@@ -3555,29 +3555,3 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 "
 `;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-text-field-wrapper input::-webkit-outer-spin-button, p-text-field-wrapper input::-webkit-inner-spin-button, p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-p-text-field-wrapper input[type="search"]::-webkit-search-cancel-button {
-  display: none !important;
-}
-p-text-field-wrapper input[type="text"]::-webkit-contacts-auto-fill-button, p-text-field-wrapper input[type="text"]::-webkit-credentials-auto-fill-button {
-  margin-right: 2.4375rem !important;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-text-field-wrapper input::-webkit-outer-spin-button, prefixed-p-text-field-wrapper input::-webkit-inner-spin-button, prefixed-p-text-field-wrapper input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-prefixed-p-text-field-wrapper input[type="search"]::-webkit-search-cancel-button {
-  display: none !important;
-}
-prefixed-p-text-field-wrapper input[type="text"]::-webkit-contacts-auto-fill-button, prefixed-p-text-field-wrapper input[type="text"]::-webkit-credentials-auto-fill-button {
-  margin-right: 2.4375rem !important;
-}"
-`;

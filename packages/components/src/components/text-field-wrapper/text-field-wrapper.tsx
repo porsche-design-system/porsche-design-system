@@ -3,7 +3,6 @@ import {
   addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
@@ -21,7 +20,7 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, IconName, PropTypes, Theme } from '../../types';
 import type { FormState } from '../../utils/form/form-state';
-import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
+import { getComponentCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
@@ -111,7 +110,6 @@ export class TextFieldWrapper {
   private hasUnit: boolean;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes(); // on every reconnect
   }
 

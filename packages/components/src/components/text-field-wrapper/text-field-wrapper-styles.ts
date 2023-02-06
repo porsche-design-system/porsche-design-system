@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
-import { buildSlottedStyles, getCss } from '../../utils';
+import { getCss } from '../../utils';
 import { isType } from './text-field-wrapper-utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
@@ -132,27 +132,4 @@ export const getComponentCss = (
       padding: 0,
     },
   });
-};
-
-// TODO: should be transferred to normalize styles (getInitialStyles partial)
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
-      '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
-        {
-          WebkitAppearance: 'none',
-          appearance: 'none',
-        },
-      '& input[type="search"]::-webkit-search-cancel-button': {
-        display: 'none',
-      },
-      '& input[type="text"]': {
-        '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
-          // TODO: does it have any effect?
-          marginRight: '2.4375rem',
-        },
-      },
-    })
-  );
 };
