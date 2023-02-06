@@ -3,6 +3,7 @@ import * as segmentedControlUtils from './segmented-control-utils';
 import * as getClickedItemUtils from '../../../utils/dom/getClickedItem';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 
 describe('connectedCallback', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
@@ -26,11 +27,11 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, component.value, component.backgroundColor, component.theme);
+    expect(spy).toBeCalledWith(component.host, component.value, component.theme);
   });
 
-  it('should call warnIfBackgroundColorIsUsed() with correct parameters', () => {
-    const spy = jest.spyOn(segmentedControlUtils, 'warnIfBackgroundColorIsUsed');
+  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
+    const spy = jest.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
     const component = new SegmentedControl();
     component.host = document.createElement('p-segmented-control');
     component.backgroundColor = 'background-surface';
@@ -38,7 +39,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, 'background-surface');
+    expect(spy).toBeCalledWith(component.host, 'background-color', 'background-surface');
   });
 });
 
