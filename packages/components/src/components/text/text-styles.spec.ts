@@ -1,6 +1,6 @@
 import { getComponentCss, getSlottedCss } from './text-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['small', 'regular', 'left', 'default', false, 'light'],
     ['x-large', 'thin', 'right', 'brand', true, 'dark'],
@@ -23,16 +23,4 @@ xdescribe('getComponentCss()', () => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
-});
-
-xdescribe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-text');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-text');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
 });
