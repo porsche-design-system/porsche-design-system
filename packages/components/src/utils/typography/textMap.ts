@@ -1,10 +1,5 @@
 import type { TextSize } from '../../types';
 import {
-  fontSizeTextLarge,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXLarge,
-  fontSizeTextXSmall,
   textLargeStyle,
   textMediumStyle,
   textSmallStyle,
@@ -18,12 +13,4 @@ export const textMap: { [key in Exclude<TextSize, 'inherit'>]: any } = {
   medium: textMediumStyle,
   large: textLargeStyle,
   'x-large': textXLargeStyle,
-};
-
-export const textSizeMap: { [key in Exclude<TextSize, 'inherit'>]: any } = {
-  'x-small': fontSizeTextXSmall,
-  small: fontSizeTextSmall,
-  medium: fontSizeTextMedium,
-  large: fontSizeTextLarge,
-  'x-large': fontSizeTextXLarge,
 };

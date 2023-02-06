@@ -1,11 +1,26 @@
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, textSizeMap } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule } from '../../styles';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  fontSizeTextLarge,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXLarge,
+  fontSizeTextXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+
+const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: any } = {
+  'x-small': fontSizeTextXSmall,
+  small: fontSizeTextSmall,
+  medium: fontSizeTextMedium,
+  large: fontSizeTextLarge,
+  'x-large': fontSizeTextXLarge,
+};
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
@@ -39,7 +54,7 @@ export const getComponentCss = (
       whiteSpace: 'inherit',
       ...(ellipsis && getEllipsisJssStyle()),
       ...buildResponsiveStyles(size, (sizeValue: TextSize) => ({
-        fontSize: sizeValue === 'inherit' ? sizeValue : textSizeMap[sizeValue],
+        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
         fontWeight: getFontWeight(weight),
       })),
     },
