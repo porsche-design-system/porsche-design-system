@@ -1,5 +1,5 @@
 import type { TextColor, TextSize, Theme } from '../../types';
-import { getCss } from '../../utils';
+import { getCss, isThemeDark } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -125,14 +125,9 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
       },
-      ...(!isColorInherit &&
-        theme === 'light' && {
-          [`@keyframes ${keyFramesLight}`]: forceRerenderAnimationStyle,
-        }),
-      ...(!isColorInherit &&
-        theme === 'dark' && {
-          [`@keyframes ${keyFramesDark}`]: forceRerenderAnimationStyle,
-        }),
+      ...(!isColorInherit && {
+        [`@keyframes ${isThemeDark(theme) ? keyFramesDark : keyFramesLight}`]: forceRerenderAnimationStyle,
+      }),
     },
   });
 };
