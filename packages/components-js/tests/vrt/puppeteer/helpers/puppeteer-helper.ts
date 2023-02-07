@@ -26,7 +26,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
         <link rel="stylesheet" href="assets/styles.css" />
-        ${initialStyles.concat(options.injectIntoHead)}
+        ${initialStyles}
+        ${options.injectIntoHead}
       </head>
       <body>
         <script type="text/javascript">porscheDesignSystem.load();</script>
