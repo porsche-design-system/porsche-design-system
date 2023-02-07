@@ -26,6 +26,7 @@ const components = [
   'text-field-wrapper',
   'textarea-wrapper',
   'toast-basic',
+  'fieldset-wrapper',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {

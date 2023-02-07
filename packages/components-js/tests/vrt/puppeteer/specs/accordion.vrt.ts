@@ -44,16 +44,16 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
         </p-accordion>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }));
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoverState(page, '.hover > p-accordion >>> button');
-      await forceHoverState(page, '.hover > p-accordion > p-link-pure >>> a');
+      await forceHoverState(page, '.hover p-accordion >>> button');
+      await forceHoverState(page, '.hover p-accordion > p-link-pure >>> a');
 
-      await forceFocusState(page, '.focus > p-accordion >>> button');
-      await forceFocusState(page, '.focus > p-accordion > p-link-pure >>> a');
+      await forceFocusState(page, '.focus p-accordion >>> button');
+      await forceFocusState(page, '.focus p-accordion > p-link-pure >>> a');
 
-      await forceFocusHoverState(page, '.focus-hover > p-accordion >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-accordion > p-link-pure >>> a');
+      await forceFocusHoverState(page, '.focus-hover p-accordion >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-accordion > p-link-pure >>> a');
     })
   ).toBeFalsy();
 });

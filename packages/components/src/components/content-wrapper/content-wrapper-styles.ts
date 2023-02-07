@@ -8,8 +8,8 @@ export const getComponentCss = (width: ContentWrapperWidth): string => {
   return getCss({
     '@global': {
       ':host': {
-        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
     },
     root: getContentWrapperStyle(width),

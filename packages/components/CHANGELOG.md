@@ -13,8 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Display` component
 - Prop `underline` for `Link Pure`
-- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper` and
-  `Text Field Wrapper`
+- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper`, `Text Field Wrapper` and `Fieldset Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
 - Prop `size` for `Accordion` `compact="true"` supports `medium`
 
@@ -121,8 +120,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Content Wrapper` and `Text Field Wrapper` matches new design language
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`, `Text Field Wrapper`, `Content Wrapper` and `Fieldset Wrapper` matches new design
+  language
 - CSS global variables names
 
 ```diff

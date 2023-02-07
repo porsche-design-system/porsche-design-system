@@ -35,9 +35,9 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoverState(page, '.hover > p-text-list a');
-      await forceFocusState(page, '.focus > p-text-list a');
-      await forceFocusHoverState(page, '.focus-hover > p-text-list a');
+      await forceHoverState(page, '.hover p-text-list a');
+      await forceFocusState(page, '.focus p-text-list a');
+      await forceFocusHoverState(page, '.focus-hover p-text-list a');
     })
   ).toBeFalsy();
 });

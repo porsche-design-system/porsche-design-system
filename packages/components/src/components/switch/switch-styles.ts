@@ -6,10 +6,10 @@ import {
   getTransition,
   getThemedColors,
   getInsetJssStyle,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const getColors = (
   checked: boolean,
@@ -67,8 +67,8 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        ...hostHiddenStyles,
         outline: 0, // custom element is able to delegate the focus
+        ...hostHiddenStyles,
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',
           ...(!stretchValue && { verticalAlign: 'top' }),

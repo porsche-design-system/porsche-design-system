@@ -1,7 +1,7 @@
 import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const gutter = `calc(${gridGap} / 2)`;
@@ -19,6 +19,7 @@ export const getComponentCss = (
         paddingLeft: gutter,
         paddingRight: gutter,
         boxSizing: 'border-box',
+        ...hostHiddenStyles,
         ...mergeDeep(
           buildResponsiveStyles(size, (sizeResponsive: GridItemSize) => ({
             width: `${gridItemWidths[sizeResponsive]}%`,

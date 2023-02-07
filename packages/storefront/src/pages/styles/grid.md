@@ -20,14 +20,15 @@ Window</p-link>
 
 tbd.
 
-## Tokens
+## Styles
 
-The Design Tokens are available as JavaScript and SCSS version. Look at the example above to see how the tokens work.
+The Styles / Design Tokens are available as JavaScript and SCSS version. Look at the example above to see how the tokens
+work.
 
 #### JS
 
 JavaScript Design Tokens can be imported by
-`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/utilities/js';`.
+`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
 - `gridBasic`
 - `gridBasicColumnEnd`
@@ -57,9 +58,8 @@ JavaScript Design Tokens can be imported by
 
 #### SCSS
 
-SCSS Design Tokens can be imported by
-`@import '~@porsche-design-system/components-{js|angular|react|vue}/utilities/scss';` (make sure your bundler supports
-scss `~` tilde imports).
+SCSS Design Tokens can be imported by `@import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';`
+(make sure your bundler supports scss `~` tilde imports).
 
 - `@mixin pds-grid()`
 - `$pds-grid-basic-column-start`

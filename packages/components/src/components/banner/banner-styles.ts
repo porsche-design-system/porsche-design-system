@@ -12,7 +12,7 @@ import {
   getKeyframes,
   getKeyframesMobile,
 } from './banner-styles-shared';
-import { addImportantToEachRule } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
 const bannerPositionTopVar = '--p-banner-position-top';
@@ -52,7 +52,11 @@ export const getComponentCss = (width: BannerWidth): string => {
         right: 0,
         willChange: 'opacity,transform',
         ...mergeDeep(
-          addImportantToEachRule(getContentWrapperStyle(widthMap[width])),
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          addImportantToEachRule({
+            ...getContentWrapperStyle(widthMap[width]),
+            ...hostHiddenStyles,
+          }),
           {
             [mediaQueryBase]: {
               bottom: `var(${bannerPositionBottomVar})`,

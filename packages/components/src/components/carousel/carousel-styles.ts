@@ -5,6 +5,7 @@ import {
   getBackfaceVisibilityJssStyle,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
+  hostHiddenStyles,
   pxToRemWithUnit,
 } from '../../styles';
 import {
@@ -40,6 +41,7 @@ export const getComponentCss = (
         [mediaQueryXl]: {
           gap: pxToRemWithUnit(32),
         },
+        ...hostHiddenStyles,
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
         ...headingMediumStyle,
