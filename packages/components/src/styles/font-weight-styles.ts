@@ -1,12 +1,10 @@
 import type { TextWeight } from '../types';
 import { fontWeightRegular, fontWeightSemiBold, fontWeightBold } from '@porsche-design-system/utilities-v2';
 
-// 'thin' is deprecated and will be mapped to 'regular'
-// 'semibold' is deprecated and will be mapped to 'semi-bold'
 const fontWeightMap: { [k in TextWeight]: number } = {
-  thin: fontWeightRegular,
+  thin: fontWeightRegular, // deprecated
   regular: fontWeightRegular,
-  semibold: fontWeightSemiBold,
+  semibold: fontWeightSemiBold, // deprecated
   'semi-bold': fontWeightSemiBold,
   bold: fontWeightBold,
 };

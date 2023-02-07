@@ -13,6 +13,7 @@ import { ButtonGroupDirection } from "./components/button-group/button-group-uti
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
+import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerOrientation } from "./components/divider/divider-utils";
 import { FieldsetWrapperLabelSize } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
@@ -39,7 +40,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/table/table/
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
-import { TextTag } from "./components/text/text-tag";
+import { TextTag } from "./components/text/text-utils";
 import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
@@ -257,6 +258,32 @@ export namespace Components {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PDisplay {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: DisplayAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: DisplayColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<DisplaySize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the display component.
+         */
+        "tag"?: DisplayTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
     }
     interface PDivider {
         /**
@@ -1320,6 +1347,12 @@ declare global {
         prototype: HTMLPContentWrapperElement;
         new (): HTMLPContentWrapperElement;
     };
+    interface HTMLPDisplayElement extends Components.PDisplay, HTMLStencilElement {
+    }
+    var HTMLPDisplayElement: {
+        prototype: HTMLPDisplayElement;
+        new (): HTMLPDisplayElement;
+    };
     interface HTMLPDividerElement extends Components.PDivider, HTMLStencilElement {
     }
     var HTMLPDividerElement: {
@@ -1605,6 +1638,7 @@ declare global {
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
+        "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
@@ -1878,6 +1912,32 @@ declare namespace LocalJSX {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PDisplay {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: DisplayAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: DisplayColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<DisplaySize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the display component.
+         */
+        "tag"?: DisplayTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
     }
     interface PDivider {
         /**
@@ -2891,6 +2951,7 @@ declare namespace LocalJSX {
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
+        "p-display": PDisplay;
         "p-divider": PDivider;
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
@@ -2951,6 +3012,7 @@ declare module "@stencil/core" {
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
+            "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;

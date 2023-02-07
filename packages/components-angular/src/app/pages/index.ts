@@ -32,6 +32,7 @@ import { CarouselComponent } from './carousel.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
+import { DisplayComponent } from './display.component';
 import { DividerComponent } from './divider.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
@@ -92,6 +93,7 @@ export const generatedPages = [
   CheckboxWrapperComponent,
   ContentWrapperComponent,
   CoreInitializerComponent,
+  DisplayComponent,
   DividerComponent,
   FieldsetWrapperComponent,
   FlexComponent,
@@ -183,6 +185,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Content Wrapper',
     path: 'content-wrapper',
     component: ContentWrapperComponent,
+  },
+  {
+    name: 'Display',
+    path: 'display',
+    component: DisplayComponent,
   },
   {
     name: 'Divider',
