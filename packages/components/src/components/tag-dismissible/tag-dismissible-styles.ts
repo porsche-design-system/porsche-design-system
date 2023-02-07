@@ -4,7 +4,7 @@ import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import { hoverMediaQuery } from '../../styles/hover-media-query';
-import type { Theme } from '../../utils/theme';
+import type { Theme } from '../../types';
 import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {

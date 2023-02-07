@@ -86,6 +86,13 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-display 1`] = `
+"<h1 class="root">
+  <slot>
+  </slot>
+</h1>"
+`;
+
 exports[`should have no basic DOM regression for p-divider 1`] = `"<hr>"`;
 
 exports[`should have no basic DOM regression for p-fieldset-wrapper 1`] = `
@@ -256,12 +263,16 @@ exports[`should have no basic DOM regression for p-scroller 1`] = `
     </div>
   </div>
   <div class="action-prev">
-    <p-button-pure class="button hydrated" tabindex="-1" aria-hidden="true">
-      prev</p-button-pure>
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="prev">
+      <p-icon class="icon hydrated">
+      </p-icon>
+    </button>
   </div>
   <div class="action-next">
-    <p-button-pure class="button hydrated" tabindex="-1" aria-hidden="true">
-      next</p-button-pure>
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="next">
+      <p-icon class="icon hydrated">
+      </p-icon>
+    </button>
   </div>
 </div>"
 `;

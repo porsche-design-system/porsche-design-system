@@ -136,7 +136,7 @@ export class Modal {
             </PrefixedTagNames.pButtonPure>
           )}
           {this.hasHeader && (
-            <div class="header">{this.heading ? <h1>{this.heading}</h1> : <slot name="heading" />}</div>
+            <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>
           )}
           <slot />
         </div>

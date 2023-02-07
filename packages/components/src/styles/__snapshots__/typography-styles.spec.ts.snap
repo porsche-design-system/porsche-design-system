@@ -18,6 +18,7 @@ exports[`getSlottedTypographyStyle() should return correct JssStyle 1`] = `
   "fontVariant": "inherit",
   "fontWeight": "inherit",
   "hyphens": "inherit",
+  "letterSpacing": "inherit",
   "lineHeight": "inherit",
   "margin": "inherit",
   "overflowWrap": "inherit",

@@ -176,13 +176,13 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  p-scroller > * {
+  :deep(p-scroller > *) {
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 16px;
     }
   }
 
   .demo > button {
-    margin: 0 1rem 1rem 0;
+    margin: 0 16px 16px 0;
   }
 </style>
