@@ -83,6 +83,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         color: white;
         background-color: lightskyblue;
       }
+    
+      div:not(.visualize-grid) {
+        margin: 16px 0;
+      }
     `,
   ],
   template: `

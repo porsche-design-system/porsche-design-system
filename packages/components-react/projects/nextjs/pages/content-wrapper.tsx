@@ -82,6 +82,10 @@ const ContentWrapperPage: NextPage = (): JSX.Element => {
       color: white;
       background-color: lightskyblue;
     }
+
+    div:not(.visualize-grid) {
+      margin: 16px 0;
+    }
   `;
 
   return (
