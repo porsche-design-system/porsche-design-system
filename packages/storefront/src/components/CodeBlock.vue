@@ -103,7 +103,7 @@
           .token.symbol,
           .token.deleted {
             color: #007299;
-            font-family: Monaco, Menlo, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+            font-family: Monaco, Menlo, 'Andale Mono', 'Ubuntu Mono', monospace;
           }
 
           .token.boolean,
