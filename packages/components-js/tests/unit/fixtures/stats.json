@@ -51,8 +51,8 @@
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 3494,
-    "gzipSize": 1461
+    "size": 3719,
+    "gzipSize": 1557
   },
   {
     "chunkShortName": "flex",
@@ -101,7 +101,7 @@
   },
   {
     "chunkShortName": "main",
-    "size": 67482,
+    "size": 67492,
     "gzipSize": 22937
   },
   {
