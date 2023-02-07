@@ -83,7 +83,7 @@ export class SegmentedControlItem {
     return (
       <button type="button" {...getButtonAttributes(this.host.selected, this.disabled)}>
         {this.label && <span>{this.label}</span>}
-        {(this.icon || this.iconSource) && (
+        {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
             size="inherit"
