@@ -31,6 +31,12 @@ const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): Jss
     transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
   });
 
+const widthMap: { [key in BannerWidth]: BannerWidth } = {
+  fluid: 'extended',
+  extended: 'extended',
+  basic: 'basic',
+};
+
 export const getComponentCss = (width: BannerWidth): string => {
   return getCss({
     '@global': {
@@ -46,7 +52,7 @@ export const getComponentCss = (width: BannerWidth): string => {
         right: 0,
         willChange: 'opacity,transform',
         ...mergeDeep(
-          addImportantToEachRule(getContentWrapperStyle(width)),
+          addImportantToEachRule(getContentWrapperStyle(widthMap[width])),
           {
             [mediaQueryBase]: {
               bottom: `var(${bannerPositionBottomVar})`,

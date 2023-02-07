@@ -35,7 +35,7 @@ export class Banner {
   @Prop() public persistent?: boolean = false;
 
   /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
-  @Prop() public width?: BannerWidth = 'basic';
+  @Prop() public width?: BannerWidth = 'extended';
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -71,7 +71,7 @@ export class Banner {
     };
     warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
     const deprecatedWidthMap: Partial<Record<BannerWidth, BannerWidth>> = {
-      fluid: 'full',
+      fluid: 'extended',
     };
     warnIfDeprecatedPropValueIsUsed(this.host, 'width', deprecatedWidthMap);
     attachComponentCss(this.host, getComponentCss, this.width);
