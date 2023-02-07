@@ -27,19 +27,19 @@
   "exports": {
     "./jsdom-polyfill": "./jsdom-polyfill/index.js",
     "./partials": {
-      "types": "./partials/partials.d.ts",
-      "import": "./partials/esm/partials.js",
-      "require": "./partials/partials.js"
+      "types": "./partials/index.d.ts",
+      "import": "./partials/esm/index.js",
+      "require": "./partials/index.js"
     },
     "./testing": {
-      "types": "./testing/testing.d.ts",
-      "import": "./testing/testing.js",
-      "require": "./testing/testing.js"
+      "types": "./testing/index.d.ts",
+      "import": "./testing/index.js",
+      "require": "./testing/index.js"
     },
-    "./utilities/js": {
-      "types": "./utilities/js/js.d.ts",
-      "import": "./utilities/js/esm/js.js",
-      "require": "./utilities/js/js.js"
+    "./styles": {
+      "types": "./styles/index.d.ts",
+      "import": "./styles/esm/index.js",
+      "require": "./styles/index.js"
     }
   }
 }
