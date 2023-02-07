@@ -14,10 +14,10 @@ import {
   getTextHiddenJssStyle,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { Theme } from '../../types';
 
 const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');

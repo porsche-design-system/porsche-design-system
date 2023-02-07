@@ -2,13 +2,13 @@ import {
   pxToRemWithUnit,
   getInsetJssStyle,
   getTransition,
-  addImportantToRule,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';

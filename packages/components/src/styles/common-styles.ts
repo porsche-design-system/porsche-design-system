@@ -1,8 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
-import { getThemedColors } from './';
-import { hoverMediaQuery } from './hover-media-query';
+import { getThemedColors, hoverMediaQuery } from './';
 import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';

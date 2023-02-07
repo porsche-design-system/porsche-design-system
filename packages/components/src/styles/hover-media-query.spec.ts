@@ -51,6 +51,9 @@ const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).
 it.each<TagName>(tagNamesWithJss)(
   'should wrap ":hover" pseudo selector in "@media (hover: hover)" query for %s',
   (tagName) => {
+    // silence deprecation warnings
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+
     // mock to get the result from getComponentCss() directly
     const spy = jest
       .spyOn(jssUtils, 'attachComponentCss')

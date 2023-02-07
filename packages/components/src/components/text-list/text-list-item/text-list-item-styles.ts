@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles, pxToRemWithUnit } from '../../../styles';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 const cssVariableOrderedSuffix = '--p-internal-text-list-item-ordered-suffix';
@@ -18,18 +18,13 @@ export const getComponentCss = (listType: ListType, orderType: OrderType): strin
 
   return getCss({
     '@global': {
-      '::slotted(*)': {
-        [cssVariableOrderedSuffix]: '""',
-        [cssVariableUnorderedWidth]: pxToRemWithUnit(8),
-        [cssVariableUnorderedHeight]: '1px',
-        [cssVariableUnorderedTop]: 'calc(1.5em / 2)',
-      },
       ':host': addImportantToEachRule({
         position: 'relative',
         display: 'list-item',
         color: 'inherit',
         listStyleType: 'none',
         paddingLeft: pxToRemWithUnit(isOrdered ? 40 : 24),
+        ...hostHiddenStyles,
         '&:before': isOrdered
           ? {
               ...beforeJssStyles,
@@ -53,6 +48,12 @@ export const getComponentCss = (listType: ListType, orderType: OrderType): strin
               backgroundColor: 'currentColor',
             },
       }),
+      '::slotted(*)': {
+        [cssVariableOrderedSuffix]: '""',
+        [cssVariableUnorderedWidth]: pxToRemWithUnit(8),
+        [cssVariableUnorderedHeight]: '1px',
+        [cssVariableUnorderedTop]: 'calc(1.5em / 2)',
+      },
     },
   });
 };

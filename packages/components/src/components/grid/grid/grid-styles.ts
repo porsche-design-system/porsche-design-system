@@ -1,6 +1,6 @@
 import type { GridDirection, GridWrap } from './grid-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { gridGap } from '@porsche-design-system/utilities-v2';
 
@@ -18,6 +18,7 @@ export const getComponentCss = (
         width: 'auto',
         marginLeft: gutter,
         marginRight: gutter,
+        ...hostHiddenStyles,
         ...mergeDeep(
           buildResponsiveStyles(direction, (flexDirection: GridDirection) => ({ flexDirection })),
           buildResponsiveStyles(wrap, (flexWrap: GridWrap) => ({ flexWrap }))

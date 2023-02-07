@@ -2,7 +2,7 @@ import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
@@ -19,7 +19,10 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule(getNotificationRootJssStyle(state, hasAction, hasClose, theme)),
+      ':host': addImportantToEachRule({
+        ...getNotificationRootJssStyle(state, hasAction, hasClose, theme),
+        ...hostHiddenStyles,
+      }),
       h5: headingSmallStyle,
       p: textSmallStyle,
       'h5,p': {

@@ -8,7 +8,10 @@ it('should return correct jss styles', () => {
   expect(hostHiddenStyles).toMatchSnapshot();
 });
 
-const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
+const tagNamesWithJss = TAG_NAMES.filter((tagName) => {
+  const meta = getComponentMeta(tagName);
+  return !meta.isInternal && meta.styling === 'jss';
+});
 
 it.each<TagName>(tagNamesWithJss)('should have ":host([hidden])" styles for %s', (tagName) => {
   // silence deprecation warnings

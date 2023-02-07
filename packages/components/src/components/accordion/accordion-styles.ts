@@ -1,7 +1,14 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { getTransition, transitionDuration, getThemedColors, addImportantToEachRule } from '../../styles';
+import {
+  getTransition,
+  transitionDuration,
+  getThemedColors,
+  addImportantToEachRule,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import {
   fontWeight,
   fontSizeText,
@@ -11,8 +18,6 @@ import {
   borderRadiusSmall,
   borderWidthBase,
 } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,

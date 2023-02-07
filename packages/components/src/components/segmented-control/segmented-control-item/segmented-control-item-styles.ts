@@ -5,12 +5,13 @@ import {
   getInvertedThemedColors,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
   pxToRemWithUnit,
 } from '../../../styles';
 import { textSmallStyle, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
-import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const ITEM_PADDING = pxToRemWithUnit(16);
 export const { font: BUTTON_FONT } = textSmallStyle;
@@ -59,6 +60,7 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         display: 'block',
         outline: 0,
+        ...hostHiddenStyles,
       }),
       button: {
         display: 'block',

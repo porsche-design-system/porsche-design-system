@@ -1,6 +1,11 @@
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getTransition, getThemedColors } from '../../../styles';
-import { hoverMediaQuery } from '../../../styles/hover-media-query';
+import {
+  addImportantToEachRule,
+  getTransition,
+  getThemedColors,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -8,6 +13,7 @@ export const getComponentCss = (): string => {
       ':host': addImportantToEachRule({
         display: 'table-row',
         transition: getTransition('background-color'),
+        ...hostHiddenStyles,
         ...hoverMediaQuery({
           '&(:hover)': {
             backgroundColor: getThemedColors('light').backgroundSurfaceColor,

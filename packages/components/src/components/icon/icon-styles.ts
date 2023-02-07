@@ -9,10 +9,9 @@ import {
   fontSizeTextXLarge,
   fontSizeTextXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { addImportantToEachRule } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 
-const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
+const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-small': fontSizeTextXSmall,
   small: fontSizeTextSmall,
   medium: fontSizeTextMedium,

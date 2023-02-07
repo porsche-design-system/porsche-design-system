@@ -7,11 +7,12 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import {
-  addImportantToRule,
   getBaseSlottedStyles,
   getFocusJssStyle,
   pxToRemWithUnit,
   getThemedColors,
+  addImportantToEachRule,
+  hostHiddenStyles,
 } from '../../../styles';
 
 const { primaryColor } = getThemedColors('light');
@@ -19,9 +20,10 @@ const { primaryColor } = getThemedColors('light');
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
-      ':host': {
-        display: addImportantToRule('block'),
-      },
+      ':host': addImportantToEachRule({
+        display: 'block',
+        ...hostHiddenStyles,
+      }),
     },
     caption: {
       marginBottom: spacingStaticSmall,
