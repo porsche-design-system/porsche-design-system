@@ -15,8 +15,6 @@ import {
   textXSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
-import { hoverMediaQuery } from '../../../styles/hover-media-query';
-import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
 
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
