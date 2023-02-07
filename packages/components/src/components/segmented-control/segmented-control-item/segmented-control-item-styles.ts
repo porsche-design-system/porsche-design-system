@@ -31,24 +31,14 @@ export const getColors = (
   borderColor: string;
   hoverBorderColor: string;
 } => {
-  const themedColors = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
 
-  const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = themedColors;
-  const borderColor = isSelected ? primaryColor : contrastLowColor;
-
-  return isDisabled
-    ? {
-        buttonColor: disabledColor,
-        labelColor: disabledColor,
-        borderColor,
-        hoverBorderColor: primaryColor,
-      }
-    : {
-        buttonColor: primaryColor,
-        labelColor: contrastMediumColor,
-        borderColor,
-        hoverBorderColor: primaryColor,
-      };
+  return {
+    buttonColor: isDisabled ? disabledColor : primaryColor,
+    labelColor: isDisabled ? disabledColor : contrastMediumColor,
+    borderColor: isSelected ? primaryColor : contrastLowColor,
+    hoverBorderColor: primaryColor,
+  };
 };
 
 export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIcon: boolean, theme: Theme): string => {
