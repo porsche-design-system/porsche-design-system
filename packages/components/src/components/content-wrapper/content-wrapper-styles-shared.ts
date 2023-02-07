@@ -6,7 +6,6 @@ import {
   gridSafeZoneBase,
   gridSafeZoneXXL,
   gridWidthMax,
-  gridWidthMin,
 } from '@porsche-design-system/utilities-v2';
 
 const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
@@ -44,7 +43,7 @@ export const getContentWrapperStyle = (width: ContentWrapperWidth): JssStyle => 
   return {
     width: '100%',
     padding: `0 ${offsetHorizontalXXL}`,
-    minWidth: gridWidthMin,
+    minWidth: 0, // needed for some flex context
     maxWidth: gridWidthMax,
     ...widthMap[width],
   };

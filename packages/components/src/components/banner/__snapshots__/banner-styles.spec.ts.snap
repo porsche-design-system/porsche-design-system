@@ -13,7 +13,7 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
   will-change: opacity,transform;
   width: 100% !important;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
-  min-width: 320px !important;
+  min-width: 0 !important;
   max-width: 2560px !important;
 }
 @keyframes mobileIn {
@@ -104,7 +104,7 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
   will-change: opacity,transform;
   width: 100% !important;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
-  min-width: 320px !important;
+  min-width: 0 !important;
   max-width: 2560px !important;
 }
 @keyframes mobileIn {
@@ -195,7 +195,7 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
   will-change: opacity,transform;
   width: 100% !important;
   padding: 0 max(0px, (100% - 2560px) / 2) !important;
-  min-width: 320px !important;
+  min-width: 0 !important;
   max-width: 2560px !important;
 }
 @keyframes mobileIn {

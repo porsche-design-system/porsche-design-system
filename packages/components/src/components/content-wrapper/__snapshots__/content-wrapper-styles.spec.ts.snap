@@ -7,7 +7,7 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
 .root {
   width: 100%;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  min-width: 320px;
+  min-width: 0;
   max-width: 2560px;
 }
 @media(min-width:760px) {
@@ -31,7 +31,7 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
 .root {
   width: 100%;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  min-width: 320px;
+  min-width: 0;
   max-width: 2560px;
 }
 @media(min-width:1920px) {
@@ -49,7 +49,7 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
 .root {
   width: 100%;
   padding: 0 max(0px, (100% - 2560px) / 2);
-  min-width: 320px;
+  min-width: 0;
   max-width: 2560px;
 }"
 `;
@@ -61,7 +61,7 @@ exports[`getComponentCss() should return correct css for width: full 1`] = `
 .root {
   width: 100%;
   padding: 0 max(0px, (100% - 2560px) / 2);
-  min-width: 320px;
+  min-width: 0;
   max-width: 2560px;
 }"
 `;
@@ -73,7 +73,7 @@ exports[`getComponentCss() should return correct css for width: narrow 1`] = `
 .root {
   width: 100%;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  min-width: 320px;
+  min-width: 0;
   max-width: 2560px;
 }
 @media(min-width:760px) {
