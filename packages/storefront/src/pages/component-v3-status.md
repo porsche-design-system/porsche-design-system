@@ -15,6 +15,18 @@
 - generic test für `:host([hidden])` of all components
 - generic test for `display: xy !important` of all components
 - optimize component chunking
+- deprecate literal types
+
+```
+/** @deprecated */
+type Deprecated = 'foo' | 'yoo';
+type Valid = 'bar';
+
+type Union = Deprecated | Valid;
+const u: Union = 'foo';
+const v: Union = 'bar';
+console.log(u, v);
+```
 
 ### Styles
 
