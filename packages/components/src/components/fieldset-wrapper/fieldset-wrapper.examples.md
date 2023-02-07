@@ -132,11 +132,13 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
+  @import "~@porsche-design-system/components-js/utilities/scss";
+
   .state-markup > * {
-    margin-top: 16px;
+    margin-top: $pds-spacing-static-medium;
   }
 
   :deep(p-checkbox-wrapper) {
-    margin-top: 16px;
+    margin-top: $pds-spacing-static-medium;
   }
 </style>

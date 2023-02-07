@@ -16,12 +16,10 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': {
-        ...addImportantToEachRule({
-          display: 'block',
-          ...hostHiddenStyles,
-        }),
-      },
+      ':host': addImportantToEachRule({
+        display: 'block',
+        ...hostHiddenStyles,
+      }),
       fieldset: {
         margin: 0,
         padding: 0,
