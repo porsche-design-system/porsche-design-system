@@ -14,6 +14,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
+import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
 
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
@@ -50,6 +51,7 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
       ':host': addImportantToEachRule({
         display: 'block',
         outline: 0,
+        ...hostHiddenStyles,
       }),
       button: {
         display: 'block',
