@@ -4,6 +4,8 @@ import {
   getInvertedThemedColors,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
   ThemedColors,
 } from '../../styles';
 import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
@@ -11,7 +13,6 @@ import type { TagColor } from './tag-utils';
 import { getThemedBackgroundHoverColor, hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 import { getTagFocusJssStyle, getThemedBackgroundColor } from './tag-shared-utils';
 
 export const getColors = (
@@ -46,6 +47,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
       ':host': {
         display: 'inline-flex',
         verticalAlign: 'top',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       span: {
         display: 'flex',
@@ -59,8 +61,8 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         font: textXSmallStyle.font,
         whiteSpace: 'nowrap',
         ...(isFocusable && {
-          transition: getTransition('background-color'),
           ...hoverMediaQuery({
+            transition: getTransition('background-color'),
             '&:hover': {
               background: backgroundHoverColor,
             },
@@ -83,13 +85,11 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           border: 0,
           textAlign: 'left',
         },
-
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
         ...Object.entries(getTagFocusJssStyle(themedColors)).reduce((result, [key, value]) => {
           result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
           return result;
         }, {} as JssStyle),
-
         '&(br)': {
           display: 'none',
         },

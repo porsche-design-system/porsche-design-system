@@ -11,6 +11,10 @@
   (https://webaim.org/techniques/css/invisiblecontent/)
 - Ensure Banner, Toast, Modal, Content-Wrapper etc. is in sync with new grid design token by VRT test
 - Markdown Styles needs to be updated with new design tokens
+- enable ssr wrapper markup snapshot tests
+- generic test für `:host([hidden])` of all components
+- generic test for `display: xy !important` of all components
+- optimize component chunking
 
 ### Styles
 

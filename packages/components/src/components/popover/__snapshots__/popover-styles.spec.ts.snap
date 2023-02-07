@@ -30,7 +30,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -49,6 +48,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
@@ -161,7 +163,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -180,6 +181,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
@@ -292,7 +296,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -311,6 +314,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
@@ -423,7 +429,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -442,6 +447,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
@@ -554,7 +562,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -573,6 +580,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
@@ -685,7 +695,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -704,6 +713,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
@@ -816,7 +828,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -835,6 +846,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
@@ -947,7 +961,6 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
-  transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -966,6 +979,9 @@ button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);

@@ -9,6 +9,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
   addImportantToRule,
+  hoverMediaQuery,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -21,7 +22,6 @@ import {
 import { ICON_SPACE, OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../styles/form-styles';
-import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import type { FormState } from '../../../utils/form/form-state';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';

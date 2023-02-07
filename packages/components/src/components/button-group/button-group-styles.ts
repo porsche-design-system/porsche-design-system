@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { ButtonGroupDirection } from './button-group-utils';
-import { addImportantToEachRule } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { spacingStaticSmall, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 
@@ -43,6 +43,7 @@ export const getComponentCss = (direction: BreakpointCustomizable<ButtonGroupDir
     '@global': {
       ':host': {
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       div: {
         display: 'flex',

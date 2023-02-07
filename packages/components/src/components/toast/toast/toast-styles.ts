@@ -1,6 +1,6 @@
 import { getMediaQueryMin, gridSafeZoneBase } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles-shared';
 
@@ -27,6 +27,7 @@ export const getComponentCss = (): string => {
           [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, 64px)`,
           bottom: `var(${toastPositionBottomVarInternal})`,
         },
+        ...hostHiddenStyles,
       }),
       '@keyframes in': getKeyframesMobile('in', toastPositionBottomVarInternal),
       '@keyframes out': getKeyframesMobile('out', toastPositionBottomVarInternal),
