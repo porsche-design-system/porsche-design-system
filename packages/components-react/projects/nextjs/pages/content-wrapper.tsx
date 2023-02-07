@@ -104,16 +104,6 @@ const ContentWrapperPage: NextPage = (): JSX.Element => {
         ><span className="visualize-grid-columns" />
       </div>
 
-      <style>
-        p-content-wrapper > p {
-          margin: 0;
-          padding: 4px 2vw;
-          text-align: center;
-          color: white;
-          background-color: lightskyblue;
-        }
-      </style>
-
       <div title="should render with width 'fluid' (desktop: 16 columns)">
         <PContentWrapper width="fluid">
           <p>Fluid</p>
