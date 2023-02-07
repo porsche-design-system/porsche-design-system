@@ -30,6 +30,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-content-wrapper width="full">Some content</p-content-wrapper>
 ```
 
+- Deprecated prop `theme` and `background-color` for `Content Wrapper`
+
+```diff
+- <p-content-wrapper theme="dark" background-color="default">Some content</p-content-wrapper>
++ <p-content-wrapper>Some content</p-content-wrapper>
+```
+
 - `Flex` is deprecated and will be removed with the next major release. In general, please use native
   <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more
   standardized layout technique.
