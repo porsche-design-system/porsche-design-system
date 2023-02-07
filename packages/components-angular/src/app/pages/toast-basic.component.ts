@@ -76,6 +76,11 @@ import { ToastManager } from '@porsche-design-system/components-angular';
         width: 100%;
         background: rgba(0, 0, 255, 0.1);
       }
+    
+      .playground {
+        height: 300px;
+        padding: 0;
+      }
     `,
   ],
   template: `
