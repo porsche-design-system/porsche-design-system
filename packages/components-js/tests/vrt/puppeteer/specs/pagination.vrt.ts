@@ -27,18 +27,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
         <p-pagination total-items-count="500" items-per-page="25" active-page="1" theme="${theme}"></p-pagination>
-
         <p-pagination total-items-count="500" items-per-page="25" active-page="2" theme="${theme}"></p-pagination>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
       });
 
-      await forceHoverState(page, '.hover > p-pagination >>> span');
-
-      await forceFocusState(page, '.focus > p-pagination >>> span');
-
-      await forceFocusHoverState(page, '.focus-hover > p-pagination >>> span');
+      await forceHoverState(page, '.hover p-pagination >>> span');
+      await forceFocusState(page, '.focus p-pagination >>> span');
+      await forceFocusHoverState(page, '.focus-hover p-pagination >>> span');
     })
   ).toBeFalsy();
 });

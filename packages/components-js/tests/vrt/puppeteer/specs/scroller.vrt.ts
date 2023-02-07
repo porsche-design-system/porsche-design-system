@@ -37,7 +37,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
   </p-scroller>
 </div>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }));
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
       // Scroll a bit to ensure both arrows are visible
       await page.evaluate(() =>
