@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   getTransition,
   transitionDuration,
@@ -56,30 +56,35 @@ export const getComponentCss = (
           fontSize: fontSizeText[s],
           padding: compact ? '4px 0' : `${s === 'medium' ? '20px' : '12px'} 0`,
         })),
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          borderRadius: borderRadiusSmall,
-          left: '-4px',
-          right: '-4px',
-          ...(compact
-            ? {
-                top: '2px',
-                bottom: '2px',
-              }
-            : {
-                top: '6px',
-                bottom: '6px',
-              }),
-        },
-        ...hoverMediaQuery({
-          '&::before': {
-            transition: getTransition('background-color'),
+        // mergeDeep needed because of hoverMediaQuery in certain modes not wrapping keys and therefore overriding "&::before" key
+        ...mergeDeep(
+          {
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              borderRadius: borderRadiusSmall,
+              left: '-4px',
+              right: '-4px',
+              ...(compact
+                ? {
+                    top: '2px',
+                    bottom: '2px',
+                  }
+                : {
+                    top: '6px',
+                    bottom: '6px',
+                  }),
+            },
           },
-          '&:hover::before': {
-            backgroundColor: hoverColor,
-          },
-        }),
+          hoverMediaQuery({
+            '&::before': {
+              transition: getTransition('background-color'),
+            },
+            '&:hover::before': {
+              background: hoverColor,
+            },
+          })
+        ),
         '&:focus::before': {
           border: `${borderWidthBase} solid ${focusColor}`,
         },
