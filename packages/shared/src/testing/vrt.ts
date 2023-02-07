@@ -84,6 +84,7 @@ export const getVisualRegressionPropTableTester = (): VisualRegressionTester => 
 
 type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
+  scaledComponents?: boolean;
   javaScriptEnabled?: boolean;
 };
 
@@ -93,8 +94,9 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, javaScriptEnabled, ...otherOptions } = {
+  const { scenario, javaScriptEnabled, scaledComponents, ...otherOptions } = {
     scenario: undefined,
+    scaledComponents: false,
     javaScriptEnabled: true,
     ...options,
   };
@@ -105,6 +107,18 @@ export const vrtTest = (
     async () => {
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
+
+      if (scaledComponents) {
+        const client = await page.target().createCDPSession();
+        await client.send('Page.enable');
+        await client.send('Page.setFontSizes', {
+          fontSizes: {
+            standard: 32,
+            fixed: 48,
+          },
+        });
+      }
+
       await page.goto(baseUrl + url, { waitUntil: 'networkidle0' });
 
       // componentsReady is undefined in utilities package
