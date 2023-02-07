@@ -111,8 +111,8 @@ export class Accordion {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const Heading = this.tag;
 
+    // TODO: why .root div for a condition border-bottom style? could be applied on :host directly
     return (
-      // TODO: why .root div for a condition border-bottom style? could be applied on :host directly
       <div class="root">
         <Heading class="heading">
           <button
