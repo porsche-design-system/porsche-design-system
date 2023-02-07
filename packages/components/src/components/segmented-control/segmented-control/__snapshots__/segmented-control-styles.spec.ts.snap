@@ -6,6 +6,9 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 1`] = `
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 46px) !important;
   gap: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -15,6 +18,9 @@ exports[`getComponentCss() should return correct css for maxWidth: 80 1`] = `
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 80px) !important;
   gap: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -24,5 +30,8 @@ exports[`getComponentCss() should return correct css for maxWidth: 230 1`] = `
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 220px) !important;
   gap: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;

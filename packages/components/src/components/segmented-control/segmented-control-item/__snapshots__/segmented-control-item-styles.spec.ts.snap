@@ -5,6 +5,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
   display: block !important;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 button {
   display: block;
   height: 100%;
@@ -65,6 +68,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 ":host {
   display: block !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: block;
@@ -127,6 +133,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
   display: block !important;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 button {
   display: block;
   height: 100%;
@@ -188,6 +197,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
   display: block !important;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 button {
   display: block;
   height: 100%;
@@ -240,6 +252,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isSel
   display: block !important;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 button {
   display: block;
   height: 100%;
@@ -291,6 +306,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isSel
 ":host {
   display: block !important;
   outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: block;
