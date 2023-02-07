@@ -12,6 +12,7 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #404044;
+  border-radius: 4px;
   outline: 0;
   background: transparent;
   color: #FBFCFF;
@@ -19,7 +20,6 @@ button {
   overflow-wrap: normal;
   hyphens: auto;
   position: relative;
-  border-radius: 4px;
   cursor: pointer;
 }
 button::before {
@@ -73,6 +73,7 @@ button {
   padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
+  border-radius: 4px;
   outline: 0;
   background: transparent;
   color: #010205;
@@ -80,7 +81,6 @@ button {
   overflow-wrap: normal;
   hyphens: auto;
   position: relative;
-  border-radius: 4px;
   cursor: pointer;
 }
 button::before {
@@ -134,6 +134,7 @@ button {
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
+  border-radius: 4px;
   outline: 0;
   background: transparent;
   color: #010205;
@@ -141,7 +142,6 @@ button {
   overflow-wrap: normal;
   hyphens: auto;
   position: relative;
-  border-radius: 4px;
   cursor: pointer;
 }
 button::before {
@@ -195,6 +195,7 @@ button {
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #010205;
+  border-radius: 4px;
   outline: 0;
   background: transparent;
   color: #010205;
@@ -202,7 +203,6 @@ button {
   overflow-wrap: normal;
   hyphens: auto;
   position: relative;
-  border-radius: 4px;
   cursor: pointer;
 }
 button::before {
@@ -247,6 +247,7 @@ button {
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
+  border-radius: 4px;
   outline: 0;
   background: transparent;
   color: #949598;
@@ -254,7 +255,6 @@ button {
   overflow-wrap: normal;
   hyphens: auto;
   position: relative;
-  border-radius: 4px;
   cursor: not-allowed;
 }
 button::before {
@@ -299,6 +299,7 @@ button {
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #010205;
+  border-radius: 4px;
   outline: 0;
   background: transparent;
   color: #949598;
@@ -306,7 +307,6 @@ button {
   overflow-wrap: normal;
   hyphens: auto;
   position: relative;
-  border-radius: 4px;
   cursor: not-allowed;
 }
 button::before {
