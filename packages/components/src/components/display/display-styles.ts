@@ -1,11 +1,10 @@
 import type { DisplaySize, DisplayColor } from './display-utils';
 import type { BreakpointCustomizable, TextAlign, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { displayLargeStyle, fontSizeDisplayLarge, fontSizeDisplayMedium } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 import { DISPLAY_TAGS } from './display-utils';
 
 const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
@@ -23,8 +22,8 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
         [DISPLAY_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getSlottedTypographyJssStyle()),

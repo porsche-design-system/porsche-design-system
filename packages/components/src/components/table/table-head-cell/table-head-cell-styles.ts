@@ -7,10 +7,11 @@ import {
   getTextHiddenJssStyle,
   pxToRemWithUnit,
   getThemedColors,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../../styles';
 import { fontWeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
-import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 const { contrastMediumColor, primaryColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
@@ -32,6 +33,7 @@ export const getComponentCss = (
         verticalAlign: 'bottom',
         fontWeight: fontWeightSemiBold,
         whiteSpace: multiline ? 'normal' : 'nowrap',
+        ...hostHiddenStyles,
       }),
       ...(sortable
         ? {

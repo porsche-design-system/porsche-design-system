@@ -2,7 +2,14 @@ import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -14,8 +21,6 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 
@@ -37,8 +42,8 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       nav: {
         display: 'flex',

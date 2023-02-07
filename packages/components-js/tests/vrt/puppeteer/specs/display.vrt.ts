@@ -28,12 +28,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoverState(page, '.hover > p-display a');
-      await forceHoverState(page, '.hover > p-display button');
-      await forceFocusState(page, '.focus > p-display a');
-      await forceFocusState(page, '.focus > p-display button');
-      await forceFocusHoverState(page, '.focus-hover > p-display a');
-      await forceFocusHoverState(page, '.focus-hover > p-display button');
+      await forceHoverState(page, '.hover p-display a');
+      await forceHoverState(page, '.hover p-display button');
+      await forceFocusState(page, '.focus p-display a');
+      await forceFocusState(page, '.focus p-display button');
+      await forceFocusHoverState(page, '.focus-hover p-display a');
+      await forceFocusHoverState(page, '.focus-hover p-display button');
     })
   ).toBeFalsy();
 });

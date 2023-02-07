@@ -2,7 +2,14 @@ import type { JssStyle, Styles } from 'jss';
 import type { GetJssStyleFunction } from '../utils';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from './';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -12,8 +19,6 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getFontSizeText } from './font-size-text-styles';
-import { hoverMediaQuery } from './hover-media-query';
-import { hostHiddenStyles } from './host-hidden-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
@@ -54,9 +59,9 @@ export const getLinkButtonPureStyles = (
     '@global': {
       ':host': {
         ...addImportantToEachRule({
-          ...hostHiddenStyles,
           transform: 'translate3d(0,0,0)', // creates new stacking context
           outline: 0, // custom element is able to delegate the focus
+          ...hostHiddenStyles,
         }),
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
           display: responsiveStretch ? 'block' : 'inline-block',

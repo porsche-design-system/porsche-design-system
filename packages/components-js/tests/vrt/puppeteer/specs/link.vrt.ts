@@ -67,14 +67,14 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         injectIntoHead: head,
       });
 
-      await forceHoverState(page, '.hover > p-link >>> a');
-      await forceHoverState(page, '.hover > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusState(page, '.focus > p-link'); // native outline should not be visible
-      await forceFocusState(page, '.focus > p-link >>> a');
-      await forceFocusState(page, '.focus > p-link a');
-      await forceFocusHoverState(page, '.focus-hover > p-link >>> a');
-      await forceHoverState(page, '.focus-hover > p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusHoverState(page, '.focus-hover > p-link a');
+      await forceHoverState(page, '.hover p-link >>> a');
+      await forceHoverState(page, '.hover p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusState(page, '.focus p-link'); // native outline should not be visible
+      await forceFocusState(page, '.focus p-link >>> a');
+      await forceFocusState(page, '.focus p-link a');
+      await forceFocusHoverState(page, '.focus-hover p-link >>> a');
+      await forceHoverState(page, '.focus-hover p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusHoverState(page, '.focus-hover p-link a');
 
       // TODO: scenario like style="width: 200px" on parent missing?
     })
