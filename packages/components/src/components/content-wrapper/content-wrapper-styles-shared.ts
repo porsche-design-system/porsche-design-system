@@ -41,7 +41,6 @@ const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: JssSt
 
 export const getContentWrapperStyle = (width: ContentWrapperWidth): JssStyle => {
   return {
-    width: '100%',
     padding: `0 ${offsetHorizontalXXL}`,
     minWidth: 0, // needed for some flex context
     maxWidth: gridWidthMax,
