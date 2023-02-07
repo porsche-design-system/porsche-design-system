@@ -5,6 +5,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-fieldset-wrapper',
   styles: [
     `
+      @media only screen and (min-width: 760px) {
+        #app,
+        :host {
+          display: grid;
+          grid-template-columns: repeat(2, 50%);
+        }
+      }
       p-fieldset-wrapper > *:not(:last-child) {
         margin-bottom: 2px;
       }
