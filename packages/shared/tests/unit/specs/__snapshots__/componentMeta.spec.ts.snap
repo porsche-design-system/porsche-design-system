@@ -55,7 +55,7 @@ exports[`should match snapshot 1`] = `
       "persistent": false,
       "state": "info",
       "theme": "light",
-      "width": "basic",
+      "width": "extended",
     },
     "styling": "jss",
   },
