@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles } from '../utils';
-import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition } from './';
+import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, hoverMediaQuery } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -10,7 +10,6 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
-import { hoverMediaQuery } from './hover-media-query';
 import type { FormState } from '../utils/form/form-state';
 
 // TODO: should be removed if possible?

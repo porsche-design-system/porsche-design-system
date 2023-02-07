@@ -2,13 +2,13 @@ import {
   pxToRemWithUnit,
   getInsetJssStyle,
   getTransition,
-  addImportantToRule,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
@@ -69,21 +69,26 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        height: addImportantToRule('fit-content'),
-        '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
+        ...addImportantToEachRule({
+          height: 'fit-content',
+          ...hostHiddenStyles,
+        }),
+      },
+      ...addImportantToEachRule({
+        '::slotted(picture),::slotted(img)': {
           transition: getTransition('transform'),
           ...getBackfaceVisibilityJssStyle(),
-        }),
-        '& ::slotted(picture)': addImportantToEachRule({
+        },
+        '::slotted(picture)': {
           position: 'absolute',
           ...getInsetJssStyle(),
-        }),
-        '& ::slotted(img)': addImportantToEachRule({
+        },
+        '::slotted(img)': {
           height: '100%',
           width: '100%',
           objectFit: 'cover',
-        }),
-      },
+        },
+      }),
       p: {
         color: getThemedTextColor('dark', 'primary'),
         ...textSmallStyle,

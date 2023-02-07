@@ -6,6 +6,6 @@
 import * as jsJsdomPolyfill from '@porsche-design-system/components-js/jsdom-polyfill';
 import * as vueJsdomPolyfill from '@porsche-design-system/components-vue/jsdom-polyfill';
 
-it('should reexport jsdom-polyfill from components-js', () => {
+it('should reexport jsdom-polyfill sub-package from components-js', () => {
   expect(vueJsdomPolyfill).toEqual(jsJsdomPolyfill);
 });

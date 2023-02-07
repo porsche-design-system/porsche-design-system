@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../types';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, textMap } from '../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, hostHiddenStyles } from '../../styles';
 import {
   headingLargeStyle,
   headingXLargeStyle,
@@ -51,6 +51,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
         '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypographyJssStyle()),

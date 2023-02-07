@@ -1,14 +1,13 @@
 import { getCss } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles';
-import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule(hostHiddenStyles),
+      },
     },
     root: {
       marginBottom: '8px',

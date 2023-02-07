@@ -233,7 +233,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
 
   :deep(.footer) {  
     padding: 2rem 0 0;

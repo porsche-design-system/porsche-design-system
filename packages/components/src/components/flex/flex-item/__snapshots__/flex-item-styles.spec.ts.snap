@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for alignSelf: "auto" 1`] =
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -19,6 +22,9 @@ exports[`getComponentCss() should return correct css for alignSelf: "baseline" 1
   align-self: baseline !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -30,6 +36,9 @@ exports[`getComponentCss() should return correct css for alignSelf: "center" 1`]
   align-self: center !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -41,6 +50,9 @@ exports[`getComponentCss() should return correct css for alignSelf: "flex-end" 1
   align-self: flex-end !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -52,6 +64,9 @@ exports[`getComponentCss() should return correct css for alignSelf: "flex-start"
   align-self: flex-start !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -63,6 +78,9 @@ exports[`getComponentCss() should return correct css for alignSelf: "stretch" 1`
   align-self: stretch !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -74,6 +92,9 @@ exports[`getComponentCss() should return correct css for alignSelf: {"base":"str
   align-self: stretch !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -114,6 +135,9 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   margin-left: 33.333333% !important;
   align-self: stretch !important;
   flex: auto !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -169,6 +193,9 @@ exports[`getComponentCss() should return correct css for flex: "auto" 1`] = `
   margin-left: 0% !important;
   align-self: auto !important;
   flex: auto !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -179,6 +206,9 @@ exports[`getComponentCss() should return correct css for flex: "equal" 1`] = `
   margin-left: 0% !important;
   align-self: auto !important;
   flex: 1 1 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -190,6 +220,9 @@ exports[`getComponentCss() should return correct css for flex: "initial" 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -200,6 +233,9 @@ exports[`getComponentCss() should return correct css for flex: "none" 1`] = `
   margin-left: 0% !important;
   align-self: auto !important;
   flex: none !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -210,6 +246,9 @@ exports[`getComponentCss() should return correct css for flex: {"base":"auto","x
   margin-left: 0% !important;
   align-self: auto !important;
   flex: auto !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -252,6 +291,9 @@ exports[`getComponentCss() should return correct css for grow: {"base":1,"xs":0,
   flex-grow: 1 !important;
   flex-shrink: 1 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 @media(min-width:480px) {
   :host {
     flex-grow: 0 !important;
@@ -292,6 +334,9 @@ exports[`getComponentCss() should return correct css for grow: 0 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -303,6 +348,9 @@ exports[`getComponentCss() should return correct css for grow: 1 1`] = `
   align-self: auto !important;
   flex-grow: 1 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -314,6 +362,9 @@ exports[`getComponentCss() should return correct css for offset: "half" 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -325,6 +376,9 @@ exports[`getComponentCss() should return correct css for offset: "none" 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -336,6 +390,9 @@ exports[`getComponentCss() should return correct css for offset: "one-quarter" 1
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -347,6 +404,9 @@ exports[`getComponentCss() should return correct css for offset: "one-third" 1`]
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -358,6 +418,9 @@ exports[`getComponentCss() should return correct css for offset: "three-quarters
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -369,6 +432,9 @@ exports[`getComponentCss() should return correct css for offset: "two-thirds" 1`
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -380,6 +446,9 @@ exports[`getComponentCss() should return correct css for offset: {"base":"one-th
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -422,6 +491,9 @@ exports[`getComponentCss() should return correct css for shrink: {"base":0,"xs":
   flex-grow: 0 !important;
   flex-shrink: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 @media(min-width:480px) {
   :host {
     flex-shrink: 1 !important;
@@ -462,6 +534,9 @@ exports[`getComponentCss() should return correct css for shrink: 0 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -473,6 +548,9 @@ exports[`getComponentCss() should return correct css for shrink: 1 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -484,6 +562,9 @@ exports[`getComponentCss() should return correct css for width: "auto" 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -495,6 +576,9 @@ exports[`getComponentCss() should return correct css for width: "full" 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -506,6 +590,9 @@ exports[`getComponentCss() should return correct css for width: "half" 1`] = `
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -517,6 +604,9 @@ exports[`getComponentCss() should return correct css for width: "one-quarter" 1`
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -528,6 +618,9 @@ exports[`getComponentCss() should return correct css for width: "one-third" 1`] 
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -539,6 +632,9 @@ exports[`getComponentCss() should return correct css for width: "three-quarters"
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -550,6 +646,9 @@ exports[`getComponentCss() should return correct css for width: "two-thirds" 1`]
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -561,6 +660,9 @@ exports[`getComponentCss() should return correct css for width: {"base":"auto","
   align-self: auto !important;
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {

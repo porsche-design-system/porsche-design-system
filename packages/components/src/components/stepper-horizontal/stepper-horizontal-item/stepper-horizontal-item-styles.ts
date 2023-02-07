@@ -1,18 +1,19 @@
 import {
-  addImportantToRule,
+  addImportantToEachRule,
   getFocusJssStyle,
   getHoverJssStyle,
   getInvertedThemedColors,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
   pxToRemWithUnit,
 } from '../../../styles';
 import { fontLineHeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
-import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import type { JssStyle } from 'jss';
 
 // source for svg can be found in sprite.sketch file
@@ -78,10 +79,13 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
             }),
             {} as JssStyle
           )),
-        fontSize: addImportantToRule('inherit'),
-        '&(:not(:last-of-type))': {
-          marginRight: addImportantToRule('1em'),
-        },
+        ...addImportantToEachRule({
+          fontSize: 'inherit',
+          ...hostHiddenStyles,
+          '&(:not(:last-of-type))': {
+            marginRight: '1em',
+          },
+        }),
       },
       button: {
         position: 'relative',

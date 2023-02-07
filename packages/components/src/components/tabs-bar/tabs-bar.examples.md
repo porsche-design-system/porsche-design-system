@@ -221,7 +221,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
 
   :deep(div[role=tabpanel]) {
     outline: 1px solid transparent;

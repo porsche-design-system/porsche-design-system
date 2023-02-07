@@ -1,7 +1,6 @@
 import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../../styles';
-import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles, getInsetJssStyle } from '../../../styles';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (theme: Theme): string => {

@@ -43,7 +43,7 @@ it('should have no visual regression for :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { states: ['focus'] }));
 
-      await forceFocusState(page, '.focus > p-tabs p-tabs-item');
+      await forceFocusState(page, '.focus p-tabs p-tabs-item');
     })
   ).toBeFalsy();
 });

@@ -1,7 +1,13 @@
 import type { TabSize, TabWeight } from './tabs-bar-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getThemedColors, getTransition } from '../../styles';
+import {
+  addImportantToEachRule,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
   borderRadiusSmall,
@@ -10,8 +16,6 @@ import {
   frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const tabsTransitionDuration = '.4s';
 
@@ -23,12 +27,14 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        position: 'relative',
-        transform: 'translate3d(0,0,0)', // creates new stacking context
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          position: 'relative',
+          transform: 'translate3d(0,0,0)', // creates new stacking context
+          ...hostHiddenStyles,
+        }),
+      },
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser
