@@ -44,7 +44,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -127,7 +127,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -212,7 +212,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -292,7 +292,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -372,7 +372,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -454,7 +454,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -537,7 +537,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -622,7 +622,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -707,7 +707,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -787,7 +787,7 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
@@ -904,7 +904,7 @@ button:not(:focus-visible)::before {
 }
 
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {

@@ -73,7 +73,9 @@ export const getComponentCss = (
               }),
         },
         ...hoverMediaQuery({
-          transition: getTransition('background-color'),
+          '&::before': {
+            transition: getTransition('background-color'),
+          },
           '&:hover::before': {
             backgroundColor: hoverColor,
           },
