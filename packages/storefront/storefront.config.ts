@@ -68,29 +68,29 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
-  'Design Tokens': {
+  Styles: {
     // @ts-ignore
-    Introduction: [() => import('@/pages/design-tokens/introduction.md')],
+    Introduction: [() => import('@/pages/styles/introduction.md')],
     // @ts-ignore
-    Border: [() => import('@/pages/design-tokens/border.md')],
+    Border: [() => import('@/pages/styles/border.md')],
     // @ts-ignore
-    'Drop Shadow': [() => import('@/pages/design-tokens/drop-shadow.md')],
+    'Drop Shadow': [() => import('@/pages/styles/drop-shadow.md')],
     // @ts-ignore
-    Focus: [() => import('@/pages/design-tokens/focus.md')],
+    Focus: [() => import('@/pages/styles/focus.md')],
     // @ts-ignore
-    'Frosted Glass': [() => import('@/pages/design-tokens/frosted-glass.md')],
+    'Frosted Glass': [() => import('@/pages/styles/frosted-glass.md')],
     // @ts-ignore
-    Gradient: [() => import('@/pages/design-tokens/gradient.md')],
+    Gradient: [() => import('@/pages/styles/gradient.md')],
     // @ts-ignore
-    Grid: [() => import('@/pages/design-tokens/grid.md')],
+    Grid: [() => import('@/pages/styles/grid.md')],
     // @ts-ignore
-    'Media Query': [() => import('@/pages/design-tokens/media-query.md')],
+    'Media Query': [() => import('@/pages/styles/media-query.md')],
     // @ts-ignore
-    Spacing: [() => import('@/pages/design-tokens/spacing.md')],
+    Spacing: [() => import('@/pages/styles/spacing.md')],
     // @ts-ignore
-    Theme: [() => import('@/pages/design-tokens/theme.md')],
+    Theme: [() => import('@/pages/styles/theme.md')],
     // @ts-ignore
-    Typography: [() => import('@/pages/design-tokens/typography.md')],
+    Typography: [() => import('@/pages/styles/typography.md')],
   },
   Components: {
     Accordion: {
@@ -448,6 +448,8 @@ export const config: StorefrontConfig = {
       Text: [() => import('@/../../components/src/components/text/text.example.md')],
       // @ts-ignore
       Headline: [() => import('@/../../components/src/components/headline/headline.example.md')],
+      // @ts-ignore
+      Display: [() => import('@/../../components/src/components/display/display.example.md')],
       // @ts-ignore
       Usage: [() => import('@/pages/components/typography/typography.usage.md')],
       Props: [

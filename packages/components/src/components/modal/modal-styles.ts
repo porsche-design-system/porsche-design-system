@@ -16,6 +16,7 @@ import {
   getBaseSlottedStyles,
   getInsetJssStyle,
   getThemedColors,
+  hostHiddenStyles,
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
@@ -105,6 +106,7 @@ export const getComponentCss = (
                 opacity: 0,
                 visibility: 'hidden',
               }),
+          ...hostHiddenStyles,
           // workaround via pseudo element to fix stacking (black) background in safari
           '&::before': {
             content: '""',

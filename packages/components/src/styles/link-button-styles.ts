@@ -1,8 +1,14 @@
 import type { Styles } from 'jss';
 import { buildResponsiveStyles, hasVisibleIcon } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from './';
-import { hoverMediaQuery } from './hover-media-query';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from './';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -12,7 +18,6 @@ import {
   spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { hostHiddenStyles } from './host-hidden-styles';
 
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');
@@ -70,10 +75,10 @@ export const getLinkButtonStyles = (
   return {
     '@global': {
       ':host': addImportantToEachRule({
-        ...hostHiddenStyles,
         display: 'inline-block',
         verticalAlign: 'top',
         outline: 0, // custom element is able to delegate the focus
+        ...hostHiddenStyles,
       }),
     },
     root: {

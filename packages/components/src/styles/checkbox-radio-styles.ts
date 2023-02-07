@@ -7,12 +7,12 @@ import {
   getInsetJssStyle,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '.';
 import { borderWidthBase, fontFamily, fontLineHeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
-import { hostHiddenStyles } from './host-hidden-styles';
-import { hoverMediaQuery } from './hover-media-query';
 import { getFunctionalComponentRequiredStyles } from '../components/common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../components/common/state-message/state-message-styles';
 

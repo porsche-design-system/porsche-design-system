@@ -69,15 +69,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         injectIntoHead: head,
       });
 
-      await forceHoverState(page, '.hover > p-radio-button-wrapper input[type="radio"]');
-      await forceHoverState(page, '.hover > .force-label > p-radio-button-wrapper >>> span');
-      await forceHoverState(page, '.hover > p-radio-button-wrapper span a');
+      await forceHoverState(page, '.hover p-radio-button-wrapper input[type="radio"]');
+      await forceHoverState(page, '.hover .force-label > p-radio-button-wrapper >>> span');
+      await forceHoverState(page, '.hover p-radio-button-wrapper span a');
       await forceFocusState(page, '.focus p-radio-button-wrapper input[type="radio"]');
-      await forceFocusState(page, '.focus > p-radio-button-wrapper span a');
-      await forceFocusHoverState(page, '.focus-hover > p-radio-button-wrapper input[type="radio"]');
-      await forceFocusState(page, '.focus-hover > .force-label > p-radio-button-wrapper input[type="radio"]');
-      await forceHoverState(page, '.focus-hover > .force-label > p-radio-button-wrapper >>> span');
-      await forceFocusHoverState(page, '.focus-hover > p-radio-button-wrapper span a');
+      await forceFocusState(page, '.focus p-radio-button-wrapper span a');
+      await forceFocusHoverState(page, '.focus-hover p-radio-button-wrapper input[type="radio"]');
+      await forceFocusState(page, '.focus-hover .force-label > p-radio-button-wrapper input[type="radio"]');
+      await forceHoverState(page, '.focus-hover .force-label > p-radio-button-wrapper >>> span');
+      await forceFocusHoverState(page, '.focus-hover p-radio-button-wrapper span a');
     })
   ).toBeFalsy();
 });

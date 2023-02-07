@@ -61,14 +61,14 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover > p-link-social >>> a');
-      await forceHoverState(page, '.hover > p-link-social >>> span');
-      await forceFocusState(page, '.focus > p-link-social'); // native outline should not be visible
-      await forceFocusState(page, '.focus > p-link-social >>> a');
-      await forceFocusState(page, '.focus > p-link-social a');
-      await forceFocusHoverState(page, '.focus-hover > p-link-social >>> a');
-      await forceHoverState(page, '.focus-hover > p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceFocusHoverState(page, '.focus-hover > p-link-social a');
+      await forceHoverState(page, '.hover p-link-social >>> a');
+      await forceHoverState(page, '.hover p-link-social >>> span');
+      await forceFocusState(page, '.focus p-link-social'); // native outline should not be visible
+      await forceFocusState(page, '.focus p-link-social >>> a');
+      await forceFocusState(page, '.focus p-link-social a');
+      await forceFocusHoverState(page, '.focus-hover p-link-social >>> a');
+      await forceHoverState(page, '.focus-hover p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceFocusHoverState(page, '.focus-hover p-link-social a');
 
       // TODO: scenario like style="width: 200px" on parent missing?
     })

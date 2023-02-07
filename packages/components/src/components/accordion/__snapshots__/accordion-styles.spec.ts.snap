@@ -44,11 +44,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -127,11 +127,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -212,11 +212,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(126, 127, 130, 0.20);
+    background: rgba(126, 127, 130, 0.20);
   }
 }
 
@@ -292,11 +292,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -372,11 +372,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -454,11 +454,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -537,11 +537,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(126, 127, 130, 0.20);
+    background: rgba(126, 127, 130, 0.20);
   }
 }
 
@@ -622,11 +622,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -707,11 +707,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -787,11 +787,11 @@ button:not(:focus-visible)::before {
   border: 0;
 }
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, 0.20);
   }
 }
 
@@ -904,11 +904,11 @@ button:not(:focus-visible)::before {
 }
 
 @media(hover:hover) {
-  button {
+  button::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background-color: rgba(126, 127, 130, 0.20);
+    background: rgba(126, 127, 130, 0.20);
   }
 }
 

@@ -266,7 +266,7 @@ undesirable impact on the origin character of the company typeface. This include
 ![Example for uppercase text](./assets/typography-donts.png)
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
   
   .type-scale {
     display: inline-block;
@@ -281,7 +281,7 @@ undesirable impact on the origin character of the company typeface. This include
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { fontLineHeight } from '@porsche-design-system/components-js/utilities/js';
+import { fontLineHeight } from '@porsche-design-system/components-js/styles';
 
 @Component
 export default class PlaygroundTypography extends Vue {

@@ -14,10 +14,10 @@ import {
   getTextHiddenJssStyle,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { Theme } from '../../types';
 
 const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
@@ -127,8 +127,8 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         width: fontLineHeight, // width needed to improve ssr support
         height: fontLineHeight, // height needed to improve ssr support
         borderRadius: '50%',
-        transition: getTransition('background-color'),
         ...hoverMediaQuery({
+          transition: getTransition('background-color'),
           '&:hover': {
             ...frostedGlassStyle,
             backgroundColor: hoverColor,

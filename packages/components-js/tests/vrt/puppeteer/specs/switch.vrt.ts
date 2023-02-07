@@ -37,10 +37,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         injectIntoHead: head,
       });
 
-      await forceHoverState(page, '.hover > p-switch >>> button');
-      await forceFocusState(page, '.focus > p-switch'); // native outline should not be visible
-      await forceFocusState(page, '.focus > p-switch >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-switch >>> button');
+      await forceHoverState(page, '.hover p-switch >>> button');
+      await forceFocusState(page, '.focus p-switch'); // native outline should not be visible
+      await forceFocusState(page, '.focus p-switch >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-switch >>> button');
     })
   ).toBeFalsy();
 });

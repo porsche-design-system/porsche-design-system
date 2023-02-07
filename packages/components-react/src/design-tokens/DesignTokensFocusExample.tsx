@@ -10,7 +10,7 @@ import {
   themeDarkPrimary,
   themeLightBackgroundBase,
   themeLightPrimary,
-} from '@porsche-design-system/components-react/utilities/js';
+} from '@porsche-design-system/components-react/styles';
 
 // Wrapper
 const getWrapperStyle = {

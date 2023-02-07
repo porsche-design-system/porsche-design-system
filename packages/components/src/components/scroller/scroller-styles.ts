@@ -1,5 +1,12 @@
 import { getCss, isThemeDark } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../styles';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import type { Theme } from '../../types';
 import type { GradientColorTheme } from './scroller-utils';
 import {
@@ -11,8 +18,6 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 const gradientColorMap: Record<Theme, Record<GradientColorTheme, string>> = {
   light: {

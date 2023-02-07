@@ -36,7 +36,7 @@ import {
   textXSmallStyle,
   themeLightPrimary,
   themeLightStateHover,
-} from '@porsche-design-system/components-react/utilities/js';
+} from '@porsche-design-system/components-react/styles';
 
 // VisualizeGrid
 const VisualizeGrid = styled.div({

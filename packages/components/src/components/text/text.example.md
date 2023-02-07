@@ -106,7 +106,7 @@ and "semibold".
 
 ## Ellipsis mode
 
-This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the
+This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the
 end are used to visualize it.
 
 <Playground :markup="ellipsisMarkup" :config="config"></Playground>

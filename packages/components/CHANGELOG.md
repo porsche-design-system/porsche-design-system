@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Display` component
 - Prop `underline` for `Link Pure`
 - Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper` and
   `Text Field Wrapper`

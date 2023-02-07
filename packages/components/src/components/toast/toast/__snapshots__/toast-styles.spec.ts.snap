@@ -10,6 +10,9 @@ exports[`getComponentCss() should return correct css 1`] = `
   max-width: 42rem !important;
   z-index: 999999 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 @keyframes in {
   from {
     opacity: 0;
