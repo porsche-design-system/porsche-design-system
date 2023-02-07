@@ -112,6 +112,7 @@ export class Accordion {
     const Heading = this.tag;
 
     return (
+      // TODO: why .root div for a condition border-bottom style? could be applied on :host directly
       <div class="root">
         <Heading class="heading">
           <button
