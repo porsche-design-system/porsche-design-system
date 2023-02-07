@@ -61,7 +61,7 @@ const FieldsetWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with slotted label on light background">
         <PFieldsetWrapper>
-          <span slot="label">Some slotted Label</span>
+          <span slot="label">Some slotted label</span>
           <PCheckboxWrapper label="Some label">
             <input type="checkbox" name="some-name-1" />
           </PCheckboxWrapper>
@@ -73,7 +73,7 @@ const FieldsetWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with slotted label on dark background">
         <PFieldsetWrapper theme="dark">
-          <span slot="label">Some slotted Label</span>
+          <span slot="label">Some slotted label</span>
           <PCheckboxWrapper label="Some label" theme="dark">
             <input type="checkbox" name="some-name-1" />
           </PCheckboxWrapper>
@@ -157,7 +157,7 @@ const FieldsetWrapperPage: NextPage = (): JSX.Element => {
           <PRadioButtonWrapper state="error" label="Some label">
             <input type="radio" name="some-name-1" />
           </PRadioButtonWrapper>
-          <span slot="message">Some slotted error Message</span>
+          <span slot="message">Some slotted error message</span>
         </PFieldsetWrapper>
       </div>
 
@@ -169,7 +169,7 @@ const FieldsetWrapperPage: NextPage = (): JSX.Element => {
           <PRadioButtonWrapper state="error" label="Some label" theme="dark">
             <input type="radio" name="some-name-1" />
           </PRadioButtonWrapper>
-          <span slot="message">Some slotted error Message</span>
+          <span slot="message">Some slotted error message</span>
         </PFieldsetWrapper>
       </div>
 
@@ -203,7 +203,7 @@ const FieldsetWrapperPage: NextPage = (): JSX.Element => {
           <PRadioButtonWrapper state="success" label="Some label">
             <input type="radio" name="some-name-1" />
           </PRadioButtonWrapper>
-          <span slot="message">Some slotted success Message</span>
+          <span slot="message">Some slotted success message</span>
         </PFieldsetWrapper>
       </div>
 
@@ -215,7 +215,7 @@ const FieldsetWrapperPage: NextPage = (): JSX.Element => {
           <PRadioButtonWrapper state="success" label="Some label" theme="dark">
             <input type="radio" name="some-name-1" />
           </PRadioButtonWrapper>
-          <span slot="message">Some slotted success Message</span>
+          <span slot="message">Some slotted success message</span>
         </PFieldsetWrapper>
       </div>
 

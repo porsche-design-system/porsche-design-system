@@ -59,7 +59,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with slotted label on light background">
       <p-fieldset-wrapper>
-        <span slot="label">Some slotted Label</span>
+        <span slot="label">Some slotted label</span>
         <p-checkbox-wrapper [label]="'Some label'">
           <input [type]="'checkbox'" [name]="'some-name-1'" />
         </p-checkbox-wrapper>
@@ -71,7 +71,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with slotted label on dark background">
       <p-fieldset-wrapper [theme]="'dark'">
-        <span slot="label">Some slotted Label</span>
+        <span slot="label">Some slotted label</span>
         <p-checkbox-wrapper [label]="'Some label'" [theme]="'dark'">
           <input [type]="'checkbox'" [name]="'some-name-1'" />
         </p-checkbox-wrapper>
@@ -155,7 +155,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-radio-button-wrapper [state]="'error'" [label]="'Some label'">
           <input [type]="'radio'" [name]="'some-name-1'" />
         </p-radio-button-wrapper>
-        <span slot="message">Some slotted error Message</span>
+        <span slot="message">Some slotted error message</span>
       </p-fieldset-wrapper>
     </div>
 
@@ -167,7 +167,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-radio-button-wrapper [state]="'error'" [label]="'Some label'" [theme]="'dark'">
           <input [type]="'radio'" [name]="'some-name-1'" />
         </p-radio-button-wrapper>
-        <span slot="message">Some slotted error Message</span>
+        <span slot="message">Some slotted error message</span>
       </p-fieldset-wrapper>
     </div>
 
@@ -201,7 +201,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-radio-button-wrapper [state]="'success'" [label]="'Some label'">
           <input [type]="'radio'" [name]="'some-name-1'" />
         </p-radio-button-wrapper>
-        <span slot="message">Some slotted success Message</span>
+        <span slot="message">Some slotted success message</span>
       </p-fieldset-wrapper>
     </div>
 
@@ -213,7 +213,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-radio-button-wrapper [state]="'success'" [label]="'Some label'" [theme]="'dark'">
           <input [type]="'radio'" [name]="'some-name-1'" />
         </p-radio-button-wrapper>
-        <span slot="message">Some slotted success Message</span>
+        <span slot="message">Some slotted success message</span>
       </p-fieldset-wrapper>
     </div>
 
