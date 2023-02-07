@@ -23,11 +23,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Content Wrapper` is deprecated and will be removed with the next major release. Please use the Porsche Grid utility
   instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital
   touch-points.
-- Width `fluid` for `Content Wrapper` is deprecated now, currently mapped to `full`
+- Width `fluid` for `Content Wrapper` is deprecated now, currently mapped to default value `extended`
 
 ```diff
 - <p-content-wrapper width="fluid">Some content</p-content-wrapper>
-+ <p-content-wrapper width="full">Some content</p-content-wrapper>
++ <p-content-wrapper>Some content</p-content-wrapper>
 ```
 
 - Deprecated prop `theme` and `background-color` for `Content Wrapper`
@@ -121,8 +121,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text` and
-  `Text Field Wrapper` matches new design language
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
+  `Content Wrapper` and `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
@@ -253,11 +253,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
 
-- Deprecated prop `width`'s value `fluid` for `Banner`, currently mapped to `extended`
+- Deprecated prop `width`'s value `fluid` for `Banner`, currently mapped to default value `extended`
 
 ```diff
 - <p-banner width="fluid"></p-banner>
-+ <p-banner width="extended"></p-banner>
++ <p-banner></p-banner>
 ```
 
 - Deprecated prop `state`'s value `neutral` for `Inline Notification`, `Banner`, `Toast` and renamed the value to `info`
