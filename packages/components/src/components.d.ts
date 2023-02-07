@@ -320,6 +320,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
     interface PFlex {
         /**
@@ -1970,6 +1974,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
     interface PFlex {
         /**
