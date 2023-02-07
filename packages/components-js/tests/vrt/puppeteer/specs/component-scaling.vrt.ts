@@ -10,6 +10,7 @@ const components = [
   'button',
   'button-pure',
   'checkbox-wrapper',
+  'content-wrapper',
   'inline-notification',
   'link',
   'link-pure',

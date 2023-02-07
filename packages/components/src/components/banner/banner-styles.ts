@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { BannerWidth } from './banner-utils';
 import type { KeyframesDirection } from './banner-styles-shared';
 import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
-import { getCss } from '../../utils';
+import { getCss, mergeDeep } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
 import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-styles-shared';
 import {
@@ -31,6 +31,12 @@ const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): Jss
     transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
   });
 
+const widthMap: { [key in BannerWidth]: BannerWidth } = {
+  fluid: 'extended',
+  extended: 'extended',
+  basic: 'basic',
+};
+
 export const getComponentCss = (width: BannerWidth): string => {
   return getCss({
     '@global': {
@@ -45,16 +51,23 @@ export const getComponentCss = (width: BannerWidth): string => {
         left: 0,
         right: 0,
         willChange: 'opacity,transform',
-        ...addImportantToEachRule({
-          ...getContentWrapperStyle(width),
-          ...hostHiddenStyles,
-        }),
-        [mediaQueryBase]: {
-          bottom: `var(${bannerPositionBottomVar})`,
-        },
-        [mediaQueryS]: {
-          top: `var(${bannerPositionTopVar})`,
-        },
+        ...mergeDeep(
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          addImportantToEachRule({
+            ...getContentWrapperStyle(widthMap[width]),
+            ...hostHiddenStyles,
+          }),
+          {
+            [mediaQueryBase]: {
+              bottom: `var(${bannerPositionBottomVar})`,
+            },
+          },
+          {
+            [mediaQueryS]: {
+              top: `var(${bannerPositionTopVar})`,
+            },
+          }
+        ),
         '&(.hydrated),&(.ssr)': {
           [mediaQueryBase]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
           [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),

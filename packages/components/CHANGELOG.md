@@ -19,6 +19,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Content Wrapper` is deprecated and will be removed with the next major release. Please use the Porsche Grid utility
+  instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital
+  touch-points.
+- Width `fluid` for `Content Wrapper` is deprecated now, currently mapped to default value `extended`
+
+```diff
+- <p-content-wrapper width="fluid">Some content</p-content-wrapper>
++ <p-content-wrapper>Some content</p-content-wrapper>
+```
+
+- Deprecated prop `theme` and `background-color` for `Content Wrapper`
+
+```diff
+- <p-content-wrapper theme="dark" background-color="default">Some content</p-content-wrapper>
++ <p-content-wrapper>Some content</p-content-wrapper>
+```
+
 - `Flex` is deprecated and will be removed with the next major release. In general, please use native
   <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more
   standardized layout technique.
@@ -75,10 +92,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Color `background-default` for `Tag Dismissible` is deprecated now, replaced by `background-base`
 
 ```diff
-- <p-tag-dismissible color="background-default">Color label</p-tag>
-+ <p-tag-dismissible color="background-base">Color label</p-tag>
+- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
++ <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
 ```
 
+- Default value of prop `width` of `Banner` has changed from **"basic"** to **"extended"**
 - Default value of prop `action-icon` of `Inline Notification` has changed from **"arrow-head-right"** to
   **"arrow-right"**
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
@@ -102,7 +120,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`, `Text Field Wrapper` and `Fieldset Wrapper` matches new design
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`, `Text Field Wrapper`, `Content Wrapper` and `Fieldset Wrapper` matches new design
   language
 - CSS global variables names
 
@@ -233,6 +251,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
+
+- Deprecated prop `width`'s value `fluid` for `Banner`, currently mapped to default value `extended`
+
+```diff
+- <p-banner width="fluid"></p-banner>
++ <p-banner></p-banner>
+```
 
 - Deprecated prop `state`'s value `neutral` for `Inline Notification`, `Banner`, `Toast` and renamed the value to `info`
 
