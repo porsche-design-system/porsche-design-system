@@ -1,4 +1,5 @@
 import { getButtonAttributes, getIconColor } from './segmented-control-item-utils';
+import { IconColor } from '../../icon/icon-utils';
 
 describe('getButtonAttributes()', () => {
   it.each<Parameters<typeof getButtonAttributes>>([
@@ -12,11 +13,10 @@ describe('getButtonAttributes()', () => {
 });
 
 describe('getIconColor()', () => {
-  it.each<Parameters<typeof getIconColor>>([[false], [true]])(
-    'should return correct icon color for isDisabled: %s',
-    (...args) => {
-      const expectedResult = args[0] ? 'contrast-medium' : 'primary';
-      expect(getIconColor(...args)).toBe(expectedResult);
-    }
-  );
+  it.each<[Parameters<typeof getIconColor>, IconColor]>([
+    [[false], 'primary'],
+    [[true], 'contrast-medium'],
+  ])('should return correct icon color for isDisabled: %s', (args, iconColor) => {
+    expect(getIconColor(...args)).toBe(iconColor);
+  });
 });
