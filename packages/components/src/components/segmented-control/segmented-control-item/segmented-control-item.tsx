@@ -78,7 +78,6 @@ export class SegmentedControlItem {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const iconColor = getIconColor(this.disabled);
 
     return (
       <button type="button" {...getButtonAttributes(this.host.selected, this.disabled)}>
@@ -89,7 +88,7 @@ export class SegmentedControlItem {
             size="inherit"
             name={this.icon}
             source={this.iconSource}
-            color={iconColor}
+            color={getIconColor(this.disabled)}
             theme={this.host.theme || 'light'}
             aria-hidden="true"
           />
