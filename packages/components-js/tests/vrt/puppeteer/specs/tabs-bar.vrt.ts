@@ -35,17 +35,14 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
           <a href="#">Anchor Tab Three</a>
         </p-tabs-bar>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoverState(page, '.hover > p-tabs-bar button');
-      await forceHoverState(page, '.hover > p-tabs-bar a');
-      await forceFocusState(page, '.focus > p-tabs-bar button');
-      await forceFocusState(page, '.focus > p-tabs-bar a');
-      await forceFocusHoverState(page, '.focus-hover > p-tabs-bar button');
-      await forceFocusHoverState(page, '.focus-hover > p-tabs-bar a');
+      await forceHoverState(page, '.hover p-tabs-bar button');
+      await forceHoverState(page, '.hover p-tabs-bar a');
+      await forceFocusState(page, '.focus p-tabs-bar button');
+      await forceFocusState(page, '.focus p-tabs-bar a');
+      await forceFocusHoverState(page, '.focus-hover p-tabs-bar button');
+      await forceFocusHoverState(page, '.focus-hover p-tabs-bar a');
     })
   ).toBeFalsy();
 });

@@ -5,7 +5,7 @@
   Use <a href="./components/link/examples#link-with-specific-icon"><code>link</code> component</a> with corresponding social icon instead.
 </p-inline-notification>
 
---- 
+---
 
 The `p-link-social` component is a set of pre-defined social icons for various fields of application like linking to
 social media platforms or social sharing dialogs.
@@ -177,7 +177,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/components-js/utilities/scss";
+  @import "~@porsche-design-system/components-js/styles/scss";
   
   :deep(.example-link) {
     display: inline-block;

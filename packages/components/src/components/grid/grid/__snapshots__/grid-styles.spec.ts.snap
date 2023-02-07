@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for direction: "column" 1`]
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: column !important;
   flex-wrap: wrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -21,6 +24,9 @@ exports[`getComponentCss() should return correct css for direction: "column-reve
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: column-reverse !important;
   flex-wrap: wrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -33,6 +39,9 @@ exports[`getComponentCss() should return correct css for direction: "row" 1`] = 
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -45,6 +54,9 @@ exports[`getComponentCss() should return correct css for direction: "row-reverse
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: row-reverse !important;
   flex-wrap: wrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -57,6 +69,9 @@ exports[`getComponentCss() should return correct css for direction: {"base":"col
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: column !important;
   flex-wrap: wrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -99,6 +114,9 @@ exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -111,6 +129,9 @@ exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -123,6 +144,9 @@ exports[`getComponentCss() should return correct css for wrap: {"base":"wrap","x
   margin-right: calc(clamp(16px, 3.6vw, 36px) / -2) !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {

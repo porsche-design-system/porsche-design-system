@@ -3,14 +3,14 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
-  addImportantToRule,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
   pxToRemWithUnit,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { fontSizeText, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 const tabsTransitionDuration = '.4s';
 
@@ -24,7 +24,10 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
     '@global': {
       ':host': {
         display: 'block',
-        position: addImportantToRule('relative'),
+        ...addImportantToEachRule({
+          position: 'relative',
+          ...hostHiddenStyles,
+        }),
       },
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'
