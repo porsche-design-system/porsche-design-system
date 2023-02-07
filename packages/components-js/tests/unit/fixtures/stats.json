@@ -63,7 +63,6 @@
     "chunkShortName": "headline",
     "size": 5103,
     "gzipSize": 2109
-
   },
   {
     "chunkShortName": "icon",
@@ -98,7 +97,7 @@
   {
     "chunkShortName": "main",
     "size": 67303,
-    "gzipSize": 22884
+    "gzipSize": 22883
   },
   {
     "chunkShortName": "marque",
@@ -169,7 +168,6 @@
     "chunkShortName": "tabs-bar",
     "size": 8415,
     "gzipSize": 3326
-
   },
   {
     "chunkShortName": "tag",
@@ -183,13 +181,13 @@
   },
   {
     "chunkShortName": "text",
-    "size": 5414,
-    "gzipSize": 2232
+    "size": 4881,
+    "gzipSize": 1973
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 14049,
-    "gzipSize": 5233
+    "size": 13030,
+    "gzipSize": 4853
   },
   {
     "chunkShortName": "text-list",
