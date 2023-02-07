@@ -2,7 +2,10 @@
 
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
   margin-bottom: 8px;
