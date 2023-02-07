@@ -69,21 +69,26 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        height: addImportantToRule('fit-content'),
-        '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
+        ...addImportantToEachRule({
+          height: 'fit-content',
+          ...hostHiddenStyles,
+        }),
+      },
+      ...addImportantToEachRule({
+        '::slotted(picture),::slotted(img)': {
           transition: getTransition('transform'),
           ...getBackfaceVisibilityJssStyle(),
-        }),
-        '& ::slotted(picture)': addImportantToEachRule({
+        },
+        '::slotted(picture)': {
           position: 'absolute',
           ...getInsetJssStyle(),
-        }),
-        '& ::slotted(img)': addImportantToEachRule({
+        },
+        '::slotted(img)': {
           height: '100%',
           width: '100%',
           objectFit: 'cover',
-        }),
-      },
+        },
+      }),
       p: {
         color: getThemedTextColor('dark', 'primary'),
         ...textSmallStyle,
