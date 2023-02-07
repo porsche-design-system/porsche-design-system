@@ -5,7 +5,7 @@ import { PBanner } from '@porsche-design-system/components-react/ssr';
 const BannerPage: NextPage = (): JSX.Element => {
   const style = `
     .visualize-grid {
-      /* TODO: We should generate the grid visualization based on styles sub package */
+      /* TODO: We should generate the grid visualization based on styles package and provided by shared package somehow */
       margin: 0;
       display: grid;
       padding: 0 max(0px, (100% - 2560px) / 2);
@@ -87,16 +87,12 @@ const BannerPage: NextPage = (): JSX.Element => {
       margin: 16px 0;
     }
 
-    div:not(.visualize-grid):not(.playground) + div {
-      margin-top: 300px;
-    }
-
-    div.playground:last-child {
-      margin-bottom: 300px;
-    }
-
     .playground {
       padding: 0;
+    }
+
+    .content-wrapper {
+      padding: 300px 0;
     }
 
     .playground p-banner {
@@ -129,103 +125,105 @@ const BannerPage: NextPage = (): JSX.Element => {
         </PBanner>
       </div>
 
-      <div className="playground light" title="should show banner info on light background">
-        <PBanner>
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+      <div className="content-wrapper">
+        <div className="playground light" title="should show banner info on light background">
+          <PBanner>
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground light" title="should show banner info with state neutral on light background">
-        <PBanner state="neutral">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground light" title="should show banner info with state neutral on light background">
+          <PBanner state="neutral">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground dark" title="should show banner info on dark background">
-        <PBanner theme="dark">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground dark" title="should show banner info on dark background">
+          <PBanner theme="dark">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground dark" title="should show banner info with state neutral on dark background">
-        <PBanner state="neutral" theme="dark">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground dark" title="should show banner info with state neutral on dark background">
+          <PBanner state="neutral" theme="dark">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground light" title="should show banner warning on light background">
-        <PBanner state="warning">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground light" title="should show banner warning on light background">
+          <PBanner state="warning">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground dark" title="should show banner warning on dark background">
-        <PBanner state="warning" theme="dark">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground dark" title="should show banner warning on dark background">
+          <PBanner state="warning" theme="dark">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground light" title="should show banner error on light background">
-        <PBanner state="error">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground light" title="should show banner error on light background">
+          <PBanner state="error">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground dark" title="should show banner error on dark background">
-        <PBanner state="error" theme="dark">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground dark" title="should show banner error on dark background">
+          <PBanner state="error" theme="dark">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground light" title="should show banner in persistent mode">
-        <PBanner persistent={true}>
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground light" title="should show banner in persistent mode">
+          <PBanner persistent={true}>
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground light" title="should show banner in extended width">
-        <PBanner width="extended">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
-      </div>
+        <div className="playground light" title="should show banner in extended width">
+          <PBanner width="extended">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
 
-      <div className="playground light" title="should show banner in fluid width">
-        <PBanner width="fluid">
-          <span slot="title">Some notification title</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
-        </PBanner>
+        <div className="playground light" title="should show banner in fluid width">
+          <PBanner width="fluid">
+            <span slot="title">Some notification title</span>
+            <span slot="description">
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+            </span>
+          </PBanner>
+        </div>
       </div>
     </>
   );

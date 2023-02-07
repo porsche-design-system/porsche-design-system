@@ -7,7 +7,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   styles: [
     `
       .visualize-grid {
-        /* TODO: We should generate the grid visualization based on styles sub package */
+        /* TODO: We should generate the grid visualization based on styles package and provided by shared package somehow */
         margin: 0;
         display: grid;
         padding: 0 max(0px, (100% - 2560px) / 2);

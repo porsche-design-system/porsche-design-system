@@ -70,6 +70,10 @@ export class Banner {
       neutral: 'info',
     };
     warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
+    const deprecatedWidthMap: Partial<Record<BannerWidth, BannerWidth>> = {
+      fluid: 'full',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'width', deprecatedWidthMap);
     attachComponentCss(this.host, getComponentCss, this.width);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
