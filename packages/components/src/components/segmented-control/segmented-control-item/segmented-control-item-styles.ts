@@ -94,12 +94,13 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
             }
           : {
               cursor: 'pointer',
-              ...hoverMediaQuery({
-                transition: getTransition('border-color'),
-                '&:hover': {
-                  borderColor: hoverBorderColor,
-                },
-              }),
+              ...(!isSelected &&
+                hoverMediaQuery({
+                  transition: getTransition('border-color'),
+                  '&:hover': {
+                    borderColor: hoverBorderColor,
+                  },
+                })),
             }),
       },
       // label
