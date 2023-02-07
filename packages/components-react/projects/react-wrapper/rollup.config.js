@@ -17,7 +17,7 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/testing',
-  '@porsche-design-system/components-js/utilities/js',
+  '@porsche-design-system/components-js/styles',
   'react',
   'react/jsx-runtime',
 ];
@@ -26,6 +26,7 @@ const subPackageJsonConfig = {
   baseContents: {
     main: 'index.js',
     module: 'esm/index.js',
+    types: 'index.d.ts',
     sideEffects: false,
   },
 };
@@ -69,7 +70,7 @@ export default [
     plugins: [resolve(), typescript(typescriptOpts)],
   },
   {
-    input: `${projectDir}/src/jsdom-polyfill.ts`,
+    input: `${projectDir}/src/jsdom-polyfill/index.ts`,
     external,
     output: {
       file: `${outputDir}/jsdom-polyfill/index.js`,
@@ -79,7 +80,7 @@ export default [
   },
   {
     // typings are produced by main build
-    input: `${projectDir}/src/testing.ts`,
+    input: `${projectDir}/src/testing/index.ts`,
     external,
     output: {
       file: `${outputDir}/testing/index.js`,
@@ -89,7 +90,7 @@ export default [
   },
   {
     // typings are produced by main build
-    input: `${projectDir}/src/partials.ts`,
+    input: `${projectDir}/src/partials/index.ts`,
     external,
     output: [
       {
@@ -105,16 +106,16 @@ export default [
     plugins: [typescript(typescriptOpts)],
   },
   {
-    input: `${projectDir}/src/utilities/js.ts`,
+    input: `${projectDir}/src/styles/index.ts`,
     external,
     output: [
       {
-        file: `${outputDir}/utilities/js/index.js`,
+        file: `${outputDir}/styles/index.js`,
         format: 'cjs',
         plugins: [generatePackageJson(subPackageJsonConfig)],
       },
       {
-        file: `${outputDir}/utilities/js/esm/index.js`,
+        file: `${outputDir}/styles/esm/index.js`,
         format: 'esm',
       },
     ],
@@ -123,8 +124,8 @@ export default [
       copy({
         targets: [
           {
-            src: `${projectDir}/src/utilities/scss.scss`,
-            dest: `${outputDir}/utilities`,
+            src: `${projectDir}/src/styles/scss.scss`,
+            dest: `${outputDir}/styles`,
           },
         ],
       }),

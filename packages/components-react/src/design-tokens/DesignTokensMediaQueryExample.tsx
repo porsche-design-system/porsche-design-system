@@ -16,7 +16,7 @@ import {
   breakpointXXL,
   headingMediumStyle,
   spacingFluidMedium,
-} from '@porsche-design-system/components-react/utilities/js';
+} from '@porsche-design-system/components-react/styles';
 
 // Wrapper
 const Wrapper = styled.div({

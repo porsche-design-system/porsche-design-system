@@ -15,7 +15,7 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/testing',
-  '@porsche-design-system/components-js/utilities/js',
+  '@porsche-design-system/components-js/styles',
 ];
 
 // identical with rollup.config.js from components-vue
@@ -25,22 +25,12 @@ const buildConfig = (packagePath) => {
   const relativePackagePath = packagePath.split('/').pop();
 
   return {
-    input: `${projectDir}/src/${packagePath}.ts`,
+    input: `${projectDir}/src/${packagePath}/index.ts`,
     external,
     output: [
       {
         dir: `${outputDir}/${packagePath}`,
         format: 'cjs',
-        plugins: [
-          generatePackageJson({
-            baseContents: {
-              main: `${relativePackagePath}.js`,
-              module: `esm/${relativePackagePath}.js`,
-              types: `${relativePackagePath}.d.ts`,
-              sideEffects: false,
-            },
-          }),
-        ],
       },
       {
         dir: `${outputDir}/${packagePath}/esm`,
@@ -52,8 +42,8 @@ const buildConfig = (packagePath) => {
       copy({
         targets: [
           {
-            src: `${projectDir}/src/utilities/scss.scss`,
-            dest: `${outputDir}/utilities`,
+            src: `${projectDir}/src/styles/scss.scss`,
+            dest: `${outputDir}/styles`,
           },
           // TODO: stop copying unrelated files into the root of the package when bundling sub packages
           { src: `${rootDir}/LICENSE`, dest: outputDir },
@@ -67,9 +57,9 @@ const buildConfig = (packagePath) => {
 };
 
 export default [
-  ...['partials', 'utilities/js'].map(buildConfig),
+  ...['partials', 'styles'].map(buildConfig),
   {
-    input: `${projectDir}/src/jsdom-polyfill.ts`,
+    input: `${projectDir}/src/jsdom-polyfill/index.ts`,
     external,
     output: {
       file: `${outputDir}/jsdom-polyfill/index.js`,
@@ -79,21 +69,12 @@ export default [
   },
   {
     // typings are generated via separate tsc command
-    input: `${projectDir}/src/testing.ts`,
+    input: `${projectDir}/src/testing/index.ts`,
     external,
     output: {
-      file: `${outputDir}/testing/testing.js`,
+      file: `${outputDir}/testing/index.js`,
       format: 'cjs',
     },
-    plugins: [
-      typescript(typescriptOpts),
-      generatePackageJson({
-        baseContents: {
-          main: 'testing.js',
-          types: 'testing.d.ts',
-          sideEffects: false,
-        },
-      }),
-    ],
+    plugins: [typescript(typescriptOpts)],
   },
 ];
