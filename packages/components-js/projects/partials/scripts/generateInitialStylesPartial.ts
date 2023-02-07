@@ -77,16 +77,28 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       },
 
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
-      'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button':
+      'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type="search"]::-webkit-search-decoration':
         {
           WebkitAppearance: 'none',
           appearance: 'none',
         },
+      'input[type="search"]::-webkit-search-cancel-button': {
+        display: 'none',
+      },
       'input[type="text"]': {
         '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
           // TODO: does it have any effect?
           marginRight: '2.4375rem',
         },
+      },
+      'input::-webkit-calendar-picker-indicator': {
+        filter: 'filter: invert(2%) sepia(15%) saturate(2672%) hue-rotate(193deg) brightness(92%) contrast(101%)', // property color can not be used here, this is the filter for themeLight.primary
+      },
+      '[theme="dark"] input::-webkit-calendar-picker-indicator': {
+        filter: 'invert(82%) sepia(10%) saturate(66%) hue-rotate(215deg) brightness(106%) contrast(108%)', // property color can not be used here, this is the filter for themeDark.primary
+      },
+      'input::-webkit-calendar-picker-indicator:hover, input::-webkit-calendar-picker-indicator:hover': {
+        cursor: 'pointer',
       },
     },
   };
