@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for size: "medium", weight: regular and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   transform: translate3d(0,0,0) !important;
 }
@@ -90,7 +90,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 
 exports[`getComponentCss() should return correct css for size: "medium", weight: regular and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   transform: translate3d(0,0,0) !important;
 }
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 
 exports[`getComponentCss() should return correct css for size: "small", weight: regular and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   transform: translate3d(0,0,0) !important;
 }
@@ -266,7 +266,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 
 exports[`getComponentCss() should return correct css for size: "small", weight: regular and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   transform: translate3d(0,0,0) !important;
 }
@@ -354,7 +354,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 
 exports[`getComponentCss() should return correct css for size: "small", weight: semibold and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   transform: translate3d(0,0,0) !important;
 }
@@ -442,7 +442,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, weight: regular and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   transform: translate3d(0,0,0) !important;
 }
