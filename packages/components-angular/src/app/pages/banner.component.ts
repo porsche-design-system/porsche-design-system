@@ -205,8 +205,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p-banner>
       </div>
 
-      <div class="playground light" title="should show banner in extended width">
-        <p-banner [width]="'extended'">
+      <div class="playground light" title="should show banner in basic width">
+        <p-banner [width]="'basic'">
           <span slot="title">Some notification title</span>
           <span slot="description">
             Some notification description. And some <a [href]="'https://www.porsche.com/'">LINK</a> element.
@@ -214,7 +214,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p-banner>
       </div>
 
-      <div class="playground light" title="should show banner in fluid width">
+      <div class="playground light" title="should show banner in fluid width which is mapped to extended">
         <p-banner [width]="'fluid'">
           <span slot="title">Some notification title</span>
           <span slot="description">

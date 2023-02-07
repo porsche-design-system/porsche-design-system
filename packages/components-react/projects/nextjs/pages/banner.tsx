@@ -207,8 +207,8 @@ const BannerPage: NextPage = (): JSX.Element => {
           </PBanner>
         </div>
 
-        <div className="playground light" title="should show banner in extended width">
-          <PBanner width="extended">
+        <div className="playground light" title="should show banner in basic width">
+          <PBanner width="basic">
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
@@ -216,7 +216,7 @@ const BannerPage: NextPage = (): JSX.Element => {
           </PBanner>
         </div>
 
-        <div className="playground light" title="should show banner in fluid width">
+        <div className="playground light" title="should show banner in fluid width which is mapped to extended">
           <PBanner width="fluid">
             <span slot="title">Some notification title</span>
             <span slot="description">
