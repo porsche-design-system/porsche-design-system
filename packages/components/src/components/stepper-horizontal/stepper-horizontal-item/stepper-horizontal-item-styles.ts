@@ -72,8 +72,8 @@ const spriteWidth = `${9 * spriteStepSize}em`; // 9 steps
 const spriteHeight = `${spriteStepSize}em`; // height of sprite / font size in px
 const counterCirclePosition = '0.171875em'; // 2.75px
 const counterCircleSize = `calc(${fontLineHeight} - ${counterCirclePosition} * 2)`;
-const counterValuePosition = `calc((${fontLineHeight} - ${spriteStepSize}em) / 2)`;
-const counterValueSize = spriteHeight;
+// const counterValuePosition = `calc((${fontLineHeight} - ${spriteStepSize}em) / 2)`;
+// const counterValueSize = spriteHeight;
 
 export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
   const { primaryColor, hoverColor, iconColor, iconDisabledColor, invertedBaseColor, disabledColor, focusColor } =
