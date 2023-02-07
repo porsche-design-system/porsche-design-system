@@ -58,20 +58,11 @@ it.each<TagName>(tagNamesWithJss)(
 
     const component = componentFactory(tagName);
 
-    // css will be produced by one of the 2 lifecycles
-    if (component.connectedCallback) {
-      try {
-        component.connectedCallback();
-      } catch {}
-    }
+    // some components like grid-item and text-list-item require a parent to apply styles
+    // some components require a parent and certain props in order to work
+    addParentAndSetRequiredProps(tagName, component);
 
-    if (component.render) {
-      // some components like grid-item and text-list-item require a parent to apply styles
-      // some components require a parent and certain props in order to work
-      addParentAndSetRequiredProps(tagName, component);
-
-      component.render();
-    }
+    component.render();
 
     const [result] = spy.mock.results;
     const { type, value: cssString } = (result || {}) as jest.MockResultReturn<string>;
