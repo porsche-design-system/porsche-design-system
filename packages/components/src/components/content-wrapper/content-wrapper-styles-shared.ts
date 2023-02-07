@@ -11,33 +11,31 @@ import {
 
 const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
 const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
+const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
 
 const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: JssStyle } = {
   narrow: {
     padding: `0 ${gridSafeZoneBase}`,
-    boxSizing: 'border-box',
     [getMediaQueryMin('s')]: {
       padding: `0 calc(${gridSafeZoneBase} + ${gridGap} * 3 + ${oneColumnWidthS} * 3)`,
     },
     [getMediaQueryMin('xxl')]: {
-      padding: `0 calc(${gridSafeZoneXXL} + ${gridGap} * 3 + ${oneColumnWidthXXL} * 3)`,
+      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} * 3 + ${oneColumnWidthXXL} * 3)`,
     },
   },
   basic: {
     padding: `0 ${gridSafeZoneBase}`,
-    boxSizing: 'border-box',
     [getMediaQueryMin('s')]: {
       padding: `0 calc(${gridSafeZoneBase} + ${gridGap} + ${oneColumnWidthS})`,
     },
     [getMediaQueryMin('xxl')]: {
-      padding: `0 calc(${gridSafeZoneXXL} + ${gridGap} + ${oneColumnWidthXXL})`,
+      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} + ${oneColumnWidthXXL})`,
     },
   },
   extended: {
     padding: `0 ${gridSafeZoneBase}`,
-    boxSizing: 'border-box',
     [getMediaQueryMin('xxl')]: {
-      padding: `0 ${gridSafeZoneXXL}`,
+      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL})`,
     },
   },
 };
@@ -45,7 +43,7 @@ const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: JssSt
 export const getContentWrapperStyle = (width: ContentWrapperWidth): JssStyle => {
   return {
     width: '100%',
-    margin: '0 auto',
+    padding: `0 ${offsetHorizontalXXL}`,
     minWidth: gridWidthMin,
     maxWidth: gridWidthMax,
     ...widthMap[width],
