@@ -39,7 +39,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, 'background-color', 'background-surface');
+    expect(spy).toBeCalledWith(component.host, 'backgroundColor');
   });
 });
 

@@ -1,7 +1,8 @@
 import { getDeprecatedPropWarningMessage } from './helper';
 
 // TODO: add missing unit test
-export const warnIfDeprecatedPropIsUsed = <T extends string>(host: HTMLElement, prop: string, propValue: T): void => {
+export const warnIfDeprecatedPropIsUsed = (host: HTMLElement, prop: string): void => {
+  const propValue = host[prop];
   if (propValue) {
     console.warn(getDeprecatedPropWarningMessage(prop, host));
   }
