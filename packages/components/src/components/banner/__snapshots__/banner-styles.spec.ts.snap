@@ -17,6 +17,9 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
   min-width: 0 !important;
   max-width: 2560px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 @keyframes mobileIn {
   from {
     opacity: 0;
@@ -110,6 +113,9 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
   min-width: 0 !important;
   max-width: 2560px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 @keyframes mobileIn {
   from {
     opacity: 0;
@@ -201,6 +207,9 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
   width: auto !important;
   min-width: 0 !important;
   max-width: 2560px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @keyframes mobileIn {
   from {
