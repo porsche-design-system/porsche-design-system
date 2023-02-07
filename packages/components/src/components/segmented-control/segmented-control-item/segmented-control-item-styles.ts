@@ -98,7 +98,6 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
                 transition: getTransition('border-color'),
                 '&:hover': {
                   borderColor: hoverBorderColor,
-                  cursor: 'pointer',
                 },
               }),
             }),
