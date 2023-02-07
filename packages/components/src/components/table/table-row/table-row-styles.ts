@@ -12,9 +12,9 @@ export const getComponentCss = (): string => {
     '@global': {
       ':host': addImportantToEachRule({
         display: 'table-row',
-        transition: getTransition('background-color'),
         ...hostHiddenStyles,
         ...hoverMediaQuery({
+          transition: getTransition('background-color'),
           '&(:hover)': {
             backgroundColor: getThemedColors('light').backgroundSurfaceColor,
           },

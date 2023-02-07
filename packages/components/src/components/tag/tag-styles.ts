@@ -61,8 +61,8 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         font: textXSmallStyle.font,
         whiteSpace: 'nowrap',
         ...(isFocusable && {
-          transition: getTransition('background-color'),
           ...hoverMediaQuery({
+            transition: getTransition('background-color'),
             '&:hover': {
               background: backgroundHoverColor,
             },
