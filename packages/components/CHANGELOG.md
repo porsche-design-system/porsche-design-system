@@ -17,7 +17,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   `Text Field Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
 - Prop `size` for `Accordion` `compact="true"` supports `medium`
-- Value `full` and `narrow` for prop `width` for `Banner`
 
 #### Changed
 
@@ -98,6 +97,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
 ```
 
+- Default value of prop `width` of `Banner` has changed from **"basic"** to **"extended"**
 - Default value of prop `action-icon` of `Inline Notification` has changed from **"arrow-head-right"** to
   **"arrow-right"**
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
@@ -253,11 +253,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
 
-- Deprecated prop `width`'s value `fluid` for `Banner`, currently mapped to `full`
+- Deprecated prop `width`'s value `fluid` for `Banner`, currently mapped to `extended`
 
 ```diff
 - <p-banner width="fluid"></p-banner>
-+ <p-banner width="full"></p-banner>
++ <p-banner width="extended"></p-banner>
 ```
 
 - Deprecated prop `state`'s value `neutral` for `Inline Notification`, `Banner`, `Toast` and renamed the value to `info`
