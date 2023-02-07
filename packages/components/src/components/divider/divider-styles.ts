@@ -1,7 +1,7 @@
 import type { DividerColor, DividerOrientation } from './divider-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { getThemedColors } from '../../styles';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 
 export const getComponentCss = (
   color: DividerColor,
@@ -19,6 +19,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       hr: {
         margin: 0,

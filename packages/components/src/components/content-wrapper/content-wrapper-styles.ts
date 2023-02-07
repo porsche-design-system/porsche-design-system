@@ -1,7 +1,7 @@
 import type { Theme } from '../../types';
 import type { ContentWrapperBackgroundColor, ContentWrapperWidth } from './content-wrapper-utils';
 import { getCss } from '../../utils';
-import { getThemedColors } from '../../styles';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 import { getContentWrapperStyle } from './content-wrapper-styles-shared';
 
 export const getComponentCss = (
@@ -13,6 +13,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'flex',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
     },
     root: {

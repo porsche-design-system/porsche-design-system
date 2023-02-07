@@ -28,7 +28,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
   @import '../styles/internal.variables';
 
   /* More information about :deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors

@@ -4,6 +4,8 @@ import {
   getInsetJssStyle,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
   pxToRemWithUnit,
 } from '../../../styles';
 import {

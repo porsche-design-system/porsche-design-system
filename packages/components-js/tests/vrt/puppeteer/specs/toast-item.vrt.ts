@@ -21,9 +21,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover > p-toast-item >>> p-button-pure >>> button');
-      await forceFocusState(page, '.focus > p-toast-item >>> p-button-pure >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-toast-item >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-toast-item >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-toast-item >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-toast-item >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });

@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
   fontSizeTextLarge,
   fontSizeTextMedium,
@@ -12,7 +12,6 @@ import {
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 import { TEXT_TAGS } from './text-utils';
 
 const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
@@ -34,8 +33,8 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
         [TEXT_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getSlottedTypographyJssStyle()),

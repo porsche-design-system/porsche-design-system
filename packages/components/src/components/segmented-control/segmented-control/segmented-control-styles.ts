@@ -1,6 +1,5 @@
 import { getCss } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles';
-import { hostHiddenStyles } from '../../../styles/host-hidden-styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 
 const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;

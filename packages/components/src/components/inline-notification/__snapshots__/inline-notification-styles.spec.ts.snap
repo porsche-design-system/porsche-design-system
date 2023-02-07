@@ -10,6 +10,9 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   background: #290A0A !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -56,6 +59,9 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   padding: 16px !important;
   background: #FCE8E9 !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -104,6 +110,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   background: #001A33 !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -150,6 +159,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #E8EEFD !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -198,6 +210,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   background: #001A33 !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -245,6 +260,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -291,6 +309,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -342,6 +363,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -391,6 +415,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -442,6 +469,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -492,6 +522,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #001A33 !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -538,6 +571,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #E8EEFD !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -586,6 +622,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #001A33 !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -633,6 +672,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -679,6 +721,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -730,6 +775,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -779,6 +827,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #001A33 !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -830,6 +881,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #E8EEFD !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -880,6 +934,9 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   background: #003320 !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -926,6 +983,9 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   padding: 16px !important;
   background: #EBFAF0 !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -974,6 +1034,9 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   background: #2B2208 !important;
   border-radius: 4px !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -1020,6 +1083,9 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   padding: 16px !important;
   background: #FFF9E6 !important;
   border-radius: 4px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h5 {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

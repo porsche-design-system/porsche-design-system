@@ -2,7 +2,7 @@ import type { Theme } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToRule, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 import { textXSmallStyle, headingSmallStyle, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -13,7 +13,8 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabe
   return getCss({
     '@global': {
       ':host': {
-        display: addImportantToRule('block'),
+        display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       fieldset: {
         margin: 0,

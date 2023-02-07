@@ -7,7 +7,7 @@ import type {
   FlexItemWidth,
 } from './flex-item-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 
 const flexItemWidths: { [key in Exclude<FlexItemWidth, 'auto'>]: number } & { none: number; auto: string } = {
@@ -33,6 +33,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         boxSizing: 'border-box',
+        ...hostHiddenStyles,
         ...mergeDeep(
           buildResponsiveStyles(width, (widthResponsive: FlexItemWidth) => ({
             width: `${flexItemWidths[widthResponsive]}%`,
