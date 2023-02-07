@@ -20,6 +20,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Content Wrapper` is deprecated and will be removed with the next major release. Please use the Porsche Grid utility
+  instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital
+  touch-points.
+- Width `fluid` for `Content Wrapper` is deprecated now, currently mapped to `full`
+
+```diff
+- <p-content-wrapper width="fluid">Some content</p-content-wrapper>
++ <p-content-wrapper width="full">Some content</p-content-wrapper>
+```
+
 - `Flex` is deprecated and will be removed with the next major release. In general, please use native
   <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more
   standardized layout technique.
@@ -76,8 +86,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Color `background-default` for `Tag Dismissible` is deprecated now, replaced by `background-base`
 
 ```diff
-- <p-tag-dismissible color="background-default">Color label</p-tag>
-+ <p-tag-dismissible color="background-base">Color label</p-tag>
+- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
++ <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
 ```
 
 - Default value of prop `action-icon` of `Inline Notification` has changed from **"arrow-head-right"** to
@@ -103,8 +113,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text` and `Text Field Wrapper` matches new design
-  language
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text` and
+  `Text Field Wrapper` matches new design language
 - CSS global variables names
 
 ```diff
