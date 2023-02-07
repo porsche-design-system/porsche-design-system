@@ -69,7 +69,7 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
         outline: 0,
-        backgroundColor: 'transparent',
+        background: 'transparent',
         color: buttonColor,
         ...textSmallStyle,
         overflowWrap: 'normal',
