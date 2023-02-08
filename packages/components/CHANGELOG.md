@@ -39,30 +39,21 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
 
 ##### Button Pure:
 
-````diff
-- <p-icon color="inherit" style="color: #fff"></p-icon>
 - Removed `subline` slot (visually not intended anymore).
 
-+ <p-icon color="inherit" style="filter: invert(100%)"></p-icon>
 ```diff
 <p-button-pure>
   Some label
 -   <p slot="subline">Some Subline</p>
 </p-button-pure>
-````
+```
 
-- `getIconLinks()` partial accepts only param-cased icon names
 - Removed deprecated prop `tabbable`.
 
 ```diff
-- require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrowRight'] })
-
-+ require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
 - <p-button-pure tabbable="false">Some label</p-button-pure>
 + <p-button-pure tabindex="-1">Some label</p-button-pure>
 ```
-
-- Color `notification-neutral` for `Tag` is deprecated now, replaced by `notification-info`
 
 ##### Icon:
 
@@ -71,24 +62,17 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
   performance in general.
 
 ```diff
-- <p-tag color="notification-neutral">Color label</p-tag>
-+ <p-tag color="notification-info">Color label</p-tag>
 - <p-icon color="inherit" style="color: white;"></p-icon>
 + <p-icon color="inherit" style="filter: invert(100%);"></p-icon>
 ```
 
-- Color `neutral-contrast-high` for `Tag` is deprecated now, replaced by `primary`
 - Camel case syntax for `name` prop isn't supported, please use param case syntax instead (TypeScript typings have been
   updated too).
 
 ```diff
-- <p-tag color="neutral-contrast-high">Color label</p-tag>
-+ <p-tag color="primary">Color label</p-tag>
 - <p-icon name="arrowRight"></p-icon>
 + <p-icon name="arrow-right"></p-icon>
 ```
-
-- Color `background-default` for `Tag` is deprecated now, replaced by `background-base`
 
 ##### Link:
 
@@ -96,8 +80,6 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
   set if the component has the `hide-label` property.
 
 ```diff
-- <p-tag color="background-default">Color label</p-tag>
-+ <p-tag color="background-base">Color label</p-tag>
 - <p-link href="#" hide-label="true">Some label</p-link>
 + <p-link href="#" hide-label="true" icon="arrow-right">Some label</p-link>
 
@@ -105,68 +87,35 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
 + <p-link href="#" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>
 ```
 
-- Color `background-default` for `Tag Dismissible` is deprecated now, replaced by `background-base`
-
 ##### Link Pure:
 
 - Removed `subline` slot (visually not intended anymore).
 
 ```diff
-- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
-+ <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
 <p-link-pure href="#">
   Some label
 -   <p slot="subline">Some Subline</p>
 </p-link-pure>
 ```
 
-- Default value of prop `width` of `Banner` has changed from **"basic"** to **"extended"**
-- Default value of prop `action-icon` of `Inline Notification` has changed from **"arrow-head-right"** to
-  **"arrow-right"**
-- Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
-- Default value of prop `variant` of `Link` and `Button` has changed from **"secondary"** to **"primary"**
-- Default value of prop `icon` of `Link` and `Button` has changed from **"arrow-head-right"** to **"none"**. Therefore,
-  the `icon` property **must** be set if the `link` or `button` has the `hide-label` property:
-
 ##### Switch:
 
 - Removed deprecated prop `tabbable`.
 
 ```diff
-- <p-link href="#" hide-label="true">Some label</p-link>
-+ <p-link href="#" hide-label="true" icon="arrow-right">Some label</p-link>
 - <p-switch tabbable="false">Some label</p-switch>
 + <p-switch tabindex="-1">Some label</p-switch>
 ```
 
-- <p-link href="#" hide-label="{ base: true, m: false }">Some label</p-link>
-
-* <p-link href="#" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>
-
 ##### Partials:
 
-- <p-button hide-label="true">Some label</p-button>
-
-* <p-button hide-label="true" icon="arrow-right">Some label</p-button>
-
 - `getIconLinks()` partial accepts only param-cased icon names.
-
-- <p-button hide-label="{ base: true, m: false }">Some label</p-button>
-
-* <p-button hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>
 
 ```diff
 - require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrowRight'] })
 
 + require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
 ```
-
-- `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
-  `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Carousel` and `Fieldset Wrapper` matches new design
-  language
-- CSS global variables names
 
 ##### CSS global scope:
 
@@ -381,14 +330,6 @@ to the new values since those ones will be removed with next major version.
 - Prop value `thin | semibold` of `weight` prop is deprecated.
 
 ```diff
-- <p-banner state="neutral">
--  <span slot="title">Some banner title</span>
--  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-- </p-banner>
-+ <p-banner state="info">
-+  <span slot="title">Some banner title</span>
-+  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-+ </p-banner>
 - <p-text weight="thin">Some text</p-text>
 + <p-text>Some text</p-text>
 
@@ -401,8 +342,6 @@ to the new values since those ones will be removed with next major version.
   `color` prop is deprecated.
 
 ```diff
-- <p-toast state="neutral"></p-toast>
-+ <p-toast state="info"></p-toast>
 - <p-text color="brand">Some text</p-text>
 + <p-text>Some text</p-text>
 
@@ -422,16 +361,11 @@ to the new values since those ones will be removed with next major version.
 + <p-text color="notification-info">Some text</p-text>
 ```
 
-#### Fixed
-
 ##### ToastManager:
 
-- `Icon` supports param cased icon names only, typings are adapted accordingly:
 - Prop value `neutral` of `state` parameter is deprecated.
 
 ```diff
-- <p-icon name="arrowRight"></p-icon>
-+ <p-icon name="arrow-right"></p-icon>
 - …addMessage({ text: `Some message`, state: 'neutral' })
 + …addMessage({ text: `Some message`, state: 'info' })
 ```
@@ -451,7 +385,8 @@ to the new values since those ones will be removed with next major version.
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
   `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control` and `Fieldset Wrapper` matches new design language.
+  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Carousel` and `Fieldset Wrapper` matches new design
+  language.
 - `Icon` supports
   `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | inherit`
   for `color` prop.
