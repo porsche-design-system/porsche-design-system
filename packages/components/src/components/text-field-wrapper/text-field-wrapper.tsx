@@ -103,6 +103,8 @@ export class TextFieldWrapper {
   private ariaElement: HTMLSpanElement;
   private isSearch: boolean;
   private isPassword: boolean;
+  private isCalendar: boolean;
+  private isTime: boolean;
   private isWithinForm: boolean;
   private hasAction: boolean;
   private hasCounter: boolean;
@@ -123,6 +125,8 @@ export class TextFieldWrapper {
     this.observeAttributes(); // once initially
     this.isSearch = isType(this.input.type, 'search');
     this.isPassword = isType(this.input.type, 'password');
+    this.isCalendar = isType(this.input.type, ['date', 'week', 'month', 'datetime-local']);
+    this.isTime = isType(this.input.type, 'time');
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
@@ -287,6 +291,19 @@ export class TextFieldWrapper {
                 </PrefixedTagNames.pButtonPure>
               ),
             ]
+          )}
+          {(this.isCalendar || this.isTime) && (
+            <PrefixedTagNames.pButtonPure
+              key="btn-action"
+              class="button"
+              type="button"
+              icon={`${this.isCalendar ? 'calendar' : 'clock'}`}
+              theme={this.theme}
+              onClick={() => this.input.showPicker()}
+              hideLabel={true}
+            >
+              Calender picker
+            </PrefixedTagNames.pButtonPure>
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
