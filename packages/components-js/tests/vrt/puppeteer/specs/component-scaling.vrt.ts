@@ -10,6 +10,7 @@ const components = [
   'button',
   'button-pure',
   'checkbox-wrapper',
+  'content-wrapper',
   'inline-notification',
   'link',
   'link-pure',
@@ -26,6 +27,7 @@ const components = [
   'text-field-wrapper',
   'textarea-wrapper',
   'toast-basic',
+  'fieldset-wrapper',
   'segmented-control',
 ];
 
