@@ -107,7 +107,9 @@ export abstract class AbstractWrapperGenerator {
     const propsDefinition = this.generateProps(component, rawComponentInterface);
     const wrapperDefinition = this.generateComponent(component, extendedProps);
 
-    const content = this.transformContent([importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n'));
+    const content = this.transformContent(
+      [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n')
+    );
 
     const componentSubDir = this.getComponentSubDir(component);
     if (componentSubDir) {
