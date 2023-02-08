@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
-import { HeadingAlign, HeadingColor, HeadingTag } from "./components/heading/heading-utils";
+import { HeadingAlign, HeadingColor, HeadingSize, HeadingTag } from "./components/heading/heading-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
@@ -20,7 +20,7 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { HeadlineVariantDeprecated } from "./components/headline/headline-utils";
+import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
@@ -435,11 +435,11 @@ export namespace Components {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadlineAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
+        "color"?: HeadlineColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -447,7 +447,7 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending on the usage of the headline component.
          */
-        "tag"?: HeadingTag;
+        "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -455,7 +455,7 @@ export namespace Components {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: HeadlineVariantDeprecated;
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**
@@ -2124,11 +2124,11 @@ declare namespace LocalJSX {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadlineAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
+        "color"?: HeadlineColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -2136,7 +2136,7 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending on the usage of the headline component.
          */
-        "tag"?: HeadingTag;
+        "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -2144,7 +2144,7 @@ declare namespace LocalJSX {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: HeadlineVariantDeprecated;
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**
