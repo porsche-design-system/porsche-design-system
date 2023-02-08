@@ -29,6 +29,10 @@ const mediaQueryS = getMediaQueryMin('s');
 const splideSpeed = '0.4s';
 const bulletSize = '8px';
 const activeBulletWidth = '20px';
+const navGap = spacingStaticXSmall;
+const navBtnPadding = spacingStaticSmall;
+// nav width is being calculated based on icon width (fontLineHeight), button padding and distance (navGap) between 2 nav buttons
+const navWidth = `calc((${fontLineHeight} + ${navBtnPadding} * 2) * 2 + ${navGap})`;
 
 export const getComponentCss = (
   wrapContent: boolean,
@@ -56,6 +60,7 @@ export const getComponentCss = (
         maxWidth: '900px',
         ...(!isAlignLeft && {
           margin: '0 auto',
+          padding: `0 ${navWidth}`,
         }),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
@@ -65,6 +70,7 @@ export const getComponentCss = (
         maxWidth: '550px',
         ...(!isAlignLeft && {
           margin: '0 auto',
+          padding: `0 ${navWidth}`,
         }),
         gridColumn: 1, // to force it into 2nd line
       }),
@@ -115,7 +121,7 @@ export const getComponentCss = (
         ...(isAlignLeft
           ? {
               color: '#000',
-              gridTemplateColumns: `minmax(0px, 1fr) calc((${fontLineHeight} + ${spacingStaticSmall} * 2) * 2 + ${spacingStaticXSmall})`, // 2nd row has width of nav buttons
+              gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
             }
           : {
               gridTemplateColumns: 'minmax(0px, 1fr) 0',
@@ -129,14 +135,14 @@ export const getComponentCss = (
       [mediaQueryS]: {
         display: 'grid',
         gridAutoFlow: 'column',
-        gap: spacingStaticXSmall,
+        gap: navGap,
         position: 'absolute', // we can't span across multiple rows with implicit grid
         right: wrapContent ? gridSafeZoneBase : 0,
         bottom: 0,
       },
     },
     btn: {
-      padding: spacingStaticSmall,
+      padding: navBtnPadding,
     },
     ...(disablePagination !== true && {
       pagination: {
