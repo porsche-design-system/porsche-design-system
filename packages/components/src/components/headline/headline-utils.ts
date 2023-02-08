@@ -1,6 +1,8 @@
-import type { TextSize, BreakpointCustomizable, HeadingSize } from '../../types';
-import type { HeadingTag } from '../heading/heading-utils';
-import { hasSlottedHeadingTag } from '../heading/heading-utils';
+import type { BreakpointCustomizable, HeadingSize, TextSize } from '../../types';
+import { hasSpecificSlottedTag } from '../../utils';
+
+export const HEADLINE_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+export type HeadlineTag = typeof HEADLINE_TAGS[number];
 
 export const HEADLINE_VARIANTS_DEPRECATED = [
   'large-title',
@@ -38,9 +40,9 @@ const headlineVariantToTagMap: { [key in HeadlineVariantTypeDeprecated]: string 
 export const getHeadlineTagName = (
   host: HTMLElement,
   variant?: HeadlineVariantDeprecated,
-  tag?: HeadingTag
+  tag?: HeadlineTag
 ): string => {
-  if (hasSlottedHeadingTag(host)) {
+  if (hasSpecificSlottedTag(host, HEADLINE_TAGS.join())) {
     return 'div';
   } else if (tag) {
     return tag;
