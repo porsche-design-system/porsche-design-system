@@ -1,24 +1,17 @@
-import type { Theme } from '../../types';
-import type { ContentWrapperBackgroundColor, ContentWrapperWidth } from './content-wrapper-utils';
+import type { ContentWrapperWidth } from './content-wrapper-utils';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 import { getContentWrapperStyle } from './content-wrapper-styles-shared';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+import { addImportantToEachRule } from '../../styles';
 
-export const getComponentCss = (
-  width: ContentWrapperWidth,
-  backgroundColor: ContentWrapperBackgroundColor,
-  theme: Theme
-): string => {
+export const getComponentCss = (width: ContentWrapperWidth): string => {
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex',
+        display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
       },
     },
-    root: {
-      ...getContentWrapperStyle(width),
-      backgroundColor: backgroundColor === 'default' ? getThemedColors(theme).backgroundColor : 'transparent',
-    },
+    root: getContentWrapperStyle(width),
   });
 };
