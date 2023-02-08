@@ -1,11 +1,10 @@
-import type { DisplaySize, DisplayColor, DisplayAlign } from './display-utils';
+import type { DisplayAlign, DisplayColor, DisplaySize } from './display-utils';
+import { DISPLAY_TAGS } from './display-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { displayLargeStyle, fontSizeDisplayLarge, fontSizeDisplayMedium } from '@porsche-design-system/utilities-v2';
-import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { DISPLAY_TAGS } from './display-utils';
+import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
   medium: fontSizeDisplayMedium,
@@ -26,23 +25,14 @@ export const getComponentCss = (
         ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
-        [DISPLAY_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getSlottedTypographyJssStyle()),
+        [DISPLAY_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: {
-      display: 'inherit',
-      margin: 0,
-      padding: 0,
-      textAlign: align,
-      ...displayLargeStyle,
-      letterSpacing: 'normal',
-      color: getThemedTextColor(theme, color),
-      listStyleType: 'none',
-      whiteSpace: 'inherit',
-      ...(ellipsis && getEllipsisJssStyle()),
-      ...buildResponsiveStyles(size, (sizeValue: DisplaySize) => ({
+    'root': {
+      ...getTypographyRootJssStyle(displayLargeStyle, align, color, ellipsis, theme),
+      ...buildResponsiveStyles(size, (sizeValue: DisplaySize) => (addImportantToEachRule({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-      })),
-    },
+      }))),
+    }
   });
 };

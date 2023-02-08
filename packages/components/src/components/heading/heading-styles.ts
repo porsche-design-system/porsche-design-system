@@ -1,7 +1,7 @@
-import type { HeadingSize, HeadingAlign, HeadingColor } from './heading-utils';
+import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {addImportantToEachRule, hostHiddenStyles} from '../../styles';
 import {
   fontSizeHeadingLarge,
   fontSizeHeadingMedium,
@@ -11,8 +11,7 @@ import {
   fontSizeHeadingXXXLarge,
   headingXXLargeStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import { getThemedTextColor } from '../../styles/text-icon-styles';
+import { getTypographySlottedJssStyle, getTypographyRootJssStyle } from '../../styles/typography-styles';
 
 export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
   'xxx-large': fontSizeHeadingXXXLarge,
@@ -37,23 +36,14 @@ export const getComponentCss = (
         ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
-        [HEADING_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getSlottedTypographyJssStyle()),
+        [HEADING_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: {
-      display: 'inherit',
-      margin: 0,
-      padding: 0,
-      textAlign: align,
-      ...headingXXLargeStyle,
-      letterSpacing: 'normal',
-      color: getThemedTextColor(theme, color),
-      listStyleType: 'none',
-      whiteSpace: 'inherit',
-      ...(ellipsis && getEllipsisJssStyle()),
-      ...buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
+    'root': {
+      ...getTypographyRootJssStyle(headingXXLargeStyle, align, color, ellipsis, theme),
+      ...buildResponsiveStyles(size, (sizeValue: HeadingSize) => (addImportantToEachRule({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-      })),
-    },
+      }))),
+    }
   });
 };

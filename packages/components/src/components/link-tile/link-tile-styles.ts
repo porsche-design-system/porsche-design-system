@@ -8,7 +8,7 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { getThemedTextColor } from '../../styles/text-icon-styles';
+import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
@@ -90,7 +90,7 @@ export const getComponentCss = (
         },
       }),
       p: {
-        color: getThemedTextColor('dark', 'primary'),
+        color: getThemedTypographyColor('dark', 'primary'),
         ...textSmallStyle,
         maxWidth: pxToRemWithUnit(550),
         margin: 0,
