@@ -11,6 +11,7 @@ const components = [
   'button-pure',
   'checkbox-wrapper',
   'content-wrapper',
+  'icon',
   'inline-notification',
   'link',
   'link-pure',
@@ -22,6 +23,7 @@ const components = [
   'scroller',
   'select-wrapper',
   'spinner',
+  'stepper-horizontal',
   'tag',
   'tag-dismissible',
   'text-field-wrapper',
@@ -29,7 +31,6 @@ const components = [
   'toast-basic',
   'fieldset-wrapper',
   'segmented-control',
-  'icon',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
