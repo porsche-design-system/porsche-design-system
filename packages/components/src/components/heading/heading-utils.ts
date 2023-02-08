@@ -1,6 +1,6 @@
 import type { TextAlign } from '../text/text-align';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import { getHTMLElement } from '../../utils';
+import { hasSpecificSlottedTag } from '../../utils';
 
 export const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingTag = typeof HEADING_TAGS[number];
@@ -12,12 +12,6 @@ export const HEADING_COLORS = ['primary', 'inherit'] as const;
 export type HeadingColor = typeof HEADING_COLORS[number];
 
 export type HeadingAlign = TextAlign;
-
-export const hasSlottedHeadingTag = (host: HTMLElement): boolean => {
-  // TODO: needs to be direct and only child
-  const el = getHTMLElement(host, ':first-child');
-  return el?.matches(HEADING_TAGS.join());
-};
 
 export const isValidHeadingSize = (size: BreakpointCustomizable<HeadingSize>): boolean => {
   return HEADING_SIZES.includes(size as HeadingSize);
@@ -33,13 +27,12 @@ export const headingSizeToTagMap: { [key in HeadingSize]: string } = {
   inherit: 'h1',
 };
 
-// TODO: maybe we can abstract this function to be reused for text, heading and display
 export const getHeadingTagType = (
   host: HTMLElement,
   size: BreakpointCustomizable<HeadingSize>,
   tag: HeadingTag
 ): string => {
-  if (hasSlottedHeadingTag(host)) {
+  if (hasSpecificSlottedTag(host, HEADING_TAGS.join())) {
     return 'div';
   } else if (tag) {
     return tag;
