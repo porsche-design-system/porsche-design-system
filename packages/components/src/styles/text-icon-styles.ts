@@ -1,8 +1,10 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { TextColor } from '../types';
+import type { HeadingColor } from '../components/heading/heading-utils';
+import type { DisplayColor } from '../components/display/display-utils';
 import { getThemedColors } from './colors';
 
-export const getThemedTextColor = (theme: Theme, textColor: TextColor): string => {
+export const getThemedTypographyColor = (theme: Theme, textColor: TextColor | HeadingColor | DisplayColor): string => {
   const {
     primaryColor,
     contrastHighColor,
@@ -14,7 +16,7 @@ export const getThemedTextColor = (theme: Theme, textColor: TextColor): string =
     infoColor,
   } = getThemedColors(theme);
 
-  const colorMap: { [key in TextColor]: string } = {
+  const colorMap: { [key in TextColor | HeadingColor | DisplayColor]: string } = {
     primary: primaryColor,
     brand: primaryColor, // deprecated
     default: primaryColor, // deprecated

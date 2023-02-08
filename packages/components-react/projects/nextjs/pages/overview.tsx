@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import Image from 'next/image';
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
@@ -49,8 +49,16 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
       <div className="root" style={{ display: 'flex' }}>
         <div style={{ flex: 1 }}>
+          <div className="playground light" title="should render default heading">
+            <PHeading>Default Components</PHeading>
+          </div>
+
           <div className="playground light" title="should render default headline">
-            <PHeadline>Default Components</PHeadline>
+            <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+          </div>
+
+          <div className="playground light" title="should render default display">
+            <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
           </div>
 
           <div className="playground light" title="should render default banner">
@@ -299,8 +307,16 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
         <PorscheDesignSystemProvider prefix="my-prefix">
           <div style={{ flex: 1 }}>
+            <div className="playground light" title="should render default heading with custom prefix">
+              <PHeading>Prefixed Components</PHeading>
+            </div>
+
             <div className="playground light" title="should render default headline with custom prefix">
-              <PHeadline>Prefixed Components</PHeadline>
+              <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+            </div>
+
+            <div className="playground light" title="should render default display with custom prefix">
+              <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
             </div>
 
             <div className="playground light" title="should render default banner with custom prefix">

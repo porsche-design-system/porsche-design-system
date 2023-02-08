@@ -9,8 +9,7 @@ import {
   fontSizeTextXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import { getThemedTextColor } from '../../styles/text-icon-styles';
+import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { TEXT_TAGS } from './text-utils';
 
@@ -37,24 +36,19 @@ export const getComponentCss = (
         ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
-        [TEXT_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getSlottedTypographyJssStyle()),
+        [TEXT_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: {
-      display: 'inherit',
-      margin: 0,
-      padding: 0,
-      textAlign: align,
-      ...textSmallStyle,
-      letterSpacing: 'normal',
-      color: getThemedTextColor(theme, color),
-      listStyleType: 'none',
-      whiteSpace: 'inherit',
-      ...(ellipsis && getEllipsisJssStyle()),
-      ...buildResponsiveStyles(size, (sizeValue: TextSize) => ({
+    root: getTypographyRootJssStyle(
+      textSmallStyle,
+      buildResponsiveStyles(size, (sizeValue: TextSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
         fontWeight: getFontWeight(weight),
       })),
-    },
+      align,
+      color,
+      ellipsis,
+      theme
+    ),
   });
 };

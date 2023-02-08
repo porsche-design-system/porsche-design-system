@@ -122,6 +122,13 @@ exports[`should have no basic DOM regression for p-grid-item 1`] = `
 </slot>"
 `;
 
+exports[`should have no basic DOM regression for p-heading 1`] = `
+"<h2 class="root">
+  <slot>
+  </slot>
+</h2>"
+`;
+
 exports[`should have no basic DOM regression for p-headline 1`] = `
 "<h1 class="root">
   <slot>
