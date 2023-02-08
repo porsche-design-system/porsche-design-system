@@ -39,12 +39,16 @@ export const getComponentCss = (
         [TEXT_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    'root': {
-      ...getTypographyRootJssStyle(textSmallStyle, align, color, ellipsis, theme),
-      ...buildResponsiveStyles(size, (sizeValue: TextSize) => (addImportantToEachRule({
+    root: getTypographyRootJssStyle(
+      textSmallStyle,
+      buildResponsiveStyles(size, (sizeValue: TextSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
         fontWeight: getFontWeight(weight),
-      }))),
-    }
+      })),
+      align,
+      color,
+      ellipsis,
+      theme
+    ),
   });
 };

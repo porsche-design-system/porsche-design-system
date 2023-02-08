@@ -1,7 +1,7 @@
-import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
+import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
 import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
-import {addImportantToEachRule, hostHiddenStyles} from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
   fontSizeHeadingLarge,
   fontSizeHeadingMedium,
@@ -39,11 +39,15 @@ export const getComponentCss = (
         [HEADING_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    'root': {
-      ...getTypographyRootJssStyle(headingXXLargeStyle, align, color, ellipsis, theme),
-      ...buildResponsiveStyles(size, (sizeValue: HeadingSize) => (addImportantToEachRule({
+    root: getTypographyRootJssStyle(
+      headingXXLargeStyle,
+      buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-      }))),
-    }
+      })),
+      align,
+      color,
+      ellipsis,
+      theme
+    ),
   });
 };

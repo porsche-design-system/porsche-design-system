@@ -1,6 +1,6 @@
+import type { BreakpointCustomizable, Theme } from '../../types';
 import type { DisplayAlign, DisplayColor, DisplaySize } from './display-utils';
 import { DISPLAY_TAGS } from './display-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { displayLargeStyle, fontSizeDisplayLarge, fontSizeDisplayMedium } from '@porsche-design-system/utilities-v2';
@@ -28,11 +28,15 @@ export const getComponentCss = (
         [DISPLAY_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    'root': {
-      ...getTypographyRootJssStyle(displayLargeStyle, align, color, ellipsis, theme),
-      ...buildResponsiveStyles(size, (sizeValue: DisplaySize) => (addImportantToEachRule({
+    root: getTypographyRootJssStyle(
+      displayLargeStyle,
+      buildResponsiveStyles(size, (sizeValue: DisplaySize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-      }))),
-    }
+      })),
+      align,
+      color,
+      ellipsis,
+      theme
+    ),
   });
 };

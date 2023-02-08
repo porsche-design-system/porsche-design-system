@@ -6,6 +6,7 @@ import { getThemedTypographyColor } from './text-icon-styles';
 
 export const getTypographyRootJssStyle = (
   baseTextStyle: JssStyle,
+  responsiveStyle: JssStyle,
   align: TextAlign | HeadingAlign | DisplayAlign,
   color: TextColor | HeadingColor | DisplayColor,
   ellipsis: boolean,
@@ -26,6 +27,7 @@ export const getTypographyRootJssStyle = (
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
     }),
+    ...responsiveStyle,
   };
 };
 
@@ -46,14 +48,5 @@ export const getTypographySlottedJssStyle = (): JssStyle => {
     hyphens: 'inherit',
     whiteSpace: 'inherit',
     letterSpacing: 'inherit',
-  };
-};
-
-export const getEllipsisJssStyle = (): JssStyle => {
-  return {
-    maxWidth: '100%',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
   };
 };
