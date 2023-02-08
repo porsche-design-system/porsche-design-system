@@ -247,11 +247,13 @@ export namespace Components {
     }
     interface PContentWrapper {
         /**
-          * Defines the background color.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
-          * Adapts the color when used on dark background.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "theme"?: Theme;
         /**
@@ -320,6 +322,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
     interface PFlex {
         /**
@@ -1897,11 +1903,13 @@ declare namespace LocalJSX {
     }
     interface PContentWrapper {
         /**
-          * Defines the background color.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
-          * Adapts the color when used on dark background.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "theme"?: Theme;
         /**
@@ -1970,6 +1978,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
     interface PFlex {
         /**
