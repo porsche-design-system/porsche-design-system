@@ -1,10 +1,53 @@
-@mixin pds-focus($offset: 2px) {
-  &:focus {
-    outline: #0a0aff solid 2px;
-    outline-offset: $offset;
-    // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
-    &:not(:focus-visible) {
-      outline-color: transparent;
+@import 'lib/border';
+@import 'lib/theme';
+
+$pds-focus-offset-map: (
+  'small': -4px,
+  'medium': -6px,
+);
+
+$pds-focus-border-radius-map: (
+  'small': $pds-border-radius-small,
+  'medium': $pds-border-radius-medium,
+);
+
+$pds-theme-map: (
+  'light': $pds-theme-light-state-focus,
+  'dark': $pds-theme-dark-state-focus,
+);
+
+@mixin pds-focus($offset: 'small', $border-radius: 'small', $theme: 'light') {
+  position: relative;
+  // we can't use outline, since border-radius has no effect on outline style in Safari
+  outline: 0;
+  &:focus::before {
+    content: '';
+    position: absolute;
+    // we can use inset as soon as browser support is sufficient
+    @if map-has-key($pds-focus-offset-map, $offset) {
+      top: map-get($pds-focus-offset-map, $offset);
+      left: map-get($pds-focus-offset-map, $offset);
+      right: map-get($pds-focus-offset-map, $offset);
+      bottom: map-get($pds-focus-offset-map, $offset);
+    } @else {
+      top: $offset;
+      left: $offset;
+      right: $offset;
+      bottom: $offset;
     }
+    @if map-has-key($pds-theme-map, $theme) {
+      border: $pds-border-width-base solid map-get($pds-theme-map, $theme);
+    } @else {
+      border: $pds-border-width-base solid $pds-theme-light-state-focus;
+    }
+    @if map-has-key($pds-focus-border-radius-map, $border-radius) {
+      border-radius: map-get($pds-focus-border-radius-map, $border-radius);
+    } @else {
+      border-radius: $pds-border-radius-small;
+    }
+  }
+  // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
+  &:focus:not(:focus-visible)::before {
+    border-color: transparent;
   }
 }

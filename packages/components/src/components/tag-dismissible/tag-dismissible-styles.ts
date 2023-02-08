@@ -1,11 +1,16 @@
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, getTransition } from '../../styles';
+import {
+  addImportantToEachRule,
+  getScreenReaderOnlyJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import { getCss } from '../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-shared-utils';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-import type { Theme } from '../../utils/theme';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+import type { Theme } from '../../types';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);

@@ -4,7 +4,7 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { buildSlottedStyles, getCss } from '../../utils';
 import { isType } from './text-field-wrapper-utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -15,7 +15,6 @@ import {
   spacingStaticMedium,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const cssVariableInputPaddingLeft = '--p-internal-text-field-input-padding-left';
 export const cssVariableInputPaddingRight = '--p-internal-text-field-input-padding-right';

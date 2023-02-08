@@ -1,15 +1,23 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
-import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../styles';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import {
+  getTransition,
+  transitionDuration,
+  getThemedColors,
+  addImportantToEachRule,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import {
   fontWeight,
   fontSizeText,
   spacingStaticSmall,
   textSmallStyle,
   fontLineHeight,
+  borderRadiusSmall,
+  borderWidthBase,
 } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
@@ -22,43 +30,67 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
-        ...(!compact && {
-          '&(:first-of-type) .root': {
-            borderTop: border,
-          },
-        }),
-      },
+        ...hostHiddenStyles,
+      }),
       button: {
         display: 'flex',
+        position: 'relative',
         justifyContent: 'space-between',
-        margin: `${pxToRemWithUnit(4)} 0`,
+        margin: '2px 0',
         width: '100%',
         textDecoration: 'none',
         border: 0,
+        outline: 0,
+        gap: '24px',
         background: 'transparent',
         cursor: 'pointer',
-        transition: getTransition('color'),
-        overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
         color: primaryColor,
         ...textSmallStyle,
         fontWeight: fontWeight.semiBold,
-        ...(compact
-          ? { padding: `${pxToRemWithUnit(4)} 0` }
-          : buildResponsiveStyles(size, (s: AccordionSize) => ({
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              ...fontSizeText[s],
-              padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
-            }))),
-        ...getFocusJssStyle({ color: focusColor }),
-        ...hoverMediaQuery({
-          '&:hover': {
-            color: hoverColor,
+        ...buildResponsiveStyles(size, (s: AccordionSize) => ({
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          fontSize: fontSizeText[s],
+          padding: compact ? '4px 0' : `${s === 'medium' ? '20px' : '12px'} 0`,
+        })),
+        // mergeDeep needed because of hoverMediaQuery in certain modes not wrapping keys and therefore overriding "&::before" key
+        ...mergeDeep(
+          {
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              borderRadius: borderRadiusSmall,
+              left: '-4px',
+              right: '-4px',
+              ...(compact
+                ? {
+                    top: '2px',
+                    bottom: '2px',
+                  }
+                : {
+                    top: '6px',
+                    bottom: '6px',
+                  }),
+            },
           },
-        }),
+          hoverMediaQuery({
+            '&::before': {
+              transition: getTransition('background-color'),
+            },
+            '&:hover::before': {
+              background: hoverColor,
+            },
+          })
+        ),
+        '&:focus::before': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+        },
+        '&:not(:focus-visible)::before': {
+          border: 0,
+        },
       },
     },
     ...(!compact && {
@@ -73,9 +105,8 @@ export const getComponentCss = (
     icon: {
       width: fontLineHeight,
       height: fontLineHeight,
-      marginLeft: '1.5rem',
       transformOrigin: '50% 50%',
-      transform: open ? 'rotate3d(0,0,1,180deg)' : 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
+      transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
       transition: getTransition('transform'),
     },
     collapsible: {
@@ -84,7 +115,7 @@ export const getComponentCss = (
       ...(open
         ? {
             height: 'auto',
-            paddingBottom: compact ? spacingStaticSmall : '2.5rem',
+            paddingBottom: compact ? spacingStaticSmall : '24px',
             visibility: 'visible',
             transition: getTransition('height') + `,visibility ${transitionDuration}`,
             animation: `$open ${transitionDuration} ease forwards`,

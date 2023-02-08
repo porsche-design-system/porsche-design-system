@@ -1,25 +1,52 @@
 import type { JssStyle } from 'jss';
 import type { ContentWrapperWidth } from './content-wrapper-utils';
-import { gridSafeZone, gridWidthMax } from '@porsche-design-system/utilities-v2';
+import {
+  getMediaQueryMin,
+  gridGap,
+  gridSafeZoneBase,
+  gridSafeZoneXXL,
+  gridWidthMax,
+} from '@porsche-design-system/utilities-v2';
 
-const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
+const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
+const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
+const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
+
+const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: JssStyle } = {
+  narrow: {
+    padding: `0 ${gridSafeZoneBase}`,
+    [getMediaQueryMin('s')]: {
+      padding: `0 calc(${gridSafeZoneBase} + ${gridGap} * 3 + ${oneColumnWidthS} * 3)`,
+    },
+    [getMediaQueryMin('xxl')]: {
+      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} * 3 + ${oneColumnWidthXXL} * 3)`,
+    },
+  },
   basic: {
-    margin: '0 auto',
-    padding: `0 ${gridSafeZone}`,
-    maxWidth: gridWidthMax,
-    boxSizing: 'border-box',
+    padding: `0 ${gridSafeZoneBase}`,
+    [getMediaQueryMin('s')]: {
+      padding: `0 calc(${gridSafeZoneBase} + ${gridGap} + ${oneColumnWidthS})`,
+    },
+    [getMediaQueryMin('xxl')]: {
+      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} + ${oneColumnWidthXXL})`,
+    },
   },
   extended: {
-    margin: '0 auto',
-    maxWidth: gridWidthMax,
+    padding: `0 ${gridSafeZoneBase}`,
+    [getMediaQueryMin('xxl')]: {
+      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL})`,
+    },
   },
 };
 
-// TODO: maybe this should be part of utilities sub package as "getGridWrapperStyle"?
 export const getContentWrapperStyle = (width: ContentWrapperWidth): JssStyle => {
   return {
-    width: '100%',
-    minWidth: 0, // needed for possible flex context within content-wrapper
+    display: 'block',
+    margin: 0,
+    padding: `0 ${offsetHorizontalXXL}`,
+    width: 'auto', // ensure value is set to default width, although style is used in light dom
+    minWidth: 0, // needed for some flex context
+    maxWidth: gridWidthMax,
     ...widthMap[width],
   };
 };

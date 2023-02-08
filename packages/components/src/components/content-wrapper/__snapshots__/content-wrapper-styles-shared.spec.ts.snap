@@ -2,27 +2,70 @@
 
 exports[`getContentWrapperStyle() should return correct css for width: basic 1`] = `
 {
-  "boxSizing": "border-box",
-  "margin": "0 auto",
-  "maxWidth": "1920px",
+  "@media(min-width:1920px)": {
+    "padding": "0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 3.6vw, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14))",
+  },
+  "@media(min-width:760px)": {
+    "padding": "0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 3.6vw, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14))",
+  },
+  "display": "block",
+  "margin": 0,
+  "maxWidth": "2560px",
   "minWidth": 0,
   "padding": "0 clamp(22px, 10.625vw - 12px, 192px)",
-  "width": "100%",
+  "width": "auto",
 }
 `;
 
 exports[`getContentWrapperStyle() should return correct css for width: extended 1`] = `
 {
-  "margin": "0 auto",
-  "maxWidth": "1920px",
+  "@media(min-width:1920px)": {
+    "padding": "0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px))",
+  },
+  "display": "block",
+  "margin": 0,
+  "maxWidth": "2560px",
   "minWidth": 0,
-  "width": "100%",
+  "padding": "0 clamp(22px, 10.625vw - 12px, 192px)",
+  "width": "auto",
 }
 `;
 
 exports[`getContentWrapperStyle() should return correct css for width: fluid 1`] = `
 {
+  "display": "block",
+  "margin": 0,
+  "maxWidth": "2560px",
   "minWidth": 0,
-  "width": "100%",
+  "padding": "0 max(0px, (100% - 2560px) / 2)",
+  "width": "auto",
+}
+`;
+
+exports[`getContentWrapperStyle() should return correct css for width: full 1`] = `
+{
+  "display": "block",
+  "margin": 0,
+  "maxWidth": "2560px",
+  "minWidth": 0,
+  "padding": "0 max(0px, (100% - 2560px) / 2)",
+  "width": "auto",
+}
+`;
+
+exports[`getContentWrapperStyle() should return correct css for width: narrow 1`] = `
+{
+  "@media(min-width:1920px)": {
+    "padding": "0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 3.6vw, 36px) * 3 + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14) * 3)",
+  },
+  "@media(min-width:760px)": {
+    "padding": "0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 3.6vw, 36px) * 3 + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14) * 3)",
+  },
+  "display": "block",
+  "margin": 0,
+  "maxWidth": "2560px",
+  "minWidth": 0,
+  "padding": "0 clamp(22px, 10.625vw - 12px, 192px)",
+  "width": "auto",
 }
 `;

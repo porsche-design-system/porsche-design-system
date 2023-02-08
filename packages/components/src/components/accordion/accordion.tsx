@@ -19,7 +19,6 @@ import {
   setCollapsibleElementHeight,
   unobserveResize,
   useResizeObserverFallback,
-  warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
@@ -75,10 +74,6 @@ export class Accordion {
     }
   }
 
-  public componentWillLoad(): void {
-    warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
-  }
-
   public componentDidLoad(): void {
     if (!useResizeObserverFallback) {
       observeResize(
@@ -116,6 +111,7 @@ export class Accordion {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const Heading = this.tag;
 
+    // TODO: why .root div for a condition border-bottom style? could be applied on :host directly
     return (
       <div class="root">
         <Heading class="heading">
@@ -129,8 +125,7 @@ export class Accordion {
             {this.heading || <slot name="heading" />}
             <PrefixedTagNames.pIcon
               class="icon"
-              color="inherit"
-              name="arrow-head-down"
+              name={this.open ? 'minus' : 'plus'}
               theme={this.theme}
               size="inherit"
               aria-hidden="true"

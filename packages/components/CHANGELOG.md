@@ -11,12 +11,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Display` component
 - Prop `underline` for `Link Pure`
-- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper` and
-  `Text Field Wrapper`
+- Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper`, `Text Field Wrapper` and `Fieldset Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
+- Prop `size` for `Accordion` `compact="true"` supports `medium`
 
 #### Changed
+
+- `Content Wrapper` is deprecated and will be removed with the next major release. Please use the Porsche Grid utility
+  instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital
+  touch-points.
+- Width `fluid` for `Content Wrapper` is deprecated now, currently mapped to default value `extended`
+
+```diff
+- <p-content-wrapper width="fluid">Some content</p-content-wrapper>
++ <p-content-wrapper>Some content</p-content-wrapper>
+```
+
+- Deprecated prop `theme` and `background-color` for `Content Wrapper`
+
+```diff
+- <p-content-wrapper theme="dark" background-color="default">Some content</p-content-wrapper>
++ <p-content-wrapper>Some content</p-content-wrapper>
+```
 
 - `Flex` is deprecated and will be removed with the next major release. In general, please use native
   <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more
@@ -74,10 +92,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Color `background-default` for `Tag Dismissible` is deprecated now, replaced by `background-base`
 
 ```diff
-- <p-tag-dismissible color="background-default">Color label</p-tag>
-+ <p-tag-dismissible color="background-base">Color label</p-tag>
+- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
++ <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
 ```
 
+- Default value of prop `width` of `Banner` has changed from **"basic"** to **"extended"**
 - Default value of prop `action-icon` of `Inline Notification` has changed from **"arrow-head-right"** to
   **"arrow-right"**
 - Default value of prop `name` of `Icon` has changed from **"arrow-head-right"** to **"arrow-right"**
@@ -100,8 +119,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
-  `Radio Button Wrapper`, `Popover`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Carousel` and `Text Field Wrapper` matches new design language
+  `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`, `Text Field Wrapper`, `Content Wrapper`, `Carousel` and `Fieldset Wrapper` matches new design
+  language
 - CSS global variables names
 
 ```diff
@@ -128,12 +148,75 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - Prop `lazy` for `Icon` is deprecated now:
--
 
 ```diff
 - <p-icon laze="true"></p-icon>
 
 + <p-icon></p-icon>
+```
+
+- Weight `thin` for `Text` is deprecated now, currently mapped to default value `regular`
+
+```diff
+- <p-text weight="thin">Some text</p-text>
+
++ <p-text>Some text</p-text>
+```
+
+- Weight `semibold` for `Text` is deprecated now, currently mapped to `semi-bold`
+
+```diff
+- <p-text weight="semibold">Some text</p-text>
+
++ <p-text weight="semi-bold">Some text</p-text>
+```
+
+- Color `brand` for `Text` is deprecated now, currently mapped to default value `primary`
+
+```diff
+- <p-text color="brand">Some text</p-text>
+
++ <p-text>Some text</p-text>
+```
+
+- Color `default` for `Text` is deprecated now, currently mapped to default value `primary`
+
+```diff
+- <p-text color="default">Some text</p-text>
+
++ <p-text>Some text</p-text>
+```
+
+- Color `neutral-contrast-low` for `Text` is deprecated now, currently mapped to `contrast-low`
+
+```diff
+- <p-text color="neutral-contrast-low">Some text</p-text>
+
++ <p-text color="contrast-low">Some text</p-text>
+```
+
+- Color `neutral-contrast-medium` for `Text` is deprecated now, currently mapped to `contrast-medium`
+
+```diff
+- <p-text color="neutral-contrast-medium">Some text</p-text>
+
++ <p-text color="contrast-medium">Some text</p-text>
+```
+
+- Color `neutral-contrast-high` for `Text` is deprecated now, currently mapped to `contrast-high`
+
+```diff
+- <p-text color="neutral-contrast-high">Some text</p-text>
+
++ <p-text color="contrast-high">Some text</p-text>
+```
+
+- Color `notification-neutral` for `Text` is deprecated now, currently mapped to `notification-info`
+
+```diff
+- <p-text color="notification-neutral">Some text</p-text>
+
++ <p-text color="notification-info">Some text</p-text>
 ```
 
 #### Removed
@@ -168,6 +251,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```
 
 - `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now
+
+- Deprecated prop `width`'s value `fluid` for `Banner`, currently mapped to default value `extended`
+
+```diff
+- <p-banner width="fluid"></p-banner>
++ <p-banner></p-banner>
+```
 
 - Deprecated prop `state`'s value `neutral` for `Inline Notification`, `Banner`, `Toast` and renamed the value to `info`
 
@@ -211,6 +301,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```diff
 + <p-carousel alignHeader="center"></p-carousel>
 ```
+
+### [2.20.0] - 2023-02-06
+
+### [2.20.0-rc.1] - 2023-02-06
 
 ### [2.20.0-rc.0] - 2023-01-30
 
@@ -1124,9 +1218,7 @@ supporting `:focus-visible` otherwise it will fallback to `:focus` CSS implement
 
 Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px
 width/offset. If you have custom components build with the usage of our `@porsche-design-system/utilities` package then
-update it to the latest version (we also provide a focus
-[SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss/functions) and
-[JS function](https://designsystem.porsche.com/latest/utilities/js/functions)).
+update it to the latest version.
 
 #### Improved geometry of Porsche Next font
 

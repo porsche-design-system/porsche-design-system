@@ -96,10 +96,3 @@ and there might be no need for using extra separating elements like dividers.
 
 Dividers **should always be used to structure and therefore help the user perceiving the content** of a web page. A
 usage for a 100% decorative purpose is possible, but should be kept to an absolute minimum.
-
----
-
-## Related components
-
-- [Grid](components/grid)
-- [Spacing](components/spacing)

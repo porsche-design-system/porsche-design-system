@@ -73,8 +73,8 @@ const getBar = () => selectNode(page, 'p-tabs-bar >>> .bar');
 const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next');
 
 const getPrevNextButton = async () => {
-  const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-prev p-button-pure');
-  const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next p-button-pure');
+  const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-prev button');
+  const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next button');
   return { prevButton, nextButton };
 };
 
@@ -282,7 +282,7 @@ describe('active index position', () => {
     );
 
     await clickElement(prevButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(57);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(25);
   });
 
   it('should have correct scroll position after tab click and next button click', async () => {
@@ -293,7 +293,6 @@ describe('active index position', () => {
 
     const scrollArea = await getScrollArea();
     const scrollAreaWidth: number = await getOffsetWidth(scrollArea);
-    const scrollByX = Math.round(scrollAreaWidth * 0.2);
 
     const gradient = await getGradientNext();
     const gradientWidth = await getOffsetWidth(gradient);
@@ -305,11 +304,8 @@ describe('active index position', () => {
 
     expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
 
-    const scrollAreaLeftAfterClick = await getScrollLeft(scrollArea);
     await clickElement(nextButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(
-      scrollAreaLeftAfterClick + scrollByX
-    );
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(508);
   });
 });
 
@@ -677,10 +673,9 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -690,10 +685,9 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -707,7 +701,7 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });

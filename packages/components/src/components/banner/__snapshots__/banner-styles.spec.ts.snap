@@ -4,19 +4,21 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
 ":host {
   --p-banner-position-top: 56px;
   --p-banner-position-bottom: 56px;
-  display: block;
+  display: block !important;
   position: var(--p-banner-position-type,fixed);
   z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
   left: 0;
   right: 0;
   will-change: opacity,transform;
-  width: 100% !important;
-  min-width: 0 !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
-  max-width: 1920px !important;
-  box-sizing: border-box !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 2560px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @keyframes mobileIn {
   from {
@@ -72,6 +74,7 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
 
 @media(min-width:760px) {
     :host {
+      padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 3.6vw, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14)) !important;
       top: var(--p-banner-position-top);
     }
     :host(.banner--close) {
@@ -79,6 +82,12 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
     }
     :host(.hydrated), :host(.ssr) {
       animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+@media(min-width:1920px) {
+    :host {
+      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 3.6vw, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14)) !important;
     }
 }
 
@@ -91,17 +100,21 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
 ":host {
   --p-banner-position-top: 56px;
   --p-banner-position-bottom: 56px;
-  display: block;
+  display: block !important;
   position: var(--p-banner-position-type,fixed);
   z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
   left: 0;
   right: 0;
   will-change: opacity,transform;
-  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  width: auto !important;
   min-width: 0 !important;
-  margin: 0 auto !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @keyframes mobileIn {
   from {
@@ -164,6 +177,12 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
     }
     :host(.hydrated), :host(.ssr) {
       animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+@media(min-width:1920px) {
+    :host {
+      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
     }
 }
 
@@ -176,15 +195,21 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
 ":host {
   --p-banner-position-top: 56px;
   --p-banner-position-bottom: 56px;
-  display: block;
+  display: block !important;
   position: var(--p-banner-position-type,fixed);
   z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
   left: 0;
   right: 0;
   will-change: opacity,transform;
-  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  width: auto !important;
   min-width: 0 !important;
+  max-width: 2560px !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @keyframes mobileIn {
   from {
@@ -247,6 +272,12 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
     }
     :host(.hydrated), :host(.ssr) {
       animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+@media(min-width:1920px) {
+    :host {
+      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
     }
 }
 

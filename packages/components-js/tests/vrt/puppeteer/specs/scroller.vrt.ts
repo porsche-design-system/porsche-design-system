@@ -12,11 +12,11 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'scroller', '/#scroller')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('scroller-states', async () => {
@@ -37,10 +37,7 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
   </p-scroller>
 </div>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
       // Scroll a bit to ensure both arrows are visible
       await page.evaluate(() =>
@@ -49,9 +46,9 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
           .forEach((scroller) => ((scroller as any).scrollToPosition = { scrollPosition: 100 }))
       );
 
-      await forceHoverState(page, '.hover p-scroller >>> p-button-pure >>> button'); // Scroll indicator hover
+      await forceHoverState(page, '.hover p-scroller >>> button'); // Scroll indicator hover
       await forceFocusState(page, '.focus p-scroller >>> .scroll-wrapper');
-      await forceHoverState(page, '.focus-hover p-scroller >>> p-button-pure >>> button');
+      await forceHoverState(page, '.focus-hover p-scroller >>> button');
       await forceFocusState(page, '.focus-hover p-scroller >>> .scroll-wrapper');
     })
   ).toBeFalsy();

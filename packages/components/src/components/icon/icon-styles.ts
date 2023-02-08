@@ -1,5 +1,5 @@
 import type { TextColor, TextSize, Theme } from '../../types';
-import { getCss } from '../../utils';
+import { getCss, isThemeDark } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -9,10 +9,9 @@ import {
   fontSizeTextXLarge,
   fontSizeTextXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { addImportantToEachRule } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 
-const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
+const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-small': fontSizeTextXSmall,
   small: fontSizeTextSmall,
   medium: fontSizeTextMedium,
@@ -85,6 +84,17 @@ const filter: { [theme in Theme]: { [color in Exclude<TextColor, 'inherit'>]: st
   },
 };
 
+const forceRerenderAnimationStyle = {
+  '0%': {
+    transform: 'rotateZ(0)',
+  },
+  '100%': {
+    transform: 'rotateZ(0)',
+  },
+};
+const keyFramesLight = 'rerender-light';
+const keyFramesDark = 'rerender-dark';
+
 export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme): string => {
   const isColorInherit = color === 'inherit';
   const isSizeInherit = size === 'inherit';
@@ -102,6 +112,7 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
+          WebkitAnimation: `${theme === 'light' ? keyFramesLight : keyFramesDark} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
           ? {
@@ -114,6 +125,9 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
       },
+      ...(!isColorInherit && {
+        [`@keyframes ${isThemeDark(theme) ? keyFramesDark : keyFramesLight}`]: forceRerenderAnimationStyle,
+      }),
     },
   });
 };

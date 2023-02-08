@@ -40,12 +40,16 @@ If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 The `p-banner` behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with
 your layout.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "fluid".
+</p-inline-notification>
+
 <Playground :markup="markupWidth" :config="config">
   <select v-model="width" aria-label="Select width">
     <option disabled>Select width</option>
     <option value="basic">Basic</option>
     <option value="extended">Extended</option>
-    <option value="fluid">Fluid</option>
+    <option value="fluid">Fluid (deprecated)</option>
   </select>
 </Playground>
 

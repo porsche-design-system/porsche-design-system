@@ -146,8 +146,8 @@ font tags. For example the style headline 1 can also technically be implemented 
 ### Line height
 
 For reasons of legibility, the line height should always be adjusted to the respective text size. The text styles
-provided work with a 4 px baseline unit that fits to the [8 px spacing system](components/spacing) in order to follow a
-harmonious overall vertical rhythm.
+provided work with a 4 px baseline unit that fits to the spacing system in order to follow a harmonious overall vertical
+rhythm.
 
 ### Headline-subline combinations
 
@@ -266,7 +266,7 @@ undesirable impact on the origin character of the company typeface. This include
 ![Example for uppercase text](./assets/typography-donts.png)
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
   
   .type-scale {
     display: inline-block;
@@ -281,7 +281,7 @@ undesirable impact on the origin character of the company typeface. This include
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { fontLineHeight } from '@porsche-design-system/components-js/utilities/js';
+import { fontLineHeight } from '@porsche-design-system/components-js/styles';
 
 @Component
 export default class PlaygroundTypography extends Vue {

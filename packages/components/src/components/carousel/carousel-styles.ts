@@ -130,7 +130,7 @@ export const getComponentCss = (
         gridAutoFlow: 'column',
         gap: spacingStaticXSmall,
         position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: wrapContent ? gridSafeZone : 0,
+        right: wrapContent ? gridSafeZoneBase : 0,
         bottom: 0,
       },
     },

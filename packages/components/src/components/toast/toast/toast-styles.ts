@@ -1,6 +1,6 @@
-import { getMediaQueryMin, gridSafeZone } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, gridSafeZoneBase } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles-shared';
 
@@ -13,8 +13,8 @@ export const getComponentCss = (): string => {
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
-        left: gridSafeZone,
-        right: gridSafeZone,
+        left: gridSafeZoneBase,
+        right: gridSafeZoneBase,
         // Needs a not overridable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
         [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, 56px)`,
@@ -27,6 +27,7 @@ export const getComponentCss = (): string => {
           [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, 64px)`,
           bottom: `var(${toastPositionBottomVarInternal})`,
         },
+        ...hostHiddenStyles,
       }),
       '@keyframes in': getKeyframesMobile('in', toastPositionBottomVarInternal),
       '@keyframes out': getKeyframesMobile('out', toastPositionBottomVarInternal),
