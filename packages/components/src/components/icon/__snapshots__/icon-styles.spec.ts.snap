@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getComponentCss() should return correct css for color: disabled, size: small and theme: dark 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(49%) sepia(3%) saturate(278%) hue-rotate(187deg) brightness(101%) contrast(89%);
+  -webkit-animation: rerender-dark 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-dark {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: disabled, size: small and theme: light 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(67%) sepia(2%) saturate(337%) hue-rotate(188deg) brightness(89%) contrast(83%);;
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}"
+`;
+
 exports[`getComponentCss() should return correct css for color: inherit, size: small and theme: dark 1`] = `
 ":host {
   display: inline-block;
