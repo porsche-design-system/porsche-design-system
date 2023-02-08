@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
-  attachComponentCss,
   getDataThemeDarkAttribute,
   THEMES,
   TEXT_ALIGNS,
@@ -13,7 +12,6 @@ import type { HeadingTag } from '../heading/heading-utils';
 import type { HeadlineVariantDeprecated } from './headline-utils';
 import { getHeadlineTagName } from './headline-utils';
 import { HEADING_TAGS } from '../heading/heading-utils';
-import { getComponentCss } from '../headline/headline-styles';
 
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
@@ -58,7 +56,7 @@ export class Headline {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
+    // attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
 
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
 
