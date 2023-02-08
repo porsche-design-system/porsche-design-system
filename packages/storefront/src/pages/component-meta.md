@@ -21,10 +21,10 @@ export default class Code extends Vue {
 
   get body(): string {
     const rowKeys: (keyof ComponentMeta)[] = [
+      'isDeprecated',
       'isDelegatingFocus',
       'isThemeable',
       'props',
-      'hasEvent',
       'eventNames',
       'namedSlots',
       'nestedComponents',

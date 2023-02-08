@@ -90,7 +90,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     return `${inputsAndOutputs}
 
-@ProxyCmp({
+${this.inputParser.getDeprecationMessage(component)}@ProxyCmp({
   ${decoratorOpts}
 })
 @Component({

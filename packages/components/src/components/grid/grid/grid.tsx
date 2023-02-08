@@ -11,6 +11,7 @@ const propTypes: PropTypes<typeof Grid> = {
   gutter: AllowedTypes.breakpoint<GridGutter>(GRID_GUTTERS),
 };
 
+/** @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead. */
 @Component({
   tag: 'p-grid',
   shadow: true,
