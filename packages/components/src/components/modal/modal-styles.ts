@@ -1,25 +1,25 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import { BREAKPOINTS, buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, parseJSON } from '../../utils';
+import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
 import {
-  gridSafeZoneBase,
-  getMediaQueryMin,
   borderRadiusMedium,
-  frostedGlassStyle,
   borderWidthBase,
+  frostedGlassStyle,
+  getMediaQueryMin,
+  gridSafeZoneBase,
   headingLargeStyle,
   themeDarkBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
 import {
   addImportantToEachRule,
-  getBaseSlottedStyles,
   getInsetJssStyle,
   getThemedColors,
   hostHiddenStyles,
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
+
 const mediaQueryXl = getMediaQueryMin('xl');
 const { backgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
@@ -185,8 +185,4 @@ export const getComponentCss = (
       },
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };

@@ -3,7 +3,6 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
@@ -12,7 +11,7 @@ import {
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
-import { getComponentCss, getSlottedCss } from './modal-styles';
+import { getComponentCss } from './modal-styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -67,10 +66,6 @@ export class Modal {
     }
   }
 
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
-
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
     if (this.open) {
@@ -117,9 +112,12 @@ export class Modal {
         <div
           class="root"
           role="dialog"
-          aria-modal="true"
-          {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria) }}
-          aria-hidden={!this.open ? 'true' : 'false'}
+          {...parseAndGetAriaAttributes({
+            'aria-modal': true,
+            'aria-label': this.heading,
+            'aria-hidden': !this.open,
+            ...parseAndGetAriaAttributes(this.aria),
+          })}
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
         >
