@@ -84,7 +84,7 @@ export const getVisualRegressionPropTableTester = (): VisualRegressionTester => 
 
 type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
-  scaledComponents?: boolean;
+  scalePageFontSize?: boolean;
   javaScriptEnabled?: boolean;
 };
 
@@ -94,9 +94,9 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, javaScriptEnabled, hasScaledComponents, ...otherOptions } = {
+  const { scenario, javaScriptEnabled, scalePageFontSize, ...otherOptions } = {
     scenario: undefined,
-    hasScaledComponents: false,
+    scalePageFontSize: false,
     javaScriptEnabled: true,
     ...options,
   };
@@ -108,7 +108,7 @@ export const vrtTest = (
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
 
-      if (hasScaledComponents) {
+      if (scalePageFontSize) {
         const client = await page.target().createCDPSession();
         await client.send('Page.enable');
         await client.send('Page.setFontSizes', {
