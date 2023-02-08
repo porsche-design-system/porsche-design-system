@@ -8,6 +8,9 @@ import {
   fontFamily,
   fontHyphenationStyle,
   fontLineHeight,
+  borderRadiusSmall,
+  frostedGlassStyle,
+  borderWidthBase,
 } from '@porsche-design-system/utilities-v2';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
@@ -46,14 +49,15 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         '@media(hover:hover)': {
           transition: 'color var(--p-transition-duration, .24s) ease',
           '&:hover': {
-            color: themeLight.state.hover,
+            ...frostedGlassStyle,
+            backgroundColor: themeLight.state.hover,
           },
         },
       },
 
       '@media(hover:hover)': {
         '[data-theme=dark] a:hover': {
-          color: themeDark.state.hover,
+          backgroundColor: themeDark.state.hover,
         },
       },
 
@@ -68,11 +72,18 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       'a, button, input, select, textarea': {
         outline: '1px solid transparent',
         outlineOffset: '1px',
+        borderRadius: borderRadiusSmall,
         '&:focus': {
-          outlineColor: 'currentColor',
+          border: `${borderWidthBase} solid ${themeLight.state.focus}`,
         },
         '&:focus:not(:focus-visible)': {
-          outlineColor: 'transparent',
+          border: 0,
+        },
+      },
+
+      '[data-theme=dark] a, button, input, select, textarea': {
+        '&:focus': {
+          border: `${borderWidthBase} solid ${themeDark.state.focus}`,
         },
       },
 
