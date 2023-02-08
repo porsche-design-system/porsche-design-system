@@ -49,7 +49,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
               <div style={{ display: 'flex' }}>
                 <img src={item.imageUrl} width={80} height={45} style={{ marginRight: '.5rem' }} alt="" />
                 <div>
-                  <PText weight="semibold">{item.model}</PText>
+                  <PText weight="semi-bold">{item.model}</PText>
                   <PText size="x-small">{item.date}</PText>
                 </div>
               </div>

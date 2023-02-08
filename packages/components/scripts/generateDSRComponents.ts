@@ -198,6 +198,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         ) // heading, headline, text, text-list, tag
         .replace(/ = getHeadingTagName/, ': any$&') // heading
         .replace(/ = getHeadlineTagName/, ': any$&') // headline
+        .replace(/TextColor|TextWeight/g, 'any') // text
+        .replace(/import type { TextTag }.*;/g, '') // text
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
           "namedSlotChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"

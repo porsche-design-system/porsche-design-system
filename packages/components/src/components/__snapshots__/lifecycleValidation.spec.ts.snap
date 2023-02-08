@@ -89,6 +89,17 @@ exports[`should call validateProps() with correct parameters via render for p-co
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-display: propTypes with ValidatorFunctions 1`] = `
+{
+  "align": "oneOf",
+  "color": "oneOf",
+  "ellipsis": "boolean",
+  "size": "breakpoint",
+  "tag": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-divider: propTypes with ValidatorFunctions 1`] = `
 {
   "color": "oneOf",
@@ -104,6 +115,7 @@ exports[`should call validateProps() with correct parameters via render for p-fi
   "message": "string",
   "required": "boolean",
   "state": "oneOf",
+  "theme": "oneOf",
 }
 `;
 

@@ -13,11 +13,11 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'text', '/#text')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('text-states', async () => {
@@ -28,12 +28,12 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoverState(page, '.hover > p-text a');
-      await forceHoverState(page, '.hover > p-text button');
-      await forceFocusState(page, '.focus > p-text a');
-      await forceFocusState(page, '.focus > p-text button');
-      await forceFocusHoverState(page, '.focus-hover > p-text a');
-      await forceFocusHoverState(page, '.focus-hover > p-text button');
+      await forceHoverState(page, '.hover p-text a');
+      await forceHoverState(page, '.hover p-text button');
+      await forceFocusState(page, '.focus p-text a');
+      await forceFocusState(page, '.focus p-text button');
+      await forceFocusHoverState(page, '.focus-hover p-text a');
+      await forceFocusHoverState(page, '.focus-hover p-text button');
     })
   ).toBeFalsy();
 });

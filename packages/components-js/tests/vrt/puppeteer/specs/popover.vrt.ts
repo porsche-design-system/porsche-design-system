@@ -162,12 +162,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
       await openPopoversAndHighlightSpacer(page);
 
-      await forceHoverState(page, '.hover > p-popover >>> button');
-      await forceHoverState(page, '.hover > p-popover > a');
-      await forceFocusState(page, '.focus > p-popover >>> button');
-      await forceFocusState(page, '.focus > p-popover > a');
-      await forceFocusHoverState(page, '.focus-hover > p-popover >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-popover > a');
+      await forceHoverState(page, '.hover p-popover >>> button');
+      await forceHoverState(page, '.hover p-popover > a');
+      await forceFocusState(page, '.focus p-popover >>> button');
+      await forceFocusState(page, '.focus p-popover > a');
+      await forceFocusHoverState(page, '.focus-hover p-popover >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-popover > a');
     })
   ).toBeFalsy();
 });

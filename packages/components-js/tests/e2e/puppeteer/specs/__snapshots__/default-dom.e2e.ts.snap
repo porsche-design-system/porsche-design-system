@@ -86,6 +86,13 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-display 1`] = `
+"<h1 class="root">
+  <slot>
+  </slot>
+</h1>"
+`;
+
 exports[`should have no basic DOM regression for p-divider 1`] = `"<hr>"`;
 
 exports[`should have no basic DOM regression for p-fieldset-wrapper 1`] = `

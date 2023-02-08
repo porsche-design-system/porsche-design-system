@@ -19,7 +19,7 @@ import {
   gridStyle,
   spacingFluidXLarge,
   textMediumStyle,
-} from '@porsche-design-system/components-js/utilities/js';
+} from '@porsche-design-system/components-js/styles';
 
 const Grid = styled.div({
   ...gridStyle,

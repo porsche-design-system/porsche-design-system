@@ -1,13 +1,12 @@
 import type { Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, getThemedColors, getScreenReaderOnlyJssStyle } from '../../styles';
+import { addImportantToEachRule, getThemedColors, getScreenReaderOnlyJssStyle, hostHiddenStyles } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { FormState } from '../../utils/form/form-state';
 import { spacingStaticMedium, spacingStaticLarge, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
 export const getComponentCss = (
   isDisabled: boolean,

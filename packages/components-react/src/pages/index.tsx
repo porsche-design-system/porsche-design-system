@@ -20,6 +20,7 @@ import { ButtonPurePage } from './ButtonPure';
 import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { ContentWrapperPage } from './ContentWrapper';
+import { DisplayPage } from './Display';
 import { DividerPage } from './Divider';
 import { FieldsetWrapperPage } from './FieldsetWrapper';
 import { FlexPage } from './Flex';
@@ -109,6 +110,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Content Wrapper',
     path: '/content-wrapper',
     element: <ContentWrapperPage />,
+  },
+  {
+    name: 'Display',
+    path: '/display',
+    element: <DisplayPage />,
   },
   {
     name: 'Divider',

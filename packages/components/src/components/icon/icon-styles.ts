@@ -1,5 +1,5 @@
 import type { TextColor, TextSize, Theme } from '../../types';
-import { getCss } from '../../utils';
+import { getCss, isThemeDark } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -9,10 +9,9 @@ import {
   fontSizeTextXLarge,
   fontSizeTextXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { addImportantToEachRule } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 
-const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
+const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-small': fontSizeTextXSmall,
   small: fontSizeTextSmall,
   medium: fontSizeTextMedium,
@@ -126,14 +125,9 @@ export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme):
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
       },
-      ...(!isColorInherit &&
-        theme === 'light' && {
-          [`@keyframes ${keyFramesLight}`]: forceRerenderAnimationStyle,
-        }),
-      ...(!isColorInherit &&
-        theme === 'dark' && {
-          [`@keyframes ${keyFramesDark}`]: forceRerenderAnimationStyle,
-        }),
+      ...(!isColorInherit && {
+        [`@keyframes ${isThemeDark(theme) ? keyFramesDark : keyFramesLight}`]: forceRerenderAnimationStyle,
+      }),
     },
   });
 };

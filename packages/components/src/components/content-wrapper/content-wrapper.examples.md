@@ -1,34 +1,34 @@
 # Content Wrapper
 
-When designing a web page you have different possibilities to layout your content – be it limited to a dedicated width
-with spacings to the left and right of the viewport ("basic" version), stretched to the largest viewport without any
-spacing ("extended") or even to the largest total screen width ("fluid"). The `p-content-wrapper` defines the outer
-spacings between the content area and the left and right screen sides, as well as centering its content and setting a
-max-width.
+The `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well
+as centering its content and setting a max-width.
 
-Can be used along with [Grid](components/grid), [Flex](components/flex) or with any custom content.
+<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+This component is deprecated and will be removed with the next major release. 
+In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
+Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
+</p-inline-notification>
 
 <TableOfContents></TableOfContents>
 
 ## Width
 
-- **Basic**: max width 1920px including 7-10% safe zone
-- **Extended**: max width 1920px
-- **Fluid**: full width
-
 <Playground :markup="basic" :config="config">
   <select v-model="width" aria-label="Select width">
     <option disabled>Select width</option>
     <option value="basic">Basic</option>
+    <option value="narrow">Narrow</option>
     <option value="extended">Extended</option>
-    <option value="fluid">Fluid</option>
+    <option value="full">Full</option>
+    <option value="fluid">Fluid (deprecated)</option>
   </select>
 </Playground>
 
 ## Background color
 
-- **transparent**: does not set any background color
-- **default**: uses surface color depending on theming
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Background color is deprecated and has no effect anymore. Instead, it's possible to define a custom color on the host.
+</p-inline-notification>
 
 <Playground :markup="transparent" class="playground-content-wrapper-background-color" :config="config">
   <select v-model="backgroundColor" aria-label="Select background color">
@@ -63,7 +63,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
 
   :deep(.playground-content-wrapper-background-color .demo){
     background-color: deeppink;

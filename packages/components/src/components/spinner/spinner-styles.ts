@@ -2,8 +2,7 @@ import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../styles';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 
 const sizeSmall = '48px';
 const sizeMedium = '72px';

@@ -1,21 +1,21 @@
+import type { TextTag } from './text-utils';
+import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getDataThemeDarkAttribute,
   getHTMLElement,
-  TEXT_COLORS,
-  TEXT_WEIGHTS,
   TEXT_ALIGNS,
+  TEXT_COLORS,
   TEXT_SIZES,
+  TEXT_WEIGHTS,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import { getComponentCss, getSlottedCss } from './text-styles';
-import type { TextTag } from './text-tag';
-import { TEXT_TAGS } from './text-tag';
+import { getComponentCss } from './text-styles';
+import { TEXT_TAGS } from './text-utils';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -55,12 +55,22 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const deprecatedColorMap: Partial<Record<TextColor, TextColor>> = {
+      brand: 'primary',
+      default: 'primary',
+      'neutral-contrast-low': 'contrast-low',
+      'neutral-contrast-medium': 'contrast-medium',
+      'neutral-contrast-high': 'contrast-high',
+      'notification-neutral': 'notification-info',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'color', deprecatedColorMap);
+    const deprecatedTextWeightMap: Partial<Record<TextWeight, TextWeight>> = {
+      thin: 'regular',
+      semibold: 'semi-bold',
+    };
+    warnIfDeprecatedPropValueIsUsed(this.host, 'weight', deprecatedTextWeightMap);
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -73,7 +83,7 @@ export class Text {
     );
 
     const firstChild = getHTMLElement(this.host, ':first-child');
-    const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
+    const hasSlottedTextTag = firstChild?.matches(TEXT_TAGS.join());
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     return (
