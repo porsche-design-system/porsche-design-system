@@ -1,49 +1,33 @@
-import type { HeadlineVariantDeprecated } from './headline-utils';
-import { getHeadlineTagType, isHeadlineVariantType } from './headline-utils';
-import * as headingUtils from '../heading/heading-utils';
-import * as headlineUtils from './headline-utils';
-
-describe('isHeadlineVariantType()', () => {
-  it.each<[HeadlineVariantDeprecated, boolean]>([
-    ['large-title', true],
-    ['headline-1', true],
-    ['heading-1', false],
-    ['inherit', false],
-    ['small', false],
-  ])('should for variant: %s return: %s', (variant, result) => {
-    expect(isHeadlineVariantType(variant)).toBe(result);
-  });
-});
+import { getHeadlineTagType } from './headline-utils';
+import * as hasSpecificSlottedTagUtil from './../../utils/dom/hasSpecificSlottedTag';
 
 describe('getHeadlineTagName()', () => {
-  it('should return div if slottedHeadingTag() is true', () => {
-    const host = document.createElement('p-heading');
+  it('should return div if hasSpecificSlottedTag() is true', () => {
+    const host = document.createElement('p-headline');
     host.innerHTML = '<h3>Some h3</h3>';
-    jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(true);
+    jest.spyOn(hasSpecificSlottedTagUtil, 'hasSpecificSlottedTag').mockReturnValue(true);
 
-    expect(getHeadlineTagType(host)).toBe('div');
+    expect(getHeadlineTagType(host, 'medium', 'h4')).toBe('div');
   });
 
-  it('should return tag value if hasSlottedHeadingTag() is false and tag is passed', () => {
-    const host = document.createElement('p-heading');
-    jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(false);
+  it('should return tag value if hasSpecificSlottedTag() is false and tag is passed', () => {
+    const host = document.createElement('p-headline');
+    jest.spyOn(hasSpecificSlottedTagUtil, 'hasSpecificSlottedTag').mockReturnValue(false);
 
-    expect(getHeadlineTagType(host, 'headline-1', 'h4')).toBe('h4');
+    expect(getHeadlineTagType(host, 'medium', 'h4')).toBe('h4');
   });
 
-  it('should return h1 if hasSlottedHeadingTag() is false, tag is not passed and getHeadlineTagName() is false', () => {
-    const host = document.createElement('p-heading');
-    jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(false);
-    jest.spyOn(headlineUtils, 'isHeadlineVariantType').mockReturnValue(false);
+  it('should return h5 if hasSpecificSlottedTag() is false, tag is not passed but valid headline variant is passed', () => {
+    const host = document.createElement('p-headline');
+    jest.spyOn(hasSpecificSlottedTagUtil, 'hasSpecificSlottedTag').mockReturnValue(false);
 
-    expect(getHeadlineTagType(host, 'small')).toBe('h1');
+    expect(getHeadlineTagType(host, 'headline-5', undefined)).toBe('h5');
   });
 
-  it('should return h2 if hasSlottedHeadingTag() is false, tag is not passed and isHeadlineVariantType() is true', () => {
-    const host = document.createElement('p-heading');
-    jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(false);
-    jest.spyOn(headlineUtils, 'isHeadlineVariantType').mockReturnValue(true);
+  it('should return fallback h1 if hasSpecificSlottedTag() is false, tag is not passed and no valid headline variant is passed', () => {
+    const host = document.createElement('p-headline');
+    jest.spyOn(hasSpecificSlottedTagUtil, 'hasSpecificSlottedTag').mockReturnValue(false);
 
-    expect(getHeadlineTagType(host, 'headline-2')).toBe('h2');
+    expect(getHeadlineTagType(host, { base: 'medium' }, undefined)).toBe('h1');
   });
 });
