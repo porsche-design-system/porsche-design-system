@@ -4,72 +4,50 @@
 
 ## Heading
 
-**Heading component** to specify heading styling and hierarchy in documents. **Note**: Using the heading utilities
-<a href="utilities/scss/functions#typography"><code>typography utilities</code></a> can be a performant alternative.
-
-## Variant
-
-Variants for predefined headings and automated responsive sizing to fit into all major breakpoints. There are multiple
-predefined styling variants available.
-
-<Playground :markup="variant" :config="config"></Playground>
-
-### Default Tags
-
-Default rendered semantic tag hierarchy equals to heading variant.
-
-**Note**: You always have to take care of the **semantic structure** of your HTML tags. This is very important for
-**SEO** and **Accessibility**. Regarding of your **page structure** you need to set a **corresponding heading tag** via
-the `tag` property. This means, that a heading can look like an `h1` but doesn't need to be an `h1` in the document (see
-also section "**Custom tag hierarchy**").
-
-| Heading Variant | Rendered HTML Tag |
-| --------------- | ----------------- |
-| `large-title`   | `<h1>`            |
-| `xx-large`      | `<h1>`            |
-| `x-large`       | `<h2>`            |
-| `large`         | `<h3>`            |
-| `medium`        | `<h4>`            |
-| `small`         | `<h5>`            |
-
-## Custom Variant
-
-If you need more control over sizing and responsiveness, you can use predefined text sizes on different major
-breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
-
-**Hint:** When using `inherit` you have to take the **[typeScale](components/typography/usage)** values in account.
-
-**Note:** If you choose a custom responsive size, you have to take care of your **semantic tag hierarchy**. It defaults
-to `h1` for every combination.
-
-<Playground :markup="customVariantMarkup" :config="config">
- <select v-model="customVariant" aria-label="Select custom variant">
-    <option disabled>Select custom variant</option>
-    <option value="{ base: 'small', l: 'medium' }">Custom Breakpoints</option>
-    <option value="inherit">Inherit</option>
-  </select>
-</Playground>
+`p-heading` is used to highlight and specify heading styling and hierarchy in documents.
 
 ---
 
-## Custom tag hierarchy
+## Size
 
-If a custom tag hierarchy is needed, **individual heading tags** can be set from `h1` to `h6` either by referencing the
-corresponding `tag` property or setting the HTML heading tags directly as slots.
+There are predefined fluid text sizes for the component which should cover most use cases. If a specific text size is
+needed, the size can be set to `inherit` to specify the text size from outside.
 
-<Playground :markup="customTagHierarchy" :config="config"></Playground>
+<Playground :markup="sizeMarkup" :config="config">
+  <select v-model="size" aria-label="Select size">
+    <option disabled>Select size</option>
+    <option>small</option>
+    <option>medium</option>
+    <option>large</option>
+    <option>x-large</option>
+    <option>xx-large</option>
+    <option>xxx-large</option>
+    <option>inherit</option>
+  </select>
+</Playground>
+
+### Responsive
+
+<Playground :markup="sizeResponsiveMarkup" :config="config"></Playground>
+
+---
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+<Playground :markup="semanticsMarkup" :config="config"></Playground>
 
 ---
 
 ## Color
 
-A predefined default color associated with its theme is available but also inherit mode can be used to define a custom
-color.
+Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
   <select v-model="color" aria-label="Select color">
     <option disabled>Select color</option>
-    <option value="default">Default</option>
+    <option value="primary">Primary</option>
     <option value="inherit">Inherit</option>
   </select>
 </Playground>
@@ -78,7 +56,7 @@ color.
 
 ## Alignment
 
-<Playground :markup="alignment" :config="config">
+<Playground :markup="alignmentMarkup" :config="config">
   <select v-model="align" aria-label="Select alignment">
     <option disabled>Select alignment</option>
     <option value="left">Left</option>
@@ -94,12 +72,11 @@ color.
 This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the
 end are used to visualize it.
 
-<Playground :markup="ellipsisMode" :config="config"></Playground>
+<Playground :markup="ellipsisMarkup" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { HEADING_SIZES } from './heading-utils';
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -107,37 +84,35 @@ const sentence = 'The quick brown fox jumps over the lazy dog';
 export default class Code extends Vue {
   config = { themeable: true };
 
-  customVariant = "{ base: 'small', l: 'medium' }";
-  color = 'default';
+  size = 'large';
+  color = 'primary';
   align = 'center';
-
-  variant = HEADING_SIZES.map((item) => `<p-heading variant="${item}">${sentence}</p-heading>`).join('\n');
-
-  get customVariantMarkup() {
-    const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
-    return `<p-heading size="${this.customVariant}"${style}>${sentence}</p-heading>`;
+    
+  get sizeMarkup() {
+    const style = this.size === 'inherit' ? ' style="font-size: 5rem;"' : '';
+    return `<p-heading tag="h3" size="${this.size}"${style}>${sentence}</p-heading>`;
+  }
+  
+  get sizeResponsiveMarkup() {
+    return `<p-heading tag="h3" size="{ base: 'medium', l: 'large' }">${sentence}</p-heading>`;
   }
 
-  customTagHierarchy =
-`<p-heading size="xx-large" tag="h3">${sentence}</p-heading>
-<p-heading size="large" tag="h1">${sentence}</p-heading>
-<p-heading size="xx-large">
-  <h3>${sentence}</h3>
-</p-heading>
-<p-heading size="large">
-  <h1>${sentence}</h1>
-</p-heading>`;
+  get semanticsMarkup() {
+    return `<p-heading tag="h3">${sentence}</p-heading>
+<p-heading><h3>${sentence}</h3></p-heading>`;
+  }
 
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
-    return `<p-heading size="large" color="${this.color}"${style}>${sentence}</p-heading>`
-  }
-
-  get alignment() {
-    return `<p-heading size="large" align="${this.align}">${sentence}</p-heading>`;
+    return `<p-heading tag="h3" color="${this.color}"${style}>${sentence}</p-heading>`;
   }
   
-  ellipsisMode =
-`<p-heading variant="heading-3" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-heading>`;
+  get alignmentMarkup() {
+    return `<p-heading tag="h3" align="${this.align}">${sentence}</p-heading>`;
+  }
+
+  get ellipsisMarkup() {
+    return `<p-heading tag="h3" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-heading>`;
+  }
 }
 </script>
