@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { HeadingSize, HeadingAlign, HeadingTag, HeadingColor } from './heading-utils';
-import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES, HEADING_TAGS } from './heading-utils';
+import type { HeadingTag } from './heading-tag';
+import type { HeadingSize, HeadingAlign, HeadingColor } from './heading-utils';
+import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -11,6 +12,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './heading-styles';
+import { HEADING_TAGS } from './heading-tag';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
