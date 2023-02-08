@@ -33,6 +33,9 @@ const navGap = spacingStaticXSmall;
 const navBtnPadding = spacingStaticSmall;
 // nav width is being calculated based on icon width (fontLineHeight), button padding and distance (navGap) between 2 nav buttons
 const navWidth = `calc((${fontLineHeight} + ${navBtnPadding} * 2) * 2 + ${navGap})`;
+const headerGap = spacingFluidXSmall;
+// in a case alignHeader=center is being set - Heading's and Description's "spacing" (left and right) should be equal to the nav's width plus header gap
+const headerAlignCenterSpacing = `${navWidth} + ${headerGap}`;
 
 export const getComponentCss = (
   wrapContent: boolean,
@@ -60,7 +63,6 @@ export const getComponentCss = (
         maxWidth: '900px',
         ...(!isAlignLeft && {
           margin: '0 auto',
-          padding: `0 ${navWidth}`,
         }),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
@@ -70,7 +72,6 @@ export const getComponentCss = (
         maxWidth: '550px',
         ...(!isAlignLeft && {
           margin: '0 auto',
-          padding: `0 ${navWidth}`,
         }),
         gridColumn: 1, // to force it into 2nd line
       }),
@@ -114,7 +115,7 @@ export const getComponentCss = (
     //   }
     header: {
       display: 'grid',
-      gap: spacingFluidXSmall,
+      gap: headerGap,
       padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
       font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
       [mediaQueryS]: {
@@ -125,8 +126,13 @@ export const getComponentCss = (
             }
           : {
               gridTemplateColumns: 'minmax(0px, 1fr) 0',
+              columnGap: `calc(${headerAlignCenterSpacing})`,
+              paddingLeft: wrapContent
+                ? `calc(${gridSafeZoneBase} + ${headerAlignCenterSpacing})`
+                : `calc(${headerAlignCenterSpacing})`,
             }),
         position: 'relative',
+        // TODO: correct min height
         minHeight: '40px', // actual height of prev/next buttons
       },
     },
