@@ -192,12 +192,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
+        .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
           /(getDisplayTagType|getHeadingTagType|getHeadlineTagType|getTextTagType|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
-        ) // heading, headline, text, text-list, tag
-        .replace(/ = getHeadingTagName/, ': any$&') // heading
-        .replace(/ = getHeadlineTagName/, ': any$&') // headline
+        ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
         .replace(/TextColor|TextWeight/g, 'any') // text
         .replace(/import type { TextTag }.*;/g, '') // text
         .replace(
