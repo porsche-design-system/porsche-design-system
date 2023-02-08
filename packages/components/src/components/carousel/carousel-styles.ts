@@ -116,6 +116,7 @@ export const getComponentCss = (
       gap: spacingFluidXSmall,
       padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
       [mediaQueryS]: {
+        gridTemplateColumns: 'minmax(0px, 1fr) 80px', // 2nd row has width of nav buttons
         position: 'relative',
         minHeight: '40px', // actual height of prev/next buttons
       },
