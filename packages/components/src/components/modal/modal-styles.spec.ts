@@ -1,4 +1,4 @@
-import { getComponentCss, getSlottedCss, isFullscreenForXl } from './modal-styles';
+import { getComponentCss, isFullscreenForXl } from './modal-styles';
 import type { BreakpointCustomizable } from '../../types';
 
 describe('getComponentCss()', () => {
@@ -51,17 +51,5 @@ describe('isFullscreenForXL()', () => {
     [{ base: false, xs: false, s: false, m: false, l: false, xl: false }, false],
   ])('should for fullscreen: %o return: %s', (fullscreen, result) => {
     expect(isFullscreenForXl(fullscreen)).toBe(result);
-  });
-});
-
-describe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-modal');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-modal');
-    expect(getSlottedCss(host)).toMatchSnapshot();
   });
 });

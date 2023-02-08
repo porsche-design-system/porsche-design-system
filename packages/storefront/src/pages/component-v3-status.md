@@ -15,6 +15,18 @@
 - generic test for `display: xy !important` of all components
 - optimize component chunking
 - we should vrt test modal, banner, (toast), content-wrapper on even larger viewports than 2560px
+- deprecate literal types
+
+```
+/** @deprecated */
+type Deprecated = 'foo' | 'yoo';
+type Valid = 'bar';
+
+type Union = Deprecated | Valid;
+const u: Union = 'foo';
+const v: Union = 'bar';
+console.log(u, v);
+```
 
 ### Styles
 

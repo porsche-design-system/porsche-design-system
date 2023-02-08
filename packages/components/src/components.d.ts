@@ -834,7 +834,7 @@ export namespace Components {
     }
     interface PSegmentedControl {
         /**
-          * Background color variations
+          * @deprecated Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
@@ -2510,7 +2510,7 @@ declare namespace LocalJSX {
     }
     interface PSegmentedControl {
         /**
-          * Background color variations
+          * @deprecated Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**

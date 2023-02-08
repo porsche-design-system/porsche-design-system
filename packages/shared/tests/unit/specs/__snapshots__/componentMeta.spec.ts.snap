@@ -195,6 +195,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-content-wrapper": {
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -202,6 +203,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "props": {
@@ -273,6 +275,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-flex": {
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Flex instead.",
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -280,6 +283,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -293,6 +297,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-flex-item": {
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Flex instead.",
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -300,6 +305,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -314,6 +320,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-grid": {
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -321,6 +328,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -331,6 +339,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-grid-item": {
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -338,6 +347,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -487,6 +497,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-social": {
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Use \`p-link\` with corresponding social instead.",
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -494,6 +505,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -577,7 +589,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "hasSlottedCss": true,
+    "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
