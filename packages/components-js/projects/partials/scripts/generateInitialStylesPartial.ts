@@ -85,12 +85,6 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       'input[type=search]::-webkit-search-cancel-button, input::-webkit-calendar-picker-indicator': {
         display: 'none',
       },
-      'input[type=text]': {
-        '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
-          // TODO: does it have any effect?
-          marginRight: '2.4375rem',
-        },
-      },
     },
   };
 
