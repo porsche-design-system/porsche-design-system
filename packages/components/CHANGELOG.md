@@ -151,6 +151,13 @@ major version.
   [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
   **[Porsche Grid](styles/grid)** instead for better performance and more standardized layout technique.
 
+##### Headline:
+
+```diff
+- <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
++ <p-heading>The quick brown fox jumps over the lazy dog</p-heading>
+```
+
 ##### Link Social:
 
 - Component is deprecated and will be removed with the next major release. Please use the **[Link](components/link)**
@@ -373,6 +380,7 @@ to the new values since those ones will be removed with next major version.
 #### Added
 
 - `Display` component
+- `Heading` component
 - Prop `underline` for `Link Pure`
 - Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper`,
   `Text Field Wrapper` and `Fieldset Wrapper`
