@@ -18,6 +18,7 @@ import {
   spacingStaticSmall,
   spacingFluidXSmall,
   spacingFluidLarge,
+  fontLineHeight,
 } from '@porsche-design-system/utilities-v2';
 import type { HeaderAlign } from '../../types';
 
@@ -52,25 +53,19 @@ export const getComponentCss = (
         ...headingXLargeStyle,
         margin: 0,
         color: primaryColor,
-        ...(isAlignLeft
-          ? {
-              maxWidth: '900px',
-            }
-          : {
-              textAlign: 'center',
-            }),
+        maxWidth: '900px',
+        ...(!isAlignLeft && {
+          margin: '0 auto',
+        }),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
         ...textSmallStyle,
         margin: 0,
         color: primaryColor,
-        ...(isAlignLeft
-          ? {
-              maxWidth: '550px',
-            }
-          : {
-              textAlign: 'center',
-            }),
+        maxWidth: '550px',
+        ...(!isAlignLeft && {
+          margin: '0 auto',
+        }),
         gridColumn: 1, // to force it into 2nd line
       }),
     },
@@ -115,8 +110,16 @@ export const getComponentCss = (
       display: 'grid',
       gap: spacingFluidXSmall,
       padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
+      font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
       [mediaQueryS]: {
-        gridTemplateColumns: 'minmax(0px, 1fr) 80px', // 2nd row has width of nav buttons
+        ...(isAlignLeft
+          ? {
+              color: '#000',
+              gridTemplateColumns: `minmax(0px, 1fr) calc((${fontLineHeight} + ${spacingStaticSmall} * 2) * 2 + ${spacingStaticXSmall})`, // 2nd row has width of nav buttons
+            }
+          : {
+              gridTemplateColumns: 'minmax(0px, 1fr) 0',
+            }),
         position: 'relative',
         minHeight: '40px', // actual height of prev/next buttons
       },
