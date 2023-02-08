@@ -28,12 +28,12 @@ describe('sanitizeActiveTabIndex()', () => {
 
 describe('getTransformationToInactive()', () => {
   it.each([
-    [{}, 'transform: translate3d(0rem,0,0); width: 0;'],
-    [{ offsetWidth: 0 }, 'transform: translate3d(0rem,0,0); width: 0;'],
-    [{ offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0;'],
-    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0;'],
-    [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(2.34375rem,0,0); width: 0;'],
-    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(0.46875rem,0,0); width: 0;'],
+    [{}, 'transform: translate3d(0px,0,0); width: 0;'],
+    [{ offsetWidth: 0 }, 'transform: translate3d(0px,0,0); width: 0;'],
+    [{ offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0;'],
+    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0;'],
+    [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(37.5px,0,0); width: 0;'],
+    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(7.5px,0,0); width: 0;'],
   ])('should for %s return %s', (elementOffset, expected) => {
     expect(getTransformationToInactive(elementOffset as HTMLElement)).toBe(expected);
   });
@@ -41,12 +41,12 @@ describe('getTransformationToInactive()', () => {
 
 describe('getTransformationToActive()', () => {
   it.each([
-    [{}, 'transform: translate3d(0rem,0,0); width: 0rem;'],
-    [{ offsetWidth: 0 }, 'transform: translate3d(0rem,0,0); width: 0rem;'],
-    [{ offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0rem;'],
-    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0rem;'],
-    [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(1.875rem,0,0); width: 0.9375rem;'],
-    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0.9375rem;'],
+    [{}, 'transform: translate3d(0px,0,0); width: 0px;'],
+    [{ offsetWidth: 0 }, 'transform: translate3d(0px,0,0); width: 0px;'],
+    [{ offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0px;'],
+    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0px;'],
+    [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(30px,0,0); width: 15px;'],
+    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 15px;'],
   ])('should for %s return %s', (elementOffset, expected) => {
     expect(getTransformationToActive(elementOffset as HTMLElement)).toBe(expected);
   });
@@ -161,7 +161,7 @@ describe('setBarStyle()', () => {
 
     expect(spy).toBeCalledWith(barElement);
     expect(barElement.classList.contains(enableTransitionClass)).toBe(false);
-    expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0px;');
+    expect(barElement.style.cssText).toBe('transform: translate3d(0px,0,0); width: 0px;');
   });
 
   it(`should add ${enableTransitionClass} class and set transformation on barElement handling initial inactive + active to inactive cases`, () => {
@@ -179,7 +179,7 @@ describe('setBarStyle()', () => {
 
     expect(spy).toBeCalledWith(barElement);
     expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
-    expect(barElement.style.cssText).toBe('transform: translate3d(2.34375rem,0,0); width: 0px;');
+    expect(barElement.style.cssText).toBe('transform: translate3d(37.5px,0,0); width: 0px;');
   });
 
   it(`should call determineEnableTransitionClass and set transformation on barElement handling initial active + active to active + inactive to active cases`, () => {
@@ -197,7 +197,7 @@ describe('setBarStyle()', () => {
 
     expect(spy).toBeCalledWith(0, 1, barElement);
     expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
-    expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0.9375rem;');
+    expect(barElement.style.cssText).toBe('transform: translate3d(0px,0,0); width: 15px;');
   });
 });
 

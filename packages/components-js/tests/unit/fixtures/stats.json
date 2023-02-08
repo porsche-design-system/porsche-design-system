@@ -166,13 +166,13 @@
   },
   {
     "chunkShortName": "tabs",
-    "size": 6159,
-    "gzipSize": 2592
+    "size": 6138,
+    "gzipSize": 2578
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 8583,
-    "gzipSize": 3379
+    "size": 8871,
+    "gzipSize": 3497
   },
   {
     "chunkShortName": "tag",
