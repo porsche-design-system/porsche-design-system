@@ -65,7 +65,6 @@ export const getComponentCss = (
         ...textSmallStyle,
         margin: 0,
         color: primaryColor,
-        padding: `${spacingFluidXSmall} 0 0`,
         ...(isAlignLeft
           ? {
               maxWidth: '550px',
@@ -117,6 +116,8 @@ export const getComponentCss = (
     //     display: block,
     //   }
     header: {
+      display: 'grid',
+      gap: spacingFluidXSmall,
       padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
       [mediaQueryS]: {
         position: 'relative',
