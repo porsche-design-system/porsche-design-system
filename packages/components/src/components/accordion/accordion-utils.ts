@@ -1,4 +1,4 @@
-import type { HeadingTag } from '../heading/heading-utils';
+import type { HeadingTag } from '../heading/heading-tag';
 import { hasWindow, observeChildren, unobserveChildren } from '../../utils';
 
 export const ACCORDION_SIZES = ['small', 'medium'] as const;

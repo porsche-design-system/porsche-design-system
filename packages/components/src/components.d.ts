@@ -6,8 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
-import { HeadingAlign, HeadingColor, HeadingSize, HeadingTag } from "./components/heading/heading-utils";
+import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
@@ -20,6 +19,8 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
+import { HeadingTag } from "./components/heading/heading-tag";
+import { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
@@ -67,7 +68,7 @@ export namespace Components {
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */
-        "tag"?: HeadingTag;
+        "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1748,7 +1749,7 @@ declare namespace LocalJSX {
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */
-        "tag"?: HeadingTag;
+        "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
          */
