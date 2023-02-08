@@ -12,8 +12,8 @@ import { fontFamily } from '@porsche-design-system/utilities-v2';
 import { forceUpdate } from '@stencil/core';
 import { hasDocument } from '../../../utils';
 
-export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
-export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
+export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const; // 'background-color' prop is deprecated
+export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number]; // 'background-color' prop is deprecated
 
 export type SegmentedControlChangeEvent = { value: string | number };
 
@@ -65,16 +65,10 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
   return Math.max(...widths);
 };
 
-export const syncSegmentedControlItemsProps = (
-  host: HTMLElement,
-  value: string | number,
-  backgroundColor: SegmentedControlBackgroundColor,
-  theme: Theme
-): void => {
+export const syncSegmentedControlItemsProps = (host: HTMLElement, value: string | number, theme: Theme): void => {
   Array.from(host.children).forEach(
     (item: HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTMLProps) => {
       item.selected = item.value === value;
-      item.backgroundColor = backgroundColor;
       item.theme = theme;
       forceUpdate(item);
     }

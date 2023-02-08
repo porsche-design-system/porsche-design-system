@@ -15,6 +15,8 @@ const generateComponentMeta = (): void => {
 
   const types = [
     `export type ComponentMeta = {
+  isDeprecated?: boolean;
+  deprecationMessage?: string;
   isDelegatingFocus: boolean;
   isInternal: boolean;
   isThemeable: boolean;
@@ -48,6 +50,8 @@ const generateComponentMeta = (): void => {
   ].join(glue);
 
   type ComponentMeta = {
+    isDeprecated?: boolean;
+    deprecationMessage?: string;
     isDelegatingFocus: boolean;
     isInternal: boolean;
     isThemeable: boolean;
@@ -93,6 +97,10 @@ const generateComponentMeta = (): void => {
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
+
+    const [deprecated, rawDeprecationMessage] = /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(source) || [];
+    const isDeprecated = !!deprecated;
+    const deprecationMessage = rawDeprecationMessage?.trim();
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
@@ -233,6 +241,7 @@ const generateComponentMeta = (): void => {
     }
 
     result[tagName] = {
+      ...(isDeprecated && { isDeprecated, deprecationMessage }),
       isDelegatingFocus,
       isInternal,
       isThemeable,

@@ -15,6 +15,18 @@
 - generic test for `display: xy !important` of all components
 - optimize component chunking
 - we should vrt test modal, banner, (toast), content-wrapper on even larger viewports than 2560px
+- deprecate literal types
+
+```
+/** @deprecated */
+type Deprecated = 'foo' | 'yoo';
+type Valid = 'bar';
+
+type Union = Deprecated | Valid;
+const u: Union = 'foo';
+const v: Union = 'bar';
+console.log(u, v);
+```
 
 ### Styles
 
@@ -52,7 +64,7 @@
 | ✅ **Text Field Wrapper**           | - Usage Docs missing<br />- custom slotted styles shall be transferred to normalize styles (getInitialStyles partial)<br />- calculated width by JS for counter or unit isn't correct in Safari when text-zoom is set to 200%<br />- default browser input icons don't respect color definition in dark theme<br />- Safari/Chrome browser hasn't correct height and color (dark theme) when type date or time is used<br />- SSR support for input type search is not given 100% since clear button is not rendered and unit/counter is not shown |
 | ✅ **Textarea Wrapper**             | - Usage Docs missing<br />- textarea resize handle is not working in Safari except for max-width: 15rem example<br />- check min-height for 200% scaling and bottom padding with counter                                                                                                                                                                                                                                                                                                                                                           |
 | ✅ **Select Wrapper**               | - Usage Docs missing<br />- tiny border radius is visible when dropdown is open                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ⛔ **Segmented Control**            | - Usage Docs missing                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ✅ **Segmented Control**            | - Usage Docs missing                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ✅ **Inline Notification**          | - Usage Docs missing                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ✅ **Banner**                       | - Usage Docs missing<br />- Why don't we provide a controlled component?<br />- Why does Banner has width config?<br />- Naming of width should probably be aligned with what's going on in the carousel since there is similar behavior.<br />- add title and description props<br />- use drop shadow token instead of custom box-shadow                                                                                                                                                                                                         |
 | ✅ **Toast**                        | - Usage Docs missing<br />- External @Method() addMessage() must return a Promise.<br />- On page refresh, toast animation sometimes flickers<br />- use drop shadow token instead of custom box-shadow                                                                                                                                                                                                                                                                                                                                            |
