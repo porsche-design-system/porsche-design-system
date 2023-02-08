@@ -1,24 +1,29 @@
 import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getFocusJssStyle, getThemedColors, hostHiddenStyles } from '../../../styles';
-import { getFocusVisibleFallback } from '../../../styles/focus-visible-fallback';
-import type { JssStyle } from 'jss';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles, getInsetJssStyle } from '../../../styles';
+import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (theme: Theme): string => {
+  const { focusColor } = getThemedColors(theme);
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
+        position: 'relative',
         ...hostHiddenStyles,
-        ...getFocusVisibleFallback(
-          Object.entries(getFocusJssStyle({ color: getThemedColors(theme).primaryColor })).reduce(
-            (result, [key, val]) => {
-              result[key.startsWith('&') ? `&(${key.slice(1)})` : key] = val;
-              return result;
-            },
-            {} as JssStyle
-          )
-        ),
+        outline: 0,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-4),
+        },
+        '&(:focus)::before': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusSmall,
+        },
+        '&(:focus:not(:focus-visible))::before': {
+          borderColor: 'transparent',
+        },
       }),
     },
   });
