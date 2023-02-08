@@ -1,66 +1,59 @@
-import type { JssStyle } from 'jss';
-import type { TextAlign, TextColor, Theme, HeadingSize } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getThemedColors } from '../../styles';
-import { fontWeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import type { HeadingSize, HeadingAlign, HeadingColor } from './heading-utils';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {
+  fontSizeHeadingLarge,
+  fontSizeHeadingMedium,
+  fontSizeHeadingSmall,
+  fontSizeHeadingXLarge,
+  fontSizeHeadingXXLarge,
+  fontSizeHeadingXXXLarge,
+  headingXXLargeStyle,
+} from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import type { HeadlineVariantDeprecated } from '../headline/headline-utils';
-import { hostHiddenStyles } from '../../styles/host-hidden-styles';
-import { isHeadlineVariantType } from '../headline/headline-utils';
-import { BreakpointCustomizable } from '../../types';
-import { headingMap } from '../../utils/typography/headingMap';
+import { getThemedTextColor } from '../../styles/text-icon-styles';
 
-// needed for deprecated p-headline
-export const getVariantJssStyle = (
-  variant: BreakpointCustomizable<HeadingSize> | HeadlineVariantDeprecated
-): JssStyle => {
-  return headingMap[variant as HeadingSize];
-};
-
-export const getSizeJssStyle = (headingSize: HeadingSize): JssStyle => {
-  const { semiBold: fontWeightSemiBold } = fontWeight;
-  return headingSize === 'inherit'
-    ? {
-        fontSize: headingSize,
-        fontWeight: fontWeightSemiBold,
-      }
-    : {
-        font: headingMap[headingSize].font.replace('400', fontWeightSemiBold),
-      };
+export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
+  'xxx-large': fontSizeHeadingXXXLarge,
+  'xx-large': fontSizeHeadingXXLarge,
+  'x-large': fontSizeHeadingXLarge,
+  large: fontSizeHeadingLarge,
+  medium: fontSizeHeadingMedium,
+  small: fontSizeHeadingSmall,
 };
 
 export const getComponentCss = (
-  size: BreakpointCustomizable<HeadingSize> | HeadlineVariantDeprecated,
-  align: TextAlign,
-  color: Extract<TextColor, 'primary' | 'default' | 'inherit'>,
+  size: BreakpointCustomizable<HeadingSize>,
+  align: HeadingAlign,
+  color: HeadingColor,
   ellipsis: boolean,
   theme: Theme
 ): string => {
   return getCss({
     '@global': {
       ':host': {
-        ...addImportantToEachRule(hostHiddenStyles),
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
-        '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypographyJssStyle()),
+        [HEADING_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getSlottedTypographyJssStyle()),
       },
     },
     root: {
-      padding: 0,
+      display: 'inherit',
       margin: 0,
+      padding: 0,
       textAlign: align,
-      color: color === 'inherit' ? 'inherit' : getThemedColors(theme).primaryColor,
+      ...headingXXLargeStyle,
+      letterSpacing: 'normal',
+      color: getThemedTextColor(theme, color),
+      listStyleType: 'none',
       whiteSpace: 'inherit',
-      ...(isHeadlineVariantType(size)
-        ? getVariantJssStyle(size)
-        : {
-            ...textSmallStyle,
-            ...buildResponsiveStyles(size, getSizeJssStyle),
-            overflowWrap: null,
-            hyphens: null,
-          }),
       ...(ellipsis && getEllipsisJssStyle()),
+      ...buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
+        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+      })),
     },
   });
 };

@@ -1,5 +1,5 @@
-import type { DisplaySize, DisplayColor } from './display-utils';
-import type { BreakpointCustomizable, TextAlign, Theme } from '../../types';
+import type { DisplaySize, DisplayColor, DisplayAlign } from './display-utils';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { displayLargeStyle, fontSizeDisplayLarge, fontSizeDisplayMedium } from '@porsche-design-system/utilities-v2';
@@ -14,7 +14,7 @@ const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
 
 export const getComponentCss = (
   size: BreakpointCustomizable<DisplaySize>,
-  align: TextAlign,
+  align: DisplayAlign,
   color: DisplayColor,
   ellipsis: boolean,
   theme: Theme

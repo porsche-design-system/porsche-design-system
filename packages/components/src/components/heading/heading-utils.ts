@@ -1,12 +1,18 @@
+import type { TextAlign } from '../text/text-align';
 import { getHTMLElement } from '../../utils';
 import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { HeadlineVariantTypeDeprecated } from '../headline/headline-utils';
 
-export const HEADING_SIZES = ['large-title', 'xx-large', 'x-large', 'large', 'medium', 'small', 'inherit'] as const;
-export type HeadingSize = typeof HEADING_SIZES[number];
-
 export const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingTag = typeof HEADING_TAGS[number];
+
+export const HEADING_SIZES = ['small', 'medium', 'large', 'x-large', 'xx-large', 'xxx-large', 'inherit'] as const;
+export type HeadingSize = typeof HEADING_SIZES[number];
+
+export const HEADING_COLORS = ['primary', 'inherit'] as const;
+export type HeadingColor = typeof HEADING_COLORS[number];
+
+export type HeadingAlign = TextAlign;
 
 export const isHeadingSizeType = (
   variant: HeadingSize | BreakpointCustomizable<HeadingSize> | HeadlineVariantTypeDeprecated
@@ -21,7 +27,7 @@ export const hasSlottedHeadingTag = (host: HTMLElement): boolean => {
 };
 
 export const headingSizeToTagMap: { [key in HeadingSize]: string } = {
-  'large-title': 'h1',
+  'xxx-large': 'h1',
   'xx-large': 'h1',
   'x-large': 'h2',
   large: 'h3',

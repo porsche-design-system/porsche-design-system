@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
-import { HeadingTag } from "./components/heading/heading-utils";
+import { HeadingAlign, HeadingColor, HeadingTag } from "./components/heading/heading-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
@@ -409,17 +409,17 @@ export namespace Components {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadingAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
+        "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the heading. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
@@ -2098,17 +2098,17 @@ declare namespace LocalJSX {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadingAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
+        "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the heading. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
