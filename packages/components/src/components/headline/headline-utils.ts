@@ -42,9 +42,7 @@ export const getHeadlineTagType = (host: HTMLElement, variant: HeadlineVariant, 
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isValidVariantType(variant)) {
-    return 'h1';
   } else {
-    return variantToTagMap[variant as HeadlineVariantType];
+    return variantToTagMap[variant as HeadlineVariantType] || 'h1';
   }
 };

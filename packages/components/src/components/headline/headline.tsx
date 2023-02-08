@@ -22,6 +22,7 @@ const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/** @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead. */
 @Component({
   tag: 'p-headline',
   shadow: true,
@@ -49,7 +50,7 @@ export class Headline {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-heading" component instead');
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-heading" component instead.');
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
 
     const TagType = getHeadlineTagType(this.host, this.variant, this.tag);

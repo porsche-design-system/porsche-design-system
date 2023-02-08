@@ -13,10 +13,6 @@ export type HeadingColor = typeof HEADING_COLORS[number];
 
 export type HeadingAlign = TextAlign;
 
-export const isValidHeadingSize = (size: BreakpointCustomizable<HeadingSize>): boolean => {
-  return HEADING_SIZES.includes(size as HeadingSize);
-};
-
 export const headingSizeToTagMap: { [key in HeadingSize]: string } = {
   small: 'h6',
   medium: 'h5',
@@ -36,9 +32,7 @@ export const getHeadingTagType = (
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isValidHeadingSize(size)) {
-    return 'h2';
   } else {
-    return headingSizeToTagMap[size as HeadingSize];
+    return headingSizeToTagMap[size as HeadingSize] || 'h2';
   }
 };

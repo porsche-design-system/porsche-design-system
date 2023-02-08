@@ -13,10 +13,6 @@ export type DisplayColor = typeof DISPLAY_COLORS[number];
 
 export type DisplayAlign = TextAlign;
 
-export const isValidDisplaySize = (size: BreakpointCustomizable<DisplaySize>): boolean => {
-  return DISPLAY_SIZES.includes(size as DisplaySize);
-};
-
 export const displaySizeToTagMap: { [key in DisplaySize]: string } = {
   medium: 'h2',
   large: 'h1',
@@ -32,9 +28,7 @@ export const getHeadingTagType = (
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isValidDisplaySize(size)) {
-    return 'h1';
   } else {
-    return displaySizeToTagMap[size as DisplaySize];
+    return displaySizeToTagMap[size as DisplaySize] || 'h1';
   }
 };
