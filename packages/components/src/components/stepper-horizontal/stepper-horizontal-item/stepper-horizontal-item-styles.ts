@@ -6,10 +6,8 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  getInsetJssStyle,
 } from '../../../styles';
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
@@ -66,7 +64,7 @@ const getColors = (state: StepperState, theme: Theme): GetColors => {
   const stateToColorMap: { [key in Theme]: Record<StepperState, string> } = {
     light: {
       current: 'inherit',
-      complete: 'invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)', // We need tokens for this.
+      complete: 'invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%)', // We need tokens for this. Disabled color is missing for icon
       warning: 'invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%)',
     },
     dark: {
@@ -137,7 +135,10 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           '&::before': {
             content: '""',
             position: 'fixed',
-            ...getInsetJssStyle(-4),
+            top: '-2px',
+            bottom: '-2px',
+            left: '-2px',
+            right: '-4px',
             borderRadius: borderRadiusSmall,
             zIndex: '-1',
             ...(isStateCurrent && {
@@ -147,7 +148,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           },
           '&:focus::before': {
             border: `${borderWidthBase} solid ${focusColor}`,
-            borderRadius: borderRadiusMedium,
+            borderRadius: borderRadiusSmall,
           },
           '&:focus:not(:focus-visible)::before': {
             borderColor: 'transparent',
