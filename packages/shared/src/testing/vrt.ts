@@ -94,9 +94,9 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, javaScriptEnabled, scaledComponents, ...otherOptions } = {
+  const { scenario, javaScriptEnabled, hasScaledComponents, ...otherOptions } = {
     scenario: undefined,
-    scaledComponents: false,
+    hasScaledComponents: false,
     javaScriptEnabled: true,
     ...options,
   };
@@ -108,7 +108,7 @@ export const vrtTest = (
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
 
-      if (scaledComponents) {
+      if (hasScaledComponents) {
         const client = await page.target().createCDPSession();
         await client.send('Page.enable');
         await client.send('Page.setFontSizes', {

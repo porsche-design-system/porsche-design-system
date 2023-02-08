@@ -41,7 +41,7 @@ it.each(components)('should have no visual regression for scaled component %s', 
           await openPopoversAndHighlightSpacer(page);
         }
       },
-      scaledComponents: true,
+      hasScaledComponents: true,
     })
   ).toBeFalsy();
 });
