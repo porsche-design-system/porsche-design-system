@@ -70,9 +70,8 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       },
 
       'a, button, input, select, textarea': {
-        outline: '1px solid transparent',
-        outlineOffset: '1px',
         borderRadius: borderRadiusSmall,
+        borderColor: 'transparent', // default value is needed for smooth transition
         '&:focus': {
           border: `${borderWidthBase} solid ${themeLight.state.focus}`,
         },
