@@ -35,6 +35,7 @@ const propTypes: PropTypes<typeof FlexItem> = {
   flex: AllowedTypes.breakpoint<FlexItemFlex>(FLEX_ITEM_FLEXS),
 };
 
+/** @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead. */
 @Component({
   tag: 'p-flex-item',
   shadow: true,
