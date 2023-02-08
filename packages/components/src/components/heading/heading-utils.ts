@@ -37,7 +37,7 @@ export const getHeadingTagType = (
   } else if (tag) {
     return tag;
   } else if (!isValidHeadingSize(size)) {
-    return 'h1';
+    return 'h2';
   } else {
     return headingSizeToTagMap[size as HeadingSize];
   }
