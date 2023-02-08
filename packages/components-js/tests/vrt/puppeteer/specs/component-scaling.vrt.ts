@@ -22,6 +22,8 @@ const components = [
   'scroller',
   'select-wrapper',
   'spinner',
+  'tabs',
+  'tabs-bar',
   'tag',
   'tag-dismissible',
   'text-field-wrapper',
@@ -38,15 +40,8 @@ it.each(components)('should have no visual regression for scaled component %s', 
         if (component === 'popover') {
           await openPopoversAndHighlightSpacer(page);
         }
-        const client = await page.target().createCDPSession();
-        await client.send('Page.enable');
-        await client.send('Page.setFontSizes', {
-          fontSizes: {
-            standard: 32,
-            fixed: 48,
-          },
-        });
       },
+      scalePageFontSize: true,
     })
   ).toBeFalsy();
 });

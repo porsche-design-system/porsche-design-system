@@ -1,6 +1,6 @@
 import { getComponentCss } from './tabs-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it('should return correct css', () => {
     expect(getComponentCss()).toMatchSnapshot();
   });
