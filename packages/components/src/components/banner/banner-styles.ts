@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import type { BannerWidth } from './banner-utils';
 import type { KeyframesDirection } from './banner-styles-shared';
 import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
-import { getCss } from '../../utils';
+import { getCss, mergeDeep } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
 import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-styles-shared';
 import {
@@ -51,16 +51,21 @@ export const getComponentCss = (width: BannerWidth): string => {
         left: 0,
         right: 0,
         willChange: 'opacity,transform',
-        ...addImportantToEachRule({
-          ...getContentWrapperStyle(widthMap[width]),
-          ...hostHiddenStyles,
-        }),
-        [mediaQueryBase]: {
-          bottom: `var(${bannerPositionBottomVar})`,
-        },
-        [mediaQueryS]: {
-          top: `var(${bannerPositionTopVar})`,
-        },
+        // mergeDeep needed to get media queries coming from getContentWrapperStyle() together
+        ...mergeDeep(
+          addImportantToEachRule({
+            ...getContentWrapperStyle(widthMap[width]),
+            ...hostHiddenStyles,
+          }),
+          {
+            [mediaQueryBase]: {
+              bottom: `var(${bannerPositionBottomVar})`,
+            },
+            [mediaQueryS]: {
+              top: `var(${bannerPositionTopVar})`,
+            },
+          }
+        ),
         '&(.hydrated),&(.ssr)': {
           [mediaQueryBase]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
           [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
