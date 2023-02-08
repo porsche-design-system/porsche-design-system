@@ -1,20 +1,19 @@
-import type { HeadingAlign, HeadingTag } from './heading-utils';
-import { HEADING_COLORS, HEADING_SIZES, HEADING_TAGS, HeadingColor } from './heading-utils';
+import type { BreakpointCustomizable, HeadingSize, PropTypes, Theme } from '../../types';
+import type { HeadingAlign, HeadingTag, HeadingColor } from './heading-utils';
+import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES, HEADING_TAGS } from './heading-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getDataThemeDarkAttribute,
-  getHTMLElement,
   TEXT_ALIGNS,
   THEMES,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, HeadingSize, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './heading-styles';
 
 const propTypes: PropTypes<typeof Heading> = {
-  tag: AllowedTypes.oneOf<HeadingTag>(HEADING_TAGS),
+  tag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
   align: AllowedTypes.oneOf<HeadingAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
@@ -30,7 +29,7 @@ export class Heading {
   @Element() public host!: HTMLElement;
 
   /** Sets a custom HTML tag depending on the usage of the heading component. */
-  @Prop() public tag?: HeadingTag = 'h2';
+  @Prop() public tag?: HeadingTag;
 
   /** Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
   @Prop() public size?: BreakpointCustomizable<HeadingSize> = 'xx-large';
@@ -51,11 +50,7 @@ export class Heading {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
 
-    // const TagName = getHeadingTagName(this.host, this.size, this.tag);
-
-    const firstChild = getHTMLElement(this.host, ':first-child');
-    const hasSlottedTextTag = firstChild?.matches(HEADING_TAGS.join());
-    const TagType = hasSlottedTextTag ? 'div' : this.tag;
+    const TagType = getHeadingTagType(this.host, this.size, this.tag);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>

@@ -1,5 +1,5 @@
 import type { HeadingSize } from './heading-utils';
-import { getHeadingTagName, hasSlottedHeadingTag, isHeadingSizeType } from './heading-utils';
+import { getHeadingTagType, hasSlottedHeadingTag, isValidHeadingSize } from './heading-utils';
 import * as headingUtils from './heading-utils';
 import * as domUtils from '../../utils/dom/getHTMLElement';
 
@@ -10,7 +10,7 @@ describe('isHeadingSizeType()', () => {
     ['headline-1', false],
     ['inherit', true],
   ])('should for size: %s return: %s', (size, result) => {
-    expect(isHeadingSizeType(size)).toBe(result);
+    expect(isValidHeadingSize(size)).toBe(result);
   });
 });
 
@@ -44,29 +44,29 @@ describe('getHeadingTagName()', () => {
     host.innerHTML = '<h3>Some h3</h3>';
     jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(true);
 
-    expect(getHeadingTagName(host)).toBe('div');
+    expect(getHeadingTagType(host)).toBe('div');
   });
 
   it('should return tag value if hasSlottedHeadingTag() is false and tag is passed', () => {
     const host = document.createElement('p-heading');
     jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(false);
 
-    expect(getHeadingTagName(host, 'xx-large', 'h4')).toBe('h4');
+    expect(getHeadingTagType(host, 'xx-large', 'h4')).toBe('h4');
   });
 
   it('should return h1 if hasSlottedHeadingTag() is false, tag is not passed and isHeadingSizeType() is false', () => {
     const host = document.createElement('p-heading');
     jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(false);
-    jest.spyOn(headingUtils, 'isHeadingSizeType').mockReturnValue(false);
+    jest.spyOn(headingUtils, 'isValidHeadingSize').mockReturnValue(false);
 
-    expect(getHeadingTagName(host, 'headline-1')).toBe('h1');
+    expect(getHeadingTagType(host, 'headline-1')).toBe('h1');
   });
 
   it('should return h2 if hasSlottedHeadingTag() is false, tag is not passed and isHeadingSizeType() is true', () => {
     const host = document.createElement('p-heading');
     jest.spyOn(headingUtils, 'hasSlottedHeadingTag').mockReturnValue(false);
-    jest.spyOn(headingUtils, 'isHeadingSizeType').mockReturnValue(true);
+    jest.spyOn(headingUtils, 'isValidHeadingSize').mockReturnValue(true);
 
-    expect(getHeadingTagName(host, 'x-large')).toBe('h2');
+    expect(getHeadingTagType(host, 'x-large')).toBe('h2');
   });
 });

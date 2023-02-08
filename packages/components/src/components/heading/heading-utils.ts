@@ -1,7 +1,6 @@
 import type { TextAlign } from '../text/text-align';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getHTMLElement } from '../../utils';
-import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import { HeadlineVariantTypeDeprecated } from '../headline/headline-utils';
 
 export const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadingTag = typeof HEADING_TAGS[number];
@@ -14,38 +13,36 @@ export type HeadingColor = typeof HEADING_COLORS[number];
 
 export type HeadingAlign = TextAlign;
 
-export const isHeadingSizeType = (
-  variant: HeadingSize | BreakpointCustomizable<HeadingSize> | HeadlineVariantTypeDeprecated
-): boolean => {
-  return HEADING_SIZES.includes(variant as HeadingSize);
-};
-
 export const hasSlottedHeadingTag = (host: HTMLElement): boolean => {
   // TODO: needs to be direct and only child
   const el = getHTMLElement(host, ':first-child');
-  return el?.matches('h1, h2, h3, h4, h5, h6');
+  return el?.matches(HEADING_TAGS.join());
+};
+
+export const isValidHeadingSize = (size: BreakpointCustomizable<HeadingSize>): boolean => {
+  return HEADING_SIZES.includes(size as HeadingSize);
 };
 
 export const headingSizeToTagMap: { [key in HeadingSize]: string } = {
+  small: 'h6',
+  medium: 'h5',
+  large: 'h4',
+  'x-large': 'h3',
+  'xx-large': 'h2',
   'xxx-large': 'h1',
-  'xx-large': 'h1',
-  'x-large': 'h2',
-  large: 'h3',
-  medium: 'h4',
-  small: 'h5',
   inherit: 'h1',
 };
 
-export const getHeadingTagName = (
+export const getHeadingTagType = (
   host: HTMLElement,
-  size?: HeadingSize | BreakpointCustomizable<HeadingSize>,
-  tag?: HeadingTag
+  size: HeadingSize | BreakpointCustomizable<HeadingSize>,
+  tag: HeadingTag
 ): string => {
   if (hasSlottedHeadingTag(host)) {
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isHeadingSizeType(size)) {
+  } else if (!isValidHeadingSize(size)) {
     return 'h1';
   } else {
     return headingSizeToTagMap[size as HeadingSize];
