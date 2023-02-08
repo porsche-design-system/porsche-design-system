@@ -1,12 +1,11 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { DisplayTag, DisplaySize, DisplayAlign, DisplayColor } from './display-utils';
-import { DISPLAY_TAGS, DISPLAY_SIZES, DISPLAY_COLORS } from './display-utils';
+import type { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
+import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getHeadingTagType } from './display-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getDataThemeDarkAttribute,
-  getHTMLElement,
   TEXT_ALIGNS,
   THEMES,
   validateProps,
@@ -14,7 +13,7 @@ import {
 import { getComponentCss } from './display-styles';
 
 const propTypes: PropTypes<typeof Display> = {
-  tag: AllowedTypes.oneOf<DisplayTag>(DISPLAY_TAGS),
+  tag: AllowedTypes.oneOf<DisplayTag>([...DISPLAY_TAGS, undefined]),
   size: AllowedTypes.breakpoint<DisplaySize>(DISPLAY_SIZES),
   align: AllowedTypes.oneOf<DisplayAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
@@ -30,7 +29,7 @@ export class Display {
   @Element() public host!: HTMLElement;
 
   /** Sets a custom HTML tag depending on the usage of the display component. */
-  @Prop() public tag?: DisplayTag = 'h1';
+  @Prop() public tag?: DisplayTag;
 
   /** Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this. */
   @Prop() public size?: BreakpointCustomizable<DisplaySize> = 'large';
@@ -51,9 +50,7 @@ export class Display {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
 
-    const firstChild = getHTMLElement(this.host, ':first-child');
-    const hasSlottedTextTag = firstChild?.matches(DISPLAY_TAGS.join());
-    const TagType = hasSlottedTextTag ? 'div' : this.tag;
+    const TagType = getHeadingTagType(this.host, this.size, this.tag);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>

@@ -33,9 +33,10 @@ export const headingSizeToTagMap: { [key in HeadingSize]: string } = {
   inherit: 'h1',
 };
 
+// TODO: maybe we can abstract this function to be reused for text, heading and display
 export const getHeadingTagType = (
   host: HTMLElement,
-  size: HeadingSize | BreakpointCustomizable<HeadingSize>,
+  size: BreakpointCustomizable<HeadingSize>,
   tag: HeadingTag
 ): string => {
   if (hasSlottedHeadingTag(host)) {
