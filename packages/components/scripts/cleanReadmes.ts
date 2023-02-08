@@ -22,7 +22,7 @@ const adjustHeadline = (str: string): string => {
   const h1Replacements: { [key in TagName]?: string } = {
     'p-flex': 'Flex',
     'p-grid': 'Grid',
-    'p-heading': 'Typography',
+    'p-display': 'Typography',
     'p-inline-notification': 'Notifications',
     'p-segmented-control': 'Segmented Control',
     'p-stepper-horizontal': 'Stepper Horizontal',
@@ -39,6 +39,7 @@ const adjustHeadline = (str: string): string => {
     'p-grid-item',
     'p-stepper-horizontal-item',
     'p-headline',
+    'p-heading',
     'p-text',
     'p-segmented-control-item',
     'p-toast',
