@@ -127,7 +127,7 @@ layout[v]
 
 For font styling it's recommended to use the
 [`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) component or
-[text/headline js functions](utilities/js/functions).
+[text/headline js functions](utilities-deprecated/js/functions).
 
 ### Family
 
