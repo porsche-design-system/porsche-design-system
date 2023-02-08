@@ -1,18 +1,11 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
-import { PorscheDesignSystemProvider } from "@porsche-design-system/components-react/ssr";
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
 export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "Remix Notes",
-  viewport: "width=device-width,initial-scale=1",
+  charset: 'utf-8',
+  title: 'Remix Notes',
+  viewport: 'width=device-width,initial-scale=1',
 });
 
 export default function App() {
