@@ -8,7 +8,7 @@ describe('getComponentCss()', () => {
     [false, true, true, 'light'],
     [false, false, false, 'light'],
     [false, false, false, 'dark'],
-  ])('should return correct css for isDisabled: %s, isSelected: %s, bgColor: %s and theme: %s', (...args) => {
+  ])('should return correct css for isDisabled: %s, isSelected: %s, hasIcon: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
