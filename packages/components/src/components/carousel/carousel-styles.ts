@@ -8,7 +8,7 @@ import {
 } from '../../styles';
 import {
   gridWidthMax,
-  gridSafeZone,
+  gridSafeZoneBase,
   textSmallStyle,
   getMediaQueryMin,
   borderRadiusSmall,
@@ -84,10 +84,10 @@ export const getComponentCss = (
         // to override inline styles set by splide library
         ...(wrapContent &&
           addImportantToEachRule({
-            // TODO: 0 calc(${gridSafeZone} + ${gridGap}) - will be done after Grid Refactoring
-            padding: `0 calc(${gridSafeZone} + ${spacingFluidLarge}) 0 ${gridSafeZone}`,
+            // TODO: 0 calc(${gridSafeZoneBase} + ${gridGap}) - will be done after Grid Refactoring
+            padding: `0 calc(${gridSafeZoneBase} + ${spacingFluidLarge}) 0 ${gridSafeZoneBase}`,
             [mediaQueryXl]: {
-              padding: `0 calc(${gridSafeZone} + ${spacingFluidLarge}) 0 ${gridSafeZone}`,
+              padding: `0 calc(${gridSafeZoneBase} + ${spacingFluidLarge}) 0 ${gridSafeZoneBase}`,
             },
           })),
         '&--draggable': {
@@ -117,7 +117,7 @@ export const getComponentCss = (
     //     display: block,
     //   }
     header: {
-      padding: wrapContent ? `0 ${gridSafeZone}` : null,
+      padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
       [mediaQueryS]: {
         position: 'relative',
         minHeight: '40px', // actual height of prev/next buttons
