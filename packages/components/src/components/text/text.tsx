@@ -1,11 +1,11 @@
 import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import type { TextTag } from './text-utils';
+import { getTextTagType, TEXT_TAGS } from './text-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getDataThemeDarkAttribute,
-  getHTMLElement,
   TEXT_ALIGNS,
   TEXT_COLORS,
   TEXT_SIZES,
@@ -15,7 +15,6 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './text-styles';
-import { TEXT_TAGS } from './text-utils';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -82,9 +81,7 @@ export class Text {
       this.theme
     );
 
-    const firstChild = getHTMLElement(this.host, ':first-child');
-    const hasSlottedTextTag = firstChild?.matches(TEXT_TAGS.join());
-    const TagType = hasSlottedTextTag ? 'div' : this.tag;
+    const TagType = getTextTagType(this.host, this.tag);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>
