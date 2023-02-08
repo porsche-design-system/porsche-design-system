@@ -1,6 +1,5 @@
 import {
   getItemMaxWidth,
-  SegmentedControlBackgroundColor,
   syncSegmentedControlItemsProps,
   tempDiv,
   tempIcon,
@@ -129,36 +128,31 @@ describe('syncSegmentedControlItemsProps()', () => {
   host.append(child1, child2);
 
   const value = 'a';
-  const backgroundColor: SegmentedControlBackgroundColor = 'background-surface';
   const theme: Theme = 'light';
 
-  it('should set selected, backgroundColor and theme property on every item', () => {
+  it('should set selected and theme property on every item', () => {
     child1.value = 'a';
     child2.value = 'b';
 
     expect(child1.selected).toBeUndefined();
-    expect(child1.backgroundColor).toBeUndefined();
     expect(child1.theme).toBeUndefined();
 
     expect(child2.selected).toBeUndefined();
-    expect(child2.backgroundColor).toBeUndefined();
     expect(child2.theme).toBeUndefined();
 
-    syncSegmentedControlItemsProps(host, value, backgroundColor, theme);
+    syncSegmentedControlItemsProps(host, value, theme);
 
     expect(child1.selected).toBe(true);
-    expect(child1.backgroundColor).toBe(backgroundColor);
     expect(child1.theme).toBe(theme);
 
     expect(child2.selected).toBe(false);
-    expect(child2.backgroundColor).toBe(backgroundColor);
     expect(child2.theme).toBe(theme);
   });
 
   it('should call forceUpdate() on every item', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
 
-    syncSegmentedControlItemsProps(host, value, backgroundColor, theme);
+    syncSegmentedControlItemsProps(host, value, theme);
 
     expect(spy).toBeCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work

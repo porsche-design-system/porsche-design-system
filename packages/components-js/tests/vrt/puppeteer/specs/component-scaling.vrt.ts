@@ -28,6 +28,7 @@ const components = [
   'textarea-wrapper',
   'toast-basic',
   'fieldset-wrapper',
+  'segmented-control',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {

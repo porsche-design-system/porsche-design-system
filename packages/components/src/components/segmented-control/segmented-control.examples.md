@@ -36,7 +36,11 @@ An icon can be added via the `icon` or `iconSource` property.
 
 <Playground :markup="withIconsMarkup" :config="config"></Playground>
 
-## Background Color
+## Background Color (deprecated)
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The background-color prop is deprecated and will be removed with next major release.
+</p-inline-notification>
 
 If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor`
 property.
@@ -55,7 +59,7 @@ Whenever the selected item changes, a `segmentedControlChange` event gets emitte
 Each event instance contains the newly selected value at `event.detail.value`.
 
 <Playground :frameworkMarkup="eventHandlingMarkup" :config="config">
-  <p-segmented-control :value="eventHandlingValue" v-on:segmentedControlChange="eventHandlingValue = $event.detail.value">
+  <p-segmented-control :theme="theme" :value="eventHandlingValue" v-on:segmentedControlChange="eventHandlingValue = $event.detail.value">
     <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
     <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
     <p-segmented-control-item value="3">Option 3</p-segmented-control-item>

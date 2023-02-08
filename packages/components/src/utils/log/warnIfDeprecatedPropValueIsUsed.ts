@@ -1,4 +1,4 @@
-import { getTagNameWithoutPrefix } from '../tag-name';
+import { getDeprecatedPropWarningMessage } from './helper';
 
 // TODO: add missing unit test
 export const warnIfDeprecatedPropValueIsUsed = <T extends string>(
@@ -8,10 +8,7 @@ export const warnIfDeprecatedPropValueIsUsed = <T extends string>(
 ): void => {
   const value = host[prop];
   if (deprecationMap[value]) {
-    console.warn(
-      `[Porsche Design System] ${prop}="${value}" is deprecated for component "${getTagNameWithoutPrefix(
-        host
-      )}" and will be removed with next major release. Please use "${deprecationMap[value]}" instead.`
-    );
+    const deprecatedPropWarningMessage = getDeprecatedPropWarningMessage(`${prop}="${value}"`, host);
+    console.warn(`${deprecatedPropWarningMessage} Please use "${deprecationMap[value]}" instead.`);
   }
 };
