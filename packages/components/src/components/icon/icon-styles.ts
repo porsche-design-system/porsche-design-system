@@ -1,4 +1,4 @@
-import type { TextColor, TextSize, Theme } from '../../types';
+import type { TextSize, Theme } from '../../types';
 import { getCss, isThemeDark } from '../../utils';
 import {
   fontFamily,
@@ -10,6 +10,7 @@ import {
   fontSizeTextXSmall,
 } from '@porsche-design-system/utilities-v2';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import type { IconColor } from './icon-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-small': fontSizeTextXSmall,
@@ -20,7 +21,6 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
 };
 
 // TODO, use Tuple to reduce chunk size
-// TODO: shall icon component support 'disabled' color too? For e.g. button-pure disabled state?
 const filterLightPrimary = 'invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%)';
 const filterLightContrastLow = 'invert(93%) sepia(11%) saturate(36%) hue-rotate(201deg) brightness(89%) contrast(102%)';
 const filterLightContrastMedium =
@@ -34,6 +34,7 @@ const filterLightNotificationError =
   'invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%)';
 const filterLightNotificationInfo =
   'invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)';
+const filterLightDisabled = filterLightContrastMedium;
 
 const filterDarkPrimary = 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)';
 const filterDarkContrastLow = 'invert(20%) sepia(7%) saturate(421%) hue-rotate(202deg) brightness(97%) contrast(82%)';
@@ -48,12 +49,14 @@ const filterDarkNotificationError =
   'invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%)';
 const filterDarkNotificationInfo =
   'invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)';
+const filterDarkDisabled = filterDarkContrastMedium;
 
-const filter: { [theme in Theme]: { [color in Exclude<TextColor, 'inherit'>]: string } } = {
+const filter: { [theme in Theme]: { [color in Exclude<IconColor, 'inherit'>]: string } } = {
   light: {
     primary: filterLightPrimary,
     brand: filterLightPrimary, // deprecated
     default: filterLightPrimary, // deprecated
+    disabled: filterLightDisabled,
     'contrast-low': filterLightContrastLow,
     'neutral-contrast-low': filterLightContrastLow, // deprecated
     'contrast-medium': filterLightContrastMedium,
@@ -70,6 +73,7 @@ const filter: { [theme in Theme]: { [color in Exclude<TextColor, 'inherit'>]: st
     primary: filterDarkPrimary,
     brand: filterDarkPrimary, // deprecated
     default: filterDarkPrimary, // deprecated
+    disabled: filterDarkDisabled,
     'contrast-low': filterDarkContrastLow,
     'neutral-contrast-low': filterDarkContrastLow, // deprecated
     'contrast-medium': filterDarkContrastMedium,
@@ -95,7 +99,7 @@ const forceRerenderAnimationStyle = {
 const keyFramesLight = 'rerender-light';
 const keyFramesDark = 'rerender-dark';
 
-export const getComponentCss = (color: TextColor, size: TextSize, theme: Theme): string => {
+export const getComponentCss = (color: IconColor, size: TextSize, theme: Theme): string => {
   const isColorInherit = color === 'inherit';
   const isSizeInherit = size === 'inherit';
 
