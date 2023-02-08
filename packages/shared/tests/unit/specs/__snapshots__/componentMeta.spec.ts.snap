@@ -227,7 +227,7 @@ exports[`should match snapshot 1`] = `
       "color": "primary",
       "ellipsis": false,
       "size": "large",
-      "tag": "h1",
+      "tag": null,
       "theme": "light",
     },
     "styling": "jss",
@@ -377,6 +377,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-headline": {
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-heading" instead.",
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -384,6 +385,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "props": {
