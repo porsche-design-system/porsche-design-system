@@ -1,8 +1,8 @@
-import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from './typography-styles';
+import { getEllipsisJssStyle, getTypographySlottedJssStyle } from './typography-styles';
 
 describe('getSlottedTypographyStyle()', () => {
   it('should return correct JssStyle', () => {
-    expect(getSlottedTypographyJssStyle()).toMatchSnapshot();
+    expect(getTypographySlottedJssStyle()).toMatchSnapshot();
   });
 });
 
