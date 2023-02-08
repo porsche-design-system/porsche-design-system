@@ -13,6 +13,7 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
+  frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getCss, mergeDeep } from '../../../utils';
@@ -109,9 +110,10 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           )),
         ...addImportantToEachRule({
           fontSize: 'inherit',
+          transform: 'translate3d(0,0,0)', // creates new stacking context
           ...hostHiddenStyles,
           '&(:not(:last-of-type))': {
-            marginRight: '16px',
+            margin: '0 16px 0 0',
           },
         }),
       },
@@ -119,7 +121,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         display: 'grid',
         position: 'relative',
         gridTemplateColumns: `${fontLineHeight} minmax(0, auto)`,
-        rowGap: '2px',
+        gap: '3px',
         color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'),
         margin: 0,
@@ -134,9 +136,14 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         ...mergeDeep({
           '&::before': {
             content: '""',
-            position: 'absolute',
+            position: 'fixed',
             ...getInsetJssStyle(-4),
             borderRadius: borderRadiusSmall,
+            zIndex: '-1',
+            ...(isStateCurrent && {
+              ...frostedGlassStyle,
+              background: hoverColor,
+            }),
           },
           '&:focus::before': {
             border: `${borderWidthBase} solid ${focusColor}`,
@@ -169,7 +176,8 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
                     transition: getTransition('background'),
                   },
                   '&:hover::before': {
-                    backgroundColor: hoverColor,
+                    ...frostedGlassStyle,
+                    background: hoverColor,
                   },
                 }),
               }),
