@@ -13,7 +13,7 @@
         <ul>
           <li v-for="(tabs, page, index) in pages" :key="index">
             <p-link-pure class="link" icon="none" :active="isActive(category, page)">
-              <router-link :to="getRoute(category, page)">{{ page }}{{ getDeprecated(page) }}</router-link>
+              <router-link :to="getRoute(category, page)">{{ page }}{{ getDeprecated(category, page) }}</router-link>
             </p-link-pure>
           </li>
         </ul>
@@ -80,8 +80,8 @@
       this.hideNavigation = hideNavigation;
     }
 
-    getDeprecated(page: string): string {
-      if (getComponentMeta(('p-' + paramCase(page)) as TagName)?.isDeprecated) {
+    getDeprecated(category: string, page: string): string {
+      if (category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.isDeprecated) {
         return ' (deprecated)';
       } else {
         return '';
