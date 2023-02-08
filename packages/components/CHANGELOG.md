@@ -120,7 +120,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
-  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`, `Text Field Wrapper`, `Content Wrapper` and `Fieldset Wrapper` matches new design
+  `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`, `Text Field Wrapper`, `Content Wrapper`, `Segmented Control` and `Fieldset Wrapper` matches new design
   language
 - CSS global variables names
 
@@ -170,6 +170,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 + <p-text weight="semi-bold">Some text</p-text>
 ```
+
+- Prop `background-color` for `Segmented Control` is deprecated now
 
 - Color `brand` for `Text` is deprecated now, currently mapped to default value `primary`
 
