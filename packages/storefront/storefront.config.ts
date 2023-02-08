@@ -447,9 +447,9 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Text: [() => import('@/../../components/src/components/text/text.example.md')],
       // @ts-ignore
-      Heading: [() => import('@/../../components/src/components/heading/heading.examples.md')],
+      Heading: [() => import('@/../../components/src/components/heading/heading.example.md')],
       // @ts-ignore
-      Headline: [() => import('@/../components/src/components/headline/headline.examples.md')],
+      Headline: [() => import('@/../../components/src/components/headline/headline.example.md')],
       // @ts-ignore
       Display: [() => import('@/../../components/src/components/display/display.example.md')],
       // @ts-ignore
