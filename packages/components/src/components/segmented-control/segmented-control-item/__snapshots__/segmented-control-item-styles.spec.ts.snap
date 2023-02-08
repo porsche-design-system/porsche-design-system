@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, bgColor: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -64,7 +64,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, bgColor: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -128,7 +128,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, bgColor: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -192,7 +192,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, bgColor: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -247,7 +247,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, bgColor: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -302,7 +302,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, bgColor: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
