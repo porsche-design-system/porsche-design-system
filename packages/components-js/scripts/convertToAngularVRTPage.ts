@@ -36,11 +36,7 @@ export const convertToAngularVRTPage = (
     .sort(byAlphabet)
     .join(', ');
 
-  const pdsImports = [
-    (usesSetAllReady || usesComponentsReady) && 'componentsReady',
-    usesToast && 'ToastManager',
-    isIconPage && 'IconName',
-  ]
+  const pdsImports = [(usesSetAllReady || usesComponentsReady) && 'componentsReady', usesToast && 'ToastManager']
     .filter((x) => x)
     .sort(byAlphabet)
     .join(', ');
@@ -72,7 +68,7 @@ ngOnInit() {
   });
 }`;
   } else if (isIconPage) {
-    classImplementation = `public icons = ICON_NAMES as IconName[];`;
+    classImplementation = `public icons = ICON_NAMES;`;
   } else if (usesToast) {
     classImplementation = `constructor(private toastManager: ToastManager) {}
 

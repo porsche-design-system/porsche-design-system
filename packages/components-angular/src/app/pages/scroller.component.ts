@@ -70,18 +70,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground light-electric" title="should render scroller on light-electric background">
-      <p-scroller [theme]="'light-electric'">
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-      </p-scroller>
-    </div>
-
     <div
       class="playground light surface"
       title="should render scroller gradientColorScheme surface on light surface background"

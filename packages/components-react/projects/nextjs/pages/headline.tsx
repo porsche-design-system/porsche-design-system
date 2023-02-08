@@ -74,10 +74,10 @@ const HeadlinePage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should not automatically break words/strings by default">
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deeppink' }}>
           This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.
         </PHeadline>
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deepskyblue' }}>
           <h3>This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.</h3>
         </PHeadline>
       </div>
@@ -87,10 +87,10 @@ const HeadlinePage: NextPage = (): JSX.Element => {
         title="should be possible to overwrite hyphenation/break words behavior"
         style={{ hyphens: 'auto', overflowWrap: 'break-word' }}
       >
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deeppink' }}>
           This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.
         </PHeadline>
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deepskyblue' }}>
           <h3>This is the first time I&apos;ve seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It&apos;s a long one.</h3>
         </PHeadline>
       </div>

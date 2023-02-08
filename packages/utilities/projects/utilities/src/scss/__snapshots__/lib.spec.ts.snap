@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should contain correct content for auto generated file ./src/scss/lib/_border.scss 1`] = `
+"$pds-border-radius-small: 4px;
+$pds-border-radius-medium: 8px;
+$pds-border-radius-large: 16px;
+$pds-border-width-base: 2px;
+$pds-border-width-thin: 1px;
+"
+`;
+
 exports[`should contain correct content for auto generated file ./src/scss/lib/_breakpoint.scss 1`] = `
-"$pds-breakpoint-xxs: 0px;
+"$pds-breakpoint-base: 0px;
 $pds-breakpoint-xs: 480px;
 $pds-breakpoint-s: 760px;
 $pds-breakpoint-m: 1000px;
@@ -11,47 +20,149 @@ $pds-breakpoint-xxl: 1920px;
 "
 `;
 
-exports[`should contain correct content for auto generated file ./src/scss/lib/_color-external.scss 1`] = `
-"$pds-color-external-facebook: #1877f2;
-$pds-color-external-google: #4285f4;
-$pds-color-external-instagram: #e1306c;
-$pds-color-external-kakaotalk: #fae300;
-$pds-color-external-linkedin: #0077b5;
-$pds-color-external-naver: #03cf5d;
-$pds-color-external-pinterest: #e60023;
-$pds-color-external-reddit: #ff4500;
-$pds-color-external-tiktok: #fe2c55;
-$pds-color-external-twitter: #1da1f2;
-$pds-color-external-wechat: #1aad19;
-$pds-color-external-whatsapp: #25d366;
-$pds-color-external-xing: #006567;
-$pds-color-external-youtube: #ff0000;
+exports[`should contain correct content for auto generated file ./src/scss/lib/_display.scss 1`] = `
+"@mixin pds-display-medium {
+  font: italic normal 600 clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
+}
+
+@mixin pds-display-large {
+  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
+}
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_drop-shadow.scss 1`] = `
+"@mixin pds-drop-shadow-low {
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+}
+
+@mixin pds-drop-shadow-medium {
+  filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.16));
+}
+
+@mixin pds-drop-shadow-high {
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
+}
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_font.scss 1`] = `
-"$pds-font-behavior-text-size-adjust: none;
-$pds-font-behavior-webkit-text-size-adjust: none;
-$pds-font-family: "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
-$pds-font-hyphenation-overflow-wrap: break-word;
-$pds-font-hyphenation-hyphens: auto;
+"$pds-font-family: "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+$pds-font-hyphenation-style-overflow-wrap: break-word;
+$pds-font-hyphenation-style-hyphens: auto;
 $pds-font-line-height: calc(6px + 2.125ex);
-$pds-font-size-x-small-font-size: 0.75rem;
-$pds-font-size-x-small-line-height: calc(6px + 2.125ex);
-$pds-font-size-small-font-size: 1rem;
-$pds-font-size-small-line-height: calc(6px + 2.125ex);
-$pds-font-size-medium-font-size: 1.5rem;
-$pds-font-size-medium-line-height: calc(6px + 2.125ex);
-$pds-font-size-large-font-size: 2.25rem;
-$pds-font-size-large-line-height: calc(6px + 2.125ex);
-$pds-font-size-x-large-font-size: 3.25rem;
-$pds-font-size-x-large-line-height: calc(6px + 2.125ex);
-$pds-font-weight-thin: 100;
+$pds-font-size-text-x-small: 0.875rem;
+$pds-font-size-text-small: 1rem;
+$pds-font-size-text-medium: clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem);
+$pds-font-size-text-large: clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem);
+$pds-font-size-text-x-large: clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem);
+$pds-font-size-heading-small: 1rem;
+$pds-font-size-heading-medium: clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem);
+$pds-font-size-heading-large: clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem);
+$pds-font-size-heading-x-large: clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem);
+$pds-font-size-heading-xx-large: clamp(2.07rem, 0.96vw + 1.88rem, 2.94rem);
+$pds-font-size-heading-xxx-large: clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem);
+$pds-font-size-display-medium: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
+$pds-font-size-display-large: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
 $pds-font-weight-regular: 400;
 $pds-font-weight-semi-bold: 600;
 $pds-font-weight-bold: 700;
-$pds-font-style: normal;
+$pds-font-style-normal: normal;
+$pds-font-style-italic: italic;
 $pds-font-variant: normal;
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_frosted-glass.scss 1`] = `
+"@mixin pds-frosted-glass {
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_gradient.scss 1`] = `
+"@mixin pds-gradient-to-bottom {
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 31, 31, 0.9) 0%,
+    rgba(31, 31, 31, 0.9) 20%,
+    rgba(31, 31, 31, 0.852589) 26.67%,
+    rgba(32, 32, 32, 0.768225) 33.33%,
+    rgba(33, 33, 33, 0.668116) 40%,
+    rgba(34, 34, 34, 0.557309) 46.67%,
+    rgba(35, 35, 35, 0.442691) 53.33%,
+    rgba(36, 36, 36, 0.331884) 60%,
+    rgba(37, 37, 37, 0.231775) 66.67%,
+    rgba(38, 38, 38, 0.147411) 73.33%,
+    rgba(39, 39, 39, 0.0816599) 80%,
+    rgba(39, 39, 39, 0.03551) 86.67%,
+    rgba(39, 39, 39, 0.0086472) 93.33%,
+    rgba(39, 39, 39, 0) 100%
+  );
+}
+
+@mixin pds-gradient-to-left {
+  background: linear-gradient(
+    to left,
+    rgba(31, 31, 31, 0.9) 0%,
+    rgba(31, 31, 31, 0.9) 20%,
+    rgba(31, 31, 31, 0.852589) 26.67%,
+    rgba(32, 32, 32, 0.768225) 33.33%,
+    rgba(33, 33, 33, 0.668116) 40%,
+    rgba(34, 34, 34, 0.557309) 46.67%,
+    rgba(35, 35, 35, 0.442691) 53.33%,
+    rgba(36, 36, 36, 0.331884) 60%,
+    rgba(37, 37, 37, 0.231775) 66.67%,
+    rgba(38, 38, 38, 0.147411) 73.33%,
+    rgba(39, 39, 39, 0.0816599) 80%,
+    rgba(39, 39, 39, 0.03551) 86.67%,
+    rgba(39, 39, 39, 0.0086472) 93.33%,
+    rgba(39, 39, 39, 0) 100%
+  );
+}
+
+@mixin pds-gradient-to-right {
+  background: linear-gradient(
+    to right,
+    rgba(31, 31, 31, 0.9) 0%,
+    rgba(31, 31, 31, 0.9) 20%,
+    rgba(31, 31, 31, 0.852589) 26.67%,
+    rgba(32, 32, 32, 0.768225) 33.33%,
+    rgba(33, 33, 33, 0.668116) 40%,
+    rgba(34, 34, 34, 0.557309) 46.67%,
+    rgba(35, 35, 35, 0.442691) 53.33%,
+    rgba(36, 36, 36, 0.331884) 60%,
+    rgba(37, 37, 37, 0.231775) 66.67%,
+    rgba(38, 38, 38, 0.147411) 73.33%,
+    rgba(39, 39, 39, 0.0816599) 80%,
+    rgba(39, 39, 39, 0.03551) 86.67%,
+    rgba(39, 39, 39, 0.0086472) 93.33%,
+    rgba(39, 39, 39, 0) 100%
+  );
+}
+
+@mixin pds-gradient-to-top {
+  background: linear-gradient(
+    to top,
+    rgba(31, 31, 31, 0.9) 0%,
+    rgba(31, 31, 31, 0.9) 20%,
+    rgba(31, 31, 31, 0.852589) 26.67%,
+    rgba(32, 32, 32, 0.768225) 33.33%,
+    rgba(33, 33, 33, 0.668116) 40%,
+    rgba(34, 34, 34, 0.557309) 46.67%,
+    rgba(35, 35, 35, 0.442691) 53.33%,
+    rgba(36, 36, 36, 0.331884) 60%,
+    rgba(37, 37, 37, 0.231775) 66.67%,
+    rgba(38, 38, 38, 0.147411) 73.33%,
+    rgba(39, 39, 39, 0.0816599) 80%,
+    rgba(39, 39, 39, 0.03551) 86.67%,
+    rgba(39, 39, 39, 0.0086472) 93.33%,
+    rgba(39, 39, 39, 0) 100%
+  );
+}
 "
 `;
 
@@ -59,312 +170,217 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 "@mixin pds-grid {
   margin: 0;
   display: grid;
-  padding: 0 calc((100% - 120rem) / 2);
-  grid-gap: max(1rem, min(3.6vw, 2.25rem));
-  max-width: 120rem;
-  min-width: 20rem;
+  padding: 0 max(0px, (100% - 2560px)/2);
+  grid-gap: clamp(16px, 3.6vw, 36px);
+  max-width: 2560px;
+  min-width: 320px;
   box-sizing: content-box;
-  grid-template-columns: [grid-start] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
-      12,
+  grid-template-columns: [full-start] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))) [extended-start basic-start narrow-start] repeat(
+      6,
       minmax(0, 1fr)
-    ) [content-end] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+    ) [narrow-end basic-end extended-end] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))) [full-end];
+  --pds-internal-grid-safe-zone: clamp(22px, 10.625vw - 12px, 192px);
+  --pds-grid-basic-span-one-half: span 3;
+  --pds-grid-basic-span-one-third: span 2;
+  --pds-grid-narrow-span-one-half: span 3;
+  --pds-grid-basic-span-two-thirds: span 4;
+  --pds-grid-extended-span-one-half: span 3;
 
-  @media (min-width: 1760px) {
-    grid-template-columns: [grid-start] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
-        12,
+  @media (min-width: 760px) {
+    grid-template-columns: [full-start] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))) [extended-start] repeat(
+        1,
         minmax(0, 1fr)
-      ) [content-end] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+      ) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(8, minmax(0, 1fr)) [narrow-end] repeat(
+        2,
+        minmax(0, 1fr)
+      ) [basic-end] repeat(1, minmax(0, 1fr)) [extended-end] minmax(
+        0,
+        calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))
+      ) [full-end];
+    --pds-grid-basic-span-one-half: span 6;
+    --pds-grid-basic-span-one-third: span 4;
+    --pds-grid-narrow-span-one-half: span 4;
+    --pds-grid-basic-span-two-thirds: span 8;
+    --pds-grid-extended-span-one-half: span 7;
+  }
+
+  @media (min-width: 1920px) {
+    --pds-internal-grid-safe-zone: clamp(192px, 50vw - 768px, 512px);
   }
 }
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-basic.scss 1`] = `
+"$pds-grid-basic-column-start: basic-start;
+$pds-grid-basic-column-end: basic-end;
+$pds-grid-basic-span-one-half: var(--pds-grid-basic-span-one-half);
+$pds-grid-basic-span-one-third: var(--pds-grid-basic-span-one-third);
+$pds-grid-basic-span-two-thirds: var(--pds-grid-basic-span-two-thirds);
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-extended.scss 1`] = `
+"$pds-grid-extended-column-start: extended-start;
+$pds-grid-extended-column-end: extended-end;
+$pds-grid-extended-span-one-half: var(--pds-grid-extended-span-one-half);
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-full.scss 1`] = `
+"$pds-grid-full-column-start: full-start;
+$pds-grid-full-column-end: full-end;
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-gap.scss 1`] = `
-"$pds-grid-gap: max(1rem, min(3.6vw, 2.25rem));
+"$pds-grid-gap: clamp(16px, 3.6vw, 36px);
 "
 `;
 
-exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-max-width.scss 1`] = `
-"$pds-grid-min-width: 20rem;
-$pds-grid-max-width: 120rem;
-"
-`;
-
-exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-min-width.scss 1`] = `
-"$pds-grid-min-width: 20rem;
-$pds-grid-max-width: 120rem;
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-narrow.scss 1`] = `
+"$pds-grid-narrow-column-start: narrow-start;
+$pds-grid-narrow-column-end: narrow-end;
+$pds-grid-narrow-span-one-half: var(--pds-grid-narrow-span-one-half);
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-safe-zone.scss 1`] = `
-"$pds-grid-safe-zone-base: max(1rem, 7vw);
-$pds-grid-safe-zone-xl: min(calc(43vw - 39.6rem), 12rem);
+"$pds-grid-safe-zone-base: clamp(22px, 10.625vw - 12px, 192px);
+$pds-grid-safe-zone-xxl: clamp(192px, 50vw - 768px, 512px);
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-width.scss 1`] = `
+"$pds-grid-width-min: 320px;
+$pds-grid-width-max: 2560px;
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_heading.scss 1`] = `
-"@mixin pds-heading-xx-large {
-  font: normal normal 600 2rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
+"@mixin pds-heading-small {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
     sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-
-  @media (min-width: 760px) and (max-width: 999px) {
-    font-size: 2.625rem;
-  }
-
-  @media (min-width: 1000px) and (max-width: 1299px) {
-    font-size: 3.25rem;
-  }
-
-  @media (min-width: 1300px) and (max-width: 1759px) {
-    font-size: 3.875rem;
-  }
-
-  @media (min-width: 1760px) {
-    font-size: 4.5rem;
-  }
-}
-
-@mixin pds-heading-x-large {
-  font: normal normal 600 1.75rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-
-  @media (min-width: 760px) and (max-width: 999px) {
-    font-size: 2.25rem;
-  }
-
-  @media (min-width: 1000px) and (max-width: 1299px) {
-    font-size: 2.75rem;
-  }
-
-  @media (min-width: 1300px) and (max-width: 1759px) {
-    font-size: 3.25rem;
-  }
-
-  @media (min-width: 1760px) {
-    font-size: 3.75rem;
-  }
-}
-
-@mixin pds-heading-large {
-  font: normal normal 600 1.5rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-
-  @media (min-width: 760px) and (max-width: 999px) {
-    font-size: 1.875rem;
-  }
-
-  @media (min-width: 1000px) and (max-width: 1299px) {
-    font-size: 2.25rem;
-  }
-
-  @media (min-width: 1300px) and (max-width: 1759px) {
-    font-size: 2.625rem;
-  }
-
-  @media (min-width: 1760px) {
-    font-size: 3rem;
-  }
 }
 
 @mixin pds-heading-medium {
-  font: normal normal 600 1.25rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-
-  @media (min-width: 760px) and (max-width: 999px) {
-    font-size: 1.5rem;
-  }
-
-  @media (min-width: 1000px) and (max-width: 1299px) {
-    font-size: 1.75rem;
-  }
-
-  @media (min-width: 1300px) and (max-width: 1759px) {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 1760px) {
-    font-size: 2.25rem;
-  }
+  font: normal normal 600 clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
 }
 
-@mixin pds-heading-small {
-  font: normal normal 600 1rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-
-  @media (min-width: 760px) and (max-width: 999px) {
-    font-size: 1.125rem;
-  }
-
-  @media (min-width: 1000px) and (max-width: 1299px) {
-    font-size: 1.25rem;
-  }
-
-  @media (min-width: 1300px) and (max-width: 1759px) {
-    font-size: 1.375rem;
-  }
-
-  @media (min-width: 1760px) {
-    font-size: 1.5rem;
-  }
+@mixin pds-heading-large {
+  font: normal normal 600 clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
 }
 
-@mixin pds-heading-x-small {
-  font: normal normal 600 1rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+@mixin pds-heading-x-large {
+  font: normal normal 600 clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
+}
+
+@mixin pds-heading-xx-large {
+  font: normal normal 600 clamp(2.07rem, 0.96vw + 1.88rem, 2.94rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
+}
+
+@mixin pds-heading-xxx-large {
+  font: normal normal 600 clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
 }
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_spacing.scss 1`] = `
-"$pds-spacing-x-small: 0.25rem;
-$pds-spacing-small: 0.5rem;
-$pds-spacing-medium: 1rem;
-$pds-spacing-large: 2rem;
-$pds-spacing-x-large: 3rem;
-$pds-spacing-xx-large: 5rem;
+"$pds-spacing-static-x-small: 4px;
+$pds-spacing-static-small: 8px;
+$pds-spacing-static-medium: 16px;
+$pds-spacing-static-large: 32px;
+$pds-spacing-static-x-large: 48px;
+$pds-spacing-static-xx-large: 80px;
+$pds-spacing-fluid-x-small: clamp(0.25rem, 0.28vw + 0.19rem, 0.5rem);
+$pds-spacing-fluid-small: 0.75rem;
+$pds-spacing-fluid-medium: clamp(2rem, 0.56vw + 1.89rem, 2.5rem);
+$pds-spacing-fluid-large: clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem);
+$pds-spacing-fluid-x-large: clamp(4rem, 10vw + 2rem, 13rem);
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_text.scss 1`] = `
 "@mixin pds-text-x-small {
-  font: normal normal 400 0.75rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
+  font: normal normal 400 0.875rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
     sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
 }
 
 @mixin pds-text-small {
-  font: normal normal 400 1rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
+  font: normal normal 400 1rem/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
     sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
 }
 
 @mixin pds-text-medium {
-  font: normal normal 400 1.5rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
+  font: normal normal 400 clamp(1.2rem, 0.12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
 }
 
 @mixin pds-text-large {
-  font: normal normal 400 2.25rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
+  font: normal normal 400 clamp(1.44rem, 0.3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
 }
 
 @mixin pds-text-x-large {
-  font: normal normal 400 3.25rem / calc(6px + 2.125ex) "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei,
-    sans-serif;
+  font: normal normal 400 clamp(1.73rem, 0.57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+    Arial, "Heiti SC", SimHei, sans-serif;
   hyphens: auto;
   overflow-wrap: break-word;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
 }
 "
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_theme.scss 1`] = `
-"$pds-theme-light-electric-brand: #00b0f4;
-$pds-theme-light-electric-base: #000;
-$pds-theme-light-electric-background-base: #fff;
-$pds-theme-light-electric-background-surface: #f2f2f2;
-$pds-theme-light-electric-background-shading: rgba(14, 20, 24, 0.9);
-$pds-theme-light-electric-contrast-high: #323639;
-$pds-theme-light-electric-contrast-medium: #626669;
-$pds-theme-light-electric-contrast-low: #e3e4e5;
-$pds-theme-light-electric-notification-success: #018a16;
-$pds-theme-light-electric-notification-success-soft: #e5f3e7;
-$pds-theme-light-electric-notification-warning: #ff9b00;
-$pds-theme-light-electric-notification-warning-soft: #fff5e5;
-$pds-theme-light-electric-notification-error: #e00000;
-$pds-theme-light-electric-notification-error-soft: #fae6e6;
-$pds-theme-light-electric-notification-neutral: #0061bd;
-$pds-theme-light-electric-notification-neutral-soft: #e5eff8;
-$pds-theme-light-electric-state-hover: #00b0f4;
-$pds-theme-light-electric-state-active: #00b0f4;
-$pds-theme-light-electric-state-focus: currentColor;
-$pds-theme-light-electric-state-disabled: #96989a;
-$pds-theme-light-brand: #d5001c;
-$pds-theme-light-base: #000;
+"$pds-theme-light-primary: #010205;
 $pds-theme-light-background-base: #fff;
-$pds-theme-light-background-surface: #f2f2f2;
-$pds-theme-light-background-shading: rgba(14, 20, 24, 0.9);
-$pds-theme-light-contrast-high: #323639;
-$pds-theme-light-contrast-medium: #626669;
-$pds-theme-light-contrast-low: #e3e4e5;
-$pds-theme-light-notification-success: #018a16;
-$pds-theme-light-notification-success-soft: #e5f3e7;
-$pds-theme-light-notification-warning: #ff9b00;
-$pds-theme-light-notification-warning-soft: #fff5e5;
-$pds-theme-light-notification-error: #e00000;
-$pds-theme-light-notification-error-soft: #fae6e6;
-$pds-theme-light-notification-neutral: #0061bd;
-$pds-theme-light-notification-neutral-soft: #e5eff8;
-$pds-theme-light-state-hover: #d5001c;
-$pds-theme-light-state-active: #d5001c;
-$pds-theme-light-state-focus: currentColor;
-$pds-theme-light-state-disabled: #96989a;
-$pds-theme-dark-electric-brand: #00b0f4;
-$pds-theme-dark-electric-base: #fff;
-$pds-theme-dark-electric-background-base: #0e1418;
-$pds-theme-dark-electric-background-surface: #262b2e;
-$pds-theme-dark-electric-background-shading: rgba(14, 20, 24, 0.9);
-$pds-theme-dark-electric-contrast-high: #e3e4e5;
-$pds-theme-dark-electric-contrast-medium: #b0b1b2;
-$pds-theme-dark-electric-contrast-low: #4a4e51;
-$pds-theme-dark-electric-notification-success: #01ba1d;
-$pds-theme-dark-electric-notification-success-soft: #bfeec6;
-$pds-theme-dark-electric-notification-warning: #ff9b00;
-$pds-theme-dark-electric-notification-warning-soft: #ffe6bf;
-$pds-theme-dark-electric-notification-error: #fc1717;
-$pds-theme-dark-electric-notification-error-soft: #fec5c5;
-$pds-theme-dark-electric-notification-neutral: #2193ff;
-$pds-theme-dark-electric-notification-neutral-soft: #c7e4ff;
-$pds-theme-dark-electric-state-hover: #00b0f4;
-$pds-theme-dark-electric-state-active: #00b0f4;
-$pds-theme-dark-electric-state-focus: currentColor;
-$pds-theme-dark-electric-state-disabled: #7c7f81;
-$pds-theme-dark-brand: #d5001c;
-$pds-theme-dark-base: #fff;
-$pds-theme-dark-background-base: #0e1418;
-$pds-theme-dark-background-surface: #262b2e;
-$pds-theme-dark-background-shading: rgba(14, 20, 24, 0.9);
-$pds-theme-dark-contrast-high: #e3e4e5;
-$pds-theme-dark-contrast-medium: #b0b1b2;
-$pds-theme-dark-contrast-low: #4a4e51;
-$pds-theme-dark-notification-success: #01ba1d;
-$pds-theme-dark-notification-success-soft: #bfeec6;
-$pds-theme-dark-notification-warning: #ff9b00;
-$pds-theme-dark-notification-warning-soft: #ffe6bf;
-$pds-theme-dark-notification-error: #fc1717;
-$pds-theme-dark-notification-error-soft: #fec5c5;
-$pds-theme-dark-notification-neutral: #2193ff;
-$pds-theme-dark-notification-neutral-soft: #c7e4ff;
-$pds-theme-dark-state-hover: #ff0223;
-$pds-theme-dark-state-active: #ff0223;
-$pds-theme-dark-state-focus: currentColor;
-$pds-theme-dark-state-disabled: #7c7f81;
+$pds-theme-light-background-surface: #eeeff2;
+$pds-theme-light-background-shading: rgba(1, 2, 5, 0.67);
+$pds-theme-light-contrast-low: #d8d8db;
+$pds-theme-light-contrast-medium: #949598;
+$pds-theme-light-contrast-high: #535457;
+$pds-theme-light-notification-success: #32b85b;
+$pds-theme-light-notification-success-soft: #ebfaf0;
+$pds-theme-light-notification-warning: #fecc1b;
+$pds-theme-light-notification-warning-soft: #fff9e6;
+$pds-theme-light-notification-error: #e7323b;
+$pds-theme-light-notification-error-soft: #fce8e9;
+$pds-theme-light-notification-info: #1e5beb;
+$pds-theme-light-notification-info-soft: #e8eefd;
+$pds-theme-light-state-hover: rgba(148, 149, 152, 0.2);
+$pds-theme-light-state-active: rgba(148, 149, 152, 0.2);
+$pds-theme-light-state-focus: #0a0aff;
+$pds-theme-light-state-disabled: #949598;
+$pds-theme-dark-primary: #fbfcff;
+$pds-theme-dark-background-base: #0e0e12;
+$pds-theme-dark-background-surface: #212225;
+$pds-theme-dark-background-shading: rgba(1, 2, 5, 0.67);
+$pds-theme-dark-contrast-low: #404044;
+$pds-theme-dark-contrast-medium: #7e7f82;
+$pds-theme-dark-contrast-high: #afb0b3;
+$pds-theme-dark-notification-success: #00c77e;
+$pds-theme-dark-notification-success-soft: #003320;
+$pds-theme-dark-notification-warning: #ddb84b;
+$pds-theme-dark-notification-warning-soft: #2b2208;
+$pds-theme-dark-notification-error: #cb3333;
+$pds-theme-dark-notification-error-soft: #290a0a;
+$pds-theme-dark-notification-info: #027ffc;
+$pds-theme-dark-notification-info-soft: #001a33;
+$pds-theme-dark-state-hover: rgba(126, 127, 130, 0.2);
+$pds-theme-dark-state-active: rgba(126, 127, 130, 0.2);
+$pds-theme-dark-state-focus: #0a0aff;
+$pds-theme-dark-state-disabled: #7e7f82;
 "
 `;

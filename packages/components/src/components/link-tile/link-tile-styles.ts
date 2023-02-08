@@ -2,17 +2,17 @@ import {
   pxToRemWithUnit,
   getInsetJssStyle,
   getTransition,
-  addImportantToRule,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTextColor } from '../../styles/text-icon-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
-import { mediaQueryMin, textSmall } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '1:1': '100%',
@@ -69,24 +69,29 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        height: addImportantToRule('fit-content'),
-        '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
+        ...addImportantToEachRule({
+          height: 'fit-content',
+          ...hostHiddenStyles,
+        }),
+      },
+      ...addImportantToEachRule({
+        '::slotted(picture),::slotted(img)': {
           transition: getTransition('transform'),
           ...getBackfaceVisibilityJssStyle(),
-        }),
-        '& ::slotted(picture)': addImportantToEachRule({
+        },
+        '::slotted(picture)': {
           position: 'absolute',
           ...getInsetJssStyle(),
-        }),
-        '& ::slotted(img)': addImportantToEachRule({
+        },
+        '::slotted(img)': {
           height: '100%',
           width: '100%',
           objectFit: 'cover',
-        }),
-      },
+        },
+      }),
       p: {
-        color: getThemedTextColor('dark', 'default'),
-        ...textSmall,
+        color: getThemedTextColor('dark', 'primary'),
+        ...textSmallStyle,
         maxWidth: pxToRemWithUnit(550),
         margin: 0,
         ...mergeDeep(
@@ -130,7 +135,7 @@ export const getComponentCss = (
       gap: pxToRemWithUnit(24),
       ...mergeDeep(
         {
-          [mediaQueryMin('s')]: {
+          [getMediaQueryMin('s')]: {
             paddingLeft: pxToRemWithUnit(32),
             paddingRight: pxToRemWithUnit(32),
             ...(align === 'bottom' ? { paddingBottom: pxToRemWithUnit(32) } : { paddingTop: pxToRemWithUnit(32) }),

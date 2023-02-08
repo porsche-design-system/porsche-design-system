@@ -18,8 +18,6 @@ export const generateInitialStylesPartial = (): string => {
   prefix?: string;
   ${withoutTagsOption}
   format?: Format;
-  // Standard normalize.css styles won't be applied by using this option
-  applyNormalizeStyles?: boolean;
 };
 type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'html' };
 type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'jsx' };
@@ -84,11 +82,10 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { prefix, withoutTags, format, applyNormalizeStyles }: GetInitialStylesOptions = {
+  const { prefix, withoutTags, format }: GetInitialStylesOptions = {
     prefix: '',
     withoutTags: false,
     format: 'html',
-    applyNormalizeStyles: false,
     ...opts,
   };
 
@@ -101,10 +98,9 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const styleAttributes = convertPropsToAttributeString(styleProps);
 
   const prefixedTagNamesStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
-
   const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`;
 
-  const styles = applyNormalizeStyles ? prefixedTagNamesStyles.concat(normalizeStyles) : prefixedTagNamesStyles;
+  const styles = prefixedTagNamesStyles.concat(normalizeStyles);
 
   const markup = format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`

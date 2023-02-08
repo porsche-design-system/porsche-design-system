@@ -1,8 +1,6 @@
-import { headingXXLarge } from './headingXXLarge';
-import { headingXLarge } from './headingXLarge';
-import { headingLarge } from './headingLarge';
-import { headingMedium } from './headingMedium';
-import { headingSmall } from './headingSmall';
-import { headingXSmall } from './headingXSmall';
-
-export { headingXXLarge, headingXLarge, headingLarge, headingMedium, headingSmall, headingXSmall };
+export { headingSmallStyle } from './headingSmallStyle';
+export { headingMediumStyle } from './headingMediumStyle';
+export { headingLargeStyle } from './headingLargeStyle';
+export { headingXLargeStyle } from './headingXLargeStyle';
+export { headingXXLargeStyle } from './headingXXLargeStyle';
+export { headingXXXLargeStyle } from './headingXXXLargeStyle';

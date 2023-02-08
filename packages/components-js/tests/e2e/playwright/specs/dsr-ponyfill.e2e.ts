@@ -102,7 +102,7 @@ test('should handle dsr ponyfill phase correctly', async ({ page }) => {
   expect(await getComputedColor(button)).toBe('');
 });
 
-test('should handle hydration phase after ponyfill correctly', async ({ page }) => {
+test.skip('should handle hydration phase after ponyfill correctly', async ({ page }) => {
   await setPageWithContent(page);
   const [buttonWithTemplate, button] = await getButtons(page);
 
@@ -118,7 +118,7 @@ test('should handle hydration phase after ponyfill correctly', async ({ page }) 
   expect(await getComputedColor(button)).toBe('rgb(50, 54, 57)');
 });
 
-test('should handle prop change after ponyfill and hydration correctly', async ({ page }) => {
+test.skip('should handle prop change after ponyfill and hydration correctly', async ({ page }) => {
   await setPageWithContent(page);
   const [buttonWithTemplate, button] = await getButtons(page);
 

@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for alignContent: "center" 
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: center !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -19,6 +22,9 @@ exports[`getComponentCss() should return correct css for alignContent: "flex-end
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: flex-end !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -30,6 +36,9 @@ exports[`getComponentCss() should return correct css for alignContent: "flex-sta
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: flex-start !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -41,6 +50,9 @@ exports[`getComponentCss() should return correct css for alignContent: "space-ar
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: space-around !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -52,6 +64,9 @@ exports[`getComponentCss() should return correct css for alignContent: "space-be
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: space-between !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -63,6 +78,9 @@ exports[`getComponentCss() should return correct css for alignContent: "space-ev
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: space-evenly !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -74,6 +92,9 @@ exports[`getComponentCss() should return correct css for alignContent: "stretch"
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -85,6 +106,9 @@ exports[`getComponentCss() should return correct css for alignContent: {"base":"
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -126,6 +150,9 @@ exports[`getComponentCss() should return correct css for alignItems: "baseline" 
   justify-content: flex-start !important;
   align-items: baseline !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -137,6 +164,9 @@ exports[`getComponentCss() should return correct css for alignItems: "center" 1`
   justify-content: flex-start !important;
   align-items: center !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -148,6 +178,9 @@ exports[`getComponentCss() should return correct css for alignItems: "flex-end" 
   justify-content: flex-start !important;
   align-items: flex-end !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -159,6 +192,9 @@ exports[`getComponentCss() should return correct css for alignItems: "flex-start
   justify-content: flex-start !important;
   align-items: flex-start !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -170,6 +206,9 @@ exports[`getComponentCss() should return correct css for alignItems: "stretch" 1
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -181,6 +220,9 @@ exports[`getComponentCss() should return correct css for alignItems: {"base":"st
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -222,6 +264,9 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -288,6 +333,9 @@ exports[`getComponentCss() should return correct css for direction: "column" 1`]
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -299,6 +347,9 @@ exports[`getComponentCss() should return correct css for direction: "column-reve
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -310,6 +361,9 @@ exports[`getComponentCss() should return correct css for direction: "row" 1`] = 
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -321,6 +375,9 @@ exports[`getComponentCss() should return correct css for direction: "row-reverse
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -332,6 +389,9 @@ exports[`getComponentCss() should return correct css for direction: {"base":"row
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -374,6 +434,9 @@ exports[`getComponentCss() should return correct css for inline: {"base":true,"x
   align-items: stretch !important;
   align-content: stretch !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 @media(min-width:480px) {
   :host {
     display: flex !important;
@@ -414,6 +477,9 @@ exports[`getComponentCss() should return correct css for inline: false 1`] = `
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -425,6 +491,9 @@ exports[`getComponentCss() should return correct css for inline: true 1`] = `
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -436,6 +505,9 @@ exports[`getComponentCss() should return correct css for justifyContent: "center
   justify-content: center !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -447,6 +519,9 @@ exports[`getComponentCss() should return correct css for justifyContent: "flex-e
   justify-content: flex-end !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -458,6 +533,9 @@ exports[`getComponentCss() should return correct css for justifyContent: "flex-s
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -469,6 +547,9 @@ exports[`getComponentCss() should return correct css for justifyContent: "space-
   justify-content: space-around !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -480,6 +561,9 @@ exports[`getComponentCss() should return correct css for justifyContent: "space-
   justify-content: space-between !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -491,6 +575,9 @@ exports[`getComponentCss() should return correct css for justifyContent: "space-
   justify-content: space-evenly !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -502,6 +589,9 @@ exports[`getComponentCss() should return correct css for justifyContent: {"base"
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {
@@ -543,6 +633,9 @@ exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -554,6 +647,9 @@ exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -565,6 +661,9 @@ exports[`getComponentCss() should return correct css for wrap: "wrap-reverse" 1`
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
@@ -576,6 +675,9 @@ exports[`getComponentCss() should return correct css for wrap: {"base":"nowrap",
   justify-content: flex-start !important;
   align-items: stretch !important;
   align-content: stretch !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(min-width:480px) {
   :host {

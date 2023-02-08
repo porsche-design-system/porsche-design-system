@@ -1,13 +1,13 @@
 import type { JssStyle } from 'jss';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, hostHiddenStyles, pxToRemWithUnit } from '../../../styles';
+import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 
-const cssVariableOrderedSuffix = '--pds-text-list-item-ordered-suffix';
-const cssVariableUnorderedWidth = '--pds-text-list-item-unordered-width';
-const cssVariableUnorderedHeight = '--pds-text-list-item-unordered-height';
-const cssVariableUnorderedTop = '--pds-text-list-item-unordered-top';
+const cssVariableOrderedSuffix = '--p-internal-text-list-item-ordered-suffix';
+const cssVariableUnorderedWidth = '--p-internal-text-list-item-unordered-width';
+const cssVariableUnorderedHeight = '--p-internal-text-list-item-unordered-height';
+const cssVariableUnorderedTop = '--p-internal-text-list-item-unordered-top';
 
 export const getComponentCss = (listType: ListType, orderType: OrderType): string => {
   const isOrdered = listType === 'ordered';
@@ -18,18 +18,13 @@ export const getComponentCss = (listType: ListType, orderType: OrderType): strin
 
   return getCss({
     '@global': {
-      '::slotted(*)': {
-        [cssVariableOrderedSuffix]: '""',
-        [cssVariableUnorderedWidth]: pxToRemWithUnit(8),
-        [cssVariableUnorderedHeight]: '1px',
-        [cssVariableUnorderedTop]: 'calc(1.5em / 2)',
-      },
       ':host': addImportantToEachRule({
         position: 'relative',
         display: 'list-item',
         color: 'inherit',
         listStyleType: 'none',
         paddingLeft: pxToRemWithUnit(isOrdered ? 40 : 24),
+        ...hostHiddenStyles,
         '&:before': isOrdered
           ? {
               ...beforeJssStyles,
@@ -42,7 +37,7 @@ export const getComponentCss = (listType: ListType, orderType: OrderType): strin
               counterIncrement: 'section',
               textAlign: 'right',
               backgroundColor: 'transparent',
-              ...textSmall,
+              ...textSmallStyle,
             }
           : {
               ...beforeJssStyles,
@@ -53,6 +48,12 @@ export const getComponentCss = (listType: ListType, orderType: OrderType): strin
               backgroundColor: 'currentColor',
             },
       }),
+      '::slotted(*)': {
+        [cssVariableOrderedSuffix]: '""',
+        [cssVariableUnorderedWidth]: pxToRemWithUnit(8),
+        [cssVariableUnorderedHeight]: '1px',
+        [cssVariableUnorderedTop]: 'calc(1.5em / 2)',
+      },
     },
   });
 };

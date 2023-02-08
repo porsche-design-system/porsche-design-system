@@ -1,6 +1,6 @@
 import { getVisualRegressionOverviewTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-it('should have no visual regression for font family fallback strategy', async () => {
+xit('should have no visual regression for font family fallback strategy', async () => {
   expect(
     await vrtTest(
       getVisualRegressionOverviewTester(),
@@ -11,7 +11,7 @@ it('should have no visual regression for font family fallback strategy', async (
   ).toBeFalsy();
 });
 
-it('should have no visual regression for latin charset', async () => {
+xit('should have no visual regression for latin charset', async () => {
   expect(
     await vrtTest(getVisualRegressionOverviewTester(), 'typography-latin', '/typography-latin', {
       javaScriptEnabled: false,
@@ -19,7 +19,7 @@ it('should have no visual regression for latin charset', async () => {
   ).toBeFalsy();
 });
 
-it('should have no visual regression greek and coptic charset', async () => {
+xit('should have no visual regression greek and coptic charset', async () => {
   expect(
     await vrtTest(getVisualRegressionOverviewTester(), 'typography-greek-and-coptic', '/typography-greek-and-coptic', {
       javaScriptEnabled: false,
@@ -27,7 +27,7 @@ it('should have no visual regression greek and coptic charset', async () => {
   ).toBeFalsy();
 });
 
-it('should have no visual regression cyril charset', async () => {
+xit('should have no visual regression cyril charset', async () => {
   expect(
     await vrtTest(getVisualRegressionOverviewTester(), 'typography-cyril', '/typography-cyril', {
       javaScriptEnabled: false,

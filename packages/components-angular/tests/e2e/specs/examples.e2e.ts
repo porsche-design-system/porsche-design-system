@@ -21,7 +21,7 @@ const [, rawRoutes] = /const routes.*(\[[\s\S]*\]);/.exec(fileContent) || [];
 const routes: { name: string; path: string; component: string }[] = eval(
   rawRoutes
     .replace(/\.\.\.\[[\s\S]*?\].*/, '') // get rid of generatedRoutes
-    .replace(/(from(?:Pages|Examples)\.\w+)/g, "'$1'")
+    .replace(/(from(?:Pages|Examples|DesignTokens)\.\w+)/g, "'$1'")
 ).filter(({ component }) => component);
 
 const exampleRoutes = routes.filter((item) => item.component.startsWith('fromExamples.'));

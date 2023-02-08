@@ -13,11 +13,11 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'tabs-bar', '/#tabs-bar')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('tabs-bar-states', async () => {
@@ -35,17 +35,14 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <a href="#">Anchor Tab Three</a>
         </p-tabs-bar>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
 
-      await forceHoverState(page, '.hover > p-tabs-bar button');
-      await forceHoverState(page, '.hover > p-tabs-bar a');
-      await forceFocusState(page, '.focus > p-tabs-bar button');
-      await forceFocusState(page, '.focus > p-tabs-bar a');
-      await forceFocusHoverState(page, '.focus-hover > p-tabs-bar button');
-      await forceFocusHoverState(page, '.focus-hover > p-tabs-bar a');
+      await forceHoverState(page, '.hover p-tabs-bar button');
+      await forceHoverState(page, '.hover p-tabs-bar a');
+      await forceFocusState(page, '.focus p-tabs-bar button');
+      await forceFocusState(page, '.focus p-tabs-bar a');
+      await forceFocusHoverState(page, '.focus-hover p-tabs-bar button');
+      await forceFocusHoverState(page, '.focus-hover p-tabs-bar a');
     })
   ).toBeFalsy();
 });

@@ -1,99 +1,44 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildSlottedStyles, getCss, isVisibleFormState } from '../../utils';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  getTransition,
-  pxToRemWithUnit,
-  getThemedColors,
-} from '../../styles';
-import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { getCheckboxRadioLabelJssStyle } from '../../styles/checkbox-radio-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import type { FormState } from '../../utils/form/form-state';
+import { getCss, mergeDeep } from '../../utils';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { borderRadiusMedium, borderRadiusSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  isDisabled: boolean
+  isDisabled: boolean,
+  theme: Theme
 ): string => {
-  const theme: Theme = 'light';
-  const size = pxToRemWithUnit(24);
-  const hasVisibleState = isVisibleFormState(state);
-  const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const iconColor = backgroundColor.replace(/#/g, '%23');
+  const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
+  const indeterminateIconColor = getThemedColors(theme).primaryColor.replace(/#/g, '%23');
 
-  return getCss({
-    '@global': {
-      ':host': {
-        display: 'block',
-      },
-      '::slotted': addImportantToEachRule({
-        '&(input)': {
-          position: 'static',
-          width: size,
-          height: size,
-          flexShrink: 0,
-          display: 'block',
-          margin: 0,
-          padding: 0,
-          WebkitAppearance: 'none', // iOS safari
-          appearance: 'none',
-          boxSizing: 'border-box',
-          backgroundSize: size,
-          backgroundPosition: hasVisibleState ? '-2px -2px' : '-1px -1px',
-          backgroundColor,
-          transition: ['border-color', 'background-color'].map(getTransition).join(),
-          opacity: 1,
-          border: hasVisibleState ? `2px solid ${formStateColor}` : `1px solid ${contrastMediumColor}`,
-          borderRadius: 0,
-          outline: '1px solid transparent',
-          outlineOffset: '2px',
-          cursor: 'pointer',
-        },
-        '&(input:checked)': {
-          backgroundImage: `url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="${iconColor}" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>')`,
-        },
-        '&(input:indeterminate)': {
-          backgroundImage: `url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="${iconColor}" d="M3 11h18v1H3z"/></svg>')`,
-        },
-        '&(input:checked), &(input:indeterminate)': {
-          borderColor: formStateColor || contrastHighColor,
-          backgroundColor: formStateColor || contrastHighColor,
-        },
-        ...hoverMediaQuery({
-          '&(input:not(:disabled):hover), .label:hover ~ &(input:not(:disabled))': {
-            borderColor: formStateHoverColor || baseColor,
+  return getCss(
+    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, theme), {
+      '@global': {
+        '::slotted': addImportantToEachRule({
+          '&(input)': {
+            borderRadius: borderRadiusSmall,
           },
+          '&(input:checked)': {
+            backgroundImage: getInlineSVGBackgroundImage(
+              `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
+            ),
+          },
+          '&(input:indeterminate)': {
+            backgroundImage: getInlineSVGBackgroundImage(
+              `<path fill="${indeterminateIconColor}" d="m20,11v2H4v-2h16Z"/>`
+            ),
+          },
+          ...(!isDisabled && {
+            '&(input:focus)::before': {
+              borderRadius: borderRadiusMedium,
+            },
+          }),
         }),
-        '&(input:indeterminate:disabled), &(input:checked:disabled)': {
-          backgroundColor: disabledColor,
-        },
-        '&(input:disabled)': {
-          borderColor: disabledColor,
-          cursor: 'not-allowed',
-        },
-        '&(input:focus)': {
-          outlineColor: formStateColor || contrastMediumColor,
-        },
-        '&(input:focus:not(:focus-visible))': {
-          outlineColor: 'transparent',
-        },
-      }),
-      label: {
-        position: 'relative',
-        display: 'flex',
       },
-    },
-    label: getCheckboxRadioLabelJssStyle(isDisabled, hideLabel, theme),
-    ...getFunctionalComponentRequiredStyles(theme),
-    ...getFunctionalComponentStateMessageStyles(theme, state),
-  });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
+    })
+  );
 };

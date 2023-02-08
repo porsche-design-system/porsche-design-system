@@ -1,0 +1,160 @@
+@import '../../../../../node_modules/@porsche-design-system/components-angular/styles/scss';
+
+// Wrapper
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: $pds-grid-gap;
+  padding: $pds-spacing-fluid-medium;
+
+  &--light {
+    background: $pds-theme-light-background-base;
+  }
+
+  &--dark {
+    background: $pds-theme-dark-background-base;
+  }
+}
+
+// Typography
+.heading {
+  @include pds-heading-medium;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+
+  &--light {
+    color: $pds-theme-light-primary;
+  }
+
+  &--dark {
+    color: $pds-theme-dark-primary;
+  }
+}
+
+// Tile
+.tile {
+  border-radius: $pds-border-radius-small;
+  padding: $pds-spacing-fluid-medium;
+  border: 1px solid grey;
+}
+
+// Theme Light
+.theme-light-primary {
+  background: $pds-theme-light-primary;
+}
+.theme-light-background-base {
+  background: $pds-theme-light-background-base;
+}
+.theme-light-background-surface {
+  background: $pds-theme-light-background-surface;
+}
+.theme-light-background-shading {
+  background: $pds-theme-light-background-shading;
+}
+.theme-light-contrast-low {
+  background: $pds-theme-light-contrast-low;
+}
+.theme-light-contrast-medium {
+  background: $pds-theme-light-contrast-medium;
+}
+.theme-light-contrast-high {
+  background: $pds-theme-light-contrast-high;
+}
+.theme-light-notification-success {
+  background: $pds-theme-light-notification-success;
+}
+.theme-light-notification-success-soft {
+  background: $pds-theme-light-notification-success-soft;
+}
+.theme-light-notification-warning {
+  background: $pds-theme-light-notification-warning;
+}
+.theme-light-notification-warning-soft {
+  background: $pds-theme-light-notification-warning-soft;
+}
+.theme-light-notification-error {
+  background: $pds-theme-light-notification-error;
+}
+.theme-light-notification-error-soft {
+  background: $pds-theme-light-notification-error-soft;
+}
+.theme-light-notification-info {
+  background: $pds-theme-light-notification-info;
+}
+.theme-light-notification-info-soft {
+  background: $pds-theme-light-notification-info-soft;
+}
+.theme-light-state-hover {
+  background: $pds-theme-light-state-hover;
+}
+.theme-light-state-active {
+  background: $pds-theme-light-state-active;
+}
+.theme-light-state-focus {
+  background: $pds-theme-light-state-focus;
+}
+.theme-light-state-disabled {
+  background: $pds-theme-light-state-disabled;
+}
+
+// Theme Dark
+.theme-dark-primary {
+  background: $pds-theme-dark-primary;
+}
+.theme-dark-background-base {
+  background: $pds-theme-dark-background-base;
+}
+.theme-dark-background-surface {
+  background: $pds-theme-dark-background-surface;
+}
+.theme-dark-background-shading {
+  background: $pds-theme-dark-background-shading;
+}
+.theme-dark-contrast-low {
+  background: $pds-theme-dark-contrast-low;
+}
+.theme-dark-contrast-medium {
+  background: $pds-theme-dark-contrast-medium;
+}
+.theme-dark-contrast-high {
+  background: $pds-theme-dark-contrast-high;
+}
+.theme-dark-notification-success {
+  background: $pds-theme-dark-notification-success;
+}
+.theme-dark-notification-success-soft {
+  background: $pds-theme-dark-notification-success-soft;
+}
+.theme-dark-notification-warning {
+  background: $pds-theme-dark-notification-warning;
+}
+.theme-dark-notification-warning-soft {
+  background: $pds-theme-dark-notification-warning-soft;
+}
+.theme-dark-notification-error {
+  background: $pds-theme-dark-notification-error;
+}
+.theme-dark-notification-error-soft {
+  background: $pds-theme-dark-notification-error-soft;
+}
+.theme-dark-notification-info {
+  background: $pds-theme-dark-notification-info;
+}
+.theme-dark-notification-info-soft {
+  background: $pds-theme-dark-notification-info-soft;
+}
+.theme-dark-state-hover {
+  background: $pds-theme-dark-state-hover;
+}
+.theme-dark-state-active {
+  background: $pds-theme-dark-state-active;
+}
+.theme-dark-state-focus {
+  background: $pds-theme-dark-state-focus;
+}
+.theme-dark-state-disabled {
+  background: $pds-theme-dark-state-disabled;
+}

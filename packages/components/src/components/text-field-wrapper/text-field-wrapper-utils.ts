@@ -1,7 +1,7 @@
-import type { FormState } from '../../utils/form/form-state';
-import { pxToRemWithUnit } from '../../styles';
 import { getClosestHTMLElement, hasCounter } from '../../utils';
 import type { IconName } from '../../types';
+import { borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { cssVariableInputPaddingLeft, cssVariableInputPaddingRight } from './text-field-wrapper-styles';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
@@ -15,27 +15,22 @@ export const isType = (inputType: string, typeToValidate: string): boolean => in
 export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElement(host, 'form');
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
-export const getInputPadding = (
-  unitElementWidth: number,
-  unitPosition: TextFieldWrapperUnitPosition,
-  state: FormState
-): string => {
-  const padding = pxToRemWithUnit(state !== 'none' ? 10 : 11);
-  return unitPosition === 'prefix'
-    ? `${padding} ${padding} ${padding} ${pxToRemWithUnit(unitElementWidth)}`
-    : `${padding} ${pxToRemWithUnit(unitElementWidth)} ${padding} ${padding}`;
+export const getInputPaddingLeftOrRight = (unitElementWidth: number): string => {
+  return `calc(${unitElementWidth}px - ${borderWidthBase})`;
 };
 
 export const setInputStyles = (
   input: HTMLInputElement,
   unitOrCounterElement: HTMLElement,
-  unitPosition: TextFieldWrapperUnitPosition,
-  state: FormState
+  unitPosition: TextFieldWrapperUnitPosition
 ): void => {
   if (unitOrCounterElement) {
+    input.style.removeProperty(cssVariableInputPaddingLeft);
+    input.style.removeProperty(cssVariableInputPaddingRight);
+
     input.style.setProperty(
-      'padding',
-      getInputPadding(unitOrCounterElement.offsetWidth, unitPosition, state),
+      unitPosition === 'prefix' ? cssVariableInputPaddingLeft : cssVariableInputPaddingRight,
+      getInputPaddingLeftOrRight(unitOrCounterElement.offsetWidth),
       'important'
     );
   }

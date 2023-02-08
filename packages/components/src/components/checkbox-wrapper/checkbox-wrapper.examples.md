@@ -100,7 +100,7 @@ import Component from 'vue-class-component';
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'inline' };
+  config = { themeable: true, spacing: 'block' };
 
   state = 'error';
   label = 'show';

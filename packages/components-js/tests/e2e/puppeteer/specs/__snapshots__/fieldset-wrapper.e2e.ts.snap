@@ -8,19 +8,6 @@ exports[`accessibility should expose correct accessibility tree property if erro
         {
           "children": [
             {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
               "role": "none",
             },
           ],
@@ -49,19 +36,6 @@ exports[`accessibility should expose correct accessibility tree property in erro
         {
           "children": [
             {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
               "role": "none",
             },
           ],

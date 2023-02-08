@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
@@ -13,13 +13,14 @@ import { ButtonGroupDirection } from "./components/button-group/button-group-uti
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
+import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerOrientation } from "./components/divider/divider-utils";
 import { FieldsetWrapperLabelSize } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { IconAriaAttribute } from "./components/icon/icon-utils";
+import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
@@ -39,7 +40,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/table/table/
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
-import { TextTag } from "./components/text/text-tag";
+import { TextTag } from "./components/text/text-utils";
 import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
@@ -69,7 +70,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PBanner {
         /**
@@ -93,7 +94,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -103,9 +104,9 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -115,14 +116,9 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -150,7 +146,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -162,7 +158,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -180,20 +176,16 @@ export namespace Components {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
         "type"?: ButtonType;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
@@ -248,20 +240,52 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PContentWrapper {
         /**
-          * Defines the background color.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
-          * Adapts the color when used on dark background.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PDisplay {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: DisplayAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: DisplayColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<DisplaySize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the display component.
+         */
+        "tag"?: DisplayTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
     }
     interface PDivider {
         /**
@@ -298,6 +322,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
     interface PFlex {
         /**
@@ -357,7 +385,8 @@ export namespace Components {
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
@@ -383,13 +412,13 @@ export namespace Components {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'default' | 'inherit'>;
+        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**
@@ -409,9 +438,10 @@ export namespace Components {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -427,9 +457,9 @@ export namespace Components {
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -483,9 +513,9 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -501,7 +531,7 @@ export namespace Components {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The style variant of the link.
          */
@@ -535,7 +565,7 @@ export namespace Components {
         /**
           * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -559,9 +589,14 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
@@ -748,6 +783,10 @@ export namespace Components {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
+        /**
+          * Adapts the popover color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**
@@ -766,6 +805,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PScroller {
         /**
@@ -783,7 +826,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PSegmentedControl {
         /**
@@ -885,7 +928,7 @@ export namespace Components {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
@@ -933,14 +976,9 @@ export namespace Components {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -992,7 +1030,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -1014,7 +1052,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -1057,6 +1095,10 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -1076,7 +1118,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending of the usage of the text component.
+          * Sets a custom HTML tag depending on the usage of the text component.
          */
         "tag"?: TextTag;
         /**
@@ -1121,6 +1163,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
         /**
           * The unit text.
          */
@@ -1171,6 +1217,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
@@ -1298,6 +1348,12 @@ declare global {
     var HTMLPContentWrapperElement: {
         prototype: HTMLPContentWrapperElement;
         new (): HTMLPContentWrapperElement;
+    };
+    interface HTMLPDisplayElement extends Components.PDisplay, HTMLStencilElement {
+    }
+    var HTMLPDisplayElement: {
+        prototype: HTMLPDisplayElement;
+        new (): HTMLPDisplayElement;
     };
     interface HTMLPDividerElement extends Components.PDivider, HTMLStencilElement {
     }
@@ -1584,6 +1640,7 @@ declare global {
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
+        "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
@@ -1661,7 +1718,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PBanner {
         /**
@@ -1689,7 +1746,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1699,9 +1756,9 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -1711,14 +1768,9 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -1746,7 +1798,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1758,7 +1810,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -1776,20 +1828,16 @@ declare namespace LocalJSX {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
         "type"?: ButtonType;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
@@ -1848,20 +1896,52 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PContentWrapper {
         /**
-          * Defines the background color.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
-          * Adapts the color when used on dark background.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PDisplay {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: DisplayAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: DisplayColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<DisplaySize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the display component.
+         */
+        "tag"?: DisplayTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
     }
     interface PDivider {
         /**
@@ -1898,6 +1978,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
     interface PFlex {
         /**
@@ -1957,7 +2041,8 @@ declare namespace LocalJSX {
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
@@ -1983,13 +2068,13 @@ declare namespace LocalJSX {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'default' | 'inherit'>;
+        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**
@@ -2009,9 +2094,10 @@ declare namespace LocalJSX {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -2027,9 +2113,9 @@ declare namespace LocalJSX {
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -2091,9 +2177,9 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -2109,7 +2195,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The style variant of the link.
          */
@@ -2143,7 +2229,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown. By choosing 'none', no icon is displayed
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: LinkButtonIconName;
         /**
           * A URL path to a custom icon.
          */
@@ -2167,9 +2253,14 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
     }
@@ -2364,6 +2455,10 @@ declare namespace LocalJSX {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
+        /**
+          * Adapts the popover color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**
@@ -2382,6 +2477,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PScroller {
         /**
@@ -2399,7 +2498,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PSegmentedControl {
         /**
@@ -2505,7 +2604,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
@@ -2561,14 +2660,9 @@ declare namespace LocalJSX {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -2628,7 +2722,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -2654,7 +2748,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -2697,6 +2791,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -2716,7 +2814,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending of the usage of the text component.
+          * Sets a custom HTML tag depending on the usage of the text component.
          */
         "tag"?: TextTag;
         /**
@@ -2765,6 +2863,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
         /**
           * The unit text.
          */
@@ -2815,6 +2917,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         /**
@@ -2849,6 +2955,7 @@ declare namespace LocalJSX {
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
+        "p-display": PDisplay;
         "p-divider": PDivider;
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
@@ -2909,6 +3016,7 @@ declare module "@stencil/core" {
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
+            "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;

@@ -94,7 +94,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="notification-warning">
@@ -103,7 +103,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="notification-warning">
@@ -112,7 +112,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
@@ -147,7 +147,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="notification-warning">
@@ -156,7 +156,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info">
       <button type="button">Some tag content</button>
     </p-tag>
     <p-tag color="notification-warning">
@@ -165,7 +165,7 @@ export default class Code extends Vue {
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
@@ -176,13 +176,13 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  p-scroller > * {
+  :deep(p-scroller > *) {
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 16px;
     }
   }
 
   .demo > button {
-    margin: 0 1rem 1rem 0;
+    margin: 0 16px 16px 0;
   }
 </style>

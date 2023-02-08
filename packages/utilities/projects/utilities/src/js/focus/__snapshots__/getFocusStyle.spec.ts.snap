@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFocusStyle() should return correct css for opts: %s 1`] = `
+{
+  "&:focus::before": {
+    "border": "2px solid #0A0AFF",
+    "borderRadius": "4px",
+    "bottom": "-4px",
+    "content": """",
+    "left": "-4px",
+    "position": "absolute",
+    "right": "-4px",
+    "top": "-4px",
+  },
+  "&:focus:not(:focus-visible)::before": {
+    "borderColor": "transparent",
+  },
+  "outline": 0,
+  "position": "relative",
+}
+`;
+
+exports[`getFocusStyle() should return correct css for opts: { offset: '5rem' } 1`] = `
+{
+  "&:focus::before": {
+    "border": "2px solid #0A0AFF",
+    "borderRadius": "4px",
+    "bottom": "5rem",
+    "content": """",
+    "left": "5rem",
+    "position": "absolute",
+    "right": "5rem",
+    "top": "5rem",
+  },
+  "&:focus:not(:focus-visible)::before": {
+    "borderColor": "transparent",
+  },
+  "outline": 0,
+  "position": "relative",
+}
+`;
+
+exports[`getFocusStyle() should return correct css for opts: { theme: 'dark' } 1`] = `
+{
+  "&:focus::before": {
+    "border": "2px solid #0A0AFF",
+    "borderRadius": "4px",
+    "bottom": "-4px",
+    "content": """",
+    "left": "-4px",
+    "position": "absolute",
+    "right": "-4px",
+    "top": "-4px",
+  },
+  "&:focus:not(:focus-visible)::before": {
+    "borderColor": "transparent",
+  },
+  "outline": 0,
+  "position": "relative",
+}
+`;

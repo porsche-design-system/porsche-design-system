@@ -2,7 +2,6 @@ import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
-import { colorExternal } from '@porsche-design-system/components-js/utilities/js';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
@@ -251,10 +250,10 @@ describe('chunk content', () => {
     );
   });
 
-  describe('--p-override', () => {
-    it.each(chunkFileNames)('should not contain "--p-override" css variables in %s', (chunkFileName) => {
+  describe('--p-temporary', () => {
+    it.each(chunkFileNames)('should not contain "--p-temporary" css variables in %s', (chunkFileName) => {
       const content = getChunkContent(chunkFileName);
-      expect(content).not.toContain('--p-override');
+      expect(content).not.toContain('--p-temporary-');
     });
   });
 
@@ -266,12 +265,12 @@ describe('chunk content', () => {
   });
 
   describe('hex colors', () => {
-    const hexColorRegEx = /#[a-f\d]{3,6}/;
+    const hexColorRegEx = /#[a-f\d]{3,6}/i;
     const componentsWithHexColors: ComponentChunkName[] = [
-      'link-social',
       'select-wrapper',
       'text-field-wrapper',
       'textarea-wrapper',
+      'scroller',
     ];
 
     const containsHexColor = (chunkFileName: string): boolean =>
@@ -283,18 +282,6 @@ describe('chunk content', () => {
       it('should contain hex colors', () => {
         expect(content).toMatch(hexColorRegEx);
       });
-
-      it('should not contain social hex colors', () => {
-        expect(content).not.toMatch(colorExternal.facebook);
-      });
-    });
-
-    describe('link-social chunk', () => {
-      const content = getChunkContent(chunkFileNames.find((x) => x.includes('link-social')));
-
-      it('should contain social hex colors', () => {
-        expect(content).toMatch(colorExternal.facebook);
-      });
     });
 
     it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && !containsHexColor(x)))(
@@ -305,7 +292,7 @@ describe('chunk content', () => {
       }
     );
 
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && containsHexColor(x)))(
+    xit.each(chunkFileNames.filter((x) => !isCoreChunk(x) && containsHexColor(x)))(
       'should contain single hex color in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);

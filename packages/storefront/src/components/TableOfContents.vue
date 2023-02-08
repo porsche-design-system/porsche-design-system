@@ -3,7 +3,7 @@
     <p-headline variant="headline-4" tag="h2">Table of Contents</p-headline>
     <ul>
       <li v-for="(link, index) in links" :key="index">
-        <p-link-pure :href="link.href" :icon="returnIcon" v-on:click="onLinkClick(link, $event)">{{
+        <p-link-pure :href="link.href" :icon-source="returnIcon" v-on:click="onLinkClick(link, $event)">{{
           link.title
         }}</p-link-pure>
       </li>

@@ -19,7 +19,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-checkbox-wrapper');
 const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
-const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .label');
+const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .text');
 const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
 
 const setIndeterminate = async (element: ElementHandle, value: boolean) => {
@@ -203,24 +203,19 @@ it('should disable checkbox when disabled property is set programmatically', asy
   await initCheckbox();
 
   const input = await getInput();
-  const label = await getLabelText();
-  const getLabelStyle = () => getElementStyle(label, 'color');
   const getCursor = () => getElementStyle(input, 'cursor');
 
   expect(await getCursor()).toBe('pointer');
-  expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 
   await setProperty(input, 'disabled', true);
   await waitForInputTransition(page);
 
   expect(await getCursor()).toBe('not-allowed');
-  expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
 
   await setProperty(input, 'disabled', false);
   await waitForInputTransition(page);
 
   expect(await getCursor()).toBe('pointer');
-  expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 });
 
 describe('indeterminate state', () => {

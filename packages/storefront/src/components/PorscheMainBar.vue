@@ -21,19 +21,19 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
 
   .main-bar {
     @include pds-grid;
     background: $pds-theme-dark-background-surface;
-    padding-top: $pds-spacing-medium;
-    padding-bottom: $pds-spacing-medium;
+    padding-top: $pds-spacing-static-medium;
+    padding-bottom: $pds-spacing-static-medium;
 
     &__notification {
       grid-column: content-start / content-end;
       display: flex;
       justify-content: space-between;
-      gap: $pds-spacing-medium;
+      gap: $pds-spacing-static-medium;
     }
   }
 </style>

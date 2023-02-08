@@ -5,7 +5,6 @@ exports[`getSwitchButtonAriaAttributes() should return correct aria attributes f
   "aria-busy": null,
   "aria-checked": "false",
   "aria-disabled": null,
-  "aria-labelledby": "label",
 }
 `;
 
@@ -14,7 +13,6 @@ exports[`getSwitchButtonAriaAttributes() should return correct aria attributes f
   "aria-busy": null,
   "aria-checked": "true",
   "aria-disabled": null,
-  "aria-labelledby": "label",
 }
 `;
 
@@ -23,7 +21,6 @@ exports[`getSwitchButtonAriaAttributes() should return correct aria attributes f
   "aria-busy": "true",
   "aria-checked": "false",
   "aria-disabled": "true",
-  "aria-labelledby": "label",
 }
 `;
 
@@ -32,7 +29,6 @@ exports[`getSwitchButtonAriaAttributes() should return correct aria attributes f
   "aria-busy": "true",
   "aria-checked": "true",
   "aria-disabled": "true",
-  "aria-labelledby": "label",
 }
 `;
 
@@ -41,7 +37,6 @@ exports[`getSwitchButtonAriaAttributes() should return correct aria attributes f
   "aria-busy": null,
   "aria-checked": "false",
   "aria-disabled": "true",
-  "aria-labelledby": "label",
 }
 `;
 
@@ -50,7 +45,6 @@ exports[`getSwitchButtonAriaAttributes() should return correct aria attributes f
   "aria-busy": "true",
   "aria-checked": "false",
   "aria-disabled": "true",
-  "aria-labelledby": "label",
 }
 `;
 
@@ -59,6 +53,5 @@ exports[`getSwitchButtonAriaAttributes() should return correct aria attributes f
   "aria-busy": "true",
   "aria-checked": "true",
   "aria-disabled": "true",
-  "aria-labelledby": "label",
 }
 `;

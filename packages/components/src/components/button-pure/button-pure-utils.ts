@@ -1,13 +1,14 @@
-import type { ButtonAriaAttributes } from '../../utils';
-import type { AriaAttributes, LinkButtonPureIconName, SelectedAriaAttributes } from '../../types';
+import type { ButtonAriaAttribute } from '../../utils';
+import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes } from '../../types';
 import { getButtonBaseAriaAttributes, getTagName, hasVisibleIcon, parseAndGetAriaAttributes } from '../../utils';
 
 export const warnIfIsLoadingAndIconIsNone = (
   host: HTMLElement,
   loading: boolean,
-  iconName: LinkButtonPureIconName
+  iconName: LinkButtonIconName,
+  iconSource: string
 ): void => {
-  if (loading && !hasVisibleIcon(iconName)) {
+  if (loading && !hasVisibleIcon(iconName, iconSource)) {
     console.warn(
       `The combination of properties "icon='${iconName}'" and loading='${loading} within ${getTagName(
         host
@@ -19,12 +20,10 @@ export const warnIfIsLoadingAndIconIsNone = (
 export const getButtonPureAriaAttributes = (
   isDisabled: boolean,
   isLoading: boolean,
-  hasSubline: boolean,
-  aria: SelectedAriaAttributes<ButtonAriaAttributes>
+  aria: SelectedAriaAttributes<ButtonAriaAttribute>
 ): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria),
     ...getButtonBaseAriaAttributes(isDisabled, isLoading),
-    'aria-describedby': hasSubline ? 'subline' : null,
   };
 };

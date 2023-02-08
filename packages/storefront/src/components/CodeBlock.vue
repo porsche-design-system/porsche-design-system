@@ -72,14 +72,14 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
   @import '../styles/internal.variables';
 
   .code-block {
     &--light {
       code,
       pre {
-        color: $pds-theme-light-base;
+        color: $pds-theme-light-primary;
       }
 
       pre {
@@ -172,7 +172,7 @@
     &--dark {
       code,
       pre {
-        color: $pds-theme-dark-base;
+        color: $pds-theme-dark-primary;
       }
 
       pre {
@@ -258,7 +258,7 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin-top: $pds-spacing-medium;
+    margin-top: $pds-spacing-static-medium;
     @include pds-focus;
 
     :deep(code) {

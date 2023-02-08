@@ -79,7 +79,7 @@ Layout.
 All content elements that should behave responsively should be placed horizontally within the grid, always starting in a
 column. The spacing between content elements is therefore defined by the grid gutter. In most cases, this should refer
 to modules or content boxes, while smaller spaces on a more or less "micro-level" (both vertical and horizontal) should
-be defined by using the [Spacing](components/spacing) component.
+be defined by using the Spacing util.
 
 ![Porsche Design System grid alignment](./assets/grid-alignment.png)
 

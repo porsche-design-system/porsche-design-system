@@ -45,7 +45,7 @@ For automated visual regression tests the spinner animation can be disabled by s
 
 ```
 :root {
-  --p-animation-duration__spinner: 0s !important;
+  --pds-animation-duration: 0s !important;
 }
 ```
 

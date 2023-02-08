@@ -9,6 +9,5 @@ export const getSwitchButtonAriaAttributes = (
   return {
     ...getButtonBaseAriaAttributes(isDisabled, isLoading),
     'aria-checked': isChecked ? 'true' : 'false',
-    'aria-labelledby': 'label',
   };
 };

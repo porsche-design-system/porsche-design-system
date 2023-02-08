@@ -8,11 +8,11 @@ import {
   observeProperties,
   removeAttribute,
   setAttribute,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from '../../tabs-bar/tabs-bar-utils';
 import { TAB_SIZES, TAB_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
@@ -22,7 +22,7 @@ import { syncTabsItemsProps } from './tabs-utils';
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
   weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
   activeTabIndex: AllowedTypes.number,
 };
@@ -41,7 +41,7 @@ export class Tabs {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';

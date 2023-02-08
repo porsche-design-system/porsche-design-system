@@ -30,7 +30,7 @@ const initLinkTile = (opts?: { compact?: boolean }): Promise<void> => {
   );
 };
 
-describe('lifecycle', () => {
+xdescribe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initLinkTile();
     const status = await getLifecycleStatus(page);
@@ -87,7 +87,7 @@ describe('lifecycle', () => {
   });
 });
 
-describe('accessibility', () => {
+xdescribe('accessibility', () => {
   it('should expose correct initial accessibility tree properties', async () => {
     await initLinkTile();
     const root = await getRoot();

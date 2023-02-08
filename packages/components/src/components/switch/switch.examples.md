@@ -15,7 +15,7 @@ The `p-switch` component can be used with a visible or hidden label, but it's re
 better accessibility whenever possible. A `label` is a caption which informs the user which action is followed by
 interaction. When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
-<Playground :markup="basic" :config="config">
+<Playground :markup="basic" :config="configInline">
   <select v-model="label" aria-label="Select label mode">
     <option disabled>Select label mode</option>
     <option value="show">With label</option>
@@ -32,13 +32,13 @@ interaction. When used with hidden label, it's best practice to provide a descri
 
 ## Disabled
 
-<Playground :markup="disabled" :config="config"></Playground>
+<Playground :markup="disabled" :config="configInline"></Playground>
 
 ---
 
 ## Loading
 
-<Playground :markup="loading" :config="config"></Playground>
+<Playground :markup="loading" :config="configInline"></Playground>
 
 ---
 
@@ -47,7 +47,7 @@ interaction. When used with hidden label, it's best practice to provide a descri
 The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which
 is recommended on mobile views.
 
-<Playground :markup="alignment" :config="config">
+<Playground :markup="alignment" :config="configInline">
   <select v-model="alignLabel" aria-label="Select alignment">
     <option disabled>Select alignment</option>
     <option value="right">Right</option>
@@ -62,17 +62,15 @@ is recommended on mobile views.
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the **Switch**.
 
-<Playground :markup="events" :config="config"></Playground>
+<Playground :markup="events" :config="configInline"></Playground>
 
 ---
 
 ## Remove Switch from tab order
 
-**NOTICE:** The property `tabbable` is deprecated since v2.8.0 and will be removed in v3.0.0.
-
 By setting the `tabindex` attribute to `-1` you can remove the **Switch** from the tab order.
 
-<Playground :markup="taborder" :config="config"></Playground>
+<Playground :markup="taborder" :config="configInline"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -81,6 +79,7 @@ import Component from 'vue-class-component';
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
+  configInline = { themeable: true, spacing: 'inline' };
 
   frameworks = {
     'vanilla-js': `switchElement.addEventListener('switchChange', (e) => {

@@ -1,9 +1,9 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
-import { getComponentCss } from './grid-styles';
-import { AllowedTypes, attachComponentCss, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
-import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS, syncGridItemsProps } from './grid-utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { deprecatedGridComponentMessage, GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
+import { getComponentCss } from './grid-styles';
+import { AllowedTypes, attachComponentCss, validateProps, warnIfDeprecatedComponentIsUsed } from '../../../utils';
 
 const propTypes: PropTypes<typeof Grid> = {
   direction: AllowedTypes.breakpoint<GridDirection>(GRID_DIRECTIONS),
@@ -24,13 +24,16 @@ export class Grid {
   /** Handles wrapping behaviour of elements. */
   @Prop() public wrap?: BreakpointCustomizable<GridWrap> = 'wrap';
 
-  /** Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this. */
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public gutter?: BreakpointCustomizable<GridGutter> = { base: 16, s: 24, m: 36 };
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.wrap, this.gutter);
-    syncGridItemsProps(this.host, this.gutter);
+    warnIfDeprecatedComponentIsUsed(this.host, deprecatedGridComponentMessage);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.wrap);
 
     return <slot />;
   }

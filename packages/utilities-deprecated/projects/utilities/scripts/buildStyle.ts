@@ -18,40 +18,21 @@ const prepareFontFaceVariables = (opts: Options): void => {
     file,
     `/* Auto Generated Below */
 
-$p-font-porsche-next-w-la-thin-woff: '${baseUrl}/${fontsManifest.porscheNextWLaThin.woff}';
-$p-font-porsche-next-w-la-thin-woff2: '${baseUrl}/${fontsManifest.porscheNextWLaThin.woff2}';
-$p-font-porsche-next-w-la-regular-woff: '${baseUrl}/${fontsManifest.porscheNextWLaRegular.woff}';
-$p-font-porsche-next-w-la-regular-woff2: '${baseUrl}/${fontsManifest.porscheNextWLaRegular.woff2}';
-$p-font-porsche-next-w-la-semi-bold-woff: '${baseUrl}/${fontsManifest.porscheNextWLaSemiBold.woff}';
-$p-font-porsche-next-w-la-semi-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWLaSemiBold.woff2}';
-$p-font-porsche-next-w-la-bold-woff: '${baseUrl}/${fontsManifest.porscheNextWLaBold.woff}';
-$p-font-porsche-next-w-la-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWLaBold.woff2}';
+$p-font-porsche-next-w-la-regular: '${baseUrl}/${fontsManifest.porscheNextWLaRegular}';
+$p-font-porsche-next-w-la-semi-bold: '${baseUrl}/${fontsManifest.porscheNextWLaSemiBold}';
+$p-font-porsche-next-w-la-bold: '${baseUrl}/${fontsManifest.porscheNextWLaBold}';
 
-$p-font-porsche-next-w-gr-thin-woff: '${baseUrl}/${fontsManifest.porscheNextWGrThin.woff}';
-$p-font-porsche-next-w-gr-thin-woff2: '${baseUrl}/${fontsManifest.porscheNextWGrThin.woff2}';
-$p-font-porsche-next-w-gr-regular-woff: '${baseUrl}/${fontsManifest.porscheNextWGrRegular.woff}';
-$p-font-porsche-next-w-gr-regular-woff2: '${baseUrl}/${fontsManifest.porscheNextWGrRegular.woff2}';
-$p-font-porsche-next-w-gr-semi-bold-woff: '${baseUrl}/${fontsManifest.porscheNextWGrSemiBold.woff}';
-$p-font-porsche-next-w-gr-semi-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWGrSemiBold.woff2}';
-$p-font-porsche-next-w-gr-bold-woff: '${baseUrl}/${fontsManifest.porscheNextWGrBold.woff}';
-$p-font-porsche-next-w-gr-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWGrBold.woff2}';
+$p-font-porsche-next-w-gr-regular: '${baseUrl}/${fontsManifest.porscheNextWGrRegular}';
+$p-font-porsche-next-w-gr-semi-bold: '${baseUrl}/${fontsManifest.porscheNextWGrSemiBold}';
+$p-font-porsche-next-w-gr-bold: '${baseUrl}/${fontsManifest.porscheNextWGrBold}';
 
-$p-font-porsche-next-w-cy-thin-woff: '${baseUrl}/${fontsManifest.porscheNextWCyThin.woff}';
-$p-font-porsche-next-w-cy-thin-woff2: '${baseUrl}/${fontsManifest.porscheNextWCyThin.woff2}';
-$p-font-porsche-next-w-cy-regular-woff: '${baseUrl}/${fontsManifest.porscheNextWCyRegular.woff}';
-$p-font-porsche-next-w-cy-regular-woff2: '${baseUrl}/${fontsManifest.porscheNextWCyRegular.woff2}';
-$p-font-porsche-next-w-cy-semi-bold-woff: '${baseUrl}/${fontsManifest.porscheNextWCySemiBold.woff}';
-$p-font-porsche-next-w-cy-semi-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWCySemiBold.woff2}';
-$p-font-porsche-next-w-cy-bold-woff: '${baseUrl}/${fontsManifest.porscheNextWCyBold.woff}';
-$p-font-porsche-next-w-cy-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWCyBold.woff2}';`
+$p-font-porsche-next-w-cy-regular: '${baseUrl}/${fontsManifest.porscheNextWCyRegular}';
+$p-font-porsche-next-w-cy-semi-bold: '${baseUrl}/${fontsManifest.porscheNextWCySemiBold}';
+$p-font-porsche-next-w-cy-bold: '${baseUrl}/${fontsManifest.porscheNextWCyBold}';`
   );
 };
 
-const toHash = (str: string): string =>
-  crypto
-    .createHash('md5')
-    .update(str, 'utf8')
-    .digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const compileFontFaceScss = (opts: Options): string => {
   const sass = require('sass');

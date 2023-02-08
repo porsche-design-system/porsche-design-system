@@ -15,7 +15,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
     `,
   ],
   template: `
-    <div class="playground light" title="should render prefixed toast neutral on light background">
+    <div class="playground light" title="should render prefixed toast info on light background">
       <my-prefix-p-toast p-toast></my-prefix-p-toast>
     </div>
   `,

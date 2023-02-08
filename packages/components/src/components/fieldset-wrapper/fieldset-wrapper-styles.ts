@@ -1,22 +1,25 @@
 import type { Theme } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
+import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToRule, getThemedColors } from '../../styles';
-import { headingXSmall, headingSmall, spacing } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { headingSmallStyle, headingMediumStyle, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { FormState } from '../../utils/form/form-state';
+import { hostHiddenStyles } from '../../styles/host-hidden-styles';
 
-const { medium: spacingMedium } = spacing;
-
-export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabelSize, hasLabel: boolean): string => {
-  const theme: Theme = 'light';
-
+export const getComponentCss = (
+  state: FormState,
+  labelSize: FieldsetWrapperLabelSize,
+  hasLabel: boolean,
+  theme: Theme
+): string => {
   return getCss({
     '@global': {
-      ':host': {
-        display: addImportantToRule('block'),
-      },
+      ':host': addImportantToEachRule({
+        display: 'block',
+        ...hostHiddenStyles,
+      }),
       fieldset: {
         margin: 0,
         padding: 0,
@@ -24,17 +27,17 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabe
       },
       ...(hasLabel && {
         legend: {
-          margin: `0 0 ${spacingMedium}`,
+          margin: `0 0 ${spacingStaticMedium}`,
           padding: 0,
-          color: getThemedColors(theme).baseColor,
-          ...(labelSize === 'small' ? headingXSmall : headingSmall),
+          color: getThemedColors(theme).primaryColor,
+          ...(labelSize === 'small' ? headingSmallStyle : headingMediumStyle),
         },
       }),
     },
-    ...getFunctionalComponentRequiredStyles(theme),
+    ...getFunctionalComponentRequiredStyles(),
     ...mergeDeep(getFunctionalComponentStateMessageStyles(theme, state), {
       message: {
-        marginTop: spacingMedium,
+        marginTop: spacingStaticMedium,
       },
     }),
   });

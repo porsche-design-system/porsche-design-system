@@ -20,6 +20,7 @@ import { ButtonPurePage } from './ButtonPure';
 import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { ContentWrapperPage } from './ContentWrapper';
+import { DisplayPage } from './Display';
 import { DividerPage } from './Divider';
 import { FieldsetWrapperPage } from './FieldsetWrapper';
 import { FlexPage } from './Flex';
@@ -60,6 +61,7 @@ import { TextListPage } from './TextList';
 import { ToastBasicPage } from './ToastBasic';
 import { ToastBasicDarkPage } from './ToastBasicDark';
 import { ToastBasicLongTextPage } from './ToastBasicLongText';
+import { ToastBasicStateNeutralPage } from './ToastBasicStateNeutral';
 import { ToastOffsetPage } from './ToastOffset';
 import { ToastPrefixedPage } from './ToastPrefixed';
 import { TypographyCyrilPage } from './TypographyCyril';
@@ -107,6 +109,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Content Wrapper',
     path: '/content-wrapper',
     element: <ContentWrapperPage />,
+  },
+  {
+    name: 'Display',
+    path: '/display',
+    element: <DisplayPage />,
   },
   {
     name: 'Divider',
@@ -307,6 +314,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Toast Basic Long Text',
     path: '/toast-basic-long-text',
     element: <ToastBasicLongTextPage />,
+  },
+  {
+    name: 'Toast Basic State Neutral',
+    path: '/toast-basic-state-neutral',
+    element: <ToastBasicStateNeutralPage />,
   },
   {
     name: 'Toast Offset',

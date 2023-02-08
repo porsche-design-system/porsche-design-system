@@ -1,15 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should contain correct values for fontBehavior 1`] = `
-{
-  "WebkitTextSizeAdjust": "none",
-  "textSizeAdjust": "none",
-}
-`;
-
 exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
 
-exports[`should contain correct values for fontHyphenation 1`] = `
+exports[`should contain correct values for fontHyphenationStyle 1`] = `
 {
   "hyphens": "auto",
   "overflowWrap": "break-word",
@@ -20,30 +13,92 @@ exports[`should contain correct values for fontLineHeight 1`] = `"calc(6px + 2.1
 
 exports[`should contain correct values for fontSize 1`] = `
 {
-  "large": {
-    "fontSize": "2.25rem",
-    "lineHeight": "calc(6px + 2.125ex)",
+  "display": {
+    "large": "clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)",
+    "medium": "clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem)",
   },
-  "medium": {
-    "fontSize": "1.5rem",
-    "lineHeight": "calc(6px + 2.125ex)",
+  "heading": {
+    "large": "clamp(1.44rem, .3vw + 1.38rem, 1.71rem)",
+    "medium": "clamp(1.2rem, .12vw + 1.18rem, 1.31rem)",
+    "small": "1rem",
+    "xLarge": "clamp(1.73rem, .57vw + 1.61rem, 2.24rem)",
+    "xxLarge": "clamp(2.07rem, .96vw + 1.88rem, 2.94rem)",
+    "xxxLarge": "clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem)",
   },
-  "small": {
-    "fontSize": "1rem",
-    "lineHeight": "calc(6px + 2.125ex)",
-  },
-  "xLarge": {
-    "fontSize": "3.25rem",
-    "lineHeight": "calc(6px + 2.125ex)",
-  },
-  "xSmall": {
-    "fontSize": "0.75rem",
-    "lineHeight": "calc(6px + 2.125ex)",
+  "text": {
+    "large": "clamp(1.44rem, .3vw + 1.38rem, 1.71rem)",
+    "medium": "clamp(1.2rem, .12vw + 1.18rem, 1.31rem)",
+    "small": "1rem",
+    "xLarge": "clamp(1.73rem, .57vw + 1.61rem, 2.24rem)",
+    "xSmall": ".875rem",
   },
 }
 `;
 
-exports[`should contain correct values for fontStyle 1`] = `"normal"`;
+exports[`should contain correct values for fontSizeDisplay 1`] = `
+{
+  "large": "clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)",
+  "medium": "clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem)",
+}
+`;
+
+exports[`should contain correct values for fontSizeDisplayLarge 1`] = `"clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)"`;
+
+exports[`should contain correct values for fontSizeDisplayMedium 1`] = `"clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem)"`;
+
+exports[`should contain correct values for fontSizeHeading 1`] = `
+{
+  "large": "clamp(1.44rem, .3vw + 1.38rem, 1.71rem)",
+  "medium": "clamp(1.2rem, .12vw + 1.18rem, 1.31rem)",
+  "small": "1rem",
+  "xLarge": "clamp(1.73rem, .57vw + 1.61rem, 2.24rem)",
+  "xxLarge": "clamp(2.07rem, .96vw + 1.88rem, 2.94rem)",
+  "xxxLarge": "clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem)",
+}
+`;
+
+exports[`should contain correct values for fontSizeHeadingLarge 1`] = `"clamp(1.44rem, .3vw + 1.38rem, 1.71rem)"`;
+
+exports[`should contain correct values for fontSizeHeadingMedium 1`] = `"clamp(1.2rem, .12vw + 1.18rem, 1.31rem)"`;
+
+exports[`should contain correct values for fontSizeHeadingSmall 1`] = `"1rem"`;
+
+exports[`should contain correct values for fontSizeHeadingXLarge 1`] = `"clamp(1.73rem, .57vw + 1.61rem, 2.24rem)"`;
+
+exports[`should contain correct values for fontSizeHeadingXXLarge 1`] = `"clamp(2.07rem, .96vw + 1.88rem, 2.94rem)"`;
+
+exports[`should contain correct values for fontSizeHeadingXXXLarge 1`] = `"clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem)"`;
+
+exports[`should contain correct values for fontSizeText 1`] = `
+{
+  "large": "clamp(1.44rem, .3vw + 1.38rem, 1.71rem)",
+  "medium": "clamp(1.2rem, .12vw + 1.18rem, 1.31rem)",
+  "small": "1rem",
+  "xLarge": "clamp(1.73rem, .57vw + 1.61rem, 2.24rem)",
+  "xSmall": ".875rem",
+}
+`;
+
+exports[`should contain correct values for fontSizeTextLarge 1`] = `"clamp(1.44rem, .3vw + 1.38rem, 1.71rem)"`;
+
+exports[`should contain correct values for fontSizeTextMedium 1`] = `"clamp(1.2rem, .12vw + 1.18rem, 1.31rem)"`;
+
+exports[`should contain correct values for fontSizeTextSmall 1`] = `"1rem"`;
+
+exports[`should contain correct values for fontSizeTextXLarge 1`] = `"clamp(1.73rem, .57vw + 1.61rem, 2.24rem)"`;
+
+exports[`should contain correct values for fontSizeTextXSmall 1`] = `".875rem"`;
+
+exports[`should contain correct values for fontStyle 1`] = `
+{
+  "italic": "italic",
+  "normal": "normal",
+}
+`;
+
+exports[`should contain correct values for fontStyleItalic 1`] = `"italic"`;
+
+exports[`should contain correct values for fontStyleNormal 1`] = `"normal"`;
 
 exports[`should contain correct values for fontVariant 1`] = `"normal"`;
 
@@ -52,6 +107,11 @@ exports[`should contain correct values for fontWeight 1`] = `
   "bold": 700,
   "regular": 400,
   "semiBold": 600,
-  "thin": 100,
 }
 `;
+
+exports[`should contain correct values for fontWeightBold 1`] = `700`;
+
+exports[`should contain correct values for fontWeightRegular 1`] = `400`;
+
+exports[`should contain correct values for fontWeightSemiBold 1`] = `600`;

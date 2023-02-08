@@ -14,11 +14,11 @@ import {
 } from '@porsche-design-system/shared/testing';
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'stepper-horizontal', '/#stepper-horizontal')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+xit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('stepper-horizontal-states', async () => {

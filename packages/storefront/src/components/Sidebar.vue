@@ -88,7 +88,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @import '~@porsche-design-system/components-js/styles/scss';
 
   ul,
   li {
@@ -97,7 +97,7 @@
 
   .link {
     width: 100%;
-    margin: $pds-spacing-x-small 0;
+    margin: $pds-spacing-static-x-small 0;
     display: inline-block;
     text-decoration: none;
   }

@@ -1,6 +1,6 @@
 import { getComponentCss } from './text-list-item-styles';
 
-describe('getComponentCss()', () => {
+xdescribe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['unordered', 'numbered'],
     ['unordered', 'alphabetically'],

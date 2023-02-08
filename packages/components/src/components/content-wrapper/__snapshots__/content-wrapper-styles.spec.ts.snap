@@ -1,101 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for width: basic, background-color: default, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic 1`] = `
 ":host {
-  display: flex;
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
-  margin: 0 auto;
-  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
+  width: auto;
   min-width: 0;
-  max-width: 120rem;
-  box-sizing: border-box;
-  padding: 0 max(1rem, 7vw);
-  background-color: #0e1418;
+  max-width: 2560px;
 }
-@media(min-width:1760px) {
+@media(min-width:760px) {
   .root {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 3.6vw, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14));
+  }
+}
+
+@media(min-width:1920px) {
+  .root {
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 3.6vw, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14));
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, background-color: default, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended 1`] = `
 ":host {
-  display: flex;
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
-  margin: 0 auto;
-  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
+  width: auto;
   min-width: 0;
-  max-width: 120rem;
-  box-sizing: border-box;
-  padding: 0 max(1rem, 7vw);
-  background-color: #fff;
+  max-width: 2560px;
 }
-@media(min-width:1760px) {
+@media(min-width:1920px) {
   .root {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, background-color: transparent, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: fluid 1`] = `
 ":host {
-  display: flex;
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
 }
 .root {
-  margin: 0 auto;
-  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0 max(0px, (100% - 2560px) / 2);
+  width: auto;
   min-width: 0;
-  max-width: 120rem;
-  box-sizing: border-box;
-  padding: 0 max(1rem, 7vw);
-  background-color: transparent;
+  max-width: 2560px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for width: full 1`] = `
+":host {
+  display: block;
 }
-@media(min-width:1760px) {
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: block;
+  margin: 0;
+  padding: 0 max(0px, (100% - 2560px) / 2);
+  width: auto;
+  min-width: 0;
+  max-width: 2560px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for width: narrow 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: block;
+  margin: 0;
+  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
+  width: auto;
+  min-width: 0;
+  max-width: 2560px;
+}
+@media(min-width:760px) {
   .root {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 3.6vw, 36px) * 3 + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14) * 3);
+  }
+}
+
+@media(min-width:1920px) {
+  .root {
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 3.6vw, 36px) * 3 + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 3.6vw, 36px) * 13) / 14) * 3);
   }
 }
 "
-`;
-
-exports[`getComponentCss() should return correct css for width: extended, background-color: transparent, theme: light 1`] = `
-":host {
-  display: flex;
-}
-.root {
-  margin: 0 auto;
-  width: 100%;
-  min-width: 0;
-  max-width: 120rem;
-  background-color: transparent;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for width: fluid, background-color: transparent, theme: dark 1`] = `
-":host {
-  display: flex;
-}
-.root {
-  margin: 0 auto;
-  width: 100%;
-  min-width: 0;
-  background-color: transparent;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for width: fluid, background-color: transparent, theme: light 1`] = `
-":host {
-  display: flex;
-}
-.root {
-  margin: 0 auto;
-  width: 100%;
-  min-width: 0;
-  background-color: transparent;
-}"
 `;

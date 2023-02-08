@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFontWeight() should return correct value for size: inherit 1`] = `"inherit"`;
+
+exports[`getFontWeight() should return correct value for size: large 1`] = `"clamp(1.44rem, .3vw + 1.38rem, 1.71rem)"`;
+
+exports[`getFontWeight() should return correct value for size: medium 1`] = `"clamp(1.2rem, .12vw + 1.18rem, 1.31rem)"`;
+
+exports[`getFontWeight() should return correct value for size: small 1`] = `"1rem"`;
+
+exports[`getFontWeight() should return correct value for size: x-large 1`] = `"clamp(1.73rem, .57vw + 1.61rem, 2.24rem)"`;
+
+exports[`getFontWeight() should return correct value for size: x-small 1`] = `".875rem"`;

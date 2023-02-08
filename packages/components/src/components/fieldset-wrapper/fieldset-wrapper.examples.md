@@ -8,13 +8,13 @@ usage examples on our [form patterns section](patterns/forms/resources).
 
 ## Basic example with label
 
-<Playground :markup="withLabelMarkup"></Playground>
+<Playground :markup="withLabelMarkup" :config="config"></Playground>
 
 ---
 
 ## Slotted label
 
-<Playground :markup="slottedLabelMarkup"></Playground>
+<Playground :markup="slottedLabelMarkup" :config="config"></Playground>
 
 ---
 
@@ -36,7 +36,7 @@ If the `p-fieldset-wrapper` is set to `required="true"`, only the label of the `
 is removed from all wrapped child components, as long as they are Porsche Design System form elements. You should still
 set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
 
-<Playground :markup="requiredMarkup"></Playground>
+<Playground :markup="requiredMarkup" :config="config"></Playground>
 
 ---
 
@@ -68,7 +68,7 @@ import Component from 'vue-class-component';
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'block' }; 
+  config = { spacing: 'block', themeable: true }; 
   size = 'small';
   state = 'error';
   slottedMessage = 'error';
@@ -132,7 +132,13 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
+  @import '~@porsche-design-system/components-js/styles/scss';
+
   .state-markup > * {
-    margin-top: .5rem;
+    margin-top: $pds-spacing-static-medium;
+  }
+
+  :deep(p-checkbox-wrapper) {
+    margin-top: $pds-spacing-static-medium;
   }
 </style>

@@ -15,12 +15,17 @@ component is best for a particular scenario.
 The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "
 Custom styling" section.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "neutral".
+</p-inline-notification>
+
 <Playground :markup="basic" :config="config">
   <select v-model="state" aria-label="Select state">
     <option disabled>Select state</option>
-    <option value="neutral">Neutral</option>
+    <option value="info">Info</option>
     <option value="warning">Warning</option>
     <option value="error">Error</option>
+    <option value="neutral">Neutral (deprecated)</option>
   </select>
 </Playground>
 
@@ -35,12 +40,16 @@ If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 The `p-banner` behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with
 your layout.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "fluid".
+</p-inline-notification>
+
 <Playground :markup="markupWidth" :config="config">
   <select v-model="width" aria-label="Select width">
     <option disabled>Select width</option>
     <option value="basic">Basic</option>
     <option value="extended">Extended</option>
-    <option value="fluid">Fluid</option>
+    <option value="fluid">Fluid (deprecated)</option>
   </select>
 </Playground>
 
@@ -80,7 +89,7 @@ import { componentsReady } from '@porsche-design-system/components-js';
 export default class Code extends Vue {
   config = { themeable: true };
   
-  state = 'neutral';
+  state = 'info';
   width = 'basic';
   
   get basic() {

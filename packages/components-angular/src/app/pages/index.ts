@@ -32,6 +32,7 @@ import { CarouselComponent } from './carousel.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
+import { DisplayComponent } from './display.component';
 import { DividerComponent } from './divider.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
@@ -74,6 +75,7 @@ import { TextListComponent } from './text-list.component';
 import { ToastBasicComponent } from './toast-basic.component';
 import { ToastBasicDarkComponent } from './toast-basic-dark.component';
 import { ToastBasicLongTextComponent } from './toast-basic-long-text.component';
+import { ToastBasicStateNeutralComponent } from './toast-basic-state-neutral.component';
 import { ToastOffsetComponent } from './toast-offset.component';
 import { ToastPrefixedComponent } from './toast-prefixed.component';
 import { TypographyCyrilComponent } from './typography-cyril.component';
@@ -91,6 +93,7 @@ export const generatedPages = [
   CheckboxWrapperComponent,
   ContentWrapperComponent,
   CoreInitializerComponent,
+  DisplayComponent,
   DividerComponent,
   FieldsetWrapperComponent,
   FlexComponent,
@@ -133,6 +136,7 @@ export const generatedPages = [
   ToastBasicComponent,
   ToastBasicDarkComponent,
   ToastBasicLongTextComponent,
+  ToastBasicStateNeutralComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
   TypographyCyrilComponent,
@@ -181,6 +185,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Content Wrapper',
     path: 'content-wrapper',
     component: ContentWrapperComponent,
+  },
+  {
+    name: 'Display',
+    path: 'display',
+    component: DisplayComponent,
   },
   {
     name: 'Divider',
@@ -381,6 +390,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Toast Basic Long Text',
     path: 'toast-basic-long-text',
     component: ToastBasicLongTextComponent,
+  },
+  {
+    name: 'Toast Basic State Neutral',
+    path: 'toast-basic-state-neutral',
+    component: ToastBasicStateNeutralComponent,
   },
   {
     name: 'Toast Offset',

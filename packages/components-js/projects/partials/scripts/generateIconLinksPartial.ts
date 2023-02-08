@@ -4,10 +4,10 @@ import { ICON_NAMES, ICONS_MANIFEST } from '@porsche-design-system/icons';
 
 export const generateIconLinksPartial = (): string => {
   const iconType = ICON_NAMES.map((x) => `'${x}'`).join(' | ');
-  const types = `type IconNameCamelCase = ${iconType};
+  const types = `type IconName = ${iconType};
 
 type GetIconLinksOptions = {
-  icons?: IconNameCamelCase[];
+  icons?: IconName[];
   cdn?: Cdn;
   ${withoutTagsOption}
   format?: Format;
@@ -23,7 +23,7 @@ export function getIconLinks(opts?: GetIconLinksOptionsFormatHtml): string;
 export function getIconLinks(opts?: GetIconLinksOptionsWithoutTags): string[];
 export function getIconLinks(opts?: GetIconLinksOptions): string | string[] | JSX.Element {
   const { icons, cdn, withoutTags, format }: GetIconLinksOptions = {
-    icons: ['arrowHeadRight'],
+    icons: ['arrow-right'],
     cdn: 'auto',
     withoutTags: false,
     format: 'html',
@@ -32,7 +32,7 @@ export function getIconLinks(opts?: GetIconLinksOptions): string | string[] | JS
 
   throwIfRunInBrowser('getIconLinks');
 
-  const supportedIconNames: IconNameCamelCase[] = ${JSON.stringify(ICON_NAMES)};
+  const supportedIconNames: IconName[] = ${JSON.stringify(ICON_NAMES)};
   const invalidIconNames = icons.filter((x) => !supportedIconNames.includes(x));
 
   if (invalidIconNames.length) {

@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for spacing 1`] = `
+{
+  "fluid": {
+    "large": "clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)",
+    "medium": "clamp(2rem, 0.56vw + 1.89rem, 2.5rem)",
+    "small": ".75rem",
+    "xLarge": "clamp(4rem, 10vw + 2rem, 13rem)",
+    "xSmall": "clamp(.25rem, 0.28vw + 0.19rem, .5rem)",
+  },
+  "static": {
+    "large": "32px",
+    "medium": "16px",
+    "small": "8px",
+    "xLarge": "48px",
+    "xSmall": "4px",
+    "xxLarge": "80px",
+  },
+}
+`;
+
+exports[`should contain correct values for spacingFluid 1`] = `
+{
+  "large": "clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)",
+  "medium": "clamp(2rem, 0.56vw + 1.89rem, 2.5rem)",
+  "small": ".75rem",
+  "xLarge": "clamp(4rem, 10vw + 2rem, 13rem)",
+  "xSmall": "clamp(.25rem, 0.28vw + 0.19rem, .5rem)",
+}
+`;
+
+exports[`should contain correct values for spacingFluidLarge 1`] = `"clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)"`;
+
+exports[`should contain correct values for spacingFluidMedium 1`] = `"clamp(2rem, 0.56vw + 1.89rem, 2.5rem)"`;
+
+exports[`should contain correct values for spacingFluidSmall 1`] = `".75rem"`;
+
+exports[`should contain correct values for spacingFluidXLarge 1`] = `"clamp(4rem, 10vw + 2rem, 13rem)"`;
+
+exports[`should contain correct values for spacingFluidXSmall 1`] = `"clamp(.25rem, 0.28vw + 0.19rem, .5rem)"`;
+
+exports[`should contain correct values for spacingStatic 1`] = `
+{
+  "large": "32px",
+  "medium": "16px",
+  "small": "8px",
+  "xLarge": "48px",
+  "xSmall": "4px",
+  "xxLarge": "80px",
+}
+`;
+
+exports[`should contain correct values for spacingStaticLarge 1`] = `"32px"`;
+
+exports[`should contain correct values for spacingStaticMedium 1`] = `"16px"`;
+
+exports[`should contain correct values for spacingStaticSmall 1`] = `"8px"`;
+
+exports[`should contain correct values for spacingStaticXLarge 1`] = `"48px"`;
+
+exports[`should contain correct values for spacingStaticXSmall 1`] = `"4px"`;
+
+exports[`should contain correct values for spacingStaticXXLarge 1`] = `"80px"`;

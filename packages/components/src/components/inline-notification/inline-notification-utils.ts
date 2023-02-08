@@ -7,10 +7,11 @@ export type InlineNotificationState = typeof INLINE_NOTIFICATION_STATES[number];
 
 export const getInlineNotificationIconName = (state: InlineNotificationState): IconName => {
   const stateToIconMap: { [key in InlineNotificationState]: IconName } = {
-    neutral: 'information',
-    warning: 'warning',
-    success: 'success',
-    error: 'exclamation',
+    neutral: 'information-filled', // deprecated
+    info: 'information-filled',
+    warning: 'warning-filled',
+    success: 'success-filled',
+    error: 'error-filled',
   };
   return stateToIconMap[state];
 };

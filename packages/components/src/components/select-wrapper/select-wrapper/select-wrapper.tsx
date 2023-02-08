@@ -2,7 +2,6 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getDataThemeDarkAttribute,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
@@ -17,14 +16,14 @@ import {
   THEMES,
   unobserveAttributes,
   validateProps,
+  FORM_STATES,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { DropdownDirection } from './select-wrapper-utils';
 import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
-import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
+import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
-import { FORM_STATES } from '../../../utils/form/form-state';
 import type { FormState } from '../../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
@@ -79,7 +78,6 @@ export class SelectWrapper {
   private hasCustomDropdown: boolean;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes(); // on every reconnect
   }
 
@@ -141,14 +139,15 @@ export class SelectWrapper {
               </span>
             )}
             {hasDescription(this.host, this.description) && (
-              <span class="label__text label__text--description" {...labelProps}>
+              <span class="label__text" {...labelProps}>
                 {this.description || <slot name="description" />}
               </span>
             )}
             <PrefixedTagNames.pIcon
               class="icon"
               name="arrow-head-down"
-              color="inherit"
+              theme={this.theme}
+              color={disabled ? 'contrast-medium' : 'primary'}
               aria-hidden="true"
               ref={(el) => (this.iconElement = el)}
             />
@@ -172,7 +171,7 @@ export class SelectWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} host={this.host} />
+          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
       </Host>
     );

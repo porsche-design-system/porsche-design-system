@@ -6,7 +6,7 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
@@ -119,7 +119,7 @@ export const buildResponsiveStyles = <T>(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-            [mediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
+            [getMediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
           getJssStyle(value.base) as Styles
         )

@@ -71,18 +71,6 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light-electric" title="should render scroller on light-electric background">
-        <PScroller theme="light-electric">
-          <button>Light electric</button>
-          <button>Light electric</button>
-          <button>Light electric</button>
-          <button>Light electric</button>
-          <button>Light electric</button>
-          <button>Light electric</button>
-          <button>Light electric</button>
-        </PScroller>
-      </div>
-
       <div
         className="playground light surface"
         title="should render scroller gradientColorScheme surface on light surface background"

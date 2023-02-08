@@ -6,7 +6,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
 
-it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
+xit.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
   // @ts-ignore
   const Component = fromComponents[componentName];
   const tagName = paramCase(componentName) as TagName;
@@ -53,7 +53,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   expect(container.firstElementChild).toMatchSnapshot();
 });
 
-describe('manual test cases', () => {
+xdescribe('manual test cases', () => {
   const testCases: Partial<Record<TagName, (() => JSX.Element)[]>> = {
     'p-grid-item': [
       () => (

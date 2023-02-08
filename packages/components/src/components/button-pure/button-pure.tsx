@@ -4,34 +4,32 @@ import {
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
-  hasSlottedSubline,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   TEXT_SIZES,
   TEXT_WEIGHTS,
-  THEMES_EXTENDED_ELECTRIC_DARK,
+  THEMES,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import type {
   AlignLabel,
   BreakpointCustomizable,
-  ButtonAriaAttributes,
+  ButtonAriaAttribute,
   ButtonType,
-  LinkButtonPureIconName,
+  LinkButtonIconName,
   PropTypes,
   SelectedAriaAttributes,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
+  Theme,
 } from '../../types';
-import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
-  tabbable: AllowedTypes.boolean,
   type: AllowedTypes.oneOf<ButtonType>(['button', 'submit', 'reset']),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -43,8 +41,8 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
-  aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+  aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -53,11 +51,6 @@ const propTypes: PropTypes<typeof ButtonPure> = {
 })
 export class ButtonPure {
   @Element() public host!: HTMLElement;
-
-  /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use `tabindex="-1"` instead
-   */
-  @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonType = 'submit';
@@ -71,11 +64,14 @@ export class ButtonPure {
   /** Size of the button. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
 
-  /** The weight of the text (only has effect with visible label). */
+  /**
+   * The weight of the text (only has effect with visible label).
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
+  @Prop() public icon?: LinkButtonIconName = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -93,10 +89,10 @@ export class ButtonPure {
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ThemeExtendedElectricDark = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
@@ -120,25 +116,24 @@ export class ButtonPure {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon, this.iconSource);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
     attachComponentCss(
       this.host,
       getComponentCss,
       this.icon,
+      this.iconSource,
       this.active,
+      this.loading,
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
-      this.weight,
       this.hideLabel,
       this.alignLabel,
-      hasSlottedSubline(this.host),
       this.theme
     );
 
-    const hasIcon = hasVisibleIcon(this.icon);
-    const hasSubline = hasSlottedSubline(this.host);
+    const hasIcon = hasVisibleIcon(this.icon, this.iconSource);
 
     const iconProps = {
       class: 'icon',
@@ -149,35 +144,25 @@ export class ButtonPure {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <button
-          {...getButtonPureAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
-          class="root"
-          type={this.type}
-          tabIndex={this.tabbable ? parseInt(this.host.getAttribute('tabindex'), 10) || null : -1}
-        >
-          {hasIcon &&
-            (this.loading ? (
-              <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
-            ) : (
-              <PrefixedTagNames.pIcon
-                {...iconProps}
-                color="inherit"
-                name={this.icon}
-                source={this.iconSource}
-                aria-hidden="true"
-              />
-            ))}
-          <span class="label">
-            <slot />
-          </span>
-        </button>
-        {hasSubline && (
-          <div id="subline" class="subline">
-            <slot name="subline" />
-          </div>
+      <button {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+        {this.loading ? (
+          <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
+        ) : (
+          hasIcon && (
+            <PrefixedTagNames.pIcon
+              {...iconProps}
+              name={this.icon}
+              source={this.iconSource}
+              color={this.isDisabledOrLoading ? 'contrast-medium' : 'primary'}
+              theme={this.theme}
+              aria-hidden="true"
+            />
+          )
         )}
-      </Host>
+        <span class="label">
+          <slot />
+        </span>
+      </button>
     );
   }
 }

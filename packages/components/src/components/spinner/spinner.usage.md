@@ -44,7 +44,7 @@ create an extra order. A loading animation should always be a user-friendly help
 - For larger Spinner sizes, you can use any additional size, depending on your needs and the available space.
 - Text must always be placed beneath or on the right side of the loader.
 
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+<div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
     <img src="./assets/spinner-blocking.png" alt=""/>
 </div>

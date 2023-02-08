@@ -10,16 +10,6 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],
@@ -56,7 +46,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
               "role": "StaticText",
             },
           ],
-          "level": 1,
+          "level": 2,
           "name": "Some Heading",
           "role": "heading",
         },

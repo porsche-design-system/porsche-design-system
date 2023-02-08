@@ -11,12 +11,11 @@ which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
 
-| Option                 | Description                                                                                                                                                                                                     | Type      | Default |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- | -------- |
-| `prefix`               | Prefix will be added to the component names.                                                                                                                                                                    | `string`  | `''`    |
-| `withoutTags`          | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles.                                                    | `boolean` | `false` |
-| `format`               | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements.                                                                                       | `'html'   | 'jsx'`  | `'html'` |
-| `applyNormalizeStyles` | Applies basic css styles for Light DOM (Basic font style, focus style on focusable elements, hover style on anchor elements, proper font weight on bold elements, and correct font style on emphasis elements). | `boolean` | `false` |
+| Option        | Description                                                                                                                                                  | Type      | Default |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | ------- | -------- |
+| `prefix`      | Prefix will be added to the component names.                                                                                                                 | `string`  | `''`    |
+| `withoutTags` | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean` | `false` |
+| `format`      | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements.                                    | `'html'   | 'jsx'`  | `'html'` |
 
 ## Examples
 
@@ -39,10 +38,6 @@ export default class Code extends Vue {
       value: "{ prefix: 'custom-prefix' }",
       comment: 'with custom prefix to match your prefixed components',
     },
-    {
-      value: "{ applyNormalizeStyles: true }",
-      comment: 'apply normalize styles',
-    }
   ];
 }
 </script>
