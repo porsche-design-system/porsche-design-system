@@ -19,7 +19,7 @@ export const displaySizeToTagMap: { [key in DisplaySize]: string } = {
   inherit: 'h1',
 };
 
-export const getHeadingTagType = (
+export const getDisplayTagType = (
   host: HTMLElement,
   size: BreakpointCustomizable<DisplaySize>,
   tag: DisplayTag

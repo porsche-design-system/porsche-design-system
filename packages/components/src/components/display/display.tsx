@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
-import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getHeadingTagType } from './display-utils';
+import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from './display-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -50,7 +50,7 @@ export class Display {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
 
-    const TagType = getHeadingTagType(this.host, this.size, this.tag);
+    const TagType = getDisplayTagType(this.host, this.size, this.tag);
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>

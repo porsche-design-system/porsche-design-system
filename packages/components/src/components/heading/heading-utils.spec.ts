@@ -28,6 +28,6 @@ describe('getHeadingTagName()', () => {
     const host = document.createElement('p-heading');
     jest.spyOn(hasSpecificSlottedTagUtil, 'hasSpecificSlottedTag').mockReturnValue(false);
 
-    expect(getHeadingTagType(host, '{base: "small"}', undefined)).toBe('h2');
+    expect(getHeadingTagType(host, { base: 'small' }, undefined)).toBe('h2');
   });
 });
