@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-alpha.0] - 2023-02-08
+
 #### Note to the new `v3` major release of the Porsche Design System
 
 With the new **Porsche Design Language** comes a lot of changes regarding layout and design principles. To keep
