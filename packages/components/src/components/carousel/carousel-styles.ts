@@ -24,7 +24,6 @@ import type { HeaderAlign } from '../../types';
 export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = getMediaQueryMin('s');
-const mediaQueryXl = getMediaQueryMin('xl');
 // the speed which "splide" framework uses to switch between slides
 const splideSpeed = '0.4s';
 const bulletSize = '8px';
@@ -85,9 +84,6 @@ export const getComponentCss = (
           addImportantToEachRule({
             // TODO: 0 calc(${gridSafeZoneBase} + ${gridGap}) - will be done after Grid Refactoring
             padding: `0 calc(${gridSafeZoneBase} + ${spacingFluidLarge}) 0 ${gridSafeZoneBase}`,
-            [mediaQueryXl]: {
-              padding: `0 calc(${gridSafeZoneBase} + ${spacingFluidLarge}) 0 ${gridSafeZoneBase}`,
-            },
           })),
         '&--draggable': {
           userSelect: 'none',
