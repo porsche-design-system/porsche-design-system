@@ -603,7 +603,6 @@ describe('slotted heading', () => {
     const header = await getHeader();
     await setProperty(host, 'heading', 'Some Heading');
     await waitForStencilLifecycle(page);
-    await waitForComponentsReady(page); // wait for p-headline to initialize
 
     expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<h2>Some Heading</h2>"');
   });
