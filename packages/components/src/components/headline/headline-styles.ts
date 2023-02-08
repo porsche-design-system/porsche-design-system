@@ -5,7 +5,7 @@ import { HEADLINE_TAGS, isValidVariantType } from './headline-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
-  fontSizeDisplayLarge,
+  displayMediumStyle,
   fontSizeHeadingLarge,
   fontSizeHeadingMedium,
   fontSizeHeadingSmall,
@@ -20,8 +20,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
-const headlineSizeMap: Record<HeadlineVariantType, string> = {
-  'large-title': fontSizeDisplayLarge,
+const headlineSizeMap: Record<Exclude<HeadlineVariantType, 'large-title'>, string> = {
   'headline-1': fontSizeHeadingXXLarge,
   'headline-2': fontSizeHeadingXLarge,
   'headline-3': fontSizeHeadingLarge,
@@ -31,7 +30,11 @@ const headlineSizeMap: Record<HeadlineVariantType, string> = {
 
 const getHeadlineVariantJssStyle = (variant: HeadlineVariantType): JssStyle => {
   return {
-    fontSize: headlineSizeMap[variant],
+    ...(variant === 'large-title'
+      ? displayMediumStyle
+      : {
+          fontSize: headlineSizeMap[variant],
+        }),
   };
 };
 
