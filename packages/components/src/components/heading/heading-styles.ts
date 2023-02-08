@@ -14,12 +14,12 @@ import {
 import { getTypographySlottedJssStyle, getTypographyRootJssStyle } from '../../styles/typography-styles';
 
 export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
-  'xxx-large': fontSizeHeadingXXXLarge,
-  'xx-large': fontSizeHeadingXXLarge,
-  'x-large': fontSizeHeadingXLarge,
-  large: fontSizeHeadingLarge,
-  medium: fontSizeHeadingMedium,
   small: fontSizeHeadingSmall,
+  medium: fontSizeHeadingMedium,
+  large: fontSizeHeadingLarge,
+  'x-large': fontSizeHeadingXLarge,
+  'xx-large': fontSizeHeadingXXLarge,
+  'xxx-large': fontSizeHeadingXXXLarge,
 };
 
 export const getComponentCss = (
