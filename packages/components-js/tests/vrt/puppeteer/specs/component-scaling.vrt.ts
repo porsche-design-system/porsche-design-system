@@ -11,6 +11,7 @@ const components = [
   'button-pure',
   'checkbox-wrapper',
   'content-wrapper',
+  'display',
   'inline-notification',
   'heading',
   'headline',
