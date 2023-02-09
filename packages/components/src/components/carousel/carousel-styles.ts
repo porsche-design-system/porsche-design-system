@@ -31,8 +31,10 @@ const bulletSize = '8px';
 const activeBulletWidth = '20px';
 const navGap = spacingStaticXSmall;
 const navBtnPadding = spacingStaticSmall;
+// nav button is a square, so it's width is equal to it's height
+const navBtnWidthHeight = `calc(${fontLineHeight} + ${navBtnPadding} * 2)`;
 // nav width is being calculated based on icon width (fontLineHeight), button padding and distance (navGap) between 2 nav buttons
-const navWidth = `calc((${fontLineHeight} + ${navBtnPadding} * 2) * 2 + ${navGap})`;
+const navWidth = `calc((${navBtnWidthHeight}) * 2 + ${navGap})`;
 const headerGap = spacingFluidXSmall;
 // in a case alignHeader=center is being set - Heading's and Description's "spacing" (left and right) should be equal to the nav's width plus header gap
 const headerAlignCenterSpacing = `${navWidth} + ${headerGap}`;
@@ -127,13 +129,12 @@ export const getComponentCss = (
           : {
               gridTemplateColumns: 'minmax(0px, 1fr) 0',
               columnGap: 0,
-              padding: wrapContent
+              padding: wrapContent // set padding, so that description & heading do not overlap with nav buttons
                 ? `0 calc(${gridSafeZoneBase} + ${headerAlignCenterSpacing})`
                 : `0 calc(${headerAlignCenterSpacing})`,
             }),
         position: 'relative',
-        // TODO: correct min height
-        minHeight: '40px', // actual height of prev/next buttons
+        minHeight: navBtnWidthHeight, // actual height of prev/next buttons (for a case there's no description and no heading)
       },
     },
     nav: {
