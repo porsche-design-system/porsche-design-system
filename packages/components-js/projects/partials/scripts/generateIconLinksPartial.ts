@@ -49,7 +49,7 @@ Please use only valid icon names:
   const linksHtml = urls
     .map((url) => \`${link}\`)
     .join('');
-  const linksJsx = urls.map((url, index) => <link key={index} rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="true" />);
+  const linksJsx = urls.map((url, index) => <link key={index} rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="" />);
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
   return withoutTags ? urls : markup;
