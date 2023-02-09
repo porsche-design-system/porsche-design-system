@@ -51,8 +51,8 @@ export const getComponentCss = (width: BannerWidth): string => {
         left: 0,
         right: 0,
         willChange: 'opacity,transform',
+        // mergeDeep needed to get media queries coming from getContentWrapperStyle() together
         ...mergeDeep(
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           addImportantToEachRule({
             ...getContentWrapperStyle(widthMap[width]),
             ...hostHiddenStyles,
@@ -61,8 +61,6 @@ export const getComponentCss = (width: BannerWidth): string => {
             [mediaQueryBase]: {
               bottom: `var(${bannerPositionBottomVar})`,
             },
-          },
-          {
             [mediaQueryS]: {
               top: `var(${bannerPositionTopVar})`,
             },

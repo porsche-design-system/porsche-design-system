@@ -140,6 +140,14 @@ export class InputParser {
     return fileContent.includes('<slot');
   }
 
+  public getDeprecationMessage(component: TagName): string {
+    const fileContent = this.getComponentSourceCode(component);
+    const [deprecated, rawDeprecationMessage = ''] =
+      /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(fileContent) || [];
+
+    return !!deprecated ? `/** @deprecated ${rawDeprecationMessage.trim()} */\n` : '';
+  }
+
   public getDefaultValueForProp(component: TagName, prop: string): string {
     const fileContent = this.getComponentSourceCode(component);
     // extract values in same line, next line or multi line, but also respect not default

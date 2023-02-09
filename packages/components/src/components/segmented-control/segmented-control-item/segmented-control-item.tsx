@@ -9,7 +9,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
-import { getButtonAttributes } from './segmented-control-item-utils';
+import { getButtonAttributes, getIconColor } from './segmented-control-item-utils';
 import type { IconName, PropTypes, ValidatorFunction } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
@@ -66,13 +66,14 @@ export class SegmentedControlItem {
     validateProps(this, propTypes);
     // this additional validation is still needed because undefined is allowed with current propTypes
     throwIfPropIsUndefined(this.host, 'value', this.value);
+    const hasIcon = !!this.icon || !!this.iconSource;
 
     attachComponentCss(
       this.host,
       getComponentCss,
       this.disabled,
       this.host.selected,
-      this.host.backgroundColor || 'background-default', // default as fallback
+      hasIcon,
       this.host.theme || 'light' // default as fallback
     );
 
@@ -81,13 +82,13 @@ export class SegmentedControlItem {
     return (
       <button type="button" {...getButtonAttributes(this.host.selected, this.disabled)}>
         {this.label && <span>{this.label}</span>}
-        {(this.icon || this.iconSource) && (
+        {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
             size="inherit"
             name={this.icon}
             source={this.iconSource}
-            color="inherit"
+            color={getIconColor(this.disabled)}
             theme={this.host.theme || 'light'}
             aria-hidden="true"
           />

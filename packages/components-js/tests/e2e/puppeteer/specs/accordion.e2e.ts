@@ -12,7 +12,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
+import type { HeadingTag } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -27,7 +27,7 @@ const clickHandlerScript = `
 </script>`;
 
 type InitOptions = {
-  tag?: HeadlineTag;
+  tag?: HeadingTag;
   otherMarkup?: string;
   hasInput?: boolean;
   isOpen?: boolean;

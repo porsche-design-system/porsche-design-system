@@ -55,7 +55,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div id="app">
-      <p-headline variant="headline-1">Headline</p-headline>
+      <p-heading size="xx-large">Headline</p-heading>
     </div>
   `,
   styles: [],
