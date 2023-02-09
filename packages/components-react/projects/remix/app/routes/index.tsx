@@ -8,7 +8,7 @@ export default function Index() {
 
       <ul>
         <li>
-          <Link to="/pages/overview">Blog Posts</Link>
+          <Link to="/pages/overview">Overview</Link>
         </li>
       </ul>
     </main>
