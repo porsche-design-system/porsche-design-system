@@ -5,6 +5,7 @@ import {
   getBackfaceVisibilityJssStyle,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
+  hostHiddenStyles,
 } from '../../styles';
 import {
   gridWidthMax,
@@ -57,6 +58,7 @@ export const getComponentCss = (
         marginRight: 'auto',
         gap: spacingFluidMedium,
         gridAutoFlow: 'row',
+        ...hostHiddenStyles,
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
         ...headingXLargeStyle,
