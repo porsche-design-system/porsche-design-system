@@ -18,7 +18,7 @@
     "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./build"
+    "clean:build": "rm -rf ./build && rm -rf ./public/build"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
