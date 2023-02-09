@@ -20,7 +20,7 @@ import {
   spacingFluidLarge,
   fontLineHeight,
 } from '@porsche-design-system/utilities-v2';
-import type { HeaderAlign } from '../../types';
+import { HeaderAlign } from './carousel-align-header';
 
 export const bulletActiveClass = 'bullet--active';
 
