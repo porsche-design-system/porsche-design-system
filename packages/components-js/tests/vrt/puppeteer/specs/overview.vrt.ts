@@ -4,7 +4,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-xit('should have no visual regression', async () => {
+it('should have no visual regression', async () => {
   expect(
     await vrtTest(getVisualRegressionOverviewTester(), 'overview', '/#overview', {
       scenario: async (page) => {
