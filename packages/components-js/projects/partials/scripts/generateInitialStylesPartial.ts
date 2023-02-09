@@ -91,6 +91,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
           },
         },
       },
+
       'button:focus::before': {
         ...getInsetJssStyle(-6),
       },
@@ -113,6 +114,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
           WebkitAppearance: 'none',
           appearance: 'none',
         },
+
       'input[type=search]::-webkit-search-cancel-button, input::-webkit-calendar-picker-indicator': {
         display: 'none',
       },
