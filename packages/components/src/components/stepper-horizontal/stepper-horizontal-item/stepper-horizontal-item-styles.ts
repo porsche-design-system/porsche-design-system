@@ -34,6 +34,7 @@ const getSVGPath = (count: number, colors: GetColors, isCurrent: boolean): strin
     isCurrent ? '' : ` stroke="${fillColor}"`
   } stroke-width="1px" cx="12" cy="12" r="9"/>`;
 
+  // Full SVG can be found in ./numbers.svg
   const svgNumberedCirclePaths = {
     1: `${svgCirclePath}<path fill="${fillColor}" d="m12.33,8.67l-2.43.91v-.94l2.6-1.03h.85v8.78h-1.02v-7.72Z"/>`,
     2: `${svgCirclePath}<path fill="${fillColor}" d="m9.46,15.58c0-1.35.73-2.07,1.7-2.72l.95-.63c.78-.52,1.57-1.05,1.57-2.24,0-1.12-.62-1.58-1.7-1.58s-1.68.48-1.78,1.97h-.96c.06-1.82.78-2.91,2.74-2.91s2.72.92,2.72,2.52-.92,2.23-1.79,2.8l-.95.63c-1.11.75-1.52,1.18-1.52,2.01v.16h4.17v.81h-5.15v-.81Z"/>`,
