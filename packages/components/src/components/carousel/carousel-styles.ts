@@ -126,10 +126,10 @@ export const getComponentCss = (
             }
           : {
               gridTemplateColumns: 'minmax(0px, 1fr) 0',
-              columnGap: `calc(${headerAlignCenterSpacing})`,
-              paddingLeft: wrapContent
-                ? `calc(${gridSafeZoneBase} + ${headerAlignCenterSpacing})`
-                : `calc(${headerAlignCenterSpacing})`,
+              columnGap: 0,
+              padding: wrapContent
+                ? `0 calc(${gridSafeZoneBase} + ${headerAlignCenterSpacing})`
+                : `0 calc(${headerAlignCenterSpacing})`,
             }),
         position: 'relative',
         // TODO: correct min height
