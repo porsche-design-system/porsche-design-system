@@ -271,13 +271,75 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render carousel with alignHeader=center and wrap-content=true on light background"
+        title="should render carousel with alignHeader=center and wrapContent=true on light background"
       >
         <PCarousel
           heading="Aligned header with wrapped content"
           alignHeader="center"
           wrapContent={true}
           description="Description"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with alignHeader=center and multiline heading on light background"
+      >
+        <PCarousel
+          heading="Aligned header, multiline heading. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          alignHeader="center"
+          description="Description"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with alignHeader=center, multiline heading and multiline description on light background"
+      >
+        <PCarousel
+          heading="Aligned header, multiline heading, multiline description. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          alignHeader="center"
+          description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with alignHeader=center, wrapContent=true and multiline heading on light background"
+      >
+        <PCarousel
+          heading="Aligned header, wrapped content, multiline heading. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          alignHeader="center"
+          wrapContent={true}
+          description="Description"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with alignHeader=center, wrapContent=true, multiline heading and multiline description on light background"
+      >
+        <PCarousel
+          heading="Aligned header, wrapped content, multiline heading, multiline description. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          alignHeader="center"
+          wrapContent={true}
+          description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
         >
           <div>Slide 1</div>
           <div>Slide 2</div>
