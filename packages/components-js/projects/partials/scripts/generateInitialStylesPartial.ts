@@ -85,6 +85,11 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         '&:focus:not(:focus-visible)::before': {
           border: 0,
         },
+        '&[disabled]': {
+          '&:focus::before': {
+            border: 0,
+          },
+        },
       },
       'button:focus::before': {
         ...getInsetJssStyle(-6),
@@ -94,6 +99,11 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         {
           '&:focus::before': {
             border: `${borderWidthBase} solid ${themeDark.state.focus}`,
+          },
+          '&[disabled]': {
+            '&:focus::before': {
+              border: 0,
+            },
           },
         },
 
