@@ -33,7 +33,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -67,7 +67,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -115,7 +114,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -149,7 +148,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -197,13 +195,20 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   border-radius: 4px;
   z-index: -1;
+}
+button::after {
+  grid-area: 1 / 1 / 1 / 1;
+  content: "";
+  position: absolute;
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -220,7 +225,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -268,13 +272,20 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   border-radius: 4px;
   z-index: -1;
+}
+button::after {
+  grid-area: 1 / 1 / 1 / 1;
+  content: "";
+  position: absolute;
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -291,7 +302,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -362,11 +372,11 @@ button {
   font-size: inherit;
   white-space: nowrap;
   width: max-content;
-  cursor: auto;
+  cursor: pointer;
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -377,19 +387,19 @@ button::before {
   backdrop-filter: blur(32px);
   background: rgba(126, 127, 130, 0.20);
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -463,11 +473,11 @@ button {
   font-size: inherit;
   white-space: nowrap;
   width: max-content;
-  cursor: auto;
+  cursor: pointer;
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -478,19 +488,19 @@ button::before {
   backdrop-filter: blur(32px);
   background: rgba(148, 149, 152, 0.20);
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -568,7 +578,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -579,19 +589,19 @@ button::before {
   backdrop-filter: blur(32px);
   background: rgba(126, 127, 130, 0.20);
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -669,7 +679,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -680,19 +690,19 @@ button::before {
   backdrop-filter: blur(32px);
   background: rgba(148, 149, 152, 0.20);
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -770,7 +780,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -778,19 +788,19 @@ button::before {
   border-radius: 4px;
   z-index: -1;
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -868,7 +878,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -876,19 +886,19 @@ button::before {
   border-radius: 4px;
   z-index: -1;
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -966,7 +976,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -974,19 +984,19 @@ button::before {
   border-radius: 4px;
   z-index: -1;
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -1064,7 +1074,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -1072,19 +1082,19 @@ button::before {
   border-radius: 4px;
   z-index: -1;
 }
-button:focus::before {
-  border: 2px solid #0A0AFF;
-  border-radius: 4px;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 button::after {
   grid-area: 1 / 1 / 1 / 1;
   content: "";
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+}
+button:focus::before {
+  border: 2px solid #0A0AFF;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .label {
   grid-area: 1 / 2 / 1 / 2;
@@ -1135,7 +1145,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -1169,7 +1179,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -1217,7 +1226,7 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -1251,7 +1260,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -1299,13 +1307,20 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   border-radius: 4px;
   z-index: -1;
+}
+button::after {
+  grid-area: 1 / 1 / 1 / 1;
+  content: "";
+  position: absolute;
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -1322,7 +1337,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -1370,13 +1384,20 @@ button {
 }
 button::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   border-radius: 4px;
   z-index: -1;
+}
+button::after {
+  grid-area: 1 / 1 / 1 / 1;
+  content: "";
+  position: absolute;
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
 }
 button:focus::before {
   border: 2px solid #0A0AFF;
@@ -1393,7 +1414,6 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;

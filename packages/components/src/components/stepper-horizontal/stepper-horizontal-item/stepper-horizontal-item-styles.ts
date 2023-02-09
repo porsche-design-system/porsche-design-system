@@ -21,6 +21,26 @@ import type { StepperState } from './stepper-horizontal-item-utils';
 import type { JssStyle } from 'jss';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 
+type GetColors = {
+  primaryColor: string;
+  hoverColor: string;
+  invertedBaseColor: string;
+  disabledColor: string;
+  focusColor: string;
+};
+
+const getColors = (theme: Theme): GetColors => {
+  const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
+
+  return {
+    primaryColor,
+    hoverColor,
+    invertedBaseColor: getInvertedThemedColors(theme).primaryColor,
+    disabledColor,
+    focusColor,
+  };
+};
+
 const getSVGPath = (count: number, colors: GetColors, isCurrent: boolean): string => {
   colors = Object.entries(colors).reduce(
     (result, [key, value]) => ({ ...result, [key]: value.replace(/#/g, '%23') }),
@@ -48,26 +68,6 @@ const getSVGPath = (count: number, colors: GetColors, isCurrent: boolean): strin
   };
 
   return svgNumberedCirclePaths[count];
-};
-
-type GetColors = {
-  primaryColor: string;
-  hoverColor: string;
-  invertedBaseColor: string;
-  disabledColor: string;
-  focusColor: string;
-};
-
-const getColors = (theme: Theme): GetColors => {
-  const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
-
-  return {
-    primaryColor,
-    hoverColor,
-    invertedBaseColor: getInvertedThemedColors(theme).primaryColor,
-    disabledColor,
-    focusColor,
-  };
 };
 
 export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
@@ -116,29 +116,34 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         fontSize: 'inherit',
         whiteSpace: 'nowrap',
         width: 'max-content',
-        ...mergeDeep({
-          '&::before': {
-            content: '""',
-            position: 'fixed',
-            ...getInsetJssStyle(0),
-            borderRadius: borderRadiusSmall,
-            zIndex: '-1',
-            ...(isStateCurrent && {
-              ...frostedGlassStyle,
-              background: hoverColor,
-            }),
+        cursor: isDisabled ? 'not-allowed' : 'pointer',
+        // mergeDeep needed because of hoverMediaQuery in certain modes not wrapping keys and therefore overriding "&::before" key
+        ...mergeDeep(
+          {
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              ...getInsetJssStyle(0),
+              borderRadius: borderRadiusSmall,
+              zIndex: '-1',
+              ...(isStateCurrent && {
+                ...frostedGlassStyle,
+                background: hoverColor,
+              }),
+            },
           },
-          '&:focus::before': {
-            border: `${borderWidthBase} solid ${focusColor}`,
-            borderRadius: borderRadiusSmall,
-          },
-          '&:focus:not(:focus-visible)::before': {
-            borderColor: 'transparent',
-          },
-          ...(isStateCurrentOrUndefined
-            ? {
+          !isStateCurrentOrUndefined && !isDisabled
+            ? hoverMediaQuery({
+                '&::before': {
+                  transition: getTransition('background'),
+                },
+                '&:hover::before': {
+                  ...frostedGlassStyle,
+                  background: hoverColor,
+                },
+              })
+            : {
                 // counter
-                cursor: isDisabled ? 'not-allowed' : 'auto',
                 '&::after': {
                   gridArea: '1 / 1 / 1 / 1',
                   content: '""',
@@ -147,23 +152,14 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
                   width: fontLineHeight,
                 },
               }
-            : isDisabled
-            ? {
-                cursor: 'not-allowed',
-              }
-            : {
-                cursor: 'pointer',
-                ...hoverMediaQuery({
-                  '&::before': {
-                    transition: getTransition('background'),
-                  },
-                  '&:hover::before': {
-                    ...frostedGlassStyle,
-                    background: hoverColor,
-                  },
-                }),
-              }),
-        }),
+        ),
+        '&:focus::before': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusSmall,
+        },
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
+        },
       },
     },
     label: {
@@ -176,7 +172,6 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         position: 'absolute',
         height: fontLineHeight,
         width: fontLineHeight,
-        transition: getTransition('color'),
       },
     }),
     'sr-only': getScreenReaderOnlyJssStyle(),
