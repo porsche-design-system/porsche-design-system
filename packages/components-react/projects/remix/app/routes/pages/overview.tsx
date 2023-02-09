@@ -1,58 +1,7 @@
-import {
-  PAccordion,
-  PBanner,
-  PButton,
-  PButtonGroup,
-  PButtonPure,
-  PCarousel,
-  PCheckboxWrapper,
-  PContentWrapper,
-  PDivider,
-  PFieldsetWrapper,
-  PFlex,
-  PFlexItem,
-  PGrid,
-  PGridItem,
-  PHeadline,
-  PIcon,
-  PInlineNotification,
-  PLink,
-  PLinkPure,
-  PLinkSocial,
-  PLinkTile,
-  PMarque,
-  PorscheDesignSystemProvider,
-  PPagination,
-  PPopover,
-  PRadioButtonWrapper,
-  PScroller,
-  PSegmentedControl,
-  PSegmentedControlItem,
-  PSelectWrapper,
-  PSpinner,
-  PStepperHorizontal,
-  PStepperHorizontalItem,
-  PSwitch,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableHeadRow,
-  PTableRow,
-  PTabs,
-  PTabsBar,
-  PTabsItem,
-  PTag,
-  PTagDismissible,
-  PText,
-  PTextareaWrapper,
-  PTextFieldWrapper,
-  PTextList,
-  PTextListItem,
-} from '@porsche-design-system/components-react/ssr';
+/* Auto Generated File */
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
 
-export default function OverviewPage(): JSX.Element {
+const OverviewPage = (): JSX.Element => {
   const style = `
     p-flex-item > p,
     my-prefix-p-flex-item > p,
@@ -98,8 +47,16 @@ export default function OverviewPage(): JSX.Element {
 
       <div className="root" style={{ display: 'flex' }}>
         <div style={{ flex: 1 }}>
+          <div className="playground light" title="should render default heading">
+            <PHeading>Default Components</PHeading>
+          </div>
+
           <div className="playground light" title="should render default headline">
-            <PHeadline>Default Components</PHeadline>
+            <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+          </div>
+
+          <div className="playground light" title="should render default display">
+            <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
           </div>
 
           <div className="playground light" title="should render default banner">
@@ -203,9 +160,7 @@ export default function OverviewPage(): JSX.Element {
           </div>
 
           <div className="playground light" title="should render default link-social">
-            <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">
-              Some label
-            </PLinkSocial>
+            <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
           </div>
 
           <div className="playground light" title="should render default marque">
@@ -251,8 +206,8 @@ export default function OverviewPage(): JSX.Element {
 
           <div className="playground light" title="should render default accordion">
             <PAccordion heading="Some accordion heading">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
             </PAccordion>
           </div>
 
@@ -262,23 +217,15 @@ export default function OverviewPage(): JSX.Element {
 
           <div className="playground light" title="should render default flex">
             <PFlex>
-              <PFlexItem>
-                <p>1</p>
-              </PFlexItem>
-              <PFlexItem>
-                <p>2</p>
-              </PFlexItem>
+              <PFlexItem><p>1</p></PFlexItem>
+              <PFlexItem><p>2</p></PFlexItem>
             </PFlex>
           </div>
 
           <div className="playground light" title="should render default grid">
             <PGrid>
-              <PGridItem size={6}>
-                <p>1</p>
-              </PGridItem>
-              <PGridItem size={6}>
-                <p>2</p>
-              </PGridItem>
+              <PGridItem size={6}><p>1</p></PGridItem>
+              <PGridItem size={6}><p>2</p></PGridItem>
             </PGrid>
           </div>
 
@@ -336,6 +283,17 @@ export default function OverviewPage(): JSX.Element {
             </PScroller>
           </div>
 
+          <div className="playground light" title="should render default link-tile">
+            <PLinkTile href="#" label="Some Label" description="Default">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                width={50}
+                height={50}
+                alt="Beach"
+              />
+            </PLinkTile>
+          </div>
+
           <div className="playground light" title="should render default carousel">
             <PCarousel heading="Heading">
               <div>Slide 1</div>
@@ -347,8 +305,16 @@ export default function OverviewPage(): JSX.Element {
 
         <PorscheDesignSystemProvider prefix="my-prefix">
           <div style={{ flex: 1 }}>
+            <div className="playground light" title="should render default heading with custom prefix">
+              <PHeading>Prefixed Components</PHeading>
+            </div>
+
             <div className="playground light" title="should render default headline with custom prefix">
-              <PHeadline>Prefixed Components</PHeadline>
+              <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+            </div>
+
+            <div className="playground light" title="should render default display with custom prefix">
+              <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
             </div>
 
             <div className="playground light" title="should render default banner with custom prefix">
@@ -359,7 +325,10 @@ export default function OverviewPage(): JSX.Element {
             </div>
 
             <div className="playground light" title="should render default inline-notification with custom prefix">
-              <PInlineNotification heading="Some heading" description="Some description" />
+              <PInlineNotification
+                heading="Some heading"
+                description="Some description"
+               />
             </div>
 
             <div className="playground light" title="should render default popover with custom prefix">
@@ -452,9 +421,7 @@ export default function OverviewPage(): JSX.Element {
             </div>
 
             <div className="playground light" title="should render default link-social with custom prefix">
-              <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">
-                Some label
-              </PLinkSocial>
+              <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
             </div>
 
             <div className="playground light" title="should render default marque with custom prefix">
@@ -500,9 +467,8 @@ export default function OverviewPage(): JSX.Element {
 
             <div className="playground light" title="should render default accordion with custom prefix">
               <PAccordion heading="Some accordion heading">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum.
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
               </PAccordion>
             </div>
 
@@ -512,23 +478,15 @@ export default function OverviewPage(): JSX.Element {
 
             <div className="playground light" title="should render default flex with custom prefix">
               <PFlex>
-                <PFlexItem>
-                  <p>1</p>
-                </PFlexItem>
-                <PFlexItem>
-                  <p>2</p>
-                </PFlexItem>
+                <PFlexItem><p>1</p></PFlexItem>
+                <PFlexItem><p>2</p></PFlexItem>
               </PFlex>
             </div>
 
             <div className="playground light" title="should render default grid with custom prefix">
               <PGrid>
-                <PGridItem size={6}>
-                  <p>1</p>
-                </PGridItem>
-                <PGridItem size={6}>
-                  <p>2</p>
-                </PGridItem>
+                <PGridItem size={6}><p>1</p></PGridItem>
+                <PGridItem size={6}><p>2</p></PGridItem>
               </PGrid>
             </div>
 
@@ -586,6 +544,17 @@ export default function OverviewPage(): JSX.Element {
               </PScroller>
             </div>
 
+            <div className="playground light" title="should render default link-tile with custom prefix">
+              <PLinkTile href="#" label="Some Label" description="Default">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                  width={50}
+                  height={50}
+                  alt="Beach"
+                />
+              </PLinkTile>
+            </div>
+
             <div className="playground light" title="should render default carousel with custom prefix">
               <PCarousel heading="Heading">
                 <div>Slide 1</div>
@@ -598,4 +567,6 @@ export default function OverviewPage(): JSX.Element {
       </div>
     </>
   );
-}
+};
+
+export default OverviewPage;

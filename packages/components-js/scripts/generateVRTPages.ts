@@ -1,23 +1,25 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { capitalCase, paramCase, pascalCase, camelCase } from 'change-case';
 import * as globby from 'globby';
-import { convertToAngularVRTPage } from './convertToAngularVRTPage';
-import { convertToReactVRTPage } from './convertToReactVRTPage';
+import { camelCase, capitalCase, paramCase, pascalCase } from 'change-case';
+import { AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
+import { convertToReactVRTPage, ReactCharacteristics } from './convertToReactVRTPage';
 import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
+import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 
 /** array of html file names that don't get converted */
 const PAGES_TO_SKIP: string[] = ['table'];
 /** array of html file names that are converted but without route since it is maintained manually */
 const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-notifications'];
 
-type Framework = 'angular' | 'react' | 'nextjs';
+type Framework = 'angular' | 'react' | 'nextjs' | 'remix';
 
 const rootDirectory = path.resolve(__dirname, '..');
 const pagesDirectories: { [key in Framework]: string } = {
   angular: path.resolve(rootDirectory, '../components-angular/src/app/pages'),
   react: path.resolve(rootDirectory, '../components-react/src/pages'),
   nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/pages'),
+  remix: path.resolve(rootDirectory, '../components-react/projects/remix/app/routes/pages'),
 };
 
 const generateVRTPages = (): void => {
@@ -32,12 +34,15 @@ const generateVRTPages = (): void => {
   generateVRTPagesForJsFramework(htmlFileContentMap, 'angular');
   generateVRTPagesForJsFramework(htmlFileContentMap, 'react');
   generateVRTPagesForJsFramework(htmlFileContentMap, 'nextjs');
+  generateVRTPagesForJsFramework(htmlFileContentMap, 'remix');
 };
 
 export const templateRegEx = /( *<template.*>[\s\S]*?<\/template>)/;
 export const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 export const scriptRegEx = /\s*<script\b[^>]*>([\s\S]*?)<\/script\b[^>]*>\s*/i;
 export const styleRegEx = /\s*<style.*>([\s\S]*?)<\/style>\s*/i;
+
+export const comment = '/* Auto Generated File */';
 
 export const byAlphabet = (a: string, b: string): number =>
   a
@@ -47,7 +52,7 @@ export const byAlphabet = (a: string, b: string): number =>
 
 const writeFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content);
-  console.log(`Generated ${filePath.replace(path.resolve(rootDirectory, '..'), '')}`);
+  console.log(`- Generated ${filePath.replace(path.resolve(rootDirectory, '..'), '')}`);
 };
 
 const normalizeImportPath = (input: string): string => paramCase(input.replace('.component', ''));
@@ -97,9 +102,12 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
     .join('\n');
 };
 
-const generateVRTPagesForJsFramework = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
+const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, string>, framework: Framework): void => {
+  console.log(`Generating VRT pages for ${framework}`);
+
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
+    .filter(([component]) => (framework === 'remix' ? component === 'overview' : true)) // only overview page for remix
     .map(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -133,36 +141,43 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: { [key: string]: str
 
       fileContent = fileContent.trim();
 
+      const baseParams: [string, string, string, string, string, string] = [
+        fileName,
+        fileContent,
+        template,
+        style,
+        script,
+        toastText,
+      ];
+
+      const angularCharacteristics: AngularCharacteristics = {
+        usesOnInit,
+        usesSetAllReady,
+        usesComponentsReady,
+        usesToast,
+        isIconPage,
+        usesQuerySelector,
+      };
+
+      const reactCharacteristics: ReactCharacteristics = {
+        usesSetAllReady,
+        usesComponentsReady,
+        usesToast,
+        isIconPage,
+        usesQuerySelector,
+        usesPrefixing,
+        isOverviewPage,
+      };
+
       const { fileName: convertedFileName, fileContent: convertedFileContent } =
         framework === 'angular'
-          ? convertToAngularVRTPage(fileName, fileContent, template, style, script, toastText, {
-              usesOnInit,
-              usesSetAllReady,
-              usesComponentsReady,
-              usesToast,
-              isIconPage,
-              usesQuerySelector,
-            })
+          ? convertToAngularVRTPage(...baseParams, angularCharacteristics)
           : framework === 'react'
-          ? convertToReactVRTPage(fileName, fileContent, template, style, script, toastText, {
-              usesSetAllReady,
-              usesComponentsReady,
-              usesToast,
-              isIconPage,
-              usesQuerySelector,
-              usesPrefixing,
-              isOverviewPage,
-            })
+          ? convertToReactVRTPage(...baseParams, reactCharacteristics)
           : framework === 'nextjs'
-          ? convertToNextJsVRTPage(fileName, fileContent, template, style, script, toastText, {
-              usesSetAllReady,
-              usesComponentsReady,
-              usesToast,
-              isIconPage,
-              usesQuerySelector,
-              usesPrefixing,
-              isOverviewPage,
-            })
+          ? convertToNextJsVRTPage(...baseParams, reactCharacteristics)
+          : framework === 'remix'
+          ? convertToRemixVRTPage(...baseParams, reactCharacteristics)
           : { fileName: '', fileContent: '' };
 
       writeFile(path.resolve(pagesDirectories[framework], convertedFileName), convertedFileContent);
@@ -208,13 +223,16 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     barrelFileName = 'index.tsx';
   }
 
-  const barrelFilePath = path.resolve(pagesDirectories[framework], barrelFileName);
-  const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
-  const newBarrelFileContent =
-    [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
+  if (barrelFileName) {
+    const barrelFilePath = path.resolve(pagesDirectories[framework], barrelFileName);
+    const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
+    const newBarrelFileContent =
+      [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
 
-  writeFile(barrelFilePath, newBarrelFileContent);
-  console.log(`Generated VRT pages for components-${framework}`);
+    writeFile(barrelFilePath, newBarrelFileContent);
+  }
+
+  console.log(`Generated VRT pages for ${framework}`);
 };
 
 generateVRTPages();

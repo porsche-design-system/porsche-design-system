@@ -32,11 +32,13 @@ export default function App(): JSX.Element {
       </head>
       <body>
         <PorscheDesignSystemProvider>
-          <Outlet />
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
+          <div id="app">
+            <Outlet />
+          </div>
         </PorscheDesignSystemProvider>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
       </body>
     </html>
   );
