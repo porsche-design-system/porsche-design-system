@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import {
-    PorscheDesignSystemProvider,
     PAccordion,
     PBanner,
     PButton,
@@ -9,12 +8,14 @@
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
+    PDisplay,
     PDivider,
     PFieldsetWrapper,
     PFlex,
     PFlexItem,
     PGrid,
     PGridItem,
+    PHeading,
     PHeadline,
     PIcon,
     PInlineNotification,
@@ -23,6 +24,7 @@
     PLinkSocial,
     PLinkTile,
     PMarque,
+    PorscheDesignSystemProvider,
     PPagination,
     PPopover,
     PRadioButtonWrapper,
@@ -47,19 +49,28 @@
     PTag,
     PTagDismissible,
     PText,
+    PTextareaWrapper,
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
-    PTextareaWrapper,
   } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
   <div class="root" style="display: flex">
     <div style="flex: 1">
-      <div class="playground light" title="should render default headline">
-        <PHeadline>Default Components</PHeadline>
+      <div class="playground light" title="should render default heading">
+        <PHeading>Default Components</PHeading>
       </div>
+
+      <div class="playground light" title="should render default headline">
+        <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+      </div>
+
+      <div class="playground light" title="should render default display">
+        <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
+      </div>
+
       <!-- eslint-disable vue/no-deprecated-slot-attribute -->
       <div class="playground light" title="should render default banner">
         <PBanner>
@@ -68,6 +79,7 @@
         </PBanner>
       </div>
       <!-- eslint-enable -->
+
       <div class="playground light" title="should render default inline-notification">
         <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
       </div>
@@ -307,9 +319,18 @@
 
     <PorscheDesignSystemProvider prefix="my-prefix">
       <div style="flex: 1">
-        <div class="playground light" title="should render default headline with custom prefix">
-          <PHeadline>Prefixed Components</PHeadline>
+        <div class="playground light" title="should render default heading with custom prefix">
+          <PHeading>Prefixed Components</PHeading>
         </div>
+
+        <div class="playground light" title="should render default headline with custom prefix">
+          <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+        </div>
+
+        <div class="playground light" title="should render default display with custom prefix">
+          <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
+        </div>
+
         <!-- eslint-disable vue/no-deprecated-slot-attribute -->
         <div class="playground light" title="should render default banner with custom prefix">
           <PBanner>
@@ -318,6 +339,7 @@
           </PBanner>
         </div>
         <!-- eslint-enable -->
+
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
         </div>
