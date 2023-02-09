@@ -248,6 +248,8 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
+  @import '~@porsche-design-system/components-js/styles/scss';
+
   :deep(p-carousel div) {
     display: flex;
     align-items: center;
@@ -255,7 +257,7 @@ export default class Code extends Vue {
     flex-direction: column;
     background: #00b0f4;
     height: 150px;
-    border-radius: 4px;
+    border-radius: $pds-border-radius-small;
   }
 
   button {
