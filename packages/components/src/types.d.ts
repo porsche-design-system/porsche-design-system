@@ -13,8 +13,6 @@ export type { TextWeight } from './components/text/text-weight';
 
 export type { HeaderAlign } from './components/carousel/carousel-align-header';
 
-export type { HeadlineVariant, VariantType } from './components/headline/headline-utils';
-
 export type { IconName } from '@porsche-design-system/icons';
 
 export type LinkButtonIconName = IconName | 'none';
