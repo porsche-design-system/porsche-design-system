@@ -26,8 +26,7 @@ import { HeaderAlign } from './carousel-utils';
 export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = getMediaQueryMin('s');
-// the speed which "splide" framework uses to switch between slides
-const splideSpeed = '0.4s';
+
 const bulletSize = '8px';
 const activeBulletWidth = '20px';
 const navGap = spacingStaticXSmall;
@@ -43,11 +42,13 @@ const headerAlignCenterSpacing = `${navWidth} + ${headerGap}`;
 export const getComponentCss = (
   wrapContent: boolean,
   disablePagination: BreakpointCustomizable<boolean>,
+  splideSpeed: number,
   theme: Theme,
   alignHeader: HeaderAlign
 ): string => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
   const isAlignLeft = alignHeader === 'left';
+  const bulletAnimationDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css animation duration" ('0.4s') format
 
   return getCss({
     '@global': {
@@ -165,7 +166,7 @@ export const getComponentCss = (
         background: disabledColor,
         margin: `0 ${spacingStaticXSmall}`,
         // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${splideSpeed}, width ${splideSpeed}`,
+        transition: `background-color ${bulletAnimationDuration}, width ${bulletAnimationDuration}`,
         width: bulletSize,
         height: bulletSize,
       },

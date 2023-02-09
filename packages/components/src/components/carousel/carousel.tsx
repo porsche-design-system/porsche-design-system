@@ -93,6 +93,8 @@ export class Carousel {
 
   @State() private amountOfPages: number;
 
+  @State() private splideSpeed = 400;
+
   private splide: Splide;
   private container: HTMLElement;
   private btnPrev: ButtonPure;
@@ -129,6 +131,7 @@ export class Carousel {
       padding: {
         right: spacingFluidLarge, // together with wrapContent this is overridden via css
       },
+      speed: this.splideSpeed, // transition speed in milliseconds
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       // TODO: for gap definition the gridGap const must be used - will be done after Grid Refactoring
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
@@ -164,6 +167,7 @@ export class Carousel {
       getComponentCss,
       this.wrapContent,
       this.disablePagination,
+      this.splideSpeed,
       this.theme,
       this.alignHeader
     );
