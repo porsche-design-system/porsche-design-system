@@ -120,6 +120,7 @@
     "test:vrt:components-angular": "yarn --cwd ./packages/components-angular test:vrt",
     "test:vrt:components-react": "yarn --cwd ./packages/components-react test:vrt",
     "test:vrt:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:vrt",
+    "test:vrt:components-react/remix": "yarn --cwd ./packages/components-react/projects/remix test:vrt",
     "test:vrt:components-vue": "yarn --cwd ./packages/components-vue test:vrt",
     "test:vrt:fallbacks": "yarn --cwd ./packages/fallbacks test:vrt",
     "test:vrt:storefront": "yarn --cwd ./packages/storefront test:vrt",

@@ -7,23 +7,21 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestart": "yarn patchRemixRun",
-    "presbuild": "yarn patchRemixRun",
+    "prestart": "yarn patchRemixRun && yarn --cwd ../nextjs prestartAndBuild",
+    "presbuild": "yarn patchRemixRun && yarn --cwd ../nextjs prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'cross-env NODE_ENV=development binode -- @remix-run/dev:remix dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'remix-serve build'",
-    "build": "remix build",
+    "build-app": "remix build",
     "patchRemixRun": "ts-node scripts/patchRemixRun.ts",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "test": "yarn test:vrt",
+    "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./build"
   },
-  "eslintIgnore": [
-    "/node_modules",
-    "/build",
-    "/public/build"
-  ],
   "dependencies": {
+    "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/components-react": "3.0.0-alpha.0",
     "@remix-run/node": "^1.9.0",
     "@remix-run/react": "^1.9.0",
@@ -36,6 +34,7 @@
     "tiny-invariant": "^1.3.1"
   },
   "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@remix-run/dev": "^1.9.0",
     "@remix-run/eslint-config": "^1.9.0",
     "@types/bcryptjs": "^2.4.2",
@@ -62,6 +61,11 @@
     "vite": "^3.2.2",
     "vite-tsconfig-paths": "^3.5.2"
   },
+  "eslintIgnore": [
+    "/node_modules",
+    "/build",
+    "/public/build"
+  ],
   "engines": {
     "node": ">=14"
   }
