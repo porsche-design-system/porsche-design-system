@@ -11,7 +11,9 @@ import {
   borderRadiusSmall,
   frostedGlassStyle,
   borderWidthBase,
+  borderRadiusMedium,
 } from '@porsche-design-system/utilities-v2';
+import { getInsetJssStyle } from '@porsche-design-system/components/src/styles';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -46,6 +48,8 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       a: {
         color: 'inherit',
         textDecoration: 'underline',
+        borderRadius: borderRadiusSmall,
+        borderColor: 'transparent', // default value is needed for smooth transition
         '@media(hover:hover)': {
           transition: 'color var(--p-transition-duration, .24s) ease',
           '&:hover': {
@@ -68,23 +72,30 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       'em, i': {
         fontStyle: 'normal',
       },
-
       'a, button, input, select, textarea': {
-        borderRadius: borderRadiusSmall,
-        borderColor: 'transparent', // default value is needed for smooth transition
-        '&:focus': {
+        position: 'relative',
+        outline: 0, // hide default focus outline
+        '&:focus::before': {
+          content: '""',
+          position: 'absolute',
+          borderRadius: borderRadiusMedium,
           border: `${borderWidthBase} solid ${themeLight.state.focus}`,
+          ...getInsetJssStyle(-4),
         },
-        '&:focus:not(:focus-visible)': {
+        '&:focus:not(:focus-visible)::before': {
           border: 0,
         },
       },
-
-      '[data-theme=dark] a, button, input, select, textarea': {
-        '&:focus': {
-          border: `${borderWidthBase} solid ${themeDark.state.focus}`,
-        },
+      'button:focus::before': {
+        ...getInsetJssStyle(-6),
       },
+
+      '[data-theme=dark] a, [data-theme=dark] button, [data-theme=dark] input, [data-theme=dark] select, [data-theme=dark] textarea':
+        {
+          '&:focus::before': {
+            border: `${borderWidthBase} solid ${themeDark.state.focus}`,
+          },
+        },
 
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
       'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type=search]::-webkit-search-decoration, input::-webkit-calendar-picker-indicator':
