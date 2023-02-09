@@ -1,25 +1,30 @@
 import type { MetaFunction } from '@remix-run/node';
 import { LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { getFontLinks, getInitialStyles } from '@porsche-design-system/components-react/partials';
+import { getSharedStyles } from '../../nextjs/styles/getSharedStyles';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'Remix Notes',
+  title: 'Porsche Design System - Remix',
   viewport: 'width=device-width,initial-scale=1',
 });
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <html lang="en">
       <head>
         <Meta />
-        {/* TODO: apply partials */}
-        {/* TODO: get style.css from shared package */}
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `:root{--p-transition-duration:0s;--p-animation-duration__spinner:0s;--p-animation-duration__banner:0s;--p-override-popover-animation-duration:0s;--p-override-toast-skip-timeout:true;--p-override-toast-animation-duration:0s}html,body{margin:0;padding:0}body{color:deeppink;font-family:serif;font-style:italic;font-weight:bold;font-size:small;line-height:normal;font-variant:small-caps}body > select{position:relative;z-index:999999}.playground{padding:1rem}.playground.light,.playground.light-electric{background:#fff}.playground.light.surface{background:#f2f2f2}.playground.dark,.playground.dark-electric{background:#0e1418}.playground.dark.surface{background:#262b2e}.playground.hover::before,.playground.focus::before,.playground.focus-hover::before{display:block;background:deeppink;font-size:16px;line-height:normal;color:white;font-weight:bold;padding:0.5rem;margin-bottom:0.5rem}/*light*/.playground.light.hover::before{content:':hover (theme=light)'}.playground.light.focus::before{content:':focus-visible (theme=light)'}.playground.light.focus-hover::before{content:':focus-visible:hover (theme=light)'}/*dark*/.playground.dark.hover::before{content:':hover (theme=dark)'}.playground.dark.focus::before{content:':focus-visible (theme=dark)'}.playground.dark.focus-hover::before{content:':focus-visible:hover (theme=dark)'}/*light-electric*/.playground.light-electric.hover::before{content:':hover (theme=light-electric)'}.playground.light-electric.focus::before{content:':focus-visible (theme=light-electric)'}.playground.light-electric.focus-hover::before{content:':focus-visible:hover (theme=light-electric)'}/*dark-electric*/.playground.dark-electric.hover::before{content:':hover (theme=dark-electric)'}.playground.dark-electric.focus::before{content:':focus-visible (theme=dark-electric)'}.playground.dark-electric.focus-hover::before{content:':focus-visible:hover (theme=dark-electric)'}`,
-          }}
-        />
+        <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.10be24507223bc4ef63effe0eb750e58.png" />
+
+        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
+        {!process.browser && [
+          getInitialStyles({ format: 'jsx' }),
+          getFontLinks({ weights: ['regular', 'semi-bold', 'bold'], withoutTags: true })
+            .map((x) => x.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'))
+            .map((url) => <link key={url} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />),
+          getSharedStyles(),
+        ]}
       </head>
       <body>
         <PorscheDesignSystemProvider>
