@@ -19,7 +19,7 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
-import type { CarouselChangeEvent, CarouselInternationalization } from './carousel-utils';
+import type { CarouselChangeEvent, CarouselInternationalization, HeaderAlign } from './carousel-utils';
 import {
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
@@ -34,7 +34,6 @@ import {
 } from './carousel-utils';
 import type { ButtonPure } from '../button-pure/button-pure';
 import { spacingFluidLarge, spacingStaticLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
-import { HeaderAlign } from './carousel-align-header';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
