@@ -221,8 +221,8 @@ export default class Code extends Vue {
   alignHeaderModel = 'left';
   get alignHeader() {
     return `<p-carousel align-header="${this.alignHeaderModel}" heading="${this.basicHeading}" description="${this.basicDescription}">
-      ${this.getSlides(3)}
-      </p-carousel>`;
+  ${this.getSlides(3)}
+</p-carousel>`;
   }
 
   focusBehavior = `<p-carousel heading="${this.basicHeading}">
