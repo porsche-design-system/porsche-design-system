@@ -17,8 +17,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -27,7 +25,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: pointer;
 }
@@ -98,8 +95,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -108,7 +103,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: pointer;
 }
@@ -179,8 +173,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -189,7 +181,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -256,8 +247,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -266,7 +255,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -360,8 +348,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -370,7 +356,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: pointer;
 }
@@ -461,8 +446,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -471,7 +454,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: pointer;
 }
@@ -562,8 +544,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -572,7 +552,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -663,8 +642,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -673,7 +650,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -764,8 +740,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -774,7 +748,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -862,8 +835,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -872,7 +843,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -960,8 +930,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -970,7 +938,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -1058,8 +1025,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -1068,7 +1033,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -1129,8 +1093,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -1139,7 +1101,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: pointer;
 }
@@ -1210,8 +1171,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -1220,7 +1179,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: pointer;
 }
@@ -1291,8 +1249,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -1301,7 +1257,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
@@ -1368,8 +1323,6 @@ button {
   grid-template-columns: calc(6px + 2.125ex) minmax(0, auto);
   gap: 3px;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-  margin: 0;
   padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
@@ -1378,7 +1331,6 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   font-size: inherit;
-  white-space: nowrap;
   width: max-content;
   cursor: not-allowed;
 }
