@@ -13,7 +13,6 @@ export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSi
       },
     },
     scroller: {
-      display: 'flex',
       ...textSmallStyle,
       ...buildResponsiveStyles(size, (s: StepperHorizontalSize) => ({ fontSize: fontSizeText[s] })),
     },

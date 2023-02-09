@@ -21,37 +21,23 @@ import type { StepperState } from './stepper-horizontal-item-utils';
 import type { JssStyle } from 'jss';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 
-type GetColors = {
+type NumberedCircleColors = {
   primaryColor: string;
-  hoverColor: string;
   invertedBaseColor: string;
   disabledColor: string;
-  focusColor: string;
 };
 
-const getColors = (theme: Theme): GetColors => {
-  const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
-
-  return {
-    primaryColor,
-    hoverColor,
-    invertedBaseColor: getInvertedThemedColors(theme).primaryColor,
-    disabledColor,
-    focusColor,
-  };
-};
-
-const getSVGPath = (count: number, colors: GetColors, isCurrent: boolean): string => {
-  colors = Object.entries(colors).reduce(
+const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColors, isStateCurrent: boolean): string => {
+  numberedCircleColors = Object.entries(numberedCircleColors).reduce(
     (result, [key, value]) => ({ ...result, [key]: value.replace(/#/g, '%23') }),
-    {} as GetColors
+    {} as NumberedCircleColors
   );
 
-  const { disabledColor, invertedBaseColor, primaryColor } = colors;
-  const fillColor = isCurrent ? invertedBaseColor : disabledColor;
+  const { disabledColor, invertedBaseColor, primaryColor } = numberedCircleColors;
+  const fillColor = isStateCurrent ? invertedBaseColor : disabledColor;
 
-  const svgCirclePath = `<circle fill="${isCurrent ? primaryColor : 'none'}"${
-    isCurrent ? '' : ` stroke="${fillColor}"`
+  const svgCirclePath = `<circle fill="${isStateCurrent ? primaryColor : 'none'}"${
+    isStateCurrent ? '' : ` stroke="${fillColor}"`
   } stroke-width="1px" cx="12" cy="12" r="9"/>`;
 
   // Full SVG can be found in ./numbers.svg
@@ -67,12 +53,11 @@ const getSVGPath = (count: number, colors: GetColors, isCurrent: boolean): strin
     9: `${svgCirclePath}<path fill="${fillColor}" d="m9.16,10.33c0-2.03,1.02-2.86,2.83-2.86s2.82.81,2.82,2.85c0,1.11-.3,1.82-.81,2.64l-2.18,3.44h-1.1l2.18-3.37c-.31.14-.65.2-1.01.2-1.82,0-2.74-.99-2.74-2.9Zm4.65,0c0-1.23-.47-1.92-1.81-1.92s-1.81.69-1.81,1.92c0,1.37.49,2.05,1.81,2.05s1.81-.68,1.81-2.05Z"/>`,
   };
 
-  return svgNumberedCirclePaths[count];
+  return svgNumberedCirclePaths[stepCount];
 };
 
 export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
-  const colors = getColors(theme);
-  const { primaryColor, hoverColor, disabledColor, focusColor } = colors;
+  const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
 
   const isStateCurrent = state === 'current';
   const isStateCurrentOrUndefined = !state || isStateCurrent;
@@ -86,7 +71,17 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
             (result, _, i) => ({
               ...result,
               [`&(:nth-of-type(${i + 1})) $button::after`]: {
-                backgroundImage: getInlineSVGBackgroundImage(getSVGPath(i + 1, colors, isStateCurrent)),
+                backgroundImage: getInlineSVGBackgroundImage(
+                  getSVGPath(
+                    i + 1,
+                    {
+                      primaryColor,
+                      invertedBaseColor: getInvertedThemedColors(theme).primaryColor,
+                      disabledColor,
+                    },
+                    isStateCurrent
+                  )
+                ),
               },
             }),
             {} as JssStyle
@@ -106,15 +101,12 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         gridTemplateColumns: `${fontLineHeight} minmax(0, auto)`,
         gap: '3px',
         color: isDisabled ? disabledColor : primaryColor,
-        transition: getTransition('color'),
-        margin: 0,
         padding: '4px 10px 4px 6px',
         background: 0,
         border: 0,
         outline: 0,
         ...textSmallStyle,
         fontSize: 'inherit',
-        whiteSpace: 'nowrap',
         width: 'max-content',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
         // mergeDeep needed because of hoverMediaQuery in certain modes not wrapping keys and therefore overriding "&::before" key
