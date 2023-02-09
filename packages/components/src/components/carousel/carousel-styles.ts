@@ -48,7 +48,7 @@ export const getComponentCss = (
 ): string => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
   const isAlignLeft = alignHeader === 'left';
-  const bulletAnimationDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css animation duration" ('0.4s') format
+  const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
 
   return getCss({
     '@global': {
@@ -166,7 +166,7 @@ export const getComponentCss = (
         background: disabledColor,
         margin: `0 ${spacingStaticXSmall}`,
         // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${bulletAnimationDuration}, width ${bulletAnimationDuration}`,
+        transition: `background-color ${bulletTransitionDuration}, width ${bulletTransitionDuration}`,
         width: bulletSize,
         height: bulletSize,
       },
