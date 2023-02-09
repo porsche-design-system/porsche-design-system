@@ -8,7 +8,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "prestart": "yarn patchRemixRun && yarn --cwd ../nextjs prestartAndBuild",
-    "presbuild": "yarn patchRemixRun && yarn --cwd ../nextjs prestartAndBuild",
+    "prebuild-app": "yarn patchRemixRun && yarn --cwd ../nextjs prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'cross-env NODE_ENV=development binode -- @remix-run/dev:remix dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'remix-serve build'",
     "build-app": "remix build",
