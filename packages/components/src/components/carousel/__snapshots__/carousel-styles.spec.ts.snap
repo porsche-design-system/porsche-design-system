@@ -1,28 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false} and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   color: #010205 !important;
-  text-align: center !important;
+  max-width: 900px !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   color: #010205 !important;
-  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
-  text-align: center !important;
+  max-width: 550px !important;
   grid-column: 1 !important;
 }
 .splide {
@@ -60,6 +62,11 @@ p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.header {
+  display: grid;
+  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
 .nav {
   display: none;
 }
@@ -92,8 +99,11 @@ p,::slotted([slot=description]) {
 
 @media(min-width:760px) {
   .header {
+    grid-template-columns: minmax(0px, 1fr) 0;
+    column-gap: 0;
+    padding: 0 calc(calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
     position: relative;
-    min-height: 40px;
+    min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
   .nav {
     display: grid;
@@ -128,14 +138,17 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -149,7 +162,6 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #FBFCFF !important;
-  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
   max-width: 550px !important;
   grid-column: 1 !important;
 }
@@ -187,6 +199,11 @@ p,::slotted([slot=description]) {
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
   display: none;
@@ -214,8 +231,10 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
+    color: #000;
+    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px);
     position: relative;
-    min-height: 40px;
+    min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
   .nav {
     display: grid;
@@ -229,14 +248,17 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -250,7 +272,6 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #010205 !important;
-  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
   max-width: 550px !important;
   grid-column: 1 !important;
 }
@@ -288,6 +309,11 @@ p,::slotted([slot=description]) {
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
   display: none;
@@ -315,8 +341,10 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
+    color: #000;
+    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px);
     position: relative;
-    min-height: 40px;
+    min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
   .nav {
     display: grid;
@@ -330,14 +358,17 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: true, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -351,7 +382,6 @@ p,::slotted([slot=description]) {
   hyphens: auto !important;
   margin: 0 !important;
   color: #010205 !important;
-  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
   max-width: 550px !important;
   grid-column: 1 !important;
 }
@@ -390,6 +420,11 @@ p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.header {
+  display: grid;
+  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
 .nav {
   display: none;
 }
@@ -398,8 +433,10 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
+    color: #000;
+    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px);
     position: relative;
-    min-height: 40px;
+    min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
   .nav {
     display: grid;
@@ -413,29 +450,31 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: false, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   color: #010205 !important;
-  text-align: center !important;
+  max-width: 900px !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   color: #010205 !important;
-  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
-  text-align: center !important;
+  max-width: 550px !important;
   grid-column: 1 !important;
 }
 .splide {
@@ -475,7 +514,10 @@ p,::slotted([slot=description]) {
   -webkit-touch-callout: none;
 }
 .header {
+  display: grid;
+  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
   display: none;
@@ -503,8 +545,11 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
+    grid-template-columns: minmax(0px, 1fr) 0;
+    column-gap: 0;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
     position: relative;
-    min-height: 40px;
+    min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
   .nav {
     display: grid;
@@ -515,38 +560,34 @@ p,::slotted([slot=description]) {
     bottom: 0;
   }
 }
-
-@media(min-width:1760px) {
-  .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
-  }
-}
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: true, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
-  max-width: 1920px !important;
+  max-width: 2560px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   gap: clamp(2rem, 0.56vw + 1.89rem, 2.5rem) !important;
   grid-auto-flow: row !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   color: #010205 !important;
-  text-align: center !important;
+  max-width: 900px !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   color: #010205 !important;
-  padding: clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
-  text-align: center !important;
+  max-width: 550px !important;
   grid-column: 1 !important;
 }
 .splide {
@@ -586,7 +627,10 @@ p,::slotted([slot=description]) {
   -webkit-touch-callout: none;
 }
 .header {
+  display: grid;
+  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
   display: none;
@@ -596,8 +640,11 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
+    grid-template-columns: minmax(0px, 1fr) 0;
+    column-gap: 0;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
     position: relative;
-    min-height: 40px;
+    min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
   .nav {
     display: grid;
@@ -606,12 +653,6 @@ p,::slotted([slot=description]) {
     position: absolute;
     right: clamp(22px, 10.625vw - 12px, 192px);
     bottom: 0;
-  }
-}
-
-@media(min-width:1760px) {
-  .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
 }
 "

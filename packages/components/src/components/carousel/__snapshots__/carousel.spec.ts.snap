@@ -26,6 +26,7 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
     "perMove": 1,
     "rewind": true,
     "rewindByDrag": true,
+    "speed": 400,
   },
 ]
 `;
