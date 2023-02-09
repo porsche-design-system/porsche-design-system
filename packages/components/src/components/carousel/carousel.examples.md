@@ -22,9 +22,8 @@ The value can either be a static number, or a breakpoint customizable object.
 
 <Playground :markup="slidesPerPage" :config="config">
   <label>
-    <p-text :theme="theme">slidesPerPage:</p-text>
-    <select v-model="slidesPerPageModel" aria-label="Select slidesPerPage mode">
-      <option disabled>Select slidesPerPage mode</option>
+    <select v-model="slidesPerPageModel" aria-label="Select slides per page mode">
+      <option disabled>Select slides per page mode</option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -80,9 +79,8 @@ The pagination indicators underneath the slides can be removed via `disablePagin
 
 <Playground :markup="disablePagination" :config="config">
   <label>
-    <p-text :theme="theme">disablePagination:</p-text>
-    <select v-model="disablePaginationModel" aria-label="Select disablePagination mode">
-      <option disabled>Select disablePagination mode</option>
+    <select v-model="disablePaginationModel" aria-label="Select disable pagination mode">
+      <option disabled>Select disable pagination mode</option>
       <option value="true">true</option>
       <option value="false">false</option>
       <option value="{ base: true, m: false }">{ base: true, m: false }</option>
@@ -96,9 +94,8 @@ The Heading and Description can be aligned via `alignHeader`.
 
 <Playground :markup="alignHeader" :config="config">
   <label>
-    <p-text :theme="theme">alignHeader:</p-text>
-    <select v-model="alignHeaderModel" aria-label="Select alignHeader mode">
-      <option disabled>Select alignHeader mode</option>
+    <select v-model="alignHeaderModel" aria-label="Select align header mode">
+      <option disabled>Select align header mode</option>
       <option value="left">left</option>
       <option value="center">center</option>
     </select>
