@@ -127,7 +127,7 @@ describe('validation', () => {
   });
 });
 
-xdescribe('scrolling', () => {
+describe('scrolling', () => {
   it('should scroll current step into view', async () => {
     await initStepperHorizontal({ amount: 9, currentStep: 3, isWrapped: true });
     const [, , , step4] = await getStepItems();
