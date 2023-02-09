@@ -77,7 +77,9 @@ export class StepperHorizontalItem {
             />
           )}
           {this.state && <span class="sr-only">{this.state}: </span>}
-          <slot />
+          <span class="label">
+            <slot />
+          </span>
         </button>
       </Host>
     );
