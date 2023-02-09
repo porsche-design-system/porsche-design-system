@@ -21,7 +21,7 @@ describe('components', () => {
 
 <p-content-wrapper>
   <p-marque></p-marque>
-  <p-headline variant="headline-1">Some Headline</p-headline>
+  <p-heading size="xx-large">Some Headline</p-heading>
   <p-button>Some label</p-button>
 </p-content-wrapper>`;
 

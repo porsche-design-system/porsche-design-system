@@ -72,7 +72,7 @@ render(<StyledDiv>Styled Text</StyledDiv>);
 ## Typography
 
 **Note:** For font-styling it's recommended to use the
-[`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
+[`<p-heading>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
 
 The predefined variables for `text` and `headline` **only** work with JSS frameworks like styled-components due to the
 necessity of font sizes in relation to breakpoints. You can follow e.g.

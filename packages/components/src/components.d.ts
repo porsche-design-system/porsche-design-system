@@ -5,9 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeaderAlign, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
-import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
+import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, HeaderAlign, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
@@ -20,6 +19,9 @@ import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustif
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
+import { HeadingTag } from "./components/heading/heading-tag";
+import { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/heading-utils";
+import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
@@ -66,7 +68,7 @@ export namespace Components {
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */
-        "tag"?: HeadlineTag;
+        "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
          */
@@ -408,15 +410,41 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<GridItemSize>;
     }
+    interface PHeading {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: HeadingAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: HeadingColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<HeadingSize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the heading component.
+         */
+        "tag"?: HeadingTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
     interface PHeadline {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadlineAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
+        "color"?: HeadlineColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -1395,6 +1423,12 @@ declare global {
         prototype: HTMLPGridItemElement;
         new (): HTMLPGridItemElement;
     };
+    interface HTMLPHeadingElement extends Components.PHeading, HTMLStencilElement {
+    }
+    var HTMLPHeadingElement: {
+        prototype: HTMLPHeadingElement;
+        new (): HTMLPHeadingElement;
+    };
     interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {
     }
     var HTMLPHeadlineElement: {
@@ -1651,6 +1685,7 @@ declare global {
         "p-flex-item": HTMLPFlexItemElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
+        "p-heading": HTMLPHeadingElement;
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
         "p-inline-notification": HTMLPInlineNotificationElement;
@@ -1718,7 +1753,7 @@ declare namespace LocalJSX {
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */
-        "tag"?: HeadlineTag;
+        "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2068,15 +2103,41 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<GridItemSize>;
     }
+    interface PHeading {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: HeadingAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: HeadingColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<HeadingSize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the heading component.
+         */
+        "tag"?: HeadingTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
     interface PHeadline {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadlineAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'primary' | 'default' | 'inherit'>;
+        "color"?: HeadlineColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -2970,6 +3031,7 @@ declare namespace LocalJSX {
         "p-flex-item": PFlexItem;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
+        "p-heading": PHeading;
         "p-headline": PHeadline;
         "p-icon": PIcon;
         "p-inline-notification": PInlineNotification;
@@ -3031,6 +3093,7 @@ declare module "@stencil/core" {
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-grid": LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;
             "p-grid-item": LocalJSX.PGridItem & JSXBase.HTMLAttributes<HTMLPGridItemElement>;
+            "p-heading": LocalJSX.PHeading & JSXBase.HTMLAttributes<HTMLPHeadingElement>;
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;

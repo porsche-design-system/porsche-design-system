@@ -6,6 +6,12 @@
 
 `p-text` is used to specify paragraph styling in documents.
 
+<p-inline-notification heading="Recommendation" state="success" persistent="true">
+  Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
+the "@porsche-design-system/components-{js|angular|react|vue}/styles" sub-package for best performance since way 
+less DOM nodes are required to render. Further information can be found <a href="styles/typography">here</a>.
+</p-inline-notification>
+
 ---
 
 ## Size

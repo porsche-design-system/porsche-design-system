@@ -122,6 +122,13 @@ exports[`should have no basic DOM regression for p-grid-item 1`] = `
 </slot>"
 `;
 
+exports[`should have no basic DOM regression for p-heading 1`] = `
+"<h2 class="root">
+  <slot>
+  </slot>
+</h2>"
+`;
+
 exports[`should have no basic DOM regression for p-headline 1`] = `
 "<h1 class="root">
   <slot>
@@ -398,7 +405,7 @@ exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
 "<p-scroller class="scroller hydrated" role="tablist">
   <slot>
   </slot>
-  <span class="bar" style="transform: translate3d(0rem,0,0); width: 0;">
+  <span class="bar" style="transform: translate3d(0px,0,0); width: 0;">
   </span>
 </p-scroller>"
 `;

@@ -11,7 +11,7 @@ export { AllowedTypes, validateProps } from './validateProps';
 
 export { ALIGN_LABELS } from '../link-button/align-label';
 export { BUTTON_TYPES } from '../link-button/button-type';
-export { HEADLINE_TAGS } from '../../components/headline/headline-utils';
+export { HEADING_TAGS } from '../../components/heading/heading-tag';
 export { LINK_BUTTON_VARIANTS } from '../link-button/link-button-variant';
 export { TEXT_ALIGNS } from '../../components/text/text-align';
 export { HEADER_ALIGNS } from '../../components/carousel/carousel-align-header';
