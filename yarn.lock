@@ -3155,18 +3155,6 @@
   resolved "https://registry.yarnpkg.com/@porsche-design-system/browser-notification/-/browser-notification-4.1.4.tgz#2a33870f67da42ad67e891e3910493b6fbcdcfcd"
   integrity sha512-M/vdngr9ANMbM8A0p2fMpDVwNT4qDh4R8WCPaXneBCCN6DA/wnarqvj1AnkJlmordWArs8AZLn7olwIOgLTwKg==
 
-"@porsche-design-system/components-js@2.19.0":
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/@porsche-design-system/components-js/-/components-js-2.19.0.tgz#227e5d73d539b154971427de721759b82feecbe6"
-  integrity sha512-46Opj3xzG/hbH2LjnO/wPuzZyPte2aQisKyjQzktnoOGXmj6JniR0kJEAtrs/pDzparQtwRu7yfE68l9qkF44w==
-
-"@porsche-design-system/components-react@2.19.0":
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/@porsche-design-system/components-react/-/components-react-2.19.0.tgz#66cebd280a0025e2f4d6c0c7ae9a0681447547b2"
-  integrity sha512-JQveHu6kt3Pq1EJpz2xOmaaT/WZH2p8rqE5e65wsFw88f+gefPaDehfESayIqNYct1skbwEgMuBacHj34AHmqA==
-  dependencies:
-    "@porsche-design-system/components-js" "2.19.0"
-
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
