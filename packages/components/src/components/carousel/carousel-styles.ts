@@ -127,8 +127,8 @@ export const getComponentCss = (
               gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
             }
           : {
-              gridTemplateColumns: 'minmax(0px, 1fr) 0',
-              columnGap: 0,
+              gridTemplateColumns: 'minmax(0px, 1fr) 0', // first column should take the whole width
+              columnGap: 0, // there shouldn't be a gap, because we have only one column
               padding: wrapContent // set padding, so that description & heading do not overlap with nav buttons
                 ? `0 calc(${gridSafeZoneBase} + ${headerAlignCenterSpacing})`
                 : `0 calc(${headerAlignCenterSpacing})`,
