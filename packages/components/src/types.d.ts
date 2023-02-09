@@ -11,8 +11,6 @@ export type { TextAlign } from './components/text/text-align';
 export type { TextColor } from './components/text/text-color';
 export type { TextWeight } from './components/text/text-weight';
 
-export type { HeaderAlign } from './components/carousel/carousel-align-header';
-
 export type { IconName } from '@porsche-design-system/icons';
 
 export type LinkButtonIconName = IconName | 'none';
