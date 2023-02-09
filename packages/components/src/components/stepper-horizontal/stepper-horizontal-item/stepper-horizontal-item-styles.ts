@@ -108,7 +108,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'),
         margin: 0,
-        padding: '4px 4px 4px 2px',
+        padding: '4px 10px 4px 6px',
         background: 0,
         border: 0,
         outline: 0,
@@ -137,10 +137,9 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           },
           ...(isStateCurrentOrUndefined
             ? {
-                // counter circle icon
+                // counter
                 cursor: isDisabled ? 'not-allowed' : 'auto',
                 '&::after': {
-                  // circle of counter element
                   gridArea: '1 / 1 / 1 / 1',
                   content: '""',
                   position: 'absolute',
@@ -171,7 +170,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
       gridArea: '1 / 2 / 1 / 2',
     },
     ...(!isStateCurrentOrUndefined && {
-      // other icons via icon component
+      // complete / warning icons via icon component
       icon: {
         gridArea: '1 / 1 / 1 / 1',
         position: 'absolute',
