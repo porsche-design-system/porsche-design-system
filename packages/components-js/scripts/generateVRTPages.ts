@@ -19,7 +19,7 @@ const pagesDirectories: { [key in Framework]: string } = {
   angular: path.resolve(rootDirectory, '../components-angular/src/app/pages'),
   react: path.resolve(rootDirectory, '../components-react/src/pages'),
   nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/pages'),
-  remix: path.resolve(rootDirectory, '../components-react/projects/remix/app/routes/pages'),
+  remix: path.resolve(rootDirectory, '../components-react/projects/remix/app/pages'),
 };
 
 const generateVRTPages = (): void => {

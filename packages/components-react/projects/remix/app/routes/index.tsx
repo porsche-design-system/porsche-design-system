@@ -8,7 +8,7 @@ export default function Index(): JSX.Element {
 
       <ul>
         <li>
-          <Link to="/pages/overview">Overview</Link>
+          <Link to="/overview">Overview</Link>
         </li>
       </ul>
     </main>
