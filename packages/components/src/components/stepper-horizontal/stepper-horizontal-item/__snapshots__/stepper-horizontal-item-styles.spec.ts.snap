@@ -19,7 +19,7 @@ button {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -101,7 +101,7 @@ button {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -183,7 +183,7 @@ button {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -254,7 +254,7 @@ button {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -352,7 +352,7 @@ button {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -453,7 +453,7 @@ button {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -554,7 +554,7 @@ button {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -655,7 +655,7 @@ button {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -756,7 +756,7 @@ button {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -854,7 +854,7 @@ button {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -952,7 +952,7 @@ button {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -1050,7 +1050,7 @@ button {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -1121,7 +1121,7 @@ button {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -1203,7 +1203,7 @@ button {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -1285,7 +1285,7 @@ button {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
@@ -1356,7 +1356,7 @@ button {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   margin: 0;
-  padding: 4px 4px 4px 2px;
+  padding: 4px 10px 4px 6px;
   background: 0;
   border: 0;
   outline: 0;
