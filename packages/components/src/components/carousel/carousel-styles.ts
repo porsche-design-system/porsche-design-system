@@ -43,8 +43,8 @@ export const getComponentCss = (
   wrapContent: boolean,
   disablePagination: BreakpointCustomizable<boolean>,
   splideSpeed: number,
-  theme: Theme,
-  alignHeader: HeaderAlign
+  alignHeader: HeaderAlign,
+  theme: Theme
 ): string => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
   const isAlignLeft = alignHeader === 'left';

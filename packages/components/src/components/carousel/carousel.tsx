@@ -168,8 +168,8 @@ export class Carousel {
       this.wrapContent,
       this.disablePagination,
       this.splideSpeed,
-      this.theme,
-      this.alignHeader
+      this.alignHeader,
+      this.theme
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
