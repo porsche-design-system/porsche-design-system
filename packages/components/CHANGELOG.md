@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-alpha.0] - 2023-02-08
+
 #### Note to the new `v3` major release of the Porsche Design System
 
 With the new **Porsche Design Language** comes a lot of changes regarding layout and design principles. To keep
@@ -150,6 +152,13 @@ major version.
 - Component is deprecated and will be removed with the next major release. In general, please use native
   [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
   **[Porsche Grid](styles/grid)** instead for better performance and more standardized layout technique.
+
+##### Headline:
+
+```diff
+- <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
++ <p-heading>The quick brown fox jumps over the lazy dog</p-heading>
+```
 
 ##### Link Social:
 
@@ -373,21 +382,21 @@ to the new values since those ones will be removed with next major version.
 #### Added
 
 - `Display` component
+- `Heading` component
 - Prop `underline` for `Link Pure`
 - Prop `theme` for `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper`,
   `Text Field Wrapper` and `Fieldset Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
 - Prop `size` for `Accordion` `compact="true"` supports `medium`
-- Prop `color` for `Icon` supports `disabled`
 
 #### Changed
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
   `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Stepper Horizontal` and `Fieldset Wrapper` matches new design language.
+  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline` and `Fieldset Wrapper` matches new design language.
 - `Icon` supports
-  `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | disabled | inherit`
+  `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | inherit`
   for `color` prop.
 - Default value of prop `width` of `Banner` has changed from `basic` to `extended`
 - Default value of prop `action-icon` of `Inline Notification` has changed from `arrow-head-right` to `arrow-right`

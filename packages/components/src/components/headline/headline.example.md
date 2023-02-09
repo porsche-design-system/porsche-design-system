@@ -4,42 +4,23 @@
 
 ## Headline
 
-**Headline component** to specify headline styling and hierarchy in documents.
+`p-headline` is used to highlight and specify heading styling and hierarchy in documents.
+
+<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+  This component is deprecated and will be removed with the next major release.
+Please use <a href="components/typography/heading">p-heading</a> instead.
+</p-inline-notification>
+
+---
 
 ## Variant
 
-Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints. There are multiple
-predefined styling variants available.
+There are predefined fluid text sizes for the component which should cover most use cases. If a specific text size is
+needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="variant" :config="config"></Playground>
 
-### Default Tags
-
-Default rendered semantic tag hierarchy equals to headline variant.
-
-**Note**: You always have to take care of the **semantic structure** of your HTML tags. This is very important for
-**SEO** and **Accessibility**. Regarding of your **page structure** you need to set a **corresponding headline tag** via
-the `tag` property. This means, that a headline can look like an `h1` but doesn't need to be an `h1` in the document
-(see also section "**Custom tag hierarchy**").
-
-| Headline Variant | Rendered HTML Tag |
-| ---------------- | ----------------- |
-| `large-title`    | `<h1>`            |
-| `headline-1`     | `<h1>`            |
-| `headline-2`     | `<h2>`            |
-| `headline-3`     | `<h3>`            |
-| `headline-4`     | `<h4>`            |
-| `headline-5`     | `<h5>`            |
-
-## Custom Variant
-
-If you need more control over sizing and responsiveness, you can use predefined text sizes on different major
-breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
-
-**Hint:** When using `inherit` you have to take the **[typeScale](components/typography/usage)** values in account.
-
-**Note:** If you choose a custom responsive size, you have to take care of your **semantic tag hierarchy**. It defaults
-to `h1` for every combination.
+## Responsive
 
 <Playground :markup="customVariantMarkup" :config="config">
  <select v-model="customVariant" aria-label="Select custom variant">
@@ -53,8 +34,7 @@ to `h1` for every combination.
 
 ## Custom tag hierarchy
 
-If a custom tag hierarchy is needed, **individual headline tags** can be set from `h1` to `h6` either by referencing the
-corresponding `tag` property or setting the HTML headline tags directly as slots.
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
 
 <Playground :markup="customTagHierarchy" :config="config"></Playground>
 
@@ -62,8 +42,7 @@ corresponding `tag` property or setting the HTML headline tags directly as slots
 
 ## Color
 
-A predefined default color associated with its theme is available but also inherit mode can be used to define a custom
-color.
+Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
   <select v-model="color" aria-label="Select color">

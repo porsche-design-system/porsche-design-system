@@ -1,7 +1,7 @@
-import { getThemedTextColor } from './text-icon-styles';
+import { getThemedTypographyColor } from './text-icon-styles';
 
 xdescribe('getThemedTextColor()', () => {
-  it.each<Parameters<typeof getThemedTextColor>>([
+  it.each<Parameters<typeof getThemedTypographyColor>>([
     ['light', 'brand'], // TODO: shall be deprecated with v3-alpha
     ['light', 'default'], // TODO: shall be deprecated with v3-alpha
     ['light', 'neutral-contrast-high'],
@@ -23,6 +23,6 @@ xdescribe('getThemedTextColor()', () => {
     ['dark', 'notification-neutral'], // TODO: shall be deprecated with v3-alpha
     ['dark', 'inherit'],
   ])('should return correct css for theme: %s and textColor: %s', (...args) => {
-    expect(getThemedTextColor(...args)).toMatchSnapshot();
+    expect(getThemedTypographyColor(...args)).toMatchSnapshot();
   });
 });
