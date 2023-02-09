@@ -18,13 +18,17 @@ export default function App(): JSX.Element {
         <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.10be24507223bc4ef63effe0eb750e58.png" />
 
         <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
-        {!process.browser && [
-          getInitialStyles({ format: 'jsx' }),
-          getFontLinks({ weights: ['regular', 'semi-bold', 'bold'], withoutTags: true })
-            .map((x) => x.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'))
-            .map((url) => <link key={url} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />),
-          getSharedStyles(),
-        ]}
+        {!process.browser && (
+          <>
+            {getInitialStyles({ format: 'jsx' })}
+            {getFontLinks({ weights: ['regular', 'semi-bold', 'bold'], withoutTags: true })
+              .map((x) => x.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'))
+              .map((url) => (
+                <link key={url} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />
+              ))}
+            {getSharedStyles()}
+          </>
+        )}
       </head>
       <body>
         <PorscheDesignSystemProvider>
