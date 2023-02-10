@@ -254,7 +254,7 @@ export class TextFieldWrapper {
                   key="icon"
                   class="icon"
                   name="search"
-                  color="contrast-medium"
+                  color="disabled"
                   theme={this.theme}
                   aria-hidden="true"
                 />
