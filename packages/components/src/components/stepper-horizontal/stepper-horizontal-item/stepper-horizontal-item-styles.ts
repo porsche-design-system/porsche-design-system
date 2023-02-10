@@ -13,6 +13,7 @@ import {
   borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
+  spacingFluidXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getCss, mergeDeep } from '../../../utils';
@@ -93,7 +94,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           transform: 'translate3d(0,0,0)', // creates new stacking context
           ...hostHiddenStyles,
           '&(:not(:last-of-type))': {
-            margin: '0 16px 0 0',
+            margin: `0 ${spacingFluidXSmall} 0 0`,
           },
         }),
       },
