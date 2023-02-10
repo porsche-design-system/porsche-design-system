@@ -288,7 +288,7 @@ describe('events', () => {
 
     await addEventListener(host, 'stepChange');
 
-    await page.mouse.click((await getOffsetWidth(item1)) + 8, 18);
+    await page.mouse.click((await getOffsetWidth(item1)) + 6, 18);
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
 
     await item1.click();
