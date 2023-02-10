@@ -20,6 +20,7 @@ import {
   spacingFluidXSmall,
   spacingFluidLarge,
   fontLineHeight,
+  spacingStaticMedium,
 } from '@porsche-design-system/utilities-v2';
 import { CarouselAlignHeader } from './carousel-utils';
 
@@ -27,6 +28,8 @@ export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = getMediaQueryMin('s');
 
+const headerRowGap = spacingFluidXSmall;
+const headerColumnGap = spacingStaticMedium;
 const bulletSize = '8px';
 const activeBulletWidth = '20px';
 const navGap = spacingStaticXSmall;
@@ -37,9 +40,8 @@ const navBtnWidthHeight = `calc(${fontLineHeight} + ${navBtnPadding} * 2)`;
 const navOffset = '2px';
 // nav width is being calculated based on icon width (fontLineHeight), button padding, distance (navGap) between 2 nav buttons and right offset of nav
 const navWidth = `calc((${navBtnWidthHeight}) * 2 + ${navGap} + ${navOffset})`;
-const headerGap = spacingFluidXSmall;
-// in a case alignHeader=center is being set - Heading's and Description's "spacing" (left and right) should be equal to the nav's width plus header gap
-const headerAlignCenterSpacing = `${navWidth} + ${headerGap}`;
+// in a case alignHeader=center is being set - Heading's and Description's "spacing" (left and right) should be equal to the nav's width plus header column gap
+const headerAlignCenterSpacing = `${navWidth} + ${headerColumnGap}`;
 
 export const getComponentCss = (
   wrapContent: boolean,
@@ -124,7 +126,8 @@ export const getComponentCss = (
     //   }
     header: {
       display: 'grid',
-      gap: headerGap,
+      rowGap: headerRowGap,
+      columnGap: headerColumnGap,
       padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
       font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
       [mediaQueryS]: {
