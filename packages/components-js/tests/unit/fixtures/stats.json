@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 7182,
-    "gzipSize": 2877
+    "size": 7175,
+    "gzipSize": 2872
   },
   {
     "chunkShortName": "button-group",
@@ -107,7 +107,7 @@
   {
     "chunkShortName": "main",
     "size": 67752,
-    "gzipSize": 23010
+    "gzipSize": 23004
   },
   {
     "chunkShortName": "marque",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "pagination",
-    "size": 6901,
-    "gzipSize": 2832
+    "size": 6887,
+    "gzipSize": 2824
   },
   {
     "chunkShortName": "popover",
@@ -146,8 +146,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 21358,
-    "gzipSize": 7115
+    "size": 21344,
+    "gzipSize": 7109
   },
   {
     "chunkShortName": "spinner",
@@ -156,8 +156,8 @@
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 12127,
-    "gzipSize": 4878
+    "size": 12010,
+    "gzipSize": 4845
   },
   {
     "chunkShortName": "switch",
@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 14115,
-    "gzipSize": 5249
+    "size": 14108,
+    "gzipSize": 5244
   },
   {
     "chunkShortName": "text-list",
