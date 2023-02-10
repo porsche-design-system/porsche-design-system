@@ -21,7 +21,7 @@ button {
   border: 0;
   outline: 0;
   cursor: pointer;
-  background: #FFF;
+  background: #212225;
   border-radius: 4px;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -32,10 +32,9 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(126, 127, 130, 0.20);
-  }
-  button:hover > .icon {
-    filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   }
 }
 
@@ -170,6 +169,8 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(148, 149, 152, 0.20);
   }
 }
@@ -305,6 +306,8 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(148, 149, 152, 0.20);
   }
 }
@@ -428,7 +431,7 @@ button {
   border: 0;
   outline: 0;
   cursor: pointer;
-  background: #FFF;
+  background: #212225;
   border-radius: 4px;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -439,10 +442,9 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(126, 127, 130, 0.20);
-  }
-  button:hover > .icon {
-    filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   }
 }
 
@@ -577,6 +579,8 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(148, 149, 152, 0.20);
   }
 }
@@ -712,6 +716,8 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(148, 149, 152, 0.20);
   }
 }
@@ -835,7 +841,7 @@ button {
   border: 0;
   outline: 0;
   cursor: pointer;
-  background: #EEEFF2;
+  background: #0E0E12;
   border-radius: 4px;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -846,10 +852,9 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(126, 127, 130, 0.20);
-  }
-  button:hover > .icon {
-    filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   }
 }
 
@@ -984,6 +989,8 @@ button {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
     background: rgba(148, 149, 152, 0.20);
   }
 }
