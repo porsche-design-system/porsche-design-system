@@ -292,9 +292,10 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate:  p-icon').toBe(2);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 });
 
