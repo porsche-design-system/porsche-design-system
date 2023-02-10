@@ -79,7 +79,6 @@ p,::slotted([slot=description]) {
   display: flex;
   margin: 0 auto;
   gap: 8px;
-  line-height: 8px;
 }
 .bullet {
   border-radius: 4px;
@@ -217,7 +216,6 @@ p,::slotted([slot=description]) {
   display: flex;
   margin: 0 auto;
   gap: 8px;
-  line-height: 8px;
 }
 .bullet {
   border-radius: 4px;
@@ -327,7 +325,6 @@ p,::slotted([slot=description]) {
   display: flex;
   margin: 0 auto;
   gap: 8px;
-  line-height: 8px;
 }
 .bullet {
   border-radius: 4px;
@@ -534,7 +531,6 @@ p,::slotted([slot=description]) {
   display: flex;
   margin: 0 auto;
   gap: 8px;
-  line-height: 8px;
 }
 .bullet {
   border-radius: 4px;
