@@ -133,7 +133,6 @@ export const getComponentCss = (
       [mediaQueryS]: {
         ...(isAlignLeft
           ? {
-              color: '#000',
               gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
             }
           : {
