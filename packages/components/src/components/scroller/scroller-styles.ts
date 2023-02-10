@@ -50,10 +50,10 @@ export const getComponentCss = (
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, focusColor } = getThemedColors('light');
-  const { hoverColor } = getThemedColors(theme);
+  const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
 
   const isDarkTheme = isThemeDark(theme);
+  const isSurfaceColorTheme = gradientColorTheme === 'surface';
 
   const actionPrevNextStyles = {
     position: 'relative',
@@ -81,7 +81,13 @@ export const getComponentCss = (
         border: 0,
         outline: 0,
         cursor: 'pointer',
-        background: gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor,
+        background: isDarkTheme
+          ? isSurfaceColorTheme
+            ? backgroundColor
+            : backgroundSurfaceColor
+          : isSurfaceColorTheme
+          ? backgroundSurfaceColor
+          : backgroundColor,
         borderRadius: borderRadiusSmall,
         ...frostedGlassStyle,
         visibility: 'hidden',
@@ -89,12 +95,8 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
+            ...frostedGlassStyle,
             background: hoverColor,
-            ...(isDarkTheme && {
-              '& > .icon': {
-                filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
-              },
-            }),
           },
         }),
       },
