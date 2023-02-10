@@ -21,7 +21,7 @@ import {
   spacingFluidLarge,
   fontLineHeight,
 } from '@porsche-design-system/utilities-v2';
-import { HeaderAlign } from './carousel-utils';
+import { CarouselAlignHeader } from './carousel-utils';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -43,7 +43,7 @@ export const getComponentCss = (
   wrapContent: boolean,
   disablePagination: BreakpointCustomizable<boolean>,
   splideSpeed: number,
-  alignHeader: HeaderAlign,
+  alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
   const { primaryColor, disabledColor } = getThemedColors(theme);

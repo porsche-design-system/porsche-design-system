@@ -7,7 +7,7 @@ import { bulletActiveClass } from './carousel-styles';
 import type { TagName } from '@porsche-design-system/shared';
 
 export const HEADER_ALIGNS = ['left', 'center'] as const;
-export type HeaderAlign = typeof HEADER_ALIGNS[number];
+export type CarouselAlignHeader = typeof HEADER_ALIGNS[number];
 
 // https://splidejs.com/guides/i18n/#default-texts
 // extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types

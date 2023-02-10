@@ -18,8 +18,10 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
-import type { CarouselChangeEvent, CarouselInternationalization, HeaderAlign } from './carousel-utils';
 import {
+  CarouselAlignHeader,
+  CarouselChangeEvent,
+  CarouselInternationalization,
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
@@ -42,7 +44,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   wrapContent: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
-  alignHeader: AllowedTypes.oneOf<HeaderAlign>(HEADER_ALIGNS),
+  alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(HEADER_ALIGNS),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -68,7 +70,7 @@ export class Carousel {
   @Prop() public description?: string;
 
   /** Alignment of heading and description */
-  @Prop() public alignHeader?: HeaderAlign = 'left';
+  @Prop() public alignHeader?: CarouselAlignHeader = 'left';
 
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
