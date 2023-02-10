@@ -33,10 +33,10 @@ const navGap = spacingStaticXSmall;
 const navBtnPadding = spacingStaticSmall;
 // nav button is a square, so it's width is equal to it's height
 const navBtnWidthHeight = `calc(${fontLineHeight} + ${navBtnPadding} * 2)`;
-// it's equal to inset of "hover :before element" of nav button, so that button in hover state is right-aligned correctly
-const navRightOffset = '2px';
+// it's equal to inset of "hover :before element" of nav button, so that button in hover state is aligned correctly
+const navOffset = '2px';
 // nav width is being calculated based on icon width (fontLineHeight), button padding, distance (navGap) between 2 nav buttons and right offset of nav
-const navWidth = `calc((${navBtnWidthHeight}) * 2 + ${navGap} + ${navRightOffset})`;
+const navWidth = `calc((${navBtnWidthHeight}) * 2 + ${navGap} + ${navOffset})`;
 const headerGap = spacingFluidXSmall;
 // in a case alignHeader=center is being set - Heading's and Description's "spacing" (left and right) should be equal to the nav's width plus header gap
 const headerAlignCenterSpacing = `${navWidth} + ${headerGap}`;
@@ -153,7 +153,7 @@ export const getComponentCss = (
         position: 'absolute', // we can't span across multiple rows with implicit grid
         right: wrapContent ? gridSafeZoneBase : 0,
         bottom: 0,
-        paddingRight: navRightOffset,
+        padding: `0 ${navOffset} ${navOffset} 0`, // make offset to the right and the bottom side, so that it's aligned to right & bottom in hover state
       },
     },
     btn: {
