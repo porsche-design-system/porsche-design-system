@@ -34,11 +34,11 @@ const activeBulletWidth = '20px';
 const navGap = spacingStaticXSmall;
 const navBtnPadding = spacingStaticSmall;
 // nav button is a square, so it's width is equal to it's height
-const navBtnWidthHeight = `calc(${fontLineHeight} + ${navBtnPadding} * 2)`;
+const navBtnSize = `calc(${fontLineHeight} + ${navBtnPadding} * 2)`;
 // it's equal to inset of "hover :before element" of nav button, so that button in hover state is aligned correctly
 const navOffset = '2px';
 // nav width is being calculated based on icon width (fontLineHeight), button padding, distance (navGap) between 2 nav buttons and right offset of nav
-const navWidth = `calc((${navBtnWidthHeight}) * 2 + ${navGap} + ${navOffset})`;
+const navWidth = `calc((${navBtnSize}) * 2 + ${navGap} + ${navOffset})`;
 // in a case alignHeader=center is being set - Heading's and Description's "spacing" (left and right) should be equal to the nav's width plus header column gap
 const headerAlignCenterSpacing = `${navWidth} + ${headerColumnGap}`;
 
@@ -50,7 +50,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
-  const isAlignLeft = alignHeader === 'left';
+  const isHeaderAlignLeft = alignHeader === 'left';
   const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
 
   return getCss({
@@ -69,7 +69,7 @@ export const getComponentCss = (
         margin: 0,
         color: primaryColor,
         maxWidth: '900px',
-        ...(!isAlignLeft && {
+        ...(!isHeaderAlignLeft && {
           margin: '0 auto',
           textAlign: 'center',
         }),
@@ -79,7 +79,7 @@ export const getComponentCss = (
         margin: 0,
         color: primaryColor,
         maxWidth: '550px',
-        ...(!isAlignLeft && {
+        ...(!isHeaderAlignLeft && {
           margin: '0 auto',
           textAlign: 'center',
         }),
@@ -130,7 +130,7 @@ export const getComponentCss = (
       font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
       [mediaQueryS]: {
         // only starting from S size and bigger there's nav
-        ...(isAlignLeft
+        ...(isHeaderAlignLeft
           ? {
               gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
               columnGap: headerColumnGap,
@@ -143,7 +143,7 @@ export const getComponentCss = (
                 : `0 calc(${headerAlignCenterSpacing})`,
             }),
         position: 'relative',
-        minHeight: navBtnWidthHeight, // actual height of prev/next buttons (for a case there's no description and no heading)
+        minHeight: navBtnSize, // actual height of prev/next buttons (for a case there's no description and no heading)
       },
     },
     nav: {
