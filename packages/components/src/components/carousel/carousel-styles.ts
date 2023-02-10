@@ -143,7 +143,7 @@ export const getComponentCss = (
                 : `0 calc(${headerAlignCenterSpacing})`,
             }),
         position: 'relative',
-        minHeight: navBtnSize, // actual height of prev/next buttons (for a case there's no description and no heading)
+        minHeight: navBtnSize, // for a case there's no description and no heading - it should be equal to actual height of prev/next buttons
       },
     },
     nav: {
@@ -165,9 +165,8 @@ export const getComponentCss = (
       pagination: {
         ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'block' })),
         display: 'flex',
-        margin: '0 auto',
+        margin: '0 auto', // center-aligned
         gap: spacingStaticSmall,
-        lineHeight: bulletSize,
       },
       bullet: {
         borderRadius: borderRadiusSmall,
