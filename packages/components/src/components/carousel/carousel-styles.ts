@@ -33,7 +33,7 @@ const bulletSize = '8px'; // width and height of a bullet
 const activeBulletWidth = '20px';
 const navGap = spacingStaticXSmall;
 const navBtnPadding = spacingStaticSmall;
-// nav button is a square, so it's width is equal to it's height
+// width and height of nav button
 const navBtnSize = `calc(${fontLineHeight} + ${navBtnPadding} * 2)`;
 // it's equal to inset of "hover :before element" of nav button, so that button in hover state is aligned correctly
 const navOffset = '2px';
