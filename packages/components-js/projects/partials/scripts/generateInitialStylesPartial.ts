@@ -109,14 +109,36 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         },
 
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
-      'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type=search]::-webkit-search-decoration, input::-webkit-calendar-picker-indicator':
+      'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type=search]::-webkit-search-decoration':
         {
           WebkitAppearance: 'none',
           appearance: 'none',
         },
 
-      'input[type=search]::-webkit-search-cancel-button, input::-webkit-calendar-picker-indicator': {
+      'input[type=search]::-webkit-search-cancel-button': {
         display: 'none',
+      },
+
+      'input::-webkit-calendar-picker-indicator': {
+        filter: 'filter: invert(2%) sepia(15%) saturate(2672%) hue-rotate(193deg) brightness(92%) contrast(101%)', // property color can not be used here, this is the filter for themeLight.primary
+      },
+      '[theme=dark] input::-webkit-calendar-picker-indicator': {
+        filter: 'invert(82%) sepia(10%) saturate(66%) hue-rotate(215deg) brightness(106%) contrast(108%)', // property color can not be used here, this is the filter for themeDark.primary
+      },
+      'input::-webkit-calendar-picker-indicator:hover': {
+        cursor: 'pointer',
+      },
+
+      // Safari input type date and time has incorrect sizing and incorrect placeholder color
+      'input::-webkit-datetime-edit': {
+        display: 'block',
+        padding: 0,
+        WebkitTextFillColor: themeLight.primary,
+      },
+
+      // Safari input type date and time has incorrect sizing and incorrect placeholder color
+      '[theme=dark] input::-webkit-datetime-edit': {
+        WebkitTextFillColor: themeDark.primary,
       },
     },
   };
