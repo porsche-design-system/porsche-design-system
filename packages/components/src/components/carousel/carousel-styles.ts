@@ -169,7 +169,7 @@ export const getComponentCss = (
         background: disabledColor,
         margin: `0 ${spacingStaticXSmall}`,
         // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${bulletTransitionDuration}, width ${bulletTransitionDuration}`,
+        transition: `background-color ${bulletTransitionDuration} linear, width ${bulletTransitionDuration} linear`,
         width: bulletSize,
         height: bulletSize,
       },
