@@ -70,6 +70,7 @@ export const getComponentCss = (
         maxWidth: '900px',
         ...(!isAlignLeft && {
           margin: '0 auto',
+          textAlign: 'center',
         }),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
@@ -79,6 +80,7 @@ export const getComponentCss = (
         maxWidth: '550px',
         ...(!isAlignLeft && {
           margin: '0 auto',
+          textAlign: 'center',
         }),
         gridColumn: 1, // to force it into 2nd line
       }),
