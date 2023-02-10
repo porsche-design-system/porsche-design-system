@@ -147,7 +147,7 @@ export const getComponentCss = (
       },
     },
     nav: {
-      display: 'none',
+      display: 'none', // for smaller screens we don't show nav buttons
       [mediaQueryS]: {
         display: 'grid',
         gridAutoFlow: 'column',
