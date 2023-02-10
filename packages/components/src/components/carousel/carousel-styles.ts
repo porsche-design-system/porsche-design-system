@@ -27,10 +27,9 @@ import { CarouselAlignHeader } from './carousel-utils';
 export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = getMediaQueryMin('s');
-
-const headerRowGap = spacingFluidXSmall;
-const headerColumnGap = spacingStaticMedium;
-const bulletSize = '8px';
+const headerRowGap = spacingFluidXSmall; // fluid spacing for vertical gap
+const headerColumnGap = spacingStaticMedium; // static spacing for horizontal gap
+const bulletSize = '8px'; // width and height of a bullet
 const activeBulletWidth = '20px';
 const navGap = spacingStaticXSmall;
 const navBtnPadding = spacingStaticSmall;
