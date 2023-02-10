@@ -9,7 +9,7 @@ import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, Bu
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
-import { CarouselChangeEvent, CarouselInternationalization, HeaderAlign } from "./components/carousel/carousel-utils";
+import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
@@ -195,7 +195,7 @@ export namespace Components {
         /**
           * Alignment of heading and description
          */
-        "alignHeader"?: HeaderAlign;
+        "alignHeader"?: CarouselAlignHeader;
         /**
           * Defines the description used in the carousel.
          */
@@ -1884,7 +1884,7 @@ declare namespace LocalJSX {
         /**
           * Alignment of heading and description
          */
-        "alignHeader"?: HeaderAlign;
+        "alignHeader"?: CarouselAlignHeader;
         /**
           * Defines the description used in the carousel.
          */
