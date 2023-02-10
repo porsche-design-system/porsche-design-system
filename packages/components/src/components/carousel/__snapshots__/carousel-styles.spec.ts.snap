@@ -17,6 +17,7 @@ h2,::slotted([slot=heading]) {
   margin: 0 auto !important;
   color: #010205 !important;
   max-width: 900px !important;
+  text-align: center !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -25,6 +26,7 @@ p,::slotted([slot=description]) {
   margin: 0 auto !important;
   color: #010205 !important;
   max-width: 550px !important;
+  text-align: center !important;
   grid-column: 1 !important;
 }
 .splide {
@@ -74,16 +76,15 @@ p,::slotted([slot=description]) {
   padding: 8px;
 }
 .pagination {
-  display: none;
-  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  gap: 8px;
   line-height: 8px;
 }
 .bullet {
-  display: inline-block;
   border-radius: 4px;
   background: #949598;
-  margin: 0 4px;
-  transition: background-color 0.4s, width 0.4s;
+  transition: background-color 0.4s linear, width 0.4s linear;
   width: 8px;
   height: 8px;
 }
@@ -101,7 +102,7 @@ p,::slotted([slot=description]) {
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
     column-gap: 0;
-    padding: 0 calc(calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
+    padding: 0 calc(calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -112,6 +113,7 @@ p,::slotted([slot=description]) {
     position: absolute;
     right: 0;
     bottom: 0;
+    padding: 0 2px 2px 0;
   }
   .pagination {
     display: none;
@@ -212,16 +214,15 @@ p,::slotted([slot=description]) {
   padding: 8px;
 }
 .pagination {
-  display: block;
-  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  gap: 8px;
   line-height: 8px;
 }
 .bullet {
-  display: inline-block;
   border-radius: 4px;
   background: #7E7F82;
-  margin: 0 4px;
-  transition: background-color 0.4s, width 0.4s;
+  transition: background-color 0.4s linear, width 0.4s linear;
   width: 8px;
   height: 8px;
 }
@@ -232,7 +233,7 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) {
   .header {
     color: #000;
-    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px);
+    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -243,6 +244,7 @@ p,::slotted([slot=description]) {
     position: absolute;
     right: 0;
     bottom: 0;
+    padding: 0 2px 2px 0;
   }
 }
 "
@@ -322,16 +324,15 @@ p,::slotted([slot=description]) {
   padding: 8px;
 }
 .pagination {
-  display: block;
-  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  gap: 8px;
   line-height: 8px;
 }
 .bullet {
-  display: inline-block;
   border-radius: 4px;
   background: #949598;
-  margin: 0 4px;
-  transition: background-color 0.4s, width 0.4s;
+  transition: background-color 0.4s linear, width 0.4s linear;
   width: 8px;
   height: 8px;
 }
@@ -342,7 +343,7 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) {
   .header {
     color: #000;
-    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px);
+    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -353,6 +354,7 @@ p,::slotted([slot=description]) {
     position: absolute;
     right: 0;
     bottom: 0;
+    padding: 0 2px 2px 0;
   }
 }
 "
@@ -434,7 +436,7 @@ p,::slotted([slot=description]) {
 @media(min-width:760px) {
   .header {
     color: #000;
-    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px);
+    grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -445,6 +447,7 @@ p,::slotted([slot=description]) {
     position: absolute;
     right: 0;
     bottom: 0;
+    padding: 0 2px 2px 0;
   }
 }
 "
@@ -467,6 +470,7 @@ h2,::slotted([slot=heading]) {
   margin: 0 auto !important;
   color: #010205 !important;
   max-width: 900px !important;
+  text-align: center !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -475,6 +479,7 @@ p,::slotted([slot=description]) {
   margin: 0 auto !important;
   color: #010205 !important;
   max-width: 550px !important;
+  text-align: center !important;
   grid-column: 1 !important;
 }
 .splide {
@@ -526,16 +531,15 @@ p,::slotted([slot=description]) {
   padding: 8px;
 }
 .pagination {
-  display: block;
-  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  gap: 8px;
   line-height: 8px;
 }
 .bullet {
-  display: inline-block;
   border-radius: 4px;
   background: #949598;
-  margin: 0 4px;
-  transition: background-color 0.4s, width 0.4s;
+  transition: background-color 0.4s linear, width 0.4s linear;
   width: 8px;
   height: 8px;
 }
@@ -547,7 +551,7 @@ p,::slotted([slot=description]) {
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
     column-gap: 0;
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -558,6 +562,7 @@ p,::slotted([slot=description]) {
     position: absolute;
     right: clamp(22px, 10.625vw - 12px, 192px);
     bottom: 0;
+    padding: 0 2px 2px 0;
   }
 }
 "
@@ -580,6 +585,7 @@ h2,::slotted([slot=heading]) {
   margin: 0 auto !important;
   color: #010205 !important;
   max-width: 900px !important;
+  text-align: center !important;
 }
 p,::slotted([slot=description]) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -588,6 +594,7 @@ p,::slotted([slot=description]) {
   margin: 0 auto !important;
   color: #010205 !important;
   max-width: 550px !important;
+  text-align: center !important;
   grid-column: 1 !important;
 }
 .splide {
@@ -642,7 +649,7 @@ p,::slotted([slot=description]) {
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
     column-gap: 0;
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -653,6 +660,7 @@ p,::slotted([slot=description]) {
     position: absolute;
     right: clamp(22px, 10.625vw - 12px, 192px);
     bottom: 0;
+    padding: 0 2px 2px 0;
   }
 }
 "
