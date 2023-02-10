@@ -127,13 +127,14 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       rowGap: headerRowGap,
-      columnGap: headerColumnGap,
       padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
       font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
       [mediaQueryS]: {
+        // only starting from S size and bigger there's nav
         ...(isAlignLeft
           ? {
               gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
+              columnGap: headerColumnGap,
             }
           : {
               gridTemplateColumns: 'minmax(0px, 1fr) 0', // first column should take the whole width
