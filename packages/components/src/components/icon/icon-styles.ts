@@ -34,7 +34,6 @@ const filterLightNotificationError =
   'invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%)';
 const filterLightNotificationInfo =
   'invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)';
-const filterLightDisabled = filterLightContrastMedium;
 
 const filterDarkPrimary = 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)';
 const filterDarkContrastLow = 'invert(20%) sepia(7%) saturate(421%) hue-rotate(202deg) brightness(97%) contrast(82%)';
@@ -49,14 +48,13 @@ const filterDarkNotificationError =
   'invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%)';
 const filterDarkNotificationInfo =
   'invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)';
-const filterDarkDisabled = filterDarkContrastMedium;
 
 const filter: { [theme in Theme]: { [color in Exclude<IconColor, 'inherit'>]: string } } = {
   light: {
     primary: filterLightPrimary,
     brand: filterLightPrimary, // deprecated
     default: filterLightPrimary, // deprecated
-    disabled: filterLightDisabled,
+    disabled: filterLightContrastMedium,
     'contrast-low': filterLightContrastLow,
     'neutral-contrast-low': filterLightContrastLow, // deprecated
     'contrast-medium': filterLightContrastMedium,
@@ -73,7 +71,7 @@ const filter: { [theme in Theme]: { [color in Exclude<IconColor, 'inherit'>]: st
     primary: filterDarkPrimary,
     brand: filterDarkPrimary, // deprecated
     default: filterDarkPrimary, // deprecated
-    disabled: filterDarkDisabled,
+    disabled: filterDarkContrastMedium,
     'contrast-low': filterDarkContrastLow,
     'neutral-contrast-low': filterDarkContrastLow, // deprecated
     'contrast-medium': filterDarkContrastMedium,
