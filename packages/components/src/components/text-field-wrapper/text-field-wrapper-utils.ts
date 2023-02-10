@@ -11,8 +11,7 @@ export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: s
   return !!unit && (isType(type, 'text') || isType(type, 'number'));
 };
 
-export const isType = (inputType: string, typeToValidate: string | string[]): boolean =>
-  (inputType === typeToValidate && typeof typeToValidate === 'string') || typeToValidate.includes(inputType);
+export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
 export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElement(host, 'form');
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 

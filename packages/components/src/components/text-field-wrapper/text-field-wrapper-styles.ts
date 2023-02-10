@@ -51,10 +51,9 @@ export const getComponentCss = (
 ): string => {
   const { contrastMediumColor } = getThemedColors(theme);
   const isSearch = isType(inputType, 'search');
-  const isCalendarOrTime = isType(inputType, ['date', 'week', 'month', 'datetime-local', 'time']);
   const isPassword = isType(inputType, 'password');
   const isNumber = isType(inputType, 'number');
-  const isSearchPasswordOrCalendar = isSearch || isPassword || isCalendarOrTime;
+  const isSearchPassword = isSearch || isPassword;
   const isSearchWithoutForm = isSearch && !isWithinForm;
   const isSearchWithForm = isSearch && isWithinForm;
 
@@ -64,7 +63,7 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
-          [cssVariableInputPaddingRight]: isSearchPasswordOrCalendar
+          [cssVariableInputPaddingRight]: isSearchPassword
             ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
             : spacingStaticMedium,
           ...hostHiddenStyles,
@@ -85,7 +84,7 @@ export const getComponentCss = (
         },
       }),
     },
-    ...(isSearchPasswordOrCalendar && {
+    ...(isSearchPassword && {
       button: {
         ...baseButtonOrIconStyles,
         right: getButtonOrIconOffsetHorizontal(1),
