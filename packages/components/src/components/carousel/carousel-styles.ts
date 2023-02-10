@@ -49,7 +49,7 @@ export const getComponentCss = (
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const isHeaderAlignLeft = alignHeader === 'left';
   const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
 
@@ -170,7 +170,7 @@ export const getComponentCss = (
       },
       bullet: {
         borderRadius: borderRadiusSmall,
-        background: disabledColor,
+        background: contrastMediumColor,
         // set transition to have the same speed as switching slides in splide
         transition: `background-color ${bulletTransitionDuration} linear, width ${bulletTransitionDuration} linear`,
         width: bulletSize,
