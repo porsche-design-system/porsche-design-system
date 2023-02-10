@@ -66,7 +66,7 @@ p,::slotted([slot=description]) {
 }
 .header {
   display: grid;
-  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  row-gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
@@ -102,7 +102,7 @@ p,::slotted([slot=description]) {
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
     column-gap: 0;
-    padding: 0 calc(calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
+    padding: 0 calc(calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -204,7 +204,7 @@ p,::slotted([slot=description]) {
 }
 .header {
   display: grid;
-  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  row-gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
@@ -232,8 +232,8 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    color: #000;
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
+    column-gap: 16px;
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -314,7 +314,7 @@ p,::slotted([slot=description]) {
 }
 .header {
   display: grid;
-  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  row-gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
@@ -342,8 +342,8 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    color: #000;
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
+    column-gap: 16px;
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -424,7 +424,7 @@ p,::slotted([slot=description]) {
 }
 .header {
   display: grid;
-  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  row-gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 .nav {
@@ -435,8 +435,8 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    color: #000;
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
+    column-gap: 16px;
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -520,7 +520,7 @@ p,::slotted([slot=description]) {
 }
 .header {
   display: grid;
-  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  row-gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -551,7 +551,7 @@ p,::slotted([slot=description]) {
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
     column-gap: 0;
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
@@ -635,7 +635,7 @@ p,::slotted([slot=description]) {
 }
 .header {
   display: grid;
-  gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
+  row-gap: clamp(.25rem, 0.28vw + 0.19rem, .5rem);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
@@ -649,7 +649,7 @@ p,::slotted([slot=description]) {
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
     column-gap: 0;
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + clamp(.25rem, 0.28vw + 0.19rem, .5rem));
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
     position: relative;
     min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   }
