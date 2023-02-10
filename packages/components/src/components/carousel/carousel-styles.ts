@@ -160,14 +160,14 @@ export const getComponentCss = (
     ...(disablePagination !== true && {
       pagination: {
         ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'block' })),
-        textAlign: 'center',
+        display: 'flex',
+        margin: '0 auto',
+        gap: spacingStaticSmall,
         lineHeight: bulletSize,
       },
       bullet: {
-        display: 'inline-block',
         borderRadius: borderRadiusSmall,
         background: disabledColor,
-        margin: `0 ${spacingStaticXSmall}`,
         // set transition to have the same speed as switching slides in splide
         transition: `background-color ${bulletTransitionDuration} linear, width ${bulletTransitionDuration} linear`,
         width: bulletSize,
