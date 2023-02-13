@@ -64,11 +64,11 @@
       </div>
 
       <div class="playground light" title="should render default headline">
-        <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline>Some Headline</PHeadline>
       </div>
 
       <div class="playground light" title="should render default display">
-        <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
+        <PDisplay>Some Display</PDisplay>
       </div>
 
       <!-- eslint-disable vue/no-deprecated-slot-attribute -->
@@ -324,11 +324,11 @@
         </div>
 
         <div class="playground light" title="should render default headline with custom prefix">
-          <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+          <PHeadline>Some Headline</PHeadline>
         </div>
 
         <div class="playground light" title="should render default display with custom prefix">
-          <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
+          <PDisplay>Some Display</PDisplay>
         </div>
 
         <!-- eslint-disable vue/no-deprecated-slot-attribute -->
