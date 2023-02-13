@@ -52,6 +52,27 @@ vue setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` fi
 </template>
 ```
 
+### Plugin 
+
+You can also use the `PorscheDesignSystemPlugin` to extend your vue setup.
+
+```vue
+// main.ts
+import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
+import { createApp } from 'vue';
+const app = createApp(App);
+app.use(createPDS({ prefix: 'P' }));
+app.mount('#app');
+```
+
+### Composable 
+
+The `usePDS` composable provides access to the `PorscheDesignSystemProvider` context.
+
+```vue
+const { isPorscheDesignSystemLoaded, utilities } = usePorscheDesignSystemPlugin();
+```
+
 
 ## Methodology
 
