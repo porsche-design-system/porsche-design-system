@@ -171,14 +171,17 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   margin: 0;
   display: grid;
   padding: 0 calc(50% - 2560px/2);
-  grid-gap: clamp(16px, 3.6vw, 36px);
+  grid-gap: clamp(16px, 1.25vw + 12px, 36px);
   max-width: 2560px;
   min-width: 320px;
   box-sizing: content-box;
-  grid-template-columns: [full-start] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))) [extended-start basic-start narrow-start] repeat(
-      6,
-      minmax(0, 1fr)
-    ) [narrow-end basic-end extended-end] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))) [full-end];
+  grid-template-columns: [full-start] minmax(
+      0,
+      calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+    ) [extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr)) [narrow-end basic-end extended-end] minmax(
+      0,
+      calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+    ) [full-end];
   --pds-internal-grid-safe-zone: clamp(22px, 10.625vw - 12px, 192px);
   --pds-grid-basic-span-one-half: span 3;
   --pds-grid-basic-span-one-third: span 2;
@@ -187,15 +190,15 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   --pds-grid-extended-span-one-half: span 3;
 
   @media (min-width: 760px) {
-    grid-template-columns: [full-start] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))) [extended-start] repeat(
-        1,
-        minmax(0, 1fr)
-      ) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(8, minmax(0, 1fr)) [narrow-end] repeat(
-        2,
-        minmax(0, 1fr)
-      ) [basic-end] repeat(1, minmax(0, 1fr)) [extended-end] minmax(
+    grid-template-columns: [full-start] minmax(
         0,
-        calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 3.6vw, 36px))
+        calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+      ) [extended-start] repeat(1, minmax(0, 1fr)) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(
+        8,
+        minmax(0, 1fr)
+      ) [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] repeat(1, minmax(0, 1fr)) [extended-end] minmax(
+        0,
+        calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
       ) [full-end];
     --pds-grid-basic-span-one-half: span 6;
     --pds-grid-basic-span-one-third: span 4;
@@ -234,7 +237,7 @@ $pds-grid-full-column-end: full-end;
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-gap.scss 1`] = `
-"$pds-grid-gap: clamp(16px, 3.6vw, 36px);
+"$pds-grid-gap: clamp(16px, 1.25vw + 12px, 36px);
 "
 `;
 
@@ -297,11 +300,12 @@ $pds-spacing-static-medium: 16px;
 $pds-spacing-static-large: 32px;
 $pds-spacing-static-x-large: 48px;
 $pds-spacing-static-xx-large: 80px;
-$pds-spacing-fluid-x-small: clamp(0.25rem, 0.28vw + 0.19rem, 0.5rem);
-$pds-spacing-fluid-small: 0.75rem;
-$pds-spacing-fluid-medium: clamp(2rem, 0.56vw + 1.89rem, 2.5rem);
-$pds-spacing-fluid-large: clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem);
-$pds-spacing-fluid-x-large: clamp(4rem, 10vw + 2rem, 13rem);
+$pds-spacing-fluid-x-small: clamp(4px, 0.25vw + 3px, 8px);
+$pds-spacing-fluid-small: clamp(8px, 0.5vw + 6px, 16px);
+$pds-spacing-fluid-medium: clamp(16px, 1.25vw + 12px, 36px);
+$pds-spacing-fluid-large: clamp(32px, 2.75vw + 23px, 76px);
+$pds-spacing-fluid-x-large: clamp(48px, 3vw + 38px, 96px);
+$pds-spacing-fluid-xx-large: clamp(80px, 7.5vw + 56px, 200px);
 "
 `;
 
