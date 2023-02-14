@@ -7,6 +7,7 @@
       <div class="spacing-fluid-medium tile"></div>
       <div class="spacing-fluid-large tile"></div>
       <div class="spacing-fluid-x-large tile"></div>
+      <div class="spacing-fluid-xx-large tile"></div>
     </div>
     <div class="wrapper">
       <h3 class="heading">Spacing Static (XS - XXL)</h3>
@@ -56,52 +57,67 @@
     @include pds-text-small;
     background: $pds-theme-light-contrast-low;
     border-radius: $pds-border-radius-small;
-    padding: $pds-spacing-fluid-medium;
   }
 
   // Spacing Fluid
   .spacing-fluid-x-small {
-    padding: $pds-spacing-fluid-x-small;
+    width: $pds-spacing-fluid-x-small;
+    height: $pds-spacing-fluid-x-small;
   }
 
   .spacing-fluid-small {
-    padding: $pds-spacing-fluid-small;
+    width: $pds-spacing-fluid-small;
+    height: $pds-spacing-fluid-small;
   }
 
   .spacing-fluid-medium {
-    padding: $pds-spacing-fluid-medium;
+    width: $pds-spacing-fluid-medium;
+    height: $pds-spacing-fluid-medium;
   }
 
   .spacing-fluid-large {
-    padding: $pds-spacing-fluid-large;
+    width: $pds-spacing-fluid-large;
+    height: $pds-spacing-fluid-large;
   }
 
   .spacing-fluid-x-large {
-    padding: $pds-spacing-fluid-x-large;
+    width: $pds-spacing-fluid-x-large;
+    height: $pds-spacing-fluid-x-large;
+  }
+
+  .spacing-fluid-xx-large {
+    width: $pds-spacing-fluid-xx-large;
+    height: $pds-spacing-fluid-xx-large;
   }
 
   // Spacing Static
   .spacing-static-x-small {
-    padding: $pds-spacing-static-x-small;
+    width: $pds-spacing-static-x-small;
+    height: $pds-spacing-static-x-small;
   }
 
   .spacing-static-small {
-    padding: $pds-spacing-static-small;
+    width: $pds-spacing-static-small;
+    height: $pds-spacing-static-small;
   }
 
   .spacing-static-medium {
-    padding: $pds-spacing-static-medium;
+    width: $pds-spacing-static-medium;
+    height: $pds-spacing-static-medium;
   }
 
   .spacing-static-large {
-    padding: $pds-spacing-static-large;
+    width: $pds-spacing-static-large;
+    height: $pds-spacing-static-large;
   }
 
   .spacing-static-x-large {
-    padding: $pds-spacing-static-x-large;
+    width: $pds-spacing-static-x-large;
+    height: $pds-spacing-static-x-large;
   }
 
   .spacing-static-xx-large {
-    padding: $pds-spacing-static-xx-large;
+    width: $pds-spacing-static-xx-large;
+    height: $pds-spacing-static-xx-large;
   }
 </style>
