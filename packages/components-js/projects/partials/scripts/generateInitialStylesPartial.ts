@@ -51,17 +51,13 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
         '@media(hover:hover)': {
-          transition: 'color var(--p-transition-duration, .24s) ease',
           '&:hover': {
             ...frostedGlassStyle,
             backgroundColor: themeLight.state.hover,
           },
-        },
-      },
-
-      '@media(hover:hover)': {
-        '[data-theme=dark] a:hover': {
-          backgroundColor: themeDark.state.hover,
+          '[data-theme=dark] &:hover': {
+            backgroundColor: themeDark.state.hover,
+          },
         },
       },
 
@@ -72,6 +68,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       'em, i': {
         fontStyle: 'normal',
       },
+
       'a, button, input, select, textarea': {
         position: 'relative',
         outline: 0, // hide default focus outline
