@@ -15,6 +15,12 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   };
 
   const initialStyles = getInitialStyles();
+  const initialStylesWithoutMediaQuery = initialStyles
+    .replace(/\@media\(hover\:hover\)\{/g, '')
+    .replace(
+      /a\:hover\{background-color\:rgba\(126,127,130,0.20\)\}\}/g,
+      'a:hover{background-color:rgba(126,127,130,0.20)}'
+    );
 
   // get rid of spaces as we do during static VRTs
   content = content.replace(/>(\s)*</g, '><');
@@ -26,7 +32,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
         <link rel="stylesheet" href="assets/styles.css" />
-        ${initialStyles}
+        ${initialStylesWithoutMediaQuery}
         ${options.injectIntoHead}
       </head>
       <body>
