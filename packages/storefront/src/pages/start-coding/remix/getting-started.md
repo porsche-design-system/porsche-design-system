@@ -31,6 +31,40 @@ On the server the behavior is different. Here the relevant markup and styles (e.
 
 The following project is a standard Remix setup with the following adaptions.
 
+### Step 1
+
+Extend `package.json` to execute `patchRemixRun` binary.
+
+```
+// package.json
+{
+  ...
+  "scripts": {
+    "postinstall": "patchRemixRun",
+    ...
+    // or
+    "prestart": "patchRemixRun",
+    "prebuild": "patchRemixRun",
+  },
+  ...
+}
+```
+
+This script adds the necessary replacement of `process.browser` to `compileBrowser.js` of `@remix-run/dev` in this
+<a href="https://github.com/remix-run/remix/blob/05ffb6e2db8f2a0e09caffad6e9b3c897c34cb7d/packages/remix-dev/compiler/compileBrowser.ts#L159-L163" target="_blank">location</a>.
+
+While this modifies 3rd party code, the only other solutions are:
+
+- extend `@remix-run/dev` to include the patch by default
+- extend `@remix-run/dev` to support more options in `remix.config.js` so that `{ 'process.browser': 'true' }` can be
+  passed to the `define` object of `esbuild`s
+  <a href="https://esbuild.github.io/api/#define" target="_blank">configuration</a>
+- build your app twice by passing a special value to one of the two flags that are being replaced by `@remix-run/dev`
+  already: `process.env.NODE_ENV` or `process.env.REMIX_DEV_SERVER_WS_PORT`
+- post process the browser build to strip away the server code used to render Declarative Shadow DOM
+
+### Step 2
+
 Extend `root.tsx` by the necessary `PorscheDesignSystemProvider`:
 
 ```tsx
@@ -66,6 +100,8 @@ export default function App(): JSX.Element {
   );
 }
 ```
+
+### Step 3
 
 Extend `routes/index.tsx` and use a Porsche Design System component, e.g. `PHeading`:
 

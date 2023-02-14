@@ -51,6 +51,8 @@ On the server the behavior is different. Here the relevant markup and styles (e.
 
 The following project is a standard Next.js setup with the following adaptions.
 
+### Step 1
+
 Extend `_app.tsx` by the necessary `PorscheDesignSystemProvider`:
 
 ```tsx
@@ -68,6 +70,8 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 ```
+
+### Step 2
 
 Create `_document.tsx` and add necessary partials `getInitialStyles()` and `getDSRPonyfill()`. Further details,
 configuration options and even more partials to improve the UX or loading performance can be found
@@ -120,6 +124,8 @@ export default function Document() {
   );
 }
 ```
+
+### Step 3
 
 Extend `index.tsx` and use a Porsche Design System component, e.g. `PHeading`:
 
