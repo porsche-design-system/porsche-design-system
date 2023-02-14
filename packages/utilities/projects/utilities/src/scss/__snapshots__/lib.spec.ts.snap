@@ -170,7 +170,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 "@mixin pds-grid {
   margin: 0;
   display: grid;
-  padding: 0 max(0px, (100% - 2560px)/2);
+  padding: 0 calc((100% - 2560px)/2);
   grid-gap: clamp(16px, 3.6vw, 36px);
   max-width: 2560px;
   min-width: 320px;

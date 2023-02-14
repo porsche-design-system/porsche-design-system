@@ -98,7 +98,7 @@ exports[`should contain correct values for gridStyle 1`] = `
   "margin": 0,
   "maxWidth": "2560px",
   "minWidth": "320px",
-  "padding": "0 max(0px, (100% - 2560px) / 2)",
+  "padding": "0 calc((100% - 2560px) / 2)",
 }
 `;
 
