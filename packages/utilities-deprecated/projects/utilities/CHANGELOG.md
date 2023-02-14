@@ -1,6 +1,6 @@
 # Changelog
 
-## Porsche Design System - Utilities
+## Porsche Design System - Utilities **DEPRECATED**
 
 All notable changes to this project will be documented in this file.
 
@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
+
+This package is **deprecated** and will no longer be maintained. All `Porsche Design System` utilities are now provided
+at`@porsche-design-system/components-[js|angular|react]/styles` in from of styles and Design Tokens. To make the
+migration easier, we offer an overview of the old deprecated values in reference to the new design tokens.
+
+#### Deprecated
+
+#### Changed
 
 ### [5.4.0] - 2022-12-15
 
