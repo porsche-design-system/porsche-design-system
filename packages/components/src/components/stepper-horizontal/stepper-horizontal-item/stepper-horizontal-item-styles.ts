@@ -100,7 +100,6 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
       button: {
         display: 'flex',
         position: 'relative',
-        gridTemplateColumns: `${fontLineHeight} minmax(0, auto)`,
         gap: '3px',
         color: isDisabled ? disabledColor : primaryColor,
         padding: '4px 10px 4px 6px',
