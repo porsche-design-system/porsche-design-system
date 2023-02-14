@@ -23,7 +23,6 @@
 .tile {
   @include pds-text-small;
   background: $pds-theme-light-contrast-low;
-  border-radius: $pds-border-radius-small;
 }
 
 // Spacing Fluid

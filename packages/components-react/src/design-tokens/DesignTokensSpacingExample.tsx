@@ -44,7 +44,6 @@ const Heading = styled.h3({
 const getTileStyle = {
   ...textXSmallStyle,
   background: themeLightContrastLow,
-  borderRadius: borderRadiusSmall,
 } as const;
 
 // Spacing Fluid
