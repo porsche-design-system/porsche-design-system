@@ -12,6 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div class="spacing-fluid-medium tile"></div>
         <div class="spacing-fluid-large tile"></div>
         <div class="spacing-fluid-x-large tile"></div>
+        <div class="spacing-fluid-xx-large tile"></div>
       </div>
       <div class="wrapper">
         <h3 class="heading">Spacing Static (XS - XXL)</h3>
