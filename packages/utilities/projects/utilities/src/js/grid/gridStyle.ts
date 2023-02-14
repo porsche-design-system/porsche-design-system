@@ -23,21 +23,24 @@ import {
 const _gridColumnSpan = 'span';
 const _cssVariableInternalGridSafeZone = '--pds-internal-grid-safe-zone';
 
+const outerColumn = `minmax(0, calc(var(${_cssVariableInternalGridSafeZone}) - ${gridGap}))`;
+const getColumns = (repeat: number): string => {
+  const column = 'minmax(0, 1fr)';
+  return repeat > 1 ? `repeat(${repeat}, ${column})` : column;
+};
 type Layout = 'mobile' | 'desktop';
-const getColumns = (repeat: number): string => `repeat(${repeat}, minmax(0, 1fr))`;
-const getOuterColumn = (): string => `minmax(0, calc(var(${_cssVariableInternalGridSafeZone}) - ${gridGap}))`;
 const getGridTemplateColumns = (layout: Layout) =>
   layout === 'mobile'
-    ? `[${gridFullColumnStart}] ${getOuterColumn()} [${gridExtendedColumnStart} ${gridBasicColumnStart} ${gridNarrowColumnStart}] ${getColumns(
+    ? `[${gridFullColumnStart}] ${outerColumn} [${gridExtendedColumnStart} ${gridBasicColumnStart} ${gridNarrowColumnStart}] ${getColumns(
         6
-      )} [${gridNarrowColumnEnd} ${gridBasicColumnEnd} ${gridExtendedColumnEnd}] ${getOuterColumn()} [${gridFullColumnEnd}]`
-    : `[${gridFullColumnStart}] ${getOuterColumn()} [${gridExtendedColumnStart}] ${getColumns(
+      )} [${gridNarrowColumnEnd} ${gridBasicColumnEnd} ${gridExtendedColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`
+    : `[${gridFullColumnStart}] ${outerColumn} [${gridExtendedColumnStart}] ${getColumns(
         1
       )} [${gridBasicColumnStart}] ${getColumns(2)} [${gridNarrowColumnStart}] ${getColumns(
         8
       )} [${gridNarrowColumnEnd}] ${getColumns(2)} [${gridBasicColumnEnd}] ${getColumns(
         1
-      )} [${gridExtendedColumnEnd}] ${getOuterColumn()} [${gridFullColumnEnd}]`;
+      )} [${gridExtendedColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`;
 
 export const gridStyle = {
   [_cssVariableInternalGridSafeZone]: gridSafeZoneBase,
