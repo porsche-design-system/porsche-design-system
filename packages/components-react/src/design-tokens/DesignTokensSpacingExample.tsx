@@ -7,6 +7,7 @@ import {
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
+  spacingFluidXXLarge,
   spacingFluidXLarge,
   spacingFluidXSmall,
   spacingStaticLarge,
@@ -44,64 +45,80 @@ const getTileStyle = {
   ...textXSmallStyle,
   background: themeLightContrastLow,
   borderRadius: borderRadiusSmall,
-  padding: spacingFluidMedium,
 } as const;
 
 // Spacing Fluid
 const SpacingFluidXSmall = styled.div({
   ...getTileStyle,
-  padding: spacingFluidXSmall,
+  width: spacingFluidXSmall,
+  height: spacingFluidXSmall,
 });
 
 const SpacingFluidSmall = styled.div({
   ...getTileStyle,
-  padding: spacingFluidSmall,
+  width: spacingFluidSmall,
+  height: spacingFluidSmall,
 });
 
 const SpacingFluidMedium = styled.div({
   ...getTileStyle,
-  padding: spacingFluidMedium,
+  width: spacingFluidMedium,
+  height: spacingFluidMedium,
 });
 
 const SpacingFluidLarge = styled.div({
   ...getTileStyle,
-  padding: spacingFluidLarge,
+  width: spacingFluidLarge,
+  height: spacingFluidLarge,
 });
 
 const SpacingFluidXLarge = styled.div({
   ...getTileStyle,
-  padding: spacingFluidXLarge,
+  width: spacingFluidXLarge,
+  height: spacingFluidXLarge,
+});
+
+const SpacingFluidXXLarge = styled.div({
+  ...getTileStyle,
+  width: spacingFluidXXLarge,
+  height: spacingFluidXXLarge,
 });
 
 // Spacing Static
 const SpacingStaticXSmall = styled.div({
   ...getTileStyle,
-  padding: spacingStaticXSmall,
+  width: spacingStaticXSmall,
+  height: spacingStaticXSmall,
 });
 
 const SpacingStaticSmall = styled.div({
   ...getTileStyle,
-  padding: spacingStaticSmall,
+  width: spacingStaticSmall,
+  height: spacingStaticSmall,
 });
 
 const SpacingStaticMedium = styled.div({
   ...getTileStyle,
-  padding: spacingStaticMedium,
+  width: spacingStaticMedium,
+  height: spacingStaticMedium,
 });
 
 const SpacingStaticLarge = styled.div({
   ...getTileStyle,
-  padding: spacingStaticLarge,
+  width: spacingStaticLarge,
+  height: spacingStaticLarge,
 });
 
 const SpacingStaticXLarge = styled.div({
   ...getTileStyle,
-  padding: spacingStaticXLarge,
+  width: spacingStaticXLarge,
+  height: spacingStaticXLarge,
 });
 
 const SpacingStaticXXLarge = styled.div({
   ...getTileStyle,
-  padding: spacingStaticXXLarge,
+  width: spacingStaticXXLarge,
+  height: spacingStaticXXLarge,
 });
 
 export const DesignTokensSpacingExample = (): JSX.Element => {
@@ -114,6 +131,7 @@ export const DesignTokensSpacingExample = (): JSX.Element => {
         <SpacingFluidMedium></SpacingFluidMedium>
         <SpacingFluidLarge></SpacingFluidLarge>
         <SpacingFluidXLarge></SpacingFluidXLarge>
+        <SpacingFluidXXLarge></SpacingFluidXXLarge>
       </Wrapper>
       <Wrapper>
         <Heading>Spacing Static (XS - XXL)</Heading>
