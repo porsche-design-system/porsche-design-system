@@ -10,13 +10,20 @@ export type GetMinifiedPorscheNextFontFaceCssOptions = {
   cdn: 'com' | 'cn' | 'localhost';
 };
 
-// U+0180-024F ("Latin Extended-B") includes U+01A0, U+01A1, U+01AF, U+01B0 = Vietnamese characters
-// U+1E00-1EFF ("Latin Extended Additional") includes U+1EA0-1EF1 = Vietnamese characters
+// The Vietnamese glyphs are spread across several disparate unicode ranges:
+// - Basic Latin {U+0000..U+007F}
+// - Latin-1 Supplement {U+0080..U+00FF}
+// - Latin Extended-A, -B {U+0100..U+024F}
+// - Latin Extended Additional {U+1E00..U+1EFF}
+// - Combining Diacritical Marks {U+0300.. U+036F}
+// The following letters are specific to Vietnamese:
+// - U+01A0, U+01A1, U+01AF, U+01B0 (part of U+0180-024F "Latin Extended-B")
+// - U+1EA0-1EF1 (part of U+1E00-1EFF "Latin Extended Additional")
 
 export const unicodeRangeMap = {
   cy: 'U+0400-04FF', // cyril
   gr: 'U+0370-03FF', // greek
-  la: 'U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF', // latin
+  la: 'U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF', // latin (includes vietnamese)
 };
 
 export const cdnUrlMap: { [key in GetMinifiedPorscheNextFontFaceCssOptions['cdn']]: string } = {
