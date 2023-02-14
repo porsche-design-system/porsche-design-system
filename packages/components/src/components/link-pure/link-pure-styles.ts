@@ -63,6 +63,11 @@ export const getComponentCss = (
               '&(a:focus:not(:focus-visible))::before': {
                 border: 0,
               },
+              '&(a:hover)': {
+                backgroundColor: 'transparent',
+                WebkitBackdropFilter: 'initial',
+                backdropFilter: 'initial',
+              },
             },
           }),
         }),
