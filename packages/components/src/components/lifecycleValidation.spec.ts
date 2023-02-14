@@ -3,6 +3,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
+import * as getDataThemeDarkAttributeUtils from '../utils/theme/getDataThemeDarkAttribute';
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
@@ -14,6 +15,9 @@ const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta
 const tagNamesWithRequiredParent = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredParent);
 const tagNamesWithRequiredRootNode = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredRootNode);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
+const tagNamesWithSlotAndTheme = TAG_NAMES.filter(
+  (tagName) => getComponentMeta(tagName).hasSlot && getComponentMeta(tagName).props?.theme
+);
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
 const tagNamesWithObserveChildren = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveChildren);
@@ -179,6 +183,23 @@ it.each<TagName>(tagNamesWithSlottedCss)(
     } catch {}
 
     expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
+  }
+);
+
+it.each<TagName>(tagNamesWithSlotAndTheme)(
+  'should call getDataThemeDarkAttribute() with correct parameters via render for %s',
+  (tagName) => {
+    const spy = jest.spyOn(getDataThemeDarkAttributeUtils, 'getDataThemeDarkAttribute');
+    const component = componentFactory(tagName);
+
+    // some components require a parent and certain props in order to work
+    addParentAndSetRequiredProps(tagName, component);
+
+    try {
+      component.render();
+    } catch {}
+
+    expect(spy).toBeCalledWith(getComponentMeta(tagName).props.theme);
   }
 );
 
