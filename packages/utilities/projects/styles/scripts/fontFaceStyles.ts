@@ -10,6 +10,9 @@ export type GetMinifiedPorscheNextFontFaceCssOptions = {
   cdn: 'com' | 'cn' | 'localhost';
 };
 
+// U+0180-024F ("Latin Extended-B") includes U+01A0, U+01A1, U+01AF, U+01B0 = Vietnamese characters
+// U+1E00-1EFF ("Latin Extended Additional") includes U+1EA0-1EF1 = Vietnamese characters
+
 export const unicodeRangeMap = {
   cy: 'U+0400-04FF', // cyril
   gr: 'U+0370-03FF', // greek
