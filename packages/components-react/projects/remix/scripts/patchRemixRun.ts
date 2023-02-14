@@ -9,7 +9,7 @@ export const patchRemixRun = (): void => {
     .readdirSync(compilerDirPath)
     // file is currently called compileBrowser.js, but the other part is compilerServer.js
     // that's why we also consider compilerBrowser.js to be on the safe side
-    .filter((fileName) => fileName.match(/^compiler?Browser.js$/));
+    .filter((fileName) => fileName.match(/^compiler?Browser\.js$/));
 
   const filePath = path.resolve(compilerDirPath, fileName);
   const filePathBackup = filePath.replace(/\.js$/, '-original$&');
