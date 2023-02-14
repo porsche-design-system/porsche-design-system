@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Porsche Next font supports Vietnamese charset
 
+#### Changed
+
+- Use calc() instead of max() to calculate padding for `gridStyle` and `pds-grid`
+
 ### [3.0.0-alpha.0] - 2023-02-08
 
 #### Note to the new `v3` major release of the Porsche Design System
