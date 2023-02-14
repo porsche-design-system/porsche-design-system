@@ -1,3 +1,3 @@
-# Next Js
+# Remix
 
 ## SSR Support

@@ -4,7 +4,8 @@
 
 ## Quick start
 
-To build your own **NextJS** application with the **React** components of the Porsche Design System, follow these steps:
+To build your own **Next.js** application with the **React** components of the Porsche Design System, follow these
+steps:
 
 - Create a new application by executing:
 
@@ -40,7 +41,15 @@ You are ready to start building your own application.
 
 ## Integration
 
-The following project is a standard NextJS setup with following adaptions.
+<p-inline-notification heading="Attention" state="warning" persistent="true">
+The following examples use the <strong>ssr</strong> sub-package of <strong>@porsche-design-system/components-react/ssr</strong>.<br>
+This sub-package is a special build of the Porsche Design System Components that renders different markup on the server than in the browser. While this breaks the rule of SSR/SSG where browser markup should always be identical to server markup, this is the only way to achieve SSR/SSG with web components and Shadow DOM.<br>
+The two environments are detected by the <strong>process.browser</strong> flag which is replaced with a boolean value at build time. In the browser the components are essentially the "regular" React components of <strong>@porsche-design-system/components-react</strong>.<br>
+On the server the behavior is different. Here the relevant markup and styles (e.g. no hover or focus styles) are rendered into a <a href="https://web.dev/declarative-shadow-dom/" target="_blank">Declarative Shadow DOM</a> which is converted into a real Shadow DOM by modern browsers without any JavaScript. This is all we need for the initial render. Once the client code is loaded and executed, the Porsche Design System Components initialize just like normal.<br>
+<strong>It is crucial that dead code elimination is active for the client build or otherwise the server code might sneak into the browser.</strong>
+</p-inline-notification>
+
+The following project is a standard Next.js setup with the following adaptions.
 
 Extend `_app.tsx` by the necessary `PorscheDesignSystemProvider`:
 
@@ -95,7 +104,7 @@ export default function Document() {
         {/* preloads Porsche icons (=> minimize FOUC) */}
         {getIconLinks({ format: 'jsx' })}
         {/* injects favicon, apple touch icons, android touch icons, etc. */}
-        {getMetaTagsAndIconLinks({ appTitle: 'Sample Project NextJS', format: 'jsx' })}
+        {getMetaTagsAndIconLinks({ appTitle: 'Sample Project Next.js', format: 'jsx' })}
       </Head>
       <body>
         <Main />
@@ -112,17 +121,17 @@ export default function Document() {
 }
 ```
 
-Extend `index.tsx` and use a Porsche Design System component, e.g. `PHeadline`:
+Extend `index.tsx` and use a Porsche Design System component, e.g. `PHeading`:
 
 ```tsx
 // pages/index.tsx
 
-import { PHeadline } from '@porsche-design-system/components-react/ssr';
+import { PHeading } from '@porsche-design-system/components-react/ssr';
 
 export default function Home() {
   return (
     <>
-      <PHeadline>Welcome to Next.js with Porsche Design System!</PHeadline>
+      <PHeading>Welcome to Next.js<PHeading>
     </>
   );
 }
@@ -138,7 +147,7 @@ See [componentsReady()](helpers/components-ready) for further information.
 ## Sample integration
 
 We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.  
-You can find the repository of the NextJS example project here:
+You can find the repository of the Next.js example project here:
 [Sample Integration NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
 
 ### Get the project up and running
