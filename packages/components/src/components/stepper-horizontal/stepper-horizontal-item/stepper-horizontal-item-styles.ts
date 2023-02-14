@@ -115,15 +115,17 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           ...frostedGlassStyle,
           background: hoverColor,
         }),
-        ...hoverMediaQuery({
-          transition: getTransition('background-color'),
-          '&:hover': {
-            ...frostedGlassStyle,
-            background: hoverColor,
-          },
-        }),
+        ...(!isDisabled &&
+          hoverMediaQuery({
+            transition: getTransition('background-color'),
+            '&:hover': {
+              ...frostedGlassStyle,
+              background: hoverColor,
+            },
+          })),
         ...(isStateCurrentOrUndefined && {
           // counter
+          // Pseudo element is needed to center the counter to the text, as it is not working optimal directly on the button
           '&::before': {
             content: '""',
             height: fontLineHeight,
