@@ -52,7 +52,7 @@ export const gridStyle = {
   minWidth: gridWidthMin,
   maxWidth: gridWidthMax,
   margin: 0,
-  padding: `0 calc((100% - ${gridWidthMax}) / 2)`,
+  padding: `0 calc(50% - ${gridWidthMax} / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
     // TODO: we should define those css variables in global scope by getInitialStyles() partial to reduce repetitive css declaration,
