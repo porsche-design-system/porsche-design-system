@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
+import bin from 'rollup-plugin-bin';
 
 const rootDir = '../..';
 const projectDir = 'projects/react-wrapper';
@@ -130,5 +131,14 @@ export default [
         ],
       }),
     ],
+  },
+  {
+    input: `${projectDir}/bin/patchRemixRun.ts`,
+    external: ['fs', 'path'],
+    output: {
+      file: `${outputDir}/bin/patchRemixRun.js`,
+      format: 'cjs',
+    },
+    plugins: [typescript(typescriptOpts), bin()],
   },
 ];

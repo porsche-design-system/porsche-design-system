@@ -22,9 +22,11 @@ export const patchRemixRun = (): void => {
 
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
+  // prepending should be safer than appending because JSON.stringify() might be multiline like in source
+  // https://github.com/remix-run/remix/blob/05ffb6e2db8f2a0e09caffad6e9b3c897c34cb7d/packages/remix-dev/compiler/compileBrowser.ts#L159-L163
   const newFileContent = fileContent.replace(
     /"process\.env\.REMIX_DEV_SERVER_WS_PORT": JSON\.stringify\(.*/,
-    '$&,\n      "process.browser": "true"'
+    '"process.browser": "true",\n      $&'
   );
 
   const prettyFilePath = filePath.replace(packageEntry.substring(0, packageEntry.indexOf('/node_modules')), '.');
