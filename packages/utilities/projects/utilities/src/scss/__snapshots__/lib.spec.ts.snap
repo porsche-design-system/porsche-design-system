@@ -193,10 +193,10 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
     grid-template-columns: [full-start] minmax(
         0,
         calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
-      ) [extended-start] repeat(1, minmax(0, 1fr)) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(
-        8,
+      ) [extended-start] minmax(0, 1fr) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(8, minmax(0, 1fr)) [narrow-end] repeat(
+        2,
         minmax(0, 1fr)
-      ) [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] repeat(1, minmax(0, 1fr)) [extended-end] minmax(
+      ) [basic-end] minmax(0, 1fr) [extended-end] minmax(
         0,
         calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
       ) [full-end];
