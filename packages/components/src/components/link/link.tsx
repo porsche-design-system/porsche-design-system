@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop, Host } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,6 +10,7 @@ import {
   LINK_BUTTON_VARIANTS,
   hasVisibleIcon,
   getLinkButtonThemeForIcon,
+  getDataThemeDarkAttribute,
 } from '../../utils';
 import type {
   BreakpointCustomizable,
@@ -95,30 +96,32 @@ export class Link {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <TagType
-        class="root"
-        {...(TagType === 'a' && {
-          href: this.href,
-          target: this.target,
-          download: this.download,
-          rel: this.rel,
-          ...parseAndGetAriaAttributes(this.aria),
-        })}
-      >
-        {hasVisibleIcon(this.icon, this.iconSource) && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.iconSource ? undefined : this.icon}
-            source={this.iconSource}
-            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
-            aria-hidden="true"
-          />
-        )}
-        <span class="label">
-          <slot />
-        </span>
-      </TagType>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
+        <TagType
+          class="root"
+          {...(TagType === 'a' && {
+            href: this.href,
+            target: this.target,
+            download: this.download,
+            rel: this.rel,
+            ...parseAndGetAriaAttributes(this.aria),
+          })}
+        >
+          {hasVisibleIcon(this.icon, this.iconSource) && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              size="inherit"
+              name={this.iconSource ? undefined : this.icon}
+              source={this.iconSource}
+              theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
+              aria-hidden="true"
+            />
+          )}
+          <span class="label">
+            <slot />
+          </span>
+        </TagType>
+      </Host>
     );
   }
 }

@@ -16,6 +16,7 @@ import {
   validateProps,
   FORM_STATES,
   THEMES,
+  getDataThemeDarkAttribute,
 } from '../../utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -115,7 +116,7 @@ export class TextareaWrapper {
     };
 
     return (
-      <Host>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <label class="label">
           {hasLabel(this.host, this.label) && (
             <span class="label__text" {...labelProps}>

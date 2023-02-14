@@ -1,7 +1,8 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   HEADING_TAGS,
   THEMES,
@@ -113,37 +114,39 @@ export class Accordion {
 
     // TODO: why .root div for a condition border-bottom style? could be applied on :host directly
     return (
-      <div class="root">
-        <Heading class="heading">
-          <button
-            id={buttonId}
-            type="button"
-            aria-expanded={this.open ? 'true' : 'false'}
-            aria-controls={contentId}
-            onClick={this.onButtonClick}
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
+        <div class="root">
+          <Heading class="heading">
+            <button
+              id={buttonId}
+              type="button"
+              aria-expanded={this.open ? 'true' : 'false'}
+              aria-controls={contentId}
+              onClick={this.onButtonClick}
+            >
+              {this.heading || <slot name="heading" />}
+              <PrefixedTagNames.pIcon
+                class="icon"
+                name={this.open ? 'minus' : 'plus'}
+                theme={this.theme}
+                size="inherit"
+                aria-hidden="true"
+              />
+            </button>
+          </Heading>
+          <div
+            id={contentId}
+            class="collapsible"
+            role="region"
+            aria-labelledby={buttonId}
+            ref={(el) => (this.collapsibleElement = el)}
           >
-            {this.heading || <slot name="heading" />}
-            <PrefixedTagNames.pIcon
-              class="icon"
-              name={this.open ? 'minus' : 'plus'}
-              theme={this.theme}
-              size="inherit"
-              aria-hidden="true"
-            />
-          </button>
-        </Heading>
-        <div
-          id={contentId}
-          class="collapsible"
-          role="region"
-          aria-labelledby={buttonId}
-          ref={(el) => (this.collapsibleElement = el)}
-        >
-          <div ref={(el) => (this.content = el)}>
-            <slot />
+            <div ref={(el) => (this.content = el)}>
+              <slot />
+            </div>
           </div>
         </div>
-      </div>
+      </Host>
     );
   }
 

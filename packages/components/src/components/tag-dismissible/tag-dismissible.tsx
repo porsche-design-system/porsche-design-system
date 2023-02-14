@@ -1,7 +1,8 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
   THEMES,
@@ -49,14 +50,16 @@ export class TagDismissible {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <button type="button" {...parseAndGetAriaAttributes(this.aria)}>
-        <span class="sr-only">Remove:</span>
-        <span>
-          {this.label && <span class="label">{this.label}</span>}
-          <slot />
-        </span>
-        <PrefixedTagNames.pIcon class="icon" name="close" theme={this.theme} aria-hidden="true" />
-      </button>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
+        <button type="button" {...parseAndGetAriaAttributes(this.aria)}>
+          <span class="sr-only">Remove:</span>
+          <span>
+            {this.label && <span class="label">{this.label}</span>}
+            <slot />
+          </span>
+          <PrefixedTagNames.pIcon class="icon" name="close" theme={this.theme} aria-hidden="true" />
+        </button>
+      </Host>
     );
   }
 }

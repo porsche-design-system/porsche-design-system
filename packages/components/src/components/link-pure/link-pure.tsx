@@ -11,11 +11,12 @@ import type {
 } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop, Host } from '@stencil/core';
 import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
+  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   hasVisibleIcon,
   parseAndGetAriaAttributes,
@@ -128,30 +129,32 @@ export class LinkPure {
     const hasIcon = hasVisibleIcon(this.icon, this.iconSource);
 
     return (
-      <TagType
-        class="root"
-        {...(TagType === 'a' && {
-          href: this.href,
-          target: this.target,
-          download: this.download,
-          rel: this.rel,
-          ...parseAndGetAriaAttributes(this.aria),
-        })}
-      >
-        {hasIcon && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.icon}
-            source={this.iconSource}
-            theme={this.theme}
-            aria-hidden="true"
-          />
-        )}
-        <span class="label">
-          <slot />
-        </span>
-      </TagType>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
+        <TagType
+          class="root"
+          {...(TagType === 'a' && {
+            href: this.href,
+            target: this.target,
+            download: this.download,
+            rel: this.rel,
+            ...parseAndGetAriaAttributes(this.aria),
+          })}
+        >
+          {hasIcon && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              size="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              theme={this.theme}
+              aria-hidden="true"
+            />
+          )}
+          <span class="label">
+            <slot />
+          </span>
+        </TagType>
+      </Host>
     );
   }
 }

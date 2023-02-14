@@ -96,16 +96,17 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         ...getInsetJssStyle(-6),
       },
 
-      '[theme=dark] a, [theme=dark] button, [theme=dark] input, [theme=dark] select, [theme=dark] textarea': {
-        '&:focus::before': {
-          border: `${borderWidthBase} solid ${themeDark.state.focus}`,
-        },
-        '&:disabled': {
+      '[data-theme=dark] a, [data-theme=dark] button, [data-theme=dark] input, [data-theme=dark] select, [data-theme=dark] textarea':
+        {
           '&:focus::before': {
-            border: 0,
+            border: `${borderWidthBase} solid ${themeDark.state.focus}`,
+          },
+          '&:disabled': {
+            '&:focus::before': {
+              border: 0,
+            },
           },
         },
-      },
 
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
       'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type=search]::-webkit-search-decoration':
@@ -121,7 +122,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       'input::-webkit-calendar-picker-indicator': {
         filter: 'invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%)', // property color can not be used here, this is the filter for themeLight.primary
       },
-      '[theme=dark] input::-webkit-calendar-picker-indicator': {
+      '[data-theme=dark] input::-webkit-calendar-picker-indicator': {
         filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // property color can not be used here, this is the filter for themeDark.primary
       },
       'input::-webkit-calendar-picker-indicator:hover': {
@@ -135,7 +136,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       },
 
       // Safari input type date and time has incorrect placeholder color for dark theme
-      '[theme=dark] input::-webkit-datetime-edit': {
+      '[data-theme=dark] input::-webkit-datetime-edit': {
         WebkitTextFillColor: themeDark.primary,
       },
     },

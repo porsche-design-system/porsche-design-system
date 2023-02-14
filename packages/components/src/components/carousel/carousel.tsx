@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
+  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   getSlotTextContent,
   hasDescription,
@@ -167,7 +168,7 @@ export class Carousel {
     };
 
     return (
-      <Host>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
           {hasDescription(this.host, this.description) &&

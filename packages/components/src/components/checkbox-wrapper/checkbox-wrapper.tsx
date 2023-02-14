@@ -6,6 +6,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getClosestHTMLElement,
+  getDataThemeDarkAttribute,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasLabel,
   hasMessage,
@@ -83,7 +84,7 @@ export class CheckboxWrapper {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled, this.theme);
 
     return (
-      <Host>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <label>
           {hasLabel(this.host, this.label) && (
             <span class="text" onClick={this.onLabelClick}>

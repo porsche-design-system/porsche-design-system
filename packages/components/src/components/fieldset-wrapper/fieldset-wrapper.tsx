@@ -1,5 +1,13 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, hasLabel, hasMessage, THEMES, validateProps } from '../../utils';
+import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getDataThemeDarkAttribute,
+  hasLabel,
+  hasMessage,
+  THEMES,
+  validateProps,
+} from '../../utils';
 import type { PropTypes, Theme } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
@@ -58,18 +66,20 @@ export class FieldsetWrapper {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
-        {hasLabel(this.host, this.label) && (
-          <legend>
-            {this.label || <slot name="label" />}
-            {this.required && <Required />}
-          </legend>
-        )}
-        <slot />
-        {hasMessageValue && (
-          <StateMessage id={messageId} state={this.state} message={this.message} theme="light" host={this.host} />
-        )}
-      </fieldset>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
+        <fieldset aria-describedby={hasMessageValue ? messageId : null}>
+          {hasLabel(this.host, this.label) && (
+            <legend>
+              {this.label || <slot name="label" />}
+              {this.required && <Required />}
+            </legend>
+          )}
+          <slot />
+          {hasMessageValue && (
+            <StateMessage id={messageId} state={this.state} message={this.message} theme="light" host={this.host} />
+          )}
+        </fieldset>
+      </Host>
     );
   }
 }

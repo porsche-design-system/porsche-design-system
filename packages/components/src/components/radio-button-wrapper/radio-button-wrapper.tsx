@@ -12,6 +12,7 @@ import {
   AllowedTypes,
   validateProps,
   THEMES,
+  getDataThemeDarkAttribute,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
@@ -86,7 +87,7 @@ export class RadioButtonWrapper {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled, this.theme);
 
     return (
-      <Host>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <label>
           {hasLabel(this.host, this.label) && (
             <span class="text" onClick={this.onLabelClick}>

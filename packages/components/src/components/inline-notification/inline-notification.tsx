@@ -5,6 +5,7 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@st
 import {
   AllowedTypes,
   attachComponentCss,
+  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   hasHeading,
   THEMES,
@@ -80,7 +81,7 @@ export class InlineNotification {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(this.state)}

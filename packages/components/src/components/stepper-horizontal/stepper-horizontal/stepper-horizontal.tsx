@@ -3,6 +3,7 @@ import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   getScrollActivePosition,
   observeBreakpointChange,
@@ -111,7 +112,7 @@ export class StepperHorizontal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host role="list">
+      <Host {...getDataThemeDarkAttribute(this.theme)} role="list">
         <PrefixedTagNames.pScroller class="scroller" theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
           <slot />
         </PrefixedTagNames.pScroller>

@@ -1,9 +1,10 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import type { TagColor } from './tag-utils';
 import { getThemeForIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
+  getDataThemeDarkAttribute,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
   THEMES,
@@ -57,23 +58,25 @@ export class Tag {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <span>
-        {(this.icon || this.iconSource) && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name={this.icon}
-            source={this.iconSource}
-            color="primary"
-            size="x-small"
-            theme={getThemeForIcon(this.color, this.theme)}
-            aria-hidden="true"
-          />
-        )}
-        {/* to trick leading inline-block / inline-flex space character */}
-        <div class="label">
-          <slot />
-        </div>
-      </span>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
+        <span>
+          {(this.icon || this.iconSource) && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              name={this.icon}
+              source={this.iconSource}
+              color="primary"
+              size="x-small"
+              theme={getThemeForIcon(this.color, this.theme)}
+              aria-hidden="true"
+            />
+          )}
+          {/* to trick leading inline-block / inline-flex space character */}
+          <div class="label">
+            <slot />
+          </div>
+        </span>
+      </Host>
     );
   }
 }
