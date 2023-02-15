@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
 import { getComponentCss } from './model-signature-styles';
@@ -13,7 +13,7 @@ const propTypes: PropTypes<typeof ModelSignature> = {
 
 @Component({
   tag: 'p-model-signature',
-  shadow: { delegatesFocus: true },
+  shadow: true,
 })
 export class ModelSignature {
   @Element() public host!: HTMLElement;
@@ -31,6 +31,6 @@ export class ModelSignature {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.model, this.size, this.theme);
 
-    return <Host />;
+    return null;
   }
 }
