@@ -20,7 +20,7 @@ The `color` prop's default is `{{ meta.props.color }}`, which can be changed to 
   <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
 </Playground>
 
-## Size
+## Sizes
 
 The `size` prop's default is `{{ meta.props.size }}`, which can be changed to the following values.
 
