@@ -64,7 +64,6 @@ import userEvent from '@testing-library/user-event';
 test('renders Tabs Bar from Porsche Design System and uses its events', async () => {
   const { getByTestId } = render(
     <PorscheDesignSystemProvider>
-      {' '}
       {/* required for the component to work */}
       <SingleComponent />
     </PorscheDesignSystemProvider>
