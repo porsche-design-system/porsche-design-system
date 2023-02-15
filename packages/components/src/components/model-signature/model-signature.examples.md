@@ -9,12 +9,7 @@ The `p-model-signature` ...
 The `model` prop's default is `718`, which can be changed to the following values.
 
 <Playground :markup="modelMarkup" :config="config">
-  <select v-model="model" aria-label="Select model">
-    <option disabled>Select model</option>
-    <template v-for="(value) in models">
-      <option :value="value">{{ value }}</option>
-    </template>
-  </select>
+  <SelectOptions v-model="model" :values="models" name="model"></SelectOptions>
 </Playground>
 
 ## Colors
@@ -22,12 +17,7 @@ The `model` prop's default is `718`, which can be changed to the following value
 The `color` prop's default is `primary`, which can be changed to the following values.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color" aria-label="Select color">
-    <option disabled>Select color</option>
-    <template v-for="(value) in colors">
-      <option :value="value">{{ value }}</option>
-    </template>
-  </select>
+  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
 </Playground>
 
 ## Size
@@ -35,12 +25,7 @@ The `color` prop's default is `primary`, which can be changed to the following v
 The `size` prop's default is `small`, which can be changed to the following values.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <template v-for="(value) in sizes">
-      <option :value="value">{{ value }}</option>
-    </template>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 <script lang="ts">
