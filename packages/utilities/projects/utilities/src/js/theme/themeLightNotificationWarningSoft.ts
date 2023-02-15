@@ -1,1 +1,1 @@
-export const themeLightNotificationWarningSoft = '#FFF9E6';
+export const themeLightNotificationWarningSoft = 'rgba(255, 244, 210, 0.7)';
