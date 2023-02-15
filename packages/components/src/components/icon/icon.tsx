@@ -1,11 +1,10 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import type { IconAriaAttribute, IconColor } from './icon-utils';
-import { buildIconUrl, ICON_ARIA_ATTRIBUTES, IconSize } from './icon-utils';
+import { buildIconUrl, ICON_ARIA_ATTRIBUTES, ICON_COLORS, IconSize } from './icon-utils';
 import {
   AllowedTypes,
   attachComponentCss,
   parseAndGetAriaAttributes,
-  TEXT_COLORS,
   TEXT_SIZES,
   THEMES,
   validateProps,
@@ -17,7 +16,7 @@ import { ICONS_MANIFEST } from '@porsche-design-system/icons';
 const propTypes: PropTypes<typeof Icon> = {
   name: AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]),
   source: AllowedTypes.string,
-  color: AllowedTypes.oneOf<IconColor>(TEXT_COLORS),
+  color: AllowedTypes.oneOf<IconColor>(ICON_COLORS),
   size: AllowedTypes.oneOf<IconSize>(TEXT_SIZES),
   lazy: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
