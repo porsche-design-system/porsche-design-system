@@ -105,7 +105,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: '48px minmax(0, 1fr) 48px',
+      gridTemplateColumns: '3rem minmax(0, 1fr) 3rem',
       margin: '0 -4px',
       height: 'inherit',
     },

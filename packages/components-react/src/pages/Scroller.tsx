@@ -27,6 +27,15 @@ export const ScrollerPage = (): JSX.Element => {
     .scroller > span:not(:last-child) {
       margin-right: 1rem;
     }
+
+    .light button {
+      background: black;
+      color: white;
+    }
+
+    .dark button {
+      background: white;
+    }
   `;
 
   return (
@@ -99,7 +108,7 @@ export const ScrollerPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render scroller with scroll indicator position center on light background">
-        <div style={{ height: '50px', border: '1px solid deeppink', maxWidth: '600px' }}>
+        <div style={{ height: '3rem', border: '1px solid deeppink', maxWidth: '600px' }}>
           <PScroller scrollIndicatorPosition="center">
             <button>Scroll indicator position center</button>
             <button>Scroll indicator position center</button>
@@ -113,7 +122,7 @@ export const ScrollerPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render scroller with scroll indicator position top on light background">
-        <div style={{ height: '50px', border: '1px solid deeppink', maxWidth: '600px' }}>
+        <div style={{ height: '3rem', border: '1px solid deeppink', maxWidth: '600px' }}>
           <PScroller scrollIndicatorPosition="top">
             <button>Scroll indicator position top</button>
             <button>Scroll indicator position top</button>
@@ -152,7 +161,7 @@ export const ScrollerPage = (): JSX.Element => {
 
       <div className="playground light" title="should render scroller with initial scroll position on light background">
         <div style={{ maxWidth: '600px' }}>
-          <PScroller className="scroller" scrollToPosition={{scrollPosition: 290}}>
+          <PScroller className="scroller" scrollToPosition={{scrollPosition: 280}}>
             <span>Start</span>
             <span>Middle</span>
             <span>End</span>
