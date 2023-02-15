@@ -1,6 +1,6 @@
 import { getCss, isThemeDark } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import type { ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';
+import type { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';
 import type { Theme } from '../../types';
 
 // TODO: use in checkbox wrapper and stepper-horizontal-item, too
@@ -39,9 +39,14 @@ const modelToSvgMap: Record<ModelSignatureModel, string> = {
 // copied from icon-styles
 const filterDarkPrimary = 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)';
 
-export const getComponentCss = (model: ModelSignatureModel, size: ModelSignatureSize, theme: Theme): string => {
+export const getComponentCss = (
+  model: ModelSignatureModel,
+  size: ModelSignatureSize,
+  color: ModelSignatureColor,
+  theme: Theme
+): string => {
   // eslint-disable-next-line no-console
-  console.log(size);
+  console.log(size, color);
 
   return getCss({
     '@global': {

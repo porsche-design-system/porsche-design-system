@@ -29,7 +29,7 @@ import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueAriaAttribute, MarqueSize } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
-import { ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
@@ -762,6 +762,10 @@ export namespace Components {
         "open": boolean;
     }
     interface PModelSignature {
+        /**
+          * Adapts the color of the component.
+         */
+        "color"?: ModelSignatureColor;
         /**
           * Adapts the size of the component.
          */
@@ -2484,6 +2488,10 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface PModelSignature {
+        /**
+          * Adapts the color of the component.
+         */
+        "color"?: ModelSignatureColor;
         /**
           * Adapts the size of the component.
          */
