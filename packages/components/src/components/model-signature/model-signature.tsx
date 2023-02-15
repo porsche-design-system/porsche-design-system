@@ -20,7 +20,7 @@ export class ModelSignature {
   @Element() public host!: HTMLElement;
 
   /** Adapts the size of the component. */
-  @Prop() public model?: ModelSignatureModel = '718';
+  @Prop() public model?: ModelSignatureModel = '911';
 
   /** Adapts the size of the component. */
   @Prop() public size?: ModelSignatureSize = 'small';

@@ -641,7 +641,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "props": {
       "color": "primary",
-      "model": "718",
+      "model": "911",
       "size": "small",
       "theme": "light",
     },
