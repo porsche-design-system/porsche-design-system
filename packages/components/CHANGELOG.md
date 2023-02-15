@@ -13,6 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Porsche Next font supports Vietnamese charset
 
+#### Changed
+
+- `Text Field Wrapper` uses slotted styles from getInitialStyles partial
+- `Initial Styles` partial matches new design language
+
+#### Fixed
+
+- `Text Field Wrapper` browser input date/time icons respect color definition in dark theme
+- `Text Field Wrapper` Safari/Chrome browser has correct height and color (dark theme) when type date or time is used
+
 ### [3.0.0-alpha.0] - 2023-02-08
 
 #### Note to the new `v3` major release of the Porsche Design System
