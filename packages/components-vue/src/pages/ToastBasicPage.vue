@@ -4,15 +4,22 @@
 
 <template>
   <div class="visualize-grid">
-    <span class="visualize-grid-columns"></span>
-    <span class="visualize-grid-columns"></span><span class="visualize-grid-columns"></span
-    ><span class="visualize-grid-columns"></span><span class="visualize-grid-columns"></span
-    ><span class="visualize-grid-columns"></span><span class="visualize-grid-columns"></span
-    ><span class="visualize-grid-columns"></span><span class="visualize-grid-columns"></span
-    ><span class="visualize-grid-columns"></span><span class="visualize-grid-columns"></span
-    ><span class="visualize-grid-columns"></span><span class="visualize-grid-columns"></span
-    ><span class="visualize-grid-columns"></span><span class="visualize-grid-columns"></span
-    ><span class="visualize-grid-columns"></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 
   <div class="playground light">
