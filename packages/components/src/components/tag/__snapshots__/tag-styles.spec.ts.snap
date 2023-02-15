@@ -4,7 +4,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 {
   "backgroundColor": "#212225",
   "backgroundHoverColor": "#3E4045",
-  "focusColor": "#0A0AFF",
+  "focusColor": "#1E5BEB",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -13,7 +13,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 {
   "backgroundColor": "#212225",
   "backgroundHoverColor": "#3E4045",
-  "focusColor": "#0A0AFF",
+  "focusColor": "#1E5BEB",
   "primaryColor": "#010205",
 }
 `;
@@ -78,7 +78,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -190,7 +190,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -320,7 +320,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -432,7 +432,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -562,7 +562,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -692,7 +692,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -795,7 +795,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #290A0A;
+  background: rgba(58, 15, 15, 0.7);
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -822,7 +822,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -836,7 +836,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #331F1F;
+    background: #3F2828;
   }
 }
 
@@ -860,7 +860,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FCE8E9;
+  background: rgba(255, 226, 228, 0.7);
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -901,7 +901,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #EED7D9;
+    background: #F4CED1;
   }
 }
 
@@ -925,7 +925,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #001A33;
+  background: rgba(4, 41, 78, 0.7);
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -952,7 +952,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -966,7 +966,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #0F2943;
+    background: #1A3856;
   }
 }
 
@@ -990,7 +990,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #E8EEFD;
+  background: rgba(211, 225, 255, 0.7);
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -1031,7 +1031,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #D6DEF0;
+    background: #C2D1F1;
   }
 }
 
@@ -1055,7 +1055,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #001A33;
+  background: rgba(4, 41, 78, 0.7);
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -1082,7 +1082,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1096,7 +1096,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #0F2943;
+    background: #1A3856;
   }
 }
 
@@ -1120,7 +1120,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #E8EEFD;
+  background: rgba(211, 225, 255, 0.7);
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -1161,7 +1161,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #D6DEF0;
+    background: #C2D1F1;
   }
 }
 
@@ -1185,7 +1185,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #003320;
+  background: rgba(0, 51, 32, 0.7);
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -1212,7 +1212,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1250,7 +1250,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #EBFAF0;
+  background: rgba(228, 255, 236, 0.7);
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -1291,7 +1291,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #DDEAE1;
+    background: #D0F4DB;
   }
 }
 
@@ -1315,7 +1315,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #2B2208;
+  background: rgba(54, 43, 10, 0.7);
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -1342,7 +1342,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1356,7 +1356,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #362F1C;
+    background: #3E3720;
   }
 }
 
@@ -1380,7 +1380,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FFF9E6;
+  background: rgba(255, 244, 210, 0.7);
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -1421,7 +1421,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #F5ECD2;
+    background: #F1E5C1;
   }
 }
 
@@ -1472,7 +1472,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {

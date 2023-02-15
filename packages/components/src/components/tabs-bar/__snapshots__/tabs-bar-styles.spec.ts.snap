@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
@@ -222,7 +222,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {

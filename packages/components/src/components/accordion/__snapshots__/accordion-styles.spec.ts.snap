@@ -206,7 +206,7 @@ button::before {
   bottom: 2px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -531,7 +531,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -863,7 +863,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
 }
 button:not(:focus-visible)::before {
   border: 0;

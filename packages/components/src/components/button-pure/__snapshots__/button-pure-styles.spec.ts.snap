@@ -407,7 +407,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -825,7 +825,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   background-color: rgba(126, 127, 130, 0.20);
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
 }
 .root:not(:focus-visible)::before {
   border: 0;
