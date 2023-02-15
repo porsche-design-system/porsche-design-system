@@ -11,6 +11,7 @@ export const MODEL_SIGNATURE_MODELS = [
   'panamera',
   'taycan',
   'turbo',
+  'turbo-s',
 ] as const;
 export type ModelSignatureModel = typeof MODEL_SIGNATURE_MODELS[number];
 
