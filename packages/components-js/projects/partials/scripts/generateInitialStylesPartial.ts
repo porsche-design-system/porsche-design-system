@@ -69,7 +69,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         fontStyle: 'normal',
       },
 
-      'a, button, input, select, textarea': {
+      'a, button': {
         position: 'relative',
         outline: 0, // hide default focus outline
         '&:focus::before': {
@@ -86,6 +86,19 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
           '&:focus::before': {
             border: 0,
           },
+        },
+      },
+
+      // Pseudo-elements are not supported on these elements
+      'input, select, textarea': {
+        outline: `${borderWidthBase} solid transparent`,
+        outlineOffset: '4px',
+        '&:focus': {
+          borderRadius: borderRadiusSmall,
+          outlineColor: `${themeLight.state.focus}`,
+        },
+        '&:focus:not(:focus-visible)': {
+          outlineColor: 'transparent',
         },
       },
 
