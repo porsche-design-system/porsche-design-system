@@ -39,8 +39,11 @@ const modelToSvgMap: Record<ModelSignatureModel, string> = {
 const getSvgBackgroundImage = (model: ModelSignatureModel): string =>
   `url('data:image/svg+xml;charset=UTF-8,${modelToSvgMap[model]}')`;
 
-export const getComponentCss = (model: ModelSignatureModel, _size: ModelSignatureSize, _theme: Theme): string => {
-  const css = getCss({
+export const getComponentCss = (model: ModelSignatureModel, size: ModelSignatureSize, theme: Theme): string => {
+  // eslint-disable-next-line no-console
+  console.log(size, theme);
+
+  return getCss({
     '@global': {
       ':host': {
         display: 'block',
@@ -52,7 +55,4 @@ export const getComponentCss = (model: ModelSignatureModel, _size: ModelSignatur
       },
     },
   });
-
-  console.log(css);
-  return css;
 };
