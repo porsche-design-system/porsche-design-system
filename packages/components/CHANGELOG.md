@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Use calc() instead of max() to calculate padding for `gridStyle` and `pds-grid`
 - Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
+- Style `gridStyle` (JS) and `pds-grid` (SCSS) uses optimized grid gap
 
 ### [3.0.0-alpha.0] - 2023-02-08
 
