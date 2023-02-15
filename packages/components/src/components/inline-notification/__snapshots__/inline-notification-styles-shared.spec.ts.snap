@@ -24,7 +24,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(255, 226, 228, 0.7)",
+  "background": "#FCE8E9",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -39,7 +39,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(58, 15, 15, 0.7)",
+  "background": "#290A0A",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -54,7 +54,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(211, 225, 255, 0.7)",
+  "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -69,7 +69,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "background": "rgba(211, 225, 255, 0.7)",
+  "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -84,7 +84,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(4, 41, 78, 0.7)",
+  "background": "#001A33",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -99,7 +99,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "background": "rgba(211, 225, 255, 0.7)",
+  "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -114,7 +114,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto auto",
   },
-  "background": "rgba(211, 225, 255, 0.7)",
+  "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -129,7 +129,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(211, 225, 255, 0.7)",
+  "background": "#E8EEFD",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -144,7 +144,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(4, 41, 78, 0.7)",
+  "background": "#001A33",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -159,7 +159,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(228, 255, 236, 0.7)",
+  "background": "#EBFAF0",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -174,7 +174,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(0, 51, 32, 0.7)",
+  "background": "#003320",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -189,7 +189,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(255, 244, 210, 0.7)",
+  "background": "#FFF9E6",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -204,7 +204,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "rgba(54, 43, 10, 0.7)",
+  "background": "#2B2208",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",

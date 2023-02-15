@@ -7,7 +7,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: rgba(4, 41, 78, 0.7);
+  background: #001A33;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
@@ -50,7 +50,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: rgba(211, 225, 255, 0.7);
+  background: #E8EEFD;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
@@ -93,7 +93,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: rgba(4, 41, 78, 0.7);
+  background: #001A33;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
@@ -136,7 +136,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: rgba(211, 225, 255, 0.7);
+  background: #E8EEFD;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
@@ -179,7 +179,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: rgba(0, 51, 32, 0.7);
+  background: #003320;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }
@@ -222,7 +222,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: rgba(228, 255, 236, 0.7);
+  background: #EBFAF0;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
 }

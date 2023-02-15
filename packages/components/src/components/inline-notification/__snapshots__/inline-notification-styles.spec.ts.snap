@@ -7,7 +7,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(58, 15, 15, 0.7) !important;
+  background: #290A0A !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -57,7 +57,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(255, 226, 228, 0.7) !important;
+  background: #FCE8E9 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -107,7 +107,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -157,7 +157,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -207,7 +207,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -257,7 +257,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -307,7 +307,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -360,7 +360,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -413,7 +413,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -466,7 +466,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -519,7 +519,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -569,7 +569,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -619,7 +619,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -669,7 +669,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -719,7 +719,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -772,7 +772,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -825,7 +825,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(4, 41, 78, 0.7) !important;
+  background: #001A33 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -878,7 +878,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(211, 225, 255, 0.7) !important;
+  background: #E8EEFD !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -931,7 +931,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(0, 51, 32, 0.7) !important;
+  background: #003320 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -981,7 +981,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(228, 255, 236, 0.7) !important;
+  background: #EBFAF0 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -1031,7 +1031,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(54, 43, 10, 0.7) !important;
+  background: #2B2208 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -1081,7 +1081,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: rgba(255, 244, 210, 0.7) !important;
+  background: #FFF9E6 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
