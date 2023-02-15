@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-      <h3 class="heading">Spacing Fluid (XS - XL)</h3>
+      <h3 class="heading">Spacing Fluid (XS - XXL)</h3>
       <div class="spacing-fluid-x-small tile"></div>
       <div class="spacing-fluid-small tile"></div>
       <div class="spacing-fluid-medium tile"></div>

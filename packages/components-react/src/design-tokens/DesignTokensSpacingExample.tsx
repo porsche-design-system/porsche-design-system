@@ -123,7 +123,7 @@ export const DesignTokensSpacingExample = (): JSX.Element => {
   return (
     <>
       <Wrapper>
-        <Heading>Spacing Fluid (XS - XL)</Heading>
+        <Heading>Spacing Fluid (XS - XXL)</Heading>
         <SpacingFluidXSmall></SpacingFluidXSmall>
         <SpacingFluidSmall></SpacingFluidSmall>
         <SpacingFluidMedium></SpacingFluidMedium>
