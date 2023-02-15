@@ -53,7 +53,7 @@ export const getComponentCss = (
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isNumber = isType(inputType, 'number');
-  const isSearchPassword = isSearch || isPassword;
+  const isSearchOrPassword = isSearch || isPassword;
   const isSearchWithoutForm = isSearch && !isWithinForm;
   const isSearchWithForm = isSearch && isWithinForm;
 
@@ -63,7 +63,7 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
-          [cssVariableInputPaddingRight]: isSearchPassword
+          [cssVariableInputPaddingRight]: isSearchOrPassword
             ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
             : spacingStaticMedium,
           ...hostHiddenStyles,
@@ -84,7 +84,7 @@ export const getComponentCss = (
         },
       }),
     },
-    ...(isSearchPassword && {
+    ...(isSearchOrPassword && {
       button: {
         ...baseButtonOrIconStyles,
         right: getButtonOrIconOffsetHorizontal(1),

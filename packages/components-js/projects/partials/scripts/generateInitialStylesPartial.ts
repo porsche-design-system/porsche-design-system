@@ -51,6 +51,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
         '@media(hover:hover)': {
+          transition: 'color var(--p-transition-duration, .24s) ease',
           '&:hover': {
             ...frostedGlassStyle,
             backgroundColor: themeLight.state.hover,
@@ -89,6 +90,21 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         },
       },
 
+      'button:focus::before': {
+        ...getInsetJssStyle(-6),
+      },
+
+      '[data-theme=dark] a, [data-theme=dark] button': {
+        '&:focus::before': {
+          border: `${borderWidthBase} solid ${themeDark.state.focus}`,
+        },
+        '&:disabled': {
+          '&:focus::before': {
+            border: 0,
+          },
+        },
+      },
+
       // Pseudo-elements are not supported on these elements
       'input, select, textarea': {
         outline: `${borderWidthBase} solid transparent`,
@@ -102,21 +118,11 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         },
       },
 
-      'button:focus::before': {
-        ...getInsetJssStyle(-6),
-      },
-
-      '[data-theme=dark] a, [data-theme=dark] button, [data-theme=dark] input, [data-theme=dark] select, [data-theme=dark] textarea':
-        {
-          '&:focus::before': {
-            border: `${borderWidthBase} solid ${themeDark.state.focus}`,
-          },
-          '&:disabled': {
-            '&:focus::before': {
-              border: 0,
-            },
-          },
+      '[data-theme=dark] input, [data-theme=dark] select, [data-theme=dark] textarea': {
+        '&:focus': {
+          outlineColor: `${themeDark.state.focus}`,
         },
+      },
 
       // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
       'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input[type=search]::-webkit-search-decoration':

@@ -15,6 +15,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   };
 
   const initialStyles = getInitialStyles();
+  // Unsupported media feature: hover
   const initialStylesWithoutMediaQuery = initialStyles
     .replace(/\@media\(hover\:hover\)\{/g, '')
     .replace(

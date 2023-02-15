@@ -55,7 +55,6 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         alignItems: 'center',
         position: 'relative',
         padding: '4px 9px',
-        outline: 0, // reset native outline
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
@@ -74,6 +73,11 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         '&(a),&(button)': {
           display: 'inline',
           position: 'static',
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          font: 'inherit',
+          outline: 0, // reset native blue outline
+          color: 'inherit',
           appearance: 'none',
           margin: 0,
           padding: 0,
@@ -81,12 +85,12 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           border: 0,
           textAlign: 'left',
         },
+        // revert injected hover styles from InitialStyles partial
         '&(a:hover)': {
           backgroundColor: 'transparent',
           WebkitBackdropFilter: 'initial',
           backdropFilter: 'initial',
         },
-        outline: 0, // reset native blue outline
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
         ...Object.entries(getTagFocusJssStyle(themedColors)).reduce((result, [key, value]) => {
           result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;

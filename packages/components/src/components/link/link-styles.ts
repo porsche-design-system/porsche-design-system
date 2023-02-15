@@ -44,6 +44,7 @@ export const getComponentCss = (
             '&(a:focus:not(:focus-visible))::before': {
               border: 0,
             },
+            // revert injected hover styles from InitialStyles partial
             '&(a:hover)': {
               backgroundColor: 'transparent',
               WebkitBackdropFilter: 'initial',
