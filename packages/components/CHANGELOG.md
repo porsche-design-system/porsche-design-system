@@ -9,6 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Porsche Next font supports Vietnamese charset
+- Prop `color` of `Icon` supports `disabled`
+
+#### Changed
+
+- `Stepper Horizontal` matches new design language.
+
 ### [3.0.0-alpha.0] - 2023-02-08
 
 #### Note to the new `v3` major release of the Porsche Design System
@@ -394,7 +403,8 @@ to the new values since those ones will be removed with next major version.
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
   `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline` and `Fieldset Wrapper` matches new design language.
+  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline` and `Fieldset Wrapper`
+  matches new design language.
 - `Icon` supports
   `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | inherit`
   for `color` prop.

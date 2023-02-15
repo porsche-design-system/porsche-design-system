@@ -86,6 +86,7 @@ apply custom coloring to take advantage of using an SVG embedded in an image tag
     <option value="notification-error">Notification Error</option>
     <option value="notification-info">Notification Info</option>
     <option value="notification-neutral">Notification Neutral (deprecated)</option>
+    <option value="disabled">Disabled</option>
     <option value="inherit">Inherit</option>
   </select>
 </Playground>
