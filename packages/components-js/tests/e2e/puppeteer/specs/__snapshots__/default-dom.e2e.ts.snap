@@ -218,6 +218,8 @@ exports[`should have no basic DOM regression for p-modal 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-model-signature 1`] = `""`;
+
 exports[`should have no basic DOM regression for p-pagination 1`] = `
 "<nav role="navigation" aria-label="Pagination">
   <ul>
