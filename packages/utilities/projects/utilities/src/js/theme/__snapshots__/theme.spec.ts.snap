@@ -15,19 +15,19 @@ exports[`should contain correct values for theme 1`] = `
     },
     "notification": {
       "error": "#CB3333",
-      "errorSoft": "#290A0A",
+      "errorSoft": "rgba(58, 15, 15, 0.7)",
       "info": "#027FFC",
-      "infoSoft": "#001A33",
+      "infoSoft": "rgba(4, 41, 78, 0.7)",
       "success": "#00C77E",
-      "successSoft": "#003320",
+      "successSoft": "rgba(0, 51, 32, 0.7)",
       "warning": "#DDB84B",
-      "warningSoft": "#2B2208",
+      "warningSoft": "rgba(54, 43, 10, 0.7)",
     },
     "primary": "#FBFCFF",
     "state": {
       "active": "rgba(126, 127, 130, 0.20)",
       "disabled": "#7E7F82",
-      "focus": "#0A0AFF",
+      "focus": "#1E5BEB",
       "hover": "rgba(126, 127, 130, 0.20)",
     },
   },
@@ -44,13 +44,13 @@ exports[`should contain correct values for theme 1`] = `
     },
     "notification": {
       "error": "#E7323B",
-      "errorSoft": "#FCE8E9",
+      "errorSoft": "rgba(255, 226, 228, 0.7)",
       "info": "#1E5BEB",
-      "infoSoft": "#E8EEFD",
+      "infoSoft": "rgba(211, 225, 255, 0.7)",
       "success": "#32B85B",
-      "successSoft": "#EBFAF0",
+      "successSoft": "rgba(228, 255, 236, 0.7)",
       "warning": "#FECC1B",
-      "warningSoft": "#FFF9E6",
+      "warningSoft": "rgba(255, 244, 210, 0.7)",
     },
     "primary": "#010205",
     "state": {
@@ -77,19 +77,19 @@ exports[`should contain correct values for themeDark 1`] = `
   },
   "notification": {
     "error": "#CB3333",
-    "errorSoft": "#290A0A",
+    "errorSoft": "rgba(58, 15, 15, 0.7)",
     "info": "#027FFC",
-    "infoSoft": "#001A33",
+    "infoSoft": "rgba(4, 41, 78, 0.7)",
     "success": "#00C77E",
-    "successSoft": "#003320",
+    "successSoft": "rgba(0, 51, 32, 0.7)",
     "warning": "#DDB84B",
-    "warningSoft": "#2B2208",
+    "warningSoft": "rgba(54, 43, 10, 0.7)",
   },
   "primary": "#FBFCFF",
   "state": {
     "active": "rgba(126, 127, 130, 0.20)",
     "disabled": "#7E7F82",
-    "focus": "#0A0AFF",
+    "focus": "#1E5BEB",
     "hover": "rgba(126, 127, 130, 0.20)",
   },
 }
@@ -109,19 +109,19 @@ exports[`should contain correct values for themeDarkContrastMedium 1`] = `"#7E7F
 
 exports[`should contain correct values for themeDarkNotificationError 1`] = `"#CB3333"`;
 
-exports[`should contain correct values for themeDarkNotificationErrorSoft 1`] = `"#290A0A"`;
+exports[`should contain correct values for themeDarkNotificationErrorSoft 1`] = `"rgba(58, 15, 15, 0.7)"`;
 
 exports[`should contain correct values for themeDarkNotificationInfo 1`] = `"#027FFC"`;
 
-exports[`should contain correct values for themeDarkNotificationInfoSoft 1`] = `"#001A33"`;
+exports[`should contain correct values for themeDarkNotificationInfoSoft 1`] = `"rgba(4, 41, 78, 0.7)"`;
 
 exports[`should contain correct values for themeDarkNotificationSuccess 1`] = `"#00C77E"`;
 
-exports[`should contain correct values for themeDarkNotificationSuccessSoft 1`] = `"#003320"`;
+exports[`should contain correct values for themeDarkNotificationSuccessSoft 1`] = `"rgba(0, 51, 32, 0.7)"`;
 
 exports[`should contain correct values for themeDarkNotificationWarning 1`] = `"#DDB84B"`;
 
-exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] = `"#2B2208"`;
+exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] = `"rgba(54, 43, 10, 0.7)"`;
 
 exports[`should contain correct values for themeDarkPrimary 1`] = `"#FBFCFF"`;
 
@@ -129,7 +129,7 @@ exports[`should contain correct values for themeDarkStateActive 1`] = `"rgba(126
 
 exports[`should contain correct values for themeDarkStateDisabled 1`] = `"#7E7F82"`;
 
-exports[`should contain correct values for themeDarkStateFocus 1`] = `"#0A0AFF"`;
+exports[`should contain correct values for themeDarkStateFocus 1`] = `"#1E5BEB"`;
 
 exports[`should contain correct values for themeDarkStateHover 1`] = `"rgba(126, 127, 130, 0.20)"`;
 
@@ -147,13 +147,13 @@ exports[`should contain correct values for themeLight 1`] = `
   },
   "notification": {
     "error": "#E7323B",
-    "errorSoft": "#FCE8E9",
+    "errorSoft": "rgba(255, 226, 228, 0.7)",
     "info": "#1E5BEB",
-    "infoSoft": "#E8EEFD",
+    "infoSoft": "rgba(211, 225, 255, 0.7)",
     "success": "#32B85B",
-    "successSoft": "#EBFAF0",
+    "successSoft": "rgba(228, 255, 236, 0.7)",
     "warning": "#FECC1B",
-    "warningSoft": "#FFF9E6",
+    "warningSoft": "rgba(255, 244, 210, 0.7)",
   },
   "primary": "#010205",
   "state": {
@@ -179,19 +179,19 @@ exports[`should contain correct values for themeLightContrastMedium 1`] = `"#949
 
 exports[`should contain correct values for themeLightNotificationError 1`] = `"#E7323B"`;
 
-exports[`should contain correct values for themeLightNotificationErrorSoft 1`] = `"#FCE8E9"`;
+exports[`should contain correct values for themeLightNotificationErrorSoft 1`] = `"rgba(255, 226, 228, 0.7)"`;
 
 exports[`should contain correct values for themeLightNotificationInfo 1`] = `"#1E5BEB"`;
 
-exports[`should contain correct values for themeLightNotificationInfoSoft 1`] = `"#E8EEFD"`;
+exports[`should contain correct values for themeLightNotificationInfoSoft 1`] = `"rgba(211, 225, 255, 0.7)"`;
 
 exports[`should contain correct values for themeLightNotificationSuccess 1`] = `"#32B85B"`;
 
-exports[`should contain correct values for themeLightNotificationSuccessSoft 1`] = `"#EBFAF0"`;
+exports[`should contain correct values for themeLightNotificationSuccessSoft 1`] = `"rgba(228, 255, 236, 0.7)"`;
 
 exports[`should contain correct values for themeLightNotificationWarning 1`] = `"#FECC1B"`;
 
-exports[`should contain correct values for themeLightNotificationWarningSoft 1`] = `"#FFF9E6"`;
+exports[`should contain correct values for themeLightNotificationWarningSoft 1`] = `"rgba(255, 244, 210, 0.7)"`;
 
 exports[`should contain correct values for themeLightPrimary 1`] = `"#010205"`;
 
