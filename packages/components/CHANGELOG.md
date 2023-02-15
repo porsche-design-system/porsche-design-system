@@ -12,9 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - Porsche Next font supports Vietnamese charset
+- Prop `color` of `Icon` supports `disabled`
 
 #### Changed
 
+- `Stepper Horizontal` matches new design language.
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 
 ### [3.0.0-alpha.0] - 2023-02-08
