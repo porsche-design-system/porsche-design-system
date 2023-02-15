@@ -64,6 +64,7 @@ const IconPage: NextPage = (): JSX.Element => {
         <PIcon theme="light" color="notification-error" />
         <PIcon theme="light" color="notification-info" />
         <PIcon theme="light" color="notification-neutral" />
+        <PIcon theme="light" color="disabled" />
         <PIcon
           theme="light"
           color="inherit"
@@ -86,6 +87,7 @@ const IconPage: NextPage = (): JSX.Element => {
         <PIcon theme="dark" color="notification-error" />
         <PIcon theme="dark" color="notification-info" />
         <PIcon theme="dark" color="notification-neutral" />
+        <PIcon theme="dark" color="disabled" />
         <PIcon
           theme="dark"
           color="inherit"
