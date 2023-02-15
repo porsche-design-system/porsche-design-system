@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Background color of `Scroller` `prev`,`next` buttons in dark theme
+- Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 
 ### [3.0.0-alpha.0] - 2023-02-08
 
