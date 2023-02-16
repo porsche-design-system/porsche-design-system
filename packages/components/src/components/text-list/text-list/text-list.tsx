@@ -1,16 +1,9 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  attachSlottedCss,
-  getDataThemeDarkAttribute,
-  THEMES,
-  validateProps,
-} from '../../../utils';
+import { AllowedTypes, attachComponentCss, getDataThemeDarkAttribute, THEMES, validateProps } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import type { ListType, OrderType } from './text-list-utils';
 import { LIST_TYPES, ORDER_TYPES, syncTextListItemsProps } from './text-list-utils';
-import { getComponentCss, getSlottedCss } from './text-list-styles';
+import { getComponentCss } from './text-list-styles';
 
 const propTypes: PropTypes<typeof TextList> = {
   listType: AllowedTypes.oneOf<ListType>(LIST_TYPES),
@@ -33,10 +26,6 @@ export class TextList {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

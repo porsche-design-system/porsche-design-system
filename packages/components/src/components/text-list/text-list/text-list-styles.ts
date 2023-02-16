@@ -1,6 +1,6 @@
 import type { Theme } from '../../../types';
-import { buildSlottedStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, hostHiddenStyles } from '../../../styles';
+import { getCss } from '../../../utils';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../../styles';
 import { textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (theme: Theme): string => {
@@ -22,8 +22,4 @@ export const getComponentCss = (theme: Theme): string => {
       },
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: true })));
 };
