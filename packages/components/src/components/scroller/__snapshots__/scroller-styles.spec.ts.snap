@@ -40,7 +40,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
@@ -74,7 +74,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1E5BEB;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -174,7 +174,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
@@ -308,7 +308,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
@@ -441,7 +441,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
@@ -475,7 +475,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1E5BEB;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -575,7 +575,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
@@ -709,7 +709,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
@@ -842,7 +842,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
@@ -876,7 +876,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1E5BEB;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -976,7 +976,7 @@ button {
 
 .root {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
