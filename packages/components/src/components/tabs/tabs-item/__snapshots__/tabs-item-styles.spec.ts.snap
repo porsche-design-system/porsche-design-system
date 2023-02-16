@@ -18,7 +18,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   bottom: -4px !important;
 }
 :host(:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 4px !important;
 }
 :host(:focus:not(:focus-visible))::before {

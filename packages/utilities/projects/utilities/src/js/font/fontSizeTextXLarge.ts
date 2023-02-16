@@ -1,1 +1,1 @@
-export const fontSizeTextXLarge = 'clamp(1.73rem, .57vw + 1.61rem, 2.24rem)';
+export const fontSizeTextXLarge = 'clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)';

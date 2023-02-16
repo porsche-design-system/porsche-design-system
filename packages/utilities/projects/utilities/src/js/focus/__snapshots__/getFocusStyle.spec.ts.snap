@@ -43,7 +43,7 @@ exports[`getFocusStyle() should return correct css for opts: { offset: '5rem' } 
 exports[`getFocusStyle() should return correct css for opts: { theme: 'dark' } 1`] = `
 {
   "&:focus::before": {
-    "border": "2px solid #0A0AFF",
+    "border": "2px solid #1E5BEB",
     "borderRadius": "4px",
     "bottom": "-4px",
     "content": """",

@@ -11,13 +11,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Model Signature`
+
+### [3.0.0-alpha.1] - 2023-02-16
+
+#### Added
+
 - Porsche Next font supports Vietnamese charset
 - Prop `color` of `Icon` supports `disabled`
-- `Model Signature`
+- React: `patchRemixRunProcessBrowserGlobalIdentifier` binary to support SSR components with Remix
 
 #### Changed
 
 - `Stepper Horizontal` matches new design language.
+- Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
+  `@porsche-design-system/components-{js|angular|react|vue}/styles`
+- Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
+- Styles: `gridStyle` (JS) and `pds-grid` (SCSS) uses optimized grid gap
 
 ### [3.0.0-alpha.0] - 2023-02-08
 

@@ -23,7 +23,7 @@ type GetFontFaceStylesheetOptionsWithoutTags = Omit<GetFontFaceStylesheetOptions
     .replace('$URL', '${url}')
     .replace(/\$CDN_URL/g, '${cdnBaseUrl}');
   const linksJsx =
-    `<link rel="preconnect" href="$CDN_URL" crossOrigin="true" /><link rel="dns-prefetch" href="$CDN_URL" crossOrigin="true" /><link rel="stylesheet" href="$URL" type="text/css" crossOrigin="true" />`
+    `<link rel="preconnect" href="$CDN_URL" crossOrigin="" /><link rel="dns-prefetch" href="$CDN_URL" crossOrigin="" /><link rel="stylesheet" href="$URL" type="text/css" crossOrigin="" />`
       .replace('"$URL"', '{url}')
       .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
 
