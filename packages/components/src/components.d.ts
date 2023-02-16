@@ -9,7 +9,7 @@ import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, Bu
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
-import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
+import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
@@ -224,6 +224,10 @@ export namespace Components {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+        /**
+          * Defines the outer spacings between the carousel and the left and right screen sides.
+         */
+        "width"?: CarouselWidth;
         /**
           * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
          */
@@ -1917,6 +1921,10 @@ declare namespace LocalJSX {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+        /**
+          * Defines the outer spacings between the carousel and the left and right screen sides.
+         */
+        "width"?: CarouselWidth;
         /**
           * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
          */
