@@ -1,1 +1,1 @@
-export const spacingFluidXSmall = 'clamp(.25rem, 0.28vw + 0.19rem, .5rem)';
+export const spacingFluidXSmall = 'clamp(4px, 0.25vw + 3px, 8px)';
