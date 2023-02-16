@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         margin-right: 0.5rem;
       }
       p-scroller > button {
+        border: 0;
         line-height: 1.5;
         font-size: 16px;
       }
