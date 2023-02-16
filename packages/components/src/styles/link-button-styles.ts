@@ -74,8 +74,8 @@ export const getLinkButtonStyles = (
 
   return {
     '@global': {
+      display: 'inline-block',
       ':host': addImportantToEachRule({
-        display: 'inline-block',
         verticalAlign: 'top',
         outline: 0, // custom element is able to delegate the focus
         ...hostHiddenStyles,
