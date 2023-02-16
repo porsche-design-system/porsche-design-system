@@ -1,6 +1,6 @@
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, hasVisibleIcon, mergeDeep } from '../../utils';
-import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getThemedColors, hoverMediaQuery } from '../../styles';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
@@ -64,11 +64,13 @@ export const getComponentCss = (
                 border: 0,
               },
               // revert injected hover styles from InitialStyles partial
-              '&(a:hover)': {
-                backgroundColor: 'transparent',
-                WebkitBackdropFilter: 'initial',
-                backdropFilter: 'initial',
-              },
+              ...hoverMediaQuery({
+                '&(a:hover)': {
+                  backgroundColor: 'transparent',
+                  WebkitBackdropFilter: 'initial',
+                  backdropFilter: 'initial',
+                },
+              }),
             },
           }),
         }),
