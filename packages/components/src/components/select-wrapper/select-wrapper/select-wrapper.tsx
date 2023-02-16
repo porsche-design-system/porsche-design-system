@@ -147,7 +147,7 @@ export class SelectWrapper {
               class="icon"
               name="arrow-head-down"
               theme={this.theme}
-              color={disabled ? 'contrast-medium' : 'primary'}
+              color={disabled ? 'disabled' : 'primary'}
               aria-hidden="true"
               ref={(el) => (this.iconElement = el)}
             />
