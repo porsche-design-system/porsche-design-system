@@ -98,7 +98,7 @@ const themeDark = {
   hoverColor: 'rgba(126, 127, 130, 0.20)',
   hoverColorDarken: '#606163',
   activeColor: 'rgba(126, 127, 130, 0.20)',
-  focusColor: '#0A0AFF',
+  focusColor: '#1E5BEB',
   disabledColor: '#7E7F82',
   errorColor: '#CB3333',
   errorColorDarken: '#9A2727',

@@ -20,7 +20,7 @@ exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
   "errorSoftColor": "#290A0A",
   "errorSoftColorDarken": "#0D0808",
   "errorSoftColorLighten": "#331F1F",
-  "focusColor": "#0A0AFF",
+  "focusColor": "#1E5BEB",
   "hoverColor": "rgba(126, 127, 130, 0.20)",
   "hoverColorDarken": "#606163",
   "infoColor": "#027FFC",

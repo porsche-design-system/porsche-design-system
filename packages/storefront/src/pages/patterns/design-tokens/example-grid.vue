@@ -1,7 +1,7 @@
 <template>
   <div style="transform: translate3d(0, 0, 0)">
     <div class="visualize-grid">
-      <span v-for="n in new Array(16)" :key="n" class="visualize-grid-columns"></span>
+      <span v-for="n in new Array(16)" :key="n" />
     </div>
     <div class="hero-grid">
       <div class="hero-media">
@@ -133,29 +133,21 @@
   // TODO: we should import from vue, but we need to prepare CI first
   @import '~@porsche-design-system/components-js/styles/scss';
 
-  // VisualizeGrid
+  // Visualize Grid
   .visualize-grid {
     @include pds-grid;
     position: fixed;
     inset: 0;
     pointer-events: none;
-  }
 
-  .visualize-grid-columns {
-    transform: translate3d(0, 0, 0);
-    @include pds-media-query-max('s') {
-      &:nth-child(n + 9) {
-        display: none;
-      }
-    }
-
-    &::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      width: 100%;
+    > span {
       background: rgba(0, 0, 255, 0.1);
+
+      @include pds-media-query-max('s') {
+        &:nth-child(n + 9) {
+          display: none;
+        }
+      }
     }
   }
 

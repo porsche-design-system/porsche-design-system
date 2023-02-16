@@ -395,7 +395,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
     "&__text": {
       "&+&": {
         "color": "#AFB0B3",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -491,7 +491,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
     "&__text": {
       "&+&": {
         "color": "#535457",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -530,7 +530,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
     "&__text": {
       "&+&": {
         "color": "#535457",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -569,7 +569,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
     "&__text": {
       "&+&": {
         "color": "#535457",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -608,7 +608,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
     "&__text": {
       "&+&": {
         "color": "#535457",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -648,7 +648,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
     "&__text": {
       "&+&": {
         "color": "#535457",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -688,7 +688,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
     "&__text": {
       "&+&": {
         "color": "#535457",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -727,7 +727,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
   "label": {
     "&__text": {
       "&+&": {
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -767,7 +767,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
     "&__text": {
       "&+&": {
         "color": "#AFB0B3",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -806,7 +806,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
     "&__text": {
       "&+&": {
         "color": "#AFB0B3",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -845,7 +845,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
     "&__text": {
       "&+&": {
         "color": "#AFB0B3",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -884,7 +884,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
     "&__text": {
       "&+&": {
         "color": "#AFB0B3",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -924,7 +924,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
     "&__text": {
       "&+&": {
         "color": "#AFB0B3",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -964,7 +964,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
     "&__text": {
       "&+&": {
         "color": "#AFB0B3",
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
@@ -1003,7 +1003,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
   "label": {
     "&__text": {
       "&+&": {
-        "fontSize": ".875rem",
+        "fontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
         "marginTop": "-4px",
       },
       "@media(hover:hover)": {
