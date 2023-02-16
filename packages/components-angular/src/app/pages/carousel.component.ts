@@ -260,7 +260,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with alignHeader=center on light background">
+    <div class="playground light" title="should render carousel with align-header=center on light background">
       <p-carousel [heading]="'Aligned header'" [alignHeader]="'center'" [description]="'Description'">
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -270,7 +270,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with alignHeader=center and wrapContent=true on light background"
+      title="should render carousel with align-header=center and wrap-content=true on light background"
     >
       <p-carousel
         [heading]="'Aligned header with wrapped content'"
@@ -286,7 +286,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with alignHeader=center and multiline heading on light background"
+      title="should render carousel with align-header=center and multiline heading on light background"
     >
       <p-carousel
         [heading]="'Aligned header, multiline heading. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
@@ -301,7 +301,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with alignHeader=center, multiline heading and multiline description on light background"
+      title="should render carousel with align-header=center, multiline heading and multiline description on light background"
     >
       <p-carousel
         [heading]="'Aligned header, multiline heading, multiline description. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
@@ -316,7 +316,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with alignHeader=center, wrapContent=true and multiline heading on light background"
+      title="should render carousel with align-header=center, wrap-content=true and multiline heading on light background"
     >
       <p-carousel
         [heading]="'Aligned header, wrapped content, multiline heading. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
@@ -332,7 +332,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with alignHeader=center, wrapContent=true, multiline heading and multiline description on light background"
+      title="should render carousel with align-header=center, wrap-content=true, multiline heading and multiline description on light background"
     >
       <p-carousel
         [heading]="'Aligned header, wrapped content, multiline heading, multiline description. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
