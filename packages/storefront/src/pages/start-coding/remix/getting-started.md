@@ -33,17 +33,17 @@ The following project is a standard Remix setup with the following adaptions.
 
 ### Step 1
 
-Extend `package.json` to execute `patchRemixRun` binary.
+Extend `package.json` to execute `patchRemixRunProcessBrowserGlobalIdentifier` binary.
 
 ```
 // package.json
 {
   ...
   "scripts": {
-    "postinstall": "patchRemixRun",
+    "postinstall": "patchRemixRunProcessBrowserGlobalIdentifier",
     // or
-    "prestart": "patchRemixRun",
-    "prebuild": "patchRemixRun",
+    "prestart": "patchRemixRunProcessBrowserGlobalIdentifier",
+    "prebuild": "patchRemixRunProcessBrowserGlobalIdentifier",
     ...
   },
   ...

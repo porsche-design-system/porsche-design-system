@@ -133,10 +133,10 @@ export default [
     ],
   },
   {
-    input: `${projectDir}/bin/patchRemixRun.ts`,
+    input: `${projectDir}/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts`,
     external: ['fs', 'path'],
     output: {
-      file: `${outputDir}/bin/patchRemixRun.js`,
+      file: `${outputDir}/bin/patchRemixRunProcessBrowserGlobalIdentifier.js`,
       format: 'cjs',
     },
     plugins: [typescript(typescriptOpts), bin()],

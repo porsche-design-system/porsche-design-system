@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-export const patchRemixRun = (): void => {
+export const patchRemixRunProcessBrowserGlobalIdentifier = (): void => {
   const packageEntry = require.resolve('@remix-run/dev');
   const compilerDirPath = path.resolve(packageEntry, '../compiler');
 
@@ -39,4 +39,4 @@ export const patchRemixRun = (): void => {
   fs.writeFileSync(filePath, newFileContent);
 };
 
-patchRemixRun();
+patchRemixRunProcessBrowserGlobalIdentifier();
