@@ -111,20 +111,16 @@ export const ModelSignaturePage = (): JSX.Element => {
         <PModelSignature
           model="911"
           color="inherit"
-          style={{
-            filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)',
-          }}
-        />
+          style={{ filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)' }}
+         />
       </div>
       <div className="playground dark" title="should render for color inherit on dark background">
         <PModelSignature
           model="911"
           color="inherit"
-          style={{
-            filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)',
-          }}
+          style={{ filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)' }}
           theme="dark"
-        />
+         />
       </div>
 
       <div className="playground light" title="should render for size small on light background">

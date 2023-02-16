@@ -16,17 +16,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   ],
   template: `
     <div class="playground light" title="should render for model 718 on light background">
-      <p-model-signature [model]="718"></p-model-signature>
+      <p-model-signature [model]="'718'"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for model 718 on dark background">
-      <p-model-signature [model]="718" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'718'" [theme]="'dark'"></p-model-signature>
     </div>
 
     <div class="playground light" title="should render for model 911 on light background">
-      <p-model-signature [model]="911"></p-model-signature>
+      <p-model-signature [model]="'911'"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for model 911 on dark background">
-      <p-model-signature [model]="911" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'911'" [theme]="'dark'"></p-model-signature>
     </div>
 
     <div class="playground light" title="should render for model boxster on light background">
@@ -79,43 +79,43 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render for color primary on light background">
-      <p-model-signature [model]="911" [color]="'primary'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'primary'"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for color primary on dark background">
-      <p-model-signature [model]="911" [color]="'primary'" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'primary'" [theme]="'dark'"></p-model-signature>
     </div>
 
     <div class="playground light" title="should render for color contrast-low on light background">
-      <p-model-signature [model]="911" [color]="'contrast-low'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'contrast-low'"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for color contrast-low on dark background">
-      <p-model-signature [model]="911" [color]="'contrast-low'" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'contrast-low'" [theme]="'dark'"></p-model-signature>
     </div>
 
     <div class="playground light" title="should render for color contrast-medium on light background">
-      <p-model-signature [model]="911" [color]="'contrast-medium'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'contrast-medium'"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for color contrast-medium on dark background">
-      <p-model-signature [model]="911" [color]="'contrast-medium'" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'contrast-medium'" [theme]="'dark'"></p-model-signature>
     </div>
 
     <div class="playground light" title="should render for color contrast-high on light background">
-      <p-model-signature [model]="911" [color]="'contrast-high'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'contrast-high'"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for color contrast-high on dark background">
-      <p-model-signature [model]="911" [color]="'contrast-high'" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'911'" [color]="'contrast-high'" [theme]="'dark'"></p-model-signature>
     </div>
 
     <div class="playground light" title="should render for color inherit on light background">
       <p-model-signature
-        [model]="911"
+        [model]="'911'"
         [color]="'inherit'"
         style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"
       ></p-model-signature>
     </div>
     <div class="playground dark" title="should render for color inherit on dark background">
       <p-model-signature
-        [model]="911"
+        [model]="'911'"
         [color]="'inherit'"
         style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"
         [theme]="'dark'"
@@ -123,17 +123,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render for size small on light background">
-      <p-model-signature [model]="911" [size]="'small'"></p-model-signature>
+      <p-model-signature [model]="'911'" [size]="'small'"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for size small on dark background">
-      <p-model-signature [model]="911" [size]="'small'" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'911'" [size]="'small'" [theme]="'dark'"></p-model-signature>
     </div>
 
     <div class="playground light" title="should render for size inherit on light background">
-      <p-model-signature [model]="911" [size]="'inherit'" style="height: 100px"></p-model-signature>
+      <p-model-signature [model]="'911'" [size]="'inherit'" style="height: 100px"></p-model-signature>
     </div>
     <div class="playground dark" title="should render for size inherit on dark background">
-      <p-model-signature [model]="911" [size]="'inherit'" style="height: 100px" [theme]="'dark'"></p-model-signature>
+      <p-model-signature [model]="'911'" [size]="'inherit'" style="height: 100px" [theme]="'dark'"></p-model-signature>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
