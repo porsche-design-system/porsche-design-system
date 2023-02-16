@@ -1,6 +1,6 @@
 import { getComponentCss } from './model-signature-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['small', 'primary', 'light'],
     ['small', 'contrast-low', 'light'],
