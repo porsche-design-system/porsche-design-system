@@ -47,15 +47,7 @@ const VisualizeGrid = styled.div({
 });
 
 const VisualizeGridColumns = styled.span({
-  transform: 'translate3d(0, 0 , 0)',
-  '::before': {
-    content: '""',
-    position: 'fixed',
-    top: 0,
-    bottom: 0,
-    width: '100%',
-    background: 'rgba(0, 0, 255, 0.1)',
-  },
+  background: 'rgba(0, 0, 255, 0.1)',
   [getMediaQueryMax('s')]: {
     '&:nth-child(n+9)': {
       display: 'none',

@@ -29,6 +29,7 @@ JavaScript Design Tokens can be imported by
 - `spacingFluidMedium`
 - `spacingFluidLarge`
 - `spacingFluidXLarge`
+- `spacingFluidXXLarge`
 - `spacingStatic`
 - `spacingStaticXSmall`
 - `spacingStaticSmall`
@@ -47,6 +48,7 @@ SCSS Design Tokens can be imported by `@import '~@porsche-design-system/componen
 - `$pds-spacing-fluid-medium`
 - `$pds-spacing-fluid-large`
 - `$pds-spacing-fluid-x-large`
+- `$pds-spacing-fluid-xx-large`
 - `$pds-spacing-static-x-small`
 - `$pds-spacing-static-small`
 - `$pds-spacing-static-medium`

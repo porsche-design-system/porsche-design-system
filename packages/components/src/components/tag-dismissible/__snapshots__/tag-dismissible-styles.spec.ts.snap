@@ -34,7 +34,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -164,7 +164,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -180,7 +180,7 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #AFB0B3;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 4px;
@@ -251,7 +251,7 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #535457;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 4px;
@@ -306,7 +306,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -436,7 +436,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -452,7 +452,7 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #AFB0B3;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 4px;
@@ -523,7 +523,7 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #535457;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 4px;
@@ -578,7 +578,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -594,7 +594,7 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #AFB0B3;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 4px;
@@ -665,7 +665,7 @@ button:focus:not(:focus-visible)::before {
   display: block;
   margin-bottom: -4px;
   color: #535457;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 4px;

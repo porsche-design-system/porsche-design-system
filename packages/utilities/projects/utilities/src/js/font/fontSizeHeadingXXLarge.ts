@@ -1,1 +1,1 @@
-export const fontSizeHeadingXXLarge = 'clamp(2.07rem, .96vw + 1.88rem, 2.94rem)';
+export const fontSizeHeadingXXLarge = 'clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)';

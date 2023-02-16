@@ -186,7 +186,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -528,7 +528,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -866,7 +866,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1208,7 +1208,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1554,7 +1554,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
@@ -1896,7 +1896,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   left: -6px !important;
   right: -6px !important;
   bottom: -6px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(input:focus:not(:focus-visible))::before {
