@@ -65,7 +65,66 @@ While this modifies 3rd party code, the only other solutions are:
 
 ### Step 2
 
-Extend `root.tsx` by the necessary `PorscheDesignSystemProvider`:
+Create `head-partials.server.tsx` with the following content.
+
+```tsx
+// app/head-partials.server.tsx
+
+import { getFontLinks, getInitialStyles } from '@porsche-design-system/components-react/partials';
+import { getSharedStyles } from '../../nextjs/styles/getSharedStyles';
+
+export const HeadPartials = (): JSX.Element => {
+  return (
+    <>
+      {/* necessary for SSR support, injects stylesheet which defines visibility of pre-hydrated PDS components */}
+      {getInitialStyles({ format: 'jsx' })}
+      {/* injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) */}
+      {getFontFaceStylesheet({ format: 'jsx' })}
+      {/* preloads Porsche Next font (=> minimize FOUT) */}
+      {getFontLinks({ format: 'jsx' })}
+      {/* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */}
+      {getComponentChunkLinks({ format: 'jsx' })}
+      {/* preloads Porsche icons (=> minimize FOUC) */}
+      {getIconLinks({ format: 'jsx' })}
+      {/* injects favicon, apple touch icons, android touch icons, etc. */}
+      {getMetaTagsAndIconLinks({ appTitle: 'Sample Project Next.js', format: 'jsx' })}
+    </>
+  );
+};
+```
+
+Then, create `body-partials.server.tsx` with the following content.
+
+```tsx
+// app/body-partials.server.tsx
+
+import {
+  getBrowserSupportFallbackScript,
+  getCookiesFallbackScript,
+  getDSRPonyfill,
+} from '@porsche-design-system/components-react/partials';
+
+export const BodyPartials = (): JSX.Element => {
+  return (
+    <>
+      {/* necessary for SSR support, enables declarative shadow dom support for Safari and Firefox */}
+      {getDSRPonyfill({ format: 'jsx' })}
+      {/* shows a cookie fallback overlay and blocks the page, in case cookies are disabled */}
+      {getCookiesFallbackScript({ format: 'jsx' })}
+      {/* shows a browser fallback overlay and blocks the page, in case browser is not supported (e.g. IE11) */}
+      {getBrowserSupportFallbackScript({ format: 'jsx' })}
+    </>
+  );
+};
+```
+
+<p-inline-notification heading="Important" state="warning" persistent="true">
+Applying the <a href="partials/dsr-ponyfill">getDSRPonyfill()</a> partial is <strong>crucial</strong> for the server build to work in browsers that don't <a href="https://caniuse.com/declarative-shadow-dom" target="_blank">support Declarative Shadow DOM</a>, yet. 
+</p-inline-notification>
+
+### Step 3
+
+Extend `root.tsx` by the necessary `PorscheDesignSystemProvider` and server partials:
 
 ```tsx
 // app/root.tsx
@@ -73,6 +132,8 @@ Extend `root.tsx` by the necessary `PorscheDesignSystemProvider`:
 import type { MetaFunction } from '@remix-run/node';
 import { LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { HeadPartials } from '~/head-partials.server';
+import { BodyPartials } from '~/body-partials.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -85,8 +146,7 @@ export default function App(): JSX.Element {
     <html lang="en">
       <head>
         <Meta />
-        {/* TODO: apply partials */}
-        {/* getDSRPonyfill() is required for Safari */}
+        {HeadPartials && <HeadPartials />}
       </head>
       <body>
         <PorscheDesignSystemProvider>
@@ -95,13 +155,14 @@ export default function App(): JSX.Element {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        {BodyPartials && <BodyPartials />}
       </body>
     </html>
   );
 }
 ```
 
-### Step 3
+### Step 4
 
 Extend `routes/index.tsx` and use a Porsche Design System component, e.g. `PHeading`:
 
@@ -120,7 +181,6 @@ export default function Index(): JSX.Element {
 }
 ```
 
-- Run `yarn build` or `npm build`
 - Execute `yarn start` or `npm start` and check if the components are displayed correctly.
 
 ## When are Porsche Design System components (re-)hydrated?

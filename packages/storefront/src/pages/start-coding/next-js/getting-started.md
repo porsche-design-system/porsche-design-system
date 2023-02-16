@@ -97,7 +97,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* **necessary for SSR support**, injects stylesheet which defines visibility of pre-hydrated PDS components */}
+        {/* necessary for SSR support, injects stylesheet which defines visibility of pre-hydrated PDS components */}
         {getInitialStyles({ format: 'jsx' })}
         {/* injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) */}
         {getFontFaceStylesheet({ format: 'jsx' })}
@@ -113,7 +113,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        {/* **necessary for SSR support**, enables declarative shadow dom support for Safari and Firefox */}
+        {/* necessary for SSR support, enables declarative shadow dom support for Safari and Firefox */}
         {getDSRPonyfill({ format: 'jsx' })}
         {/* shows a cookie fallback overlay and blocks the page, in case cookies are disabled */}
         {getCookiesFallbackScript({ format: 'jsx' })}
@@ -124,6 +124,10 @@ export default function Document() {
   );
 }
 ```
+
+<p-inline-notification heading="Important" state="warning" persistent="true">
+Applying the <a href="partials/dsr-ponyfill">getDSRPonyfill()</a> partial is <strong>crucial</strong> for the server build to work in browsers that don't <a href="https://caniuse.com/declarative-shadow-dom" target="_blank">support Declarative Shadow DOM</a>, yet. 
+</p-inline-notification>
 
 ### Step 3
 
