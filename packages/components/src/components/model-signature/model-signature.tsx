@@ -1,9 +1,14 @@
-import { Component, Element, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
-import { getComponentCss } from './model-signature-styles';
 import type { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';
-import { MODEL_SIGNATURE_COLORS, MODEL_SIGNATURE_MODELS, MODEL_SIGNATURE_SIZES } from './model-signature-utils';
+import { getComponentCss } from './model-signature-styles';
+import {
+  getSvgUrl,
+  MODEL_SIGNATURE_COLORS,
+  MODEL_SIGNATURE_MODELS,
+  MODEL_SIGNATURE_SIZES,
+} from './model-signature-utils';
 
 const propTypes: PropTypes<typeof ModelSignature> = {
   model: AllowedTypes.oneOf<ModelSignatureModel>(MODEL_SIGNATURE_MODELS),
@@ -33,8 +38,8 @@ export class ModelSignature {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.model, this.size, this.color, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size, this.color, this.theme);
 
-    return null;
+    return <img src={getSvgUrl(this.model)} height={36} alt={`${this.model} model signature`} />;
   }
 }
