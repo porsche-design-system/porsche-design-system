@@ -105,7 +105,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: '3rem minmax(0, 1fr) 3rem',
+      gridTemplateColumns: `calc(${fontLineHeight} + 24px) minmax(0, 1fr) calc(${fontLineHeight} + 24px)`,
       margin: '0 -4px',
       height: 'inherit',
     },
