@@ -1,6 +1,6 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
-import { Styles } from 'jss';
+import { JssStyle, Styles } from 'jss';
 import {
   themeDark,
   fontWeight,
@@ -13,9 +13,18 @@ import {
   borderWidthBase,
   borderRadiusMedium,
 } from '@porsche-design-system/utilities-v2';
-import { getInsetJssStyle } from '@porsche-design-system/components/src/styles';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
+
+export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
+  value = value === 0 || value === 'auto' ? value : (`${value}px` as any);
+  return {
+    top: value,
+    left: value,
+    right: value,
+    bottom: value,
+  };
+};
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
@@ -51,7 +60,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
         '@media(hover:hover)': {
-          transition: 'color var(--p-transition-duration, .24s) ease',
+          transition: 'background-color var(--p-transition-duration, .24s) ease',
           '&:hover': {
             ...frostedGlassStyle,
             backgroundColor: themeLight.state.hover,
@@ -80,19 +89,12 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
           border: `${borderWidthBase} solid ${themeLight.state.focus}`,
           ...getInsetJssStyle(-4),
         },
-        '&:focus:not(:focus-visible)::before': {
+        '&:focus:not(:focus-visible):not(:disabled)::before': {
           border: 0,
-        },
-        '&:disabled': {
-          '&:focus::before': {
-            border: 0,
-          },
         },
       },
 
-      'button:focus::before': {
-        ...getInsetJssStyle(-6),
-      },
+      'button:focus::before': getInsetJssStyle(-6),
 
       '[data-theme=dark] a, [data-theme=dark] button': {
         '&:focus::before': {
@@ -108,7 +110,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
       // Pseudo-elements are not supported on these elements
       'input, select, textarea': {
         outline: `${borderWidthBase} solid transparent`,
-        outlineOffset: '4px',
+        outlineOffset: '2px',
         '&:focus': {
           borderRadius: borderRadiusSmall,
           outlineColor: `${themeLight.state.focus}`,
