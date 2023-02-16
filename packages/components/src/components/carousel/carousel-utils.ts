@@ -6,6 +6,8 @@ import { ButtonPure } from '../button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
 import type { TagName } from '@porsche-design-system/shared';
 
+export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
+export type CarouselWidth = typeof CAROUSEL_WIDTHS[number];
 export const HEADER_ALIGNS = ['left', 'center'] as const;
 export type CarouselAlignHeader = typeof HEADER_ALIGNS[number];
 

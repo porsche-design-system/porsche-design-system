@@ -19,9 +19,11 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
 import {
+  CAROUSEL_WIDTHS,
   CarouselAlignHeader,
   CarouselChangeEvent,
   CarouselInternationalization,
+  CarouselWidth,
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
@@ -42,6 +44,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   description: AllowedTypes.string,
   rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
+  width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(HEADER_ALIGNS),
@@ -77,6 +80,9 @@ export class Carousel {
 
   /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
   @Prop() public wrapContent?: boolean;
+
+  /** Defines the outer spacings between the carousel and the left and right screen sides. */
+  @Prop() public width?: CarouselWidth = 'extended';
 
   /** Sets the amount of slides visible at the same time. */
   @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
