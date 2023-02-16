@@ -6,7 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestartAndBuild": "yarn clean:build && ts-node --project tsconfig.json scripts/prepareSharedStyles.ts",
+    "prestartAndBuild": "yarn clean:build && ts-node scripts/prepareSharedStyles.ts",
     "start": "yarn prestartAndBuild && concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'next start'",
     "build-app": "yarn prestartAndBuild && next build",
@@ -18,13 +18,13 @@
     "clean:build": "rm -rf ./.next"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.0.0-alpha.0",
+    "@porsche-design-system/assets": "5.0.2",
+    "@porsche-design-system/components-react": "3.0.0-alpha.1",
     "next": "^13.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",

@@ -1,8 +1,8 @@
 import { pascalCase } from 'change-case';
 import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
-import { byAlphabet, iconsRegEx, templateRegEx } from './generateVRTPages';
+import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
 
-type Characteristics = {
+export type ReactCharacteristics = {
   usesSetAllReady: boolean;
   usesComponentsReady: boolean;
   usesToast: boolean;
@@ -19,7 +19,7 @@ export const convertToReactVRTPage = (
   style: string,
   script: string,
   toastText: string,
-  characteristics: Characteristics
+  characteristics: ReactCharacteristics
 ): { fileName: string; fileContent: string } => {
   const {
     usesSetAllReady,
@@ -30,8 +30,6 @@ export const convertToReactVRTPage = (
     usesPrefixing,
     isOverviewPage,
   } = characteristics;
-
-  const comment = '/* Auto Generated File */';
 
   // imports
   const reactImports = [

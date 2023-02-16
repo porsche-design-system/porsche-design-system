@@ -84,7 +84,7 @@ Please use only valid font weights:
 
   const urls = weights.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
   const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
-  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />);
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="" />);
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
   return withoutTags ? urls : markup;
