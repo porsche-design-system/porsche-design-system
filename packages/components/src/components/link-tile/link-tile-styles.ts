@@ -12,7 +12,13 @@ import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
-import { getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  textLargeStyle,
+  fontSizeTextLarge,
+  spacingFluidMedium,
+  spacingFluidLarge,
+  borderRadiusMedium,
+} from '@porsche-design-system/utilities-v2';
 
 const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '1:1': '100%',
@@ -51,7 +57,7 @@ const sizeMap: {
   inherit: {
     fontSize: 'inherit',
   },
-  default: { fontSize: '1.25rem' },
+  default: { fontSize: fontSizeTextLarge },
 };
 
 export const getComponentCss = (
@@ -63,8 +69,6 @@ export const getComponentCss = (
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top';
-  const paddingSizeXS = pxToRemWithUnit(24);
-  const gradientPadding = pxToRemWithUnit(72);
   return getCss({
     '@global': {
       ':host': {
@@ -91,9 +95,9 @@ export const getComponentCss = (
       }),
       p: {
         color: getThemedTypographyColor('dark', 'primary'),
-        ...textSmallStyle,
-        maxWidth: pxToRemWithUnit(550),
+        maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
         margin: 0,
+        ...textLargeStyle,
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
@@ -117,8 +121,9 @@ export const getComponentCss = (
     },
     'image-container': {
       position: 'absolute',
-      ...getInsetJssStyle(),
       overflow: 'hidden',
+      borderRadius: borderRadiusMedium,
+      ...getInsetJssStyle(),
     },
     content: {
       position: 'absolute',
@@ -127,20 +132,14 @@ export const getComponentCss = (
       right: 0,
       display: 'grid',
       justifyItems: 'start',
+      borderRadius: borderRadiusMedium,
       padding:
         align === 'bottom'
-          ? `${gradientPadding} ${paddingSizeXS} ${paddingSizeXS}`
-          : `${paddingSizeXS} ${paddingSizeXS} ${gradientPadding}`,
+          ? `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`
+          : `${spacingFluidMedium} ${spacingFluidMedium} ${spacingFluidLarge}`,
 
-      gap: pxToRemWithUnit(24),
+      gap: spacingFluidMedium,
       ...mergeDeep(
-        {
-          [getMediaQueryMin('s')]: {
-            paddingLeft: pxToRemWithUnit(32),
-            paddingRight: pxToRemWithUnit(32),
-            ...(align === 'bottom' ? { paddingBottom: pxToRemWithUnit(32) } : { paddingTop: pxToRemWithUnit(32) }),
-          },
-        },
         hasGradient &&
           buildResponsiveStyles(compact, (isCompact: boolean) => ({
             background: getGradientBackground(isCompact, isTopAligned),
@@ -157,13 +156,12 @@ export const getComponentCss = (
         )
       ),
     },
-
     'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
     })),
     link: {
-      minHeight: '3rem',
-      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-flex' })),
+      minHeight: '54px', // prevent content shift
+      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
     },
 
     // Due to position absolut on .content, position fixed is used to expand the clickable area of the anchor onto the whole link-tile
