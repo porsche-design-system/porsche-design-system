@@ -3,11 +3,12 @@
 exports[`should contain correct values for spacing 1`] = `
 {
   "fluid": {
-    "large": "clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)",
-    "medium": "clamp(2rem, 0.56vw + 1.89rem, 2.5rem)",
-    "small": ".75rem",
-    "xLarge": "clamp(4rem, 10vw + 2rem, 13rem)",
-    "xSmall": "clamp(.25rem, 0.28vw + 0.19rem, .5rem)",
+    "large": "clamp(32px, 2.75vw + 23px, 76px)",
+    "medium": "clamp(16px, 1.25vw + 12px, 36px)",
+    "small": "clamp(8px, 0.5vw + 6px, 16px)",
+    "xLarge": "clamp(48px, 3vw + 38px, 96px)",
+    "xSmall": "clamp(4px, 0.25vw + 3px, 8px)",
+    "xxLarge": "clamp(80px, 7.5vw + 56px, 200px)",
   },
   "static": {
     "large": "32px",
@@ -22,23 +23,26 @@ exports[`should contain correct values for spacing 1`] = `
 
 exports[`should contain correct values for spacingFluid 1`] = `
 {
-  "large": "clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)",
-  "medium": "clamp(2rem, 0.56vw + 1.89rem, 2.5rem)",
-  "small": ".75rem",
-  "xLarge": "clamp(4rem, 10vw + 2rem, 13rem)",
-  "xSmall": "clamp(.25rem, 0.28vw + 0.19rem, .5rem)",
+  "large": "clamp(32px, 2.75vw + 23px, 76px)",
+  "medium": "clamp(16px, 1.25vw + 12px, 36px)",
+  "small": "clamp(8px, 0.5vw + 6px, 16px)",
+  "xLarge": "clamp(48px, 3vw + 38px, 96px)",
+  "xSmall": "clamp(4px, 0.25vw + 3px, 8px)",
+  "xxLarge": "clamp(80px, 7.5vw + 56px, 200px)",
 }
 `;
 
-exports[`should contain correct values for spacingFluidLarge 1`] = `"clamp(3.5rem, 2.22vw + 3.06rem, 5.5rem)"`;
+exports[`should contain correct values for spacingFluidLarge 1`] = `"clamp(32px, 2.75vw + 23px, 76px)"`;
 
-exports[`should contain correct values for spacingFluidMedium 1`] = `"clamp(2rem, 0.56vw + 1.89rem, 2.5rem)"`;
+exports[`should contain correct values for spacingFluidMedium 1`] = `"clamp(16px, 1.25vw + 12px, 36px)"`;
 
-exports[`should contain correct values for spacingFluidSmall 1`] = `".75rem"`;
+exports[`should contain correct values for spacingFluidSmall 1`] = `"clamp(8px, 0.5vw + 6px, 16px)"`;
 
-exports[`should contain correct values for spacingFluidXLarge 1`] = `"clamp(4rem, 10vw + 2rem, 13rem)"`;
+exports[`should contain correct values for spacingFluidXLarge 1`] = `"clamp(48px, 3vw + 38px, 96px)"`;
 
-exports[`should contain correct values for spacingFluidXSmall 1`] = `"clamp(.25rem, 0.28vw + 0.19rem, .5rem)"`;
+exports[`should contain correct values for spacingFluidXSmall 1`] = `"clamp(4px, 0.25vw + 3px, 8px)"`;
+
+exports[`should contain correct values for spacingFluidXXLarge 1`] = `"clamp(80px, 7.5vw + 56px, 200px)"`;
 
 exports[`should contain correct values for spacingStatic 1`] = `
 {

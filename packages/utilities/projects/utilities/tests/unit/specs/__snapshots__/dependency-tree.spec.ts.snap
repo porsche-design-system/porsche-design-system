@@ -148,7 +148,9 @@ exports[`should have no regression for dependency tree 1`] = `
   ],
   "grid/gridFullColumnEnd.js": [],
   "grid/gridFullColumnStart.js": [],
-  "grid/gridGap.js": [],
+  "grid/gridGap.js": [
+    "spacing/spacingFluidMedium.js",
+  ],
   "grid/gridNarrow.js": [
     "grid/gridNarrowColumnEnd.js",
     "grid/gridNarrowColumnStart.js",
@@ -278,6 +280,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "spacing/spacingFluidSmall.js",
     "spacing/spacingFluidXLarge.js",
     "spacing/spacingFluidXSmall.js",
+    "spacing/spacingFluidXXLarge.js",
     "spacing/spacingStatic.js",
     "spacing/spacingStaticLarge.js",
     "spacing/spacingStaticMedium.js",
@@ -375,12 +378,14 @@ exports[`should have no regression for dependency tree 1`] = `
     "spacing/spacingFluidSmall.js",
     "spacing/spacingFluidXLarge.js",
     "spacing/spacingFluidXSmall.js",
+    "spacing/spacingFluidXXLarge.js",
   ],
   "spacing/spacingFluidLarge.js": [],
   "spacing/spacingFluidMedium.js": [],
   "spacing/spacingFluidSmall.js": [],
   "spacing/spacingFluidXLarge.js": [],
   "spacing/spacingFluidXSmall.js": [],
+  "spacing/spacingFluidXXLarge.js": [],
   "spacing/spacingStatic.js": [
     "spacing/spacingStaticLarge.js",
     "spacing/spacingStaticMedium.js",

@@ -112,7 +112,7 @@ div:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1e5beb;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {

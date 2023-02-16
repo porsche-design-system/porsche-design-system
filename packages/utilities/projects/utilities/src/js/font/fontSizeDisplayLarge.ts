@@ -1,1 +1,1 @@
-export const fontSizeDisplayLarge = 'clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)';
+export const fontSizeDisplayLarge = 'clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)';
