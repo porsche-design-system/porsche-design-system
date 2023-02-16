@@ -1,4 +1,4 @@
-export const MODEL_SIGNATURE_SIZES = ['small', 'medium', 'inherit'] as const;
+export const MODEL_SIGNATURE_SIZES = ['small', 'inherit'] as const;
 export type ModelSignatureSize = typeof MODEL_SIGNATURE_SIZES[number];
 
 export const MODEL_SIGNATURE_MODELS = [

@@ -29,7 +29,6 @@ const modelToSvgMap: Record<ModelSignatureModel, string> = {
 const sizeToHeightMap: Record<ModelSignatureSize, string> = {
   inherit: 'inherit',
   small: '36px',
-  medium: '64px',
 };
 
 const toFilter = (values: [number, number, number, number, number, number]): string =>
