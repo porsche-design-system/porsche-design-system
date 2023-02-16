@@ -22,8 +22,8 @@ yarn add @porsche-design-system/components-vue
 
 ### Usage
 
-After adding the `@porsche-design-system/components-vue` package to your project, you've to extend your standard
-vue setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` file.
+After adding the `@porsche-design-system/components-vue` package to your project, you've to extend your standard vue
+setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` file.
 
 ```tsx
 // App.vue
@@ -52,27 +52,27 @@ vue setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` fi
 </template>
 ```
 
-### Plugin 
+### Plugin
 
 You can also use the `PorscheDesignSystemPlugin` to extend your vue setup.
 
-```vue
+```ts
 // main.ts
-import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
 import { createApp } from 'vue';
+import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
+
 const app = createApp(App);
-app.use(createPDS({ prefix: 'P' }));
+app.use(createPorscheDesignSystem({ prefix: 'P' }));
 app.mount('#app');
 ```
 
-### Composable 
+### Composable
 
-The `usePDS` composable provides access to the `PorscheDesignSystemProvider` context.
+The `usePorscheDesignSystemPlugin` composable provides access to the `PorscheDesignSystemProvider` context.
 
-```vue
+```ts
 const { isPorscheDesignSystemLoaded, utilities } = usePorscheDesignSystemPlugin();
 ```
-
 
 ## Methodology
 
