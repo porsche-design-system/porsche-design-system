@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Porsche Next font supports Vietnamese charset
 - Prop `color` of `Icon` supports `disabled`
+- React: `patchRemixRunProcessBrowserGlobalIdentifier` binary to support SSR components with Remix
 
 #### Changed
 
