@@ -16,7 +16,7 @@ const tagNamesWithRequiredParent = TAG_NAMES.filter((tagName) => getComponentMet
 const tagNamesWithRequiredRootNode = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredRootNode);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 const tagNamesWithSlotAndTheme = TAG_NAMES.filter(
-  (tagName) => getComponentMeta(tagName).hasSlot && getComponentMeta(tagName).props?.theme
+  (tagName) => getComponentMeta(tagName).hasSlot && getComponentMeta(tagName).isThemeable
 );
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
