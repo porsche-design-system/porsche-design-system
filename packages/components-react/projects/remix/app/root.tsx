@@ -1,8 +1,8 @@
 import type { MetaFunction } from '@remix-run/node';
 import { LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
-import { getFontLinks, getInitialStyles } from '@porsche-design-system/components-react/partials';
-import { getSharedStyles } from '../../nextjs/styles/getSharedStyles';
+import { HeadPartials } from '~/head-partials.server';
+import { BodyPartials } from '~/body-partials.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -15,21 +15,7 @@ export default function App(): JSX.Element {
     <html lang="en">
       <head>
         <Meta />
-        <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.10be24507223bc4ef63effe0eb750e58.png" />
-
-        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
-        {/* @ts-ignore*/}
-        {!process.browser && (
-          <>
-            {getInitialStyles({ format: 'jsx' })}
-            {getFontLinks({ weights: ['regular', 'semi-bold', 'bold'], withoutTags: true })
-              .map((x) => x.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'))
-              .map((url) => (
-                <link key={url} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="" />
-              ))}
-            {getSharedStyles()}
-          </>
-        )}
+        {HeadPartials && <HeadPartials />}
       </head>
       <body>
         <PorscheDesignSystemProvider>
@@ -40,6 +26,7 @@ export default function App(): JSX.Element {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        {BodyPartials && <BodyPartials />}
       </body>
     </html>
   );
