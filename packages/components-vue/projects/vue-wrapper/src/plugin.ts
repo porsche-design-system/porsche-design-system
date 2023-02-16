@@ -9,16 +9,18 @@ export type PorscheDesignSystemPluginOptions = {
   extends?: Record<string, unknown>;
 };
 
-export interface PorscheDesignSystemPlugin {
+export type PorscheDesignSystemPlugin = {
   [key: string]: any;
   install: (app: App, options?: PorscheDesignSystemPluginOptions) => void;
-}
+};
 
 export const porscheDesignSystemSymbol: InjectionKey<PorscheDesignSystemPlugin> = Symbol();
 
 export function usePorscheDesignSystemPlugin() {
   const porscheDesignSystem = inject(porscheDesignSystemSymbol);
-  if (!porscheDesignSystem) throw new Error('No PorscheDesignSystem provided!!!');
+  if (!porscheDesignSystem) {
+    throw new Error('No PorscheDesignSystem provided!!!');
+  }
 
   return porscheDesignSystem;
 }

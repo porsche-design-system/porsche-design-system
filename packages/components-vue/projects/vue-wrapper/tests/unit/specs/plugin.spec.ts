@@ -1,22 +1,21 @@
-import { createApp, inject } from 'vue';
+import { createApp } from 'vue';
 import { flushPromises } from '@vue/test-utils';
-// @ts-ignore
 import * as PDS from '@porsche-design-system/components-js';
+import { createPorscheDesignSystem, usePorscheDesignSystemPlugin } from '../../../src/plugin';
+import { prefixInjectionKey } from '../../../src/utils';
+
 jest.mock('@porsche-design-system/components-js', () => ({
   __esModule: true,
   ...jest.requireActual('@porsche-design-system/components-js'),
   load: jest.fn(),
 }));
 
-import { createPorscheDesignSystem } from '../../../src/public-api';
-import { porscheDesignSystemSymbol, usePorscheDesignSystemPlugin } from '../../../src/plugin';
-import { prefixInjectionKey } from '../../../src/utils';
-
 describe('createPorscheDesignSystem', () => {
   it('should create a porsche design system plugin', () => {
     const plugin = createPorscheDesignSystem();
     expect(plugin).toBeDefined();
   });
+
   it('should install the plugin', () => {
     const plugin = createPorscheDesignSystem();
     const app = createApp({
@@ -83,6 +82,7 @@ describe('usePorscheDesignSystemPlugin', () => {
       usePorscheDesignSystemPlugin();
     }).toThrowError('No PorscheDesignSystem provided!!!');
   });
+
   it('should return the plugin', async () => {
     const plugin = createPorscheDesignSystem();
     const app = createApp({
@@ -97,7 +97,5 @@ describe('usePorscheDesignSystemPlugin', () => {
     });
 
     app.use(plugin);
-
-
   });
 });
