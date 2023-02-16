@@ -10,12 +10,72 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### [Unreleased]
 
 This package is **deprecated** and will no longer be maintained. All `Porsche Design System` utilities are now provided
-at`@porsche-design-system/components-[js|angular|react]/styles` in from of styles and Design Tokens. To make the
-migration easier, we offer an overview of the old deprecated values in reference to the new design tokens.
-
-#### Deprecated
+at`@porsche-design-system/components-{js|angular|react|vue}/styles` in from of styles and Design Tokens. To make the
+migration easier, we offer an overview of the old deprecated values in reference to the new design tokens. Further
+documentation about the new Design Tokens can be found here https://designsystem.porsche.com/latest/styles/introduction
 
 #### Changed
+
+##### JS
+
+- `focus()` is now `getFocusStyles()`. The parameters have changed as the focus is now handled with `border` and rounded
+  edges. You can choose `small` or `medium` for the `borderRadius`. `getFocusStyles()` also excepts an `theme` parameter
+  instead of `color`.
+
+```diff
+- import { focus } from '@porsche-design-system/utilities'
++ import { getFocusStyles } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+- `breakpoint` `xxs` is now `base`. The values have not changed.
+- Instead of `mediaQuery()` we provide now `getMediaQueryMin`, `getMediaQueryMax` and `getMediaQueryMinMax`.
+  Furthermore, the functions accept only the predefined PDS breakpoints from `base` to `xxl` and no custom breakpoints
+  anymore.
+
+```diff
+- import { breakpoint, mediaQuery } from '@porsche-design-system/utilities'
++ import { breakpoint, getMediaQueryMin, getMediaQueryMax, getMediaQueryMinMax } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+- `titleLarge` got renamed to `displayLargeStyle`. The size got adjusted. In addition, we also provide
+  `displayMediumStyle`. The new `display` styles differ also, that they are recursive and their size is fluently
+  changing depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+
+```diff
+- import { titleLarge } from '@porsche-design-system/utilities'
++ import { displayMediumStyle, displayLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+- `headline` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size got adjusted. Same as
+  in `display`, the size is now fluently changing depending on the viewport width instead of fixed predefined sizes on
+  specific breakpoints.
+
+```diff
+- import { headline1, headline2, headline3, headline4, headline5 } from '@porsche-design-system/utilities'
++ import { headingSmallStyle, headingMediumStyle, headingLargeStyle, headingXLargeStyle, headingXXLargeStyle, headingXXXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+- `text` got not only renamed but also the size got adjusted. In addition, starting from `textMediumStyle` all text
+  styles have fluent sizes that change depending on the viewport width.
+
+```diff
+- import { textXSmall, textSmall, textMedium, textLarge, textXLarge } from '@porsche-design-system/utilities'
++ import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle, } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+##### SCSS
+
+```diff
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
+
+Functions:
+
+- @include p-focus
++ @include pds-focus
+```
+
+#### Deprecated
 
 ### [5.4.0] - 2022-12-15
 

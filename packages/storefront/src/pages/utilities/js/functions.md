@@ -4,6 +4,11 @@
 
 ## Breakpoints
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>breakpoint</code> is <strong>deprecated</strong>.<br>
+  Use <code>breakpoint</code> provided at <a href="./styles/media-query">Media Query</a> instead.
+</p-inline-notification>
+
 We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l | xl | xxl`
 
 #### Example
@@ -19,6 +24,11 @@ if (window.matchMedia(`(min-width: ${breakpoint.m}px)`).matches) {
 ```
 
 ## Media Query
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>mediaQuery()</code> function is <strong>deprecated</strong>.<br>
+  Look into <a href="./styles/media-query">Media Query</a> for a replacement.
+</p-inline-notification>
 
 The function has two parameter `mediaQuery(minBreakpoint: breakpoint | number, maxBreakpoint?: breakpoints | number)`
 where the `minBreakpoint` parameter is mandatory. You can choose any number as pixel value or our predefined breakpoints
@@ -70,6 +80,11 @@ render(<StyledDiv>Styled Text</StyledDiv>);
 ---
 
 ## Typography
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>Typography</code> styles are <strong>deprecated</strong>.<br>
+  Use styles provided at <a href="./styles/typography">Typography</a> instead.
+</p-inline-notification>
 
 **Note:** For font-styling it's recommended to use the
 [`<p-heading>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
@@ -162,6 +177,11 @@ h1 {
 ## State
 
 ### Focus
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>focus()</code> function is <strong>deprecated</strong>.<br>
+  Use <a href="./styles/focus">getFocusStyle()</a> instead.
+</p-inline-notification>
 
 The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by
 accessibility guidelines and law. The provided SCSS mixin ensures focus is shown by keyboard navigation only.
