@@ -1,5 +1,5 @@
-// plugin
-import { App, ref, inject, InjectionKey } from 'vue';
+import { ref, inject } from 'vue';
+import type { App, InjectionKey } from 'vue';
 
 import { load, componentsReady } from '@porsche-design-system/components-js';
 import { prefixInjectionKey } from './utils';
