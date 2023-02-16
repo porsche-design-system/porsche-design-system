@@ -1,1 +1,1 @@
-export const themeDarkStateFocus = '#0A0AFF';
+export const themeDarkStateFocus = '#1E5BEB';
