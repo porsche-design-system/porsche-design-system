@@ -82,7 +82,7 @@ export class Carousel {
   @Prop() public wrapContent?: boolean;
 
   /** Defines the outer spacings between the carousel and the left and right screen sides. */
-  @Prop() public width?: CarouselWidth = 'extended';
+  @Prop() public width?: CarouselWidth = 'basic';
 
   /** Sets the amount of slides visible at the same time. */
   @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
@@ -172,7 +172,7 @@ export class Carousel {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.wrapContent,
+      this.width,
       this.disablePagination,
       this.splideSpeed,
       this.alignHeader,

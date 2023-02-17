@@ -9,7 +9,6 @@ import {
 } from '../../styles';
 import {
   gridWidthMax,
-  gridSafeZoneBase,
   textSmallStyle,
   getMediaQueryMin,
   borderRadiusSmall,
@@ -22,11 +21,13 @@ import {
   fontLineHeight,
   spacingStaticMedium,
 } from '@porsche-design-system/utilities-v2';
-import { CarouselAlignHeader } from './carousel-utils';
+import { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
+import { getSpacingForWidth } from '../content-wrapper/content-wrapper-styles-shared';
 
 export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = getMediaQueryMin('s');
+const mediaQueryXXL = getMediaQueryMin('xxl');
 const headerRowGap = spacingFluidXSmall; // fluid spacing for vertical gap
 const headerColumnGap = spacingStaticMedium; // static spacing for horizontal gap
 const bulletSize = '8px'; // width and height of a bullet
@@ -43,7 +44,7 @@ const navWidth = `calc((${navBtnSize}) * 2 + ${navGap} + ${navOffset})`;
 const headerAlignCenterSpacing = `${navWidth} + ${headerColumnGap}`;
 
 export const getComponentCss = (
-  wrapContent: boolean,
+  width: CarouselWidth,
   disablePagination: BreakpointCustomizable<boolean>,
   splideSpeed: number,
   alignHeader: CarouselAlignHeader,
@@ -52,6 +53,10 @@ export const getComponentCss = (
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const isHeaderAlignLeft = alignHeader === 'left';
   const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
+
+  const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
+  const spacingLeftRightS = gridSpacing.s;
+  const spacingLeftRightXXL = gridSpacing.xxl;
 
   return getCss({
     '@global': {
@@ -92,11 +97,18 @@ export const getComponentCss = (
       '&__track': {
         cursor: 'grab',
         // to override inline styles set by splide library
-        ...(wrapContent &&
-          addImportantToEachRule({
-            // TODO: 0 calc(${gridSafeZoneBase} + ${gridGap}) - will be done after Grid Refactoring
-            padding: `0 calc(${gridSafeZoneBase} + ${spacingFluidLarge}) 0 ${gridSafeZoneBase}`,
-          })),
+        ...addImportantToEachRule({
+          // TODO: 0 calc(${gridSafeZoneBase} + ${gridGap}) - will be done after Grid Refactoring
+          padding: `0 calc(${spacingLeftRight} + ${spacingFluidLarge}) 0 ${spacingLeftRight}`,
+          ...(spacingLeftRightS && {
+            [mediaQueryS]: {
+              padding: `0 calc(${spacingLeftRightS} + ${spacingFluidLarge}) 0 ${spacingLeftRightS}`,
+            },
+          }),
+          [mediaQueryXXL]: {
+            padding: `0 calc(${spacingLeftRightXXL} + ${spacingFluidLarge}) 0 ${spacingLeftRightXXL}`,
+          },
+        }),
         '&--draggable': {
           userSelect: 'none',
           WebkitUserSelect: 'none',
@@ -126,7 +138,7 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       rowGap: headerRowGap,
-      padding: wrapContent ? `0 ${gridSafeZoneBase}` : null,
+      padding: `0 ${spacingLeftRight}`,
       font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
       [mediaQueryS]: {
         // only starting from S size and bigger there's nav
@@ -134,16 +146,27 @@ export const getComponentCss = (
           ? {
               gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
               columnGap: headerColumnGap,
+              ...(spacingLeftRightS && {
+                // is for s size there's another spacing
+                padding: `0 ${spacingLeftRightS}`,
+              }),
             }
           : {
               gridTemplateColumns: 'minmax(0px, 1fr) 0', // first column should take the whole width
               columnGap: 0, // there shouldn't be a gap, because we have only one column
-              padding: wrapContent // set padding, so that description & heading do not overlap with nav buttons
-                ? `0 calc(${gridSafeZoneBase} + ${headerAlignCenterSpacing})`
-                : `0 calc(${headerAlignCenterSpacing})`,
+              padding: `0 calc(${spacingLeftRightS || spacingLeftRight} + ${headerAlignCenterSpacing})`, // set padding, so that description & heading do not overlap with nav buttons
             }),
         position: 'relative',
         minHeight: navBtnSize, // for a case there's no description and no heading - it should be equal to actual height of prev/next buttons
+      },
+      [mediaQueryXXL]: {
+        ...(isHeaderAlignLeft
+          ? {
+              padding: `0 ${spacingLeftRightXXL}`,
+            }
+          : {
+              padding: `0 calc(${spacingLeftRightXXL} + ${headerAlignCenterSpacing})`, // set padding, so that description & heading do not overlap with nav buttons
+            }),
       },
     },
     nav: {
@@ -153,9 +176,12 @@ export const getComponentCss = (
         gridAutoFlow: 'column',
         gap: navGap,
         position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: wrapContent ? gridSafeZoneBase : 0,
+        right: spacingLeftRightS || spacingLeftRight,
         bottom: 0,
         padding: `0 ${navOffset} ${navOffset} 0`, // make offset to the right and the bottom side, so that it's aligned to right & bottom in hover state
+      },
+      [mediaQueryXXL]: {
+        right: spacingLeftRightXXL,
       },
     },
     btn: {
