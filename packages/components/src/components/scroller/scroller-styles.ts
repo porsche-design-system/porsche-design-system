@@ -34,11 +34,9 @@ const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme): stri
   const gradientColor = gradientColorMap[theme][gradientColorTheme];
 
   return (
-    `rgba(${gradientColor},1) 0%,` +
-    `rgba(${gradientColor},0.9) 10%,` +
-    `rgba(${gradientColor},0.668116) 40%,` +
-    `rgba(${gradientColor},0.331884) 60%,` +
-    `rgba(${gradientColor},0.0816599) 80%,` +
+    `rgba(${gradientColor},1) 20%,` +
+    `rgba(${gradientColor},0.6) 48%,` +
+    `rgba(${gradientColor},0.3) 68%,` +
     `rgba(${gradientColor},0)`
   );
 };
@@ -50,10 +48,20 @@ export const getComponentCss = (
   scrollIndicatorPosition: ScrollIndicatorPosition,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, focusColor } = getThemedColors('light');
-  const { hoverColor } = getThemedColors(theme);
+  const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
 
   const isDarkTheme = isThemeDark(theme);
+
+  const backgroundColorMap: Record<Theme, Record<GradientColorTheme, string>> = {
+    dark: {
+      default: backgroundSurfaceColor,
+      surface: backgroundColor,
+    },
+    light: {
+      default: backgroundColor,
+      surface: backgroundSurfaceColor,
+    },
+  };
 
   const actionPrevNextStyles = {
     position: 'relative',
@@ -81,7 +89,7 @@ export const getComponentCss = (
         border: 0,
         outline: 0,
         cursor: 'pointer',
-        background: gradientColorTheme === 'surface' ? backgroundSurfaceColor : backgroundColor,
+        background: backgroundColorMap[theme][gradientColorTheme],
         borderRadius: borderRadiusSmall,
         ...frostedGlassStyle,
         visibility: 'hidden',
@@ -89,23 +97,15 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
+            ...frostedGlassStyle,
             background: hoverColor,
-            ...(isDarkTheme && {
-              '& > .icon': {
-                filter: 'invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%)', // TODO: this is not shared from icon?
-              },
-            }),
           },
         }),
       },
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: '48px minmax(0, 1fr) 48px',
-      ...hoverMediaQuery({
-        // distinguish gradient width on mobile and desktop
-        gridTemplateColumns: '64px minmax(0, 1fr) 64px',
-      }),
+      gridTemplateColumns: `calc(${fontLineHeight} + 24px) minmax(0, 1fr) calc(${fontLineHeight} + 24px)`,
       margin: '0 -4px',
       height: 'inherit',
     },
