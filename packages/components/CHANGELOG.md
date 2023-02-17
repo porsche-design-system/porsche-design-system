@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- Background color of `Scroller`'s `prev` and `next` buttons in dark theme
+
 #### Added
 
 - `Model Signature`
@@ -23,7 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Stepper Horizontal` matches new design language.
+- `Stepper Horizontal` matches new design language
 - Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
 - Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
@@ -415,10 +419,10 @@ to the new values since those ones will be removed with next major version.
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
   `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
   `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline` and `Fieldset Wrapper`
-  matches new design language.
+  match new design language
 - `Icon` supports
   `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | inherit`
-  for `color` prop.
+  for `color` prop
 - Default value of prop `width` of `Banner` has changed from `basic` to `extended`
 - Default value of prop `action-icon` of `Inline Notification` has changed from `arrow-head-right` to `arrow-right`
 - Default value of prop `name` of `Icon` has changed from `arrow-head-right` to `arrow-right`

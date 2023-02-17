@@ -116,7 +116,11 @@ export class Scroller {
             aria-hidden="true"
             aria-label={direction}
           >
-            <PrefixedTagNames.pIcon class="icon" name={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'} />
+            <PrefixedTagNames.pIcon
+              class="icon"
+              name={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
+              theme={this.theme}
+            />
           </button>
         </div>
       );
