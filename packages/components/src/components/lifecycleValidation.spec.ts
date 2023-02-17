@@ -189,17 +189,20 @@ it.each<TagName>(tagNamesWithSlottedCss)(
 it.each<TagName>(tagNamesWithSlotAndTheme)(
   'should call getDataThemeDarkAttribute() with correct parameters via render for %s',
   (tagName) => {
-    const spy = jest.spyOn(getDataThemeDarkAttributeUtils, 'getDataThemeDarkAttribute');
-    const component = componentFactory(tagName);
+    // the slot of p-popover is currently rendered on light background
+    if (tagName !== 'p-popover') {
+      const spy = jest.spyOn(getDataThemeDarkAttributeUtils, 'getDataThemeDarkAttribute');
+      const component = componentFactory(tagName);
 
-    // some components require a parent and certain props in order to work
-    addParentAndSetRequiredProps(tagName, component);
+      // some components require a parent and certain props in order to work
+      addParentAndSetRequiredProps(tagName, component);
 
-    try {
-      component.render();
-    } catch {}
+      try {
+        component.render();
+      } catch {}
 
-    expect(spy).toBeCalledWith(getComponentMeta(tagName).props.theme);
+      expect(spy).toBeCalledWith(getComponentMeta(tagName).props.theme);
+    }
   }
 );
 
