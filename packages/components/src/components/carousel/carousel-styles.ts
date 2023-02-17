@@ -20,6 +20,8 @@ import {
   fontLineHeight,
   spacingStaticMedium,
   gridGap,
+  gridSafeZoneBase,
+  gridSafeZoneXXL,
 } from '@porsche-design-system/utilities-v2';
 import { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
@@ -57,6 +59,9 @@ export const getComponentCss = (
   const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
   const spacingLeftRightS = gridSpacing.s;
   const spacingLeftRightXXL = gridSpacing.xxl;
+
+  const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
+  const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
 
   return getCss({
     '@global': {
@@ -98,14 +103,15 @@ export const getComponentCss = (
         cursor: 'grab',
         // to override inline styles set by splide library
         ...addImportantToEachRule({
+          // TODO: Define correct splide spacing for 'extended' width
           padding: `0 calc(${spacingLeftRight} + ${gridGap}) 0 ${spacingLeftRight}`,
           ...(spacingLeftRightS && {
             [mediaQueryS]: {
-              padding: `0 calc(${spacingLeftRightS} + ${gridGap}) 0 ${spacingLeftRightS}`,
+              padding: `0 calc(${spacingLeftRightS} + ${gridGap} + ${oneColumnWidthS}) 0 ${spacingLeftRightS}`,
             },
           }),
           [mediaQueryXXL]: {
-            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap}) 0 ${spacingLeftRightXXL}`,
+            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${oneColumnWidthXXL}) 0 ${spacingLeftRightXXL}`,
           },
         }),
         '&--draggable': {
