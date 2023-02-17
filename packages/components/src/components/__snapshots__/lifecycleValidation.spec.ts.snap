@@ -68,6 +68,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "rewind": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
+  "width": "oneOf",
   "wrapContent": "boolean",
 }
 `;
