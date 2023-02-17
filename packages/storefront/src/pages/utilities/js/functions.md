@@ -6,7 +6,7 @@
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>breakpoint</code> is <strong>deprecated</strong>.<br>
-  Use <code>breakpoint</code> provided at <a href="./styles/media-query">Media Query</a> instead.
+  Use <code>breakpoint</code> provided at <a href="./styles/media-query">media query</a> instead.
 </p-inline-notification>
 
 We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l | xl | xxl`
@@ -27,7 +27,7 @@ if (window.matchMedia(`(min-width: ${breakpoint.m}px)`).matches) {
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   The <code>mediaQuery()</code> function is <strong>deprecated</strong>.<br>
-  Look into <a href="./styles/media-query">Media Query</a> for a replacement.
+  Look into <a href="./styles/media-query">media query</a> for a replacement.
 </p-inline-notification>
 
 The function has two parameter `mediaQuery(minBreakpoint: breakpoint | number, maxBreakpoint?: breakpoints | number)`
@@ -83,7 +83,7 @@ render(<StyledDiv>Styled Text</StyledDiv>);
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   The <code>Typography</code> styles are <strong>deprecated</strong>.<br>
-  Use styles provided at <a href="./styles/typography">Typography</a> instead.
+  Use styles provided at <a href="./styles/typography">typography</a> instead.
 </p-inline-notification>
 
 **Note:** For font-styling it's recommended to use the

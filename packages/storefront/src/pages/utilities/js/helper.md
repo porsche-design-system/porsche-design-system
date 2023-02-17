@@ -6,7 +6,7 @@
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>generateFontDefinition()</code> is <strong>deprecated</strong>.<br>
-  Please use the <code>fontFamily</code>, <code>fontWeight</code>, <code>fontLineHeight</code> and one of the provided font sizes from the <a href="./styles/media-query">Typography</a> design tokens.
+  Please use the <code>fontFamily</code>, <code>fontWeight</code>, <code>fontLineHeight</code> and one of the provided font sizes from the <a href="./styles/media-query">typography</a> design tokens.
 </p-inline-notification>
 
 With the `generateFontDefinition()` function it is possible to get various kinds of font variants (size and weight) by
@@ -44,7 +44,7 @@ p {
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>generateTypeScale()</code> is <strong>deprecated</strong>.<br>
-  Please use <code>fontLineHeight</code> and one of the provided font sizes from the <a href="./styles/media-query">Typography</a> design tokens.
+  Please use <code>fontLineHeight</code> and one of the provided font sizes from the <a href="./styles/media-query">typography</a> design tokens.
 </p-inline-notification>
 
 Generates font-size and line-height styling definition to fit into Porsche Vertical Grid System. The `fontSize`
@@ -75,7 +75,7 @@ p {
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>generateTypeScale()</code> is <strong>deprecated</strong>.<br>
-  Please use the provided <code>fontLineHeight</code> design token provided at <a href="./styles/media-query">Typography</a>.
+  Please use the provided <code>fontLineHeight</code> design token provided at <a href="./styles/media-query">typography</a>.
 </p-inline-notification>
 
 Calculates line-height to fit into Porsche Vertical Grid System. The `fontSize` parameter only accepts value in rem or

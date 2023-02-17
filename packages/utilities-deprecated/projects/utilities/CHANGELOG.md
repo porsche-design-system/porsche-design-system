@@ -18,6 +18,8 @@ documentation about the new Design Tokens can be found here https://designsystem
 
 ##### JS
 
+**Functions**
+
 - `focus()` is now `getFocusStyles()`. The parameters have changed as the focus is now handled with `border` and rounded
   edges. You can choose `small` or `medium` for the `borderRadius`. `getFocusStyles()` also excepts an `theme` parameter
   instead of `color`.
@@ -63,12 +65,74 @@ documentation about the new Design Tokens can be found here https://designsystem
 + import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle, } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
-- `calculateLineHeight()` the calculation of the `line-height` has changed and is defined by the `ex` unit. To set the
-  `line-height`, use the design token provided.
+**Colors**
+
+As of v3 of the Porsche Design System the color theme got reworked completely to achieve a monochrome look. To get an
+overview ot the new colors have a look at https://designsystem.porsche.com/latest/styles/theme.
+
+As the design tokens for `themeLight` and `themeDark` are in sync, the name changes mentioned below concern both themes
+even if only light theme is displayed in the diff.
+
+- `lightTheme` and `darkTheme` got renamed to `themeLight` and `themeDark`. In addition, you can also single import a
+  theme if for e.g. you only need `lightTheme`.
 
 ```diff
-- import { calculateLineHeight } from '@porsche-design-system/utilities'
-+ import { fontLineHeight } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { color } from '@porsche-design-system/utilities';
++ import { theme, themeLight, themeDark } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+- `brand` got renamed to `primary`.
+
+```diff
+- color.lightTheme.brand
++ themeLight.primary
+```
+
+- `default` is removed.
+
+```diff
+- color.lightTheme.default
+```
+
+- `backgound.default` is renamed to `background.base`.
+
+```diff
+- color.lightTheme.background.default
++ themeLight.background.base
+```
+
+- `neutralContrast` is renamed to `contrast`.
+
+```diff
+- color.lightTheme.neutralContrast.{low|medium|high}
++ themeLight.contrast.{low|medium|high}
+```
+
+- `notification.neutral` and `notification.neutralSoft` are renamed to `notification.info` / `notification.infoSoft`.
+
+```diff
+- color.lightTheme.notification.neutral
+- color.lightTheme.notification.neutralSoft
+- themeLight.notification.info
+- themeLight.notification.infoSoft
+```
+
+- `state.focus` is changed from `currentColor` to a fixed color for depending on the theme.
+
+**Font**
+
+- `fontFamily` is provided as design token
+
+```diff
+- import { fontFamily } from '@porsche-design-system/utilities';
++ import { fontFamily } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+- `fontWeight` is provided as design token
+
+```diff
+- import { fontWeight } from '@porsche-design-system/utilities';
++ import { fontWeight } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
 ##### SCSS
@@ -85,12 +149,50 @@ Functions:
 
 #### Deprecated
 
+**Functions**
+
 - `pxToRem()` there is no replacement for the function
 - `remToPx()` there is no replacement for the function
+- `calculateLineHeight()` the calculation of the `line-height` has changed and is defined by the `ex` unit. To set the
+  `line-height`, use the `fontLineHeight` design token provided.
+
+```diff
+- import { calculateLineHeight } from '@porsche-design-system/utilities'
++ import { fontLineHeight } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
 - `generateTypeScale()` since the font sizes are now fluid, the `fontLineHeight` design token and one of the provided
   font sizes should be used
 - `generateFontDefinition()` we provide `fontFamily`, `fontWeight`, `fontLineHeight` and multiple font sizes, which
   should be used instead
+
+**Colors**
+
+- all `external` colors are no longer available in v3.
+
+**Spacings**
+
+As of v3 of the Porsche Design System the spacing concept has shifted to use static spacing or fluid spacing. Spacing
+values defined in `rem` are no longer available.
+
+To get an overview ot the new spacings have a look at https://designsystem.porsche.com/latest/styles/spacings.
+
+```diff
+- import { spacing } from '@porsche-design-system/utilities';
+- import { layout } from '@porsche-design-system/utilities';
++ import { spacing, spacingStatic, spacingFluid } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+**Font**
+
+- `fontWeight` thin is removed as of v3
+- `fontSize` object is no longer provided as the font sizes are now fluid. You can use `fontLineHeight` design token and
+  on of the provided font sizes to recreate it.
+
+```diff
+- import { fontSize } from '@porsche-design-system/utilities';
++ import { fontLineHeight, fontSizeMedium } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
 
 ### [5.4.0] - 2022-12-15
 
