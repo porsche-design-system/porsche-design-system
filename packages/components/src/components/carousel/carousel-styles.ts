@@ -20,11 +20,13 @@ import {
   fontLineHeight,
   spacingStaticMedium,
   gridGap,
-  gridSafeZoneBase,
-  gridSafeZoneXXL,
 } from '@porsche-design-system/utilities-v2';
 import { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
+import {
+  getSpacingForWidth,
+  oneColumnWidthS,
+  oneColumnWidthXXL,
+} from '../content-wrapper/content-wrapper-spacings-shared';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -59,9 +61,6 @@ export const getComponentCss = (
   const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
   const spacingLeftRightS = gridSpacing.s;
   const spacingLeftRightXXL = gridSpacing.xxl;
-
-  const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
-  const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
 
   return getCss({
     '@global': {
