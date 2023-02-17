@@ -1,48 +1,10 @@
 import type { JssStyle } from 'jss';
 import type { ContentWrapperWidth } from './content-wrapper-utils';
-import {
-  getMediaQueryMin,
-  gridGap,
-  gridSafeZoneBase,
-  gridSafeZoneXXL,
-  gridWidthMax,
-} from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, gridWidthMax } from '@porsche-design-system/utilities-v2';
+import { gridSpacingMapConfig, offsetHorizontalXXL } from './content-wrapper-spacings-shared';
+import type { GridSpacingMap, GridSpacingMapKey } from './content-wrapper-spacings-shared';
 
-const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
-const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
-const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
-
-type ScreenSize = 's' | 'xxl';
-type GridSpacingMapKey = Exclude<ContentWrapperWidth, 'full' | 'fluid'>;
-type GridSpacingMapValue = [string, Partial<{ [key in ScreenSize]: string }>];
-type GridSpacingMap = { [key in GridSpacingMapKey]: GridSpacingMapValue };
 type WidthMap = { [key in GridSpacingMapKey]: JssStyle };
-
-const gridSpacingMapConfig: GridSpacingMap = {
-  narrow: [
-    gridSafeZoneBase,
-    {
-      s: `calc(${gridSafeZoneBase} + ${gridGap} * 3 + ${oneColumnWidthS} * 3)`,
-      xxl: `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} * 3 + ${oneColumnWidthXXL} * 3)`,
-    },
-  ],
-  basic: [
-    gridSafeZoneBase,
-    {
-      s: `calc(${gridSafeZoneBase} + ${gridGap} + ${oneColumnWidthS})`,
-      xxl: `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} + ${oneColumnWidthXXL})`,
-    },
-  ],
-  extended: [
-    gridSafeZoneBase,
-    {
-      xxl: `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL})`,
-    },
-  ],
-};
-
-export const getSpacingForWidth = (gridSpacingMapKey: GridSpacingMapKey): GridSpacingMapValue =>
-  gridSpacingMapConfig[gridSpacingMapKey];
 const getWidthMapByGridSpacingMap = (gridSpacingMap: GridSpacingMap): WidthMap => {
   const mediaQueryS = getMediaQueryMin('s');
   const mediaQueryXXL = getMediaQueryMin('xxl');

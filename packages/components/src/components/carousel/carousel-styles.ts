@@ -22,7 +22,7 @@ import {
   spacingStaticMedium,
 } from '@porsche-design-system/utilities-v2';
 import { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import { getSpacingForWidth } from '../content-wrapper/content-wrapper-styles-shared';
+import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
 
 export const bulletActiveClass = 'bullet--active';
 
