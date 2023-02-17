@@ -12,32 +12,62 @@ const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13)
 const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
 const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
 
-const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: JssStyle } = {
-  narrow: {
-    padding: `0 ${gridSafeZoneBase}`,
-    [getMediaQueryMin('s')]: {
-      padding: `0 calc(${gridSafeZoneBase} + ${gridGap} * 3 + ${oneColumnWidthS} * 3)`,
+type ScreenSize = 's' | 'xxl';
+type GridSpacingMapKey = Exclude<ContentWrapperWidth, 'full' | 'fluid'>;
+type GridSpacingMapValue = [string, Partial<{ [key in ScreenSize]: string }>];
+type GridSpacingMap = { [key in GridSpacingMapKey]: GridSpacingMapValue };
+type WidthMap = { [key in GridSpacingMapKey]: JssStyle };
+
+const gridSpacingMapConfig: GridSpacingMap = {
+  narrow: [
+    gridSafeZoneBase,
+    {
+      s: `calc(${gridSafeZoneBase} + ${gridGap} * 3 + ${oneColumnWidthS} * 3)`,
+      xxl: `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} * 3 + ${oneColumnWidthXXL} * 3)`,
     },
-    [getMediaQueryMin('xxl')]: {
-      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} * 3 + ${oneColumnWidthXXL} * 3)`,
+  ],
+  basic: [
+    gridSafeZoneBase,
+    {
+      s: `calc(${gridSafeZoneBase} + ${gridGap} + ${oneColumnWidthS})`,
+      xxl: `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} + ${oneColumnWidthXXL})`,
     },
-  },
-  basic: {
-    padding: `0 ${gridSafeZoneBase}`,
-    [getMediaQueryMin('s')]: {
-      padding: `0 calc(${gridSafeZoneBase} + ${gridGap} + ${oneColumnWidthS})`,
+  ],
+  extended: [
+    gridSafeZoneBase,
+    {
+      xxl: `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL})`,
     },
-    [getMediaQueryMin('xxl')]: {
-      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + ${gridGap} + ${oneColumnWidthXXL})`,
-    },
-  },
-  extended: {
-    padding: `0 ${gridSafeZoneBase}`,
-    [getMediaQueryMin('xxl')]: {
-      padding: `0 calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL})`,
-    },
-  },
+  ],
 };
+
+export const getSpacingForWidth = (gridSpacingMapKey: GridSpacingMapKey): GridSpacingMapValue =>
+  gridSpacingMapConfig[gridSpacingMapKey];
+const getWidthMapByGridSpacingMap = (gridSpacingMap: GridSpacingMap): WidthMap => {
+  const mediaQueryS = getMediaQueryMin('s');
+  const mediaQueryXXL = getMediaQueryMin('xxl');
+  return Object.entries(gridSpacingMap).reduce(
+    (result, [gridSpacingMapKey, gridSpacingMapValue]) => ({
+      ...result,
+      [gridSpacingMapKey as GridSpacingMapKey]: {
+        padding: `0 ${gridSpacingMapValue[0]}`,
+        ...Object.entries(gridSpacingMapValue[1]).reduce(
+          (newResult, [screenSize, spacing]) => ({
+            ...newResult,
+            // TODO: find a way to do it better
+            [screenSize === 's' ? mediaQueryS : mediaQueryXXL]: {
+              padding: `0 ${spacing}`,
+            },
+          }),
+          {} as JssStyle
+        ),
+      },
+    }),
+    {} as WidthMap
+  );
+};
+
+const widthMap = getWidthMapByGridSpacingMap(gridSpacingMapConfig);
 
 export const getContentWrapperStyle = (width: ContentWrapperWidth): JssStyle => {
   return {
