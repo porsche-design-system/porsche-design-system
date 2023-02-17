@@ -67,7 +67,7 @@ describe('format: jsx', () => {
   it('should return default link', () => {
     const { container } = render(getIconLinks({ format: 'jsx' }));
     const regex = new RegExp(
-      `^<link rel="prefetch" href="${baseHrefCom}/arrow-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
+      `^<link rel="prefetch" href="${baseHrefCom}/arrow-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="">$`
     );
     expect(container.innerHTML).toMatch(regex);
   });
@@ -75,7 +75,7 @@ describe('format: jsx', () => {
   it('should return default link for china cdn', () => {
     const { container } = render(getIconLinks({ format: 'jsx', cdn: 'cn' }));
     const regex = new RegExp(
-      `^<link rel="prefetch" href="${baseHrefCn}/arrow-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
+      `^<link rel="prefetch" href="${baseHrefCn}/arrow-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="">$`
     );
     expect(container.innerHTML).toMatch(regex);
   });
@@ -83,7 +83,7 @@ describe('format: jsx', () => {
   it('should return multiple links', () => {
     const { container } = render(getIconLinks({ format: 'jsx', icons: ['truck', 'volume-up', 'mobile'] }));
     const regex = new RegExp(
-      `^<link rel="prefetch" href="${baseHrefCom}/truck.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true"><link rel="prefetch" href="${baseHrefCom}/volume-up.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true"><link rel="prefetch" href="${baseHrefCom}/mobile.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
+      `^<link rel="prefetch" href="${baseHrefCom}/truck.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin=""><link rel="prefetch" href="${baseHrefCom}/volume-up.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin=""><link rel="prefetch" href="${baseHrefCom}/mobile.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="">$`
     );
     expect(container.innerHTML).toMatch(regex);
   });
@@ -94,7 +94,7 @@ describe('format: jsx', () => {
       const regex = new RegExp(
         `^<link rel="prefetch" href="${baseHrefCom}/${paramCase(
           iconName
-        )}.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
+        )}.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="">$`
       );
       expect(container.innerHTML).toMatch(regex);
     });

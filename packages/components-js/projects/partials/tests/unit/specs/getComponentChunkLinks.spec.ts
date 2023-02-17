@@ -62,7 +62,7 @@ describe('format: html', () => {
 });
 
 describe('format: jsx', () => {
-  const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="true">`;
+  const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="">`;
 
   it('should return core link', () => {
     const { container } = render(getComponentChunkLinks({ format: 'jsx' }));
@@ -73,7 +73,7 @@ describe('format: jsx', () => {
   it('should return core link for china cdn', () => {
     const { container } = render(getComponentChunkLinks({ format: 'jsx', cdn: 'cn' }));
     const regex = new RegExp(
-      `<link rel="preload" href="${baseHrefCn}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="true">`
+      `<link rel="preload" href="${baseHrefCn}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="">`
     );
     expect(container.innerHTML).toMatch(regex);
   });

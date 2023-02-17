@@ -42,10 +42,24 @@ export const config: StorefrontConfig = {
     'Next Js': {
       // @ts-ignore
       'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
-      // @ts-ignore
-      'Ssr Support': [() => import('@/pages/start-coding/next-js/ssr-support.md')],
+      'Ssr Support': [
+        // @ts-ignore
+        () => import('@/pages/start-coding/next-js/ssr-support.md'),
+        // @ts-ignore
+        () => import('@/pages/start-coding/ssr-support-table.md'),
+      ],
       // @ts-ignore
       Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
+    },
+    Remix: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/remix/getting-started.md')],
+      'Ssr Support': [
+        // @ts-ignore
+        () => import('@/pages/start-coding/remix/ssr-support.md'),
+        // @ts-ignore
+        () => import('@/pages/start-coding/ssr-support-table.md'),
+      ],
     },
   },
   News: {
