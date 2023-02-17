@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-group>
         <p-button [variant]="'primary'">Some label</p-button>
         <p-button [variant]="'secondary'">Some label</p-button>
-        <p-button [variant]="'tertiary'">Some label</p-button>
+        <p-button [variant]="'secondary'">Some label</p-button>
       </p-button-group>
     </div>
 
@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-group [direction]="{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }">
         <p-button [variant]="'primary'">Some label</p-button>
         <p-button [variant]="'secondary'">Some label</p-button>
-        <p-button [variant]="'tertiary'">Some label</p-button>
+        <p-button [variant]="'secondary'">Some label</p-button>
       </p-button-group>
     </div>
 

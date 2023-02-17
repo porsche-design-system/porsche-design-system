@@ -8,7 +8,7 @@ export const ButtonGroupPage = (): JSX.Element => {
         <PButtonGroup>
           <PButton variant="primary">Some label</PButton>
           <PButton variant="secondary">Some label</PButton>
-          <PButton variant="tertiary">Some label</PButton>
+          <PButton variant="secondary">Some label</PButton>
         </PButtonGroup>
       </div>
 
@@ -16,7 +16,7 @@ export const ButtonGroupPage = (): JSX.Element => {
         <PButtonGroup direction={{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }}>
           <PButton variant="primary">Some label</PButton>
           <PButton variant="secondary">Some label</PButton>
-          <PButton variant="tertiary">Some label</PButton>
+          <PButton variant="secondary">Some label</PButton>
         </PButtonGroup>
       </div>
 
