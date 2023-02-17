@@ -27,7 +27,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", align:
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   text-align: center;
   letter-spacing: normal;
@@ -64,13 +64,13 @@ exports[`getComponentCss() should return correct css for size: "large", align: c
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   text-align: center;
   letter-spacing: normal;
   list-style-type: none;
   white-space: inherit;
-  font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }"
 `;
 
@@ -101,13 +101,13 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   text-align: left;
   letter-spacing: normal;
   list-style-type: none;
   white-space: inherit;
-  font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }"
 `;
 
@@ -138,13 +138,13 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   text-align: left;
   letter-spacing: normal;
   list-style-type: none;
   white-space: inherit;
-  font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }"
 `;
 
@@ -175,7 +175,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   text-align: left;
   letter-spacing: normal;
@@ -184,7 +184,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }"
 `;
 
@@ -215,7 +215,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   text-align: left;
   letter-spacing: normal;
@@ -224,7 +224,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }"
 `;
 
@@ -255,7 +255,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: r
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   text-align: right;
   letter-spacing: normal;
@@ -264,7 +264,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: r
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }"
 `;
 
@@ -295,13 +295,13 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: currentColor;
   text-align: left;
   letter-spacing: normal;
   list-style-type: none;
   white-space: inherit;
-  font-size: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
+  font-size: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
 }"
 `;
 
@@ -332,7 +332,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: currentColor;
   text-align: right;
   letter-spacing: normal;
@@ -341,7 +341,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
+  font-size: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
 }"
 `;
 
@@ -372,7 +372,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 .root {
   margin: 0;
   padding: 0;
-  font: italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   text-align: center;
   letter-spacing: normal;
@@ -381,17 +381,17 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
+  font-size: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
 }
 @media(min-width:480px) {
   .root {
-    font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+    font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
   }
 }
 
 @media(min-width:760px) {
   .root {
-    font-size: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
+    font-size: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
   }
 }
 
@@ -403,13 +403,13 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 
 @media(min-width:1300px) {
   .root {
-    font-size: clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem);
+    font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
   }
 }
 
 @media(min-width:1760px) {
   .root {
-    font-size: clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem);
+    font-size: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
   }
 }
 "

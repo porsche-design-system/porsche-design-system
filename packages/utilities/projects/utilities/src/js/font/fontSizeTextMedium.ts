@@ -1,1 +1,1 @@
-export const fontSizeTextMedium = 'clamp(1.2rem, .12vw + 1.18rem, 1.31rem)';
+export const fontSizeTextMedium = 'clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)';

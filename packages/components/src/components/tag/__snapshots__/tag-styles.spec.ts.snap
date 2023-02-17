@@ -4,7 +4,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 {
   "backgroundColor": "#212225",
   "backgroundHoverColor": "#3E4045",
-  "focusColor": "#0A0AFF",
+  "focusColor": "#1E5BEB",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -13,7 +13,7 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 {
   "backgroundColor": "#212225",
   "backgroundHoverColor": "#3E4045",
-  "focusColor": "#0A0AFF",
+  "focusColor": "#1E5BEB",
   "primaryColor": "#010205",
 }
 `;
@@ -53,7 +53,7 @@ span {
   border-radius: 4px;
   background: #0E0E12;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -78,7 +78,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -117,7 +117,7 @@ span {
   border-radius: 4px;
   background: #FFF;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -181,7 +181,7 @@ span {
   border-radius: 4px;
   background: #0E0E12;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -206,7 +206,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -251,7 +251,7 @@ span {
   border-radius: 4px;
   background: #FFF;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -321,7 +321,7 @@ span {
   border-radius: 4px;
   background: #0E0E12;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -346,7 +346,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -385,7 +385,7 @@ span {
   border-radius: 4px;
   background: #FFF;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -449,7 +449,7 @@ span {
   border-radius: 4px;
   background: #0E0E12;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -474,7 +474,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -519,7 +519,7 @@ span {
   border-radius: 4px;
   background: #FFF;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -589,7 +589,7 @@ span {
   border-radius: 4px;
   background: #212225;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -614,7 +614,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -659,7 +659,7 @@ span {
   border-radius: 4px;
   background: #EEEFF2;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -729,7 +729,7 @@ span {
   border-radius: 4px;
   background: #FBFCFF;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -754,7 +754,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -799,7 +799,7 @@ span {
   border-radius: 4px;
   background: #010205;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -869,7 +869,7 @@ span {
   border-radius: 4px;
   background: #290A0A;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -894,7 +894,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -939,7 +939,7 @@ span {
   border-radius: 4px;
   background: #FCE8E9;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1009,7 +1009,7 @@ span {
   border-radius: 4px;
   background: #001A33;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1034,7 +1034,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1079,7 +1079,7 @@ span {
   border-radius: 4px;
   background: #E8EEFD;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1149,7 +1149,7 @@ span {
   border-radius: 4px;
   background: #001A33;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1174,7 +1174,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1219,7 +1219,7 @@ span {
   border-radius: 4px;
   background: #E8EEFD;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1289,7 +1289,7 @@ span {
   border-radius: 4px;
   background: #003320;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1314,7 +1314,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1359,7 +1359,7 @@ span {
   border-radius: 4px;
   background: #EBFAF0;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1429,7 +1429,7 @@ span {
   border-radius: 4px;
   background: #2B2208;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1454,7 +1454,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1499,7 +1499,7 @@ span {
   border-radius: 4px;
   background: #FFF9E6;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1569,7 +1569,7 @@ span {
   border-radius: 4px;
   background: #FBFCFF;
   color: #010205;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
@@ -1594,7 +1594,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1639,7 +1639,7 @@ span {
   border-radius: 4px;
   background: #010205;
   color: #FBFCFF;
-  font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {

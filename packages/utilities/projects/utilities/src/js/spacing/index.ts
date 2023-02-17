@@ -12,3 +12,4 @@ export { spacingFluidSmall } from './spacingFluidSmall';
 export { spacingFluidMedium } from './spacingFluidMedium';
 export { spacingFluidLarge } from './spacingFluidLarge';
 export { spacingFluidXLarge } from './spacingFluidXLarge';
+export { spacingFluidXXLarge } from './spacingFluidXXLarge';

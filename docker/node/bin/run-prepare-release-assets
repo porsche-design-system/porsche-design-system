@@ -31,6 +31,11 @@ pushd "./packages/components-react/projects/nextjs"
   sed -i -E -e 's$("@porsche-design-system/assets": )(".*")$\1"'${1}'"$' package.json
 popd
 
+# update "assets" in remix project
+pushd "./packages/components-react/projects/remix"
+  sed -i -E -e 's$("@porsche-design-system/assets": )(".*")$\1"'${1}'"$' package.json
+popd
+
 # update "assets" in uxpin-wrapper project
 pushd "./packages/components-react/projects/uxpin-wrapper"
   sed -i -E -e 's$("@porsche-design-system/assets": )(".*")$\1"'${1}'"$' package.json

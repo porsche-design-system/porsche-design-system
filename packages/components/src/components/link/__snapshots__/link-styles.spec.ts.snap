@@ -36,7 +36,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .root:focus::before {
   content: "";
   position: fixed;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
   top: -6px;
   left: -6px;
@@ -216,7 +216,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0 !important;
 }
 ::slotted(a:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
@@ -376,7 +376,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0 !important;
 }
 ::slotted(a:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
@@ -540,7 +540,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0 !important;
 }
 ::slotted(a:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1E5BEB !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
