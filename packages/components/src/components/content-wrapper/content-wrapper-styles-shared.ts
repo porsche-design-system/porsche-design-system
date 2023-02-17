@@ -16,7 +16,7 @@ const getWidthMapByGridSpacingMap = (gridSpacingMap: GridSpacingMap): WidthMap =
         ...Object.entries(gridSpacingMapValue[1]).reduce(
           (newResult, [screenSize, spacing]) => ({
             ...newResult,
-            // TODO: find a way to do it better
+            // TODO: find a way to do it better: ideally [getMediaQueryMin(screenSize)] should work
             [screenSize === 's' ? mediaQueryS : mediaQueryXXL]: {
               padding: `0 ${spacing}`,
             },
