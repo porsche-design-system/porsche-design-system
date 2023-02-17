@@ -1,8 +1,8 @@
-# Porsche Design System - Email
+# Porsche Design System - Model Signatures
 
 ## Build
 
-Copy email assets and create a manifest.
+Copy model signature assets and create a manifest.
 
 ```
 yarn build

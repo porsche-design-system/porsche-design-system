@@ -8,15 +8,15 @@
   "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
-  "description": "Porsche Email",
+  "description": "Porsche Model Signatures",
   "keywords": [
     "porsche",
-    "email"
+    "model signatures"
   ],
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn build:email && yarn build:lib",
-    "build:email": "ts-node --project tsconfig.json scripts/build.ts",
+    "build": "yarn build:model-sigatures && yarn build:lib",
+    "build:model-sigatures": "ts-node --project tsconfig.json scripts/build.ts",
     "build:lib": "yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build tsconfig.lib.umd.json",
