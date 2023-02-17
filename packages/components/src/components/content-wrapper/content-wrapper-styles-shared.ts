@@ -2,16 +2,16 @@ import type { JssStyle } from 'jss';
 import type { ContentWrapperWidth } from './content-wrapper-utils';
 import { getMediaQueryMin, gridWidthMax } from '@porsche-design-system/utilities-v2';
 import { gridSpacingMapConfig, offsetHorizontalXXL } from './content-wrapper-spacings-shared';
-import type { GridSpacingMap, GridSpacingMapKey } from './content-wrapper-spacings-shared';
+import type { GridSpacingMap, GridSpacingWidth } from './content-wrapper-spacings-shared';
 
-type WidthMap = { [key in GridSpacingMapKey]: JssStyle };
+type WidthMap = { [key in GridSpacingWidth]: JssStyle };
 const getWidthMapByGridSpacingMap = (gridSpacingMap: GridSpacingMap): WidthMap => {
   const mediaQueryS = getMediaQueryMin('s');
   const mediaQueryXXL = getMediaQueryMin('xxl');
   return Object.entries(gridSpacingMap).reduce(
     (result, [gridSpacingMapKey, gridSpacingMapValue]) => ({
       ...result,
-      [gridSpacingMapKey as GridSpacingMapKey]: {
+      [gridSpacingMapKey as GridSpacingWidth]: {
         padding: `0 ${gridSpacingMapValue[0]}`,
         ...Object.entries(gridSpacingMapValue[1]).reduce(
           (newResult, [screenSize, spacing]) => ({

@@ -5,9 +5,9 @@ const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13)
 const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
 export const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
 
-export type GridSpacingMapKey = Exclude<ContentWrapperWidth, 'full' | 'fluid'>;
-export type GridSpacingMapValue = [string, Partial<{ [key in 's' | 'xxl']: string }>];
-export type GridSpacingMap = { [key in GridSpacingMapKey]: GridSpacingMapValue };
+export type GridSpacingWidth = Exclude<ContentWrapperWidth, 'full' | 'fluid'>;
+export type GridSpacingDataForWidth = [string, Partial<{ [key in 's' | 'xxl']: string }>];
+export type GridSpacingMap = { [key in GridSpacingWidth]: GridSpacingDataForWidth };
 
 export const gridSpacingMapConfig: GridSpacingMap = {
   narrow: [
@@ -32,5 +32,5 @@ export const gridSpacingMapConfig: GridSpacingMap = {
   ],
 };
 
-export const getSpacingForWidth = (gridSpacingMapKey: GridSpacingMapKey): GridSpacingMapValue =>
+export const getSpacingForWidth = (gridSpacingMapKey: GridSpacingWidth): GridSpacingDataForWidth =>
   gridSpacingMapConfig[gridSpacingMapKey];
