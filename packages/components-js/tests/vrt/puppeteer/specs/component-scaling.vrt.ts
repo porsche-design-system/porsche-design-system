@@ -8,6 +8,7 @@ const components = [
   'accordion',
   'banner',
   'button',
+  'button-group',
   'button-pure',
   'checkbox-wrapper',
   'content-wrapper',
