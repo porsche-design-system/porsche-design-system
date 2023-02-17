@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- Background color of `Scroller`'s `prev` and `next` buttons in dark theme
+
 ### [3.0.0-alpha.1] - 2023-02-16
 
 #### Added

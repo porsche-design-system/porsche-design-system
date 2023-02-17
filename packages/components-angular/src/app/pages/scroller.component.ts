@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         margin-right: 0.5rem;
       }
       p-scroller > button {
+        border: 0;
         line-height: 1.5;
         font-size: 16px;
       }
@@ -28,6 +29,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     
       .scroller > span:not(:last-child) {
         margin-right: 1rem;
+      }
+    
+      .light button {
+        background: black;
+        color: white;
+      }
+    
+      .dark button {
+        background: white;
       }
     `,
   ],
@@ -98,7 +108,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render scroller with scroll indicator position center on light background">
-      <div style="height: 50px; border: 1px solid deeppink; max-width: 600px">
+      <div style="height: 3rem; border: 1px solid deeppink; max-width: 600px">
         <p-scroller [scrollIndicatorPosition]="'center'">
           <button>Scroll indicator position center</button>
           <button>Scroll indicator position center</button>
@@ -112,7 +122,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render scroller with scroll indicator position top on light background">
-      <div style="height: 50px; border: 1px solid deeppink; max-width: 600px">
+      <div style="height: 3rem; border: 1px solid deeppink; max-width: 600px">
         <p-scroller [scrollIndicatorPosition]="'top'">
           <button>Scroll indicator position top</button>
           <button>Scroll indicator position top</button>
@@ -151,7 +161,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render scroller with initial scroll position on light background">
       <div style="max-width: 600px">
-        <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 290}">
+        <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 280}">
           <span>Start</span>
           <span>Middle</span>
           <span>End</span>
