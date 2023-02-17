@@ -17,9 +17,9 @@ import {
   spacingStaticXSmall,
   spacingStaticSmall,
   spacingFluidXSmall,
-  spacingFluidLarge,
   fontLineHeight,
   spacingStaticMedium,
+  gridGap,
 } from '@porsche-design-system/utilities-v2';
 import { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
@@ -98,15 +98,14 @@ export const getComponentCss = (
         cursor: 'grab',
         // to override inline styles set by splide library
         ...addImportantToEachRule({
-          // TODO: 0 calc(${gridSafeZoneBase} + ${gridGap}) - will be done after Grid Refactoring
-          padding: `0 calc(${spacingLeftRight} + ${spacingFluidLarge}) 0 ${spacingLeftRight}`,
+          padding: `0 calc(${spacingLeftRight} + ${gridGap}) 0 ${spacingLeftRight}`,
           ...(spacingLeftRightS && {
             [mediaQueryS]: {
-              padding: `0 calc(${spacingLeftRightS} + ${spacingFluidLarge}) 0 ${spacingLeftRightS}`,
+              padding: `0 calc(${spacingLeftRightS} + ${gridGap}) 0 ${spacingLeftRightS}`,
             },
           }),
           [mediaQueryXXL]: {
-            padding: `0 calc(${spacingLeftRightXXL} + ${spacingFluidLarge}) 0 ${spacingLeftRightXXL}`,
+            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap}) 0 ${spacingLeftRightXXL}`,
           },
         }),
         '&--draggable': {
