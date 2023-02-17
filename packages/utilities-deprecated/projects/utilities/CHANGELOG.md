@@ -38,8 +38,8 @@ documentation about the new Design Tokens can be found here https://designsystem
 ```
 
 - `titleLarge` got renamed to `displayLargeStyle`. The size got adjusted. In addition, we also provide
-  `displayMediumStyle`. The new `display` styles differ also, that they are recursive and their size is fluently
-  changing depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+  `displayMediumStyle`. The new `display` styles differ also, that they are recursive and their size is fluid changing
+  depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
 
 ```diff
 - import { titleLarge } from '@porsche-design-system/utilities'
@@ -47,20 +47,28 @@ documentation about the new Design Tokens can be found here https://designsystem
 ```
 
 - `headline` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size got adjusted. Same as
-  in `display`, the size is now fluently changing depending on the viewport width instead of fixed predefined sizes on
-  specific breakpoints.
+  in `display`, the size is now fluid depending on the viewport width instead of fixed predefined sizes on specific
+  breakpoints.
 
 ```diff
 - import { headline1, headline2, headline3, headline4, headline5 } from '@porsche-design-system/utilities'
 + import { headingSmallStyle, headingMediumStyle, headingLargeStyle, headingXLargeStyle, headingXXLargeStyle, headingXXXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
-- `text` got not only renamed but also the size got adjusted. In addition, starting from `textMediumStyle` all text
-  styles have fluent sizes that change depending on the viewport width.
+- `text` got not only renamed but also the size got adjusted. Except `textSmallStyle` all text styles have fluid sizes
+  that change depending on the viewport width.
 
 ```diff
 - import { textXSmall, textSmall, textMedium, textLarge, textXLarge } from '@porsche-design-system/utilities'
 + import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle, } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+```
+
+- `calculateLineHeight()` the calculation of the `line-height` has changed and is defined by the `ex` unit. To set the
+  `line-height`, use the design token provided.
+
+```diff
+- import { calculateLineHeight } from '@porsche-design-system/utilities'
++ import { fontLineHeight } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
 ##### SCSS
@@ -76,6 +84,13 @@ Functions:
 ```
 
 #### Deprecated
+
+- `pxToRem()` there is no replacement for the function
+- `remToPx()` there is no replacement for the function
+- `generateTypeScale()` since the font sizes are now fluid, the `fontLineHeight` design token and one of the provided
+  font sizes should be used
+- `generateFontDefinition()` we provide `fontFamily`, `fontWeight`, `fontLineHeight` and multiple font sizes, which
+  should be used instead
 
 ### [5.4.0] - 2022-12-15
 
