@@ -161,6 +161,7 @@ exports[`should match snapshot 1`] = `
       "rewind": true,
       "slidesPerPage": "1",
       "theme": "light",
+      "width": "basic",
       "wrapContent": null,
     },
     "styling": "jss",
