@@ -1206,15 +1206,15 @@ export namespace Components {
     }
     interface PTextList {
         /**
-          * The type of the text list.
+          * The type of the list.
          */
         "listType"?: ListType;
         /**
-          * The list style type of an ordered list.
+          * The list style type of ordered list.
          */
         "orderType"?: OrderType;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2939,15 +2939,15 @@ declare namespace LocalJSX {
     }
     interface PTextList {
         /**
-          * The type of the text list.
+          * The type of the list.
          */
         "listType"?: ListType;
         /**
-          * The list style type of an ordered list.
+          * The list style type of ordered list.
          */
         "orderType"?: OrderType;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
     }
