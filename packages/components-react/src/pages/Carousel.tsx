@@ -10,11 +10,36 @@ export const CarouselPage = (): JSX.Element => {
       background: #00b0f4;
       height: 100px;
     }
+    .playground {
+      padding: 1rem 0;
+    }
+    .visualize-grid {
+      z-index: 9999999;
+    }
   `;
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
+
+      <div className="visualize-grid">
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
 
       <div className="playground light" title="should render carousel on light background">
         <PCarousel heading="Heading">
@@ -134,12 +159,33 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
+      <div className="playground light" title="should render carousel with width=extended and description on light background">
+        <PCarousel heading="Extended width heading" description="Description" width="extended">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
       <div
         className="playground light"
         title="should render carousel with wrapped slotted heading and slotted description on light background"
       >
         <PCarousel wrapContent={true}>
           <h2 slot="heading">Wrapped content slotted heading</h2>
+          <p slot="description">Description</p>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with width=extended, slotted heading and slotted description on light background"
+      >
+        <PCarousel width="extended">
+          <h2 slot="heading">Extended width slotted heading</h2>
           <p slot="description">Description</p>
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -159,11 +205,40 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
+        title="should render carousel with width=extended and multiline heading on light background"
+      >
+        <PCarousel
+          heading="Extended width. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          width="extended"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
         title="should render carousel with multiline heading and multiline description on light background"
       >
         <PCarousel
           heading="Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
           description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with width=extended multiline heading and multiline description on light background"
+      >
+        <PCarousel
+          heading="Extended width. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          width="extended"
         >
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -287,6 +362,22 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
+        title="should render carousel with align-header=center and width=extended on light background"
+      >
+        <PCarousel
+          heading="Aligned header with extended width"
+          alignHeader="center"
+          description="Description"
+          width="extended"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
         title="should render carousel with align-header=center and multiline heading on light background"
       >
         <PCarousel
@@ -333,6 +424,22 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
+        title="should render carousel with align-header=center, width=extended and multiline heading on light background"
+      >
+        <PCarousel
+          heading="Aligned header, extended width, multiline heading. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          alignHeader="center"
+          description="Description"
+          width="extended"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
         title="should render carousel with align-header=center, wrap-content=true, multiline heading and multiline description on light background"
       >
         <PCarousel
@@ -340,6 +447,22 @@ export const CarouselPage = (): JSX.Element => {
           alignHeader="center"
           wrapContent={true}
           description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with align-header=center, width=extended, multiline heading and multiline description on light background"
+      >
+        <PCarousel
+          heading="Aligned header, extended width, multiline heading, multiline description. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          alignHeader="center"
+          description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          width="extended"
         >
           <div>Slide 1</div>
           <div>Slide 2</div>
