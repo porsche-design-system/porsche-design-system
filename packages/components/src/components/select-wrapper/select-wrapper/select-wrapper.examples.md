@@ -12,13 +12,8 @@ text for screen readers.
 
 ## Basic example
 
-<Playground :markup="basic" :config="config">
-  <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="show">With label</option>
-    <option value="hide">Without label</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="hideLabelMarkup" :config="config">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
 ---
@@ -28,12 +23,8 @@ text for screen readers.
 To ensure the user makes a conscious choice, use `<option></option>` as placeholder. If the select is required, use
 `<option hidden></option>` to enforce a selection.
 
-<Playground :markup="basicNoPreselection" :config="config">
-  <select v-model="isRequired" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="false">optional</option>
-    <option value="true">required</option>
-  </select>
+<Playground :markup="requiredMarkup" :config="config">
+  <SelectOptions v-model="required" :values="requireds" name="required"></SelectOptions>
 </Playground>
 
 ---
@@ -56,13 +47,8 @@ first character of the options text.
 
 ## Dropdown direction
 
-<Playground :markup="direction" :config="config">
-  <select v-model="dropdownDirection" aria-label="Select dropdown direction">
-    <option disabled>Select dropdown direction</option>
-    <option value="down">Direction down</option>
-    <option value="up">Direction up</option>
-    <option value="auto">Direction auto</option>
-  </select>
+<Playground :markup="dropdownDirectionMarkup" :config="config">
+  <SelectOptions v-model="dropdownDirection" :values="dropdownDirections" name="dropdownDirection"></SelectOptions>
 </Playground>
 
 ---
@@ -78,7 +64,7 @@ of the label text and is technically connected with the `hide-label` property.
 
 ## Required
 
-<Playground :markup="required" :config="config"></Playground>
+<Playground :markup="requiredBasic" :config="config"></Playground>
 
 ---
 
@@ -99,13 +85,8 @@ changes while this process is performed.
 
 The `p-select-wrapper` component supports the visualisation of inline validation.
 
-<Playground :markup="validationStates" :config="config">
-  <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">Error</option>
-    <option value="success">Success</option>
-    <option value="none">None</option>
-  </select>
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ---
@@ -133,7 +114,7 @@ reader users the corresponding information:
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component from 'vue-class-component'; import {FORM_STATES} from "../../../utils"; import {DROPDOWN_DIRECTIONS} from "./select-wrapper-utils"; 
 
 const buildOptions = (opts: string[]): string[] => opts.map(val => `<option value="${val}">Option ${val.toUpperCase()}</option>`);
 
@@ -141,33 +122,30 @@ const buildOptions = (opts: string[]): string[] => opts.map(val => `<option valu
 export default class Code extends Vue {
   config = { themeable: true, overflowX: 'visible' };
   
-  label = 'show';
-  state = 'error';
-  dropdownDirection = 'auto';
-  isRequired = 'false';
-  
-  get basic() {
-    const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-      return `<p-select-wrapper label="Some label" ${attr}>
+  hideLabel = false;
+  hideLabels = [false, true, '{ base: true, l: false }'];
+  get hideLabelMarkup() {
+    return `<p-select-wrapper label="Some label" hide-label="${this.hideLabel}">
   <select name="some-name">
     ${buildOptions(['a','b','c','d','e','f']).join('\n    ')}
   </select>
 </p-select-wrapper>`;
-    }
+  }
 
-  get basicNoPreselection() {
-    const option = this.isRequired === 'false' ? '<option></option>' : '<option hidden></option>';
-    const required = this.isRequired === 'true' ? ' required' : '';
+  required = false;
+  requireds = [false, true];
+  get requiredMarkup() {
+    const option = !this.required ? '<option></option>' : '<option hidden></option>';
+    const attr = this.required ? ' required' : '';
     
     return `<p-select-wrapper label="Some label">
-  <select name="some-name"${required}>
+  <select name="some-name"${attr}>
     ${option}
     ${buildOptions(['a','b','c']).join('\n    ')}
   </select>
 </p-select-wrapper>`;
-    }
+  }
 
-    
   get withFilter() {
     const options = {
       AF: 'Afghanistan',
@@ -439,14 +417,16 @@ export default class Code extends Vue {
   </select>
 </p-select-wrapper>`;
 
-  get direction() {
+  dropdownDirection = 'auto';
+  dropdownDirections = DROPDOWN_DIRECTIONS;
+  get dropdownDirectionMarkup() {
     return `<p-select-wrapper label="Some label" dropdown-direction="${this.dropdownDirection}">
   <select name="some-name">
     ${buildOptions(['a','b','c','d','e','f']).join('\n    ')}
   </select>
 </p-select-wrapper>`;
 }
-    
+
   withDescriptionText =
 `<p-select-wrapper label="Some label" description="Some description">
   <select name="some-name">
@@ -454,7 +434,7 @@ export default class Code extends Vue {
   </select>
 </p-select-wrapper>`;
 
-  required =
+  requiredBasic =
 `<p-select-wrapper label="Some label">
   <select name="some-name" required>
     ${buildOptions(['a','b','c']).join('\n    ')}
@@ -468,14 +448,16 @@ export default class Code extends Vue {
   </select>
 </p-select-wrapper>`;
 
-  get validationStates() {
+  state = 'error';
+  states = FORM_STATES;
+  get stateMarkup() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
     return `<p-select-wrapper label="Some label" state="${this.state}" ${attr}>
   <select name="some-name" aria-invalid="${this.state === 'error'}">
     ${buildOptions(['a','b','c']).join('\n    ')}
   </select>
 </p-select-wrapper>`
-    }
+  }
 
   slots =
 `<p-select-wrapper state="error">

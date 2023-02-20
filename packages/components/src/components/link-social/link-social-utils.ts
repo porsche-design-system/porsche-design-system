@@ -1,4 +1,4 @@
-import { IconName } from '../../types';
+import type { IconName } from '../../types';
 
 export type SocialIconName = Extract<
   IconName,

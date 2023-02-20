@@ -21,22 +21,13 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ## Weight
 
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select weight</option>
-    <option value="regular">Regular</option>
-    <option value="semibold">SemiBold</option>
-  </select>
+  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
 ## Gradient Color Scheme
@@ -44,12 +35,8 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <select v-model="gradientColorScheme" aria-label="Select gradient color scheme">
-    <option disabled>Select gradient color scheme</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+<Playground :markup="gradientColorSchemeMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
+  <SelectOptions v-model="gradientColorScheme" :values="gradientColorSchemes" name="gradientColorScheme"></SelectOptions>
 </Playground>
 
 ## Active Tab
@@ -62,6 +49,8 @@ update the `activeTabIndex` when adding or removing elements.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { TAB_SIZES, TAB_WEIGHTS } from '../tabs-bar/tabs-bar-utils';
+import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils'; 
 
 const buildTabsItem = (name: string, index: number) => 
 `  <p-tabs-item label="Tab ${name}">
@@ -72,28 +61,30 @@ const buildTabsItem = (name: string, index: number) =>
 export default class Code extends Vue {
   config = { themeable: true };
 
-  weight = 'semibold';
-  size = 'medium';
-  gradientColorScheme = 'surface';
-
   basic =
 `<p-tabs>
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
 
+  size = 'medium';
+  sizes = [...TAB_SIZES, "{ base: 'small', l: 'medium' }"];
   get sizeMarkup() {
     return `<p-tabs size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
   }
 
+  weight = 'semibold';
+  weights = TAB_WEIGHTS;
   get weightMarkup() {
     return `<p-tabs weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
   }
 
-  get gradientMarkup() {
+  gradientColorScheme = 'surface';
+  gradientColorSchemes = GRADIENT_COLOR_THEMES;
+  get gradientColorSchemeMarkup() {
     return `<p-tabs gradient-color-scheme="${this.gradientColorScheme}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
   .map(buildTabsItem).join('\n')}
