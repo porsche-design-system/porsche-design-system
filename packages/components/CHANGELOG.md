@@ -259,6 +259,15 @@ recommend to migrate and remove the deprecated props since those ones will be re
  </p-segmented-control>
 ```
 
+##### Carousel:
+
+- Prop `wrap-content` is deprecated.
+
+```diff
+- <p-carousel wrap-content="true"></p-carousel>
++ <p-carousel></p-carousel>
+```
+
 #### 👾 Property value deprecations 👾
 
 All deprecated values are mapped to new ones, therefor it's technically not breaking, but we highly recommend to migrate
