@@ -114,7 +114,9 @@ reader users the corresponding information:
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component'; import {FORM_STATES} from "../../../utils"; import {DROPDOWN_DIRECTIONS} from "./select-wrapper-utils"; 
+import Component from 'vue-class-component';
+import { FORM_STATES } from '../../../utils';
+import { DROPDOWN_DIRECTIONS } from './select-wrapper-utils'; 
 
 const buildOptions = (opts: string[]): string[] => opts.map(val => `<option value="${val}">Option ${val.toUpperCase()}</option>`);
 

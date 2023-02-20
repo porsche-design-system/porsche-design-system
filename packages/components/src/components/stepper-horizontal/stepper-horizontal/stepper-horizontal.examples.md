@@ -91,7 +91,7 @@ export default class Code extends Vue {
   codeExample = getStepperHorizontalCodeSamples();
   
   basic = `<p-stepper-horizontal>
-  <p-stepper-horizontal-item state='complete">Step 1</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
   <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
   <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
   <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>

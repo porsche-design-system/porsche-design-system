@@ -22,7 +22,6 @@ usage examples on our [form patterns section](patterns/forms/resources).
 
 <Playground :markup="labelSizeMarkup" :config="config">
   <SelectOptions v-model="labelSize" :values="labelSizes" name="labelSize"></SelectOptions>
-  
 </Playground>
 
 ---
