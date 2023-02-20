@@ -229,7 +229,7 @@ export namespace Components {
          */
         "width"?: CarouselWidth;
         /**
-          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * @deprecated Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
          */
         "wrapContent"?: boolean;
     }
@@ -1926,7 +1926,7 @@ declare namespace LocalJSX {
          */
         "width"?: CarouselWidth;
         /**
-          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * @deprecated Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
          */
         "wrapContent"?: boolean;
     }
