@@ -408,15 +408,15 @@ to the new values since those ones will be removed with next major version.
   `Text Field Wrapper` and `Fieldset Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
 - Prop `size` for `Accordion` `compact="true"` supports `medium`
-- Prop `alignHeader` for `Carousel`
+- Props `alignHeader` and `width` for `Carousel`
 
 #### Changed
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
   `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline`, `Carousel` and `Fieldset Wrapper`
-  matches new design language.
+  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline`, `Carousel` and
+  `Fieldset Wrapper` matches new design language.
 - `Icon` supports
   `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | inherit`
   for `color` prop.
