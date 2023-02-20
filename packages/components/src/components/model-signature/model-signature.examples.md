@@ -1,6 +1,7 @@
 # Model Signature
 
-The `p-model-signature` ...
+The `p-model-signature` component is purely visual and renders the different signatures of Porsche car models.  
+It can be used to overlay background images or enhance cards and teasers to be more dynamic and recognizable.
 
 <TableOfContents></TableOfContents>
 
