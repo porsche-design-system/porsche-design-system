@@ -14,6 +14,7 @@ const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirecti
     },
     row: {
       flexFlow: 'row wrap',
+      alignItems: 'stretch',
     },
   };
   return style[direction];
@@ -28,7 +29,7 @@ export const getComponentCss = (direction: BreakpointCustomizable<ButtonGroupDir
       },
       div: {
         display: 'flex',
-        marginTop: `${spacingFluidSmall}`,
+        marginTop: spacingFluidSmall,
         gap: spacingFluidSmall,
         ...buildResponsiveStyles(direction, getDirectionJssStyle),
       },

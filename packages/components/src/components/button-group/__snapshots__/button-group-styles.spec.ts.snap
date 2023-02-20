@@ -28,6 +28,7 @@ div {
   margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
+  align-items: stretch;
 }"
 `;
 
@@ -48,6 +49,7 @@ div {
 @media(min-width:480px) {
   div {
     flex-flow: row wrap;
+    align-items: stretch;
   }
 }
 "
@@ -65,6 +67,7 @@ div {
   margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
+  align-items: stretch;
 }
 @media(min-width:480px) {
   div {
@@ -76,6 +79,7 @@ div {
 @media(min-width:760px) {
   div {
     flex-flow: row wrap;
+    align-items: stretch;
   }
 }
 
@@ -89,6 +93,7 @@ div {
 @media(min-width:1300px) {
   div {
     flex-flow: row wrap;
+    align-items: stretch;
   }
 }
 
