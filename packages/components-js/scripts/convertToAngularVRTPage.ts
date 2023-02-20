@@ -1,8 +1,8 @@
 import { pascalCase } from 'change-case';
 import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
-import { byAlphabet, iconsRegEx, templateRegEx } from './generateVRTPages';
+import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
 
-type Characteristics = {
+export type AngularCharacteristics = {
   usesOnInit: boolean;
   usesSetAllReady: boolean;
   usesComponentsReady: boolean;
@@ -18,12 +18,10 @@ export const convertToAngularVRTPage = (
   style: string,
   script: string,
   toastText: string,
-  characteristics: Characteristics
+  characteristics: AngularCharacteristics
 ): { fileName: string; fileContent: string } => {
   const { usesOnInit, usesSetAllReady, usesComponentsReady, usesToast, isIconPage, usesQuerySelector } =
     characteristics;
-
-  const comment = '/* Auto Generated File */';
 
   // imports
   const angularImports = [

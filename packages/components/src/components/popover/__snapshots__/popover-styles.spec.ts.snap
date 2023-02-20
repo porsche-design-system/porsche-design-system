@@ -42,7 +42,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1E5BEB;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -308,7 +308,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1E5BEB;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -574,7 +574,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1E5BEB;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -840,7 +840,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1E5BEB;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;

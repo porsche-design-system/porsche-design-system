@@ -8,7 +8,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -34,7 +34,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -76,7 +76,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -144,7 +144,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -170,7 +170,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -201,7 +201,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -285,7 +285,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -318,7 +318,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -383,7 +383,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -481,7 +481,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -514,7 +514,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -568,7 +568,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -655,7 +655,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -686,7 +686,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -740,7 +740,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -825,7 +825,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -856,7 +856,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -910,7 +910,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -968,7 +968,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -994,7 +994,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -1036,7 +1036,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -1104,7 +1104,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;
@@ -1130,7 +1130,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -1161,7 +1161,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(.25rem, 0.28vw + 0.19rem, .5rem) 0 0 !important;
+  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
 }
 button {
   display: flex;

@@ -136,8 +136,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 7384,
-    "gzipSize": 2915
+    "size": 7192,
+    "gzipSize": 2823
   },
   {
     "chunkShortName": "segmented-control",
