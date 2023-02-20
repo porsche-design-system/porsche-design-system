@@ -5,8 +5,8 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
-import type { MarqueSize } from './marque-sizes';
-import { MARQUE_SIZES } from './marque-sizes';
+import type { MarqueSize } from './marque-size';
+import { MARQUE_SIZES } from './marque-size';
 
 const propTypes: PropTypes<typeof Marque> = {
   trademark: AllowedTypes.boolean,

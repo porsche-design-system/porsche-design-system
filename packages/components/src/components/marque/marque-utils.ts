@@ -1,5 +1,5 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import type { MarqueSize } from './marque-sizes';
+import type { MarqueSize } from './marque-size';
 
 type MarqueManifest = typeof MARQUES_MANIFEST;
 export type InnerManifest = MarqueManifest['porscheMarque'];
