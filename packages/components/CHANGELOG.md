@@ -23,7 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Stepper Horizontal` matches new design language.
+- `Stepper Horizontal` and `Divider` matches new design language.
 - Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
 - Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
