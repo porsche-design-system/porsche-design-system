@@ -76,7 +76,7 @@ export const getComponentCss = (
         maxWidth: gridWidthMax,
         marginLeft: 'auto',
         marginRight: 'auto',
-        gap: spacingFluidMedium,
+        gap: spacingFluidMedium, // vertical spacing
         gridAutoFlow: 'row',
         ...hostHiddenStyles,
       }),
