@@ -51,11 +51,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default headline">
-          <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
+          <p-headline>Some Headline</p-headline>
         </div>
 
         <div class="playground light" title="should render default display">
-          <p-display>The quick brown fox jumps over the lazy dog</p-display>
+          <p-display>Some Display</p-display>
         </div>
 
         <div class="playground light" title="should render default banner">
@@ -308,11 +308,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default headline with custom prefix">
-          <my-prefix-p-headline p-headline>The quick brown fox jumps over the lazy dog</my-prefix-p-headline>
+          <my-prefix-p-headline p-headline>Some Headline</my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render default display with custom prefix">
-          <my-prefix-p-display p-display>The quick brown fox jumps over the lazy dog</my-prefix-p-display>
+          <my-prefix-p-display p-display>Some Display</my-prefix-p-display>
         </div>
 
         <div class="playground light" title="should render default banner with custom prefix">
