@@ -10,6 +10,8 @@ import {
   MARQUES_MANIFEST,
   META_ICONS_CDN_BASE_URL,
   META_ICONS_MANIFEST,
+  MODEL_SIGNATURES_MANIFEST,
+  MODEL_SIGNATURES_CDN_BASE_URL,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
@@ -158,7 +160,7 @@ describe('cdn', () => {
         })(item);
       }
 
-      it(`should have all ${items.length} ${baseUrl.substr(baseUrl.lastIndexOf('/') + 1)}`, () => {
+      it(`should have all ${items.length} ${baseUrl.substring(baseUrl.lastIndexOf('/') + 1)}`, () => {
         expect(responseCounter).toBe(items.length);
         responseCounter = 0; // reset for upcoming test
       });
@@ -193,6 +195,11 @@ describe('cdn', () => {
     describe('meta-icons', () => {
       const metaIcons = objectToFlatArray(META_ICONS_MANIFEST);
       bulkRequestItems(metaIcons, META_ICONS_CDN_BASE_URL);
+    });
+
+    describe('model-signatures', () => {
+      const modelSignatures = objectToFlatArray(MODEL_SIGNATURES_MANIFEST);
+      bulkRequestItems(modelSignatures, MODEL_SIGNATURES_CDN_BASE_URL);
     });
 
     describe('styles', () => {
