@@ -60,7 +60,7 @@ can be set on the host element.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { MARQUE_SIZES } from './marque-sizes';
+import { MARQUE_SIZES } from './marque-size';
 
 @Component
 export default class Code extends Vue {
