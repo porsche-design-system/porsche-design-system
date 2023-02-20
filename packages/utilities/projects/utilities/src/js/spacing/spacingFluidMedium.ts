@@ -1,1 +1,1 @@
-export const spacingFluidMedium = 'clamp(2rem, 0.56vw + 1.89rem, 2.5rem)';
+export const spacingFluidMedium = 'clamp(16px, 1.25vw + 12px, 36px)';

@@ -59,11 +59,11 @@ Change your App file to use at least one Porsche Design System component, for ex
 ```tsx
 // App.tsx
 
-import { PHeadline } from '@porsche-design-system/components-react';
+import { PHeading } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Element => (
   <div className="App">
-    <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
+    <PHeading>Welcome to React</PHeading>
   </div>
 );
 ```

@@ -32,7 +32,7 @@ describe('format: jsx', () => {
   it('should return links', () => {
     const { container } = render(getFontFaceStylesheet({ format: 'jsx' }));
     const regex = new RegExp(
-      `^<link rel="preconnect" href="${baseUrlCdnCom}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCdnCom}" crossorigin="true"><link rel="stylesheet" href="${hrefCom}" type="text/css" crossorigin="true">$`
+      `^<link rel="preconnect" href="${baseUrlCdnCom}" crossorigin=""><link rel="dns-prefetch" href="${baseUrlCdnCom}" crossorigin=""><link rel="stylesheet" href="${hrefCom}" type="text/css" crossorigin="">$`
     );
 
     expect(container.innerHTML).toMatch(regex);
@@ -41,7 +41,7 @@ describe('format: jsx', () => {
   it('should return links for china cdn', () => {
     const { container } = render(getFontFaceStylesheet({ cdn: 'cn', format: 'jsx' }));
     const regex = new RegExp(
-      `^<link rel="preconnect" href="${baseUrlCdnCn}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCdnCn}" crossorigin="true"><link rel="stylesheet" href="${hrefCn}" type="text/css" crossorigin="true">$`
+      `^<link rel="preconnect" href="${baseUrlCdnCn}" crossorigin=""><link rel="dns-prefetch" href="${baseUrlCdnCn}" crossorigin=""><link rel="stylesheet" href="${hrefCn}" type="text/css" crossorigin="">$`
     );
 
     expect(container.innerHTML).toMatch(regex);

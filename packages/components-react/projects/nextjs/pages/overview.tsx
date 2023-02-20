@@ -54,11 +54,11 @@ const OverviewPage: NextPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default headline">
-            <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+            <PHeadline>Some Headline</PHeadline>
           </div>
 
           <div className="playground light" title="should render default display">
-            <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
+            <PDisplay>Some Display</PDisplay>
           </div>
 
           <div className="playground light" title="should render default banner">
@@ -312,11 +312,11 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default headline with custom prefix">
-              <PHeadline>The quick brown fox jumps over the lazy dog</PHeadline>
+              <PHeadline>Some Headline</PHeadline>
             </div>
 
             <div className="playground light" title="should render default display with custom prefix">
-              <PDisplay>The quick brown fox jumps over the lazy dog</PDisplay>
+              <PDisplay>Some Display</PDisplay>
             </div>
 
             <div className="playground light" title="should render default banner with custom prefix">

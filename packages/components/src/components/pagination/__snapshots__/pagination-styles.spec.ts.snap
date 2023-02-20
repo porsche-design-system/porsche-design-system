@@ -47,7 +47,7 @@ span:not(.ellipsis):focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 span:focus:not(:focus-visible)::before {
@@ -173,7 +173,7 @@ span:not(.ellipsis):focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 span:focus:not(:focus-visible)::before {
@@ -371,7 +371,7 @@ span:not(.ellipsis):focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1E5BEB;
   border-radius: 8px;
 }
 span:focus:not(:focus-visible)::before {

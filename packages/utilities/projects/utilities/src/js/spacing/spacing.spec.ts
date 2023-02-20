@@ -1,7 +1,7 @@
 import * as fromSpacing from './';
 
 it('should provide all exports', () => {
-  expect(Object.keys(fromSpacing).length).toBe(14);
+  expect(Object.keys(fromSpacing).length).toBe(15);
 });
 
 it.each<keyof typeof fromSpacing>(Object.keys(fromSpacing) as (keyof typeof fromSpacing)[])(

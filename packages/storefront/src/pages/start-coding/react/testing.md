@@ -5,8 +5,8 @@
 ## Test the application
 
 **Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
-However, it doesn't support JavaScript modules as described in this [issue](https://github.com/jsdom/jsdom/issues/2475)
-.  
+However, it doesn't support JavaScript modules as described in this
+[issue](https://github.com/jsdom/jsdom/issues/2475).  
 Also, it doesn't support `CSSStyleSheet.replace()`, `Intersection Observer`, `Element.prototype.scrollTo` and others.
 
 As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react` package.
@@ -63,7 +63,8 @@ import userEvent from '@testing-library/user-event';
 
 test('renders Tabs Bar from Porsche Design System and uses its events', async () => {
   const { getByTestId } = render(
-    <PorscheDesignSystemProvider> {/* required for the component to work */}
+    <PorscheDesignSystemProvider>
+      {/* required for the component to work */}
       <SingleComponent />
     </PorscheDesignSystemProvider>
   );
@@ -229,10 +230,10 @@ As a solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
 import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
 
 it('should work for PAccordion', async () => {
-  render(<PAccordion heading="Headline">Content</PAccordion>);
+  render(<PAccordion heading="Heading">Content</PAccordion>);
   await componentsReady();
 
-  const el = getByTextShadowed('Headline');
+  const el = getByTextShadowed('Heading');
   expect(el).toBeInTheDocument();
   expect(el.tagName).toBe('BUTTON');
 });
