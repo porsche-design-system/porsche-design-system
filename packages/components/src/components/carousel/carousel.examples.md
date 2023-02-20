@@ -56,7 +56,11 @@ first/last slide.
 
 <Playground :markup="rewind" :config="config"></Playground>
 
-## Wrap Content
+## Wrap Content (deprecated)
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The wrap-content prop is deprecated and will be removed with next major release.
+</p-inline-notification>
 
 By default, the `p-carousel` takes up the available space which works for all scenarios where its parent has some
 padding, e.g., when used within `p-content-wrapper`.  
