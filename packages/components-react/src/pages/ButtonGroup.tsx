@@ -35,7 +35,7 @@ export const ButtonGroupPage = (): JSX.Element => {
           <PButtonPure>Some label</PButtonPure>
           <PButton>Some label</PButton>
           <PButton>Some label</PButton>
-          <PButton style={{ maxWidth: '150px' }} icon="arrow-right">Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+          <PButton style={{ maxWidth: '15rem' }} icon="arrow-right">Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
           <PButton>Some label</PButton>
           <PButton>Some label</PButton>
           <PButton icon="arrow-right">Some label</PButton>

@@ -35,7 +35,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-button-pure>Some label</p-button-pure>
         <p-button>Some label</p-button>
         <p-button>Some label</p-button>
-        <p-button style="max-width: 150px" [icon]="'arrow-right'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+        <p-button style="max-width: 15rem" [icon]="'arrow-right'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
         <p-button>Some label</p-button>
         <p-button>Some label</p-button>
         <p-button [icon]="'arrow-right'">Some label</p-button>
