@@ -24,14 +24,22 @@ You can change the Divider orientation by using different major breakpoints `xs`
 
 ## Colors
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+ Following colors have been deprecated and will be removed with the next major release:
+ "neutral-contrast-high", "neutral-contrast-medium" and "neutral-contrast-low".
+</p-inline-notification>
+
 Predefined colors associated with its theme are available.
 
 <Playground :markup="colors" :config="config">
   <select v-model="color" aria-label="Select color">
     <option disabled>Select color</option>
-    <option>neutral-contrast-low</option>
-    <option>neutral-contrast-medium</option>
-    <option>neutral-contrast-high</option>
+    <option>neutral-contrast-low (deprecated)</option>
+    <option>neutral-contrast-medium (deprecated)</option>
+    <option>neutral-contrast-high (deprecated</option>
+    <option>contrast-low</option>
+    <option>contrast-medium</option>
+    <option>contrast-high</option>
   </select>
 </Playground>
 
