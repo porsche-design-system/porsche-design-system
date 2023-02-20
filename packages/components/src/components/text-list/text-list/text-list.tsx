@@ -21,7 +21,7 @@ export class TextList {
   /** The type of the list. */
   @Prop() public listType?: ListType = 'unordered';
 
-  /** The list style type of ordered list. */
+  /** The list style type of ordered list. Only has effect when list type is set to 'ordered'. */
   @Prop() public orderType?: OrderType = 'numbered';
 
   /** Adapts the text color depending on the theme. */
