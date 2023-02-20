@@ -22,7 +22,7 @@ documentation about the new Design Tokens can be found here https://designsystem
 
 - `focus()` is now `getFocusStyles()`. The parameters have changed as the focus is now handled with `border` and rounded
   edges. You can choose `small` or `medium` for the `borderRadius`. `getFocusStyles()` also excepts an `theme` parameter
-  instead of `color`.
+  instead of a custom `color`, which determines the color of the focus.
 
 ```diff
 - import { focus } from '@porsche-design-system/utilities'
@@ -40,8 +40,8 @@ documentation about the new Design Tokens can be found here https://designsystem
 ```
 
 - `titleLarge` got renamed to `displayLargeStyle`. The size got adjusted. In addition, we also provide
-  `displayMediumStyle`. The new `display` styles differ also, that they are recursive and their size is fluid changing
-  depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+  `displayMediumStyle`. The new `display` styles differ also, that they are recursive and their size is changing linear
+  fluid depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
 
 ```diff
 - import { titleLarge } from '@porsche-design-system/utilities'
@@ -49,8 +49,8 @@ documentation about the new Design Tokens can be found here https://designsystem
 ```
 
 - `headline` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size got adjusted. Same as
-  in `display`, the size is now fluid depending on the viewport width instead of fixed predefined sizes on specific
-  breakpoints.
+  in `display`, the size is now changing linear fluid, depending on the viewport width instead of fixed predefined sizes
+  on specific breakpoints.
 
 ```diff
 - import { headline1, headline2, headline3, headline4, headline5 } from '@porsche-design-system/utilities'
@@ -58,20 +58,17 @@ documentation about the new Design Tokens can be found here https://designsystem
 ```
 
 - `text` got not only renamed but also the size got adjusted. Except `textSmallStyle` all text styles have fluid sizes
-  that change depending on the viewport width.
+  that change linear depending on the viewport width.
 
 ```diff
 - import { textXSmall, textSmall, textMedium, textLarge, textXLarge } from '@porsche-design-system/utilities'
-+ import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle, } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
 **Colors**
 
 As of v3 of the Porsche Design System the color theme got reworked completely to achieve a monochrome look. To get an
-overview ot the new colors have a look at https://designsystem.porsche.com/latest/styles/theme.
-
-As the design tokens for `themeLight` and `themeDark` are in sync, the name changes mentioned below concern both themes
-even if only light theme is displayed in the diff.
+overview of the new colors have a look at https://designsystem.porsche.com/latest/styles/theme.
 
 - `lightTheme` and `darkTheme` got renamed to `themeLight` and `themeDark`. In addition, you can also single import a
   theme if for e.g. you only need `lightTheme`.
@@ -80,6 +77,9 @@ even if only light theme is displayed in the diff.
 - import { color } from '@porsche-design-system/utilities';
 + import { theme, themeLight, themeDark } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
+
+As the design tokens for `themeLight` and `themeDark` are in sync, the name changes mentioned below concern both themes
+even if only light theme is displayed in the diff.
 
 - `brand` got renamed to `primary`.
 
@@ -108,7 +108,7 @@ even if only light theme is displayed in the diff.
 + themeLight.contrast.{low|medium|high}
 ```
 
-- `notification.neutral` and `notification.neutralSoft` are renamed to `notification.info` / `notification.infoSoft`.
+- `notification.neutral` and `notification.neutralSoft` are renamed to `notification.info` and `notification.infoSoft`.
 
 ```diff
 - color.lightTheme.notification.neutral
@@ -117,7 +117,7 @@ even if only light theme is displayed in the diff.
 - themeLight.notification.infoSoft
 ```
 
-- `state.focus` is changed from `currentColor` to a fixed color for depending on the theme.
+- `state.focus` is changed from `currentColor` to a fixed color, depending on the theme.
 
 **Font**
 
@@ -137,9 +137,10 @@ even if only light theme is displayed in the diff.
 
 **Spacings**
 
-As of v3 of the Porsche Design System the spacing concept has shifted to using fluid spacing or static spacing. Spacing
-values defined in `rem` are no longer available to avoid waisted space when fonts are scaled. Generally speaking you
-should always use the fluid spacings if possible and not leave the predefined spacing range.
+With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
+adjust in size based on a min and max value, providing a linear response to changes in browser width. Additionally,
+we've switched from using "rem" to "px" for our spacers to ensure they don't unnecessarily expand when the root font
+size is adjusted.
 
 To get an overview ot the new spacings have a look at https://designsystem.porsche.com/latest/styles/spacings.
 
@@ -151,8 +152,6 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 
 ##### SCSS
 
-// TODO: add banners to scss .md files on storefront
-
 ```diff
 - @import '~@porsche-design-system/utilities/scss';
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
@@ -162,7 +161,7 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 
 - `p-focus` mixin is now `pds-focus`. The parameters have changed as the focus is now handled with `border` and rounded
   edges. You can choose `small` or `medium` for the `border-radius`. `pds-focus` also excepts an `theme` parameter
-  instead of `color`.
+  instead of `color`, which determines the color of the focus.
 
 ```diff
 -  @include p-focus;
@@ -171,7 +170,8 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 
 - `breakpoint` `xxs` is now `base`. The values have not changed.
 - Instead of `p-media-query` we provide now `pds-media-query-min`, `pds-media-query-max` and `pds-media-query-min-max`.
-  Furthermore, the mixins accept the predefined PDS breakpoints from `base` to `xxl` and no custom breakpoints anymore.
+  Furthermore, the mixins only accept the predefined PDS breakpoints from `base` to `xxl` and no custom breakpoints
+  anymore.
 
 ```diff
 -  @include p-media-query($min, $max);
@@ -182,8 +182,8 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 ```
 
 - `p-title-large` mixin is now renamed to `pds-display-large`. The size got adjusted. In addition, we also provide
-  `pds-display-medium`. The new `display` mixin differ also, that they are recursive and their size is fluid changing
-  depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+  `pds-display-medium`. The new `display` mixin differ also, that they are recursive and their size is changing linear
+  fluid depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
 
 ```diff
 - @include p-title-large;
@@ -193,7 +193,7 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 ```
 
 - `p-headline-{1|2|3|4|5}` got renamed/extended to `pds-heading-{small|medium|large|x-large|xx-large|xxx-large}`. The
-  size got adjusted. Same as in `display`, the size is now fluid depending on the viewport width instead of fixed
+  size got adjusted. Same as in `display`, the size is now linear fluid depending on the viewport width instead of fixed
   predefined sizes on specific breakpoints.
 
 ```diff
@@ -212,8 +212,8 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 ```
 
 - `p-text-{x-small|small|medium|large|x-large}` got not only renamed to `pds-text-{x-small|small|medium|large|x-large}`
-  but also the size got adjusted. Except `pds-text-small` all text mixins have fluid sizes that change depending on the
-  viewport width.
+  but also the size got adjusted. Except `pds-text-small` all text mixins have fluid sizes that change linear depending
+  on the viewport width.
 
 ```diff
 - @include p-text-x-small;
@@ -234,6 +234,8 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 As of v3 of the Porsche Design System the color theme got reworked completely to achieve a monochrome look. To get an
 overview ot the new colors have a look at https://designsystem.porsche.com/latest/styles/theme.
 
+- `brand` got renamed to `primary`.
+
 ```diff
 - $p-color-brand;
 - $p-color-theme-light-brand;
@@ -241,10 +243,14 @@ overview ot the new colors have a look at https://designsystem.porsche.com/lates
 + $pds-theme-light-primary;
 ```
 
+- `default` is removed.
+
 ```diff
 - $p-color-default;
 - $p-color-theme-light-default;
 ```
+
+- `$p-color-theme-light-background` is renamed to `$pds-theme-light-background-base`.
 
 ```diff
 - $p-color-background-default;
@@ -264,17 +270,20 @@ overview ot the new colors have a look at https://designsystem.porsche.com/lates
 ```
 
 ```diff
-- $p-color-neutral-contrast-high
-- $p-color-theme-light-neutral-contrast-high
-- $p-color-neutral-contrast-medium
-- $p-color-theme-light-neutral-contrast-medium
 - $p-color-neutral-contrast-low
 - $p-color-theme-light-neutral-contrast-low
+- $p-color-neutral-contrast-medium
+- $p-color-theme-light-neutral-contrast-medium
+- $p-color-neutral-contrast-high
+- $p-color-theme-light-neutral-contrast-high
 
 + $pds-theme-light-contrast-low
 + $pds-theme-light-contrast-medium
 + $pds-theme-light-contrast-high
 ```
+
+- `$p-color-notification-neutral` and `$p-color-notification-neutral-soft` are renamed to
+  `$pds-theme-light-notification-info` and `$pds-theme-light-notification-info-soft`.
 
 ```diff
 - $p-color-notification-success
@@ -303,6 +312,8 @@ overview ot the new colors have a look at https://designsystem.porsche.com/lates
 + $pds-theme-light-notification-info
 + $pds-theme-light-notification-info-soft
 ```
+
+- `$pds-theme-light-state-focus` is now a fixed color depending on theme instead of `currentColor`.
 
 ```diff
 - $p-color-state-hover
@@ -396,9 +407,10 @@ overview ot the new colors have a look at https://designsystem.porsche.com/lates
 
 **Spacings**
 
-As of v3 of the Porsche Design System the spacing concept has shifted to using fluid spacing or static spacing. Spacing
-values defined in `rem` are no longer available to avoid waisted space when fonts are scaled. Generally speaking you
-should always use the fluid spacings if possible and not leave the predefined spacing range.
+With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
+adjust in size based on a min and max value, providing a linear response to changes in browser width. Additionally,
+we've switched from using "rem" to "px" for our spacers to ensure they don't unnecessarily expand when the root font
+size is adjusted.
 
 To get an overview ot the new spacings have a look at https://designsystem.porsche.com/latest/styles/spacings.
 
@@ -457,15 +469,13 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 **Font**
 
 - `fontWeight` thin is removed as of v3.
-- `fontSize` object is no longer provided as the font sizes are now fluid. You can use `fontLineHeight` design token and
-  on of the provided font sizes to recreate it.
+- `font` object is no longer provided as the font sizes are now fluid. You can use `fontLineHeight` design token and on
+  of the provided font sizes, e.g. `fontSizeTextSmall` to recreate it.
 
 ```diff
-- import { fontSize } from '@porsche-design-system/utilities';
-+ import { fontLineHeight, fontSizeMedium } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { font } from '@porsche-design-system/utilities';
++ import { fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
-
-// TODO: fontSize is missing
 
 ##### SCSS
 
