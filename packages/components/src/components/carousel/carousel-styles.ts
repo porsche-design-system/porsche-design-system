@@ -57,10 +57,13 @@ export const getComponentCss = (
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const isHeaderAlignLeft = alignHeader === 'left';
   const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
-
   const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
   const spacingLeftRightS = gridSpacing.s;
   const spacingLeftRightXXL = gridSpacing.xxl;
+  const isBasic = width === 'basic';
+  // offset of cutted slide in regard to header (nav)
+  const splideOffsetS = isBasic ? oneColumnWidthS : `calc(${oneColumnWidthS} * 2 + ${gridGap})`;
+  const splideOffsetXXL = isBasic ? oneColumnWidthXXL : `calc(${oneColumnWidthXXL} * 2 + ${gridGap})`;
 
   return getCss({
     '@global': {
@@ -106,11 +109,11 @@ export const getComponentCss = (
           padding: `0 calc(${spacingLeftRight} + ${gridGap}) 0 ${spacingLeftRight}`,
           ...(spacingLeftRightS && {
             [mediaQueryS]: {
-              padding: `0 calc(${spacingLeftRightS} + ${gridGap} + ${oneColumnWidthS}) 0 ${spacingLeftRightS}`,
+              padding: `0 calc(${spacingLeftRightS} + ${gridGap} + ${splideOffsetS}) 0 ${spacingLeftRightS}`,
             },
           }),
           [mediaQueryXXL]: {
-            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${oneColumnWidthXXL}) 0 ${spacingLeftRightXXL}`,
+            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${splideOffsetXXL}) 0 ${spacingLeftRightXXL}`,
           },
         }),
         '&--draggable': {
