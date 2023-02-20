@@ -24,6 +24,7 @@ import {
 import { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import {
   getSpacingForWidth,
+  oneColumnWidthBase,
   oneColumnWidthS,
   oneColumnWidthXXL,
 } from '../content-wrapper/content-wrapper-spacings-shared';
@@ -62,6 +63,7 @@ export const getComponentCss = (
   const spacingLeftRightXXL = gridSpacing.xxl;
   const isBasic = width === 'basic';
   // offset of cutted slide in regard to header (nav)
+  const splideOffset = oneColumnWidthBase;
   const splideOffsetS = isBasic ? oneColumnWidthS : `calc(${oneColumnWidthS} * 2 + ${gridGap})`;
   const splideOffsetXXL = isBasic ? oneColumnWidthXXL : `calc(${oneColumnWidthXXL} * 2 + ${gridGap})`;
 
@@ -106,12 +108,12 @@ export const getComponentCss = (
         // to override inline styles set by splide library
         ...addImportantToEachRule({
           // TODO: Define correct splide spacing for 'extended' width
-          padding: `0 calc(${spacingLeftRight} + ${gridGap}) 0 ${spacingLeftRight}`,
-          ...(spacingLeftRightS && {
-            [mediaQueryS]: {
-              padding: `0 calc(${spacingLeftRightS} + ${gridGap} + ${splideOffsetS}) 0 ${spacingLeftRightS}`,
-            },
-          }),
+          padding: `0 calc(${spacingLeftRight} + ${gridGap} + ${splideOffset}) 0 ${spacingLeftRight}`,
+          [mediaQueryS]: {
+            padding: `0 calc(${spacingLeftRightS || spacingLeftRight} + ${gridGap} + ${splideOffsetS}) 0 ${
+              spacingLeftRightS || spacingLeftRight
+            }`,
+          },
           [mediaQueryXXL]: {
             padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${splideOffsetXXL}) 0 ${spacingLeftRightXXL}`,
           },
