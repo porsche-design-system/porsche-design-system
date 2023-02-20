@@ -1,6 +1,5 @@
 import {
   pxToRemWithUnit,
-  getInsetJssStyle,
   getTransition,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
@@ -73,8 +72,8 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
+        height: 'fit-content',
         ...addImportantToEachRule({
-          height: 'fit-content',
           ...hostHiddenStyles,
         }),
       },
@@ -85,7 +84,7 @@ export const getComponentCss = (
         },
         '::slotted(picture)': {
           position: 'absolute',
-          ...getInsetJssStyle(),
+          inset: 0,
         },
         '::slotted(img)': {
           height: '100%',
@@ -105,9 +104,11 @@ export const getComponentCss = (
       },
     },
     root: {
+      display: 'block',
       height: 0,
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
+      borderRadius: borderRadiusMedium,
       ...hoverMediaQuery({
         '&:hover': {
           '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
@@ -123,7 +124,7 @@ export const getComponentCss = (
       position: 'absolute',
       overflow: 'hidden',
       borderRadius: borderRadiusMedium,
-      ...getInsetJssStyle(),
+      inset: 0,
     },
     content: {
       position: 'absolute',
@@ -163,14 +164,9 @@ export const getComponentCss = (
       minHeight: '54px', // prevent content shift
       ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
     },
-
-    // Due to position absolut on .content, position fixed is used to expand the clickable area of the anchor onto the whole link-tile
-    anchor: {
-      '&::after': {
-        content: '""',
-        position: 'fixed',
-        ...getInsetJssStyle(),
-      },
+    'link-overlay': {
+      position: 'fixed',
+      inset: 0,
     },
   });
 };
