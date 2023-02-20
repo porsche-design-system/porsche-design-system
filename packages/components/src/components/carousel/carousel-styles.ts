@@ -58,15 +58,16 @@ export const getComponentCss = (
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const isHeaderAlignLeft = alignHeader === 'left';
   const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
+  // get standard spacings for the width - distance from carousel to the left and right borders of the parent
   const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
   const spacingLeftRightS = gridSpacing.s;
-  const spacingLeftRightSWithFallback = spacingLeftRightS || spacingLeftRight;
+  const spacingLeftRightSWithFallback = spacingLeftRightS || spacingLeftRight; // in a case "spacingLeftRightS" is undefined (for example for "extended") - use fallback "spacingLeftRight"
   const spacingLeftRightXXL = gridSpacing.xxl;
   const isBasic = width === 'basic';
   // offset of cutted slide in regard to header (nav)
-  const splideOffset = oneColumnWidthBase; // for smaller screens it's the width of one column, for both "extended" and "basic" width
-  const splideOffsetS = isBasic ? oneColumnWidthS : `calc(${oneColumnWidthS} * 2 + ${gridGap})`;
-  const splideOffsetXXL = isBasic ? oneColumnWidthXXL : `calc(${oneColumnWidthXXL} * 2 + ${gridGap})`;
+  const cuttedSlideOffset = oneColumnWidthBase; // for smaller screens it's the width of one column, for both "extended" and "basic" width
+  const cuttedSlideOffsetS = isBasic ? oneColumnWidthS : `calc(${oneColumnWidthS} * 2 + ${gridGap})`; // for "extended" it's 2 column widths with a gap between, and for "basic" it's just one column width
+  const cuttedSlideOffsetXXL = isBasic ? oneColumnWidthXXL : `calc(${oneColumnWidthXXL} * 2 + ${gridGap})`;
 
   return getCss({
     '@global': {
@@ -108,12 +109,13 @@ export const getComponentCss = (
         cursor: 'grab',
         // to override inline styles set by splide library
         ...addImportantToEachRule({
-          padding: `0 calc(${spacingLeftRight} + ${gridGap} + ${splideOffset}) 0 ${spacingLeftRight}`,
+          // since we have "cutted slide" on the right side, padding right should include also "cuttedSlideOffset" and "gridGap" (distance between slides)
+          padding: `0 calc(${spacingLeftRight} + ${gridGap} + ${cuttedSlideOffset}) 0 ${spacingLeftRight}`,
           [mediaQueryS]: {
-            padding: `0 calc(${spacingLeftRightSWithFallback} + ${gridGap} + ${splideOffsetS}) 0 ${spacingLeftRightSWithFallback}`,
+            padding: `0 calc(${spacingLeftRightSWithFallback} + ${gridGap} + ${cuttedSlideOffsetS}) 0 ${spacingLeftRightSWithFallback}`,
           },
           [mediaQueryXXL]: {
-            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${splideOffsetXXL}) 0 ${spacingLeftRightXXL}`,
+            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${cuttedSlideOffsetXXL}) 0 ${spacingLeftRightXXL}`,
           },
         }),
         '&--draggable': {
