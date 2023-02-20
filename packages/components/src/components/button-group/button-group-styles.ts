@@ -10,11 +10,11 @@ const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirecti
   const style: Record<ButtonGroupDirection, JssStyle> = {
     column: {
       flexFlow: 'column nowrap',
-      alignItems: 'center',
+      alignItems: 'stretch',
     },
     row: {
       flexFlow: 'row wrap',
-      alignItems: 'stretch',
+      alignItems: 'center',
     },
   };
   return style[direction];
