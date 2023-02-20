@@ -78,7 +78,8 @@ export class Carousel {
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
 
-  /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
+  /** @deprecated
+   * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
   @Prop() public wrapContent?: boolean;
 
   /** Defines the outer spacings between the carousel and the left and right screen sides. */
