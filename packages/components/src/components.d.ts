@@ -1210,7 +1210,7 @@ export namespace Components {
          */
         "listType"?: ListType;
         /**
-          * The list style type of ordered list.
+          * The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
         "orderType"?: OrderType;
         /**
@@ -2943,7 +2943,7 @@ declare namespace LocalJSX {
          */
         "listType"?: ListType;
         /**
-          * The list style type of ordered list.
+          * The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
         "orderType"?: OrderType;
         /**
