@@ -60,10 +60,11 @@ export const getComponentCss = (
   const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
   const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
   const spacingLeftRightS = gridSpacing.s;
+  const spacingLeftRightSWithFallback = spacingLeftRightS || spacingLeftRight;
   const spacingLeftRightXXL = gridSpacing.xxl;
   const isBasic = width === 'basic';
   // offset of cutted slide in regard to header (nav)
-  const splideOffset = oneColumnWidthBase;
+  const splideOffset = oneColumnWidthBase; // for smaller screens it's the width of one column, for both "extended" and "basic" width
   const splideOffsetS = isBasic ? oneColumnWidthS : `calc(${oneColumnWidthS} * 2 + ${gridGap})`;
   const splideOffsetXXL = isBasic ? oneColumnWidthXXL : `calc(${oneColumnWidthXXL} * 2 + ${gridGap})`;
 
@@ -107,12 +108,9 @@ export const getComponentCss = (
         cursor: 'grab',
         // to override inline styles set by splide library
         ...addImportantToEachRule({
-          // TODO: Define correct splide spacing for 'extended' width
           padding: `0 calc(${spacingLeftRight} + ${gridGap} + ${splideOffset}) 0 ${spacingLeftRight}`,
           [mediaQueryS]: {
-            padding: `0 calc(${spacingLeftRightS || spacingLeftRight} + ${gridGap} + ${splideOffsetS}) 0 ${
-              spacingLeftRightS || spacingLeftRight
-            }`,
+            padding: `0 calc(${spacingLeftRightSWithFallback} + ${gridGap} + ${splideOffsetS}) 0 ${spacingLeftRightSWithFallback}`,
           },
           [mediaQueryXXL]: {
             padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${splideOffsetXXL}) 0 ${spacingLeftRightXXL}`,
@@ -163,7 +161,7 @@ export const getComponentCss = (
           : {
               gridTemplateColumns: 'minmax(0px, 1fr) 0', // first column should take the whole width
               columnGap: 0, // there shouldn't be a gap, because we have only one column
-              padding: `0 calc(${spacingLeftRightS || spacingLeftRight} + ${headerAlignCenterSpacing})`, // set padding, so that description & heading do not overlap with nav buttons
+              padding: `0 calc(${spacingLeftRightSWithFallback} + ${headerAlignCenterSpacing})`, // set padding, so that description & heading do not overlap with nav buttons
             }),
         position: 'relative',
         minHeight: navBtnSize, // for a case there's no description and no heading - it should be equal to actual height of prev/next buttons
@@ -185,7 +183,7 @@ export const getComponentCss = (
         gridAutoFlow: 'column',
         gap: navGap,
         position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: spacingLeftRightS || spacingLeftRight,
+        right: spacingLeftRightSWithFallback,
         bottom: 0,
         padding: `0 ${navOffset} ${navOffset} 0`, // make offset to the right and the bottom side, so that it's aligned to right & bottom in hover state
       },
