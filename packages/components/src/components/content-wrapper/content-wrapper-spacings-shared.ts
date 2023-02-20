@@ -1,6 +1,7 @@
 import type { ContentWrapperWidth } from './content-wrapper-utils';
 import { gridGap, gridSafeZoneBase, gridSafeZoneXXL, gridWidthMax } from '@porsche-design-system/utilities-v2';
 
+export const oneColumnWidthBase = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 5) / 6)`;
 export const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
 export const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
 export const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
