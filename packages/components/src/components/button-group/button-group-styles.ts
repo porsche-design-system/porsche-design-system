@@ -29,7 +29,6 @@ export const getComponentCss = (direction: BreakpointCustomizable<ButtonGroupDir
       },
       div: {
         display: 'flex',
-        marginTop: spacingFluidSmall,
         gap: spacingFluidSmall,
         ...buildResponsiveStyles(direction, getDirectionJssStyle),
       },

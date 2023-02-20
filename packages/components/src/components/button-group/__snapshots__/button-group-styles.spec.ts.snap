@@ -9,7 +9,6 @@ exports[`getComponentCss() should return correct css for direction: "column" 1`]
 }
 div {
   display: flex;
-  margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: center;
@@ -25,7 +24,6 @@ exports[`getComponentCss() should return correct css for direction: "row" 1`] = 
 }
 div {
   display: flex;
-  margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: stretch;
@@ -41,7 +39,6 @@ exports[`getComponentCss() should return correct css for direction: {"base":"col
 }
 div {
   display: flex;
-  margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: center;
@@ -64,7 +61,6 @@ exports[`getComponentCss() should return correct css for direction: {"base":"row
 }
 div {
   display: flex;
-  margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: stretch;
