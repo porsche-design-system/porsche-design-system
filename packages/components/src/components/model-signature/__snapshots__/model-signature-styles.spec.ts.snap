@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: i
 }
 img {
   display: block;
+  pointer-events: none;
   height: inherit;
 }"
 `;
@@ -22,6 +23,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: i
 }
 img {
   display: block;
+  pointer-events: none;
   height: inherit;
 }"
 `;
@@ -35,6 +37,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: p
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   height: inherit;
 }"
@@ -49,6 +52,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: p
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   height: inherit;
 }"
@@ -63,6 +67,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(68%) sepia(6%) saturate(108%) hue-rotate(187deg) brightness(104%) contrast(88%);
 }"
 `;
@@ -76,6 +81,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(40%) sepia(2%) saturate(686%) hue-rotate(187deg) brightness(80%) contrast(94%);
 }"
 `;
@@ -89,6 +95,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(20%) sepia(7%) saturate(421%) hue-rotate(202deg) brightness(97%) contrast(82%);
 }"
 `;
@@ -102,6 +109,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(93%) sepia(11%) saturate(36%) hue-rotate(201deg) brightness(89%) contrast(102%);
 }"
 `;
@@ -115,6 +123,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(54%) sepia(4%) saturate(229%) hue-rotate(187deg) brightness(91%) contrast(84%);
 }"
 `;
@@ -128,6 +137,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
 }"
 `;
@@ -141,6 +151,7 @@ exports[`getComponentCss() should return correct css for size: small, color: inh
 }
 img {
   display: block;
+  pointer-events: none;
 }"
 `;
 
@@ -153,6 +164,7 @@ exports[`getComponentCss() should return correct css for size: small, color: inh
 }
 img {
   display: block;
+  pointer-events: none;
 }"
 `;
 
@@ -165,6 +177,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
 }"
 `;
@@ -178,6 +191,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
 }
 img {
   display: block;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
 }"
 `;

@@ -44,6 +44,7 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
       },
       img: {
         display: 'block',
+        pointerEvents: 'none', // prevents image drag
         ...(!isColorInherit && { filter: colorToFilterMap[theme][color] }),
         ...(isSizeInherit && { height: size }),
       },
