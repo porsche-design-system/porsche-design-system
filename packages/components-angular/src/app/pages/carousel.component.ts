@@ -12,9 +12,34 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         background: #00b0f4;
         height: 100px;
       }
+      .playground {
+        padding: 1rem 0;
+      }
+      .visualize-grid {
+        z-index: 9999999;
+      }
     `,
   ],
   template: `
+    <div class="visualize-grid">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <div class="playground light" title="should render carousel on light background">
       <p-carousel [heading]="'Heading'">
         <div>Slide 1</div>
@@ -133,12 +158,33 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
+    <div class="playground light" title="should render carousel with width=extended and description on light background">
+      <p-carousel [heading]="'Extended width heading'" [description]="'Description'" [width]="'extended'">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
     <div
       class="playground light"
       title="should render carousel with wrapped slotted heading and slotted description on light background"
     >
       <p-carousel [wrapContent]="true">
         <h2 slot="heading">Wrapped content slotted heading</h2>
+        <p slot="description">Description</p>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with width=extended, slotted heading and slotted description on light background"
+    >
+      <p-carousel [width]="'extended'">
+        <h2 slot="heading">Extended width slotted heading</h2>
         <p slot="description">Description</p>
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -158,11 +204,40 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
+      title="should render carousel with width=extended and multiline heading on light background"
+    >
+      <p-carousel
+        [heading]="'Extended width. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+        [width]="'extended'"
+      >
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
       title="should render carousel with multiline heading and multiline description on light background"
     >
       <p-carousel
         [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
         [description]="'Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+      >
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with width=extended multiline heading and multiline description on light background"
+    >
+      <p-carousel
+        [heading]="'Extended width. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+        [description]="'Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+        [width]="'extended'"
       >
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -286,6 +361,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
+      title="should render carousel with align-header=center and width=extended on light background"
+    >
+      <p-carousel
+        [heading]="'Aligned header with extended width'"
+        [alignHeader]="'center'"
+        [description]="'Description'"
+        [width]="'extended'"
+      >
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
       title="should render carousel with align-header=center and multiline heading on light background"
     >
       <p-carousel
@@ -332,6 +423,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
+      title="should render carousel with align-header=center, width=extended and multiline heading on light background"
+    >
+      <p-carousel
+        [heading]="'Aligned header, extended width, multiline heading. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+        [alignHeader]="'center'"
+        [description]="'Description'"
+        [width]="'extended'"
+      >
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
       title="should render carousel with align-header=center, wrap-content=true, multiline heading and multiline description on light background"
     >
       <p-carousel
@@ -339,6 +446,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [alignHeader]="'center'"
         [wrapContent]="true"
         [description]="'Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+      >
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with align-header=center, width=extended, multiline heading and multiline description on light background"
+    >
+      <p-carousel
+        [heading]="'Aligned header, extended width, multiline heading, multiline description. Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+        [alignHeader]="'center'"
+        [description]="'Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+        [width]="'extended'"
       >
         <div>Slide 1</div>
         <div>Slide 2</div>
