@@ -53,8 +53,8 @@ documentation about the new Design Tokens can be found here https://designsystem
   on specific breakpoints.
 
 ```diff
-- import { headline1, headline2, headline3, headline4, headline5 } from '@porsche-design-system/utilities'
-+ import { headingSmallStyle, headingMediumStyle, headingLargeStyle, headingXLargeStyle, headingXXLargeStyle, headingXXXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { headline{1|2|3|4|5} } from '@porsche-design-system/utilities'
++ import { heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
 - `text` got not only renamed but also the size got adjusted. Except `textSmallStyle` all text styles have fluid sizes
