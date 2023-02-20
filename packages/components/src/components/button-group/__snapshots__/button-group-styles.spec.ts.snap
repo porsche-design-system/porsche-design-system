@@ -12,6 +12,7 @@ div {
   margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
+  align-items: center;
 }"
 `;
 
@@ -42,6 +43,7 @@ div {
   margin-top: clamp(8px, 0.5vw + 6px, 16px);
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
+  align-items: center;
 }
 @media(min-width:480px) {
   div {
@@ -67,6 +69,7 @@ div {
 @media(min-width:480px) {
   div {
     flex-flow: column nowrap;
+    align-items: center;
   }
 }
 
@@ -79,6 +82,7 @@ div {
 @media(min-width:1000px) {
   div {
     flex-flow: column nowrap;
+    align-items: center;
   }
 }
 
@@ -91,6 +95,7 @@ div {
 @media(min-width:1760px) {
   div {
     flex-flow: column nowrap;
+    align-items: center;
   }
 }
 "
