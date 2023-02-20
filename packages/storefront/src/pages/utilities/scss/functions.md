@@ -4,6 +4,11 @@
 
 ## Media Query
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>p-media-query()</code> is <strong>deprecated</strong>.<br>
+  ook into <a href="/styles/media-query">media query</a> for a replacement.
+</p-inline-notification>
+
 Predefined breakpoints can easily be used as in the following examples.
 
 Available breakpoints:  
@@ -54,6 +59,11 @@ div {
 ---
 
 ## Typography
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>Typography</code> styles are <strong>deprecated</strong>.<br>
+  Use the style variables provided at <a href="/styles/typography">typography</a> instead.
+</p-inline-notification>
 
 **Note:** For font-styling it's recommended to use the
 [`<p-heading>`](components/typography/heading)/[`<p-text>`](components/typography/text) components.
@@ -151,6 +161,11 @@ h1 {
 ## State
 
 ### Focus
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>p-focus()</code> mixin is <strong>deprecated</strong>.<br>
+  Use <a href="/styles/focus">pds-focus()</a> instead.
+</p-inline-notification>
 
 The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by
 accessibility guidelines and law. The provided SCSS mixin ensures focus is shown by keyboard navigation only.

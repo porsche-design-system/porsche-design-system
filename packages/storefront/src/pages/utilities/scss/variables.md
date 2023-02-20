@@ -4,6 +4,11 @@
 
 ## Color
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>Color</code> is <strong>deprecated</strong> and the values have <strong>changed</strong>.<br>
+  Please use the provided <code>colors</code> at <a href="/styles/theme">theme</a>.
+</p-inline-notification>
+
 A light and dark theme is available depending on which background it's used.
 
 <br>
@@ -95,6 +100,11 @@ A light and dark theme is available depending on which background it's used.
 
 ## Spacing
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>Spacing</code> is <strong>deprecated</strong>.<br>
+  Please use the provided <code>spacings</code> at <a href="/styles/spacing">spacing</a>.
+</p-inline-notification>
+
 Given values are:  
 `4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
@@ -125,6 +135,11 @@ For font styling it's recommended to use the
 
 ### Family
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>Font Family</code> is <strong>deprecated</strong>.<br>
+  Please use the provided <code>$pds-font-family</code> variable provided at <a href="/styles/typography">typography</a>.
+</p-inline-notification>
+
 Contains Porsche Next and predefined fallback fonts:
 
 ```scss
@@ -132,6 +147,11 @@ $p-font-family
 ```
 
 ### Weight
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>Font Weight</code> is <strong>deprecated</strong>.<br>
+  Please use the provided <code>$pds-font-weight-{regular|bold}</code> variable provided at <a href="/styles/typography">typography</a>.
+</p-inline-notification>
 
 Given values are:  
 `thin | regular | semibold | bold`
@@ -143,6 +163,11 @@ $p-font-weight-{v};
 ```
 
 ### Size
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>$p-font-size-{v}</code> is <strong>deprecated</strong>.<br>
+  To recreate the result, use the provided <code>$pds-font-line-height</code> variable and one of the <code>font sizes</code>  provided at <a href="/styles/typography">typography</a>.
+</p-inline-notification>
 
 #### Font scaling system
 
