@@ -1,16 +1,20 @@
 import type { Theme } from '../../types';
 import type { ThemedColors } from '../../styles'; // deep import needed since barrel contains MutationObserver and causes VRT to fail because of TAG_COLORS import
-import { TAG_DISMISSIBLE_COLORS } from '../tag-dismissible/tag-dismissible-utils';
+import { TAG_DISMISSIBLE_COLORS, TAG_DISMISSIBLE_COLORS_DEPRECATED } from '../tag-dismissible/tag-dismissible-utils';
 import { isThemeDark } from '../../utils';
 
 export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
   return ['neutral-contrast-high', 'primary'].includes(color) ? (isThemeDark(theme) ? 'light' : 'dark') : theme;
 };
 
+/** @deprecated */
 export const TAG_COLORS_DEPRECATED = [
   'neutral-contrast-high', // 'notification-contrast-high' is deprecated (replaced with 'primary')
   'notification-neutral', // 'notification-neutral' is deprecated (replaced with 'notification-info')
+  ...TAG_DISMISSIBLE_COLORS_DEPRECATED,
 ] as const;
+/** @deprecated */
+export type TagColorDeprecated = typeof TAG_COLORS_DEPRECATED[number];
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
   'primary',
