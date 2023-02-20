@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: list-item !important;
+  position: relative !important;
   font: inherit !important;
   color: inherit !important;
   list-style-type: inherit !important;
@@ -10,5 +11,8 @@ exports[`getComponentCss() should return correct css 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(*) {
+  --p-internal-text-list-pseudo-suffix: "";
 }"
 `;
