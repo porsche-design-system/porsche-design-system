@@ -40,6 +40,6 @@ export class ModelSignature {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.color, this.theme);
 
-    return <img src={getSvgUrl(this.model)} height={36} alt={`${this.model} model signature`} />;
+    return <img src={getSvgUrl(this.model)} height={36} alt={this.model} />;
   }
 }
