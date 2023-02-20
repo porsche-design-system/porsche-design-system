@@ -37,12 +37,7 @@ import {
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import type { ButtonPure } from '../button-pure/button-pure';
-import {
-  gridGap,
-  spacingFluidLarge,
-  spacingStaticLarge,
-  spacingStaticMedium,
-} from '@porsche-design-system/utilities-v2';
+import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
