@@ -77,6 +77,20 @@ If you want to place any additional elements between heading and slider, you can
 <Playground :markup="postHeading" :config="config"></Playground>
 -->
 
+## Width
+
+Left and right outer spacings can be defined via `width`.
+
+<Playground :markup="width" :config="config">
+  <label>
+    <select v-model="widthModel" aria-label="Select width mode">
+      <option disabled>Select width mode</option>
+      <option value="basic">basic</option>
+      <option value="extended">extended</option>
+    </select>
+  </label>
+</Playground>
+
 ## Disable Pagination
 
 The pagination indicators underneath the slides can be removed via `disablePagination`. Also, on a per-breakpoint basis.
@@ -227,7 +241,14 @@ export default class Code extends Vue {
     return `<p-carousel align-header="${this.alignHeaderModel}" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
 </p-carousel>`;
-  }
+}
+
+  widthModel = 'basic';
+  get width() {
+    return `<p-carousel width="${this.widthModel}" heading="${this.basicHeading}" description="${this.basicDescription}">
+  ${this.getSlides(3)}
+</p-carousel>`;
+}
 
   focusBehavior = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)
