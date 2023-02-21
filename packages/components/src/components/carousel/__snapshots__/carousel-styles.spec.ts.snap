@@ -34,7 +34,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -70,6 +70,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -95,7 +96,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
@@ -117,7 +118,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
@@ -163,7 +164,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -199,6 +200,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -224,7 +226,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
@@ -246,7 +248,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
@@ -290,7 +292,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -326,6 +328,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -351,7 +354,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
@@ -373,7 +376,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
@@ -417,7 +420,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -453,6 +456,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -478,7 +482,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
@@ -500,7 +504,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
@@ -546,7 +550,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -582,6 +586,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -591,7 +596,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
@@ -613,7 +618,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
@@ -657,7 +662,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -693,6 +698,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -702,7 +708,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
@@ -724,7 +730,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
   }
   .header {
     padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
@@ -770,7 +776,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -806,6 +812,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -837,7 +844,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
@@ -880,7 +887,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
   }
   .header {
     padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
@@ -924,7 +931,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -960,6 +967,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -991,7 +999,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
@@ -1033,7 +1041,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
   }
   .header {
     padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
@@ -1079,7 +1087,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -1115,6 +1123,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -1140,7 +1149,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
@@ -1162,7 +1171,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
   }
   .header {
     padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
@@ -1206,7 +1215,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -1242,6 +1251,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -1267,7 +1277,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
@@ -1288,7 +1298,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
   }
   .header {
     padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
@@ -1334,7 +1344,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -1370,6 +1380,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -1379,7 +1390,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) 0;
@@ -1401,7 +1412,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
   }
   .header {
     padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px) + 16px);
@@ -1445,7 +1456,7 @@ p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
 }
 .splide__list {
   display: flex;
@@ -1481,6 +1492,7 @@ p,::slotted([slot=description]) {
   row-gap: clamp(4px, 0.25vw + 3px, 8px);
   padding: 0 clamp(22px, 10.625vw - 12px, 192px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  min-width: 200px;
 }
 .nav {
   display: none;
@@ -1490,7 +1502,7 @@ p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+    padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   }
   .header {
     grid-template-columns: minmax(0px, 1fr) calc((calc(calc(6px + 2.125ex) + 8px * 2)) * 2 + 4px + 2px);
@@ -1511,7 +1523,7 @@ p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .splide__track {
-    padding: 0 calc(calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) + clamp(16px, 1.25vw + 12px, 36px) + calc(calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 2 + clamp(16px, 1.25vw + 12px, 36px))) 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
   }
   .header {
     padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
