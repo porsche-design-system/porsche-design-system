@@ -5,6 +5,7 @@ import {
   getBackfaceVisibilityJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
+  getInsetJssStyle,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
@@ -84,7 +85,7 @@ export const getComponentCss = (
         },
         '::slotted(picture)': {
           position: 'absolute',
-          inset: 0,
+          ...getInsetJssStyle(0),
         },
         '::slotted(img)': {
           height: '100%',
@@ -124,7 +125,7 @@ export const getComponentCss = (
       position: 'absolute',
       overflow: 'hidden',
       borderRadius: borderRadiusMedium,
-      inset: 0,
+      ...getInsetJssStyle(0),
     },
     content: {
       position: 'absolute',
@@ -166,7 +167,7 @@ export const getComponentCss = (
     },
     'link-overlay': {
       position: 'fixed',
-      inset: 0,
+      ...getInsetJssStyle(0),
     },
   });
 };
