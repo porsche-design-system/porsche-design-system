@@ -12,7 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 This package is **deprecated** and will no longer be maintained. All `Porsche Design System` utilities are now provided
 at`@porsche-design-system/components-{js|angular|react|vue}/styles` in from of styles and Design Tokens. To make the
 migration easier, we offer an overview of the old deprecated values in reference to the new design tokens. Further
-documentation about the new Design Tokens can be found here https://designsystem.porsche.com/latest/styles/introduction
+documentation about the new Design Tokens can be found here
+[Introduction](https://designsystem.porsche.com/latest/styles/introduction).
 
 #### Changed
 
@@ -68,7 +69,7 @@ documentation about the new Design Tokens can be found here https://designsystem
 **Colors**
 
 As of v3 of the Porsche Design System the color theme got reworked completely to achieve a monochrome look. To get an
-overview of the new colors have a look at https://designsystem.porsche.com/latest/styles/theme.
+overview of the new colors have a look at [Theme](https://designsystem.porsche.com/latest/styles/theme).
 
 - `lightTheme` and `darkTheme` got renamed to `themeLight` and `themeDark`. In addition, you can also single import a
   theme if for e.g. you only need `lightTheme`.
@@ -139,10 +140,10 @@ even if only light theme is displayed in the diff.
 
 With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
 adjust in size based on a min and max value, providing a linear response to changes in browser width. Additionally,
-we've switched from using "rem" to "px" for our spacers to ensure they don't unnecessarily expand when the root font
+we've switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font
 size is adjusted.
 
-To get an overview ot the new spacings have a look at https://designsystem.porsche.com/latest/styles/spacings.
+To get an overview ot the new spacings have a look at [Spacing](https://designsystem.porsche.com/latest/styles/spacing).
 
 ```diff
 - import { spacing } from '@porsche-design-system/utilities';
@@ -232,7 +233,7 @@ To get an overview ot the new spacings have a look at https://designsystem.porsc
 **Colors**
 
 As of v3 of the Porsche Design System the color theme got reworked completely to achieve a monochrome look. To get an
-overview ot the new colors have a look at https://designsystem.porsche.com/latest/styles/theme.
+overview ot the new colors have a look at [Theme](https://designsystem.porsche.com/latest/styles/theme).
 
 - `brand` got renamed to `primary`.
 
@@ -385,6 +386,7 @@ overview ot the new colors have a look at https://designsystem.porsche.com/lates
 - $p-font-weight-regular
 - $p-font-weight-semibold
 - $p-font-weight-bold
+
 + $pds-font-weight-regular
 + $pds-font-weight-semi-bold
 + $pds-font-weight-bold
@@ -397,7 +399,6 @@ overview ot the new colors have a look at https://designsystem.porsche.com/lates
 - $p-font-size-large
 - $p-font-size-x-large
 
-
 + $pds-font-size-text-x-small
 + $pds-font-size-text-small
 + $pds-font-size-text-medium
@@ -409,10 +410,10 @@ overview ot the new colors have a look at https://designsystem.porsche.com/lates
 
 With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
 adjust in size based on a min and max value, providing a linear response to changes in browser width. Additionally,
-we've switched from using "rem" to "px" for our spacers to ensure they don't unnecessarily expand when the root font
+we've switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font
 size is adjusted.
 
-To get an overview ot the new spacings have a look at https://designsystem.porsche.com/latest/styles/spacings.
+To get an overview ot the new spacings have a look at [Spacing](https://designsystem.porsche.com/latest/styles/spacing).
 
 ```diff
 - $p-spacing-4
