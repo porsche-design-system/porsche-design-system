@@ -47,15 +47,3 @@ describe('format: jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 });
-
-describe('withoutTags: true', () => {
-  it('should return only url', () => {
-    const result = getFontFaceStylesheet({ withoutTags: true });
-    expect(result).toMatch(new RegExp(hrefCom));
-  });
-
-  it('should return only url for china cdn', () => {
-    const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'cn' });
-    expect(result).toMatch(new RegExp(hrefCn));
-  });
-});
