@@ -35,15 +35,8 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 
 The background and gradient has to align with your chosen background.
 
-<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <label>
-    <p-text :theme="theme">Select color scheme:</p-text>
-    <select v-model="gradientColorScheme" aria-label="Select color scheme">
-      <option disabled>Select gradient-color-scheme</option>
-      <option value="default">Default</option>
-      <option value="surface">Surface</option>
-    </select>
-  </label>
+<Playground :markup="gradientColorSchemeMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
+  <SelectOptions v-model="gradientColorScheme" :values="gradientColorSchemes" name="gradientColorScheme"></SelectOptions>
 </Playground>
 
 ## Scroll to position
@@ -73,6 +66,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getScrollerCodeSamples } from '@porsche-design-system/shared';
 import type { Theme } from '@/models';
+import { GRADIENT_COLOR_THEMES } from './scroller-utils'; 
   
 @Component
 export default class Code extends Vue {
@@ -82,10 +76,8 @@ export default class Code extends Vue {
     return this.$store.getters.theme;
   }
 
-  gradientColorScheme = 'surface';
   scrollIndicatorPosition = 'top';
-
-  scrollToPosition = '{scrollPosition: 220}';
+  scrollToPosition = '{ scrollPosition: 220 }';
 
   codeExample = getScrollerCodeSamples();
 
@@ -141,7 +133,9 @@ export default class Code extends Vue {
   </p-scroller>
 </div>`;
 
-  get gradientMarkup() {
+  gradientColorScheme = 'surface';
+  gradientColorSchemes = GRADIENT_COLOR_THEMES;
+  get gradientColorSchemeMarkup() {
     return `<div style="max-width: 600px">
   <p-scroller gradient-color-scheme="${this.gradientColorScheme}" style="white-space: nowrap">
     <p-tag color="neutral-contrast-high">
@@ -172,7 +166,6 @@ export default class Code extends Vue {
 </div>`;
   }
 }
-
 </script>
 
 <style scoped lang="scss">

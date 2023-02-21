@@ -23,11 +23,7 @@ needed, the size can be set to `inherit` to specify the text size from outside.
 ## Responsive
 
 <Playground :markup="customVariantMarkup" :config="config">
- <select v-model="customVariant" aria-label="Select custom variant">
-    <option disabled>Select custom variant</option>
-    <option value="{ base: 'small', l: 'medium' }">Custom Breakpoints</option>
-    <option value="inherit">Inherit</option>
-  </select>
+  <SelectOptions v-model="customVariant" :values="customVariants" name="customVariant"></SelectOptions>
 </Playground>
 
 ---
@@ -45,24 +41,15 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color" aria-label="Select color">
-    <option disabled>Select color</option>
-    <option value="default">Default</option>
-    <option value="inherit">Inherit</option>
-  </select>
+  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
 </Playground>
 
 ---
 
 ## Alignment
 
-<Playground :markup="alignment" :config="config">
-  <select v-model="align" aria-label="Select alignment">
-    <option disabled>Select alignment</option>
-    <option value="left">Left</option>
-    <option value="center">Center</option>
-    <option value="right">Right</option>
-  </select>
+<Playground :markup="alignMarkup" :config="config">
+  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>
 
 ---
@@ -77,7 +64,8 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { HEADLINE_VARIANTS } from './headline-utils';
+import { HEADLINE_COLORS, HEADLINE_VARIANTS } from './headline-utils';
+import { TEXT_ALIGNS}  from '../text/text-align'; 
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -85,12 +73,10 @@ const sentence = 'The quick brown fox jumps over the lazy dog';
 export default class Code extends Vue {
   config = { themeable: true };
 
-  customVariant = "{ base: 'small', l: 'medium' }";
-  color = 'default';
-  align = 'center';
-
   variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
 
+  customVariant = "{ base: 'small', l: 'medium' }";
+  customVariants = ["{ base: 'small', l: 'medium' }", 'inherit'];
   get customVariantMarkup() {
     const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
     return `<p-headline variant="${this.customVariant}"${style}>${sentence}</p-headline>`;
@@ -106,15 +92,19 @@ export default class Code extends Vue {
   <h1>${sentence}</h1>
 </p-headline>`;
 
+  color = 'default';
+  colors = HEADLINE_COLORS;
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
     return `<p-headline variant="headline-3" color="${this.color}"${style}>${sentence}</p-headline>`
   }
 
-  get alignment() {
+  align = 'center';
+  aligns = TEXT_ALIGNS;
+  get alignMarkup() {
     return `<p-headline variant="headline-3" align="${this.align}">${sentence}</p-headline>`;
   }
-  
+
   ellipsisMode =
 `<p-headline variant="headline-3" ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-headline>`;
 }

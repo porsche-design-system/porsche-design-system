@@ -19,14 +19,8 @@ Custom styling" section.
 Following state has been deprecated and will be removed with the next major release: "neutral".
 </p-inline-notification>
 
-<Playground :markup="basic" :config="config">
-  <select v-model="state" aria-label="Select state">
-    <option disabled>Select state</option>
-    <option value="info">Info</option>
-    <option value="warning">Warning</option>
-    <option value="error">Error</option>
-    <option value="neutral">Neutral (deprecated)</option>
-  </select>
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ## Persistent
@@ -44,13 +38,8 @@ your layout.
 Following state has been deprecated and will be removed with the next major release: "fluid".
 </p-inline-notification>
 
-<Playground :markup="markupWidth" :config="config">
-  <select v-model="width" aria-label="Select width">
-    <option disabled>Select width</option>
-    <option value="basic">Basic</option>
-    <option value="extended">Extended</option>
-    <option value="fluid">Fluid (deprecated)</option>
-  </select>
+<Playground :markup="widthMarkup" :config="config">
+  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
 </Playground>
 
 ## Example with user interaction
@@ -84,15 +73,15 @@ p-banner {
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { componentsReady } from '@porsche-design-system/components-js';
+import { BANNER_STATES, BANNER_STATES_DEPRECATED, BANNER_WIDTHS, BANNER_WIDTHS_DEPRECATED } from './banner-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
   
   state = 'info';
-  width = 'basic';
-  
-  get basic() {
+  states = BANNER_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  get stateMarkup() {
     return `<p-banner state="${this.state}">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
@@ -105,13 +94,15 @@ export default class Code extends Vue {
   <span slot="description">Some banner description.</span>
 </p-banner>`;
 
-  get markupWidth() {
+  width = 'basic';
+  widths = BANNER_WIDTHS.map(item => BANNER_WIDTHS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  get widthMarkup() {
     return `<p-banner width="${this.width}">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>`;
   }
-  
+
   openBanner = (event) => {
     const el = document.createElement('p-banner');
     const currentTarget = event.currentTarget;

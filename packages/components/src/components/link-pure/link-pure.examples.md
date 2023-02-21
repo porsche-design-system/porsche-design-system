@@ -57,15 +57,7 @@ There are predefined text sizes for the component which should cover most use ca
 the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select style variant">
-    <option disabled>Select style variant</option>
-    <option>x-small</option>
-    <option>small</option>
-    <option>medium</option>
-    <option>large</option>
-    <option>x-large</option>
-    <option>inherit</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ### Responsive
@@ -84,14 +76,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 </p-inline-notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select weight</option>
-    <option>thin</option>
-    <option>regular</option>
-    <option>semibold</option>
-    <option>semi-bold</option>
-    <option>bold</option>
-  </select>
+  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
 ---
@@ -153,13 +138,8 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 The `label` can be aligned to the `right` (default) or to the `left` of the icon.
 
-<Playground :markup="alignmentMarkup" :config="config">
-  <select v-model="alignLabel" aria-label="Select alignment">
-    <option disabled>Select alignment</option>
-    <option value="left">Left</option>
-    <option value="right">Right</option>
-    <option value="{ base: 'left', l: 'right' }">Responsive</option>
-  </select>
+<Playground :markup="alignLabelMarkup" :config="config">
+  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
 </Playground>
 
 ---
@@ -208,17 +188,17 @@ By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** fro
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { TEXT_SIZES } from '../text/text-size';
+import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from '../text/text-weight';
+import { ALIGN_LABELS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
   configInline = { ...this.config, spacing: 'inline' };
-  
-  size = 'medium';
-  weight = 'thin';
-  alignLabel = 'left';
+
   stretch = 'stretch="true" align-label="left"';
-  
+
   withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
 <p-link-pure underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
@@ -237,14 +217,18 @@ export default class Code extends Vue {
 `<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>
 <p-link-pure icon="none" underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
+  size = 'medium';
+  sizes = TEXT_SIZES;
   get sizeMarkup() {
     const style =this.size === 'inherit' ? ' style="font-size: 3rem;"' : '';
     return `<p-link-pure href="https://www.porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
   }
-    
+
   sizeResponsive =
 `<p-link-pure href="https://www.porsche.com" size="{ base: 'small', l: 'medium' }">Some label</p-link-pure>`;
 
+  weight = 'thin';
+  weights = TEXT_WEIGHTS.map(item => TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get weightMarkup() {
     return `<p-link-pure href="https://www.porsche.com" weight="${this.weight}">Some label</p-link-pure>`;
   }
@@ -274,7 +258,9 @@ export default class Code extends Vue {
   <a href="https://www.porsche.com">Some label</a>
 </p-link-pure>`;
 
-  get alignmentMarkup() {
+  alignLabel = 'left';
+  alignLabels = [...ALIGN_LABELS, "{ base: 'left', l: 'right' }"];
+  get alignLabelMarkup() {
     return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;
   };
 
@@ -296,7 +282,6 @@ export default class Code extends Vue {
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com" tabindex="-1">Some label</p-link-pure>
 <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
-
 }
 </script>
 

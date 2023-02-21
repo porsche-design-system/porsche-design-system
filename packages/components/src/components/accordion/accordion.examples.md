@@ -32,12 +32,7 @@ contained in sections titled with a level 2 heading.
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ---
@@ -66,6 +61,7 @@ By setting `compact` to `true` you can have a more compact accordion. It removes
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getAccordionCodeSamples } from '@porsche-design-system/shared';
+import { ACCORDION_SIZES } from './accordion-utils'; 
   
 @Component
 export default class Code extends Vue {
@@ -73,7 +69,6 @@ export default class Code extends Vue {
 
   codeExample = getAccordionCodeSamples();
 
-  size = 'small';
   content= `<p-text>
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
     sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -88,14 +83,16 @@ export default class Code extends Vue {
 </p-accordion>`;
     }
   
-  get sizeMarkup() {    
+  size = 'small';
+  sizes = [...ACCORDION_SIZES, "{ base: 'small', l: 'medium' }"];
+  get sizeMarkup() {
     return `<p-accordion heading="Some Heading" tag="h3" size="${this.size}">
   ${this.content}
 </p-accordion>
 <p-accordion heading="Some Heading" tag="h3" size="${this.size}">
   ${this.content}
 </p-accordion>`;
-    }  
+  }
 
   get slottedMarkup(){
     return `<p-accordion tag="h3">
@@ -106,9 +103,9 @@ export default class Code extends Vue {
   <span slot="heading">Some slotted heading</span>
   ${this.content}
 </p-accordion>`;
-    }
+  }
 
-  get compactMarkup() {      
+  get compactMarkup(){
     return `<div style="max-width: 400px">
   <p-accordion heading="Some Heading" tag="h3" compact="true">
     <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
@@ -117,7 +114,7 @@ export default class Code extends Vue {
     <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
   </p-accordion>
 </div>`;
-    }
+  }
  
   mounted() {
     /* initially update accordion with open attribute in playground */
@@ -129,7 +126,7 @@ export default class Code extends Vue {
       this.registerEvents();
     }));
   }
-  
+
   updated(){
     this.registerEvents();
   }

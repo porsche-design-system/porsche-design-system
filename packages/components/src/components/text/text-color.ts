@@ -1,18 +1,21 @@
-export const TEXT_COLORS = [
-  'primary',
+export const TEXT_COLORS_DEPRECATED = [
   'brand', // deprecated
   'default', // deprecated
-  'contrast-low',
   'neutral-contrast-low', // deprecated
-  'contrast-medium',
   'neutral-contrast-medium', // deprecated
-  'contrast-high',
   'neutral-contrast-high', // deprecated
+  'notification-neutral', // deprecated
+] as const;
+export const TEXT_COLORS = [
+  'primary',
+  'contrast-low',
+  'contrast-medium',
+  'contrast-high',
   'notification-success',
   'notification-warning',
   'notification-error',
   'notification-info',
-  'notification-neutral', // deprecated
   'inherit',
+  ...TEXT_COLORS_DEPRECATED,
 ] as const;
 export type TextColor = typeof TEXT_COLORS[number];
