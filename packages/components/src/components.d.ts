@@ -27,7 +27,8 @@ import { InlineNotificationState } from "./components/inline-notification/inline
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { MarqueAriaAttribute, MarqueSize } from "./components/marque/marque-utils";
+import { MarqueSize } from "./components/marque/marque-size";
+import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
