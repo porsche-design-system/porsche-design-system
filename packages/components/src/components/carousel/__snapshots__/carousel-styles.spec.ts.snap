@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for wrapContent: basic, disablePagination: false, splideSpeed: 400, alignHeader: center and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, disablePagination: false, splideSpeed: 400, alignHeader: center and theme: dark 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -130,7 +130,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: basic, disablePagination: false, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, disablePagination: false, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -260,7 +260,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: basic, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: dark 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -388,7 +388,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: basic, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -516,7 +516,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: basic, disablePagination: true, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, disablePagination: true, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -630,7 +630,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: basic, disablePagination: true, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, disablePagination: true, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -742,7 +742,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: extended, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -899,7 +899,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: extended, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -1053,7 +1053,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: extended, disablePagination: false, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, disablePagination: false, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -1183,7 +1183,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: extended, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, disablePagination: false, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -1310,7 +1310,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: extended, disablePagination: true, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, disablePagination: true, splideSpeed: 400, alignHeader: center and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
@@ -1424,7 +1424,7 @@ p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapContent: extended, disablePagination: true, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, disablePagination: true, splideSpeed: 400, alignHeader: left and theme: light 1`] = `
 ":host {
   display: grid !important;
   max-width: 2560px !important;
