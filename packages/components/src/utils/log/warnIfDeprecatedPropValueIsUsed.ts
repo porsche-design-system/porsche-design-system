@@ -21,7 +21,10 @@ export const warnIfDeprecatedPropValueIsUsed = <C extends Class<any>, Deprecated
 ): void => {
   const value = instance[prop];
   if (deprecationMap[value]) {
-    const deprecatedPropWarningMessage = getDeprecatedPropWarningMessage(`${prop as string}="${value}"`, host);
+    const deprecatedPropWarningMessage = getDeprecatedPropWarningMessage(
+      `${prop as string}="${value}"`,
+      instance.host as HTMLElement
+    );
     console.warn(`${deprecatedPropWarningMessage} Please use "${deprecationMap[value]}" instead.`);
   }
 };
