@@ -45,12 +45,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 By default, the sizing is responsive, but can be changed to a static size when needed.
 
 <Playground :markup="sizeMarkup">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option value="responsive">Responsive</option>
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ---
@@ -65,15 +60,16 @@ can be set on the host element.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { MARQUE_SIZES } from './marque-size';
 
 @Component
 export default class Code extends Vue {
-  size = 'small';
-
   basicMarkup = `<p-marque></p-marque>`;
   withoutTrademarkMarkup = `<p-marque trademark="false"></p-marque>`;
   linkMarkup = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-marque>`;
 
+  size = 'small';
+  sizes = MARQUE_SIZES;
   get sizeMarkup() {
     return `<p-marque size="${this.size}"></p-marque>`;
   }

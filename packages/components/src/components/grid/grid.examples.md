@@ -47,15 +47,8 @@ In some cases it might be necessary to define or change direction of the columns
 `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be
 achieved by setting `reverse`.
 
-<Playground :markup="markupDirection" :config="config">
-  <select v-model="directionValue" aria-label="Select direction">
-    <option disabled>Select direction</option>
-    <option value="row">Row (default)</option>
-    <option value="row-reverse">Row reverse</option>
-    <option value="column">Column</option>
-    <option value="column-reverse">Column Reverse</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="directionMarkup" :config="config">
+  <SelectOptions v-model="direction" :values="directions" name="direction"></SelectOptions>
 </Playground>
 
 ---
@@ -110,15 +103,21 @@ anymore:
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { GRID_DIRECTIONS } from './grid/grid-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { spacing: 'block-small' };
   
-  directionValue = 'row';
-
-  get markupDirection() {
-    return (this.directionValue === 'responsive') ? this.direction('{ base: \'column\', m: \'row\' }', '{ base: 12, m: 4 }') : this.direction(this.directionValue);
+  direction = 'row';
+  directions = [...GRID_DIRECTIONS, "{ base: 'column', m: 'row' }"];
+  get directionMarkup() {
+    const size = this.direction.includes('base') ? '{ base: 12, m: 4 }' : 4;
+    return `<p-grid direction="${this.direction}">
+  <p-grid-item size="${size}">A</p-grid-item>
+  <p-grid-item size="${size}">B</p-grid-item>
+  <p-grid-item size="${size}">C</p-grid-item>
+</p-grid>`;
   }
   
   get size() {
@@ -141,22 +140,12 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid>
     return `${Array.from(Array(11)).map((x, i) => `<p-grid>
     <p-grid-item offset="${i+1}" size="${11-i}">${i+1}</p-grid-item>
 </p-grid>`).join('\n')}`;
-    }
+  }
     
   offsetResponsiveness =
 `<p-grid>
   <p-grid-item offset="{ base: 6, m: 2 }" size="{ base: 6, m: 10 }">A</p-grid-item>
 </p-grid>`;
-
-  direction(value: string, size: string = '4') {
-    const attr = value ? ` direction="${value}"` : '';
-    const sizeAttr = value ? ` size="${size}"` : '';
-    return `<p-grid${attr}>
-  <p-grid-item${sizeAttr}>A</p-grid-item>
-  <p-grid-item${sizeAttr}>B</p-grid-item>
-  <p-grid-item${sizeAttr}>C</p-grid-item>
-</p-grid>`;
-  }
 
   wrap(value: string) {
     return `<p-grid wrap="${value}">

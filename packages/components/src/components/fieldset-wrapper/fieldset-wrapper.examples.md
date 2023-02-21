@@ -20,12 +20,8 @@ usage examples on our [form patterns section](patterns/forms/resources).
 
 ## Size
 
-<Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select label size">
-    <option disabled>Select label size</option>
-    <option value="small">small</option>
-    <option value="medium">medium</option>
-  </select>
+<Playground :markup="labelSizeMarkup" :config="config">
+  <SelectOptions v-model="labelSize" :values="labelSizes" name="labelSize"></SelectOptions>
 </Playground>
 
 ---
@@ -43,11 +39,7 @@ set required on the input of the wrapped form elements to ensure accessibility, 
 ## State
 
 <Playground :markup="stateMarkup" :config="config">
-  <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">error</option>
-    <option value="success">success</option>
-  </select>
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ---
@@ -55,24 +47,19 @@ set required on the input of the wrapped form elements to ensure accessibility, 
 ## Slotted message
 
 <Playground :markup="slottedMessageMarkup" :config="config">
-  <select v-model="slottedMessage" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">error</option>
-    <option value="success">success</option>
-  </select>
+  <SelectOptions v-model="slottedMessage" :values="slottedMessages" name="state"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
+import { FORM_STATES } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { spacing: 'block', themeable: true }; 
-  size = 'small';
-  state = 'error';
-  slottedMessage = 'error';
-
+  
   withLabelMarkup =
 `<p-fieldset-wrapper label="Some legend label">
   <p-text-field-wrapper label="Some label">
@@ -88,13 +75,15 @@ export default class Code extends Vue {
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
-  get sizeMarkup() {
-    return `<p-fieldset-wrapper label="Some legend label" label-size=${this.size}>
+  labelSize = 'small';
+  labelSizes = FIELDSET_WRAPPER_LABEL_SIZES;
+  get labelSizeMarkup() {
+    return `<p-fieldset-wrapper label="Some legend label" label-size=${this.labelSize}>
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
-   }
+  }
 
   requiredMarkup =
 `<p-fieldset-wrapper label="Some legend label" required="true">
@@ -103,6 +92,8 @@ export default class Code extends Vue {
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
+  state = 'error';
+  states = FORM_STATES;
   get stateMarkup() {
     const message = this.state === 'error' ? 'Some error message' : 'Some success message';
     const attr = `state="${this.state}" message="${message}"`;
@@ -119,6 +110,8 @@ export default class Code extends Vue {
 </p-fieldset-wrapper>`;
   }
 
+  slottedMessage = 'error';
+  slottedMessages = FORM_STATES;
   get slottedMessageMarkup() {
     const content = this.slottedMessage === 'error' ? 'Some error message' : 'Some success message';
     return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMessage}>

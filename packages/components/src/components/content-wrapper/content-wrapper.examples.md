@@ -13,15 +13,8 @@ Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid
 
 ## Width
 
-<Playground :markup="basic" :config="config">
-  <select v-model="width" aria-label="Select width">
-    <option disabled>Select width</option>
-    <option value="basic">Basic</option>
-    <option value="narrow">Narrow</option>
-    <option value="extended">Extended</option>
-    <option value="full">Full</option>
-    <option value="fluid">Fluid (deprecated)</option>
-  </select>
+<Playground :markup="widthMarkup" :config="config">
+  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
 </Playground>
 
 ## Background color
@@ -30,31 +23,30 @@ Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid
 Background color is deprecated and has no effect anymore. Instead, it's possible to define a custom color on the host.
 </p-inline-notification>
 
-<Playground :markup="transparent" class="playground-content-wrapper-background-color" :config="config">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="transparent">Transparent</option>
-    <option value="default">Default</option>    
-  </select>
+<Playground :markup="backgroundColorMarkup" class="playground-content-wrapper-background-color" :config="config">
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { CONTENT_WRAPPER_BACKGROUND_COLORS, CONTENT_WRAPPER_WIDTHS } from './content-wrapper-utils'; 
 
 @Component
 export default class Code extends Vue {
-  width = 'basic';
-  backgroundColor = 'transparent';
   config = { themeable: true };    
   
-  get basic(){
+  width = 'basic';
+  widths = CONTENT_WRAPPER_WIDTHS.map(item => item === 'fluid' ? item + ' (deprecated)' : item);
+  get widthMarkup(){
     return `<p-content-wrapper width="${this.width}">
   <div class="example-content">Some content</div>
 </p-content-wrapper>`;
   }
 
-  get transparent(){
+  backgroundColor = 'transparent';
+  backgroundColors = CONTENT_WRAPPER_BACKGROUND_COLORS;
+  get backgroundColorMarkup(){
     return `<p-content-wrapper background-color="${this.backgroundColor}">
   <div class="example-content">Some content</div>
 </p-content-wrapper>`;

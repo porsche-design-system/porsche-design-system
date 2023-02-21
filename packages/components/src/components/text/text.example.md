@@ -20,15 +20,7 @@ There are predefined fluid text sizes for the text component which should cover 
 is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option>x-small</option>
-    <option>small</option>
-    <option>medium</option>
-    <option>large</option>
-    <option>x-large</option>
-    <option>inherit</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ### Responsive
@@ -55,24 +47,7 @@ Following colors have been deprecated and will be removed with the next major re
 </p-inline-notification>
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color" aria-label="Select color">
-    <option disabled>Select color</option>
-    <option value="primary">Primary</option>
-    <option value="brand">Brand (deprecated)</option>
-    <option value="default">Default (deprecated)</option>
-    <option value="contrast-high">Contrast High</option>
-    <option value="neutral-contrast-high">Neutral Contrast High (deprecated)</option>
-    <option value="contrast-medium">Neutral Contrast Medium</option>
-    <option value="neutral-contrast-medium">Neutral Contrast Medium (deprecated)</option>
-    <option value="contrast-low">Contrast Low</option>
-    <option value="neutral-contrast-low">Neutral Contrast Low (deprecated)</option>
-    <option value="notification-success">Notification Success</option>
-    <option value="notification-warning">Notification Warning</option>
-    <option value="notification-error">Notification Error</option>
-    <option value="notification-info">Notification Info</option>
-    <option value="notification-neutral">Notification Neutral (deprecated)</option>
-    <option value="inherit">Inherit</option>
-  </select>
+  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
 </Playground>
 
 ---
@@ -85,27 +60,15 @@ and "semibold".
 </p-inline-notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select weight</option>
-    <option value="thin">Thin (deprecated)</option>
-    <option value="regular">Regular</option>
-    <option value="semi-bold">Semi Bold</option>
-    <option value="semibold">Semibold (deprecated)</option>
-    <option value="bold">Bold</option>
-  </select>
+  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
 ---
 
 ## Alignment
 
-<Playground :markup="alignmentMarkup" :config="config">
-  <select v-model="align" aria-label="Select alignment">
-    <option disabled>Select alignment</option>
-    <option value="left">Left</option>
-    <option value="center">Center</option>
-    <option value="right">Right</option>
-  </select>
+<Playground :markup="alignMarkup" :config="config">
+  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>
 
 ---
@@ -120,6 +83,10 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { TEXT_SIZES } from './text-size';
+import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from './text-weight';
+import { TEXT_COLORS, TEXT_COLORS_DEPRECATED } from './text-color';
+import { TEXT_ALIGNS } from './text-align'; 
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -128,39 +95,36 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   size = 'small';
-  weight = 'bold';
-  color = 'primary';
-  align = 'center';
-    
+  sizes = TEXT_SIZES;
   get sizeMarkup() {
     const style = this.size === 'inherit' ? ' style="font-size: 3rem;"' : '';
     return `<p-text size="${this.size}"${style}>${sentence}</p-text>`;
   }
   
-  get sizeResponsiveMarkup() {
-    return `<p-text size="{ base: 'small', l: 'medium' }">${sentence}</p-text>`;
-  }
+  sizeResponsiveMarkup = `<p-text size="{ base: 'small', l: 'medium' }">${sentence}</p-text>`;
 
-  get semanticsMarkup() {
-    return `<p-text tag="blockquote">${sentence}</p-text>
+  semanticsMarkup = `<p-text tag="blockquote">${sentence}</p-text>
 <p-text><blockquote>${sentence}</blockquote></p-text>`;
-  }
 
+  color = 'primary';
+  colors = TEXT_COLORS.map(item => TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
     return `<p-text color="${this.color}"${style}>${sentence}</p-text>`;
   }
   
+  weight = 'bold';
+  weights = TEXT_WEIGHTS.map(item => TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get weightMarkup() {
     return `<p-text weight="${this.weight}">${sentence}</p-text>`;
   }
   
-  get alignmentMarkup() {
+  align = 'center';
+  aligns = TEXT_ALIGNS;
+  get alignMarkup() {
     return `<p-text align="${this.align}">${sentence}</p-text>`;
   }
 
-  get ellipsisMarkup() {
-    return `<p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>`;
-  }
+  ellipsisMarkup = `<p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>`;
 }
 </script>
