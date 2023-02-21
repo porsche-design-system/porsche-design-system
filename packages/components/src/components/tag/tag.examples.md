@@ -14,11 +14,7 @@ Following colors have been deprecated and will be removed with the next major re
 </p-inline-notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ## Icon
@@ -35,11 +31,7 @@ It is possible to add a `<button>` tag into the `p-tag` component. If you do thi
 clickable and no other content outside the button or link is allowed.
 
 <Playground :markup="buttonMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
@@ -55,11 +47,7 @@ It is possible to add `<a>` tag into the `p-tag` component. If you do this, the 
 no other content outside the button or link is allowed.
 
 <Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
@@ -77,7 +65,9 @@ import { TAG_COLORS } from './tag-utils';
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
+  
   backgroundColor = 'default';
+  backgroundColors = ['default', 'surface']; 
 
   get colorMarkup(){
     return TAG_COLORS.map((color) => `<p-tag color="${color}">Color ${color}</p-tag>`).join('\n');

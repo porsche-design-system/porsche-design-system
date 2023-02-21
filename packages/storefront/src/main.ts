@@ -9,6 +9,7 @@ import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
 import A11yIcon from '@/components/A11yIcon.vue';
 import PartialDocs from '@/components/PartialDocs.vue';
+import SelectOptions from '@/components/SelectOptions.vue';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -39,11 +40,12 @@ Vue.use({
   install(vue: VueConstructor) {
     vue.component('A11yIcon', A11yIcon);
     vue.component('ColorBadge', ColorBadge);
+    vue.component('OpenBugTemplateInStackBlitz', OpenBugTemplateInStackBlitz);
+    vue.component('PartialDocs', PartialDocs);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
-    vue.component('OpenBugTemplateInStackBlitz', OpenBugTemplateInStackBlitz);
+    vue.component('SelectOptions', SelectOptions);
     vue.component('TableOfContents', TableOfContents);
-    vue.component('PartialDocs', PartialDocs);
   },
 });
 

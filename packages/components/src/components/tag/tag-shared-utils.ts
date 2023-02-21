@@ -1,6 +1,6 @@
 import { getInsetJssStyle, ThemedColors } from '../../styles';
-import { JssStyle } from 'jss';
-import { TagColor } from './tag-utils';
+import type { JssStyle } from 'jss';
+import type { TagColor } from './tag-utils';
 import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
@@ -19,7 +19,7 @@ export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
 };
 
 export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
-  const colorMap: { [key in TagColor]: string } = {
+  const colorMap: Record<TagColor, string> = {
     'background-default': themedColors.backgroundColor, // 'background-default' is deprecated (replaced with 'background-base')
     'background-base': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,

@@ -1,21 +1,24 @@
 import type { Theme } from '../../types';
 import type { ThemedColors } from '../../styles'; // deep import needed since barrel contains MutationObserver and causes VRT to fail because of TAG_COLORS import
 import { TAG_DISMISSIBLE_COLORS } from '../tag-dismissible/tag-dismissible-utils';
-import { isThemeDark } from '../../utils/theme/isThemeDark';
+import { isThemeDark } from '../../utils';
 
 export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
-  return ['neutral-contrast-high', 'primary'].includes(color) ? (theme === 'light' ? 'dark' : 'light') : theme;
+  return ['neutral-contrast-high', 'primary'].includes(color) ? (isThemeDark(theme) ? 'light' : 'dark') : theme;
 };
 
+export const TAG_COLORS_DEPRECATED = [
+  'neutral-contrast-high', // 'notification-contrast-high' is deprecated (replaced with 'primary')
+  'notification-neutral', // 'notification-neutral' is deprecated (replaced with 'notification-info')
+] as const;
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
-  'neutral-contrast-high', // 'notification-contrast-high' is deprecated (replaced with 'primary')
   'primary',
-  'notification-neutral', // 'notification-neutral' is deprecated (replaced with 'notification-info')
   'notification-info',
   'notification-warning',
   'notification-success',
   'notification-error',
+  ...TAG_COLORS_DEPRECATED,
 ] as const;
 export type TagColor = typeof TAG_COLORS[number];
 
@@ -39,7 +42,7 @@ export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: 
   const isDark = isThemeDark(theme);
   const keySuffix = isDark ? 'ColorLighten' : 'ColorDarken';
   const primaryColor = isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColor;
-  const colorMap: { [key in TagColor]: string } = {
+  const colorMap: Record<TagColor, string> = {
     'background-default': themedColors[`background${keySuffix}`], // 'background-default' is deprecated (replaced with 'background-base')
     'background-base': themedColors[`background${keySuffix}`],
     'background-surface': themedColors[`backgroundSurface${keySuffix}`],

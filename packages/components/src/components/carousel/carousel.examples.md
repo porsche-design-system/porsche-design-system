@@ -20,18 +20,8 @@ Without any additional configuration, the `p-carousel` displays a single slide s
 The amount of slides visible at the same time can be specified by setting the `slidesPerPage` property.  
 The value can either be a static number, or a breakpoint customizable object.
 
-<Playground :markup="slidesPerPage" :config="config">
-  <label>
-    <select v-model="slidesPerPageModel" aria-label="Select slides per page mode">
-      <option disabled>Select slides per page mode</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="{ base: 1, s: 2, m: 3 }">{ base: 1, m: 2, l: 3 }</option>
-    </select>
-  </label>
+<Playground :markup="slidesPerPageMarkup" :config="config">
+  <SelectOptions v-model="slidesPerPage" :values="slidesPerPages" name="slidesPerPage"></SelectOptions>
 </Playground>
 
 ## Heading
@@ -95,15 +85,8 @@ Left and right outer spacings can be defined via `width`.
 
 The pagination indicators underneath the slides can be removed via `disablePagination`. Also, on a per-breakpoint basis.
 
-<Playground :markup="disablePagination" :config="config">
-  <label>
-    <select v-model="disablePaginationModel" aria-label="Select disable pagination mode">
-      <option disabled>Select disable pagination mode</option>
-      <option value="true">true</option>
-      <option value="false">false</option>
-      <option value="{ base: true, m: false }">{ base: true, m: false }</option>
-    </select>
-  </label>
+<Playground :markup="disablePaginationMarkup" :config="config">
+  <SelectOptions v-model="disablePagination" :values="disablePaginations" name="disablePagination"></SelectOptions>
 </Playground>
 
 ## Align Header
@@ -192,9 +175,10 @@ export default class Code extends Vue {
   ${this.getSlides(4)}
 </p-carousel>`;
 
-  slidesPerPageModel = 2;
-  get slidesPerPage() {
-    return `<p-carousel slides-per-page="${this.slidesPerPageModel}" heading="${this.basicHeading}">
+  slidesPerPage = 2;
+  slidesPerPages = [1, 2, 3, 4, 5, '{ base: 1, s: 2, m: 3 }'];
+  get slidesPerPageMarkup() {
+    return `<p-carousel slides-per-page="${this.slidesPerPage}" heading="${this.basicHeading}">
   ${this.getSlides()}
 </p-carousel>`;
   }
@@ -230,9 +214,10 @@ export default class Code extends Vue {
 //   ${this.getSlides(3)}
 // </p-carousel>`;
 
-  disablePaginationModel = true;
-  get disablePagination() {
-    return `<p-carousel disable-pagination="${this.disablePaginationModel}" heading="${this.basicHeading}">
+  disablePagination = true;
+  disablePaginations = [true, false, '{ base: true, m: false }'];
+  get disablePaginationMarkup() {
+    return `<p-carousel disable-pagination="${this.disablePagination}" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 }

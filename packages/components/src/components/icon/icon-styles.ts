@@ -49,7 +49,7 @@ const filterDarkNotificationError =
 const filterDarkNotificationInfo =
   'invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%)';
 
-const filter: { [theme in Theme]: { [color in Exclude<IconColor, 'inherit'>]: string } } = {
+const filter: Record<Theme, Record<Exclude<IconColor, 'inherit'>, string>> = {
   light: {
     primary: filterLightPrimary,
     brand: filterLightPrimary, // deprecated
