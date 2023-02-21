@@ -243,7 +243,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "props": {
-      "color": "neutral-contrast-low",
+      "color": "contrast-low",
       "orientation": "horizontal",
       "theme": "light",
     },
