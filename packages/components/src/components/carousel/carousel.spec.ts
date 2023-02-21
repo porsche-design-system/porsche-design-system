@@ -7,6 +7,7 @@ import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-u
 import * as jsonUtils from '../../utils/json';
 import { Splide } from '@splidejs/splide';
 import * as splideModule from '@splidejs/splide';
+import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
 
 const splideMock = {
   index: 0,
@@ -121,6 +122,17 @@ describe('componentDidLoad', () => {
 });
 
 describe('render', () => {
+  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
+    const spy = jest.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.wrapContent = true;
+    component.host.attachShadow({ mode: 'open' });
+
+    component.render();
+
+    expect(spy).toBeCalledWith(component.host, 'wrapContent');
+  });
   it('should call warnIfHeadingIsMissing() with correct parameters', () => {
     const spy = jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing');
     const component = new Carousel();
