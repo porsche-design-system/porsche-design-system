@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
+- `Divider` matches new design language.
 
 ### [3.0.0-alpha.1] - 2023-02-16
 
@@ -23,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Stepper Horizontal` and `Divider` matches new design language.
+- `Stepper Horizontal` matches new design language.
 - Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
 - Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
@@ -397,6 +398,21 @@ to the new values since those ones will be removed with next major version.
 ```diff
 - …addMessage({ text: `Some message`, state: 'neutral' })
 + …addMessage({ text: `Some message`, state: 'info' })
+```
+
+##### Divider:
+
+- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated.
+
+```diff
+- <p-divider color="neutral-contrast-low"></p-divider>
++ <p-divider color="contrast-low"></p-divider>
+
+- <p-divider color="neutral-contrast-medium"></p-divider>
++ <p-divider color="contrast-medium"></p-divider>
+
+- <p-divider color="neutral-contrast-high"></p-divider>
++ <p-divider color="contrast-high"></p-divider>
 ```
 
 #### Added
