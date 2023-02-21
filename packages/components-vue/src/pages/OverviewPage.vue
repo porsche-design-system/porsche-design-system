@@ -24,6 +24,7 @@
     PLinkSocial,
     PLinkTile,
     PMarque,
+    PModelSignature,
     PorscheDesignSystemProvider,
     PPagination,
     PPopover,
@@ -179,6 +180,10 @@
 
       <div class="playground light" title="should render default marque">
         <PMarque />
+      </div>
+
+      <div class="playground light" title="should render default model-signature">
+        <PModelSignature />
       </div>
 
       <div class="playground light" title="should render default pagination">
@@ -439,6 +444,10 @@
 
         <div class="playground light" title="should render default marque with custom prefix">
           <PMarque />
+        </div>
+
+        <div class="playground light" title="should render default model-signature with custom prefix">
+          <PModelSignature />
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">

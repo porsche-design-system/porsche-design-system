@@ -218,6 +218,8 @@ exports[`should have no basic DOM regression for p-modal 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-model-signature 1`] = `"<img src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg" height="36" alt="911">"`;
+
 exports[`should have no basic DOM regression for p-pagination 1`] = `
 "<nav role="navigation" aria-label="Pagination">
   <ul>

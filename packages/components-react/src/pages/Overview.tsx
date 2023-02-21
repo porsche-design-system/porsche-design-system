@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 
 export const OverviewPage = (): JSX.Element => {
   const style = `
@@ -165,6 +165,10 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default marque">
             <PMarque />
+          </div>
+
+          <div className="playground light" title="should render default model-signature">
+            <PModelSignature />
           </div>
 
           <div className="playground light" title="should render default pagination">
@@ -426,6 +430,10 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default marque with custom prefix">
               <PMarque />
+            </div>
+
+            <div className="playground light" title="should render default model-signature with custom prefix">
+              <PModelSignature />
             </div>
 
             <div className="playground light" title="should render default pagination with custom prefix">

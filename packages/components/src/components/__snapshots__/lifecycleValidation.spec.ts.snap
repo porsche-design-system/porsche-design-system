@@ -288,6 +288,15 @@ exports[`should call validateProps() with correct parameters via render for p-mo
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-model-signature: propTypes with ValidatorFunctions 1`] = `
+{
+  "color": "oneOf",
+  "model": "oneOf",
+  "size": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-pagination: propTypes with ValidatorFunctions 1`] = `
 {
   "activePage": "number",
