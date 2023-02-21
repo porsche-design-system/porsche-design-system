@@ -1,19 +1,31 @@
 import { getComponentCss } from './divider-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['neutral-contrast-low', 'horizontal', 'light'],
-    ['neutral-contrast-low', 'vertical', 'light'],
-    ['neutral-contrast-low', 'horizontal', 'dark'],
-    ['neutral-contrast-low', 'vertical', 'dark'],
-    ['neutral-contrast-medium', 'horizontal', 'light'],
-    ['neutral-contrast-medium', 'vertical', 'light'],
-    ['neutral-contrast-medium', 'horizontal', 'dark'],
-    ['neutral-contrast-medium', 'vertical', 'dark'],
-    ['neutral-contrast-high', 'horizontal', 'light'],
-    ['neutral-contrast-high', 'vertical', 'light'],
-    ['neutral-contrast-high', 'horizontal', 'dark'],
-    ['neutral-contrast-high', 'vertical', 'dark'],
+    ['contrast-low', 'horizontal', 'light'],
+    ['contrast-low', 'vertical', 'light'],
+    ['contrast-low', 'horizontal', 'dark'],
+    ['contrast-low', 'vertical', 'dark'],
+    ['contrast-medium', 'horizontal', 'light'],
+    ['contrast-medium', 'vertical', 'light'],
+    ['contrast-medium', 'horizontal', 'dark'],
+    ['contrast-medium', 'vertical', 'dark'],
+    ['contrast-high', 'horizontal', 'light'],
+    ['contrast-high', 'vertical', 'light'],
+    ['contrast-high', 'horizontal', 'dark'],
+    ['contrast-high', 'vertical', 'dark'],
+    ['neutral-contrast-low', 'horizontal', 'light'], // deprecated
+    ['neutral-contrast-low', 'vertical', 'light'], // deprecated
+    ['neutral-contrast-low', 'horizontal', 'dark'], // deprecated
+    ['neutral-contrast-low', 'vertical', 'dark'], // deprecated
+    ['neutral-contrast-medium', 'horizontal', 'light'], // deprecated
+    ['neutral-contrast-medium', 'vertical', 'light'], // deprecated
+    ['neutral-contrast-medium', 'horizontal', 'dark'], // deprecated
+    ['neutral-contrast-medium', 'vertical', 'dark'], // deprecated
+    ['neutral-contrast-high', 'horizontal', 'light'], // deprecated
+    ['neutral-contrast-high', 'vertical', 'light'], // deprecated
+    ['neutral-contrast-high', 'horizontal', 'dark'], // deprecated
+    ['neutral-contrast-high', 'vertical', 'dark'], // deprecated
     [
       'neutral-contrast-low',
       { base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' },
