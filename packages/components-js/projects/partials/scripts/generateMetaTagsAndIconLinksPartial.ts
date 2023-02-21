@@ -38,8 +38,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   format?: Format;
 };`;
 
-  const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'html' }): string;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element {
   const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions = {
@@ -61,7 +60,9 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
 
   const metaIconTags = ${minifiedMetaIconsHTML}.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
 
-  return format === 'html' ? metaIconTags.join('') : <>${metaIconTemplatesJSX}</>;
+  return format === 'html'
+    ? metaIconTags.join('')
+    : <>${metaIconTemplatesJSX}</>;
 }`;
 
   return [types, func].join('\n\n');

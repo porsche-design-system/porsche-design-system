@@ -9,8 +9,8 @@ export const generateDSRPonyfillPartial = (): string => {
   const filePath = path.resolve(__dirname, '../dist-tmp/dsr-ponyfill.min.js');
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  const func = `export function getDSRPonyfill(opts?: GetDSRPonyfillOptions & { format: 'html' }): string;
-export function getDSRPonyfill(opts?: GetDSRPonyfillOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getDSRPonyfill(opts?: GetDSRPonyfillOptions & { format: 'jsx' }): JSX.Element;
+export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string;
 export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string | JSX.Element {
   const { format }: GetDSRPonyfillOptions = {
     format: 'html',
@@ -21,9 +21,9 @@ export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string | JSX.Eleme
 
   const scriptContent = \`${fileContent.trim()}\`;
 
-  const markup = format === 'html' ? \`<script>\${scriptContent}</script>\` : <script dangerouslySetInnerHTML={{__html: scriptContent}} />;
-
-  return markup;
+  return format === 'html'
+    ? \`<script>\${scriptContent}</script>\`
+    : <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
 }`;
 
   return [types, func].join('\n\n');
