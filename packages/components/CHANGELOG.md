@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 - Partials: Removed deprecated `withoutTags` option for all partials, please use `format: 'jsx'` instead
 - `Divider` and `Button Group` match new design language.
+- `Text List` matches new design language
 
 #### Added
 
@@ -29,7 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Stepper Horizontal` and `Text List` match new design language
+- `Stepper Horizontal` matches new design language
 - Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
 - Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
