@@ -129,6 +129,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  outline: 0;
 }
 @media(min-width:480px) {
   .root {
@@ -306,6 +307,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  outline: 0;
 }
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
@@ -394,6 +396,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  outline: 0;
 }
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
@@ -482,6 +485,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  outline: 0;
 }
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
@@ -569,6 +573,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  outline: 0;
 }
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
@@ -657,6 +662,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  outline: 0;
 }
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
