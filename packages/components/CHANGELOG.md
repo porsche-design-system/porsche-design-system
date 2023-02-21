@@ -412,8 +412,10 @@ to the new values since those ones will be removed with next major version.
 ```diff
 - <p-divider color="neutral-contrast-low"></p-divider>
 + <p-divider color="contrast-low"></p-divider>
+
 - <p-divider color="neutral-contrast-medium"></p-divider>
 + <p-divider color="contrast-medium"></p-divider>
+
 - <p-divider color="neutral-contrast-high"></p-divider>
 + <p-divider color="contrast-high"></p-divider>
 ```
