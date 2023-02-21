@@ -24,7 +24,7 @@ const propTypes: PropTypes<typeof ModelSignature> = {
 export class ModelSignature {
   @Element() public host!: HTMLElement;
 
-  /** Adapts the size of the component. */
+  /** Adapts the model of the component. */
   @Prop() public model?: ModelSignatureModel = '911';
 
   /** Adapts the size of the component. */
