@@ -21,7 +21,7 @@ import {
   spacingStaticMedium,
   gridGap,
 } from '@porsche-design-system/utilities-v2';
-import { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
+import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import {
   getSpacingForWidth,
   oneColumnWidthBase,
