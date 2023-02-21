@@ -71,7 +71,6 @@ Create `head-partials.server.tsx` with the following content.
 // app/head-partials.server.tsx
 
 import { getFontLinks, getInitialStyles } from '@porsche-design-system/components-react/partials';
-import { getSharedStyles } from '../../nextjs/styles/getSharedStyles';
 
 export const HeadPartials = (): JSX.Element => {
   return (
@@ -87,7 +86,7 @@ export const HeadPartials = (): JSX.Element => {
       {/* preloads Porsche icons (=> minimize FOUC) */}
       {getIconLinks({ format: 'jsx' })}
       {/* injects favicon, apple touch icons, android touch icons, etc. */}
-      {getMetaTagsAndIconLinks({ appTitle: 'Sample Project Next.js', format: 'jsx' })}
+      {getMetaTagsAndIconLinks({ appTitle: 'Sample Project Remix', format: 'jsx' })}
     </>
   );
 };

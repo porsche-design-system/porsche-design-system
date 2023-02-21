@@ -69,6 +69,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   </p-link-tile>`,
   'p-marque': `<p-marque></p-marque>`,
   'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,
+  'p-model-signature': `<p-model-signature></p-model-signature>`,
   'p-pagination': `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`,
   'p-popover': `<p-popover>Some Popover Content</p-popover>`,
   'p-radio-button-wrapper': `<p-radio-button-wrapper label="Some label">
