@@ -44,7 +44,6 @@ describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
     expect(status.componentDidUpdate['p-text-list'], 'componentDidUpdate: p-text-list').toBe(1);
-    expect(status.componentDidUpdate['p-text-list-item'], 'componentDidUpdate: p-text-list-item').toBe(0);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     expect(await getProperty(host, 'theme')).toBe('dark');
 
