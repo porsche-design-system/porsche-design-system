@@ -4,7 +4,6 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { DividerColor, DividerOrientation } from './divider-utils';
 import { DIVIDER_COLORS, DIVIDER_ORIENTATIONS } from './divider-utils';
 import { getComponentCss } from './divider-styles';
-import { TextColor } from '../../types';
 
 const propTypes: PropTypes<typeof Divider> = {
   color: AllowedTypes.oneOf<DividerColor>(DIVIDER_COLORS),
@@ -30,7 +29,7 @@ export class Divider {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedColorMap: Partial<Record<TextColor, TextColor>> = {
+    const deprecatedColorMap: Partial<Record<DividerColor, DividerColor>> = {
       'neutral-contrast-low': 'contrast-low',
       'neutral-contrast-medium': 'contrast-medium',
       'neutral-contrast-high': 'contrast-high',
