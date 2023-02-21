@@ -8,8 +8,8 @@ import type { TagName } from '@porsche-design-system/shared';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = typeof CAROUSEL_WIDTHS[number];
-export const HEADER_ALIGNS = ['left', 'center'] as const;
-export type CarouselAlignHeader = typeof HEADER_ALIGNS[number];
+export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
+export type CarouselAlignHeader = typeof CAROUSEL_ALIGN_HEADERS[number];
 
 // https://splidejs.com/guides/i18n/#default-texts
 // extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types

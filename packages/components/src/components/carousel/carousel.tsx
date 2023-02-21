@@ -20,11 +20,11 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
 import {
+  CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_WIDTHS,
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
-  HEADER_ALIGNS,
   renderPagination,
   slideNext,
   slidePrev,
@@ -50,7 +50,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
-  alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(HEADER_ALIGNS),
+  alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
