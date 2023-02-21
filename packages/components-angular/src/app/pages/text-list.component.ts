@@ -156,6 +156,53 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-text-list>
     </div>
 
+    <div class="playground light" title="should show multiline text list">
+      <p-text-list [listType]="'ordered'" style="width: 15rem">
+        <p-text-list-item>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Cursus mattis molestie a iaculis.
+          <p-text-list [listType]="'ordered'">
+            <p-text-list-item>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Cursus mattis molestie a iaculis.
+            </p-text-list-item>
+            <p-text-list-item>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Cursus mattis molestie a iaculis.
+            </p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Cursus mattis molestie a iaculis.
+          <p-text-list>
+            <p-text-list-item>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Cursus mattis molestie a iaculis.
+            </p-text-list-item>
+            <p-text-list-item>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Cursus mattis molestie a iaculis.
+            </p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+        <p-text-list-item>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Cursus mattis molestie a iaculis.
+          <p-text-list [listType]="'ordered'" [orderType]="'alphabetically'">
+            <p-text-list-item>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Cursus mattis molestie a iaculis.
+            </p-text-list-item>
+            <p-text-list-item>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Cursus mattis molestie a iaculis.
+            </p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
+      </p-text-list>
+    </div>
+
     <div class="playground light" title="should apply custom styles for dedicated slotted content">
       <p-text-list>
         <p-text-list-item>

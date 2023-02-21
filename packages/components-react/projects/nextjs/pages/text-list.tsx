@@ -157,6 +157,53 @@ const TextListPage: NextPage = (): JSX.Element => {
         </PTextList>
       </div>
 
+      <div className="playground light" title="should show multiline text list">
+        <PTextList listType="ordered" style={{ width: '15rem' }}>
+          <PTextListItem>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Cursus mattis molestie a iaculis.
+            <PTextList listType="ordered">
+              <PTextListItem>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Cursus mattis molestie a iaculis.
+              </PTextListItem>
+              <PTextListItem>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Cursus mattis molestie a iaculis.
+              </PTextListItem>
+            </PTextList>
+          </PTextListItem>
+          <PTextListItem>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Cursus mattis molestie a iaculis.
+            <PTextList>
+              <PTextListItem>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Cursus mattis molestie a iaculis.
+              </PTextListItem>
+              <PTextListItem>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Cursus mattis molestie a iaculis.
+              </PTextListItem>
+            </PTextList>
+          </PTextListItem>
+          <PTextListItem>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Cursus mattis molestie a iaculis.
+            <PTextList listType="ordered" orderType="alphabetically">
+              <PTextListItem>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Cursus mattis molestie a iaculis.
+              </PTextListItem>
+              <PTextListItem>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Cursus mattis molestie a iaculis.
+              </PTextListItem>
+            </PTextList>
+          </PTextListItem>
+        </PTextList>
+      </div>
+
       <div className="playground light" title="should apply custom styles for dedicated slotted content">
         <PTextList>
           <PTextListItem>
