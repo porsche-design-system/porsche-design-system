@@ -4,7 +4,6 @@ import {
   getExternalDependencies,
   getSharedImportConstants,
   isStableStorefrontReleaseOrForcedPdsVersion,
-  isStableStorefrontRelease,
   removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';

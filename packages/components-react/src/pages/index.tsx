@@ -42,6 +42,7 @@ import { ModalNoHeadingPage } from './ModalNoHeading';
 import { ModalPrefixedPage } from './ModalPrefixed';
 import { ModalScrollablePage } from './ModalScrollable';
 import { ModalSlottedHeadingPage } from './ModalSlottedHeading';
+import { ModelSignaturePage } from './ModelSignature';
 import { PaginationPage } from './Pagination';
 import { PopoverPage } from './Popover';
 import { RadioButtonWrapperPage } from './RadioButtonWrapper';
@@ -220,6 +221,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal Slotted Heading',
     path: '/modal-slotted-heading',
     element: <ModalSlottedHeadingPage />,
+  },
+  {
+    name: 'Model Signature',
+    path: '/model-signature',
+    element: <ModelSignaturePage />,
   },
   {
     name: 'Pagination',
