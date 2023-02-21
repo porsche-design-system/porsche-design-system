@@ -37,15 +37,7 @@ clicked step.
 You can set the `size` property of the component which is breakpoint customizable.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <label>
-    <p-text :theme="theme">Select size:</p-text>
-    <select v-model="size" aria-label="Select size">
-      <option disabled>Select size</option>
-      <option value="small">Small</option>
-      <option value="medium">Medium</option>
-      <option value="{ base: 'small', l: 'medium' }">{ base: 'small', l: 'medium' }</option>
-    </select>
-  </label>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ## Scrollable
@@ -60,9 +52,7 @@ Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
   <p-stepper-horizontal :theme="theme" @stepChange="onStepChange">    
-    <template v-for="({ state, text }, i) in steps">
-      <p-stepper-horizontal-item :state="state">{{ text }}</p-stepper-horizontal-item>
-    </template>
+    <p-stepper-horizontal-item v-for="({ state, text }, i) in steps" :state="state">{{ text }}</p-stepper-horizontal-item>
   </p-stepper-horizontal>
   <p-text :theme="theme" class="mock-content">{{ stepContent[getActiveStepIndex(steps)] }}</p-text>
 
@@ -92,12 +82,11 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStepperHorizontalCodeSamples } from '@porsche-design-system/shared';
 import type { Theme } from '@/models';
+import { STEPPER_HORIZONTAL_SIZES } from './stepper-horizontal-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
-
-  size = 'small'
 
   codeExample = getStepperHorizontalCodeSamples();
   
@@ -108,6 +97,8 @@ export default class Code extends Vue {
   <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
 </p-stepper-horizontal>`;
 
+  size = 'small';
+  sizes = [...STEPPER_HORIZONTAL_SIZES, "{ base: 'small', l: 'medium' }"];
   get sizeMarkup() {
     return `<p-stepper-horizontal size="${this.size}">
   <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
@@ -121,7 +112,7 @@ export default class Code extends Vue {
   <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
 </p-stepper-horizontal>`;
   }
-  
+
   scrollable = `<div style="max-width: 600px">
   <p-stepper-horizontal>
     <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
@@ -151,7 +142,7 @@ export default class Code extends Vue {
   getActiveStepIndex(steps): number {
     return steps.findIndex((step) => step.state === 'current');
   }
-  
+
   onNextPrevStep(direction): void {
     const activeStepIndex = this.getActiveStepIndex(this.steps);
 

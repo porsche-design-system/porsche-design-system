@@ -57,10 +57,3 @@ describe('format: jsx', () => {
     ).toBe(true);
   });
 });
-
-describe('withoutTags: true', () => {
-  it('should return content of components-js tmp build without script tag', () => {
-    const result = getLoaderScript({ withoutTags: true });
-    expect(result).toBe(fileContent);
-  });
-});

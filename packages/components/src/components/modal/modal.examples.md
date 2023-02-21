@@ -31,12 +31,8 @@ key you need to register an event listener for the `close` event which is emitte
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
-<Playground :markup="basic">
-  <select v-model="width" aria-label="Select modal width">
-    <option disabled>Select modal width</option>
-    <option value="minWidth">min width</option>
-    <option value="maxWidth">max width</option>
-  </select>
+<Playground :markup="widthMarkup">
+  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
 </Playground>
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to
@@ -53,7 +49,7 @@ meaningful heading through **ARIA** with the `aria` property.
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExampleAccessibility" :markup="basic"></Playground>
+<Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup"></Playground>
 
 ## Basic Scrollable
 
@@ -113,8 +109,6 @@ import { getModalCodeSamples } from '@porsche-design-system/shared';
 @Component
 export default class Code extends Vue {
   modals = [];
-  width = 'minWidth';
-
   codeExampleAccessibility = getModalCodeSamples();
 
   mounted() {
@@ -152,7 +146,9 @@ export default class Code extends Vue {
     return stretchToFullModalWidthClassName; 
   }
 
-  get basic() {
+  width = 'minWidth';
+  widths = ['minWidth', 'maxWidth'];
+  get widthMarkup() {
     const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
     
     return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
@@ -163,7 +159,7 @@ export default class Code extends Vue {
     <p-button type="button" variant="secondary" icon="close">Close</p-button>
   </p-button-group>
 </p-modal>`;}
-  
+
   scrollable =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
@@ -225,7 +221,7 @@ export default class Code extends Vue {
   openModal(index: number): void {
     this.modals[index].open = true;
   }
-  
+
   closeModal(index: number): void {
     this.modals[index].open = false;
   }

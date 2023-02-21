@@ -15,13 +15,8 @@ give the user visual cues to fill out the form.
 
 ## Basic example
 
-<Playground :markup="basic" :config="config">
-  <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="show">With label</option>
-    <option value="hide">Without label</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="hideLabelMarkup" :config="config">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
 ## With description text
@@ -64,20 +59,8 @@ The following types listed in the configurator below are supported. Browser spec
 in Chrome) may occur inside the input field which are explicitly not reset by the `p-text-field-wrapper` component. For
 better accessibility it's recommended to **not** reset these browser default UI helpers.
 
-<Playground :markup="typeOverview" :config="config">
-  <select v-model="type" aria-label="Select input type">
-    <option disabled>Select input type</option>
-    <option value="text">Text</option>
-    <option value="number">Number</option>
-    <option value="email">Email</option>
-    <option value="tel">Tel</option>
-    <option value="search">Search</option>
-    <option value="url">Url</option>
-    <option value="date">Date</option>
-    <option value="time">Time</option>
-    <option value="month">Month</option>
-    <option value="week">Week</option>
-  </select>
+<Playground :markup="inputTypeMarkup" :config="config">
+  <SelectOptions v-model="inputType" :values="inputTypes" name="inputType"></SelectOptions>
 </Playground>
 
 ## type="number"
@@ -85,12 +68,8 @@ better accessibility it's recommended to **not** reset these browser default UI 
 Inputs with `type="number"` can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
 description of the used unit should be provided to ensure accessibility.
 
-<Playground :markup="typeNumber" :config="config">
-  <select v-model="unitPosition" aria-label="Select unit position">
-    <option disabled>Select unit position</option>
-    <option value="prefix">Prefix</option>
-    <option value="suffix">Suffix</option>    
-  </select>
+<Playground :markup="unitPositionMarkup" :config="config">
+  <SelectOptions v-model="unitPosition" :values="unitPositions" name="unitPosition"></SelectOptions>
 </Playground>
 
 ## type="password"
@@ -133,13 +112,8 @@ On top of `actionIcon="locate"` it is possible to put the component into a loadi
 The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is
 colored and visible/hidden depending on the defined `state`.
 
-<Playground :markup="validationStates" :config="config">
-  <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">Error</option>
-    <option value="success">Success</option>
-    <option value="none">None</option>
-  </select>
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ## Slots
@@ -183,16 +157,13 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import IMask from 'imask';
 import { getTextFieldWrapperCodeSamples } from '@porsche-design-system/shared';
+import { UNIT_POSITIONS } from './text-field-wrapper-utils'; 
+import { FORM_STATES } from '../../utils'; 
 import { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
-
-  label = 'show';
-  type = 'text';
-  state = 'error';
-  unitPosition = 'prefix';
 
   imaskExample = getTextFieldWrapperCodeSamples('example-imask');
   searchExample = getTextFieldWrapperCodeSamples('example-search');
@@ -201,12 +172,13 @@ export default class Code extends Vue {
     return this.$store.getters.theme || 'light';
   }
 
-  get basic() {
-    const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-    return `<p-text-field-wrapper label="Some label"${labelAttr}>
+  hideLabel = false;
+  hideLabels = [false, true, '{ base: true, l: false }'];
+  get hideLabelMarkup() {
+    return `<p-text-field-wrapper label="Some label" hide-label="${this.hideLabel}">
   <input type="text" name="some-name" />
 </p-text-field-wrapper>
-<p-text-field-wrapper label="Some label"${labelAttr}>
+<p-text-field-wrapper label="Some label" hide-label="${this.hideLabel}">
   <input type="text" placeholder="Some placeholder" name="some-name" />
 </p-text-field-wrapper>`;
   }
@@ -239,13 +211,17 @@ export default class Code extends Vue {
   <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>`;
 
-  get typeOverview() {
+  inputType = 'text';
+  inputTypes = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'];
+  get inputTypeMarkup() {
     return `<p-text-field-wrapper label="Some label">
-  <input type="${this.type}" name="some-name" />
+  <input type="${this.inputType}" name="some-name" />
 </p-text-field-wrapper>`;
   }
 
-  get typeNumber() {
+  unitPosition = 'prefix';
+  unitPositions = UNIT_POSITIONS;
+  get unitPositionMarkup() {
     return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
   <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
@@ -307,12 +283,14 @@ export default class Code extends Vue {
     }
   }
 
-  get validationStates() {
+  state = 'error';
+  states = FORM_STATES;
+  get stateMarkup() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
     return `<p-text-field-wrapper label="Some label" state="${this.state}" ${attr}>
   <input type="text" name="some-name" />
 </p-text-field-wrapper>`;
-    }
+  }
     
   slots =
 `<p-text-field-wrapper state="error">

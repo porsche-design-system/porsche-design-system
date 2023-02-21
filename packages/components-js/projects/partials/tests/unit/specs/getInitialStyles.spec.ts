@@ -42,10 +42,3 @@ describe('format: jsx', () => {
     );
   });
 });
-
-describe('withoutTags: true', () => {
-  it('should return core styles without style tag', () => {
-    const result = getInitialStyles({ withoutTags: true });
-    expect(result).toBe(`${tagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}${normalizeCss}`);
-  });
-});
