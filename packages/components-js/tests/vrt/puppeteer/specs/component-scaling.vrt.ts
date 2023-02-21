@@ -13,6 +13,7 @@ const components = [
   'checkbox-wrapper',
   'content-wrapper',
   'display',
+  'divider',
   'fieldset-wrapper',
   'heading',
   'headline',
