@@ -120,15 +120,15 @@ export default class Code extends Vue {
   get icon() {
     return `logo-${this.platform.toLowerCase()}`;
   }
-  
+
   get variants() {
     return `<p-link-social href="https://example.com" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>
 <p-link-social href="https://example.com" hide-label="true" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>`;
   }
-  
+
   responsive =
 `<p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, l: false }" target="_blank" rel="nofollow noopener">Facebook</p-link-social>`;
-    
+
   routing =
 `<p-link-social icon="logo-facebook">
   <a href="https://www.facebook.com/" target="_blank" rel="nofollow noopener">Facebook</a>

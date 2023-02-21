@@ -58,16 +58,8 @@ component.
 There are predefined text sizes for the component which should cover most use cases. If a specific text size is needed,
 the size can be set to `inherit` to specify the text size from outside.
 
-<Playground :markup="markupSize" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option>x-small</option>
-    <option>small</option>
-    <option>medium</option>
-    <option>large</option>
-    <option>x-large</option>
-    <option>inherit</option>
-  </select>
+<Playground :markup="sizeMarkup" :config="config">
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ### Responsive
@@ -85,15 +77,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   In case, e.g. <b>weight="semibold"</b> is used it will automatically be mapped to font weight regular.
 </p-inline-notification>
 
-<Playground :markup="markupWeight" :config="config">
-  <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select weight</option>
-    <option>thin</option>
-    <option>regular</option>
-    <option>semibold</option>
-    <option>semi-bold</option>
-    <option>bold</option>
-  </select>
+<Playground :markup="weightMarkup" :config="config">
+  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
 ---
@@ -120,13 +105,8 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 The `label` can be aligned to the `right` (default) or to the `left` of the icon.
 
-<Playground :markup="markupAlignment" :config="config">
-  <select v-model="alignLabel" aria-label="Select alignment">
-    <option disabled>Select alignment</option>
-    <option value="left">Left</option>
-    <option value="right">Right</option>
-    <option value="{ base: 'left', l: 'right' }">Responsive</option>
-  </select>
+<Playground :markup="alignLabelMarkup" :config="config">
+  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
 </Playground>
 
 ---
@@ -136,7 +116,7 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 The `stretch` property extends the area between icon and label to the maximum available space. It is recommended to use
 stretch only on `left` alignment and small viewports, e.g. mobile views.
 
-<Playground :markup="markupStretch" :config="config">
+<Playground :markup="stretchMarkup" :config="config">
   <select v-model="stretch" aria-label="Select stretching and alignment">
     <option disabled>Select stretching and alignment</option>
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
@@ -175,15 +155,15 @@ By setting the `tabindex` attribute to `-1` you can remove the **Button Pure** f
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { TEXT_SIZES } from '../text/text-size';
+import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from '../text/text-weight';
+import { ALIGN_LABELS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
   configInline = { ...this.config, spacing: 'inline' };
 
-  size = 'medium';
-  weight = 'thin';
-  alignLabel = 'left';
   stretch = 'stretch="true" align-label="left"';
 
   withoutIcon =
@@ -204,7 +184,9 @@ export default class Code extends Vue {
   responsive =
 `<p-button-pure hide-label="{ base: true, l: false }">Some label</p-button-pure>`;
 
-  get markupSize() {
+  size = 'medium';
+  sizes = TEXT_SIZES;
+  get sizeMarkup() {
     const style = this.size === 'inherit' ? ' style="font-size: 3rem;"' : '';
     return `<p-button-pure size="${this.size}"${style}>Some label</p-button-pure>`;
   }
@@ -215,7 +197,9 @@ export default class Code extends Vue {
   markupResponsive = 
 `<p-button-pure size="{ base: 'small', l: 'medium' }">Some label</p-button-pure>`;
 
-  get markupWeight() {
+  weight = 'thin';
+  weights = TEXT_WEIGHTS.map(item => TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  get weightMarkup() {
     return `<p-button-pure weight="${this.weight}">Some label</p-button-pure>`;
   }
 
@@ -226,11 +210,13 @@ export default class Code extends Vue {
 `<p-button-pure icon="delete">Some label</p-button-pure>
 <p-button-pure icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
 
-  get markupAlignment() {
+  alignLabel = 'left';
+  alignLabels = [...ALIGN_LABELS, "{ base: 'left', l: 'right' }"];
+  get alignLabelMarkup() {
     return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
   };
 
-  get markupStretch() {
+  get stretchMarkup() {
     return `<p-button-pure ${this.stretch}>Some label</p-button-pure>`;
   };
 
