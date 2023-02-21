@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Stepper Horizontal` matches new design language.
+- `Stepper Horizontal` and `Text List` match new design language.
 - Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
 - Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
@@ -415,8 +415,8 @@ to the new values since those ones will be removed with next major version.
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
   `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Text List`, `Headline` and
-  `Fieldset Wrapper` matches new design language.
+  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline` and `Fieldset Wrapper`
+  matches new design language.
 - `Icon` supports
   `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | inherit`
   for `color` prop.
