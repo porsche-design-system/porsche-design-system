@@ -29,6 +29,7 @@ import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueAriaAttribute, MarqueSize } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
+import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
@@ -760,6 +761,24 @@ export namespace Components {
          */
         "open": boolean;
     }
+    interface PModelSignature {
+        /**
+          * Adapts the color of the component.
+         */
+        "color"?: ModelSignatureColor;
+        /**
+          * Adapts the size of the component.
+         */
+        "model"?: ModelSignatureModel;
+        /**
+          * Adapts the size of the component.
+         */
+        "size"?: ModelSignatureSize;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1479,6 +1498,12 @@ declare global {
         prototype: HTMLPModalElement;
         new (): HTMLPModalElement;
     };
+    interface HTMLPModelSignatureElement extends Components.PModelSignature, HTMLStencilElement {
+    }
+    var HTMLPModelSignatureElement: {
+        prototype: HTMLPModelSignatureElement;
+        new (): HTMLPModelSignatureElement;
+    };
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
     }
     var HTMLPPaginationElement: {
@@ -1691,6 +1716,7 @@ declare global {
         "p-link-tile": HTMLPLinkTileElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
+        "p-model-signature": HTMLPModelSignatureElement;
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
@@ -2461,6 +2487,24 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
     }
+    interface PModelSignature {
+        /**
+          * Adapts the color of the component.
+         */
+        "color"?: ModelSignatureColor;
+        /**
+          * Adapts the size of the component.
+         */
+        "model"?: ModelSignatureModel;
+        /**
+          * Adapts the size of the component.
+         */
+        "size"?: ModelSignatureSize;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -3033,6 +3077,7 @@ declare namespace LocalJSX {
         "p-link-tile": PLinkTile;
         "p-marque": PMarque;
         "p-modal": PModal;
+        "p-model-signature": PModelSignature;
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
@@ -3095,6 +3140,7 @@ declare module "@stencil/core" {
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
+            "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
