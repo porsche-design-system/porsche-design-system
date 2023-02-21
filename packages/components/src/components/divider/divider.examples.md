@@ -56,7 +56,7 @@ export default class Code extends Vue {
   <p-divider orientation="{base: 'horizontal', l: 'vertical'}"></p-divider>
 </div>`;
 
-  color = 'neutral-contrast-low';
+  color = 'contrast-low';
   colors = DIVIDER_COLORS.map(item => DIVIDER_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get colorMarkup(){
     return `<p-divider color="${this.color}"></p-divider>`;
