@@ -37,6 +37,7 @@ const components = [
   'tag-dismissible',
   'text-field-wrapper',
   'textarea-wrapper',
+  'text-list',
   'toast-basic',
 ];
 

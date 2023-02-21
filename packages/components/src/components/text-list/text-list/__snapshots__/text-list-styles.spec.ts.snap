@@ -1,109 +1,189 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for listType: ordered, orderType: alphabetically and theme: dark 1`] = `
 ":host {
   display: block;
-  counter-reset: section !important;
+  counter-reset: p-text-list-counter !important;
 }
-[role] {
-  display: block;
-  padding: 0;
-  margin: 0;
-  color: #fff;
+:host([hidden]) {
+  display: none !important;
+}
+ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  color: #FBFCFF;
+  margin: 0;
+  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
+  list-style-type: none;
+}
+::slotted(*) {
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
+}
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light 1`] = `
+exports[`getComponentCss() should return correct css for listType: ordered, orderType: alphabetically and theme: light 1`] = `
 ":host {
   display: block;
-  counter-reset: section !important;
+  counter-reset: p-text-list-counter !important;
 }
-[role] {
-  display: block;
-  padding: 0;
-  margin: 0;
-  color: #000;
+:host([hidden]) {
+  display: none !important;
+}
+ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  color: #010205;
+  margin: 0;
+  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
+  list-style-type: none;
+}
+::slotted(*) {
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
+}
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
 }"
 `;
 
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-text-list a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
+exports[`getComponentCss() should return correct css for listType: ordered, orderType: numbered and theme: dark 1`] = `
+":host {
+  display: block;
+  counter-reset: p-text-list-counter !important;
 }
-p-text-list b, p-text-list strong {
-  font-weight: 700 !important;
+:host([hidden]) {
+  display: none !important;
 }
-p-text-list em, p-text-list i {
-  font-style: normal !important;
+ol,ul {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  margin: 0;
+  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
+  list-style-type: none;
 }
-p-text-list a::-moz-focus-inner {
-  border: 0 !important;
+::slotted(*) {
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }
-p-text-list a:focus {
-  outline-color: currentColor !important;
-}
-p-text-list a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  p-text-list[data-theme="dark"] a:hover {
-    color: #ff0223 !important;
-  }
-  p-text-list a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-text-list a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
+}"
 `;
 
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-text-list a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
+exports[`getComponentCss() should return correct css for listType: ordered, orderType: numbered and theme: light 1`] = `
+":host {
+  display: block;
+  counter-reset: p-text-list-counter !important;
 }
-prefixed-p-text-list b, prefixed-p-text-list strong {
-  font-weight: 700 !important;
+:host([hidden]) {
+  display: none !important;
 }
-prefixed-p-text-list em, prefixed-p-text-list i {
-  font-style: normal !important;
+ol,ul {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  margin: 0;
+  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
+  list-style-type: none;
 }
-prefixed-p-text-list a::-moz-focus-inner {
-  border: 0 !important;
+::slotted(*) {
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }
-prefixed-p-text-list a:focus {
-  outline-color: currentColor !important;
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for listType: unordered, orderType: numbered and theme: dark 1`] = `
+":host {
+  display: block;
+  counter-reset: p-text-list-counter !important;
 }
-prefixed-p-text-list a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
+:host([hidden]) {
+  display: none !important;
 }
-@media(hover:hover) {
-  prefixed-p-text-list[data-theme="dark"] a:hover {
-    color: #ff0223 !important;
-  }
-  prefixed-p-text-list a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-text-list a:hover {
-    color: #d5001c !important;
-  }
+ol,ul {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FBFCFF;
+  margin: 0;
+  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-unordered-padding-left,.375rem);
+  list-style-type: var(--p-internal-text-list-list-style-type,'•');
 }
-"
+::slotted(*) {
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for listType: unordered, orderType: numbered and theme: light 1`] = `
+":host {
+  display: block;
+  counter-reset: p-text-list-counter !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+ol,ul {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  margin: 0;
+  padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-unordered-padding-left,.375rem);
+  list-style-type: var(--p-internal-text-list-list-style-type,'•');
+}
+::slotted(*) {
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
+}"
 `;
