@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`isListTypeOrdered() should return correct boolean for list type: ordered 1`] = `true`;
-
-exports[`isListTypeOrdered() should return correct boolean for list type: unordered 1`] = `false`;
-
-exports[`isOrderTypeNumbered() should return correct boolean for order type: alphabetically 1`] = `false`;
-
-exports[`isOrderTypeNumbered() should return correct boolean for order type: numbered 1`] = `true`;

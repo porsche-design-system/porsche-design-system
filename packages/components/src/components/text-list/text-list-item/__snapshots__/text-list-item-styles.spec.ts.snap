@@ -13,6 +13,6 @@ exports[`getComponentCss() should return correct css 1`] = `
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-text-list-pseudo-suffix: "";
+  --p-internal-text-list-pseudo-suffix: "" !important;
 }"
 `;

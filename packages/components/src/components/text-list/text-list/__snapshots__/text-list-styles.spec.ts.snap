@@ -18,19 +18,19 @@ ol,ul {
   list-style-type: none;
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px;
-  --p-internal-text-list-padding-bottom: 16px;
-  --p-internal-text-list-ordered-padding-left: 2rem;
-  --p-internal-text-list-unordered-padding-left: .625rem;
-  --p-internal-text-list-list-style-type: "–";
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }
-::slotted([role="listitem"])::before {
-  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-pseudo-suffix,'.');
-  counter-increment: p-text-list-counter;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-100%,0);
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
 }"
 `;
 
@@ -52,19 +52,19 @@ ol,ul {
   list-style-type: none;
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px;
-  --p-internal-text-list-padding-bottom: 16px;
-  --p-internal-text-list-ordered-padding-left: 2rem;
-  --p-internal-text-list-unordered-padding-left: .625rem;
-  --p-internal-text-list-list-style-type: "–";
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }
-::slotted([role="listitem"])::before {
-  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-pseudo-suffix,'.');
-  counter-increment: p-text-list-counter;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-100%,0);
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
 }"
 `;
 
@@ -86,19 +86,19 @@ ol,ul {
   list-style-type: none;
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px;
-  --p-internal-text-list-padding-bottom: 16px;
-  --p-internal-text-list-ordered-padding-left: 2rem;
-  --p-internal-text-list-unordered-padding-left: .625rem;
-  --p-internal-text-list-list-style-type: "–";
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }
-::slotted([role="listitem"])::before {
-  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-pseudo-suffix,'.');
-  counter-increment: p-text-list-counter;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-100%,0);
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
 }"
 `;
 
@@ -120,19 +120,19 @@ ol,ul {
   list-style-type: none;
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px;
-  --p-internal-text-list-padding-bottom: 16px;
-  --p-internal-text-list-ordered-padding-left: 2rem;
-  --p-internal-text-list-unordered-padding-left: .625rem;
-  --p-internal-text-list-list-style-type: "–";
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }
-::slotted([role="listitem"])::before {
-  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-pseudo-suffix,'.');
-  counter-increment: p-text-list-counter;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-100%,0);
+::slotted(*)::before {
+  content: counters(p-text-list-counter,'.',decimal) var(--p-internal-text-list-pseudo-suffix,'.') !important;
+  counter-increment: p-text-list-counter !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-100%,0) !important;
 }"
 `;
 
@@ -154,11 +154,11 @@ ol,ul {
   list-style-type: var(--p-internal-text-list-list-style-type,'•');
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px;
-  --p-internal-text-list-padding-bottom: 16px;
-  --p-internal-text-list-ordered-padding-left: 2rem;
-  --p-internal-text-list-unordered-padding-left: .625rem;
-  --p-internal-text-list-list-style-type: "–";
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }"
 `;
 
@@ -180,10 +180,10 @@ ol,ul {
   list-style-type: var(--p-internal-text-list-list-style-type,'•');
 }
 ::slotted(*) {
-  --p-internal-text-list-padding-top: 4px;
-  --p-internal-text-list-padding-bottom: 16px;
-  --p-internal-text-list-ordered-padding-left: 2rem;
-  --p-internal-text-list-unordered-padding-left: .625rem;
-  --p-internal-text-list-list-style-type: "–";
+  --p-internal-text-list-padding-top: 4px !important;
+  --p-internal-text-list-padding-bottom: 16px !important;
+  --p-internal-text-list-ordered-padding-left: 2rem !important;
+  --p-internal-text-list-unordered-padding-left: .625rem !important;
+  --p-internal-text-list-list-style-type: "–" !important;
 }"
 `;
