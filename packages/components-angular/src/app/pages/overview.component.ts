@@ -166,6 +166,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-marque></p-marque>
         </div>
 
+        <div class="playground light" title="should render default model-signature">
+          <p-model-signature></p-model-signature>
+        </div>
+
         <div class="playground light" title="should render default pagination">
           <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></p-pagination>
         </div>
@@ -424,6 +428,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default marque with custom prefix">
           <my-prefix-p-marque p-marque></my-prefix-p-marque>
+        </div>
+
+        <div class="playground light" title="should render default model-signature with custom prefix">
+          <my-prefix-p-model-signature p-model-signature></my-prefix-p-model-signature>
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">

@@ -13,6 +13,9 @@ export const getComponentCss = (
     'neutral-contrast-low': contrastLowColor,
     'neutral-contrast-medium': contrastMediumColor,
     'neutral-contrast-high': contrastHighColor,
+    'contrast-low': contrastLowColor,
+    'contrast-medium': contrastMediumColor,
+    'contrast-high': contrastHighColor,
   };
 
   return getCss({
