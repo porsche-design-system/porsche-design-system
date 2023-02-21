@@ -14,7 +14,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-link-tile');
 const getRoot = () => selectNode(page, 'p-link-tile >>> .root');
-const getLink = () => selectNode(page, 'p-link-tile >>> a');
+const getLink = () => selectNode(page, 'p-link-tile >>> p-link >>> a');
 
 const imgSrc =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=';
@@ -25,12 +25,11 @@ const initLinkTile = (opts?: { compact?: boolean }): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `<p-link-tile href="#" label="Some label" description="Some description" compact="${compact}" >
-  <img src="${imgSrc}"/>
+  <img src="${imgSrc}" alt="Some image label"/>
 </p-link-tile>`
   );
 };
-
-xdescribe('lifecycle', () => {
+describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initLinkTile();
     const status = await getLifecycleStatus(page);
@@ -59,7 +58,7 @@ xdescribe('lifecycle', () => {
     await setContentWithDesignSystem(
       page,
       `<p-link-tile href="#" label="Some label" description="Some description" compact="{ base: true, s: false, l: true }" >
-  <img src="${imgSrc}"/>
+  <img src="${imgSrc}" alt="Some image label"/>
 </p-link-tile>`
     );
     const status = await getLifecycleStatus(page);
@@ -87,7 +86,7 @@ xdescribe('lifecycle', () => {
   });
 });
 
-xdescribe('accessibility', () => {
+describe('accessibility', () => {
   it('should expose correct initial accessibility tree properties', async () => {
     await initLinkTile();
     const root = await getRoot();
