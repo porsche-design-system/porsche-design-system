@@ -71,14 +71,8 @@ If you want to place any additional elements between heading and slider, you can
 
 Left and right outer spacings can be defined via `width`.
 
-<Playground :markup="width" :config="config">
-  <label>
-    <select v-model="widthModel" aria-label="Select width mode">
-      <option disabled>Select width mode</option>
-      <option value="basic">basic</option>
-      <option value="extended">extended</option>
-    </select>
-  </label>
+<Playground :markup="widthMarkup" :config="config">
+  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
 </Playground>
 
 ## Disable Pagination
@@ -224,9 +218,10 @@ export default class Code extends Vue {
 </p-carousel>`;
 }
 
-  widthModel = 'basic';
-  get width() {
-    return `<p-carousel width="${this.widthModel}" heading="${this.basicHeading}" description="${this.basicDescription}">
+  width = 'basic';
+  widths = ['basic', 'extended'];
+  get widthMarkup() {
+    return `<p-carousel width="${this.width}" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
 </p-carousel>`;
 }
