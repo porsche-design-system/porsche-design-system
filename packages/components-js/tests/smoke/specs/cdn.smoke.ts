@@ -204,13 +204,16 @@ describe('cdn', () => {
 
     describe('styles', () => {
       // retrieve css file names via partial since FONT_FACE_CDN_URL returns different value based on flag in window
-      const comStyle = getFontFaceStylesheet({ cdn: 'auto', withoutTags: true });
-      const cnStyle = getFontFaceStylesheet({ cdn: 'cn', withoutTags: true });
+      const comStyle = getFontFaceStylesheet({ cdn: 'auto' });
+      const cnStyle = getFontFaceStylesheet({ cdn: 'cn' });
 
       // extract file name from full path
-      const getFileName = (path: string) => path.substr(path.lastIndexOf('/') + 1);
+      const getFileName = (path: string): string => {
+        path = path.replace(/(.*)(https:\/\/[a-z0-9./-]+\.css)(.*)/, '$2');
+        return path.substring(path.lastIndexOf('/') + 1);
+      };
 
-      const styles = [getFileName(comStyle), getFileName(cnStyle)];
+      const styles = [comStyle, cnStyle].map(getFileName);
       const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`;
       bulkRequestItems(styles, baseUrl);
     });

@@ -16,7 +16,7 @@ const mediaQueryMaxS = getMediaQueryMax('s');
 
 const getBackgroundColor = (state: InlineNotificationState, theme: Theme): string => {
   const { infoSoftColor, successSoftColor, errorSoftColor, warningSoftColor } = getThemedColors(theme);
-  const colorMap: { [key in InlineNotificationState]: string } = {
+  const colorMap: Record<InlineNotificationState, string> = {
     neutral: infoSoftColor, // deprecated
     info: infoSoftColor,
     warning: warningSoftColor,

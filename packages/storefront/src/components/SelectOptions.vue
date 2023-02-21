@@ -3,7 +3,8 @@
     <p-text :theme="theme">{{ name }}:</p-text>
     <select :value="value" aria-label="label" @input="$emit('input', $event.target.value)">
       <option disabled>{{ label }}</option>
-      <option v-for="value in values" v-bind:key="value" :value="value">{{ value }}</option>
+      <!-- prettier-ignore -->
+      <option v-for="value in values" v-bind:key="value" :value="`${value}`.replace(' (deprecated)', '')">{{ value }}</option>
     </select>
   </label>
 </template>

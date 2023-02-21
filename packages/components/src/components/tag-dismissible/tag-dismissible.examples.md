@@ -16,11 +16,7 @@
 </p-inline-notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ## Label
@@ -45,7 +41,9 @@ import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
+
   backgroundColor = 'default';
+  backgroundColors = ['default', 'surface'];
 
   get colorMarkup(){
     return TAG_DISMISSIBLE_COLORS.map((color) => `<p-tag-dismissible color="${color}">Color ${color}</p-tag-dismissible>`).join('\n');

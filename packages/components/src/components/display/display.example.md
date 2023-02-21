@@ -20,12 +20,7 @@ There are predefined fluid text sizes for the component which should cover most 
 needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option>medium</option>
-    <option>large</option>
-    <option>inherit</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ### Responsive
@@ -47,24 +42,15 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color" aria-label="Select color">
-    <option disabled>Select color</option>
-    <option value="primary">Primary</option>
-    <option value="inherit">Inherit</option>
-  </select>
+  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
 </Playground>
 
 ---
 
 ## Alignment
 
-<Playground :markup="alignmentMarkup" :config="config">
-  <select v-model="align" aria-label="Select alignment">
-    <option disabled>Select alignment</option>
-    <option value="left">Left</option>
-    <option value="center">Center</option>
-    <option value="right">Right</option>
-  </select>
+<Playground :markup="alignMarkup" :config="config">
+  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>
 
 ---
@@ -79,6 +65,8 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { DISPLAY_COLORS, DISPLAY_SIZES } from './display-utils';
+import { TEXT_ALIGNS } from '../text/text-align'; 
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -87,9 +75,7 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   size = 'large';
-  color = 'primary';
-  align = 'center';
-    
+  sizes = DISPLAY_SIZES;
   get sizeMarkup() {
     const style = this.size === 'inherit' ? ' style="font-size: 5rem;"' : '';
     return `<p-display tag="h3" size="${this.size}"${style}>${sentence}</p-display>`;
@@ -104,12 +90,16 @@ export default class Code extends Vue {
 <p-display><h3>${sentence}</h3></p-display>`;
   }
 
+  color = 'primary';
+  colors = DISPLAY_COLORS;
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
     return `<p-display tag="h3" color="${this.color}"${style}>${sentence}</p-display>`;
   }
   
-  get alignmentMarkup() {
+  align = 'center';
+  aligns = TEXT_ALIGNS;
+  get alignMarkup() {
     return `<p-display tag="h3" align="${this.align}">${sentence}</p-display>`;
   }
 
