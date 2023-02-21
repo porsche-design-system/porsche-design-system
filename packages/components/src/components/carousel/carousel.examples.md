@@ -93,14 +93,8 @@ The pagination indicators underneath the slides can be removed via `disablePagin
 
 The Heading and Description can be aligned via `alignHeader`.
 
-<Playground :markup="alignHeader" :config="config">
-  <label>
-    <select v-model="alignHeaderModel" aria-label="Select align header mode">
-      <option disabled>Select align header mode</option>
-      <option value="left">left</option>
-      <option value="center">center</option>
-    </select>
-  </label>
+<Playground :markup="alignHeaderMarkup" :config="config">
+  <SelectOptions v-model="alignHeader" :values="alignHeaders" name="alignHeader"></SelectOptions>
 </Playground>
 
 ## Focus Behavior
@@ -221,9 +215,11 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 }
-  alignHeaderModel = 'left';
-  get alignHeader() {
-    return `<p-carousel align-header="${this.alignHeaderModel}" heading="${this.basicHeading}" description="${this.basicDescription}">
+
+  alignHeader = 'left';
+  alignHeaders = ['left', 'center'];
+  get alignHeaderMarkup() {
+    return `<p-carousel align-header="${this.alignHeader}" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
 </p-carousel>`;
 }
