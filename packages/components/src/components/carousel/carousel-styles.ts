@@ -109,7 +109,7 @@ export const getComponentCss = (
         cursor: 'grab',
         // to override inline styles set by splide library
         ...addImportantToEachRule({
-          // since we have "cutted slide" on the right side, padding right should include also "cuttedSlideOffset" and "gridGap" (distance between slides)
+          // since we have "cutted slide" on the right side, splide padding right should include also "cuttedSlideOffset" and "gridGap" (distance between slides)
           padding: `0 calc(${spacingLeftRight} + ${gridGap} + ${cuttedSlideOffset}) 0 ${spacingLeftRight}`,
           [mediaQueryS]: {
             padding: `0 calc(${spacingLeftRightSWithFallback} + ${gridGap} + ${cuttedSlideOffsetS}) 0 ${spacingLeftRightSWithFallback}`,
