@@ -104,10 +104,10 @@ export const getComponentCss = (
           // since we have "cutted slide" on the right side, splide padding right should include also "cuttedSlideOffset" and "gridGap" (distance between slides)
           padding: `0 calc(${spacingLeftRight} + ${gridGap}) 0 ${spacingLeftRight}`,
           [mediaQueryS]: {
-            padding: `0 ${spacingLeftRightSWithFallback} 0 ${spacingLeftRightSWithFallback}`,
+            padding: `0 ${spacingLeftRightSWithFallback}`,
           },
           [mediaQueryXXL]: {
-            padding: `0 ${spacingLeftRightXXL} 0 ${spacingLeftRightXXL}`,
+            padding: `0 ${spacingLeftRightXXL}`,
           },
         }),
         '&--draggable': {
