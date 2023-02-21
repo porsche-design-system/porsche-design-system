@@ -13,8 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 - Partials: Removed deprecated `withoutTags` option for all partials, please use `format: 'jsx'` instead
-- `Divider` matches new design language.
-- `Button Group` matches new design language.
+- `Divider` and `Button Group` match new design language.
 
 #### Added
 
@@ -404,6 +403,19 @@ to the new values since those ones will be removed with next major version.
 ```diff
 - …addMessage({ text: `Some message`, state: 'neutral' })
 + …addMessage({ text: `Some message`, state: 'info' })
+```
+
+##### Divider:
+
+- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated.
+
+```diff
+- <p-divider color="neutral-contrast-low"></p-divider>
++ <p-divider color="contrast-low"></p-divider>
+- <p-divider color="neutral-contrast-medium"></p-divider>
++ <p-divider color="contrast-medium"></p-divider>
+- <p-divider color="neutral-contrast-high"></p-divider>
++ <p-divider color="contrast-high"></p-divider>
 ```
 
 #### Added
