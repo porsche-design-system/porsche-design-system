@@ -1,4 +1,4 @@
-import { minifyHTML, withoutTagsOption } from './utils';
+import { minifyHTML } from './utils';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
@@ -12,25 +12,18 @@ type GetFontLinksOptions = {
   subset?: FontSubset;
   weights?: FontWeight[];
   cdn?: Cdn;
-  ${withoutTagsOption}
   format?: Format;
-};
-type GetFontLinksOptionsFormatHtml = Omit<GetFontLinksOptions, 'withoutTags'> & { format: 'html' };
-type GetFontLinksOptionsFormatJsx = Omit<GetFontLinksOptions, 'withoutTags'> & { format: 'jsx' };
-type GetFontLinksOptionsWithoutTags = Omit<GetFontLinksOptions, 'format'>;`;
+};`;
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
-  const func = `export function getFontLinks(opts?: GetFontLinksOptionsFormatJsx): JSX.Element;
-export function getFontLinks(opts?: GetFontLinksOptionsFormatHtml): string;
-export function getFontLinks(opts?: GetFontLinksOptionsWithoutTags): string[];
+  const func = `export function getFontLinks(opts?: GetFontLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getFontLinks(opts?: GetFontLinksOptions): string;
-export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JSX.Element {
-  const { subset, weights, cdn, withoutTags, format }: GetFontLinksOptions = {
+export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element {
+  const { subset, weights, cdn, format }: GetFontLinksOptions = {
     subset: 'latin',
     weights: ['regular', 'semi-bold'],
     cdn: 'auto',
-    withoutTags: false,
     format: 'html',
     ...opts,
   };
@@ -86,8 +79,9 @@ Please use only valid font weights:
   const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
   const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="" />);
 
-  const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
-  return withoutTags ? urls : markup;
+  return format === 'html'
+    ? linksHtml
+    : <>{linksJsx}</>;
 }`;
 
   return [types, func].join('\n\n');
