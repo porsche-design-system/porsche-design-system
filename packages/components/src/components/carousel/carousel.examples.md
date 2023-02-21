@@ -270,6 +270,10 @@ export default class Code extends Vue {
     border-radius: $pds-border-radius-small;
   }
 
+  :deep(p-carousel) {
+    margin-bottom: $pds-spacing-fluid-medium;
+  }
+
   button {
     padding: .5rem 1rem;
 
