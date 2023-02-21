@@ -16,7 +16,7 @@ teaser with a more detailed description of the link and where it leads to.
 
 The `label` property is used to describe the anchor.
 
-<Playground :markup="basic"></Playground>
+<Playground :markup="basic" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -41,7 +41,7 @@ can change the height by using different aspect ratios.
 
 The `size` property changes the font size of the description.
 
-<Playground :markup="sizeMarkup">
+<Playground :markup="sizeMarkup" :config="config">
   <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
@@ -49,7 +49,7 @@ The `size` property changes the font size of the description.
 
 The `weight` property changes the font weight of the description.
 
-<Playground :markup="weightMarkup">
+<Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
@@ -60,7 +60,7 @@ underlying image provides enough contrast, you can choose to disable the gradien
 
 **Note:** When disabling the gradient, it must be ensured that the contrast values are accessibility compliant.
 
-<Playground :markup="gradientMarkup">
+<Playground :markup="gradientMarkup" :config="config">
   <SelectOptions v-model="gradient" :values="gradients" name="gradient"></SelectOptions>
 </Playground>
 
@@ -89,6 +89,7 @@ import { LINK_TILE_ALIGNS, LINK_TILE_ASPECT_RATIOS, LINK_TILE_SIZES, LINK_TILE_W
 
 @Component
 export default class Code extends Vue {
+  config = { spacing: 'block' };
   imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
 
   basic = `<p-link-tile
