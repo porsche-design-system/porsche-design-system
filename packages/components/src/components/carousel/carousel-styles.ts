@@ -86,6 +86,7 @@ export const getComponentCss = (
         color: primaryColor,
         maxWidth: '900px',
         ...(!isHeaderAlignLeft && {
+          // if center-aligned
           margin: '0 auto',
           textAlign: 'center',
         }),
@@ -96,6 +97,7 @@ export const getComponentCss = (
         color: primaryColor,
         maxWidth: '550px',
         ...(!isHeaderAlignLeft && {
+          // if center-aligned
           margin: '0 auto',
           textAlign: 'center',
         }),
@@ -150,13 +152,13 @@ export const getComponentCss = (
       padding: `0 ${spacingLeftRight}`,
       font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
       [mediaQueryS]: {
-        // only starting from S size and bigger there's nav
+        // only starting from S size and bigger there's nav, therefore header alignment is needed
         ...(isHeaderAlignLeft
           ? {
               gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
               columnGap: headerColumnGap,
+              // if there's another spacing for s size
               ...(spacingLeftRightS && {
-                // is for s size there's another spacing
                 padding: `0 ${spacingLeftRightS}`,
               }),
             }
@@ -166,7 +168,7 @@ export const getComponentCss = (
               padding: `0 calc(${spacingLeftRightSWithFallback} + ${headerAlignCenterSpacing})`, // set padding, so that description & heading do not overlap with nav buttons
             }),
         position: 'relative',
-        minHeight: navBtnSize, // for a case there's no description and no heading - it should be equal to actual height of prev/next buttons
+        minHeight: navBtnSize, // for a case there's no description and no heading - it's height should be equal to actual height of prev/next buttons
       },
       [mediaQueryXXL]: {
         ...(isHeaderAlignLeft
