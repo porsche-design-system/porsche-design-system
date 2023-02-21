@@ -141,6 +141,7 @@ export const getComponentCss = (
       rowGap: headerRowGap,
       padding: `0 ${spacingLeftRight}`,
       font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
+      minWidth: '200px', // for a case someone tries to put carousel in a very small element - there should be enough space in header, so that it doesn't look broken
       [mediaQueryS]: {
         // only starting from S size and bigger there's nav, therefore header alignment is needed
         ...(isHeaderAlignLeft
