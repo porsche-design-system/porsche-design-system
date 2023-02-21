@@ -22,12 +22,7 @@ import {
   gridGap,
 } from '@porsche-design-system/utilities-v2';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import {
-  getSpacingForWidth,
-  oneColumnWidthBase,
-  oneColumnWidthS,
-  oneColumnWidthXXL,
-} from '../content-wrapper/content-wrapper-spacings-shared';
+import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -63,11 +58,6 @@ export const getComponentCss = (
   const spacingLeftRightS = gridSpacing.s;
   const spacingLeftRightSWithFallback = spacingLeftRightS || spacingLeftRight; // in a case "spacingLeftRightS" is undefined (for example for "extended") - use fallback "spacingLeftRight"
   const spacingLeftRightXXL = gridSpacing.xxl;
-  const isBasic = width === 'basic';
-  // offset of cutted slide in regard to header (nav)
-  const cuttedSlideOffset = oneColumnWidthBase; // for smaller screens it's the width of one column, for both "extended" and "basic" width
-  const cuttedSlideOffsetS = isBasic ? oneColumnWidthS : `calc(${oneColumnWidthS} * 2 + ${gridGap})`; // for "extended" it's 2 column widths with a gap between, and for "basic" it's just one column width
-  const cuttedSlideOffsetXXL = isBasic ? oneColumnWidthXXL : `calc(${oneColumnWidthXXL} * 2 + ${gridGap})`;
 
   return getCss({
     '@global': {
@@ -112,12 +102,12 @@ export const getComponentCss = (
         // to override inline styles set by splide library
         ...addImportantToEachRule({
           // since we have "cutted slide" on the right side, splide padding right should include also "cuttedSlideOffset" and "gridGap" (distance between slides)
-          padding: `0 calc(${spacingLeftRight} + ${gridGap} + ${cuttedSlideOffset}) 0 ${spacingLeftRight}`,
+          padding: `0 calc(${spacingLeftRight} + ${gridGap}) 0 ${spacingLeftRight}`,
           [mediaQueryS]: {
-            padding: `0 calc(${spacingLeftRightSWithFallback} + ${gridGap} + ${cuttedSlideOffsetS}) 0 ${spacingLeftRightSWithFallback}`,
+            padding: `0 ${spacingLeftRightSWithFallback} 0 ${spacingLeftRightSWithFallback}`,
           },
           [mediaQueryXXL]: {
-            padding: `0 calc(${spacingLeftRightXXL} + ${gridGap} + ${cuttedSlideOffsetXXL}) 0 ${spacingLeftRightXXL}`,
+            padding: `0 ${spacingLeftRightXXL} 0 ${spacingLeftRightXXL}`,
           },
         }),
         '&--draggable': {
