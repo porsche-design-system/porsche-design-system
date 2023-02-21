@@ -21,10 +21,6 @@ import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
 import {
   CAROUSEL_WIDTHS,
-  CarouselAlignHeader,
-  CarouselChangeEvent,
-  CarouselInternationalization,
-  CarouselWidth,
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
@@ -36,6 +32,12 @@ import {
   updatePrevNextButtons,
   updateSlidesInert,
   warnIfHeadingIsMissing,
+} from './carousel-utils';
+import type {
+  CarouselAlignHeader,
+  CarouselChangeEvent,
+  CarouselInternationalization,
+  CarouselWidth,
 } from './carousel-utils';
 import type { ButtonPure } from '../button-pure/button-pure';
 import { gridGap } from '@porsche-design-system/utilities-v2';
