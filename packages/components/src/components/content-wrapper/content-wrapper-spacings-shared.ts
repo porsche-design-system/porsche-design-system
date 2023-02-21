@@ -4,7 +4,7 @@ import { gridGap, gridSafeZoneBase, gridSafeZoneXXL, gridWidthMax } from '@porsc
 type PartiallyOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>; // possibility to define some keys to be optional
 const oneColumnWidthS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
 const oneColumnWidthXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
-const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
+export const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
 
 export type GridSpacingWidth = Exclude<ContentWrapperWidth, 'full' | 'fluid'>;
 // I think it's better (safer) to explicitly define, which keys are optional and which not. If the format changes in the future - we can adjust the type
