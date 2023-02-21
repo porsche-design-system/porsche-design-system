@@ -168,6 +168,7 @@ export const getComponentCss = (
     'link-overlay': {
       position: 'fixed',
       ...getInsetJssStyle(0),
+      outline: 0,
     },
   });
 };

@@ -13,11 +13,11 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'link-tile', '/#link-tile')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('link-tile-states', async () => {
@@ -55,11 +55,14 @@ xit('should have no visual regression for :hover + :focus-visible', async () => 
       await forceHoverState(page, '.hover p-link-tile >>> .root');
       await forceHoverState(page, '.hover p-link-tile >>> p-link >>> .root');
       await forceHoverState(page, '.hover p-link-tile >>> p-link-pure >>> .root');
+      await forceFocusState(page, '.focus p-link-tile >>> p-link >>> .root');
+      await forceFocusState(page, '.focus p-link-tile >>> p-link-pure >>> .root');
       await forceFocusState(page, '.focus p-link-tile >>> a');
       await forceHoverState(page, '.focus-hover p-link-tile >>> p-link >>> .root');
       await forceHoverState(page, '.focus-hover p-link-tile >>> p-link-pure >>> .root');
       await forceHoverState(page, '.focus-hover p-link-tile >>> .root');
-      await forceFocusHoverState(page, '.focus-hover p-link-tile >>> a');
+      await forceFocusHoverState(page, '.focus-hover p-link-tile >>> p-link >>> .root');
+      await forceFocusHoverState(page, '.focus-hover p-link-tile >>> p-link-pure >>> .root');
     })
   ).toBeFalsy();
 });
