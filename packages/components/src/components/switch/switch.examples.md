@@ -15,13 +15,8 @@ The `p-switch` component can be used with a visible or hidden label, but it's re
 better accessibility whenever possible. A `label` is a caption which informs the user which action is followed by
 interaction. When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
-<Playground :markup="basic" :config="configInline">
-  <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="show">With label</option>
-    <option value="hide">Without label</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="hideLabelMarkup" :config="configInline">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
 ## Framework Implementations
@@ -47,13 +42,8 @@ interaction. When used with hidden label, it's best practice to provide a descri
 The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which
 is recommended on mobile views.
 
-<Playground :markup="alignment" :config="configInline">
-  <select v-model="alignLabel" aria-label="Select alignment">
-    <option disabled>Select alignment</option>
-    <option value="right">Right</option>
-    <option value="left">Left</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="alignLabelMarkup" :config="configInline">
+  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
 </Playground>
 
 ---
@@ -75,11 +65,12 @@ By setting the `tabindex` attribute to `-1` you can remove the **Switch** from t
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { ALIGN_LABELS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
-  configInline = { themeable: true, spacing: 'inline' };
+  configInline = { ...this.config, spacing: 'inline' };
 
   frameworks = {
     'vanilla-js': `switchElement.addEventListener('switchChange', (e) => {
@@ -113,19 +104,19 @@ const SomeSwitchPage = (): JSX.Element => {
 }`,
   };
 
-  label = 'show';
-  alignLabel = 'right';
-
-  get basic() {
-    const hideLabel = this.label === 'hide' ? ' hide-label="true"' : this.label === 'responsive' ? ' hide-label="{ base: true, l: false }"' : '';
-    return `<p-switch${hideLabel}>Some label</p-switch>
-<p-switch${hideLabel} checked="true">Some label</p-switch>`;
+  hideLabel = false;
+  hideLabels = [true, false, '{ base: true, l: false }'];
+  get hideLabelMarkup() {
+    return `<p-switch hide-label="${this.hideLabel}">Some label</p-switch>
+<p-switch hide-label="${this.hideLabel}" checked="true">Some label</p-switch>`;
   };
 
-  get alignment() {
-    const alignLabel = this.alignLabel === 'left' ? ' align-label="left"' : this.alignLabel === 'responsive' ? ' align-label="{ base: \'left\', l: \'right\' }"  stretch="{ base: true, l: false }"' : '';
-    return `<p-switch${alignLabel}>Some label</p-switch>
-<p-switch${alignLabel} checked="true">Some label</p-switch>`;
+  alignLabel = 'right';
+  alignLabels = [...ALIGN_LABELS, "{ base: 'left', l: 'right' }"];
+  get alignLabelMarkup() {
+    const attr = this.alignLabel.includes('base') ? ' stretch="{ base: true, l: false }"' : '';
+    return `<p-switch align-label="${this.alignLabel}"${attr}>Some label</p-switch>
+<p-switch align-label="${this.alignLabel}"${attr} checked="true">Some label</p-switch>`;
   };
 
   disabled = `<p-switch disabled="true">Some label</p-switch>
