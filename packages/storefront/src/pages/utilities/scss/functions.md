@@ -6,7 +6,7 @@
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>p-media-query()</code> is <strong>deprecated</strong>.<br>
-  ook into <a href="styles/media-query">media query</a> for a replacement.
+  Look into <a href="styles/media-query">media query</a> for a replacement.
 </p-inline-notification>
 
 Predefined breakpoints can easily be used as in the following examples.
@@ -61,8 +61,8 @@ div {
 ## Typography
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  The <code>Typography</code> styles are <strong>deprecated</strong>.<br>
-  Use the style variables provided at <a href="styles/typography">typography</a> instead.
+  The <code>Typography</code> mixinis are <strong>deprecated</strong>.<br>
+  Use the style variables / mixins provided at <a href="styles/typography">typography</a> instead.
 </p-inline-notification>
 
 **Note:** For font-styling it's recommended to use the

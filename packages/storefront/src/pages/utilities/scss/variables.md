@@ -79,6 +79,10 @@ A light and dark theme is available depending on which background it's used.
 
 ### External brand colors
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  <code>External brand colors</code> are <strong>deprecated</strong> and will no longer be provided in v3.
+</p-inline-notification>
+
 |                                          |               |                               |
 | ---------------------------------------- | ------------- | ----------------------------- |
 | <ColorBadge color="external-facebook"/>  | **Facebook**  | `$p-color-external-facebook`  |
@@ -166,7 +170,7 @@ $p-font-weight-{v};
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>$p-font-size-{v}</code> is <strong>deprecated</strong>.<br>
-  To recreate the result, use the provided <code>$pds-font-line-height</code> variable and one of the <code>font sizes</code>  provided at <a href="styles/typography">typography</a>.
+  To recreate the result, use the provided <code>$pds-font-line-height</code> variable and one of the font sizes provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 #### Font scaling system

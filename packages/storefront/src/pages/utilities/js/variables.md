@@ -181,7 +181,7 @@ font.weight[v]
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>Size</code> is <strong>deprecated</strong>.<br>
-  To recreate the result, use the provided <code>fontLineHeight</code> design token and one of the <code>font size</code>  provided at <a href="styles/typography">typography</a>.
+  To recreate the result, use the provided <code>fontLineHeight</code> design token and one of the font sizes provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 #### Font scaling system
