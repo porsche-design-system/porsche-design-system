@@ -34,6 +34,7 @@
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/meta-icons": "0.0.0",
+    "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/utilities-v2": "0.0.0"
   },
   "devDependencies": {

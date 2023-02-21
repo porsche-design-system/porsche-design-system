@@ -629,6 +629,24 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-model-signature": {
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": {
+      "color": "primary",
+      "model": "911",
+      "size": "small",
+      "theme": "light",
+    },
+    "styling": "jss",
+  },
   "p-pagination": {
     "eventNames": [
       "pageChange",
