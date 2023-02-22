@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { BannerState, BannerWidth } from './banner-utils';
+import type { BannerState, BannerStateDeprecated, BannerWidth, BannerWidthDeprecated } from './banner-utils';
 import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
 import {
   AllowedTypes,
@@ -66,14 +66,12 @@ export class Banner {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedStateMap: Partial<Record<BannerState, BannerState>> = {
+    warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerStateDeprecated, BannerState>(this, 'state', {
       neutral: 'info',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
-    const deprecatedWidthMap: Partial<Record<BannerWidth, BannerWidth>> = {
+    });
+    warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerWidthDeprecated, BannerWidth>(this, 'width', {
       fluid: 'extended',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'width', deprecatedWidthMap);
+    });
     attachComponentCss(this.host, getComponentCss, this.width);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

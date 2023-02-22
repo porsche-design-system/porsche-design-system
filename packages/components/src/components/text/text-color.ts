@@ -1,3 +1,4 @@
+/** @deprecated */
 export const TEXT_COLORS_DEPRECATED = [
   'brand', // deprecated
   'default', // deprecated
@@ -6,6 +7,8 @@ export const TEXT_COLORS_DEPRECATED = [
   'neutral-contrast-high', // deprecated
   'notification-neutral', // deprecated
 ] as const;
+/** @deprecated */
+export type TextColorDeprecated = typeof TEXT_COLORS_DEPRECATED[number];
 export const TEXT_COLORS = [
   'primary',
   'contrast-low',
