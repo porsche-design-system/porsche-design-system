@@ -21,22 +21,41 @@ documentation about the new Design Tokens can be found here
 
 **Functions**
 
-- `focus()` is now `getFocusStyles()`. The parameters have changed as the focus is now handled with `border` and rounded
-  edges. You can choose `small` or `medium` for the `borderRadius`. `getFocusStyles()` also excepts an `theme` parameter
-  instead of a custom `color`, which determines the color of the focus.
+- `focus()` is now `getFocusStyles()`.
 
 ```diff
 - import { focus } from '@porsche-design-system/utilities'
 + import { getFocusStyles } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+
+const Component1 = styled.a`
+-  ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
++  ${getFocusStyle({ offset: 'small', borderRadius: 'small', theme: 'light' })}
+`;
+
+const Component2 = styled.a`
+-  ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
++  ${getFocusStyle({ offset: 'small', borderRadius: 'small', theme: 'light' })}
+`;
 ```
 
-- `breakpoint` `xxs` is now `base`. The values have not changed.
+- `breakpoint` `xxs` is now `base`.
+
+```diff
+- import { breakpoint } from '@porsche-design-system/utilities'
++ import { breakpoint } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+
+- breakpoint.xxs
++ breakpoint.base
+```
+
 - Instead of `mediaQuery()` we provide now `getMediaQueryMin`, `getMediaQueryMax` and `getMediaQueryMinMax`.
   Furthermore, the functions accept only the predefined PDS breakpoints from `base` to `xxl` and no custom breakpoints
   anymore.
 
 ```diff
 - import { breakpoint, mediaQuery } from '@porsche-design-system/utilities'
+
+
 + import { breakpoint, getMediaQueryMin, getMediaQueryMax, getMediaQueryMinMax } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
