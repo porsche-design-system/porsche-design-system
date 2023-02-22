@@ -261,6 +261,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/modal/modal.props.md')],
     },
+    'Model Signature': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/model-signature/model-signature.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/model-signature/model-signature.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/model-signature/model-signature.props.md')],
+    },
     Notifications: {
       // @ts-ignore
       Introduction: [() => import('@/pages/components/notifications/notifications.usage.md')],

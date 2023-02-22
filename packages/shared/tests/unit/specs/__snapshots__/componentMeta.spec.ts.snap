@@ -629,6 +629,24 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-model-signature": {
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": {
+      "color": "primary",
+      "model": "911",
+      "size": "small",
+      "theme": "light",
+    },
+    "styling": "jss",
+  },
   "p-pagination": {
     "eventNames": [
       "pageChange",
@@ -1264,7 +1282,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "hasSlottedCss": true,
+    "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
@@ -1284,10 +1302,6 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": false,
     "hostAttributes": {
       "role": "listitem",
-    },
-    "internalProps": {
-      "listType": "unordered",
-      "orderType": "numbered",
     },
     "isDelegatingFocus": false,
     "isInternal": false,

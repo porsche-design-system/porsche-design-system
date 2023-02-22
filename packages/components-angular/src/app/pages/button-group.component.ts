@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-group>
         <p-button [variant]="'primary'">Some label</p-button>
         <p-button [variant]="'secondary'">Some label</p-button>
-        <p-button [variant]="'tertiary'">Some label</p-button>
+        <p-button [variant]="'secondary'" [icon]="'arrow-right'">Some label</p-button>
       </p-button-group>
     </div>
 
@@ -16,7 +16,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-group [direction]="{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }">
         <p-button [variant]="'primary'">Some label</p-button>
         <p-button [variant]="'secondary'">Some label</p-button>
-        <p-button [variant]="'tertiary'">Some label</p-button>
+        <p-button [variant]="'secondary'" [icon]="'arrow-right'">Some label</p-button>
+        <p-button-pure>Some label</p-button-pure>
       </p-button-group>
     </div>
 
@@ -27,17 +28,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-button-group [direction]="{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }">
         <p-button-pure>Some label</p-button-pure>
-        <p-button [hideLabel]="true">Some label</p-button>
+        <p-button [hideLabel]="true" [icon]="'arrow-right'">Some label</p-button>
         <p-button>Some label</p-button>
-        <p-button>Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+        <p-button [icon]="'arrow-right'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
         <p-button>Some label</p-button>
         <p-button-pure>Some label</p-button-pure>
         <p-button>Some label</p-button>
         <p-button>Some label</p-button>
-        <p-button style="max-width: 150px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+        <p-button style="max-width: 15rem" [icon]="'arrow-right'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
         <p-button>Some label</p-button>
         <p-button>Some label</p-button>
-        <p-button>Some label</p-button>
+        <p-button [icon]="'arrow-right'">Some label</p-button>
       </p-button-group>
     </div>
   `,

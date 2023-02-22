@@ -224,6 +224,7 @@ export const AllowedTypes: {
     },
 };
 
+// NOTE: the following utility types are duplicated in warnIfDeprecatedPropValueIsUsed
 // utility type to return public properties of generic type that are not a function or EventEmitter
 type FunctionPropertyNames<T> = {
   // eslint-disable-next-line @typescript-eslint/ban-types

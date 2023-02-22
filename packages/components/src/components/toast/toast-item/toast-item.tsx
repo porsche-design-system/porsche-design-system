@@ -1,8 +1,8 @@
-import type { ToastState } from '../toast/toast-utils';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import type { ToastState, ToastStateDeprecated } from '../toast/toast-utils';
 import { TOAST_STATES } from '../toast/toast-utils';
 import type { IconColor } from '../../icon/icon-utils';
 import type { PropTypes, Theme } from '../../../types';
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -46,10 +46,9 @@ export class ToastItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedStateMap: Partial<Record<ToastState, ToastState>> = {
+    warnIfDeprecatedPropValueIsUsed<typeof ToastItem, ToastStateDeprecated, ToastState>(this, 'state', {
       neutral: 'info',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
+    });
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
 
     const toastId = 'toast';
