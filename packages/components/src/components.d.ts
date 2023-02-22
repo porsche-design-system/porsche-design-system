@@ -27,7 +27,8 @@ import { InlineNotificationState } from "./components/inline-notification/inline
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { MarqueAriaAttribute, MarqueSize } from "./components/marque/marque-utils";
+import { MarqueSize } from "./components/marque/marque-size";
+import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
@@ -1225,15 +1226,15 @@ export namespace Components {
     }
     interface PTextList {
         /**
-          * The type of the text list.
+          * The type of the list.
          */
         "listType"?: ListType;
         /**
-          * The list style type of an ordered list.
+          * The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
         "orderType"?: OrderType;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2983,15 +2984,15 @@ declare namespace LocalJSX {
     }
     interface PTextList {
         /**
-          * The type of the text list.
+          * The type of the list.
          */
         "listType"?: ListType;
         /**
-          * The list style type of an ordered list.
+          * The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
         "orderType"?: OrderType;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
     }

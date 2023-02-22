@@ -1,16 +1,9 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  attachSlottedCss,
-  getDataThemeDarkAttribute,
-  THEMES,
-  validateProps,
-} from '../../../utils';
+import { AllowedTypes, attachComponentCss, getDataThemeDarkAttribute, THEMES, validateProps } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import type { ListType, OrderType } from './text-list-utils';
-import { LIST_TYPES, ORDER_TYPES, syncTextListItemsProps } from './text-list-utils';
-import { getComponentCss, getSlottedCss } from './text-list-styles';
+import { isListTypeOrdered, LIST_TYPES, ORDER_TYPES } from './text-list-utils';
+import { getComponentCss } from './text-list-styles';
 
 const propTypes: PropTypes<typeof TextList> = {
   listType: AllowedTypes.oneOf<ListType>(LIST_TYPES),
@@ -25,30 +18,24 @@ const propTypes: PropTypes<typeof TextList> = {
 export class TextList {
   @Element() public host!: HTMLElement;
 
-  /** The type of the text list. */
+  /** The type of the list. */
   @Prop() public listType?: ListType = 'unordered';
 
-  /** The list style type of an ordered list. */
+  /** The list style type of ordered list. Only has effect when list type is set to 'ordered'. */
   @Prop() public orderType?: OrderType = 'numbered';
 
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
+  /** Adapts the text color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.listType, this.orderType, this.theme);
 
-    const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
-
-    syncTextListItemsProps(this.host, this.listType, this.orderType);
+    const TagType = isListTypeOrdered(this.listType) ? 'ol' : 'ul';
 
     return (
       <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <TagType role="list">
+        <TagType>
           <slot />
         </TagType>
       </Host>

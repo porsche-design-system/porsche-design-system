@@ -9,7 +9,7 @@ const ButtonGroupPage: NextPage = (): JSX.Element => {
         <PButtonGroup>
           <PButton variant="primary">Some label</PButton>
           <PButton variant="secondary">Some label</PButton>
-          <PButton variant="tertiary">Some label</PButton>
+          <PButton variant="secondary" icon="arrow-right">Some label</PButton>
         </PButtonGroup>
       </div>
 
@@ -17,7 +17,8 @@ const ButtonGroupPage: NextPage = (): JSX.Element => {
         <PButtonGroup direction={{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }}>
           <PButton variant="primary">Some label</PButton>
           <PButton variant="secondary">Some label</PButton>
-          <PButton variant="tertiary">Some label</PButton>
+          <PButton variant="secondary" icon="arrow-right">Some label</PButton>
+          <PButtonPure>Some label</PButtonPure>
         </PButtonGroup>
       </div>
 
@@ -28,17 +29,17 @@ const ButtonGroupPage: NextPage = (): JSX.Element => {
       >
         <PButtonGroup direction={{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }}>
           <PButtonPure>Some label</PButtonPure>
-          <PButton hideLabel={true}>Some label</PButton>
+          <PButton hideLabel={true} icon="arrow-right">Some label</PButton>
           <PButton>Some label</PButton>
-          <PButton>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+          <PButton icon="arrow-right">Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
           <PButton>Some label</PButton>
           <PButtonPure>Some label</PButtonPure>
           <PButton>Some label</PButton>
           <PButton>Some label</PButton>
-          <PButton style={{ maxWidth: '150px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
+          <PButton style={{ maxWidth: '15rem' }} icon="arrow-right">Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
           <PButton>Some label</PButton>
           <PButton>Some label</PButton>
-          <PButton>Some label</PButton>
+          <PButton icon="arrow-right">Some label</PButton>
         </PButtonGroup>
       </div>
     </>

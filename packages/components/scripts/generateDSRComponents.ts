@@ -191,7 +191,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
-        .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
           /(getDisplayTagType|getHeadingTagType|getHeadlineTagType|getTextTagType|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
@@ -262,19 +261,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const manipulatedChildren = children.map((child, i) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
-        : child
-    );`
-          )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
-      } else if (tagName === 'p-text-list') {
-        // pass down listType and orderType prop to p-text-list-item children
-        newFileContent = newFileContent
-          .replace(
-            /const { children, namedSlotChildren, otherChildren } =.*/,
-            `$&
-    const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? { ...child, props: { ...child.props, listType: this.props.listType, orderType: this.props.orderType } }
         : child
     );`
           )
