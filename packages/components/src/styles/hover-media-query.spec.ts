@@ -1,5 +1,4 @@
 import { hoverMediaQuery } from './hover-media-query';
-import * as jssUtils from '../utils/jss';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import {
@@ -7,7 +6,6 @@ import {
   componentFactory,
   getComponentCssObject,
   getComponentCssSpy,
-  getCssObject,
 } from '../test-utils';
 
 const originalEnv = process.env;
