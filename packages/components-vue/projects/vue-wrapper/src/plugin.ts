@@ -1,6 +1,5 @@
-import { ref, inject } from 'vue';
 import type { App, InjectionKey } from 'vue';
-
+import { ref, inject } from 'vue';
 import { load, componentsReady } from '@porsche-design-system/components-js';
 import { prefixInjectionKey } from './utils';
 
@@ -19,7 +18,9 @@ export const porscheDesignSystemSymbol: InjectionKey<PorscheDesignSystemPlugin> 
 export function usePorscheDesignSystemPlugin() {
   const porscheDesignSystem = inject(porscheDesignSystemSymbol);
   if (!porscheDesignSystem) {
-    throw new Error('No PorscheDesignSystem provided!!!');
+    throw new Error(
+      '[Porsche Design System Vue] No plugin was provided. Make sure to create one via `createPorscheDesignSystem()`.'
+    );
   }
 
   return porscheDesignSystem;
@@ -38,6 +39,7 @@ export function createPorscheDesignSystem(options = { prefix: '' }) {
         await componentsReady();
         isPorscheDesignSystemLoaded.value = true;
       }
+
       app.provide(prefixInjectionKey, options.prefix);
       app.provide(porscheDesignSystemSymbol, $porscheDesignSystem);
     },

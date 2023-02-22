@@ -1,89 +1,101 @@
-import { createApp } from 'vue';
+import { App, createApp } from 'vue';
 import { flushPromises } from '@vue/test-utils';
-import * as PDS from '@porsche-design-system/components-js';
-import { createPorscheDesignSystem, usePorscheDesignSystemPlugin } from '../../../src/plugin';
+import * as componentsJs from '@porsche-design-system/components-js';
+import {
+  createPorscheDesignSystem,
+  porscheDesignSystemSymbol,
+  usePorscheDesignSystemPlugin,
+} from '../../../src/plugin';
 import { prefixInjectionKey } from '../../../src/utils';
 
 jest.mock('@porsche-design-system/components-js', () => ({
-  __esModule: true,
-  ...jest.requireActual('@porsche-design-system/components-js'),
   load: jest.fn(),
+  componentsReady: () => Promise.resolve(), // instant resolve
 }));
 
-describe('createPorscheDesignSystem', () => {
-  it('should create a porsche design system plugin', () => {
+describe('createPorscheDesignSystem()', () => {
+  const getApp = (): App<Element> =>
+    createApp({
+      use: jest.fn(),
+      provide: jest.fn(),
+    });
+
+  it('should create a Porsche Design System plugin', () => {
     const plugin = createPorscheDesignSystem();
     expect(plugin).toBeDefined();
   });
 
-  it('should install the plugin', () => {
+  it('should call plugin.install() with correct parameters', () => {
     const plugin = createPorscheDesignSystem();
-    const app = createApp({
-      use: jest.fn(),
-      setup() {},
-    });
     const spy = jest.spyOn(plugin, 'install');
+    const app = getApp();
+
     app.use(plugin);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(app);
   });
 
-  it('should load the porsche design system', async () => {
+  it('should call porscheDesignSystem.load() without prefix', async () => {
     const plugin = createPorscheDesignSystem();
-    const app = createApp({
-      use: jest.fn(),
-      setup() {},
-    });
-    const spy = jest.spyOn(PDS, 'load');
+    const spy = jest.spyOn(componentsJs, 'load');
+    const app = getApp();
+
     app.use(plugin);
     await flushPromises();
     expect(spy).toHaveBeenCalledWith({ prefix: '' });
   });
 
-  it('should load the porsche design system with options', async () => {
+  it('should call porscheDesignSystem.load() with prefix', async () => {
     const plugin = createPorscheDesignSystem({ prefix: 'prefix' });
-    const app = createApp({
-      use: jest.fn(),
-      setup() {},
-    });
-    const spy = jest.spyOn(PDS, 'load');
+    const spy = jest.spyOn(componentsJs, 'load');
+    const app = getApp();
+
     app.use(plugin);
     await flushPromises();
     expect(spy).toHaveBeenCalledWith({ prefix: 'prefix' });
   });
 
-  it('should provide the plugin', async () => {
+  it('should provide prefix via prefixInjectionKey and plugin via porscheDesignSystemSymbol', async () => {
     const plugin = createPorscheDesignSystem({ prefix: 'prefix' });
-    const app = createApp({
-      use: jest.fn(),
-      setup() {},
-      provide: jest.fn(),
-    });
+    const app = getApp();
     const spy = jest.spyOn(app, 'provide');
+
     app.use(plugin);
     await flushPromises();
     expect(spy).toHaveBeenNthCalledWith(1, prefixInjectionKey, 'prefix');
+    expect(spy).toHaveBeenNthCalledWith(
+      2,
+      porscheDesignSystemSymbol,
+      expect.objectContaining({
+        options: { prefix: 'prefix' },
+        isPorscheDesignSystemLoaded: expect.objectContaining({ _value: true }),
+        componentsReady: componentsJs.componentsReady,
+        install: expect.any(Function),
+      })
+    );
   });
 
   it('should isPorscheDesignSystemLoaded be true when installed', async () => {
     const plugin = createPorscheDesignSystem();
-    const app = createApp({
-      use: jest.fn(),
-      setup() {},
-    });
+    const app = getApp();
+
     app.use(plugin);
     await flushPromises();
     expect(plugin.isPorscheDesignSystemLoaded.value).toBe(true);
   });
 });
 
-describe('usePorscheDesignSystemPlugin', () => {
+describe('usePorscheDesignSystemPlugin()', () => {
   it('should throw an error when no plugin is provided', () => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {}); // suppress vue warning
+
     expect(() => {
       usePorscheDesignSystemPlugin();
-    }).toThrowError('No PorscheDesignSystem provided!!!');
+    }).toThrowError(
+      '[Porsche Design System Vue] No plugin was provided. Make sure to create one via `createPorscheDesignSystem()`.'
+    );
   });
 
-  it('should return the plugin', async () => {
+  it('should return the plugin created via createPorscheDesignSystem()', async () => {
     const plugin = createPorscheDesignSystem();
     const app = createApp({
       use: jest.fn(),
