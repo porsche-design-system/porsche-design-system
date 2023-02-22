@@ -9,7 +9,11 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
-import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
+import type {
+  TagDismissibleAriaAttribute,
+  TagDismissibleColor,
+  TagDismissibleColorDeprecated,
+} from './tag-dismissible-utils';
 import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
@@ -41,10 +45,13 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedColorMap: Partial<Record<TagDismissibleColor, TagDismissibleColor>> = {
-      'background-default': 'background-base',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'color', deprecatedColorMap);
+    warnIfDeprecatedPropValueIsUsed<typeof TagDismissible, TagDismissibleColorDeprecated, TagDismissibleColor>(
+      this,
+      'color',
+      {
+        'background-default': 'background-base',
+      }
+    );
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
