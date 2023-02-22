@@ -4,7 +4,6 @@ import {
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
-  parseAndGetAriaAttributes,
   parseJSON,
   validateProps,
 } from '../../utils';
@@ -109,7 +108,7 @@ export class LinkTile {
 
     const linkProps = {
       theme: 'dark',
-      ...parseAndGetAriaAttributes(this.aria),
+      aria: this.aria,
     };
 
     const sharedLinkProps = {
