@@ -346,4 +346,35 @@ describe('accessibility', () => {
 
     await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
   });
+
+  it(`should keep focus on radio buttons when using keyboard navigation `, async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-button-wrapper label="Some label">
+        <input type="radio" name="some-name" id="radio-1"/>
+      </p-radio-button-wrapper>
+      <p-radio-button-wrapper label="Some label">
+        <input type="radio" name="some-name" id="radio-2"/>
+      </p-radio-button-wrapper>
+      <button id="lastPageEl"></button>`
+    );
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('radio-1');
+
+    await page.keyboard.press('ArrowDown');
+    expect(await getActiveElementId(page)).toBe('radio-2');
+
+    await page.keyboard.press('ArrowRight');
+    expect(await getActiveElementId(page)).toBe('radio-1');
+
+    await page.keyboard.press('ArrowUp');
+    expect(await getActiveElementId(page)).toBe('radio-2');
+
+    await page.keyboard.press('ArrowLeft');
+    expect(await getActiveElementId(page)).toBe('radio-1');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('lastPageEl');
+  });
 });
