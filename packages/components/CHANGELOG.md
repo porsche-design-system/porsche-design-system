@@ -13,7 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 - Partials: Removed deprecated `withoutTags` option for all partials, please use `format: 'jsx'` instead
-- `Divider` matches new design language.
+- `Divider` and `Button Group` match new design language.
+- `Text List` matches new design language
 
 #### Added
 
