@@ -32,10 +32,3 @@ describe('format: jsx', () => {
     expect(container.innerHTML).toMatchSnapshot();
   });
 });
-
-describe('withoutTags: true', () => {
-  it('should return core styles without style tag', () => {
-    const result = getInitialStyles({ withoutTags: true });
-    expect(result).toMatchSnapshot();
-  });
-});
