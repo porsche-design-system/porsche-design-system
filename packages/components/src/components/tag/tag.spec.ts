@@ -22,7 +22,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, 'color', {
+    expect(spy).toBeCalledWith(component, 'color', {
       'notification-neutral': 'notification-info',
       'neutral-contrast-high': 'primary',
       'background-default': 'background-base',

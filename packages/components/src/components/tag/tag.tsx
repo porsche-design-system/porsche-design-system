@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { TagColor } from './tag-utils';
+import type { TagColor, TagColorDeprecated } from './tag-utils';
 import { getThemeForIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
@@ -41,12 +41,11 @@ export class Tag {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedColorMap: Partial<Record<TagColor, TagColor>> = {
+    warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', {
       'notification-neutral': 'notification-info',
       'neutral-contrast-high': 'primary',
       'background-default': 'background-base',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'color', deprecatedColorMap);
+    });
     attachComponentCss(
       this.host,
       getComponentCss,
