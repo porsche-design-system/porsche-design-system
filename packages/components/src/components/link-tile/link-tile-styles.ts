@@ -14,8 +14,9 @@ import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize }
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
 import {
   textLargeStyle,
-  fontSizeTextLarge,
+  fontSizeTextMedium,
   spacingFluidMedium,
+  spacingStaticMedium,
   spacingFluidLarge,
   borderRadiusMedium,
 } from '@porsche-design-system/utilities-v2';
@@ -57,7 +58,7 @@ const sizeMap: {
   inherit: {
     fontSize: 'inherit',
   },
-  default: { fontSize: fontSizeTextLarge },
+  default: { fontSize: fontSizeTextMedium },
 };
 
 export const getComponentCss = (
@@ -140,7 +141,7 @@ export const getComponentCss = (
           ? `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`
           : `${spacingFluidMedium} ${spacingFluidMedium} ${spacingFluidLarge}`,
 
-      gap: spacingFluidMedium,
+      gap: spacingStaticMedium,
       ...mergeDeep(
         hasGradient &&
           buildResponsiveStyles(compact, (isCompact: boolean) => ({
@@ -150,7 +151,7 @@ export const getComponentCss = (
           isCompact
             ? {
                 alignItems: 'center',
-                gridTemplateColumns: `auto ${pxToRemWithUnit(24)}`,
+                gridTemplateColumns: 'auto 24px',
                 gridTemplateRows: 'auto',
                 ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
               }
