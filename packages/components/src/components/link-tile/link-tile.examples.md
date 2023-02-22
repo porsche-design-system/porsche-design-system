@@ -96,7 +96,6 @@ export default class Code extends Vue {
   href="https://www.porsche.com"
   label="Some label"
   description="Some Description"
-  style="max-width: 400px;"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>
@@ -104,7 +103,6 @@ export default class Code extends Vue {
   href="https://www.porsche.com"
   label="Some label"
   description="Some Description"
-  style="max-width: 400px;"
 >
   <picture>
     <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
@@ -115,17 +113,17 @@ export default class Code extends Vue {
   aspectRatio = '4:3';
   aspectRatios = [...LINK_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
-    return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}" style="max-width: 400px; font-size: 40px;">
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`}
 
   size = 'default';
   sizes = [...LINK_TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
   get sizeMarkup() {
-    return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="max-width: 400px;">
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>
-<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true" style="max-width: 400px;">
+<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true" style="font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`
   }
@@ -133,10 +131,10 @@ export default class Code extends Vue {
   weight = 'semibold';
   weights = [...LINK_TILE_WEIGHTS, "{ base: 'semibold', m: 'regular' }"];
   get weightMarkup() {
-    return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" style="max-width: 400px;">
+    return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>
-<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true" style="max-width: 400px;">
+<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`
   }
@@ -149,7 +147,6 @@ export default class Code extends Vue {
   label="Some label"
   description="Some Description"
   gradient="${this.gradient}"
-  style="max-width: 400px;"
 >
   <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
 </p-link-tile>
@@ -159,7 +156,6 @@ export default class Code extends Vue {
   description="Some Description"
   compact="true"
   gradient="${this.gradient}"
-  style="max-width: 400px;"
 >
   <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
@@ -172,7 +168,6 @@ export default class Code extends Vue {
   label="Some label"
   description="Some Description"
   compact="${this.compact}"
-  style="max-width: 400px; font-size: 40px;"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
@@ -186,7 +181,6 @@ export default class Code extends Vue {
   description="Some Description"
   compact="true"
   align="${this.align}"
-  style="max-width: 400px; font-size: 40px;"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
@@ -194,7 +188,8 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  p-link-tile:not(:last-child) {
-    margin-bottom: 1rem;
+  :deep(p-link-tile) {
+    display: block;
+    max-width: 400px;
   }
 </style>
