@@ -1,3 +1,4 @@
+import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
@@ -26,7 +27,6 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { JssStyle } from 'jss';
 
 export const bulletActiveClass = 'bullet--active';
 const selectorHeading = 'h2,::slotted([slot=heading])';
