@@ -1,7 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps, warnIfDeprecatedPropValueIsUsed } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { DividerColor, DividerOrientation } from './divider-utils';
+import type { DividerColor, DividerColorDeprecated, DividerOrientation } from './divider-utils';
 import { DIVIDER_COLORS, DIVIDER_ORIENTATIONS } from './divider-utils';
 import { getComponentCss } from './divider-styles';
 
@@ -29,12 +29,11 @@ export class Divider {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedColorMap: Partial<Record<DividerColor, DividerColor>> = {
+    warnIfDeprecatedPropValueIsUsed<typeof Divider, DividerColorDeprecated, DividerColor>(this, 'color', {
       'neutral-contrast-low': 'contrast-low',
       'neutral-contrast-medium': 'contrast-medium',
       'neutral-contrast-high': 'contrast-high',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'color', deprecatedColorMap);
+    });
     attachComponentCss(this.host, getComponentCss, this.color, this.orientation, this.theme);
 
     return <hr />;

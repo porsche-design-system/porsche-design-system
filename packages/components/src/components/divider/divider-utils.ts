@@ -1,9 +1,11 @@
+/** @deprecated */
 export const DIVIDER_COLORS_DEPRECATED = [
   'neutral-contrast-high',
   'neutral-contrast-medium',
   'neutral-contrast-low',
 ] as const;
-
+/** @deprecated */
+export type DividerColorDeprecated = typeof DIVIDER_COLORS_DEPRECATED[number];
 export const DIVIDER_COLORS = [
   'contrast-low',
   'contrast-medium',
