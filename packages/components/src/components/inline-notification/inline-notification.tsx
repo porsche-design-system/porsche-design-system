@@ -1,6 +1,6 @@
 import type { IconName, PropTypes, Theme } from '../../types';
 import type { IconColor } from '../icon/icon-utils';
-import type { InlineNotificationState } from './inline-notification-utils';
+import type { InlineNotificationState, InlineNotificationStateDeprecated } from './inline-notification-utils';
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -68,10 +68,13 @@ export class InlineNotification {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedStateMap: Partial<Record<InlineNotificationState, InlineNotificationState>> = {
+    warnIfDeprecatedPropValueIsUsed<
+      typeof InlineNotification,
+      InlineNotificationStateDeprecated,
+      InlineNotificationState
+    >(this, 'state', {
       neutral: 'info',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'state', deprecatedStateMap);
+    });
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
 
     const bannerId = 'banner';
