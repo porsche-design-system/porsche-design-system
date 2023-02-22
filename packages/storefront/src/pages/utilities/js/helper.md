@@ -105,7 +105,7 @@ p {
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>pxToRem()</code> is <strong>deprecated</strong> without any replacement.
- </p-inline-notification>
+</p-inline-notification>
 
 Converts px to rem unit. The base for rem calculation is defined with 16px by default.  
 Parameter `px` only accepts value in px unit, e.g. 12px.
@@ -134,7 +134,7 @@ div {
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>remToPx()</code> is <strong>deprecated</strong> without any replacement.
- </p-inline-notification>
+</p-inline-notification>
 
 Converts rem to px unit. The base for rem calculation is defined with 16px by default.  
 Parameter `rem` only accepts value in rem unit, e.g. 1.5rem.

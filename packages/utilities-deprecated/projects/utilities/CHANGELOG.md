@@ -10,10 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### [Unreleased]
 
 This package is **deprecated** and will no longer be maintained. All `Porsche Design System` utilities are now provided
-at`@porsche-design-system/components-{js|angular|react|vue}/styles` in from of styles and Design Tokens. To make the
-migration easier, we offer an overview of the old deprecated values in reference to the new design tokens. Further
-documentation about the new Design Tokens can be found here
-[Introduction](https://designsystem.porsche.com/latest/styles/introduction).
+via the `@porsche-design-system/components-{js|angular|react|vue}/styles` sub-package. To make the migration easier, we
+offer an overview of the old deprecated values in reference to the new styles. Further documentation about the new
+styles can be found here [Introduction](https://designsystem.porsche.com/latest/styles/introduction).
 
 #### Changed
 
@@ -44,45 +43,89 @@ const Component2 = styled.a`
 - import { breakpoint } from '@porsche-design-system/utilities'
 + import { breakpoint } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 
-- breakpoint.xxs
-+ breakpoint.base
+- if (window.matchMedia(`(min-width: ${breakpoint.xxs}px)`).matches) {
++ if (window.matchMedia(`(min-width: ${breakpoint.base}px)`).matches) {
+  /* The viewport is greater than, or equal to the breakpointValue wide */
+}
 ```
 
-- Instead of `mediaQuery()` we provide now `getMediaQueryMin`, `getMediaQueryMax` and `getMediaQueryMinMax`.
-  Furthermore, the functions accept only the predefined PDS breakpoints from `base` to `xxl` and no custom breakpoints
+- Instead of `mediaQuery()` we provide now `getMediaQueryMin()`, `getMediaQueryMax()` and `getMediaQueryMinMax()`.
+  Furthermore, the functions accept only the predefined breakpoints from `base` to `xxl` and no custom breakpoints
   anymore.
 
 ```diff
 - import { breakpoint, mediaQuery } from '@porsche-design-system/utilities'
-
-
 + import { breakpoint, getMediaQueryMin, getMediaQueryMax, getMediaQueryMinMax } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+
+const StyledDiv = css`{
+  color: 'royalblue',
+
+  // up to predefined breakpoint xs apply color black
++ [getMediaQueryMax(breakpoint.xs)]: {
+    color: 'black'
+  }
+
+  // from predefined breakpoint xs to m apply color aqua
+- [mediaQuery(breakpoint.xs, breakpoint.m)]: {
++ [getMediaQueryMinMax(breakpoint.xs, breakpoint.m)]: {
+    color: 'aqua'
+  },
+
+  // from predefined breakpoint m apply color deeppink
+- [mediaQuery(breakpoint.m)]: {
++ [getMediaQueryMin(breakpoint.m)]: {
+    color: 'deeppink'
+  }
+}`;
+
+render(<StyledDiv>Styled Text</StyledDiv>);
 ```
 
-- `titleLarge` got renamed to `displayLargeStyle`. The size got adjusted. In addition, we also provide
-  `displayMediumStyle`. The new `display` styles differ also, that they are recursive and their size is changing linear
-  fluid depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+- `titleLarge` got renamed to `displayLargeStyle`. The size of the new `display` styles are changing fluid depending on
+  the viewport width instead of fixed predefined sizes on specific breakpoints, and they are italic now.
 
 ```diff
 - import { titleLarge } from '@porsche-design-system/utilities'
 + import { displayMediumStyle, displayLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.h1`
+- ${titleLarge}
++ ${displayLargeStyle}
+`;
+
+const component2 = styled.h2`
++ ${displayMediumStyle}
+`;
 ```
 
-- `headline` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size got adjusted. Same as
-  in `display`, the size is now changing linear fluid, depending on the viewport width instead of fixed predefined sizes
-  on specific breakpoints.
+- `headline` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size of the new `heading`
+  styles are changing fluid depending on the viewport width instead of fixed predefined sizes on specific breakpoints,
+  and they are italic now.
 
 ```diff
 - import { headline{1|2|3|4|5} } from '@porsche-design-system/utilities'
 + import { heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.h1`
+- ${headline['1']}
++ ${headingMediumStyle}
+`;
 ```
 
-- `text` got not only renamed but also the size got adjusted. Except `textSmallStyle` all text styles have fluid sizes
-  that change linear depending on the viewport width.
+- `text` got renamed to `text{XSmall|Small|Medium|Large|XLarge}Style`. Except `textSmallStyle` all text styles have
+  fluid sizes that change depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
 
 ```diff
-- import { textXSmall, textSmall, textMedium, textLarge, textXLarge } from '@porsche-design-system/utilities'
+- import { text } from '@porsche-design-system/utilities'
 + import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.p`
+- ${text.small}
++ ${textSmallStyle}
+`;
 ```
 
 **Colors**
@@ -104,51 +147,85 @@ even if only light theme is displayed in the diff.
 - `brand` got renamed to `primary`.
 
 ```diff
-- color.lightTheme.brand
-+ themeLight.primary
+- import { color } from '@porsche-design-system/utilities';
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.div({
+- background: color.lightTheme.brand
++ background: theme.light.primary
+});
 ```
 
-- `default` is removed.
+- `default` is removed, use `primary` instead.
 
 ```diff
-- color.lightTheme.default
+- import { color } from '@porsche-design-system/utilities';
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.div({
+- background: color.lightTheme.default
++ background: theme.light.primary
+});
 ```
 
 - `backgound.default` is renamed to `background.base`.
 
 ```diff
-- color.lightTheme.background.default
-+ themeLight.background.base
+- import { color } from '@porsche-design-system/utilities';
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.div({
+- background: color.lightTheme.background.default
++ background: theme.light.background.base
+});
 ```
 
 - `neutralContrast` is renamed to `contrast`.
 
 ```diff
-- color.lightTheme.neutralContrast.{low|medium|high}
-+ themeLight.contrast.{low|medium|high}
+- import { color } from '@porsche-design-system/utilities';
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.div({
+- background: color.lightTheme.neutralContrast.{low|medium|high}
++ background: theme.light.contrast.{low|medium|high}
+});
 ```
 
 - `notification.neutral` and `notification.neutralSoft` are renamed to `notification.info` and `notification.infoSoft`.
 
 ```diff
-- color.lightTheme.notification.neutral
-- color.lightTheme.notification.neutralSoft
-- themeLight.notification.info
-- themeLight.notification.infoSoft
+- import { color } from '@porsche-design-system/utilities';
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+import styled from 'styled-components';
+
+const component1 = styled.div({
+- background: color.lightTheme.notification.neutral
++ background: theme.light.notification.info
+});
+
+const component2 = styled.div({
+- background: color.lightTheme.notification.neutralSoft
++ background: theme.light.notification.infoSoft
+});
 ```
 
 - `state.focus` is changed from `currentColor` to a fixed color, depending on the theme.
 
 **Font**
 
-- `fontFamily` is provided as design token
+- `fontFamily` is provided only the import has changed
 
 ```diff
 - import { fontFamily } from '@porsche-design-system/utilities';
 + import { fontFamily } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
 ```
 
-- `fontWeight` is provided as design token
+- `fontWeight` is provided only the import has changed
 
 ```diff
 - import { fontWeight } from '@porsche-design-system/utilities';
@@ -158,9 +235,9 @@ even if only light theme is displayed in the diff.
 **Spacings**
 
 With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
-adjust in size based on a min and max value, providing a linear response to changes in browser width. Additionally,
-we've switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font
-size is adjusted.
+adjust in size based on a min and max value, providing a fluid response to changes in browser width. Additionally, we've
+switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font size is
+adjusted.
 
 To get an overview ot the new spacings have a look at [Spacing](https://designsystem.porsche.com/latest/styles/spacing).
 
@@ -202,8 +279,8 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 ```
 
 - `p-title-large` mixin is now renamed to `pds-display-large`. The size got adjusted. In addition, we also provide
-  `pds-display-medium`. The new `display` mixin differ also, that they are recursive and their size is changing linear
-  fluid depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+  `pds-display-medium`. The new `display` mixin differ also, that they are recursive and their size is changing fluid
+  depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
 
 ```diff
 - @include p-title-large;
@@ -213,7 +290,7 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 ```
 
 - `p-headline-{1|2|3|4|5}` got renamed/extended to `pds-heading-{small|medium|large|x-large|xx-large|xxx-large}`. The
-  size got adjusted. Same as in `display`, the size is now linear fluid depending on the viewport width instead of fixed
+  size got adjusted. Same as in `display`, the size is now fluid depending on the viewport width instead of fixed
   predefined sizes on specific breakpoints.
 
 ```diff
@@ -232,8 +309,8 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 ```
 
 - `p-text-{x-small|small|medium|large|x-large}` got not only renamed to `pds-text-{x-small|small|medium|large|x-large}`
-  but also the size got adjusted. Except `pds-text-small` all text mixins have fluid sizes that change linear depending
-  on the viewport width.
+  but also the size got adjusted. Except `pds-text-small` all text mixins have fluid sizes that change depending on the
+  viewport width.
 
 ```diff
 - @include p-text-x-small;
@@ -428,9 +505,9 @@ overview ot the new colors have a look at [Theme](https://designsystem.porsche.c
 **Spacings**
 
 With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
-adjust in size based on a min and max value, providing a linear response to changes in browser width. Additionally,
-we've switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font
-size is adjusted.
+adjust in size based on a min and max value, providing a response to changes in browser width. Additionally, we've
+switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font size is
+adjusted.
 
 To get an overview ot the new spacings have a look at [Spacing](https://designsystem.porsche.com/latest/styles/spacing).
 
