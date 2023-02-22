@@ -15,6 +15,8 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './text-styles';
+import type { TextColorDeprecated } from './text-color';
+import type { TextWeightDeprecated } from './text-weight';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -56,20 +58,18 @@ export class Text {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecatedColorMap: Partial<Record<TextColor, TextColor>> = {
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextColorDeprecated, TextColor>(this, 'color', {
       brand: 'primary',
       default: 'primary',
       'neutral-contrast-low': 'contrast-low',
       'neutral-contrast-medium': 'contrast-medium',
       'neutral-contrast-high': 'contrast-high',
       'notification-neutral': 'notification-info',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'color', deprecatedColorMap);
-    const deprecatedTextWeightMap: Partial<Record<TextWeight, TextWeight>> = {
+    });
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextWeightDeprecated, TextWeight>(this, 'weight', {
       thin: 'regular',
       semibold: 'semi-bold',
-    };
-    warnIfDeprecatedPropValueIsUsed(this.host, 'weight', deprecatedTextWeightMap);
+    });
     attachComponentCss(
       this.host,
       getComponentCss,
