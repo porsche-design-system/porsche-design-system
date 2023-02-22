@@ -22,13 +22,13 @@ export default class Code extends Vue {
   buttonGroup = `<p-button-group>
   <p-button variant="primary">Some label</p-button>
   <p-button variant="secondary">Some label</p-button>
-  <p-button variant="tertiary">Some label</p-button>
+  <p-button variant="secondary">Some label</p-button>
 </p-button-group>`;    
 
  buttonGroupCustomBreakpoint = `<p-button-group direction="{base: 'column', s: 'row'}">
   <p-button variant="primary">Some label</p-button>
   <p-button variant="secondary">Some label</p-button>
-  <p-button variant="tertiary">Some label</p-button>
+  <p-button variant="secondary">Some label</p-button>
 </p-button-group>`;    
 }
 </script>

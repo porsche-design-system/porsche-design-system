@@ -54,6 +54,7 @@ import { ModalNoHeadingComponent } from './modal-no-heading.component';
 import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
 import { ModalSlottedHeadingComponent } from './modal-slotted-heading.component';
+import { ModelSignatureComponent } from './model-signature.component';
 import { OverviewComponent } from './overview.component';
 import { OverviewNotificationsComponent } from './overview-notifications.component';
 import { PaginationComponent } from './pagination.component';
@@ -116,6 +117,7 @@ export const generatedPages = [
   ModalPrefixedComponent,
   ModalScrollableComponent,
   ModalSlottedHeadingComponent,
+  ModelSignatureComponent,
   OverviewComponent,
   OverviewNotificationsComponent,
   PaginationComponent,
@@ -297,6 +299,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal Slotted Heading',
     path: 'modal-slotted-heading',
     component: ModalSlottedHeadingComponent,
+  },
+  {
+    name: 'Model Signature',
+    path: 'model-signature',
+    component: ModelSignatureComponent,
   },
   {
     name: 'Pagination',
