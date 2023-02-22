@@ -61,8 +61,8 @@ div {
 ## Typography
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  The <code>Typography</code> mixinis are <strong>deprecated</strong>.<br>
-  Use the style variables / mixins provided at <a href="styles/typography">typography</a> instead.
+  <code>typography</code> styles are <strong>deprecated</strong>.<br>
+  Use the styles provided at <a href="styles/typography">typography</a> instead.
 </p-inline-notification>
 
 **Note:** For font-styling it's recommended to use the
@@ -163,8 +163,8 @@ h1 {
 ### Focus
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  The <code>p-focus()</code> mixin is <strong>deprecated</strong>.<br>
-  Use <a href="styles/focus">pds-focus()</a> instead.
+  The <code>p-focus()</code> style is <strong>deprecated</strong>.<br>
+  Use <code>pds-focus()</code> style provided at <a href="styles/focus">focus</a> instead.
 </p-inline-notification>
 
 The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by

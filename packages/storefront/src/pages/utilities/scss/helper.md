@@ -5,8 +5,8 @@
 ## p-generate-font-definition($fontSize, $fontWeight)
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>p-generate-font-definition()</code> is <strong>deprecated</strong>.<br>
-  Please use the <code>$pds-font-family</code>, <code>$pds-font-weight-{regular|bold|semi-bold}</code>, <code>$pds-font-line-height</code> and one of the provided font sizes from <a href="styles/media-query">typography</a>.
+  <code>p-generate-font-definition()</code> mixin is <strong>deprecated</strong>.<br>
+  Please use the <code>$pds-font-family</code>, <code>$pds-font-weight-{regular|bold|semi-bold}</code>, <code>$pds-font-line-height</code> and one of the provided font sizes from <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 With this mixin, it's possible to get various kinds of text variants (size and weight) by passing two parameters as
@@ -42,8 +42,8 @@ p {
 ## p-generate-type-scale($size)
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>p-generate-type-scale()</code> is <strong>deprecated</strong>.<br>
-  Please use <code>$pds-font-line-height</code> and one of the provided font sizes from <a href="styles/media-query">typography</a>.
+  <code>p-generate-type-scale()</code> mixin is <strong>deprecated</strong>.<br>
+  Please use <code>$pds-font-line-height</code> and one of the provided font sizes from <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 Generates font-size and line-height styling definition to fit into Porsche Vertical Grid System. `$size` only accepts
@@ -71,8 +71,8 @@ p {
 ## p-calculate-line-height($size)
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>p-calculate-line-height</code> is <strong>deprecated</strong>.<br>
-  Please use the provided <code>$pds-font-line-height</code> variable provided at <a href="styles/media-query">typography</a>.
+  <code>p-calculate-line-height()</code> mixin is <strong>deprecated</strong>.<br>
+  Please use the provided <code>$pds-font-line-height</code> variable provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 Calculates line-height to fit into Porsche Vertical Grid System. The `$size` parameter only accepts value in rem or px,
@@ -99,7 +99,7 @@ p {
 ## p-px-to-rem($px)
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>p-px-to-rem()</code> is <strong>deprecated</strong>.
+  <code>p-px-to-rem()</code> mixin is <strong>deprecated</strong> without any replacement.
  </p-inline-notification>
 
 Converts px to rem unit. The base for rem calculation is defined with 16px by default.  
@@ -126,7 +126,7 @@ div {
 ## p-rem-to-px($rem)
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>p-rem-to-px()</code> is <strong>deprecated</strong>.
+  <code>p-rem-to-px()</code> mixin is <strong>deprecated</strong> without any replacement.
  </p-inline-notification>
 
 Converts rem to px unit. The base for rem calculation is defined with 16px by default.  

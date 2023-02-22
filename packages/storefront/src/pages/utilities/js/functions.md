@@ -5,8 +5,8 @@
 ## Breakpoints
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>Breakpoints</code> are <strong>deprecated</strong>.<br>
-  Use the <code>breakpoints</code> provided at <a href="styles/media-query">media query</a> instead.
+  <code>breakpoint</code> are <strong>deprecated</strong>.<br>
+  Use <code>breakpoint</code> provided at <a href="styles/media-query">media query</a> instead.
 </p-inline-notification>
 
 We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l | xl | xxl`
@@ -82,8 +82,8 @@ render(<StyledDiv>Styled Text</StyledDiv>);
 ## Typography
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  The <code>Typography</code> styles are <strong>deprecated</strong>.<br>
-  Use the design tokens provided at <a href="styles/typography">typography</a> instead.
+  The <code>typography</code> styles are <strong>deprecated</strong>.<br>
+  Use the styles provided at <a href="styles/typography">typography</a> instead.
 </p-inline-notification>
 
 **Note:** For font-styling it's recommended to use the

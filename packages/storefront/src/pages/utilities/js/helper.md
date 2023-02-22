@@ -6,7 +6,7 @@
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>generateFontDefinition()</code> is <strong>deprecated</strong>.<br>
-  Please use the <code>fontFamily</code>, <code>fontWeight</code>, <code>fontLineHeight</code> and one of the provided font sizes from the <a href="styles/media-query">typography</a> design tokens.
+  Please use the <code>fontFamily</code>, <code>fontWeight</code>, <code>fontLineHeight</code> and one of the provided font sizes from the <a href="styles/typography">typography</a> styles.
 </p-inline-notification>
 
 With the `generateFontDefinition()` function it is possible to get various kinds of font variants (size and weight) by
@@ -44,7 +44,7 @@ p {
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>generateTypeScale()</code> is <strong>deprecated</strong>.<br>
-  Please use <code>fontLineHeight</code> and one of the provided font sizes from the <a href="styles/media-query">typography</a> design tokens.
+  Please use <code>fontLineHeight</code> and one of the provided font sizes from the <a href="styles/typography">typography</a> styles.
 </p-inline-notification>
 
 Generates font-size and line-height styling definition to fit into Porsche Vertical Grid System. The `fontSize`
@@ -75,7 +75,7 @@ p {
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
   <code>calculateLineHeight()</code> is <strong>deprecated</strong>.<br>
-  Please use the provided <code>fontLineHeight</code> design token provided at <a href="styles/media-query">typography</a>.
+  Please use the provided <code>fontLineHeight</code> style provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 Calculates line-height to fit into Porsche Vertical Grid System. The `fontSize` parameter only accepts value in rem or
@@ -104,7 +104,7 @@ p {
 ## pxToRem(px)
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>pxToRem()</code> is <strong>deprecated</strong>.
+  <code>pxToRem()</code> is <strong>deprecated</strong> without any replacement.
  </p-inline-notification>
 
 Converts px to rem unit. The base for rem calculation is defined with 16px by default.  
@@ -133,7 +133,7 @@ div {
 ## remToPx(rem)
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>remToPx()</code> is <strong>deprecated</strong>.
+  <code>remToPx()</code> is <strong>deprecated</strong> without any replacement.
  </p-inline-notification>
 
 Converts rem to px unit. The base for rem calculation is defined with 16px by default.  

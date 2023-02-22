@@ -5,8 +5,8 @@
 ## Color
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>Color</code> is <strong>deprecated</strong> and the values have <strong>changed</strong>.<br>
-  Please use the provided <code>colors</code> at <a href="styles/theme">theme</a>.
+  The <code>p-color{-theme-dark}-{color-name}</code> variables are <strong>deprecated</strong> and the values have <strong>changed</strong>.<br>
+  Please use the provided <code>pds-theme-{light|dark}-{color-name}</code> variables provided at <a href="styles/theme">theme</a>.
 </p-inline-notification>
 
 A light and dark theme is available depending on which background it's used.
@@ -80,7 +80,7 @@ A light and dark theme is available depending on which background it's used.
 ### External brand colors
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>External brand colors</code> are <strong>deprecated</strong> and will no longer be provided in v3.
+  <code>External brand colors</code> are <strong>deprecated</strong> without any replacement.
 </p-inline-notification>
 
 |                                          |               |                               |
@@ -105,8 +105,8 @@ A light and dark theme is available depending on which background it's used.
 ## Spacing
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>Spacing</code> is <strong>deprecated</strong>.<br>
-  Please use the provided <code>spacings</code> at <a href="styles/spacing">spacing</a>.
+  <code>$p-spacing-{v}</code> mixins are <strong>deprecated</strong>.<br>
+  Please use the provided <code>spacing</code> styles provided at <a href="styles/spacing">spacing</a>.
 </p-inline-notification>
 
 Given values are:  
@@ -140,7 +140,7 @@ For font styling it's recommended to use the
 ### Family
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>Font Family</code> is <strong>deprecated</strong>.<br>
+  <code>$p-font-family</code> variable is <strong>deprecated</strong>.<br>
   Please use the provided <code>$pds-font-family</code> variable provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
@@ -153,7 +153,7 @@ $p-font-family
 ### Weight
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>Font Weight</code> is <strong>deprecated</strong>.<br>
+  <code>$p-font-weight-{v}</code> variables are <strong>deprecated</strong>.<br>
   Please use the provided <code>$pds-font-weight-{regular|bold}</code> variable provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
@@ -169,7 +169,7 @@ $p-font-weight-{v};
 ### Size
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>$p-font-size-{v}</code> is <strong>deprecated</strong>.<br>
+  <code>$p-font-size-{v}</code> variables are <strong>deprecated</strong>.<br>
   To recreate the result, use the provided <code>$pds-font-line-height</code> variable and one of the font sizes provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
