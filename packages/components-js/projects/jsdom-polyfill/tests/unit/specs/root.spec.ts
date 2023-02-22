@@ -34,7 +34,7 @@ it('should have one unit test per component', () => {
   );
 
   if (componentsWithMissingTests.length) {
-    console.log(componentsWithMissingTests);
+    console.log('componentsWithMissingTests:', componentsWithMissingTests.join(', '));
   }
 
   expect(componentsWithMissingTests.length).toEqual(0);

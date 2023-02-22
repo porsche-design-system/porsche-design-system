@@ -13,13 +13,8 @@ text for screen readers.
 
 ## Basic examples
 
-<Playground :markup="basic" :config="config">
-  <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="show">With label</option>
-    <option value="hide">Without label</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="hideLabelMarkup" :config="config">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
 ---
@@ -48,13 +43,8 @@ changes while this process is performed.
 The `p-radio-button-wrapper` component supports the visualisation of inline validation. The `message` and `radio` is
 colored and visible/hidden depending on the defined `state`.
 
-<Playground :markup="validation" :config="config">
-  <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">Error</option>
-    <option value="success">Success</option>
-    <option value="none">None</option>
-  </select>
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ---
@@ -83,20 +73,19 @@ reader users the corresponding information:
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { FORM_STATES } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
 
-  state = 'error';
-  label = 'show';
-  
-  get basic() {
-    const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-    return `<p-radio-button-wrapper label="Some label" ${attr}>
+  hideLabel = false;
+  hideLabels = [false, true, '{ base: true, l: false }'];
+  get hideLabelMarkup() {
+    return `<p-radio-button-wrapper label="Some label" hide-label="${this.hideLabel}">
   <input type="radio" name="some-name-1" />
 </p-radio-button-wrapper>
-<p-radio-button-wrapper label="Some label" ${attr}>
+<p-radio-button-wrapper label="Some label" hide-label="${this.hideLabel}">
   <input type="radio" name="some-name-1" />
 </p-radio-button-wrapper>`;
   }
@@ -117,8 +106,10 @@ export default class Code extends Vue {
   <input type="radio" name="some-name-4" disabled checked />
 </p-radio-button-wrapper>`;
 
-  get validation() {
-    const attr = ` message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`
+  state = 'error';
+  states = FORM_STATES;
+  get stateMarkup() {
+    const attr = ` message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
     return `<p-radio-button-wrapper label="Some label" state="${this.state}">
   <input type="radio" name="some-name-5" />
 </p-radio-button-wrapper>

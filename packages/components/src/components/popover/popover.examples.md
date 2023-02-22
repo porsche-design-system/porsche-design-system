@@ -41,34 +41,30 @@ It's possible to define a preferred direction in which the popover should open, 
 Otherwise, it will be opened in the direction with most available space automatically.
 
 <Playground :markup="directionMarkup" :config="config">
-  <select v-model="direction" aria-label="Select direction">
-    <option disabled>Select direction</option>
-    <option value="top">Top</option>
-    <option value="right">Right</option>
-    <option value="bottom">Bottom</option>
-    <option value="left">Left</option>
-  </select>
+  <SelectOptions v-model="direction" :values="directions" name="direction"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import {POPOVER_Z_INDEX} from "../../constants";
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { POPOVER_DIRECTIONS } from './popover-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { overflowX: 'visible', themeable: true, };
 
-  direction = 'left';
   popoverContent = 'Some additional content.';
   zIndex = POPOVER_Z_INDEX;
-  
+
   basicMarkup = `<p-text>
   Some content <p-popover>${this.popoverContent}</p-popover> which is longer.<br>  Some more content <p-popover description="${this.popoverContent}"></p-popover>.
 </p-text>`;
 
   descriptionMarkup = `<p-popover description="${this.popoverContent}"></p-popover>`;
 
+  direction = 'left';
+  directions = POPOVER_DIRECTIONS;
   get directionMarkup() {
     return `<p-popover direction="${this.direction}">${this.popoverContent}</p-popover>`;
   }

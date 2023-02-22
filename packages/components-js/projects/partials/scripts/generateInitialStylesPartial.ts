@@ -1,4 +1,4 @@
-import { joinArrayElementsToString, withoutTagsOption } from './utils';
+import { joinArrayElementsToString } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
 import { JssStyle, Styles } from 'jss';
 import {
@@ -29,12 +29,8 @@ export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
   prefix?: string;
-  ${withoutTagsOption}
   format?: Format;
-};
-type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'html' };
-type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'jsx' };
-type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'>;`;
+};`;
 
   const normalizeStyles: Styles = {
     '@global': {
@@ -160,13 +156,11 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
     },
   };
 
-  const initialStylesFunction = `export function getInitialStyles(opts?: GetInitialStylesOptionsFormatHtml): string;
-export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
-export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
+  const initialStylesFunction = `export function getInitialStyles(opts?: GetInitialStylesOptions & { format: 'jsx' }): JSX.Element;
+export function getInitialStyles(opts?: GetInitialStylesOptions): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { prefix, withoutTags, format }: GetInitialStylesOptions = {
+  const { prefix, format }: GetInitialStylesOptions = {
     prefix: '',
-    withoutTags: false,
     format: 'html',
     ...opts,
   };
@@ -184,13 +178,9 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const styles = prefixedTagNamesStyles.concat(normalizeStyles);
 
-  const markup = format === 'html'
+  return format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
     : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
-
-  return withoutTags
-    ? styles
-    : markup;
 }`;
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {

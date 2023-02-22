@@ -29,16 +29,8 @@ type ToastMessage = {
 Following state has been deprecated and will be removed with the next major release: "neutral".
 </p-inline-notification>
 
-<Playground :frameworkMarkup="basic" :config="config">
-  <label>
-    State:
-    <select v-model="toastState" aria-label="Select state">
-      <option disabled>Select state</option>
-      <option value="info">Info</option>
-      <option value="success">Success</option>
-      <option value="neutral">Neutral (deprecated)</option>
-    </select>
-  </label>
+<Playground :frameworkMarkup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
   <br><br>
   <label>
     Text:&nbsp;
@@ -78,21 +70,23 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getToastCodeSamples } from '@porsche-design-system/shared';
 import type { Theme } from '@/models';
+import { TOAST_STATES, TOAST_STATES_DEPRECATED } from './toast/toast-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
 
-  toastState = 'info';
   toastText = 'Some message';
   toastCounter = 1;
   positionBottom = 64;
   
-  get basic() { 
+  state = 'info';
+  states = TOAST_STATES.map(item => TOAST_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  get stateMarkup() { 
     return Object.entries(getToastCodeSamples()).reduce((result, [key, markup]) => ({
       ...result,
       [key]: markup
-        .replace(/(state:) 'success'/, `$1 '${this.toastState}'`)
+        .replace(/(state:) 'success'/, `$1 '${this.state}'`)
         .replace(/(Some message)/, this.toastText)
     }), {});
   }
@@ -102,7 +96,7 @@ export default class Code extends Vue {
   }
 
   queueToast(): void {
-    this.$refs.toast.addMessage({ text: `${this.toastText} ${this.toastCounter}`, state: this.toastState });
+    this.$refs.toast.addMessage({ text: `${this.toastText} ${this.toastCounter}`, state: this.state });
     this.toastCounter++;
   }
 

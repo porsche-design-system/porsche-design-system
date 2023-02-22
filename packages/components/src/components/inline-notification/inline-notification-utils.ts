@@ -1,12 +1,12 @@
+import type { AriaAttributes } from 'react';
 import type { IconName } from '../../types';
 import { BANNER_STATES } from '../banner/banner-utils';
-import { AriaAttributes } from 'react';
 
-export const INLINE_NOTIFICATION_STATES = [...BANNER_STATES, 'success'] as const;
+export const INLINE_NOTIFICATION_STATES = ['success', ...BANNER_STATES] as const;
 export type InlineNotificationState = typeof INLINE_NOTIFICATION_STATES[number];
 
 export const getInlineNotificationIconName = (state: InlineNotificationState): IconName => {
-  const stateToIconMap: { [key in InlineNotificationState]: IconName } = {
+  const stateToIconMap: Record<InlineNotificationState, IconName> = {
     neutral: 'information-filled', // deprecated
     info: 'information-filled',
     warning: 'warning-filled',

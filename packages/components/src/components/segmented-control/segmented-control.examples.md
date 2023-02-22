@@ -46,11 +46,7 @@ If used on top of a surface background color, contrast of the buttons can be twe
 property.
 
 <Playground :markup="backgroundColorMarkup" :config="{ ...config, colorScheme: backgroundColor.replace('background-', '') }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="background-default">Background Default</option>
-    <option value="background-surface">Background Surface</option>
-  </select>
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ## Event Handling
@@ -75,11 +71,11 @@ import Component from 'vue-class-component';
 import { getSegmentedControlCodeSamples } from '@porsche-design-system/shared';
 import { getAnchorLink } from '@/utils';
 import type { Theme } from '@/models';
+import { SEGMENTED_CONTROL_BACKGROUND_COLORS } from './segmented-control/segmented-control-utils'; 
   
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
-  backgroundColor = 'background-surface';
   eventHandlingUrl = getAnchorLink('event-handling');
 
   shirtSizeItems = `<p-segmented-control-item value="xs">XS</p-segmented-control-item>
@@ -119,6 +115,8 @@ export default class Code extends Vue {
 </p-segmented-control>`;
   };
 
+  backgroundColor = 'background-surface';
+  backgroundColors = SEGMENTED_CONTROL_BACKGROUND_COLORS;
   get backgroundColorMarkup() {
     return `<p-segmented-control background-color="${this.backgroundColor}" aria-label="Choose an option">
   ${this.optionItems}
