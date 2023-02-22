@@ -62,16 +62,18 @@ import { createApp } from 'vue';
 import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
 
 const app = createApp(App);
-app.use(createPorscheDesignSystem({ prefix: 'P' }));
+app.use(createPorscheDesignSystem({ prefix: 'my-prefix' }));
 app.mount('#app');
 ```
 
 ### Composable
 
-The `usePorscheDesignSystemPlugin` composable provides access to the `PorscheDesignSystemProvider` context.
+The `usePorscheDesignSystemPlugin` composable provides access to the `PorscheDesignSystemPlugin` context.
 
 ```ts
-const { isPorscheDesignSystemLoaded, utilities } = usePorscheDesignSystemPlugin();
+import { usePorscheDesignSystemPlugin } from '@porsche-design-system/components-vue';
+
+const { isPorscheDesignSystemLoaded, componentsReady } = usePorscheDesignSystemPlugin();
 ```
 
 ## Methodology
