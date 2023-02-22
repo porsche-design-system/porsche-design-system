@@ -78,6 +78,7 @@ export const getLinkButtonPureStyles = (
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       outline: 0,
       ...textSmallStyle,
+      position: 'relative',
       ...mergeDeep(
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
@@ -89,7 +90,7 @@ export const getLinkButtonPureStyles = (
       ),
       '&::before': {
         content: '""',
-        position: 'fixed',
+        position: 'absolute',
         top: offsetVertical,
         bottom: offsetVertical,
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
