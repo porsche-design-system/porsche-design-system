@@ -1,4 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
+import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
@@ -22,15 +23,13 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
 
 export const bulletActiveClass = 'bullet--active';
-
+const selectorHeading = 'h2,::slotted([slot=heading])';
+const selectorDescription = 'p,::slotted([slot=description])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
-const bulletSize = '8px'; // width and height of a bullet
-const activeBulletWidth = '20px';
 
 // we need an explicit grid template, therefor we need to calculate the button group width
 const buttonGroupWidth = `calc((${spacingStaticSmall} * 2 + ${fontLineHeight}) * 2 + ${spacingStaticXSmall})`;
@@ -43,8 +42,12 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const bulletTransitionDuration = `${splideSpeed}ms`;
+
+  // TODO: needs to be moved over to utils
   const isHeaderAlignCenter = alignHeader === 'center';
-  const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
+
+  // TODO: needs to be simplified/cleaned somehow
   // get standard spacings for the width - distance from carousel to the left and right borders of the parent
   const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
   const spacingLeftRightS = gridSpacing.s;
@@ -62,17 +65,17 @@ export const getComponentCss = (
         marginRight: 'auto', // relevant for viewport width > 2560px
         ...hostHiddenStyles,
       }),
-      'h2,::slotted([slot=heading])': addImportantToEachRule({
+      [selectorHeading]: addImportantToEachRule({
         ...headingXLargeStyle,
         maxWidth: '56.25rem',
         margin: 0,
       }),
-      'p,::slotted([slot=description])': addImportantToEachRule({
+      [selectorDescription]: addImportantToEachRule({
         ...textSmallStyle,
         maxWidth: '34.375rem',
         margin: `${spacingFluidXSmall} 0 0`,
       }),
-      'h2,p,::slotted([slot=heading]),::slotted([slot=description])': addImportantToEachRule({
+      [`${selectorHeading},${selectorDescription}`]: addImportantToEachRule({
         color: primaryColor,
         [mediaQueryS]: isHeaderAlignCenter
           ? {
@@ -155,9 +158,10 @@ export const getComponentCss = (
     },
     ...(!disablePagination && {
       pagination: {
-        ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'block' })),
-        display: 'flex',
-        margin: '0 auto', // center-aligned
+        ...buildResponsiveStyles(disablePagination, (disablePaginationValue: boolean) => ({
+          display: disablePaginationValue ? 'none' : 'flex',
+        })),
+        justifyContent: 'center',
         gap: spacingStaticSmall,
       },
       bullet: {
@@ -165,12 +169,12 @@ export const getComponentCss = (
         background: contrastMediumColor,
         // set transition to have the same speed as switching slides in splide
         transition: `background-color ${bulletTransitionDuration} linear, width ${bulletTransitionDuration} linear`,
-        width: bulletSize,
-        height: bulletSize,
+        width: '8px',
+        height: '8px',
       },
       [bulletActiveClass]: {
         background: primaryColor,
-        width: activeBulletWidth,
+        width: '20px',
       },
     }),
   });
