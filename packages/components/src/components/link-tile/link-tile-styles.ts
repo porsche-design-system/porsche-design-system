@@ -73,11 +73,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
-        height: 'fit-content',
-        ...addImportantToEachRule({
-          ...hostHiddenStyles,
-        }),
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       ...addImportantToEachRule({
         '::slotted(picture),::slotted(img)': {
@@ -110,7 +106,6 @@ export const getComponentCss = (
       height: 0,
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
-      borderRadius: borderRadiusMedium,
       ...hoverMediaQuery({
         '&:hover': {
           '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
@@ -166,6 +161,7 @@ export const getComponentCss = (
       minHeight: '54px', // prevent content shift
       ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
     },
+    // is used for expanded click-area only
     'link-overlay': {
       position: 'fixed',
       ...getInsetJssStyle(0),
