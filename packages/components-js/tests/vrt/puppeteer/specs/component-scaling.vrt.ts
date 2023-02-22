@@ -8,6 +8,7 @@ const components = [
   'accordion',
   'banner',
   'button',
+  'button-group',
   'button-pure',
   'carousel',
   'checkbox-wrapper',
@@ -37,6 +38,7 @@ const components = [
   'tag-dismissible',
   'text-field-wrapper',
   'textarea-wrapper',
+  'text-list',
   'toast-basic',
 ];
 

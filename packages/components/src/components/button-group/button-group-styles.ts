@@ -3,7 +3,7 @@ import type { GetJssStyleFunction } from '../../utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { ButtonGroupDirection } from './button-group-utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import { spacingStaticSmall, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { spacingFluidSmall } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 
 const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirection): JssStyle => {
@@ -11,28 +11,10 @@ const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirecti
     column: {
       flexFlow: 'column nowrap',
       alignItems: 'stretch',
-      marginRight: 0,
-      marginLeft: 0,
     },
     row: {
       flexFlow: 'row wrap',
       alignItems: 'center',
-      marginRight: `-${spacingStaticSmall}`,
-      marginLeft: `-${spacingStaticSmall}`,
-    },
-  };
-  return style[direction];
-};
-
-const getDirectionSlottedJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirection): JssStyle => {
-  const style: Record<ButtonGroupDirection, JssStyle> = {
-    column: {
-      marginRight: 0,
-      marginLeft: 0,
-    },
-    row: {
-      marginRight: spacingStaticSmall,
-      marginLeft: spacingStaticSmall,
     },
   };
   return style[direction];
@@ -47,13 +29,9 @@ export const getComponentCss = (direction: BreakpointCustomizable<ButtonGroupDir
       },
       div: {
         display: 'flex',
-        marginTop: `-${spacingStaticMedium}`,
+        gap: spacingFluidSmall,
         ...buildResponsiveStyles(direction, getDirectionJssStyle),
       },
-      '::slotted(*)': addImportantToEachRule({
-        marginTop: spacingStaticMedium,
-        ...buildResponsiveStyles(direction, getDirectionSlottedJssStyle),
-      }),
     },
   });
 };
