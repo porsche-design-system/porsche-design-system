@@ -12,12 +12,11 @@ which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                                                                          | Type                           | Default |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------- | -------- |
-| `components`  | All components listed in the array are loaded from the CDN. By default, our core is always preloaded when using this partial.                                                                                        | `({{this.componentChunks}})[]` | `[]`    |
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                                                     | `'auto'                        | 'cn'`   | `'auto'` |
-| `withoutTags` | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns an array of strings with urls to the cdn location of the resources. | `boolean`                      | `false` |
-| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                                                             | `'html'                        | 'jsx'`  | `'html'` |
+| Option       | Description                                                                                                                   | Type                           | Default |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------- | -------- |
+| `components` | All components listed in the array are loaded from the CDN. By default, our core is always preloaded when using this partial. | `({{this.componentChunks}})[]` | `[]`    |
+| `cdn`        | Decides from which CDN the resources are loaded.                                                                              | `'auto'                        | 'cn'`   | `'auto'` |
+| `format`     | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.      | `'html'                        | 'jsx'`  | `'html'` |
 
 ## Examples
 

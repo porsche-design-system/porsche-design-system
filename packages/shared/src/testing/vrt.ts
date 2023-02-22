@@ -9,7 +9,8 @@ export type {
 
 export const defaultViewports = [320, 480, 760, 1000, 1300, 1760] as const;
 export const extendedViewports = [...defaultViewports, 1920, 2560] as const;
-type Viewport = typeof extendedViewports[number];
+export const furtherExtendedViewports = [...extendedViewports, 3000] as const;
+type Viewport = typeof furtherExtendedViewports[number];
 
 export const marqueViewports = [1299, 1300] as const;
 type MarqueViewport = typeof marqueViewports[number];

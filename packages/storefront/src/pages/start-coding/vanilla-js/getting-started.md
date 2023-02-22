@@ -36,7 +36,7 @@ After adding the `@porsche-design-system/components-js` package to your project,
     <script type="text/javascript">
       porscheDesignSystem.load();
     </script>
-    <p-heading size="xx-large">Some text</p-heading>
+    <p-heading>Welcome to Vanilla JS</p-heading>
   </body>
 </html>
 ```

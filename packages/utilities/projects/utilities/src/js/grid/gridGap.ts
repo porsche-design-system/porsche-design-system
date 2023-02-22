@@ -1,1 +1,3 @@
-export const gridGap = 'clamp(16px, 3.6vw, 36px)';
+import { spacingFluidMedium } from '../spacing';
+
+export const gridGap = spacingFluidMedium;

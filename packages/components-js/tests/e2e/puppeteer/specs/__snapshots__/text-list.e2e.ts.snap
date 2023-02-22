@@ -10,56 +10,6 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
-                  "name": "The quick brown fox jumps over the lazy dog",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 1,
-          "name": "",
-          "role": "listitem",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "The quick ",
-                  "role": "StaticText",
-                },
-                {
-                  "children": [
-                    {
-                      "name": "brown fox",
-                      "role": "StaticText",
-                    },
-                  ],
-                  "name": "brown fox",
-                  "role": "link",
-                },
-                {
-                  "name": " jumps over the lazy dog",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "level": 1,
-          "name": "",
-          "role": "listitem",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "The quick brown fox jumps over the lazy dog",
-                  "role": "StaticText",
-                },
-                {
                   "children": [
                     {
                       "children": [
@@ -68,42 +18,149 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "•",
+                              "role": "ListMarker",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "name": "The quick brown fox jumps over the lazy dog",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "level": 1,
+                          "name": "",
+                          "role": "listitem",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "•",
+                              "role": "ListMarker",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "name": "The quick ",
+                                  "role": "StaticText",
+                                },
+                                {
                                   "children": [
                                     {
-                                      "name": "The quick brown fox jumps over the lazy dog",
+                                      "name": "brown fox",
                                       "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "brown fox",
+                                  "role": "link",
+                                },
+                                {
+                                  "name": " jumps over the lazy dog",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "level": 1,
+                          "name": "",
+                          "role": "listitem",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "•",
+                              "role": "ListMarker",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "name": "The quick brown fox jumps over the lazy dog",
+                                  "role": "StaticText",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "children": [
+                                                    {
+                                                      "role": "none",
+                                                    },
+                                                  ],
+                                                  "name": "–",
+                                                  "role": "ListMarker",
+                                                },
+                                                {
+                                                  "children": [
+                                                    {
+                                                      "name": "The quick brown fox jumps over the lazy dog",
+                                                      "role": "StaticText",
+                                                    },
+                                                  ],
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "level": 2,
+                                              "name": "",
+                                              "role": "listitem",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "name": "",
+                                      "role": "list",
                                     },
                                   ],
                                   "role": "none",
                                 },
                               ],
-                              "level": 2,
-                              "name": "",
-                              "role": "listitem",
+                              "role": "none",
                             },
                           ],
-                          "role": "none",
+                          "level": 1,
+                          "name": "",
+                          "role": "listitem",
                         },
                       ],
-                      "name": "",
-                      "role": "list",
+                      "role": "none",
                     },
                   ],
-                  "role": "none",
+                  "name": "",
+                  "role": "list",
                 },
               ],
               "role": "none",
             },
           ],
-          "level": 1,
-          "name": "",
-          "role": "listitem",
+          "role": "none",
         },
       ],
       "role": "none",
     },
   ],
   "name": "",
-  "role": "list",
+  "role": "RootWebArea",
 }
 `;

@@ -132,20 +132,20 @@ describe('format: jsx', () => {
   it('should return default link', () => {
     const { container } = render(getFontLinks({ format: 'jsx' }));
     const regex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin="true"><link rel="preload" href="${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
     expect(container.innerHTML).toMatch(regex);
   });
 
   describe('subset latin', () => {
     const regularRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
     const semiBoldRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
     const boldRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
@@ -160,13 +160,13 @@ describe('format: jsx', () => {
 
   describe('subset greek', () => {
     const regularRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
     const semiBoldRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-semi-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-semi-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
     const boldRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-gr-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
@@ -181,13 +181,13 @@ describe('format: jsx', () => {
 
   describe('subset cyril', () => {
     const regularRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
     const semiBoldRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-semi-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-semi-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
     const boldRegex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-cy-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
 
     it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
@@ -203,41 +203,9 @@ describe('format: jsx', () => {
   it('should return multiple links', () => {
     const { container } = render(getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold'] }));
     const regex = new RegExp(
-      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin="true"><link rel="preload" href="${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin="true">$`
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin="">$`
     );
 
     expect(container.innerHTML).toMatch(regex);
-  });
-});
-
-describe('withoutTags: true', () => {
-  it('should return default url', () => {
-    const result = getFontLinks({ withoutTags: true });
-    const regexRegular = new RegExp(`^${baseHrefCom}/porsche-next-w-la-regular\\.min\\.${hash}\\.woff2$`);
-    const regexSemiBold = new RegExp(`^${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.${hash}\\.woff2$`);
-
-    expect(result[0]).toMatch(regexRegular);
-    expect(result[1]).toMatch(regexSemiBold);
-    expect(result.length).toBe(2);
-  });
-
-  it('should return default china cdn url', () => {
-    const result = getFontLinks({ withoutTags: true, cdn: 'cn' });
-    const regexRegular = new RegExp(`^${baseHrefCn}\/porsche-next-w-la-regular\\.min\\.${hash}\\.woff2$`);
-    const regexSemiBold = new RegExp(`^${baseHrefCn}\/porsche-next-w-la-semi-bold\\.min\\.${hash}\\.woff2$`);
-
-    expect(result[0]).toMatch(regexRegular);
-    expect(result[1]).toMatch(regexSemiBold);
-    expect(result.length).toBe(2);
-  });
-
-  it('should return multiple urls', () => {
-    const result = getFontLinks({ withoutTags: true, weights: ['regular', 'semi-bold'] });
-    const regexRegular = new RegExp(`^${baseHrefCom}/porsche-next-w-la-regular\\.min\\.${hash}\\.woff2$`);
-    const regexSemiBold = new RegExp(`^${baseHrefCom}/porsche-next-w-la-semi-bold\\.min\\.${hash}\\.woff2$`);
-
-    expect(result[0]).toMatch(regexRegular);
-    expect(result[1]).toMatch(regexSemiBold);
-    expect(result.length).toBe(2);
   });
 });

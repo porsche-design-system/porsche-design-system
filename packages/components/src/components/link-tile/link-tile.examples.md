@@ -34,18 +34,7 @@ The component takes its height from the width provided and places the image via 
 can change the height by using different aspect ratios.
 
 <Playground :markup="aspectRatioMarkup">
-  <label>
-    <p-text>Select aspect ratio:</p-text>
-    <select v-model="aspectRatio" aria-label="Select aspect ratio">
-      <option disabled>Select aspect ratio</option>
-      <option value="1:1">1:1</option>
-      <option value="3:4">3:4</option>
-      <option value="4:3">4:3</option>
-      <option value="9:16">9:16</option>
-      <option value="16:9">16:9</option>
-      <option value="{ base: '3:4', s: '1:1', m: '16:9' }">{ base: '4:3', s: '1:1', m: '16:9' }</option>
-    </select>
-  </label>
+  <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
 </Playground>
 
 ## Size
@@ -53,15 +42,7 @@ can change the height by using different aspect ratios.
 The `size` property changes the font size of the description.
 
 <Playground :markup="sizeMarkup">
-  <label>
-    <p-text>Select font size:</p-text>
-    <select v-model="size" aria-label="Select font size">
-      <option disabled>Select font size</option>
-      <option value="default">default</option>
-      <option value="inherit">inherit</option>
-      <option value="{ base: 'inherit', m: 'default' }">{ base: 'inherit', m: 'default' }</option>
-    </select>
-  </label>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ## Weight
@@ -69,13 +50,7 @@ The `size` property changes the font size of the description.
 The `weight` property changes the font weight of the description.
 
 <Playground :markup="weightMarkup">
-  <p-text>Select font weight:</p-text>
-  <select v-model="weight" aria-label="Select font weight">
-    <option disabled>Select font weight</option>
-    <option value="regular">regular</option>
-    <option value="semibold">semibold</option>
-    <option value="{ base: 'semibold', m: 'regular' }">{ base: 'semibold', m: 'regular' }</option>
-  </select>
+  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
 ## Gradient
@@ -86,12 +61,7 @@ underlying image provides enough contrast, you can choose to disable the gradien
 **Note:** When disabling the gradient, it must be ensured that the contrast values are accessibility compliant.
 
 <Playground :markup="gradientMarkup">
-  <p-text>Select gradient:</p-text>
-  <select v-model="gradient" aria-label="Select gradient">
-    <option disabled>Select gradient</option>
-    <option value="true">true</option>
-    <option value="false">false</option>
-  </select>
+  <SelectOptions v-model="gradient" :values="gradients" name="gradient"></SelectOptions>
 </Playground>
 
 ## Compact
@@ -99,13 +69,7 @@ underlying image provides enough contrast, you can choose to disable the gradien
 The `label` property stays mandatory when using `compact`, for **accessibility** reasons.
 
 <Playground :markup="compactMarkup">
-  <p-text>Select compact:</p-text>
-  <select v-model="compact" aria-label="Select compact">
-    <option disabled>Select compact</option>
-    <option value="true">true</option>
-    <option value="false">false</option>
-    <option value="{ base: true, m: false }">{ base: true, m: false }</option>
-  </select>
+  <SelectOptions v-model="compact" :values="compacts" name="compact"></SelectOptions>
 </Playground>
 
 ## Alignment
@@ -115,27 +79,16 @@ It is possible to align the description on top of the component.
 **Note:** This is only possible in combination with `compact="true"`
 
 <Playground :markup="alignMarkup">
-  <p-text>Select align:</p-text>
-  <select v-model="align" aria-label="Select align">
-    <option disabled>Select align</option>
-    <option value="top">top</option>
-    <option value="bottom">bottom</option>
-  </select>
+  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { LINK_TILE_ALIGNS, LINK_TILE_ASPECT_RATIOS, LINK_TILE_SIZES, LINK_TILE_WEIGHTS } from './link-tile-utils'; 
 
 @Component
 export default class Code extends Vue {
-  aspectRatio = '4:3';
-  size = 'default';
-  weight = 'semibold';
-  gradient = 'false';
-  compact = 'true';
-  align = 'top';
-
   imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
 
   basic = `<p-link-tile
@@ -158,11 +111,15 @@ export default class Code extends Vue {
   </picture>
 </p-link-tile>`;
 
+  aspectRatio = '4:3';
+  aspectRatios = [...LINK_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}" style="max-width: 400px; font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`}
 
+  size = 'default';
+  sizes = [...LINK_TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
   get sizeMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="max-width: 400px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
@@ -172,6 +129,8 @@ export default class Code extends Vue {
 </p-link-tile>`
   }
 
+  weight = 'semibold';
+  weights = [...LINK_TILE_WEIGHTS, "{ base: 'semibold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" style="max-width: 400px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
@@ -181,7 +140,9 @@ export default class Code extends Vue {
 </p-link-tile>`
   }
 
- get gradientMarkup() { 
+  gradient = false;
+  gradients = [false, true];
+  get gradientMarkup() { 
   return `<p-link-tile
   href="https://www.porsche.com"
   label="Some label"
@@ -202,6 +163,8 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
 
+  compact = false;
+  compacts = [false, true, "{ base: true, m: false }"];
   get compactMarkup() {
     return `<p-link-tile
   href="https://www.porsche.com"
@@ -213,6 +176,8 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
 
+  align = 'top';
+  aligns = LINK_TILE_ALIGNS;
   get alignMarkup() {
     return `<p-link-tile
   href="https://www.porsche.com"
@@ -224,7 +189,6 @@ export default class Code extends Vue {
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
-
 }
 </script>
 

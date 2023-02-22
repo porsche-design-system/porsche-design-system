@@ -62,7 +62,7 @@ describe('format: html', () => {
 });
 
 describe('format: jsx', () => {
-  const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="true">`;
+  const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="">`;
 
   it('should return core link', () => {
     const { container } = render(getComponentChunkLinks({ format: 'jsx' }));
@@ -73,7 +73,7 @@ describe('format: jsx', () => {
   it('should return core link for china cdn', () => {
     const { container } = render(getComponentChunkLinks({ format: 'jsx', cdn: 'cn' }));
     const regex = new RegExp(
-      `<link rel="preload" href="${baseHrefCn}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="true">`
+      `<link rel="preload" href="${baseHrefCn}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="">`
     );
     expect(container.innerHTML).toMatch(regex);
   });
@@ -97,50 +97,6 @@ describe('format: jsx', () => {
       );
 
       expect(container.innerHTML).toMatch(regex);
-    });
-  });
-});
-
-describe('withoutTags: true', () => {
-  const coreUrlRegexCom = new RegExp(`${baseHrefCom}/porsche-design-system.v${version}.${hash}.js`);
-
-  it('should return core url', () => {
-    const result = getComponentChunkLinks({ withoutTags: true });
-
-    expect(result[0]).toMatch(coreUrlRegexCom);
-    expect(result.length).toBe(1);
-  });
-
-  it('should return core China CDN url', () => {
-    const result = getComponentChunkLinks({ withoutTags: true, cdn: 'cn' });
-    const regex = new RegExp(`${baseHrefCn}/porsche-design-system.v${version}.${hash}.js`);
-
-    expect(result[0]).toMatch(regex);
-    expect(result.length).toBe(1);
-  });
-
-  it('should return multiple urls', () => {
-    const result = getComponentChunkLinks({ withoutTags: true, components: ['button', 'button-pure', 'marque'] });
-
-    const buttonUrlRegex = new RegExp(`${baseHrefCom}/porsche-design-system.button.${hash}.js`);
-    const buttonPureUrlRegex = new RegExp(`${baseHrefCom}/porsche-design-system.button-pure.${hash}.js`);
-    const marqueUrlRegex = new RegExp(`${baseHrefCom}/porsche-design-system.marque.${hash}.js`);
-
-    expect(result[0]).toMatch(coreUrlRegexCom);
-    expect(result[1]).toMatch(buttonUrlRegex);
-    expect(result[2]).toMatch(buttonPureUrlRegex);
-    expect(result[3]).toMatch(marqueUrlRegex);
-    expect(result.length).toBe(4);
-  });
-
-  COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
-    it(`should return core and chunk url for ['${chunkName}']`, () => {
-      const result = getComponentChunkLinks({ withoutTags: true, components: [chunkName] });
-      const regex = new RegExp(`${baseHrefCom}/porsche-design-system.${chunkName}.${hash}.js`);
-
-      expect(result[0]).toMatch(coreUrlRegexCom);
-      expect(result[1]).toMatch(regex);
-      expect(result.length).toBe(2);
     });
   });
 });

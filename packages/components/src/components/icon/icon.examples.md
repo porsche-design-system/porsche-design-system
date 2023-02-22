@@ -41,15 +41,7 @@ There are default sizes for the icon component being in sync with text component
 specific size is needed, the size can be set to `inherit` in order to specify the size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option>x-small</option>
-    <option>small</option>
-    <option>medium</option>
-    <option>large</option>
-    <option>x-large</option>
-    <option>inherit</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
     
 ---
@@ -70,24 +62,7 @@ apply custom coloring to take advantage of using an SVG embedded in an image tag
 </p-inline-notification>
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color" aria-label="Select color">
-    <option disabled>Select color</option>
-    <option value="primary">Primary</option>
-    <option value="brand">Brand (deprecated)</option>
-    <option value="default">Default (deprecated)</option>
-    <option value="contrast-low">Contrast Low</option>
-    <option value="neutral-contrast-low">Neutral Contrast Low (deprecated)</option>
-    <option value="contrast-medium">Contrast Medium</option>
-    <option value="neutral-contrast-medium">Neutral Contrast Medium (deprecated)</option>
-    <option value="contrast-high">Contrast High</option>
-    <option value="neutral-contrast-high">Neutral Contrast High (deprecated)</option>
-    <option value="notification-success">Notification Success</option>
-    <option value="notification-warning">Notification Warning</option>
-    <option value="notification-error">Notification Error</option>
-    <option value="notification-info">Notification Info</option>
-    <option value="notification-neutral">Notification Neutral (deprecated)</option>
-    <option value="inherit">Inherit</option>
-  </select>
+  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
 </Playground>
 
 ---
@@ -118,28 +93,32 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { capitalCase } from 'change-case';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { TEXT_SIZES } from '../text/text-size';
+import { TEXT_COLORS_DEPRECATED } from '../text/text-color'; 
+import { ICON_COLORS } from './icon-utils';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
 
-  size = 'large';
-  color = 'primary';
-  
   get name() {
     return Object.keys(ICONS_MANIFEST).map(x => `<p-icon name="${x}" aria="{ 'aria-label': '${capitalCase(x)} icon' }"></p-icon>`).join('\n');
   }
-  
+
+  size = 'large';
+  sizes = TEXT_SIZES;
   get sizeMarkup() {
     const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
     return `<p-icon size="${this.size}" name="highway" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
   }
-  
+
+  color = 'primary';
+  colors = ICON_COLORS.map(item => TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"' : '';
     return `<p-icon name="highway" color="${this.color}" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`
   }
-  
+
   custom =
 `<p-icon source="${require('../../assets/icon-custom-kaixin.svg')}" aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"></p-icon>`;
 

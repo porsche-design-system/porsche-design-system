@@ -24,25 +24,25 @@ You can change the Divider orientation by using different major breakpoints `xs`
 
 ## Colors
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+ Following colors have been deprecated and will be removed with the next major release:
+ "neutral-contrast-high", "neutral-contrast-medium" and "neutral-contrast-low".
+</p-inline-notification>
+
 Predefined colors associated with its theme are available.
 
-<Playground :markup="colors" :config="config">
-  <select v-model="color" aria-label="Select color">
-    <option disabled>Select color</option>
-    <option>neutral-contrast-low</option>
-    <option>neutral-contrast-medium</option>
-    <option>neutral-contrast-high</option>
-  </select>
+<Playground :markup="colorMarkup" :config="config">
+  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { DIVIDER_COLORS, DIVIDER_COLORS_DEPRECATED } from './divider-utils';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };    
-  color = 'neutral-contrast-low';
   
   horizontal = `<p-divider></p-divider>`;
 
@@ -56,7 +56,9 @@ export default class Code extends Vue {
   <p-divider orientation="{base: 'horizontal', l: 'vertical'}"></p-divider>
 </div>`;
 
-  get colors(){
+  color = 'contrast-low';
+  colors = DIVIDER_COLORS.map(item => DIVIDER_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  get colorMarkup(){
     return `<p-divider color="${this.color}"></p-divider>`;
   }
 }

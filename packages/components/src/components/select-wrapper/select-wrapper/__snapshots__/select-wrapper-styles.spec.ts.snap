@@ -72,7 +72,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
 .icon {
@@ -244,7 +244,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
 .icon {
@@ -350,7 +350,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
 }
 .icon {
@@ -456,7 +456,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
 .icon {
@@ -561,7 +561,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
 }
 .icon {
@@ -666,7 +666,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
 .icon {
@@ -772,7 +772,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
 }
 .icon {
@@ -879,7 +879,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
 .icon {
@@ -986,7 +986,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
 }
 .icon {
@@ -1093,7 +1093,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
 .icon {
@@ -1199,7 +1199,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
 }
 .icon {
@@ -1305,7 +1305,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
 .icon {
@@ -1412,7 +1412,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
 }
 .icon {
@@ -1519,7 +1519,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .label__text+.label__text {
   margin-top: -4px;
-  font-size: .875rem;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   position: absolute;

@@ -27,7 +27,7 @@ exports[`should contain correct values for theme 1`] = `
     "state": {
       "active": "rgba(126, 127, 130, 0.20)",
       "disabled": "#7E7F82",
-      "focus": "#0A0AFF",
+      "focus": "#1E5BEB",
       "hover": "rgba(126, 127, 130, 0.20)",
     },
   },
@@ -89,7 +89,7 @@ exports[`should contain correct values for themeDark 1`] = `
   "state": {
     "active": "rgba(126, 127, 130, 0.20)",
     "disabled": "#7E7F82",
-    "focus": "#0A0AFF",
+    "focus": "#1E5BEB",
     "hover": "rgba(126, 127, 130, 0.20)",
   },
 }
@@ -129,7 +129,7 @@ exports[`should contain correct values for themeDarkStateActive 1`] = `"rgba(126
 
 exports[`should contain correct values for themeDarkStateDisabled 1`] = `"#7E7F82"`;
 
-exports[`should contain correct values for themeDarkStateFocus 1`] = `"#0A0AFF"`;
+exports[`should contain correct values for themeDarkStateFocus 1`] = `"#1E5BEB"`;
 
 exports[`should contain correct values for themeDarkStateHover 1`] = `"rgba(126, 127, 130, 0.20)"`;
 

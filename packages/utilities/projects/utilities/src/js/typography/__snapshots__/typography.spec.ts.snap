@@ -2,25 +2,25 @@
 
 exports[`should contain correct values for displayLargeStyle 1`] = `
 {
-  "font": "italic normal 600 clamp(2.49rem, 5.67vw + 1.35rem, 7.59rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for displayMediumStyle 1`] = `
 {
-  "font": "italic normal 600 clamp(2.07rem, 3.32vw + 1.41rem, 5.06rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "italic normal 600 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for headingLargeStyle 1`] = `
 {
-  "font": "normal normal 600 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for headingMediumStyle 1`] = `
 {
-  "font": "normal normal 600 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
@@ -32,25 +32,25 @@ exports[`should contain correct values for headingSmallStyle 1`] = `
 
 exports[`should contain correct values for headingXLargeStyle 1`] = `
 {
-  "font": "normal normal 600 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for headingXXLargeStyle 1`] = `
 {
-  "font": "normal normal 600 clamp(2.07rem, .96vw + 1.88rem, 2.94rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for headingXXXLargeStyle 1`] = `
 {
-  "font": "normal normal 600 clamp(2.49rem, 1.51vw + 2.19rem, 3.84rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 600 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for textLargeStyle 1`] = `
 {
-  "font": "normal normal 400 clamp(1.44rem, .3vw + 1.38rem, 1.71rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
 }
@@ -58,7 +58,7 @@ exports[`should contain correct values for textLargeStyle 1`] = `
 
 exports[`should contain correct values for textMediumStyle 1`] = `
 {
-  "font": "normal normal 400 clamp(1.2rem, .12vw + 1.18rem, 1.31rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
 }
@@ -74,7 +74,7 @@ exports[`should contain correct values for textSmallStyle 1`] = `
 
 exports[`should contain correct values for textXLargeStyle 1`] = `
 {
-  "font": "normal normal 400 clamp(1.73rem, .57vw + 1.61rem, 2.24rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
 }
@@ -82,7 +82,7 @@ exports[`should contain correct values for textXLargeStyle 1`] = `
 
 exports[`should contain correct values for textXSmallStyle 1`] = `
 {
-  "font": "normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "font": "normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "hyphens": "auto",
   "overflowWrap": "break-word",
 }

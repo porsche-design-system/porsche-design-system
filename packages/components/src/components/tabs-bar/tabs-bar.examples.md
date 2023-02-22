@@ -68,22 +68,13 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ## Weight
 
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select weight</option>
-    <option value="regular">Regular</option>
-    <option value="semibold">SemiBold</option>
-  </select>
+  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
 ## Gradient Color Scheme
@@ -91,18 +82,16 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <select v-model="gradientColorScheme" aria-label="Select color scheme">
-    <option disabled>Select gradient-color-scheme</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+<Playground :markup="gradientColorSchemeMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
+  <SelectOptions v-model="gradientColorScheme" :values="gradientColorSchemes" name="gradientColorScheme"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
+import { TAB_SIZES, TAB_WEIGHTS } from './tabs-bar-utils';
+import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils'; 
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
 const buildAnchor = (name: string) => `  <a href="https://porsche.com" target="_blank">Tab ${name}</a>`;
@@ -116,10 +105,6 @@ export default class Code extends Vue {
 
   codeExampleAccessibility = getTabsBarCodeSamples('example-accessibility');
   codeExampleBasic = getTabsBarCodeSamples('example-basic');
-
-  weight = 'semibold';
-  size = 'medium';
-  gradientColorScheme = 'surface';
 
   basicButton =
     `<p-tabs-bar>
@@ -140,19 +125,25 @@ ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
  
     ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
+  size = 'medium';
+  sizes = [...TAB_SIZES, "{ base: 'small', l: 'medium' }"];
   get sizeMarkup() {
     return `<p-tabs-bar size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
 
+  weight = 'semibold';
+  weights = TAB_WEIGHTS;
   get weightMarkup() {
     return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
-    
-  get gradientMarkup() {
+
+  gradientColorScheme = 'surface';
+  gradientColorSchemes = GRADIENT_COLOR_THEMES;
+  get gradientColorSchemeMarkup() {
     return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
@@ -192,7 +183,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
       this.updateAndRegister(); 
     }));    
   }
-  
+
   updated() {
     this.registerEvents();
   }
@@ -201,7 +192,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));      
     this.registerEvents();
   }
-  
+
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
     tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));

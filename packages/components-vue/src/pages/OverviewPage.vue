@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import {
-    PorscheDesignSystemProvider,
     PAccordion,
     PBanner,
     PButton,
@@ -9,12 +8,14 @@
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
+    PDisplay,
     PDivider,
     PFieldsetWrapper,
     PFlex,
     PFlexItem,
     PGrid,
     PGridItem,
+    PHeading,
     PHeadline,
     PIcon,
     PInlineNotification,
@@ -23,6 +24,8 @@
     PLinkSocial,
     PLinkTile,
     PMarque,
+    PModelSignature,
+    PorscheDesignSystemProvider,
     PPagination,
     PPopover,
     PRadioButtonWrapper,
@@ -47,19 +50,28 @@
     PTag,
     PTagDismissible,
     PText,
+    PTextareaWrapper,
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
-    PTextareaWrapper,
   } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
   <div class="root" style="display: flex">
     <div style="flex: 1">
-      <div class="playground light" title="should render default headline">
-        <PHeadline>Default Components</PHeadline>
+      <div class="playground light" title="should render default heading">
+        <PHeading>Default Components</PHeading>
       </div>
+
+      <div class="playground light" title="should render default headline">
+        <PHeadline>Some Headline</PHeadline>
+      </div>
+
+      <div class="playground light" title="should render default display">
+        <PDisplay>Some Display</PDisplay>
+      </div>
+
       <!-- eslint-disable vue/no-deprecated-slot-attribute -->
       <div class="playground light" title="should render default banner">
         <PBanner>
@@ -68,6 +80,7 @@
         </PBanner>
       </div>
       <!-- eslint-enable -->
+
       <div class="playground light" title="should render default inline-notification">
         <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
       </div>
@@ -167,6 +180,10 @@
 
       <div class="playground light" title="should render default marque">
         <PMarque />
+      </div>
+
+      <div class="playground light" title="should render default model-signature">
+        <PModelSignature />
       </div>
 
       <div class="playground light" title="should render default pagination">
@@ -307,9 +324,18 @@
 
     <PorscheDesignSystemProvider prefix="my-prefix">
       <div style="flex: 1">
-        <div class="playground light" title="should render default headline with custom prefix">
-          <PHeadline>Prefixed Components</PHeadline>
+        <div class="playground light" title="should render default heading with custom prefix">
+          <PHeading>Prefixed Components</PHeading>
         </div>
+
+        <div class="playground light" title="should render default headline with custom prefix">
+          <PHeadline>Some Headline</PHeadline>
+        </div>
+
+        <div class="playground light" title="should render default display with custom prefix">
+          <PDisplay>Some Display</PDisplay>
+        </div>
+
         <!-- eslint-disable vue/no-deprecated-slot-attribute -->
         <div class="playground light" title="should render default banner with custom prefix">
           <PBanner>
@@ -318,6 +344,7 @@
           </PBanner>
         </div>
         <!-- eslint-enable -->
+
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
         </div>
@@ -417,6 +444,10 @@
 
         <div class="playground light" title="should render default marque with custom prefix">
           <PMarque />
+        </div>
+
+        <div class="playground light" title="should render default model-signature with custom prefix">
+          <PModelSignature />
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">

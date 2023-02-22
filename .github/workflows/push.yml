@@ -9,7 +9,7 @@ on:
 name: 'Porsche Design System'
 env:
   PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:16.15.1-stretch-slim
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal-v3-alpha-3
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal-v3-alpha-5
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -452,8 +452,8 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-  components-react-nextjs:
-    name: 'Components React NextJS'
+  components-react-nextjs-remix:
+    name: 'Components React NextJS/Remix'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -497,6 +497,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'VRT Test components-react/remix'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt
+          args: --components-react/remix
       - name: 'VRT Test components-react/nextjs'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -507,6 +512,12 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components-react:react-ssr-wrapper
+      - name: 'VRT Regression components-react/remix'
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: components-react-remix-vrt-regression
+          path: ./packages/components-react/projects/remix/tests/vrt/results
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
         uses: actions/upload-artifact@v3
@@ -1163,7 +1174,7 @@ jobs:
       - components-js-vrt-playwright
       - components-angular
       - components-react
-      - components-react-nextjs
+      - components-react-nextjs-remix
       - components-vue
       - crawler-e2e-puppeteer
       - fallbacks
@@ -1210,7 +1221,7 @@ jobs:
       - components-js-vrt-playwright
       - components-angular
       - components-react
-      - components-react-nextjs
+      - components-react-nextjs-remix
       - components-vue
       - crawler-e2e-puppeteer
       - fallbacks
