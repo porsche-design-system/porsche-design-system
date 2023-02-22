@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
@@ -12,8 +12,11 @@ import {
   borderRadiusSmall,
   fontFamily,
   fontLineHeight,
+  getMediaQueryMax,
   getMediaQueryMin,
   gridGap,
+  gridSafeZoneBase,
+  gridSafeZoneXXL,
   gridWidthMax,
   headingXLargeStyle,
   spacingFluidMedium,
@@ -23,7 +26,7 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
+import { JssStyle } from 'jss';
 
 export const bulletActiveClass = 'bullet--active';
 const selectorHeading = 'h2,::slotted([slot=heading])';
@@ -34,6 +37,28 @@ const mediaQueryXXL = getMediaQueryMin('xxl');
 // we need an explicit grid template, therefor we need to calculate the button group width
 const buttonGroupWidth = `calc((${spacingStaticSmall} * 2 + ${fontLineHeight}) * 2 + ${spacingStaticXSmall})`;
 
+// we don't need to abstract spacing definitions since component content-wrapper is deprecated and will be removed soon
+const gridColumn1FrS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
+const gridColumn1FrXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
+
+const spacingMap: { [key in CarouselWidth]: JssStyle } = {
+  basic: {
+    padding: `0 ${gridSafeZoneBase}`,
+    [mediaQueryS]: {
+      padding: `0 calc(${gridSafeZoneBase} + ${gridGap} + ${gridColumn1FrS})`,
+    },
+    [mediaQueryXXL]: {
+      padding: `0 calc(${gridSafeZoneXXL} + ${gridGap} + ${gridColumn1FrXXL})`,
+    },
+  },
+  extended: {
+    padding: `0 ${gridSafeZoneBase}`,
+    [mediaQueryXXL]: {
+      padding: `0 ${gridSafeZoneXXL}`,
+    },
+  },
+};
+
 export const getComponentCss = (
   width: CarouselWidth,
   disablePagination: BreakpointCustomizable<boolean>,
@@ -43,16 +68,7 @@ export const getComponentCss = (
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const bulletTransitionDuration = `${splideSpeed}ms`;
-
-  // TODO: needs to be moved over to utils
   const isHeaderAlignCenter = alignHeader === 'center';
-
-  // TODO: needs to be simplified/cleaned somehow
-  // get standard spacings for the width - distance from carousel to the left and right borders of the parent
-  const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
-  const spacingLeftRightS = gridSpacing.s;
-  const spacingLeftRightSWithFallback = spacingLeftRightS || spacingLeftRight; // in a case "spacingLeftRightS" is undefined (for example for "extended") - use fallback "spacingLeftRight"
-  const spacingLeftRightXXL = gridSpacing.xxl;
 
   return getCss({
     '@global': {
@@ -87,20 +103,40 @@ export const getComponentCss = (
             },
       }),
     },
+    header: {
+      display: 'grid',
+      ...mergeDeep(spacingMap[width], {
+        [mediaQueryS]: {
+          fontFamily, // relevant for button group width calculation, which is based on ex unit
+          columnGap: spacingStaticMedium,
+          gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
+          ...(isHeaderAlignCenter && {
+            justifyItems: 'center', // relevant when max-width of heading or description is reached
+          }),
+        },
+      }),
+    },
+    nav: {
+      display: 'none',
+      [mediaQueryS]: {
+        display: 'flex',
+        gap: spacingStaticXSmall,
+        alignItems: 'end',
+      },
+    },
+    btn: {
+      padding: spacingStaticSmall,
+    },
     splide: {
       overflow: 'hidden',
       // visibility: 'hidden',
       '&__track': {
         cursor: 'grab',
-        // to override inline styles set by splide library
+        // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
-          // since we have "cutted slide" on the right side, splide padding right should include also "gridGap" (distance between slides)
-          padding: `0 calc(${spacingLeftRight} + ${gridGap}) 0 ${spacingLeftRight}`,
-          [mediaQueryS]: {
-            padding: `0 ${spacingLeftRightSWithFallback}`,
-          },
-          [mediaQueryXXL]: {
-            padding: `0 ${spacingLeftRightXXL}`,
+          ...spacingMap[width],
+          [getMediaQueryMax('xs')]: {
+            paddingRight: `calc(${gridSafeZoneBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
           },
         }),
         '&--draggable': {
@@ -129,33 +165,6 @@ export const getComponentCss = (
     // .splide.is-initialized:not(.is-active) .splide__list {
     //     display: block,
     //   }
-    header: {
-      display: 'grid',
-      padding: `0 ${spacingLeftRight}`,
-      [mediaQueryS]: {
-        fontFamily, // relevant for button group width calculation, which is based on ex unit
-        padding: `0 ${spacingLeftRightSWithFallback}`,
-        columnGap: spacingStaticMedium,
-        gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
-        ...(isHeaderAlignCenter && {
-          justifyItems: 'center',
-        }),
-      },
-      [mediaQueryXXL]: {
-        padding: `0 ${spacingLeftRightXXL}`,
-      },
-    },
-    nav: {
-      display: 'none',
-      [mediaQueryS]: {
-        display: 'flex',
-        gap: spacingStaticXSmall,
-        alignItems: 'end',
-      },
-    },
-    btn: {
-      padding: spacingStaticSmall,
-    },
     ...(!disablePagination && {
       pagination: {
         ...buildResponsiveStyles(disablePagination, (disablePaginationValue: boolean) => ({
