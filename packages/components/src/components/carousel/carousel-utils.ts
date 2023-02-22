@@ -8,6 +8,7 @@ import type { TagName } from '@porsche-design-system/shared';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = typeof CAROUSEL_WIDTHS[number];
+
 export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
 export type CarouselAlignHeader = typeof CAROUSEL_ALIGN_HEADERS[number];
 

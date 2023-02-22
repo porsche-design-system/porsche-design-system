@@ -8,18 +8,19 @@ import {
   hostHiddenStyles,
 } from '../../styles';
 import {
-  gridWidthMax,
-  textSmallStyle,
-  getMediaQueryMin,
   borderRadiusSmall,
+  fontFamily,
+  fontLineHeight,
+  getMediaQueryMin,
+  gridGap,
+  gridWidthMax,
   headingXLargeStyle,
   spacingFluidMedium,
-  spacingStaticXSmall,
-  spacingStaticSmall,
   spacingFluidXSmall,
-  fontLineHeight,
   spacingStaticMedium,
-  gridGap,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { getSpacingForWidth } from '../content-wrapper/content-wrapper-spacings-shared';
@@ -28,20 +29,11 @@ export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
-const headerRowGap = spacingFluidXSmall; // fluid spacing for vertical gap
-const headerColumnGap = spacingStaticMedium; // static spacing for horizontal gap
 const bulletSize = '8px'; // width and height of a bullet
 const activeBulletWidth = '20px';
-const navGap = spacingStaticXSmall;
-const navBtnPadding = spacingStaticSmall;
-// width and height of nav button
-const navBtnSize = `calc(${fontLineHeight} + ${navBtnPadding} * 2)`;
-// it's equal to inset of "hover :before element" of nav button, so that button in hover state is aligned correctly
-const navOffset = '2px';
-// nav width is being calculated based on icon width (fontLineHeight), button padding, distance (navGap) between 2 nav buttons and right offset of nav
-const navWidth = `calc((${navBtnSize}) * 2 + ${navGap} + ${navOffset})`;
-// in a case alignHeader=center is being set - Heading's and Description's "spacing" (left and right) should be equal to the nav's width plus header column gap
-const headerAlignCenterSpacing = `${navWidth} + ${headerColumnGap}`;
+
+// we need an explicit grid template, therefor we need to calculate the button group width
+const buttonGroupWidth = `calc((${spacingStaticSmall} * 2 + ${fontLineHeight}) * 2 + ${spacingStaticXSmall})`;
 
 export const getComponentCss = (
   width: CarouselWidth,
@@ -51,7 +43,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const isHeaderAlignLeft = alignHeader === 'left';
+  const isHeaderAlignCenter = alignHeader === 'center';
   const bulletTransitionDuration = (splideSpeed / 1000).toString() + 's'; // convert speed from "milliseconds" (400) to "css transition duration" ('0.4s') format
   // get standard spacings for the width - distance from carousel to the left and right borders of the parent
   const [spacingLeftRight, gridSpacing] = getSpacingForWidth(width);
@@ -62,36 +54,34 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        display: 'grid',
+        display: 'flex',
+        gap: spacingFluidMedium,
+        flexDirection: 'column',
         maxWidth: gridWidthMax,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        gap: spacingFluidMedium, // vertical spacing
-        gridAutoFlow: 'row',
+        marginLeft: 'auto', // relevant for viewport width > 2560px
+        marginRight: 'auto', // relevant for viewport width > 2560px
         ...hostHiddenStyles,
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
         ...headingXLargeStyle,
+        maxWidth: '56.25rem',
         margin: 0,
-        color: primaryColor,
-        maxWidth: '900px',
-        ...(!isHeaderAlignLeft && {
-          // if center-aligned
-          margin: '0 auto',
-          textAlign: 'center',
-        }),
       }),
       'p,::slotted([slot=description])': addImportantToEachRule({
         ...textSmallStyle,
-        margin: 0,
+        maxWidth: '34.375rem',
+        margin: `${spacingFluidXSmall} 0 0`,
+      }),
+      'h2,p,::slotted([slot=heading]),::slotted([slot=description])': addImportantToEachRule({
         color: primaryColor,
-        maxWidth: '550px',
-        ...(!isHeaderAlignLeft && {
-          // if center-aligned
-          margin: '0 auto',
-          textAlign: 'center',
-        }),
-        gridColumn: 1, // to force it into 2nd line
+        [mediaQueryS]: isHeaderAlignCenter
+          ? {
+              gridColumnStart: 2,
+              textAlign: 'center', // relevant when text becomes multiline
+            }
+          : {
+              gridColumn: '1 / 3',
+            },
       }),
     },
     splide: {
@@ -138,58 +128,32 @@ export const getComponentCss = (
     //   }
     header: {
       display: 'grid',
-      rowGap: headerRowGap,
       padding: `0 ${spacingLeftRight}`,
-      font: textSmallStyle.font, // we need the font to be the same as nav font in order to set gridTemplateColumns correctly depending on nav width
-      minWidth: '200px', // for a case someone tries to put carousel in a very small element - there should be enough space in header, so that it doesn't look broken
       [mediaQueryS]: {
-        // only starting from S size and bigger there's nav, therefore header alignment is needed
-        ...(isHeaderAlignLeft
-          ? {
-              gridTemplateColumns: `minmax(0px, 1fr) ${navWidth}`, // 2nd row has width of nav buttons
-              columnGap: headerColumnGap,
-              // if there's another spacing for s size
-              ...(spacingLeftRightS && {
-                padding: `0 ${spacingLeftRightS}`,
-              }),
-            }
-          : {
-              gridTemplateColumns: 'minmax(0px, 1fr) 0', // first column should take the whole width
-              columnGap: 0, // there shouldn't be a gap, because we have only one column
-              padding: `0 calc(${spacingLeftRightSWithFallback} + ${headerAlignCenterSpacing})`, // set padding, so that description & heading do not overlap with nav buttons
-            }),
-        position: 'relative',
-        minHeight: navBtnSize, // for a case there's no description and no heading - it's height should be equal to actual height of prev/next buttons
+        fontFamily, // relevant for button group width calculation, which is based on ex unit
+        padding: `0 ${spacingLeftRightSWithFallback}`,
+        columnGap: spacingStaticMedium,
+        gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
+        ...(isHeaderAlignCenter && {
+          justifyItems: 'center',
+        }),
       },
       [mediaQueryXXL]: {
-        ...(isHeaderAlignLeft
-          ? {
-              padding: `0 ${spacingLeftRightXXL}`,
-            }
-          : {
-              padding: `0 calc(${spacingLeftRightXXL} + ${headerAlignCenterSpacing})`, // set padding, so that description & heading do not overlap with nav buttons
-            }),
+        padding: `0 ${spacingLeftRightXXL}`,
       },
     },
     nav: {
-      display: 'none', // for smaller screens we don't show nav buttons
+      display: 'none',
       [mediaQueryS]: {
-        display: 'grid',
-        gridAutoFlow: 'column',
-        gap: navGap,
-        position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: spacingLeftRightSWithFallback,
-        bottom: 0,
-        padding: `0 ${navOffset} ${navOffset} 0`, // make offset to the right and the bottom side, so that it's aligned to right & bottom in hover state
-      },
-      [mediaQueryXXL]: {
-        right: spacingLeftRightXXL,
+        display: 'flex',
+        gap: spacingStaticXSmall,
+        alignItems: 'end',
       },
     },
     btn: {
-      padding: navBtnPadding,
+      padding: spacingStaticSmall,
     },
-    ...(disablePagination !== true && {
+    ...(!disablePagination && {
       pagination: {
         ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'block' })),
         display: 'flex',
