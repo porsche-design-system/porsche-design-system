@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 
 - `Radio Button` keyboard arrow navigation
+- `Button Pure` and `Link-Pure`: Lagging active state background on iOS
 
 ### [3.0.0-alpha.1] - 2023-02-16
 
