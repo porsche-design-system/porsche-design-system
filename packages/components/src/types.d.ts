@@ -1,3 +1,4 @@
+// TODO: move to types folder
 // common type definitions
 import type { IconName } from '@porsche-design-system/icons';
 
