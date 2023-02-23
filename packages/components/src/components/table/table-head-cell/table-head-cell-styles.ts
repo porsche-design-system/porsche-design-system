@@ -2,18 +2,16 @@ import type { Direction } from '../table/table-utils';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  getFocusJssStyle,
-  getHoverJssStyle,
   getTextHiddenJssStyle,
   pxToRemWithUnit,
   getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../../../styles';
-import { fontWeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { fontWeight, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 
-const { contrastMediumColor, primaryColor } = getThemedColors('light');
+const { contrastMediumColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
 export const getComponentCss = (
