@@ -231,7 +231,8 @@ export namespace Components {
          */
         "width"?: CarouselWidth;
         /**
-          * @deprecated Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
     }
@@ -776,7 +777,7 @@ export namespace Components {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
@@ -1953,7 +1954,8 @@ declare namespace LocalJSX {
          */
         "width"?: CarouselWidth;
         /**
-          * @deprecated Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
     }
@@ -2510,7 +2512,7 @@ declare namespace LocalJSX {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
