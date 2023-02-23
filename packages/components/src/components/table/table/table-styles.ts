@@ -2,18 +2,10 @@ import {
   textSmallStyle,
   spacingStaticSmall,
   spacingStaticMedium,
-  spacingStaticLarge,
   getMediaQueryMin,
 } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import {
-  getBaseSlottedStyles,
-  getFocusJssStyle,
-  pxToRemWithUnit,
-  getThemedColors,
-  addImportantToEachRule,
-  hostHiddenStyles,
-} from '../../../styles';
+import { getBaseSlottedStyles, getThemedColors, addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 
 const { primaryColor } = getThemedColors('light');
 
