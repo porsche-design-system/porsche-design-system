@@ -1,8 +1,7 @@
 import { test } from '@playwright/test';
 import { executeVisualRegressionTest, openPopovers } from '../helpers/playwright-helper';
 
-// since it often fails, temporary disabling it
-test.skip('should have no visual regression', async () => {
+test.describe('should have no visual regression', async () => {
   await executeVisualRegressionTest('overview', {
     scenario: async (page) => {
       await openPopovers(page);
