@@ -113,7 +113,7 @@ export const getComponentCss = (
     'scroll-area': {
       gridArea: '1 / 1 / 1 / -1',
       padding: '4px',
-      overflow: 'scroll hidden',
+      overflow: 'auto hidden',
       ...(!scrollbar && {
         // If scrollbar is disabled - hide scrollbar
         msOverflowStyle: 'none' /* IE and Edge */,
