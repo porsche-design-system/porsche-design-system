@@ -768,7 +768,7 @@ export namespace Components {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
@@ -871,6 +871,10 @@ export namespace Components {
           * Scrolls the scroll area to the left either smooth or immediately
          */
         "scrollToPosition"?: ScrollToPosition;
+        /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: false;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2494,7 +2498,7 @@ declare namespace LocalJSX {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
@@ -2601,6 +2605,10 @@ declare namespace LocalJSX {
           * Scrolls the scroll area to the left either smooth or immediately
          */
         "scrollToPosition"?: ScrollToPosition;
+        /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: false;
         /**
           * Adapts the color when used on dark background.
          */
