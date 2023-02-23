@@ -2,7 +2,7 @@ import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
-import * as slottedStylesUtils from '../utils/slotted-styles';
+import * as attachSlottedCssUtils from '../utils/attachSlottedCss';
 import * as getDataThemeDarkAttributeUtils from '../utils/theme/getDataThemeDarkAttribute';
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
@@ -175,7 +175,7 @@ it.each<TagName>(tagNamesWithJss)(
 it.each<TagName>(tagNamesWithSlottedCss)(
   'should call attachSlottedCss() with correct parameters via connectedCallback for %s',
   (tagName) => {
-    const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
+    const spy = jest.spyOn(attachSlottedCssUtils, 'attachSlottedCss');
     const component = componentFactory(tagName);
 
     try {
