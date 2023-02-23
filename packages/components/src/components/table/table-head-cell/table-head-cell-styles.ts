@@ -37,23 +37,8 @@ export const getComponentCss = (
       }),
       ...(sortable
         ? {
-            button: {
-              display: 'flex',
-              alignItems: 'flex-end',
-              padding: 0,
-              boxSizing: 'border-box',
-              appearance: 'none',
-              border: 'none',
-              ...textSmallStyle,
-              fontWeight: fontWeightSemiBold,
-              color: primaryColor,
-              textDecoration: 'none',
-              textAlign: 'left',
-              background: 'transparent',
-              cursor: 'pointer',
-              ...getFocusJssStyle({ offset: 1 }),
+            '.button-pure': {
               ...hoverMediaQuery({
-                ...getHoverJssStyle(),
                 '&:hover, &:focus': {
                   '& .icon': {
                     opacity: 1,

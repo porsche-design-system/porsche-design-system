@@ -54,8 +54,9 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
         {isSortable(active, direction) ? (
-          <PrefixedTagNames.pButtonPure icon="arrow-up" onClick={this.onButtonClick}>
+          <PrefixedTagNames.pButtonPure class="button-pure" icon="none" onClick={this.onButtonClick}>
             <slot />
+            <PrefixedTagNames.pIcon class="icon" color="inherit" name="arrow-up" aria-hidden="true" />
           </PrefixedTagNames.pButtonPure>
         ) : (
           <span>
