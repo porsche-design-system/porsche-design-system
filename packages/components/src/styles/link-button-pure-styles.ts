@@ -59,7 +59,7 @@ export const getLinkButtonPureStyles = (
     '@global': {
       ':host': {
         ...addImportantToEachRule({
-          position: 'relative',
+          transform: 'translate3d(0,0,0)', // creates new stacking context
           outline: 0, // custom element is able to delegate the focus
           ...hostHiddenStyles,
         }),

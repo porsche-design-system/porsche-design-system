@@ -48,7 +48,7 @@ export const getComponentCss = (
               // (https://bugs.webkit.org/show_bug.cgi?id=178237)
               '&(a)::before': {
                 content: '""',
-                position: 'absolute',
+                position: 'fixed',
                 top: offsetVertical,
                 bottom: offsetVertical,
                 borderRadius: borderRadiusSmall,

@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
 }
@@ -216,7 +216,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -368,7 +368,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"dark"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -440,7 +440,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -512,7 +512,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -584,7 +584,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","theme":"light"} 2`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -656,7 +656,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -720,7 +720,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"light"} 2`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -784,7 +784,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","theme":"dark"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
 }
@@ -858,7 +858,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
 }
@@ -932,7 +932,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -999,7 +999,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -1058,7 +1058,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 
 exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -1117,7 +1117,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 
 exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
@@ -1206,7 +1206,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 
 exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":true,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
 ":host {
-  position: relative !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
   vertical-align: top;
