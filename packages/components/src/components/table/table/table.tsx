@@ -1,12 +1,10 @@
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
-  getScrollByX,
   hasNamedSlot,
-  scrollElementBy,
   validateProps,
 } from '../../../utils';
 import type { PropTypes } from '../../../types';
@@ -32,14 +30,6 @@ export class Table {
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
 
-  @State() private isScrollIndicatorVisible = false;
-  @State() private isScrollable = false;
-
-  private intersectionObserver: IntersectionObserver;
-  private scrollAreaElement: HTMLElement;
-  private scrollTriggerElement: HTMLElement;
-  private tableElement: HTMLElement;
-
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
   }
@@ -52,14 +42,6 @@ export class Table {
     });
   }
 
-  public componentDidLoad(): void {
-    this.initIntersectionObserver();
-  }
-
-  public disconnectedCallback(): void {
-    this.intersectionObserver?.disconnect();
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss);
@@ -70,7 +52,6 @@ export class Table {
     const tableAttr = this.caption
       ? { 'aria-label': this.caption }
       : hasSlottedCaption && { 'aria-labelledby': captionId };
-    const scrollAreaAttr = this.isScrollable && { ...tableAttr, role: 'region', tabindex: '0' };
 
     return (
       <Host>
@@ -80,55 +61,19 @@ export class Table {
           </div>
         )}
         <div class="root">
-          <div class="scroll-area" {...scrollAreaAttr} ref={(el) => (this.scrollAreaElement = el)}>
-            <div class="table" role="table" {...tableAttr} ref={(el) => (this.tableElement = el)}>
+          <PrefixedTagNames.pScroller>
+            <div class="table" role="table" {...tableAttr}>
               <slot />
-              <span class="scroll-trigger" ref={(el) => (this.scrollTriggerElement = el)} />
             </div>
-          </div>
-          {this.isScrollIndicatorVisible && (
-            <div class="scroll-indicator">
-              <PrefixedTagNames.pButtonPure
-                class="scroll-button"
-                aria-hidden="true"
-                type="button"
-                tabIndex={-1}
-                hideLabel={true}
-                size="inherit"
-                icon="arrow-head-right"
-                onClick={this.onScrollClick}
-              >
-                Next
-              </PrefixedTagNames.pButtonPure>
-            </div>
-          )}
+          </PrefixedTagNames.pScroller>
         </div>
       </Host>
     );
   }
 
-  private initIntersectionObserver = (): void => {
-    this.intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        for (const { target, isIntersecting } of entries) {
-          if (target === this.scrollTriggerElement) {
-            this.isScrollIndicatorVisible = !isIntersecting;
-          } else if (target === this.tableElement) {
-            this.isScrollable = !isIntersecting;
-          }
-        }
-      },
-      {
-        root: this.scrollAreaElement,
-        threshold: 1,
-      }
-    );
-
-    this.intersectionObserver.observe(this.scrollTriggerElement); // to check if table should show a scroll indicator
-    this.intersectionObserver.observe(this.tableElement); // to check if table is scrollable in general
-  };
-
+  /*
   private onScrollClick = (): void => {
     scrollElementBy(this.scrollAreaElement, getScrollByX(this.scrollAreaElement));
   };
+   */
 }
