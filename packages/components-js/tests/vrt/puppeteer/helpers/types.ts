@@ -8,4 +8,4 @@ type Split<S extends string, D extends string> = string extends S
   ? [T, ...Split<U, D>]
   : [S];
 
-export type Component = Split<TagName, 'p-'>[1] | 'modal-basic' | 'toast-basic';
+export type Component = Split<TagName, 'p-'>[1] | 'modal-basic' | 'toast-basic' | 'overview';

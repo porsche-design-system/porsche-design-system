@@ -112,8 +112,8 @@ export const vrtTest = (
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
 
-      const cdpSession = await page.target().createCDPSession();
       if (scalePageFontSize) {
+        const cdpSession = await page.target().createCDPSession();
         await cdpSession.send('Page.enable');
         await cdpSession.send('Page.setFontSizes', {
           fontSizes: {
@@ -124,6 +124,7 @@ export const vrtTest = (
       }
 
       if (forcedColorsEnabled || prefersColorScheme) {
+        const cdpSession = await page.target().createCDPSession();
         // NOTE: 'forced-colors' isn't supported by page.emulateMediaFeatures, yet https://pptr.dev/api/puppeteer.page.emulatemediafeatures
         // also it looks like cdpSession.send() can't be combined with page.emulateMediaFeatures since it affects each other
         await cdpSession.send('Emulation.setEmulatedMedia', {
