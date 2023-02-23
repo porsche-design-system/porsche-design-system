@@ -3,12 +3,11 @@ import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
-  pxToRemWithUnit,
   getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../../../styles';
-import { fontWeight, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 
 const { contrastMediumColor } = getThemedColors('light');
@@ -26,7 +25,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'table-cell',
-        padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
+        padding: `2px ${spacingFluidSmall} ${spacingFluidSmall} ${spacingFluidSmall}`,
         borderBottom: `1px solid ${contrastMediumColor}`,
         verticalAlign: 'bottom',
         fontWeight: fontWeightSemiBold,
