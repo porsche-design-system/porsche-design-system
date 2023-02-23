@@ -124,7 +124,6 @@ export const getComponentCss = (
     },
     nav: {
       display: 'none',
-      background: 'rgba(255, 0, 0, 0.1)',
       [mediaQueryS]: {
         display: 'flex',
         gap: spacingStaticXSmall,
@@ -133,7 +132,6 @@ export const getComponentCss = (
       },
     },
     btn: {
-      background: 'rgba(0, 0, 255, 0.1)',
       padding: spacingStaticSmall,
     },
     splide: {
