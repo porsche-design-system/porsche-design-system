@@ -1,4 +1,13 @@
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { ButtonPure } from '../button-pure/button-pure';
+import type {
+  CarouselAlignHeader,
+  CarouselChangeEvent,
+  CarouselInternationalization,
+  CarouselWidth,
+} from './carousel-utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -16,9 +25,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { getComponentCss } from './carousel-styles';
-import { Splide } from '@splidejs/splide';
+import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_WIDTHS,
@@ -33,13 +40,6 @@ import {
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
-import type {
-  CarouselAlignHeader,
-  CarouselChangeEvent,
-  CarouselInternationalization,
-  CarouselWidth,
-} from './carousel-utils';
-import type { ButtonPure } from '../button-pure/button-pure';
 import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
@@ -105,8 +105,6 @@ export class Carousel {
 
   @State() private amountOfPages: number;
 
-  @State() private splideSpeed = 400;
-
   private splide: Splide;
   private container: HTMLElement;
   private btnPrev: ButtonPure;
@@ -140,10 +138,7 @@ export class Carousel {
       rewindByDrag: true, // only works when rewind: true
       perMove: 1,
       mediaQuery: 'min',
-      padding: {
-        right: gridGap, // this is overridden via css
-      },
-      speed: this.splideSpeed, // transition speed in milliseconds
+      speed: carouselTransitionDuration,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
         base: gridGap, // distance between slides
@@ -172,15 +167,7 @@ export class Carousel {
     warnIfDeprecatedPropIsUsed(this.host, 'wrapContent');
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.width,
-      this.disablePagination,
-      this.splideSpeed,
-      this.alignHeader,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.width, this.disablePagination, this.alignHeader, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

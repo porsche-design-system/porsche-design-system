@@ -28,14 +28,17 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
+export const carouselTransitionDuration = 400;
 export const bulletActiveClass = 'bullet--active';
+
 const selectorHeading = 'h2,::slotted([slot=heading])';
 const selectorDescription = 'p,::slotted([slot=description])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
 // we need an explicit grid template, therefor we need to calculate the button group width
-const buttonGroupWidth = `calc((${spacingStaticSmall} * 2 + ${fontLineHeight}) * 2 + ${spacingStaticXSmall})`;
+const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
+const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall})`;
 
 // we don't need to abstract spacing definitions since component content-wrapper is deprecated and will be removed soon
 const gridColumn1FrS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
@@ -62,12 +65,10 @@ const spacingMap: { [key in CarouselWidth]: JssStyle } = {
 export const getComponentCss = (
   width: CarouselWidth,
   disablePagination: BreakpointCustomizable<boolean>,
-  splideSpeed: number,
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const bulletTransitionDuration = `${splideSpeed}ms`;
   const isHeaderAlignCenter = alignHeader === 'center';
 
   return getCss({
@@ -77,8 +78,10 @@ export const getComponentCss = (
         gap: spacingFluidMedium,
         flexDirection: 'column',
         maxWidth: gridWidthMax,
-        marginLeft: 'auto', // relevant for viewport width > 2560px
-        marginRight: 'auto', // relevant for viewport width > 2560px
+        // relevant for viewport width > 2560px
+        paddingLeft: `calc(50% - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
+        paddingRight: `calc(50% - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
+        boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
         ...hostHiddenStyles,
       }),
       [selectorHeading]: addImportantToEachRule({
@@ -95,7 +98,7 @@ export const getComponentCss = (
         color: primaryColor,
         [mediaQueryS]: isHeaderAlignCenter
           ? {
-              gridColumnStart: 2,
+              gridColumn: 2,
               textAlign: 'center', // relevant when text becomes multiline
             }
           : {
@@ -121,6 +124,7 @@ export const getComponentCss = (
       [mediaQueryS]: {
         display: 'flex',
         gap: spacingStaticXSmall,
+        gridArea: '1 / 3 / 3 / auto', // needed in case description height is smaller than button group
         alignItems: 'end',
       },
     },
@@ -177,7 +181,7 @@ export const getComponentCss = (
         borderRadius: borderRadiusSmall,
         background: contrastMediumColor,
         // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${bulletTransitionDuration} linear, width ${bulletTransitionDuration} linear`,
+        transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
         width: '8px',
         height: '8px',
       },
