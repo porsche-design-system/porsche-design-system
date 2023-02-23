@@ -9,19 +9,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### 🤖 Property deprecations 🤖
+
+##### Carousel:
+
+- Prop `wrap-content` is deprecated.
+
+```diff
+- <p-carousel wrap-content="true"></p-carousel>
++ <p-carousel></p-carousel>
+```
+
+##### Divider:
+
+- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated.
+
+```diff
+- <p-divider color="neutral-contrast-low"></p-divider>
++ <p-divider color="contrast-low"></p-divider>
+
+- <p-divider color="neutral-contrast-medium"></p-divider>
++ <p-divider color="contrast-medium"></p-divider>
+
+- <p-divider color="neutral-contrast-high"></p-divider>
++ <p-divider color="contrast-high"></p-divider>
+```
+
 #### Changed
 
+- `Divider`, `Button Group`, `Carousel` and `Text List` match new design language
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 - Partials: Removed deprecated `withoutTags` option for all partials, please use `format: 'jsx'` instead
-- `Divider`, `Button Group` and `Text List` match new design language
 
 #### Added
 
 - `Model Signature`
+- Props `align-header` and `width` for `Carousel`
 
 #### Fixed
 
-- `Radio Button` keyboard arrow navigation
+- `Radio Button Wrapper` keyboard arrow navigation
 
 ### [3.0.0-alpha.1] - 2023-02-16
 
@@ -269,15 +296,6 @@ recommend to migrate and remove the deprecated props since those ones will be re
  </p-segmented-control>
 ```
 
-##### Carousel:
-
-- Prop `wrap-content` is deprecated.
-
-```diff
-- <p-carousel wrap-content="true"></p-carousel>
-+ <p-carousel></p-carousel>
-```
-
 #### 👾 Property value deprecations 👾
 
 All deprecated values are mapped to new ones, therefor it's technically not breaking, but we highly recommend to migrate
@@ -418,21 +436,6 @@ to the new values since those ones will be removed with next major version.
 + …addMessage({ text: `Some message`, state: 'info' })
 ```
 
-##### Divider:
-
-- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated.
-
-```diff
-- <p-divider color="neutral-contrast-low"></p-divider>
-+ <p-divider color="contrast-low"></p-divider>
-
-- <p-divider color="neutral-contrast-medium"></p-divider>
-+ <p-divider color="contrast-medium"></p-divider>
-
-- <p-divider color="neutral-contrast-high"></p-divider>
-+ <p-divider color="contrast-high"></p-divider>
-```
-
 #### Added
 
 - `Display` component
@@ -442,14 +445,13 @@ to the new values since those ones will be removed with next major version.
   `Text Field Wrapper` and `Fieldset Wrapper`
 - Prop `size` for `Icon` supports `x-small` and `x-large`
 - Prop `size` for `Accordion` `compact="true"` supports `medium`
-- Props `alignHeader` and `width` for `Carousel`
 
 #### Changed
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
   `Inline Notification`, `Banner`, `Toast`, `Grid`, `Flex`, `Pagination`, `Scroller`, `Accordion`, `Text`,
-  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline`, `Carousel` and `Fieldset Wrapper`
+  `Text Field Wrapper`, `Content Wrapper`, `Segmented Control`, `Tabs`, `Tabs Bar`, `Headline` and `Fieldset Wrapper`
   match new design language
 - `Icon` supports
   `primary | contrast-low | contrast-medium | contrast-high | notification-success | notification-warning | notification-error | notification-info | inherit`
