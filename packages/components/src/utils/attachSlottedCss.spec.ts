@@ -1,5 +1,5 @@
-import { attachSlottedCss, getCachedSlottedCss, slottedCssMap } from './slotted-styles';
-import * as slottedStyles from './slotted-styles';
+import { attachSlottedCss, getCachedSlottedCss, slottedCssMap } from './attachSlottedCss';
+import * as attachSlottedCssUtilss from './attachSlottedCss';
 
 /**
  * we need to use `node.innerHTML` or `node.textContent` instead of `node.innerText`
@@ -18,7 +18,7 @@ describe('attachSlottedCss()', () => {
   it('should call getCachedSlottedCss() to retrieve cached css', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = jest.spyOn(slottedStyles, 'getCachedSlottedCss').mockImplementation(() => '');
+    const spy = jest.spyOn(attachSlottedCssUtilss, 'getCachedSlottedCss').mockImplementation(() => '');
 
     attachSlottedCss(host, () => 'some css');
 
