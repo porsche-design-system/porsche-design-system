@@ -87,6 +87,8 @@ type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
   scalePageFontSize?: boolean;
   javaScriptEnabled?: boolean;
+  forcedColorsEnabled?: boolean;
+  prefersColorScheme?: 'light' | 'dark';
 };
 
 export const vrtTest = (
@@ -95,10 +97,11 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, javaScriptEnabled, scalePageFontSize, ...otherOptions } = {
+  const { scenario, scalePageFontSize, javaScriptEnabled, forcedColorsEnabled, prefersColorScheme, ...otherOptions } = {
     scenario: undefined,
     scalePageFontSize: false,
     javaScriptEnabled: true,
+    forcedColorsEnabled: false,
     ...options,
   };
   const { baseUrl } = customOptions || defaultOptions;
@@ -109,14 +112,25 @@ export const vrtTest = (
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
 
+      const cdpSession = await page.target().createCDPSession();
       if (scalePageFontSize) {
-        const client = await page.target().createCDPSession();
-        await client.send('Page.enable');
-        await client.send('Page.setFontSizes', {
+        await cdpSession.send('Page.enable');
+        await cdpSession.send('Page.setFontSizes', {
           fontSizes: {
             standard: 32,
             fixed: 48,
           },
+        });
+      }
+
+      if (forcedColorsEnabled || prefersColorScheme) {
+        // NOTE: 'forced-colors' isn't supported by page.emulateMediaFeatures, yet https://pptr.dev/api/puppeteer.page.emulatemediafeatures
+        // also it looks like cdpSession.send() can't be combined with page.emulateMediaFeatures since it affects each other
+        await cdpSession.send('Emulation.setEmulatedMedia', {
+          features: [
+            ...(forcedColorsEnabled ? [{ name: 'forced-colors', value: 'active' }] : []),
+            ...(prefersColorScheme ? [{ name: 'prefers-color-scheme', value: prefersColorScheme }] : []),
+          ],
         });
       }
 
