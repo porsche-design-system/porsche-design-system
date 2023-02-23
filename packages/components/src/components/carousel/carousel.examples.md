@@ -7,6 +7,11 @@ visible at the same time.
 Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.  
 The amount of slides visible can be specified on a per-breakpoint basis.
 
+<p-inline-notification heading="Layout hint" state="warning" persistent="true">
+ The component can only be used with the full viewport width. The alignment of its content can be controlled 
+by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic
@@ -37,6 +42,28 @@ Right after the `heading`, an additional `description` can be added either via p
 
 <Playground :markup="description" :config="config"></Playground>
 
+## Align Header
+
+The heading and description can be aligned via `alignHeader`.
+
+<Playground :markup="alignHeaderMarkup" :config="config">
+  <SelectOptions v-model="alignHeader" :values="alignHeaders" name="alignHeader"></SelectOptions>
+</Playground>
+
+## Width
+
+Defines horizontal spacing which is aligned with the [Porsche Grid](styles/grid).
+
+<Playground :markup="widthMarkup" :config="config">
+  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
+</Playground>
+
+## Wrap Content (deprecated)
+
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+  This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
+</p-inline-notification>
+
 ## Rewind
 
 By default, the `p-carousel` cycles by rewinding and fast forwarding from the last slide to the first slide and first
@@ -46,49 +73,12 @@ first/last slide.
 
 <Playground :markup="rewind" :config="config"></Playground>
 
-## Wrap Content (deprecated)
-
-<p-inline-notification heading="Important note" state="error" persistent="true">
-  The wrap-content prop is deprecated and will be removed with next major release.
-</p-inline-notification>
-
-By default, the `p-carousel` takes up the available space which works for all scenarios where its parent has some
-padding, e.g., when used within `p-content-wrapper`.  
-In case its parent either does not provide some padding or the `p-carousel` really should go edge to edge, you cann use
-the `wrapContent` property which internally applies the padding of `p-content-wrapper`.
-
-<Playground :markup="wrapContent" :config="config"></Playground>
-
-<!--
-## Post Heading
-
-If you want to place any additional elements between heading and slider, you can use the `post-heading` slot.
-
-<Playground :markup="postHeading" :config="config"></Playground>
--->
-
-## Width
-
-Left and right outer spacings can be defined via `width`.
-
-<Playground :markup="widthMarkup" :config="config">
-  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
-</Playground>
-
 ## Disable Pagination
 
-The pagination indicators underneath the slides can be removed via `disablePagination`. Also, on a per-breakpoint basis.
+The pagination indicators underneath the slides can be removed via `disablePagination`.
 
 <Playground :markup="disablePaginationMarkup" :config="config">
   <SelectOptions v-model="disablePagination" :values="disablePaginations" name="disablePagination"></SelectOptions>
-</Playground>
-
-## Align Header
-
-The Heading and Description can be aligned via `alignHeader`.
-
-<Playground :markup="alignHeaderMarkup" :config="config">
-  <SelectOptions v-model="alignHeader" :values="alignHeaders" name="alignHeader"></SelectOptions>
 </Playground>
 
 ## Focus Behavior
@@ -145,7 +135,9 @@ type CarouselInternationalization = {
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import type { Theme } from '@/models';
+import type { CarouselWidth, CarouselAlignHeader } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
+import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS } from './carousel-utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -193,15 +185,6 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  wrapContent = `<p-carousel wrap-content="true" heading="${this.basicHeading}" description="${this.basicDescription}">
-  ${this.getSlides(3)}
-</p-carousel>`;
-
-//   postHeading = `<p-carousel heading="${this.basicHeading}">
-//   <p slot="post-heading">Some slotted content between heading and slider</p>
-//   ${this.getSlides(3)}
-// </p-carousel>`;
-
   disablePagination = true;
   disablePaginations = [true, false, '{ base: true, m: false }'];
   get disablePaginationMarkup() {
@@ -210,16 +193,16 @@ export default class Code extends Vue {
 </p-carousel>`;
 }
 
-  alignHeader = 'left';
-  alignHeaders = ['left', 'center'];
+  alignHeader: CarouselAlignHeader = 'center';
+  alignHeaders = CAROUSEL_ALIGN_HEADERS;
   get alignHeaderMarkup() {
     return `<p-carousel align-header="${this.alignHeader}" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
 </p-carousel>`;
 }
 
-  width = 'basic';
-  widths = ['basic', 'extended'];
+  width: CarouselWidth = 'basic';
+  widths = CAROUSEL_WIDTHS;
   get widthMarkup() {
     return `<p-carousel width="${this.width}" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
