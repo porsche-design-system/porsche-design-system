@@ -1,10 +1,10 @@
-import type { ResponsiveOptions, Options, Splide } from '@splidejs/splide';
+import type { Options, Splide } from '@splidejs/splide';
 import type { BreakpointCustomizable, BreakpointKey } from '../../types';
-import { getTagName, hasNamedSlot, mergeDeep } from '../../utils';
+import type { TagName } from '@porsche-design-system/shared';
+import { getTagName, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
-import type { TagName } from '@porsche-design-system/shared';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = typeof CAROUSEL_WIDTHS[number];
@@ -19,29 +19,17 @@ export type CarouselInternationalization =
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
 export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
 
-type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'gap'>;
-type ResponsiveOptsKey = keyof ResponsiveOpts;
 export type SplideBreakpoints = Options['breakpoints'];
 
-export const getSplideBreakpoints = (
-  perPage: Exclude<BreakpointCustomizable<number>, string>,
-  gap: BreakpointCustomizable<string>
-): SplideBreakpoints => {
-  return mergeDeep(toSplideBreakpoints('perPage', perPage), toSplideBreakpoints('gap', gap));
-};
-
-export const toSplideBreakpoints = <T>(
-  propName: ResponsiveOptsKey,
-  value: BreakpointCustomizable<T>
-): SplideBreakpoints => {
-  return typeof value === 'object'
-    ? Object.entries(value).reduce(
+export const getSplideBreakpoints = (perPage: Exclude<BreakpointCustomizable<number>, string>): SplideBreakpoints => {
+  return typeof perPage === 'object'
+    ? Object.entries(perPage).reduce(
         (result, [key, val]: [BreakpointKey, number]) => ({
           ...result,
           // cut off 'px' suffix
           [key === 'base' ? 0 : breakpoint[key].slice(0, -2)]: {
             // round to sanitize floating numbers
-            [propName]: propName === 'perPage' ? Math.round(val) : val,
+            perPage: Math.round(val),
           },
         }),
         {}
@@ -49,7 +37,7 @@ export const toSplideBreakpoints = <T>(
     : {
         0: {
           // round to sanitize floating numbers
-          [propName]: propName === 'perPage' ? Math.round(value as unknown as number) : value,
+          perPage: Math.round(perPage as unknown as number),
         },
       };
 };

@@ -45,12 +45,12 @@ import { gridGap } from '@porsche-design-system/utilities-v2';
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
+  alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
-  alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -81,8 +81,10 @@ export class Carousel {
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
 
-  /** @deprecated
-   * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public wrapContent?: boolean;
 
   /** Defines the outer spacings between the carousel and the left and right screen sides. */
@@ -139,10 +141,9 @@ export class Carousel {
       perMove: 1,
       mediaQuery: 'min',
       speed: carouselTransitionDuration,
+      gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
-        base: gridGap, // distance between slides
-      }),
+      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl),
     });
