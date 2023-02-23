@@ -38,7 +38,8 @@ const mediaQueryXXL = getMediaQueryMin('xxl');
 
 // we need an explicit grid template, therefor we need to calculate the button group width
 const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
-const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall})`;
+// + 2px, compensates hover offset of button-pure
+const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
 
 // we don't need to abstract spacing definitions since component content-wrapper is deprecated and will be removed soon
 const gridColumn1FrS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;

@@ -131,7 +131,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, 'wrapContent');
+    expect(spy).toBeCalledWith(component, 'wrapContent');
   });
   it('should call warnIfHeadingIsMissing() with correct parameters', () => {
     const spy = jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing');
