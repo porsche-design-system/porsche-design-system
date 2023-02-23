@@ -86,7 +86,7 @@ describe('componentDidLoad', () => {
     component.slidesPerPage = 3;
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(3, { base: 'clamp(16px, 1.25vw + 12px, 36px)' });
+    expect(spy).toBeCalledWith(3);
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {

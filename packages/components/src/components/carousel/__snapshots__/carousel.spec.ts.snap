@@ -7,15 +7,12 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
     "arrows": false,
     "breakpoints": {
       "0": {
-        "gap": "clamp(16px, 1.25vw + 12px, 36px)",
         "perPage": 1,
       },
     },
+    "gap": "clamp(16px, 1.25vw + 12px, 36px)",
     "i18n": {},
     "mediaQuery": "min",
-    "padding": {
-      "right": "clamp(16px, 1.25vw + 12px, 36px)",
-    },
     "pagination": false,
     "perMove": 1,
     "rewind": true,
