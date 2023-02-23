@@ -165,7 +165,7 @@ export class Carousel {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed(this.host, 'wrapContent');
+    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     attachComponentCss(this.host, getComponentCss, this.width, this.disablePagination, this.alignHeader, this.theme);
