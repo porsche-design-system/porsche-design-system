@@ -115,6 +115,7 @@ export const getComponentCss = (
       padding: '4px',
       overflow: 'scroll hidden',
       ...(!scrollbar && {
+        // If scrollbar is disabled - hide scrollbar
         msOverflowStyle: 'none' /* IE and Edge */,
         scrollbarWidth: 'none' /* Firefox */,
         '&::-webkit-scrollbar': {
