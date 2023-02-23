@@ -6,7 +6,6 @@ import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validati
 import * as propertyObserverUtils from '../../utils/property-observer';
 
 jest.mock('../../utils/dom');
-jest.mock('../../utils/slotted-styles');
 
 const mockGetOnlyChildOfKindHTMLElementOrThrow = (input: HTMLInputElement) =>
   jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(input);
