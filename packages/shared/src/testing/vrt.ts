@@ -112,8 +112,9 @@ export const vrtTest = (
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
 
+      const cdpSession = await page.target().createCDPSession();
+
       if (scalePageFontSize) {
-        const cdpSession = await page.target().createCDPSession();
         await cdpSession.send('Page.enable');
         await cdpSession.send('Page.setFontSizes', {
           fontSizes: {
@@ -123,17 +124,15 @@ export const vrtTest = (
         });
       }
 
-      if (forcedColorsEnabled || prefersColorScheme) {
-        const cdpSession = await page.target().createCDPSession();
-        // NOTE: 'forced-colors' isn't supported by page.emulateMediaFeatures, yet https://pptr.dev/api/puppeteer.page.emulatemediafeatures
-        // also it looks like cdpSession.send() can't be combined with page.emulateMediaFeatures since it affects each other
-        await cdpSession.send('Emulation.setEmulatedMedia', {
-          features: [
-            ...(forcedColorsEnabled ? [{ name: 'forced-colors', value: 'active' }] : []),
-            ...(prefersColorScheme ? [{ name: 'prefers-color-scheme', value: prefersColorScheme }] : []),
-          ],
-        });
-      }
+      // NOTE: 'forced-colors' isn't supported by page.emulateMediaFeatures, yet https://pptr.dev/api/puppeteer.page.emulatemediafeatures
+      // also it looks like cdpSession.send() can't be combined with page.emulateMediaFeatures since it affects each other
+      // reset or fallback is needed since it is shared across pages, parallel tests are affected by this
+      await cdpSession.send('Emulation.setEmulatedMedia', {
+        features: [
+          { name: 'forced-colors', value: forcedColorsEnabled ? 'active' : 'none' },
+          { name: 'prefers-color-scheme', value: prefersColorScheme || 'light' },
+        ],
+      });
 
       await page.goto(baseUrl + url, { waitUntil: 'networkidle0' });
 
