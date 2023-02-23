@@ -13,6 +13,7 @@ import {
   borderRadiusSmall,
   fontFamily,
   fontLineHeight,
+  fontSizeTextSmall,
   getMediaQueryMax,
   getMediaQueryMin,
   gridGap,
@@ -112,6 +113,7 @@ export const getComponentCss = (
       ...mergeDeep(spacingMap[width], {
         [mediaQueryS]: {
           fontFamily, // relevant for button group width calculation, which is based on ex unit
+          fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
           columnGap: spacingStaticMedium,
           gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
           ...(isHeaderAlignCenter && {
