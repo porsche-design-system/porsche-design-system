@@ -32,6 +32,7 @@ const propTypes: PropTypes<typeof Scroller> = {
     isSmooth: AllowedTypes.boolean,
   }),
   scrollIndicatorPosition: AllowedTypes.oneOf<ScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
+  scrollbar: AllowedTypes.boolean,
 };
 
 @Component({
@@ -53,6 +54,9 @@ export class Scroller {
 
   /** Sets the vertical position of scroll indicator icon */
   @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';
+
+  /** Specifies if scrollbar should be shown */
+  @Prop() public scrollbar?: false;
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
@@ -102,6 +106,7 @@ export class Scroller {
       this.isNextHidden,
       this.isPrevHidden,
       this.scrollIndicatorPosition,
+      this.scrollbar,
       this.theme
     );
 

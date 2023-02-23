@@ -46,6 +46,7 @@ export const getComponentCss = (
   isNextHidden: boolean,
   isPrevHidden: boolean,
   scrollIndicatorPosition: ScrollIndicatorPosition,
+  scrollbar: boolean,
   theme: Theme
 ): string => {
   const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
@@ -113,11 +114,13 @@ export const getComponentCss = (
       gridArea: '1 / 1 / 1 / -1',
       padding: '4px',
       overflow: 'scroll hidden',
-      msOverflowStyle: 'none' /* IE and Edge */,
-      scrollbarWidth: 'none' /* Firefox */,
-      '&::-webkit-scrollbar': {
-        display: 'none',
-      },
+      ...(!scrollbar && {
+        msOverflowStyle: 'none' /* IE and Edge */,
+        scrollbarWidth: 'none' /* Firefox */,
+        '&::-webkit-scrollbar': {
+          display: 'none',
+        },
+      }),
     },
     // Extra wrapper needed to compensate different offset parent calculation depending on browser.
     // Needed for position of status bar.
