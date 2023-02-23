@@ -1,8 +1,8 @@
-import { BREAKPOINTS, parseJSON } from '../breakpoint-customizable';
+import type { Class, FunctionPropertyNames } from '../../types/index';
 import type { BreakpointKey, BreakpointValues } from '../breakpoint-customizable';
+import { BREAKPOINTS, parseJSON } from '../breakpoint-customizable';
 import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
-import type { EventEmitter } from '@stencil/core';
 import { getTagName } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
@@ -222,18 +222,6 @@ export const AllowedTypes: {
         }
       }
     },
-};
-
-// NOTE: the following utility types are duplicated in warnIfDeprecatedPropValueIsUsed
-// utility type to return public properties of generic type that are not a function or EventEmitter
-type FunctionPropertyNames<T> = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  [K in keyof T]: T[K] extends Function | EventEmitter ? K : never; // or make `@Event` decorators private maybe?
-}[keyof T];
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Class<T> = Function & {
-  new (...args: any[]): T; // eslint-disable-line @typescript-eslint/prefer-function-type
 };
 
 // utility type to retrieve all props based on a class

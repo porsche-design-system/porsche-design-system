@@ -7,6 +7,7 @@ import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-u
 import * as jsonUtils from '../../utils/json';
 import { Splide } from '@splidejs/splide';
 import * as splideModule from '@splidejs/splide';
+import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
 
 const splideMock = {
   index: 0,
@@ -78,14 +79,14 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  xit('should call getSplideBreakpoints() with correct parameters', () => {
+  it('should call getSplideBreakpoints() with correct parameters', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const spy = jest.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
     component.slidesPerPage = 3;
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(3, { base: '0.5rem', l: '2rem', s: '1rem' });
+    expect(spy).toBeCalledWith(3);
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {
@@ -98,7 +99,7 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(component.intl);
   });
 
-  xit('should call Splide constructor with correct parameters and set this.splide', () => {
+  it('should call Splide constructor with correct parameters and set this.splide', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
@@ -121,6 +122,17 @@ describe('componentDidLoad', () => {
 });
 
 describe('render', () => {
+  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
+    const spy = jest.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.wrapContent = true;
+    component.host.attachShadow({ mode: 'open' });
+
+    component.render();
+
+    expect(spy).toBeCalledWith(component, 'wrapContent');
+  });
   it('should call warnIfHeadingIsMissing() with correct parameters', () => {
     const spy = jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing');
     const component = new Carousel();

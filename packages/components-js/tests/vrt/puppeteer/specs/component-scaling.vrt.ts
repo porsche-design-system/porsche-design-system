@@ -10,6 +10,7 @@ const components = [
   'button',
   'button-group',
   'button-pure',
+  'carousel',
   'checkbox-wrapper',
   'content-wrapper',
   'display',
