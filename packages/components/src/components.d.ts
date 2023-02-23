@@ -768,7 +768,7 @@ export namespace Components {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
@@ -2494,7 +2494,7 @@ declare namespace LocalJSX {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**

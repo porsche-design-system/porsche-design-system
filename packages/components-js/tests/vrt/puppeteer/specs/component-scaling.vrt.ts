@@ -3,8 +3,9 @@ import {
   openPopoversAndHighlightSpacer,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
+import type { Component } from '../helpers';
 
-const components = [
+const components: Component[] = [
   'accordion',
   'banner',
   'button',
@@ -31,13 +32,14 @@ const components = [
   'select-wrapper',
   'spinner',
   'stepper-horizontal',
+  'switch',
   'tabs',
   'tabs-bar',
   'tag',
   'tag-dismissible',
   'text-field-wrapper',
-  'textarea-wrapper',
   'text-list',
+  'textarea-wrapper',
   'toast-basic',
 ];
 
