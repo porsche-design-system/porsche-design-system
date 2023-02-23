@@ -1,9 +1,4 @@
-import {
-  textSmallStyle,
-  spacingStaticSmall,
-  spacingStaticMedium,
-  getMediaQueryMin,
-} from '@porsche-design-system/utilities-v2';
+import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import { getBaseSlottedStyles, getThemedColors, addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 
@@ -18,10 +13,7 @@ export const getComponentCss = (): string => {
       }),
     },
     caption: {
-      marginBottom: spacingStaticSmall,
-      [getMediaQueryMin('m')]: {
-        marginBottom: spacingStaticMedium,
-      },
+      marginBottom: spacingFluidMedium,
     },
     root: {
       position: 'relative',
