@@ -70,10 +70,4 @@ export class Table {
       </Host>
     );
   }
-
-  /*
-  private onScrollClick = (): void => {
-    scrollElementBy(this.scrollAreaElement, getScrollByX(this.scrollAreaElement));
-  };
-   */
 }
