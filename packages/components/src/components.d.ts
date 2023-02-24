@@ -9,7 +9,7 @@ import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, Bu
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
-import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
+import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
@@ -195,6 +195,10 @@ export namespace Components {
     }
     interface PCarousel {
         /**
+          * Alignment of heading and description
+         */
+        "alignHeader"?: CarouselAlignHeader;
+        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -223,7 +227,12 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Defines the outer spacings between the carousel and the left and right screen sides.
+         */
+        "width"?: CarouselWidth;
+        /**
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
     }
@@ -768,7 +777,7 @@ export namespace Components {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
@@ -1905,6 +1914,10 @@ declare namespace LocalJSX {
     }
     interface PCarousel {
         /**
+          * Alignment of heading and description
+         */
+        "alignHeader"?: CarouselAlignHeader;
+        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -1937,7 +1950,12 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Defines the outer spacings between the carousel and the left and right screen sides.
+         */
+        "width"?: CarouselWidth;
+        /**
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
     }
@@ -2494,7 +2512,7 @@ declare namespace LocalJSX {
          */
         "color"?: ModelSignatureColor;
         /**
-          * Adapts the size of the component.
+          * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
