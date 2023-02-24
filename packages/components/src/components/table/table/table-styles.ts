@@ -26,7 +26,7 @@ export const getComponentCss = (): string => {
       textAlign: 'left',
       color: primaryColor,
       whiteSpace: 'nowrap',
-      borderCollapse: 'collapse',
+      borderCollapse: 'collapse', // needed for row hover state
     },
   });
 };
