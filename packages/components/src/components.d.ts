@@ -883,7 +883,7 @@ export namespace Components {
         /**
           * Specifies if scrollbar should be shown
          */
-        "scrollbar"?: false;
+        "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2626,7 +2626,7 @@ declare namespace LocalJSX {
         /**
           * Specifies if scrollbar should be shown
          */
-        "scrollbar"?: false;
+        "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
