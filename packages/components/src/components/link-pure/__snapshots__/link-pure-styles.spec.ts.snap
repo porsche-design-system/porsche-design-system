@@ -60,7 +60,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -238,7 +238,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -386,7 +386,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -454,7 +454,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -551,7 +551,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -613,7 +613,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -681,7 +681,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -749,7 +749,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -846,7 +846,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -907,7 +907,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -977,7 +977,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -1048,7 +1048,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -1103,7 +1103,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
