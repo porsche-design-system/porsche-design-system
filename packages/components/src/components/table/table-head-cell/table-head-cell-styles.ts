@@ -10,7 +10,6 @@ import {
 import { fontWeight, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 
-const { contrastMediumColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
 export const getComponentCss = (
@@ -26,7 +25,7 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         display: 'table-cell',
         padding: `2px ${spacingFluidSmall} ${spacingFluidSmall} ${spacingFluidSmall}`,
-        borderBottom: `1px solid ${contrastMediumColor}`,
+        borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
         verticalAlign: 'bottom',
         fontWeight: fontWeightSemiBold,
         whiteSpace: multiline ? 'normal' : 'nowrap',
