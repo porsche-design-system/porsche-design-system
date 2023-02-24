@@ -13,6 +13,7 @@ export const getComponentCss = (multiline: boolean): string => {
           borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
           whiteSpace: multiline ? 'normal' : 'nowrap',
           ...hostHiddenStyles,
+          transform: 'translate3d(0,0,0)', // Change stacking context for hover state
         }),
         verticalAlign: 'middle',
       },

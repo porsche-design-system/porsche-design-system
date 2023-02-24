@@ -7,6 +7,9 @@ export const getComponentCss = (): string => {
       ':host': addImportantToEachRule({
         display: 'table-row',
         ...hostHiddenStyles,
+        '&::before': {
+          content: '""',
+        },
       }),
     },
   });
