@@ -118,6 +118,18 @@
         </p>
       </div>
     </div>
+    <div class="hero-carousel">
+      <p-carousel heading="Heading Carousel Basic">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+      <p-carousel heading="Heading Carousel Extended" width="extended">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
   </div>
 </template>
 
@@ -135,6 +147,7 @@
 
   // Visualize Grid
   .visualize-grid {
+    z-index: 9999999;
     @include pds-grid;
     position: fixed;
     inset: 0;
@@ -399,5 +412,21 @@
   .narrow-content-half-right {
     @include tile('yellow', 'small');
     grid-column: $pds-grid-narrow-span-one-half / $pds-grid-narrow-column-end;
+  }
+
+  // Carousel
+  .hero-carousel {
+    margin-top: $pds-spacing-fluid-large;
+  }
+  p-carousel {
+    padding-bottom: $pds-spacing-fluid-large;
+  }
+  p-carousel div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00b0f4;
+    height: 100px;
+    border-radius: $pds-border-radius-small;
   }
 </style>

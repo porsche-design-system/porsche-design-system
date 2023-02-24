@@ -89,7 +89,7 @@ export const getLinkButtonPureStyles = (
       ),
       '&::before': {
         content: '""',
-        position: 'fixed',
+        position: 'absolute', // mobile Safari -> prevent lagging active state
         top: offsetVertical,
         bottom: offsetVertical,
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
