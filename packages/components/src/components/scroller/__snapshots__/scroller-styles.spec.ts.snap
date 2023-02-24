@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: dark  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, scrollbar: false and theme: dark  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -47,7 +47,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -133,7 +133,7 @@ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, scrollbar: false and theme: light  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -181,7 +181,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -267,7 +267,7 @@ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: top, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: top, scrollbar: true and theme: light  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -315,12 +315,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
   position: relative;
@@ -401,7 +396,7 @@ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: true and scrollIndicatorPosition: undefined, theme: dark  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: true, scrollIndicatorPosition: undefined, scrollbar: true and theme: dark  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -448,12 +443,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
   position: relative;
@@ -534,7 +524,7 @@ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: true, isPrevHidden: false and scrollIndicatorPosition: undefined, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: true, isPrevHidden: false, scrollIndicatorPosition: undefined, scrollbar: true and theme: light  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -582,12 +572,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
   position: relative;
@@ -668,7 +653,7 @@ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: true, isPrevHidden: true and scrollIndicatorPosition: undefined, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: true, isPrevHidden: true, scrollIndicatorPosition: undefined, scrollbar: true and theme: light  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -716,12 +701,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
   position: relative;
@@ -802,7 +782,7 @@ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: dark  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, scrollbar: false and theme: dark  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -849,7 +829,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -935,7 +915,7 @@ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, scrollbar: false and theme: light  1`] = `
 ":host {
   display: block !important;
   height: inherit !important;
@@ -983,7 +963,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
