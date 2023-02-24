@@ -16,7 +16,7 @@ const ModalSlottedHeadingPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should display slotted heading">
-        <PContentWrapper>
+        <PContentWrapper width="basic">
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
         <PModal open={true} aria={{ 'aria-label': 'Slotted Headline' }}>
