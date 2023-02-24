@@ -337,6 +337,7 @@ exports[`should call validateProps() with correct parameters via render for p-sc
   "gradientColorScheme": "oneOf",
   "scrollIndicatorPosition": "oneOf",
   "scrollToPosition": "shape",
+  "scrollbar": "boolean",
   "theme": "oneOf",
 }
 `;
