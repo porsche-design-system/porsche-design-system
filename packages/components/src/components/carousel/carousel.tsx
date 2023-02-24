@@ -1,4 +1,13 @@
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { ButtonPure } from '../button-pure/button-pure';
+import type {
+  CarouselAlignHeader,
+  CarouselChangeEvent,
+  CarouselInternationalization,
+  CarouselWidth,
+} from './carousel-utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -15,12 +24,12 @@ import {
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { getComponentCss } from './carousel-styles';
-import { Splide } from '@splidejs/splide';
-import type { CarouselChangeEvent, CarouselInternationalization } from './carousel-utils';
+import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
+  CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_WIDTHS,
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
@@ -32,14 +41,15 @@ import {
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
-import { ButtonPure } from '../button-pure/button-pure';
-import { spacingStaticLarge, spacingStaticMedium, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
+  alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
+  width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
@@ -66,11 +76,20 @@ export class Carousel {
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
 
+  /** Alignment of heading and description */
+  @Prop() public alignHeader?: CarouselAlignHeader = 'left';
+
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
 
-  /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public wrapContent?: boolean;
+
+  /** Defines the outer spacings between the carousel and the left and right screen sides. */
+  @Prop() public width?: CarouselWidth = 'basic';
 
   /** Sets the amount of slides visible at the same time. */
   @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
@@ -122,16 +141,10 @@ export class Carousel {
       rewindByDrag: true, // only works when rewind: true
       perMove: 1,
       mediaQuery: 'min',
-      padding: {
-        right: '7%', // together with wrapContent this is overridden via css
-      },
+      speed: carouselTransitionDuration,
+      gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      // TODO: for gap definition the gridGap const must be used
-      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
-        base: spacingStaticSmall,
-        s: spacingStaticMedium,
-        l: spacingStaticLarge,
-      }),
+      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl),
     });
@@ -153,9 +166,10 @@ export class Carousel {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.width, this.disablePagination, this.alignHeader, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -210,7 +224,7 @@ export class Carousel {
           </div>
         </div>
 
-        {this.disablePagination !== true && <div class="pagination" ref={(ref) => (this.pagination = ref)} />}
+        {!this.disablePagination && <div class="pagination" ref={(ref) => (this.pagination = ref)} />}
       </Host>
     );
   }

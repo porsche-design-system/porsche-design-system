@@ -73,7 +73,7 @@ export class SegmentedControl {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed(this.host, 'backgroundColor');
+    warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
     syncSegmentedControlItemsProps(this.host, this.value, this.theme);
