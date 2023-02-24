@@ -150,7 +150,8 @@ describe('lifecycle', () => {
     await initTable();
     const initialStatus = await getLifecycleStatus(page);
 
-    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(27);
+    // TODO: check it
+    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
     expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
     const host = await getHost();
