@@ -11,6 +11,7 @@ const components: Component[] = [
   'button',
   'button-group',
   'button-pure',
+  'carousel',
   'checkbox-wrapper',
   'content-wrapper',
   'display',
