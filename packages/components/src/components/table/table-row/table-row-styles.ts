@@ -26,7 +26,10 @@ export const getComponentCss = (): string => {
           '&::before': {
             content: '""',
             position: 'absolute',
-            inset: offset,
+            left: offset,
+            top: offset,
+            right: offset,
+            bottom: offset,
             borderRadius: borderRadiusSmall,
             transition: getTransition('background-color'),
           },
