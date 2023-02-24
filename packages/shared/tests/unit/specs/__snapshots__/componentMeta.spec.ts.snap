@@ -742,7 +742,6 @@ exports[`should match snapshot 1`] = `
       "gradientColorScheme": "default",
       "scrollIndicatorPosition": "center",
       "scrollToPosition": null,
-      "scrollbar": null,
       "theme": "light",
     },
     "styling": "jss",
