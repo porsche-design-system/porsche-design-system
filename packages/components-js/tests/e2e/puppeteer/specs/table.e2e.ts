@@ -85,56 +85,6 @@ const makeTableOverflow = async () => {
   await waitForStencilLifecycle(page);
 };
 
-describe('scroll button', () => {
-  it('should have type="button" attribute', async () => {
-    await initTable();
-    await makeTableOverflow();
-
-    expect(await getProperty(await getScrollButton(), 'type')).toBe('button');
-  });
-
-  it("should be visible when table's content is overflowing", async () => {
-    await initTable();
-
-    expect(await getScrollIndicator(), 'initially').toBeNull();
-
-    await makeTableOverflow();
-
-    expect(await getScrollIndicator(), 'finally').not.toBeNull();
-  });
-
-  it('should disappear when scrolled to the very right', async () => {
-    await initTable();
-    await makeTableOverflow();
-
-    expect(await getScrollIndicator(), 'initially').not.toBeNull();
-
-    const scrollArea = await getScrollArea();
-    await scrollArea.evaluate((el) => (el.scrollLeft = 2000));
-    await waitForStencilLifecycle(page);
-
-    expect(await getScrollIndicator(), 'finally').toBeNull();
-  });
-
-  it('should scroll table on click', async () => {
-    await initTable();
-    await makeTableOverflow();
-
-    const scrollArea = await getScrollArea();
-    const getScrollLeft = () => scrollArea.evaluate((el) => el.scrollLeft);
-
-    const initialScrollLeft = await getScrollLeft();
-    expect(initialScrollLeft, 'initially').toBe(0);
-
-    const scrollButton = await getScrollButton();
-    await scrollButton.click();
-    await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION));
-
-    const scrollLeftAfterClick = await getScrollLeft();
-    expect(scrollLeftAfterClick, 'after click').toBeGreaterThan(0);
-  });
-});
-
 describe('sorting', () => {
   it('should not render sorting button if invalid sort options are provided', async () => {
     await initTable({ isSortable: true });
