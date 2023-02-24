@@ -56,7 +56,7 @@ export class Scroller {
   @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';
 
   /** Specifies if scrollbar should be shown */
-  @Prop() public scrollbar?: false;
+  @Prop() public scrollbar? = false;
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
