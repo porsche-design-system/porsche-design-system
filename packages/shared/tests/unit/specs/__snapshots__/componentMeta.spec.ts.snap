@@ -742,6 +742,7 @@ exports[`should match snapshot 1`] = `
       "gradientColorScheme": "default",
       "scrollIndicatorPosition": "center",
       "scrollToPosition": null,
+      "scrollbar": null,
       "theme": "light",
     },
     "styling": "jss",
@@ -984,7 +985,7 @@ exports[`should match snapshot 1`] = `
       "caption",
     ],
     "nestedComponents": [
-      "p-button-pure",
+      "p-scroller",
     ],
     "props": {
       "caption": null,
@@ -1057,6 +1058,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "nestedComponents": [
+      "p-button-pure",
       "p-icon",
     ],
     "props": {
