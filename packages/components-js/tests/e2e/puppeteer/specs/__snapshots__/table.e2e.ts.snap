@@ -1,19 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`accessibility should expose correct accessibility tree of scroll area: Overflow with caption as property 1`] = `
-{
-  "name": "Some caption",
-  "role": "region",
-}
-`;
-
-exports[`accessibility should expose correct accessibility tree of scroll area: Overflow with caption as slot 1`] = `
-{
-  "name": "Some caption",
-  "role": "region",
-}
-`;
-
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
 {
   "children": [
@@ -25,6 +11,9 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
               "children": [
                 {
                   "children": [
+                    {
+                      "role": "none",
+                    },
                     {
                       "children": [
                         {
@@ -483,9 +472,6 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
           "role": "rowgroup",
         },
       ],
-      "role": "none",
-    },
-    {
       "role": "none",
     },
   ],
