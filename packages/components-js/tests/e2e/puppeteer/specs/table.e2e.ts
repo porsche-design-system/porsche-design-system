@@ -23,7 +23,8 @@ const getTable = () => selectNode(page, 'p-table >>> .table');
 const getTableHead = () => selectNode(page, 'p-table-head');
 const getTableHeadRow = () => selectNode(page, 'p-table-head-row');
 const getFirstTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(1)');
-const getFirstTableHeadCellButton = () => selectNode(page, 'p-table-head-cell:nth-child(1) >>> button');
+const getFirstTableHeadCellButton = () =>
+  selectNode(page, 'p-table-head-cell:nth-child(1) >>> p-button-pure >>> button');
 const getSecondTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(2)');
 const getThirdTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(3)');
 const getTableBody = () => selectNode(page, 'p-table-body');
@@ -130,9 +131,11 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
     expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
     expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
     expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-table-body'], 'componentDidLoad: p-table-body').toBe(1);
     expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
