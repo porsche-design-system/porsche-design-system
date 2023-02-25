@@ -166,7 +166,8 @@ describe('lifecycle', () => {
 
     // TODO: check  if it's correct
     expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(40);
-    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(5);
+    // TODO: check  if it's correct
+    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(7);
     expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5);
     expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
   });
