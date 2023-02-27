@@ -32,6 +32,7 @@ const components = [
   'select-wrapper',
   'spinner',
   'stepper-horizontal',
+  'table',
   'tabs',
   'tabs-bar',
   'tag',
