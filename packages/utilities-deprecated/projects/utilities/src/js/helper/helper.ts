@@ -64,7 +64,6 @@ export const calculateLineHeight = (fontSize: string): string => {
   return 'calc(6px + 2.125ex)';
 };
 
-// TODO: is this even communicated / provided?
 // Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
 export const srOnly = (): CSS.Properties => {
   return {

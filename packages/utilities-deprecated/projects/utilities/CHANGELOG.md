@@ -23,8 +23,8 @@ styles can be found here [Introduction](https://designsystem.porsche.com/latest/
 - `focus()` is now `getFocusStyles()`.
 
 ```diff
-- import { focus } from '@porsche-design-system/utilities'
-+ import { getFocusStyles } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { focus } from '@porsche-design-system/utilities';
++ import { getFocusStyles } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 
 const Component1 = styled.a`
 -  ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
@@ -40,8 +40,8 @@ const Component2 = styled.a`
 - `breakpoint` `xxs` is now `base`.
 
 ```diff
-- import { breakpoint } from '@porsche-design-system/utilities'
-+ import { breakpoint } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { breakpoint } from '@porsche-design-system/utilities';
++ import { breakpoint } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 
 - if (window.matchMedia(`(min-width: ${breakpoint.xxs}px)`).matches) {
 + if (window.matchMedia(`(min-width: ${breakpoint.base}px)`).matches) {
@@ -54,8 +54,8 @@ const Component2 = styled.a`
   anymore.
 
 ```diff
-- import { breakpoint, mediaQuery } from '@porsche-design-system/utilities'
-+ import { breakpoint, getMediaQueryMin, getMediaQueryMax, getMediaQueryMinMax } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
++ import { breakpoint, getMediaQueryMin, getMediaQueryMax, getMediaQueryMinMax } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 
 const StyledDiv = css`{
   color: 'royalblue',
@@ -85,8 +85,8 @@ render(<StyledDiv>Styled Text</StyledDiv>);
   the viewport width instead of fixed predefined sizes on specific breakpoints, and they are italic now.
 
 ```diff
-- import { titleLarge } from '@porsche-design-system/utilities'
-+ import { displayMediumStyle, displayLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { titleLarge } from '@porsche-design-system/utilities';
++ import { displayMediumStyle, displayLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.h1`
@@ -104,8 +104,8 @@ const component2 = styled.h2`
   and they are italic now.
 
 ```diff
-- import { headline{1|2|3|4|5} } from '@porsche-design-system/utilities'
-+ import { heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { headline{1|2|3|4|5} } from '@porsche-design-system/utilities';
++ import { heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.h1`
@@ -118,8 +118,8 @@ const component1 = styled.h1`
   fluid sizes that change depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
 
 ```diff
-- import { text } from '@porsche-design-system/utilities'
-+ import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { text } from '@porsche-design-system/utilities';
++ import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.p`
@@ -137,8 +137,8 @@ overview of the new colors have a look at [Theme](https://designsystem.porsche.c
   theme if for e.g. you only need `lightTheme`.
 
 ```diff
-- import { color } from '@porsche-design-system/utilities';
-+ import { theme, themeLight, themeDark } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
+- import { color } from '@porsche-design-system/utilities';;
++ import { theme, themeLight, themeDark } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
 As the design tokens for `themeLight` and `themeDark` are in sync, the name changes mentioned below concern both themes
@@ -148,7 +148,7 @@ even if only light theme is displayed in the diff.
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';
-+ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.div({
@@ -161,7 +161,7 @@ const component1 = styled.div({
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';
-+ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.div({
@@ -174,7 +174,7 @@ const component1 = styled.div({
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';
-+ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.div({
@@ -187,7 +187,7 @@ const component1 = styled.div({
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';
-+ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.div({
@@ -200,7 +200,7 @@ const component1 = styled.div({
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';
-+ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.div({
@@ -218,18 +218,18 @@ const component2 = styled.div({
 
 **Font**
 
-- `fontFamily` is provided only the import has changed
+- `fontFamily` is provided only the import has changed.
 
 ```diff
 - import { fontFamily } from '@porsche-design-system/utilities';
-+ import { fontFamily } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { fontFamily } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
-- `fontWeight` is provided only the import has changed
+- `fontWeight` is provided only the import has changed.
 
 ```diff
 - import { fontWeight } from '@porsche-design-system/utilities';
-+ import { fontWeight } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { fontWeight } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
 **Spacings**
@@ -244,7 +244,7 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 ```diff
 - import { spacing } from '@porsche-design-system/utilities';
 - import { layout } from '@porsche-design-system/utilities';
-+ import { spacing, spacingStatic, spacingFluid } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { spacing, spacingStatic, spacingFluid } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
 ##### SCSS
@@ -256,74 +256,104 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 
 **Mixins**
 
-- `p-focus` mixin is now `pds-focus`. The parameters have changed as the focus is now handled with `border` and rounded
-  edges. You can choose `small` or `medium` for the `border-radius`. `pds-focus` also excepts an `theme` parameter
-  instead of `color`, which determines the color of the focus.
+- `p-focus` mixin is now `pds-focus`.
 
 ```diff
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
+
+a {
 -  @include p-focus;
 +  @include pds-focus;
+  }
+
+button {
+-  @include p-focus($p-color-state-focus, 1px, '::before');
++  @include pds-focus('small', 'small', 'light');
+  }
 ```
 
-- `breakpoint` `xxs` is now `base`. The values have not changed.
+- `breakpoint` `xxs` is now `base`.
 - Instead of `p-media-query` we provide now `pds-media-query-min`, `pds-media-query-max` and `pds-media-query-min-max`.
   Furthermore, the mixins only accept the predefined PDS breakpoints from `base` to `xxl` and no custom breakpoints
   anymore.
 
 ```diff
--  @include p-media-query($min, $max);
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
-+  @include pds-media-query-min($min);
-+  @include pds-media-query-max($max);
-+  @include pds-media-query-min-max($min, $max);
+div {
+  color: inherit;
+
+   // up to predefined breakpoint xs apply color black
++  @include pds-media-query-max('xs')
+    color: black;
+  }
+
+  // from predefined breakpoint xs to m apply color aqua
+-  @include p-media-query('xs', 'm') {
++  @include pds-media-query-min-max('xs', 'm')
+    color: aqua;
+  }
+
+  // from predefined breakpoint m apply color deeppink
+-  @include p-media-query('m') {
++  @include pds-media-query-min('m')
+    color: deeppink;
+  }
+}
 ```
 
-- `p-title-large` mixin is now renamed to `pds-display-large`. The size got adjusted. In addition, we also provide
-  `pds-display-medium`. The new `display` mixin differ also, that they are recursive and their size is changing fluid
-  depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+- `p-title-large` mixin is now renamed to `pds-display-large` and in addition we provide `pds-display-medium`. The size
+  of the new `display` styles are changing fluid depending on the viewport width instead of fixed predefined sizes on
+  specific breakpoints, and they are italic now.
 
 ```diff
-- @include p-title-large;
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
-+ @include pds-display-medium;
+h1 {
+- @include p-title-large;
 + @include pds-display-large;
+  }
+
+h2 {
+- @include p-title-large;
++ @include pds-display-medium;
+  }
 ```
 
 - `p-headline-{1|2|3|4|5}` got renamed/extended to `pds-heading-{small|medium|large|x-large|xx-large|xxx-large}`. The
-  size got adjusted. Same as in `display`, the size is now fluid depending on the viewport width instead of fixed
+  size of the new `heading` styles are changing fluid depending on the viewport width instead of fixed predefined sizes
+  on specific breakpoints, and they are italic now.
+
+```diff
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
+
+h1 {
+- @include p-headline-1;
++ @include pds-heading-xx-large;
+  }
+
+h2 {
+- @include p-headline-2;
++ @include pds-heading-x-large;
+  }
+```
+
+- `p-text-{x-small|small|medium|large|x-large}` got renamed to `pds-text-{x-small|small|medium|large|x-large}`. Except
+  `pds-text-small` all text styles have fluid sizes that change depending on the viewport width instead of fixed
   predefined sizes on specific breakpoints.
 
 ```diff
-- @include p-headline-1;
-- @include p-headline-2;
-- @include p-headline-3;
-- @include p-headline-4;
-- @include p-headline-5;
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
-+ @include pds-heading-small;
-+ @include pds-heading-medium;
-+ @include pds-heading-large;
-+ @include pds-heading-x-large;
-+ @include pds-heading-xx-large;
-+ @include pds-heading-xxx-large;
-```
-
-- `p-text-{x-small|small|medium|large|x-large}` got not only renamed to `pds-text-{x-small|small|medium|large|x-large}`
-  but also the size got adjusted. Except `pds-text-small` all text mixins have fluid sizes that change depending on the
-  viewport width.
-
-```diff
-- @include p-text-x-small;
+p {
 - @include p-text-small;
-- @include p-text-medium;
-- @include p-text-large;
-- @include p-text-x-large;
-
-+ @include pds-text-x-small;
 + @include pds-text-small;
-+ @include pds-text-medium;
-+ @include pds-text-large;
-+ @include pds-text-x-large;
+  }
 ```
 
 **Colors**
@@ -334,48 +364,62 @@ overview ot the new colors have a look at [Theme](https://designsystem.porsche.c
 - `brand` got renamed to `primary`.
 
 ```diff
-- $p-color-brand;
-- $p-color-theme-light-brand;
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
-+ $pds-theme-light-primary;
+div {
+- background: {$p-color-brand|$p-color-theme-light-brand};
++ background: $pds-theme-light-primary;
+  }
 ```
 
-- `default` is removed.
+- `default` is removed, use `primary` instead.
 
 ```diff
-- $p-color-default;
-- $p-color-theme-light-default;
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
+
+div {
+- color: {$p-color-default|$p-color-theme-light-default};
++ color: $pds-theme-light-primary;
+  }
 ```
 
 - `$p-color-theme-light-background` is renamed to `$pds-theme-light-background-base`.
 
 ```diff
-- $p-color-background-default;
-- $p-color-theme-light-background;
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
-+ $pds-theme-light-background-base
+div {
+- background: {$p-color-background-default|$p-color-theme-light-background};
++ background: $pds-theme-light-background-base;
+  }
 ```
+
+- to keep it clear, only the old variable name and its new one will be mentioned below:
 
 ```diff
 - $p-color-background-surface
 - $p-color-theme-light-surface
++ $pds-theme-light-background-surface
+
 - $p-color-background-shading
 - $p-color-theme-light-background-shading
-
-+ $pds-theme-light-background-surface
 + $pds-theme-light-background-shading
 ```
 
 ```diff
 - $p-color-neutral-contrast-low
 - $p-color-theme-light-neutral-contrast-low
++ $pds-theme-light-contrast-low
+
 - $p-color-neutral-contrast-medium
 - $p-color-theme-light-neutral-contrast-medium
++ $pds-theme-light-contrast-medium
+
 - $p-color-neutral-contrast-high
 - $p-color-theme-light-neutral-contrast-high
-
-+ $pds-theme-light-contrast-low
-+ $pds-theme-light-contrast-medium
 + $pds-theme-light-contrast-high
 ```
 
@@ -385,28 +429,34 @@ overview ot the new colors have a look at [Theme](https://designsystem.porsche.c
 ```diff
 - $p-color-notification-success
 - $p-color-theme-light-notification-success
++ $pds-theme-light-notification-success
+
 - $p-color-notification-success-soft
 - $p-color-theme-light-notification-success-soft
++ $pds-theme-light-notification-success-soft
+
 - $p-color-notification-warning
 - $p-color-theme-light-notification-warning
++ $pds-theme-light-notification-warning
+
 - $p-color-notification-warning-soft
 - $p-color-theme-light-notification-warning-soft
++ $pds-theme-light-notification-warning-soft
+
 - $p-color-notification-error
 - $p-color-theme-light-notification-error
++ $pds-theme-light-notification-error
+
 - $p-color-notification-error-soft
 - $p-color-theme-light-notification-error-soft
++ $pds-theme-light-notification-error-soft
+
 - $p-color-notification-neutral
 - $p-color-theme-light-notification-neutral
++ $pds-theme-light-notification-info
+
 - $p-color-notification-neutral-soft
 - $p-color-theme-light-notification-neutral-soft
-
-+ $pds-theme-light-notification-success
-+ $pds-theme-light-notification-success-soft
-+ $pds-theme-light-notification-warning
-+ $pds-theme-light-notification-warning-soft
-+ $pds-theme-light-notification-error
-+ $pds-theme-light-notification-error-soft
-+ $pds-theme-light-notification-info
 + $pds-theme-light-notification-info-soft
 ```
 
@@ -415,97 +465,126 @@ overview ot the new colors have a look at [Theme](https://designsystem.porsche.c
 ```diff
 - $p-color-state-hover
 - $p-color-theme-light-state-hover
++ $pds-theme-light-state-hover
+
 - $p-color-state-active
 - $p-color-theme-light-state-active
++ $pds-theme-light-state-active
+
 - $p-color-state-focus
 - $p-color-theme-light-state-focus
++ $pds-theme-light-state-focus
+
 - $p-color-state-disabled
 - $p-color-theme-light-state-disabled
-
-+ $pds-theme-light-state-hover
-+ $pds-theme-light-state-active
-+ $pds-theme-light-state-focus
 + $pds-theme-light-state-disabled
 ```
 
 ```diff
 - $p-color-theme-dark-brand
-- $p-color-theme-dark-default
-- $p-color-theme-dark-background-default
-- $p-color-theme-dark-background-surface
-- $p-color-theme-dark-background-shading
-- $p-color-theme-dark-neutral-contrast-high
-- $p-color-theme-dark-neutral-contrast-medium
-- $p-color-theme-dark-neutral-contrast-low
-- $p-color-theme-dark-notification-success
-- $p-color-theme-dark-notification-success-soft
-- $p-color-theme-dark-notification-warning
-- $p-color-theme-dark-notification-warning-soft
-- $p-color-theme-dark-notification-error
-- $p-color-theme-dark-notification-error-soft
-- $p-color-theme-dark-notification-neutral
-- $p-color-theme-dark-notification-neutral-soft
-- $p-color-theme-dark-state-hover
-- $p-color-theme-dark-state-active
-- $p-color-theme-dark-state-focus
-- $p-color-theme-dark-state-disabled
-
 + $pds-theme-dark-primary
+
+- $p-color-theme-dark-default
 + $pds-theme-dark-background-base
+
+- $p-color-theme-dark-background-default
++ $pds-theme-dark-primary
+
+- $p-color-theme-dark-background-surface
 + $pds-theme-dark-background-surface
+
+- $p-color-theme-dark-background-shading
 + $pds-theme-dark-background-shading
-+ $pds-theme-dark-contrast-low
-+ $pds-theme-dark-contrast-medium
+
+- $p-color-theme-dark-neutral-contrast-high
 + $pds-theme-dark-contrast-high
+
+- $p-color-theme-dark-neutral-contrast-medium
++ $pds-theme-dark-contrast-medium
+
+- $p-color-theme-dark-neutral-contrast-low
++ $pds-theme-dark-contrast-low
+
+- $p-color-theme-dark-notification-success
 + $pds-theme-dark-notification-success
+
+- $p-color-theme-dark-notification-success-soft
 + $pds-theme-dark-notification-success-soft
+
+- $p-color-theme-dark-notification-warning
 + $pds-theme-dark-notification-warning
+
+- $p-color-theme-dark-notification-warning-soft
 + $pds-theme-dark-notification-warning-soft
+
+- $p-color-theme-dark-notification-error
 + $pds-theme-dark-notification-error
+
+- $p-color-theme-dark-notification-error-soft
 + $pds-theme-dark-notification-error-soft
+
+- $p-color-theme-dark-notification-neutral
 + $pds-theme-dark-notification-info
+
+- $p-color-theme-dark-notification-neutral-soft
 + $pds-theme-dark-notification-info-soft
+
+- $p-color-theme-dark-state-hover
 + $pds-theme-dark-state-hover
+
+- $p-color-theme-dark-state-active
 + $pds-theme-dark-state-active
+
+- $p-color-theme-dark-state-focus
 + $pds-theme-dark-state-focus
+
+- $p-color-theme-dark-state-disabled
 + $pds-theme-dark-state-disabled
 ```
 
 **Font**
 
+- `$p-font-family` got renamed to `$pds-font-family`.
+
 ```diff
-- $p-font-family
-+ $pds-font-family
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
+
+p {
+- font-family: $p-font-family;
++ font-family: $pds-font-family;
+  }
 ```
 
-```diff
-- $p-font-weight-regular
-- $p-font-weight-semibold
-- $p-font-weight-bold
+- `$p-font-weight-{regular|semi-bold|bold}` got renamed to `$pds-font-weight-{regular|semi-bold|bold}`.
 
-+ $pds-font-weight-regular
-+ $pds-font-weight-semi-bold
-+ $pds-font-weight-bold
+```diff
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
+
+button {
+- font-weight: $p-font-weight-bold;
++ font-weight: $pds-font-weight-bold;
+  }
 ```
 
-```diff
-- $p-font-size-x-small
-- $p-font-size-small
-- $p-font-size-medium
-- $p-font-size-large
-- $p-font-size-x-large
+- `$p-font-size-{x-small|small|medium|large|x-large}` got renamed to
+  `$pds-font-size-{x-small|small|medium|large|x-large}`.
 
-+ $pds-font-size-text-x-small
-+ $pds-font-size-text-small
-+ $pds-font-size-text-medium
-+ $pds-font-size-text-large
-+ $pds-font-size-text-x-large
+```diff
+- @import '~@porsche-design-system/utilities/scss';
++ @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
+
+button {
+- font-size: $p-font-size-medium;
++ font-size: $pds-font-size-medium;
+  }
 ```
 
 **Spacings**
 
 With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
-adjust in size based on a min and max value, providing a response to changes in browser width. Additionally, we've
+adjust in size based on a min and max value, providing a fluid response to changes in browser width. Additionally, we've
 switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font size is
 adjusted.
 
@@ -550,10 +629,9 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 
 **Functions**
 
-- `pxToRem()` there is no replacement for the function.
-- `remToPx()` there is no replacement for the function.
-- `calculateLineHeight()` the calculation of the `line-height` has changed and is defined by the `ex` unit. To set the
-  `line-height`, use the `fontLineHeight` design token provided.
+- `pxToRem()` is removed without replacement.
+- `remToPx()` is removed without replacement.
+- `calculateLineHeight()` is removed. To set the `line-height`, use the `fontLineHeight` style provided.
 - `generateTypeScale()` since the font sizes are now fluid, the `fontLineHeight` design token and one of the provided
   font sizes should be used.
 - `generateFontDefinition()` we provide `fontFamily`, `fontWeight`, `fontLineHeight` and multiple font sizes, which
@@ -571,17 +649,16 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 
 ```diff
 - import { font } from '@porsche-design-system/utilities';
-+ import { fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/components-{js|angular|react|vue}/styles'
++ import { fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
 ##### SCSS
 
 **Mixins**
 
-- `p-px-to-rem` there is no replacement for the mixin.
-- `p-rem-to-px` there is no replacement for the mixin.
-- `p-calculate-line-height` the calculation of the `line-height` has changed and is defined by the `ex` unit. To set the
-  `line-height`, use the `$pds-font-line-height` variable.
+- `p-px-to-rem` is removed without replacement.
+- `p-rem-to-px` is removed without replacement.
+- `p-calculate-line-height` is removed. To set the `line-height`, use the `$pds-font-line-height` variable.
 - `p-generate-type-scale` since the font sizes are now fluid, the `$pds-font-line-height` design token and one of the
   provided font sizes should be used.
 - `p-generate-font-definition` we provide `$pds-font-family`, `$pds-font-weight`, `$pds-font-line-height` and multiple
@@ -590,38 +667,18 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 **Colors**
 
 - Theme `light-electric` and `dark-electric` are no longer available.
-- External brand colors are no longer available.
+- all `external` colors are no longer available in v3.
 
 **Font**
 
-- `$p-font-weight-thin` is removed
+- `$p-font-weight-thin` is removed.
 
 ```diff
 - $p-font-weight-thin
 ```
 
-- font sizes in `rem` are removed
-
-```diff
-- $p-font-size-12
-- $p-font-size-16
-- $p-font-size-18
-- $p-font-size-20
-- $p-font-size-22
-- $p-font-size-24
-- $p-font-size-28
-- $p-font-size-30
-- $p-font-size-32
-- $p-font-size-36
-- $p-font-size-42
-- $p-font-size-44
-- $p-font-size-48
-- $p-font-size-52
-- $p-font-size-60
-- $p-font-size-62
-- $p-font-size-72
-- $p-font-size-84
-```
+- static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36||42|44|48|52|60|62|72|84}` are removed. Please use one
+  of the predefined fluid font sizes.
 
 ### [5.4.0] - 2022-12-15
 
