@@ -134,6 +134,7 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-icon').toBe(2);
     expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
     expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
     expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
@@ -141,7 +142,6 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
-    // TODO: check  if it's correct
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
