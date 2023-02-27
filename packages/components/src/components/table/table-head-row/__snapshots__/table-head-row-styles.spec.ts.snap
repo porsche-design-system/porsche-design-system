@@ -3,5 +3,11 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: table-row !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:host::before {
+  content: "" !important;
 }"
 `;
