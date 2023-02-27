@@ -5,15 +5,17 @@ import {
   attachSlottedCss,
   getPrefixedTagNames,
   hasNamedSlot,
+  THEMES,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './table-styles';
 import type { SortingChangeEvent } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -26,6 +28,9 @@ export class Table {
   /** A caption describing the contents of the table for accessibility only. This won't be visible in the browser.
    * Use an element with an attribute of `slot="caption"` for a visible caption. */
   @Prop() public caption?: string;
+
+  /** Adapts the color when used on dark background. */
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
