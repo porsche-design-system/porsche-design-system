@@ -150,7 +150,6 @@ describe('lifecycle', () => {
     await initTable();
     const initialStatus = await getLifecycleStatus(page);
 
-    // TODO: check if it's correct
     expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
     expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
