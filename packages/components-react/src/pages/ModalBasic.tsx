@@ -15,7 +15,7 @@ export const ModalBasicPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show basic modal on light background">
-        <PContentWrapper>
+        <PContentWrapper width="basic">
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
         <PModal heading="Some Heading" open={true}>Some Content</PModal>
