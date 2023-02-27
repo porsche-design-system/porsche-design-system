@@ -1,8 +1,9 @@
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../../styles';
 import { spacingFluidSmall } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '../../../types';
 
-export const getComponentCss = (multiline: boolean): string => {
+export const getComponentCss = (multiline: boolean, theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -10,7 +11,7 @@ export const getComponentCss = (multiline: boolean): string => {
           display: 'table-cell',
           padding: spacingFluidSmall,
           margin: 0,
-          borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
+          borderBottom: `1px solid ${getThemedColors(theme).contrastLowColor}`,
           whiteSpace: multiline ? 'normal' : 'nowrap',
           ...hostHiddenStyles,
           transform: 'translate3d(0,0,0)', // Change stacking context for hover state
