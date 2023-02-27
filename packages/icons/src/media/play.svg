@@ -1,1 +1,3 @@
-<svg id="Default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="8 18 8 6 18 12 8 18"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+<path d="m8 20 8-8-8-8v16ZM9 6.413 14.585 12 9 17.585V6.413Z"/>
+</svg>
