@@ -418,6 +418,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-table-cell: propTypes with ValidatorFunctions 1`] = `
 {
   "multiline": "boolean",
+  "theme": "oneOf",
 }
 `;
 
