@@ -214,7 +214,7 @@ describe('accessibility', () => {
   });
 
   // TODO: check it
-  xit('should expose correct accessibility tree of scroll area', async () => {
+  it('should expose correct accessibility tree of scroll area', async () => {
     await initTable({ hasSlottedCaption: true });
     const host = await getHost();
     const scrollArea = await getScrollArea();
