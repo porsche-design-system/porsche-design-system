@@ -1,9 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  THEMES,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -21,6 +22,7 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
   }),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   multiline: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -39,6 +41,9 @@ export class TableHeadCell {
   /** Displays slotted text multiline or forced into a single line. */
   @Prop() public multiline?: boolean = false;
 
+  /** Adapts the color when used on dark background. */
+  @Prop() public theme?: Theme = 'light';
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-table-head-row');
     throwIfElementHasAttribute(this.host, 'sort');
@@ -47,16 +52,22 @@ export class TableHeadCell {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { active, direction } = this.sort || {};
-    attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline);
+    attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
         {isSortable(active, direction) ? (
-          <PrefixedTagNames.pButtonPure class="button-pure" icon="none" onClick={this.onButtonClick}>
+          <PrefixedTagNames.pButtonPure class="button-pure" icon="none" onClick={this.onButtonClick} theme={this.theme}>
             <slot />
-            <PrefixedTagNames.pIcon class="icon" color="inherit" name="arrow-up" aria-hidden="true" />
+            <PrefixedTagNames.pIcon
+              class="icon"
+              color="inherit"
+              name="arrow-up"
+              aria-hidden="true"
+              theme={this.theme}
+            />
           </PrefixedTagNames.pButtonPure>
         ) : (
           <span>

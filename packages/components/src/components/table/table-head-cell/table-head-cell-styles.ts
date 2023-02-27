@@ -9,6 +9,7 @@ import {
 } from '../../../styles';
 import { fontWeight, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
+import type { Theme } from '../../../types';
 
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
@@ -16,7 +17,8 @@ export const getComponentCss = (
   active: boolean,
   direction: Direction,
   hideLabel: boolean,
-  multiline: boolean
+  multiline: boolean,
+  theme: Theme
 ): string => {
   const sortable = isSortable(active, direction);
 
@@ -25,7 +27,7 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         display: 'table-cell',
         padding: `2px ${spacingFluidSmall} ${spacingFluidSmall} ${spacingFluidSmall}`,
-        borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
+        borderBottom: `1px solid ${getThemedColors(theme).contrastLowColor}`,
         verticalAlign: 'bottom',
         fontWeight: fontWeightSemiBold,
         whiteSpace: multiline ? 'normal' : 'nowrap',
