@@ -17,12 +17,6 @@ export const getComponentCss = (): string => {
         display: 'table-row',
         ...hostHiddenStyles,
         ...hoverMediaQuery({
-          transition: getTransition('background-color'),
-
-          '&(:hover)::before': {
-            backgroundColor: getThemedColors('light').backgroundSurfaceColor,
-          },
-
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -32,6 +26,9 @@ export const getComponentCss = (): string => {
             bottom: offset,
             borderRadius: borderRadiusSmall,
             transition: getTransition('background-color'),
+          },
+          '&(:hover)::before': {
+            backgroundColor: getThemedColors('light').backgroundSurfaceColor,
           },
         }),
       }),
