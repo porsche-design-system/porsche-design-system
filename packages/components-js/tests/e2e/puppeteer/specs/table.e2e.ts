@@ -128,8 +128,7 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1); // table uses p-scroller
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // scroller contains p-icon: inside left or right scroll button
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // scroller contains p-button: left or right scroll button
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // scroller contains 4 p-icons: inside left or right scroll button
     expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
     expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
     expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
