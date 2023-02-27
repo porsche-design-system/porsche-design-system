@@ -7,9 +7,10 @@ import {
   hoverMediaQuery,
 } from '../../../styles';
 import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '../../../types';
 
 export const offset = '-2px';
-export const getComponentCss = (): string => {
+export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -28,7 +29,7 @@ export const getComponentCss = (): string => {
             transition: getTransition('background-color'),
           },
           '&(:hover)::before': {
-            backgroundColor: getThemedColors('light').backgroundSurfaceColor,
+            backgroundColor: getThemedColors(theme).backgroundSurfaceColor,
           },
         }),
       }),
