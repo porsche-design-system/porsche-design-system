@@ -46,6 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Model Signature`
 - Props `align-header` and `width` for `Carousel`
+- Vue: plugin functions `createPorscheDesignSystem` and `usePorscheDesignSystemPlugin`
 
 #### Fixed
 
