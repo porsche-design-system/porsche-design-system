@@ -1086,6 +1086,10 @@ export namespace Components {
     interface PTableHeadRow {
     }
     interface PTableRow {
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTabs {
         /**
@@ -2857,6 +2861,10 @@ declare namespace LocalJSX {
     interface PTableHeadRow {
     }
     interface PTableRow {
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTabs {
         /**
