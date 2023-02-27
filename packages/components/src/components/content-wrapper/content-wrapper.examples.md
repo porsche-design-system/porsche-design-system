@@ -36,7 +36,7 @@ import { CONTENT_WRAPPER_BACKGROUND_COLORS, CONTENT_WRAPPER_WIDTHS } from './con
 export default class Code extends Vue {
   config = { themeable: true };    
   
-  width = 'basic';
+  width = 'extended';
   widths = CONTENT_WRAPPER_WIDTHS.map(item => item === 'fluid' ? item + ' (deprecated)' : item);
   get widthMarkup(){
     return `<p-content-wrapper width="${this.width}">

@@ -92,18 +92,18 @@ export default class Code extends Vue {
   
   required =
 `<p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" required />
+  <input type="radio" name="some-name-2" required />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" required checked />
+  <input type="radio" name="some-name-2" required checked />
 </p-radio-button-wrapper>`;
 
   disabled =
 `<p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" disabled />
+  <input type="radio" name="some-name-3" disabled />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" disabled checked />
+  <input type="radio" name="some-name-3" disabled checked />
 </p-radio-button-wrapper>`;
 
   state = 'error';
@@ -111,21 +111,21 @@ export default class Code extends Vue {
   get stateMarkup() {
     const attr = ` message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
     return `<p-radio-button-wrapper label="Some label" state="${this.state}">
-  <input type="radio" name="some-name-5" />
+  <input type="radio" name="some-name-4" />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label" state="${this.state}"${attr}>
-  <input type="radio" name="some-name-5" />
+  <input type="radio" name="some-name-4" />
 </p-radio-button-wrapper>`;
     }
     
   slots =
 `<p-radio-button-wrapper state="error">
   <span slot="label" id="some-label-id-1">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-1" />
+  <input type="radio" name="some-name-5" aria-labelledby="some-label-id-1" />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper state="error">
   <span slot="label" id="some-label-id-2">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
+  <input type="radio" name="some-name-5" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-radio-button-wrapper>`
 }

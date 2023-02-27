@@ -31,7 +31,7 @@ const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): Jss
     transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
   });
 
-const widthMap: { [key in BannerWidth]: BannerWidth } = {
+const widthMap: Record<BannerWidth, BannerWidth> = {
   fluid: 'extended',
   extended: 'extended',
   basic: 'basic',
@@ -44,7 +44,6 @@ export const getComponentCss = (width: BannerWidth): string => {
         // TODO: Why is nothing set as important here?
         [bannerPositionTopVar]: bannerOffset,
         [bannerPositionBottomVar]: bannerOffset,
-        display: 'block',
         position: `var(${bannerPositionTypeVar},fixed)`,
         zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
         opacity: 0,

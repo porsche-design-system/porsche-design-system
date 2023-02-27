@@ -1,59 +1,23 @@
-import type { JssStyle } from 'jss';
-import type { ListType, OrderType } from '../text-list/text-list-utils';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles, pxToRemWithUnit } from '../../../styles';
-import { textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { cssVariablePseudoSuffix } from '../text-list/text-list-styles';
 
-const cssVariableOrderedSuffix = '--p-internal-text-list-item-ordered-suffix';
-const cssVariableUnorderedWidth = '--p-internal-text-list-item-unordered-width';
-const cssVariableUnorderedHeight = '--p-internal-text-list-item-unordered-height';
-const cssVariableUnorderedTop = '--p-internal-text-list-item-unordered-top';
-
-export const getComponentCss = (listType: ListType, orderType: OrderType): string => {
-  const isOrdered = listType === 'ordered';
-  const beforeJssStyles: JssStyle = {
-    position: 'absolute',
-    left: 0,
-  };
-
+export const getComponentCss = (): string => {
   return getCss({
-    '@global': {
-      ':host': addImportantToEachRule({
-        position: 'relative',
+    '@global': addImportantToEachRule({
+      ':host': {
         display: 'list-item',
-        color: 'inherit',
-        listStyleType: 'none',
-        paddingLeft: pxToRemWithUnit(isOrdered ? 40 : 24),
+        position: 'relative', // needed by before pseudo-element, used for ordered list
+        font: 'inherit', // ensures style can't be overwritten from outside
+        color: 'inherit', // ensures style can't be overwritten from outside
+        listStyleType: 'inherit', // ensures style can't be overwritten from outside
+        paddingLeft: spacingStaticMedium, // space between ::marker/::before and list item
         ...hostHiddenStyles,
-        '&:before': isOrdered
-          ? {
-              ...beforeJssStyles,
-              content: `counters(section,".",${
-                orderType === 'numbered' ? 'decimal' : 'lower-latin'
-              }) var(${cssVariableOrderedSuffix},".")`,
-              top: 0,
-              width: pxToRemWithUnit(24),
-              height: 'auto',
-              counterIncrement: 'section',
-              textAlign: 'right',
-              backgroundColor: 'transparent',
-              ...textSmallStyle,
-            }
-          : {
-              ...beforeJssStyles,
-              content: '""',
-              width: `var(${cssVariableUnorderedWidth},${pxToRemWithUnit(4)})`,
-              height: `var(${cssVariableUnorderedHeight},${pxToRemWithUnit(4)})`,
-              top: `var(${cssVariableUnorderedTop},calc(1.5em / 2 - 0.125em))`,
-              backgroundColor: 'currentColor',
-            },
-      }),
-      '::slotted(*)': {
-        [cssVariableOrderedSuffix]: '""',
-        [cssVariableUnorderedWidth]: pxToRemWithUnit(8),
-        [cssVariableUnorderedHeight]: '1px',
-        [cssVariableUnorderedTop]: 'calc(1.5em / 2)',
       },
-    },
+      '::slotted(*)': {
+        [cssVariablePseudoSuffix]: '""', // don't show suffix "." for nested ordered list
+      },
+    }),
   });
 };
