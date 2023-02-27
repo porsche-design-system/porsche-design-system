@@ -53,13 +53,13 @@ const ContentWrapperPage: NextPage = (): JSX.Element => {
       </div>
 
       <div title="should render with width 'extended' (desktop: 14 columns)">
-        <PContentWrapper width="extended">
+        <PContentWrapper>
           <p>Extended</p>
         </PContentWrapper>
       </div>
 
       <div title="should render with width 'basic' (desktop: 12 columns)">
-        <PContentWrapper>
+        <PContentWrapper width="basic">
           <p>Basic</p>
         </PContentWrapper>
       </div>
