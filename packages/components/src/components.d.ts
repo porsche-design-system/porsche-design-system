@@ -1046,6 +1046,10 @@ export namespace Components {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -2805,6 +2809,10 @@ declare namespace LocalJSX {
           * Emitted when sorting is changed.
          */
         "onSortingChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
