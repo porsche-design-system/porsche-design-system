@@ -16,7 +16,7 @@ const ModalFullscreenBreakpointPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show fullscreen breakpoint modal on light background">
-        <PContentWrapper>
+        <PContentWrapper width="basic">
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
         <PModal

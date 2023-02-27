@@ -16,7 +16,7 @@ const ModalFullWidthSlotPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should display a full width div when using .stretch-to-full-modal-width">
-        <PContentWrapper>
+        <PContentWrapper width="basic">
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
         <PModal open={true} aria={{ 'aria-label': 'Some Heading' }}>
