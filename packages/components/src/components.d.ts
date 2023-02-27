@@ -1058,6 +1058,10 @@ export namespace Components {
           * Displays slotted text multiline or forced into a single line.
          */
         "multiline"?: boolean;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableHead {
     }
@@ -2821,6 +2825,10 @@ declare namespace LocalJSX {
           * Displays slotted text multiline or forced into a single line.
          */
         "multiline"?: boolean;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableHead {
     }
