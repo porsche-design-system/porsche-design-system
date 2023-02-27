@@ -5,14 +5,11 @@ import {
   getAttribute,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-
-const SCROLL_DURATION = 205; // with 20 steps and an interval of 10, we get 200ms plus 5ms for safety
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -33,9 +30,6 @@ const getTableBody = () => selectNode(page, 'p-table-body');
 const getFirstTableRow = () => selectNode(page, 'p-table-row:nth-child(1)');
 const getFirstTableRowCell = () => selectNode(page, 'p-table-row:nth-child(1) p-table-cell:nth-child(1)');
 const getCaption = () => selectNode(page, 'p-table >>> .caption');
-const getScrollArea = () => selectNode(page, 'p-table >>> .scroll-area');
-const getScrollIndicator = () => selectNode(page, 'p-table >>> .scroll-indicator');
-const getScrollButton = () => selectNode(page, 'p-table >>> .scroll-button');
 
 type InitOptions = {
   columnAmount?: number;
@@ -212,30 +206,6 @@ describe('accessibility', () => {
 
     const caption = await getCaption();
     expect(await getAttribute(caption, 'id'), 'caption id').toBe('caption');
-  });
-
-  // TODO: check it
-  it('should expose correct accessibility tree of scroll area', async () => {
-    await initTable({ hasSlottedCaption: true });
-    const host = await getHost();
-    const scrollArea = await getScrollArea();
-
-    expect(await getAttribute(scrollArea, 'tabindex'), 'initial: tabindex').toBeNull();
-    expect(await getAttribute(scrollArea, 'role'), 'initial: role').toBeNull();
-    expect(await getAttribute(scrollArea, 'aria-label'), 'initial: aria-label').toBeNull();
-    expect(await getAttribute(scrollArea, 'aria-labelledby'), 'initial: aria-labelledby').toBeNull();
-
-    await makeTableOverflow();
-
-    await expectA11yToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as property' });
-    expect(await getAttribute(scrollArea, 'tabindex'), 'after overflow: tabindex').toBe('0');
-    expect(await getAttribute(scrollArea, 'aria-label'), 'after overflow: aria-label').toBeNull();
-
-    await setProperty(host, 'caption', 'Some caption');
-    await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as slot' });
-    expect(await getAttribute(scrollArea, 'aria-labelledby'), 'after caption: aria-labelledby').toBeNull();
   });
 
   it('should set correct aria-sort value when sortable', async () => {
