@@ -51,7 +51,7 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Co
       } bytes (size: ${svgOptimizedSize} bytes)`
     );
 
-    // car icon size can't be more optimized
+    // car icon size can't be more optimized it has 3.034KB
     if (svgOptimizedSize > 3000 && svgRawName !== 'car') {
       throw new Error(`Icon "${svgRawName}" is too large.`);
     }
