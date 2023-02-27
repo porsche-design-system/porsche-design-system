@@ -51,13 +51,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div title="should render with width 'extended' (desktop: 14 columns)">
-      <p-content-wrapper [width]="'extended'">
+      <p-content-wrapper>
         <p>Extended</p>
       </p-content-wrapper>
     </div>
 
     <div title="should render with width 'basic' (desktop: 12 columns)">
-      <p-content-wrapper>
+      <p-content-wrapper [width]="'basic'">
         <p>Basic</p>
       </p-content-wrapper>
     </div>
