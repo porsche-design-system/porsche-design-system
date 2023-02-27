@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [5.4.1] - 2023-02-27
+
 This package is **deprecated** and will no longer be maintained. All `Porsche Design System` utilities are now provided
 via the `@porsche-design-system/components-{js|angular|react|vue}/styles` sub-package. To make the migration easier, we
 offer an overview of the old deprecated values in reference to the new styles. Further documentation about the new
