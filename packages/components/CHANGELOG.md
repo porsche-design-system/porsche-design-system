@@ -37,7 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Divider`, `Button Group`, `Carousel` and `Text List` match new design language
+- `Divider`, `Button Group`, `Carousel`, `Table` and `Text List` match new design language
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 - Partials: Removed deprecated `withoutTags` option for all partials, please use `format: 'jsx'` instead
 - `Content Wrapper` default value of prop `width` has changed from `basic` to `extended`
@@ -46,6 +46,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Model Signature`
 - Props `align-header` and `width` for `Carousel`
+- Prop `scrollbar` for `Scroller`
+- Prop `theme` for `Table`
 
 #### Fixed
 
