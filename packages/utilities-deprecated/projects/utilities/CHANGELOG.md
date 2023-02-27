@@ -243,8 +243,7 @@ adjusted.
 To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
 
 ```diff
-- import { spacing } from '@porsche-design-system/utilities';
-- import { layout } from '@porsche-design-system/utilities';
+- import { spacing, layout } from '@porsche-design-system/utilities';
 + import { spacing, spacingStatic, spacingFluid } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
@@ -316,11 +315,11 @@ div {
 h1 {
 - @include p-title-large;
 + @include pds-display-large;
-  }
+}
 
 h2 {
 + @include pds-display-medium;
-  }
+}
 ```
 
 - `p-headline-{1|2|3|4|5}` got renamed/extended to `pds-heading-{small|medium|large|x-large|xx-large|xxx-large}`. The
@@ -334,12 +333,12 @@ h2 {
 h1 {
 - @include p-headline-1;
 + @include pds-heading-xx-large;
-  }
+}
 
 h2 {
 - @include p-headline-2;
 + @include pds-heading-x-large;
-  }
+}
 ```
 
 - `p-text-{x-small|small|medium|large|x-large}` got renamed to `pds-text-{x-small|small|medium|large|x-large}`. Except
@@ -353,7 +352,7 @@ h2 {
 p {
 - @include p-text-small;
 + @include pds-text-small;
-  }
+}
 ```
 
 **Colors**
@@ -370,7 +369,7 @@ overview ot the new colors have a look [here](https://designsystem.porsche.com/l
 div {
 - background: {$p-color-brand|$p-color-theme-light-brand};
 + background: $pds-theme-light-primary;
-  }
+}
 ```
 
 - `default` is removed, use `primary` instead.
@@ -382,7 +381,7 @@ div {
 div {
 - color: {$p-color-default|$p-color-theme-light-default};
 + color: $pds-theme-light-primary;
-  }
+}
 ```
 
 - `$p-color-theme-light-background` is renamed to `$pds-theme-light-background-base`.
@@ -394,7 +393,7 @@ div {
 div {
 - background: {$p-color-background-default|$p-color-theme-light-background};
 + background: $pds-theme-light-background-base;
-  }
+}
 ```
 
 - to keep it clear, only the old color variable in regard to its new name will be mentioned below:
@@ -555,7 +554,7 @@ div {
 p {
 - font-family: $p-font-family;
 + font-family: $pds-font-family;
-  }
+}
 ```
 
 - `$p-font-weight-{regular|semi-bold|bold}` got renamed to `$pds-font-weight-{regular|semi-bold|bold}`.
@@ -567,7 +566,7 @@ p {
 button {
 - font-weight: $p-font-weight-bold;
 + font-weight: $pds-font-weight-bold;
-  }
+}
 ```
 
 - `$p-font-size-{x-small|small|medium|large|x-large}` got renamed to
@@ -580,7 +579,7 @@ button {
 button {
 - font-size: $p-font-size-medium;
 + font-size: $pds-font-size-medium;
-  }
+}
 ```
 
 **Spacings**
