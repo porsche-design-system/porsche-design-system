@@ -3,5 +3,8 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: table-row-group !important;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
