@@ -1,6 +1,6 @@
 import { getComponentCss } from './table-cell-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [true, 'dark'],
     [false, 'light'],
