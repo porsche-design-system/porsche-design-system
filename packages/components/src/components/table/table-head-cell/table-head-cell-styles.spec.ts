@@ -1,15 +1,18 @@
 import { getComponentCss } from './table-head-cell-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [undefined, undefined, false, false],
-    [undefined, undefined, true, false],
-    [false, 'asc', false, false],
-    [true, 'asc', false, false],
-    [false, 'desc', false, false],
-    [true, 'desc', false, false],
-    [true, 'desc', false, true],
-  ])('should return correct css for active: %s, direction: %s, hideLabel: %s and multiline: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
-  });
+    [undefined, undefined, false, false, 'light'],
+    [undefined, undefined, true, false, 'light'],
+    [false, 'asc', false, false, 'light'],
+    [true, 'asc', false, false, 'light'],
+    [false, 'desc', false, false, 'dark'],
+    [true, 'desc', false, false, 'dark'],
+    [true, 'desc', false, true, 'dark'],
+  ])(
+    'should return correct css for active: %s, direction: %s, hideLabel: %s, multiline: %s and theme: %s',
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
+    }
+  );
 });
