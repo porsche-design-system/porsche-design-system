@@ -35,7 +35,7 @@ export const getComponentCss = (theme: Theme): string => {
 export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
-      ...getBaseSlottedStyles(),
+      ...getBaseSlottedStyles({ withDarkTheme: true }),
       '& img': {
         verticalAlign: 'middle',
       },
