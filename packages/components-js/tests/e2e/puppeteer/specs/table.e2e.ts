@@ -133,8 +133,8 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
-    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1); // table uses p-scroller
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-icon').toBe(2); // scroller contains 2 p-icons: left and right scroll buttons
     expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
     expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
     expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
@@ -142,7 +142,7 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30); // if you sum up all the components - you'll get 30
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -163,10 +163,9 @@ describe('lifecycle', () => {
 
     const status = await getLifecycleStatus(page);
 
-    // TODO: check  if it's correct
     expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(40);
-    // TODO: check  if it's correct
     expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(7);
+    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-button').toBe(5);
     expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5);
     expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
   });
