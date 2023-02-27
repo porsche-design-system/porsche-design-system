@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 This package is **deprecated** and will no longer be maintained. All `Porsche Design System` utilities are now provided
 via the `@porsche-design-system/components-{js|angular|react|vue}/styles` sub-package. To make the migration easier, we
 offer an overview of the old deprecated values in reference to the new styles. Further documentation about the new
-styles can be found here [Introduction](https://designsystem.porsche.com/latest/styles/introduction).
+styles can be found [here](https://designsystem.porsche.com/latest/styles/introduction).
 
 #### Changed
 
@@ -27,6 +27,7 @@ styles can be found here [Introduction](https://designsystem.porsche.com/latest/
 ```diff
 - import { focus } from '@porsche-design-system/utilities';
 + import { getFocusStyles } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
+import styled from 'styled-components';
 
 const Component1 = styled.a`
 -  ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
@@ -51,7 +52,7 @@ const Component2 = styled.a`
 }
 ```
 
-- Instead of `mediaQuery()` we provide now `getMediaQueryMin()`, `getMediaQueryMax()` and `getMediaQueryMinMax()`.
+- instead of `mediaQuery()` we provide now `getMediaQueryMin()`, `getMediaQueryMax()` and `getMediaQueryMinMax()`.
   Furthermore, the functions accept only the predefined breakpoints from `base` to `xxl` and no custom breakpoints
   anymore.
 
@@ -79,8 +80,6 @@ const StyledDiv = css`{
     color: 'deeppink'
   }
 }`;
-
-render(<StyledDiv>Styled Text</StyledDiv>);
 ```
 
 - `titleLarge` got renamed to `displayLargeStyle`. The size of the new `display` styles are changing fluid depending on
@@ -101,18 +100,18 @@ const component2 = styled.h2`
 `;
 ```
 
-- `headline` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size of the new `heading`
-  styles are changing fluid depending on the viewport width instead of fixed predefined sizes on specific breakpoints,
-  and they are italic now.
+- `headline{1|2|3|4|5}` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size of the new
+  `heading` styles are changing fluid depending on the viewport width instead of fixed predefined sizes on specific
+  breakpoints, and they are italic now.
 
 ```diff
-- import { headline{1|2|3|4|5} } from '@porsche-design-system/utilities';
-+ import { heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
+- import { headline } from '@porsche-design-system/utilities';
++ import { headingXXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.h1`
 - ${headline['1']}
-+ ${headingMediumStyle}
++ ${headingXXLargeStyle}
 `;
 ```
 
@@ -121,7 +120,7 @@ const component1 = styled.h1`
 
 ```diff
 - import { text } from '@porsche-design-system/utilities';
-+ import { textXSmallStyle, textSmallStyle, textMediumStyle, textLargeStyle, textXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { textSmallStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const component1 = styled.p`
@@ -133,18 +132,18 @@ const component1 = styled.p`
 **Colors**
 
 As of v3 of the Porsche Design System the color theme got reworked completely to achieve a monochrome look. To get an
-overview of the new colors have a look at [Theme](https://designsystem.porsche.com/latest/styles/theme).
+overview of the new colors have a look [here](https://designsystem.porsche.com/latest/styles/theme).
 
-- `lightTheme` and `darkTheme` got renamed to `themeLight` and `themeDark`. In addition, you can also single import a
-  theme if for e.g. you only need `lightTheme`.
+- `color.lightTheme` and `color.darkTheme` got renamed to `theme.light` and `theme.dark`. In addition, you can also
+  single import a theme if for e.g. you only need `themeLight`.
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';;
 + import { theme, themeLight, themeDark } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
-As the design tokens for `themeLight` and `themeDark` are in sync, the name changes mentioned below concern both themes
-even if only light theme is displayed in the diff.
+As the styles for `themeLight` and `themeDark` are in sync, the name changes mentioned below concern both themes even if
+only light theme is displayed in the diff.
 
 - `brand` got renamed to `primary`.
 
@@ -193,8 +192,8 @@ const component1 = styled.div({
 import styled from 'styled-components';
 
 const component1 = styled.div({
-- background: color.lightTheme.neutralContrast.{low|medium|high}
-+ background: theme.light.contrast.{low|medium|high}
+- background: color.lightTheme.neutralContrast.medium
++ background: theme.light.contrast.medium
 });
 ```
 
@@ -220,14 +219,14 @@ const component2 = styled.div({
 
 **Font**
 
-- `fontFamily` is provided only the import has changed.
+- `fontFamily` is provided the same way, only the import has changed.
 
 ```diff
 - import { fontFamily } from '@porsche-design-system/utilities';
 + import { fontFamily } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
-- `fontWeight` is provided only the import has changed.
+- `fontWeight` is provided the same way, only the import has changed.
 
 ```diff
 - import { fontWeight } from '@porsche-design-system/utilities';
@@ -241,7 +240,7 @@ adjust in size based on a min and max value, providing a fluid response to chang
 switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font size is
 adjusted.
 
-To get an overview ot the new spacings have a look at [Spacing](https://designsystem.porsche.com/latest/styles/spacing).
+To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
 
 ```diff
 - import { spacing } from '@porsche-design-system/utilities';
@@ -258,7 +257,7 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 
 **Mixins**
 
-- `p-focus` mixin is now `pds-focus`.
+- `p-focus` is now `pds-focus`.
 
 ```diff
 - @import '~@porsche-design-system/utilities/scss';
@@ -276,9 +275,9 @@ button {
 ```
 
 - `breakpoint` `xxs` is now `base`.
-- Instead of `p-media-query` we provide now `pds-media-query-min`, `pds-media-query-max` and `pds-media-query-min-max`.
-  Furthermore, the mixins only accept the predefined PDS breakpoints from `base` to `xxl` and no custom breakpoints
-  anymore.
+- instead of `p-media-query` we provide now `pds-media-query-min`, `pds-media-query-max` and `pds-media-query-min-max`.
+  Furthermore, the mixins only accept the predefined Porsche Design System breakpoints from `base` to `xxl` and no
+  custom breakpoints anymore.
 
 ```diff
 - @import '~@porsche-design-system/utilities/scss';
@@ -320,7 +319,6 @@ h1 {
   }
 
 h2 {
-- @include p-title-large;
 + @include pds-display-medium;
   }
 ```
@@ -361,7 +359,7 @@ p {
 **Colors**
 
 As of v3 of the Porsche Design System the color theme got reworked completely to achieve a monochrome look. To get an
-overview ot the new colors have a look at [Theme](https://designsystem.porsche.com/latest/styles/theme).
+overview ot the new colors have a look [here](https://designsystem.porsche.com/latest/styles/theme).
 
 - `brand` got renamed to `primary`.
 
@@ -399,7 +397,7 @@ div {
   }
 ```
 
-- to keep it clear, only the old variable name and its new one will be mentioned below:
+- to keep it clear, only the old color variable in regard to its new name will be mentioned below:
 
 ```diff
 - $p-color-background-surface
@@ -481,6 +479,8 @@ div {
 - $p-color-theme-light-state-disabled
 + $pds-theme-light-state-disabled
 ```
+
+- all name changes that happened in theme light also apply to theme dark:
 
 ```diff
 - $p-color-theme-dark-brand
@@ -590,7 +590,7 @@ adjust in size based on a min and max value, providing a fluid response to chang
 switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font size is
 adjusted.
 
-To get an overview ot the new spacings have a look at [Spacing](https://designsystem.porsche.com/latest/styles/spacing).
+To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
 
 ```diff
 - $p-spacing-4
@@ -631,13 +631,13 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 
 **Functions**
 
-- `pxToRem()` is removed without replacement.
-- `remToPx()` is removed without replacement.
-- `calculateLineHeight()` is removed. To set the `line-height`, use the `fontLineHeight` style provided.
-- `generateTypeScale()` since the font sizes are now fluid, the `fontLineHeight` design token and one of the provided
-  font sizes should be used.
-- `generateFontDefinition()` we provide `fontFamily`, `fontWeight`, `fontLineHeight` and multiple font sizes, which
-  should be used instead.
+- `pxToRem()` will be removed in v3 without replacement.
+- `remToPx()` will be removed in v3 without replacement.
+- `calculateLineHeight()` will be removed in v3. To set the `line-height`, use the `fontLineHeight` style provided.
+- `generateTypeScale()` will be removed in v3. Since the font sizes are now fluid, the `fontLineHeight` style and one of
+  the provided font sizes should be used.
+- `generateFontDefinition()` will be removed in v3. We provide `fontFamily`, `fontWeight`, `fontLineHeight` and multiple
+  font sizes, which should be used instead.
 
 **Colors**
 
@@ -646,29 +646,24 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 **Font**
 
 - `fontWeight` thin is removed as of v3.
-- `font` object is no longer provided as the font sizes are now fluid. You can use `fontLineHeight` design token and on
-  of the provided font sizes, e.g. `fontSizeTextSmall` to recreate it.
-
-```diff
-- import { font } from '@porsche-design-system/utilities';
-+ import { fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
-```
+- the static `font.size` object is no longer provided in v3. Please use one of the predefined fluid font sizes or the
+  `fontLineHeight` style and on of the provided font sizes, e.g. `fontSizeTextSmall` to recreate it.
 
 ##### SCSS
 
 **Mixins**
 
-- `p-px-to-rem` is removed without replacement.
-- `p-rem-to-px` is removed without replacement.
-- `p-calculate-line-height` is removed. To set the `line-height`, use the `$pds-font-line-height` variable.
-- `p-generate-type-scale` since the font sizes are now fluid, the `$pds-font-line-height` design token and one of the
-  provided font sizes should be used.
-- `p-generate-font-definition` we provide `$pds-font-family`, `$pds-font-weight`, `$pds-font-line-height` and multiple
-  font sizes, which should be used instead.
+- `p-px-to-rem` will be removed in v3 without replacement.
+- `p-rem-to-px` will be removed in v3 without replacement.
+- `p-calculate-line-height` will be removed in v3. To set the `line-height`, use the `$pds-font-line-height` variable.
+- `p-generate-type-scale` will be removed in v3 since the font sizes are now fluid. The `$pds-font-line-height` style
+  and one of the provided font sizes should be used.
+- `p-generate-font-definition` will be removed in v3. We provide `$pds-font-family`, `$pds-font-weight`,
+  `$pds-font-line-height` and multiple font sizes, which should be used instead.
 
 **Colors**
 
-- Theme `light-electric` and `dark-electric` are no longer available.
+- theme `light-electric` and `dark-electric` are no longer available in v3.
 - all `external` colors are no longer available in v3.
 
 **Font**
@@ -679,8 +674,9 @@ To get an overview ot the new spacings have a look at [Spacing](https://designsy
 - $p-font-weight-thin
 ```
 
-- static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36||42|44|48|52|60|62|72|84}` are removed. Please use one
-  of the predefined fluid font sizes.
+- static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36||42|44|48|52|60|62|72|84}` will be removed in v3.
+  Please use one of the predefined fluid font sizes or the `$pds-font-line-height` style and on of the provided font
+  sizes, to recreate it.
 
 ### [5.4.0] - 2022-12-15
 
