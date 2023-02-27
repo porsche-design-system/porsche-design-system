@@ -585,37 +585,9 @@ button {
 **Spacings**
 
 With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
-adjust in size based on a min and max value, providing a fluid response to changes in browser width. Additionally, we've
-switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font size is
-adjusted.
-
-To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
+adjust in size based on a min and max value, providing a fluid response to changes in browser width.
 
 ```diff
-- $p-spacing-4
-- $p-spacing-8
-- $p-spacing-16
-- $p-spacing-24
-- $p-spacing-32
-- $p-spacing-40
-- $p-spacing-48
-- $p-spacing-56
-- $p-spacing-64
-- $p-spacing-72
-- $p-spacing-80
-- $p-layout-x-small
-- $p-layout-small
-- $p-layout-medium
-- $p-layout-large
-- $p-layout-x-large
-- $p-layout-xx-large
-
-+ $pds-spacing-static-x-small
-+ $pds-spacing-static-small
-+ $pds-spacing-static-medium
-+ $pds-spacing-static-large
-+ $pds-spacing-static-x-large
-+ $pds-spacing-static-xx-large
 + $pds-spacing-fluid-x-small
 + $pds-spacing-fluid-small
 + $pds-spacing-fluid-medium
@@ -623,6 +595,31 @@ To get an overview ot the new spacings have a look [here](https://designsystem.p
 + $pds-spacing-fluid-x-large
 + $pds-spacing-fluid-xx-large
 ```
+
+Additionally, we've switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the
+root font size is adjusted.
+
+```diff
+- $p-layout-x-small
++ $pds-spacing-static-x-small
+
+- $p-layout-small
++ $pds-spacing-static-small
+
+- $p-layout-medium
++ $pds-spacing-static-medium
+
+- $p-layout-large
++ $pds-spacing-static-large
+
+- $p-layout-x-large
++ $pds-spacing-static-x-large
+
+- $p-layout-xx-large
++ $pds-spacing-static-xx-large
+```
+
+To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
 
 #### Deprecated
 
@@ -647,6 +644,11 @@ To get an overview ot the new spacings have a look [here](https://designsystem.p
 - `fontWeight` thin is removed as of v3.
 - the static `font.size` object is no longer provided in v3. Please use one of the predefined fluid font sizes or the
   `fontLineHeight` style and on of the provided font sizes, e.g. `fontSizeTextSmall` to recreate it.
+
+**Spacings**
+
+- the static `spacing` object with `rem` spacings is no longer provided in v3. Please use one of the provided static or
+  fluid spacings.
 
 ##### SCSS
 
@@ -676,6 +678,24 @@ To get an overview ot the new spacings have a look [here](https://designsystem.p
 - static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36||42|44|48|52|60|62|72|84}` will be removed in v3.
   Please use one of the predefined fluid font sizes or the `$pds-font-line-height` style and on of the provided font
   sizes, to recreate it.
+
+**Spacings**
+
+- static spacings with rem values are no longer provided in v3.
+
+```diff
+- $p-spacing-4
+- $p-spacing-8
+- $p-spacing-16
+- $p-spacing-24
+- $p-spacing-32
+- $p-spacing-40
+- $p-spacing-48
+- $p-spacing-56
+- $p-spacing-64
+- $p-spacing-72
+- $p-spacing-80
+```
 
 ### [5.4.0] - 2022-12-15
 
