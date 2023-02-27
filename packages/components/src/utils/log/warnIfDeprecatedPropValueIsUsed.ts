@@ -1,17 +1,5 @@
-import type { EventEmitter } from '@stencil/core';
 import { getDeprecatedPropWarningMessage } from './helper';
-
-// NOTE: the following utility types are duplicated in validateProps
-// utility type to return public properties of generic type that are not a function or EventEmitter
-type FunctionPropertyNames<T> = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  [K in keyof T]: T[K] extends Function | EventEmitter ? K : never;
-}[keyof T];
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Class<T> = Function & {
-  new (...args: any[]): T; // eslint-disable-line @typescript-eslint/prefer-function-type
-};
+import type { Class, FunctionPropertyNames } from '../../types/index';
 
 // TODO: add missing unit test
 export const warnIfDeprecatedPropValueIsUsed = <C extends Class<any>, DeprecatedT extends string, T extends string>(
@@ -22,8 +10,8 @@ export const warnIfDeprecatedPropValueIsUsed = <C extends Class<any>, Deprecated
   const value = instance[prop];
   if (deprecationMap[value]) {
     const deprecatedPropWarningMessage = getDeprecatedPropWarningMessage(
-      `${prop as string}="${value}"`,
-      instance.host as HTMLElement
+      instance.host as HTMLElement,
+      `${prop as string}="${value}"`
     );
     console.warn(`${deprecatedPropWarningMessage} Please use "${deprecationMap[value]}" instead.`);
   }

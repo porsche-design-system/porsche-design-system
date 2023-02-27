@@ -153,6 +153,7 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
+      "alignHeader": "left",
       "description": null,
       "disablePagination": false,
       "heading": null,
@@ -160,6 +161,7 @@ exports[`should match snapshot 1`] = `
       "rewind": true,
       "slidesPerPage": "1",
       "theme": "light",
+      "width": "basic",
       "wrapContent": null,
     },
     "styling": "jss",
@@ -208,7 +210,7 @@ exports[`should match snapshot 1`] = `
     "props": {
       "backgroundColor": "transparent",
       "theme": "light",
-      "width": "basic",
+      "width": "extended",
     },
     "styling": "jss",
   },

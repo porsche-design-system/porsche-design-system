@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   ],
   template: `
     <div class="playground light" title="should display slotted heading">
-      <p-content-wrapper>
+      <p-content-wrapper [width]="'basic'">
         <div style="background: deeppink; height: 100vh"></div>
       </p-content-wrapper>
       <p-modal [open]="true" [aria]="{ 'aria-label': 'Slotted Headline' }">
