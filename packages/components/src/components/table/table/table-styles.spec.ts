@@ -1,12 +1,15 @@
 import { getComponentCss, getSlottedCss } from './table-styles';
 
-xdescribe('getComponentCss()', () => {
-  it('should return correct css', () => {
-    expect(getComponentCss()).toMatchSnapshot();
-  });
+describe('getComponentCss()', () => {
+  it.each<Parameters<typeof getComponentCss>>([['dark'], ['light']])(
+    'should return correct css for theme: %s',
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
+    }
+  );
 });
 
-xdescribe('getSlottedCss()', () => {
+describe('getSlottedCss()', () => {
   it('should return correct css', () => {
     const host = document.createElement('p-table');
     expect(getSlottedCss(host)).toMatchSnapshot();
