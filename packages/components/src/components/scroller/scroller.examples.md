@@ -46,7 +46,7 @@ The `p-scroller` component provides the `scrollToPosition` property. It accepts
 
 If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 
-<Playground :frameworkMarkup="codeExample" :config="{ themable: false }">
+<Playground :frameworkMarkup="codeExample" :config="{ themeable: false }">
   <button id="start" @click="scrollToPosition = '{scrollPosition: 0, isSmooth: true }'">Scroll to start</button>
   <button id="middle" @click="scrollToPosition = '{scrollPosition: 220, isSmooth: true }'">Scroll to middle</button>
   <button id="end" @click="scrollToPosition = '{scrollPosition: 720, isSmooth: true }'">Scroll to end</button>
