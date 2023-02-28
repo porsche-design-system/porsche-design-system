@@ -1221,7 +1221,7 @@ img {
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -1452,7 +1452,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -1718,7 +1718,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -1834,7 +1834,7 @@ img {
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -2055,15 +2055,9 @@ exports[`should render dsr component for PContentWrapper 1`] = `
   min-width: 0;
   max-width: 2560px;
 }
-@media(min-width:760px) {
-  .root {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
-  }
-}
-
 @media(min-width:1920px) {
   .root {
-    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
+    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
   }
 }
 
@@ -2603,7 +2597,7 @@ img {
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
@@ -2817,7 +2811,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -4px;
@@ -3435,7 +3429,7 @@ h2 {
 }
 .root::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -2px;
   bottom: -2px;
   right: -2px;
