@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Updated and added new Icons according to the new design language
+
 ### [3.0.0-alpha.2] - 2023-02-27
 
 #### 🤖 Property deprecations 🤖
