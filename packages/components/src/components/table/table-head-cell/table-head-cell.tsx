@@ -63,7 +63,7 @@ export class TableHeadCell {
             <slot />
             <PrefixedTagNames.pIcon
               class="icon"
-              color="inherit"
+              color="primary"
               name="arrow-up"
               aria-hidden="true"
               theme={this.theme}
