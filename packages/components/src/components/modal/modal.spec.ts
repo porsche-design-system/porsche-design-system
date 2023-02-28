@@ -4,7 +4,6 @@ import * as domUtils from '../../utils/dom';
 import { FirstAndLastFocusableElement } from './modal-utils';
 
 jest.mock('../../utils/dom');
-jest.mock('../../utils/slotted-styles');
 
 describe('modal', () => {
   let component: Modal;

@@ -204,7 +204,7 @@ export default class Code extends Vue {
   }
 
   markupActive =
-`<p-button-pure active="true">Some label</p-link-pure>`;
+`<p-button-pure active="true">Some label</p-button-pure>`;
 
   icon =
 `<p-button-pure icon="delete">Some label</p-button-pure>

@@ -16,7 +16,7 @@ const ModalNoHeadingPage: NextPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should display close button on the correct position without a heading">
-        <PContentWrapper>
+        <PContentWrapper width="basic">
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
         <PModal open={true} aria={{ 'aria-label': 'Some Heading' }}>

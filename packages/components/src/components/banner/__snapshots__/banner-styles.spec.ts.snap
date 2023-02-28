@@ -4,13 +4,13 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
 ":host {
   --p-banner-position-top: 56px;
   --p-banner-position-bottom: 56px;
-  display: block !important;
   position: var(--p-banner-position-type,fixed);
   z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
   left: 0;
   right: 0;
   will-change: opacity,transform;
+  display: block !important;
   margin: 0 !important;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   width: auto !important;
@@ -100,13 +100,13 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
 ":host {
   --p-banner-position-top: 56px;
   --p-banner-position-bottom: 56px;
-  display: block !important;
   position: var(--p-banner-position-type,fixed);
   z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
   left: 0;
   right: 0;
   will-change: opacity,transform;
+  display: block !important;
   margin: 0 !important;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   width: auto !important;
@@ -195,13 +195,13 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
 ":host {
   --p-banner-position-top: 56px;
   --p-banner-position-bottom: 56px;
-  display: block !important;
   position: var(--p-banner-position-type,fixed);
   z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
   left: 0;
   right: 0;
   will-change: opacity,transform;
+  display: block !important;
   margin: 0 !important;
   padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
   width: auto !important;

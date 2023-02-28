@@ -13,10 +13,11 @@
 
 ## Types
 
-| Variants            | Usage                                                                            |
-| ------------------- | -------------------------------------------------------------------------------- |
-| Wrap Content        | To apply padding if there is no padding inherited, e.g. from the content wrapper |
-| Disabled Pagination | to remove the pagination indicators underneath the slides                        |
+| Variants                  | Usage                                                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Wrap Content (deprecated) | To apply padding if there is no padding inherited, e.g. from the content wrapper                              |
+| Width                     | set width to `extended` in order to enlarge spacings between the carousel and the left and right screen sides |
+| Disabled Pagination       | to remove the pagination indicators underneath the slides                                                     |
 
 ### Navigation
 
