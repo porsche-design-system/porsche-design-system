@@ -59,8 +59,9 @@ const Component2 = styled.a`
 ```diff
 - import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
 + import { breakpoint, getMediaQueryMin, getMediaQueryMax, getMediaQueryMinMax } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
+import styled from 'styled-components';
 
-const StyledDiv = css`{
+const Component1 = styled.div({
   color: 'royalblue',
 
   // up to predefined breakpoint xs apply color black
@@ -90,7 +91,7 @@ const StyledDiv = css`{
 + import { displayMediumStyle, displayLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
-const component1 = styled.h1`
+const Component1 = styled.h1`
 - ${titleLarge}
 + ${displayLargeStyle}
 `;
@@ -109,7 +110,7 @@ const component2 = styled.h2`
 + import { headingXXLargeStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
-const component1 = styled.h1`
+const Component1 = styled.h1`
 - ${headline['1']}
 + ${headingXXLargeStyle}
 `;
@@ -123,7 +124,7 @@ const component1 = styled.h1`
 + import { textSmallStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
-const component1 = styled.p`
+const Component1 = styled.p`
 - ${text.small}
 + ${textSmallStyle}
 `;
@@ -152,7 +153,7 @@ only light theme is displayed in the diff.
 + import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
-const component1 = styled.div({
+const Component1 = styled.div({
 - background: color.lightTheme.brand
 + background: theme.light.primary
 });
@@ -165,7 +166,7 @@ const component1 = styled.div({
 + import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
-const component1 = styled.div({
+const Component1 = styled.div({
 - background: color.lightTheme.default
 + background: theme.light.primary
 });
@@ -178,7 +179,7 @@ const component1 = styled.div({
 + import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
-const component1 = styled.div({
+const Component1 = styled.div({
 - background: color.lightTheme.background.default
 + background: theme.light.background.base
 });
@@ -191,7 +192,7 @@ const component1 = styled.div({
 + import { theme } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
-const component1 = styled.div({
+const Component1 = styled.div({
 - background: color.lightTheme.neutralContrast.medium
 + background: theme.light.contrast.medium
 });
@@ -236,16 +237,27 @@ const component2 = styled.div({
 **Spacings**
 
 With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
-adjust in size based on a min and max value, providing a fluid response to changes in browser width. Additionally, we've
-switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the root font size is
-adjusted.
-
-To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
+adjust in size based on a min and max value, providing a fluid response to changes in browser width.
 
 ```diff
-- import { spacing, layout } from '@porsche-design-system/utilities';
-+ import { spacing, spacingStatic, spacingFluid } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { spacing, spacingFluid } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
+
+Additionally, we've switched from using _rem_ to _px_ for our spacers to ensure they don't unnecessarily expand when the
+root font size is adjusted.
+
+```diff
+- import { layout } from '@porsche-design-system/utilities';
++ import { spacingStatic } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
+import styled from 'styled-components';
+
+const Component1 = styled.div({
+- margin: layout.medium
++ margin: spacingStatic.medium
+});
+```
+
+To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
 
 ##### SCSS
 
