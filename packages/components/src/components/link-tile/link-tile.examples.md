@@ -189,7 +189,6 @@ export default class Code extends Vue {
 
 <style scoped lang="scss">
   :deep(p-link-tile) {
-    display: block;
     max-width: 400px;
   }
 </style>

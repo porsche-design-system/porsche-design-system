@@ -73,6 +73,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
+        display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       ...addImportantToEachRule({
@@ -102,7 +103,6 @@ export const getComponentCss = (
       },
     },
     root: {
-      display: 'block',
       height: 0,
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
