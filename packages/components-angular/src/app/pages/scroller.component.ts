@@ -200,6 +200,33 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p-scroller>
       </div>
     </div>
+
+    <div class="playground light" title="should render scroller with scrollbar true">
+      <p-scroller [scrollbar]="true">
+        <p-text-list>
+          <p-text-list-item>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+          </p-text-list-item>
+          <p-text-list-item>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+            <p-text-list>
+              <p-text-list-item>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+                rebum.
+              </p-text-list-item>
+              <p-text-list-item>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+                rebum.
+              </p-text-list-item>
+            </p-text-list>
+          </p-text-list-item>
+        </p-text-list>
+      </p-scroller>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
