@@ -61,6 +61,12 @@ If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
   </div>
 </Playground>
 
+## Scrollbar
+
+The `p-scroller` component may have scrollbar by setting `scrollbar` property to `true`.
+
+<Playground :markup="scrollbar" :config="config"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -133,6 +139,32 @@ export default class Code extends Vue {
   </p-scroller>
 </div>`;
 
+  scrollbar = `<div style="max-width: 600px">
+  <p-scroller scrollbar="true">
+    <p-text-list>
+      <p-text-list-item>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+      </p-text-list-item>
+      <p-text-list-item>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+        <p-text-list>
+          <p-text-list-item>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+            rebum.
+          </p-text-list-item>
+          <p-text-list-item>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+            rebum.
+          </p-text-list-item>
+        </p-text-list>
+      </p-text-list-item>
+    </p-text-list>
+  </p-scroller>`;
+
   gradientColorScheme = 'surface';
   gradientColorSchemes = GRADIENT_COLOR_THEMES;
   get gradientColorSchemeMarkup() {
@@ -169,6 +201,10 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
+
+  :deep(p-scroller) {
+    white-space: nowrap;
+  }
   :deep(p-scroller > *) {
     &:not(:last-child) {
       margin-right: 16px;
