@@ -7,14 +7,14 @@ import {
   PTableHeadCell,
   PTableHeadRow,
   PTableRow,
+  Theme,
 } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
 
-// NOTE: this is component is duplicated and adjusted from react
-export const TableWithCaption = (): JSX.Element => {
+const getTableWithCaption = (theme: Theme): JSX.Element => {
   return (
-    <PTable caption="Some caption">
+    <PTable caption="Some caption" theme={theme}>
       <PTableHead>
         <PTableHeadRow>
           {head.map((item, i) => (
@@ -24,6 +24,7 @@ export const TableWithCaption = (): JSX.Element => {
               hideLabel={item.hideLabel}
               multiline={item.multiline}
               style={item.style}
+              theme={theme}
             >
               <span dangerouslySetInnerHTML={{ __html: item.name }} />
             </PTableHeadCell>
@@ -32,8 +33,8 @@ export const TableWithCaption = (): JSX.Element => {
       </PTableHead>
       <PTableBody>
         {data.map((item, i) => (
-          <PTableRow key={i}>
-            <PTableCell>
+          <PTableRow key={i} theme={theme}>
+            <PTableCell theme={theme}>
               <Image
                 src={item.imageUrl}
                 width={item.imageWidth}
@@ -43,15 +44,17 @@ export const TableWithCaption = (): JSX.Element => {
               />
               <span dangerouslySetInnerHTML={{ __html: item.html }} />
             </PTableCell>
-            <PTableCell multiline={true}>{item.longText}</PTableCell>
-            <PTableCell>{item.shortText}</PTableCell>
-            <PTableCell>{item.shortText}</PTableCell>
-            <PTableCell>{item.shortText}</PTableCell>
-            <PTableCell>
-              <PButtonPure icon="edit" style={{ padding: '.5rem' }}>
+            <PTableCell multiline={true} theme={theme}>
+              {item.longText}
+            </PTableCell>
+            <PTableCell theme={theme}>{item.shortText}</PTableCell>
+            <PTableCell theme={theme}>{item.shortText}</PTableCell>
+            <PTableCell theme={theme}>{item.shortText}</PTableCell>
+            <PTableCell theme={theme}>
+              <PButtonPure theme={theme} icon="edit" style={{ padding: '.5rem' }}>
                 Edit
               </PButtonPure>
-              <PButtonPure icon="delete" style={{ padding: '.5rem' }}>
+              <PButtonPure theme={theme} icon="delete" style={{ padding: '.5rem' }}>
                 Delete
               </PButtonPure>
             </PTableCell>
@@ -60,4 +63,13 @@ export const TableWithCaption = (): JSX.Element => {
       </PTableBody>
     </PTable>
   );
+};
+
+// NOTE: this is component is duplicated and adjusted from react
+export const TableWithCaption = (): JSX.Element => {
+  return getTableWithCaption('light');
+};
+
+export const TableWithCaptionDark = (): JSX.Element => {
+  return getTableWithCaption('dark');
 };
