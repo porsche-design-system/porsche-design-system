@@ -153,6 +153,9 @@ export const getComponentCss = (
             : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
         )
       ),
+      '@media (forced-colors: active)': {
+        background: 'rgba(0,0,0,0.7)',
+      },
     },
     'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
