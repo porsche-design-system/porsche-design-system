@@ -46,7 +46,7 @@
     "concurrently": "^7.6.0",
     "cookie": "^0.5.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.26.0",
+    "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "happy-dom": "^8.3.2",
