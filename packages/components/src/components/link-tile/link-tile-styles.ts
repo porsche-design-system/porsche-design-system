@@ -19,6 +19,8 @@ import {
   spacingStaticMedium,
   spacingFluidLarge,
   borderRadiusMedium,
+  gradientToBottomStyle,
+  gradientToTopStyle,
 } from '@porsche-design-system/utilities-v2';
 
 const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
@@ -29,26 +31,8 @@ const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '9:16': '177.75%',
 };
 
-const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): string => {
-  const gradient =
-    'rgba(31,31,31,0.9) 0%,' +
-    'rgba(31,31,31,0.9) 20%,' +
-    'rgba(31,31,31,0.852589) 26.67%,' +
-    'rgba(32,32,32,0.768225) 33.33%,' +
-    'rgba(33,33,33,0.668116) 40%,' +
-    'rgba(34,34,34,0.557309) 46.67%,' +
-    'rgba(35,35,35,0.442691) 53.33%,' +
-    'rgba(36,36,36,0.331884) 60%,' +
-    'rgba(37,37,37,0.231775) 66.67%,' +
-    'rgba(38,38,38,0.147411) 73.33%,' +
-    'rgba(39,39,39,0.0816599) 80%,' +
-    'rgba(39,39,39,0.03551) 86.67%,' +
-    'rgba(39,39,39,0.0086472) 93.33%,' +
-    'rgba(39,39,39,0)';
-
-  return isCompact && isTopAligned
-    ? `linear-gradient(${gradient} 100%);`
-    : `linear-gradient(to top, ${gradient} 100%);`;
+const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): object => {
+  return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
 };
 
 const sizeMap: {
@@ -140,7 +124,7 @@ export const getComponentCss = (
       ...mergeDeep(
         hasGradient &&
           buildResponsiveStyles(compact, (isCompact: boolean) => ({
-            background: getGradientBackground(isCompact, isTopAligned),
+            ...getGradientBackground(isCompact, isTopAligned),
           })),
         buildResponsiveStyles(compact, (isCompact: boolean) =>
           isCompact
