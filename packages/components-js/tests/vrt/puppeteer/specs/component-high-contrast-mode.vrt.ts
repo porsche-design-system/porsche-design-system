@@ -36,6 +36,7 @@ const components: Component[] = [
   'spinner',
   'stepper-horizontal',
   'switch',
+  'table',
   'tabs',
   'tabs-bar',
   'tag',
