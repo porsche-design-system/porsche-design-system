@@ -33,12 +33,21 @@ export default class Code extends Vue {
 
     const content = rowKeys.map(key => {
       const cells = TAG_NAMES.map(tagName => {
-        let meta = getComponentMeta(tagName)[key];
-        meta = meta && key === 'props' ? Object.keys(meta) : meta;
-        let cellContent = meta 
-          ? Array.isArray(meta) 
-            ? meta.sort().map(m => key === 'nestedComponents' ? m : `<code>${m}</code>`).join('<br>') 
-            : meta
+        const meta = getComponentMeta(tagName); 
+        let value = meta[key];
+
+        if (value && key === 'props') {
+          value = Object.keys(value);
+          const { deprecatedProps } = meta;
+          if (deprecatedProps) {
+            value = value.map(val => deprecatedProps.includes(val) ? `${val} 🚫` : val)
+          }
+        }
+
+        let cellContent = value 
+          ? Array.isArray(value) 
+            ? value.sort().map(val => key === 'nestedComponents' ? val : `<code>${val}</code>`).join('<br>') 
+            : value
           : '';
         cellContent = cellContent === true ? '✅' : cellContent;
 
