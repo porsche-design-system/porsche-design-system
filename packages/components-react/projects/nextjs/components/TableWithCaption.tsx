@@ -65,7 +65,7 @@ const getTableWithCaption = (theme: Theme): JSX.Element => {
   );
 };
 
-// NOTE: this is component is duplicated and adjusted from react
+// NOTE: this component is duplicated and adjusted from react
 export const TableWithCaption = (): JSX.Element => {
   return getTableWithCaption('light');
 };
