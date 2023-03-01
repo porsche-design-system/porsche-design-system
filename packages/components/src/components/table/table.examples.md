@@ -195,7 +195,7 @@ export default class Code extends Vue {
   <p-table-head>
     <p-table-head-row>
       <p-table-head-cell>Column 1</p-table-head-cell>
-      <p-table-head-cell >Column 2</p-table-head-cell>
+      <p-table-head-cell>Column 2</p-table-head-cell>
       <p-table-head-cell hide-label="true">Column 3</p-table-head-cell>
     </p-table-head-row>
   </p-table-head>
