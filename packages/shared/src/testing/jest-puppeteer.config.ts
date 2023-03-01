@@ -2,6 +2,7 @@ import type { PuppeteerNodeLaunchOptions } from 'puppeteer';
 
 const launch: PuppeteerNodeLaunchOptions = {
   headless: true,
+  ignoreDefaultArgs: ['--hide-scrollbars'],
   defaultViewport: {
     width: 1920,
     height: 800,
