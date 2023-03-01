@@ -63,3 +63,17 @@ export const dispatchInputEvent = (el: HTMLInputElement): void => {
   // { bubbles: true } is crucial for react onChange callback getting invoked
   el.dispatchEvent(new Event('input', { bubbles: true }));
 };
+
+// eslint-disable-next-line no-underscore-dangle
+export const _hasShowPickerSupport = (): boolean => {
+  return (
+    'showPicker' in HTMLInputElement.prototype &&
+    // TODO: it would be better to determinate support by checking for existence of "calendar-picker-indicator"
+    !!window.navigator.userAgent.match(/chrome|chromium|crios|edg/i)
+  );
+};
+const hasShowPickerSupport = _hasShowPickerSupport();
+
+export const showCustomCalendarOrTimeIndicator = (isCalendar: boolean, isTime: boolean): boolean => {
+  return hasShowPickerSupport && (isCalendar || isTime);
+};

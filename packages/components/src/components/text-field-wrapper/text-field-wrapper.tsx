@@ -33,6 +33,7 @@ import {
   isType,
   isWithinForm,
   setInputStyles,
+  showCustomCalendarOrTimeIndicator,
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
@@ -104,6 +105,8 @@ export class TextFieldWrapper {
   private ariaElement: HTMLSpanElement;
   private isSearch: boolean;
   private isPassword: boolean;
+  private isCalendar: boolean;
+  private isTime: boolean;
   private isWithinForm: boolean;
   private hasAction: boolean;
   private hasCounter: boolean;
@@ -118,12 +121,15 @@ export class TextFieldWrapper {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
-        .map((type) => `input[type=${type}]`)
+        .map((v) => `input[type=${v}]`)
         .join()
     );
+    const { type } = this.input;
     this.observeAttributes(); // once initially
-    this.isSearch = isType(this.input.type, 'search');
-    this.isPassword = isType(this.input.type, 'password');
+    this.isSearch = isType(type, 'search');
+    this.isPassword = isType(type, 'password');
+    this.isCalendar = isType(type, 'date') || isType(type, 'week') || isType(type, 'month');
+    this.isTime = isType(type, 'time');
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
@@ -193,6 +199,12 @@ export class TextFieldWrapper {
     const labelProps = {
       onClick: this.onLabelClick,
     };
+    const buttonProps = {
+      hideLabel: true,
+      theme: this.theme,
+      class: 'button',
+      type: 'button',
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -221,30 +233,34 @@ export class TextFieldWrapper {
           </label>
           {this.isPassword ? (
             <PrefixedTagNames.pButtonPure
-              class="button"
-              type="button"
-              hideLabel={true}
+              {...buttonProps}
               icon={this.showPassword ? 'view-off' : 'view'}
               disabled={disabled}
-              theme={this.theme}
               onClick={this.togglePassword}
               aria={{ 'aria-pressed': this.showPassword ? 'true' : 'false' }}
             >
               Toggle password visibility
+            </PrefixedTagNames.pButtonPure>
+          ) : showCustomCalendarOrTimeIndicator(this.isCalendar, this.isTime) ? (
+            <PrefixedTagNames.pButtonPure
+              {...buttonProps}
+              icon={this.isCalendar ? 'calendar' : 'clock'}
+              disabled={disabled}
+              onClick={() => this.input.showPicker()}
+            >
+              {`Show ${this.isCalendar ? 'date' : 'time'} picker`}
             </PrefixedTagNames.pButtonPure>
           ) : (
             this.isSearch && [
               // TODO: create an own component, which would fix SSR support too
               this.isWithinForm ? (
                 <PrefixedTagNames.pButtonPure
+                  {...buttonProps}
                   key="btn-submit"
-                  class="button"
                   type="submit"
                   icon="search"
                   disabled={disabledOrReadOnly}
-                  theme={this.theme}
                   onClick={this.onSubmit}
-                  hideLabel={true}
                 >
                   Search
                 </PrefixedTagNames.pButtonPure>
@@ -259,29 +275,23 @@ export class TextFieldWrapper {
                 />
               ),
               <PrefixedTagNames.pButtonPure
+                {...buttonProps}
                 key="btn-clear"
-                class="button"
-                type="button"
                 icon="close"
-                hideLabel={true}
                 tabIndex={-1}
                 hidden={!this.isClearable}
-                theme={this.theme}
                 disabled={disabledOrReadOnly}
                 onClick={this.onClear}
                 aria-hidden="true"
               />,
               this.hasAction && (
                 <PrefixedTagNames.pButtonPure
+                  {...buttonProps}
                   key="btn-action"
-                  class="button"
-                  type="button"
                   icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
-                  theme={this.theme}
                   onClick={!this.actionLoading ? () => this.action.emit() : null}
-                  hideLabel={true}
                   loading={this.actionLoading}
                 >
                   Locate me

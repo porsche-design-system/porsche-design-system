@@ -3,7 +3,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
-import { isType } from './text-field-wrapper-utils';
+import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
@@ -13,6 +13,7 @@ import {
   fontFamily,
   fontLineHeight,
   spacingStaticMedium,
+  spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
@@ -53,6 +54,8 @@ export const getComponentCss = (
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isNumber = isType(inputType, 'number');
+  const isCalendar = isType(inputType, 'date') || isType(inputType, 'week') || isType(inputType, 'month');
+  const isTime = isType(inputType, 'time');
   const isSearchOrPassword = isSearch || isPassword;
   const isSearchWithoutForm = isSearch && !isWithinForm;
   const isSearchWithForm = isSearch && isWithinForm;
@@ -63,15 +66,16 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
-          [cssVariableInputPaddingRight]: isSearchOrPassword
-            ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
-            : spacingStaticMedium,
+          [cssVariableInputPaddingRight]:
+            isSearchOrPassword || showCustomCalendarOrTimeIndicator(isCalendar, isTime)
+              ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
+              : spacingStaticMedium,
           ...hostHiddenStyles,
         }),
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
-          padding: `8px var(${cssVariableInputPaddingRight}) 8px var(${cssVariableInputPaddingLeft})`,
+          padding: `${spacingStaticSmall} var(${cssVariableInputPaddingRight}) ${spacingStaticSmall} var(${cssVariableInputPaddingLeft})`,
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
@@ -84,7 +88,7 @@ export const getComponentCss = (
         },
       }),
     },
-    ...(isSearchOrPassword && {
+    ...((isSearchOrPassword || showCustomCalendarOrTimeIndicator(isCalendar, isTime)) && {
       button: {
         ...baseButtonOrIconStyles,
         right: getButtonOrIconOffsetHorizontal(1),
