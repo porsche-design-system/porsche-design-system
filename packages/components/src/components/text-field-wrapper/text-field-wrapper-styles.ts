@@ -59,6 +59,7 @@ export const getComponentCss = (
   const isSearchOrPassword = isSearch || isPassword;
   const isSearchWithoutForm = isSearch && !isWithinForm;
   const isSearchWithForm = isSearch && isWithinForm;
+  const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
 
   return getCss({
     '@global': {
@@ -67,7 +68,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
           [cssVariableInputPaddingRight]:
-            isSearchOrPassword || showCustomCalendarOrTimeIndicator(isCalendar, isTime)
+            isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
               ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
               : spacingStaticMedium,
           ...hostHiddenStyles,
@@ -88,7 +89,7 @@ export const getComponentCss = (
         },
       }),
     },
-    ...((isSearchOrPassword || showCustomCalendarOrTimeIndicator(isCalendar, isTime)) && {
+    ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       button: {
         ...baseButtonOrIconStyles,
         right: getButtonOrIconOffsetHorizontal(1),
