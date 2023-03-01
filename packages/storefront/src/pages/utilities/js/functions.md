@@ -5,7 +5,7 @@
 ## Breakpoints
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>breakpoint</code> are <strong>deprecated</strong>.<br>
+  <code>breakpoint</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Use <code>breakpoint</code> provided at <a href="styles/media-query">media query</a> instead.
 </p-inline-notification>
 
@@ -26,7 +26,7 @@ if (window.matchMedia(`(min-width: ${breakpoint.m}px)`).matches) {
 ## Media Query
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  The <code>mediaQuery()</code> function is <strong>deprecated</strong>.<br>
+  The <code>mediaQuery()</code> function is <strong>deprecated</strong> and will be removed with next major release.<br>
   Look into <a href="styles/media-query">media query</a> for a replacement.
 </p-inline-notification>
 
@@ -82,7 +82,7 @@ render(<StyledDiv>Styled Text</StyledDiv>);
 ## Typography
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  The <code>typography</code> styles are <strong>deprecated</strong>.<br>
+  The <code>typography</code> styles are <strong>deprecated</strong> and will be removed with next major release.<br>
   Use the styles provided at <a href="styles/typography">typography</a> instead.
 </p-inline-notification>
 
@@ -179,7 +179,7 @@ h1 {
 ### Focus
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  The <code>focus()</code> function is <strong>deprecated</strong>.<br>
+  The <code>focus()</code> function is <strong>deprecated</strong> and will be removed with next major release.<br>
   Use <a href="styles/focus">getFocusStyle()</a> instead.
 </p-inline-notification>
 

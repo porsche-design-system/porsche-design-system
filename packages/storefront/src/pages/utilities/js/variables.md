@@ -5,8 +5,8 @@
 ## Color
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>color</code> is <strong>deprecated</strong> and the values have <strong>changed</strong>.<br>
-  Please use the provided <code>theme</code> styles provided at <a href="styles/theme">theme</a>.
+  <code>color</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use <code>theme</code> styles provided at <a href="styles/theme">theme</a>.
 </p-inline-notification>
 
 A light (default) and dark theme is available depending on which background it's used.
@@ -80,7 +80,8 @@ A light (default) and dark theme is available depending on which background it's
 ### External brand colors
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>External brand colors</code> are <strong>deprecated</strong> without any replacement..
+  <code>External brand colors</code> are <strong>deprecated</strong> without any replacement and will be removed with next major release.<br>
+  Please use <code>theme</code> styles provided at <a href="styles/theme">theme</a>.
 </p-inline-notification>
 
 |                                          |               |                            |
@@ -105,8 +106,8 @@ A light (default) and dark theme is available depending on which background it's
 ## Spacing
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>spacing</code> is <strong>deprecated</strong>.<br>
-  Please use the provided <code>spacing</code> styles provided at <a href="styles/spacing">spacing</a>.
+  <code>spacing</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>spacing</code> styles provided at <a href="styles/spacing">spacing</a>.
 </p-inline-notification>
 
 Given values are:  
@@ -146,8 +147,8 @@ For font styling it's recommended to use the
 ### Family
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>font.family</code> is <strong>deprecated</strong>.<br>
-  Please use the provided <code>fontFamily</code> style provided at <a href="styles/typography">typography</a>.
+  <code>font.family</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>fontFamily</code> style provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 Contains Porsche Next and predefined fallback fonts:
@@ -161,8 +162,8 @@ font.family
 ### Weight
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>font.weight</code> is <strong>deprecated</strong>.<br>
-  Please use the provided <code>fontWeight</code> style provided at <a href="styles/typography">typography</a>.
+  <code>font.weight</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>fontWeight</code> style provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 Given values are:  
@@ -180,8 +181,8 @@ font.weight[v]
 ### Size
 
 <p-inline-notification heading="Important note" state="error" persistent="true">
-  <code>font.size</code> is <strong>deprecated</strong>.<br>
-  To recreate the result, use the provided <code>fontLineHeight</code> and one of the font sizes provided at <a href="styles/typography">typography</a>.
+  <code>font.size</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  To recreate the result, use the <code>fontLineHeight</code> and one of the font sizes provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
 
 #### Font scaling system

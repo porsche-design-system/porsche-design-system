@@ -83,8 +83,7 @@ const Component1 = styled.div({
 }`;
 ```
 
-- `titleLarge` got renamed to `displayLargeStyle`. The size of the new `display` styles are changing fluid depending on
-  the viewport width instead of fixed predefined sizes on specific breakpoints, and they are italic now.
+- `titleLarge` got renamed to `displayLargeStyle`.
 
 ```diff
 - import { titleLarge } from '@porsche-design-system/utilities';
@@ -101,9 +100,7 @@ const component2 = styled.h2`
 `;
 ```
 
-- `headline{1|2|3|4|5}` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`. The size of the new
-  `heading` styles are changing fluid depending on the viewport width instead of fixed predefined sizes on specific
-  breakpoints, and they are italic now.
+- `headline{1|2|3|4|5}` got renamed to `heading{Small|Medium|Large|XLarge|XXLarge|XXXLarge}Style`.
 
 ```diff
 - import { headline } from '@porsche-design-system/utilities';
@@ -116,8 +113,7 @@ const Component1 = styled.h1`
 `;
 ```
 
-- `text` got renamed to `text{XSmall|Small|Medium|Large|XLarge}Style`. Except `textSmallStyle` all text styles have
-  fluid sizes that change depending on the viewport width instead of fixed predefined sizes on specific breakpoints.
+- `text` got renamed to `text{XSmall|Small|Medium|Large|XLarge}Style`.
 
 ```diff
 - import { text } from '@porsche-design-system/utilities';
@@ -136,15 +132,15 @@ As of v3 of the Porsche Design System the color theme got reworked completely to
 overview of the new colors have a look [here](https://designsystem.porsche.com/latest/styles/theme).
 
 - `color.lightTheme` and `color.darkTheme` got renamed to `theme.light` and `theme.dark`. In addition, you can also
-  single import a theme if for e.g. you only need `themeLight`.
+  single import a theme, e.g. if you only need `themeLight`.
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';;
 + import { theme, themeLight, themeDark } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
-As the styles for `themeLight` and `themeDark` are in sync, the name changes mentioned below concern both themes even if
-only light theme is displayed in the diff.
+Since the styles for `themeLight` and `themeDark` are synchronized, the name changes mentioned below affect both themes,
+even if only the light theme is displayed in the diff.
 
 - `brand` got renamed to `primary`.
 
@@ -236,7 +232,7 @@ const component2 = styled.div({
 
 **Spacings**
 
-With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
+With the upcoming v3 release, we will introduce fluid spacers in addition to our static spacers. These spacers will
 adjust in size based on a min and max value, providing a fluid response to changes in browser width.
 
 ```diff
@@ -257,7 +253,7 @@ const Component1 = styled.div({
 });
 ```
 
-To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
+To get an overview of the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
 
 ##### SCSS
 
@@ -287,8 +283,6 @@ button {
 
 - `breakpoint` `xxs` is now `base`.
 - instead of `p-media-query` we provide now `pds-media-query-min`, `pds-media-query-max` and `pds-media-query-min-max`.
-  Furthermore, the mixins only accept the predefined Porsche Design System breakpoints from `base` to `xxl` and no
-  custom breakpoints anymore.
 
 ```diff
 - @import '~@porsche-design-system/utilities/scss';
@@ -316,9 +310,7 @@ div {
 }
 ```
 
-- `p-title-large` mixin is now renamed to `pds-display-large` and in addition we provide `pds-display-medium`. The size
-  of the new `display` styles are changing fluid depending on the viewport width instead of fixed predefined sizes on
-  specific breakpoints, and they are italic now.
+- `p-title-large` mixin is now renamed to `pds-display-large` and in addition we provide `pds-display-medium`.
 
 ```diff
 - @import '~@porsche-design-system/utilities/scss';
@@ -334,9 +326,7 @@ h2 {
 }
 ```
 
-- `p-headline-{1|2|3|4|5}` got renamed/extended to `pds-heading-{small|medium|large|x-large|xx-large|xxx-large}`. The
-  size of the new `heading` styles are changing fluid depending on the viewport width instead of fixed predefined sizes
-  on specific breakpoints, and they are italic now.
+- `p-headline-{1|2|3|4|5}` got renamed/extended to `pds-heading-{small|medium|large|x-large|xx-large|xxx-large}`.
 
 ```diff
 - @import '~@porsche-design-system/utilities/scss';
@@ -353,9 +343,7 @@ h2 {
 }
 ```
 
-- `p-text-{x-small|small|medium|large|x-large}` got renamed to `pds-text-{x-small|small|medium|large|x-large}`. Except
-  `pds-text-small` all text styles have fluid sizes that change depending on the viewport width instead of fixed
-  predefined sizes on specific breakpoints.
+- `p-text-{x-small|small|medium|large|x-large}` got renamed to `pds-text-{x-small|small|medium|large|x-large}`.
 
 ```diff
 - @import '~@porsche-design-system/utilities/scss';
@@ -408,7 +396,7 @@ div {
 }
 ```
 
-- to keep it clear, only the old color variable in regard to its new name will be mentioned below:
+- for the sake of clarity, only the old color variables are mentioned below in relation to their new names:
 
 ```diff
 - $p-color-background-surface
@@ -596,7 +584,7 @@ button {
 
 **Spacings**
 
-With the upcoming v3 release, we will be introducing fluid spacers alongside our static spacers. These spacers will
+With the upcoming v3 release, we will introduce fluid spacers in addition to our static spacers. These spacers will
 adjust in size based on a min and max value, providing a fluid response to changes in browser width.
 
 ```diff
@@ -631,7 +619,7 @@ root font size is adjusted.
 + $pds-spacing-static-xx-large
 ```
 
-To get an overview ot the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
+To get an overview of the new spacings have a look [here](https://designsystem.porsche.com/latest/styles/spacing).
 
 #### Deprecated
 
