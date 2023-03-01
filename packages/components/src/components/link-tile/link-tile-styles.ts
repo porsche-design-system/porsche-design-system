@@ -1,3 +1,4 @@
+import { JssStyle } from 'jss';
 import {
   pxToRemWithUnit,
   getTransition,
@@ -31,7 +32,7 @@ const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '9:16': '177.75%',
 };
 
-const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): object => {
+const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): JssStyle => {
   return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
 };
 
@@ -123,9 +124,7 @@ export const getComponentCss = (
       gap: spacingStaticMedium,
       ...mergeDeep(
         hasGradient &&
-          buildResponsiveStyles(compact, (isCompact: boolean) => ({
-            ...getGradientBackground(isCompact, isTopAligned),
-          })),
+          buildResponsiveStyles(compact, (isCompact: boolean) => getGradientBackground(isCompact, isTopAligned)),
         buildResponsiveStyles(compact, (isCompact: boolean) =>
           isCompact
             ? {
