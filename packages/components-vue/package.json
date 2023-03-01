@@ -42,7 +42,7 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@rushstack/eslint-patch": "^1.1.4",
     "@testing-library/vue": "^6.6.1",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.14.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",
