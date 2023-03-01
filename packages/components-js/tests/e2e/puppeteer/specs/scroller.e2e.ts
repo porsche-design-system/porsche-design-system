@@ -24,19 +24,23 @@ type InitOptions = {
   otherMarkup?: string;
   tag?: 'a' | 'button' | 'span';
   scrollToPosition?: ScrollToPosition;
+  scrollbar?: boolean;
 };
 
 const initScroller = (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts || {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition, scrollbar } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const attrs = scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '';
+  const attrs = [
+    scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
+    scrollbar ? `scrollbar="${scrollbar}"` : '',
+  ];
 
-  const content = `<p-scroller ${attrs}>
+  const content = `<p-scroller ${attrs.join(' ')}>
   ${elements}
 </p-scroller>${otherMarkup}`;
 
@@ -46,6 +50,7 @@ const initScroller = (opts?: InitOptions) => {
 const getHost = () => selectNode(page, 'p-scroller');
 const getAllButtons = () => page.$$('button');
 const getScrollArea = () => selectNode(page, 'p-scroller >>> .scroll-area');
+const getScrollAreaOverflow = async () => getElementStyle(await getScrollArea(), 'overflow');
 const getScrollWrapper = () => selectNode(page, 'p-scroller >>> .scroll-wrapper');
 const getActionContainers = async () => {
   const actionPrev = await selectNode(page, 'p-scroller >>> .action-prev');
@@ -82,6 +87,14 @@ describe('scrolling', () => {
     await initScroller({ isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
 
     expect(await getScrollLeft(await getScrollArea())).toBe(50);
+  });
+});
+
+describe('scroller with scrollbar', () => {
+  it('should have overflow: "auto hidden" for scroll area when scrollbar is set to true', async () => {
+    await initScroller({ scrollbar: true });
+
+    expect(await getScrollAreaOverflow()).toBe('auto hidden');
   });
 });
 
