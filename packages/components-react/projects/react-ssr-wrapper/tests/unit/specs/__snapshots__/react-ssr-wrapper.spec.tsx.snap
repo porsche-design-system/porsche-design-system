@@ -4055,7 +4055,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -4665,7 +4665,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -5068,18 +5068,10 @@ exports[`should render dsr component for PTable 1`] = `
   display: none !important;
 }
 .caption {
-  margin-bottom: 8px;
+  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
 .root {
   position: relative;
-}
-.scroll-area {
-  overflow: auto visible;
-  outline: 1px solid transparent;
-  outline-offset: -1px;
-}
-.scroll-area::-moz-focus-inner {
-  border: 0;
 }
 .table {
   position: relative;
@@ -5091,62 +5083,249 @@ exports[`should render dsr component for PTable 1`] = `
   text-align: left;
   color: #010205;
   white-space: nowrap;
+  border-collapse: collapse;
 }
-.scroll-trigger {
-  position: absolute;
-  top: 0;
-  right: 1px;
-  width: 1px;
-  height: 1px;
-  visibility: hidden;
-}
-.scroll-indicator {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  padding-left: 32px;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
-}
-.scroll-indicator::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 3rem;
-  pointer-events: auto;
-}
-.scroll-button {
-  padding: 0.75rem;
-  pointer-events: auto;
-}
-@media(min-width:1000px) {
-  .caption {
-    margin-bottom: 16px;
-  }
-}
-
     </style>
     <div
       class="root"
     >
-      <div
-        class="scroll-area"
+      <p-scroller
+        class="ssr"
       >
+        <template
+          shadowroot="open"
+        >
+          <style>
+            :host {
+  display: block !important;
+  height: inherit !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+}
+
+.root {
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 4px;
+  overflow: auto hidden;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-flex;
+  min-height: 28px;
+  min-width: 100%;
+  vertical-align: top;
+  outline: 0;
+}
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.trigger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  position: relative;
+  padding: 4px 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  margin-left: -1px;
+  grid-area: 1 / 1 / 1 / 1;
+  justify-content: flex-start;
+  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
+  visibility: hidden;
+}
+.action-prev button {
+  margin-left: 8px;
+}
+.action-next {
+  position: relative;
+  padding: 4px 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  margin-right: -1px;
+  grid-area: 1 / 3 / 1 / 3;
+  justify-content: flex-end;
+  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
+  visibility: hidden;
+}
+.action-next button {
+  margin-right: 8px;
+}
+
+          </style>
+          <div
+            class="root"
+          >
+            <div
+              class="scroll-area"
+            >
+              <div
+                class="scroll-wrapper"
+              >
+                <slot />
+                <div
+                  class="trigger"
+                />
+                <div
+                  class="trigger"
+                />
+              </div>
+            </div>
+            <div
+              class="action-prev"
+            >
+              <button
+                aria-hidden="true"
+                aria-label="prev"
+                tabindex="-1"
+                type="button"
+              >
+                <p-icon
+                  class="icon ssr"
+                >
+                  <template
+                    shadowroot="open"
+                  >
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                    </style>
+                    <img
+                      alt=""
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    />
+                  </template>
+                </p-icon>
+              </button>
+            </div>
+            <div
+              class="action-next"
+            >
+              <button
+                aria-hidden="true"
+                aria-label="next"
+                tabindex="-1"
+                type="button"
+              >
+                <p-icon
+                  class="icon ssr"
+                >
+                  <template
+                    shadowroot="open"
+                  >
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                    </style>
+                    <img
+                      alt=""
+                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    />
+                  </template>
+                </p-icon>
+              </button>
+            </div>
+          </div>
+        </template>
         <div
           class="table"
           role="table"
         >
           <slot />
-          <span
-            class="scroll-trigger"
-          />
         </div>
-      </div>
+      </p-scroller>
     </div>
   </template>
   Some child
@@ -5186,10 +5365,11 @@ exports[`should render dsr component for PTableCell 1`] = `
     <style>
       :host {
   display: table-cell !important;
-  padding: 0.75rem !important;
+  padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   border-bottom: 1px solid #D8D8DB !important;
   white-space: nowrap !important;
+  transform: translate3d(0,0,0) !important;
   vertical-align: middle;
 }
 :host([hidden]) {
@@ -5236,8 +5416,8 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
     <style>
       :host {
   display: table-cell !important;
-  padding: 0.125rem 0.75rem 0.5rem !important;
-  border-bottom: 1px solid #949598 !important;
+  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  border-bottom: 1px solid #D8D8DB !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -5269,6 +5449,9 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:host::before {
+  content: "" !important;
+}
     </style>
     <slot />
   </template>
@@ -5286,6 +5469,7 @@ exports[`should render dsr component for PTableRow 1`] = `
   >
     <style>
       :host {
+  position: relative !important;
   display: table-row !important;
 }
 :host([hidden]) {
@@ -5438,7 +5622,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -5772,7 +5956,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
