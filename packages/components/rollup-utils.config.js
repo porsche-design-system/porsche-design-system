@@ -30,9 +30,11 @@ ${utilsExports}
 
 generateUtilsEntryFile();
 
+const isDevBuild = process.env.PDS_IS_STAGING === '1';
+
 const sharedPlugins = [
   replace({
-    ROLLUP_REPLACE_IS_STAGING: '"production"',
+    ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
     preventAssignment: true,
   }),
   commonjs(),
