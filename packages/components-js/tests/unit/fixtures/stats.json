@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 16828,
-    "gzipSize": 7696
+    "size": 16151,
+    "gzipSize": 7716
   },
   {
     "chunkShortName": "inline-notification",
@@ -107,7 +107,7 @@
   {
     "chunkShortName": "main",
     "size": 67997,
-    "gzipSize": 23070
+    "gzipSize": 23071
   },
   {
     "chunkShortName": "marque",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "model-signature",
-    "size": 2314,
-    "gzipSize": 1237
+    "size": 2475,
+    "gzipSize": 1307
   },
   {
     "chunkShortName": "pagination",
