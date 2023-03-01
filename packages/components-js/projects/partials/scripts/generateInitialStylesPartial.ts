@@ -12,6 +12,7 @@ export const generateInitialStylesPartial = (): string => {
   format?: Format;
 };`;
 
+  // TODO: Modal + Table will get theme prop soon
   // TODO: extend slotted link case for Carousel, Display, Link Tile, Modal, Switch, Tabs (maybe states test is good enough)
   const componentsWithSlottedCss: TagName[] = [
     'p-accordion',

@@ -1,8 +1,7 @@
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   getHTMLElements,
   getPrefixedTagNames,
   scrollElementTo,
@@ -128,18 +127,16 @@ export class Scroller {
     };
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <div class="root">
-          <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-            <div class="scroll-wrapper" tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
-              <slot />
-              <div class="trigger" />
-              <div class="trigger" />
-            </div>
+      <div class="root">
+        <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
+          <div class="scroll-wrapper" tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
+            <slot />
+            <div class="trigger" />
+            <div class="trigger" />
           </div>
-          {(['prev', 'next'] as ScrollerDirection[]).map(renderPrevNextButton)}
         </div>
-      </Host>
+        {(['prev', 'next'] as ScrollerDirection[]).map(renderPrevNextButton)}
+      </div>
     );
   }
 
