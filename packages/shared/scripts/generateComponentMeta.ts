@@ -61,11 +61,11 @@ const generateComponentMeta = (): void => {
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
     nestedComponents?: TagName[]; // array of other pds components
     props?: {
-      [propName: string]: boolean | number | string; // value is the prop's default value
+      [propName: string]: boolean | number | string | object; // value is the prop's default value
     };
     requiredProps?: string[]; // array of props that are mandatory
     internalProps?: {
-      [propName: string]: boolean | number | string; // value is the prop's default value
+      [propName: string]: boolean | number | string | object; // value is the prop's default value
     };
     hostAttributes?: {
       [attrName: string]: string;
@@ -159,15 +159,33 @@ const generateComponentMeta = (): void => {
     // props
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
-      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
+      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
     ).reduce((result, [, propName, , propValue]) => {
-      const cleanedValue =
+      let cleanedValue: boolean | number | string | object =
         propValue === 'true'
           ? true
           : propValue === 'false'
           ? false
           : // undefined values get lost in JSON.stringify, but null is allowed
-            propValue?.replace(/'/g, '') || null;
+            propValue
+              ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
+              .replace(/\s+/g, ' ') // remove new lines and multiple spaces
+              .replace(/,( })/, '$1') || // remove trailing comma in original multiline objects
+            null;
+
+      if (typeof cleanedValue === 'string') {
+        if (cleanedValue.match(/^\d+$/)) {
+          // parse numbers
+          cleanedValue = parseInt(cleanedValue);
+
+          if (tagName === 'p-model-signature' && cleanedValue === 911) {
+            cleanedValue = `${cleanedValue}`; // convert it back to string
+          }
+        } else if (cleanedValue.match(/^{.+}$/)) {
+          // parse objects
+          cleanedValue = eval(`(${cleanedValue})`);
+        }
+      }
 
       return {
         ...result,
