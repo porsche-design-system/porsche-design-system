@@ -203,7 +203,6 @@ export class TextFieldWrapper {
       hideLabel: true,
       theme: this.theme,
       class: 'button',
-      type: 'button',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -234,6 +233,7 @@ export class TextFieldWrapper {
           {this.isPassword ? (
             <PrefixedTagNames.pButtonPure
               {...buttonProps}
+              type="button"
               icon={this.showPassword ? 'view-off' : 'view'}
               disabled={disabled}
               onClick={this.togglePassword}
@@ -244,6 +244,7 @@ export class TextFieldWrapper {
           ) : showCustomCalendarOrTimeIndicator(this.isCalendar, this.isTime) ? (
             <PrefixedTagNames.pButtonPure
               {...buttonProps}
+              type="button"
               icon={this.isCalendar ? 'calendar' : 'clock'}
               disabled={disabled}
               onClick={() => this.input.showPicker()}
@@ -276,6 +277,7 @@ export class TextFieldWrapper {
               ),
               <PrefixedTagNames.pButtonPure
                 {...buttonProps}
+                type="button"
                 key="btn-clear"
                 icon="close"
                 tabIndex={-1}
@@ -287,6 +289,7 @@ export class TextFieldWrapper {
               this.hasAction && (
                 <PrefixedTagNames.pButtonPure
                   {...buttonProps}
+                  type="button"
                   key="btn-action"
                   icon="locate"
                   hidden={this.isClearable}
