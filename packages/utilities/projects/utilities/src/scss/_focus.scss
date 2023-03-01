@@ -23,6 +23,7 @@ $pds-theme-map: (
   &:focus::before {
     content: '';
     position: absolute;
+    pointer-events: none; // necessary to be able to select elements behind ::before pseudo-element
     // we can use inset as soon as browser support is sufficient
     @if map-has-key($pds-focus-offset-map, $offset) {
       top: map-get($pds-focus-offset-map, $offset);

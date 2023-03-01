@@ -26,6 +26,7 @@ export const getFocusStyle = (opts?: GetFocusOptions) => {
       bottom: offset,
       border: `${borderWidthBase} solid ${opts?.theme === 'dark' ? themeDarkStateFocus : themeLightStateFocus}`,
       borderRadius: opts?.borderRadius === 'medium' ? borderRadiusMedium : borderRadiusSmall,
+      pointerEvents: 'none', // necessary to be able to select elements behind ::before pseudo-element
     },
     // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
     '&:focus:not(:focus-visible)::before': {
