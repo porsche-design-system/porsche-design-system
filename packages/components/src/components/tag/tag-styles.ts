@@ -85,14 +85,6 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           border: 0,
           textAlign: 'left',
         },
-        // revert injected hover styles from InitialStyles partial
-        ...hoverMediaQuery({
-          '&(a:hover)': {
-            backgroundColor: 'transparent',
-            WebkitBackdropFilter: 'initial',
-            backdropFilter: 'initial',
-          },
-        }),
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
         ...Object.entries(getTagFocusJssStyle(themedColors)).reduce((result, [key, value]) => {
           result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
