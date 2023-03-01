@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PorscheDesignSystemProvider should render components wrapped with nested provider and prefix 1`] = `
+exports[`should render components wrapped with nested provider and prefix 1`] = `
 <div>
   
   <my-prefix-p-button>
