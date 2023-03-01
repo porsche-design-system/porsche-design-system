@@ -3,7 +3,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
-  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
@@ -26,7 +25,7 @@ import type {
   TextWeight,
   Theme,
 } from '../../types';
-import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
@@ -145,27 +144,25 @@ export class ButtonPure {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <button {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
-          {this.loading ? (
-            <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
-          ) : (
-            hasIcon && (
-              <PrefixedTagNames.pIcon
-                {...iconProps}
-                name={this.icon}
-                source={this.iconSource}
-                color={this.isDisabledOrLoading ? 'disabled' : 'primary'}
-                theme={this.theme}
-                aria-hidden="true"
-              />
-            )
-          )}
-          <span class="label">
-            <slot />
-          </span>
-        </button>
-      </Host>
+      <button {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+        {this.loading ? (
+          <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
+        ) : (
+          hasIcon && (
+            <PrefixedTagNames.pIcon
+              {...iconProps}
+              name={this.icon}
+              source={this.iconSource}
+              color={this.isDisabledOrLoading ? 'disabled' : 'primary'}
+              theme={this.theme}
+              aria-hidden="true"
+            />
+          )
+        )}
+        <span class="label">
+          <slot />
+        </span>
+      </button>
     );
   }
 }

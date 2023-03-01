@@ -1,4 +1,5 @@
 import type { Styles } from 'jss';
+import type { TagName } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
 import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { fontFamily, fontHyphenationStyle, fontLineHeight, fontWeight } from '@porsche-design-system/utilities-v2';
@@ -10,6 +11,30 @@ export const generateInitialStylesPartial = (): string => {
   prefix?: string;
   format?: Format;
 };`;
+
+  // TODO: extend slotted link case for Carousel, Display, Link Tile, Modal, Switch, Tabs (maybe states test is good enough)
+  const componentsWithSlottedCss: TagName[] = [
+    'p-accordion',
+    'p-banner',
+    'p-carousel',
+    'p-checkbox-wrapper',
+    'p-display',
+    'p-heading',
+    'p-headline',
+    'p-inline-notification',
+    'p-link-tile',
+    'p-modal',
+    'p-popover',
+    'p-radio-button-wrapper',
+    'p-select-wrapper',
+    'p-switch',
+    'p-table',
+    'p-tabs',
+    'p-text',
+    'p-text-field-wrapper',
+    'p-text-list',
+    'p-textarea-wrapper',
+  ];
 
   const normalizeStyles: Styles = {
     '@global': {

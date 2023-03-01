@@ -21,9 +21,8 @@ import {
   THEMES,
   validateProps,
   getLinkButtonThemeForIcon,
-  getDataThemeDarkAttribute,
 } from '../../utils';
-import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
 
@@ -105,32 +104,30 @@ export class Button {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <button {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
-          {this.loading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
-              aria={{ 'aria-label': 'Loading state:' }}
-            />
-          )}
-          {hasVisibleIcon(this.icon, this.iconSource) && (
-            <PrefixedTagNames.pIcon
-              class="icon"
-              size="inherit"
-              name={this.iconSource ? undefined : this.icon}
-              source={this.iconSource}
-              color={isDisabledOrLoading(this.disabled, this.loading) ? 'disabled' : 'primary'}
-              theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
-              aria-hidden="true"
-            />
-          )}
-          <span class="label">
-            <slot />
-          </span>
-        </button>
-      </Host>
+      <button {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+        {this.loading && (
+          <PrefixedTagNames.pSpinner
+            class="spinner"
+            size="inherit"
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
+            aria={{ 'aria-label': 'Loading state:' }}
+          />
+        )}
+        {hasVisibleIcon(this.icon, this.iconSource) && (
+          <PrefixedTagNames.pIcon
+            class="icon"
+            size="inherit"
+            name={this.iconSource ? undefined : this.icon}
+            source={this.iconSource}
+            color={isDisabledOrLoading(this.disabled, this.loading) ? 'disabled' : 'primary'}
+            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
+            aria-hidden="true"
+          />
+        )}
+        <span class="label">
+          <slot />
+        </span>
+      </button>
     );
   }
 }

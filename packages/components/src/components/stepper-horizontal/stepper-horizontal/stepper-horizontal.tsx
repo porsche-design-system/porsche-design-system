@@ -1,9 +1,8 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   getScrollActivePosition,
   observeBreakpointChange,
@@ -25,7 +24,6 @@ import {
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
-import type { BreakpointCustomizable } from '../../../types';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
   size: AllowedTypes.breakpoint<StepperHorizontalSize>(STEPPER_HORIZONTAL_SIZES),
@@ -112,7 +110,7 @@ export class StepperHorizontal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)} role="list">
+      <Host role="list">
         <PrefixedTagNames.pScroller class="scroller" theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
           <slot />
         </PrefixedTagNames.pScroller>

@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Pro
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   observeChildren,
   THEMES,
   throwIfChildrenAreNotOfKind,
@@ -79,7 +78,7 @@ export class SegmentedControl {
     syncSegmentedControlItemsProps(this.host, this.value, this.theme);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)} role="group">
+      <Host role="group">
         <slot />
       </Host>
     );

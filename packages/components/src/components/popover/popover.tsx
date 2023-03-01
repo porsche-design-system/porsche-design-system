@@ -8,6 +8,7 @@ import {
 import {
   AllowedTypes,
   attachComponentCss,
+  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
   THEMES,
@@ -72,7 +73,7 @@ export class Popover {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onKeydown={this.onKeydown}>
+      <Host onKeydown={this.onKeydown} {...getDataThemeDarkAttribute(this.theme)}>
         <button
           type="button"
           onClick={() => (this.open = !this.open)}

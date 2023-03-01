@@ -1,8 +1,8 @@
-import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
+  FORM_STATES,
   hasLabel,
   hasMessage,
   THEMES,
@@ -10,12 +10,11 @@ import {
 } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
+import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { FORM_STATES } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
 
 const propTypes: PropTypes<typeof FieldsetWrapper> = {
   label: AllowedTypes.string,
@@ -66,20 +65,18 @@ export class FieldsetWrapper {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <fieldset aria-describedby={hasMessageValue ? messageId : null}>
-          {hasLabel(this.host, this.label) && (
-            <legend>
-              {this.label || <slot name="label" />}
-              {this.required && <Required />}
-            </legend>
-          )}
-          <slot />
-          {hasMessageValue && (
-            <StateMessage id={messageId} state={this.state} message={this.message} theme="light" host={this.host} />
-          )}
-        </fieldset>
-      </Host>
+      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
+        {hasLabel(this.host, this.label) && (
+          <legend>
+            {this.label || <slot name="label" />}
+            {this.required && <Required />}
+          </legend>
+        )}
+        <slot />
+        {hasMessageValue && (
+          <StateMessage id={messageId} state={this.state} message={this.message} theme="light" host={this.host} />
+        )}
+      </fieldset>
     );
   }
 }

@@ -1,9 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
@@ -134,19 +133,17 @@ export class TabsBar {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <PrefixedTagNames.pScroller
-          class="scroller"
-          role="tablist"
-          theme={this.theme}
-          gradientColorScheme={this.gradientColorScheme}
-          scrollIndicatorPosition="top"
-          ref={(el) => (this.scrollerElement = el)}
-        >
-          <slot />
-          <span class="bar" ref={(el) => (this.barElement = el)} />
-        </PrefixedTagNames.pScroller>
-      </Host>
+      <PrefixedTagNames.pScroller
+        class="scroller"
+        role="tablist"
+        theme={this.theme}
+        gradientColorScheme={this.gradientColorScheme}
+        scrollIndicatorPosition="top"
+        ref={(el) => (this.scrollerElement = el)}
+      >
+        <slot />
+        <span class="bar" ref={(el) => (this.barElement = el)} />
+      </PrefixedTagNames.pScroller>
     );
   }
 
