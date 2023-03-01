@@ -979,7 +979,7 @@ exports[`should match snapshot 1`] = `
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "caption",
     ],
@@ -988,6 +988,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "caption": null,
+      "theme": "light",
     },
     "styling": "jss",
   },
@@ -1019,9 +1020,10 @@ exports[`should match snapshot 1`] = `
     },
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "props": {
       "multiline": false,
+      "theme": "light",
     },
     "requiredParent": "p-table-row",
     "styling": "jss",
@@ -1055,7 +1057,7 @@ exports[`should match snapshot 1`] = `
     },
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
       "p-icon",
@@ -1064,6 +1066,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": false,
       "multiline": false,
       "sort": null,
+      "theme": "light",
     },
     "requiredParent": "p-table-head-row",
     "styling": "jss",
@@ -1096,7 +1099,10 @@ exports[`should match snapshot 1`] = `
     },
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
+    "props": {
+      "theme": "light",
+    },
     "requiredParent": "p-table-body",
     "styling": "jss",
   },
