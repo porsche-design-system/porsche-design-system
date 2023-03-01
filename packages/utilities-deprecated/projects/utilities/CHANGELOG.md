@@ -30,8 +30,8 @@ styles can be found [here](https://designsystem.porsche.com/latest/styles/introd
 import styled from 'styled-components';
 
 const Component1 = styled.a`
--  ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
-+  ${getFocusStyle({ offset: 'small', borderRadius: 'small', theme: 'light' })}
+-  ${focus()}
++  ${getFocusStyle()}
 `;
 
 const Component2 = styled.a`
