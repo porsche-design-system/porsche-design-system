@@ -26,7 +26,7 @@ styles can be found [here](https://designsystem.porsche.com/latest/styles/introd
 
 ```diff
 - import { focus } from '@porsche-design-system/utilities';
-+ import { getFocusStyles } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { getFocusStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const Component1 = styled.a`
