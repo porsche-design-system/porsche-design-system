@@ -103,7 +103,6 @@
           .token.symbol,
           .token.deleted {
             color: #007299;
-            font-family: inherit;
           }
 
           .token.boolean,
@@ -118,7 +117,6 @@
           .token.builtin,
           .token.inserted {
             color: #aa5d00;
-            font-family: inherit;
           }
 
           .token.operator,
@@ -134,7 +132,6 @@
           .token.attr-value,
           .token.function {
             color: #418340; // NOTE: this is custom and not from the theme
-            font-family: inherit;
           }
 
           .token.keyword {
@@ -160,14 +157,12 @@
             .token.builtin,
             .token.inserted {
               color: #a55a00;
-              font-family: inherit;
             }
 
             .token.atrule,
             .token.attr-value,
             .token.function {
               color: #3d7b3c;
-              font-family: inherit;
             }
           }
         }
@@ -201,7 +196,6 @@
           .token.symbol,
           .token.deleted {
             color: #ffa07a;
-            font-family: inherit;
           }
 
           .token.boolean,
@@ -216,7 +210,6 @@
           .token.builtin,
           .token.inserted {
             color: #abe338;
-            font-family: inherit;
           }
 
           .token.operator,
@@ -232,7 +225,6 @@
           .token.attr-value,
           .token.function {
             color: #ffd700;
-            font-family: inherit;
           }
 
           .token.keyword {
