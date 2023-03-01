@@ -39,7 +39,7 @@
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-typescript": "^10.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
     "@rushstack/eslint-patch": "^1.1.4",
     "@testing-library/vue": "^6.6.1",
     "@types/node": "^18.11.18",
@@ -53,7 +53,7 @@
     "eslint": "^8.31.0",
     "eslint-plugin-vue": "^9.3.0",
     "local-web-server": "^5.2.1",
-    "rollup": "^3.10.0",
+    "rollup": "^3.17.3",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "~4.9.5",
