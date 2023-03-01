@@ -61,7 +61,7 @@ export class TableHeadCell {
         {isSortable(active, direction) ? (
           <PrefixedTagNames.pButtonPure class="button-pure" icon="none" onClick={this.onButtonClick} theme={this.theme}>
             <slot />
-            <PrefixedTagNames.pIcon
+            <PrefixedTagNames.pIcon // we use slotted icon instead of built-in icon because we need to style it from here (for active state and for sorting)
               class="icon"
               color="primary"
               name="arrow-up"
