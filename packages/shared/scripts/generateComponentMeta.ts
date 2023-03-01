@@ -29,6 +29,7 @@ const generateComponentMeta = (): void => {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
   requiredProps?: string[]; // array of props that are mandatory
+  deprecatedProps?: string[]; // array of props that are deprecated
   internalProps?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
@@ -61,11 +62,12 @@ const generateComponentMeta = (): void => {
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
     nestedComponents?: TagName[]; // array of other pds components
     props?: {
-      [propName: string]: boolean | number | string | object; // value is the prop's default value
+      [propName: string]: boolean | number | string | object | null; // value is the prop's default value
     };
     requiredProps?: string[]; // array of props that are mandatory
+    deprecatedProps?: string[]; // array of props that are deprecated
     internalProps?: {
-      [propName: string]: boolean | number | string | object; // value is the prop's default value
+      [propName: string]: boolean | number | string | object | null; // value is the prop's default value
     };
     hostAttributes?: {
       [attrName: string]: string;
@@ -156,11 +158,12 @@ const generateComponentMeta = (): void => {
       .map(([, tagName]) => paramCase(tagName) as TagName)
       .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
+    const deprecatedProps: ComponentMeta['deprecatedProps'] = [];
+
     // props
     const props: ComponentMeta['props'] = Array.from(
-      // regex can handle value on same line and next line only
-      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
-    ).reduce((result, [, propName, , propValue]) => {
+      source.matchAll(/(  \/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
+    ).reduce((result, [, jsdoc, propName, , propValue]) => {
       let cleanedValue: boolean | number | string | object =
         propValue === 'true'
           ? true
@@ -185,6 +188,10 @@ const generateComponentMeta = (): void => {
           // parse objects
           cleanedValue = eval(`(${cleanedValue})`);
         }
+      }
+
+      if (jsdoc?.match(/@deprecated/)) {
+        deprecatedProps.push(propName);
       }
 
       return {
@@ -264,22 +271,23 @@ const generateComponentMeta = (): void => {
       isInternal,
       isThemeable,
       requiredParent,
-      ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
+      ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }), // TODO: singular / plural mismatch?
       requiredChild,
       requiredChildSelector,
-      ...(nestedComponents.length && { nestedComponents: nestedComponents }),
-      ...(Object.keys(props).length && { props: props }),
-      ...(requiredProps.length && { requiredProps: requiredProps }),
-      ...(Object.keys(internalProps).length && { internalProps: internalProps }),
-      ...(Object.keys(hostAttributes).length && { hostAttributes: hostAttributes }),
+      ...(nestedComponents.length && { nestedComponents }),
+      ...(Object.keys(props).length && { props }),
+      ...(requiredProps.length && { requiredProps }),
+      ...(deprecatedProps.length && { deprecatedProps }),
+      ...(Object.keys(internalProps).length && { internalProps }),
+      ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
-      ...(namedSlots.length && { namedSlots: namedSlots }),
+      ...(namedSlots.length && { namedSlots }),
       hasSlottedCss,
       hasEvent,
-      ...(eventNames.length && { eventNames: eventNames }),
+      ...(eventNames.length && { eventNames }),
       hasAriaProp,
       hasObserveAttributes,
-      ...(observedAttributes.length && { observedAttributes: observedAttributes }),
+      ...(observedAttributes.length && { observedAttributes }),
       hasObserveChildren,
       styling,
     };

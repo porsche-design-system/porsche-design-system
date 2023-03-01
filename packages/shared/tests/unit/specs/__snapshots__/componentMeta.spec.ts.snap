@@ -105,6 +105,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-pure": {
+    "deprecatedProps": [
+      "weight",
+    ],
     "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -136,6 +139,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-carousel": {
+    "deprecatedProps": [
+      "wrapContent",
+    ],
     "eventNames": [
       "carouselChange",
     ],
@@ -199,6 +205,10 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-content-wrapper": {
+    "deprecatedProps": [
+      "backgroundColor",
+      "theme",
+    ],
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
     "hasEvent": false,
@@ -324,6 +334,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-grid": {
+    "deprecatedProps": [
+      "gutter",
+    ],
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
     "hasEvent": false,
@@ -408,6 +421,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-icon": {
+    "deprecatedProps": [
+      "lazy",
+    ],
     "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -492,6 +508,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-pure": {
+    "deprecatedProps": [
+      "weight",
+    ],
     "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -761,6 +780,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-segmented-control": {
+    "deprecatedProps": [
+      "backgroundColor",
+    ],
     "eventNames": [
       "segmentedControlChange",
     ],
