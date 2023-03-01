@@ -22,7 +22,7 @@ styles can be found [here](https://designsystem.porsche.com/latest/styles/introd
 
 **Functions**
 
-- `focus()` is now `getFocusStyles()`.
+- `focus()` is now `getFocusStyle()`.
 
 ```diff
 - import { focus } from '@porsche-design-system/utilities';
