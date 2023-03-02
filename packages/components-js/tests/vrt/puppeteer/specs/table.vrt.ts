@@ -54,16 +54,16 @@ it('should have no visual regression for :hover + :focus-visible and light theme
 
       // TODO: scroll trigger :hover + :focus-visible test is missing due piercing selector only works for nested child
       // TODO: `await forceFocusedState(page, '.focus p-table >>> .scroll-area');`, no class is selectable after piercing selector
-      await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
-      await forceHoverState(page, '.hover p-table-cell a');
-      await forceHoverState(page, '.hover [slot="caption"] a');
-      await forceHoverState(page, '.hover p-table-row:nth-child(3)');
       await forceFocusState(page, '.focus p-table-head-cell >>> p-button-pure >>> button');
       await forceFocusState(page, '.focus p-table-cell a');
       await forceFocusState(page, '.focus [slot="caption"] a');
       await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> p-button-pure >>> button');
       await forceFocusHoverState(page, '.focus-hover p-table-cell a');
       await forceFocusHoverState(page, '.focus-hover [slot="caption"] a');
+      await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-table-cell a');
+      await forceHoverState(page, '.hover [slot="caption"] a');
+      await forceHoverState(page, '.hover p-table-row:nth-child(3)');
     })
   ).toBeFalsy();
 });
@@ -82,16 +82,16 @@ it('should have no visual regression for :hover + :focus-visible and dark theme'
         });
       });
 
-      await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
-      await forceHoverState(page, '.hover p-table-cell a');
-      await forceHoverState(page, '.hover [slot="caption"] a');
-      await forceHoverState(page, '.hover p-table-row:nth-child(3)');
       await forceFocusState(page, '.focus p-table-head-cell >>> p-button-pure >>> button');
       await forceFocusState(page, '.focus p-table-cell a');
       await forceFocusState(page, '.focus [slot="caption"] a');
       await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> p-button-pure >>> button');
       await forceFocusHoverState(page, '.focus-hover p-table-cell a');
       await forceFocusHoverState(page, '.focus-hover [slot="caption"] a');
+      await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-table-cell a');
+      await forceHoverState(page, '.hover [slot="caption"] a');
+      await forceHoverState(page, '.hover p-table-row:nth-child(3)');
     })
   ).toBeFalsy();
 });
