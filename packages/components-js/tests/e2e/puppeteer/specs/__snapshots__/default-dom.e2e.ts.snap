@@ -191,7 +191,7 @@ exports[`should have no basic DOM regression for p-link-tile 1`] = `
   <div class="content">
     <p id="description">
       value</p>
-    <p-link class="link hydrated" data-theme="dark">
+    <p-link class="link hydrated">
       <a class="anchor" href="value" target="_self" aria-describedby="description">
         value</a>
     </p-link>
