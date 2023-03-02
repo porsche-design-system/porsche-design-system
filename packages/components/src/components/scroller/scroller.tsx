@@ -55,7 +55,7 @@ export class Scroller {
   @Prop() public gradientColor?: ScrollerGradientColor = 'background-base';
 
   /** Scrolls the scroll area to the left either smooth or immediately */
-  @Prop() public scrollToPosition?: ScrollToPosition;
+  @Prop({ mutable: true }) public scrollToPosition?: ScrollToPosition;
 
   /** Sets the vertical position of scroll indicator icon */
   @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';

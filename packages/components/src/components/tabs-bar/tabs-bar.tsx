@@ -71,7 +71,7 @@ export class TabsBar {
   @Prop() public gradientColor?: TabGradientColor = 'background-base';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
-  @Prop() public activeTabIndex?: number | undefined;
+  @Prop({ mutable: true }) public activeTabIndex?: number | undefined;
 
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
