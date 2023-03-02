@@ -62,22 +62,22 @@ export class Pagination {
   };
 
   /**
-   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead.
    * Aria label what the pagination is used for. */
   @Prop() public allyLabel?: string;
 
   /**
-   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead.
    * Aria label for previous page icon. */
   @Prop() public allyLabelPrev?: string;
 
   /**
-   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead.
    * Aria label for page navigation. */
   @Prop() public allyLabelPage?: string;
 
   /**
-   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead.
    * Aria label for next page icon. */
   @Prop() public allyLabelNext?: string;
 
@@ -92,8 +92,13 @@ export class Pagination {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when the page changes. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when the page changes. */
   @Event({ bubbles: false }) public pageChange: EventEmitter<PageChangeEvent>;
+
+  /** Emitted when the page changes. */
+  @Event({ bubbles: false }) public change: EventEmitter<PageChangeEvent>;
 
   @State() private breakpointMaxNumberOfPageLinks: NumberOfPageLinks = 7;
 
@@ -229,6 +234,7 @@ export class Pagination {
 
   private onClick(page: number): void {
     if (page !== this.activePage) {
+      this.change.emit({ page, previousPage: this.activePage });
       this.pageChange.emit({ page, previousPage: this.activePage });
       this.activePage = page; // TODO: should become a controlled component
     }

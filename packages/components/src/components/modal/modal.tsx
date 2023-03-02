@@ -47,8 +47,13 @@ export class Modal {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
 
-  /** Emitted when the component requests to be closed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead.
+   * Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
+
+  /** Emitted when the component requests to be closed. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
   private closeBtn: HTMLElement;
@@ -154,6 +159,7 @@ export class Modal {
 
   private closeModal = (): void => {
     if (!this.disableCloseButton) {
+      this.dismiss.emit();
       this.close.emit();
     }
   };

@@ -811,19 +811,19 @@ export namespace Components {
          */
         "activePage"?: number;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
          */
         "allyLabel"?: string;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
          */
         "allyLabelNext"?: string;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
          */
         "allyLabelPage"?: string;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
          */
         "allyLabelPrev"?: string;
         /**
@@ -1105,7 +1105,7 @@ export namespace Components {
          */
         "gradientColor"?: TabGradientColor;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
@@ -1811,9 +1811,13 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Emitted when accordion state is changed.
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when accordion state is changed.
          */
         "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
+        /**
+          * Emitted when accordion state is changed.
+         */
+        "onChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -1982,9 +1986,13 @@ declare namespace LocalJSX {
          */
         "intl"?: CarouselInternationalization;
         /**
-          * Emitted when carousel's content slides.
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when carousel's content slides.
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        /**
+          * Emitted when carousel's content slides.
+         */
+        "onChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
          */
@@ -2554,9 +2562,13 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Emitted when the component requests to be closed.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead. Emitted when the component requests to be closed.
          */
         "onClose"?: (event: PModalCustomEvent<void>) => void;
+        /**
+          * Emitted when the component requests to be closed.
+         */
+        "onDismiss"?: (event: PModalCustomEvent<void>) => void;
         /**
           * If true, the modal is open.
          */
@@ -2586,19 +2598,19 @@ declare namespace LocalJSX {
          */
         "activePage"?: number;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
          */
         "allyLabel"?: string;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
          */
         "allyLabelNext"?: string;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
          */
         "allyLabelPage"?: string;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
          */
         "allyLabelPrev"?: string;
         /**
@@ -2615,6 +2627,10 @@ declare namespace LocalJSX {
         "maxNumberOfPageLinks"?: BreakpointCustomizable<NumberOfPageLinks>;
         /**
           * Emitted when the page changes.
+         */
+        "onChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when the page changes.
          */
         "onPageChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
         /**
@@ -2695,6 +2711,10 @@ declare namespace LocalJSX {
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
           * Emitted when selected element changes.
+         */
+        "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
          */
         "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
         /**
@@ -2798,6 +2818,10 @@ declare namespace LocalJSX {
         /**
           * Emitted when active step is changed.
          */
+        "onChange"?: (event: PStepperHorizontalCustomEvent<StepChangeEvent>) => void;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active step is changed.
+         */
         "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepChangeEvent>) => void;
         /**
           * The text size.
@@ -2842,6 +2866,10 @@ declare namespace LocalJSX {
         /**
           * Emitted when checked status is changed.
          */
+        "onChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when checked status is changed.
+         */
         "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
         /**
           * Stretches the contents to max available space.
@@ -2859,6 +2887,10 @@ declare namespace LocalJSX {
         "caption"?: string;
         /**
           * Emitted when sorting is changed.
+         */
+        "onChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when sorting is changed.
          */
         "onSortingChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
     }
@@ -2900,11 +2932,15 @@ declare namespace LocalJSX {
          */
         "gradientColor"?: TabGradientColor;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
           * Emitted when active tab is changed.
+         */
+        "onChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
          */
         "onTabChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
         /**
@@ -2935,6 +2971,10 @@ declare namespace LocalJSX {
         "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
           * Emitted when active tab is changed.
+         */
+        "onChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
          */
         "onTabChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
         /**

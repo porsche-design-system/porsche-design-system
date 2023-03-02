@@ -5,6 +5,7 @@ exports[`should match snapshot 1`] = `
   "p-accordion": {
     "eventNames": [
       "accordionChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -148,6 +149,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "carouselChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -641,6 +643,7 @@ exports[`should match snapshot 1`] = `
   "p-modal": {
     "eventNames": [
       "close",
+      "dismiss",
     ],
     "hasAriaProp": true,
     "hasEvent": true,
@@ -694,6 +697,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "pageChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -810,6 +814,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "segmentedControlChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -953,6 +958,7 @@ exports[`should match snapshot 1`] = `
   "p-stepper-horizontal": {
     "eventNames": [
       "stepChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1004,6 +1010,7 @@ exports[`should match snapshot 1`] = `
   "p-switch": {
     "eventNames": [
       "switchChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1031,6 +1038,7 @@ exports[`should match snapshot 1`] = `
   "p-table": {
     "eventNames": [
       "sortingChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1166,6 +1174,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "tabChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1195,6 +1204,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "tabChange",
+      "change",
     ],
     "hasAriaProp": false,
     "hasEvent": true,

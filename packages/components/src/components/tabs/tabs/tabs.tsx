@@ -52,7 +52,7 @@ export class Tabs {
   @Prop() public theme?: Theme = 'light';
 
   /**
-   * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
    * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorDeprecated;
 
@@ -62,14 +62,20 @@ export class Tabs {
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
-  /** Emitted when active tab is changed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   *  Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
+
+  /** Emitted when active tab is changed. */
+  @Event({ bubbles: false }) public change: EventEmitter<TabChangeEvent>;
 
   @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
     this.setAccessibilityAttributes();
+    this.change.emit({ activeTabIndex: newValue });
     this.tabChange.emit({ activeTabIndex: newValue });
   }
 

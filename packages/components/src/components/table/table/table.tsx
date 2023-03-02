@@ -29,8 +29,13 @@ export class Table {
    * Use an element with an attribute of `slot="caption"` for a visible caption. */
   @Prop() public caption?: string;
 
-  /** Emitted when sorting is changed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
+
+  /** Emitted when sorting is changed. */
+  @Event({ bubbles: false }) public change: EventEmitter<SortingChangeEvent>;
 
   @State() private isScrollIndicatorVisible = false;
   @State() private isScrollable = false;
@@ -48,6 +53,7 @@ export class Table {
     warnIfCaptionIsUndefined(this.host, this.caption);
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<SortingChangeEvent>) => {
       e.stopPropagation();
+      this.change.emit(e.detail);
       this.sortingChange.emit(e.detail);
     });
   }

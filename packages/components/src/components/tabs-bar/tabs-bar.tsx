@@ -73,8 +73,13 @@ export class TabsBar {
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop({ mutable: true }) public activeTabIndex?: number | undefined;
 
-  /** Emitted when active tab is changed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
+
+  /** Emitted when active tab is changed. */
+  @Event({ bubbles: false }) public change: EventEmitter<TabChangeEvent>;
 
   @State() private tabElements: HTMLElement[] = [];
 
@@ -196,6 +201,7 @@ export class TabsBar {
   };
 
   private onTabClick = (newTabIndex: number): void => {
+    this.change.emit({ activeTabIndex: newTabIndex });
     this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 

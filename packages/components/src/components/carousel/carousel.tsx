@@ -108,8 +108,13 @@ export class Carousel {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when carousel's content slides. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when carousel's content slides. */
   @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselChangeEvent>;
+
+  /** Emitted when carousel's content slides. */
+  @Event({ bubbles: false }) public change: EventEmitter<CarouselChangeEvent>;
 
   @State() private amountOfPages: number;
 
@@ -263,6 +268,7 @@ export class Carousel {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
       updatePagination(this.paginationEl, activeIndex);
+      this.change.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
 
