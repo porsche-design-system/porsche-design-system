@@ -51,6 +51,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
+  pagination: AllowedTypes.breakpoint('boolean'),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -93,8 +94,13 @@ export class Carousel {
   /** Sets the amount of slides visible at the same time. */
   @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
 
-  /** If true, the carousel will not show pagination bullets at the bottom. */
-  @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean> = false;
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
+   * If true, the carousel will not show pagination bullets at the bottom. */
+  @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean>;
+
+  /** If false, the carousel will not show pagination bullets at the bottom. */
+  @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public intl?: CarouselInternationalization = {};
@@ -111,7 +117,7 @@ export class Carousel {
   private container: HTMLElement;
   private btnPrev: ButtonPure;
   private btnNext: ButtonPure;
-  private pagination: HTMLElement;
+  private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
   public connectedCallback(): void {
@@ -166,9 +172,25 @@ export class Carousel {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
+    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-    attachComponentCss(this.host, getComponentCss, this.width, this.disablePagination, this.alignHeader, this.theme);
+    this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.width,
+      this.disablePagination
+        ? typeof this.disablePagination === 'object'
+          ? // flipping the boolean values
+            (Object.fromEntries(
+              Object.entries(this.disablePagination).map(([key, value]) => [key, !value])
+            ) as BreakpointCustomizable<boolean>)
+          : this.disablePagination
+        : this.pagination,
+      this.alignHeader,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -223,7 +245,9 @@ export class Carousel {
           </div>
         </div>
 
-        {!this.disablePagination && <div class="pagination" ref={(ref) => (this.pagination = ref)} />}
+        {(!this.disablePagination || this.pagination) && (
+          <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
+        )}
       </Host>
     );
   }
@@ -232,13 +256,13 @@ export class Carousel {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
-      renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
+      renderPagination(this.paginationEl, this.amountOfPages, 0); // initial pagination
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
-      updatePagination(this.pagination, activeIndex);
+      updatePagination(this.paginationEl, activeIndex);
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
 
@@ -262,7 +286,7 @@ export class Carousel {
       // round to sanitize floating numbers
       Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
-    renderPagination(this.pagination, this.amountOfPages, this.splide?.index || 0);
+    renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
     updateSlidesInert(this.splide);
   };
 }

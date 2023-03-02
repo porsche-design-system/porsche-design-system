@@ -211,7 +211,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * If true, the carousel will not show pagination bullets at the bottom.
+          * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead. If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
@@ -222,6 +222,10 @@ export namespace Components {
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
         "intl"?: CarouselInternationalization;
+        /**
+          * If false, the carousel will not show pagination bullets at the bottom.
+         */
+        "pagination"?: BreakpointCustomizable<boolean>;
         /**
           * Whether the slides should rewind from last to first slide and vice versa.
          */
@@ -1966,7 +1970,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * If true, the carousel will not show pagination bullets at the bottom.
+          * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead. If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
@@ -1981,6 +1985,10 @@ declare namespace LocalJSX {
           * Emitted when carousel's content slides.
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        /**
+          * If false, the carousel will not show pagination bullets at the bottom.
+         */
+        "pagination"?: BreakpointCustomizable<boolean>;
         /**
           * Whether the slides should rewind from last to first slide and vice versa.
          */

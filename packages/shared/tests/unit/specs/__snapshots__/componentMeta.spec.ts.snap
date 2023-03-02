@@ -144,6 +144,7 @@ exports[`should match snapshot 1`] = `
   "p-carousel": {
     "deprecatedProps": [
       "wrapContent",
+      "disablePagination",
     ],
     "eventNames": [
       "carouselChange",
@@ -167,9 +168,10 @@ exports[`should match snapshot 1`] = `
     "props": {
       "alignHeader": "left",
       "description": null,
-      "disablePagination": false,
+      "disablePagination": null,
       "heading": null,
       "intl": "{}",
+      "pagination": true,
       "rewind": true,
       "slidesPerPage": 1,
       "theme": "light",
