@@ -10,41 +10,42 @@ import {
   getFocusStyle,
   getHoverStyle,
 } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule } from '@porsche-design-system/components/src/styles';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
+
+// TODO: Modal + Table will get theme prop soon
+// TODO: extend slotted link case for Carousel, Display, Link Tile, Modal, Switch, Tabs (maybe states test is good enough)
+const tagNamesWithSlottedAnchor: TagName[] = [
+  'p-accordion',
+  'p-banner',
+  'p-carousel',
+  'p-checkbox-wrapper',
+  'p-display',
+  'p-heading',
+  'p-headline',
+  'p-inline-notification',
+  'p-link-tile',
+  'p-modal',
+  'p-popover',
+  'p-radio-button-wrapper',
+  'p-select-wrapper',
+  'p-switch',
+  'p-table',
+  'p-tabs',
+  'p-text',
+  'p-text-field-wrapper',
+  'p-text-list',
+  'p-textarea-wrapper',
+];
+
+const tagNamesWithSlottedInputIndicator: TagName[] = ['p-textarea-wrapper'];
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
   prefix?: string;
   format?: Format;
 };`;
-
-  // TODO: Modal + Table will get theme prop soon
-  // TODO: extend slotted link case for Carousel, Display, Link Tile, Modal, Switch, Tabs (maybe states test is good enough)
-  const componentsWithSlottedAnchor: TagName[] = [
-    'p-accordion',
-    'p-banner',
-    'p-carousel',
-    'p-checkbox-wrapper',
-    'p-display',
-    'p-heading',
-    'p-headline',
-    'p-inline-notification',
-    'p-link-tile',
-    'p-modal',
-    'p-popover',
-    'p-radio-button-wrapper',
-    'p-select-wrapper',
-    'p-switch',
-    'p-table',
-    'p-tabs',
-    'p-text',
-    'p-text-field-wrapper',
-    'p-text-list',
-    'p-textarea-wrapper',
-  ];
-
-  const componentsWithSlottedInputIndicator: TagName[] = ['p-textarea-wrapper'];
 
   const normalizeStyles: Styles = {
     '@global': {
@@ -71,25 +72,23 @@ export const generateInitialStylesPartial = (): string => {
 
       // TODO: add prefix support
       // TODO: add multi prefix support
-      // TODO: styles should be important
-      [componentsWithSlottedAnchor.join()]: {
-        '& a': {
+      [tagNamesWithSlottedAnchor.join()]: {
+        '& a': addImportantToEachRule({
           textDecoration: 'underline',
           color: 'currentcolor',
           ...getHoverStyle({ inset: '0 -4px' }),
           ...getFocusStyle({ inset: '0 -4px' }),
-        },
+        }),
       },
 
       // TODO: add prefix support
       // TODO: add multi prefix support
-      // TODO: styles should be important
-      [componentsWithSlottedInputIndicator.join()]: {
+      [tagNamesWithSlottedInputIndicator.join()]: {
         '& input': {
           '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator':
-            {
+            addImportantToEachRule({
               display: 'none',
-            },
+            }),
         },
       },
     },
