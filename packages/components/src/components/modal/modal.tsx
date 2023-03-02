@@ -147,7 +147,10 @@ export class Modal {
   }
 
   private onMouseDown = (e: MouseEvent): void => {
-    if ((e.composedPath() as HTMLElement[])[0] === this.host) {
+    // hack to prevent click event on scrollbar track
+    const hasScrollBars = this.dialog.clientHeight > this.host.clientHeight;
+    const clickStartedInScrollBar = hasScrollBars ? e.clientX > this.host.clientWidth - 17 : false;
+    if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollBar) {
       this.closeModal();
     }
   };
