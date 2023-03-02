@@ -11,19 +11,27 @@ import {
   THEMES,
   unobserveChildren,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from '../../tabs-bar/tabs-bar-utils';
+import type {
+  TabChangeEvent,
+  TabGradientColor,
+  TabGradientColorDeprecated,
+  TabSize,
+  TabWeight,
+} from '../../tabs-bar/tabs-bar-utils';
 import { TAB_SIZES, TAB_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
-import { GRADIENT_COLOR_THEMES } from '../../scroller/scroller-utils';
+import { GRADIENT_COLORS, GRADIENT_COLORS_DEPRECATED } from '../../scroller/scroller-utils';
 import { syncTabsItemsProps } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
   weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
+  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorDeprecated>([...GRADIENT_COLORS_DEPRECATED, undefined]),
+  gradientColor: AllowedTypes.oneOf<TabGradientColor>(GRADIENT_COLORS),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -43,8 +51,13 @@ export class Tabs {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  /**
+   * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead
+   * Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColorScheme?: TabGradientColorDeprecated;
+
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
+  @Prop() public gradientColor?: TabGradientColor = 'background-base';
 
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
@@ -83,6 +96,7 @@ export class Tabs {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Tabs>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
     attachComponentCss(this.host, getComponentCss);
     syncTabsItemsProps(this.host, this.theme);
 
@@ -96,6 +110,7 @@ export class Tabs {
           weight={this.weight}
           theme={this.theme}
           gradientColorScheme={this.gradientColorScheme}
+          gradientColor={this.gradientColor}
           activeTabIndex={this.activeTabIndex}
           onTabChange={this.onTabChange}
         >

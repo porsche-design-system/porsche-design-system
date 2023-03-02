@@ -33,7 +33,7 @@ import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
-import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
+import { ScrollerGradientColor, ScrollerGradientColorDeprecated, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -41,7 +41,7 @@ import { StepChangeEvent, StepperHorizontalSize } from "./components/stepper-hor
 import { StepperState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/table/table/table-utils";
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { TabChangeEvent, TabGradientColor, TabGradientColorDeprecated, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextTag } from "./components/text/text-utils";
@@ -879,7 +879,11 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColor"?: ScrollerGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: ScrollerGradientColorDeprecated;
         /**
           * Sets the vertical position of scroll indicator icon
          */
@@ -1087,7 +1091,11 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabGradientColor;
+        /**
+          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
           * The text size.
          */
@@ -1109,7 +1117,11 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
           * The text size.
          */
@@ -2626,7 +2638,11 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColor"?: ScrollerGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: ScrollerGradientColorDeprecated;
         /**
           * Sets the vertical position of scroll indicator icon
          */
@@ -2850,7 +2866,11 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabGradientColor;
+        /**
+          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
           * Emitted when active tab is changed.
          */
@@ -2876,7 +2896,11 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
           * Emitted when active tab is changed.
          */

@@ -762,6 +762,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-scroller": {
+    "deprecatedProps": [
+      "gradientColorScheme",
+    ],
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -775,7 +778,8 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
-      "gradientColorScheme": "default",
+      "gradientColor": "background-base",
+      "gradientColorScheme": null,
       "scrollIndicatorPosition": "center",
       "scrollToPosition": null,
       "theme": "light",
@@ -1139,6 +1143,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs": {
+    "deprecatedProps": [
+      "gradientColorScheme",
+    ],
     "eventNames": [
       "tabChange",
     ],
@@ -1156,7 +1163,8 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "activeTabIndex": 0,
-      "gradientColorScheme": "default",
+      "gradientColor": "background-base",
+      "gradientColorScheme": null,
       "size": "small",
       "theme": "light",
       "weight": "regular",
@@ -1164,6 +1172,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs-bar": {
+    "deprecatedProps": [
+      "gradientColorScheme",
+    ],
     "eventNames": [
       "tabChange",
     ],
@@ -1181,7 +1192,8 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "activeTabIndex": null,
-      "gradientColorScheme": "default",
+      "gradientColor": "background-base",
+      "gradientColorScheme": null,
       "size": "small",
       "theme": "light",
       "weight": "regular",

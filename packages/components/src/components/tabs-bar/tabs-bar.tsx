@@ -15,9 +15,16 @@ import {
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
+import type {
+  TabChangeEvent,
+  TabGradientColor,
+  TabGradientColorDeprecated,
+  TabSize,
+  TabWeight,
+} from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
   getPrevNextTabIndex,
@@ -28,13 +35,14 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { ScrollerDirection } from '../scroller/scroller-utils';
-import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils';
+import { GRADIENT_COLORS, GRADIENT_COLORS_DEPRECATED } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
   weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
+  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorDeprecated>([...GRADIENT_COLORS_DEPRECATED, undefined]),
+  gradientColor: AllowedTypes.oneOf<TabGradientColor>(GRADIENT_COLORS),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -54,8 +62,13 @@ export class TabsBar {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead
+   * Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColorScheme?: TabGradientColorDeprecated;
+
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
+  @Prop() public gradientColor?: TabGradientColor = 'background-base';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop() public activeTabIndex?: number | undefined;
@@ -100,6 +113,7 @@ export class TabsBar {
 
   public componentDidLoad(): void {
     // TODO: validation of active element index inside of tabs bar!
+    // TODO: why not do this in connectedCallback?
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
 
     if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
@@ -128,6 +142,7 @@ export class TabsBar {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
     attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -138,6 +153,7 @@ export class TabsBar {
         role="tablist"
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
+        gradientColor={this.gradientColor}
         scrollIndicatorPosition="top"
         ref={(el) => (this.scrollerElement = el)}
       >
