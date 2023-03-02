@@ -127,6 +127,8 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
           "hostPdsComponent": null,
           "properties": {
+            "description": "",
+            "heading": "",
             "persistent": false,
             "state": "info",
             "theme": "dark",
