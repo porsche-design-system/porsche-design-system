@@ -221,11 +221,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
 }
-::slotted(a:hover) {
-  background-color: transparent !important;
-  -webkit-backdrop-filter: initial !important;
-  backdrop-filter: initial !important;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -301,11 +296,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
 }
-::slotted(a:hover) {
-  background-color: transparent !important;
-  -webkit-backdrop-filter: initial !important;
-  backdrop-filter: initial !important;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -380,11 +370,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
-}
-::slotted(a:hover) {
-  background-color: transparent !important;
-  -webkit-backdrop-filter: initial !important;
-  backdrop-filter: initial !important;
 }
 .root {
   display: flex;
@@ -463,11 +448,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
 }
-::slotted(a:hover) {
-  background-color: transparent !important;
-  -webkit-backdrop-filter: initial !important;
-  backdrop-filter: initial !important;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -544,11 +524,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
-}
-::slotted(a:hover) {
-  background-color: transparent !important;
-  -webkit-backdrop-filter: initial !important;
-  backdrop-filter: initial !important;
 }
 .root {
   display: flex;
@@ -627,11 +602,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
 }
-::slotted(a:hover) {
-  background-color: transparent !important;
-  -webkit-backdrop-filter: initial !important;
-  backdrop-filter: initial !important;
-}
 .root {
   display: flex;
   align-items: flex-start;
@@ -708,11 +678,6 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
-}
-::slotted(a:hover) {
-  background-color: transparent !important;
-  -webkit-backdrop-filter: initial !important;
-  backdrop-filter: initial !important;
 }
 .root {
   display: flex;

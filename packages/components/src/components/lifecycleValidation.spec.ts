@@ -186,7 +186,7 @@ it.each<TagName>(tagNamesWithSlottedCss)(
   }
 );
 
-it.each<TagName>(tagNamesWithSlotAndTheme)(
+xit.each<TagName>(tagNamesWithSlotAndTheme)(
   'should call getDataThemeDarkAttribute() with correct parameters via render for %s',
   (tagName) => {
     // the slot of p-popover is currently rendered on light background

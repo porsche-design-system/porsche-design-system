@@ -87,14 +87,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media(hover:hover) {
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
-}
-
 .icon {
   margin-left: -2px;
 }"
@@ -151,14 +143,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media(hover:hover) {
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
-}
-
 .icon {
   margin-left: -2px;
 }"
@@ -221,11 +205,6 @@ span {
   }
   span:hover {
     background: #292934;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -292,11 +271,6 @@ span {
   span:hover {
     background: #E0E0E0;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -355,14 +329,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media(hover:hover) {
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
-}
-
 .icon {
   margin-left: -2px;
 }"
@@ -419,14 +385,6 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-@media(hover:hover) {
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
-}
-
 .icon {
   margin-left: -2px;
 }"
@@ -489,11 +447,6 @@ span {
   }
   span:hover {
     background: #292934;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -560,11 +513,6 @@ span {
   span:hover {
     background: #E0E0E0;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -629,11 +577,6 @@ span {
   }
   span:hover {
     background: #3E4045;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -700,11 +643,6 @@ span {
   span:hover {
     background: #CBCED7;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -769,11 +707,6 @@ span {
   }
   span:hover {
     background: #CECFD1;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -840,11 +773,6 @@ span {
   span:hover {
     background: #535457;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -909,11 +837,6 @@ span {
   }
   span:hover {
     background: #331F1F;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -980,11 +903,6 @@ span {
   span:hover {
     background: #EED7D9;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -1049,11 +967,6 @@ span {
   }
   span:hover {
     background: #0F2943;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -1120,11 +1033,6 @@ span {
   span:hover {
     background: #D6DEF0;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -1189,11 +1097,6 @@ span {
   }
   span:hover {
     background: #0F2943;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -1260,11 +1163,6 @@ span {
   span:hover {
     background: #D6DEF0;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -1329,11 +1227,6 @@ span {
   }
   span:hover {
     background: #0F432F;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -1400,11 +1293,6 @@ span {
   span:hover {
     background: #DDEAE1;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -1469,11 +1357,6 @@ span {
   }
   span:hover {
     background: #362F1C;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 
@@ -1540,11 +1423,6 @@ span {
   span:hover {
     background: #F5ECD2;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -1610,11 +1488,6 @@ span {
   span:hover {
     background: #CECFD1;
   }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
 }
 
 .icon {
@@ -1679,11 +1552,6 @@ span {
   }
   span:hover {
     background: #535457;
-  }
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
   }
 }
 

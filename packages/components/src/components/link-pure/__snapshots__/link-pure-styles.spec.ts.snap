@@ -525,14 +525,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
 }
-@media(hover:hover) {
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
-}
-
 .root {
   display: flex;
   gap: 4px;
@@ -820,14 +812,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
 }
-@media(hover:hover) {
-  ::slotted(a:hover) {
-    background-color: transparent !important;
-    -webkit-backdrop-filter: initial !important;
-    backdrop-filter: initial !important;
-  }
-}
-
 .root {
   display: flex;
   gap: 4px;
