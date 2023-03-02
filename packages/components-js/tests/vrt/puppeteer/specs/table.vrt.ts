@@ -5,7 +5,7 @@ import {
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import type { GetThemedMarkup } from '../helpers';
+import type { GetThemedMarkup, StateType } from '../helpers';
 import {
   defaultViewports,
   getVisualRegressionStatesTester,
@@ -13,17 +13,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'table', '/#table')).toBeFalsy();
-});
-
-it('should have no visual regression for :hover + :focus-visible', async () => {
-  const vrt = getVisualRegressionStatesTester();
-  expect(
-    await vrt.test('table-states', async () => {
-      const page = vrt.getPage();
-
-      const getElementsMarkup: GetThemedMarkup = (theme) => `
+const getElementsMarkup: GetThemedMarkup = (theme) => `
 <p-table theme="${theme}">
   <span slot="caption">Some caption <a href="#">with a link</a></span>
   <p-table-head>
@@ -43,7 +33,18 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     </p-table-row>
   </p-table-body>
 </p-table>`;
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
+
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'table', '/#table')).toBeFalsy();
+});
+
+it('should have no visual regression for :hover + :focus-visible and light theme', async () => {
+  const vrt = getVisualRegressionStatesTester();
+  expect(
+    await vrt.test('table-states-light', async () => {
+      const page = vrt.getPage();
+
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light'] }));
 
       await page.evaluate(() => {
         document.querySelectorAll('p-table-head-cell').forEach((el) => {
@@ -53,6 +54,34 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       // TODO: scroll trigger :hover + :focus-visible test is missing due piercing selector only works for nested child
       // TODO: `await forceFocusedState(page, '.focus p-table >>> .scroll-area');`, no class is selectable after piercing selector
+      await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-table-cell a');
+      await forceHoverState(page, '.hover [slot="caption"] a');
+      await forceHoverState(page, '.hover p-table-row:nth-child(3)');
+      await forceFocusState(page, '.focus p-table-head-cell >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-table-cell a');
+      await forceFocusState(page, '.focus [slot="caption"] a');
+      await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-table-cell a');
+      await forceFocusHoverState(page, '.focus-hover [slot="caption"] a');
+    })
+  ).toBeFalsy();
+});
+
+it('should have no visual regression for :hover + :focus-visible and dark theme', async () => {
+  const vrt = getVisualRegressionStatesTester();
+  expect(
+    await vrt.test('table-states-dark', async () => {
+      const page = vrt.getPage();
+
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['dark'] }));
+
+      await page.evaluate(() => {
+        document.querySelectorAll('p-table-head-cell').forEach((el) => {
+          (el as any).sort = { id: 'some-id', active: true, direction: 'asc' };
+        });
+      });
+
       await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
       await forceHoverState(page, '.hover p-table-cell a');
       await forceHoverState(page, '.hover [slot="caption"] a');
