@@ -41,6 +41,7 @@ const generateComponentMeta = (): void => {
   hasSlottedCss: boolean;
   hasEvent: boolean;
   eventNames?: string[];
+  deprecatedEventNames?: string[]; // array of event names
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
   observedAttributes?: string[];
@@ -77,6 +78,7 @@ const generateComponentMeta = (): void => {
     hasSlottedCss: boolean;
     hasEvent: boolean;
     eventNames?: string[];
+    deprecatedEventNames?: string[]; // array of event names
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
     observedAttributes?: string[];
@@ -255,8 +257,18 @@ const generateComponentMeta = (): void => {
       namedSlots.push('message');
     }
 
+    const deprecatedEventNames: ComponentMeta['deprecatedEventNames'] = [];
+
     // events
-    const eventNames = Array.from(source.matchAll(/([A-Za-z]+)\??: EventEmitter/g)).map(([, eventName]) => eventName);
+    const eventNames = Array.from(source.matchAll(/(  \/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter/g)).map(
+      ([, jsdoc, eventName]) => {
+        if (jsdoc?.match(/@deprecated/)) {
+          deprecatedEventNames.push(eventName);
+        }
+
+        return eventName;
+      }
+    );
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
@@ -285,6 +297,7 @@ const generateComponentMeta = (): void => {
       hasSlottedCss,
       hasEvent,
       ...(eventNames.length && { eventNames }),
+      ...(deprecatedEventNames.length && { deprecatedEventNames }),
       hasAriaProp,
       hasObserveAttributes,
       ...(observedAttributes.length && { observedAttributes }),

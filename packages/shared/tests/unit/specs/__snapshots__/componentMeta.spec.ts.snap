@@ -3,6 +3,9 @@
 exports[`should match snapshot 1`] = `
 {
   "p-accordion": {
+    "deprecatedEventNames": [
+      "accordionChange",
+    ],
     "eventNames": [
       "accordionChange",
       "change",
@@ -143,6 +146,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-carousel": {
+    "deprecatedEventNames": [
+      "carouselChange",
+    ],
     "deprecatedProps": [
       "wrapContent",
       "disablePagination",
@@ -641,6 +647,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-modal": {
+    "deprecatedEventNames": [
+      "close",
+    ],
     "eventNames": [
       "close",
       "dismiss",
@@ -689,6 +698,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-pagination": {
+    "deprecatedEventNames": [
+      "pageChange",
+    ],
     "deprecatedProps": [
       "allyLabel",
       "allyLabelPrev",
@@ -809,6 +821,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-segmented-control": {
+    "deprecatedEventNames": [
+      "segmentedControlChange",
+    ],
     "deprecatedProps": [
       "backgroundColor",
     ],
@@ -956,6 +971,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-stepper-horizontal": {
+    "deprecatedEventNames": [
+      "stepChange",
+    ],
     "eventNames": [
       "stepChange",
       "change",
@@ -1008,6 +1026,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-switch": {
+    "deprecatedEventNames": [
+      "switchChange",
+    ],
     "eventNames": [
       "switchChange",
       "change",
@@ -1036,6 +1057,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-table": {
+    "deprecatedEventNames": [
+      "sortingChange",
+    ],
     "eventNames": [
       "sortingChange",
       "change",
@@ -1169,6 +1193,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs": {
+    "deprecatedEventNames": [
+      "tabChange",
+    ],
     "deprecatedProps": [
       "gradientColorScheme",
     ],
@@ -1199,6 +1226,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs-bar": {
+    "deprecatedEventNames": [
+      "tabChange",
+    ],
     "deprecatedProps": [
       "gradientColorScheme",
     ],
