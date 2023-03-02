@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-vue": "3.0.0-alpha.2",
-    "vue": "^3.2.45",
+    "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@rushstack/eslint-patch": "^1.1.4",
     "@testing-library/vue": "^6.6.1",
-    "@types/node": "^18.14.2",
+    "@types/node": "^18.14.3",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",
@@ -57,8 +57,8 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "~4.9.5",
-    "vite": "^4.0.4",
-    "vite-plugin-static-copy": "^0.13.0",
-    "vue-tsc": "^1.0.19"
+    "vite": "^4.1.4",
+    "vite-plugin-static-copy": "^0.13.1",
+    "vue-tsc": "^1.2.0"
   }
 }

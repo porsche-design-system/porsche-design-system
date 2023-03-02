@@ -75,7 +75,7 @@
     "@playwright/test": "1.27.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^18.14.2",
+    "@types/node": "^18.14.3",
     "concurrently": "^7.6.0",
     "devtools-protocol": "^0.0.1087818",
     "globby": "^11.0.4",
