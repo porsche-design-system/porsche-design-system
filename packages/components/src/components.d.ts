@@ -13,7 +13,7 @@ import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization,
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
-import { DividerColor, DividerOrientation } from "./components/divider/divider-utils";
+import { DividerColor, DividerDirection } from "./components/divider/divider-utils";
 import { FieldsetWrapperLabelSize } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
@@ -314,9 +314,13 @@ export namespace Components {
          */
         "color"?: DividerColor;
         /**
-          * Defines orientation.
+          * Defines direction.
          */
-        "orientation"?: BreakpointCustomizable<DividerOrientation>;
+        "direction"?: BreakpointCustomizable<DividerDirection>;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead. Defines orientation.
+         */
+        "orientation"?: BreakpointCustomizable<DividerDirection>;
         /**
           * Adapts color depending on theme.
          */
@@ -2069,9 +2073,13 @@ declare namespace LocalJSX {
          */
         "color"?: DividerColor;
         /**
-          * Defines orientation.
+          * Defines direction.
          */
-        "orientation"?: BreakpointCustomizable<DividerOrientation>;
+        "direction"?: BreakpointCustomizable<DividerDirection>;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead. Defines orientation.
+         */
+        "orientation"?: BreakpointCustomizable<DividerDirection>;
         /**
           * Adapts color depending on theme.
          */

@@ -251,6 +251,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-divider": {
+    "deprecatedProps": [
+      "orientation",
+    ],
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -262,7 +265,8 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "props": {
       "color": "contrast-low",
-      "orientation": "horizontal",
+      "direction": "horizontal",
+      "orientation": null,
       "theme": "light",
     },
     "styling": "jss",

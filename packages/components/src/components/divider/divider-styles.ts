@@ -1,18 +1,18 @@
-import type { DividerColor, DividerOrientation } from './divider-utils';
+import type { DividerColor, DividerDirection } from './divider-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 
 export const getComponentCss = (
   color: DividerColor,
-  orientation: BreakpointCustomizable<DividerOrientation>,
+  orientation: BreakpointCustomizable<DividerDirection>,
   theme: Theme
 ): string => {
   const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
-  const colorMap: { [key in DividerColor]: string } = {
-    'neutral-contrast-low': contrastLowColor,
-    'neutral-contrast-medium': contrastMediumColor,
-    'neutral-contrast-high': contrastHighColor,
+  const colorMap: Record<DividerColor, string> = {
+    'neutral-contrast-low': contrastLowColor, // deprecated
+    'neutral-contrast-medium': contrastMediumColor, // deprecated
+    'neutral-contrast-high': contrastHighColor, // deprecated
     'contrast-low': contrastLowColor,
     'contrast-medium': contrastMediumColor,
     'contrast-high': contrastHighColor,
@@ -30,7 +30,7 @@ export const getComponentCss = (
         border: 'none',
         textAlign: 'left',
         background: colorMap[color],
-        ...buildResponsiveStyles(orientation, (o: DividerOrientation) =>
+        ...buildResponsiveStyles(orientation, (o: DividerDirection) =>
           o === 'horizontal' ? { height: '1px', width: '100%' } : { height: '100%', width: '1px' }
         ),
       },
