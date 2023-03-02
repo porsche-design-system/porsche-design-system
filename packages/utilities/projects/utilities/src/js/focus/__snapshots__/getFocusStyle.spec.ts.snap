@@ -1,18 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getFocusStyle() should return correct css for opts: %s 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { inset: '-4px -2px', borderRadius: '6px', theme: 'dark' } 1`] = `
 {
-  "&:focus::before": {
-    "border": "2px solid #0A0AFF",
-    "borderRadius": "4px",
-    "bottom": "-4px",
+  "&:focus::after": {
+    "border": "2px solid #1E5BEB",
+    "borderRadius": "6px",
     "content": """",
-    "left": "-4px",
+    "inset": "-4px -2px",
+    "pointerEvents": "none",
     "position": "absolute",
-    "right": "-4px",
-    "top": "-4px",
   },
-  "&:focus:not(:focus-visible)::before": {
+  "&:focus:not(:focus-visible)::after": {
     "borderColor": "transparent",
   },
   "outline": 0,
@@ -20,19 +18,17 @@ exports[`getFocusStyle() should return correct css for opts: %s 1`] = `
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { offset: '5rem' } 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { inset: '-4px -2px', borderRadius: '6px', theme: 'light' } 1`] = `
 {
-  "&:focus::before": {
+  "&:focus::after": {
     "border": "2px solid #0A0AFF",
-    "borderRadius": "4px",
-    "bottom": "5rem",
+    "borderRadius": "6px",
     "content": """",
-    "left": "5rem",
+    "inset": "-4px -2px",
+    "pointerEvents": "none",
     "position": "absolute",
-    "right": "5rem",
-    "top": "5rem",
   },
-  "&:focus:not(:focus-visible)::before": {
+  "&:focus:not(:focus-visible)::after": {
     "borderColor": "transparent",
   },
   "outline": 0,
@@ -40,19 +36,89 @@ exports[`getFocusStyle() should return correct css for opts: { offset: '5rem' } 
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { theme: 'dark' } 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { inset: 'medium', borderRadius: 'medium', theme: 'dark' } 1`] = `
 {
-  "&:focus::before": {
+  "&:focus::after": {
+    "border": "2px solid #1E5BEB",
+    "borderRadius": "8px",
+    "content": """",
+    "inset": "-6px",
+    "pointerEvents": "none",
+    "position": "absolute",
+  },
+  "&:focus:not(:focus-visible)::after": {
+    "borderColor": "transparent",
+  },
+  "outline": 0,
+  "position": "relative",
+}
+`;
+
+exports[`getFocusStyle() should return correct css for opts: { inset: 'medium', borderRadius: 'medium', theme: 'light' } 1`] = `
+{
+  "&:focus::after": {
+    "border": "2px solid #0A0AFF",
+    "borderRadius": "8px",
+    "content": """",
+    "inset": "-6px",
+    "pointerEvents": "none",
+    "position": "absolute",
+  },
+  "&:focus:not(:focus-visible)::after": {
+    "borderColor": "transparent",
+  },
+  "outline": 0,
+  "position": "relative",
+}
+`;
+
+exports[`getFocusStyle() should return correct css for opts: { inset: 'small', borderRadius: 'small', theme: 'dark' } 1`] = `
+{
+  "&:focus::after": {
     "border": "2px solid #1E5BEB",
     "borderRadius": "4px",
-    "bottom": "-4px",
     "content": """",
-    "left": "-4px",
+    "inset": "-4px",
+    "pointerEvents": "none",
     "position": "absolute",
-    "right": "-4px",
-    "top": "-4px",
   },
-  "&:focus:not(:focus-visible)::before": {
+  "&:focus:not(:focus-visible)::after": {
+    "borderColor": "transparent",
+  },
+  "outline": 0,
+  "position": "relative",
+}
+`;
+
+exports[`getFocusStyle() should return correct css for opts: { inset: 'small', borderRadius: 'small', theme: 'light' } 1`] = `
+{
+  "&:focus::after": {
+    "border": "2px solid #0A0AFF",
+    "borderRadius": "4px",
+    "content": """",
+    "inset": "-4px",
+    "pointerEvents": "none",
+    "position": "absolute",
+  },
+  "&:focus:not(:focus-visible)::after": {
+    "borderColor": "transparent",
+  },
+  "outline": 0,
+  "position": "relative",
+}
+`;
+
+exports[`getFocusStyle() should return correct css for opts: { inset: undefined, borderRadius: undefined, theme: undefined } 1`] = `
+{
+  "&:focus::after": {
+    "border": "2px solid #0A0AFF",
+    "borderRadius": "4px",
+    "content": """",
+    "inset": "-4px",
+    "pointerEvents": "none",
+    "position": "absolute",
+  },
+  "&:focus:not(:focus-visible)::after": {
     "borderColor": "transparent",
   },
   "outline": 0,

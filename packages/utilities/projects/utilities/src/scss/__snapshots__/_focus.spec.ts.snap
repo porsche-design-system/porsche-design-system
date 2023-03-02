@@ -8,6 +8,7 @@ exports[`pds-focus() should return correct css for opts: { offset: '-20px' } 1`]
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -20px;
   left: -20px;
   right: -20px;
@@ -28,6 +29,7 @@ exports[`pds-focus() should return correct css for opts: { offset: 'medium' } 1`
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -6px;
   left: -6px;
   right: -6px;
@@ -48,6 +50,7 @@ exports[`pds-focus() should return correct css for opts: { offset: 'small' } 1`]
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -4px;
   left: -4px;
   right: -4px;
@@ -68,6 +71,7 @@ exports[`pds-focus() should return correct css for opts: { offset: 'small', bord
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -4px;
   left: -4px;
   right: -4px;
@@ -88,6 +92,7 @@ exports[`pds-focus() should return correct css for opts: { offset: 'small', bord
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -4px;
   left: -4px;
   right: -4px;
@@ -108,6 +113,7 @@ exports[`pds-focus() should return correct css for opts: { offset: 'small', bord
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -4px;
   left: -4px;
   right: -4px;
@@ -128,6 +134,7 @@ exports[`pds-focus() should return correct css for opts: { offset: 'small', bord
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -4px;
   left: -4px;
   right: -4px;
@@ -148,6 +155,7 @@ exports[`pds-focus() should return correct css for opts: {} 1`] = `
 div:focus::before {
   content: "";
   position: absolute;
+  pointer-events: none;
   top: -4px;
   left: -4px;
   right: -4px;
