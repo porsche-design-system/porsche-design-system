@@ -65,19 +65,19 @@ const Component1 = styled.div({
   color: 'royalblue',
 
   // up to predefined breakpoint xs apply color black
-+ [getMediaQueryMax(breakpoint.xs)]: {
++  [getMediaQueryMax(breakpoint.xs)]: {
     color: 'black'
   }
 
   // from predefined breakpoint xs to m apply color aqua
-- [mediaQuery(breakpoint.xs, breakpoint.m)]: {
-+ [getMediaQueryMinMax(breakpoint.xs, breakpoint.m)]: {
+-  [mediaQuery(breakpoint.xs, breakpoint.m)]: {
++  [getMediaQueryMinMax(breakpoint.xs, breakpoint.m)]: {
     color: 'aqua'
   },
 
   // from predefined breakpoint m apply color deeppink
-- [mediaQuery(breakpoint.m)]: {
-+ [getMediaQueryMin(breakpoint.m)]: {
+-  [mediaQuery(breakpoint.m)]: {
++  [getMediaQueryMin(breakpoint.m)]: {
     color: 'deeppink'
   }
 }`;
@@ -91,12 +91,12 @@ const Component1 = styled.div({
 import styled from 'styled-components';
 
 const Component1 = styled.h1`
-- ${titleLarge}
-+ ${displayLargeStyle}
+-  ${titleLarge}
++  ${displayLargeStyle}
 `;
 
 const component2 = styled.h2`
-+ ${displayMediumStyle}
++  ${displayMediumStyle}
 `;
 ```
 
@@ -108,8 +108,8 @@ const component2 = styled.h2`
 import styled from 'styled-components';
 
 const Component1 = styled.h1`
-- ${headline['1']}
-+ ${headingXXLargeStyle}
+-  ${headline['1']}
++  ${headingXXLargeStyle}
 `;
 ```
 
@@ -121,8 +121,8 @@ const Component1 = styled.h1`
 import styled from 'styled-components';
 
 const Component1 = styled.p`
-- ${text.small}
-+ ${textSmallStyle}
+-  ${text.small}
++  ${textSmallStyle}
 `;
 ```
 
@@ -150,8 +150,8 @@ even if only the light theme is displayed in the diff.
 import styled from 'styled-components';
 
 const Component1 = styled.div({
-- background: color.lightTheme.brand
-+ background: theme.light.primary
+-  background: color.lightTheme.brand
++  background: theme.light.primary
 });
 ```
 
@@ -163,8 +163,8 @@ const Component1 = styled.div({
 import styled from 'styled-components';
 
 const Component1 = styled.div({
-- background: color.lightTheme.default
-+ background: theme.light.primary
+-  background: color.lightTheme.default
++  background: theme.light.primary
 });
 ```
 
@@ -176,8 +176,8 @@ const Component1 = styled.div({
 import styled from 'styled-components';
 
 const Component1 = styled.div({
-- background: color.lightTheme.background.default
-+ background: theme.light.background.base
+-  background: color.lightTheme.background.default
++  background: theme.light.background.base
 });
 ```
 
@@ -189,8 +189,8 @@ const Component1 = styled.div({
 import styled from 'styled-components';
 
 const Component1 = styled.div({
-- background: color.lightTheme.neutralContrast.medium
-+ background: theme.light.contrast.medium
+-  background: color.lightTheme.neutralContrast.medium
++  background: theme.light.contrast.medium
 });
 ```
 
@@ -202,13 +202,13 @@ const Component1 = styled.div({
 import styled from 'styled-components';
 
 const component1 = styled.div({
-- background: color.lightTheme.notification.neutral
-+ background: theme.light.notification.info
+-  background: color.lightTheme.notification.neutral
++  background: theme.light.notification.info
 });
 
 const component2 = styled.div({
-- background: color.lightTheme.notification.neutralSoft
-+ background: theme.light.notification.infoSoft
+-  background: color.lightTheme.notification.neutralSoft
++  background: theme.light.notification.infoSoft
 });
 ```
 
@@ -248,8 +248,8 @@ root font size is adjusted.
 import styled from 'styled-components';
 
 const Component1 = styled.div({
-- margin: layout.medium
-+ margin: spacingStatic.medium
+-  margin: layout.medium
++  margin: spacingStatic.medium
 });
 ```
 
@@ -273,12 +273,12 @@ To get an overview of the new spacings have a look [here](https://designsystem.p
 a {
 -  @include p-focus;
 +  @include pds-focus;
-  }
+}
 
 button {
 -  @include p-focus($p-color-state-focus, 1px, '::before');
 +  @include pds-focus('small', 'small', 'light');
-  }
+}
 ```
 
 - `breakpoint` `xxs` is now `base`.
@@ -292,7 +292,7 @@ div {
   color: inherit;
 
    // up to predefined breakpoint xs apply color black
-+  @include pds-media-query-max('xs')
++  @include pds-media-query-max('xs') {
     color: black;
   }
 
@@ -317,12 +317,12 @@ div {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 h1 {
-- @include p-title-large;
-+ @include pds-display-large;
+-  @include p-title-large;
++  @include pds-display-large;
 }
 
 h2 {
-+ @include pds-display-medium;
++  @include pds-display-medium;
 }
 ```
 
@@ -333,13 +333,13 @@ h2 {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 h1 {
-- @include p-headline-1;
-+ @include pds-heading-xx-large;
+-  @include p-headline-1;
++  @include pds-heading-xx-large;
 }
 
 h2 {
-- @include p-headline-2;
-+ @include pds-heading-x-large;
+-  @include p-headline-2;
++  @include pds-heading-x-large;
 }
 ```
 
@@ -350,8 +350,8 @@ h2 {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 p {
-- @include p-text-small;
-+ @include pds-text-small;
+-  @include p-text-small;
++  @include pds-text-small;
 }
 ```
 
@@ -367,8 +367,8 @@ overview ot the new colors have a look [here](https://designsystem.porsche.com/l
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 div {
-- background: {$p-color-brand|$p-color-theme-light-brand};
-+ background: $pds-theme-light-primary;
+-  background: {$p-color-brand|$p-color-theme-light-brand};
++  background: $pds-theme-light-primary;
 }
 ```
 
@@ -379,8 +379,8 @@ div {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 div {
-- color: {$p-color-default|$p-color-theme-light-default};
-+ color: $pds-theme-light-primary;
+-  color: {$p-color-default|$p-color-theme-light-default};
++  color: $pds-theme-light-primary;
 }
 ```
 
@@ -391,8 +391,8 @@ div {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 div {
-- background: {$p-color-background-default|$p-color-theme-light-background};
-+ background: $pds-theme-light-background-base;
+-  background: {$p-color-background-default|$p-color-theme-light-background};
++  background: $pds-theme-light-background-base;
 }
 ```
 
@@ -552,8 +552,8 @@ div {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 p {
-- font-family: $p-font-family;
-+ font-family: $pds-font-family;
+-  font-family: $p-font-family;
++  font-family: $pds-font-family;
 }
 ```
 
@@ -564,8 +564,8 @@ p {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 button {
-- font-weight: $p-font-weight-bold;
-+ font-weight: $pds-font-weight-bold;
+-  font-weight: $p-font-weight-bold;
++  font-weight: $pds-font-weight-bold;
 }
 ```
 
@@ -577,8 +577,8 @@ button {
 + @import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';
 
 button {
-- font-size: $p-font-size-medium;
-+ font-size: $pds-font-size-medium;
+-  font-size: $p-font-size-medium;
++  font-size: $pds-font-size-medium;
 }
 ```
 
@@ -641,14 +641,19 @@ To get an overview of the new spacings have a look [here](https://designsystem.p
 
 **Font**
 
-- `fontWeight` thin is removed as of v3.
+- `fontWeight.thin` is removed as of v3. Please use `fontWeight.regular` instead.
 - the static `font.size` object is no longer provided in v3. Please use one of the predefined fluid font sizes or the
-  `fontLineHeight` style and on of the provided font sizes, e.g. `fontSizeTextSmall` to recreate it.
+  `fontLineHeight` style and on of the provided font sizes to recreate it.
 
 **Spacings**
 
-- the static `spacing` object with `rem` spacings is no longer provided in v3. Please use one of the provided static or
-  fluid spacings.
+- the static `spacing` object with `rem` spacings is no longer provided in v3. Please use one of the provided static
+  `spacingStatic.{XSmall|Small|Medium|Large|XLarge|XXLarge}` or fluid
+  `spacingFluid.{XSmall|Small|Medium|Large|XLarge|XXLarge}` spacings instead.
+
+```diff
+- spacing[{4|8|16|24|32|40|48|56|64|72|80}]
+```
 
 ##### SCSS
 
@@ -669,19 +674,16 @@ To get an overview of the new spacings have a look [here](https://designsystem.p
 
 **Font**
 
-- `$p-font-weight-thin` is removed.
-
-```diff
-- $p-font-weight-thin
-```
-
-- static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36|42|44|48|52|60|62|72|84}` will be removed in v3.
-  Please use one of the predefined fluid font sizes or the `$pds-font-line-height` style and on of the provided font
-  sizes, to recreate it.
+- `$p-font-weight-thin` is removed as of v3. Please use `$pds-font-weight-regular` instead.
+- static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36|42|44|48|52|60|62|72|84}` will be removed in v3. Please
+  use one of the predefined fluid font sizes or the `$pds-font-line-height` style and on of the provided font sizes, to
+  recreate it.
 
 **Spacings**
 
-- static spacings with rem values are no longer provided in v3.
+- static spacings with _rem_ values are no longer provided in v3. Please use one of the provided static
+  `$pds-spacing-static-{x-small|small|medium|large|x-large|xx-large}` or fluid
+  `$pds-spacing-fluid-{x-small|small|medium|large|x-large|xx-large}` spacing instead.
 
 ```diff
 - $p-spacing-4
