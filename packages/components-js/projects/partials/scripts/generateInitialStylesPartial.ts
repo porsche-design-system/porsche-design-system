@@ -1,8 +1,15 @@
 import type { Styles } from 'jss';
 import type { TagName } from '@porsche-design-system/shared';
-import { joinArrayElementsToString } from './utils';
 import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { fontFamily, fontHyphenationStyle, fontLineHeight, fontWeight } from '@porsche-design-system/utilities-v2';
+import { joinArrayElementsToString } from './utils';
+import {
+  fontFamily,
+  fontHyphenationStyle,
+  fontLineHeight,
+  fontWeight,
+  getFocusStyle,
+  getHoverStyle,
+} from '@porsche-design-system/utilities-v2';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -14,7 +21,7 @@ export const generateInitialStylesPartial = (): string => {
 
   // TODO: Modal + Table will get theme prop soon
   // TODO: extend slotted link case for Carousel, Display, Link Tile, Modal, Switch, Tabs (maybe states test is good enough)
-  const componentsWithSlottedCss: TagName[] = [
+  const componentsWithSlottedAnchor: TagName[] = [
     'p-accordion',
     'p-banner',
     'p-carousel',
@@ -36,6 +43,8 @@ export const generateInitialStylesPartial = (): string => {
     'p-text-list',
     'p-textarea-wrapper',
   ];
+
+  const componentsWithSlottedInputIndicator: TagName[] = ['p-textarea-wrapper'];
 
   const normalizeStyles: Styles = {
     '@global': {
@@ -60,12 +69,28 @@ export const generateInitialStylesPartial = (): string => {
         fontWeight: fontWeight.bold,
       },
 
-      // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
-      input: {
-        '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator':
-          {
-            display: 'none',
-          },
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      // TODO: styles should be important
+      [componentsWithSlottedAnchor.join()]: {
+        '& a': {
+          textDecoration: 'underline',
+          color: 'currentcolor',
+          ...getHoverStyle({ inset: '0 -4px' }),
+          ...getFocusStyle({ inset: '0 -4px' }),
+        },
+      },
+
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      // TODO: styles should be important
+      [componentsWithSlottedInputIndicator.join()]: {
+        '& input': {
+          '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator':
+            {
+              display: 'none',
+            },
+        },
       },
     },
   };
