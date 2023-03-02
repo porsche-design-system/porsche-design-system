@@ -25,7 +25,7 @@
     "jss": "^10.9.2",
     "jss-preset-default": "^10.9.2",
     "rollup": "^3.18.0",
-    "ts-jest": "^29.0.3",
+    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "~4.9.5"
   }
