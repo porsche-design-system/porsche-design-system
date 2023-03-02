@@ -136,7 +136,7 @@ exports[`should have no basic DOM regression for p-headline 1`] = `
 </h1>"
 `;
 
-exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.17598fa1cdd4a8c6d4ac0006bbb4016c.svg" alt="">"`;
+exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.0d6071f97c95fb0ec07adc5783de11c9.svg" alt="">"`;
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<p-icon class="icon hydrated" aria-hidden="true">
