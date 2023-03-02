@@ -2,42 +2,31 @@
 import { PLinkPure } from '@porsche-design-system/components-react';
 
 export const LinkPurePage = (): JSX.Element => {
-  const style = `
-    p-link-pure:not(:last-child) {
-      margin-right: 16px;
-    }
-    .stretched-links p-link-pure {
-      margin-right: 0;
-    }
-  `;
-
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: style }} />
-
-      <div className="playground light" title="should render with label">
+      <div className="playground light auto-layout" title="should render with label">
         <PLinkPure href="https://www.porsche.com">Label default</PLinkPure>
         <PLinkPure><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
         <PLinkPure underline={true} href="https://www.porsche.com">Label default</PLinkPure>
         <PLinkPure underline={true}><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
       </div>
-      <div className="playground dark" title="should render with label on dark background">
+      <div className="playground dark auto-layout" title="should render with label on dark background">
         <PLinkPure href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
         <PLinkPure theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
         <PLinkPure underline={true} href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
         <PLinkPure underline={true} theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
       </div>
 
-      <div className="playground light" title="should render without label">
+      <div className="playground light auto-layout" title="should render without label">
         <PLinkPure href="https://www.porsche.com" hideLabel={true}>Some label</PLinkPure>
         <PLinkPure hideLabel={true}><a href="https://www.porsche.com">Some label</a></PLinkPure>
       </div>
-      <div className="playground dark" title="should render without label on dark background">
+      <div className="playground dark auto-layout" title="should render without label on dark background">
         <PLinkPure href="https://www.porsche.com" hideLabel={true} theme="dark">Some label</PLinkPure>
         <PLinkPure hideLabel={true} theme="dark"><a href="https://www.porsche.com">Some label</a></PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with responsive label">
+      <div className="playground light auto-layout" title="should render with responsive label">
         <PLinkPure
           href="https://www.porsche.com"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
@@ -46,7 +35,7 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should not render with different weight">
+      <div className="playground light auto-layout" title="should not render with different weight">
         <PLinkPure href="https://www.porsche.com" weight="regular">Label weight regular</PLinkPure>
         <PLinkPure weight="regular"><a href="https://www.porsche.com">Label slotted weight regular</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" weight="semi-bold">Label weight semi-bold</PLinkPure>
@@ -55,7 +44,7 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure weight="bold"><a href="https://www.porsche.com">Label slotted weight bold</a></PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with active state">
+      <div className="playground light auto-layout" title="should render with active state">
         <PLinkPure href="https://www.porsche.com" active={true}>Label active</PLinkPure>
         <PLinkPure active={true}><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" active={true} icon="none">Label active</PLinkPure>
@@ -64,7 +53,7 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure active={true} hideLabel={true}><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
       </div>
 
-      <div className="playground dark" title="should render with active state on dark background">
+      <div className="playground dark auto-layout" title="should render with active state on dark background">
         <PLinkPure href="https://www.porsche.com" active={true} theme="dark">Label active</PLinkPure>
         <PLinkPure active={true} theme="dark"><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" active={true} icon="none" theme="dark">Label active</PLinkPure>
@@ -77,21 +66,21 @@ export const LinkPurePage = (): JSX.Element => {
         >
       </div>
 
-      <div className="playground light" title="should render with specific icon">
+      <div className="playground light auto-layout" title="should render with specific icon">
         <PLinkPure href="https://www.porsche.com" icon="phone">Label with specific icon</PLinkPure>
         <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg">
           Label with iconSource
         </PLinkPure>
       </div>
 
-      <div className="playground dark" title="should render with specific icon on dark background">
+      <div className="playground dark auto-layout" title="should render with specific icon on dark background">
         <PLinkPure href="https://www.porsche.com" icon="phone" theme="dark">Label with specific icon</PLinkPure>
         <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg" theme="dark">
           Label with iconSource
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with multiline label">
+      <div className="playground light auto-layout" title="should render with multiline label">
         <PLinkPure href="https://www.porsche.com" style={{ width: '15rem' }}>
           Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
         </PLinkPure>
@@ -106,7 +95,7 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with custom clickable area">
+      <div className="playground light auto-layout" title="should render with custom clickable area">
         <PLinkPure href="https://www.porsche.com" style={{ padding: '1rem' }}>Label with custom click-area</PLinkPure>
         <PLinkPure href="https://www.porsche.com" hideLabel={true} style={{ padding: '1rem' }}>
           Label with custom click-area
@@ -119,23 +108,23 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with no icon">
+      <div className="playground light auto-layout" title="should render with no icon">
         <PLinkPure href="https://www.porsche.com" icon="none">Label icon none</PLinkPure>
         <PLinkPure icon="none"><a href="https://www.porsche.com">Label slotted icon none</a></PLinkPure>
       </div>
 
-      <div className="playground light" title="should render label if hide-label is set to true and icon none is set">
+      <div className="playground light auto-layout" title="should render label if hide-label is set to true and icon none is set">
         <PLinkPure href="https://www.porsche.com" hideLabel={true} icon="none">Label hide-label icon none</PLinkPure>
         <PLinkPure hideLabel={true} icon="none">
           <a href="https://www.porsche.com">Label slotted with hideLabel and no icon</a>
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should align label to the left">
+      <div className="playground light auto-layout" title="should align label to the left">
         <PLinkPure href="https://www.porsche.com" alignLabel="left">Label align left</PLinkPure>
         <PLinkPure alignLabel="left"><a href="https://www.porsche.com">Label slotted align left</a></PLinkPure>
       </div>
-      <div className="playground light" title="should align label to the left or right depending on viewport">
+      <div className="playground light auto-layout" title="should align label to the left or right depending on viewport">
         <PLinkPure
           href="https://www.porsche.com"
           alignLabel={{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }}
@@ -147,7 +136,7 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light stretched-links" title="should render with stretched label">
+      <div className="playground light auto-layout" title="should render with stretched label">
         <PLinkPure href="https://www.porsche.com" stretch={true}>Label stretch</PLinkPure>
         <PLinkPure href="https://www.porsche.com" stretch={true} alignLabel="left">Label stretch align left</PLinkPure>
         <PLinkPure stretch={true}><a href="https://www.porsche.com">Label slotted stretch</a></PLinkPure>
@@ -156,7 +145,7 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light stretched-links" title="should render with stretched label depending on viewport">
+      <div className="playground light auto-layout" title="should render with stretched label depending on viewport">
         <PLinkPure
           href="https://www.porsche.com"
           stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
@@ -169,7 +158,7 @@ export const LinkPurePage = (): JSX.Element => {
       </div>
 
       <div
-        className="playground light stretched-links"
+        className="playground light auto-layout"
         title="should render with interplay of breakpoint-customizable depending on viewport"
       >
         <PLinkPure
@@ -213,7 +202,7 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with responsive size">
+      <div className="playground light auto-layout" title="should render with responsive size">
         <PLinkPure
           href="https://www.porsche.com"
           size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
@@ -223,7 +212,7 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
       </div>
 
-      <div className="playground light" title="should render with no icon and size inherit">
+      <div className="playground light auto-layout" title="should render with no icon and size inherit">
         <PLinkPure href="https://www.porsche.com" icon="none" size="inherit" style={{ fontSize: '48px' }}
           >Label icon none size inherit</PLinkPure
         >

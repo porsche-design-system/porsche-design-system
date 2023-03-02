@@ -10,6 +10,12 @@
   padding: 16px;
 }
 
+.playground.auto-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .playground.light {
   /* TODO: we should generate background color with scss or js styles package */
   background: #fff;
