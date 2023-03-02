@@ -1,18 +1,28 @@
+import { JssStyle } from 'jss';
 import {
   pxToRemWithUnit,
-  getInsetJssStyle,
   getTransition,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
+  getInsetJssStyle,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
-import { getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  textLargeStyle,
+  fontSizeTextMedium,
+  spacingFluidMedium,
+  spacingStaticMedium,
+  spacingFluidLarge,
+  borderRadiusMedium,
+  gradientToBottomStyle,
+  gradientToTopStyle,
+} from '@porsche-design-system/utilities-v2';
 
 const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '1:1': '100%',
@@ -22,26 +32,8 @@ const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '9:16': '177.75%',
 };
 
-const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): string => {
-  const gradient =
-    'rgba(31,31,31,0.9) 0%,' +
-    'rgba(31,31,31,0.9) 20%,' +
-    'rgba(31,31,31,0.852589) 26.67%,' +
-    'rgba(32,32,32,0.768225) 33.33%,' +
-    'rgba(33,33,33,0.668116) 40%,' +
-    'rgba(34,34,34,0.557309) 46.67%,' +
-    'rgba(35,35,35,0.442691) 53.33%,' +
-    'rgba(36,36,36,0.331884) 60%,' +
-    'rgba(37,37,37,0.231775) 66.67%,' +
-    'rgba(38,38,38,0.147411) 73.33%,' +
-    'rgba(39,39,39,0.0816599) 80%,' +
-    'rgba(39,39,39,0.03551) 86.67%,' +
-    'rgba(39,39,39,0.0086472) 93.33%,' +
-    'rgba(39,39,39,0)';
-
-  return isCompact && isTopAligned
-    ? `linear-gradient(${gradient} 100%);`
-    : `linear-gradient(to top, ${gradient} 100%);`;
+const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): JssStyle => {
+  return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
 };
 
 const sizeMap: {
@@ -51,7 +43,7 @@ const sizeMap: {
   inherit: {
     fontSize: 'inherit',
   },
-  default: { fontSize: '1.25rem' },
+  default: { fontSize: fontSizeTextMedium },
 };
 
 export const getComponentCss = (
@@ -63,16 +55,11 @@ export const getComponentCss = (
   hasGradient: boolean
 ): string => {
   const isTopAligned = align === 'top';
-  const paddingSizeXS = pxToRemWithUnit(24);
-  const gradientPadding = pxToRemWithUnit(72);
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule({
-          height: 'fit-content',
-          ...hostHiddenStyles,
-        }),
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       ...addImportantToEachRule({
         '::slotted(picture),::slotted(img)': {
@@ -81,7 +68,7 @@ export const getComponentCss = (
         },
         '::slotted(picture)': {
           position: 'absolute',
-          ...getInsetJssStyle(),
+          ...getInsetJssStyle(0),
         },
         '::slotted(img)': {
           height: '100%',
@@ -91,9 +78,9 @@ export const getComponentCss = (
       }),
       p: {
         color: getThemedTypographyColor('dark', 'primary'),
-        ...textSmallStyle,
-        maxWidth: pxToRemWithUnit(550),
+        maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
         margin: 0,
+        ...textLargeStyle,
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
@@ -117,8 +104,9 @@ export const getComponentCss = (
     },
     'image-container': {
       position: 'absolute',
-      ...getInsetJssStyle(),
       overflow: 'hidden',
+      borderRadius: borderRadiusMedium,
+      ...getInsetJssStyle(0),
     },
     content: {
       position: 'absolute',
@@ -127,52 +115,43 @@ export const getComponentCss = (
       right: 0,
       display: 'grid',
       justifyItems: 'start',
+      borderRadius: borderRadiusMedium,
       padding:
         align === 'bottom'
-          ? `${gradientPadding} ${paddingSizeXS} ${paddingSizeXS}`
-          : `${paddingSizeXS} ${paddingSizeXS} ${gradientPadding}`,
+          ? `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`
+          : `${spacingFluidMedium} ${spacingFluidMedium} ${spacingFluidLarge}`,
 
-      gap: pxToRemWithUnit(24),
+      gap: spacingStaticMedium,
       ...mergeDeep(
-        {
-          [getMediaQueryMin('s')]: {
-            paddingLeft: pxToRemWithUnit(32),
-            paddingRight: pxToRemWithUnit(32),
-            ...(align === 'bottom' ? { paddingBottom: pxToRemWithUnit(32) } : { paddingTop: pxToRemWithUnit(32) }),
-          },
-        },
         hasGradient &&
-          buildResponsiveStyles(compact, (isCompact: boolean) => ({
-            background: getGradientBackground(isCompact, isTopAligned),
-          })),
+          buildResponsiveStyles(compact, (isCompact: boolean) => getGradientBackground(isCompact, isTopAligned)),
         buildResponsiveStyles(compact, (isCompact: boolean) =>
           isCompact
             ? {
                 alignItems: 'center',
-                gridTemplateColumns: `auto ${pxToRemWithUnit(24)}`,
+                gridTemplateColumns: 'auto 24px',
                 gridTemplateRows: 'auto',
                 ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
               }
             : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
         )
       ),
+      '@media (forced-colors: active)': {
+        background: 'rgba(0,0,0,0.7)',
+      },
     },
-
     'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
     })),
     link: {
-      minHeight: '3rem',
-      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-flex' })),
+      minHeight: '54px', // prevent content shift
+      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
     },
-
-    // Due to position absolut on .content, position fixed is used to expand the clickable area of the anchor onto the whole link-tile
-    anchor: {
-      '&::after': {
-        content: '""',
-        position: 'fixed',
-        ...getInsetJssStyle(),
-      },
+    // is used for expanded click-area only
+    'link-overlay': {
+      position: 'fixed',
+      ...getInsetJssStyle(0),
+      outline: 0,
     },
   });
 };
