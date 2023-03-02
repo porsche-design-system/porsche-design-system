@@ -206,7 +206,7 @@ export class SelectWrapperDropdown {
                       <PrefixedTagNames.pIcon
                         aria-hidden="true"
                         name="check"
-                        color={disabled ? 'disabled' : 'primary'}
+                        color={disabled ? 'state-disabled' : 'primary'}
                         theme={this.theme}
                       />
                     )}

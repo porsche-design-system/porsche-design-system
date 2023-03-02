@@ -155,7 +155,7 @@ export class Pagination {
             };
             const iconProps = {
               theme: this.theme,
-              color: isActive ? 'primary' : 'disabled',
+              color: isActive ? 'primary' : 'state-disabled',
               'aria-hidden': 'true',
             };
 

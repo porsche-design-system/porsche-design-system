@@ -72,7 +72,7 @@ export class StepperHorizontalItem {
               name={getStepperHorizontalIconName(this.state)}
               size="inherit"
               theme={this.host.theme || 'light'}
-              color={this.disabled ? 'disabled' : `notification-${getStepperHorizontalIconName(this.state)}`}
+              color={this.disabled ? 'state-disabled' : `notification-${getStepperHorizontalIconName(this.state)}`}
               aria-hidden="true"
             />
           )}

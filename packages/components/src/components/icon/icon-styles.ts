@@ -43,7 +43,7 @@ const filter: Record<Theme, Record<Exclude<IconColor, 'inherit'>, string>> = {
     primary: filterLightPrimary,
     brand: filterLightPrimary, // deprecated
     default: filterLightPrimary, // deprecated
-    disabled: filterLightContrastMedium,
+    'state-disabled': filterLightContrastMedium,
     'contrast-low': filterLightContrastLow,
     'neutral-contrast-low': filterLightContrastLow, // deprecated
     'contrast-medium': filterLightContrastMedium,
@@ -60,7 +60,7 @@ const filter: Record<Theme, Record<Exclude<IconColor, 'inherit'>, string>> = {
     primary: filterDarkPrimary,
     brand: filterDarkPrimary, // deprecated
     default: filterDarkPrimary, // deprecated
-    disabled: filterDarkContrastMedium,
+    'state-disabled': filterDarkContrastMedium,
     'contrast-low': filterDarkContrastLow,
     'neutral-contrast-low': filterDarkContrastLow, // deprecated
     'contrast-medium': filterDarkContrastMedium,

@@ -1,12 +1,15 @@
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import type { IconName, TextSize } from '../../types';
-import { TEXT_COLORS } from '../text/text-color';
+import { TEXT_COLORS, TextColorDeprecated } from '../text/text-color';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type IconAriaAttribute = typeof ICON_ARIA_ATTRIBUTES[number];
 
 export type IconSize = TextSize;
-export const ICON_COLORS = [...TEXT_COLORS, 'disabled'] as const;
+
+/** @deprecated */
+export type IconColorDeprecated = TextColorDeprecated;
+export const ICON_COLORS = [...TEXT_COLORS, 'state-disabled'] as const;
 export type IconColor = typeof ICON_COLORS[number];
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
