@@ -135,7 +135,7 @@ overview of the new colors have a look [here](https://designsystem.porsche.com/l
   single import a theme, e.g. if you only need `themeLight`.
 
 ```diff
-- import { color } from '@porsche-design-system/utilities';;
+- import { color } from '@porsche-design-system/utilities';
 + import { theme, themeLight, themeDark } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 ```
 
@@ -675,7 +675,7 @@ To get an overview of the new spacings have a look [here](https://designsystem.p
 - $p-font-weight-thin
 ```
 
-- static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36||42|44|48|52|60|62|72|84}` will be removed in v3.
+- static font sizes `$p-font-size-{12]16|18|20|22|24|28|30|32|36|42|44|48|52|60|62|72|84}` will be removed in v3.
   Please use one of the predefined fluid font sizes or the `$pds-font-line-height` style and on of the provided font
   sizes, to recreate it.
 
