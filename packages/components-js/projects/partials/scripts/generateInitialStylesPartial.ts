@@ -39,7 +39,7 @@ const tagNamesWithSlottedAnchor: TagName[] = [
   'p-textarea-wrapper',
 ];
 
-const tagNamesWithSlottedInputIndicator: TagName[] = ['p-textarea-wrapper'];
+const tagNamesWithSlottedInputIndicator: TagName[] = ['p-text-field-wrapper'];
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
