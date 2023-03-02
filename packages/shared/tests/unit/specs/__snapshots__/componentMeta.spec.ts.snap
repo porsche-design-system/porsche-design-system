@@ -45,6 +45,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
+      "heading",
       "title",
       "description",
     ],
@@ -52,6 +53,8 @@ exports[`should match snapshot 1`] = `
       "p-inline-notification",
     ],
     "props": {
+      "description": null,
+      "heading": null,
       "persistent": false,
       "state": "info",
       "theme": "light",

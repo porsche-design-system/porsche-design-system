@@ -78,6 +78,14 @@ export namespace Components {
     }
     interface PBanner {
         /**
+          * Description of the banner.
+         */
+        "description"?: string;
+        /**
+          * Heading of the banner.
+         */
+        "heading"?: string;
+        /**
           * Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
@@ -1792,6 +1800,14 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PBanner {
+        /**
+          * Description of the banner.
+         */
+        "description"?: string;
+        /**
+          * Heading of the banner.
+         */
+        "heading"?: string;
         /**
           * Emitted when the close button is clicked.
          */
