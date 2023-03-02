@@ -9,6 +9,8 @@ import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, Bu
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
+import { LinkButtonTileAlign, LinkButtonTileAspectRatio, LinkButtonTileSize, LinkButtonTileWeight } from "./utils";
+import { LinkAriaAttribute } from "./components/link/link-utils";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -24,9 +26,7 @@ import { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/he
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -192,6 +192,64 @@ export namespace Components {
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
+    }
+    interface PButtonTile {
+        /**
+          * Alignment of link and description.
+         */
+        "align"?: LinkButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        /**
+          * Aspect ratio of the link-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        /**
+          * Displays the tile-link as compact version with description and link icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description": string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: LinkButtonIconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label": string;
+        /**
+          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PCarousel {
         /**
@@ -673,7 +731,7 @@ export namespace Components {
         /**
           * Alignment of link and description.
          */
-        "align"?: LinkTileAlign;
+        "align"?: LinkButtonTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -681,7 +739,7 @@ export namespace Components {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -713,7 +771,7 @@ export namespace Components {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkTileSize>;
+        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -721,7 +779,7 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PMarque {
         /**
@@ -1388,6 +1446,12 @@ declare global {
         prototype: HTMLPButtonPureElement;
         new (): HTMLPButtonPureElement;
     };
+    interface HTMLPButtonTileElement extends Components.PButtonTile, HTMLStencilElement {
+    }
+    var HTMLPButtonTileElement: {
+        prototype: HTMLPButtonTileElement;
+        new (): HTMLPButtonTileElement;
+    };
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
     }
     var HTMLPCarouselElement: {
@@ -1706,6 +1770,7 @@ declare global {
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
+        "p-button-tile": HTMLPButtonTileElement;
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
@@ -1911,6 +1976,64 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: TextWeight;
+    }
+    interface PButtonTile {
+        /**
+          * Alignment of link and description.
+         */
+        "align"?: LinkButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        /**
+          * Aspect ratio of the link-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        /**
+          * Displays the tile-link as compact version with description and link icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: LinkButtonIconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label"?: string;
+        /**
+          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PCarousel {
         /**
@@ -2404,7 +2527,7 @@ declare namespace LocalJSX {
         /**
           * Alignment of link and description.
          */
-        "align"?: LinkTileAlign;
+        "align"?: LinkButtonTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -2412,7 +2535,7 @@ declare namespace LocalJSX {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -2444,7 +2567,7 @@ declare namespace LocalJSX {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkTileSize>;
+        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -2452,7 +2575,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PMarque {
         /**
@@ -3076,6 +3199,7 @@ declare namespace LocalJSX {
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
+        "p-button-tile": PButtonTile;
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
@@ -3139,6 +3263,7 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
+            "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;

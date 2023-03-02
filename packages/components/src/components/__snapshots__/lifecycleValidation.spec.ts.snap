@@ -58,6 +58,25 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-button-tile: propTypes with ValidatorFunctions 1`] = `
+{
+  "align": "oneOf",
+  "aria": "aria",
+  "aspectRatio": "breakpoint",
+  "compact": "breakpoint",
+  "description": "string",
+  "disabled": "boolean",
+  "gradient": "boolean",
+  "icon": "string",
+  "iconSource": "string",
+  "label": "string",
+  "loading": "boolean",
+  "size": "breakpoint",
+  "type": "oneOf",
+  "weight": "breakpoint",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-carousel: propTypes with ValidatorFunctions 1`] = `
 {
   "alignHeader": "oneOf",

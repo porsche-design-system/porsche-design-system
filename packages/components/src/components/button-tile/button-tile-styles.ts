@@ -158,6 +158,10 @@ export const getComponentCss = (
       position: 'fixed',
       ...getInsetJssStyle(0),
       outline: 0,
+      cursor: 'pointer',
+      backgroundColor: 'transparent',
+      backgroundRepeat: 'no-repeat',
+      border: 'none',
     },
   });
 };

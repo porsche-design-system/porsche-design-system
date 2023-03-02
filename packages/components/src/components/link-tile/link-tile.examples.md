@@ -85,7 +85,7 @@ It is possible to align the description on top of the component.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { LINK_TILE_ALIGNS, LINK_TILE_ASPECT_RATIOS, LINK_TILE_SIZES, LINK_TILE_WEIGHTS } from './link-tile-utils'; 
+import { LINK_BUTTON_TILE_ALIGNS, LINK_BUTTON_TILE_ASPECT_RATIOS, LINK_BUTTON_TILE_SIZES, LINK_BUTTON_TILE_WEIGHTS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
