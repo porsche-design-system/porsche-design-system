@@ -85,8 +85,8 @@ export class Pagination {
   @Prop() public intl?: PaginationInternationalization = {
     root: 'Pagination',
     prev: 'Previous page',
-    next: 'Page',
-    page: 'Next page',
+    next: 'Next page',
+    page: 'Page',
   };
 
   /** Adapts the color when used on dark background. */
@@ -156,7 +156,7 @@ export class Pagination {
             const iconProps = {
               theme: this.theme,
               color: isActive ? 'primary' : 'disabled',
-              'aria-hidden': true,
+              'aria-hidden': 'true',
             };
 
             switch (type) {
