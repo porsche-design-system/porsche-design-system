@@ -185,13 +185,13 @@ export class Carousel {
       this.host,
       getComponentCss,
       this.width,
+      // flip boolean values of disablePagination since it is the inverse of pagination
       this.disablePagination
         ? typeof this.disablePagination === 'object'
-          ? // flipping the boolean values
-            (Object.fromEntries(
+          ? (Object.fromEntries(
               Object.entries(this.disablePagination).map(([key, value]) => [key, !value])
             ) as BreakpointCustomizable<boolean>)
-          : this.disablePagination
+          : !this.disablePagination
         : this.pagination,
       this.alignHeader,
       this.theme
