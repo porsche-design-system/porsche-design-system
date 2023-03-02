@@ -1,5 +1,4 @@
-import type { Theme } from '../theme';
-import { themeDarkStateFocus, themeLightStateFocus } from '../theme';
+import { themeLightStateFocus } from '../theme';
 import { borderRadiusMedium, borderRadiusSmall, borderWidthBase } from '../border';
 
 type Size = 'small' | 'medium';
@@ -8,7 +7,6 @@ type BorderRadius = Size;
 type Options = {
   inset?: Inset | string;
   borderRadius?: BorderRadius | string;
-  theme?: Theme;
 };
 
 export const getFocusStyle = (opts?: Options) => {
@@ -29,7 +27,7 @@ export const getFocusStyle = (opts?: Options) => {
       position: 'absolute',
       inset,
       pointerEvents: 'none', // necessary to be able to select elements behind pseudo-element
-      border: `${borderWidthBase} solid ${opts?.theme === 'dark' ? themeDarkStateFocus : themeLightStateFocus}`,
+      border: `${borderWidthBase} solid ${themeLightStateFocus}`, // focus color is equal for light and dark theme
       borderRadius,
     },
     // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/

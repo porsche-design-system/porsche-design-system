@@ -1,5 +1,4 @@
-import type { Theme } from '../theme';
-import { themeDarkStateHover, themeLightStateHover } from '../theme';
+import { themeLightStateHover } from '../theme';
 import { borderRadiusMedium, borderRadiusSmall } from '../border';
 import { frostedGlassStyle } from '../frostedGlass';
 
@@ -9,7 +8,6 @@ type BorderRadius = Size;
 type Options = {
   inset?: Inset | string;
   borderRadius?: BorderRadius | string;
-  theme?: Theme;
 };
 
 export const getHoverStyle = (opts?: Options) => {
@@ -33,7 +31,7 @@ export const getHoverStyle = (opts?: Options) => {
         pointerEvents: 'none', // necessary to be able to select elements behind pseudo-element
         zIndex: -1, // ensures pseudo-element gets behind text node
         ...frostedGlassStyle,
-        background: opts?.theme === 'dark' ? themeDarkStateHover : themeLightStateHover,
+        background: themeLightStateHover, // hover color is equal for light and dark theme
         borderRadius,
       },
     },
