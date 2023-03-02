@@ -104,19 +104,20 @@ export class Scroller {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme');
+    warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    const deprecationMap: Record<ScrollerGradientColorDeprecated, ScrollerGradientColor> = {
+      default: 'background-base',
+      surface: 'background-surface',
+    };
     warnIfDeprecatedPropValueIsUsed<typeof Scroller, ScrollerGradientColorDeprecated, ScrollerGradientColor>(
       this,
       'gradientColorScheme',
-      {
-        default: 'background-base',
-        surface: 'background-surface',
-      }
+      deprecationMap
     );
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.gradientColorScheme || this.gradientColor,
+      deprecationMap[this.gradientColorScheme] || this.gradientColor,
       this.isNextHidden,
       this.isPrevHidden,
       this.scrollIndicatorPosition,

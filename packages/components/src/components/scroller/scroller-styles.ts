@@ -8,7 +8,7 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import type { Theme } from '../../types';
-import type { ScrollerGradientColor, ScrollerGradientColorDeprecated, ScrollIndicatorPosition } from './scroller-utils';
+import type { ScrollerGradientColor, ScrollIndicatorPosition } from './scroller-utils';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -18,25 +18,18 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
-const gradientColorMap: Record<Theme, Record<ScrollerGradientColor | ScrollerGradientColorDeprecated, string>> = {
+const gradientColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
   light: {
     'background-base': '255,255,255',
     'background-surface': '238,239,242',
-    default: '255,255,255', // deprecated
-    surface: '238,239,242', // deprecated
   },
   dark: {
     'background-base': '14,14,18',
     'background-surface': '33,34,37',
-    default: '14,14,18', // deprecated
-    surface: '33,34,37', // deprecated
   },
 };
 
-const getGradient = (
-  theme: Theme,
-  gradientColorTheme: ScrollerGradientColor | ScrollerGradientColorDeprecated
-): string => {
+const getGradient = (theme: Theme, gradientColorTheme: ScrollerGradientColor): string => {
   const gradientColor = gradientColorMap[theme][gradientColorTheme];
 
   return (
@@ -48,7 +41,7 @@ const getGradient = (
 };
 
 export const getComponentCss = (
-  gradientColor: ScrollerGradientColor | ScrollerGradientColorDeprecated,
+  gradientColor: ScrollerGradientColor,
   isNextHidden: boolean,
   isPrevHidden: boolean,
   scrollIndicatorPosition: ScrollIndicatorPosition,
@@ -58,18 +51,14 @@ export const getComponentCss = (
 
   const isDarkTheme = isThemeDark(theme);
 
-  const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor | ScrollerGradientColorDeprecated, string>> = {
+  const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
     dark: {
       'background-base': backgroundSurfaceColor,
       'background-surface': backgroundColor,
-      default: backgroundSurfaceColor, // deprecated
-      surface: backgroundColor, // deprecated
     },
     light: {
       'background-base': backgroundColor,
       'background-surface': backgroundSurfaceColor,
-      default: backgroundColor, // deprecated
-      surface: backgroundSurfaceColor, // deprecated
     },
   };
 
