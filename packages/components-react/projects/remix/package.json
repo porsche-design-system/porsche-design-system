@@ -53,7 +53,7 @@
     "msw": "^1.1.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
-    "start-server-and-test": "^1.15.4",
+    "start-server-and-test": "^2.0.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
     "typescript": "~4.9.5",
