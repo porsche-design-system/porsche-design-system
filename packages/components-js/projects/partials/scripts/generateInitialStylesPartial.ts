@@ -50,6 +50,8 @@ export const generateInitialStylesPartial = (): string => {
   const normalizeStyles: Styles = {
     '@global': {
       'html, body': {
+        margin: 0,
+        padding: 0,
         fontFamily,
         lineHeight: fontLineHeight,
         letterSpacing: 'normal',
