@@ -135,7 +135,8 @@ export class TextFieldWrapper {
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.isCounterVisible = this.hasCounter && (this.showCharacterCount || this.showCounter);
+    this.isCounterVisible =
+      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
 
     if (this.isSearch) {

@@ -255,7 +255,7 @@ describe('registerSplideHandlers()', () => {
     component['splide'].emit('mounted');
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
     expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
-    expect(renderPaginationSpy).toBeCalledWith(component['pagination'], component['amountOfPages'], 0);
+    expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
   });
 
   it('should call updatePrevNextButtons(), updateSlidesInert(), updatePagination() and this.carouselChange.emit() with correct parameters on move event', () => {
@@ -271,7 +271,7 @@ describe('registerSplideHandlers()', () => {
     component['splide'].emit('move', 1, 0);
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
     expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
-    expect(updatePaginationSpy).toBeCalledWith(component['pagination'], 1);
+    expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], 1);
     expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
   });
 
@@ -361,7 +361,7 @@ describe('updateAmountOfPages()', () => {
     component['splide'] = { index: 1 } as Splide;
 
     component['updateAmountOfPages']();
-    expect(spy).toBeCalledWith(component['pagination'], 5, 1);
+    expect(spy).toBeCalledWith(component['paginationEl'], 5, 1);
   });
 
   it('should call updateSlidesInert() with correct parameters', () => {

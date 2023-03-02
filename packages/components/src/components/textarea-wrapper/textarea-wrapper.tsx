@@ -79,7 +79,9 @@ export class TextareaWrapper {
   public componentWillLoad(): void {
     this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
-    this.hasCounter = hasCounter(this.textarea) && (this.showCharacterCount || this.showCounter);
+    this.hasCounter =
+      hasCounter(this.textarea) &&
+      (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
   }
 
   public componentDidLoad(): void {
