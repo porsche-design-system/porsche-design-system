@@ -15,6 +15,7 @@ module.exports = {
     },
     'sortAttrs', // sort element attributes for epic readability
     'convertStyleToAttrs', // convert styles into attributes
+    'removeDimensions', // add viewBox and set width and height to 100%
     {
       name: 'removeAttrs', // remove attributes by pattern
       params: {
