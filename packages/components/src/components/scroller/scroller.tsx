@@ -47,7 +47,7 @@ export class Scroller {
   @Element() public host!: HTMLElement;
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead
+   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
    * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: ScrollerGradientColorDeprecated;
 

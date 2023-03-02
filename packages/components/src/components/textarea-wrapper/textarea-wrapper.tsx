@@ -16,6 +16,7 @@ import {
   validateProps,
   FORM_STATES,
   THEMES,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -29,6 +30,7 @@ const propTypes: PropTypes<typeof TextareaWrapper> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
+  showCounter: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -54,8 +56,13 @@ export class TextareaWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead.
+   * Show or hide max character count. */
+  @Prop() public showCharacterCount?: boolean;
+
   /** Show or hide max character count. */
-  @Prop() public showCharacterCount?: boolean = true;
+  @Prop() public showCounter?: boolean = true;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -72,7 +79,7 @@ export class TextareaWrapper {
   public componentWillLoad(): void {
     this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
-    this.hasCounter = hasCounter(this.textarea) && this.showCharacterCount;
+    this.hasCounter = hasCounter(this.textarea) && (this.showCharacterCount || this.showCounter);
   }
 
   public componentDidLoad(): void {
@@ -100,6 +107,11 @@ export class TextareaWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof TextareaWrapper>(
+      this,
+      'showCharacterCount',
+      'Please use showCounter prop instead.'
+    );
     attachComponentCss(
       this.host,
       getComponentCss,

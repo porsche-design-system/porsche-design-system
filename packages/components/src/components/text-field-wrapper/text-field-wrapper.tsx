@@ -18,6 +18,7 @@ import {
   THEMES,
   unobserveAttributes,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, IconName, PropTypes, Theme } from '../../types';
 import type { FormState } from '../../utils/form/form-state';
@@ -47,6 +48,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
+  showCounter: AllowedTypes.boolean,
   actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>(['locate', undefined]),
   actionLoading: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -80,8 +82,13 @@ export class TextFieldWrapper {
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead.
+   * Show or hide max character count. */
+  @Prop() public showCharacterCount?: boolean;
+
   /** Show or hide max character count. */
-  @Prop() public showCharacterCount?: boolean = true;
+  @Prop() public showCounter?: boolean = true;
 
   /** Action icon can be set to `locate` for `input type="search"` in order to display an action button. */
   @Prop() public actionIcon?: Extract<IconName, 'locate'>;
@@ -128,7 +135,7 @@ export class TextFieldWrapper {
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.isCounterVisible = this.showCharacterCount && this.hasCounter;
+    this.isCounterVisible = this.hasCounter && (this.showCharacterCount || this.showCounter);
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
 
     if (this.isSearch) {
@@ -173,6 +180,11 @@ export class TextFieldWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof TextFieldWrapper>(
+      this,
+      'showCharacterCount',
+      'Please use showCounter prop instead.'
+    );
     throwIfUnitLengthExceeded(this.unit);
     const { readOnly, disabled, type } = this.input;
 

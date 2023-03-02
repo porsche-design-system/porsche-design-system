@@ -881,7 +881,7 @@ export namespace Components {
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorDeprecated;
         /**
@@ -1093,7 +1093,7 @@ export namespace Components {
          */
         "gradientColor"?: TabGradientColor;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
@@ -1119,7 +1119,7 @@ export namespace Components {
          */
         "gradientColor"?: TabGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
@@ -1233,9 +1233,13 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
+        /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
         /**
           * The validation state.
          */
@@ -1287,9 +1291,13 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
+        /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
         /**
           * The validation state.
          */
@@ -2640,7 +2648,7 @@ declare namespace LocalJSX {
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorDeprecated;
         /**
@@ -2868,7 +2876,7 @@ declare namespace LocalJSX {
          */
         "gradientColor"?: TabGradientColor;
         /**
-          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
@@ -2898,7 +2906,7 @@ declare namespace LocalJSX {
          */
         "gradientColor"?: TabGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorDeprecated;
         /**
@@ -3020,9 +3028,13 @@ declare namespace LocalJSX {
          */
         "onAction"?: (event: PTextFieldWrapperCustomEvent<void>) => void;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
+        /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
         /**
           * The validation state.
          */
@@ -3074,9 +3086,13 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
+        /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
         /**
           * The validation state.
          */

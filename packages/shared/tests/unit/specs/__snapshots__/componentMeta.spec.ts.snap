@@ -1286,6 +1286,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text-field-wrapper": {
+    "deprecatedProps": [
+      "showCharacterCount",
+    ],
     "eventNames": [
       "action",
     ],
@@ -1319,7 +1322,8 @@ exports[`should match snapshot 1`] = `
       "hideLabel": false,
       "label": null,
       "message": null,
-      "showCharacterCount": true,
+      "showCharacterCount": null,
+      "showCounter": true,
       "state": "none",
       "theme": "light",
       "unit": null,
@@ -1363,6 +1367,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-textarea-wrapper": {
+    "deprecatedProps": [
+      "showCharacterCount",
+    ],
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": true,
@@ -1387,7 +1394,8 @@ exports[`should match snapshot 1`] = `
       "hideLabel": false,
       "label": null,
       "message": null,
-      "showCharacterCount": true,
+      "showCharacterCount": null,
+      "showCounter": true,
       "state": "none",
       "theme": "light",
     },

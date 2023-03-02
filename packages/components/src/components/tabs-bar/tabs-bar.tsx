@@ -63,7 +63,7 @@ export class TabsBar {
   @Prop() public theme?: Theme = 'light';
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead
+   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
    * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorDeprecated;
 
