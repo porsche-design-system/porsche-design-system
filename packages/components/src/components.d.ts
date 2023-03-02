@@ -31,7 +31,7 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
+import { NumberOfPageLinks, PageChangeEvent, PaginationInternationalization } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { ScrollerGradientColor, ScrollerGradientColorDeprecated, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
@@ -803,21 +803,25 @@ export namespace Components {
          */
         "activePage"?: number;
         /**
-          * Aria label what the pagination is used for.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
          */
         "allyLabel"?: string;
         /**
-          * Aria label for next page icon.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
          */
         "allyLabelNext"?: string;
         /**
-          * Aria label for page navigation.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
          */
         "allyLabelPage"?: string;
         /**
-          * Aria label for previous page icon.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
          */
         "allyLabelPrev"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+         */
+        "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
          */
@@ -2566,21 +2570,25 @@ declare namespace LocalJSX {
          */
         "activePage"?: number;
         /**
-          * Aria label what the pagination is used for.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
          */
         "allyLabel"?: string;
         /**
-          * Aria label for next page icon.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
          */
         "allyLabelNext"?: string;
         /**
-          * Aria label for page navigation.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
          */
         "allyLabelPage"?: string;
         /**
-          * Aria label for previous page icon.
+          * * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
          */
         "allyLabelPrev"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+         */
+        "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
          */

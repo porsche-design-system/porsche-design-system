@@ -1,7 +1,15 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  parseJSONAttribute,
+  THEMES,
+  validateProps,
+  warnIfDeprecatedPropIsUsed,
+} from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { NumberOfPageLinks, PageChangeEvent } from './pagination-utils';
+import type { NumberOfPageLinks, PageChangeEvent, PaginationInternationalization } from './pagination-utils';
 import {
   createPaginationModel,
   getCounterResetValue,
@@ -22,6 +30,12 @@ const propTypes: PropTypes<typeof Pagination> = {
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
   allyLabelNext: AllowedTypes.string,
+  intl: AllowedTypes.shape<Required<PaginationInternationalization>>({
+    root: AllowedTypes.string,
+    prev: AllowedTypes.string,
+    next: AllowedTypes.string,
+    page: AllowedTypes.string,
+  }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -47,17 +61,33 @@ export class Pagination {
     xs: 7,
   };
 
-  /** Aria label what the pagination is used for. */
-  @Prop() public allyLabel?: string = 'Pagination';
+  /**
+   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead.
+   * Aria label what the pagination is used for. */
+  @Prop() public allyLabel?: string;
 
-  /** Aria label for previous page icon. */
-  @Prop() public allyLabelPrev?: string = 'Previous page';
+  /**
+   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead.
+   * Aria label for previous page icon. */
+  @Prop() public allyLabelPrev?: string;
 
-  /** Aria label for page navigation. */
-  @Prop() public allyLabelPage?: string = 'Page';
+  /**
+   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead.
+   * Aria label for page navigation. */
+  @Prop() public allyLabelPage?: string;
 
-  /** Aria label for next page icon. */
-  @Prop() public allyLabelNext?: string = 'Next page';
+  /**
+   * * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead.
+   * Aria label for next page icon. */
+  @Prop() public allyLabelNext?: string;
+
+  /** Override the default wordings that are used for aria-labels on the next/prev and page buttons. */
+  @Prop() public intl?: PaginationInternationalization = {
+    root: 'Pagination',
+    prev: 'Previous page',
+    next: 'Page',
+    page: 'Next page',
+  };
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -65,7 +95,7 @@ export class Pagination {
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public pageChange: EventEmitter<PageChangeEvent>;
 
-  @State() private breakpointMaxNumberOfPageLinks: number;
+  @State() private breakpointMaxNumberOfPageLinks: NumberOfPageLinks = 7;
 
   private navigationElement: HTMLElement;
   private unlistenResize: () => void;
@@ -84,27 +114,49 @@ export class Pagination {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'allyLabel', 'Please use intl prop with intl.root instead.');
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(
+      this,
+      'allyLabelNext',
+      'Please use intl prop with intl.next instead.'
+    );
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(
+      this,
+      'allyLabelPrev',
+      'Please use intl prop with intl.prev instead.'
+    );
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(
+      this,
+      'allyLabelPage',
+      'Please use intl prop with intl.page instead.'
+    );
     attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
-
     const paginationModel = createPaginationModel({
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
       pageRange: this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0,
     });
+    const parsedIntl = parseJSONAttribute(this.intl);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <nav role="navigation" aria-label={this.allyLabel} ref={(el) => (this.navigationElement = el)}>
+      <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root} ref={(el) => (this.navigationElement = el)}>
         <ul>
           {paginationModel.map((pageModel) => {
             const { type, isActive, value } = pageModel;
             const spanProps = {
               role: 'button',
+              tabIndex: isActive ? 0 : null,
               onClick: () => this.onClick(value),
               onKeyDown: (e: KeyboardEvent) => this.onKeyDown(e, value),
+            };
+            const iconProps = {
+              theme: this.theme,
+              color: isActive ? 'primary' : 'disabled',
+              'aria-hidden': true,
             };
 
             switch (type) {
@@ -113,16 +165,10 @@ export class Pagination {
                   <li key="prev">
                     <span
                       {...spanProps}
-                      tabIndex={isActive ? 0 : null}
-                      aria-disabled={!isActive ? 'true' : null}
-                      aria-label={this.allyLabelPrev}
+                      aria-disabled={isActive ? null : 'true'}
+                      aria-label={this.allyLabelPrev || parsedIntl.prev}
                     >
-                      <PrefixedTagNames.pIcon
-                        name="arrow-left"
-                        theme={this.theme}
-                        color={isActive ? 'default' : 'disabled'}
-                        aria-hidden="true"
-                      />
+                      <PrefixedTagNames.pIcon name="arrow-left" {...iconProps} />
                     </span>
                   </li>
                 );
@@ -140,7 +186,7 @@ export class Pagination {
                     <span
                       {...spanProps}
                       tabIndex={0}
-                      aria-label={`${this.allyLabelPage} ${value}`}
+                      aria-label={`${this.allyLabelPage || parsedIntl.page} ${value}`}
                       aria-current={isActive ? 'page' : null}
                     >
                       {value}
@@ -153,16 +199,10 @@ export class Pagination {
                   <li key="next">
                     <span
                       {...spanProps}
-                      tabIndex={isActive ? 0 : null}
-                      aria-disabled={!isActive ? 'true' : null}
-                      aria-label={this.allyLabelNext}
+                      aria-disabled={isActive ? null : 'true'}
+                      aria-label={this.allyLabelNext || parsedIntl.next}
                     >
-                      <PrefixedTagNames.pIcon
-                        name="arrow-right"
-                        theme={this.theme}
-                        color={isActive ? 'default' : 'disabled'}
-                        aria-hidden="true"
-                      />
+                      <PrefixedTagNames.pIcon name="arrow-right" {...iconProps} />
                     </span>
                   </li>
                 );

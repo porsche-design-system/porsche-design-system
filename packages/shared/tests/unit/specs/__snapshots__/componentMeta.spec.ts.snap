@@ -680,6 +680,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-pagination": {
+    "deprecatedProps": [
+      "allyLabel",
+      "allyLabelPrev",
+      "allyLabelPage",
+      "allyLabelNext",
+    ],
     "eventNames": [
       "pageChange",
     ],
@@ -697,10 +703,16 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "activePage": 1,
-      "allyLabel": "Pagination",
-      "allyLabelNext": "Next page",
-      "allyLabelPage": "Page",
-      "allyLabelPrev": "Previous page",
+      "allyLabel": null,
+      "allyLabelNext": null,
+      "allyLabelPage": null,
+      "allyLabelPrev": null,
+      "intl": {
+        "next": "Page",
+        "page": "Next page",
+        "prev": "Previous page",
+        "root": "Pagination",
+      },
       "itemsPerPage": 1,
       "maxNumberOfPageLinks": {
         "base": 5,
