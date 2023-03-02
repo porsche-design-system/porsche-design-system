@@ -9,6 +9,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `getInitialStyles` partial matches new design language
+- `Text Field Wrapper` uses Light DOM styles to handle input pseudo-elements provided by getInitialStyles partial
+
+#### Fixed
+
+- `Text Field Wrapper` calendar and time indicator icons respect color definition in dark theme
+- `Text Field Wrapper` has correct height when type date or time is used
+
 ### [3.0.0-alpha.2] - 2023-02-27
 
 #### 🤖 Property deprecations 🤖
@@ -70,16 +80,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
 - Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
 - Styles: `gridStyle` (JS) and `pds-grid` (SCSS) uses optimized grid gap
-
-#### Changed
-
-- `Text Field Wrapper` uses slotted styles from getInitialStyles partial
-- `getInitialStyles` partial matches new design language
-
-#### Fixed
-
-- `Text Field Wrapper` input date/time icons respect color definition in dark theme
-- `Text Field Wrapper` Safari/Chrome browser has correct height and color (dark theme) when type date or time is used
 
 ### [3.0.0-alpha.0] - 2023-02-08
 
