@@ -36,11 +36,14 @@ export default class Code extends Vue {
         const meta = getComponentMeta(tagName); 
         let value = meta[key];
 
-        if (value && key === 'props') {
-          value = Object.keys(value);
-          const { deprecatedProps } = meta;
-          if (deprecatedProps) {
-            value = value.map(val => deprecatedProps.includes(val) ? `${val} 🚫` : val)
+        if (value && (key === 'props' || key === 'eventNames')) {
+          const { deprecatedProps = [], deprecatedEventNames = [] } = meta;
+
+          if (key === 'props') {
+            value = Object.keys(value);
+            value = value.map(val => deprecatedProps.includes(val) ? `${val} 🚫` : val);
+          } else if (key === 'eventNames') {
+            value = value.map(val => deprecatedEventNames.includes(val) ? `${val} 🚫` : val);
           }
         }
 
