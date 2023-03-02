@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Link Tile` matches new design language
 - `Icon` matches new design language
 
 #### Added

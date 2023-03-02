@@ -24,6 +24,7 @@ const components: Component[] = [
   'link',
   'link-pure',
   'link-social',
+  'link-tile',
   'modal-basic',
   'pagination',
   'popover',

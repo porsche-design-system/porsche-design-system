@@ -1316,7 +1316,7 @@ exports[`should render dsr component for PButton 1`] = `
   >
     <style>
       :host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -2690,7 +2690,7 @@ exports[`should render dsr component for PLink 1`] = `
   >
     <style>
       :host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -2900,7 +2900,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   >
     <style>
       :host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -3024,7 +3024,6 @@ exports[`should render dsr component for PLinkTile 1`] = `
     <style>
       :host {
   display: block;
-  height: fit-content !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3048,12 +3047,12 @@ exports[`should render dsr component for PLinkTile 1`] = `
 }
 p {
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   max-width: 34.375rem;
   margin: 0;
-  font-size: 1.25rem;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
 }
 .root {
@@ -3064,11 +3063,12 @@ p {
 }
 .image-container {
   position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
 }
 .content {
   position: absolute;
@@ -3077,8 +3077,9 @@ p {
   right: 0;
   display: grid;
   justify-items: start;
-  padding: 4.5rem 1.5rem 1.5rem;
-  gap: 1.5rem;
+  border-radius: 8px;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  gap: 16px;
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
   grid-template-rows: auto auto;
   grid-template-columns: auto;
@@ -3087,22 +3088,20 @@ p {
   display: none;
 }
 .link {
-  min-height: 3rem;
-  display: inline-flex;
+  min-height: 54px;
+  display: inline-block;
 }
-.anchor::after {
-  content: "";
+.link-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  outline: 0;
 }
-@media(min-width:760px) {
+@media (forced-colors: active) {
   .content {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-bottom: 2rem;
+    background: rgba(0,0,0,0.7);
   }
 }
 
@@ -3119,9 +3118,13 @@ p {
       <div
         class="content"
       >
-        <p
-          id="description"
+        <a
+          aria-hidden="true"
+          class="link-overlay"
+          tabindex="-1"
+          target="_self"
         />
+        <p />
         <p-link
           class="link ssr"
         >
@@ -3131,7 +3134,7 @@ p {
           >
             <style>
               :host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -3197,11 +3200,6 @@ p {
               </span>
             </span>
           </template>
-          <a
-            aria-describedby="description"
-            class="anchor"
-            target="_self"
-          />
         </p-link>
       </div>
     </div>
