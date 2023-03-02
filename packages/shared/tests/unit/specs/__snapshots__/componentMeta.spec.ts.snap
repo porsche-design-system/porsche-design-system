@@ -714,8 +714,8 @@ exports[`should match snapshot 1`] = `
       "allyLabelPage": null,
       "allyLabelPrev": null,
       "intl": {
-        "next": "Page",
-        "page": "Next page",
+        "next": "Next page",
+        "page": "Page",
         "prev": "Previous page",
         "root": "Pagination",
       },
