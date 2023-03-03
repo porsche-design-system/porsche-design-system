@@ -83,7 +83,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add custom props to wrappers
     if (component === 'p-banner') {
       props = addProp(props, 'title?: string;');
-      props = addProp(props, 'description?: string;');
     } else if (component === 'p-toast') {
       props = addProp(props, 'text: string;');
       props = addProp(props, 'state: ToastState;');
