@@ -471,10 +471,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render label, description and message by slotted content with error state">
       <p-text-field-wrapper [state]="'error'">
-        <span slot="label">Slotted error label with a <a [href]="'#'">link</a></span>
-        <span slot="description">Slotted description with a <a [href]="'#'">link</a></span>
+        <span slot="label">
+          Slotted label
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <input [type]="'text'" [placeholder]="'Some placeholder'" />
-        <span slot="message">Slotted message with a <a [href]="'#'">link</a></span>
+        <span slot="message">
+          Slotted error message.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-text-field-wrapper>
     </div>
 
@@ -483,10 +501,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with error state on theme dark"
     >
       <p-text-field-wrapper [state]="'error'" [theme]="'dark'">
-        <span slot="label">Slotted error label with a <a [href]="'#'">link</a></span>
-        <span slot="description">Slotted description with a <a [href]="'#'">link</a></span>
+        <span slot="label">
+          Slotted label
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <input [type]="'text'" [placeholder]="'Some placeholder'" />
-        <span slot="message">Slotted message with a <a [href]="'#'">link</a></span>
+        <span slot="message">
+          Slotted error message.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-text-field-wrapper>
     </div>
 
@@ -495,10 +531,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with success state"
     >
       <p-text-field-wrapper [state]="'success'">
-        <span slot="label">Slotted success label with a <a [href]="'#'">link</a></span>
-        <span slot="description">Slotted description with a <a [href]="'#'">link</a></span>
+        <span slot="label">
+          Slotted label
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <input [type]="'text'" [placeholder]="'Some placeholder'" />
-        <span slot="message">Slotted message with a <a [href]="'#'">link</a></span>
+        <span slot="message">
+          Slotted success message.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-text-field-wrapper>
     </div>
 
@@ -507,10 +561,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with success state on theme dark"
     >
       <p-text-field-wrapper [state]="'success'" [theme]="'dark'">
-        <span slot="label">Slotted success label with a <a [href]="'#'">link</a></span>
-        <span slot="description">Slotted description with a <a [href]="'#'">link</a></span>
+        <span slot="label">
+          Slotted label
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <input [type]="'text'" [placeholder]="'Some placeholder'" />
-        <span slot="message">Slotted message with a <a [href]="'#'">link</a></span>
+        <span slot="message">
+          Slotted success message.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-text-field-wrapper>
     </div>
 

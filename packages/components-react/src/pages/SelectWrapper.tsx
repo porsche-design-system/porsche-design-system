@@ -362,14 +362,32 @@ export const SelectWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render label, description and message by slotted content with error state">
         <PSelectWrapper state="error">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+          <span slot="description">
+            Slotted description.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
           <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="message">
+            Slotted error message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
         </PSelectWrapper>
       </div>
       <div
@@ -377,14 +395,32 @@ export const SelectWrapperPage = (): JSX.Element => {
         title="should render label, description and message by slotted content with error state on dark theme"
       >
         <PSelectWrapper state="error" theme="dark">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+          <span slot="description">
+            Slotted description.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
           <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="message">
+            Slotted error message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
         </PSelectWrapper>
       </div>
 
@@ -393,14 +429,32 @@ export const SelectWrapperPage = (): JSX.Element => {
         title="should render label, description and message by slotted content with success state"
       >
         <PSelectWrapper state="success">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+          <span slot="description">
+            Slotted description.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
           <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="message">
+            Slotted success message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
         </PSelectWrapper>
       </div>
       <div
@@ -408,14 +462,32 @@ export const SelectWrapperPage = (): JSX.Element => {
         title="should render label, description and message by slotted content with success state on dark theme"
       >
         <PSelectWrapper state="success" theme="dark">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+          <span slot="description">
+            Slotted description.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
           <select>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="message">
+            Slotted success message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
         </PSelectWrapper>
       </div>
 

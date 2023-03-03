@@ -4,8 +4,16 @@ import { PRadioButtonWrapper } from '@porsche-design-system/components-react/ssr
 
 const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
   const style = `
+    @media only screen and (min-width: 760px) {
+      #app,
+      :host {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+      }
+    }
+
     .playground > * {
-      margin-bottom: 2px;
+      margin-bottom: 8px;
     }
   `;
 
@@ -209,25 +217,99 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with slotted content with error state and message">
         <PRadioButtonWrapper state="error">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">Slotted label</span>
           <input type="radio" name="some-name-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper state="error">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">Slotted label</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
           <input type="radio" name="some-name-9" />
-          <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="message">
+            Slotted error message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
         </PRadioButtonWrapper>
       </div>
 
       <div className="playground dark" title="should render with slotted content with error state and message">
         <PRadioButtonWrapper theme="dark" state="error">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">Slotted label</span>
           <input type="radio" name="some-name-dark-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" state="error">
-          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
           <input type="radio" name="some-name-dark-9" />
-          <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="message">
+            Slotted error message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+        </PRadioButtonWrapper>
+      </div>
+
+      <div className="playground light" title="should render with slotted content with success state and message">
+        <PRadioButtonWrapper state="success">
+          <span slot="label">Slotted label</span>
+          <input type="radio" name="some-name-9" />
+        </PRadioButtonWrapper>
+        <PRadioButtonWrapper state="success">
+          <span slot="label">Slotted label</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+          <input type="radio" name="some-name-9" />
+          <span slot="message">
+            Slotted success message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+        </PRadioButtonWrapper>
+      </div>
+
+      <div className="playground dark" title="should render with slotted content with success state and message">
+        <PRadioButtonWrapper theme="dark" state="success">
+          <span slot="label">Slotted label</span>
+          <input type="radio" name="some-name-dark-9" />
+        </PRadioButtonWrapper>
+        <PRadioButtonWrapper theme="dark" state="success">
+          <span slot="label">
+            Slotted label
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+          <input type="radio" name="some-name-dark-9" />
+          <span slot="message">
+            Slotted success message.
+            <span>
+              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
         </PRadioButtonWrapper>
       </div>
 
