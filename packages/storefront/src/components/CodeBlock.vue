@@ -1,5 +1,5 @@
 <template>
-  <div class="code-block" :class="`code-block--${theme} code-block--${colorScheme}`">
+  <div class="code-block" :class="`code-block--${theme} code-block--${backgroundColor}`">
     <p-tabs-bar v-if="Object.keys(usedFrameworks).length > 1" :theme="theme" :active-tab-index="activeTabIndex">
       <!-- prettier-ignore -->
       <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
@@ -17,7 +17,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import type { Framework, FrameworkMarkup, Theme } from '@/models';
+  import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '@/models';
   import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
@@ -25,7 +25,7 @@
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
+    @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: false }) public convertMarkup!: boolean;
     @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
 
@@ -147,7 +147,7 @@
 
       // the following are all custom based on above values
       // extracted from chrome dev tools contrast utility
-      &.code-block--surface {
+      &.code-block--background-surface {
         pre {
           :deep(code) {
             .token.selector,

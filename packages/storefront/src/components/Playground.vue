@@ -9,7 +9,7 @@
         example: true,
         'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
         'example--dark': mergedConfig.themeable && theme === 'dark',
-        'example--surface': mergedConfig.colorScheme === 'surface',
+        'example--surface': mergedConfig.backgroundColor === 'background-surface',
         'example--height-fixed': mergedConfig.height === 'fixed',
         'example--spacing-inline': mergedConfig.spacing === 'inline',
         'example--spacing-block': mergedConfig.spacing === 'block',
@@ -33,7 +33,7 @@
           :markup="codeBlockMarkup"
           :convert-markup="!hasFrameworkMarkup"
           :theme="theme"
-          :colorScheme="config.colorScheme"
+          :backgroundColor="config.backgroundColor"
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor
@@ -43,7 +43,7 @@
           :framework="activeFramework"
           :externalStackBlitzDependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
           :sharedImportKeys="sharedImportKeys"
-          :colorScheme="config.colorScheme"
+          :backgroundColor="config.backgroundColor"
         ></CodeEditor>
       </template>
     </div>
@@ -58,13 +58,13 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
   import { componentMeta } from '@porsche-design-system/shared';
-  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '../models';
+  import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
   import { getExternalDependenciesOrThrow } from '../utils/stackblitz/helper';
 
   export type PlaygroundConfig = {
     themeable: boolean;
-    colorScheme: ColorScheme;
+    backgroundColor: BackgroundColor;
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
@@ -73,7 +73,7 @@
 
   export const initialConfig: PlaygroundConfig = {
     themeable: false,
-    colorScheme: 'default',
+    backgroundColor: 'background-base',
     height: 'auto',
     spacing: 'none',
     overflowX: 'auto',

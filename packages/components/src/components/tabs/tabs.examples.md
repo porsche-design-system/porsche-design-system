@@ -30,13 +30,13 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
-## Gradient Color Scheme
+## Gradient color
 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Playground :markup="gradientColorSchemeMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <SelectOptions v-model="gradientColorScheme" :values="gradientColorSchemes" name="gradientColorScheme"></SelectOptions>
+<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
 </Playground>
 
 ## Active Tab
@@ -50,7 +50,7 @@ update the `activeTabIndex` when adding or removing elements.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { TAB_SIZES, TAB_WEIGHTS } from '../tabs-bar/tabs-bar-utils';
-import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils'; 
+import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildTabsItem = (name: string, index: number) => 
 `  <p-tabs-item label="Tab ${name}">
@@ -82,10 +82,10 @@ ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
   }
 
-  gradientColorScheme = 'surface';
-  gradientColorSchemes = GRADIENT_COLOR_THEMES;
-  get gradientColorSchemeMarkup() {
-    return `<p-tabs gradient-color-scheme="${this.gradientColorScheme}">
+  gradientColor = 'background-surface';
+  gradientColors = GRADIENT_COLORS;
+  get gradientColorMarkup() {
+    return `<p-tabs gradient-color="${this.gradientColor}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
   .map(buildTabsItem).join('\n')}
 </p-tabs>`;

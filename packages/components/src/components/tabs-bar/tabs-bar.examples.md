@@ -77,13 +77,13 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
-## Gradient Color Scheme
+## Gradient color
 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Playground :markup="gradientColorSchemeMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <SelectOptions v-model="gradientColorScheme" :values="gradientColorSchemes" name="gradientColorScheme"></SelectOptions>
+<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
 </Playground>
 
 <script lang="ts">
@@ -91,7 +91,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
 import { TAB_SIZES, TAB_WEIGHTS } from './tabs-bar-utils';
-import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils'; 
+import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
 const buildAnchor = (name: string) => `  <a href="https://porsche.com" target="_blank">Tab ${name}</a>`;
@@ -141,10 +141,10 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
 
-  gradientColorScheme = 'surface';
-  gradientColorSchemes = GRADIENT_COLOR_THEMES;
-  get gradientColorSchemeMarkup() {
-    return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
+  gradientColor = 'background-surface';
+  gradientColors = GRADIENT_COLORS;
+  get gradientColorMarkup() {
+    return `<p-tabs-bar gradient-color="${this.gradientColor}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }

@@ -31,12 +31,12 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 
 <Playground :markup="scrollIndicatorSize" :config="config"></Playground>
 
-## Gradient color scheme
+## Gradient color
 
 The background and gradient has to align with your chosen background.
 
-<Playground :markup="gradientColorSchemeMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <SelectOptions v-model="gradientColorScheme" :values="gradientColorSchemes" name="gradientColorScheme"></SelectOptions>
+<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
 </Playground>
 
 ## Scroll to position
@@ -66,7 +66,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getScrollerCodeSamples } from '@porsche-design-system/shared';
 import type { Theme } from '@/models';
-import { GRADIENT_COLOR_THEMES } from './scroller-utils'; 
+import { GRADIENT_COLORS } from './scroller-utils'; 
   
 @Component
 export default class Code extends Vue {
@@ -133,11 +133,11 @@ export default class Code extends Vue {
   </p-scroller>
 </div>`;
 
-  gradientColorScheme = 'surface';
-  gradientColorSchemes = GRADIENT_COLOR_THEMES;
-  get gradientColorSchemeMarkup() {
+  gradientColor = 'background-surface';
+  gradientColors = GRADIENT_COLORS;
+  get gradientColorMarkup() {
     return `<div style="max-width: 600px">
-  <p-scroller gradient-color-scheme="${this.gradientColorScheme}" style="white-space: nowrap">
+  <p-scroller gradient-color="${this.gradientColor}" style="white-space: nowrap">
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
     </p-tag>

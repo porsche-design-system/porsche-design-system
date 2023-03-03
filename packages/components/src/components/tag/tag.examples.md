@@ -13,7 +13,7 @@ Following colors have been deprecated and will be removed with the next major re
 "neutral-contrast-high", and "notification-neutral".
 </p-inline-notification>
 
-<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+<Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
@@ -30,7 +30,7 @@ whole icon path to the icon-source property.
 It is possible to add a `<button>` tag into the `p-tag` component. If you do this, the entire component becomes
 clickable and no other content outside the button or link is allowed.
 
-<Playground :markup="buttonMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+<Playground :markup="buttonMarkup" :config="{ ...config, backgroundColor }">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
@@ -46,7 +46,7 @@ action.
 It is possible to add `<a>` tag into the `p-tag` component. If you do this, the entire component becomes clickable and
 no other content outside the button or link is allowed.
 
-<Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+<Playground :markup="linkMarkup" :config="{ ...config, backgroundColor }">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
@@ -60,14 +60,15 @@ to.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { TAG_COLORS } from './tag-utils'; 
+import { TAG_COLORS } from './tag-utils';
+import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
   
-  backgroundColor = 'default';
-  backgroundColors = ['default', 'surface']; 
+  backgroundColor = 'background-base';
+  backgroundColors = GRADIENT_COLORS; 
 
   get colorMarkup(){
     return TAG_COLORS.map((color) => `<p-tag color="${color}">Color ${color}</p-tag>`).join('\n');

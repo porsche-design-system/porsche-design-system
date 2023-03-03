@@ -8,6 +8,7 @@
   import { Prop } from 'vue-property-decorator';
   import { Theme } from '@/models';
 
+  // TODO: update or remove
   type Color =
     | 'brand'
     | 'default'

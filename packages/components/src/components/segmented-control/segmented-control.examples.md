@@ -45,7 +45,7 @@ An icon can be added via the `icon` or `iconSource` property.
 If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor`
 property.
 
-<Playground :markup="backgroundColorMarkup" :config="{ ...config, colorScheme: backgroundColor.replace('background-', '') }">
+<Playground :markup="backgroundColorMarkup" :config="{ ...config, backgroundColor }">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
