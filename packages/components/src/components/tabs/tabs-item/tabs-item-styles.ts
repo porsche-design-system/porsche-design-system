@@ -4,12 +4,13 @@ import { addImportantToEachRule, getThemedColors, hostHiddenStyles, getInsetJssS
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (theme: Theme): string => {
-  const { focusColor } = getThemedColors(theme);
+  const { primaryColor, focusColor } = getThemedColors(theme);
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
         position: 'relative',
+        color: primaryColor, // enables color inheritance for e.g. slotted anchor
         ...hostHiddenStyles,
         outline: 0,
         '&::before': {
