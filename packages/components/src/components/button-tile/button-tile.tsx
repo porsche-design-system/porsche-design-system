@@ -1,31 +1,30 @@
-import { Component, Element, h, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  attachSlottedCss,
-  BUTTON_TYPES,
-  getPrefixedTagNames,
-  parseJSON,
-  validateProps,
-} from '../../utils';
-import { getComponentCss, getSlottedCss } from './button-tile-styles';
-import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
+import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes, ButtonAriaAttribute } from '../../types';
 import type {
   LinkButtonTileSize,
   LinkButtonTileWeight,
   LinkButtonTileAspectRatio,
   LinkButtonTileAlign,
 } from '../../utils';
+import { Component, Element, h, Prop } from '@stencil/core';
 import {
+  AllowedTypes,
+  attachComponentCss,
+  attachSlottedCss,
+  BUTTON_TYPES,
+  BUTTON_ARIA_ATTRIBUTES,
+  getPrefixedTagNames,
+  parseJSON,
+  validateProps,
   LINK_BUTTON_TILE_SIZES,
   LINK_BUTTON_TILE_WEIGHTS,
   LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_ALIGNS,
   throwIfAlignTopAndNotCompact,
 } from '../../utils';
+import { getComponentCss } from './button-tile-styles';
+import { getSlottedCss } from '../../styles/link-button-tile-styles';
 import { ButtonType, LinkButtonIconName } from '../../types';
+import { getButtonAriaAttributes } from '../button/button-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   size: AllowedTypes.breakpoint<LinkButtonTileSize>(LINK_BUTTON_TILE_SIZES),
@@ -41,7 +40,7 @@ const propTypes: PropTypes<typeof ButtonTile> = {
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -57,7 +56,7 @@ export class ButtonTile {
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<LinkButtonTileWeight> = 'semibold';
 
-  /** Aspect ratio of the link-tile. */
+  /** Aspect ratio of the button-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkButtonTileAspectRatio> = '4:3';
 
   /** Label of the button. */
@@ -66,13 +65,13 @@ export class ButtonTile {
   /** Description text. */
   @Prop() public description: string;
 
-  /** Alignment of link and description. */
+  /** Alignment of button and description. */
   @Prop() public align?: LinkButtonTileAlign = 'bottom';
 
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;
 
-  /** Displays the tile-link as compact version with description and link icon only. */
+  /** Displays the button-tile as compact version with description and button icon only. */
   @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
 
   /** Specifies the type of the button. */
@@ -81,7 +80,7 @@ export class ButtonTile {
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
-  /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
 
   /** The icon shown. By choosing 'none', no icon is displayed. */
@@ -91,7 +90,7 @@ export class ButtonTile {
   @Prop() public iconSource?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -119,7 +118,8 @@ export class ButtonTile {
 
     const buttonProps = {
       theme: 'dark',
-      aria: this.aria,
+      variant: 'secondary',
+      aria: { ...getButtonAriaAttributes(this.disabled, this.loading, this.aria) },
     };
 
     const sharedButtonProps = {
@@ -130,20 +130,18 @@ export class ButtonTile {
       iconSource: this.iconSource,
     };
 
-    // TODO key and class naming
     const button: JSX.Element = (
-      <PrefixedTagNames.pButton {...sharedButtonProps} {...buttonProps} key="link" class="link" variant="secondary">
+      <PrefixedTagNames.pButton {...sharedButtonProps} {...buttonProps} key="link-or-button" class="link-or-button">
         {this.label}
       </PrefixedTagNames.pButton>
     );
 
-    // TODO key and class naming
     const buttonPure: JSX.Element = (
       <PrefixedTagNames.pButtonPure
         {...sharedButtonProps}
         {...buttonProps}
-        key="link-pure"
-        class="link-pure"
+        key="link-or-button-pure"
+        class="link-or-button-pure"
         hideLabel={true}
         icon="arrow-right"
       >
@@ -157,7 +155,7 @@ export class ButtonTile {
           <slot />
         </div>
         <div class="content">
-          <button {...sharedButtonProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></button>
+          <button {...sharedButtonProps} class="button-overlay" tabIndex={-1} aria-hidden="true"></button>
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>

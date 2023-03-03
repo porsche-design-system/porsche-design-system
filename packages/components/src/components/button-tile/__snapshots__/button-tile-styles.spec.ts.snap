@@ -120,13 +120,15 @@ p {
   min-height: 54px;
   display: none;
 }
-.link-overlay {
+.button-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   outline: 0;
+  background: transparent no-repeat;
+  border: none;
 }
 @media(min-width:480px) {
   .root {
@@ -301,13 +303,15 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.link-overlay {
+.button-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   outline: 0;
+  background: transparent no-repeat;
+  border: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -393,13 +397,15 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.link-overlay {
+.button-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   outline: 0;
+  background: transparent no-repeat;
+  border: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -485,13 +491,15 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.link-overlay {
+.button-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   outline: 0;
+  background: transparent no-repeat;
+  border: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -576,13 +584,15 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.link-overlay {
+.button-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   outline: 0;
+  background: transparent no-repeat;
+  border: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -668,13 +678,15 @@ p {
   min-height: 54px;
   display: none;
 }
-.link-overlay {
+.button-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   outline: 0;
+  background: transparent no-repeat;
+  border: none;
 }
 @media (forced-colors: active) {
   .content {

@@ -10,7 +10,6 @@ import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { LinkButtonTileAlign, LinkButtonTileAspectRatio, LinkButtonTileSize, LinkButtonTileWeight } from "./utils";
-import { LinkAriaAttribute } from "./components/link/link-utils";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -26,6 +25,7 @@ import { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/he
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
@@ -195,19 +195,19 @@ export namespace Components {
     }
     interface PButtonTile {
         /**
-          * Alignment of link and description.
+          * Alignment of button and description.
          */
         "align"?: LinkButtonTileAlign;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
-          * Aspect ratio of the link-tile.
+          * Aspect ratio of the button-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the button-tile as compact version with description and button icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -235,7 +235,7 @@ export namespace Components {
          */
         "label": string;
         /**
-          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
          */
         "loading"?: boolean;
         /**
@@ -741,7 +741,7 @@ export namespace Components {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -1979,19 +1979,19 @@ declare namespace LocalJSX {
     }
     interface PButtonTile {
         /**
-          * Alignment of link and description.
+          * Alignment of button and description.
          */
         "align"?: LinkButtonTileAlign;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
-          * Aspect ratio of the link-tile.
+          * Aspect ratio of the button-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the button-tile as compact version with description and button icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -2019,7 +2019,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
          */
         "loading"?: boolean;
         /**
@@ -2537,7 +2537,7 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**

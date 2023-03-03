@@ -1,5 +1,5 @@
 import { LinkTile } from './link-tile';
-import * as throwIfAlignTopWithoutCompactUtils from '../../utils';
+import * as throwIfAlignTopWithoutCompactUtils from '../../utils/link-button-tile/link-button-tile-align';
 
 describe('componentWillLoad', () => {
   it('should call throwIfAlignTopAndNotCompact() with correct parameters', () => {

@@ -1,3 +1,11 @@
+import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
+import type { LinkAriaAttribute } from '../link/link-utils';
+import type {
+  LinkButtonTileSize,
+  LinkButtonTileWeight,
+  LinkButtonTileAspectRatio,
+  LinkButtonTileAlign,
+} from '../../utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -6,24 +14,15 @@ import {
   getPrefixedTagNames,
   parseJSON,
   validateProps,
-} from '../../utils';
-import { getComponentCss, getSlottedCss } from './link-tile-styles';
-import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type {
-  LinkButtonTileSize,
-  LinkButtonTileWeight,
-  LinkButtonTileAspectRatio,
-  LinkButtonTileAlign,
-} from '../../utils';
-import {
   LINK_BUTTON_TILE_SIZES,
   LINK_BUTTON_TILE_WEIGHTS,
   LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_ALIGNS,
   throwIfAlignTopAndNotCompact,
 } from '../../utils';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
+import { getComponentCss } from './link-tile-styles';
+import { getSlottedCss } from '../../styles/link-button-tile-styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.breakpoint<LinkButtonTileSize>(LINK_BUTTON_TILE_SIZES),
@@ -69,7 +68,7 @@ export class LinkTile {
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;
 
-  /** Displays the tile-link as compact version with description and link icon only. */
+  /** Displays the link-tile as compact version with description and link icon only. */
   @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
 
   /** href of the `<a>`. */
@@ -113,6 +112,7 @@ export class LinkTile {
 
     const linkProps = {
       theme: 'dark',
+      variant: 'secondary',
       aria: this.aria,
     };
 
@@ -124,7 +124,7 @@ export class LinkTile {
     };
 
     const link: JSX.Element = (
-      <PrefixedTagNames.pLink {...sharedLinkProps} {...linkProps} key="link" class="link" variant="secondary">
+      <PrefixedTagNames.pLink {...sharedLinkProps} {...linkProps} key="link-or-button" class="link-or-button">
         {this.label}
       </PrefixedTagNames.pLink>
     );
@@ -133,8 +133,8 @@ export class LinkTile {
       <PrefixedTagNames.pLinkPure
         {...sharedLinkProps}
         {...linkProps}
-        key="link-pure"
-        class="link-pure"
+        key="link-or-button-pure"
+        class="link-or-button-pure"
         hideLabel={true}
         icon="arrow-right"
       >

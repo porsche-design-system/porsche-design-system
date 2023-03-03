@@ -1,4 +1,4 @@
-import { getComponentCss } from './link-tile-styles';
+import { getComponentCss } from './button-tile-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
