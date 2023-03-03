@@ -76,7 +76,7 @@ const ModalPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show scrollable modal">
-        <PModal heading="Heading" open={true} id="modal-scrollable">
+        <PModal heading="Heading" open={true}>
           Some content: "should show scrollable modal"
           <br />
           <br />
@@ -115,7 +115,7 @@ const ModalPage: NextPage = (): JSX.Element => {
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
           gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
           elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-          eos et accusam<span id="scroll-into-view">.</span>
+          eos et accusam.
         </PModal>
       </div>
 

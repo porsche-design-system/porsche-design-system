@@ -74,7 +74,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show scrollable modal">
-      <p-modal [heading]="'Heading'" [open]="true" id="modal-scrollable">
+      <p-modal [heading]="'Heading'" [open]="true">
         Some content: "should show scrollable modal"
         <br />
         <br />
@@ -113,7 +113,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
         gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
         elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-        eos et accusam<span id="scroll-into-view">.</span>
+        eos et accusam.
       </p-modal>
     </div>
 
