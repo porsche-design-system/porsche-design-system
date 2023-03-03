@@ -11,7 +11,7 @@ describe('getComponentCss()', () => {
     ['background-base', false, true, undefined, 'dark'],
     ['background-base', true, true, undefined, 'light'],
   ])(
-    'should return correct css for gradientColor: %s, isNextHidden: %s, isPrevHidden: %s, scrollIndicatorPosition: %s and theme: %s ',
+    'should return correct css for gradientColor: %s, isNextHidden: %s, isPrevHidden: %s, scrollIndicatorPosition: %s and theme: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
