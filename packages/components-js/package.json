@@ -77,7 +77,7 @@
     "@types/js-beautify": "^1.13.3",
     "@types/node": "^18.14.5",
     "concurrently": "^7.6.0",
-    "devtools-protocol": "^0.0.1087818",
+    "devtools-protocol": "^0.0.1112051",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.7",
     "jsdom": "^20.0.3",

@@ -32,7 +32,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "5.4.0",
     "@stackblitz/sdk": "^1.8.2",
-    "algoliasearch": "^4.14.3",
+    "algoliasearch": "^4.15.0",
     "change-case": "^4.1.2",
     "core-js": "^3.29.0",
     "imask": "^6.4.3",
