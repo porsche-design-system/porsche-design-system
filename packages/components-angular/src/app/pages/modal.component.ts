@@ -70,6 +70,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-heading [tag]="'h2'">Slotted heading</p-heading>
         </div>
         Some Content: "should show modal with slotted heading"
+        <span>
+          and some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
       </p-modal>
     </div>
 
