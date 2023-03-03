@@ -62,8 +62,17 @@ export const HeadlinePage = (): JSX.Element => {
       <div className="playground" title="should apply custom styles for dedicated slotted content">
         <PHeadline>
           <span>
-            Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text
+            Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PHeadline>
+      </div>
+
+      <div className="playground dark" title="should apply custom styles for dedicated slotted content">
+        <PHeadline theme="dark">
+          <span>
+            Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
           </span>
         </PHeadline>
       </div>
