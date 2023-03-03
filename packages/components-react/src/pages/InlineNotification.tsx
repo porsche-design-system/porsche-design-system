@@ -5,96 +5,190 @@ export const InlineNotificationPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should show inline-notification info on light background">
-        <PInlineNotification heading="Some neutral heading" description="Some description" />
+        <PInlineNotification heading="Heading (state=info)" description="Description" />
+      </div>
+
+      <div
+        className="playground light"
+        title="should show inline-notification info with slotted and deeply nested anchor on light background"
+      >
+        <PInlineNotification>
+          <span slot="heading">Slotted heading (state=info)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PInlineNotification>
       </div>
 
       <div className="playground light" title="should show inline-notification info with state neutral on light background">
         <PInlineNotification
           state="neutral"
-          heading="Some neutral heading"
-          description="Some description"
+          heading="Heading (state=neutral)"
+          description="Description"
          />
       </div>
 
       <div className="playground dark" title="should show inline-notification info on dark background">
-        <PInlineNotification
-          heading="Some neutral heading"
-          description="Some description"
-          theme="dark"
-         />
+        <PInlineNotification theme="dark" heading="Heading (state=info)" description="Description" />
+      </div>
+
+      <div
+        className="playground dark"
+        title="should show inline-notification info with slotted and deeply nested anchor on dark background"
+      >
+        <PInlineNotification theme="dark">
+          <span slot="heading">Slotted heading (state=info)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PInlineNotification>
       </div>
 
       <div className="playground dark" title="should show inline-notification info with state neutral on dark background">
         <PInlineNotification
-          state="neutral"
-          heading="Some neutral heading"
-          description="Some description"
           theme="dark"
+          state="neutral"
+          heading="Heading (state=neutral)"
+          description="Description"
          />
       </div>
 
       <div className="playground light" title="should show inline-notification warning on light background">
         <PInlineNotification
-          heading="Some warning heading"
-          description="Some description"
+          heading="Heading (state=warning)"
+          description="Description"
           state="warning"
          />
+      </div>
+
+      <div
+        className="playground light"
+        title="should show inline-notification warning with slotted and deeply nested anchor on light background"
+      >
+        <PInlineNotification state="warning">
+          <span slot="heading">Slotted heading (state=warning)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PInlineNotification>
       </div>
 
       <div className="playground dark" title="should show inline-notification warning on dark background">
         <PInlineNotification
-          heading="Some warning heading"
-          description="Some description"
+          heading="Heading (state=warning)"
+          description="Description"
           state="warning"
           theme="dark"
          />
       </div>
 
+      <div
+        className="playground dark"
+        title="should show inline-notification warning with slotted and deeply nested anchor on dark background"
+      >
+        <PInlineNotification theme="dark" state="warning">
+          <span slot="heading">Slotted heading (state=warning)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PInlineNotification>
+      </div>
+
       <div className="playground light" title="should show inline-notification success on light background">
         <PInlineNotification
-          heading="Some success heading"
-          description="Some description"
+          heading="Heading (state=success)"
+          description="Description"
           state="success"
          />
+      </div>
+
+      <div
+        className="playground light"
+        title="should show inline-notification success with slotted and deeply nested anchor on light background"
+      >
+        <PInlineNotification state="success">
+          <span slot="heading">Slotted heading (state=success)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PInlineNotification>
       </div>
 
       <div className="playground dark" title="should show inline-notification success on dark background">
         <PInlineNotification
-          heading="Some success heading"
-          description="Some description"
+          heading="Heading (state=success)"
+          description="Description"
           state="success"
           theme="dark"
          />
       </div>
 
+      <div
+        className="playground dark"
+        title="should show inline-notification success with slotted and deeply nested anchor on dark background"
+      >
+        <PInlineNotification theme="dark" state="success">
+          <span slot="heading">Slotted heading (state=success)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PInlineNotification>
+      </div>
+
       <div className="playground light" title="should show inline-notification error on light background">
         <PInlineNotification
-          heading="Some error heading"
-          description="Some description"
+          heading="Heading (state=error)"
+          description="Description"
           state="error"
          />
       </div>
 
+      <div
+        className="playground light"
+        title="should show inline-notification error with slotted and deeply nested anchor on light background"
+      >
+        <PInlineNotification state="error">
+          <span slot="heading">Slotted heading (state=error)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PInlineNotification>
+      </div>
+
       <div className="playground dark" title="should show inline-notification error on dark background">
         <PInlineNotification
-          heading="Some error heading"
-          description="Some description"
+          heading="Heading (state=error)"
+          description="Description"
           state="error"
           theme="dark"
          />
       </div>
 
-      <div className="playground light" title="should show inline-notification with slotted content on light background">
-        <PInlineNotification>
-          <span slot="heading">Some slotted heading</span>
-          Some slotted description with a <a href="https://www.porsche.com/">LINK</a> element.
-        </PInlineNotification>
-      </div>
-
-      <div className="playground dark" title="should show inline-notification with slotted content on dark background">
-        <PInlineNotification theme="dark">
-          <span slot="heading">Some slotted heading</span>
-          Some slotted description with a <a href="https://www.porsche.com/">LINK</a> element.
+      <div
+        className="playground dark"
+        title="should show inline-notification error with slotted and deeply nested anchor on dark background"
+      >
+        <PInlineNotification theme="dark" state="error">
+          <span slot="heading">Slotted heading (state=error)</span>
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
         </PInlineNotification>
       </div>
 
@@ -183,7 +277,7 @@ export const InlineNotificationPage = (): JSX.Element => {
         title="should show inline-notification with multiline heading and description on light background"
       >
         <PInlineNotification
-          style={{ width: '15rem' }}
+          style={{ maxWidth: '15rem' }}
           heading="Some heading with a very long text across multiple lines"
           description="Some description with a very long text across multiple lines"
           actionLabel="Some action label with custom icon"

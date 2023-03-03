@@ -5,96 +5,190 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-inline-notification',
   template: `
     <div class="playground light" title="should show inline-notification info on light background">
-      <p-inline-notification [heading]="'Some neutral heading'" [description]="'Some description'"></p-inline-notification>
+      <p-inline-notification [heading]="'Heading (state=info)'" [description]="'Description'"></p-inline-notification>
+    </div>
+
+    <div
+      class="playground light"
+      title="should show inline-notification info with slotted and deeply nested anchor on light background"
+    >
+      <p-inline-notification>
+        <span slot="heading">Slotted heading (state=info)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+      </p-inline-notification>
     </div>
 
     <div class="playground light" title="should show inline-notification info with state neutral on light background">
       <p-inline-notification
         [state]="'neutral'"
-        [heading]="'Some neutral heading'"
-        [description]="'Some description'"
+        [heading]="'Heading (state=neutral)'"
+        [description]="'Description'"
       ></p-inline-notification>
     </div>
 
     <div class="playground dark" title="should show inline-notification info on dark background">
-      <p-inline-notification
-        [heading]="'Some neutral heading'"
-        [description]="'Some description'"
-        [theme]="'dark'"
-      ></p-inline-notification>
+      <p-inline-notification [theme]="'dark'" [heading]="'Heading (state=info)'" [description]="'Description'"></p-inline-notification>
+    </div>
+
+    <div
+      class="playground dark"
+      title="should show inline-notification info with slotted and deeply nested anchor on dark background"
+    >
+      <p-inline-notification [theme]="'dark'">
+        <span slot="heading">Slotted heading (state=info)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+      </p-inline-notification>
     </div>
 
     <div class="playground dark" title="should show inline-notification info with state neutral on dark background">
       <p-inline-notification
-        [state]="'neutral'"
-        [heading]="'Some neutral heading'"
-        [description]="'Some description'"
         [theme]="'dark'"
+        [state]="'neutral'"
+        [heading]="'Heading (state=neutral)'"
+        [description]="'Description'"
       ></p-inline-notification>
     </div>
 
     <div class="playground light" title="should show inline-notification warning on light background">
       <p-inline-notification
-        [heading]="'Some warning heading'"
-        [description]="'Some description'"
+        [heading]="'Heading (state=warning)'"
+        [description]="'Description'"
         [state]="'warning'"
       ></p-inline-notification>
+    </div>
+
+    <div
+      class="playground light"
+      title="should show inline-notification warning with slotted and deeply nested anchor on light background"
+    >
+      <p-inline-notification [state]="'warning'">
+        <span slot="heading">Slotted heading (state=warning)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+      </p-inline-notification>
     </div>
 
     <div class="playground dark" title="should show inline-notification warning on dark background">
       <p-inline-notification
-        [heading]="'Some warning heading'"
-        [description]="'Some description'"
+        [heading]="'Heading (state=warning)'"
+        [description]="'Description'"
         [state]="'warning'"
         [theme]="'dark'"
       ></p-inline-notification>
     </div>
 
+    <div
+      class="playground dark"
+      title="should show inline-notification warning with slotted and deeply nested anchor on dark background"
+    >
+      <p-inline-notification [theme]="'dark'" [state]="'warning'">
+        <span slot="heading">Slotted heading (state=warning)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+      </p-inline-notification>
+    </div>
+
     <div class="playground light" title="should show inline-notification success on light background">
       <p-inline-notification
-        [heading]="'Some success heading'"
-        [description]="'Some description'"
+        [heading]="'Heading (state=success)'"
+        [description]="'Description'"
         [state]="'success'"
       ></p-inline-notification>
+    </div>
+
+    <div
+      class="playground light"
+      title="should show inline-notification success with slotted and deeply nested anchor on light background"
+    >
+      <p-inline-notification [state]="'success'">
+        <span slot="heading">Slotted heading (state=success)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+      </p-inline-notification>
     </div>
 
     <div class="playground dark" title="should show inline-notification success on dark background">
       <p-inline-notification
-        [heading]="'Some success heading'"
-        [description]="'Some description'"
+        [heading]="'Heading (state=success)'"
+        [description]="'Description'"
         [state]="'success'"
         [theme]="'dark'"
       ></p-inline-notification>
     </div>
 
+    <div
+      class="playground dark"
+      title="should show inline-notification success with slotted and deeply nested anchor on dark background"
+    >
+      <p-inline-notification [theme]="'dark'" [state]="'success'">
+        <span slot="heading">Slotted heading (state=success)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+      </p-inline-notification>
+    </div>
+
     <div class="playground light" title="should show inline-notification error on light background">
       <p-inline-notification
-        [heading]="'Some error heading'"
-        [description]="'Some description'"
+        [heading]="'Heading (state=error)'"
+        [description]="'Description'"
         [state]="'error'"
       ></p-inline-notification>
     </div>
 
+    <div
+      class="playground light"
+      title="should show inline-notification error with slotted and deeply nested anchor on light background"
+    >
+      <p-inline-notification [state]="'error'">
+        <span slot="heading">Slotted heading (state=error)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+      </p-inline-notification>
+    </div>
+
     <div class="playground dark" title="should show inline-notification error on dark background">
       <p-inline-notification
-        [heading]="'Some error heading'"
-        [description]="'Some description'"
+        [heading]="'Heading (state=error)'"
+        [description]="'Description'"
         [state]="'error'"
         [theme]="'dark'"
       ></p-inline-notification>
     </div>
 
-    <div class="playground light" title="should show inline-notification with slotted content on light background">
-      <p-inline-notification>
-        <span slot="heading">Some slotted heading</span>
-        Some slotted description with a <a [href]="'https://www.porsche.com/'">LINK</a> element.
-      </p-inline-notification>
-    </div>
-
-    <div class="playground dark" title="should show inline-notification with slotted content on dark background">
-      <p-inline-notification [theme]="'dark'">
-        <span slot="heading">Some slotted heading</span>
-        Some slotted description with a <a [href]="'https://www.porsche.com/'">LINK</a> element.
+    <div
+      class="playground dark"
+      title="should show inline-notification error with slotted and deeply nested anchor on dark background"
+    >
+      <p-inline-notification [theme]="'dark'" [state]="'error'">
+        <span slot="heading">Slotted heading (state=error)</span>
+        Slotted description.
+        <span>
+          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
       </p-inline-notification>
     </div>
 
@@ -183,7 +277,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should show inline-notification with multiline heading and description on light background"
     >
       <p-inline-notification
-        style="width: 15rem"
+        style="max-width: 15rem"
         [heading]="'Some heading with a very long text across multiple lines'"
         [description]="'Some description with a very long text across multiple lines'"
         [actionLabel]="'Some action label with custom icon'"
