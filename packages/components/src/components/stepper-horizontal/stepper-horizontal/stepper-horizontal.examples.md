@@ -52,7 +52,7 @@ Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
   <p-stepper-horizontal :theme="theme" @stepChange="onStepChange">    
-    <p-stepper-horizontal-item v-for="({ state, text }, i) in steps" :key="index" :state="state">{{ text }}</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item v-for="({ state, text }, i) in steps" :key="i" :state="state">{{ text }}</p-stepper-horizontal-item>
   </p-stepper-horizontal>
   <p-text :theme="theme" class="mock-content">{{ stepContent[getActiveStepIndex(steps)] }}</p-text>
 
