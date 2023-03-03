@@ -2,8 +2,20 @@
 import { PAccordion, PLinkPure } from '@porsche-design-system/components-react';
 
 export const AccordionPage = (): JSX.Element => {
+  const style = `
+    @media only screen and (min-width: 760px) {
+      #app,
+      :host {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+      }
+    }
+  `;
+
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
+
       <div className="playground light" title="should render accordion on light background">
         <PAccordion heading="Heading" />
       </div>
@@ -50,9 +62,8 @@ export const AccordionPage = (): JSX.Element => {
       <div
         className="playground light"
         title="should render accordion with long heading that breaks to second line on light background"
-        style={{ maxWidth: '400px' }}
       >
-        <PAccordion>
+        <PAccordion style={{ maxWidth: '400px' }}>
           <span slot="heading">Multiline heading, some extra long heading that should break to the second line</span>
         </PAccordion>
       </div>
@@ -60,9 +71,8 @@ export const AccordionPage = (): JSX.Element => {
       <div
         className="playground dark"
         title="should render accordion with long heading that breaks to second line on dark background"
-        style={{ maxWidth: '400px' }}
       >
-        <PAccordion theme="dark">
+        <PAccordion theme="dark" style={{ maxWidth: '400px' }}>
           <span slot="heading">Multiline heading, some extra long heading that should break to the second line</span>
         </PAccordion>
       </div>
@@ -157,11 +167,27 @@ export const AccordionPage = (): JSX.Element => {
         <PAccordion heading="Heading (compact=true size=medium)" compact={true} size="medium" />
       </div>
 
+      <div className="playground dark" title="should render compact accordion with size medium on dark background">
+        <PAccordion theme="dark" heading="Heading (compact=true size=medium)" compact={true} size="medium" />
+      </div>
+
       <div
         className="playground light"
         title="should render compact accordion with breakpoint customizable size on light background"
       >
         <PAccordion
+          heading="Heading (compact=true size=responsive)"
+          compact={true}
+          size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
+         />
+      </div>
+
+      <div
+        className="playground dark"
+        title="should render compact accordion with breakpoint customizable size on dark background"
+      >
+        <PAccordion
+          theme="dark"
           heading="Heading (compact=true size=responsive)"
           compact={true}
           size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}

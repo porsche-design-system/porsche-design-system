@@ -3,8 +3,20 @@ import type { NextPage } from 'next';
 import { PLink } from '@porsche-design-system/components-react/ssr';
 
 const LinkPage: NextPage = (): JSX.Element => {
+  const style = `
+    @media only screen and (min-width: 760px) {
+      #app,
+      :host {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+      }
+    }
+  `;
+
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
+
       <div className="playground light auto-layout" title="should render primary with label only">
         <PLink variant="primary" href="https://www.porsche.com">Some label</PLink>
         <PLink variant="primary"><a href="https://www.porsche.com">Some label</a></PLink>
@@ -152,6 +164,18 @@ const LinkPage: NextPage = (): JSX.Element => {
         </PLink>
       </div>
 
+      <div className="playground dark auto-layout" title="should render primary with responsive label on dark theme">
+        <PLink
+          theme="dark"
+          variant="primary"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+          icon="arrow-right"
+          href="https://www.porsche.com"
+        >
+          Some label
+        </PLink>
+      </div>
+
       <div className="playground light auto-layout" title="should render link with specific icon">
         <PLink icon="phone" href="https://www.porsche.com">Some label</PLink>
         <PLink iconSource="./assets/icon-custom-kaixin.svg" href="https://www.porsche.com">Some label</PLink>
@@ -183,9 +207,27 @@ const LinkPage: NextPage = (): JSX.Element => {
         </PLink>
       </div>
 
+      <div className="playground dark auto-layout" title="should render with multiline label with icon on dark theme">
+        <PLink theme="dark" style={{ width: '15rem' }} icon="arrow-right" href="https://www.porsche.com"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing
+        </PLink>
+        <PLink theme="dark" style={{ width: '15rem' }} icon="arrow-right">
+          <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
+        </PLink>
+      </div>
+
       <div className="playground light auto-layout" title="should render with multiline label without icon">
         <PLink style={{ width: '15rem' }} href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</PLink>
         <PLink style={{ width: '15rem' }}>
+          <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
+        </PLink>
+      </div>
+
+      <div className="playground dark auto-layout" title="should render with multiline label without icon on dark theme">
+        <PLink theme="dark" style={{ width: '15rem' }} href="https://www.porsche.com"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing</PLink
+        >
+        <PLink theme="dark" style={{ width: '15rem' }}>
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </PLink>
       </div>
@@ -201,6 +243,32 @@ const LinkPage: NextPage = (): JSX.Element => {
           >Some label
         </PLink>
         <PLink variant="primary" hideLabel={true} icon="arrow-right" style={{ width: '100%' }}
+          ><a href="https://www.porsche.com">Some label</a></PLink
+        >
+      </div>
+
+      <div
+        className="playground dark auto-layout"
+        title="should render with centered text/icon if set to 100% width on dark theme"
+      >
+        <PLink theme="dark" variant="primary" href="https://www.porsche.com" style={{ width: '100%' }}>Some label</PLink>
+        <PLink theme="dark" variant="primary" style={{ width: '100%' }}><a href="https://www.porsche.com">Some label</a></PLink>
+        <PLink theme="dark" variant="primary" icon="arrow-right" href="https://www.porsche.com" style={{ width: '100%' }}
+          >Some label</PLink
+        >
+        <PLink theme="dark" variant="primary" icon="arrow-right" style={{ width: '100%' }}
+          ><a href="https://www.porsche.com">Some label</a></PLink
+        >
+        <PLink
+          theme="dark"
+          variant="primary"
+          hideLabel={true}
+          icon="arrow-right"
+          href="https://www.porsche.com"
+          style={{ width: '100%' }}
+          >Some label
+        </PLink>
+        <PLink theme="dark" variant="primary" hideLabel={true} icon="arrow-right" style={{ width: '100%' }}
           ><a href="https://www.porsche.com">Some label</a></PLink
         >
       </div>

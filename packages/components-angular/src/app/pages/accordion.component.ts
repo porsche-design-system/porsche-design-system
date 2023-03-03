@@ -3,6 +3,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-accordion',
+  styles: [
+    `
+      @media only screen and (min-width: 760px) {
+        #app,
+        :host {
+          display: grid;
+          grid-template-columns: repeat(2, 50%);
+        }
+      }
+    `,
+  ],
   template: `
     <div class="playground light" title="should render accordion on light background">
       <p-accordion [heading]="'Heading'"></p-accordion>
@@ -50,9 +61,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div
       class="playground light"
       title="should render accordion with long heading that breaks to second line on light background"
-      style="max-width: 400px"
     >
-      <p-accordion>
+      <p-accordion style="max-width: 400px">
         <span slot="heading">Multiline heading, some extra long heading that should break to the second line</span>
       </p-accordion>
     </div>
@@ -60,9 +70,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div
       class="playground dark"
       title="should render accordion with long heading that breaks to second line on dark background"
-      style="max-width: 400px"
     >
-      <p-accordion [theme]="'dark'">
+      <p-accordion [theme]="'dark'" style="max-width: 400px">
         <span slot="heading">Multiline heading, some extra long heading that should break to the second line</span>
       </p-accordion>
     </div>
@@ -157,11 +166,27 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-accordion [heading]="'Heading (compact=true size=medium)'" [compact]="true" [size]="'medium'"></p-accordion>
     </div>
 
+    <div class="playground dark" title="should render compact accordion with size medium on dark background">
+      <p-accordion [theme]="'dark'" [heading]="'Heading (compact=true size=medium)'" [compact]="true" [size]="'medium'"></p-accordion>
+    </div>
+
     <div
       class="playground light"
       title="should render compact accordion with breakpoint customizable size on light background"
     >
       <p-accordion
+        [heading]="'Heading (compact=true size=responsive)'"
+        [compact]="true"
+        [size]="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
+      ></p-accordion>
+    </div>
+
+    <div
+      class="playground dark"
+      title="should render compact accordion with breakpoint customizable size on dark background"
+    >
+      <p-accordion
+        [theme]="'dark'"
         [heading]="'Heading (compact=true size=responsive)'"
         [compact]="true"
         [size]="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
