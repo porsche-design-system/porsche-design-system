@@ -154,7 +154,7 @@ export class InputParser {
     const fileContent = this.getComponentSourceCode(component);
     // extract values in same line, next line or multi line, but also respect not default
     let [, defaultValue] =
-      fileContent.match(new RegExp(`@Prop\\(.*?\\)\\spublic\\s${prop}(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
+      fileContent.match(new RegExp(`@Prop\\(.*?\\) public ${prop}\\b(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
 
     // detect if the provided value is a variable
     if (defaultValue?.match(/^(?!true|false)[a-zA-Z]+$/)) {
@@ -169,6 +169,7 @@ export class InputParser {
 
       defaultValue = resolvedDefaultValue;
     }
+
     return defaultValue?.replace(/\s+/g, ' '); // multiline to single line
   }
 }
