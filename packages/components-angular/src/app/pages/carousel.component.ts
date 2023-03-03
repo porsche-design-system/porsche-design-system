@@ -89,11 +89,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with slotted heading and slotted description on light background"
+      title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor on light background"
     >
       <p-carousel>
         <h2 slot="heading">Slotted heading</h2>
-        <p slot="description">Slotted description</p>
+        <p slot="description">
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
@@ -102,11 +108,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground dark"
-      title="should render carousel with slotted heading and slotted description on dark background"
+      title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor on dark background"
     >
       <p-carousel [theme]="'dark'">
         <h2 slot="heading">Slotted heading</h2>
-        <p slot="description">Slotted description</p>
+        <p slot="description">
+          Slotted description.
+          <span>
+            And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
