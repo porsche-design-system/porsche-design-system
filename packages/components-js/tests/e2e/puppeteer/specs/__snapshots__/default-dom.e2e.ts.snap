@@ -51,6 +51,23 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
 </button>"
 `;
 
+exports[`should have no basic DOM regression for p-button-tile 1`] = `
+"<div class="root">
+  <div class="image-container">
+    <slot>
+    </slot>
+  </div>
+  <div class="content">
+    <button type="submit" icon="none" class="button-overlay" tabindex="-1" aria-hidden="true">
+    </button>
+    <p>
+      value</p>
+    <p-button class="link-or-button hydrated">
+      value</p-button>
+  </div>
+</div>"
+`;
+
 exports[`should have no basic DOM regression for p-carousel 1`] = `
 "<div class="header">
   <slot name="heading">
@@ -193,7 +210,7 @@ exports[`should have no basic DOM regression for p-link-tile 1`] = `
     </a>
     <p>
       value</p>
-    <p-link class="link hydrated">
+    <p-link class="link-or-button hydrated">
       value</p-link>
   </div>
 </div>"

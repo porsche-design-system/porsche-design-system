@@ -124,7 +124,7 @@ export class ButtonTile {
 
     const sharedButtonProps = {
       type: this.type,
-      disabled: this.loading,
+      disabled: this.disabled,
       loading: this.loading,
       icon: this.icon,
       iconSource: this.iconSource,
