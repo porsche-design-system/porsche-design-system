@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PHeading, PModal, PorscheDesignSystemProvider, PText } from '@porsche-design-system/components-react';
 
-export const ModalBasicPage = (): JSX.Element => {
+export const ModalPage = (): JSX.Element => {
   const style = `
     body {
       overflow: auto !important;
@@ -9,7 +9,7 @@ export const ModalBasicPage = (): JSX.Element => {
     }
 
     .playground {
-      height: 500px;
+      height: 600px;
       padding: 0;
       background: linear-gradient(
         90deg,
@@ -49,8 +49,6 @@ export const ModalBasicPage = (): JSX.Element => {
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
           <PText>Some Content: "should display a full width div when using .stretch-to-full-modal-width"</PText>
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
-          <PText>Some Content: "should display a full width div when using .stretch-to-full-modal-width"</PText>
-          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
         </PModal>
       </div>
 
@@ -77,7 +75,7 @@ export const ModalBasicPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show scrollable modal">
-        <PModal heading="Heading" open={true}>
+        <PModal heading="Heading" open={true} id="modal-scrollable">
           Some content: "should show scrollable modal"
           <br />
           <br />

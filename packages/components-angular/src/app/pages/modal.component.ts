@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-modal-basic',
+  selector: 'page-modal',
   styles: [
     `
       body {
@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       .playground {
-        height: 500px;
+        height: 600px;
         padding: 0;
         background: linear-gradient(
           90deg,
@@ -48,8 +48,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div class="stretch-to-full-modal-width" style="background: deeppink; height: 60px"></div>
         <p-text>Some Content: "should display a full width div when using .stretch-to-full-modal-width"</p-text>
         <div class="stretch-to-full-modal-width" style="background: deeppink; height: 60px"></div>
-        <p-text>Some Content: "should display a full width div when using .stretch-to-full-modal-width"</p-text>
-        <div class="stretch-to-full-modal-width" style="background: deeppink; height: 60px"></div>
       </p-modal>
     </div>
 
@@ -76,7 +74,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show scrollable modal">
-      <p-modal [heading]="'Heading'" [open]="true">
+      <p-modal [heading]="'Heading'" [open]="true" id="modal-scrollable">
         Some content: "should show scrollable modal"
         <br />
         <br />
@@ -140,4 +138,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ModalBasicComponent {}
+export class ModalComponent {}

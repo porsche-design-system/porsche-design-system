@@ -34,14 +34,7 @@ import { LinkPurePage } from './LinkPure';
 import { LinkSocialPage } from './LinkSocial';
 import { LinkTilePage } from './LinkTile';
 import { MarquePage } from './Marque';
-import { ModalBasicPage } from './ModalBasic';
-import { ModalFullscreenPage } from './ModalFullscreen';
-import { ModalFullscreenBreakpointPage } from './ModalFullscreenBreakpoint';
-import { ModalFullWidthSlotPage } from './ModalFullWidthSlot';
-import { ModalNoHeadingPage } from './ModalNoHeading';
-import { ModalPrefixedPage } from './ModalPrefixed';
-import { ModalScrollablePage } from './ModalScrollable';
-import { ModalSlottedHeadingPage } from './ModalSlottedHeading';
+import { ModalPage } from './Modal';
 import { ModelSignaturePage } from './ModelSignature';
 import { PaginationPage } from './Pagination';
 import { PopoverPage } from './Popover';
@@ -183,44 +176,9 @@ export const generatedRoutes: RouteType[] = [
     element: <MarquePage />,
   },
   {
-    name: 'Modal Basic',
-    path: '/modal-basic',
-    element: <ModalBasicPage />,
-  },
-  {
-    name: 'Modal Full Width Slot',
-    path: '/modal-full-width-slot',
-    element: <ModalFullWidthSlotPage />,
-  },
-  {
-    name: 'Modal Fullscreen',
-    path: '/modal-fullscreen',
-    element: <ModalFullscreenPage />,
-  },
-  {
-    name: 'Modal Fullscreen Breakpoint',
-    path: '/modal-fullscreen-breakpoint',
-    element: <ModalFullscreenBreakpointPage />,
-  },
-  {
-    name: 'Modal No Heading',
-    path: '/modal-no-heading',
-    element: <ModalNoHeadingPage />,
-  },
-  {
-    name: 'Modal Prefixed',
-    path: '/modal-prefixed',
-    element: <ModalPrefixedPage />,
-  },
-  {
-    name: 'Modal Scrollable',
-    path: '/modal-scrollable',
-    element: <ModalScrollablePage />,
-  },
-  {
-    name: 'Modal Slotted Heading',
-    path: '/modal-slotted-heading',
-    element: <ModalSlottedHeadingPage />,
+    name: 'Modal',
+    path: '/modal',
+    element: <ModalPage />,
   },
   {
     name: 'Model Signature',

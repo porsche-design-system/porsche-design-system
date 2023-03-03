@@ -25,7 +25,7 @@ const components: Component[] = [
   'link',
   'link-pure',
   'link-social',
-  'modal-basic',
+  'modal',
   // 'overview',
   'pagination',
   'popover',

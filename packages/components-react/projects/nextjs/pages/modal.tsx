@@ -1,7 +1,8 @@
 /* Auto Generated File */
-import { PHeading, PModal, PorscheDesignSystemProvider, PText } from '@porsche-design-system/components-react';
+import type { NextPage } from 'next';
+import { PHeading, PModal, PorscheDesignSystemProvider, PText } from '@porsche-design-system/components-react/ssr';
 
-export const ModalBasicPage = (): JSX.Element => {
+const ModalPage: NextPage = (): JSX.Element => {
   const style = `
     body {
       overflow: auto !important;
@@ -9,7 +10,7 @@ export const ModalBasicPage = (): JSX.Element => {
     }
 
     .playground {
-      height: 500px;
+      height: 600px;
       padding: 0;
       background: linear-gradient(
         90deg,
@@ -29,7 +30,7 @@ export const ModalBasicPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show modal">
-        <PModal heading="Heading" open={true}>Some Content: "should show modal"</PModal>
+        <PModal heading="Heading" open={true}>Some Content: "should show modal&quot;</PModal>
       </div>
 
       <div className="playground light" title="should show modal with prefixed component initialization">
@@ -47,9 +48,7 @@ export const ModalBasicPage = (): JSX.Element => {
       <div className="playground light" title="should display a full width div when using .stretch-to-full-modal-width">
         <PModal open={true} aria={{ 'aria-label': 'Some Heading' }}>
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
-          <PText>Some Content: "should display a full width div when using .stretch-to-full-modal-width"</PText>
-          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
-          <PText>Some Content: "should display a full width div when using .stretch-to-full-modal-width"</PText>
+          <PText>Some Content: "should display a full width div when using .stretch-to-full-modal-width&quot;</PText>
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
         </PModal>
       </div>
@@ -77,7 +76,7 @@ export const ModalBasicPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show scrollable modal">
-        <PModal heading="Heading" open={true}>
+        <PModal heading="Heading" open={true} id="modal-scrollable">
           Some content: "should show scrollable modal"
           <br />
           <br />
@@ -141,3 +140,5 @@ export const ModalBasicPage = (): JSX.Element => {
     </PorscheDesignSystemProvider>
   );
 };
+
+export default ModalPage;
