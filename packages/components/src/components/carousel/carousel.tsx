@@ -250,7 +250,7 @@ export class Carousel {
           </div>
         </div>
 
-        {(!this.disablePagination || this.pagination) && (
+        {(this.disablePagination ? this.disablePagination !== true : this.pagination) && (
           <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
         )}
       </Host>
