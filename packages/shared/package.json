@@ -48,7 +48,7 @@
     "@types/node": "^18.14.5",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
-    "madge": "^5.0.1",
+    "madge": "^6.0.0",
     "rollup": "^3.18.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
