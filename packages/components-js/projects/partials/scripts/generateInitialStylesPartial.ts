@@ -25,7 +25,6 @@ const tagNamesWithSlottedAnchor: TagName[] = [
   'p-heading',
   'p-headline',
   'p-inline-notification',
-  'p-link-tile',
   'p-modal',
   'p-popover',
   'p-radio-button-wrapper',
