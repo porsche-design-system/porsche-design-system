@@ -34,7 +34,7 @@ const generateDSRComponents = (): void => {
         .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@State\(\) /g, '')
-        .replace(/\n.*\n  @Event\(.*\).*\n/g, '')
+        .replace(/(?:\n  \/\*\*(?:.*\n){0,3})?  @Event\(.*\).*\n/g, '')
         .replace(/\n  public connectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentWillLoad\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentDidLoad\(\): void {[\s\S]+?\n  }\n/g, '')
@@ -217,7 +217,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
       // component based tweaks
       if (tagName === 'p-carousel') {
-        newFileContent = newFileContent.replace(/this\.slides(\.map)/, `otherChildren$1`);
+        newFileContent = newFileContent
+          .replace(/this\.slides(\.map)/, `otherChildren$1`)
+          .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n");
+      } else if (tagName === 'p-banner') {
+        // remove warning about deprecated title slot
+        newFileContent = newFileContent.replace(/.+console\.warn\([\s\S]+?\);\n/g, '');
+      } else if (tagName === 'p-pagination') {
+        // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
+        newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
       } else if (tagName === 'p-tabs') {
