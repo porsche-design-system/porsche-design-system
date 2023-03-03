@@ -81,9 +81,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     let props = super.generateProps(component, rawComponentInterface);
 
     // add custom props to wrappers
-    if (component === 'p-banner') {
-      props = addProp(props, 'title?: string;');
-    } else if (component === 'p-toast') {
+    if (component === 'p-toast') {
       props = addProp(props, 'text: string;');
       props = addProp(props, 'state: ToastState;');
     } else if (component === 'p-text-field-wrapper') {
@@ -167,32 +165,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
-      // special treatments
-      if (component === 'p-banner') {
-        cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `title = 'Title', description = 'Description', $1`) // set default children value in props destructuring
-          .replace(/PropsWithChildren<(.*)>/, '$1') // remove PropsWithChildren
-          .replace(
-            // map custom title and description props to slotted children
-            /(<Tag {...props}) \/>/,
-            [
-              '(',
-              ...[
-                '$1>',
-                ...['<span slot="title" children={title} />', '<span slot="description" children={description} />'].map(
-                  addNestedIndentation
-                ),
-                '</Tag>',
-              ].map(addNestedIndentation),
-              ')',
-            ].join('\n    ')
-          );
-      } else {
-        // other components receive their component name as default
-        cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
-          .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
-      }
+      // other components receive their component name as default
+      cleanedComponent = cleanedComponent
+        .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
+        .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
 
       // other special treatments that need default props
       if (component === 'p-text') {
