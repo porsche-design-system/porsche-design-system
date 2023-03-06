@@ -24,12 +24,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const page = vrt.getPage();
 
       const head = `<style>
+        body { display: grid; grid-template-columns: repeat(2, 50%); }
         p-tag-dismissible:not(:last-child) { margin-right: 0.5rem; }
       </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-tag-dismissible theme="${theme}">Some Text</p-tag-dismissible>
-        <p-tag-dismissible theme="${theme}" label="Some Label" color="background-default">Some Text</p-tag-dismissible>
+        <p-tag-dismissible theme="${theme}" label="Some Label" color="background-base">Some Text</p-tag-dismissible>
         <p-tag-dismissible theme="${theme}" label="Some Label" color="background-surface">Some Text</p-tag-dismissible>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
