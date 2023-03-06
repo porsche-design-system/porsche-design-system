@@ -4,13 +4,20 @@
 
 ## Porsche Design System - Utilities
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The <code>Porsche Design System - Utilities</code> package is <strong>deprecated</strong> and will no longer be maintained.<br>
+  All Porsche Design System utilities are now provided via the @porsche-design-system/components-{js|angular|react|vue}/styles sub-package.<br>
+  To make the migration easier have a look at the <a href="news/changelog/utilities">changelog</a> which contains a migration path.
+</p-inline-notification>
+
 This package contains helpful SCSS & JS variables, functions and helpers.
 
 ### Install
 
-It's necessary to have access to the Porsche Design System private npm registry to be able to install the
-`@porsche-design-system/utilities` npm package. If you don't have an account yet, please first
-[read more about getting started as developer](start-coding/introduction).
+All releases are available as versioned NPM packages. You can consume the public `@porsche-design-system/utilities`
+package here:
+
+- Public NPM registry ([https://www.npmjs.com](https://www.npmjs.com))
 
 ```shell
 // install with npm:
