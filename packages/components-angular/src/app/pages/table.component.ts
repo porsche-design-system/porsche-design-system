@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { dataVrt, headVrt } from '@porsche-design-system/shared';
-import { Theme } from '@porsche-design-system/components-angular';
+import type { Theme } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-table',
