@@ -2,7 +2,7 @@
 
 exports[`accessibility should expose correct accessibility tree if accessibility properties are set 1`] = `
 {
-  "name": "Some more detailed label",
+  "name": "Some label",
   "role": "button",
 }
 `;

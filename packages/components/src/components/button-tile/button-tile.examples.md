@@ -2,7 +2,7 @@
 
 The `p-button-tile` is an interactive component that displays a provided image to tease content and performs form or
 **interaction** events within one container. Whenever you want to provide navigational elements, stick to the
-[Link Tile](components/buton-tile) component instead.
+[Link Tile](components/link-tile) component instead.
 
 **Note:** The component does not take care of processing and aligning the image.
 
