@@ -36,7 +36,31 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 10px">
+      <p-link-tile-model
+        aspect-ratio="4:3"
+        description="Some description"
+        sub-description="Some sub-description"
+        primary-label="Some label"
+        secondary-label="Secondary label"
+        href="#"
+        weight="regular"
+      >
+        <img src="assets/porsche_beach-min.jpg" width="3000" height="2000" alt="Some alt text" />
+      </p-link-tile-model>
+      <p-link-tile-model
+        aspect-ratio="9:16"
+        description="Some description"
+        sub-description="Some sub-description"
+        primary-label="Some label"
+        secondary-label="Secondary label"
+        direction="column"
+        href="#"
+        weight="regular"
+      >
+        <img src="assets/porsche_beach-min.jpg" width="3000" height="2000" alt="Some alt text" />
+      </p-link-tile-model>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->

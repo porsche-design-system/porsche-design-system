@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
-import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
+import { ButtonLinkGroupDirection } from "./utils/direction-jss-style";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -27,10 +27,11 @@ import { InlineNotificationState } from "./components/inline-notification/inline
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { LinkTileModelAspectRatio } from "./components/link-tile-model/link-tile-model-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
-import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
@@ -136,7 +137,7 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<ButtonGroupDirection>;
+        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
     }
     interface PButtonPure {
         /**
@@ -714,6 +715,60 @@ export namespace Components {
           * Font size of the description.
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+    }
+    interface PLinkTileModel {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        /**
+          * Aspect ratio of the link-tile-model.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description": string;
+        /**
+          * Defines the direction of the main and cross axis of the links.
+         */
+        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * href of the `<a>`.
+         */
+        "href": string;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: ModelSignatureModel;
+        /**
+          * Label of the primary <a />.
+         */
+        "primaryLabel": string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Label of the secondary <a />.
+         */
+        "secondaryLabel": string;
+        /**
+          * Description text.
+         */
+        "subDescription"?: string;
         /**
           * Target attribute where the link should be opened.
          */
@@ -1496,6 +1551,12 @@ declare global {
         prototype: HTMLPLinkTileElement;
         new (): HTMLPLinkTileElement;
     };
+    interface HTMLPLinkTileModelElement extends Components.PLinkTileModel, HTMLStencilElement {
+    }
+    var HTMLPLinkTileModelElement: {
+        prototype: HTMLPLinkTileModelElement;
+        new (): HTMLPLinkTileModelElement;
+    };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
     var HTMLPMarqueElement: {
@@ -1724,6 +1785,7 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
+        "p-link-tile-model": HTMLPLinkTileModelElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -1855,7 +1917,7 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<ButtonGroupDirection>;
+        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
     }
     interface PButtonPure {
         /**
@@ -2445,6 +2507,60 @@ declare namespace LocalJSX {
           * Font size of the description.
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+    }
+    interface PLinkTileModel {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        /**
+          * Aspect ratio of the link-tile-model.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Defines the direction of the main and cross axis of the links.
+         */
+        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * href of the `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: ModelSignatureModel;
+        /**
+          * Label of the primary <a />.
+         */
+        "primaryLabel"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Label of the secondary <a />.
+         */
+        "secondaryLabel"?: string;
+        /**
+          * Description text.
+         */
+        "subDescription"?: string;
         /**
           * Target attribute where the link should be opened.
          */
@@ -3094,6 +3210,7 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
+        "p-link-tile-model": PLinkTileModel;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -3157,6 +3274,7 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
+            "p-link-tile-model": LocalJSX.PLinkTileModel & JSXBase.HTMLAttributes<HTMLPLinkTileModelElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
