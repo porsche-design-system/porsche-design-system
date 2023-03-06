@@ -41,7 +41,7 @@ const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
   weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorDeprecated>([...GRADIENT_COLORS_DEPRECATED, undefined]),
+  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorDeprecated>([undefined, ...GRADIENT_COLORS_DEPRECATED]),
   gradientColor: AllowedTypes.oneOf<TabGradientColor>(GRADIENT_COLORS),
   activeTabIndex: AllowedTypes.number,
 };

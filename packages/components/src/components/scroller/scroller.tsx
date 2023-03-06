@@ -29,7 +29,7 @@ import {
 import type { PropTypes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Scroller> = {
-  gradientColorScheme: AllowedTypes.oneOf<ScrollerGradientColorDeprecated>([...GRADIENT_COLORS_DEPRECATED, undefined]),
+  gradientColorScheme: AllowedTypes.oneOf<ScrollerGradientColorDeprecated>([undefined, ...GRADIENT_COLORS_DEPRECATED]),
   gradientColor: AllowedTypes.oneOf<ScrollerGradientColor>(GRADIENT_COLORS),
   scrollToPosition: AllowedTypes.shape<ScrollToPosition>({
     scrollPosition: AllowedTypes.number,

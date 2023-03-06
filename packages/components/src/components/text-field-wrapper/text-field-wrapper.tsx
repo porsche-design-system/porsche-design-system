@@ -49,7 +49,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
   showCounter: AllowedTypes.boolean,
-  actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>(['locate', undefined]),
+  actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>([undefined, 'locate']),
   actionLoading: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };

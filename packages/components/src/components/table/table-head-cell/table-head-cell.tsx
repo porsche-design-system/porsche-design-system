@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
   sort: AllowedTypes.shape<TableHeadCellSort>({
     id: AllowedTypes.string,
     active: AllowedTypes.boolean,
-    direction: AllowedTypes.oneOf<Direction>(['asc', 'desc', undefined]),
+    direction: AllowedTypes.oneOf<Direction>([undefined, 'asc', 'desc']),
   }),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   multiline: AllowedTypes.boolean,

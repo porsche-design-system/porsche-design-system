@@ -13,7 +13,7 @@ import {
 import { getComponentCss } from './display-styles';
 
 const propTypes: PropTypes<typeof Display> = {
-  tag: AllowedTypes.oneOf<DisplayTag>([...DISPLAY_TAGS, undefined]),
+  tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
   size: AllowedTypes.breakpoint<DisplaySize>(DISPLAY_SIZES),
   align: AllowedTypes.oneOf<DisplayAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
