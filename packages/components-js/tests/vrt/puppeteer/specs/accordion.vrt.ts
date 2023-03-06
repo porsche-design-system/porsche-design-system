@@ -33,11 +33,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-accordion theme="${theme}" heading="Some heading" open="true">
           ${content}
         </p-accordion>
-        <br />
+        <p-accordion theme="${theme}" heading="Some slotted and deeply nested anchor" open="true">
+           <span>
+             Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+             <em>emphasized</em> and <i>italic</i> text.
+           </span>
+        </p-accordion>
         <p-accordion theme="${theme}" heading="Some compact accordion" open="true" compact="true">
            ${content}
         </p-accordion>
-        <br />
         <p-accordion theme="${theme}" heading="Some navigation like accordion" open="true" compact="true">
           <p-link-pure href="https://www.porsche.com" theme="${theme}" icon="none">Some link</p-link-pure>
           <br />
@@ -48,12 +52,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoverState(page, '.hover p-accordion >>> button');
       await forceHoverState(page, '.hover p-accordion > p-link-pure >>> a');
+      await forceHoverState(page, '.hover p-accordion > span a');
 
       await forceFocusState(page, '.focus p-accordion >>> button');
       await forceFocusState(page, '.focus p-accordion > p-link-pure >>> a');
+      await forceFocusState(page, '.focus p-accordion > span a');
 
       await forceFocusHoverState(page, '.focus-hover p-accordion >>> button');
       await forceFocusHoverState(page, '.focus-hover p-accordion > p-link-pure >>> a');
+      await forceFocusHoverState(page, '.focus-hover p-accordion > span a');
     })
   ).toBeFalsy();
 });
