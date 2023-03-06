@@ -4,8 +4,11 @@ exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: block !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 .caption {
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 .root {
   position: relative;
@@ -29,12 +32,10 @@ exports[`getComponentCss() should return correct css 1`] = `
   width: 100%;
   display: table;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   text-align: left;
-  color: #000;
+  color: #010205;
   white-space: nowrap;
 }
 .scroll-trigger {
@@ -50,7 +51,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   top: 0;
   right: 0;
   bottom: 0;
-  padding-left: 2rem;
+  padding-left: 32px;
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -71,79 +72,7 @@ exports[`getComponentCss() should return correct css 1`] = `
 }
 @media(min-width:1000px) {
   .caption {
-    margin-bottom: 1rem;
-  }
-}
-"
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-table a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-table b, p-table strong {
-  font-weight: 700 !important;
-}
-p-table em, p-table i {
-  font-style: normal !important;
-}
-p-table img {
-  vertical-align: middle !important;
-}
-p-table a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-table a:focus {
-  outline-color: currentColor !important;
-}
-p-table a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  p-table a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  p-table a:hover {
-    color: #d5001c !important;
-  }
-}
-"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-table a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-table b, prefixed-p-table strong {
-  font-weight: 700 !important;
-}
-prefixed-p-table em, prefixed-p-table i {
-  font-style: normal !important;
-}
-prefixed-p-table img {
-  vertical-align: middle !important;
-}
-prefixed-p-table a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-table a:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-table a:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-@media(hover:hover) {
-  prefixed-p-table a {
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-  prefixed-p-table a:hover {
-    color: #d5001c !important;
+    margin-bottom: 16px;
   }
 }
 "

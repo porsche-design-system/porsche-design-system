@@ -36,7 +36,7 @@ button::before {
   border-radius: 7px;
 }
 button:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -100,7 +100,7 @@ button::before {
   border-radius: 7px;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -164,7 +164,7 @@ button::before {
   border-radius: 7px;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -228,7 +228,7 @@ button::before {
   border-radius: 7px;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -283,7 +283,7 @@ button::before {
   border-radius: 7px;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -338,7 +338,7 @@ button::before {
   border-radius: 7px;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;

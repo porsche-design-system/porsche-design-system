@@ -19,28 +19,29 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   display: block;
   height: fit-content !important;
 }
-:host ::slotted(picture), :host ::slotted(img) {
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
   transition: transform var(--p-transition-duration, .24s) ease !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
 }
-:host ::slotted(picture) {
+::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
 }
-:host ::slotted(img) {
+::slotted(img) {
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 p {
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
@@ -231,28 +232,29 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
   display: block;
   height: fit-content !important;
 }
-:host ::slotted(picture), :host ::slotted(img) {
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
   transition: transform var(--p-transition-duration, .24s) ease !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
 }
-:host ::slotted(picture) {
+::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
 }
-:host ::slotted(img) {
+::slotted(img) {
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 p {
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
@@ -323,28 +325,29 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   display: block;
   height: fit-content !important;
 }
-:host ::slotted(picture), :host ::slotted(img) {
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
   transition: transform var(--p-transition-duration, .24s) ease !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
 }
-:host ::slotted(picture) {
+::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
 }
-:host ::slotted(img) {
+::slotted(img) {
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 p {
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
@@ -415,28 +418,29 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   display: block;
   height: fit-content !important;
 }
-:host ::slotted(picture), :host ::slotted(img) {
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
   transition: transform var(--p-transition-duration, .24s) ease !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
 }
-:host ::slotted(picture) {
+::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
 }
-:host ::slotted(img) {
+::slotted(img) {
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 p {
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
@@ -507,28 +511,29 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
   display: block;
   height: fit-content !important;
 }
-:host ::slotted(picture), :host ::slotted(img) {
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
   transition: transform var(--p-transition-duration, .24s) ease !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
 }
-:host ::slotted(picture) {
+::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
 }
-:host ::slotted(img) {
+::slotted(img) {
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 p {
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
@@ -598,28 +603,29 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   display: block;
   height: fit-content !important;
 }
-:host ::slotted(picture), :host ::slotted(img) {
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
   transition: transform var(--p-transition-duration, .24s) ease !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
 }
-:host ::slotted(picture) {
+::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
 }
-:host ::slotted(img) {
+::slotted(img) {
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
 }
 p {
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 34.375rem;
@@ -683,20 +689,4 @@ p {
   }
 }
 "
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-link-tile picture > img {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-link-tile picture > img {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}"
 `;
