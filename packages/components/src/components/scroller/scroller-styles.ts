@@ -46,7 +46,7 @@ export const getComponentCss = (
   isNextHidden: boolean,
   isPrevHidden: boolean,
   scrollIndicatorPosition: ScrollIndicatorPosition,
-  scrollbar: boolean,
+  hasScrollbar: boolean,
   theme: Theme
 ): string => {
   const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
@@ -114,7 +114,7 @@ export const getComponentCss = (
       gridArea: '1 / 1 / 1 / -1',
       padding: '4px',
       overflow: 'auto hidden',
-      ...(!scrollbar && {
+      ...(!hasScrollbar && {
         // If scrollbar is disabled - hide scrollbar
         msOverflowStyle: 'none' /* IE and Edge */,
         scrollbarWidth: 'none' /* Firefox */,
