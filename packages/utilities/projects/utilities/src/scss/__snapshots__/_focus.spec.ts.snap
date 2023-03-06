@@ -13,7 +13,7 @@ div:focus::before {
   left: -20px;
   right: -20px;
   bottom: -20px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {
@@ -34,7 +34,7 @@ div:focus::before {
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {
@@ -55,7 +55,7 @@ div:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {
@@ -76,7 +76,7 @@ div:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1a44ea;
   border-radius: 8px;
 }
 div:focus:not(:focus-visible)::before {
@@ -97,7 +97,7 @@ div:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {
@@ -118,7 +118,7 @@ div:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #1e5beb;
+  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {
@@ -139,7 +139,7 @@ div:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {
@@ -160,7 +160,7 @@ div:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0a0aff;
+  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
 div:focus:not(:focus-visible)::before {

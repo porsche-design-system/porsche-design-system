@@ -7,13 +7,10 @@ it('should provide all exports', () => {
 
 describe('getFocusStyle()', () => {
   it.each<Parameters<typeof getFocusStyle>>([
-    [{ inset: undefined, borderRadius: undefined, theme: undefined }],
-    [{ inset: 'small', borderRadius: 'small', theme: 'light' }],
-    [{ inset: 'medium', borderRadius: 'medium', theme: 'light' }],
-    [{ inset: '-4px -2px', borderRadius: '6px', theme: 'light' }],
-    [{ inset: 'small', borderRadius: 'small', theme: 'dark' }],
-    [{ inset: 'medium', borderRadius: 'medium', theme: 'dark' }],
-    [{ inset: '-4px -2px', borderRadius: '6px', theme: 'dark' }],
+    [{ inset: undefined, borderRadius: undefined }],
+    [{ inset: 'small', borderRadius: 'small' }],
+    [{ inset: 'medium', borderRadius: 'medium' }],
+    [{ inset: '-4px -2px', borderRadius: '6px' }],
   ])('should return correct css for opts: %s', (...args) => {
     expect(getFocusStyle(...args)).toMatchSnapshot();
   });
