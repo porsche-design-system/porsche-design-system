@@ -29,7 +29,7 @@ export const getComponentCss = (theme: Theme): string => {
             transition: getTransition('background-color'),
           },
           '&(:hover)::before': {
-            backgroundColor: getThemedColors(theme).backgroundSurfaceColor,
+            background: getThemedColors(theme).backgroundSurfaceColor,
           },
         }),
       }),
