@@ -66,7 +66,7 @@ export class Table {
           </div>
         )}
 
-        <PrefixedTagNames.pScroller scrollbar={true} theme={this.theme}>
+        <PrefixedTagNames.pScroller hasScrollbar={true} theme={this.theme}>
           <div class="table" role="table" {...tableAttr}>
             <slot />
           </div>
