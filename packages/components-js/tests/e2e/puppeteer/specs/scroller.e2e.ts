@@ -24,11 +24,11 @@ type InitOptions = {
   otherMarkup?: string;
   tag?: 'a' | 'button' | 'span';
   scrollToPosition?: ScrollToPosition;
-  scrollbar?: boolean;
+  hasScrollbar?: boolean;
 };
 
 const initScroller = (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition, scrollbar } = opts || {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition, hasScrollbar } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
@@ -37,7 +37,7 @@ const initScroller = (opts?: InitOptions) => {
 
   const attrs = [
     scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
-    scrollbar ? `scrollbar="${scrollbar}"` : '',
+    hasScrollbar ? `hasScrollbar="${hasScrollbar}"` : '',
   ].join(' ');
 
   const content = `<p-scroller ${attrs}>
@@ -90,9 +90,9 @@ describe('scrolling', () => {
   });
 });
 
-describe('scroller with scrollbar', () => {
-  it('should have overflow: "auto hidden" for scroll area when scrollbar is set to true', async () => {
-    await initScroller({ scrollbar: true });
+describe('scroller with hasScrollbar', () => {
+  it('should have overflow: "auto hidden" for scroll area when hasScrollbar is set to true', async () => {
+    await initScroller({ hasScrollbar: true });
 
     expect(await getScrollAreaOverflow()).toBe('auto hidden');
   });
