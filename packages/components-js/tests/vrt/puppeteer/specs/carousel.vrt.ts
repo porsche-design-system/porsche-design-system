@@ -26,6 +26,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `
         <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
           p-carousel div {
             display: flex;
             align-items: center;
@@ -40,15 +41,30 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         .join('');
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
-        <p-carousel theme="${theme}" heading="Heading">
+        <p-carousel theme="${theme}">
+          <h2 slot="heading">
+            Slotted heading
+            <span>
+              and some slotted and deeply nested <a href="#">anchor</a>.
+            </span>
+          </h2>
+          <p slot="description">
+            Slotted description
+            <span>
+              and some slotted and deeply nested <a href="#">anchor</a>.
+            </span>
+          </p>
           ${slides}
         </p-carousel>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover p-carousel >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-carousel span a');
       await forceFocusState(page, '.focus p-carousel >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-carousel span a');
       await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-carousel span a');
     })
   ).toBeFalsy();
 });
