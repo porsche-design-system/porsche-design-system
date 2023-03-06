@@ -1,17 +1,16 @@
 import type { TagName } from '@porsche-design-system/shared';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
+import { parseJSON } from './breakpoint-customizable';
 import type { JssStyle, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import { parseJSON } from './breakpoint-customizable';
+import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getShadowRootHTMLElement } from './dom';
-import { addImportantToEachRule } from '../styles';
-import { getTagName, getTagNameWithoutPrefix } from '.';
+import { getTagNameWithoutPrefix } from '.';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
@@ -94,12 +93,6 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
     host.shadowRoot.prepend(styleEl);
   }
 };
-
-export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> => ({
-  '@global': {
-    [getTagName(host)]: addImportantToEachRule(jssStyle),
-  },
-});
 
 export type GetJssStyleFunction = (value?: any) => JssStyle;
 

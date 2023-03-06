@@ -40,6 +40,10 @@ const tagNamesWithSlottedAnchor: TagName[] = [
 
 const tagNamesWithSlottedInputIndicator: TagName[] = ['p-text-field-wrapper'];
 
+const tagNamesWithSlottedImage: TagName[] = ['p-table'];
+
+const tagNamesWithSlottedPicture: TagName[] = ['p-link-tile'];
+
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
   prefix?: string;
@@ -92,6 +96,24 @@ export const generateInitialStylesPartial = (): string => {
               display: 'none',
             }),
         },
+      },
+
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      [tagNamesWithSlottedImage.join()]: {
+        '& img': addImportantToEachRule({
+          verticalAlign: 'middle',
+        }),
+      },
+
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      [tagNamesWithSlottedPicture.join()]: {
+        '& picture > img': addImportantToEachRule({
+          height: '100%',
+          width: '100%',
+          objectFit: 'cover',
+        }),
       },
     },
   };

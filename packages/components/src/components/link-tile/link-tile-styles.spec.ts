@@ -1,6 +1,6 @@
-import { getComponentCss, getSlottedCss } from './link-tile-styles';
+import { getComponentCss } from './link-tile-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['4:3', 'default', 'semibold', 'bottom', false, true],
     ['1:1', 'inherit', 'regular', 'bottom', false, true],
@@ -21,16 +21,4 @@ xdescribe('getComponentCss()', () => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
-});
-
-xdescribe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-link-tile');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-link-tile');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
 });

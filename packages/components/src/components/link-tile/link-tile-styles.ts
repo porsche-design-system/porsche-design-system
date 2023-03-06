@@ -1,17 +1,17 @@
 import {
-  pxToRemWithUnit,
-  getInsetJssStyle,
-  getTransition,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  getInsetJssStyle,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  pxToRemWithUnit,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
+import type { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from './link-tile-utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import { getMediaQueryMin, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
@@ -175,16 +175,4 @@ export const getComponentCss = (
       },
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& picture > img': {
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-      },
-    })
-  );
 };
