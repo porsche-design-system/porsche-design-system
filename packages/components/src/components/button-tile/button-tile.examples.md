@@ -1,8 +1,8 @@
-# Link Tile
+# Button Tile
 
-The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further
-information within one container. In case you want the user to execute an action, you should select the
-[Button Tile](components/button-tile) component instead.
+The `p-button-tile` is an interactive component that displays a provided image to tease content and performs form or
+**interaction** events within one container. Whenever you want to provide navigational elements, stick to the
+[Link Tile](components/buton-tile) component instead.
 
 **Note:** The component does not take care of processing and aligning the image.
 
@@ -10,12 +10,12 @@ information within one container. In case you want the user to execute an action
 
 ## Basic
 
-An `img` or `picture` tag has to be provided in the slot of the `p-link-tile` component.
+An `img` or `picture` tag has to be provided in the slot of the `p-button-tile` component.
 
-Additionally, the properties `href`, `description` and `label` are required. The `description` property is used as a
-teaser with a more detailed description of the link and where it leads to.
+Additionally, the properties `description` and `label` are required. The `description` property is used as a teaser with
+a more detailed description of the button and its action.
 
-The `label` property is used to describe the anchor.
+The `label` property is used to describe the button.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -28,6 +28,12 @@ used. So, always **check readability** and play around with the `size` and `weig
 results.
 
 ---
+
+## States
+
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="states"></SelectOptions>
+</Playground>
 
 ## Aspect Ratio
 
@@ -56,7 +62,7 @@ The `weight` property changes the font weight of the description.
 
 ## Gradient
 
-By default, the `p-link-tile` takes care of the readability of the description by displaying a gradient. If the
+By default, the `p-button-tile` takes care of the readability of the description by displaying a gradient. If the
 underlying image provides enough contrast, you can choose to disable the gradient by setting `gradient="false"`.
 
 **Note:** When disabling the gradient, it must be ensured that the contrast values are accessibility compliant.
@@ -90,18 +96,16 @@ import { LINK_BUTTON_TILE_ALIGNS, LINK_BUTTON_TILE_ASPECT_RATIOS, LINK_BUTTON_TI
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'block' };
+  config = { spacing: 'inline' };
   imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
 
-  basic = `<p-link-tile
-  href="https://www.porsche.com"
+  basic = `<p-button-tile
   label="Some label"
   description="Some Description"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>
-<p-link-tile
-  href="https://www.porsche.com"
+</p-button-tile>
+<p-button-tile
   label="Some label"
   description="Some Description"
 >
@@ -109,87 +113,93 @@ export default class Code extends Vue {
     <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
     <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
   </picture>
-</p-link-tile>`;
+</p-button-tile>`;
+
+  state = 'disabled';
+  states = ['disabled', 'loading'];
+  get stateMarkup() {
+    return`<p-button-tile label="Some Label" description="Some Description" ${this.state}>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+</p-button-tile>
+<p-button-tile label="Some Label" description="Some Description" size="${this.size}" compact="true" ${this.state}>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+</p-button-tile>`}
 
   aspectRatio = '4:3';
   aspectRatios = [...LINK_BUTTON_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
-    return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
+    return`<p-button-tile label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>`}
+</p-button-tile>`}
 
   size = 'default';
   sizes = [...LINK_BUTTON_TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
   get sizeMarkup() {
-    return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="font-size: 40px;">
+    return`<p-button-tile label="Some Label" description="Some Description" size="${this.size}" style="font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>
-<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" compact="true" style="font-size: 40px;">
+</p-button-tile>
+<p-button-tile label="Some Label" description="Some Description" size="${this.size}" compact="true" style="font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>`
+</p-button-tile>`
   }
 
   weight = 'semibold';
   weights = [...LINK_BUTTON_TILE_WEIGHTS, "{ base: 'semibold', m: 'regular' }"];
   get weightMarkup() {
-    return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
+    return`<p-button-tile label="Some Label" description="Some Description" weight="${this.weight}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>
-<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
+</p-button-tile>
+<p-button-tile label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>`
+</p-button-tile>`
   }
 
   gradient = false;
   gradients = [false, true];
   get gradientMarkup() { 
-  return `<p-link-tile
-  href="https://www.porsche.com"
+  return `<p-button-tile
   label="Some label"
   description="Some Description"
   gradient="${this.gradient}"
 >
   <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
-</p-link-tile>
-<p-link-tile
-  href="https://www.porsche.com"
+</p-button-tile>
+<p-button-tile
   label="Some label"
   description="Some Description"
   compact="true"
   gradient="${this.gradient}"
 >
   <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
-</p-link-tile>`};
+</p-button-tile>`};
 
   compact = false;
   compacts = [false, true, "{ base: true, m: false }"];
   get compactMarkup() {
-    return `<p-link-tile
-  href="https://www.porsche.com"
+    return `<p-button-tile
   label="Some label"
   description="Some Description"
   compact="${this.compact}"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>`};
+</p-button-tile>`};
 
   align = 'top';
   aligns = LINK_BUTTON_TILE_ALIGNS;
   get alignMarkup() {
-    return `<p-link-tile
-  href="https://www.porsche.com"
+    return `<p-button-tile
   label="Some label"
   description="Some Description"
   compact="true"
   align="${this.align}"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>`};
+</p-button-tile>`};
 }
 </script>
 
 <style scoped lang="scss">
-  :deep(p-link-tile) {
+  :deep(p-button-tile) {
     max-width: 400px;
   }
 </style>

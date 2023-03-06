@@ -141,6 +141,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/button-pure/button-pure.props.md')],
     },
+    'Button Tile': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/button-tile/button-tile.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/button-tile/button-tile.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/button-tile/button-tile.props.md')],
+    },
     Carousel: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/carousel/carousel.examples.md')],
