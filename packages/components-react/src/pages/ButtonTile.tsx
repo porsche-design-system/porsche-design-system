@@ -242,6 +242,17 @@ export const ButtonTilePage = (): JSX.Element => {
         </PButtonTile>
       </div>
 
+      <div className="playground light grid" title="should render compact disabled button-tile on light background">
+        <PButtonTile label="Some Label" description="Disabled" disabled={true} compact={true}>
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
+            alt="Some alt text"
+          />
+        </PButtonTile>
+      </div>
+
       <div className="playground light grid" title="should render loading button-tile on light background">
         <PButtonTile label="Some Label" description="Loading" loading={true}>
           <img
@@ -253,8 +264,30 @@ export const ButtonTilePage = (): JSX.Element => {
         </PButtonTile>
       </div>
 
+      <div className="playground light grid" title="should render loading compact button-tile on light background">
+        <PButtonTile label="Some Label" description="Loading" loading={true} compact={true}>
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
+            alt="Some alt text"
+          />
+        </PButtonTile>
+      </div>
+
       <div className="playground light grid" title="should render button-tile with specific icon on light background">
         <PButtonTile label="Some Label" description="Icon" icon="delete">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
+            alt="Some alt text"
+          />
+        </PButtonTile>
+      </div>
+
+      <div className="playground light grid" title="should render compact button-tile with specific icon on light background">
+        <PButtonTile label="Some Label" description="Icon" icon="delete" compact={true}>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
