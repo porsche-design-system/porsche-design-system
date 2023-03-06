@@ -17,6 +17,6 @@ export type TableHeadCellSort = {
   active?: boolean;
   direction?: Direction;
 };
-export type SortingChangeEvent = TableHeadCellSort; // to have consistent event types
+export type TableChangeEvent = TableHeadCellSort; // to have consistent event types
 
 export const SORT_EVENT_NAME = 'internalSortingChange';

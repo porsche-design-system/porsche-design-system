@@ -9,7 +9,7 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { NumberOfPageLinks, PageChangeEvent, PaginationInternationalization } from './pagination-utils';
+import type { NumberOfPageLinks, PaginationChangeEvent, PaginationInternationalization } from './pagination-utils';
 import {
   createPaginationModel,
   getCounterResetValue,
@@ -95,10 +95,10 @@ export class Pagination {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
    * Emitted when the page changes. */
-  @Event({ bubbles: false }) public pageChange: EventEmitter<PageChangeEvent>;
+  @Event({ bubbles: false }) public pageChange: EventEmitter<PaginationChangeEvent>;
 
   /** Emitted when the page changes. */
-  @Event({ bubbles: false }) public change: EventEmitter<PageChangeEvent>;
+  @Event({ bubbles: false }) public change: EventEmitter<PaginationChangeEvent>;
 
   @State() private breakpointMaxNumberOfPageLinks: NumberOfPageLinks = 7;
 

@@ -15,9 +15,9 @@ import {
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type {
-  TabChangeEvent,
   TabGradientColor,
   TabGradientColorDeprecated,
+  TabsBarChangeEvent,
   TabSize,
   TabWeight,
 } from '../../tabs-bar/tabs-bar-utils';
@@ -25,6 +25,7 @@ import { TAB_SIZES, TAB_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
 import { GRADIENT_COLORS, GRADIENT_COLORS_DEPRECATED } from '../../scroller/scroller-utils';
 import { syncTabsItemsProps } from './tabs-utils';
+import type { TabsChangeEvent } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -65,10 +66,10 @@ export class Tabs {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
    *  Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsChangeEvent>;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public change: EventEmitter<TabChangeEvent>;
+  @Event({ bubbles: false }) public change: EventEmitter<TabsChangeEvent>;
 
   @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
 
@@ -118,7 +119,7 @@ export class Tabs {
           gradientColorScheme={this.gradientColorScheme}
           gradientColor={this.gradientColor}
           activeTabIndex={this.activeTabIndex}
-          onChange={this.onTabChange}
+          onChange={this.onTabsBarChange}
           onTabChange={(e) => e.stopPropagation()}
         >
           {this.tabsItemElements.map((tab, index) => (
@@ -162,7 +163,7 @@ export class Tabs {
     this.tabsItemElements.forEach((el) => observeProperties(el, ['label'], () => forceUpdate(this.host)));
   };
 
-  private onTabChange = (e: CustomEvent<TabChangeEvent>): void => {
+  private onTabsBarChange = (e: CustomEvent<TabsBarChangeEvent>): void => {
     e.stopPropagation(); // prevent double event emission because of identical name
     this.activeTabIndex = e.detail.activeTabIndex;
   };

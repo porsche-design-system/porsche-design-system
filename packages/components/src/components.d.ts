@@ -31,17 +31,18 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { NumberOfPageLinks, PageChangeEvent, PaginationInternationalization } from "./components/pagination/pagination-utils";
+import { NumberOfPageLinks, PaginationChangeEvent, PaginationInternationalization } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { ScrollerGradientColor, ScrollerGradientColorDeprecated, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
-import { StepChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+import { StepperHorizontalChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/switch/switch";
-import { SortingChangeEvent, TableHeadCellSort } from "./components/table/table/table-utils";
-import { TabChangeEvent, TabGradientColor, TabGradientColorDeprecated, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { TableChangeEvent, TableHeadCellSort } from "./components/table/table/table-utils";
+import { TabGradientColor, TabGradientColorDeprecated, TabsBarChangeEvent, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { TabsChangeEvent } from "./components/tabs/tabs/tabs-utils";
 import { TagColor } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextTag } from "./components/text/text-utils";
@@ -2628,11 +2629,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the page changes.
          */
-        "onChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
+        "onChange"?: (event: PPaginationCustomEvent<PaginationChangeEvent>) => void;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when the page changes.
          */
-        "onPageChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
+        "onPageChange"?: (event: PPaginationCustomEvent<PaginationChangeEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2818,11 +2819,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when active step is changed.
          */
-        "onChange"?: (event: PStepperHorizontalCustomEvent<StepChangeEvent>) => void;
+        "onChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalChangeEvent>) => void;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active step is changed.
          */
-        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepChangeEvent>) => void;
+        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2888,11 +2889,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when sorting is changed.
          */
-        "onChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
+        "onChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
+        "onSortingChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
     }
     interface PTableBody {
     }
@@ -2938,11 +2939,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
+        "onChange"?: (event: PTabsCustomEvent<TabsChangeEvent>) => void;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: PTabsCustomEvent<TabsChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2972,11 +2973,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
+        "onChange"?: (event: PTabsBarCustomEvent<TabsBarChangeEvent>) => void;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarChangeEvent>) => void;
         /**
           * The text size.
          */

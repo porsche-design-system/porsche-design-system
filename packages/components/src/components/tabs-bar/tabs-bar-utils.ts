@@ -11,7 +11,7 @@ export type TabSize = typeof TAB_SIZES[number];
 export const TAB_WEIGHTS = ['regular', 'semibold'] as const;
 export type TabWeight = typeof TAB_WEIGHTS[number];
 
-export type TabChangeEvent = { activeTabIndex: number };
+export type TabsBarChangeEvent = { activeTabIndex: number };
 
 /** @deprecated */
 export type TabGradientColorDeprecated = ScrollerGradientColorDeprecated;
