@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Link Tile` and `Table` matches new design language
 
+#### Added
+
+- Prop `scrollbar` for `Scroller`
+
 ### [3.0.0-alpha.2] - 2023-02-27
 
 #### 🤖 Property deprecations 🤖
@@ -53,7 +57,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Model Signature`
 - Props `align-header` and `width` for `Carousel`
 - Vue: plugin functions `createPorscheDesignSystem` and `usePorscheDesignSystemPlugin`
-- Prop `scrollbar` for `Scroller`
 - Prop `theme` for `Table`
 
 #### Fixed
