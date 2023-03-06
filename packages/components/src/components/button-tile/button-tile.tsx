@@ -159,7 +159,6 @@ export class ButtonTile {
         key="link-or-button-pure"
         class="link-or-button-pure"
         hideLabel={true}
-        icon="arrow-right"
       >
         {this.label}
       </PrefixedTagNames.pButtonPure>
