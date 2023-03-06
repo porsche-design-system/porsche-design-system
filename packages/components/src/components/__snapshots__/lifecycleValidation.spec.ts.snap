@@ -335,9 +335,9 @@ exports[`should call validateProps() with correct parameters via render for p-ra
 exports[`should call validateProps() with correct parameters via render for p-scroller: propTypes with ValidatorFunctions 1`] = `
 {
   "gradientColorScheme": "oneOf",
+  "hasScrollbar": "boolean",
   "scrollIndicatorPosition": "oneOf",
   "scrollToPosition": "shape",
-  "scrollbar": "boolean",
   "theme": "oneOf",
 }
 `;

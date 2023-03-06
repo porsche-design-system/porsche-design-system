@@ -12,15 +12,15 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   :host::before {
     content: "" !important;
     position: absolute !important;
-    left: -2px !important;
     top: -2px !important;
+    left: -2px !important;
     right: -2px !important;
     bottom: -2px !important;
     border-radius: 4px !important;
     transition: background-color var(--p-transition-duration, .24s) ease !important;
   }
   :host(:hover)::before {
-    background-color: #212225 !important;
+    background: #212225 !important;
   }
 }
 "
@@ -38,15 +38,15 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   :host::before {
     content: "" !important;
     position: absolute !important;
-    left: -2px !important;
     top: -2px !important;
+    left: -2px !important;
     right: -2px !important;
     bottom: -2px !important;
     border-radius: 4px !important;
     transition: background-color var(--p-transition-duration, .24s) ease !important;
   }
   :host(:hover)::before {
-    background-color: #EEEFF2 !important;
+    background: #EEEFF2 !important;
   }
 }
 "

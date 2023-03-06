@@ -10,9 +10,6 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
-.root {
-  position: relative;
-}
 .table {
   position: relative;
   width: 100%;
@@ -36,9 +33,6 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
-}
-.root {
-  position: relative;
 }
 .table {
   position: relative;
