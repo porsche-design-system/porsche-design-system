@@ -40,8 +40,14 @@
 .playground.focus::before,
 .playground.focus-hover::before {
   display: block;
-  border-bottom: 1px solid;
+  width: 100%;
   color: deeppink;
+}
+
+.playground.hover:not(.auto-layout)::before,
+.playground.focus:not(.auto-layout)::before,
+.playground.focus-hover:not(.auto-layout)::before {
+  margin-bottom: 16px;
 }
 
 .playground.light.hover::before {
