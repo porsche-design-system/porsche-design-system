@@ -178,7 +178,7 @@ export const ButtonTilePage = (): JSX.Element => {
             alt="Some alt text"
           />
         </PButtonTile>
-        <PButtonTile label="Some super long label which causes line breaks in the link" description="Some description">
+        <PButtonTile label="Some super long label which causes line breaks in the button" description="Some description">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
             width={50}

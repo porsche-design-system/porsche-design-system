@@ -177,7 +177,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [alt]="'Some alt text'"
         />
       </p-button-tile>
-      <p-button-tile [label]="'Some super long label which causes line breaks in the link'" [description]="'Some description'">
+      <p-button-tile [label]="'Some super long label which causes line breaks in the button'" [description]="'Some description'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC'"
           [width]="50"
