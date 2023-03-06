@@ -203,8 +203,8 @@ const ScrollerPage: NextPage = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="playground light" title="should render scroller with scrollbar true">
-        <PScroller scrollbar={true}>
+      <div className="playground light" title="should render scroller with scrollbar on light background">
+        <PScroller hasScrollbar={true}>
           <ul>
             <li>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
