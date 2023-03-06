@@ -2,14 +2,14 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/shared';
 
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
-  const meta = getComponentMeta(tagName);
-  if (meta.requiredParent) {
-    const parent = document.createElement(meta.requiredParent);
+  const { requiredParent, requiredChild, requiredProps, props, hasEvent, eventNames } = getComponentMeta(tagName);
+  if (requiredParent) {
+    const parent = document.createElement(requiredParent);
     parent.append(component.host as HTMLElement);
   }
 
-  if (meta.requiredChild) {
-    const [childTagName, childAttribute] = meta.requiredChild.split(' ');
+  if (requiredChild) {
+    const [childTagName, childAttribute] = requiredChild.split(' ');
     const child = document.createElement(childTagName);
     if (childAttribute) {
       const [childAttributeName, childAttributeValue] = childAttribute.replace(/"/g, '').split('=');
@@ -20,14 +20,14 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component[childTagName] = child;
   }
 
-  if (meta.requiredProps) {
-    meta.requiredProps.forEach((prop) => {
-      component[prop] = 'some value';
+  if (requiredProps) {
+    requiredProps.forEach((prop) => {
+      component[prop] = props[prop] || 'some value';
     });
   }
 
-  if (meta.hasEvent) {
-    meta.eventNames.forEach((event) => {
+  if (hasEvent) {
+    eventNames.forEach((event) => {
       component[event] = jest.fn();
     });
   }
