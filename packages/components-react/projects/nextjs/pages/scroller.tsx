@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PScroller, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
+import { PScroller } from '@porsche-design-system/components-react/ssr';
 
 const ScrollerPage: NextPage = (): JSX.Element => {
   const style = `
@@ -205,28 +205,28 @@ const ScrollerPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render scroller with scrollbar true">
         <PScroller scrollbar={true}>
-          <PTextList>
-            <PTextListItem>
+          <ul>
+            <li>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
               dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
-            </PTextListItem>
-            <PTextListItem>
+            </li>
+            <li>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
               dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
-              <PTextList>
-                <PTextListItem>
+              <ul>
+                <li>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
                   dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
                   rebum.
-                </PTextListItem>
-                <PTextListItem>
+                </li>
+                <li>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
                   dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
                   rebum.
-                </PTextListItem>
-              </PTextList>
-            </PTextListItem>
-          </PTextList>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </PScroller>
       </div>
     </>
