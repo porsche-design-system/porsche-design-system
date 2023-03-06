@@ -122,9 +122,8 @@ export const EventsPage = (): JSX.Element => {
         <PModal open={isModalOpen} onDismiss={onModalClose}>
           Modal
         </PModal>
-        <p>
-          {modalDismissEventCounter} <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
-        </p>
+        <p>{modalDismissEventCounter}</p>
+        <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
       </div>
 
       <div className="playground light">

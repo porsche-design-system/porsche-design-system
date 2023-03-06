@@ -98,7 +98,8 @@
 
   <div className="playground light">
     <PModal :open="isModalOpen" @dismiss="onModalDismiss">Modal</PModal>
-    <p>{{ modalDismissEventCounter }} <button @click="isModalOpen = true">Open Modal</button></p>
+    <p>{{ modalDismissEventCounter }}</p>
+    <button @click="isModalOpen = true">Open Modal</button>
   </div>
 
   <div className="playground light">

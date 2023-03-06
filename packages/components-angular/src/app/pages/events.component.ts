@@ -62,10 +62,8 @@ import type {
 
     <div class="playground light">
       <p-modal [open]="isModalOpen" (dismiss)="onModalDismiss()">Modal</p-modal>
-      <p>
-        {{ modalDismissEventCounter }}
-        <button (click)="openModal()">Open Modal</button>
-      </p>
+      <p>{{ modalDismissEventCounter }}</p>
+      <button (click)="openModal()">Open Modal</button>
     </div>
 
     <div class="playground light">
