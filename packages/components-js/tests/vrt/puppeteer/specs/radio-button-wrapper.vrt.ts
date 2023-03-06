@@ -58,9 +58,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </p-radio-button-wrapper>
         <p-radio-button-wrapper theme="${theme}">
           <span slot="label">
-            Some label
+            Slotted label
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </span>
           <input type="radio" name="some-name" />
@@ -68,18 +68,18 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-radio-button-wrapper theme="${theme}" label="Some label" state="error">
           <input type="radio" name="some-name" />
           <span slot="message">
-            Some error message
+            Slotted error message
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </span>
         </p-radio-button-wrapper>
         <p-radio-button-wrapper theme="${theme}" label="Some label" state="success">
           <input type="radio" name="some-name" />
           <span slot="message">
-            Some success message
+            Slotted success message
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </span>
         </p-radio-button-wrapper>`;

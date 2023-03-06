@@ -41,7 +41,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-accordion theme="${theme}" heading="Heading" open="true">
           ${content}
           <span>
-            and some slotted and deeply nested <a href="#">anchor</a>.
+            and some slotted, deeply nested <a href="#">anchor</a>.
           </span>
         </p-accordion>
         <p-accordion theme="${theme}" heading="Heading (compact=true)" open="true" compact="true">

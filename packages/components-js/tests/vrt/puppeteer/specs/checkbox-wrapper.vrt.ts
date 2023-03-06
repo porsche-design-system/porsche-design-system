@@ -55,9 +55,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </p-checkbox-wrapper>
         <p-checkbox-wrapper theme="${theme}">
           <span slot="label">
-            Some label
+            Slotted label
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </span>
           <input type="checkbox" name="some-name" />
@@ -65,18 +65,18 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <p-checkbox-wrapper theme="${theme}" label="Some label" state="error">
           <input type="checkbox" name="some-name" />
           <span slot="message">
-            Some error message
+            Slotted error message
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </span>
         </p-checkbox-wrapper>
         <p-checkbox-wrapper theme="${theme}" label="Some label" state="success">
           <input type="checkbox" name="some-name" />
           <span slot="message">
-            Some success message
+            Slotted success message
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </span>
         </p-checkbox-wrapper>`;

@@ -17,7 +17,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'text-field-wrapper', '/#text-field-wrapper')).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+fit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('text-field-wrapper-states', async () => {
@@ -25,6 +25,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `
         <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
           .playground div, .playground form { display: flex; }
           .playground div > *, .playground form > * { width: 40%; }
           p-text-field-wrapper:not(:last-child) {
@@ -106,17 +107,37 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </div>
         <div>
           <p-text-field-wrapper theme="${theme}">
-            <span slot="label">Slotted label with <a href="#">link</a></span>
-            <span slot="description">Slotted description with <a href="#">link</a></span>
+            <span slot="label">
+              Slotted label
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
+            <span slot="description">
+              Slotted description
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
             ${child}
           </p-text-field-wrapper>
           <p-text-field-wrapper label="Error" description="Some description" state="error" theme="${theme}">
             ${child}
-            <span slot="message">Slotted message with <a href="#">link</a></span>
+            <span slot="message">
+              Slotted error message
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
           </p-text-field-wrapper>
           <p-text-field-wrapper label="Success" description="Some description" state="success" theme="${theme}">
             ${child}
-            <span slot="message">Slotted message with <a href="#">link</a></span>
+            <span slot="message">
+              Slotted success message
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
           </p-text-field-wrapper>
         </div>`;
 

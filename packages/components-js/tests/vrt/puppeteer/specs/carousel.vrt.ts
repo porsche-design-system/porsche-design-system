@@ -45,13 +45,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <h2 slot="heading">
             Slotted heading
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </h2>
           <p slot="description">
             Slotted description
             <span>
-              and some slotted and deeply nested <a href="#">anchor</a>.
+              and some slotted, deeply nested <a href="#">anchor</a>.
             </span>
           </p>
           ${slides}
