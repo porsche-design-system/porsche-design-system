@@ -54,7 +54,7 @@ const initStepperHorizontal = (opts?: InitOptions) => {
   const steps = Array.from(Array(amount))
     .map(
       (_, i) =>
-        `<p-stepper-horizontal-item${`${getState(i) ? ` state="${getState(i)}"` : ''}`}>Step ${
+        `<p-stepper-horizontal-item${getState(i) ? ` state="${getState(i)}"` : ''}>Step ${
           i + 1
         }</p-stepper-horizontal-item>`
     )
@@ -338,6 +338,21 @@ describe('events', () => {
 
     await item1.click();
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
+  });
+
+  it('should emit both stepChange and change event', async () => {
+    await initStepperHorizontal({ currentStep: 2 });
+    const host = await getHost();
+
+    await addEventListener(host, 'stepChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const [item1] = await getStepItems();
+    await item1.click();
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
   });
 });
 

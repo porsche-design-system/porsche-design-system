@@ -13,7 +13,6 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
@@ -242,6 +241,18 @@ describe('can be closed', () => {
 
     expect((await getEventSummary(host, 'close')).counter).toBe(1);
     expect((await getEventSummary(body, 'close')).counter).toBe(0);
+  });
+
+  it('should emit both close and dismiss event', async () => {
+    // close handler in applied via beforeEach
+    await addEventListener(host, 'dismiss');
+    expect((await getEventSummary(host, 'close')).counter).toBe(0);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    const closeBtn = await getModalCloseButton();
+    await closeBtn.click();
+    expect((await getEventSummary(host, 'close')).counter).toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 });
 
