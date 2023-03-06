@@ -5,11 +5,11 @@ import {
   getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
+  getInsetJssStyle,
 } from '../../../styles';
 import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 
-export const offset = '-2px';
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
@@ -21,10 +21,7 @@ export const getComponentCss = (theme: Theme): string => {
           '&::before': {
             content: '""',
             position: 'absolute',
-            left: offset,
-            top: offset,
-            right: offset,
-            bottom: offset,
+            ...getInsetJssStyle(-2),
             borderRadius: borderRadiusSmall,
             transition: getTransition('background-color'),
           },
