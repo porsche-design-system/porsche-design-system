@@ -314,7 +314,7 @@ export const goto = async (page: Page, url: string) => {
 };
 
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
-  const componentMeta = getComponentMeta(tagName);
+  const { props, requiredProps, requiredChild, requiredParent } = getComponentMeta(tagName);
 
   const buildChildMarkup = (requiredChild: string): string => {
     if (requiredChild) {
@@ -324,20 +324,20 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const buildParentMarkup = (markup: string, { requiredParent }: ComponentMeta): string => {
+  const buildParentMarkup = (markup: string, requiredParent: TagName): string => {
     if (requiredParent) {
       const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
-      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent));
+      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent).requiredParent);
     } else {
       return markup;
     }
   };
 
-  const attributes = componentMeta.requiredProps?.map((prop) => ` ${prop}="value"`).join() || '';
+  const attributes = requiredProps?.map((prop) => ` ${prop}="${props[prop] ?? 'value'}"`).join() || '';
 
-  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
+  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(requiredChild)}</${tagName}>`;
 
-  return buildParentMarkup(componentMarkup, componentMeta);
+  return buildParentMarkup(componentMarkup, requiredParent);
 };
 
 export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promise<void> => {

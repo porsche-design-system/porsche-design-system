@@ -22,7 +22,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
 
   if (requiredProps) {
     requiredProps.forEach((prop) => {
-      component[prop] = props[prop] || 'some value';
+      component[prop] = props[prop] ?? 'some value';
     });
   }
 
