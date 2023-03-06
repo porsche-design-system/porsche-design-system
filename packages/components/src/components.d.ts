@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
-import { ButtonLinkGroupDirection } from "./utils/direction-jss-style";
+import { ButtonLinkGroupDirection } from "./styles/direction-style";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -26,7 +26,8 @@ import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkButtonTileAspectRatio, LinkButtonTileSize, LinkButtonTileWeight } from "./styles/link-button-tile-styles";
+import { LinkTileAlign } from "./components/link-tile/link-tile-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { LinkTileModelAspectRatio } from "./components/link-tile-model/link-tile-model-utils";
 import { MarqueSize } from "./components/marque/marque-size";
@@ -682,7 +683,7 @@ export namespace Components {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -714,7 +715,7 @@ export namespace Components {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkTileSize>;
+        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -722,7 +723,7 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PLinkTileModel {
         /**
@@ -776,7 +777,7 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PMarque {
         /**
@@ -2474,7 +2475,7 @@ declare namespace LocalJSX {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -2506,7 +2507,7 @@ declare namespace LocalJSX {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkTileSize>;
+        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -2514,7 +2515,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PLinkTileModel {
         /**
@@ -2568,7 +2569,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
     }
     interface PMarque {
         /**

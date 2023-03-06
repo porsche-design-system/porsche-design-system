@@ -1,21 +1,8 @@
 import { JssStyle } from 'jss';
-import {
-  pxToRemWithUnit,
-  getTransition,
-  addImportantToEachRule,
-  getBackfaceVisibilityJssStyle,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  getInsetJssStyle,
-} from '../../styles';
-import { getFontWeight } from '../../styles/font-weight-styles';
-import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
+import type { LinkTileAlign } from './link-tile-utils';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
 import {
-  textLargeStyle,
-  fontSizeTextMedium,
   spacingFluidMedium,
   spacingStaticMedium,
   spacingFluidLarge,
@@ -23,33 +10,27 @@ import {
   gradientToBottomStyle,
   gradientToTopStyle,
 } from '@porsche-design-system/utilities-v2';
-
-const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
-  '1:1': '100%',
-  '4:3': '75%',
-  '3:4': '133.33%',
-  '16:9': '56.25%',
-  '9:16': '177.75%',
-};
+import type {
+  LinkButtonTileAspectRatio,
+  LinkButtonTileSize,
+  LinkButtonTileWeight,
+} from '../../styles/link-button-tile-styles';
+import {
+  getLinkButtonTilePStyles,
+  getLinkButtonTileHostAndSlottedStyles,
+  linkButtonTileLinkOverlayStyles,
+  linkButtonTileImageContainerStyles,
+  getLinkButtonTileRootStyles,
+} from '../../styles/link-button-tile-styles';
 
 const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): JssStyle => {
   return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
 };
 
-const sizeMap: {
-  inherit: { fontSize: string };
-  default: { fontSize: string };
-} = {
-  inherit: {
-    fontSize: 'inherit',
-  },
-  default: { fontSize: fontSizeTextMedium },
-};
-
 export const getComponentCss = (
-  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
-  size: BreakpointCustomizable<LinkTileSize>,
-  weight: BreakpointCustomizable<LinkTileWeight>,
+  aspectRatio: BreakpointCustomizable<LinkButtonTileAspectRatio>,
+  size: BreakpointCustomizable<LinkButtonTileSize>,
+  weight: BreakpointCustomizable<LinkButtonTileWeight>,
   align: LinkTileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean
@@ -57,57 +38,11 @@ export const getComponentCss = (
   const isTopAligned = align === 'top';
   return getCss({
     '@global': {
-      ':host': {
-        display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
-      },
-      ...addImportantToEachRule({
-        '::slotted(picture),::slotted(img)': {
-          transition: getTransition('transform'),
-          ...getBackfaceVisibilityJssStyle(),
-        },
-        '::slotted(picture)': {
-          position: 'absolute',
-          ...getInsetJssStyle(0),
-        },
-        '::slotted(img)': {
-          height: '100%',
-          width: '100%',
-          objectFit: 'cover',
-        },
-      }),
-      p: {
-        color: getThemedTypographyColor('dark', 'primary'),
-        maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
-        margin: 0,
-        ...textLargeStyle,
-        ...mergeDeep(
-          buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
-          buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
-        ),
-      },
+      ...getLinkButtonTileHostAndSlottedStyles(),
+      ...getLinkButtonTilePStyles(size, weight),
     },
-    root: {
-      height: 0,
-      position: 'relative',
-      transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
-      ...hoverMediaQuery({
-        '&:hover': {
-          '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
-            transform: 'scale3d(1.05, 1.05, 1.05)',
-          }),
-        },
-      }),
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
-        paddingTop: aspectRatioPaddingTop[ratio],
-      })),
-    },
-    'image-container': {
-      position: 'absolute',
-      overflow: 'hidden',
-      borderRadius: borderRadiusMedium,
-      ...getInsetJssStyle(0),
-    },
+    root: getLinkButtonTileRootStyles(aspectRatio),
+    'image-container': linkButtonTileImageContainerStyles,
     content: {
       position: 'absolute',
       ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
@@ -148,22 +83,6 @@ export const getComponentCss = (
       ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
     },
     // is used for expanded click-area only
-    'link-overlay': {
-      position: 'fixed',
-      ...getInsetJssStyle(0),
-      outline: 0,
-    },
+    'link-overlay': linkButtonTileLinkOverlayStyles,
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& picture > img': {
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-      },
-    })
-  );
 };

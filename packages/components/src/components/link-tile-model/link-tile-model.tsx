@@ -1,12 +1,13 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
-import { attachComponentCss, getPrefixedTagNames } from '../../utils';
-import type { LinkTileWeight } from '../link-tile/link-tile-utils';
 import type { LinkTileModelAspectRatio } from './link-tile-model-utils';
 import type { SelectedAriaAttributes, LinkTarget, BreakpointCustomizable } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
-import type { ButtonLinkGroupDirection } from '../../styles/direction-jss-style';
+import type { ButtonLinkGroupDirection } from '../../styles/direction-style';
+import type { LinkButtonTileWeight } from '../../styles/link-button-tile-styles';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './link-tile-model-styles';
+import { getSlottedCss } from '../../styles/link-button-tile-styles';
 
 @Component({
   tag: 'p-link-tile-model',
@@ -19,7 +20,7 @@ export class LinkTileModel {
   @Prop() public model?: ModelSignatureModel = '911';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkButtonTileWeight> = 'semibold';
 
   /** Label of the primary <a />. */
   @Prop() public primaryLabel: string;
@@ -59,6 +60,10 @@ export class LinkTileModel {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+
+  public connectedCallback(): void {
+    attachSlottedCss(this.host, getSlottedCss);
+  }
 
   public render(): JSX.Element {
     attachComponentCss(this.host, getComponentCss, this.aspectRatio, this.weight, this.direction);

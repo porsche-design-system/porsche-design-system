@@ -1,6 +1,6 @@
 // TODO: unit test this
-import { GetJssStyleFunction } from './jss';
 import { JssStyle } from 'jss';
+import { GetJssStyleFunction } from '../utils';
 
 export const BUTTON_LINK_GROUP_DIRECTIONS = ['row', 'column'] as const;
 export type ButtonLinkGroupDirection = typeof BUTTON_LINK_GROUP_DIRECTIONS[number];
