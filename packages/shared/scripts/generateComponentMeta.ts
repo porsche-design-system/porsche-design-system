@@ -30,6 +30,10 @@ const generateComponentMeta = (): void => {
   };
   requiredProps?: string[]; // array of props that are mandatory
   deprecatedProps?: string[]; // array of props that are deprecated
+  breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+  allowedPropValues?: {
+    [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+  };
   internalProps?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
@@ -67,6 +71,10 @@ const generateComponentMeta = (): void => {
     };
     requiredProps?: string[]; // array of props that are mandatory
     deprecatedProps?: string[]; // array of props that are deprecated
+    breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+    allowedPropValues?: {
+      [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+    };
     internalProps?: {
       [propName: string]: boolean | number | string | object | null; // value is the prop's default value
     };
@@ -214,6 +222,76 @@ const generateComponentMeta = (): void => {
       requiredProps.push(invalidLinkUsageProp);
     }
 
+    let [, rawPropTypes] = /const [a-z][a-zA-z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
+    rawPropTypes = rawPropTypes
+      ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
+      .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
+    const propTypes = eval(`(${rawPropTypes})`) as Record<string, string>;
+
+    // breakpointCustomizableProps
+    const breakpointCustomizableProps: ComponentMeta['breakpointCustomizableProps'] = [];
+
+    // allowedPropValues
+    const allowedPropValues: ComponentMeta['allowedPropValues'] =
+      isInternal || !propTypes
+        ? {} // internal components or ones without propTypes validation don't matter
+        : Object.entries(propTypes).reduce((result, [propName, propType]) => {
+            propType = propType.replace('AllowedTypes.', '');
+            if (propType.match(/^(?:breakpoint|oneOf)/)) {
+              if (propType.match(/^breakpoint/)) {
+                breakpointCustomizableProps.push(propName);
+              }
+
+              let [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
+              if (values.match(/^\[.+]$/) || values.match(/[A-Z_]{5,}/)) {
+                result[propName] = [];
+                if (values.match(/undefined/)) {
+                  (result[propName] as string[]).push(undefined);
+                }
+
+                let [, variable] = (values.match(/([A-Z_]{5,})/) || []) as [string, string | string[]];
+                if (variable) {
+                  const [, variableImportPath] = source.match(new RegExp(`${variable}[\\s\\S]+?from '(.+)';`)) || [];
+                  const componentFilePath = componentFiles.find((file) =>
+                    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\.tsx$`))
+                  );
+                  const variableExportFilePath = variableImportPath.match(/^\./)
+                    ? path.resolve(componentFilePath, '..', variableImportPath) // relative path
+                    : variableImportPath; // absolute path to other package
+
+                  variable = require(variableExportFilePath)[variable as string];
+
+                  // handle stuff like ICONS_MANIFEST
+                  if (values.match(/^Object\.keys/)) {
+                    variable = Object.keys(variable);
+                  }
+
+                  result[propName] = [...(result[propName] as string[]), ...variable];
+                } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
+                  // TODO: still missing, e.g. in segmented-control
+                  result[propName] = ['// TODO'];
+                } else if (!variable) {
+                  // must be array of inline values
+                  result[propName] = eval(`(${values})`);
+                } else {
+                  throw new Error(
+                    `Unsupported propType for breakpoint or oneOf in "${tagName}" "${propName}": ${propType}`
+                  );
+                }
+              } else if (values === 'boolean' || values === 'number') {
+                result[propName] = values;
+              }
+            } else if (propType === 'boolean' || propType === 'number' || propType === 'string') {
+              result[propName] = propType;
+            } else if (propType.match(/^(?:aria|shape)/)) {
+              // TODO: still missing
+              result[propName] = ['// TODO'];
+            } else {
+              throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
+            }
+            return result;
+          }, {} as ComponentMeta['allowedPropValues']);
+
     // internal props set by parent
     const internalProps: ComponentMeta['internalProps'] = {};
 
@@ -290,6 +368,9 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(props).length && { props }),
       ...(requiredProps.length && { requiredProps }),
       ...(deprecatedProps.length && { deprecatedProps }),
+      ...(Object.keys(allowedPropValues).length && { allowedPropValues }),
+      ...(Object.keys(internalProps).length && { internalProps }),
+      ...(breakpointCustomizableProps.length && { breakpointCustomizableProps }),
       ...(Object.keys(internalProps).length && { internalProps }),
       ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
