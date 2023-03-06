@@ -2,9 +2,5 @@
 /dist
 scss.scss
 
-# generated output
-/src/styles/font-face.variables.scss
-/src/styles/font-face.variables.cn.scss
-
 LICENSE
 OSS_NOTICE
