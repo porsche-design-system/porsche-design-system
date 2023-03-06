@@ -132,6 +132,13 @@ export class InputParser {
     return parsedInterface;
   }
 
+  public isPropDeprecated(component: TagName, propName: string): boolean {
+    const rawInterface = this.getRawComponentInterface(component);
+    const [, jsdoc] = rawInterface.match(new RegExp(`(  \\/\\*\\*\\n(?:.*\\n){0,3})?  ${propName}\\??: `)) || [];
+
+    return !!jsdoc?.match(/@deprecated/);
+  }
+
   public hasGeneric(component: TagName): boolean {
     const rawInterface = this.getRawComponentInterface(component);
     return !!rawInterface.match(/: T[^\w]/);
