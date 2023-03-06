@@ -1,222 +1,227 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 5622,
-    "gzipSize": 2407
+    "size": 5627,
+    "gzipSize": 2409
   },
   {
     "chunkShortName": "banner",
-    "size": 4998,
-    "gzipSize": 2119
+    "size": 5001,
+    "gzipSize": 2118
   },
   {
     "chunkShortName": "button",
-    "size": 7184,
-    "gzipSize": 2875
+    "size": 7285,
+    "gzipSize": 2895
   },
   {
     "chunkShortName": "button-group",
-    "size": 861,
-    "gzipSize": 503
+    "size": 862,
+    "gzipSize": 505
   },
   {
     "chunkShortName": "button-pure",
-    "size": 7592,
-    "gzipSize": 3121
+    "size": 7601,
+    "gzipSize": 3114
+  },
+  {
+    "chunkShortName": "button-tile",
+    "size": 8300,
+    "gzipSize": 3403
   },
   {
     "chunkShortName": "carousel",
-    "size": 40325,
-    "gzipSize": 16549
+    "size": 40334,
+    "gzipSize": 16556
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 7118,
-    "gzipSize": 2987
+    "size": 7127,
+    "gzipSize": 2993
   },
   {
     "chunkShortName": "content-wrapper",
-    "size": 2310,
+    "size": 2313,
     "gzipSize": 1051
   },
   {
     "chunkShortName": "display",
-    "size": 3247,
-    "gzipSize": 1481
+    "size": 3248,
+    "gzipSize": 1475
   },
   {
     "chunkShortName": "divider",
-    "size": 1854,
-    "gzipSize": 856
+    "size": 1856,
+    "gzipSize": 857
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 3764,
-    "gzipSize": 1566
+    "size": 3769,
+    "gzipSize": 1575
   },
   {
     "chunkShortName": "flex",
-    "size": 3501,
-    "gzipSize": 1380
+    "size": 3505,
+    "gzipSize": 1379
   },
   {
     "chunkShortName": "grid",
-    "size": 2579,
-    "gzipSize": 1165
+    "size": 2583,
+    "gzipSize": 1168
   },
   {
     "chunkShortName": "heading",
-    "size": 4123,
-    "gzipSize": 1702
+    "size": 4126,
+    "gzipSize": 1694
   },
   {
     "chunkShortName": "headline",
-    "size": 4844,
-    "gzipSize": 1980
+    "size": 4847,
+    "gzipSize": 1971
   },
   {
     "chunkShortName": "icon",
-    "size": 16149,
-    "gzipSize": 7716
+    "size": 16151,
+    "gzipSize": 7715
   },
   {
     "chunkShortName": "inline-notification",
-    "size": 4877,
-    "gzipSize": 2046
+    "size": 4885,
+    "gzipSize": 2057
   },
   {
     "chunkShortName": "link",
-    "size": 6601,
-    "gzipSize": 2740
+    "size": 6613,
+    "gzipSize": 2742
   },
   {
     "chunkShortName": "link-pure",
-    "size": 7399,
-    "gzipSize": 3019
+    "size": 7410,
+    "gzipSize": 3020
   },
   {
     "chunkShortName": "link-social",
-    "size": 5981,
-    "gzipSize": 2535
+    "size": 5993,
+    "gzipSize": 2532
   },
   {
     "chunkShortName": "link-tile",
-    "size": 6788,
-    "gzipSize": 2846
+    "size": 7105,
+    "gzipSize": 2965
   },
   {
     "chunkShortName": "main",
-    "size": 67997,
-    "gzipSize": 23081
+    "size": 68339,
+    "gzipSize": 23141
   },
   {
     "chunkShortName": "marque",
-    "size": 4862,
-    "gzipSize": 2042
+    "size": 4864,
+    "gzipSize": 2041
   },
   {
     "chunkShortName": "modal",
-    "size": 7442,
-    "gzipSize": 3190
+    "size": 7444,
+    "gzipSize": 3189
   },
   {
     "chunkShortName": "model-signature",
-    "size": 2474,
+    "size": 2475,
     "gzipSize": 1307
   },
   {
     "chunkShortName": "pagination",
-    "size": 6885,
-    "gzipSize": 2824
+    "size": 6890,
+    "gzipSize": 2827
   },
   {
     "chunkShortName": "popover",
-    "size": 7431,
-    "gzipSize": 2925
+    "size": 7437,
+    "gzipSize": 2929
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 6993,
-    "gzipSize": 2956
+    "size": 7002,
+    "gzipSize": 2962
   },
   {
     "chunkShortName": "scroller",
-    "size": 7219,
-    "gzipSize": 2823
+    "size": 7225,
+    "gzipSize": 2826
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 7885,
-    "gzipSize": 3139
+    "size": 7895,
+    "gzipSize": 3135
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 21367,
-    "gzipSize": 7134
+    "size": 21377,
+    "gzipSize": 7127
   },
   {
     "chunkShortName": "spinner",
-    "size": 2628,
-    "gzipSize": 1264
+    "size": 2630,
+    "gzipSize": 1263
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 11936,
-    "gzipSize": 4787
+    "size": 11945,
+    "gzipSize": 4788
   },
   {
     "chunkShortName": "switch",
-    "size": 5398,
-    "gzipSize": 2204
+    "size": 5403,
+    "gzipSize": 2206
   },
   {
     "chunkShortName": "table",
-    "size": 10854,
-    "gzipSize": 3946
+    "size": 10864,
+    "gzipSize": 3947
   },
   {
     "chunkShortName": "tabs",
-    "size": 6172,
-    "gzipSize": 2584
+    "size": 6177,
+    "gzipSize": 2583
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 8971,
-    "gzipSize": 3521
+    "size": 8980,
+    "gzipSize": 3527
   },
   {
     "chunkShortName": "tag",
-    "size": 5394,
-    "gzipSize": 2182
+    "size": 5401,
+    "gzipSize": 2185
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 4439,
-    "gzipSize": 1945
+    "size": 4447,
+    "gzipSize": 1950
   },
   {
     "chunkShortName": "text",
-    "size": 5140,
-    "gzipSize": 2076
+    "size": 5149,
+    "gzipSize": 2077
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 14126,
-    "gzipSize": 5249
+    "size": 14139,
+    "gzipSize": 5252
   },
   {
     "chunkShortName": "text-list",
-    "size": 3419,
-    "gzipSize": 1527
+    "size": 3427,
+    "gzipSize": 1525
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 8092,
-    "gzipSize": 3144
+    "size": 8101,
+    "gzipSize": 3145
   },
   {
     "chunkShortName": "toast",
-    "size": 6804,
-    "gzipSize": 2897
+    "size": 6812,
+    "gzipSize": 2900
   }
 ]
