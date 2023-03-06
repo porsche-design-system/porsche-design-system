@@ -50,28 +50,16 @@
   margin-bottom: 16px;
 }
 
-.playground.light.hover::before {
-  content: ':hover (theme=light)';
+.playground.hover::before {
+  content: ':hover';
 }
 
-.playground.light.focus::before {
-  content: ':focus-visible (theme=light)';
+.playground.focus::before {
+  content: ':focus-visible';
 }
 
-.playground.light.focus-hover::before {
-  content: ':focus-visible:hover (theme=light)';
-}
-
-.playground.dark.hover::before {
-  content: ':hover (theme=dark)';
-}
-
-.playground.dark.focus::before {
-  content: ':focus-visible (theme=dark)';
-}
-
-.playground.dark.focus-hover::before {
-  content: ':focus-visible:hover (theme=dark)';
+.playground.focus-hover::before {
+  content: ':focus-visible:hover';
 }
 
 /* Select */
