@@ -201,8 +201,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
 
-    <div class="playground light" title="should render scroller with scrollbar true">
-      <p-scroller [scrollbar]="true">
+    <div class="playground light" title="should render scroller with scrollbar on light background">
+      <p-scroller [hasScrollbar]="true">
         <ul>
           <li>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
