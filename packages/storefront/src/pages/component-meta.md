@@ -16,15 +16,18 @@ import type { ComponentMeta } from '@porsche-design-system/shared';
 @Component
 export default class Code extends Vue {
   get headRow(): string {
-    return ['', ...TAG_NAMES].map((tagName) => `<p-table-head-cell>${tagName}</p-table-head-cell>`).join('');
+    return ['', ...TAG_NAMES].map((tagName) => {
+      const { isDeprecated } = getComponentMeta(tagName) || {};
+      return `<p-table-head-cell>${tagName}${isDeprecated ? ' 🚫' : ''}</p-table-head-cell>`;
+    }).join('');
   }
 
   get body(): string {
     const rowKeys: (keyof ComponentMeta)[] = [
-      'isDeprecated',
       'isDelegatingFocus',
       'isThemeable',
       'props',
+      'requiredProps',
       'eventNames',
       'namedSlots',
       'nestedComponents',
@@ -33,7 +36,7 @@ export default class Code extends Vue {
 
     const content = rowKeys.map(key => {
       const cells = TAG_NAMES.map(tagName => {
-        const meta = getComponentMeta(tagName); 
+        const meta = getComponentMeta(tagName);
         let value = meta[key];
 
         if (value && (key === 'props' || key === 'eventNames')) {
@@ -48,13 +51,13 @@ export default class Code extends Vue {
         }
 
         let cellContent = value 
-          ? Array.isArray(value) 
+          ? Array.isArray(value)
             ? value.sort().map(val => key === 'nestedComponents' ? val : `<code>${val}</code>`).join('<br>') 
             : value
           : '';
         cellContent = cellContent === true ? '✅' : cellContent;
 
-        return `<p-table-cell>${cellContent}</p-table-cell>`
+        return `<p-table-cell>${cellContent}</p-table-cell>`;
       }).join('');
 
       return `<p-table-row>
