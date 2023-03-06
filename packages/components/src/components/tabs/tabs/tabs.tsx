@@ -118,7 +118,8 @@ export class Tabs {
           gradientColorScheme={this.gradientColorScheme}
           gradientColor={this.gradientColor}
           activeTabIndex={this.activeTabIndex}
-          onTabChange={this.onTabChange}
+          onChange={this.onTabChange}
+          onTabChange={(e) => e.stopPropagation()}
         >
           {this.tabsItemElements.map((tab, index) => (
             <button key={index} type="button">
