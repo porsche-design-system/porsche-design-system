@@ -16,9 +16,6 @@ export const getComponentCss = (theme: Theme): string => {
     caption: {
       marginBottom: spacingFluidMedium,
     },
-    root: {
-      position: 'relative',
-    },
     table: {
       position: 'relative',
       width: '100%',

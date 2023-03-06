@@ -65,13 +65,12 @@ export class Table {
             <slot name="caption" />
           </div>
         )}
-        <div class="root">
-          <PrefixedTagNames.pScroller scrollbar={true} theme={this.theme}>
-            <div class="table" role="table" {...tableAttr}>
-              <slot />
-            </div>
-          </PrefixedTagNames.pScroller>
-        </div>
+
+        <PrefixedTagNames.pScroller scrollbar={true} theme={this.theme}>
+          <div class="table" role="table" {...tableAttr}>
+            <slot />
+          </div>
+        </PrefixedTagNames.pScroller>
       </Host>
     );
   }
