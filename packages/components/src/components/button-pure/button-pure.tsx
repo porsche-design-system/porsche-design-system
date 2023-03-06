@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
+  BUTTON_TYPES,
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
@@ -30,7 +31,7 @@ import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './but
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
-  type: AllowedTypes.oneOf<ButtonType>(['button', 'submit', 'reset']),
+  type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
