@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- Prop `scrollbar` for `Scroller`
+- Prop `hasScrollbar` for `Scroller`
 
 ### [3.0.0-alpha.2] - 2023-02-27
 
