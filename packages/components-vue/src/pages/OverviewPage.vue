@@ -641,7 +641,9 @@
   }
 
   p-link-tile,
-  my-prefix-p-link-tile {
+  p-button-tile,
+  my-prefix-p-link-tile,
+  my-prefix-p-button-tile {
     max-width: 400px;
   }
 
