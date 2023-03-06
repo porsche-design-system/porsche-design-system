@@ -178,8 +178,8 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     this.updateAndRegister();
     
     /* theme switch needs to register event listeners again */
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
+    const themeTabsBar = this.$el.querySelectorAll('.playground > p-tabs-bar');
+    themeTabsBar.forEach(tab => tab.addEventListener('change', () => {
       this.updateAndRegister(); 
     }));    
   }
@@ -195,17 +195,17 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('change', this.onTabsBarChange));
 
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-      this.onTabChange(e);
+    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('change', (e: CustomEvent<TabsBarChangeEvent>)=> {
+      this.onTabsBarChange(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
 
-  onTabChange = (e: CustomEvent) => {
+  onTabsBarChange = (e: CustomEvent<TabsBarChangeEvent>) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }

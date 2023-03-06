@@ -79,7 +79,7 @@ export const EventsPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light">
-        <PAccordion heading="Some heading" onChange={onAccordionChange} onAccordionChange={onAccordionChange} />
+        <PAccordion heading="Some heading" onChange={onAccordionChange} />
         <p>{accordionChangeEventCounter}</p>
       </div>
 

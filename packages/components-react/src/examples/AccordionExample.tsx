@@ -3,14 +3,14 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-rea
 import { PAccordion, PText } from '@porsche-design-system/components-react';
 
 export const AccordionExamplePage = (): JSX.Element => {
-  const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
-  const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
+  const [isOpen1, setIsOpen1] = useState<boolean>(false);
+  const [isOpen2, setIsOpen2] = useState<boolean>(false);
 
-  const onAccordion1Change = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
-    setIsAccordion1Open(e.detail.open);
+  const onChange1 = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+    setIsOpen1(e.detail.open);
   }, []);
-  const onAccordion2Change = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
-    setIsAccordion2Open(e.detail.open);
+  const onChange2 = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+    setIsOpen2(e.detail.open);
   }, []);
 
   const content =
@@ -19,10 +19,10 @@ export const AccordionExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <PAccordion heading="Some Heading" tag="h3" open={isAccordion1Open} onAccordionChange={onAccordion1Change}>
+      <PAccordion heading="Some Heading" tag="h3" open={isOpen1} onChange={onChange1}>
         <PText>{content}</PText>
       </PAccordion>
-      <PAccordion heading="Some Heading" tag="h3" open={isAccordion2Open} onAccordionChange={onAccordion2Change}>
+      <PAccordion heading="Some Heading" tag="h3" open={isOpen2} onChange={onChange2}>
         <PText>{content}</PText>
       </PAccordion>
     </>
