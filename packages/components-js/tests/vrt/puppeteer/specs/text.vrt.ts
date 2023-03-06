@@ -30,7 +30,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-text theme="${theme}">
-          Heading
+          Text
           <span>
             and some slotted, deeply nested <a href="#">anchor</a>.
           </span>
