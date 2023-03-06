@@ -1,5 +1,13 @@
 # Dependencies 03.03.2023
 
+## UX-Pin Wrappers
+
+UX-Pin is not ready for the major babel loader upgrade jet.
+
+### Affected dependencies:
+
+- ` babel-loader`
+
 ## Partials
 
 Upgrading `@webcomponents/template-shadowroot` causes the dsr-ponyfill tests in playwright to fail
