@@ -11,7 +11,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
 
-const getTableWithCaption = (theme: Theme): JSX.Element => {
+export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
   return (
     <PTable caption="Some caption" theme={theme}>
       <PTableHead>
@@ -61,11 +61,4 @@ const getTableWithCaption = (theme: Theme): JSX.Element => {
       </PTableBody>
     </PTable>
   );
-};
-export const TableWithCaption = (): JSX.Element => {
-  return getTableWithCaption('light');
-};
-
-export const TableWithCaptionDark = (): JSX.Element => {
-  return getTableWithCaption('dark');
 };

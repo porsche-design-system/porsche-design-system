@@ -1,5 +1,5 @@
 import { PTable, PTableHead, PTableHeadCell, PTableHeadRow } from '@porsche-design-system/components-react';
-import { TableWithCaptionDark, TableWithCaption } from '../components';
+import { TableWithCaption } from '../components';
 
 export const TablePage = (): JSX.Element => {
   return (
@@ -9,7 +9,7 @@ export const TablePage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should render table on dark background">
-        <TableWithCaptionDark />
+        <TableWithCaption theme="dark" />
       </div>
 
       <div className="playground light" title="should render table with unstyled slotted caption on light background">

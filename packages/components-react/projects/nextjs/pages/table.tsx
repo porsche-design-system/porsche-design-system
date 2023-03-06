@@ -1,5 +1,5 @@
 import { PTable, PTableHead, PTableHeadCell, PTableHeadRow } from '@porsche-design-system/components-react/ssr';
-import { TableWithCaption, TableWithCaptionDark } from '../components';
+import { TableWithCaption } from '../components';
 import type { NextPage } from 'next';
 
 const TablePage: NextPage = (): JSX.Element => {
@@ -9,7 +9,7 @@ const TablePage: NextPage = (): JSX.Element => {
         <TableWithCaption />
       </div>
       <div className="playground dark" title="should render table on dark background">
-        <TableWithCaptionDark />
+        <TableWithCaption theme="dark" />
       </div>
 
       <div className="playground light" title="should render table with unstyled slotted caption on light background">

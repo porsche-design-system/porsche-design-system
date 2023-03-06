@@ -12,7 +12,8 @@ import {
 import Image from 'next/image';
 import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
 
-const getTableWithCaption = (theme: Theme): JSX.Element => {
+// NOTE: this component is duplicated and adjusted from react
+export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
   return (
     <PTable caption="Some caption" theme={theme}>
       <PTableHead>
@@ -63,13 +64,4 @@ const getTableWithCaption = (theme: Theme): JSX.Element => {
       </PTableBody>
     </PTable>
   );
-};
-
-// NOTE: this component is duplicated and adjusted from react
-export const TableWithCaption = (): JSX.Element => {
-  return getTableWithCaption('light');
-};
-
-export const TableWithCaptionDark = (): JSX.Element => {
-  return getTableWithCaption('dark');
 };
