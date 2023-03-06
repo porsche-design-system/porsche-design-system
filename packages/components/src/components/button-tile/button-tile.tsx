@@ -5,7 +5,7 @@ import type {
   LinkButtonTileAspectRatio,
   LinkButtonTileAlign,
 } from '../../utils';
-import { Component, Element, h, Prop } from '@stencil/core';
+import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -20,6 +20,7 @@ import {
   LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_ALIGNS,
   throwIfAlignTopAndNotCompact,
+  isDisabledOrLoading,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
 import { getSlottedCss } from '../../styles/link-button-tile-styles';
@@ -91,6 +92,13 @@ export class ButtonTile {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
+
+  @Listen('click', { capture: true })
+  public onClick(e: MouseEvent): void {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
+      e.stopPropagation();
+    }
+  }
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
