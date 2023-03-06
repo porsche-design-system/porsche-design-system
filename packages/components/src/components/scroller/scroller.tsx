@@ -32,7 +32,7 @@ const propTypes: PropTypes<typeof Scroller> = {
     isSmooth: AllowedTypes.boolean,
   }),
   scrollIndicatorPosition: AllowedTypes.oneOf<ScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
-  scrollbar: AllowedTypes.boolean,
+  hasScrollbar: AllowedTypes.boolean,
 };
 
 @Component({
@@ -56,7 +56,7 @@ export class Scroller {
   @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';
 
   /** Specifies if scrollbar should be shown */
-  @Prop() public scrollbar? = false;
+  @Prop() public hasScrollbar? = false;
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
@@ -106,7 +106,7 @@ export class Scroller {
       this.isNextHidden,
       this.isPrevHidden,
       this.scrollIndicatorPosition,
-      this.scrollbar,
+      this.hasScrollbar,
       this.theme
     );
 
