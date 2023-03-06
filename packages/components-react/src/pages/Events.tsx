@@ -2,10 +2,11 @@ import { ChangeEvent, useCallback, useState } from 'react';
 import type {
   AccordionChangeEvent,
   CarouselChangeEvent,
-  PageChangeEvent,
-  SortingChangeEvent,
+  PaginationChangeEvent,
+  TableChangeEvent,
   SwitchChangeEvent,
-  TabChangeEvent,
+  TabsBarChangeEvent,
+  TabsChangeEvent,
 } from '@porsche-design-system/components-react';
 import {
   PAccordion,
@@ -25,31 +26,33 @@ import {
 
 export const EventsPage = (): JSX.Element => {
   const [accordionChangeEventCounter, setAccordionChangeEventCounter] = useState(0);
-  const [pageChangeEventCounter, setPageChangeEventCounter] = useState(0);
+  const [paginationChangeEventCounter, setPaginationChangeEventCounter] = useState(0);
   const [tabsBarChangeEventCounter, setTabsBarChangeEventCounter] = useState(0);
   const [tabsChangeEventCounter, setTabsChangeEventCounter] = useState(0);
   const [textFieldSearchValue, setTextFieldSearchValue] = useState('');
   const [switchChangeEventCounter, setSwitchChangeEventCounter] = useState(0);
-  const [modalCloseEventCounter, setModalCloseEventCounter] = useState(0);
+  const [modalDismissEventCounter, setModalDismissEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
+  const [tableChangeEventCounter, setTableChangeEventCounter] = useState(0);
   const [carouselChangeEventCounter, setCarouselChangeEventCounter] = useState(0);
+
+  // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported from package root
   const onAccordionChange = useCallback(
     (e: CustomEvent<AccordionChangeEvent>) => setAccordionChangeEventCounter((prev) => prev + 1),
     []
   );
-  const onPageChange = useCallback(
-    (e: CustomEvent<PageChangeEvent>) => setPageChangeEventCounter((prev) => prev + 1),
+  const onPaginationChange = useCallback(
+    (e: CustomEvent<PaginationChangeEvent>) => setPaginationChangeEventCounter((prev) => prev + 1),
     []
   );
   const onTabsBarChange = useCallback(
-    (e: CustomEvent<TabChangeEvent>) => setTabsBarChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TabsBarChangeEvent>) => setTabsBarChangeEventCounter((prev) => prev + 1),
     []
   );
   const onTabsChange = useCallback(
-    (e: CustomEvent<TabChangeEvent>) => setTabsChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TabsChangeEvent>) => setTabsChangeEventCounter((prev) => prev + 1),
     []
   );
   const onTextFieldSearchChange = useCallback(
@@ -61,11 +64,11 @@ export const EventsPage = (): JSX.Element => {
     []
   );
   const onModalClose = useCallback(() => {
-    setModalCloseEventCounter((prev) => prev + 1);
+    setModalDismissEventCounter((prev) => prev + 1);
     setIsModalOpen(false);
   }, []);
-  const onTableSortingChange = useCallback(
-    (e: CustomEvent<SortingChangeEvent>) => setTableSortingChangeEventCounter((prev) => prev + 1),
+  const onTableChange = useCallback(
+    (e: CustomEvent<TableChangeEvent>) => setTableChangeEventCounter((prev) => prev + 1),
     []
   );
   const onCarouselChange = useCallback(
@@ -76,17 +79,17 @@ export const EventsPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light">
-        <PAccordion heading="Some heading" onAccordionChange={onAccordionChange} />
+        <PAccordion heading="Some heading" onChange={onAccordionChange} onAccordionChange={onAccordionChange} />
         <p>{accordionChangeEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} onPageChange={onPageChange} />
-        <p>{pageChangeEventCounter}</p>
+        <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} onChange={onPaginationChange} />
+        <p>{paginationChangeEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PTabsBar activeTabIndex={0} onTabChange={onTabsBarChange}>
+        <PTabsBar activeTabIndex={0} onChange={onTabsBarChange}>
           <button>Tab 1</button>
           <button>Tab 2</button>
           <button>Tab 3</button>
@@ -95,7 +98,7 @@ export const EventsPage = (): JSX.Element => {
       </div>
 
       <div className="playground light">
-        <PTabs activeTabIndex={0} onTabChange={onTabsChange}>
+        <PTabs activeTabIndex={0} onChange={onTabsChange}>
           <PTabsItem label="Tab 1">Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Content 3</PTabsItem>
@@ -116,27 +119,27 @@ export const EventsPage = (): JSX.Element => {
       </div>
 
       <div className="playground light">
-        <PModal open={isModalOpen} onClose={onModalClose}>
+        <PModal open={isModalOpen} onDismiss={onModalClose}>
           Modal
         </PModal>
         <p>
-          {modalCloseEventCounter} <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
+          {modalDismissEventCounter} <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
         </p>
       </div>
 
       <div className="playground light">
-        <PTable onSortingChange={onTableSortingChange}>
+        <PTable onChange={onTableChange}>
           <PTableHead>
             <PTableHeadRow>
               <PTableHeadCell sort={{ id: 'col1', active: true, direction: 'asc' }}>Col 1</PTableHeadCell>
             </PTableHeadRow>
           </PTableHead>
         </PTable>
-        <p>{tableSortingChangeEventCounter}</p>
+        <p>{tableChangeEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PCarousel onCarouselChange={onCarouselChange}>
+        <PCarousel onChange={onCarouselChange}>
           <div children="Slide 1" />
           <div children="Slide 2" />
           <div children="Slide 3" />

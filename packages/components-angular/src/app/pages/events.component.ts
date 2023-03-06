@@ -2,17 +2,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type {
   AccordionChangeEvent,
   CarouselChangeEvent,
-  PageChangeEvent,
-  SortingChangeEvent,
+  PaginationChangeEvent,
+  TableChangeEvent,
   SwitchChangeEvent,
-  TabChangeEvent,
+  TabsBarChangeEvent,
+  TabsChangeEvent,
 } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-events',
   template: `
     <div class="playground light">
-      <p-accordion [heading]="'Some heading'" (accordionChange)="onAccordionChange($event)">
+      <p-accordion [heading]="'Some heading'" (change)="onAccordionChange($event)">
         Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
         labore et dolore magna aliquyam erat, sed diam voluptua.
       </p-accordion>
@@ -24,13 +25,13 @@ import type {
         [totalItemsCount]="500"
         [itemsPerPage]="25"
         [activePage]="1"
-        (pageChange)="onPageChange($event)"
+        (change)="onPaginationChange($event)"
       ></p-pagination>
-      <p>{{ pageChangeEventCounter }}</p>
+      <p>{{ paginationChangeEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-tabs-bar [activeTabIndex]="0" (tabChange)="onTabsBarChange($event)">
+      <p-tabs-bar [activeTabIndex]="0" (change)="onTabsBarChange($event)">
         <button>Tab 1</button>
         <button>Tab 2</button>
         <button>Tab 3</button>
@@ -39,7 +40,7 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-tabs [activeTabIndex]="0" (tabChange)="onTabsChange($event)">
+      <p-tabs [activeTabIndex]="0" (change)="onTabsChange($event)">
         <p-tabs-item label="Tab 1">Content 1</p-tabs-item>
         <p-tabs-item label="Tab 2">Content 2</p-tabs-item>
         <p-tabs-item label="Tab 3">Content 3</p-tabs-item>
@@ -55,28 +56,31 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-switch (switchChange)="onSwitchChange($event)">Switch</p-switch>
+      <p-switch (change)="onSwitchChange($event)">Switch</p-switch>
       <p>{{ switchChangeEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-modal [open]="isModalOpen" (close)="onModalClose()">Modal</p-modal>
-      <p>{{ modalCloseEventCounter }} <button (click)="openModal()">Open Modal</button></p>
+      <p-modal [open]="isModalOpen" (dismiss)="onModalDismiss()">Modal</p-modal>
+      <p>
+        {{ modalDismissEventCounter }}
+        <button (click)="openModal()">Open Modal</button>
+      </p>
     </div>
 
     <div class="playground light">
-      <p-table (sortingChange)="onTableSortingChange($event)">
+      <p-table (change)="onTableChange($event)">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell [sort]="{ id: 'col1', active: true, direction: 'asc' }">Col 1</p-table-head-cell>
           </p-table-head-row>
         </p-table-head>
       </p-table>
-      <p>{{ tableSortingChangeEventCounter }}</p>
+      <p>{{ tableChangeEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-carousel (carouselChange)="onCarouselChange($event)">
+      <p-carousel (change)="onCarouselChange($event)">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
@@ -88,30 +92,32 @@ import type {
 })
 export class EventsComponent {
   public accordionChangeEventCounter = 0;
-  public pageChangeEventCounter = 0;
+  public paginationChangeEventCounter = 0;
   public tabsBarChangeEventCounter = 0;
   public tabsChangeEventCounter = 0;
   public textFieldSearchValue = '';
   public switchChangeEventCounter = 0;
-  public modalCloseEventCounter = 0;
+  public modalDismissEventCounter = 0;
   public isModalOpen = false;
-  public tableSortingChangeEventCounter = 0;
+  public tableChangeEventCounter = 0;
   public carouselChangeEventCounter = 0;
+
+  // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported package root
   public onAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
     this.accordionChangeEventCounter++;
   }
 
-  public onPageChange(e: CustomEvent<PageChangeEvent>) {
-    this.pageChangeEventCounter++;
+  public onPaginationChange(e: CustomEvent<PaginationChangeEvent>) {
+    this.paginationChangeEventCounter++;
   }
 
-  public onTabsBarChange(e: CustomEvent<TabChangeEvent>) {
+  public onTabsBarChange(e: CustomEvent<TabsBarChangeEvent>) {
     this.tabsBarChangeEventCounter++;
   }
 
-  public onTabsChange(e: CustomEvent<TabChangeEvent>) {
+  public onTabsChange(e: CustomEvent<TabsChangeEvent>) {
     this.tabsChangeEventCounter++;
   }
 
@@ -127,13 +133,13 @@ export class EventsComponent {
     this.isModalOpen = true;
   }
 
-  public onModalClose() {
-    this.modalCloseEventCounter++;
+  public onModalDismiss() {
+    this.modalDismissEventCounter++;
     this.isModalOpen = false;
   }
 
-  public onTableSortingChange(e: CustomEvent<SortingChangeEvent>) {
-    this.tableSortingChangeEventCounter++;
+  public onTableChange(e: CustomEvent<TableChangeEvent>) {
+    this.tableChangeEventCounter++;
   }
 
   public onCarouselChange(e: CustomEvent<CarouselChangeEvent>) {
