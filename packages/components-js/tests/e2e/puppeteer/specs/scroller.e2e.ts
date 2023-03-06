@@ -38,9 +38,9 @@ const initScroller = (opts?: InitOptions) => {
   const attrs = [
     scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
     scrollbar ? `scrollbar="${scrollbar}"` : '',
-  ];
+  ].join(' ');
 
-  const content = `<p-scroller ${attrs.join(' ')}>
+  const content = `<p-scroller ${attrs}>
   ${elements}
 </p-scroller>${otherMarkup}`;
 
