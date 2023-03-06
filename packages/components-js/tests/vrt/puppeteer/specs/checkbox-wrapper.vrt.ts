@@ -23,7 +23,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('checkbox-wrapper-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-checkbox-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }</style>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          p-checkbox-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }
+        </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-checkbox-wrapper theme="${theme}" label="When input gets hovered or focused">
@@ -50,16 +54,31 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <input type="checkbox" name="some-name" checked />
         </p-checkbox-wrapper>
         <p-checkbox-wrapper theme="${theme}">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <span slot="label">
+            Some label
+            <span>
+              and some slotted and deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
           <input type="checkbox" name="some-name" />
         </p-checkbox-wrapper>
         <p-checkbox-wrapper theme="${theme}" label="Some label" state="error">
           <input type="checkbox" name="some-name" />
-          <span slot="message">Some error message with a <a href="#">link</a>.</span>
+          <span slot="message">
+            Some error message
+            <span>
+              and some slotted and deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
         </p-checkbox-wrapper>
         <p-checkbox-wrapper theme="${theme}" label="Some label" state="success">
           <input type="checkbox" name="some-name" />
-          <span slot="message">Some success message with a <a href="#">link</a>.</span>
+          <span slot="message">
+            Some success message
+            <span>
+              and some slotted and deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
         </p-checkbox-wrapper>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
