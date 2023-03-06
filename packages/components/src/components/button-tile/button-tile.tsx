@@ -111,7 +111,9 @@ export class ButtonTile {
       this.weight,
       this.align,
       this.compact,
-      this.gradient
+      this.gradient,
+      this.disabled,
+      this.loading
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

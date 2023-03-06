@@ -5,7 +5,7 @@ import type {
   LinkButtonTileWeight,
   LinkButtonTileSize,
 } from '../../utils';
-import { getCss, mergeDeep } from '../../utils';
+import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 import { getInsetJssStyle } from '../../styles';
 
@@ -15,10 +15,14 @@ export const getComponentCss = (
   weight: BreakpointCustomizable<LinkButtonTileWeight>,
   align: LinkButtonTileAlign,
   compact: BreakpointCustomizable<boolean>,
-  hasGradient: boolean
+  hasGradient: boolean,
+  isDisabled: boolean,
+  isLoading: boolean
 ): string => {
+  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
+
   return getCss(
-    mergeDeep(getLinkButtonTileStyles(aspectRatio, size, weight, align, compact, hasGradient), {
+    mergeDeep(getLinkButtonTileStyles(aspectRatio, size, weight, align, compact, hasGradient, isDisabled), {
       // is used for expanded click-area only
       'button-overlay': {
         position: 'fixed',
@@ -26,6 +30,7 @@ export const getComponentCss = (
         outline: 0,
         background: 'transparent no-repeat',
         border: 'none',
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       },
     })
   );

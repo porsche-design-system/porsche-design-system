@@ -69,7 +69,8 @@ export const getLinkButtonTileStyles = (
   weight: BreakpointCustomizable<LinkButtonTileWeight>,
   align: LinkButtonTileAlign,
   compact: BreakpointCustomizable<boolean>,
-  hasGradient: boolean
+  hasGradient: boolean,
+  isDisabled?: boolean
 ): Styles => {
   const isTopAligned = align === 'top';
   return {
@@ -108,13 +109,14 @@ export const getLinkButtonTileStyles = (
       height: 0,
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
-      ...hoverMediaQuery({
-        '&:hover': {
-          '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
-            transform: 'scale3d(1.05, 1.05, 1.05)',
-          }),
-        },
-      }),
+      ...(!isDisabled &&
+        hoverMediaQuery({
+          '&:hover': {
+            '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
+              transform: 'scale3d(1.05, 1.05, 1.05)',
+            }),
+          },
+        })),
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkButtonTileAspectRatio) => ({
         paddingTop: aspectRatioPaddingTop[ratio],
       })),
