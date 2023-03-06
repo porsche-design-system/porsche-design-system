@@ -5,14 +5,14 @@ import type { NextPage } from 'next';
 const TablePage: NextPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should render table with light mode">
+      <div className="playground light" title="should render table on light background">
         <TableWithCaption />
       </div>
-      <div className="playground dark" title="should render table with dark mode">
+      <div className="playground dark" title="should render table on dark background">
         <TableWithCaptionDark />
       </div>
 
-      <div className="playground light" title="should render table with unstyled slotted caption with light mode">
+      <div className="playground light" title="should render table with unstyled slotted caption on light background">
         <PTable>
           <span slot="caption">
             Some unstyled caption <a href="https://porsche.com">with a link</a>
@@ -26,7 +26,7 @@ const TablePage: NextPage = (): JSX.Element => {
         </PTable>
       </div>
 
-      <div className="playground dark" title="should render table with unstyled slotted caption with dark mode">
+      <div className="playground dark" title="should render table with unstyled slotted caption on dark background">
         <PTable theme="dark">
           <span slot="caption">
             Some unstyled caption <a href="https://porsche.com">with a link</a>
