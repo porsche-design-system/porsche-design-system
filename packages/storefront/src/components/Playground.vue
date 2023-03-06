@@ -60,7 +60,7 @@
   import { componentMeta } from '@porsche-design-system/component-meta';
   import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
-  import { getExternalDependenciesOrThrow } from '../utils/stackblitz/helper';
+  import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
 
   export type PlaygroundConfig = {
     themeable: boolean;
