@@ -1,4 +1,11 @@
-import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes, ButtonAriaAttribute } from '../../types';
+import type {
+  BreakpointCustomizable,
+  SelectedAriaAttributes,
+  PropTypes,
+  ButtonAriaAttribute,
+  ButtonType,
+  LinkButtonIconName,
+} from '../../types';
 import type {
   LinkButtonTileSize,
   LinkButtonTileWeight,
@@ -24,7 +31,6 @@ import {
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
 import { getSlottedCss } from '../../styles/link-button-tile-styles';
-import { ButtonType, LinkButtonIconName } from '../../types';
 import { getButtonAriaAttributes } from '../button/button-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
@@ -129,7 +135,7 @@ export class ButtonTile {
     const buttonProps = {
       theme: 'dark',
       variant: 'secondary',
-      aria: { ...getButtonAriaAttributes(this.disabled, this.loading, this.aria) },
+      ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
     };
 
     const sharedButtonProps = {
