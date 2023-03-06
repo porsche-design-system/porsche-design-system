@@ -11,9 +11,8 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "postinstall": "rm -rf ../../node_modules/@types/puppeteer",
-    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",
+    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateCodeSamples && yarn build:bundle",
     "build:generateTagNames": "ts-node scripts/generateTagNames.ts",
-    "build:generateComponentMeta": "ts-node scripts/generateComponentMeta.ts",
     "build:generateCodeSamples": "ts-node scripts/generateCodeSamples.ts",
     "build:generateChunkNames": "ts-node scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "ts-node scripts/generatePartialNames.ts",
@@ -27,6 +26,7 @@
   },
   "dependencies": {
     "@alex_neo/jest-expect-message": "^1.0.5",
+    "@porsche-design-system/component-meta": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^4.3.0",
     "@signed/jest-alphabetical-sequencer": "^0.1.1",
     "@types/jest": "^29.2.5",

@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { getComponentMeta, TagName } from '@porsche-design-system/shared';
+import { TagName } from '@porsche-design-system/shared';
 
 const addDeprecatedAnnotations = (): void => {
   const distDir = path.resolve(__dirname, '../dist/vue-wrapper/lib/components');

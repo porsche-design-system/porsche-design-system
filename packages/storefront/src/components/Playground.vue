@@ -57,7 +57,7 @@
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
   import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
-  import { componentMeta } from '@porsche-design-system/shared';
+  import { componentMeta } from '@porsche-design-system/component-meta';
   import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
   import { getExternalDependenciesOrThrow } from '../utils/stackblitz/helper';

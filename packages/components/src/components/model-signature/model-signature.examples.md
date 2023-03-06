@@ -33,7 +33,7 @@ The `size` prop's default is `{{ meta.props.size }}`, which can be changed to th
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { ModelSignatureColor, MODEL_SIGNATURE_COLORS, ModelSignatureModel, MODEL_SIGNATURE_MODELS, ModelSignatureSize, MODEL_SIGNATURE_SIZES } from './model-signature-utils';
-import { getComponentMeta } from '@porsche-design-system/shared'; 
+import { getComponentMeta} from '@porsche-design-system/component-meta';
 
 @Component
 export default class Code extends Vue {

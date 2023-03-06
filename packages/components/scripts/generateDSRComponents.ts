@@ -4,7 +4,8 @@ import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');

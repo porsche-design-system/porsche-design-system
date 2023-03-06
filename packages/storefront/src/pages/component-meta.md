@@ -10,8 +10,8 @@
 <script lang="ts">
 import Vue from 'vue';  
 import Component from 'vue-class-component';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import type { ComponentMeta } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { ComponentMeta, getComponentMeta} from '@porsche-design-system/component-meta';
 
 @Component
 export default class Code extends Vue {

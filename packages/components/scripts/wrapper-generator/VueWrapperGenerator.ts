@@ -1,5 +1,5 @@
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
-import { getComponentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { camelCase, pascalCase } from 'change-case';

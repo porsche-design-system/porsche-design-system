@@ -36,6 +36,7 @@ services:
       - home:/home/design-system
       - monorepo-node-modules:/opt/porsche-design-system-app/node_modules
       - assets-node-modules:/opt/porsche-design-system-app/packages/assets/node_modules
+      - component-meta-node-modules:/opt/porsche-design-system-app/packages/component-meta/node_modules
       - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
       - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/jsdom-polyfill/node_modules
@@ -70,6 +71,7 @@ services:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
       - assets-node-modules:/opt/porsche-design-system-volumes/assets-node_modules
+      - component-meta-node-modules:/opt/porsche-design-system-volumes/component-meta-node_modules
       - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
       - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-volumes/components-js-jsdom-polyfill-node_modules
@@ -104,6 +106,7 @@ volumes:
   home:
   monorepo-node-modules:
   assets-node-modules:
+  component-meta-node-modules:
   components-node-modules:
   components-js-node-modules:
   components-js-jsdom-polyfill-node-modules:

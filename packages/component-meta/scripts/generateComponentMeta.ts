@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '../src/lib/tagNames';
+import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '@porsche-design-system/shared';
 
 const glue = '\n\n';
 
@@ -11,7 +11,7 @@ const generateComponentMeta = (): void => {
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = `import type { TagName } from './tagNames';`;
+  const imports = `import type { TagName } from '@porsche-design-system/shared';`;
 
   const types = [
     `export type ComponentMeta = {
