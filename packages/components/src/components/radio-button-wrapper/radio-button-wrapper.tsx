@@ -1,27 +1,26 @@
-import { Component, Element, Host, JSX, h, Prop, forceUpdate } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  AllowedTypes,
+  attachComponentCss,
+  FORM_STATES,
   getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasLabel,
   hasMessage,
-  setAriaAttributes,
-  observeAttributes,
-  unobserveAttributes,
   isRequiredAndParentNotRequired,
-  attachComponentCss,
-  AllowedTypes,
-  validateProps,
+  observeAttributes,
+  setAriaAttributes,
   THEMES,
-  getDataThemeDarkAttribute,
+  unobserveAttributes,
+  validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { FORM_STATES } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { addChangeListener } from './radio-button-wrapper-utils';
-import { Theme } from '../../types';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -87,7 +86,7 @@ export class RadioButtonWrapper {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled, this.theme);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <label>
           {hasLabel(this.host, this.label) && (
             <span class="text" onClick={this.onLabelClick}>

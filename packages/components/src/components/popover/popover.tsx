@@ -1,4 +1,5 @@
-import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
+import type { PopoverDirection } from './popover-utils';
 import {
   addDocumentEventListener,
   POPOVER_DIRECTIONS,
@@ -8,14 +9,12 @@ import {
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
   THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
-import type { PopoverDirection } from './popover-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Popover> = {
@@ -73,7 +72,7 @@ export class Popover {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onKeydown={this.onKeydown} {...getDataThemeDarkAttribute(this.theme)}>
+      <Host onKeydown={this.onKeydown}>
         <button
           type="button"
           onClick={() => (this.open = !this.open)}

@@ -3,7 +3,6 @@ import { Component, Element, Event, forceUpdate, h, Host, Prop, State, Watch } f
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   observeChildren,
   observeProperties,
@@ -90,7 +89,7 @@ export class Tabs {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <PrefixedTagNames.pTabsBar
           class="root"
           size={this.size}

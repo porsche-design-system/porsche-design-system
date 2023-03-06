@@ -1,10 +1,9 @@
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, JSX, Listen, Prop } from '@stencil/core';
 import type { AlignLabel, BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
@@ -89,32 +88,30 @@ export class Switch {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <button
-          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-          class="root"
-          type="button"
-          role="switch"
-          onClick={this.onSwitchClick}
-        >
-          <span class="switch">
-            {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
-            <span class="toggle">
-              {this.loading && (
-                <PrefixedTagNames.pSpinner
-                  class="spinner"
-                  size="inherit"
-                  theme={this.theme}
-                  aria={{ 'aria-label': 'Loading state' }}
-                />
-              )}
-            </span>
+      <button
+        {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+        class="root"
+        type="button"
+        role="switch"
+        onClick={this.onSwitchClick}
+      >
+        <span class="switch">
+          {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
+          <span class="toggle">
+            {this.loading && (
+              <PrefixedTagNames.pSpinner
+                class="spinner"
+                size="inherit"
+                theme={this.theme}
+                aria={{ 'aria-label': 'Loading state' }}
+              />
+            )}
           </span>
-          <span class="label">
-            <slot />
-          </span>
-        </button>
-      </Host>
+        </span>
+        <span class="label">
+          <slot />
+        </span>
+      </button>
     );
   }
 

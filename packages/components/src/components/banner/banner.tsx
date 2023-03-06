@@ -1,11 +1,10 @@
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
 import type { BannerState, BannerStateDeprecated, BannerWidth, BannerWidthDeprecated } from './banner-utils';
 import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
@@ -78,19 +77,17 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <PrefixedTagNames.pInlineNotification
-          ref={(el) => (this.inlineNotificationElement = el)}
-          class="root"
-          state={this.state}
-          persistent={this.persistent}
-          theme={this.theme}
-          onDismiss={this.removeBanner}
-        >
-          {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
-          {hasNamedSlot(this.host, 'description') && <slot name="description" />}
-        </PrefixedTagNames.pInlineNotification>
-      </Host>
+      <PrefixedTagNames.pInlineNotification
+        ref={(el) => (this.inlineNotificationElement = el)}
+        class="root"
+        state={this.state}
+        persistent={this.persistent}
+        theme={this.theme}
+        onDismiss={this.removeBanner}
+      >
+        {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
+        {hasNamedSlot(this.host, 'description') && <slot name="description" />}
+      </PrefixedTagNames.pInlineNotification>
     );
   }
 

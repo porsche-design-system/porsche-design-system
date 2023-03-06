@@ -38,20 +38,3 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
     await expectShadowDomToMatchSnapshot(host);
   }
 );
-
-it.each(tagNamesWithSlotAndTheme)('should have property data-theme for %s', async (tagName) => {
-  // the slot of p-popover is currently rendered on light background
-  if (tagName !== 'p-popover') {
-    await goto(page, ''); // start page
-
-    const markup = buildDefaultComponentMarkup(tagName, 'dark');
-    await page.evaluate((markup: string) => {
-      document.getElementById('app').innerHTML = markup;
-    }, markup);
-    await waitForComponentsReady(page);
-
-    const dataThemeAttribute = await page.$eval(tagName, (element) => element.getAttribute('data-theme'));
-
-    expect(dataThemeAttribute).toBe('dark');
-  }
-});

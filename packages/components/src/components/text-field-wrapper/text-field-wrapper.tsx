@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getDataThemeDarkAttribute,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
@@ -208,7 +207,7 @@ export class TextFieldWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (

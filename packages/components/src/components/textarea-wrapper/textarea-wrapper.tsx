@@ -4,6 +4,7 @@ import {
   addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
+  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
   hasDescription,
@@ -12,11 +13,9 @@ import {
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
+  THEMES,
   unobserveAttributes,
   validateProps,
-  FORM_STATES,
-  THEMES,
-  getDataThemeDarkAttribute,
 } from '../../utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -116,7 +115,7 @@ export class TextareaWrapper {
     };
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <label class="label">
           {hasLabel(this.host, this.label) && (
             <span class="label__text" {...labelProps}>

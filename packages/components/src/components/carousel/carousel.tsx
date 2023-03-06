@@ -6,27 +6,6 @@ import type {
   CarouselInternationalization,
   CarouselWidth,
 } from './carousel-utils';
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
-import { Splide } from '@splidejs/splide';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getCurrentMatchingBreakpointValue,
-  getDataThemeDarkAttribute,
-  getPrefixedTagNames,
-  getSlotTextContent,
-  hasDescription,
-  observeBreakpointChange,
-  observeChildren,
-  parseJSON,
-  parseJSONAttribute,
-  THEMES,
-  unobserveBreakpointChange,
-  unobserveChildren,
-  validateProps,
-  warnIfDeprecatedPropIsUsed,
-} from '../../utils';
-import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_WIDTHS,
@@ -41,6 +20,26 @@ import {
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { Splide } from '@splidejs/splide';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getCurrentMatchingBreakpointValue,
+  getPrefixedTagNames,
+  getSlotTextContent,
+  hasDescription,
+  observeBreakpointChange,
+  observeChildren,
+  parseJSON,
+  parseJSONAttribute,
+  THEMES,
+  unobserveBreakpointChange,
+  unobserveChildren,
+  validateProps,
+  warnIfDeprecatedPropIsUsed,
+} from '../../utils';
+import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
@@ -182,7 +181,7 @@ export class Carousel {
     };
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
           {hasDescription(this.host, this.description) &&
