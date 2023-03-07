@@ -1,10 +1,9 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../../types';
+import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  THEMES,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -13,6 +12,7 @@ import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './tabl
 import type { Direction, SortingChangeEvent, TableHeadCellSort } from '../table/table-utils';
 import { SORT_EVENT_NAME } from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
+import { cssVariableTableTheme } from '../table/table-styles';
 
 const propTypes: PropTypes<typeof TableHeadCell> = {
   sort: AllowedTypes.shape<TableHeadCellSort>({
@@ -22,7 +22,6 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
   }),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   multiline: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -41,9 +40,6 @@ export class TableHeadCell {
   /** Displays slotted text multiline or forced into a single line. */
   @Prop() public multiline?: boolean = false;
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-table-head-row');
     throwIfElementHasAttribute(this.host, 'sort');
@@ -55,18 +51,18 @@ export class TableHeadCell {
     attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-
+    const tableTheme = getComputedStyle(this.host).getPropertyValue(cssVariableTableTheme).trim();
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
         {isSortable(active, direction) ? (
-          <PrefixedTagNames.pButtonPure class="button-pure" icon="none" onClick={this.onButtonClick} theme={this.theme}>
+          <PrefixedTagNames.pButtonPure class="button-pure" icon="none" onClick={this.onButtonClick} theme={tableTheme}>
             <slot />
             <PrefixedTagNames.pIcon // we use slotted icon instead of built-in icon because we need to style it from here (for active state and for sorting)
               class="icon"
               color="primary"
               name="arrow-up"
               aria-hidden="true"
-              theme={this.theme}
+              theme={tableTheme}
             />
           </PrefixedTagNames.pButtonPure>
         ) : (

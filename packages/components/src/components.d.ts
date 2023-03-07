@@ -1074,10 +1074,6 @@ export namespace Components {
           * Defines sortability properties.
          */
         "sort"?: TableHeadCellSort;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     interface PTableHeadRow {
     }
@@ -2841,10 +2837,6 @@ declare namespace LocalJSX {
           * Defines sortability properties.
          */
         "sort"?: TableHeadCellSort;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     interface PTableHeadRow {
     }
