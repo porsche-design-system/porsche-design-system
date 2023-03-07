@@ -134,7 +134,7 @@ describe('modal', () => {
   it('should emit events once', async () => {
     await goto(page, 'events');
 
-    const modalOpenBtn = await selectNode(page, 'p-modal + p button');
+    const modalOpenBtn = await selectNode(page, 'p-modal ~ button');
     const modalCloseBtn = await selectNode(page, 'p-modal >>> p-button-pure >>> button');
     const modalDismissEventCounter = await selectNode(page, 'p-modal + p');
 
@@ -144,7 +144,7 @@ describe('modal', () => {
     await modalCloseBtn.click();
     await waitForComponentsReady(page);
     await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
-    expect(await getCounterValue(modalDismissEventCounter)).toBe('1 <button>Open Modal</button>');
+    expect(await getCounterValue(modalDismissEventCounter)).toBe('1');
 
     await modalOpenBtn.click();
     await waitForComponentsReady(page);
@@ -152,7 +152,7 @@ describe('modal', () => {
     await modalCloseBtn.click();
     await waitForComponentsReady(page);
     await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
-    expect(await getCounterValue(modalDismissEventCounter)).toBe('2 <button>Open Modal</button>');
+    expect(await getCounterValue(modalDismissEventCounter)).toBe('2');
 
     await modalOpenBtn.click();
     await waitForComponentsReady(page);
@@ -160,7 +160,7 @@ describe('modal', () => {
     await modalCloseBtn.click();
     await waitForComponentsReady(page);
     await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
-    expect(await getCounterValue(modalDismissEventCounter)).toBe('3 <button>Open Modal</button>');
+    expect(await getCounterValue(modalDismissEventCounter)).toBe('3');
   });
 });
 
