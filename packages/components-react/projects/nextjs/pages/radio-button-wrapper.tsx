@@ -223,18 +223,16 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
         <PRadioButtonWrapper state="error">
           <span slot="label">Slotted label</span>
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="radio" name="some-name-9" />
           <span slot="message">
-            Slotted error message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PRadioButtonWrapper>
@@ -247,18 +245,16 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" state="error">
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="radio" name="some-name-dark-9" />
           <span slot="message">
-            Slotted error message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PRadioButtonWrapper>
@@ -272,18 +268,16 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
         <PRadioButtonWrapper state="success">
           <span slot="label">Slotted label</span>
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="radio" name="some-name-9" />
           <span slot="message">
-            Slotted success message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PRadioButtonWrapper>
@@ -296,18 +290,16 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" state="success">
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="radio" name="some-name-dark-9" />
           <span slot="message">
-            Slotted success message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PRadioButtonWrapper>

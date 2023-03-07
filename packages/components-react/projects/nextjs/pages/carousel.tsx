@@ -96,10 +96,9 @@ const CarouselPage: NextPage = (): JSX.Element => {
         <PCarousel>
           <h2 slot="heading">Slotted heading</h2>
           <p slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </p>
           <div>Slide 1</div>
@@ -115,10 +114,9 @@ const CarouselPage: NextPage = (): JSX.Element => {
         <PCarousel theme="dark">
           <h2 slot="heading">Slotted heading</h2>
           <p slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </p>
           <div>Slide 1</div>

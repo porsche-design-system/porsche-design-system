@@ -62,10 +62,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner>
           <span slot="title">Slotted title (--p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>
@@ -75,10 +74,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner [state]="'neutral'">
           <span slot="title">Slotted Title (state=neutral --p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>
@@ -88,10 +86,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner [theme]="'dark'">
           <span slot="title">Slotted Title (--p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>
@@ -101,10 +98,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner [state]="'neutral'" [theme]="'dark'">
           <span slot="title">Slotted Title (state=neutral --p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>
@@ -114,10 +110,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner [state]="'warning'">
           <span slot="title">Slotted Title (state=warning --p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>
@@ -127,10 +122,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner [state]="'warning'" [theme]="'dark'">
           <span slot="title">Slotted Title (state=warning --p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>
@@ -140,10 +134,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner [state]="'error'">
           <span slot="title">Slotted Title (state=error --p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>
@@ -153,10 +146,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-banner [state]="'error'" [theme]="'dark'">
           <span slot="title">Slotted Title (state=error --p-banner-position-type: static)</span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              <em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </p-banner>

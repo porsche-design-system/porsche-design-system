@@ -210,25 +210,22 @@ export const TextareaWrapperPage = (): JSX.Element => {
       <div className="playground light" title="should render label, description and message by slotted content with error state">
         <PTextareaWrapper state="error">
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <textarea defaultValue="Some value" />
           <span slot="message">
-            Slotted error message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PTextareaWrapper>
@@ -239,25 +236,22 @@ export const TextareaWrapperPage = (): JSX.Element => {
       >
         <PTextareaWrapper state="error" theme="dark">
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <textarea defaultValue="Some value" />
           <span slot="message">
-            Slotted error message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PTextareaWrapper>
@@ -269,25 +263,22 @@ export const TextareaWrapperPage = (): JSX.Element => {
       >
         <PTextareaWrapper state="success">
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <textarea defaultValue="Some value" />
           <span slot="message">
-            Slotted success message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PTextareaWrapper>
@@ -298,25 +289,22 @@ export const TextareaWrapperPage = (): JSX.Element => {
       >
         <PTextareaWrapper state="success" theme="dark">
           <span slot="label">
-            Slotted label
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
               {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <span slot="description">
-            Slotted description.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <textarea defaultValue="Some value" />
           <span slot="message">
-            Slotted success message.
             <span>
-              And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text.
+              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PTextareaWrapper>

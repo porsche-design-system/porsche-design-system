@@ -15,10 +15,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification>
           <span slot="heading">Slotted heading (state=info)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>
@@ -41,10 +40,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification theme="dark">
           <span slot="heading">Slotted heading (state=info)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>
@@ -72,10 +70,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification state="warning">
           <span slot="heading">Slotted heading (state=warning)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>
@@ -95,10 +92,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification theme="dark" state="warning">
           <span slot="heading">Slotted heading (state=warning)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>
@@ -117,10 +113,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification state="success">
           <span slot="heading">Slotted heading (state=success)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>
@@ -140,10 +135,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification theme="dark" state="success">
           <span slot="heading">Slotted heading (state=success)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>
@@ -162,10 +156,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification state="error">
           <span slot="heading">Slotted heading (state=error)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>
@@ -185,10 +178,9 @@ const InlineNotificationPage: NextPage = (): JSX.Element => {
       >
         <PInlineNotification theme="dark" state="error">
           <span slot="heading">Slotted heading (state=error)</span>
-          Slotted description.
           <span>
-            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
+            Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PInlineNotification>
       </div>

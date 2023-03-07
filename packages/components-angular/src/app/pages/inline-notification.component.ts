@@ -14,10 +14,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification>
         <span slot="heading">Slotted heading (state=info)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
@@ -40,10 +39,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification [theme]="'dark'">
         <span slot="heading">Slotted heading (state=info)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
@@ -71,10 +69,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification [state]="'warning'">
         <span slot="heading">Slotted heading (state=warning)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
@@ -94,10 +91,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification [theme]="'dark'" [state]="'warning'">
         <span slot="heading">Slotted heading (state=warning)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
@@ -116,10 +112,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification [state]="'success'">
         <span slot="heading">Slotted heading (state=success)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
@@ -139,10 +134,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification [theme]="'dark'" [state]="'success'">
         <span slot="heading">Slotted heading (state=success)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
@@ -161,10 +155,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification [state]="'error'">
         <span slot="heading">Slotted heading (state=error)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
@@ -184,10 +177,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-inline-notification [theme]="'dark'" [state]="'error'">
         <span slot="heading">Slotted heading (state=error)</span>
-        Slotted description.
         <span>
-          And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
+          Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+          <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
         </span>
       </p-inline-notification>
     </div>
