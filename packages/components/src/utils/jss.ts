@@ -11,6 +11,7 @@ import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getShadowRootHTMLElement } from './dom';
 import { getTagNameWithoutPrefix } from '.';
+import { addImportantToEachRule } from '../styles';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
@@ -92,6 +93,10 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
     styleEl.innerHTML = css;
     host.shadowRoot.prepend(styleEl);
   }
+};
+
+export const doNothing = (): void => {
+  addImportantToEachRule({});
 };
 
 export type GetJssStyleFunction = (value?: any) => JssStyle;
