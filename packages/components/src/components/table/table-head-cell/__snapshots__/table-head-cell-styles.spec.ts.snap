@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for active: false, direction: asc, hideLabel: false, multiline: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #D8D8DB !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -26,11 +26,11 @@ exports[`getComponentCss() should return correct css for active: false, directio
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: false, direction: desc, hideLabel: false, multiline: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #404044 !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -52,11 +52,11 @@ exports[`getComponentCss() should return correct css for active: false, directio
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: true, direction: asc, hideLabel: false, multiline: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #D8D8DB !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -78,11 +78,11 @@ exports[`getComponentCss() should return correct css for active: true, direction
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false, multiline: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #404044 !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -104,11 +104,11 @@ exports[`getComponentCss() should return correct css for active: true, direction
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false, multiline: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
 ":host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #404044 !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: normal !important;
@@ -130,11 +130,11 @@ exports[`getComponentCss() should return correct css for active: true, direction
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: false, multiline: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #D8D8DB !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -144,11 +144,11 @@ exports[`getComponentCss() should return correct css for active: undefined, dire
 }"
 `;
 
-exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: true, multiline: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #D8D8DB !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
