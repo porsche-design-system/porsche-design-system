@@ -67,7 +67,8 @@ export const dispatchInputEvent = (el: HTMLInputElement): void => {
 // eslint-disable-next-line no-underscore-dangle
 export const _hasShowPickerSupport = (): boolean => {
   return (
-    'showPicker' in HTMLInputElement?.prototype &&
+    HTMLInputElement &&
+    'showPicker' in HTMLInputElement.prototype &&
     // TODO: it would be better to determinate support by checking for existence of "calendar-picker-indicator"
     !!window.navigator.userAgent.match(/chrome|chromium|crios|edg/i)
   );
