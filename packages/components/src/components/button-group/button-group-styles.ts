@@ -2,10 +2,10 @@ import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { spacingFluidSmall } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
-import type { FlexDirections } from '../../styles/flex-direction-styles';
-import { getFlexDirectionStyle } from '../../styles/flex-direction-styles';
+import type { JssDirections } from '../../styles/jss-direction-styles';
+import { getJssDirectionStyle } from '../../styles/jss-direction-styles';
 
-export const getComponentCss = (direction: BreakpointCustomizable<FlexDirections>): string => {
+export const getComponentCss = (direction: BreakpointCustomizable<JssDirections>): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -15,7 +15,7 @@ export const getComponentCss = (direction: BreakpointCustomizable<FlexDirections
       div: {
         display: 'flex',
         gap: spacingFluidSmall,
-        ...buildResponsiveStyles(direction, getFlexDirectionStyle),
+        ...buildResponsiveStyles(direction, getJssDirectionStyle),
       },
     },
   });

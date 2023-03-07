@@ -1,11 +1,10 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
-import type { LinkTileModelAspectRatio } from './link-tile-model-utils';
-import type { SelectedAriaAttributes, LinkTarget, BreakpointCustomizable } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
-import type { FlexDirections } from '../../styles/flex-direction-styles';
+import type { LinkTileModelAspectRatio, LinkTileModelLinkProps } from './link-tile-model-utils';
+import type { BreakpointCustomizable } from '../../types';
+import type { JssDirections } from '../../styles/jss-direction-styles';
 import type { LinkButtonTileWeight } from '../../styles/link-button-tile-styles';
-import { attachComponentCss, attachSlottedCss, getPrefixedTagNames } from '../../utils';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseJSONAttribute } from '../../utils';
 import { getComponentCss } from './link-tile-model-styles';
 import { getSlottedCss } from '../../styles/link-button-tile-styles';
 
@@ -16,17 +15,17 @@ import { getSlottedCss } from '../../styles/link-button-tile-styles';
 export class LinkTileModel {
   @Element() public host!: HTMLElement;
 
+  /** Contains the label, href and anchor props for the primary link */
+  @Prop() public primaryLinkProps: LinkTileModelLinkProps;
+
+  /** Contains the label, href and anchor props for the secondary link */
+  @Prop() public secondaryLinkProps: LinkTileModelLinkProps;
+
   /** Adapts the model of the component. */
   @Prop() public model?: ModelSignatureModel = '911';
 
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<LinkButtonTileWeight> = 'semibold';
-
-  /** Label of the primary <a />. */
-  @Prop() public primaryLabel: string;
-
-  /** Label of the secondary <a />. */
-  @Prop() public secondaryLabel: string;
 
   /** Aspect ratio of the link-tile-model. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileModelAspectRatio> = '4:3';
@@ -35,31 +34,11 @@ export class LinkTileModel {
   @Prop() public description: string;
 
   // TODO: naming?
-
   /** Description text. */
   @Prop() public subDescription?: string;
 
-  // TODO: distinguish between primary and secondary href?
-
   /** Defines the direction of the main and cross axis of the links. */
-  @Prop() public direction?: BreakpointCustomizable<FlexDirections> = 'row';
-
-  /** href of the `<a>`. */
-  @Prop() public href: string;
-
-  // TODO: are those needed? And if so how to comfortable set them onto primary and secondary?
-
-  /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
-
-  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
-  @Prop() public download?: string;
-
-  /** Specifies the relationship of the target object to the link object. */
-  @Prop() public rel?: string;
-
-  /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+  @Prop() public direction?: BreakpointCustomizable<JssDirections> = 'row';
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -70,14 +49,13 @@ export class LinkTileModel {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const sharedLinkProps = {
-      href: this.href,
-      target: this.target,
-      download: this.download,
-      rel: this.rel,
-    };
+    const { label: primaryLabel, ...restPrimaryLinkProps } = parseJSONAttribute(this.primaryLinkProps);
+    const { label: secondaryLabel, ...restSecondaryLinkProps } = parseJSONAttribute(this.secondaryLinkProps);
 
-    // TODO: set aria onto links
+    const sharedLinkProps = {
+      class: 'link',
+      theme: 'dark',
+    };
 
     return (
       <div class="root">
@@ -86,7 +64,7 @@ export class LinkTileModel {
         </div>
         <PrefixedTagNames.pModelSignature class="signature" theme="dark" model={this.model} />
         <div class="content">
-          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
+          <a {...restPrimaryLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
           {this.subDescription ? (
             <div class="description-group" role="group">
               <p class="description">{this.description}</p>
@@ -96,11 +74,16 @@ export class LinkTileModel {
             <p class="description">{this.description}</p>
           )}
           <div class="link-group" role="group">
-            <PrefixedTagNames.pLink {...sharedLinkProps} theme="dark" key="link" class="link" variant="primary">
-              {this.primaryLabel}
+            <PrefixedTagNames.pLink {...sharedLinkProps} {...restPrimaryLinkProps} key="primary-link" variant="primary">
+              {primaryLabel}
             </PrefixedTagNames.pLink>
-            <PrefixedTagNames.pLink class="link" theme="dark" href="#2" key="link" variant="secondary">
-              {this.secondaryLabel}
+            <PrefixedTagNames.pLink
+              {...sharedLinkProps}
+              {...restSecondaryLinkProps}
+              key="secondary-link"
+              variant="secondary"
+            >
+              {secondaryLabel}
             </PrefixedTagNames.pLink>
           </div>
         </div>

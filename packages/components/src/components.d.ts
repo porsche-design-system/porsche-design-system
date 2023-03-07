@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
-import { FlexDirections } from "./styles/flex-direction-styles";
+import { JssDirections } from "./styles/jss-direction-styles";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -28,8 +28,8 @@ import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkButtonTileAspectRatio, LinkButtonTileSize, LinkButtonTileWeight } from "./styles/link-button-tile-styles";
 import { LinkTileAlign } from "./components/link-tile/link-tile-utils";
+import { LinkTileModelAspectRatio, LinkTileModelLinkProps } from "./components/link-tile-model/link-tile-model-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { LinkTileModelAspectRatio } from "./components/link-tile-model/link-tile-model-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -138,7 +138,7 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<FlexDirections>;
+        "direction"?: BreakpointCustomizable<JssDirections>;
     }
     interface PButtonPure {
         /**
@@ -727,10 +727,6 @@ export namespace Components {
     }
     interface PLinkTileModel {
         /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
-        /**
           * Aspect ratio of the link-tile-model.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileModelAspectRatio>;
@@ -741,39 +737,23 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis of the links.
          */
-        "direction"?: BreakpointCustomizable<FlexDirections>;
-        /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
-         */
-        "download"?: string;
-        /**
-          * href of the `<a>`.
-         */
-        "href": string;
+        "direction"?: BreakpointCustomizable<JssDirections>;
         /**
           * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
-          * Label of the primary <a />.
+          * Contains the label, href and anchor props for the primary link
          */
-        "primaryLabel": string;
+        "primaryLinkProps": LinkTileModelLinkProps;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Contains the label, href and anchor props for the secondary link
          */
-        "rel"?: string;
-        /**
-          * Label of the secondary <a />.
-         */
-        "secondaryLabel": string;
+        "secondaryLinkProps": LinkTileModelLinkProps;
         /**
           * Description text.
          */
         "subDescription"?: string;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
         /**
           * Font weight of the description.
          */
@@ -1918,7 +1898,7 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<FlexDirections>;
+        "direction"?: BreakpointCustomizable<JssDirections>;
     }
     interface PButtonPure {
         /**
@@ -2519,10 +2499,6 @@ declare namespace LocalJSX {
     }
     interface PLinkTileModel {
         /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
-        /**
           * Aspect ratio of the link-tile-model.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileModelAspectRatio>;
@@ -2533,39 +2509,23 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis of the links.
          */
-        "direction"?: BreakpointCustomizable<FlexDirections>;
-        /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
-         */
-        "download"?: string;
-        /**
-          * href of the `<a>`.
-         */
-        "href"?: string;
+        "direction"?: BreakpointCustomizable<JssDirections>;
         /**
           * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
-          * Label of the primary <a />.
+          * Contains the label, href and anchor props for the primary link
          */
-        "primaryLabel"?: string;
+        "primaryLinkProps"?: LinkTileModelLinkProps;
         /**
-          * Specifies the relationship of the target object to the link object.
+          * Contains the label, href and anchor props for the secondary link
          */
-        "rel"?: string;
-        /**
-          * Label of the secondary <a />.
-         */
-        "secondaryLabel"?: string;
+        "secondaryLinkProps"?: LinkTileModelLinkProps;
         /**
           * Description text.
          */
         "subDescription"?: string;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
         /**
           * Font weight of the description.
          */

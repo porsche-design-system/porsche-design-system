@@ -5,10 +5,13 @@ import type { LinkButtonTileAspectRatio } from '../../styles/link-button-tile-st
 
 export type LinkTileModelAspectRatio = Extract<LinkButtonTileAspectRatio, '4:3' | '3:4' | '9:16'>;
 
-export type LinkTileModelLinkProps = {
-  href: string;
-  target?: LinkTarget;
-  download?: string;
-  rel?: string;
-  aria?: SelectedAriaAttributes<LinkAriaAttribute>;
-};
+export type LinkTileModelLinkProps =
+  | string
+  | {
+      label: string;
+      href: string;
+      target?: LinkTarget;
+      download?: string;
+      rel?: string;
+      aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+    };

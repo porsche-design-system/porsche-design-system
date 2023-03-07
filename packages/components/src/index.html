@@ -37,25 +37,23 @@
     </header>
 
     <main style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 10px">
-      <p-link-tile-model
-        aspect-ratio="4:3"
-        description="Some description"
-        sub-description="Some sub-description"
-        primary-label="Some label"
-        secondary-label="Secondary label"
-        href="#"
-        weight="regular"
-      >
-        <img src="assets/porsche_beach-min.jpg" width="3000" height="2000" alt="Some alt text" />
-      </p-link-tile-model>
+      <!--      <p-link-tile-model-->
+      <!--        aspect-ratio="4:3"-->
+      <!--        description="Some description"-->
+      <!--        sub-description="Some sub-description"-->
+      <!--        primary-link-props="{ label: 'Some label', href: '#' }"-->
+      <!--        secondary-link-props="{ label: 'Some label', href: '#2' }"-->
+      <!--        weight="regular"-->
+      <!--      >-->
+      <!--        <img src="assets/porsche_beach-min.jpg" width="3000" height="2000" alt="Some alt text" />-->
+      <!--      </p-link-tile-model>-->
       <p-link-tile-model
         aspect-ratio="9:16"
         description="Some description"
         sub-description="Some sub-description"
-        primary-label="Some label"
-        secondary-label="Secondary label"
-        direction="column"
-        href="#"
+        primary-link-props="{ label: 'Some label', 'href': '#' }"
+        secondary-link-props="{ 'label': 'Some label', 'href': '#2' }"
+        direction="{ base: 'column', l: 'row' }"
         weight="regular"
       >
         <img src="assets/porsche_beach-min.jpg" width="3000" height="2000" alt="Some alt text" />

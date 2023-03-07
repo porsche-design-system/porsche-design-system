@@ -13,8 +13,8 @@ import {
   textLargeStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import type { FlexDirections } from '../../styles/flex-direction-styles';
-import { getFlexDirectionStyle } from '../../styles/flex-direction-styles';
+import type { JssDirections } from '../../styles/jss-direction-styles';
+import { getJssDirectionStyle } from '../../styles/jss-direction-styles';
 import type { LinkButtonTileWeight } from '../../styles/link-button-tile-styles';
 import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 
@@ -22,7 +22,7 @@ import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-style
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileModelAspectRatio>,
   weight: BreakpointCustomizable<LinkButtonTileWeight>,
-  direction: BreakpointCustomizable<FlexDirections>
+  direction: BreakpointCustomizable<JssDirections>
 ): string => {
   return getCss({
     ...getBaseLinkButtonTileStyles({
@@ -58,7 +58,7 @@ export const getComponentCss = (
       display: 'flex',
       width: '100%',
       gap: spacingFluidSmall,
-      ...buildResponsiveStyles(direction, getFlexDirectionStyle),
+      ...buildResponsiveStyles(direction, getJssDirectionStyle),
     },
   });
 };
