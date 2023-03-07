@@ -220,7 +220,6 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <input type="radio" name="some-name-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper state="error">
-          <span slot="label">Slotted label</span>
           <span slot="label">
             <span>
               Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
