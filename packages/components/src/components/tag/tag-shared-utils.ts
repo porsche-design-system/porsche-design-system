@@ -26,10 +26,10 @@ export const getThemedBackgroundColor = (
     'background-base': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
     primary: themedColors.primaryColor,
-    'notification-info': themedColors.infoSoftColor,
-    'notification-success': themedColors.successSoftColor,
-    'notification-error': themedColors.errorSoftColor,
-    'notification-warning': themedColors.warningSoftColor,
+    'notification-info-soft': themedColors.infoSoftColor,
+    'notification-warning-soft': themedColors.warningSoftColor,
+    'notification-success-soft': themedColors.successSoftColor,
+    'notification-error-soft': themedColors.errorSoftColor,
   };
 
   return colorMap[tagColor];

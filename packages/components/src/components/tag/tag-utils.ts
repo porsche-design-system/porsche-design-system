@@ -11,16 +11,19 @@ export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
 export const TAG_COLORS_DEPRECATED = [
   'neutral-contrast-high', // 'notification-contrast-high' is deprecated (replaced with 'primary')
   'notification-neutral', // 'notification-neutral' is deprecated (replaced with 'notification-info')
+  'notification-warning',
+  'notification-success',
+  'notification-error',
 ] as const;
 /** @deprecated */
 export type TagColorDeprecated = typeof TAG_COLORS_DEPRECATED[number] | TagDismissibleColorDeprecated;
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
   'primary',
-  'notification-info',
-  'notification-warning',
-  'notification-success',
-  'notification-error',
+  'notification-info-soft',
+  'notification-warning-soft',
+  'notification-success-soft',
+  'notification-error-soft',
   ...TAG_COLORS_DEPRECATED,
 ] as const;
 export type TagColor = typeof TAG_COLORS[number];
@@ -36,10 +39,10 @@ export const getThemedBackgroundHoverColor = (
     'background-base': themedColors[`backgroundColor${keySuffix}`],
     'background-surface': themedColors[`backgroundSurfaceColor${keySuffix}`],
     primary: isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColor,
-    'notification-info': themedColors[`infoSoftColor${keySuffix}`],
-    'notification-success': themedColors[`successSoftColor${keySuffix}`],
-    'notification-error': themedColors[`errorSoftColor${keySuffix}`],
-    'notification-warning': themedColors[`warningSoftColor${keySuffix}`],
+    'notification-info-soft': themedColors[`infoSoftColor${keySuffix}`],
+    'notification-success-soft': themedColors[`successSoftColor${keySuffix}`],
+    'notification-error-soft': themedColors[`errorSoftColor${keySuffix}`],
+    'notification-warning-soft': themedColors[`warningSoftColor${keySuffix}`],
   };
 
   return colorMap[tagColor];
