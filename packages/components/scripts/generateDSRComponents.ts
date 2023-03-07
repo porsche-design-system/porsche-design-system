@@ -59,7 +59,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
-        .replace(/\s+onTabChange={.*?}/g, '') // onTabChange props // TODO: need to adjust?
+        .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
