@@ -26,8 +26,10 @@ import {
   LINK_BUTTON_TILE_WEIGHTS,
   LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_ALIGNS,
+  LINK_BUTTON_VARIANTS,
   throwIfAlignTopAndNotCompact,
   isDisabledOrLoading,
+  THEMES,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
 import { getSlottedCss } from '../../styles/link-button-tile-styles';
@@ -133,8 +135,8 @@ export class ButtonTile {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const buttonProps = {
-      theme: 'dark',
-      variant: 'secondary',
+      theme: THEMES['dark'],
+      variant: LINK_BUTTON_VARIANTS['secondary'],
       ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
     };
 
