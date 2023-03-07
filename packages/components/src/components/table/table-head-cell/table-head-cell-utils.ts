@@ -1,5 +1,6 @@
-import type { AriaAttributes } from '../../../types';
+import type { AriaAttributes, Theme } from '../../../types';
 import type { Direction, SortingChangeEvent, TableHeadCellSort } from '../table/table-utils';
+import { cssVariableTableTheme } from '../table/table-styles';
 
 export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
@@ -16,4 +17,8 @@ export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): Custom
 
 export const isSortable = (active: boolean, direction: Direction): boolean => {
   return active !== undefined && direction !== undefined;
+};
+
+export const getTableTheme = (element: Element): Theme => {
+  return getComputedStyle(element).getPropertyValue(cssVariableTableTheme).trim() as Theme;
 };
