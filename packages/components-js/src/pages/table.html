@@ -13,15 +13,11 @@
   (async () => {
     const { head, data } = await getHeadAndData();
 
-    const renderTableHeadRow = (items, theme) =>
+    const renderTableHeadRow = (items) =>
       [
         '<p-table-head-row>',
         ...items.map((item) => {
-          const attrs = [
-            item.multiline && 'multiline="true"',
-            `theme="${theme}"`,
-            item.style?.minWidth && 'style="min-width: 250px;"',
-          ]
+          const attrs = [item.multiline && 'multiline="true"', item.style?.minWidth && 'style="min-width: 250px;"']
             .filter((x) => x)
             .join(' ');
           return `<p-table-head-cell ${attrs}>${item.name}</p-table-head-cell>`;
@@ -33,8 +29,8 @@
       items
         .map(
           (item) => `
-<p-table-row theme="${theme}">
-  <p-table-cell theme="${theme}">
+<p-table-row>
+  <p-table-cell>
     <img
       src="${item.imageUrl}"
       width=${item.imageWidth}"
@@ -43,11 +39,11 @@
       alt=''
     />${item.html}
   </p-table-cell>
-  <p-table-cell multiline="true" theme="${theme}">${item.longText}</p-table-cell>
-  <p-table-cell theme="${theme}">${item.shortText}</p-table-cell>
-  <p-table-cell theme="${theme}">${item.shortText}</p-table-cell>
-  <p-table-cell theme="${theme}">${item.shortText}</p-table-cell>
-  <p-table-cell theme="${theme}">
+  <p-table-cell multiline="true">${item.longText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
+  <p-table-cell>
     <p-button-pure theme="${theme}" icon='edit' style='padding: .5rem;'>Edit</p-button-pure>
     <p-button-pure theme="${theme}" icon='delete' style='padding: .5rem;'>Delete</p-button-pure>
   </p-table-cell>
@@ -57,13 +53,13 @@
 
     const markupLight = `
 <p-table caption='Some caption'>
-    <p-table-head>${renderTableHeadRow(head, 'light')}</p-table-head>
+    <p-table-head>${renderTableHeadRow(head)}</p-table-head>
     <p-table-body>${renderTableBodyRows(data, 'light')}</p-table-body>
 </p-table>`;
 
     const markupDark = `
 <p-table caption='Some caption' theme='dark'>
-    <p-table-head>${renderTableHeadRow(head, 'dark')}</p-table-head>
+    <p-table-head>${renderTableHeadRow(head)}</p-table-head>
     <p-table-body>${renderTableBodyRows(data, 'dark')}</p-table-body>
 </p-table>`;
 
@@ -102,8 +98,8 @@
     <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
     <p-table-head>
       <p-table-head-row>
-        <p-table-head-cell theme="dark">Column 1</p-table-head-cell>
-        <p-table-head-cell theme="dark">Column 2</p-table-head-cell>
+        <p-table-head-cell>Column 1</p-table-head-cell>
+        <p-table-head-cell>Column 2</p-table-head-cell>
       </p-table-head-row>
     </p-table-head>
   </p-table>
