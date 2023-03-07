@@ -1,16 +1,16 @@
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  getTransition,
-  getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
   getInsetJssStyle,
+  getTransition,
+  getThemedColors,
 } from '../../../styles';
 import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
-import type { Theme } from '../../../types';
+import { cssVariableTableRowHoverColor } from '../table/table-styles';
 
-export const getComponentCss = (theme: Theme): string => {
+export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -26,7 +26,7 @@ export const getComponentCss = (theme: Theme): string => {
             transition: getTransition('background-color'),
           },
           '&(:hover)::before': {
-            background: getThemedColors(theme).backgroundSurfaceColor,
+            background: `var(${cssVariableTableRowHoverColor}, ${getThemedColors('light').backgroundSurfaceColor})`,
           },
         }),
       }),
