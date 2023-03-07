@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for multiline: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for multiline: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid #D8D8DB !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   white-space: nowrap !important;
   transform: translate3d(0,0,0) !important;
   vertical-align: middle;
@@ -15,12 +15,12 @@ exports[`getComponentCss() should return correct css for multiline: false and th
 }"
 `;
 
-exports[`getComponentCss() should return correct css for multiline: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for multiline: true 1`] = `
 ":host {
   display: table-cell !important;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid #404044 !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   white-space: normal !important;
   transform: translate3d(0,0,0) !important;
   vertical-align: middle;
