@@ -56,7 +56,13 @@ export class TagDismissible {
       'color',
       deprecationMap
     );
-    attachComponentCss(this.host, getComponentCss, deprecationMap[this.color] || this.color, !!this.label, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      (deprecationMap[this.color] || this.color) as Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>,
+      !!this.label,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (

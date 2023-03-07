@@ -50,7 +50,7 @@ export class Tag {
     attachComponentCss(
       this.host,
       getComponentCss,
-      deprecationMap[this.color] || this.color,
+      (deprecationMap[this.color] || this.color) as Exclude<TagColor, TagColorDeprecated>,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       this.theme
     );
