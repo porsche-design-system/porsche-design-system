@@ -4,6 +4,7 @@ import { getBaseSlottedStyles, getThemedColors, addImportantToEachRule, hostHidd
 import type { Theme } from '../../../types';
 
 export const cssVariableTableRowHoverColor = '--p-internal-table-row-hover-color';
+export const cssVariableTableBorderColor = '--p-internal-table-border-color';
 export const getComponentCss = (theme: Theme): string => {
   const { primaryColor } = getThemedColors(theme);
 
@@ -15,6 +16,7 @@ export const getComponentCss = (theme: Theme): string => {
       }),
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableRowHoverColor]: getThemedColors(theme).backgroundSurfaceColor,
+        [cssVariableTableBorderColor]: getThemedColors(theme).contrastLowColor,
       }),
     },
     caption: {
