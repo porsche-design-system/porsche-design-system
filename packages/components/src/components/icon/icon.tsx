@@ -66,7 +66,13 @@ export class Icon {
       'notification-neutral': 'notification-info',
     };
     warnIfDeprecatedPropValueIsUsed<typeof Icon, IconColorDeprecated, IconColor>(this, 'color', deprecationMap);
-    attachComponentCss(this.host, getComponentCss, deprecationMap[this.color] || this.color, this.size, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      (deprecationMap[this.color] || this.color) as Exclude<IconColor, IconColorDeprecated>,
+      this.size,
+      this.theme
+    );
 
     // TODO: wouldn't it be better to set alt attribute instead of aria-label?
     return <img src={buildIconUrl(this.source || this.name)} {...parseAndGetAriaAttributes(this.aria)} alt="" />;

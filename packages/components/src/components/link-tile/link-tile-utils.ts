@@ -1,7 +1,11 @@
 import { getTagName } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 
-export const LINK_TILE_WEIGHTS = ['regular', 'semibold'] as const;
+/** @deprecated */
+export const LINK_TILE_WEIGHTS_DEPRECATED = ['semibold'] as const;
+/** @deprecated */
+export type LinkTileWeightDeprecated = typeof LINK_TILE_WEIGHTS_DEPRECATED[number];
+export const LINK_TILE_WEIGHTS = ['regular', 'semi-bold', ...LINK_TILE_WEIGHTS_DEPRECATED] as const;
 export type LinkTileWeight = typeof LINK_TILE_WEIGHTS[number];
 
 export const LINK_TILE_SIZES = ['default', 'inherit'] as const;

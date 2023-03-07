@@ -1,4 +1,4 @@
-import type { TabSize, TabWeight } from './tabs-bar-utils';
+import type { TabSize, TabWeight, TabWeightDeprecated } from './tabs-bar-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
@@ -22,7 +22,11 @@ const tabsTransitionDuration = '.4s';
 const transformSelector = (selector: string): string =>
   ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join();
 
-export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: TabWeight, theme: Theme): string => {
+export const getComponentCss = (
+  size: BreakpointCustomizable<TabSize>,
+  weight: Exclude<TabWeight, TabWeightDeprecated>,
+  theme: Theme
+): string => {
   const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
@@ -106,7 +110,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabSize>, weight: T
       display: 'block',
       position: 'absolute',
       width: 0,
-      height: weight === 'semibold' ? '2px' : '1.5px',
+      height: weight === 'semi-bold' ? '2px' : '1.5px',
       left: 0,
       bottom: '-4px',
       background: primaryColor,

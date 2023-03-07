@@ -16,6 +16,7 @@ import {
   unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
@@ -24,6 +25,7 @@ import type {
   TabGradientColorDeprecated,
   TabSize,
   TabWeight,
+  TabWeightDeprecated,
 } from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
@@ -148,7 +150,17 @@ export class TabsBar {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
-    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
+    const deprecationMap: Record<TabWeightDeprecated, Exclude<TabWeight, TabWeightDeprecated>> = {
+      semibold: 'semi-bold',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof TabsBar, TabWeightDeprecated, TabWeight>(this, 'weight', deprecationMap);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.size,
+      (deprecationMap[this.weight] || this.weight) as Exclude<TabWeight, TabWeightDeprecated>,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

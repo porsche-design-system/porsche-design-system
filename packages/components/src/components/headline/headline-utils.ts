@@ -28,7 +28,7 @@ export const isValidVariantType = (variant: HeadlineVariant): boolean => {
   return HEADLINE_VARIANTS.includes(variant as HeadlineVariantType);
 };
 
-const variantToTagMap: { [key in HeadlineVariantType]: string } = {
+const variantToTagMap: Record<HeadlineVariantType, string> = {
   'large-title': 'h1',
   'headline-1': 'h1',
   'headline-2': 'h2',

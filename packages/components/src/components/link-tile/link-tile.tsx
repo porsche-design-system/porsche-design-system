@@ -6,12 +6,19 @@ import {
   getPrefixedTagNames,
   parseJSON,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './link-tile-styles';
 import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
+import type {
+  LinkTileAspectRatio,
+  LinkTileAlign,
+  LinkTileWeight,
+  LinkTileSize,
+  LinkTileWeightDeprecated,
+} from './link-tile-utils';
 import {
   LINK_TILE_SIZES,
   LINK_TILE_ASPECT_RATIOS,
@@ -47,7 +54,7 @@ export class LinkTile {
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
@@ -93,12 +100,15 @@ export class LinkTile {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
+    warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeight>(this, 'weight', {
+      semibold: 'semi-bold',
+    });
     attachComponentCss(
       this.host,
       getComponentCss,
       this.aspectRatio,
       this.size,
-      this.weight,
+      this.weight, // potentially breakpoint customizable, so we can't easily access the deprecation map
       this.align,
       this.compact,
       this.gradient

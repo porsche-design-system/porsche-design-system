@@ -8,7 +8,11 @@ import { setAttribute } from '../../utils';
 export const TAB_SIZES = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZES[number];
 
-export const TAB_WEIGHTS = ['regular', 'semibold'] as const;
+/** @deprecated */
+export const TAB_WEIGHTS_DEPRECATED = ['semibold'] as const;
+/** @deprecated */
+export type TabWeightDeprecated = typeof TAB_WEIGHTS_DEPRECATED[number];
+export const TAB_WEIGHTS = ['regular', 'semi-bold', ...TAB_WEIGHTS_DEPRECATED] as const;
 export type TabWeight = typeof TAB_WEIGHTS[number];
 
 export type TabsBarChangeEvent = { activeTabIndex: number };

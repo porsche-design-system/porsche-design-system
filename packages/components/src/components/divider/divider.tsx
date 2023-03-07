@@ -42,13 +42,24 @@ export class Divider {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof Divider, DividerColorDeprecated, DividerColor>(this, 'color', {
+    const deprecationMap: Record<DividerColorDeprecated, Exclude<DividerColor, DividerColorDeprecated>> = {
       'neutral-contrast-low': 'contrast-low',
       'neutral-contrast-medium': 'contrast-medium',
       'neutral-contrast-high': 'contrast-high',
-    });
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Divider, DividerColorDeprecated, DividerColor>(
+      this,
+      'color',
+      deprecationMap
+    );
     warnIfDeprecatedPropIsUsed<typeof Divider>(this, 'orientation', 'Please use direction prop instead.');
-    attachComponentCss(this.host, getComponentCss, this.color, this.orientation || this.direction, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      (deprecationMap[this.color] || this.color) as Exclude<DividerColor, DividerColorDeprecated>,
+      this.orientation || this.direction,
+      this.theme
+    );
 
     return <hr />;
   }

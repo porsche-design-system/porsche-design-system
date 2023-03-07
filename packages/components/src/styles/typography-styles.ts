@@ -1,14 +1,16 @@
 import type { JssStyle } from 'jss';
 import type { TextAlign, TextColor, Theme } from '../types';
 import type { HeadingAlign, HeadingColor } from '../components/heading/heading-utils';
+import type { HeadlineColor } from '../components/headline/headline-utils';
 import type { DisplayAlign, DisplayColor } from '../components/display/display-utils';
+import type { TextColorDeprecated } from '../components/text/text-color';
 import { getThemedTypographyColor } from './text-icon-styles';
 
 export const getTypographyRootJssStyle = (
   baseTextStyle: JssStyle,
   responsiveStyle: JssStyle,
   align: TextAlign | HeadingAlign | DisplayAlign,
-  color: TextColor | HeadingColor | DisplayColor,
+  color: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor,
   ellipsis: boolean,
   theme: Theme
 ): JssStyle => {

@@ -1,18 +1,15 @@
-import type { DividerColor, DividerDirection } from './divider-utils';
+import type { DividerColor, DividerDirection, DividerColorDeprecated } from './divider-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 
 export const getComponentCss = (
-  color: DividerColor,
+  color: Exclude<DividerColor, DividerColorDeprecated>,
   orientation: BreakpointCustomizable<DividerDirection>,
   theme: Theme
 ): string => {
   const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
-  const colorMap: Record<DividerColor, string> = {
-    'neutral-contrast-low': contrastLowColor, // deprecated
-    'neutral-contrast-medium': contrastMediumColor, // deprecated
-    'neutral-contrast-high': contrastHighColor, // deprecated
+  const colorMap: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
     'contrast-low': contrastLowColor,
     'contrast-medium': contrastMediumColor,
     'contrast-high': contrastHighColor,
