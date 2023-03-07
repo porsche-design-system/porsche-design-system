@@ -431,12 +431,6 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-table-row: propTypes with ValidatorFunctions 1`] = `
-{
-  "theme": "oneOf",
-}
-`;
-
 exports[`should call validateProps() with correct parameters via render for p-tabs: propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",

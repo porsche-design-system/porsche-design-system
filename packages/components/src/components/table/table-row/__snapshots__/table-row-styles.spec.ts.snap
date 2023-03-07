@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   position: relative !important;
   display: table-row !important;
@@ -20,33 +20,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
     transition: background-color var(--p-transition-duration, .24s) ease !important;
   }
   :host(:hover)::before {
-    background: #212225 !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for theme: light 1`] = `
-":host {
-  position: relative !important;
-  display: table-row !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-@media(hover:hover) {
-  :host::before {
-    content: "" !important;
-    position: absolute !important;
-    top: -2px !important;
-    left: -2px !important;
-    right: -2px !important;
-    bottom: -2px !important;
-    border-radius: 4px !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
-  }
-  :host(:hover)::before {
-    background: #EEEFF2 !important;
+    background: var(--p-internal-table-row-hover-color, #EEEFF2) !important;
   }
 }
 "

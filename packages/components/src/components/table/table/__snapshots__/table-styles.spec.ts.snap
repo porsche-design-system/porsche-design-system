@@ -7,6 +7,9 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  --p-internal-table-row-hover-color: #212225 !important;
+}
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -30,6 +33,9 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(*) {
+  --p-internal-table-row-hover-color: #EEEFF2 !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
