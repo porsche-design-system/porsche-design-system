@@ -215,7 +215,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with slotted content with error state and message">
       <p-radio-button-wrapper [state]="'error'">
-        <span slot="label">Slotted label</span>
         <input [type]="'radio'" [name]="'some-name-9'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [state]="'error'">
@@ -237,7 +236,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with slotted content with error state and message">
       <p-radio-button-wrapper [theme]="'dark'" [state]="'error'">
-        <span slot="label">Slotted label</span>
         <input [type]="'radio'" [name]="'some-name-dark-9'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [state]="'error'">
@@ -259,11 +257,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with slotted content with success state and message">
       <p-radio-button-wrapper [state]="'success'">
-        <span slot="label">Slotted label</span>
         <input [type]="'radio'" [name]="'some-name-9'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [state]="'success'">
-        <span slot="label">Slotted label</span>
         <span slot="label">
           <span>
             Slotted label. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -282,7 +278,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground dark" title="should render with slotted content with success state and message">
       <p-radio-button-wrapper [theme]="'dark'" [state]="'success'">
-        <span slot="label">Slotted label</span>
         <input [type]="'radio'" [name]="'some-name-dark-9'" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [theme]="'dark'" [state]="'success'">
