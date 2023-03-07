@@ -52,7 +52,7 @@ export class TableHeadCell {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { active, direction } = this.sort || {};
-    attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline, this.theme);
+    attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
