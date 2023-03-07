@@ -217,6 +217,7 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with slotted content with error state and message">
         <PRadioButtonWrapper state="error">
+          <span slot="label">Slotted label</span>
           <input type="radio" name="some-name-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper state="error">
@@ -238,6 +239,7 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with slotted content with error state and message">
         <PRadioButtonWrapper theme="dark" state="error">
+          <span slot="label">Slotted label</span>
           <input type="radio" name="some-name-dark-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" state="error">
@@ -259,6 +261,7 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with slotted content with success state and message">
         <PRadioButtonWrapper state="success">
+          <span slot="label">Slotted label</span>
           <input type="radio" name="some-name-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper state="success">
@@ -280,6 +283,7 @@ const RadioButtonWrapperPage: NextPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render with slotted content with success state and message">
         <PRadioButtonWrapper theme="dark" state="success">
+          <span slot="label">Slotted label</span>
           <input type="radio" name="some-name-dark-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper theme="dark" state="success">
