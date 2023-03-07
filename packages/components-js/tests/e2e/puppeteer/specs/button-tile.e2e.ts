@@ -1,3 +1,4 @@
+import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
@@ -6,7 +7,6 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Page } from 'puppeteer';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
