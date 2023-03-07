@@ -10,7 +10,6 @@ import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   parseJSON,
   validateProps,
@@ -22,7 +21,6 @@ import {
 } from '../../utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { getComponentCss } from './link-tile-styles';
-import { getSlottedCss } from '../../styles/link-button-tile-styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.breakpoint<LinkButtonTileSize>(LINK_BUTTON_TILE_SIZES),
@@ -85,10 +83,6 @@ export class LinkTile {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);

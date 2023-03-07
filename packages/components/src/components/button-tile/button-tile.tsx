@@ -16,7 +16,6 @@ import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   BUTTON_TYPES,
   BUTTON_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
@@ -30,7 +29,6 @@ import {
   isDisabledOrLoading,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
-import { getSlottedCss } from '../../styles/link-button-tile-styles';
 import { getButtonAriaAttributes } from '../button/button-utils';
 import { ButtonProps } from './button-tile-utils';
 
@@ -107,10 +105,6 @@ export class ButtonTile {
     }
   }
 
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
-
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
   }
@@ -172,7 +166,7 @@ export class ButtonTile {
           <slot />
         </div>
         <div class="content">
-          <button {...sharedButtonProps} class="button-overlay" tabIndex={-1} aria-hidden="true"></button>
+          <button {...sharedButtonProps} class="button-overlay" tabIndex={-1} aria-hidden="true" />
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>

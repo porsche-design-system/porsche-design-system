@@ -17,7 +17,7 @@ import {
 } from './';
 import { getFontWeight } from './font-weight-styles';
 import { getThemedTypographyColor } from './text-icon-styles';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../utils';
+import { buildResponsiveStyles, mergeDeep } from '../utils';
 import {
   textLargeStyle,
   fontSizeTextMedium,
@@ -49,18 +49,6 @@ const sizeMap: {
     fontSize: 'inherit',
   },
   default: { fontSize: fontSizeTextMedium },
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& picture > img': {
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-      },
-    })
-  );
 };
 
 export const getLinkButtonTileStyles = (
