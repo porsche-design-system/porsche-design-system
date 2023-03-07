@@ -74,7 +74,7 @@ export const generateInitialStylesPartial = (): string => {
     },
   };
 
-  const initialStylesFunction = `export function getInitialStyles(opts?: GetInitialStylesOptions & { format: 'jsx' }): JSX.Element;
+  const initialStylesFunction = `export function getInitialStyles(opts: GetInitialStylesOptions & { format: 'jsx' }): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
   const { prefix, format }: GetInitialStylesOptions = {

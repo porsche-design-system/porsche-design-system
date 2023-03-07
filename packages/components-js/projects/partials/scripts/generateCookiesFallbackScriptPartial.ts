@@ -15,7 +15,7 @@ export const generateCookiesFallbackScriptPartial = (): string => {
     .replace('https://cdn.ui.porsche.com', '${cdnBaseUrl}')
     .trim();
 
-  const func = `export function getCookiesFallbackScript(opts?: GetCookiesFallbackScriptOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getCookiesFallbackScript(opts: GetCookiesFallbackScriptOptions & { format: 'jsx' }): JSX.Element;
 export function getCookiesFallbackScript(opts?: GetCookiesFallbackScriptOptions): string;
 export function getCookiesFallbackScript(opts?: GetCookiesFallbackScriptOptions): string | JSX.Element {
   const { cdn, format }: GetCookiesFallbackScriptOptions = {

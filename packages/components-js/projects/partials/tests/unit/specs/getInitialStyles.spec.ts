@@ -13,14 +13,14 @@ const normalizeCss = `*{font-family:'Porsche Next','Arial Narrow',Arial,'Heiti S
 
 describe('format: html', () => {
   it('should return core styles', () => {
-    const result = getInitialStyles();
+    const result: string = getInitialStyles();
     expect(result).toBe(
       `<style data-pds-initial-styles>${tagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}${normalizeCss}</style>`
     );
   });
 
   it('should add custom prefixes to component names', () => {
-    const result = getInitialStyles({ prefix: 'custom-prefix' });
+    const result: string = getInitialStyles({ prefix: 'custom-prefix' });
     expect(result).toBe(
       `<style data-pds-initial-styles-custom-prefix>${prefixedTagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}${normalizeCss}</style>`
     );
@@ -29,14 +29,16 @@ describe('format: html', () => {
 
 describe('format: jsx', () => {
   it('should return core styles', () => {
-    const { container } = render(getInitialStyles({ format: 'jsx' }));
+    const result: JSX.Element = getInitialStyles({ format: 'jsx' });
+    const { container } = render(result);
     expect(container.innerHTML).toBe(
       `<style data-pds-initial-styles="">${tagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}${normalizeCss}</style>`
     );
   });
 
   it('should add custom prefix to component names', () => {
-    const { container } = render(getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' }));
+    const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' });
+    const { container } = render(result);
     expect(container.innerHTML).toBe(
       `<style data-pds-initial-styles-custom-prefix="">${prefixedTagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}${normalizeCss}</style>`
     );

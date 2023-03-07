@@ -38,7 +38,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   format?: Format;
 };`;
 
-  const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element {
   const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions = {
