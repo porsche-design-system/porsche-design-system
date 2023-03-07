@@ -138,7 +138,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add spacing props to every component
     const spacings = this.spacingProps.map((x) => `${x}?: Spacing;`).join('\n  ');
-    const htmlAttributesType = this.generateHTMLAttributesType();
+    const htmlAttributesType = this.generateHTMLAttributesType().replace(/\|/g, '\\$&');
     props = props.replace(new RegExp(`(${htmlAttributesType} & {\n)`), `$1  ${spacings}\n`);
 
     return props;
