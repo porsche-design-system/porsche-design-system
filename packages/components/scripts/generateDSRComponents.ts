@@ -214,7 +214,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
-        .replace(/(const (?:iconProps|btnProps|linkProps)) =/, '$1: any ='); // workaround typing issue
+        .replace(/(const (?:iconProps|btnProps|linkProps)) =/, '$1: any =') // workaround typing issue
+        .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
+        .replace(/Exclude<any, any>/g, 'any'); // workaround typings of deprecation maps
 
       // component based tweaks
       if (tagName === 'p-carousel') {
