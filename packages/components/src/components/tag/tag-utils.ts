@@ -4,7 +4,7 @@ import { TAG_DISMISSIBLE_COLORS, TagDismissibleColorDeprecated } from '../tag-di
 import { isThemeDark } from '../../utils';
 
 export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
-  return ['neutral-contrast-high', 'primary'].includes(color) ? (isThemeDark(theme) ? 'light' : 'dark') : theme;
+  return color === 'neutral-contrast-high' || color === 'primary' ? (isThemeDark(theme) ? 'light' : 'dark') : theme;
 };
 
 /** @deprecated */
@@ -25,20 +25,8 @@ export const TAG_COLORS = [
 ] as const;
 export type TagColor = typeof TAG_COLORS[number];
 
-export const hasInvertedThemeColor = (tagColor: TagColor, theme: Theme): boolean => {
-  const isDark = isThemeDark(theme);
-  return (
-    (!isDark && (tagColor === 'neutral-contrast-high' || tagColor === 'primary')) || // 'neutral-contrast-high' is deprecated (replaced with 'primary')
-    (isDark &&
-      tagColor !== 'background-surface' &&
-      tagColor !== 'background-default' && // 'background-default' is deprecated (replaced with 'background-base')
-      tagColor !== 'background-base' &&
-      tagColor !== 'notification-neutral' && // 'notification-neutral' is deprecated (replaced with 'notification-info')
-      tagColor !== 'notification-info' &&
-      tagColor !== 'notification-warning' &&
-      tagColor !== 'notification-success' &&
-      tagColor !== 'notification-error')
-  );
+export const hasInvertedThemeColor = (color: TagColor, theme: Theme): boolean => {
+  return color === 'neutral-contrast-high' ? true : color === 'primary' ? isThemeDark(theme) : false;
 };
 
 export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: ThemedColors, theme: Theme): string => {
