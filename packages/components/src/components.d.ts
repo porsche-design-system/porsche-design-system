@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
-import { ButtonLinkGroupDirection } from "./styles/direction-style";
+import { FlexDirections } from "./styles/flex-direction-styles";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -138,7 +138,7 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
+        "direction"?: BreakpointCustomizable<FlexDirections>;
     }
     interface PButtonPure {
         /**
@@ -741,7 +741,7 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis of the links.
          */
-        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
+        "direction"?: BreakpointCustomizable<FlexDirections>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1918,7 +1918,7 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
+        "direction"?: BreakpointCustomizable<FlexDirections>;
     }
     interface PButtonPure {
         /**
@@ -2533,7 +2533,7 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis of the links.
          */
-        "direction"?: BreakpointCustomizable<ButtonLinkGroupDirection>;
+        "direction"?: BreakpointCustomizable<FlexDirections>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */

@@ -4,24 +4,31 @@ import type { LinkTileAlign } from './link-tile-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   spacingFluidMedium,
-  spacingStaticMedium,
   spacingFluidLarge,
-  borderRadiusMedium,
   gradientToBottomStyle,
   gradientToTopStyle,
+  textLargeStyle,
+  fontSizeTextMedium,
 } from '@porsche-design-system/utilities-v2';
 import type {
   LinkButtonTileAspectRatio,
   LinkButtonTileSize,
   LinkButtonTileWeight,
 } from '../../styles/link-button-tile-styles';
-import {
-  getLinkButtonTilePStyles,
-  getLinkButtonTileHostAndSlottedStyles,
-  linkButtonTileLinkOverlayStyles,
-  linkButtonTileImageContainerStyles,
-  getLinkButtonTileRootStyles,
-} from '../../styles/link-button-tile-styles';
+import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
+import { getThemedTypographyColor } from '../../styles/text-icon-styles';
+import { pxToRemWithUnit } from '../../styles';
+import { getFontWeight } from '../../styles/font-weight-styles';
+
+const sizeMap: {
+  inherit: { fontSize: string };
+  default: { fontSize: string };
+} = {
+  inherit: {
+    fontSize: 'inherit',
+  },
+  default: { fontSize: fontSizeTextMedium },
+};
 
 const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): JssStyle => {
   return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
@@ -37,52 +44,47 @@ export const getComponentCss = (
 ): string => {
   const isTopAligned = align === 'top';
   return getCss({
-    '@global': {
-      ...getLinkButtonTileHostAndSlottedStyles(),
-      ...getLinkButtonTilePStyles(size, weight),
-    },
-    root: getLinkButtonTileRootStyles(aspectRatio),
-    'image-container': linkButtonTileImageContainerStyles,
-    content: {
-      position: 'absolute',
-      ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
-      left: 0,
-      right: 0,
-      display: 'grid',
-      justifyItems: 'start',
-      borderRadius: borderRadiusMedium,
-      padding:
-        align === 'bottom'
-          ? `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`
-          : `${spacingFluidMedium} ${spacingFluidMedium} ${spacingFluidLarge}`,
-
-      gap: spacingStaticMedium,
-      ...mergeDeep(
-        hasGradient &&
-          buildResponsiveStyles(compact, (isCompact: boolean) => getGradientBackground(isCompact, isTopAligned)),
-        buildResponsiveStyles(compact, (isCompact: boolean) =>
-          isCompact
-            ? {
-                alignItems: 'center',
-                gridTemplateColumns: 'auto 24px',
-                gridTemplateRows: 'auto',
-                ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
-              }
-            : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-        )
-      ),
-      '@media (forced-colors: active)': {
-        background: 'rgba(0,0,0,0.7)',
+    ...getBaseLinkButtonTileStyles({
+      aspectRatio,
+      additionalGlobalStyles: {
+        p: {
+          color: getThemedTypographyColor('dark', 'primary'),
+          maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
+          margin: 0,
+          ...textLargeStyle,
+          ...mergeDeep(
+            buildResponsiveStyles(size, (s: LinkButtonTileSize) => sizeMap[s]),
+            buildResponsiveStyles(weight, (w: LinkButtonTileWeight) => ({ fontWeight: getFontWeight(w) }))
+          ),
+        },
       },
-    },
+      additionalContentStyles: {
+        ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
+        padding:
+          align === 'bottom'
+            ? `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`
+            : `${spacingFluidMedium} ${spacingFluidMedium} ${spacingFluidLarge}`,
+        ...mergeDeep(
+          hasGradient &&
+            buildResponsiveStyles(compact, (isCompact: boolean) => getGradientBackground(isCompact, isTopAligned)),
+          buildResponsiveStyles(compact, (isCompact: boolean) =>
+            isCompact
+              ? {
+                  alignItems: 'center',
+                  gridTemplateColumns: 'auto 24px',
+                  gridTemplateRows: 'auto',
+                  ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
+                }
+              : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
+          )
+        ),
+      },
+      additionalLinkStyles: {
+        ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
+      },
+    }),
     'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
     })),
-    link: {
-      minHeight: '54px', // prevent content shift
-      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
-    },
-    // is used for expanded click-area only
-    'link-overlay': linkButtonTileLinkOverlayStyles,
   });
 };
