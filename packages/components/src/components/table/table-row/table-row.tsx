@@ -1,9 +1,6 @@
 import { Component, Element, h, Host, JSX } from '@stencil/core';
-import { attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../utils';
 import { getComponentCss } from './table-row-styles';
-import type { PropTypes } from '../../../types';
-
-const propTypes: PropTypes<typeof TableRow> = {};
 
 @Component({
   tag: 'p-table-row',
@@ -17,7 +14,6 @@ export class TableRow {
   }
 
   public render(): JSX.Element {
-    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss);
 
     return (
