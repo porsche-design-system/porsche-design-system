@@ -1,7 +1,7 @@
 import { JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAlign } from './link-tile-utils';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   spacingFluidMedium,
   spacingStaticMedium,

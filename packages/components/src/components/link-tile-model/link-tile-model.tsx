@@ -3,7 +3,7 @@ import type { ModelSignatureModel } from '../model-signature/model-signature-uti
 import type { LinkTileModelAspectRatio } from './link-tile-model-utils';
 import type { SelectedAriaAttributes, LinkTarget, BreakpointCustomizable } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
-import type { ButtonLinkGroupDirection } from '../../styles/direction-style';
+import type { FlexDirections } from '../../styles/flex-direction-styles';
 import type { LinkButtonTileWeight } from '../../styles/link-button-tile-styles';
 import { attachComponentCss, attachSlottedCss, getPrefixedTagNames } from '../../utils';
 import { getComponentCss } from './link-tile-model-styles';
@@ -42,7 +42,7 @@ export class LinkTileModel {
   // TODO: distinguish between primary and secondary href?
 
   /** Defines the direction of the main and cross axis of the links. */
-  @Prop() public direction?: BreakpointCustomizable<ButtonLinkGroupDirection> = 'row';
+  @Prop() public direction?: BreakpointCustomizable<FlexDirections> = 'row';
 
   /** href of the `<a>`. */
   @Prop() public href: string;
