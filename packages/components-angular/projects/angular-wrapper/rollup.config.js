@@ -1,6 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const rootDir = '../..';
 const projectDir = 'projects/angular-wrapper';
@@ -14,16 +13,14 @@ const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
-  '@porsche-design-system/components-js/testing',
   '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/testing',
 ];
 
 // identical with rollup.config.js from components-vue
 // 1 input, 2 output formats
 // typings are generated via separate tsc command since @rollup/plugin-typescript can't handle it properly
 const buildConfig = (packagePath) => {
-  const relativePackagePath = packagePath.split('/').pop();
-
   return {
     input: `${projectDir}/src/${packagePath}/index.ts`,
     external,
