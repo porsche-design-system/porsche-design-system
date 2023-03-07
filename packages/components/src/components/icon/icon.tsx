@@ -57,15 +57,16 @@ export class Icon {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof Icon, IconColorDeprecated, IconColor>(this, 'color', {
+    const deprecationMap: Record<IconColorDeprecated, Exclude<IconColor, IconColorDeprecated>> = {
       brand: 'primary',
       default: 'primary',
       'neutral-contrast-low': 'contrast-low',
       'neutral-contrast-medium': 'contrast-medium',
       'neutral-contrast-high': 'contrast-high',
       'notification-neutral': 'notification-info',
-    });
-    attachComponentCss(this.host, getComponentCss, this.color, this.size, this.theme);
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Icon, IconColorDeprecated, IconColor>(this, 'color', deprecationMap);
+    attachComponentCss(this.host, getComponentCss, deprecationMap[this.color] || this.color, this.size, this.theme);
 
     // TODO: wouldn't it be better to set alt attribute instead of aria-label?
     return <img src={buildIconUrl(this.source || this.name)} {...parseAndGetAriaAttributes(this.aria)} alt="" />;

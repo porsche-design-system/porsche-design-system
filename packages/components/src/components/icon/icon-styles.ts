@@ -10,7 +10,7 @@ import {
   fontSizeTextXSmall,
 } from '@porsche-design-system/utilities-v2';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import type { IconColor } from './icon-utils';
+import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {
   filterDarkContrastHigh,
   filterDarkContrastLow,
@@ -38,40 +38,28 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-large': fontSizeTextXLarge,
 };
 
-const filter: Record<Theme, Record<Exclude<IconColor, 'inherit'>, string>> = {
+const filter: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string>> = {
   light: {
     primary: filterLightPrimary,
-    brand: filterLightPrimary, // deprecated
-    default: filterLightPrimary, // deprecated
     'state-disabled': filterLightContrastMedium,
     'contrast-low': filterLightContrastLow,
-    'neutral-contrast-low': filterLightContrastLow, // deprecated
     'contrast-medium': filterLightContrastMedium,
-    'neutral-contrast-medium': filterLightContrastMedium, // deprecated
     'contrast-high': filterLightContrastHigh,
-    'neutral-contrast-high': filterLightContrastHigh, // deprecated
     'notification-success': filterLightNotificationSuccess,
     'notification-warning': filterLightNotificationWarning,
     'notification-error': filterLightNotificationError,
     'notification-info': filterLightNotificationInfo,
-    'notification-neutral': filterLightNotificationInfo, // deprecated
   },
   dark: {
     primary: filterDarkPrimary,
-    brand: filterDarkPrimary, // deprecated
-    default: filterDarkPrimary, // deprecated
     'state-disabled': filterDarkContrastMedium,
     'contrast-low': filterDarkContrastLow,
-    'neutral-contrast-low': filterDarkContrastLow, // deprecated
     'contrast-medium': filterDarkContrastMedium,
-    'neutral-contrast-medium': filterDarkContrastMedium, // deprecated
     'contrast-high': filterDarkContrastHigh,
-    'neutral-contrast-high': filterDarkContrastHigh, // deprecated
     'notification-success': filterDarkNotificationSuccess,
     'notification-warning': filterDarkNotificationWarning,
     'notification-error': filterDarkNotificationError,
     'notification-info': filterDarkNotificationInfo,
-    'notification-neutral': filterDarkNotificationInfo, // deprecated
   },
 };
 
@@ -86,9 +74,14 @@ const forceRerenderAnimationStyle = {
 const keyFramesLight = 'rerender-light';
 const keyFramesDark = 'rerender-dark';
 
-export const getComponentCss = (color: IconColor, size: TextSize, theme: Theme): string => {
+export const getComponentCss = (
+  color: Exclude<IconColor, IconColorDeprecated>,
+  size: TextSize,
+  theme: Theme
+): string => {
   const isColorInherit = color === 'inherit';
   const isSizeInherit = size === 'inherit';
+  const isDark = isThemeDark(theme);
 
   return getCss({
     '@global': {
@@ -103,7 +96,7 @@ export const getComponentCss = (color: IconColor, size: TextSize, theme: Theme):
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
-          WebkitAnimation: `${theme === 'light' ? keyFramesLight : keyFramesDark} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
+          WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
           ? {
@@ -117,7 +110,7 @@ export const getComponentCss = (color: IconColor, size: TextSize, theme: Theme):
             }),
       },
       ...(!isColorInherit && {
-        [`@keyframes ${isThemeDark(theme) ? keyFramesDark : keyFramesLight}`]: forceRerenderAnimationStyle,
+        [`@keyframes ${isDark ? keyFramesDark : keyFramesLight}`]: forceRerenderAnimationStyle,
       }),
     },
   });
