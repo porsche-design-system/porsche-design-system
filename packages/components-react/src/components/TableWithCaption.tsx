@@ -24,15 +24,14 @@ export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
               multiline={item.multiline}
               style={item.style}
               dangerouslySetInnerHTML={{ __html: item.name }}
-              theme={theme}
             />
           ))}
         </PTableHeadRow>
       </PTableHead>
       <PTableBody>
         {data.map((item, i) => (
-          <PTableRow key={i} theme={theme}>
-            <PTableCell theme={theme}>
+          <PTableRow key={i}>
+            <PTableCell>
               <img
                 src={item.imageUrl}
                 width={item.imageWidth}
@@ -42,13 +41,11 @@ export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
               />
               <span dangerouslySetInnerHTML={{ __html: item.html }} />
             </PTableCell>
-            <PTableCell multiline={true} theme={theme}>
-              {item.longText}
-            </PTableCell>
-            <PTableCell theme={theme}>{item.shortText}</PTableCell>
-            <PTableCell theme={theme}>{item.shortText}</PTableCell>
-            <PTableCell theme={theme}>{item.shortText}</PTableCell>
-            <PTableCell theme={theme}>
+            <PTableCell multiline={true}>{item.longText}</PTableCell>
+            <PTableCell>{item.shortText}</PTableCell>
+            <PTableCell>{item.shortText}</PTableCell>
+            <PTableCell>{item.shortText}</PTableCell>
+            <PTableCell>
               <PButtonPure theme={theme} icon="edit" style={{ padding: '.5rem' }}>
                 Edit
               </PButtonPure>
