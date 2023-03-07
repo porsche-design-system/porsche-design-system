@@ -72,7 +72,7 @@ export const ModalPage = (): JSX.Element => {
           </div>
           <span>
             Some Content: "should show modal with slotted heading" and some slotted and deeply nested <a href="#">anchor</a>,
-            <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+            {' '}<b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
           </span>
         </PModal>
       </div>
