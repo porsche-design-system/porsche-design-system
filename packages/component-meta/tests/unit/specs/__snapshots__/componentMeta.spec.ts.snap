@@ -1423,6 +1423,7 @@ exports[`should match snapshot 1`] = `
       "target": "string",
       "weight": [
         "regular",
+        "semi-bold",
         "semibold",
       ],
     },
@@ -1458,7 +1459,7 @@ exports[`should match snapshot 1`] = `
       "rel": null,
       "size": "default",
       "target": "_self",
-      "weight": "semibold",
+      "weight": "semi-bold",
     },
     "requiredProps": [
       "label",
@@ -2318,6 +2319,7 @@ exports[`should match snapshot 1`] = `
       ],
       "weight": [
         "regular",
+        "semi-bold",
         "semibold",
       ],
     },
@@ -2378,6 +2380,7 @@ exports[`should match snapshot 1`] = `
       ],
       "weight": [
         "regular",
+        "semi-bold",
         "semibold",
       ],
     },
