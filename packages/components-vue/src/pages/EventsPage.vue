@@ -56,17 +56,17 @@
 </script>
 
 <template>
-  <div className="playground light">
+  <div class="playground light">
     <PAccordion :heading="'Some heading'" @change="onAccordionChange" />
     <p>{{ accordionChangeEventCounter }}</p>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" @change="onPaginationChange" />
     <p>{{ paginationChangeEventCounter }}</p>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PTabsBar :activeTabIndex="0" @change="onTabsBarChange">
       <button>Tab 1</button>
       <button>Tab 2</button>
@@ -75,7 +75,7 @@
     <p>{{ tabsBarChangeEventCounter }}</p>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PTabs :activeTabIndex="0" @change="onTabsChange">
       <PTabsItem :label="'Tab 1'">Content 1</PTabsItem>
       <PTabsItem :label="'Tab 2'">Content 2</PTabsItem>
@@ -84,25 +84,25 @@
     <p>{{ tabsChangeEventCounter }}</p>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PTextFieldWrapper>
       <input type="search" :value="textFieldSearchValue" @input="onTextFieldSearchChange" />
     </PTextFieldWrapper>
     <p>Value: {{ textFieldSearchValue }}</p>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PSwitch @change="onSwitchChange">Switch</PSwitch>
     <p>{{ switchChangeEventCounter }}</p>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PModal :open="isModalOpen" @dismiss="onModalDismiss">Modal</PModal>
     <p>{{ modalDismissEventCounter }}</p>
     <button @click="isModalOpen = true">Open Modal</button>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PTable @change="onTableChange">
       <PTableHead>
         <PTableHeadRow>
@@ -113,7 +113,7 @@
     <p>{{ tableChangeEventCounter }}</p>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <PCarousel @change="onCarouselChange">
       <div>Slide 1</div>
       <div>Slide 2</div>

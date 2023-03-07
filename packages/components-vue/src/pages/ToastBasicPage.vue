@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div className="visualize-grid">
+  <div class="visualize-grid">
     <span></span>
     <span></span>
     <span></span>
@@ -22,7 +22,7 @@
     <span></span>
   </div>
 
-  <div className="playground light">
+  <div class="playground light">
     <ToastComponent text="Some message" />
   </div>
 </template>
