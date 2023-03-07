@@ -130,9 +130,9 @@ export class ButtonTile {
     const buttonProps: ButtonProps = {
       theme: 'dark',
       variant: 'secondary',
-      ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
       icon: this.icon,
       iconSource: this.iconSource,
+      ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
     };
 
     const sharedButtonProps = {
