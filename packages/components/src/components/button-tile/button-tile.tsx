@@ -26,14 +26,13 @@ import {
   LINK_BUTTON_TILE_WEIGHTS,
   LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_ALIGNS,
-  LINK_BUTTON_VARIANTS,
   throwIfAlignTopAndNotCompact,
   isDisabledOrLoading,
-  THEMES,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
 import { getSlottedCss } from '../../styles/link-button-tile-styles';
 import { getButtonAriaAttributes } from '../button/button-utils';
+import { ButtonProps } from './button-tile-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   size: AllowedTypes.breakpoint<LinkButtonTileSize>(LINK_BUTTON_TILE_SIZES),
@@ -134,18 +133,18 @@ export class ButtonTile {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const buttonProps = {
-      theme: THEMES['dark'],
-      variant: LINK_BUTTON_VARIANTS['secondary'],
+    const buttonProps: ButtonProps = {
+      theme: 'dark',
+      variant: 'secondary',
       ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
+      icon: this.icon,
+      iconSource: this.iconSource,
     };
 
     const sharedButtonProps = {
       type: this.type,
       disabled: this.disabled,
       loading: this.loading,
-      icon: this.icon,
-      iconSource: this.iconSource,
     };
 
     const button: JSX.Element = (
