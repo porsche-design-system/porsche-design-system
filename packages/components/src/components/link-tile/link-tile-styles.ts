@@ -1,6 +1,6 @@
 import { JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAlign } from './link-tile-utils';
+import type { LinkTileAspectRatio, LinkTileSize, LinkTileWeight, LinkTileAlign } from './link-tile-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   spacingFluidMedium,
@@ -10,11 +10,6 @@ import {
   textLargeStyle,
   fontSizeTextMedium,
 } from '@porsche-design-system/utilities-v2';
-import type {
-  LinkButtonTileAspectRatio,
-  LinkButtonTileSize,
-  LinkButtonTileWeight,
-} from '../../styles/link-button-tile-styles';
 import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import { pxToRemWithUnit } from '../../styles';
@@ -35,9 +30,9 @@ const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTop
 };
 
 export const getComponentCss = (
-  aspectRatio: BreakpointCustomizable<LinkButtonTileAspectRatio>,
-  size: BreakpointCustomizable<LinkButtonTileSize>,
-  weight: BreakpointCustomizable<LinkButtonTileWeight>,
+  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
+  size: BreakpointCustomizable<LinkTileSize>,
+  weight: BreakpointCustomizable<LinkTileWeight>,
   align: LinkTileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean
@@ -53,8 +48,8 @@ export const getComponentCss = (
           margin: 0,
           ...textLargeStyle,
           ...mergeDeep(
-            buildResponsiveStyles(size, (s: LinkButtonTileSize) => sizeMap[s]),
-            buildResponsiveStyles(weight, (w: LinkButtonTileWeight) => ({ fontWeight: getFontWeight(w) }))
+            buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
+            buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
           ),
         },
       },

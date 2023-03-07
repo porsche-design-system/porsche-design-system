@@ -1,13 +1,11 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
-import type { LinkTileModelAspectRatio, LinkTileModelLinkProps } from './link-tile-model-utils';
-import { LINK_TILE_MODEL_ASPECT_RATIO } from './link-tile-model-utils';
+import type { LinkTileModelLinkProps } from './link-tile-model-signature-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import type { JssDirections } from '../../styles/jss-direction-styles';
 import { JSS_DIRECTIONS } from '../../styles/jss-direction-styles';
-import type { LinkButtonTileWeight } from '../../styles/link-button-tile-styles';
-import { getSlottedCss, LINK_BUTTON_TILE_WEIGHTS } from '../../styles/link-button-tile-styles';
+import { getSlottedCss } from '../../styles/link-button-tile-styles';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import {
@@ -18,9 +16,11 @@ import {
   parseJSON,
   validateProps,
 } from '../../utils';
-import { getComponentCss } from './link-tile-model-styles';
+import { getComponentCss } from './link-tile-model-signature-styles';
+import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
+import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS } from '../link-tile/link-tile-utils';
 
-const propTypes: PropTypes<typeof LinkTileModel> = {
+const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   primaryLinkProps: AllowedTypes.shape({
     label: AllowedTypes.string,
     href: AllowedTypes.string,
@@ -38,18 +38,18 @@ const propTypes: PropTypes<typeof LinkTileModel> = {
     aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
   }),
   model: AllowedTypes.oneOf<ModelSignatureModel>(MODEL_SIGNATURE_MODELS),
-  weight: AllowedTypes.breakpoint<LinkButtonTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkTileModelAspectRatio>(LINK_TILE_MODEL_ASPECT_RATIO),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
+  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   description: AllowedTypes.string,
   subDescription: AllowedTypes.string,
   direction: AllowedTypes.breakpoint<JssDirections>(JSS_DIRECTIONS),
 };
 
 @Component({
-  tag: 'p-link-tile-model',
+  tag: 'p-link-tile-model-signature',
   shadow: { delegatesFocus: true },
 })
-export class LinkTileModel {
+export class LinkTileModelSignature {
   @Element() public host!: HTMLElement;
 
   /** Contains the label, href and anchor props for the primary link */
@@ -62,20 +62,19 @@ export class LinkTileModel {
   @Prop() public model?: ModelSignatureModel = '911';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkButtonTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
 
   /** Aspect ratio of the link-tile-model. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileModelAspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
 
   /** Description text. */
   @Prop() public description!: string;
 
-  // TODO: naming?
   /** Description text. */
   @Prop() public subDescription?: string;
 
-  /** Defines the direction of the main and cross axis of the links. */
-  @Prop() public direction?: BreakpointCustomizable<JssDirections> = 'row';
+  /** Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'. */
+  @Prop() public direction?: BreakpointCustomizable<JssDirections> = { base: 'column', xs: 'row' };
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);

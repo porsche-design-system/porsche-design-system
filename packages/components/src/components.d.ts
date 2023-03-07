@@ -26,9 +26,8 @@ import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
-import { LinkButtonTileAspectRatio, LinkButtonTileSize, LinkButtonTileWeight } from "./styles/link-button-tile-styles";
-import { LinkTileAlign } from "./components/link-tile/link-tile-utils";
-import { LinkTileModelAspectRatio, LinkTileModelLinkProps } from "./components/link-tile-model/link-tile-model-utils";
+import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileModelLinkProps } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
@@ -683,7 +682,7 @@ export namespace Components {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -715,7 +714,7 @@ export namespace Components {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -723,19 +722,19 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
-    interface PLinkTileModel {
+    interface PLinkTileModelSignature {
         /**
           * Aspect ratio of the link-tile-model.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileModelAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Description text.
          */
         "description": string;
         /**
-          * Defines the direction of the main and cross axis of the links.
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
         "direction"?: BreakpointCustomizable<JssDirections>;
         /**
@@ -757,7 +756,7 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**
@@ -1532,11 +1531,11 @@ declare global {
         prototype: HTMLPLinkTileElement;
         new (): HTMLPLinkTileElement;
     };
-    interface HTMLPLinkTileModelElement extends Components.PLinkTileModel, HTMLStencilElement {
+    interface HTMLPLinkTileModelSignatureElement extends Components.PLinkTileModelSignature, HTMLStencilElement {
     }
-    var HTMLPLinkTileModelElement: {
-        prototype: HTMLPLinkTileModelElement;
-        new (): HTMLPLinkTileModelElement;
+    var HTMLPLinkTileModelSignatureElement: {
+        prototype: HTMLPLinkTileModelSignatureElement;
+        new (): HTMLPLinkTileModelSignatureElement;
     };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
@@ -1766,7 +1765,7 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
-        "p-link-tile-model": HTMLPLinkTileModelElement;
+        "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -2455,7 +2454,7 @@ declare namespace LocalJSX {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the tile-link as compact version with description and link icon only.
          */
@@ -2487,7 +2486,7 @@ declare namespace LocalJSX {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -2495,19 +2494,19 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
-    interface PLinkTileModel {
+    interface PLinkTileModelSignature {
         /**
           * Aspect ratio of the link-tile-model.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileModelAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Description text.
          */
         "description": string;
         /**
-          * Defines the direction of the main and cross axis of the links.
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
         "direction"?: BreakpointCustomizable<JssDirections>;
         /**
@@ -2529,7 +2528,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**
@@ -3171,7 +3170,7 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
-        "p-link-tile-model": PLinkTileModel;
+        "p-link-tile-model-signature": PLinkTileModelSignature;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -3235,7 +3234,7 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
-            "p-link-tile-model": LocalJSX.PLinkTileModel & JSXBase.HTMLAttributes<HTMLPLinkTileModelElement>;
+            "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;

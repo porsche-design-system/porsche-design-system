@@ -11,16 +11,15 @@ import {
   textLargeStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import type { JssDirections } from '../../styles/jss-direction-styles';
 import { getJssDirectionStyle } from '../../styles/jss-direction-styles';
 import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
-import type { JssDirections } from '../../styles/jss-direction-styles';
 import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileModelAspectRatio } from './link-tile-model-utils';
-import type { LinkButtonTileWeight } from '../../styles/link-button-tile-styles';
+import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
 
 export const getComponentCss = (
-  aspectRatio: BreakpointCustomizable<LinkTileModelAspectRatio>,
-  weight: BreakpointCustomizable<LinkButtonTileWeight>,
+  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
+  weight: BreakpointCustomizable<LinkTileWeight>,
   direction: BreakpointCustomizable<JssDirections>,
   hasSubDescription: boolean
 ): string => {
@@ -43,7 +42,7 @@ export const getComponentCss = (
     description: {
       margin: 0,
       ...textLargeStyle,
-      ...buildResponsiveStyles(weight, (w: LinkButtonTileWeight) => ({ fontWeight: getFontWeight(w) })),
+      ...buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) })),
     },
     ...(hasSubDescription && {
       'description-group': {

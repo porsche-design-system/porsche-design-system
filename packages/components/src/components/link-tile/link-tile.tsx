@@ -11,24 +11,21 @@ import { getComponentCss } from './link-tile-styles';
 import type { BreakpointCustomizable, LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAlign } from './link-tile-utils';
-import { LINK_TILE_ALIGNS, throwIfAlignTopAndNotCompact } from './link-tile-utils';
-import type {
-  LinkButtonTileAspectRatio,
-  LinkButtonTileSize,
-  LinkButtonTileWeight,
-} from '../../styles/link-button-tile-styles';
+import type { LinkTileAspectRatio, LinkTileSize, LinkTileWeight, LinkTileAlign } from './link-tile-utils';
 import {
-  getSlottedCss,
-  LINK_BUTTON_TILE_ASPECT_RATIOS,
-  LINK_BUTTON_TILE_SIZES,
-  LINK_BUTTON_TILE_WEIGHTS,
-} from '../../styles/link-button-tile-styles';
+  LINK_TILE_ASPECT_RATIOS,
+  LINK_TILE_SIZES,
+  LINK_TILE_WEIGHTS,
+  LINK_TILE_ALIGNS,
+  throwIfAlignTopAndNotCompact,
+} from './link-tile-utils';
+import type {} from '../../styles/link-button-tile-styles';
+import { getSlottedCss } from '../../styles/link-button-tile-styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.breakpoint<LinkButtonTileSize>(LINK_BUTTON_TILE_SIZES),
-  weight: AllowedTypes.breakpoint<LinkButtonTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkButtonTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
+  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZES),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
+  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   align: AllowedTypes.oneOf<LinkTileAlign>(LINK_TILE_ALIGNS),
@@ -49,13 +46,13 @@ export class LinkTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
-  @Prop() public size?: BreakpointCustomizable<LinkButtonTileSize> = 'default';
+  @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkButtonTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
 
   /** Aspect ratio of the link-tile. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkButtonTileAspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
 
   /** Label of the <a />. */
   @Prop() public label: string;

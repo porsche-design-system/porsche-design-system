@@ -11,17 +11,9 @@ import { buildResponsiveStyles, buildSlottedStyles, getCss } from '../utils';
 import { borderRadiusMedium, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { hostHiddenStyles } from './host-hidden-styles';
 import { hoverMediaQuery } from './hover-media-query';
-import { LINK_TILE_MODEL_ASPECT_RATIO } from '../components/link-tile-model/link-tile-model-utils';
+import type { LinkTileAspectRatio } from '../components/link-tile/link-tile-utils';
 
-export const LINK_BUTTON_TILE_WEIGHTS = ['regular', 'semibold'] as const;
-export type LinkButtonTileWeight = typeof LINK_BUTTON_TILE_WEIGHTS[number];
-
-export const LINK_BUTTON_TILE_SIZES = ['default', 'inherit'] as const;
-export type LinkButtonTileSize = typeof LINK_BUTTON_TILE_SIZES[number];
-export const LINK_BUTTON_TILE_ASPECT_RATIOS = [...LINK_TILE_MODEL_ASPECT_RATIO, '1:1', '16:9'] as const;
-export type LinkButtonTileAspectRatio = typeof LINK_BUTTON_TILE_ASPECT_RATIOS[number];
-
-const aspectRatioPaddingTop: Record<LinkButtonTileAspectRatio, string> = {
+const aspectRatioPaddingTop: Record<LinkTileAspectRatio, string> = {
   '1:1': '100%',
   '4:3': '75%',
   '3:4': '133.33%',
@@ -30,7 +22,7 @@ const aspectRatioPaddingTop: Record<LinkButtonTileAspectRatio, string> = {
 };
 
 export const getBaseLinkButtonTileStyles = (opts: {
-  aspectRatio: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>;
   additionalGlobalStyles?: JssStyle;
   additionalContentStyles?: JssStyle;
   additionalLinkStyles?: JssStyle;
@@ -71,7 +63,7 @@ export const getBaseLinkButtonTileStyles = (opts: {
           }),
         },
       }),
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkButtonTileAspectRatio) => ({
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio) => ({
         paddingTop: aspectRatioPaddingTop[ratio],
       })),
     },

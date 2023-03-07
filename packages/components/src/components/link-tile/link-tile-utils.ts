@@ -1,6 +1,14 @@
 import { getTagName } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 
+export const LINK_TILE_WEIGHTS = ['regular', 'semibold'] as const;
+export type LinkTileWeight = typeof LINK_TILE_WEIGHTS[number];
+
+export const LINK_TILE_SIZES = ['default', 'inherit'] as const;
+export type LinkTileSize = typeof LINK_TILE_SIZES[number];
+export const LINK_TILE_ASPECT_RATIOS = ['4:3', '3:4', '9:16', '16:9', '1:1'] as const;
+export type LinkTileAspectRatio = typeof LINK_TILE_ASPECT_RATIOS[number];
+
 export const LINK_TILE_ALIGNS = ['top', 'bottom'] as const;
 export type LinkTileAlign = typeof LINK_TILE_ALIGNS[number];
 
