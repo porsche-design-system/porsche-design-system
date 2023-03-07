@@ -1,14 +1,16 @@
 <template>
+  <div style="margin: 0 0 1rem">🚫 = deprecated<br>🛠 = breakpointCustomizable</div>
+
   <p-table>
     <p-table-head>
       <p-table-head-row v-html="headRow"></p-table-head-row>
     </p-table-head>
-    <p-table-body v-html="body"></p-table-body>
+    <p-table-body @click="onClick" v-html="body"></p-table-body>
   </p-table>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';  
+import Vue from 'vue';
 import Component from 'vue-class-component';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { ComponentMeta, getComponentMeta} from '@porsche-design-system/component-meta';
@@ -18,7 +20,7 @@ export default class Code extends Vue {
   get headRow(): string {
     return ['', ...TAG_NAMES].map((tagName) => {
       const { isDeprecated } = getComponentMeta(tagName) || {};
-      return `<p-table-head-cell>${tagName}${isDeprecated ? ' 🚫' : ''}</p-table-head-cell>`;
+      return `<p-table-head-cell>${tagName}${isDeprecated ? '🚫' : ''}</p-table-head-cell>`;
     }).join('');
   }
 
@@ -40,13 +42,17 @@ export default class Code extends Vue {
         let value = meta[key];
 
         if (value && (key === 'props' || key === 'eventNames')) {
-          const { deprecatedProps = [], deprecatedEventNames = [] } = meta;
+          const { deprecatedProps = [], deprecatedEventNames = [], breakpointCustomizableProps = [], allowedPropValues = {} } = meta;
 
           if (key === 'props') {
             value = Object.keys(value);
-            value = value.map(val => deprecatedProps.includes(val) ? `${val} 🚫` : val);
+            value = value.map(val => {
+              const allowedValues = allowedPropValues[val];
+              return ('<span class="prop">' + val + [breakpointCustomizableProps.includes(val) && '🛠️' , deprecatedProps.includes(val) && '🚫'].filter(x => x).join('') + '</span>') +
+              (allowedValues ? ('<div style="display: none">– ' + (Array.isArray(allowedValues) && allowedValues.join('<br>– ') || allowedValues) + '</div>') : '')
+            });
           } else if (key === 'eventNames') {
-            value = value.map(val => deprecatedEventNames.includes(val) ? `${val} 🚫` : val);
+            value = value.map(val => val + (deprecatedEventNames.includes(val) ? '🚫' : ''));
           }
         }
 
@@ -67,6 +73,12 @@ export default class Code extends Vue {
     }).join('');
     
     return content;
+  }
+
+  onClick({ target }) {
+    if (target.classList.value === 'prop') {
+      target.nextSibling.style.display = target.nextSibling.style.display === 'block' ? 'none' : 'block';
+    }
   }
 }
 </script>
@@ -89,5 +101,9 @@ export default class Code extends Vue {
     background-color: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
     border-radius: 3px;
     color: $pds-theme-light-primary;
+  }
+
+  :deep(span) {
+    font-family: inherit;
   }
 </style>
