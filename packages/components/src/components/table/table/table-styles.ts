@@ -13,9 +13,9 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'block',
         ...hostHiddenStyles,
       }),
-      '::slotted(*)': {
+      '::slotted(*)': addImportantToEachRule({
         [cssVariableTableRowHoverColor]: getThemedColors(theme).backgroundSurfaceColor,
-      },
+      }),
     },
     caption: {
       marginBottom: spacingFluidMedium,
