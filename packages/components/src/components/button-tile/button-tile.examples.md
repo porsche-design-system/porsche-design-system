@@ -32,7 +32,7 @@ results.
 ## States
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="states"></SelectOptions>
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ## Aspect Ratio
