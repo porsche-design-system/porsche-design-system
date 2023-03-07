@@ -1,16 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-default and theme: dark 1`] = `"#292934"`;
+exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-base and theme: dark 1`] = `"#292934"`;
 
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-default and theme: light 1`] = `"#E0E0E0"`;
+exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-base and theme: light 1`] = `"#E0E0E0"`;
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-surface and theme: dark 1`] = `"#3E4045"`;
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: background-surface and theme: light 1`] = `"#CBCED7"`;
-
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: neutral-contrast-high and theme: dark 1`] = `"#CECFD1"`;
-
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: neutral-contrast-high and theme: light 1`] = `"#535457"`;
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-error and theme: dark 1`] = `"#331F1F"`;
 
@@ -20,10 +16,6 @@ exports[`getThemedBackgroundHoverColor() should return correct backgroundColor f
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-info and theme: light 1`] = `"#D6DEF0"`;
 
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-neutral and theme: dark 1`] = `"#0F2943"`;
-
-exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-neutral and theme: light 1`] = `"#D6DEF0"`;
-
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-success and theme: dark 1`] = `"#0F432F"`;
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-success and theme: light 1`] = `"#DDEAE1"`;
@@ -31,3 +23,7 @@ exports[`getThemedBackgroundHoverColor() should return correct backgroundColor f
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-warning and theme: dark 1`] = `"#362F1C"`;
 
 exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: notification-warning and theme: light 1`] = `"#F5ECD2"`;
+
+exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: primary and theme: dark 1`] = `"#CECFD1"`;
+
+exports[`getThemedBackgroundHoverColor() should return correct backgroundColor for color: primary and theme: light 1`] = `"#535457"`;

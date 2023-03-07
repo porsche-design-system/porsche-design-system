@@ -25,25 +25,21 @@ export const TAG_COLORS = [
 ] as const;
 export type TagColor = typeof TAG_COLORS[number];
 
-export const hasInvertedThemeColor = (color: TagColor, theme: Theme): boolean => {
-  return color === 'neutral-contrast-high' ? true : color === 'primary' ? isThemeDark(theme) : false;
-};
-
-export const getThemedBackgroundHoverColor = (tagColor: TagColor, themedColors: ThemedColors, theme: Theme): string => {
+export const getThemedBackgroundHoverColor = (
+  tagColor: Exclude<TagColor, TagColorDeprecated>,
+  themedColors: ThemedColors,
+  theme: Theme
+): string => {
   const isDark = isThemeDark(theme);
-  const keySuffix = isDark ? 'ColorLighten' : 'ColorDarken';
-  const primaryColor = isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColor;
-  const colorMap: Record<TagColor, string> = {
-    'background-default': themedColors[`background${keySuffix}`], // 'background-default' is deprecated (replaced with 'background-base')
-    'background-base': themedColors[`background${keySuffix}`],
-    'background-surface': themedColors[`backgroundSurface${keySuffix}`],
-    'neutral-contrast-high': primaryColor, // 'neutral-contrast-high' is deprecated (replaced with 'primary')
-    primary: primaryColor,
-    'notification-neutral': themedColors[`infoSoft${keySuffix}`], // 'notification-neutral' is deprecated (replaced with 'notification-info')
-    'notification-info': themedColors[`infoSoft${keySuffix}`],
-    'notification-success': themedColors[`successSoft${keySuffix}`],
-    'notification-error': themedColors[`errorSoft${keySuffix}`],
-    'notification-warning': themedColors[`warningSoft${keySuffix}`],
+  const keySuffix = isDark ? 'Lighten' : 'Darken';
+  const colorMap: Record<Exclude<TagColor, TagColorDeprecated>, string> = {
+    'background-base': themedColors[`backgroundColor${keySuffix}`],
+    'background-surface': themedColors[`backgroundSurfaceColor${keySuffix}`],
+    primary: isDark ? themedColors.contrastHighColorLighten : themedColors.contrastHighColor,
+    'notification-info': themedColors[`infoSoftColor${keySuffix}`],
+    'notification-success': themedColors[`successSoftColor${keySuffix}`],
+    'notification-error': themedColors[`errorSoftColor${keySuffix}`],
+    'notification-warning': themedColors[`warningSoftColor${keySuffix}`],
   };
 
   return colorMap[tagColor];

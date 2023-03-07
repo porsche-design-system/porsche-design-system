@@ -45,14 +45,18 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const deprecationMap: Record<
+      TagDismissibleColorDeprecated,
+      Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>
+    > = {
+      'background-default': 'background-base',
+    };
     warnIfDeprecatedPropValueIsUsed<typeof TagDismissible, TagDismissibleColorDeprecated, TagDismissibleColor>(
       this,
       'color',
-      {
-        'background-default': 'background-base',
-      }
+      deprecationMap
     );
-    attachComponentCss(this.host, getComponentCss, this.color, !!this.label, this.theme);
+    attachComponentCss(this.host, getComponentCss, deprecationMap[this.color] || this.color, !!this.label, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (

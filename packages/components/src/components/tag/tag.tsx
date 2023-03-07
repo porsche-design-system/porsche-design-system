@@ -41,15 +41,16 @@ export class Tag {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', {
+    const deprecationMap: Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>> = {
       'notification-neutral': 'notification-info',
       'neutral-contrast-high': 'primary',
       'background-default': 'background-base',
-    });
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', deprecationMap);
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.color,
+      deprecationMap[this.color] || this.color,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       this.theme
     );
