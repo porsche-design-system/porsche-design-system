@@ -11,13 +11,14 @@ import { buildResponsiveStyles, buildSlottedStyles, getCss } from '../utils';
 import { borderRadiusMedium, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { hostHiddenStyles } from './host-hidden-styles';
 import { hoverMediaQuery } from './hover-media-query';
+import { LINK_TILE_MODEL_ASPECT_RATIO } from '../components/link-tile-model/link-tile-model-utils';
 
 export const LINK_BUTTON_TILE_WEIGHTS = ['regular', 'semibold'] as const;
 export type LinkButtonTileWeight = typeof LINK_BUTTON_TILE_WEIGHTS[number];
 
 export const LINK_BUTTON_TILE_SIZES = ['default', 'inherit'] as const;
 export type LinkButtonTileSize = typeof LINK_BUTTON_TILE_SIZES[number];
-export const LINK_BUTTON_TILE_ASPECT_RATIOS = ['1:1', '4:3', '3:4', '16:9', '9:16'] as const;
+export const LINK_BUTTON_TILE_ASPECT_RATIOS = [...LINK_TILE_MODEL_ASPECT_RATIO, '1:1', '16:9'] as const;
 export type LinkButtonTileAspectRatio = typeof LINK_BUTTON_TILE_ASPECT_RATIOS[number];
 
 const aspectRatioPaddingTop: Record<LinkButtonTileAspectRatio, string> = {

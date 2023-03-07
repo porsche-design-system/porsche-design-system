@@ -8,21 +8,21 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
-import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
+import type { BreakpointCustomizable, LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import type { LinkTileAlign } from './link-tile-utils';
 import { LINK_TILE_ALIGNS, throwIfAlignTopAndNotCompact } from './link-tile-utils';
 import type {
+  LinkButtonTileAspectRatio,
   LinkButtonTileSize,
   LinkButtonTileWeight,
-  LinkButtonTileAspectRatio,
 } from '../../styles/link-button-tile-styles';
 import {
+  getSlottedCss,
+  LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_SIZES,
   LINK_BUTTON_TILE_WEIGHTS,
-  LINK_BUTTON_TILE_ASPECT_RATIOS,
-  getSlottedCss,
 } from '../../styles/link-button-tile-styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {

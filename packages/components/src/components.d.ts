@@ -2505,7 +2505,7 @@ declare namespace LocalJSX {
         /**
           * Description text.
          */
-        "description"?: string;
+        "description": string;
         /**
           * Defines the direction of the main and cross axis of the links.
          */
@@ -2517,11 +2517,11 @@ declare namespace LocalJSX {
         /**
           * Contains the label, href and anchor props for the primary link
          */
-        "primaryLinkProps"?: LinkTileModelLinkProps;
+        "primaryLinkProps": LinkTileModelLinkProps;
         /**
           * Contains the label, href and anchor props for the secondary link
          */
-        "secondaryLinkProps"?: LinkTileModelLinkProps;
+        "secondaryLinkProps": LinkTileModelLinkProps;
         /**
           * Description text.
          */
