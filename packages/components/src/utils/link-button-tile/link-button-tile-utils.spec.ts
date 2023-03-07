@@ -1,4 +1,4 @@
-import { LinkButtonTileAlign, throwIfAlignTopAndNotCompact } from './link-button-tile-align';
+import { LinkButtonTileAlign, throwIfAlignTopAndNotCompact } from './link-button-tile-utils';
 import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 
 describe('throwIfAlignTopAndNotCompact()', () => {

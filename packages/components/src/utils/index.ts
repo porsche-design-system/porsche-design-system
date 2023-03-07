@@ -14,10 +14,7 @@ export * from './inject-global-style'; // to trick bundling and avoid separate j
 export * from './jss';
 export { parseJSONAttribute } from './json';
 export * from './link-button/getLinkButtonThemeForIcon';
-export * from './link-button-tile/link-button-tile-size';
-export * from './link-button-tile/link-button-tile-weight';
-export * from './link-button-tile/link-button-tile-aspect-ratio';
-export * from './link-button-tile/link-button-tile-align';
+export * from './link-button-tile/link-button-tile-utils';
 export * from './log';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './pds-fetch';
