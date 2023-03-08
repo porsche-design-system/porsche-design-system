@@ -106,8 +106,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 67997,
-    "gzipSize": 23067
+    "size": 68000,
+    "gzipSize": 23089
   },
   {
     "chunkShortName": "marque",
@@ -141,8 +141,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 7177,
-    "gzipSize": 2818
+    "size": 7186,
+    "gzipSize": 2822
   },
   {
     "chunkShortName": "segmented-control",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "table",
-    "size": 8250,
-    "gzipSize": 2980
+    "size": 8506,
+    "gzipSize": 3090
   },
   {
     "chunkShortName": "tabs",
