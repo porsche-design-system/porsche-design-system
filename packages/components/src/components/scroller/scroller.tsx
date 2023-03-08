@@ -36,7 +36,10 @@ const propTypes: PropTypes<typeof Scroller> = {
     scrollPosition: AllowedTypes.number,
     isSmooth: AllowedTypes.boolean,
   }),
-  scrollIndicatorPosition: AllowedTypes.oneOf<ScrollerScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
+  scrollIndicatorPosition: AllowedTypes.oneOf<ScrollerScrollIndicatorPosition>([
+    undefined,
+    ...SCROLL_INDICATOR_POSITIONS,
+  ]),
   alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLL_INDICATOR_POSITIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -138,6 +141,7 @@ export class Scroller {
 
     const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
+      // TODO: why not use p-button?
       return (
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <button
