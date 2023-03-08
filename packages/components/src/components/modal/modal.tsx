@@ -67,6 +67,10 @@ export class Modal {
   private hasHeader: boolean;
   private dialog: HTMLElement;
 
+  private get hasDismissButton(): boolean {
+    return this.disableCloseButton ? false : this.dismissButton;
+  }
+
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     this.updateScrollLock(isOpen);
@@ -153,10 +157,6 @@ export class Modal {
         </div>
       </Host>
     );
-  }
-
-  private get hasDismissButton(): boolean {
-    return this.disableCloseButton ? false : this.dismissButton;
   }
 
   private updateScrollLock(isOpen: boolean): void {
