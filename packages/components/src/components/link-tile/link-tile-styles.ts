@@ -1,18 +1,13 @@
 import type { BreakpointCustomizable } from '../../types';
-import type {
-  LinkButtonTileAspectRatio,
-  LinkButtonTileAlign,
-  LinkButtonTileWeight,
-  LinkButtonTileSize,
-} from '../../utils';
+import type { LinkTileAspectRatio, LinkButtonTileAlign, LinkTileWeight, LinkTileSize } from '../../utils';
 import { getCss } from '../../utils';
 import { getLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 import { getInsetJssStyle } from '../../styles';
 
 export const getComponentCss = (
-  aspectRatio: BreakpointCustomizable<LinkButtonTileAspectRatio>,
-  size: BreakpointCustomizable<LinkButtonTileSize>,
-  weight: BreakpointCustomizable<LinkButtonTileWeight>,
+  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
+  size: BreakpointCustomizable<LinkTileSize>,
+  weight: BreakpointCustomizable<LinkTileWeight>,
   align: LinkButtonTileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean

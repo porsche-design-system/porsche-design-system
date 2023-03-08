@@ -6,12 +6,7 @@ import type {
   ButtonType,
   LinkButtonIconName,
 } from '../../types';
-import type {
-  LinkButtonTileSize,
-  LinkButtonTileWeight,
-  LinkButtonTileAspectRatio,
-  LinkButtonTileAlign,
-} from '../../utils';
+import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign } from '../../utils';
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -25,20 +20,18 @@ import {
   LINK_BUTTON_TILE_WEIGHTS,
   LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_ALIGNS,
-  throwIfAlignTopAndNotCompact,
-  isDisabledOrLoading,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
+import { ButtonTileProps } from './button-tile-utils';
 import { getButtonAriaAttributes } from '../button/button-utils';
-import { ButtonProps } from './button-tile-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
-  size: AllowedTypes.breakpoint<LinkButtonTileSize>(LINK_BUTTON_TILE_SIZES),
-  weight: AllowedTypes.breakpoint<LinkButtonTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkButtonTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
+  size: AllowedTypes.breakpoint<ButtonTileSize>(LINK_BUTTON_TILE_SIZES),
+  weight: AllowedTypes.breakpoint<ButtonTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
+  aspectRatio: AllowedTypes.breakpoint<ButtonTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<LinkButtonTileAlign>(LINK_BUTTON_TILE_ALIGNS),
+  align: AllowedTypes.oneOf<ButtonTileAlign>(LINK_BUTTON_TILE_ALIGNS),
   gradient: AllowedTypes.boolean,
   compact: AllowedTypes.breakpoint('boolean'),
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -57,13 +50,13 @@ export class ButtonTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
-  @Prop() public size?: BreakpointCustomizable<LinkButtonTileSize> = 'default';
+  @Prop() public size?: BreakpointCustomizable<ButtonTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkButtonTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semibold';
 
   /** Aspect ratio of the button-tile. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkButtonTileAspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4:3';
 
   /** Label of the button. */
   @Prop() public label: string;
@@ -72,7 +65,7 @@ export class ButtonTile {
   @Prop() public description: string;
 
   /** Alignment of button and description. */
-  @Prop() public align?: LinkButtonTileAlign = 'bottom';
+  @Prop() public align?: ButtonTileAlign = 'bottom';
 
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;
@@ -127,7 +120,7 @@ export class ButtonTile {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const buttonProps: ButtonProps = {
+    const buttonProps: ButtonTileProps = {
       theme: 'dark',
       variant: 'secondary',
       icon: this.icon,

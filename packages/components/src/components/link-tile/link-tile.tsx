@@ -1,11 +1,6 @@
 import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
-import type {
-  LinkButtonTileSize,
-  LinkButtonTileWeight,
-  LinkButtonTileAspectRatio,
-  LinkButtonTileAlign,
-} from '../../utils';
+import type { LinkTileSize, LinkTileWeight, LinkTileAspectRatio, LinkTileAlign } from '../../utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -23,12 +18,12 @@ import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { getComponentCss } from './link-tile-styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.breakpoint<LinkButtonTileSize>(LINK_BUTTON_TILE_SIZES),
-  weight: AllowedTypes.breakpoint<LinkButtonTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkButtonTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
+  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_BUTTON_TILE_SIZES),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
+  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<LinkButtonTileAlign>(LINK_BUTTON_TILE_ALIGNS),
+  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_BUTTON_TILE_ALIGNS),
   gradient: AllowedTypes.boolean,
   compact: AllowedTypes.breakpoint('boolean'),
   href: AllowedTypes.string,
@@ -46,13 +41,13 @@ export class LinkTile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
-  @Prop() public size?: BreakpointCustomizable<LinkButtonTileSize> = 'default';
+  @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkButtonTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
 
   /** Aspect ratio of the link-tile. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkButtonTileAspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
 
   /** Label of the <a />. */
   @Prop() public label: string;
@@ -61,7 +56,7 @@ export class LinkTile {
   @Prop() public description: string;
 
   /** Alignment of link and description. */
-  @Prop() public align?: LinkButtonTileAlign = 'bottom';
+  @Prop() public align?: LinkTileAlign = 'bottom';
 
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;

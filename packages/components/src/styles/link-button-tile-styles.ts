@@ -1,10 +1,14 @@
 import type { Styles, JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../types';
 import type {
-  LinkButtonTileAspectRatio,
-  LinkButtonTileAlign,
-  LinkButtonTileWeight,
-  LinkButtonTileSize,
+  LinkTileAspectRatio,
+  LinkTileAlign,
+  LinkTileWeight,
+  LinkTileSize,
+  ButtonTileAspectRatio,
+  ButtonTileAlign,
+  ButtonTileWeight,
+  ButtonTileSize,
 } from '../utils';
 import {
   pxToRemWithUnit,
@@ -29,7 +33,7 @@ import {
   gradientToTopStyle,
 } from '@porsche-design-system/utilities-v2';
 
-const aspectRatioPaddingTop: Record<LinkButtonTileAspectRatio, string> = {
+const aspectRatioPaddingTop: Record<LinkTileAspectRatio | ButtonTileAspectRatio, string> = {
   '1:1': '100%',
   '4:3': '75%',
   '3:4': '133.33%',
@@ -52,13 +56,14 @@ const sizeMap: {
 };
 
 export const getLinkButtonTileStyles = (
-  aspectRatio: BreakpointCustomizable<LinkButtonTileAspectRatio>,
-  size: BreakpointCustomizable<LinkButtonTileSize>,
-  weight: BreakpointCustomizable<LinkButtonTileWeight>,
-  align: LinkButtonTileAlign,
+  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio | ButtonTileAspectRatio>,
+  size: BreakpointCustomizable<LinkTileSize | ButtonTileSize>,
+  weight: BreakpointCustomizable<LinkTileWeight | ButtonTileWeight>,
+  align: LinkTileAlign | ButtonTileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
-  isDisabled?: boolean
+  isDisabled?: boolean,
+  isDIsabledOrLoading?: boolean
 ): Styles => {
   const isTopAligned = align === 'top';
   return {
@@ -88,8 +93,8 @@ export const getLinkButtonTileStyles = (
         margin: 0,
         ...textLargeStyle,
         ...mergeDeep(
-          buildResponsiveStyles(size, (s: LinkButtonTileSize) => sizeMap[s]),
-          buildResponsiveStyles(weight, (w: LinkButtonTileWeight) => ({ fontWeight: getFontWeight(w) }))
+          buildResponsiveStyles(size, (s: LinkTileSize | ButtonTileSize) => sizeMap[s]),
+          buildResponsiveStyles(weight, (w: LinkTileWeight | ButtonTileWeight) => ({ fontWeight: getFontWeight(w) }))
         ),
       },
     },
@@ -105,7 +110,7 @@ export const getLinkButtonTileStyles = (
             }),
           },
         })),
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkButtonTileAspectRatio) => ({
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileAspectRatio | ButtonTileAspectRatio) => ({
         paddingTop: aspectRatioPaddingTop[ratio],
       })),
     },
