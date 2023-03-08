@@ -24,6 +24,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const page = vrt.getPage();
 
       const head = `<style>
+        body { display: grid; grid-template-columns: repeat(2, 50%); }
         p-segmented-control:not(:last-child) { margin-bottom: 0.5rem; }
       </style>`;
 

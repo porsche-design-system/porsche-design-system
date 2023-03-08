@@ -10,6 +10,7 @@ it('should have no visual regression for :hover', async () => {
       const page = vrt.getPage();
 
       const head = `<style>
+  body { display: grid; grid-template-columns: repeat(2, 50%); }
   p-select-wrapper-dropdown { --p-internal-dropdown-position: 'static'; }
   p-select-wrapper-dropdown:not(:last-child) { margin-bottom: 1rem; }
 </style>`;

@@ -1,18 +1,18 @@
 import { JssStyle } from 'jss';
+import type { BreakpointCustomizable } from '../../types';
+import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import {
   pxToRemWithUnit,
-  getTransition,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  getInsetJssStyle,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  getInsetJssStyle,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
-import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   textLargeStyle,
   fontSizeTextMedium,
@@ -154,16 +154,4 @@ export const getComponentCss = (
       outline: 0,
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& picture > img': {
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-      },
-    })
-  );
 };

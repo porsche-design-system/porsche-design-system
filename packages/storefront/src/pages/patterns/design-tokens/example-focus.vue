@@ -69,7 +69,7 @@
     }
 
     &--dark {
-      @include pds-focus('medium', 'small', 'dark');
+      @include pds-focus('medium');
     }
   }
 
@@ -83,7 +83,7 @@
     }
 
     &--dark {
-      @include pds-focus('small', 'small', 'dark');
+      @include pds-focus;
       color: $pds-theme-dark-primary;
     }
   }

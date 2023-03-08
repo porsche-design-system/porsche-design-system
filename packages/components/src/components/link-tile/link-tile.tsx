@@ -2,20 +2,19 @@ import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   parseJSON,
   validateProps,
 } from '../../utils';
-import { getComponentCss, getSlottedCss } from './link-tile-styles';
-import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
+import { getComponentCss } from './link-tile-styles';
+import type { BreakpointCustomizable, LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
+import type { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from './link-tile-utils';
 import {
-  LINK_TILE_SIZES,
-  LINK_TILE_ASPECT_RATIOS,
   LINK_TILE_ALIGNS,
+  LINK_TILE_ASPECT_RATIOS,
+  LINK_TILE_SIZES,
   LINK_TILE_WEIGHTS,
   throwIfAlignTopAndNotCompact,
 } from './link-tile-utils';
@@ -81,10 +80,6 @@ export class LinkTile {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);

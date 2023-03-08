@@ -24,6 +24,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('stepper-horizontal-states', async () => {
       const page = vrt.getPage();
 
+      const head = `<style>
+        body { display: grid; grid-template-columns: repeat(2, 50%); }
+      </style>`;
+
       const stepperHorizontalItems = `
         <p-stepper-horizontal-item state="warning">Warning</p-stepper-horizontal-item>
         <p-stepper-horizontal-item state="complete">Complete</p-stepper-horizontal-item>
@@ -41,7 +45,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           ${stepperHorizontalItems}
         </p-stepper-horizontal>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover p-stepper-horizontal p-stepper-horizontal-item >>> button');
       await forceFocusState(page, '.focus p-stepper-horizontal p-stepper-horizontal-item >>> button');

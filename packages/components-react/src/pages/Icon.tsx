@@ -13,6 +13,7 @@ export const IconPage = (): JSX.Element => {
     }
     p-text {
       display: inline-block !important;
+      vertical-align: top;
     }
   `;
 

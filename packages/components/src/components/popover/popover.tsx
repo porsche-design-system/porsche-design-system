@@ -1,4 +1,5 @@
-import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
+import type { PopoverDirection } from './popover-utils';
 import {
   addDocumentEventListener,
   POPOVER_DIRECTIONS,
@@ -14,7 +15,6 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
-import type { PopoverDirection } from './popover-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Popover> = {

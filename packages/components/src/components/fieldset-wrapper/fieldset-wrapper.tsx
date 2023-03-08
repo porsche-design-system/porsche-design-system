@@ -1,13 +1,20 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, hasLabel, hasMessage, THEMES, validateProps } from '../../utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  FORM_STATES,
+  hasLabel,
+  hasMessage,
+  THEMES,
+  validateProps,
+} from '../../utils';
 import type { PropTypes, Theme } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
+import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { FORM_STATES } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
 
 const propTypes: PropTypes<typeof FieldsetWrapper> = {
   label: AllowedTypes.string,

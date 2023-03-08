@@ -42,7 +42,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -54,7 +54,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -175,7 +175,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -187,7 +187,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -308,7 +308,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -320,7 +320,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -441,7 +441,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -453,7 +453,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -574,7 +574,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -586,7 +586,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -707,7 +707,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -719,7 +719,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -840,7 +840,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -852,7 +852,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -973,7 +973,7 @@ button::before {
   border-radius: 50%;
 }
 button:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -985,7 +985,7 @@ button:focus:not(:focus-visible)::before {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
