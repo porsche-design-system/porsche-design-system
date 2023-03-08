@@ -20,4 +20,10 @@ describe('parseJSONAttribute()', () => {
       href: 'https://www.porsche.com',
     });
   });
+
+  it('should return parsed object if value is a number', () => {
+    expect(parseJSONAttribute('{ scrollToPosition: 4 }')).toEqual({
+      scrollToPosition: 4,
+    });
+  });
 });
