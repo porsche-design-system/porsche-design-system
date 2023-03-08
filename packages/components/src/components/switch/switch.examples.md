@@ -143,7 +143,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
     /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
+    themeTabs.forEach(tab => tab.addEventListener('change', () => {
       this.registerEvents();
     }));
   }
