@@ -95,6 +95,7 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   }
 };
 
+// TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
 export const doNothing = (): void => {
   addImportantToEachRule({});
 };

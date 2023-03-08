@@ -57,15 +57,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoverState(page, '.hover p-accordion >>> button');
       await forceHoverState(page, '.hover p-accordion > p-link-pure >>> a');
-      await forceHoverState(page, '.hover p-accordion > span a');
+      await forceHoverState(page, '.hover p-accordion a');
 
       await forceFocusState(page, '.focus p-accordion >>> button');
       await forceFocusState(page, '.focus p-accordion > p-link-pure >>> a');
-      await forceFocusState(page, '.focus p-accordion > span a');
+      await forceFocusState(page, '.focus p-accordion a');
 
       await forceFocusHoverState(page, '.focus-hover p-accordion >>> button');
       await forceFocusHoverState(page, '.focus-hover p-accordion > p-link-pure >>> a');
-      await forceFocusHoverState(page, '.focus-hover p-accordion > span a');
+      await forceFocusHoverState(page, '.focus-hover p-accordion a');
     })
   ).toBeFalsy();
 });

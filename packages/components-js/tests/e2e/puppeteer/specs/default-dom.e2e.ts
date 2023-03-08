@@ -10,10 +10,6 @@ import {
 import type { Page } from 'puppeteer';
 import { getComponentMeta, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
-const tagNamesWithSlotAndTheme = TAG_NAMES.filter(
-  (tagName) => getComponentMeta(tagName).hasSlot && getComponentMeta(tagName).isThemeable
-);
-
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
