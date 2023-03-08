@@ -615,10 +615,7 @@ describe('slotted heading', () => {
     await setProperty(host, 'heading', 'Some Heading');
     await waitForStencilLifecycle(page);
 
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
-      '"<h2>Some Heading</h2>"',
-      `"<slot name="heading"></slot>"`
-    );
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<h2>Some Heading</h2>"');
   });
 });
 
