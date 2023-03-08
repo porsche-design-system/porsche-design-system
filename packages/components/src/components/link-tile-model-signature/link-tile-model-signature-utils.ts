@@ -1,5 +1,4 @@
-import type { LinkTarget } from '../../utils/link-button/link-target';
-import type { SelectedAriaAttributes } from '../../types';
+import type { SelectedAriaAttributes, LinkTarget } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 
 export type LinkTileModelLinkProps =

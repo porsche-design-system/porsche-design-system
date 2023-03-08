@@ -750,7 +750,7 @@ export namespace Components {
          */
         "secondaryLinkProps": LinkTileModelLinkProps;
         /**
-          * Description text.
+          * Sub description text.
          */
         "subDescription"?: string;
         /**
@@ -2522,7 +2522,7 @@ declare namespace LocalJSX {
          */
         "secondaryLinkProps": LinkTileModelLinkProps;
         /**
-          * Description text.
+          * Sub description text.
          */
         "subDescription"?: string;
         /**

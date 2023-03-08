@@ -13,7 +13,7 @@ import {
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
-  parseJSON,
+  parseJSONAttribute,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
@@ -70,7 +70,7 @@ export class LinkTileModelSignature {
   /** Description text. */
   @Prop() public description!: string;
 
-  /** Description text. */
+  /** Sub description text. */
   @Prop() public subDescription?: string;
 
   /** Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'. */
@@ -93,8 +93,8 @@ export class LinkTileModelSignature {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const { label: primaryLabel, ...restPrimaryLinkProps } = parseJSON(this.primaryLinkProps as any) as any;
-    const { label: secondaryLabel, ...restSecondaryLinkProps } = parseJSON(this.secondaryLinkProps as any) as any;
+    const { label: primaryLabel, ...restPrimaryLinkProps } = parseJSONAttribute(this.primaryLinkProps);
+    const { label: secondaryLabel, ...restSecondaryLinkProps } = parseJSONAttribute(this.secondaryLinkProps);
 
     const sharedLinkProps = {
       class: 'link',
