@@ -53,10 +53,10 @@ export class LinkTileModelSignature {
   @Element() public host!: HTMLElement;
 
   /** Contains the label, href and anchor props for the primary link */
-  @Prop() public primaryLinkProps!: LinkTileModelLinkProps;
+  @Prop() public primaryLinkProps: LinkTileModelLinkProps;
 
   /** Contains the label, href and anchor props for the secondary link */
-  @Prop() public secondaryLinkProps!: LinkTileModelLinkProps;
+  @Prop() public secondaryLinkProps: LinkTileModelLinkProps;
 
   /** Adapts the model of the component. */
   @Prop() public model?: ModelSignatureModel = '911';
@@ -68,7 +68,7 @@ export class LinkTileModelSignature {
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
 
   /** Description text. */
-  @Prop() public description!: string;
+  @Prop() public description: string;
 
   /** Sub description text. */
   @Prop() public subDescription?: string;
