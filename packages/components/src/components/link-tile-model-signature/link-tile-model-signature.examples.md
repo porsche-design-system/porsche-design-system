@@ -27,9 +27,28 @@ used. So, always **check readability** and play around with the `weight` propert
 
 ---
 
+## Aspect Ratio
+
+The component takes its height from the width provided and places the image via CSS `object-fit: cover`. Therefore, you
+can change the height by using different aspect ratios.
+
+<Playground :markup="aspectRatioMarkup">
+  <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
+</Playground>
+
+---
+
+## Model
+
+<Playground :markup="modelMarkup">
+  <SelectOptions v-model="model" :values="models" name="model"></SelectOptions>
+</Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { LINK_TILE_ASPECT_RATIOS } from '../link-tile/link-tile-utils'; 
+import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -38,7 +57,6 @@ export default class Code extends Vue {
 
   basic = `<p-link-tile-model-signature
   description="Some description"
-  sub-description="Some sub description"
   primary-link-props="{ 'label': 'Primary label', 'href': 'https://www.porsche.com' }"
   secondary-link-props="{ 'label': 'Secondary label', 'href': 'https://www.porsche.com' }"
 >
@@ -55,6 +73,28 @@ export default class Code extends Vue {
     <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
   </picture>
 </p-link-tile-model-signature>`;
+
+  aspectRatio = '4:3';
+  aspectRatios = [...LINK_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  get aspectRatioMarkup() {
+    return`<p-link-tile-model-signature 
+description="Some Description" 
+primary-link-props="{ 'label': 'Primary label', 'href': 'https://www.porsche.com' }" 
+secondary-link-props="{ 'label': 'Secondary label', 'href': 'https://www.porsche.com' }" 
+aspect-ratio="${this.aspectRatio}">
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+</p-link-tile>`}
+
+  model = '911';
+  models = [...MODEL_SIGNATURE_MODELS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  get modelMarkup() {
+    return`<p-link-tile-model-signature 
+description="Some Description" 
+primary-link-props="{ 'label': 'Primary label', 'href': 'https://www.porsche.com' }" 
+secondary-link-props="{ 'label': 'Secondary label', 'href': 'https://www.porsche.com' }" 
+model="${this.model}">
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+</p-link-tile>`}
 }
 </script>
 

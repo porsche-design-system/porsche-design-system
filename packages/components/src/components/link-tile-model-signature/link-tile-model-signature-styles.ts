@@ -46,6 +46,7 @@ export const getComponentCss = (
       ...gradientToBottomStyle,
     },
     description: {
+      ...(!hasSubDescription && { color: getThemedTypographyColor('dark', 'primary') }),
       margin: 0,
       ...textLargeStyle,
       ...buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) })),
