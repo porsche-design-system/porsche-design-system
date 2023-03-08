@@ -9,15 +9,17 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss, getSlottedCss } from './link-tile-styles';
-import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
+import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import type {
+  LinkTileAriaAttribute,
   LinkTileAspectRatio,
   LinkTileAlign,
   LinkTileWeight,
   LinkTileSize,
   LinkTileWeightDeprecated,
+  LinkTileTarget,
 } from './link-tile-utils';
 import {
   LINK_TILE_SIZES,
@@ -78,7 +80,7 @@ export class LinkTile {
   @Prop() public href: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: LinkTileTarget = '_self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
   @Prop() public download?: string;
@@ -87,7 +89,7 @@ export class LinkTile {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);

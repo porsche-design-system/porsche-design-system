@@ -1,7 +1,9 @@
-import type { Theme } from '../../types';
+import type { IconName, Theme } from '../../types';
 import type { ThemedColors } from '../../styles'; // deep import needed since barrel contains MutationObserver and causes VRT to fail because of TAG_COLORS import
 import { TAG_DISMISSIBLE_COLORS, TagDismissibleColorDeprecated } from '../tag-dismissible/tag-dismissible-utils';
 import { isThemeDark } from '../../utils';
+
+export type TagIcon = IconName;
 
 export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
   return color === 'neutral-contrast-high' || color === 'primary' ? (isThemeDark(theme) ? 'light' : 'dark') : theme;

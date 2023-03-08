@@ -90,7 +90,7 @@ background and gradient has to align to your chosen background.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
-import { TAB_SIZES, TAB_WEIGHTS } from './tabs-bar-utils';
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from './tabs-bar-utils';
 import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
@@ -126,7 +126,7 @@ ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
     ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
   size = 'medium';
-  sizes = [...TAB_SIZES, "{ base: 'small', l: 'medium' }"];
+  sizes = [...TABS_BAR_SIZES, "{ base: 'small', l: 'medium' }"];
   get sizeMarkup() {
     return `<p-tabs-bar size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
@@ -134,7 +134,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
   }
 
   weight = 'semibold';
-  weights = TAB_WEIGHTS;
+  weights = TABS_BAR_WEIGHTS;
   get weightMarkup() {
     return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}

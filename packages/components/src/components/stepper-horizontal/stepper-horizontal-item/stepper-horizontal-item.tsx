@@ -1,5 +1,8 @@
 import { Component, Element, h, Host, JSX, Listen, Prop, Watch } from '@stencil/core';
-import type { StepperHorizontalItemInternalHTMLProps, StepperState } from './stepper-horizontal-item-utils';
+import type {
+  StepperHorizontalItemInternalHTMLProps,
+  StepperHorizontalItemState,
+} from './stepper-horizontal-item-utils';
 import {
   getStepperHorizontalIconName,
   isItemClickable,
@@ -19,7 +22,7 @@ import {
 import { getComponentCss } from './stepper-horizontal-item-styles';
 
 const propTypes: PropTypes<typeof StepperHorizontalItem> = {
-  state: AllowedTypes.oneOf<StepperState>([undefined, ...STEPPER_ITEM_STATES]),
+  state: AllowedTypes.oneOf<StepperHorizontalItemState>([undefined, ...STEPPER_ITEM_STATES]),
   disabled: AllowedTypes.boolean,
 };
 
@@ -31,7 +34,7 @@ export class StepperHorizontalItem {
   @Element() public host!: HTMLElement & StepperHorizontalItemInternalHTMLProps;
 
   /** The validation state. */
-  @Prop() public state?: StepperState;
+  @Prop() public state?: StepperHorizontalItemState;
 
   /** Disables the stepper-horizontal-item. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;

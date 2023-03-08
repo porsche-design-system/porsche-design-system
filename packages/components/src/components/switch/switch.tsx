@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Listen, Prop } from '@stencil/core';
-import type { AlignLabel, BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
@@ -12,11 +12,12 @@ import {
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
+import type { SwitchAlignLabel } from './switch-utils';
 
 export type SwitchChangeEvent = { checked: boolean };
 
 const propTypes: PropTypes<typeof Switch> = {
-  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   stretch: AllowedTypes.breakpoint('boolean'),
   checked: AllowedTypes.boolean,
@@ -33,7 +34,7 @@ export class Switch {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<AlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'right';
 
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;

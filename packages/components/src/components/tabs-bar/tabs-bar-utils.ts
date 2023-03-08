@@ -1,25 +1,21 @@
-import type {
-  ScrollerDirection,
-  ScrollerGradientColor,
-  ScrollerGradientColorDeprecated,
-} from '../scroller/scroller-utils';
+import type { ScrollerDirection, ScrollerGradientColor, ScrollerGradientColorScheme } from '../scroller/scroller-utils';
 import { setAttribute } from '../../utils';
 
-export const TAB_SIZES = ['small', 'medium'] as const;
-export type TabSize = typeof TAB_SIZES[number];
+export const TABS_BAR_SIZES = ['small', 'medium'] as const;
+export type TabsBarSize = typeof TABS_BAR_SIZES[number];
 
 /** @deprecated */
-export const TAB_WEIGHTS_DEPRECATED = ['semibold'] as const;
+export const TABS_BAR_WEIGHTS_DEPRECATED = ['semibold'] as const;
 /** @deprecated */
-export type TabWeightDeprecated = typeof TAB_WEIGHTS_DEPRECATED[number];
-export const TAB_WEIGHTS = ['regular', 'semi-bold', ...TAB_WEIGHTS_DEPRECATED] as const;
-export type TabWeight = typeof TAB_WEIGHTS[number];
+export type TabsBarWeightDeprecated = typeof TABS_BAR_WEIGHTS_DEPRECATED[number];
+export const TABS_BAR_WEIGHTS = ['regular', 'semi-bold', ...TABS_BAR_WEIGHTS_DEPRECATED] as const;
+export type TabsBarWeight = typeof TABS_BAR_WEIGHTS[number];
 
 export type TabsBarChangeEvent = { activeTabIndex: number };
 
 /** @deprecated */
-export type TabGradientColorDeprecated = ScrollerGradientColorDeprecated;
-export type TabGradientColor = ScrollerGradientColor;
+export type TabsBarGradientColorScheme = ScrollerGradientColorScheme;
+export type TabsBarGradientColor = ScrollerGradientColor;
 
 const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 

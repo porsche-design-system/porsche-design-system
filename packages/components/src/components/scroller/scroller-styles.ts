@@ -8,7 +8,7 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import type { Theme } from '../../types';
-import type { ScrollerGradientColor, ScrollIndicatorPosition } from './scroller-utils';
+import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -44,11 +44,10 @@ export const getComponentCss = (
   gradientColor: ScrollerGradientColor,
   isNextHidden: boolean,
   isPrevHidden: boolean,
-  scrollIndicatorPosition: ScrollIndicatorPosition,
+  scrollIndicatorPosition: ScrollerScrollIndicatorPosition,
   theme: Theme
 ): string => {
   const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
-
   const isDarkTheme = isThemeDark(theme);
 
   const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {

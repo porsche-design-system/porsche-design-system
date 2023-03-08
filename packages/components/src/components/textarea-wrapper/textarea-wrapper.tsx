@@ -18,15 +18,15 @@ import {
   THEMES,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
+import type { TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import type { FormState } from '../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<TextareaWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
@@ -48,7 +48,7 @@ export class TextareaWrapper {
   @Prop() public description?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: TextareaWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';

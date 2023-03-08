@@ -3,17 +3,17 @@ import { getHTMLElements, getScrollByX } from '../../utils';
 export type ScrollerDirection = 'prev' | 'next';
 
 /** @deprecated */
-export const GRADIENT_COLORS_DEPRECATED = ['default', 'surface'] as const;
+export const GRADIENT_COLOR_SCHEMES = ['default', 'surface'] as const;
 /** @deprecated */
-export type ScrollerGradientColorDeprecated = typeof GRADIENT_COLORS_DEPRECATED[number];
+export type ScrollerGradientColorScheme = typeof GRADIENT_COLOR_SCHEMES[number];
 
 export const GRADIENT_COLORS = ['background-base', 'background-surface'] as const;
 export type ScrollerGradientColor = typeof GRADIENT_COLORS[number];
 
-export type ScrollToPosition = { scrollPosition: number; isSmooth?: boolean } | string; // string to support attribute, gets removed via InputParser
+export type ScrollerScrollToPosition = { scrollPosition: number; isSmooth?: boolean } | string; // string to support attribute, gets removed via InputParser
 
 export const SCROLL_INDICATOR_POSITIONS = ['top', 'center'] as const;
-export type ScrollIndicatorPosition = typeof SCROLL_INDICATOR_POSITIONS[number];
+export type ScrollerScrollIndicatorPosition = typeof SCROLL_INDICATOR_POSITIONS[number];
 
 export const getScrollPositionAfterPrevNextClick = (
   scrollAreaElement: HTMLElement,

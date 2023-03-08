@@ -10,7 +10,7 @@
  */
 
 export const PAGINATION_NUMBER_OF_PAGE_LINKS = [5, 7] as const;
-export type NumberOfPageLinks = typeof PAGINATION_NUMBER_OF_PAGE_LINKS[number];
+export type PaginationMaxNumberOfPageLinks = typeof PAGINATION_NUMBER_OF_PAGE_LINKS[number];
 export type PaginationChangeEvent = { page: number; previousPage: number };
 
 // TODO: first and last wording similar to carousel?
@@ -220,8 +220,8 @@ export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): nu
   return Math.ceil(totalItemsCount / itemsPerPage);
 };
 
-export const getCounterResetValue = (element: Element): NumberOfPageLinks => {
+export const getCounterResetValue = (element: Element): PaginationMaxNumberOfPageLinks => {
   const computedStyles = getComputedStyle(element);
   const [, value] = computedStyles.getPropertyValue('counter-reset').split(' ');
-  return parseInt(value, 10) as NumberOfPageLinks;
+  return parseInt(value, 10) as PaginationMaxNumberOfPageLinks;
 };

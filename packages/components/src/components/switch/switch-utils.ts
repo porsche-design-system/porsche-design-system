@@ -1,5 +1,7 @@
-import type { AriaAttributes } from '../../types';
+import type { AlignLabel, AriaAttributes } from '../../types';
 import { getButtonBaseAriaAttributes } from '../../utils';
+
+export type SwitchAlignLabel = AlignLabel;
 
 export const getSwitchButtonAriaAttributes = (
   isDisabled: boolean,

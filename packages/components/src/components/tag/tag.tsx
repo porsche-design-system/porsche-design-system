@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { TagColor, TagColorDeprecated } from './tag-utils';
+import type { TagColor, TagColorDeprecated, TagIcon } from './tag-utils';
 import { getThemeForIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
@@ -11,7 +11,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
-import type { IconName, PropTypes, Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Tag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -34,7 +34,7 @@ export class Tag {
   @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
+  @Prop() public icon?: TagIcon; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;

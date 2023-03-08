@@ -20,11 +20,14 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, IconName, PropTypes, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
-import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import type {
+  TextFieldWrapperActionIcon,
+  TextFieldWrapperState,
+  TextFieldWrapperUnitPosition,
+} from './text-field-wrapper-utils';
 import {
   addInputEventListenerForSearch,
   dispatchInputEvent,
@@ -44,12 +47,12 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   unit: AllowedTypes.string,
   unitPosition: AllowedTypes.oneOf<TextFieldWrapperUnitPosition>(UNIT_POSITIONS),
   description: AllowedTypes.string,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<TextFieldWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
   showCounter: AllowedTypes.boolean,
-  actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>([undefined, 'locate']),
+  actionIcon: AllowedTypes.oneOf<TextFieldWrapperActionIcon>([undefined, 'locate']),
   actionLoading: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -74,7 +77,7 @@ export class TextFieldWrapper {
   @Prop() public description?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: TextFieldWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -91,7 +94,7 @@ export class TextFieldWrapper {
   @Prop() public showCounter?: boolean = true;
 
   /** Action icon can be set to `locate` for `input type="search"` in order to display an action button. */
-  @Prop() public actionIcon?: Extract<IconName, 'locate'>;
+  @Prop() public actionIcon?: TextFieldWrapperActionIcon;
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;

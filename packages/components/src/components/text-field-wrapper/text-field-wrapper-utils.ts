@@ -2,9 +2,13 @@ import { getClosestHTMLElement, hasCounter } from '../../utils';
 import type { IconName } from '../../types';
 import { borderWidthBase } from '@porsche-design-system/utilities-v2';
 import { cssVariableInputPaddingLeft, cssVariableInputPaddingRight } from './text-field-wrapper-styles';
+import type { FormState } from '../../utils/form/form-state';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
+
+export type TextFieldWrapperActionIcon = Extract<IconName, 'locate'>;
+export type TextFieldWrapperState = FormState;
 
 export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => isType(el.type, 'text') && hasCounter(el);
 export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: string): boolean => {

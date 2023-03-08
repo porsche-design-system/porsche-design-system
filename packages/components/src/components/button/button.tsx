@@ -3,7 +3,6 @@ import type {
   ButtonAriaAttribute,
   ButtonType,
   ButtonVariant,
-  LinkButtonIconName,
   PropTypes,
   SelectedAriaAttributes,
   Theme,
@@ -23,7 +22,7 @@ import {
   getLinkButtonThemeForIcon,
 } from '../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes } from './button-utils';
+import { ButtonIcon, getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
 
 const propTypes: PropTypes<typeof Button> = {
@@ -58,7 +57,7 @@ export class Button {
   @Prop() public variant?: ButtonVariant = 'primary';
 
   /** The icon shown. By choosing 'none', no icon is displayed. */
-  @Prop() public icon?: LinkButtonIconName = 'none';
+  @Prop() public icon?: ButtonIcon = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;

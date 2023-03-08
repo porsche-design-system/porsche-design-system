@@ -8,13 +8,13 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { DividerColor, DividerColorDeprecated, DividerDirection } from './divider-utils';
+import type { DividerColor, DividerColorDeprecated, DividerDirection, DividerOrientation } from './divider-utils';
 import { DIVIDER_COLORS, DIVIDER_DIRECTIONS } from './divider-utils';
 import { getComponentCss } from './divider-styles';
 
 const propTypes: PropTypes<typeof Divider> = {
   color: AllowedTypes.oneOf<DividerColor>(DIVIDER_COLORS),
-  orientation: AllowedTypes.breakpoint<DividerDirection>([...DIVIDER_DIRECTIONS, undefined]),
+  orientation: AllowedTypes.breakpoint<DividerOrientation>([undefined, ...DIVIDER_DIRECTIONS]),
   direction: AllowedTypes.breakpoint<DividerDirection>(DIVIDER_DIRECTIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -32,7 +32,7 @@ export class Divider {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead.
    * Defines orientation. */
-  @Prop() public orientation?: BreakpointCustomizable<DividerDirection>;
+  @Prop() public orientation?: BreakpointCustomizable<DividerOrientation>;
 
   /** Defines direction. */
   @Prop() public direction?: BreakpointCustomizable<DividerDirection> = 'horizontal';

@@ -14,36 +14,33 @@ import {
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
-import type {
-  AlignLabel,
-  BreakpointCustomizable,
-  ButtonAriaAttribute,
-  ButtonType,
-  LinkButtonIconName,
-  PropTypes,
-  SelectedAriaAttributes,
-  TextSize,
-  TextWeight,
-  Theme,
-} from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import type {
+  ButtonPureAlignLabel,
+  ButtonPureAriaAttribute,
+  ButtonPureIcon,
+  ButtonPureSize,
+  ButtonPureType,
+  ButtonPureWeight,
+} from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
-  type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
+  type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
-  size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
+  size: AllowedTypes.breakpoint<ButtonPureSize>(TEXT_SIZES),
+  weight: AllowedTypes.oneOf<ButtonPureWeight>(TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<ButtonPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<ButtonPureAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -54,7 +51,7 @@ export class ButtonPure {
   @Element() public host!: HTMLElement;
 
   /** Specifies the type of the button. */
-  @Prop() public type?: ButtonType = 'submit';
+  @Prop() public type?: ButtonPureType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -63,16 +60,16 @@ export class ButtonPure {
   @Prop() public loading?: boolean = false;
 
   /** Size of the button. */
-  @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<ButtonPureSize> = 'small';
 
   /**
    * The weight of the text (only has effect with visible label).
    * @deprecated since v3.0.0, will be removed with next major release
    */
-  @Prop() public weight?: TextWeight = 'regular';
+  @Prop() public weight?: ButtonPureWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: LinkButtonIconName = 'arrow-right';
+  @Prop() public icon?: ButtonPureIcon = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -84,7 +81,7 @@ export class ButtonPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<AlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<ButtonPureAlignLabel> = 'right';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
@@ -93,7 +90,7 @@ export class ButtonPure {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);

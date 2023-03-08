@@ -1,4 +1,4 @@
-import type { TabSize, TabWeight, TabWeightDeprecated } from './tabs-bar-utils';
+import type { TabsBarSize, TabsBarWeight, TabsBarWeightDeprecated } from './tabs-bar-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
@@ -23,8 +23,8 @@ const transformSelector = (selector: string): string =>
   ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join();
 
 export const getComponentCss = (
-  size: BreakpointCustomizable<TabSize>,
-  weight: Exclude<TabWeight, TabWeightDeprecated>,
+  size: BreakpointCustomizable<TabsBarSize>,
+  weight: Exclude<TabsBarWeight, TabsBarWeightDeprecated>,
   theme: Theme
 ): string => {
   const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
@@ -104,7 +104,7 @@ export const getComponentCss = (
     scroller: {
       ...textSmallStyle,
       fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabSize) => ({ fontSize: fontSizeText[s] })),
+      ...buildResponsiveStyles(size, (s: TabsBarSize) => ({ fontSize: fontSizeText[s] })),
     },
     bar: {
       display: 'block',

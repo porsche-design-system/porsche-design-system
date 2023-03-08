@@ -21,30 +21,30 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
   TabsBarChangeEvent,
-  TabGradientColor,
-  TabGradientColorDeprecated,
-  TabSize,
-  TabWeight,
-  TabWeightDeprecated,
+  TabsBarGradientColor,
+  TabsBarGradientColorScheme,
+  TabsBarSize,
+  TabsBarWeight,
+  TabsBarWeightDeprecated,
 } from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
   getPrevNextTabIndex,
   sanitizeActiveTabIndex,
   setBarStyle,
-  TAB_SIZES,
-  TAB_WEIGHTS,
+  TABS_BAR_SIZES,
+  TABS_BAR_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { ScrollerDirection } from '../scroller/scroller-utils';
-import { GRADIENT_COLORS, GRADIENT_COLORS_DEPRECATED } from '../scroller/scroller-utils';
+import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
-  size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
-  weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
+  size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
+  weight: AllowedTypes.oneOf<TabsBarWeight>(TABS_BAR_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorDeprecated>([undefined, ...GRADIENT_COLORS_DEPRECATED]),
-  gradientColor: AllowedTypes.oneOf<TabGradientColor>(GRADIENT_COLORS),
+  gradientColorScheme: AllowedTypes.oneOf<TabsBarGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
+  gradientColor: AllowedTypes.oneOf<TabsBarGradientColor>(GRADIENT_COLORS),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -56,10 +56,10 @@ export class TabsBar {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<TabsBarSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: TabWeight = 'regular';
+  @Prop() public weight?: TabsBarWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -67,10 +67,10 @@ export class TabsBar {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
    * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorDeprecated;
+  @Prop() public gradientColorScheme?: TabsBarGradientColorScheme;
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: TabGradientColor = 'background-base';
+  @Prop() public gradientColor?: TabsBarGradientColor = 'background-base';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop({ mutable: true }) public activeTabIndex?: number | undefined;
@@ -150,15 +150,19 @@ export class TabsBar {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
-    const deprecationMap: Record<TabWeightDeprecated, Exclude<TabWeight, TabWeightDeprecated>> = {
+    const deprecationMap: Record<TabsBarWeightDeprecated, Exclude<TabsBarWeight, TabsBarWeightDeprecated>> = {
       semibold: 'semi-bold',
     };
-    warnIfDeprecatedPropValueIsUsed<typeof TabsBar, TabWeightDeprecated, TabWeight>(this, 'weight', deprecationMap);
+    warnIfDeprecatedPropValueIsUsed<typeof TabsBar, TabsBarWeightDeprecated, TabsBarWeight>(
+      this,
+      'weight',
+      deprecationMap
+    );
     attachComponentCss(
       this.host,
       getComponentCss,
       this.size,
-      (deprecationMap[this.weight] || this.weight) as Exclude<TabWeight, TabWeightDeprecated>,
+      (deprecationMap[this.weight] || this.weight) as Exclude<TabsBarWeight, TabsBarWeightDeprecated>,
       this.theme
     );
 

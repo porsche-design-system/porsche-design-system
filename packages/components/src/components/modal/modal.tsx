@@ -30,7 +30,7 @@ export class Modal {
   @Element() public host!: HTMLElement;
 
   /** If true, the modal is open. */
-  @Prop() public open = false;
+  @Prop() public open: boolean = false;
 
   /** If true, the modal will not have a close button. */
   @Prop() public disableCloseButton?: boolean = false;

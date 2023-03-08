@@ -16,3 +16,4 @@ export type DividerColor = typeof DIVIDER_COLORS[number];
 
 export const DIVIDER_DIRECTIONS = ['vertical', 'horizontal'] as const;
 export type DividerDirection = typeof DIVIDER_DIRECTIONS[number];
+export type DividerOrientation = DividerDirection;

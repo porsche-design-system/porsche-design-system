@@ -49,7 +49,7 @@ update the `activeTabIndex` when adding or removing elements.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TAB_SIZES, TAB_WEIGHTS } from '../tabs-bar/tabs-bar-utils';
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../tabs-bar/tabs-bar-utils';
 import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildTabsItem = (name: string, index: number) => 
@@ -67,7 +67,7 @@ ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
 
   size = 'medium';
-  sizes = [...TAB_SIZES, "{ base: 'small', l: 'medium' }"];
+  sizes = [...TABS_BAR_SIZES, "{ base: 'small', l: 'medium' }"];
   get sizeMarkup() {
     return `<p-tabs size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
@@ -75,7 +75,7 @@ ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
   }
 
   weight = 'semibold';
-  weights = TAB_WEIGHTS;
+  weights = TABS_BAR_WEIGHTS;
   get weightMarkup() {
     return `<p-tabs weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}

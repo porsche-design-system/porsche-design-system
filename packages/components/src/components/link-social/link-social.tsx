@@ -9,8 +9,8 @@ import {
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, LinkTarget, PropTypes, Theme } from '../../types';
-import type { SocialIconName } from './link-social-utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { LinkSocialIcon, LinkSocialTarget } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
 
 const propTypes: PropTypes<typeof LinkSocial> = {
@@ -32,7 +32,7 @@ export class LinkSocial {
   @Element() public host!: HTMLElement;
 
   /** The icon shown. */
-  @Prop() public icon?: SocialIconName;
+  @Prop() public icon?: LinkSocialIcon;
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -44,7 +44,7 @@ export class LinkSocial {
   @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: LinkSocialTarget = '_self';
 
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string;

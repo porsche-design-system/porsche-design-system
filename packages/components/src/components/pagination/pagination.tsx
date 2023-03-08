@@ -9,7 +9,11 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { NumberOfPageLinks, PaginationChangeEvent, PaginationInternationalization } from './pagination-utils';
+import type {
+  PaginationMaxNumberOfPageLinks,
+  PaginationChangeEvent,
+  PaginationInternationalization,
+} from './pagination-utils';
 import {
   createPaginationModel,
   getCounterResetValue,
@@ -25,7 +29,7 @@ const propTypes: PropTypes<typeof Pagination> = {
   totalItemsCount: AllowedTypes.number,
   itemsPerPage: AllowedTypes.number,
   activePage: AllowedTypes.number,
-  maxNumberOfPageLinks: AllowedTypes.breakpoint<NumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
+  maxNumberOfPageLinks: AllowedTypes.breakpoint<PaginationMaxNumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
   allyLabel: AllowedTypes.string,
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
@@ -47,16 +51,16 @@ export class Pagination {
   @Element() public host!: HTMLElement;
 
   /** The total count of items. */
-  @Prop() public totalItemsCount = 1;
+  @Prop() public totalItemsCount: number = 1;
 
   /** The total count of items which should be shown per page.  */
-  @Prop() public itemsPerPage = 1;
+  @Prop() public itemsPerPage: number = 1;
 
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;
 
   /** The maximum number of page links rendered */
-  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<NumberOfPageLinks> = {
+  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks> = {
     base: 5,
     xs: 7,
   };
@@ -100,7 +104,7 @@ export class Pagination {
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public change: EventEmitter<PaginationChangeEvent>;
 
-  @State() private breakpointMaxNumberOfPageLinks: NumberOfPageLinks = 7;
+  @State() private breakpointMaxNumberOfPageLinks: PaginationMaxNumberOfPageLinks = 7;
 
   private navigationElement: HTMLElement;
   private unlistenResize: () => void;

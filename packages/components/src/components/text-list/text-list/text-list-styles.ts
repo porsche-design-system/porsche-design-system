@@ -1,4 +1,4 @@
-import type { ListType, OrderType } from './text-list-utils';
+import type { TextListListType, TextListOrderType } from './text-list-utils';
 import type { Theme } from '../../../types';
 import { isListTypeOrdered, isOrderTypeNumbered } from './text-list-utils';
 import { getCss } from '../../../utils';
@@ -13,7 +13,7 @@ const cssVariableOrderedPaddingLeft = '--p-internal-text-list-ordered-padding-le
 const cssVariableListStyleType = '--p-internal-text-list-list-style-type';
 const counter = 'p-text-list-counter';
 
-export const getComponentCss = (listType: ListType, orderType: OrderType, theme: Theme): string => {
+export const getComponentCss = (listType: TextListListType, orderType: TextListOrderType, theme: Theme): string => {
   const isOrderedList = isListTypeOrdered(listType);
 
   return getCss({
