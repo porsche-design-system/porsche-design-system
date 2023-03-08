@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { StepperHorizontalChangeEvent, StepperState } from '@porsche-design-system/components-angular';
+import type {
+  StepperHorizontalChangeEvent,
+  StepperHorizontalItemState,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-stepper-horizontal-example',
@@ -91,6 +94,6 @@ export class StepperHorizontalExampleComponent {
 }
 
 type StepperHorizontalItemProps = {
-  state?: StepperState;
+  state?: StepperHorizontalItemState;
   name: string;
 };

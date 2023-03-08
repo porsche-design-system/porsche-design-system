@@ -1,4 +1,4 @@
-import type { StepperHorizontalChangeEvent, StepperState } from '@porsche-design-system/components-react';
+import type { StepperHorizontalChangeEvent, StepperHorizontalItemState } from '@porsche-design-system/components-react';
 import {
   PButton,
   PButtonGroup,
@@ -9,9 +9,10 @@ import {
 import { useState } from 'react';
 
 type StepperHorizontalItemProps = {
-  state?: StepperState;
+  state?: StepperHorizontalItemState;
   name: string;
 };
+
 export const StepperHorizontalExample = (): JSX.Element => {
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
