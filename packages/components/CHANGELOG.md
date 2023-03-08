@@ -13,11 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ##### Accordion:
 
-- Event `accordionChange` is deprecated. Use `change` instead.
+- Event `accordionChange` is deprecated, use `change` event instead.
+
+```diff
+- <PAccordion onAccordionChange={() => {}} />
++ <PAccordion onChange={() => {}} />
+```
 
 #### Banner:
 
-- Named `slot="title"` is deprecated.
+- Named `slot="title"` is deprecated, use `heading` prop or `slot="heading"` instead.
 
 ```diff
 <p-banner>
@@ -35,17 +40,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ##### Carousel:
 
-- Prop `disablePagination` is deprecated.
-- Event `carouselChange` is deprecated. Use `change` instead.
+- Prop `disablePagination` is deprecated, use `pagination` instead.
+- Event `carouselChange` is deprecated, use `change` event instead.
 
 ```diff
 - <p-carousel disable-pagination="true"></p-carousel>
 + <p-carousel pagination="false"></p-carousel>
+
+- <PCarousel onCarouselChange={() => {}} />
++ <PCarousel onChange={() => {}} />
 ```
 
 ##### Divider:
 
-- Prop `orientation` is deprecated.
+- Prop `orientation` is deprecated, use `direction` instead.
 
 ```diff
 - <p-divider orientation="horizontal"></p-divider>
@@ -54,66 +62,108 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Modal:
 
-- Event `close` is deprecated. Use `dismiss` instead.
+- Prop `disableCloseButton` is deprecated, use `dismissButton` instead.
+- Event `close` is deprecated, use `dismiss` event instead.
+
+```diff
+- <p-modal disable-close-button="true"></p-modal>
++ <p-modal dismiss-button="false"></p-modal>
+
+- <PModal onClose={() => {}} />
++ <PModal onDismiss={() => {}} />
+```
 
 ##### Pagination:
 
 - Props `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` are deprecated.
-- Event `pageChange` is deprecated. Use `change` instead.
+- Event `pageChange` is deprecated, use `change` event instead.
 
 ```diff
 - <p-pagination ally-label="Paginierung" ally-label-prev="Vorherige Seite" ally-label-next="Nächste Seite" ally-label-page="Seite"></p-pagination>
 + <p-pagination intl="{root: 'Paginierung', prev: 'Vorherige Seite', next: 'Nächste Seite', page: 'Seite'}"></p-pagination>
+
+- <PPagination onPageChangee={() => {}} />
++ <PPagination onChange={() => {}} />
 ```
 
 ##### Scroller:
 
-- Prop `gradientColorScheme` is deprecated.
+- Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Prop `scrollIndicatorPosition` is deprecated, use `alignScrollIndicator` instead.
 
 ```diff
 - <p-scroller gradient-color-scheme="surface"></p-scroller>
 + <p-scroller gradient-color="background-surface"></p-scroller>
+
+- <p-scroller scroll-indicator-position="top"></p-scroller>
++ <p-scroller align-scroll-indicator="top"></p-scroller>
 ```
 
 #### Segmented Control:
 
-- Event `segmentedControlChange` is deprecated. Use `change` instead.
+- Event `segmentedControlChange` is deprecated, use `change` event instead.
+
+```diff
+- <PSegmentedControl onSegmentedControlChange={() => {}} />
++ <PSegmentedControl onChange={() => {}} />
+```
 
 #### Stepper Horizontal:
 
-- Event `stepChange` is deprecated. Use `change` instead.
+- Event `stepChange` is deprecated, use `change` event instead.
+
+```diff
+- <PStepperHorizontal onStepChange={() => {}} />
++ <PStepperHorizontal onChange={() => {}} />
+```
 
 #### Switch:
 
-- Event `switchChange` is deprecated. Use `change` instead.
+- Event `switchChange` is deprecated, use `change` event instead.
+
+```diff
+- <PSwitch onSwitchChange={() => {}} />
++ <PSwitch onChange={() => {}} />
+```
 
 #### Table:
 
-- Event `sortingChange` is deprecated. Use `change` instead.
+- Event `sortingChange` is deprecated, use `change` event instead.
+
+```diff
+- <PTable onSortingChange={() => {}} />
++ <PTable onChange={() => {}} />
+```
 
 ##### Tabs:
 
-- Prop `gradientColorScheme` is deprecated.
-- Event `tabChange` is deprecated. Use `change` instead.
+- Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Event `tabChange` is deprecated, use `change` event instead.
 
 ```diff
 - <p-tabs gradient-color-scheme="surface"></p-tabs>
 + <p-tabs gradient-color="background-surface"></p-tabs>
+
+- <PTabs onTabChange={() => {}} />
++ <PTabs onChange={() => {}} />
 ```
 
 ##### Tabs Bar:
 
-- Prop `gradientColorScheme` is deprecated.
-- Event `tabChange` is deprecated. Use `change` instead.
+- Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Event `tabChange` is deprecated, use `change` event instead.
 
 ```diff
 - <p-tabs-bar gradient-color-scheme="surface"></p-tabs-bar>
 + <p-tabs-bar gradient-color="background-surface"></p-tabs-bar>
+
+- <PTabsBar onTabChange={() => {}} />
++ <PTabsBar onChange={() => {}} />
 ```
 
 ##### Text Field Wrapper:
 
-- Prop `showCharacterCount` is deprecated.
+- Prop `showCharacterCount` is deprecated, use `showCounter` instead.
 
 ```diff
 - <p-text-field-wrapper show-character-count="false">
@@ -124,13 +174,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ##### Textarea Wrapper:
 
-- Prop `showCharacterCount` is deprecated.
+- Prop `showCharacterCount` is deprecated, use `showCounter` instead.
 
 ```diff
 - <p-textarea-wrapper show-character-count="false">
 + <p-textarea-wrapper show-counter="false">
   <textarea maxlength="80"></textarea>
 </p-textarea-wrapper>
+```
+
+##### Text List
+
+- Props `listType` and `orderType` are deprecated, use `type` instead.
+
+```diff
+- <p-text-list list-type="unordered"></p-text-list>
++ <p-text-list type="unordered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="numbered"></p-text-list>
++ <p-text-list type="numbered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="alphabetically"></p-text-list>
++ <p-text-list type="alphabetically"></p-text-list>
 ```
 
 #### Changed
@@ -140,7 +205,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
-- Custom events with consistent names across components and deprecated old event names
+- Custom events have consistent names across components and deprecated old event names
   - `Accordion` emits `change` and deprecated `accordionChange` event
   - `Carousel` emits `change` and deprecated `carouselChange` event
   - `Modal` emits `dismiss` and deprecated `close` event
@@ -151,15 +216,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Table` emits `change`and deprecated `sortingChange` event
   - `Tabs` emits `change`and deprecated `tabChange` event
   - `Tabs Bar` emits `change`and deprecated `tabChange` event
-- Props with consistent names across components and deprecated old props
+- Props have consistent names across components and deprecated old props
   - `Carousel` got `pagination` prop and deprecated `disablePagination` prop
   - `Divider` got `direction` prop and deprecated `orientation` prop
+  - `Modal` got `dismissButton` prop and deprecated `disableCloseButton` prop
   - `Pagination` got `intl` prop and deprecated `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` props
   - `Scroller` got `gradientColor` prop and deprecated `gradientColorScheme` prop
+  - `Scroller` got `alignScrollIndicator` prop and deprecated `scrollIndicatorPosition` prop
   - `Tabs` got `gradientColor` prop and deprecated `gradientColorScheme` prop
   - `Tabs Bar` got `gradientColor` prop and deprecated `gradientColorScheme` prop
   - `Text Field Wrapper` got `showCounter` prop and deprecated `showCharacterCount` prop
   - `Textarea Wrapper` got `showCounter` prop and deprecated `showCharacterCount` prop
+  - `Text List` got `type` prop and deprecated `listType` and `orderType` prop
 - Props have consistent values across components and deprecated old values
   - TODO..
   - icon color, tag color, semi-bold
