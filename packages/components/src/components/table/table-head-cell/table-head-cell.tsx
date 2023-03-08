@@ -66,14 +66,16 @@ export class TableHeadCell {
             onClick={this.onButtonClick}
             theme={this.tableTheme}
           >
-            <slot />
-            <PrefixedTagNames.pIcon // we use slotted icon instead of built-in icon because we need to style it from here (for active state and for sorting)
-              class="icon"
-              color="primary"
-              name="arrow-up"
-              aria-hidden="true"
-              theme={this.tableTheme}
-            />
+            <div class="button-root">
+              <slot />
+              <PrefixedTagNames.pIcon // we use slotted icon instead of built-in icon because we need to style it from here (for active state and for sorting)
+                class="icon"
+                color="primary"
+                name="arrow-up"
+                aria-hidden="true"
+                theme={this.tableTheme}
+              />
+            </div>
           </PrefixedTagNames.pButtonPure>
         ) : (
           <span>

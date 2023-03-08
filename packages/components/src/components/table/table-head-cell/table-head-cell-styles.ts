@@ -43,6 +43,10 @@ export const getComponentCss = (
                 },
               }),
             },
+            '.button-root': {
+              display: 'flex',
+              alignItems: 'flex-end',
+            },
           }
         : hideLabel && {
             span: {
