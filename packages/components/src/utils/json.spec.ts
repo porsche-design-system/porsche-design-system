@@ -14,4 +14,10 @@ describe('parseJSONAttribute()', () => {
       'aria-label': 'Some label',
     });
   });
+
+  it('should return parsed object if key contains an url', () => {
+    expect(parseJSONAttribute("{ href: 'https://www.porsche.com' }")).toEqual({
+      href: 'https://www.porsche.com',
+    });
+  });
 });

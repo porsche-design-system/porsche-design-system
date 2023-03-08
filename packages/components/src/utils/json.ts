@@ -4,7 +4,7 @@ export const parseJSONAttribute = <T>(attribute: T | string): T => {
       JSON.parse(
         attribute
           .replace(/'/g, '"') // convert single quotes to double quotes
-          .replace(/[\s"]?([\w-]+)[\s"]?:/g, '"$1":') // wrap keys in double quotes
+          .replace(/[\s"]?([a-z-]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
       )
     : // input is object, e.g. { aria-label: 'Some label' }
       attribute;
