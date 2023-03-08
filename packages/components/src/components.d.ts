@@ -2504,7 +2504,7 @@ declare namespace LocalJSX {
         /**
           * Description text.
          */
-        "description": string;
+        "description"?: string;
         /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
@@ -2516,11 +2516,11 @@ declare namespace LocalJSX {
         /**
           * Contains the label, href and anchor props for the primary link
          */
-        "primaryLinkProps": LinkTileModelLinkProps;
+        "primaryLinkProps"?: LinkTileModelLinkProps;
         /**
           * Contains the label, href and anchor props for the secondary link
          */
-        "secondaryLinkProps": LinkTileModelLinkProps;
+        "secondaryLinkProps"?: LinkTileModelLinkProps;
         /**
           * Sub description text.
          */

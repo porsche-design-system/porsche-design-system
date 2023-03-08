@@ -19,10 +19,14 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component.host.append(child);
     component[childTagName] = child;
   }
-
   if (meta.requiredProps) {
     meta.requiredProps.forEach((prop) => {
-      component[prop] = 'some value';
+      // TODO: Generic way?
+      if (tagName === 'p-link-tile-model-signature') {
+        component[prop] = prop === 'description' ? 'Some description' : { label: 'Some label', href: '#' };
+      } else {
+        component[prop] = 'some value';
+      }
     });
   }
 
