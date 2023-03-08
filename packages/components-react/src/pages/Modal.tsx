@@ -19,8 +19,8 @@ export const ModalPage = (): JSX.Element => {
       ) !important;
       transform: translate3d(0, 0, 0);
     }
-    .playground:not(:first-child) {
-      margin-top: 16px;
+    .playground {
+      margin: 16px 0;
     }
   `;
 
@@ -29,57 +29,42 @@ export const ModalPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show modal">
-        <PModal heading="Heading" open={true}>Some Content: "should show modal"</PModal>
+        <PModal heading="Heading" open={true}>Some Content: should show modal</PModal>
       </div>
 
       <div className="playground light" title="should show modal with prefixed component initialization">
         <PModal heading="Heading" open={true}>
-          Some Content: "should show modal with prefixed component initialization"
+          Some Content: should show modal with prefixed component initialization
         </PModal>
       </div>
 
       <div className="playground light" title="should show modal (fullscreen=true)">
-        <PModal heading="Heading" open={true} fullscreen={true}>
-          Some content: "should show modal (fullscreen=true)"
-        </PModal>
+        <PModal heading="Heading" open={true} fullscreen={true}> Some content: should show modal (fullscreen=true) </PModal>
       </div>
 
       <div className="playground light" title="should display a full width div when using .stretch-to-full-modal-width">
         <PModal open={true} aria={{ 'aria-label': 'Some Heading' }}>
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
-          <PText>Some Content: "should display a full width div when using .stretch-to-full-modal-width"</PText>
+          <PText>Some Content: should display a full width div when using .stretch-to-full-modal-width</PText>
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
         </PModal>
       </div>
 
       <div className="playground light" title="should show modal (fullscreen=responsive)">
         <PModal heading="Heading" open={true} fullscreen={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
-          Some Content: "should show modal (fullscreen=responsive)"
+          Some Content: should show modal (fullscreen=responsive)
         </PModal>
       </div>
 
       <div className="playground light" title="should display close button on the correct position without a heading">
         <PModal open={true} aria={{ 'aria-label': 'Some Heading' }}>
-          Some Content: "should display close button on the correct position without a heading"
-        </PModal>
-      </div>
-
-      <div className="playground light" title="should show modal with slotted heading">
-        <PModal open={true} aria={{ 'aria-label': 'Slotted Headline' }}>
-          <div slot="heading">
-            <PText tag="div" role="doc-subtitle">Slotted Subtitle</PText>
-            <PHeading tag="h2">Slotted heading</PHeading>
-          </div>
-          <span>
-            Some Content: "should show modal with slotted heading" and some slotted and deeply nested <a href="#">anchor</a>,
-            {' '}<b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
-          </span>
+          Some Content: should display close button on the correct position without a heading
         </PModal>
       </div>
 
       <div className="playground light" title="should show scrollable modal">
         <PModal heading="Heading" open={true}>
-          Some content: "should show scrollable modal"
+          Some content: should show scrollable modal
           <br />
           <br />
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
@@ -118,6 +103,22 @@ export const ModalPage = (): JSX.Element => {
           gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
           elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
           eos et accusam.
+        </PModal>
+      </div>
+
+      <div className="playground light" title="should show modal with slotted heading">
+        <PModal open={true} aria={{ 'aria-label': 'Slotted Headline' }}>
+          <div slot="heading">
+            <PText tag="div" role="doc-subtitle">Slotted Subtitle</PText>
+            <PHeading tag="h2">Slotted heading</PHeading>
+          </div>
+          <span>
+            Some Content: should show modal with slotted heading
+            <br />
+            <br />
+            And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
         </PModal>
       </div>
 
