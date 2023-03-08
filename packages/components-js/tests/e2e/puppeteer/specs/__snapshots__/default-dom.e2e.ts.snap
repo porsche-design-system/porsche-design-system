@@ -199,6 +199,29 @@ exports[`should have no basic DOM regression for p-link-tile 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-link-tile-model-signature 1`] = `
+"<div class="root">
+  <div class="image-container">
+    <slot>
+    </slot>
+  </div>
+  <p-model-signature class="signature hydrated">
+  </p-model-signature>
+  <div class="content">
+    <a href="#" class="link-overlay" tabindex="-1" aria-hidden="true">
+    </a>
+    <p class="description">
+      value</p>
+    <div class="link-group" role="group">
+      <p-link class="link hydrated">
+        Some label</p-link>
+      <p-link class="link hydrated">
+        Some label</p-link>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`should have no basic DOM regression for p-marque 1`] = `
 "<picture>
   <source srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x" media="(min-width: 1300px)" type="image/webp">
