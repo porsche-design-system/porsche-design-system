@@ -14,6 +14,7 @@ import {
 import { getComponentCss } from './scroller-styles';
 import type { PropTypes, Theme } from '../../types';
 import type {
+  ScrollerAlignScrollIndicator,
   ScrollerDirection,
   ScrollerGradientColor,
   ScrollerGradientColorScheme,
@@ -36,6 +37,7 @@ const propTypes: PropTypes<typeof Scroller> = {
     isSmooth: AllowedTypes.boolean,
   }),
   scrollIndicatorPosition: AllowedTypes.oneOf<ScrollerScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
+  alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLL_INDICATOR_POSITIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -57,8 +59,13 @@ export class Scroller {
   /** Scrolls the scroll area to the left either smooth or immediately */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
 
-  /** Sets the vertical position of scroll indicator icon */
-  @Prop() public scrollIndicatorPosition?: ScrollerScrollIndicatorPosition = 'center';
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead.
+   * Sets the vertical position of scroll indicator */
+  @Prop() public scrollIndicatorPosition?: ScrollerScrollIndicatorPosition;
+
+  /** Sets the vertical position of scroll indicator */
+  @Prop() public alignScrollIndicator?: ScrollerAlignScrollIndicator = 'center';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -105,6 +112,11 @@ export class Scroller {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Scroller>(
+      this,
+      'scrollIndicatorPosition',
+      'Please use alignScrollIndicator prop instead.'
+    );
     const deprecationMap: Record<ScrollerGradientColorScheme, ScrollerGradientColor> = {
       default: 'background-base',
       surface: 'background-surface',
@@ -120,7 +132,7 @@ export class Scroller {
       deprecationMap[this.gradientColorScheme] || this.gradientColor,
       this.isNextHidden,
       this.isPrevHidden,
-      this.scrollIndicatorPosition,
+      this.scrollIndicatorPosition || this.alignScrollIndicator,
       this.theme
     );
 

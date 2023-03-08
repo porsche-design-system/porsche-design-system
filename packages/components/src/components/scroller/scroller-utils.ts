@@ -13,7 +13,9 @@ export type ScrollerGradientColor = typeof GRADIENT_COLORS[number];
 export type ScrollerScrollToPosition = { scrollPosition: number; isSmooth?: boolean } | string; // string to support attribute, gets removed via InputParser
 
 export const SCROLL_INDICATOR_POSITIONS = ['top', 'center'] as const;
+/** @deprecated */
 export type ScrollerScrollIndicatorPosition = typeof SCROLL_INDICATOR_POSITIONS[number];
+export type ScrollerAlignScrollIndicator = ScrollerScrollIndicatorPosition;
 
 export const getScrollPositionAfterPrevNextClick = (
   scrollAreaElement: HTMLElement,
