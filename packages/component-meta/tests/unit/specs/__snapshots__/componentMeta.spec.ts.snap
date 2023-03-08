@@ -2447,16 +2447,19 @@ exports[`should match snapshot 1`] = `
   "p-tag": {
     "allowedPropValues": {
       "color": [
-        "background-surface",
         "background-base",
+        "background-surface",
         "background-default",
         "primary",
-        "notification-info",
+        "notification-info-soft",
+        "notification-warning-soft",
+        "notification-success-soft",
+        "notification-error-soft",
+        "neutral-contrast-high",
+        "notification-neutral",
         "notification-warning",
         "notification-success",
         "notification-error",
-        "neutral-contrast-high",
-        "notification-neutral",
       ],
       "icon": "string",
       "iconSource": "string",
@@ -2491,8 +2494,8 @@ exports[`should match snapshot 1`] = `
         "// TODO",
       ],
       "color": [
-        "background-surface",
         "background-base",
+        "background-surface",
         "background-default",
       ],
       "label": "string",
