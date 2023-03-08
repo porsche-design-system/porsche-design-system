@@ -137,7 +137,7 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30); // if you sum up all the components - you'll get 30
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5); // since we get tableTheme from css property - one extra update for every head cell is being done
   });
 
   it('should work without unnecessary round trips on p-table-head-cell prop change', async () => {
@@ -145,7 +145,7 @@ describe('lifecycle', () => {
     const initialStatus = await getLifecycleStatus(page);
 
     expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
-    expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
+    expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(5); // since we get tableTheme from css property - one extra update for every head cell is being done
 
     const host = await getHost();
     await host.evaluate((host) => {
