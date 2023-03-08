@@ -8,6 +8,7 @@ import {
   hasNamedSlot,
   parseAndGetAriaAttributes,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
@@ -110,18 +111,12 @@ export class Modal {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }
     this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.open,
-      this.fullscreen,
-      this.disableCloseButton ? !this.disableCloseButton : this.dismissButton,
-      this.hasHeader
-    );
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.hasDismissButton, this.hasHeader);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -139,7 +134,7 @@ export class Modal {
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
         >
-          {(this.disableCloseButton ? this.disableCloseButton !== true : this.dismissButton) && (
+          {this.hasDismissButton && (
             <PrefixedTagNames.pButtonPure
               class="dismiss"
               type="button"
@@ -160,6 +155,10 @@ export class Modal {
     );
   }
 
+  private get hasDismissButton(): boolean {
+    return this.disableCloseButton ? false : this.dismissButton;
+  }
+
   private updateScrollLock(isOpen: boolean): void {
     setScrollLock(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
   }
@@ -171,7 +170,7 @@ export class Modal {
   };
 
   private dismissModal = (): void => {
-    if (!this.disableCloseButton) {
+    if (this.hasDismissButton) {
       this.dismiss.emit();
       this.close.emit();
     }
