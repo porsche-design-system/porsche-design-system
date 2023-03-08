@@ -175,7 +175,7 @@ export class TabsBar {
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}
-        scrollIndicatorPosition="top"
+        alignScrollIndicator="top"
         ref={(el) => (this.scrollerElement = el)}
       >
         <slot />
