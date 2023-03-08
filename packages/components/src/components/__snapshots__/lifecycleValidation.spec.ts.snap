@@ -288,6 +288,7 @@ exports[`should call validateProps() with correct parameters via render for p-mo
   "aria": "aria",
   "disableBackdropClick": "boolean",
   "disableCloseButton": "boolean",
+  "dismissButton": "boolean",
   "fullscreen": "breakpoint",
   "heading": "string",
   "open": "boolean",
@@ -339,6 +340,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
 
 exports[`should call validateProps() with correct parameters via render for p-scroller: propTypes with ValidatorFunctions 1`] = `
 {
+  "alignScrollIndicator": "oneOf",
   "gradientColor": "oneOf",
   "gradientColorScheme": "oneOf",
   "scrollIndicatorPosition": "oneOf",

@@ -1507,6 +1507,7 @@ exports[`should match snapshot 1`] = `
       ],
       "disableBackdropClick": "boolean",
       "disableCloseButton": "boolean",
+      "dismissButton": "boolean",
       "fullscreen": "boolean",
       "heading": "string",
       "open": "boolean",
@@ -1516,6 +1517,9 @@ exports[`should match snapshot 1`] = `
     ],
     "deprecatedEventNames": [
       "close",
+    ],
+    "deprecatedProps": [
+      "disableCloseButton",
     ],
     "eventNames": [
       "close",
@@ -1539,7 +1543,8 @@ exports[`should match snapshot 1`] = `
     "props": {
       "aria": null,
       "disableBackdropClick": false,
-      "disableCloseButton": false,
+      "disableCloseButton": null,
+      "dismissButton": true,
       "fullscreen": false,
       "heading": null,
       "open": false,
@@ -1756,6 +1761,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-scroller": {
     "allowedPropValues": {
+      "alignScrollIndicator": [
+        "top",
+        "center",
+      ],
       "gradientColor": [
         "background-base",
         "background-surface",
@@ -1779,6 +1788,7 @@ exports[`should match snapshot 1`] = `
     },
     "deprecatedProps": [
       "gradientColorScheme",
+      "scrollIndicatorPosition",
     ],
     "hasAriaProp": false,
     "hasEvent": false,
@@ -1793,9 +1803,10 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
+      "alignScrollIndicator": "center",
       "gradientColor": "background-base",
       "gradientColorScheme": null,
-      "scrollIndicatorPosition": "center",
+      "scrollIndicatorPosition": null,
       "scrollToPosition": null,
       "theme": "light",
     },

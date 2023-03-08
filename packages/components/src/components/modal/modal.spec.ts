@@ -1,7 +1,7 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
 import * as domUtils from '../../utils/dom';
-import { FirstAndLastFocusableElement } from './modal-utils';
+import type { FirstAndLastFocusableElement } from './modal-utils';
 
 jest.mock('../../utils/dom');
 
@@ -31,7 +31,7 @@ describe('modal', () => {
       component.open = true;
       component.componentDidLoad();
 
-      expect(utilsSpy).toBeCalledWith(component.host, true, component['closeBtn'], component['closeModal']);
+      expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissModal']);
     });
 
     it('should not call setScrollLock() if modal is not open', () => {

@@ -16,6 +16,7 @@ import { getComponentCss } from './modal-styles';
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
   disableCloseButton: AllowedTypes.boolean,
+  dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
   heading: AllowedTypes.string,
   fullscreen: AllowedTypes.breakpoint('boolean'),
@@ -32,8 +33,13 @@ export class Modal {
   /** If true, the modal is open. */
   @Prop() public open: boolean = false;
 
-  /** If true, the modal will not have a close button. */
-  @Prop() public disableCloseButton?: boolean = false;
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
+   * If true, the modal will not have a dismiss button. */
+  @Prop() public disableCloseButton?: boolean;
+
+  /** If false, the modal will not have a dismiss button. */
+  @Prop() public dismissButton?: boolean = true;
 
   /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
@@ -49,14 +55,14 @@ export class Modal {
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead.
-   * Emitted when the component requests to be closed. */
+   * Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
-  /** Emitted when the component requests to be closed. */
+  /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
-  private closeBtn: HTMLElement;
+  private dismissBtn: HTMLElement;
   private hasHeader: boolean;
   private dialog: HTMLElement;
 
@@ -108,7 +114,14 @@ export class Modal {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }
     this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.open,
+      this.fullscreen,
+      this.disableCloseButton ? !this.disableCloseButton : this.dismissButton,
+      this.hasHeader
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -126,16 +139,16 @@ export class Modal {
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
         >
-          {!this.disableCloseButton && (
+          {(this.disableCloseButton ? this.disableCloseButton !== true : this.dismissButton) && (
             <PrefixedTagNames.pButtonPure
-              class="close"
+              class="dismiss"
               type="button"
-              ref={(el) => (this.closeBtn = el)}
+              ref={(el) => (this.dismissBtn = el)}
               hideLabel
               icon="close"
-              onClick={this.closeModal}
+              onClick={this.dismissModal}
             >
-              Close modal
+              Dismiss modal
             </PrefixedTagNames.pButtonPure>
           )}
           {this.hasHeader && (
@@ -148,16 +161,16 @@ export class Modal {
   }
 
   private updateScrollLock(isOpen: boolean): void {
-    setScrollLock(this.host, isOpen, !this.disableCloseButton && this.closeBtn, this.closeModal);
+    setScrollLock(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
   }
 
   private onMouseDown = (e: MouseEvent): void => {
     if ((e.composedPath() as HTMLElement[])[0] === this.host) {
-      this.closeModal();
+      this.dismissModal();
     }
   };
 
-  private closeModal = (): void => {
+  private dismissModal = (): void => {
     if (!this.disableCloseButton) {
       this.dismiss.emit();
       this.close.emit();
