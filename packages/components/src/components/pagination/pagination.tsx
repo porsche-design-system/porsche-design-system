@@ -51,10 +51,10 @@ export class Pagination {
   @Element() public host!: HTMLElement;
 
   /** The total count of items. */
-  @Prop() public totalItemsCount: number = 1;
+  @Prop() public totalItemsCount: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
   /** The total count of items which should be shown per page.  */
-  @Prop() public itemsPerPage: number = 1;
+  @Prop() public itemsPerPage: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;
