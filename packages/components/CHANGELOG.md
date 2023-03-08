@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Partials: `getInitialStyles` matches new design language
 - Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
+- `Link Tile` matches new design language
 
 #### Fixed
 

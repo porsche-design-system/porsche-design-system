@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, disabled: true, loading: false and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -123,7 +123,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -190,7 +190,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -257,7 +257,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: light 2`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -324,7 +324,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: true and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -396,7 +396,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: true, loading: false and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -457,7 +457,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, loading: false and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -526,7 +526,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, loading: false and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -595,7 +595,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, loading: false and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -664,7 +664,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, loading: false and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }
@@ -733,7 +733,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 exports[`getComponentCss() should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, disabled: true, loading: true and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
+  display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
 }

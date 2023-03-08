@@ -10,28 +10,6 @@ type Options = {
   suffix?: string;
 };
 
-const prepareFontFaceVariables = (opts: Options): void => {
-  const { baseUrl, fontsManifest, suffix } = opts;
-  const file = path.normalize(`./src/styles/font-face.variables${suffix ? '.' + suffix : ''}.scss`);
-
-  fs.writeFileSync(
-    file,
-    `/* Auto Generated Below */
-
-$p-font-porsche-next-w-la-regular: '${baseUrl}/${fontsManifest.porscheNextWLaRegular}';
-$p-font-porsche-next-w-la-semi-bold: '${baseUrl}/${fontsManifest.porscheNextWLaSemiBold}';
-$p-font-porsche-next-w-la-bold: '${baseUrl}/${fontsManifest.porscheNextWLaBold}';
-
-$p-font-porsche-next-w-gr-regular: '${baseUrl}/${fontsManifest.porscheNextWGrRegular}';
-$p-font-porsche-next-w-gr-semi-bold: '${baseUrl}/${fontsManifest.porscheNextWGrSemiBold}';
-$p-font-porsche-next-w-gr-bold: '${baseUrl}/${fontsManifest.porscheNextWGrBold}';
-
-$p-font-porsche-next-w-cy-regular: '${baseUrl}/${fontsManifest.porscheNextWCyRegular}';
-$p-font-porsche-next-w-cy-semi-bold: '${baseUrl}/${fontsManifest.porscheNextWCySemiBold}';
-$p-font-porsche-next-w-cy-bold: '${baseUrl}/${fontsManifest.porscheNextWCyBold}';`
-  );
-};
-
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const compileFontFaceScss = (opts: Options): string => {
@@ -58,6 +36,5 @@ const compileFontFaceScss = (opts: Options): string => {
 };
 
 export function buildStyle(opts: Options): string {
-  prepareFontFaceVariables(opts);
   return compileFontFaceScss(opts);
 }

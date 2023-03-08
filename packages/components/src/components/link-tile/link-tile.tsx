@@ -3,7 +3,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  parseAndGetAriaAttributes,
   parseJSON,
   validateProps,
 } from '../../utils';
@@ -101,31 +100,35 @@ export class LinkTile {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const descriptionId = 'description';
 
     const linkProps = {
       theme: 'dark',
+      aria: this.aria,
     };
 
-    const anchorProps = {
-      class: 'anchor',
+    const sharedLinkProps = {
       href: this.href,
       target: this.target,
       download: this.download,
-      'aria-describedby': descriptionId,
       rel: this.rel,
-      ...parseAndGetAriaAttributes(this.aria),
     };
 
     const link: JSX.Element = (
-      <PrefixedTagNames.pLink {...linkProps} key="link" class="link" variant="tertiary">
-        <a {...anchorProps}>{this.label}</a>
+      <PrefixedTagNames.pLink {...sharedLinkProps} {...linkProps} key="link" class="link" variant="secondary">
+        {this.label}
       </PrefixedTagNames.pLink>
     );
 
     const linkPure: JSX.Element = (
-      <PrefixedTagNames.pLinkPure {...linkProps} key="link-pure" class="link-pure" hideLabel={true} icon="arrow-right">
-        <a {...anchorProps}>{this.label}</a>
+      <PrefixedTagNames.pLinkPure
+        {...sharedLinkProps}
+        {...linkProps}
+        key="link-pure"
+        class="link-pure"
+        hideLabel={true}
+        icon="arrow-right"
+      >
+        {this.label}
       </PrefixedTagNames.pLinkPure>
     );
 
@@ -135,7 +138,8 @@ export class LinkTile {
           <slot />
         </div>
         <div class="content">
-          <p id={descriptionId}>{this.description}</p>
+          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
+          <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>
