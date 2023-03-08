@@ -201,6 +201,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - `Link Tile` matches new design language
+- Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
+  `LinkPureIcon`
 
 #### Added
 
@@ -231,6 +233,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Props have consistent values across components and deprecated old values
   - TODO..
   - icon color, tag color, semi-bold
+
+#### Fixed
+
+- Partials: Typings of return value with and without options
 
 ### [3.0.0-alpha.2] - 2023-02-27
 
