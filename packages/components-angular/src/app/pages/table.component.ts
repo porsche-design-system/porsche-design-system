@@ -20,13 +20,12 @@ import type { Theme } from '@porsche-design-system/components-angular';
               [multiline]="item.multiline"
               [style]="item.style?.minWidth ? 'min-width: 250px;' : null"
               [innerHTML]="item.name"
-              [theme]="theme"
             ></p-table-head-cell>
           </p-table-head-row>
         </p-table-head>
         <p-table-body>
-          <p-table-row *ngFor="let item of data" [theme]="theme">
-            <p-table-cell [theme]="theme">
+          <p-table-row *ngFor="let item of data">
+            <p-table-cell>
               <img
                 [src]="item.imageUrl"
                 [width]="item.imageWidth"
@@ -36,11 +35,11 @@ import type { Theme } from '@porsche-design-system/components-angular';
               />
               <span [innerHTML]="item.html"></span>
             </p-table-cell>
-            <p-table-cell [multiline]="true" [theme]="theme">{{ item.longText }}</p-table-cell>
-            <p-table-cell [theme]="theme">{{ item.shortText }}</p-table-cell>
-            <p-table-cell [theme]="theme">{{ item.shortText }}</p-table-cell>
-            <p-table-cell [theme]="theme">{{ item.shortText }}</p-table-cell>
-            <p-table-cell [theme]="theme">
+            <p-table-cell [multiline]="true">{{ item.longText }}</p-table-cell>
+            <p-table-cell>{{ item.shortText }}</p-table-cell>
+            <p-table-cell>{{ item.shortText }}</p-table-cell>
+            <p-table-cell>{{ item.shortText }}</p-table-cell>
+            <p-table-cell>
               <p-button-pure [theme]="theme" icon="edit" style="padding: .5rem;">Edit</p-button-pure>
               <p-button-pure [theme]="theme" icon="delete" style="padding: .5rem;">Delete</p-button-pure>
             </p-table-cell>
@@ -58,8 +57,8 @@ import type { Theme } from '@porsche-design-system/components-angular';
         <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
         <p-table-head>
           <p-table-head-row>
-            <p-table-head-cell [theme]="theme">Column 1</p-table-head-cell>
-            <p-table-head-cell [theme]="theme">Column 2</p-table-head-cell>
+            <p-table-head-cell>Column 1</p-table-head-cell>
+            <p-table-head-cell>Column 2</p-table-head-cell>
           </p-table-head-row>
         </p-table-head>
       </p-table>
