@@ -1,0 +1,548 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+  aspectRatio: '1:1',
+  additionalGlobalStyles: [Object],
+  additionalContentStyles: [Object],
+  additionalLinkStyles: [Object]
+} 1`] = `
+{
+  "@global": {
+    "::slotted(img)": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+    "::slotted(picture)": {
+      "bottom": "0 !important",
+      "left": "0 !important",
+      "position": "absolute !important",
+      "right": "0 !important",
+      "top": "0 !important",
+    },
+    "::slotted(picture),::slotted(img)": {
+      "WebkitBackfaceVisibility": "hidden !important",
+      "backfaceVisibility": "hidden !important",
+      "transition": "transform var(--p-transition-duration, .24s) ease !important",
+    },
+    ":host": {
+      "&([hidden])": {
+        "display": "none !important",
+      },
+      "display": "block",
+    },
+    "p": {
+      "background": "black",
+    },
+  },
+  "content": {
+    "@media (forced-colors: active)": {
+      "background": "rgba(0,0,0,0.7)",
+    },
+    "borderRadius": "8px",
+    "display": "grid",
+    "gap": "16px",
+    "gridTemplateColumns": "auto",
+    "gridTemplateRows": "auto auto",
+    "justifyItems": "start",
+    "left": 0,
+    "position": "absolute",
+    "right": 0,
+  },
+  "image-container": {
+    "borderRadius": "8px",
+    "bottom": 0,
+    "left": 0,
+    "overflow": "hidden",
+    "position": "absolute",
+    "right": 0,
+    "top": 0,
+  },
+  "link": {
+    "maxWidth": "400px",
+    "minHeight": "54px",
+  },
+  "link-overlay": {
+    "bottom": 0,
+    "left": 0,
+    "outline": 0,
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+  },
+  "root": {
+    "@media(hover:hover)": {
+      "&:hover": {
+        "& ::slotted(picture),::slotted(img)": {
+          "transform": "scale3d(1.05, 1.05, 1.05) !important",
+        },
+      },
+    },
+    "height": 0,
+    "paddingTop": "100%",
+    "position": "relative",
+    "transform": "translate3d(0,0,0)",
+  },
+}
+`;
+
+exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+  aspectRatio: '3:4',
+  additionalGlobalStyles: [Object],
+  additionalContentStyles: [Object],
+  additionalLinkStyles: [Object]
+} 1`] = `
+{
+  "@global": {
+    "::slotted(img)": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+    "::slotted(picture)": {
+      "bottom": "0 !important",
+      "left": "0 !important",
+      "position": "absolute !important",
+      "right": "0 !important",
+      "top": "0 !important",
+    },
+    "::slotted(picture),::slotted(img)": {
+      "WebkitBackfaceVisibility": "hidden !important",
+      "backfaceVisibility": "hidden !important",
+      "transition": "transform var(--p-transition-duration, .24s) ease !important",
+    },
+    ":host": {
+      "&([hidden])": {
+        "display": "none !important",
+      },
+      "display": "block",
+    },
+    "p": {
+      "background": "black",
+    },
+  },
+  "content": {
+    "@media (forced-colors: active)": {
+      "background": "rgba(0,0,0,0.7)",
+    },
+    "borderRadius": "8px",
+    "display": "grid",
+    "gap": "16px",
+    "gridTemplateColumns": "auto",
+    "gridTemplateRows": "auto auto",
+    "justifyItems": "start",
+    "left": 0,
+    "position": "absolute",
+    "right": 0,
+  },
+  "image-container": {
+    "borderRadius": "8px",
+    "bottom": 0,
+    "left": 0,
+    "overflow": "hidden",
+    "position": "absolute",
+    "right": 0,
+    "top": 0,
+  },
+  "link": {
+    "maxWidth": "400px",
+    "minHeight": "54px",
+  },
+  "link-overlay": {
+    "bottom": 0,
+    "left": 0,
+    "outline": 0,
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+  },
+  "root": {
+    "@media(hover:hover)": {
+      "&:hover": {
+        "& ::slotted(picture),::slotted(img)": {
+          "transform": "scale3d(1.05, 1.05, 1.05) !important",
+        },
+      },
+    },
+    "height": 0,
+    "paddingTop": "133.33%",
+    "position": "relative",
+    "transform": "translate3d(0,0,0)",
+  },
+}
+`;
+
+exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+  aspectRatio: '4:3',
+  additionalGlobalStyles: [Object],
+  additionalContentStyles: [Object],
+  additionalLinkStyles: [Object]
+} 1`] = `
+{
+  "@global": {
+    "::slotted(img)": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+    "::slotted(picture)": {
+      "bottom": "0 !important",
+      "left": "0 !important",
+      "position": "absolute !important",
+      "right": "0 !important",
+      "top": "0 !important",
+    },
+    "::slotted(picture),::slotted(img)": {
+      "WebkitBackfaceVisibility": "hidden !important",
+      "backfaceVisibility": "hidden !important",
+      "transition": "transform var(--p-transition-duration, .24s) ease !important",
+    },
+    ":host": {
+      "&([hidden])": {
+        "display": "none !important",
+      },
+      "display": "block",
+    },
+    "p": {
+      "background": "black",
+    },
+  },
+  "content": {
+    "@media (forced-colors: active)": {
+      "background": "rgba(0,0,0,0.7)",
+    },
+    "borderRadius": "8px",
+    "display": "grid",
+    "gap": "16px",
+    "gridTemplateColumns": "auto",
+    "gridTemplateRows": "auto auto",
+    "justifyItems": "start",
+    "left": 0,
+    "position": "absolute",
+    "right": 0,
+  },
+  "image-container": {
+    "borderRadius": "8px",
+    "bottom": 0,
+    "left": 0,
+    "overflow": "hidden",
+    "position": "absolute",
+    "right": 0,
+    "top": 0,
+  },
+  "link": {
+    "maxWidth": "400px",
+    "minHeight": "54px",
+  },
+  "link-overlay": {
+    "bottom": 0,
+    "left": 0,
+    "outline": 0,
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+  },
+  "root": {
+    "@media(hover:hover)": {
+      "&:hover": {
+        "& ::slotted(picture),::slotted(img)": {
+          "transform": "scale3d(1.05, 1.05, 1.05) !important",
+        },
+      },
+    },
+    "height": 0,
+    "paddingTop": "75%",
+    "position": "relative",
+    "transform": "translate3d(0,0,0)",
+  },
+}
+`;
+
+exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+  aspectRatio: '9:16',
+  additionalGlobalStyles: [Object],
+  additionalContentStyles: [Object],
+  additionalLinkStyles: [Object]
+} 1`] = `
+{
+  "@global": {
+    "::slotted(img)": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+    "::slotted(picture)": {
+      "bottom": "0 !important",
+      "left": "0 !important",
+      "position": "absolute !important",
+      "right": "0 !important",
+      "top": "0 !important",
+    },
+    "::slotted(picture),::slotted(img)": {
+      "WebkitBackfaceVisibility": "hidden !important",
+      "backfaceVisibility": "hidden !important",
+      "transition": "transform var(--p-transition-duration, .24s) ease !important",
+    },
+    ":host": {
+      "&([hidden])": {
+        "display": "none !important",
+      },
+      "display": "block",
+    },
+    "p": {
+      "background": "black",
+    },
+  },
+  "content": {
+    "@media (forced-colors: active)": {
+      "background": "rgba(0,0,0,0.7)",
+    },
+    "borderRadius": "8px",
+    "display": "grid",
+    "gap": "16px",
+    "gridTemplateColumns": "auto",
+    "gridTemplateRows": "auto auto",
+    "justifyItems": "start",
+    "left": 0,
+    "position": "absolute",
+    "right": 0,
+  },
+  "image-container": {
+    "borderRadius": "8px",
+    "bottom": 0,
+    "left": 0,
+    "overflow": "hidden",
+    "position": "absolute",
+    "right": 0,
+    "top": 0,
+  },
+  "link": {
+    "maxWidth": "400px",
+    "minHeight": "54px",
+  },
+  "link-overlay": {
+    "bottom": 0,
+    "left": 0,
+    "outline": 0,
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+  },
+  "root": {
+    "@media(hover:hover)": {
+      "&:hover": {
+        "& ::slotted(picture),::slotted(img)": {
+          "transform": "scale3d(1.05, 1.05, 1.05) !important",
+        },
+      },
+    },
+    "height": 0,
+    "paddingTop": "177.75%",
+    "position": "relative",
+    "transform": "translate3d(0,0,0)",
+  },
+}
+`;
+
+exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+  aspectRatio: '16:9',
+  additionalGlobalStyles: [Object],
+  additionalContentStyles: [Object],
+  additionalLinkStyles: [Object]
+} 1`] = `
+{
+  "@global": {
+    "::slotted(img)": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+    "::slotted(picture)": {
+      "bottom": "0 !important",
+      "left": "0 !important",
+      "position": "absolute !important",
+      "right": "0 !important",
+      "top": "0 !important",
+    },
+    "::slotted(picture),::slotted(img)": {
+      "WebkitBackfaceVisibility": "hidden !important",
+      "backfaceVisibility": "hidden !important",
+      "transition": "transform var(--p-transition-duration, .24s) ease !important",
+    },
+    ":host": {
+      "&([hidden])": {
+        "display": "none !important",
+      },
+      "display": "block",
+    },
+    "p": {
+      "background": "black",
+    },
+  },
+  "content": {
+    "@media (forced-colors: active)": {
+      "background": "rgba(0,0,0,0.7)",
+    },
+    "borderRadius": "8px",
+    "display": "grid",
+    "gap": "16px",
+    "gridTemplateColumns": "auto",
+    "gridTemplateRows": "auto auto",
+    "justifyItems": "start",
+    "left": 0,
+    "position": "absolute",
+    "right": 0,
+  },
+  "image-container": {
+    "borderRadius": "8px",
+    "bottom": 0,
+    "left": 0,
+    "overflow": "hidden",
+    "position": "absolute",
+    "right": 0,
+    "top": 0,
+  },
+  "link": {
+    "maxWidth": "400px",
+    "minHeight": "54px",
+  },
+  "link-overlay": {
+    "bottom": 0,
+    "left": 0,
+    "outline": 0,
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+  },
+  "root": {
+    "@media(hover:hover)": {
+      "&:hover": {
+        "& ::slotted(picture),::slotted(img)": {
+          "transform": "scale3d(1.05, 1.05, 1.05) !important",
+        },
+      },
+    },
+    "height": 0,
+    "paddingTop": "56.25%",
+    "position": "relative",
+    "transform": "translate3d(0,0,0)",
+  },
+}
+`;
+
+exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+  aspectRatio: [Object],
+  additionalGlobalStyles: [Object],
+  additionalContentStyles: [Object],
+  additionalLinkStyles: [Object]
+} 1`] = `
+{
+  "@global": {
+    "::slotted(img)": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+    "::slotted(picture)": {
+      "bottom": "0 !important",
+      "left": "0 !important",
+      "position": "absolute !important",
+      "right": "0 !important",
+      "top": "0 !important",
+    },
+    "::slotted(picture),::slotted(img)": {
+      "WebkitBackfaceVisibility": "hidden !important",
+      "backfaceVisibility": "hidden !important",
+      "transition": "transform var(--p-transition-duration, .24s) ease !important",
+    },
+    ":host": {
+      "&([hidden])": {
+        "display": "none !important",
+      },
+      "display": "block",
+    },
+    "p": {
+      "background": "black",
+    },
+  },
+  "content": {
+    "@media (forced-colors: active)": {
+      "background": "rgba(0,0,0,0.7)",
+    },
+    "borderRadius": "8px",
+    "display": "grid",
+    "gap": "16px",
+    "gridTemplateColumns": "auto",
+    "gridTemplateRows": "auto auto",
+    "justifyItems": "start",
+    "left": 0,
+    "position": "absolute",
+    "right": 0,
+  },
+  "image-container": {
+    "borderRadius": "8px",
+    "bottom": 0,
+    "left": 0,
+    "overflow": "hidden",
+    "position": "absolute",
+    "right": 0,
+    "top": 0,
+  },
+  "link": {
+    "maxWidth": "400px",
+    "minHeight": "54px",
+  },
+  "link-overlay": {
+    "bottom": 0,
+    "left": 0,
+    "outline": 0,
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+  },
+  "root": {
+    "@media(hover:hover)": {
+      "&:hover": {
+        "& ::slotted(picture),::slotted(img)": {
+          "transform": "scale3d(1.05, 1.05, 1.05) !important",
+        },
+      },
+    },
+    "@media(min-width:1000px)": {
+      "paddingTop": "56.25%",
+    },
+    "@media(min-width:1300px)": {
+      "paddingTop": "177.75%",
+    },
+    "@media(min-width:1760px)": {
+      "paddingTop": "100%",
+    },
+    "@media(min-width:480px)": {
+      "paddingTop": "75%",
+    },
+    "@media(min-width:760px)": {
+      "paddingTop": "133.33%",
+    },
+    "height": 0,
+    "paddingTop": "100%",
+    "position": "relative",
+    "transform": "translate3d(0,0,0)",
+  },
+}
+`;
+
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
+`;
+
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-link-tile picture > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}"
+`;

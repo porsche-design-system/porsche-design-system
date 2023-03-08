@@ -1,0 +1,730 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' }, size: {
+  base: 'semibold',
+  xs: 'regular',
+  s: 'semibold',
+  m: 'regular',
+  l: 'semibold',
+  xl: 'regular'
+}, weight: {
+  base: 'column',
+  xs: 'row',
+  s: 'column',
+  m: 'row',
+  l: 'column',
+  xl: 'row'
+}, align: true, isCompact: %s and hasGradient: %s 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 100%;
+}
+.content {
+  display: grid;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-items: start;
+  border-radius: 8px;
+  gap: 16px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+.link {
+  min-height: 54px;
+}
+.signature {
+  position: absolute;
+  padding: clamp(16px, 1.25vw + 12px, 36px);
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.description {
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+}
+.description-group {
+  color: #FBFCFF;
+  max-width: 34.375rem;
+  gap: 4px;
+}
+.sub-description {
+  margin: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.link-group {
+  display: flex;
+  width: 100%;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+@media(min-width:480px) {
+  .root {
+    padding-top: 75%;
+  }
+  .description {
+    font-weight: 400;
+  }
+  .link-group {
+    flex-flow: row wrap;
+    align-items: center;
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    padding-top: 133.33%;
+  }
+  .description {
+    font-weight: 600;
+  }
+  .link-group {
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
+}
+
+@media(min-width:1000px) {
+  .root {
+    padding-top: 56.25%;
+  }
+  .description {
+    font-weight: 400;
+  }
+  .link-group {
+    flex-flow: row wrap;
+    align-items: center;
+  }
+}
+
+@media(min-width:1300px) {
+  .root {
+    padding-top: 177.75%;
+  }
+  .description {
+    font-weight: 600;
+  }
+  .link-group {
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
+}
+
+@media(min-width:1760px) {
+  .root {
+    padding-top: 100%;
+  }
+  .description {
+    font-weight: 400;
+  }
+  .link-group {
+    flex-flow: row wrap;
+    align-items: center;
+  }
+}
+
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size: regular, weight: column, align: false, isCompact: %s and hasGradient: %s 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 100%;
+}
+.content {
+  display: grid;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-items: start;
+  border-radius: 8px;
+  gap: 16px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+.link {
+  min-height: 54px;
+}
+.signature {
+  position: absolute;
+  padding: clamp(16px, 1.25vw + 12px, 36px);
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.description {
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
+}
+.link-group {
+  display: flex;
+  width: 100%;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size: semibold, weight: row, align: true, isCompact: %s and hasGradient: %s 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 133.33%;
+}
+.content {
+  display: grid;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-items: start;
+  border-radius: 8px;
+  gap: 16px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+.link {
+  min-height: 54px;
+}
+.signature {
+  position: absolute;
+  padding: clamp(16px, 1.25vw + 12px, 36px);
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.description {
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+}
+.description-group {
+  color: #FBFCFF;
+  max-width: 34.375rem;
+  gap: 4px;
+}
+.sub-description {
+  margin: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.link-group {
+  display: flex;
+  width: 100%;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  flex-flow: row wrap;
+  align-items: center;
+}
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size: semibold, weight: row, align: true, isCompact: %s and hasGradient: %s 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 75%;
+}
+.content {
+  display: grid;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-items: start;
+  border-radius: 8px;
+  gap: 16px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+.link {
+  min-height: 54px;
+}
+.signature {
+  position: absolute;
+  padding: clamp(16px, 1.25vw + 12px, 36px);
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.description {
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+}
+.description-group {
+  color: #FBFCFF;
+  max-width: 34.375rem;
+  gap: 4px;
+}
+.sub-description {
+  margin: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.link-group {
+  display: flex;
+  width: 100%;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  flex-flow: row wrap;
+  align-items: center;
+}
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size: semibold, weight: row, align: false, isCompact: %s and hasGradient: %s 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 177.75%;
+}
+.content {
+  display: grid;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-items: start;
+  border-radius: 8px;
+  gap: 16px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+.link {
+  min-height: 54px;
+}
+.signature {
+  position: absolute;
+  padding: clamp(16px, 1.25vw + 12px, 36px);
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.description {
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+}
+.link-group {
+  display: flex;
+  width: 100%;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  flex-flow: row wrap;
+  align-items: center;
+}
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size: regular, weight: column, align: true, isCompact: %s and hasGradient: %s 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 56.25%;
+}
+.content {
+  display: grid;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-items: start;
+  border-radius: 8px;
+  gap: 16px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+.link {
+  min-height: 54px;
+}
+.signature {
+  position: absolute;
+  padding: clamp(16px, 1.25vw + 12px, 36px);
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.description {
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 400;
+}
+.description-group {
+  color: #FBFCFF;
+  max-width: 34.375rem;
+  gap: 4px;
+}
+.sub-description {
+  margin: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.link-group {
+  display: flex;
+  width: 100%;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+}
+"
+`;
