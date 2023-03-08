@@ -15,16 +15,16 @@ behavior.
   <p-table :theme="theme" caption="Some caption" ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
-        <p-table-head-cell :theme="theme" v-for="(item, index) in headBasic" :key="index">{{ item }}</p-table-head-cell>
+        <p-table-head-cell v-for="(item, index) in headBasic" :key="index">{{ item }}</p-table-head-cell>
       </p-table-head-row>
     </p-table-head>
     <p-table-body>
-      <p-table-row :theme="theme" v-for="(item, index) in dataBasic" :key="index">
-        <p-table-cell :theme="theme">{{ item.model }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.date }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.interest }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.status }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.leadId }}</p-table-cell>
+      <p-table-row v-for="(item, index) in dataBasic" :key="index">
+        <p-table-cell>{{ item.model }}</p-table-cell>
+        <p-table-cell>{{ item.date }}</p-table-cell>
+        <p-table-cell>{{ item.interest }}</p-table-cell>
+        <p-table-cell>{{ item.status }}</p-table-cell>
+        <p-table-cell>{{ item.leadId }}</p-table-cell>
       </p-table-row>
     </p-table-body>
   </p-table>
@@ -75,14 +75,14 @@ subscribe to.
   <p-table caption="Some caption" ref="tableSorting" :theme="theme">
     <p-table-head>
       <p-table-head-row>
-        <p-table-head-cell :theme="theme" v-for="(item, index) in headSorting" :key="index" ref="headCellsSorting">{{ item.name }}</p-table-head-cell>
+        <p-table-head-cell v-for="(item, index) in headSorting" :key="index" ref="headCellsSorting">{{ item.name }}</p-table-head-cell>
       </p-table-head-row>
     </p-table-head>
     <p-table-body>
-      <p-table-row :theme="theme" v-for="(item, index) in dataSorting" :key="index">
-        <p-table-cell :theme="theme">{{ item.col1 }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.col2 }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.col3 }}</p-table-cell>
+      <p-table-row v-for="(item, index) in dataSorting" :key="index">
+        <p-table-cell>{{ item.col1 }}</p-table-cell>
+        <p-table-cell>{{ item.col2 }}</p-table-cell>
+        <p-table-cell>{{ item.col3 }}</p-table-cell>
       </p-table-row>
     </p-table-body>
   </p-table>
@@ -106,12 +106,12 @@ The appearance of a table's contents can be customized as illustrated in the fol
     <p-heading slot="caption" size="large">Some visual caption</p-heading>
     <p-table-head>
       <p-table-head-row>
-        <p-table-head-cell :theme="theme" v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
+        <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
       </p-table-head-row>
     </p-table-head>
     <p-table-body>
-      <p-table-row :theme="theme" v-for="(item, index) in dataAdvanced" :key="index">
-        <p-table-cell :theme="theme">
+      <p-table-row v-for="(item, index) in dataAdvanced" :key="index">
+        <p-table-cell>
           <p-flex>
             <p-flex-item>
               <img :src="item.imageUrl" width="80" height="45" style="margin-right: 0.5rem" alt="">
@@ -122,13 +122,13 @@ The appearance of a table's contents can be customized as illustrated in the fol
             </p-flex-item>
           </p-flex>
         </p-table-cell>
-        <p-table-cell :theme="theme">{{ item.interest }}</p-table-cell>
-        <p-table-cell :theme="theme"><a href="https://porsche.com">{{ item.vin }}</a></p-table-cell>
-        <p-table-cell :theme="theme">{{ item.purchaseIntention }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.status }}</p-table-cell>
-        <p-table-cell multiline="true" :theme="theme" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
-        <p-table-cell :theme="theme">{{ item.leadId }}</p-table-cell>
-        <p-table-cell :theme="theme">
+        <p-table-cell>{{ item.interest }}</p-table-cell>
+        <p-table-cell><a href="https://porsche.com">{{ item.vin }}</a></p-table-cell>
+        <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
+        <p-table-cell>{{ item.status }}</p-table-cell>
+        <p-table-cell multiline="true" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
+        <p-table-cell>{{ item.leadId }}</p-table-cell>
+        <p-table-cell>
           <p-button-pure :theme="theme" icon="edit" style="padding: .5rem">Edit</p-button-pure>
           <p-button-pure :theme="theme" icon="delete" style="padding: .5rem">Delete</p-button-pure>
         </p-table-cell>
