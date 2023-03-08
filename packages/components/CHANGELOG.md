@@ -11,8 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `getInitialStyles` partial matches new design language
-- `Text Field Wrapper` uses Light DOM styles to handle input pseudo-elements provided by getInitialStyles partial
+- Partials: `getInitialStyles` matches new design language
+- Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
 
 #### Fixed
 
