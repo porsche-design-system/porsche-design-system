@@ -1,5 +1,5 @@
-import { getClosestHTMLElement, hasCounter } from '../../utils';
 import type { IconName } from '../../types';
+import { getClosestHTMLElement, hasCounter, hasDocument } from '../../utils';
 import { borderWidthBase } from '@porsche-design-system/utilities-v2';
 import { cssVariableInputPaddingLeft, cssVariableInputPaddingRight } from './text-field-wrapper-styles';
 
@@ -67,7 +67,7 @@ export const dispatchInputEvent = (el: HTMLInputElement): void => {
 // eslint-disable-next-line no-underscore-dangle
 export const _hasShowPickerSupport = (): boolean => {
   return (
-    HTMLInputElement &&
+    hasDocument &&
     'showPicker' in HTMLInputElement.prototype &&
     // TODO: it would be better to determinate support by checking for existence of "calendar-picker-indicator"
     !!window.navigator.userAgent.match(/chrome|chromium|crios|edg/i)
