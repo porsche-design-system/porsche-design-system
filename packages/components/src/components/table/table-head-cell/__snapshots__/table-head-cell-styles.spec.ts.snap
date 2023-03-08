@@ -12,6 +12,10 @@ exports[`getComponentCss() should return correct css for active: false, directio
 :host([hidden]) {
   display: none !important;
 }
+.button-root {
+  display: flex;
+  align-items: flex-end;
+}
 @media(hover:hover) {
   .button-pure:hover .icon, .button-pure:focus .icon {
     opacity: 1;
@@ -37,6 +41,10 @@ exports[`getComponentCss() should return correct css for active: false, directio
 }
 :host([hidden]) {
   display: none !important;
+}
+.button-root {
+  display: flex;
+  align-items: flex-end;
 }
 @media(hover:hover) {
   .button-pure:hover .icon, .button-pure:focus .icon {
@@ -64,6 +72,10 @@ exports[`getComponentCss() should return correct css for active: true, direction
 :host([hidden]) {
   display: none !important;
 }
+.button-root {
+  display: flex;
+  align-items: flex-end;
+}
 @media(hover:hover) {
   .button-pure:hover .icon, .button-pure:focus .icon {
     opacity: 1;
@@ -90,6 +102,10 @@ exports[`getComponentCss() should return correct css for active: true, direction
 :host([hidden]) {
   display: none !important;
 }
+.button-root {
+  display: flex;
+  align-items: flex-end;
+}
 @media(hover:hover) {
   .button-pure:hover .icon, .button-pure:focus .icon {
     opacity: 1;
@@ -115,6 +131,10 @@ exports[`getComponentCss() should return correct css for active: true, direction
 }
 :host([hidden]) {
   display: none !important;
+}
+.button-root {
+  display: flex;
+  align-items: flex-end;
 }
 @media(hover:hover) {
   .button-pure:hover .icon, .button-pure:focus .icon {
