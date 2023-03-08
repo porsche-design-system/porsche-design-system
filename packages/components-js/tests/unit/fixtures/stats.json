@@ -106,8 +106,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 68239,
-    "gzipSize": 23120
+    "size": 68333,
+    "gzipSize": 23139
   },
   {
     "chunkShortName": "marque",
@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 7503,
-    "gzipSize": 3208
+    "size": 7669,
+    "gzipSize": 3243
   },
   {
     "chunkShortName": "model-signature",
@@ -141,8 +141,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 8149,
-    "gzipSize": 3120
+    "size": 8345,
+    "gzipSize": 3155
   },
   {
     "chunkShortName": "segmented-control",
@@ -162,7 +162,7 @@
   {
     "chunkShortName": "stepper-horizontal",
     "size": 12068,
-    "gzipSize": 4819
+    "gzipSize": 4820
   },
   {
     "chunkShortName": "switch",
@@ -172,7 +172,7 @@
   {
     "chunkShortName": "table",
     "size": 10969,
-    "gzipSize": 3973
+    "gzipSize": 3972
   },
   {
     "chunkShortName": "tabs",
@@ -182,7 +182,7 @@
   {
     "chunkShortName": "tabs-bar",
     "size": 9855,
-    "gzipSize": 3823
+    "gzipSize": 3826
   },
   {
     "chunkShortName": "tag",
@@ -206,8 +206,8 @@
   },
   {
     "chunkShortName": "text-list",
-    "size": 3419,
-    "gzipSize": 1527
+    "size": 3985,
+    "gzipSize": 1741
   },
   {
     "chunkShortName": "textarea-wrapper",
