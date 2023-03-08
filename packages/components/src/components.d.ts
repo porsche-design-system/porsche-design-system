@@ -37,11 +37,10 @@ import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./
 import { PaginationChangeEvent, PaginationInternationalization, PaginationMaxNumberOfPageLinks } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
-import { ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+import { ScrollerAlignScrollIndicator, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { DropdownDirection, SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
-import { FormState } from "./utils/form/form-state";
+import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
@@ -54,7 +53,7 @@ import { TagColor, TagIcon } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextTag } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
-import { TextListListType, TextListOrderType } from "./components/text-list/text-list/text-list-utils";
+import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -780,9 +779,13 @@ export namespace Components {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If true, the modal will not have a close button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If false, the modal will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
          */
@@ -898,6 +901,10 @@ export namespace Components {
     }
     interface PScroller {
         /**
+          * Sets the vertical position of scroll indicator
+         */
+        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
@@ -906,7 +913,7 @@ export namespace Components {
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
-          * Sets the vertical position of scroll indicator icon
+          * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
         /**
@@ -994,7 +1001,7 @@ export namespace Components {
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
-        "direction"?: DropdownDirection;
+        "direction"?: SelectWrapperDropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
         "isOpenOverride"?: boolean;
@@ -1003,7 +1010,7 @@ export namespace Components {
         "onOpenChange": (isOpen: boolean) => void;
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
-        "state"?: FormState;
+        "state"?: SelectWrapperState;
         "theme"?: Theme;
     }
     interface PSpinner {
@@ -1280,17 +1287,21 @@ export namespace Components {
     }
     interface PTextList {
         /**
-          * The type of the list.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The type of the list.
          */
         "listType"?: TextListListType;
         /**
-          * The list style type of ordered list. Only has effect when list type is set to 'ordered'.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
         "orderType"?: TextListOrderType;
         /**
           * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * The list style type.
+         */
+        "type"?: TextListType;
     }
     interface PTextListItem {
     }
@@ -2559,9 +2570,13 @@ declare namespace LocalJSX {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If true, the modal will not have a close button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If false, the modal will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
          */
@@ -2571,11 +2586,11 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead. Emitted when the component requests to be closed.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead. Emitted when the component requests to be dismissed.
          */
         "onClose"?: (event: PModalCustomEvent<void>) => void;
         /**
-          * Emitted when the component requests to be closed.
+          * Emitted when the component requests to be dismissed.
          */
         "onDismiss"?: (event: PModalCustomEvent<void>) => void;
         /**
@@ -2693,6 +2708,10 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
+          * Sets the vertical position of scroll indicator
+         */
+        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
@@ -2701,7 +2720,7 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
-          * Sets the vertical position of scroll indicator icon
+          * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
         /**
@@ -2797,7 +2816,7 @@ declare namespace LocalJSX {
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
-        "direction"?: DropdownDirection;
+        "direction"?: SelectWrapperDropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
         "isOpenOverride"?: boolean;
@@ -2806,7 +2825,7 @@ declare namespace LocalJSX {
         "onOpenChange"?: (isOpen: boolean) => void;
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
-        "state"?: FormState;
+        "state"?: SelectWrapperState;
         "theme"?: Theme;
     }
     interface PSpinner {
@@ -3127,17 +3146,21 @@ declare namespace LocalJSX {
     }
     interface PTextList {
         /**
-          * The type of the list.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The type of the list.
          */
         "listType"?: TextListListType;
         /**
-          * The list style type of ordered list. Only has effect when list type is set to 'ordered'.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
         "orderType"?: TextListOrderType;
         /**
           * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * The list style type.
+         */
+        "type"?: TextListType;
     }
     interface PTextListItem {
     }
