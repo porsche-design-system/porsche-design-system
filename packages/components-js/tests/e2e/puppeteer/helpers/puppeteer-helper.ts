@@ -313,7 +313,7 @@ export const goto = async (page: Page, url: string) => {
   await waitForComponentsReady(page);
 };
 
-export const buildDefaultComponentMarkup = (tagName: TagName, darkTheme?: 'dark'): string => {
+export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const componentMeta = getComponentMeta(tagName);
 
   const buildChildMarkup = (requiredChild: string): string => {
@@ -333,12 +333,9 @@ export const buildDefaultComponentMarkup = (tagName: TagName, darkTheme?: 'dark'
     }
   };
 
-  const attributes =
-    componentMeta.requiredProps?.map((prop) => (darkTheme && prop === 'theme' ? '' : ` ${prop}="value"`)).join() || '';
+  const attributes = componentMeta.requiredProps?.map((prop) => ` ${prop}="value"`).join() || '';
 
-  const componentMarkup = `<${tagName}${darkTheme ? ' theme="dark"' : ''}${attributes}>${buildChildMarkup(
-    componentMeta.requiredChild
-  )}</${tagName}>`;
+  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, componentMeta);
 };
