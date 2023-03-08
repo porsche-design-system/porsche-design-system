@@ -3,6 +3,8 @@ import { pxToRemWithUnit } from '../../styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
+  borderRadiusMedium,
+  gradientToBottomStyle,
   gradientToTopStyle,
   spacingFluidLarge,
   spacingFluidMedium,
@@ -36,8 +38,12 @@ export const getComponentCss = (
     }),
     signature: {
       position: 'absolute',
-      top: spacingFluidMedium,
-      left: spacingFluidMedium,
+      padding: spacingFluidMedium,
+      borderRadius: borderRadiusMedium,
+      top: 0,
+      left: 0,
+      right: 0,
+      ...gradientToBottomStyle,
     },
     description: {
       margin: 0,
