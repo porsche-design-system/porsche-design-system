@@ -15079,7 +15079,7 @@ jss-plugin-vendor-prefixer@10.10.0:
     css-vendor "^2.0.8"
     jss "10.10.0"
 
-jss-preset-default@10.10.0, jss-preset-default@^10.10.0, jss-preset-default@^10.9.2:
+jss-preset-default@10.10.0, jss-preset-default@^10.10.0:
   version "10.10.0"
   resolved "https://registry.yarnpkg.com/jss-preset-default/-/jss-preset-default-10.10.0.tgz#c8209449a0f6d232526c2ba3a3a6ec69ee97e023"
   integrity sha512-GL175Wt2FGhjE+f+Y3aWh+JioL06/QWFgZp53CbNNq6ZkVU0TDplD8Bxm9KnkotAYn3FlplNqoW5CjyLXcoJ7Q==
@@ -15099,7 +15099,7 @@ jss-preset-default@10.10.0, jss-preset-default@^10.10.0, jss-preset-default@^10.
     jss-plugin-template "10.10.0"
     jss-plugin-vendor-prefixer "10.10.0"
 
-jss@10.10.0, jss@^10.10.0, jss@^10.9.2:
+jss@10.10.0, jss@^10.10.0:
   version "10.10.0"
   resolved "https://registry.yarnpkg.com/jss/-/jss-10.10.0.tgz#a75cc85b0108c7ac8c7b7d296c520a3e4fbc6ccc"
   integrity sha512-cqsOTS7jqPsPMjtKYDUpdFC0AbhYFLTcuGRqymgmdJIeQ8cH7+AgX7YSgQy79wXloZq2VvATYxUOUQEvS1V/Zw==
