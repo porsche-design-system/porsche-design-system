@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 7669,
-    "gzipSize": 3243
+    "size": 8040,
+    "gzipSize": 3399
   },
   {
     "chunkShortName": "model-signature",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 9855,
-    "gzipSize": 3826
+    "size": 9852,
+    "gzipSize": 3827
   },
   {
     "chunkShortName": "tag",
