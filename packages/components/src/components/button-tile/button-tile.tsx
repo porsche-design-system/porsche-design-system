@@ -16,6 +16,8 @@ import {
   getPrefixedTagNames,
   parseJSON,
   validateProps,
+  throwIfAlignTopAndNotCompact,
+  isDisabledOrLoading,
   LINK_BUTTON_TILE_SIZES,
   LINK_BUTTON_TILE_WEIGHTS,
   LINK_BUTTON_TILE_ASPECT_RATIOS,
@@ -159,7 +161,6 @@ export class ButtonTile {
           <slot />
         </div>
         <div class="content">
-          <button {...sharedButtonProps} class="button-overlay" tabIndex={-1} aria-hidden="true" />
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>

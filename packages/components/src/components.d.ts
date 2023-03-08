@@ -9,7 +9,7 @@ import { AlignLabel, BreakpointCustomizable, ButtonAriaAttribute, ButtonType, Bu
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
-import { LinkButtonTileAlign, LinkButtonTileAspectRatio, LinkButtonTileSize, LinkButtonTileWeight } from "./utils";
+import { ButtonTileAlign, ButtonTileAspectRatio, ButtonTileSize, ButtonTileWeight, LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./utils";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -197,7 +197,7 @@ export namespace Components {
         /**
           * Alignment of button and description.
          */
-        "align"?: LinkButtonTileAlign;
+        "align"?: ButtonTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -205,7 +205,7 @@ export namespace Components {
         /**
           * Aspect ratio of the button-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
           * Displays the button-tile as compact version with description and button icon only.
          */
@@ -241,7 +241,7 @@ export namespace Components {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
           * Specifies the type of the button.
          */
@@ -249,7 +249,7 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     interface PCarousel {
         /**
@@ -731,7 +731,7 @@ export namespace Components {
         /**
           * Alignment of link and description.
          */
-        "align"?: LinkButtonTileAlign;
+        "align"?: LinkTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -739,7 +739,7 @@ export namespace Components {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the link-tile as compact version with description and link icon only.
          */
@@ -771,7 +771,7 @@ export namespace Components {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -779,7 +779,7 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**
@@ -1981,7 +1981,7 @@ declare namespace LocalJSX {
         /**
           * Alignment of button and description.
          */
-        "align"?: LinkButtonTileAlign;
+        "align"?: ButtonTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -1989,7 +1989,7 @@ declare namespace LocalJSX {
         /**
           * Aspect ratio of the button-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
           * Displays the button-tile as compact version with description and button icon only.
          */
@@ -2025,7 +2025,7 @@ declare namespace LocalJSX {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
           * Specifies the type of the button.
          */
@@ -2033,7 +2033,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     interface PCarousel {
         /**
@@ -2527,7 +2527,7 @@ declare namespace LocalJSX {
         /**
           * Alignment of link and description.
          */
-        "align"?: LinkButtonTileAlign;
+        "align"?: LinkTileAlign;
         /**
           * Add ARIA attributes.
          */
@@ -2535,7 +2535,7 @@ declare namespace LocalJSX {
         /**
           * Aspect ratio of the link-tile.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkButtonTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Displays the link-tile as compact version with description and link icon only.
          */
@@ -2567,7 +2567,7 @@ declare namespace LocalJSX {
         /**
           * Font size of the description.
          */
-        "size"?: BreakpointCustomizable<LinkButtonTileSize>;
+        "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
          */
@@ -2575,7 +2575,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkButtonTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PMarque {
         /**

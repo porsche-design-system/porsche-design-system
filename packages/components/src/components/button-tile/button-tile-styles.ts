@@ -16,15 +16,6 @@ export const getComponentCss = (
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   return getCss({
-    ...getLinkButtonTileStyles(aspectRatio, size, weight, align, compact, hasGradient, isDisabled),
-    // is used for expanded click-area only
-    'button-overlay': {
-      position: 'fixed',
-      ...getInsetJssStyle(0),
-      outline: 0,
-      background: 'transparent no-repeat',
-      border: 'none',
-      cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
-    },
+    ...getLinkButtonTileStyles(aspectRatio, size, weight, align, compact, hasGradient, isDisabled, disabledOrLoading),
   });
 };

@@ -71,6 +71,7 @@ export const getLinkButtonTileStyles = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
+        cursor: isDIsabledOrLoading ? 'not-allowed' : 'pointer',
       },
       ...addImportantToEachRule({
         '::slotted(picture),::slotted(img)': {
