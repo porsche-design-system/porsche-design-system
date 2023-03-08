@@ -17,6 +17,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
 }, align: top, isCompact: { base: true, xs: false, s: true, m: false, l: true, xl: false } and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -119,17 +120,6 @@ p {
 .link-or-button {
   min-height: 54px;
   display: none;
-}
-.button-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: transparent no-repeat;
-  border: none;
-  cursor: pointer;
 }
 @media(min-width:480px) {
   .root {
@@ -237,6 +227,7 @@ p {
 exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size: inherit, weight: regular, align: bottom, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: not-allowed;
 }
 :host([hidden]) {
   display: none !important;
@@ -304,17 +295,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.button-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: transparent no-repeat;
-  border: none;
-  cursor: not-allowed;
-}
 @media (forced-colors: active) {
   .content {
     background: rgba(0,0,0,0.7);
@@ -326,6 +306,7 @@ p {
 exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size: default, weight: semibold, align: top, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: not-allowed;
 }
 :host([hidden]) {
   display: none !important;
@@ -393,17 +374,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.button-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: transparent no-repeat;
-  border: none;
-  cursor: not-allowed;
-}
 @media (forced-colors: active) {
   .content {
     background: rgba(0,0,0,0.7);
@@ -421,6 +391,7 @@ p {
 exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size: default, weight: semibold, align: bottom, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -488,17 +459,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.button-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: transparent no-repeat;
-  border: none;
-  cursor: pointer;
-}
 @media (forced-colors: active) {
   .content {
     background: rgba(0,0,0,0.7);
@@ -516,6 +476,7 @@ p {
 exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size: default, weight: semibold, align: bottom, isCompact: false and hasGradient: false 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -582,17 +543,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.button-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: transparent no-repeat;
-  border: none;
-  cursor: pointer;
-}
 @media (forced-colors: active) {
   .content {
     background: rgba(0,0,0,0.7);
@@ -610,6 +560,7 @@ p {
 exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size: inherit, weight: regular, align: top, isCompact: true and hasGradient: false 1`] = `
 ":host {
   display: block;
+  cursor: not-allowed;
 }
 :host([hidden]) {
   display: none !important;
@@ -676,17 +627,6 @@ p {
 .link-or-button {
   min-height: 54px;
   display: none;
-}
-.button-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: transparent no-repeat;
-  border: none;
-  cursor: not-allowed;
 }
 @media (forced-colors: active) {
   .content {
