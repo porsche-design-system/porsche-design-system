@@ -1775,6 +1775,7 @@ exports[`should match snapshot 1`] = `
         "surface",
       ],
       "scrollIndicatorPosition": [
+        null,
         "top",
         "center",
       ],
@@ -2695,10 +2696,12 @@ exports[`should match snapshot 1`] = `
   "p-text-list": {
     "allowedPropValues": {
       "listType": [
+        null,
         "unordered",
         "ordered",
       ],
       "orderType": [
+        null,
         "numbered",
         "alphabetically",
       ],
@@ -2706,7 +2709,16 @@ exports[`should match snapshot 1`] = `
         "light",
         "dark",
       ],
+      "type": [
+        "unordered",
+        "numbered",
+        "alphabetically",
+      ],
     },
+    "deprecatedProps": [
+      "listType",
+      "orderType",
+    ],
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -2717,9 +2729,10 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "props": {
-      "listType": "unordered",
-      "orderType": "numbered",
+      "listType": null,
+      "orderType": null,
       "theme": "light",
+      "type": "unordered",
     },
     "styling": "jss",
   },
