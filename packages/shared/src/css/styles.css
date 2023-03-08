@@ -5,6 +5,12 @@
   --p-temporary-toast-skip-timeout: true;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /* Playground */
 .playground {
   padding: 16px;
