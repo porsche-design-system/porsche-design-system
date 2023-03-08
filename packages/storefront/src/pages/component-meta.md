@@ -1,11 +1,14 @@
 <template>
-  <div style="margin: 0 0 1rem">🚫 = deprecated<br>🛠 = breakpointCustomizable</div>
+  <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
+    <div>🚫 = deprecated<br>🛠 = breakpointCustomizable</div>
+    <p-switch @change="toggleProps" :checked="isToggled">Show all prop values</p-switch>
+  </div>
 
   <p-table>
     <p-table-head>
       <p-table-head-row v-html="headRow"></p-table-head-row>
     </p-table-head>
-    <p-table-body @click="onClick" v-html="body"></p-table-body>
+    <p-table-body ref="body" @click="onClick" v-html="body"></p-table-body>
   </p-table>
 </template>
 
@@ -47,9 +50,10 @@ export default class Code extends Vue {
           if (key === 'props') {
             value = Object.keys(value);
             value = value.map(val => {
-              const allowedValues = allowedPropValues[val];
+              let allowedValues = allowedPropValues[val];
+              allowedValues = (Array.isArray(allowedValues) && allowedValues.map(x => x === null ? 'undefined' : x).join('<br>– ')) || allowedValues;
               return ('<span class="prop">' + val + [breakpointCustomizableProps.includes(val) && '🛠️' , deprecatedProps.includes(val) && '🚫'].filter(x => x).join('') + '</span>') +
-              (allowedValues ? ('<div style="display: none">– ' + (Array.isArray(allowedValues) && allowedValues.join('<br>– ') || allowedValues) + '</div>') : '')
+              (allowedValues ? ('<div style="display: none">– ' + allowedValues + '</div>') : '')
             });
           } else if (key === 'eventNames') {
             value = value.map(val => val + (deprecatedEventNames.includes(val) ? '🚫' : ''));
@@ -79,6 +83,14 @@ export default class Code extends Vue {
     if (target.classList.value === 'prop') {
       target.nextSibling.style.display = target.nextSibling.style.display === 'block' ? 'none' : 'block';
     }
+  }
+
+  isToggled = false;
+  toggleProps({ detail: { checked } }) {
+    this.isToggled = checked;
+    this.$refs.body.querySelectorAll('.prop + div').forEach(el => {
+      el.style.display = checked ? 'block' : 'none';
+    });
   }
 }
 </script>
