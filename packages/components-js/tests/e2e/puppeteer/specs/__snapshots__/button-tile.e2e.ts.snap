@@ -28,9 +28,6 @@ exports[`accessibility should expose correct initial accessibility tree properti
     {
       "children": [
         {
-          "role": "none",
-        },
-        {
           "children": [
             {
               "name": "Some description",
