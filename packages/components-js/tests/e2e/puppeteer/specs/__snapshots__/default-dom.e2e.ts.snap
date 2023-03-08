@@ -58,8 +58,6 @@ exports[`should have no basic DOM regression for p-button-tile 1`] = `
     </slot>
   </div>
   <div class="content">
-    <button type="submit" class="button-overlay" tabindex="-1" aria-hidden="true">
-    </button>
     <p>
       value</p>
     <p-button class="link-or-button hydrated">
