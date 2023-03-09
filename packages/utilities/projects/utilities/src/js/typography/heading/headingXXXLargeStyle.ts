@@ -1,6 +1,6 @@
 import { _headingFontPartA, _headingFontPartB } from './headingShared';
-import { fontSizeHeadingXXXLarge } from '../../font';
+import { fontSizeDisplaySmall } from '../../font';
 
 export const headingXXXLargeStyle = {
-  font: `${_headingFontPartA}${fontSizeHeadingXXXLarge}${_headingFontPartB}`,
+  font: `${_headingFontPartA}${fontSizeDisplaySmall}${_headingFontPartB}`,
 } as const;
