@@ -2,6 +2,12 @@ import { JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileSize, LinkTileWeight, LinkTileAlign } from './link-tile-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { BreakpointCustomizable } from '../../types';
+import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
+import { pxToRemWithUnit } from '../../styles';
+import { getFontWeight } from '../../styles/font-weight-styles';
+import { getThemedTypographyColor } from '../../styles/text-icon-styles';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   spacingFluidMedium,
   spacingFluidLarge,

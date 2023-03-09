@@ -1,18 +1,17 @@
 import {
-  textSmallStyle,
-  spacingStaticSmall,
-  spacingStaticMedium,
-  spacingStaticLarge,
   getMediaQueryMin,
+  spacingStaticLarge,
+  spacingStaticMedium,
+  spacingStaticSmall,
+  textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { buildSlottedStyles, getCss } from '../../../utils';
+import { getCss } from '../../../utils';
 import {
-  getBaseSlottedStyles,
-  getFocusJssStyle,
-  pxToRemWithUnit,
-  getThemedColors,
   addImportantToEachRule,
+  getFocusJssStyle,
+  getThemedColors,
   hostHiddenStyles,
+  pxToRemWithUnit,
 } from '../../../styles';
 
 const { primaryColor } = getThemedColors('light');
@@ -80,15 +79,4 @@ export const getComponentCss = (): string => {
       pointerEvents: 'auto',
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      ...getBaseSlottedStyles(),
-      '& img': {
-        verticalAlign: 'middle',
-      },
-    })
-  );
 };

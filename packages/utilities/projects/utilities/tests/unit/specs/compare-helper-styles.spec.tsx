@@ -68,7 +68,7 @@ xit('should have equal styles for scss and jss', () => {
   const cssStyles = sass.compileString(`
   ${focusMixin} ${headingMixin} ${frostedGlassMixin}
   .focus {
-    @include pds-focus($offset: 2px);
+    @include pds-focus(2px);
   };
   .heading {
     @include pds-heading-medium;

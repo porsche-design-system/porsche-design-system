@@ -71,6 +71,7 @@ export const getComponentCss = (
         ...hostHiddenStyles,
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',
+          width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
           ...(!stretchValue && { verticalAlign: 'top' }),
         })),
       }),

@@ -2,7 +2,6 @@ import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   parseJSON,
   validateProps,
@@ -11,16 +10,14 @@ import { getComponentCss } from './link-tile-styles';
 import type { BreakpointCustomizable, LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAspectRatio, LinkTileSize, LinkTileWeight, LinkTileAlign } from './link-tile-utils';
+import type { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from './link-tile-utils';
 import {
+  LINK_TILE_ALIGNS,
   LINK_TILE_ASPECT_RATIOS,
   LINK_TILE_SIZES,
   LINK_TILE_WEIGHTS,
-  LINK_TILE_ALIGNS,
   throwIfAlignTopAndNotCompact,
 } from './link-tile-utils';
-import type {} from '../../styles/link-button-tile-styles';
-import { getSlottedCss } from '../../styles/link-button-tile-styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZES),
@@ -83,10 +80,6 @@ export class LinkTile {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);

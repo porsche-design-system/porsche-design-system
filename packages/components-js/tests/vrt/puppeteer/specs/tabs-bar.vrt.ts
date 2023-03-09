@@ -23,6 +23,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('tabs-bar-states', async () => {
       const page = vrt.getPage();
 
+      const head = `<style>
+        body { display: grid; grid-template-columns: repeat(2, 50%); }
+      </style>`;
+
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-tabs-bar theme="${theme}" active-tab-index="1">
           <button type="button">Button Tab One</button>
@@ -35,7 +39,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <a href="#">Anchor Tab Three</a>
         </p-tabs-bar>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover p-tabs-bar button');
       await forceHoverState(page, '.hover p-tabs-bar a');

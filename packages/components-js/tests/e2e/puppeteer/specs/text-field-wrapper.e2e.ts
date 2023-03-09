@@ -183,6 +183,7 @@ describe('input type="search"', () => {
       expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
       await setProperty(input, 'value', 'value');
+      // in case positioning of clear button changes
       await page.mouse.click(90, 25);
       expect(await getProperty(input, 'value')).toBe('');
       expect((await getEventSummary(input, 'input')).counter).toBe(2);

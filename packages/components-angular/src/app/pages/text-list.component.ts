@@ -207,8 +207,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-list>
         <p-text-list-item>
           <span>
-            Some slotted and deeply nested <a [href]="'#'">linked</a>, <b>bold</b>, <strong>strong</strong>,
-            <em>emphasized</em> and <i>italic</i> text
+            Some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </p-text-list-item>
+      </p-text-list>
+    </div>
+
+    <div class="playground dark" title="should apply custom styles for dedicated slotted content">
+      <p-text-list [theme]="'dark'">
+        <p-text-list-item>
+          <span>
+            Some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
           </span>
         </p-text-list-item>
       </p-text-list>
