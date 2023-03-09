@@ -230,7 +230,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
         newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
       } else if (tagName === 'p-modal') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
+          .replace(/hasHeader =/, 'const $&')
+          .replace(
+            /const hasHeader = .+\n/,
+            '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
+          );
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
