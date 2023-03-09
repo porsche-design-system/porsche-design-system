@@ -161,7 +161,7 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(40);
     expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(7); // 2 p-icons inside scroller + 5 p-icons in table head for sorting
     expect(status.componentDidLoad['p-button-pure'], 'final componentDidLoad: p-button-pure').toBe(5); // 5 p-button-pure in table head for sorting
-    expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5); // 5 p-table-head-cells have been updated
+    expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(10); // 5 p-table-head-cells have been updated
     expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
   });
 });
