@@ -24,7 +24,7 @@ JavaScript Design Tokens can be imported by
 
 - `displayLargeStyle`
 - `displayMediumStyle`
-- `headingXXXLargeStyle`
+- `displaySmallStyle`
 - `headingXXLargeStyle`
 - `headingXLargeStyle`
 - `headingLargeStyle`
@@ -41,9 +41,9 @@ JavaScript Design Tokens can be imported by
 SCSS Design Tokens can be imported by `@import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';`
 (make sure your bundler supports scss `~` tilde imports).
 
-- `@mixin pds-display-medium`
 - `@mixin pds-display-large`
-- `@mixin pds-heading-xxx-large`
+- `@mixin pds-display-medium`
+- `@mixin pds-display-small`
 - `@mixin pds-heading-xx-large`
 - `@mixin pds-heading-x-large`
 - `@mixin pds-heading-large`
