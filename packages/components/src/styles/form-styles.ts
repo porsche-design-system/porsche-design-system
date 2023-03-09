@@ -5,7 +5,9 @@ import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTran
 import {
   borderRadiusSmall,
   borderWidthBase,
+  fontLineHeight,
   fontSizeTextXSmall,
+  spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
@@ -30,7 +32,10 @@ export const getBaseChildStyles = (
     [`::slotted(${child})`]: {
       display: 'block',
       width: '100%',
-      height: 'auto',
+      height:
+        child !== 'textarea'
+          ? `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)` // we need 10px additionally so input height becomes 54px
+          : 'auto',
       margin: 0,
       outline: 0,
       WebkitAppearance: 'none', // iOS safari
@@ -39,7 +44,7 @@ export const getBaseChildStyles = (
       border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       background: 'transparent',
-      font: textSmallStyle.font.replace('ex', 'ex + 10px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome
+      font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
       textIndent: 0,
       color: primaryColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states

@@ -1,6 +1,11 @@
 import type { IconName, PropTypes, Theme } from '../../types';
 import type { IconColor } from '../icon/icon-utils';
 import type { InlineNotificationState, InlineNotificationStateDeprecated } from './inline-notification-utils';
+import {
+  getContentAriaAttributes,
+  getInlineNotificationIconName,
+  INLINE_NOTIFICATION_STATES,
+} from './inline-notification-utils';
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -12,11 +17,6 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
-import {
-  getContentAriaAttributes,
-  getInlineNotificationIconName,
-  INLINE_NOTIFICATION_STATES,
-} from './inline-notification-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,

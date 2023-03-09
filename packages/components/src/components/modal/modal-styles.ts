@@ -40,7 +40,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
         maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
         minHeight: 'auto',
-        margin: `max(16px, 7vh) ${gridSafeZoneBase}`,
+        margin: `clamp(16px, 7vh, 192px) ${gridSafeZoneBase}`,
         borderRadius: borderRadiusMedium,
       };
 };

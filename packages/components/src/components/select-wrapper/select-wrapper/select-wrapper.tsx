@@ -2,7 +2,7 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
+  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -16,7 +16,6 @@ import {
   THEMES,
   unobserveAttributes,
   validateProps,
-  FORM_STATES,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { DropdownDirection } from './select-wrapper-utils';
@@ -129,7 +128,7 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (

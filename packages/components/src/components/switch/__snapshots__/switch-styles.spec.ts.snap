@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 ":host {
   outline: 0 !important;
   display: inline-block !important;
+  width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -30,7 +31,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -95,6 +96,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   outline: 0 !important;
   display: inline-block !important;
+  width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -121,7 +123,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -185,6 +187,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   outline: 0 !important;
   display: inline-block !important;
+  width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -211,7 +214,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -265,6 +268,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   outline: 0 !important;
   display: block !important;
+  width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -290,7 +294,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -354,6 +358,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   outline: 0 !important;
   display: block !important;
+  width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -379,7 +384,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -440,6 +445,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   outline: 0 !important;
   display: block !important;
+  width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -465,7 +471,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -526,6 +532,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   outline: 0 !important;
   display: block !important;
+  width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -551,7 +558,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -612,6 +619,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   outline: 0 !important;
   display: block !important;
+  width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -637,7 +645,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -701,6 +709,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 ":host {
   outline: 0 !important;
   display: inline-block !important;
+  width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -709,12 +718,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 @media(min-width:480px) {
   :host {
     display: block !important;
+    width: 100% !important;
   }
 }
 
 @media(min-width:760px) {
   :host {
     display: inline-block !important;
+    width: auto !important;
     vertical-align: top !important;
   }
 }
@@ -722,12 +733,14 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 @media(min-width:1000px) {
   :host {
     display: block !important;
+    width: 100% !important;
   }
 }
 
 @media(min-width:1300px) {
   :host {
     display: inline-block !important;
+    width: auto !important;
     vertical-align: top !important;
   }
 }
@@ -735,6 +748,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 @media(min-width:1760px) {
   :host {
     display: block !important;
+    width: 100% !important;
   }
 }
 
@@ -759,7 +773,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {

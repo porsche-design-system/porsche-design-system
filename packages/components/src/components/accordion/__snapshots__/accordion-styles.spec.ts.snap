@@ -38,7 +38,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -48,7 +48,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -67,6 +67,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -121,7 +122,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -131,7 +132,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -150,6 +151,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -206,7 +208,7 @@ button::before {
   bottom: 2px;
 }
 button:focus::before {
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -216,7 +218,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -232,6 +234,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #FBFCFF;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -286,7 +289,7 @@ button::before {
   bottom: 2px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -296,7 +299,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -312,6 +315,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -366,7 +370,7 @@ button::before {
   bottom: 2px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -376,7 +380,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -392,6 +396,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -448,7 +453,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -458,7 +463,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -477,6 +482,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -531,7 +537,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -541,7 +547,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -560,6 +566,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #FBFCFF;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -616,7 +623,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -626,7 +633,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -645,6 +652,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -701,7 +709,7 @@ button::before {
   bottom: 2px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -711,7 +719,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -727,6 +735,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -781,7 +790,7 @@ button::before {
   bottom: 2px;
 }
 button:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -791,7 +800,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -807,6 +816,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -863,7 +873,7 @@ button::before {
   bottom: 6px;
 }
 button:focus::before {
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
 }
 button:not(:focus-visible)::before {
   border: 0;
@@ -908,7 +918,7 @@ button:not(:focus-visible)::before {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   button:hover::before {
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -927,6 +937,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #FBFCFF;
   padding: 0;
   overflow: hidden;
   height: auto;

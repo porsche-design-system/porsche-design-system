@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getHoverStyle() should return correct css for opts: { inset: '-4px -2px', borderRadius: '6px' } 1`] = `
+{
+  "@media(hover:hover)": {
+    "&:hover::before": {
+      "WebkitBackdropFilter": "blur(32px)",
+      "backdropFilter": "blur(32px)",
+      "background": "rgba(148, 149, 152, .18)",
+      "borderRadius": "6px",
+      "content": """",
+      "inset": "-4px -2px",
+      "pointerEvents": "none",
+      "position": "absolute",
+      "zIndex": -1,
+    },
+  },
+  "position": "relative",
+  "zIndex": 0,
+}
+`;
+
+exports[`getHoverStyle() should return correct css for opts: { inset: 'medium', borderRadius: 'medium' } 1`] = `
+{
+  "@media(hover:hover)": {
+    "&:hover::before": {
+      "WebkitBackdropFilter": "blur(32px)",
+      "backdropFilter": "blur(32px)",
+      "background": "rgba(148, 149, 152, .18)",
+      "borderRadius": "8px",
+      "content": """",
+      "inset": "-6px",
+      "pointerEvents": "none",
+      "position": "absolute",
+      "zIndex": -1,
+    },
+  },
+  "position": "relative",
+  "zIndex": 0,
+}
+`;
+
+exports[`getHoverStyle() should return correct css for opts: { inset: 'small', borderRadius: 'small' } 1`] = `
+{
+  "@media(hover:hover)": {
+    "&:hover::before": {
+      "WebkitBackdropFilter": "blur(32px)",
+      "backdropFilter": "blur(32px)",
+      "background": "rgba(148, 149, 152, .18)",
+      "borderRadius": "4px",
+      "content": """",
+      "inset": "-4px",
+      "pointerEvents": "none",
+      "position": "absolute",
+      "zIndex": -1,
+    },
+  },
+  "position": "relative",
+  "zIndex": 0,
+}
+`;
+
+exports[`getHoverStyle() should return correct css for opts: { inset: undefined, borderRadius: undefined } 1`] = `
+{
+  "@media(hover:hover)": {
+    "&:hover::before": {
+      "WebkitBackdropFilter": "blur(32px)",
+      "backdropFilter": "blur(32px)",
+      "background": "rgba(148, 149, 152, .18)",
+      "borderRadius": "4px",
+      "content": """",
+      "inset": "-4px",
+      "pointerEvents": "none",
+      "position": "absolute",
+      "zIndex": -1,
+    },
+  },
+  "position": "relative",
+  "zIndex": 0,
+}
+`;

@@ -34,7 +34,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -42,7 +42,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -99,7 +99,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -107,7 +107,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -164,7 +164,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -172,7 +172,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -235,7 +235,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -243,7 +243,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -306,7 +306,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -314,7 +314,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -371,7 +371,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -379,7 +379,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -436,7 +436,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -444,7 +444,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -507,7 +507,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -515,7 +515,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -578,7 +578,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -586,7 +586,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 
@@ -649,7 +649,7 @@ button:focus::before {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 8px;
 }
 button:focus:not(:focus-visible)::before {
@@ -657,7 +657,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 

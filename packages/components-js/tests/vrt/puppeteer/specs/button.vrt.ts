@@ -17,14 +17,17 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'button', '/#button')).toBeFalsy();
 });
 
-// TODO: for unknown reasons Docker + Puppeteer screenshots a skeleton like button for hover scenario
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('button-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-button:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }</style>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          p-button:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }
+        </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-button theme="${theme}" variant="primary">Primary</p-button>
