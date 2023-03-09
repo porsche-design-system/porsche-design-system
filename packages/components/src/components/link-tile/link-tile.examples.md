@@ -129,8 +129,8 @@ export default class Code extends Vue {
 </p-link-tile>`
   }
 
-  weight = 'semibold';
-  weights = [...LINK_BUTTON_TILE_WEIGHTS, "{ base: 'semibold', m: 'regular' }"];
+  weight = 'semi-bold';
+  weights = [...LINK_BUTTON_TILE_WEIGHTS, "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />

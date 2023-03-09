@@ -55,7 +55,7 @@ export class ButtonTile implements TileProps {
   @Prop() public size?: BreakpointCustomizable<ButtonTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
 
   /** Aspect ratio of the button-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4:3';

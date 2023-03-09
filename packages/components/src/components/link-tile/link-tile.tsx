@@ -44,7 +44,7 @@ export class LinkTile implements TileProps {
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
