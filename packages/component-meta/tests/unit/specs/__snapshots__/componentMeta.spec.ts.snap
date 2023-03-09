@@ -434,6 +434,7 @@ exports[`should match snapshot 1`] = `
       ],
       "ellipsis": "boolean",
       "size": [
+        "small",
         "medium",
         "large",
         "inherit",
@@ -816,7 +817,6 @@ exports[`should match snapshot 1`] = `
         "large",
         "x-large",
         "xx-large",
-        "xxx-large",
         "inherit",
       ],
       "tag": [
