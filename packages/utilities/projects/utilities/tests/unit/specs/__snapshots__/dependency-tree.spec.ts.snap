@@ -505,9 +505,9 @@ exports[`should have no regression for dependency tree 1`] = `
   "typography/display/displayShared.js": [
     "font/fontFamily.js",
     "font/fontLineHeight.js",
-    "font/fontStyleItalic.js",
+    "font/fontStyleNormal.js",
     "font/fontVariant.js",
-    "font/fontWeightSemiBold.js",
+    "font/fontWeightRegular.js",
   ],
   "typography/display/displaySmallStyle.js": [
     "font/fontSizeDisplaySmall.js",

@@ -22,17 +22,17 @@ $pds-breakpoint-xxl: 1920px;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_display.scss 1`] = `
 "@mixin pds-display-small {
-  font: italic normal 600 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+  font: normal normal 400 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 
 @mixin pds-display-medium {
-  font: italic normal 600 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+  font: normal normal 400 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 
 @mixin pds-display-large {
-  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
+  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
     Arial, "Heiti SC", SimHei, sans-serif;
 }
 "
