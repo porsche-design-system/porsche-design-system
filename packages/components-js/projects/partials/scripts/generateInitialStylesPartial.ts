@@ -82,8 +82,8 @@ export const generateInitialStylesPartial = (): string => {
           textDecoration: 'underline',
           color: 'currentcolor',
           // TODO: add smooth transition to hover
-          ...getHoverStyle({ inset: '0 -4px' }),
-          ...getFocusStyle({ inset: '0 -4px' }),
+          ...getHoverStyle({ inset: '2px' }),
+          ...getFocusStyle(),
         }),
       },
 

@@ -36,7 +36,7 @@ const Component1 = styled.a`
 
 const Component2 = styled.a`
 -  ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
-+  ${getFocusStyle({ offset: 'small', borderRadius: 'small', theme: 'light' })}
++  ${getFocusStyle()}
 `;
 ```
 
