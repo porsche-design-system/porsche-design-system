@@ -8,9 +8,14 @@ exports[`getComponentCss() should return correct css 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:host::before {
+  content: "" !important;
+}
 @media(hover:hover) {
+  :host(:hover)::before {
+    background: var(--p-internal-table-row-hover-color, #EEEFF2) !important;
+  }
   :host::before {
-    content: "" !important;
     position: absolute !important;
     top: -2px !important;
     left: -2px !important;
@@ -18,9 +23,6 @@ exports[`getComponentCss() should return correct css 1`] = `
     bottom: -2px !important;
     border-radius: 4px !important;
     transition: background-color var(--p-transition-duration, .24s) ease !important;
-  }
-  :host(:hover)::before {
-    background: var(--p-internal-table-row-hover-color, #EEEFF2) !important;
   }
 }
 "

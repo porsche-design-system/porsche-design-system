@@ -17,14 +17,16 @@ export const getComponentCss = (): string => {
         position: 'relative',
         display: 'table-row',
         ...hostHiddenStyles,
-        ...hoverMediaQuery({
-          '&::before': {
-            content: '""',
+        '&::before': {
+          content: '""', // we need it also for ssr, because without it the table structure would be broken (since ::before affects table cells' amount)
+          ...hoverMediaQuery({
             position: 'absolute',
             ...getInsetJssStyle(-2),
             borderRadius: borderRadiusSmall,
             transition: getTransition('background-color'),
-          },
+          }),
+        },
+        ...hoverMediaQuery({
           '&(:hover)::before': {
             background: `var(${cssVariableTableRowHoverColor}, ${getThemedColors('light').backgroundSurfaceColor})`,
           },
