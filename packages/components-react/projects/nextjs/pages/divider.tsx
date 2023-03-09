@@ -25,16 +25,28 @@ const DividerPage: NextPage = (): JSX.Element => {
         <PDivider />
       </div>
 
-      <div className="playground light" title="should show vertical divider">
+      <div className="playground light" title="should show divider with orientation=vertical">
         <div className="divider-vertical-container-example">
           <PDivider orientation="vertical" />
         </div>
       </div>
+      <div className="playground light" title="should show divider with direction=vertical">
+        <div className="divider-vertical-container-example">
+          <PDivider direction="vertical" />
+        </div>
+      </div>
 
-      <div className="playground light" title="should show responsive vertical divider">
+      <div className="playground light" title="should show responsive divider with orientation">
         <div className="divider-vertical-responsive-container-example">
           <PDivider
             orientation={{ base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' }}
+           />
+        </div>
+      </div>
+      <div className="playground light" title="should show responsive divider with direction">
+        <div className="divider-vertical-responsive-container-example">
+          <PDivider
+            direction={{ base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' }}
            />
         </div>
       </div>
@@ -42,18 +54,13 @@ const DividerPage: NextPage = (): JSX.Element => {
       <div className="playground light" title="should show different colors of divider with light theme">
         <PDivider />
         <br />
-        <br />
         <PDivider color="contrast-medium" />
-        <br />
         <br />
         <PDivider color="contrast-high" />
         <br />
-        <br />
         <PDivider color="neutral-contrast-low" />
         <br />
-        <br />
         <PDivider color="neutral-contrast-medium" />
-        <br />
         <br />
         <PDivider color="neutral-contrast-high" />
       </div>
@@ -61,18 +68,13 @@ const DividerPage: NextPage = (): JSX.Element => {
       <div className="playground dark" title="should show different colors of divider with dark theme">
         <PDivider theme="dark" />
         <br />
-        <br />
         <PDivider theme="dark" color="contrast-medium" />
-        <br />
         <br />
         <PDivider theme="dark" color="contrast-high" />
         <br />
-        <br />
         <PDivider theme="dark" color="neutral-contrast-low" />
         <br />
-        <br />
         <PDivider theme="dark" color="neutral-contrast-medium" />
-        <br />
         <br />
         <PDivider theme="dark" color="neutral-contrast-high" />
       </div>

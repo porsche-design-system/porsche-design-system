@@ -59,6 +59,31 @@ export const BannerPage = (): JSX.Element => {
       </div>
 
       <div className="content-wrapper">
+        <div className="playground light" title="should show banner with heading and description on light background">
+          <PBanner heading="Heading (--p-banner-position-type: static)" description="Description" />
+        </div>
+
+        <div
+          className="playground light"
+          title="should show banner with slotted heading and prop description on light background"
+        >
+          <PBanner description="Description">
+            <span slot="heading">Slotted heading (--p-banner-position-type: static)</span>
+          </PBanner>
+        </div>
+
+        <div className="playground light" title="should show banner with slotted heading and description on light background">
+          <PBanner>
+            <span slot="heading">Slotted heading (--p-banner-position-type: static)</span>
+            <span slot="description">
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
+            </span>
+          </PBanner>
+        </div>
+
         <div className="playground light" title="should show banner on light background">
           <PBanner>
             <span slot="title">Slotted title (--p-banner-position-type: static)</span>

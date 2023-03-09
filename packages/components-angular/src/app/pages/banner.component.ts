@@ -58,6 +58,31 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="content-wrapper">
+      <div class="playground light" title="should show banner with heading and description on light background">
+        <p-banner [heading]="'Heading (--p-banner-position-type: static)'" [description]="'Description'"></p-banner>
+      </div>
+
+      <div
+        class="playground light"
+        title="should show banner with slotted heading and prop description on light background"
+      >
+        <p-banner [description]="'Description'">
+          <span slot="heading">Slotted heading (--p-banner-position-type: static)</span>
+        </p-banner>
+      </div>
+
+      <div class="playground light" title="should show banner with slotted heading and description on light background">
+        <p-banner>
+          <span slot="heading">Slotted heading (--p-banner-position-type: static)</span>
+          <span slot="description">
+            <span>
+              Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </span>
+        </p-banner>
+      </div>
+
       <div class="playground light" title="should show banner on light background">
         <p-banner>
           <span slot="title">Slotted title (--p-banner-position-type: static)</span>

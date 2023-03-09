@@ -1,4 +1,4 @@
-<div class="playground light" title="should show unordered text list on light background">
+<div class="playground light" title="should show text list type=unordered on light background">
   <p-text-list>
     <p-text-list-item>Unordered root list item</p-text-list-item>
     <p-text-list-item>
@@ -12,7 +12,7 @@
   </p-text-list>
 </div>
 
-<div class="playground dark" title="should show unordered text list on dark background">
+<div class="playground dark" title="should show text list type=unordered on dark background">
   <p-text-list theme="dark">
     <p-text-list-item>Unordered root list item</p-text-list-item>
     <p-text-list-item>
@@ -26,7 +26,63 @@
   </p-text-list>
 </div>
 
-<div class="playground light" title="should show ordered text list Numbered, on light background">
+<div class="playground light" title="should show text list type=numbered on light background">
+  <p-text-list type="numbered">
+    <p-text-list-item>Numbered root list item</p-text-list-item>
+    <p-text-list-item>
+      Numbered root list item
+      <p-text-list type="numbered">
+        <p-text-list-item>Numbered nested list item</p-text-list-item>
+        <p-text-list-item>Numbered nested list item</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>Numbered root list item</p-text-list-item>
+  </p-text-list>
+</div>
+
+<div class="playground dark" title="should show text list type=numbered on dark background">
+  <p-text-list type="numbered" theme="dark">
+    <p-text-list-item>Numbered root list item</p-text-list-item>
+    <p-text-list-item>
+      Numbered root list item
+      <p-text-list type="numbered" theme="dark">
+        <p-text-list-item>Numbered nested list item</p-text-list-item>
+        <p-text-list-item>Numbered nested list item</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>Numbered root list item</p-text-list-item>
+  </p-text-list>
+</div>
+
+<div class="playground light" title="should show text list type=alphabetically on light background">
+  <p-text-list type="alphabetically">
+    <p-text-list-item>Alphabetically root list item</p-text-list-item>
+    <p-text-list-item>
+      Alphabetically root list item
+      <p-text-list type="alphabetically">
+        <p-text-list-item>Alphabetically nested list item</p-text-list-item>
+        <p-text-list-item>Alphabetically nested list item</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>Alphabetically root list item</p-text-list-item>
+  </p-text-list>
+</div>
+
+<div class="playground dark" title="should show text list type=alphabetically on dark background">
+  <p-text-list type="alphabetically" theme="dark">
+    <p-text-list-item>Alphabetically root list item</p-text-list-item>
+    <p-text-list-item>
+      Alphabetically root list item
+      <p-text-list type="alphabetically" theme="dark">
+        <p-text-list-item>Alphabetically nested list item</p-text-list-item>
+        <p-text-list-item>Alphabetically nested list item</p-text-list-item>
+      </p-text-list>
+    </p-text-list-item>
+    <p-text-list-item>Alphabetically root list item</p-text-list-item>
+  </p-text-list>
+</div>
+
+<div class="playground light" title="should show ordered text list numbered on light background">
   <p-text-list list-type="ordered">
     <p-text-list-item>
       Numbered, ordered root list item
@@ -46,7 +102,7 @@
   </p-text-list>
 </div>
 
-<div class="playground dark" title="should show ordered text list Numbered, on dark background">
+<div class="playground dark" title="should show ordered text list numbered on dark background">
   <p-text-list list-type="ordered" theme="dark">
     <p-text-list-item>
       Numbered, ordered root list item

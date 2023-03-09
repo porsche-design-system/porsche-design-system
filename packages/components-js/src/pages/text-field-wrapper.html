@@ -144,13 +144,25 @@
 </div>
 
 <div class="playground light" title="should render without counter">
-  <p-text-field-wrapper label="Counter hidden" show-character-count="false">
+  <p-text-field-wrapper label="showCharacterCount=false" show-character-count="false">
     <input type="text" maxlength="20" value="Some value" />
   </p-text-field-wrapper>
 </div>
 
 <div class="playground dark" title="should render without counter on dark theme">
-  <p-text-field-wrapper label="Counter hidden" show-character-count="false" theme="dark">
+  <p-text-field-wrapper label="showCharacterCount=false" show-character-count="false" theme="dark">
+    <input type="text" maxlength="20" value="Some value" />
+  </p-text-field-wrapper>
+</div>
+
+<div class="playground light" title="should render without counter">
+  <p-text-field-wrapper label="showCounter=false" show-counter="false">
+    <input type="text" maxlength="20" value="Some value" />
+  </p-text-field-wrapper>
+</div>
+
+<div class="playground dark" title="should render without counter on dark theme">
+  <p-text-field-wrapper label="showCounter=false" show-counter="false" theme="dark">
     <input type="text" maxlength="20" value="Some value" />
   </p-text-field-wrapper>
 </div>

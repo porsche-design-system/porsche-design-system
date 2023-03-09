@@ -122,6 +122,18 @@ export const ModalPage = (): JSX.Element => {
         </PModal>
       </div>
 
+      <div className="playground light" title="should show modal with disableCloseButton=true">
+        <PModal open={true} heading="disableCloseButton=true" disableCloseButton={true}>
+          Some Content: should show modal with disableCloseButton=true
+        </PModal>
+      </div>
+
+      <div className="playground light" title="should show modal with dismissButton=false">
+        <PModal open={true} heading="dismissButton=false" dismissButton={false}>
+          Some Content: should show modal with dismissButton=false
+        </PModal>
+      </div>
+
       <div className="visualize-grid">
         <span />
         <span />

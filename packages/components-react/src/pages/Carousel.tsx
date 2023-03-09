@@ -357,9 +357,23 @@ export const CarouselPage = (): JSX.Element => {
           <div>Slide 3</div>
         </PCarousel>
       </div>
+      <div className="playground light" title="should render carousel with pagination=false">
+        <PCarousel heading="pagination=false" pagination={false}>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
 
       <div className="playground light" title="should render carousel with responsive disablePagination">
         <PCarousel heading="disablePagination={base: false, m: true}" disablePagination={{base: false, m: true}}>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+      <div className="playground light" title="should render carousel with responsive pagination">
+        <PCarousel heading="pagination={base: true, m: false}" pagination={{base: true, m: false}}>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
