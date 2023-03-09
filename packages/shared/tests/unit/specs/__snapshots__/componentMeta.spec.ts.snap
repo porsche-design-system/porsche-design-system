@@ -160,7 +160,7 @@ exports[`should match snapshot 1`] = `
       "loading": false,
       "size": "default",
       "type": "submit",
-      "weight": "semibold",
+      "weight": "semi-bold",
     },
     "requiredProps": [
       "label",
@@ -611,7 +611,7 @@ exports[`should match snapshot 1`] = `
       "rel": null,
       "size": "default",
       "target": "_self",
-      "weight": "semibold",
+      "weight": "semi-bold",
     },
     "requiredProps": [
       "label",
