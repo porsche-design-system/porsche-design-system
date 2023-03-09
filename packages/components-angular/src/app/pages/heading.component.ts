@@ -109,7 +109,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-heading [size]="'large'">The quick brown fox jumps over the lazy dog</p-heading>
       <p-heading [size]="'x-large'">The quick brown fox jumps over the lazy dog</p-heading>
       <p-heading [size]="'xx-large'">The quick brown fox jumps over the lazy dog</p-heading>
-      <p-heading [size]="'xxx-large'">The quick brown fox jumps over the lazy dog</p-heading>
       <p-heading [size]="'inherit'" style="font-size: 5rem">The quick brown fox jumps over the lazy dog</p-heading>
     </div>
 
@@ -119,7 +118,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-heading [theme]="'dark'" [size]="'large'">The quick brown fox jumps over the lazy dog</p-heading>
       <p-heading [theme]="'dark'" [size]="'x-large'">The quick brown fox jumps over the lazy dog</p-heading>
       <p-heading [theme]="'dark'" [size]="'xx-large'">The quick brown fox jumps over the lazy dog</p-heading>
-      <p-heading [theme]="'dark'" [size]="'xxx-large'">The quick brown fox jumps over the lazy dog</p-heading>
       <p-heading [theme]="'dark'" [size]="'inherit'" style="font-size: 5rem">The quick brown fox jumps over the lazy dog</p-heading>
     </div>
 

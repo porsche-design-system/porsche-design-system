@@ -3,10 +3,16 @@ import type { DisplayAlign, DisplayColor, DisplaySize } from './display-utils';
 import { DISPLAY_TAGS } from './display-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import { displayLargeStyle, fontSizeDisplayLarge, fontSizeDisplayMedium } from '@porsche-design-system/utilities-v2';
+import {
+  displayLargeStyle,
+  fontSizeDisplayLarge,
+  fontSizeDisplayMedium,
+  fontSizeDisplaySmall,
+} from '@porsche-design-system/utilities-v2';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
+  small: fontSizeDisplaySmall,
   medium: fontSizeDisplayMedium,
   large: fontSizeDisplayLarge,
 };
