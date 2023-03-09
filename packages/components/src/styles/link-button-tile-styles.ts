@@ -7,7 +7,7 @@ import {
   getInsetJssStyle,
   getTransition,
 } from './common-styles';
-import { buildResponsiveStyles, buildSlottedStyles, getCss } from '../utils';
+import { buildResponsiveStyles } from '../utils';
 import { borderRadiusMedium, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { hostHiddenStyles } from './host-hidden-styles';
 import { hoverMediaQuery } from './hover-media-query';
@@ -97,16 +97,4 @@ export const getBaseLinkButtonTileStyles = (opts: {
       ...additionalLinkStyles,
     },
   };
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& picture > img': {
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-      },
-    })
-  );
 };

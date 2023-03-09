@@ -726,7 +726,7 @@ export namespace Components {
     }
     interface PLinkTileModelSignature {
         /**
-          * Aspect ratio of the link-tile-model.
+          * Aspect ratio of the link-tile-model-signature.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
@@ -734,11 +734,15 @@ export namespace Components {
          */
         "description": string;
         /**
+          * Sets a custom HTML tag containing the model name depending on the usage of the link tile model signature component.
+         */
+        "headingTag"?: HeadingTag;
+        /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
-        "direction"?: BreakpointCustomizable<JssDirections>;
+        "linkDirection"?: BreakpointCustomizable<JssDirections>;
         /**
-          * Adapts the model of the component.
+          * Adapts the displayed model-signature of the component.
          */
         "model"?: ModelSignatureModel;
         /**
@@ -2498,7 +2502,7 @@ declare namespace LocalJSX {
     }
     interface PLinkTileModelSignature {
         /**
-          * Aspect ratio of the link-tile-model.
+          * Aspect ratio of the link-tile-model-signature.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
@@ -2506,11 +2510,15 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * Sets a custom HTML tag containing the model name depending on the usage of the link tile model signature component.
+         */
+        "headingTag"?: HeadingTag;
+        /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
-        "direction"?: BreakpointCustomizable<JssDirections>;
+        "linkDirection"?: BreakpointCustomizable<JssDirections>;
         /**
-          * Adapts the model of the component.
+          * Adapts the displayed model-signature of the component.
          */
         "model"?: ModelSignatureModel;
         /**
