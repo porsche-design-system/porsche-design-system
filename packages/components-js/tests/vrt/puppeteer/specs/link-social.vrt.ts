@@ -23,7 +23,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('link-social-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-link-social { margin-right: 1rem; margin-top: 1rem; }</style>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          p-link-social { margin-right: 1rem; margin-top: 1rem; }
+        </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-link-social theme="${theme}" href="https://www.porsche.com/">Fallback</p-link-social>

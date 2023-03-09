@@ -34,7 +34,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -74,7 +74,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -168,7 +168,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -208,7 +208,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -302,7 +302,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -337,7 +337,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -430,7 +430,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -465,7 +465,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -559,7 +559,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -594,7 +594,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -688,7 +688,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -723,7 +723,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -816,7 +816,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -856,7 +856,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #1E5BEB;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;
@@ -950,7 +950,7 @@ button {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -990,7 +990,7 @@ button {
   pointer-events: none;
 }
 .scroll-wrapper:focus::before {
-  border-color: #0A0AFF;
+  border-color: #1A44EA;
 }
 .scroll-wrapper:focus:not(:focus-visible)::before {
   border-color: transparent;

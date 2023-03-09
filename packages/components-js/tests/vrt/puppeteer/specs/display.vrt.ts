@@ -23,10 +23,22 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('display-states', async () => {
       const page = vrt.getPage();
 
-      const getElementsMarkup: GetThemedMarkup = (theme) => `
-          <p-display size="medium" theme="${theme}">Lorem ipsum dolor sit amet <a href="#">linked text</a> lorem <button>button text</button></p-display>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+        </style>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
+          <p-display size="medium" theme="${theme}">
+            Display
+            <span>
+              and some slotted, deeply nested <a href="#">anchor</a>.
+            </span>
+          </p-display>`;
+
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover p-display a');
       await forceHoverState(page, '.hover p-display button');

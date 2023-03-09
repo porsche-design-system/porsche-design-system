@@ -1,7 +1,7 @@
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import { fontWeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
-import { getThemedColors, hoverMediaQuery } from './';
+import { spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import { getThemedColors } from './';
 import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -99,27 +99,6 @@ export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
           outlineColor: 'transparent',
         },
       };
-};
-
-export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: false }): Styles => {
-  return {
-    '& a': {
-      color: 'inherit',
-      textDecoration: 'underline',
-      ...getFocusJssStyle({ offset: 1 }),
-      ...hoverMediaQuery(getHoverJssStyle()),
-    },
-    ...(opts.withDarkTheme &&
-      ({
-        '&[data-theme="dark"] a:hover': hoverMediaQuery(getHoverJssStyle({ theme: 'dark' })['&:hover'] as JssStyle),
-      } as Styles)),
-    '& b, & strong': {
-      fontWeight: fontWeight.bold,
-    },
-    '& em, & i': {
-      fontStyle: 'normal',
-    },
-  };
 };
 
 export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>

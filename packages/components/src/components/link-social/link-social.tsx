@@ -2,6 +2,7 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  doNothing,
   getLinkButtonThemeForIcon,
   getPrefixedTagNames,
   THEMES,
@@ -55,6 +56,7 @@ export class LinkSocial {
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
     warnIfDeprecatedComponentIsUsed(this.host, 'Use "link" component with corresponding social icon instead.');
+    doNothing(); // TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
   }
 
   public render(): JSX.Element {

@@ -25,7 +25,7 @@ const components: Component[] = [
   'link-pure',
   'link-social',
   'link-tile',
-  'modal-basic',
+  'modal',
   'pagination',
   'popover',
   'radio-button-wrapper',
@@ -52,6 +52,9 @@ it.each(components)('should have no visual regression for scaled component %s', 
       scenario: async (page) => {
         if (component === 'popover') {
           await openPopoversAndHighlightSpacer(page);
+        }
+        if (component === 'modal') {
+          await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
         }
       },
       scalePageFontSize: true,

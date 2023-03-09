@@ -26,7 +26,7 @@ const components: Component[] = [
   'link-pure',
   'link-social',
   'link-tile',
-  'modal-basic',
+  'modal',
   // 'overview',
   'pagination',
   'popover',
@@ -48,14 +48,19 @@ const components: Component[] = [
   'toast-basic',
 ];
 
-const scenario = async (page: Page) => {
+const scenarioPopover = async (page: Page) => {
   await openPopoversAndHighlightSpacer(page);
+};
+
+const scenarioModal = async (page: Page) => {
+  await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
 };
 
 it.each(components)('should have no visual regression for component in high-contrast light: %s', async (component) => {
   expect(
     await vrtTest(getVisualRegressionStatesTester(), `${component}-high-contrast-light`, `/#${component}`, {
-      ...(component === 'popover' && { scenario }),
+      ...(component === 'popover' && { scenario: scenarioPopover }),
+      ...(component === 'modal' && { scenario: scenarioModal }),
       forcedColorsEnabled: true,
       prefersColorScheme: 'light',
     })
@@ -65,7 +70,8 @@ it.each(components)('should have no visual regression for component in high-cont
 it.each(components)('should have no visual regression for component in high-contrast dark: %s', async (component) => {
   expect(
     await vrtTest(getVisualRegressionStatesTester(), `${component}-high-contrast-dark`, `/#${component}`, {
-      ...(component === 'popover' && { scenario }),
+      ...(component === 'popover' && { scenario: scenarioPopover }),
+      ...(component === 'modal' && { scenario: scenarioModal }),
       forcedColorsEnabled: true,
       prefersColorScheme: 'dark',
     })

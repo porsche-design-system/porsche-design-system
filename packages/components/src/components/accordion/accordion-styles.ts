@@ -110,6 +110,7 @@ export const getComponentCss = (
       transition: getTransition('transform'),
     },
     collapsible: {
+      color: primaryColor, // enables color inheritance for slotted content
       padding: 0,
       overflow: 'hidden',
       ...(open

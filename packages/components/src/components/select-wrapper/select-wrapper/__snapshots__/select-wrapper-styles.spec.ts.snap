@@ -10,7 +10,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -19,7 +19,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -183,7 +183,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -192,7 +192,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -289,7 +289,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -298,7 +298,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #CB3333 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -395,7 +395,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -404,7 +404,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -500,7 +500,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -509,7 +509,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -605,7 +605,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -614,7 +614,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -711,7 +711,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -720,7 +720,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #00C77E !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -817,7 +817,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -826,7 +826,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #E7323B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -924,7 +924,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -933,7 +933,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #CB3333 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1031,7 +1031,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -1040,7 +1040,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1137,7 +1137,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -1146,7 +1146,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1243,7 +1243,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -1252,7 +1252,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #32B85B !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1350,7 +1350,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -1359,7 +1359,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #00C77E !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1457,7 +1457,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -1466,7 +1466,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #CB3333 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;

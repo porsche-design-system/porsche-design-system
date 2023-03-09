@@ -884,6 +884,7 @@ button::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -1194,6 +1195,7 @@ img {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -1425,6 +1427,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -1691,6 +1694,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -1807,6 +1811,7 @@ img {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -2570,6 +2575,7 @@ img {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -2773,6 +2779,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -3359,7 +3366,7 @@ h2 {
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
 .close {
@@ -3400,6 +3407,7 @@ h2 {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -4357,7 +4365,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -4366,7 +4374,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -4964,6 +4972,7 @@ exports[`should render dsr component for PSwitch 1`] = `
       :host {
   outline: 0 !important;
   display: inline-block !important;
+  width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
@@ -6166,6 +6175,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
       :host {
   display: block !important;
   position: relative !important;
+  color: #010205 !important;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -6433,7 +6443,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
@@ -6442,7 +6452,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   border: 2px solid #949598 !important;
   border-radius: 4px !important;
   background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 10px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;

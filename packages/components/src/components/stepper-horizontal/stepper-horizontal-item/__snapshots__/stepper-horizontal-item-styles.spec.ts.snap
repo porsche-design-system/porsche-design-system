@@ -34,7 +34,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -47,7 +47,7 @@ button:focus:not(:focus-visible)::after {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -102,7 +102,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -115,7 +115,7 @@ button:focus:not(:focus-visible)::after {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -170,7 +170,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -227,7 +227,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -293,7 +293,7 @@ button {
   gap: 3px;
   color: #FBFCFF;
   padding: 4px 10px 4px 6px;
-  background: rgba(126, 127, 130, 0.20);
+  background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -318,7 +318,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -331,7 +331,7 @@ button:focus:not(:focus-visible)::after {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -391,7 +391,7 @@ button {
   gap: 3px;
   color: #010205;
   padding: 4px 10px 4px 6px;
-  background: rgba(148, 149, 152, 0.20);
+  background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -416,7 +416,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -429,7 +429,7 @@ button:focus:not(:focus-visible)::after {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -489,7 +489,7 @@ button {
   gap: 3px;
   color: #7E7F82;
   padding: 4px 10px 4px 6px;
-  background: rgba(126, 127, 130, 0.20);
+  background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -514,7 +514,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -576,7 +576,7 @@ button {
   gap: 3px;
   color: #949598;
   padding: 4px 10px 4px 6px;
-  background: rgba(148, 149, 152, 0.20);
+  background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -601,7 +601,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -686,7 +686,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -771,7 +771,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -856,7 +856,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -941,7 +941,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -994,7 +994,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -1007,7 +1007,7 @@ button:focus:not(:focus-visible)::after {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(126, 127, 130, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -1062,7 +1062,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -1075,7 +1075,7 @@ button:focus:not(:focus-visible)::after {
   button:hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, 0.20);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -1130,7 +1130,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
@@ -1187,7 +1187,7 @@ button:focus::after {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 4px;
 }
 button:focus:not(:focus-visible)::after {
