@@ -7,7 +7,7 @@ export const cssVariableTableRowHoverColor = '--p-internal-table-row-hover-color
 export const cssVariableTableBorderColor = '--p-internal-table-border-color';
 export const cssVariableTableTheme = '--p-internal-table-theme';
 export const getComponentCss = (theme: Theme): string => {
-  const { primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -17,7 +17,7 @@ export const getComponentCss = (theme: Theme): string => {
       }),
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableRowHoverColor]: backgroundSurfaceColor,
-        [cssVariableTableBorderColor]: backgroundSurfaceColor,
+        [cssVariableTableBorderColor]: contrastLowColor,
         [cssVariableTableTheme]: theme,
       }),
     },
