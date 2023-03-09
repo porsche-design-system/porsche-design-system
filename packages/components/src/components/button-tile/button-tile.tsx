@@ -7,6 +7,7 @@ import type {
   LinkButtonIconName,
 } from '../../types';
 import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, TileProps } from '../../utils';
+import type { ButtonTileProps } from './button-tile-utils';
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -24,7 +25,6 @@ import {
   LINK_BUTTON_TILE_ALIGNS,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
-import { ButtonTileProps } from './button-tile-utils';
 import { getButtonAriaAttributes } from '../button/button-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {

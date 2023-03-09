@@ -63,7 +63,7 @@ export const getLinkButtonTileStyles = (
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
   isDisabled?: boolean,
-  isDIsabledOrLoading?: boolean
+  isDisabledOrLoading?: boolean
 ): Styles => {
   const isTopAligned = align === 'top';
   return {
@@ -71,7 +71,7 @@ export const getLinkButtonTileStyles = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
-        cursor: isDIsabledOrLoading ? 'not-allowed' : 'pointer',
+        cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       },
       ...addImportantToEachRule({
         '::slotted(picture),::slotted(img)': {

@@ -1,5 +1,5 @@
-import { Theme } from '../../utils/theme';
-import { ButtonVariant, LinkButtonIconName } from '../../types';
+import type { Theme } from '../../utils/theme';
+import type { ButtonVariant, LinkButtonIconName } from '../../types';
 
 export type ButtonTileProps = {
   theme: Theme;

@@ -1,4 +1,4 @@
-import { BreakpointCustomizable } from '../breakpoint-customizable';
+import type { BreakpointCustomizable } from '../breakpoint-customizable';
 import { getTagName } from '../tag-name';
 
 export const LINK_BUTTON_TILE_ASPECT_RATIOS = ['1:1', '4:3', '3:4', '16:9', '9:16'] as const;
@@ -9,7 +9,7 @@ export const LINK_BUTTON_TILE_SIZES = ['default', 'inherit'] as const;
 export type LinkTileSize = typeof LINK_BUTTON_TILE_SIZES[number];
 export type ButtonTileSize = LinkTileSize;
 
-export const LINK_BUTTON_TILE_WEIGHTS = ['regular', 'semibold'] as const;
+export const LINK_BUTTON_TILE_WEIGHTS = ['regular', 'semi-bold'] as const;
 export type LinkTileWeight = typeof LINK_BUTTON_TILE_WEIGHTS[number];
 export type ButtonTileWeight = LinkTileWeight;
 
