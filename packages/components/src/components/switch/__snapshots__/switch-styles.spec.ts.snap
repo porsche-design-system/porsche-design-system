@@ -31,7 +31,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -123,7 +123,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -214,7 +214,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -294,7 +294,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -384,7 +384,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -471,7 +471,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -558,7 +558,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -645,7 +645,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {
@@ -773,7 +773,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   left: -6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
   border-radius: 18px;
 }
 .root:not(:focus-visible) .switch::before {

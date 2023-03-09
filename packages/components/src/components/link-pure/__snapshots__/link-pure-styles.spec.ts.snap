@@ -75,7 +75,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -210,7 +210,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -254,7 +254,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -359,7 +359,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -403,7 +403,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -428,7 +428,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -472,7 +472,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -497,7 +497,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -530,7 +530,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   left: -2px !important;
 }
 ::slotted(a:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
@@ -581,7 +581,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -625,7 +625,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -650,7 +650,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -694,7 +694,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -719,7 +719,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -763,7 +763,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -788,7 +788,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -821,7 +821,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   left: -2px !important;
 }
 ::slotted(a:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before {
   border: 0 !important;
@@ -872,7 +872,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -915,10 +915,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  background-color: rgba(126, 127, 130, 0.20);
+  background-color: rgba(148, 149, 152, .18);
 }
 .root:focus::before {
-  border: 2px solid #1E5BEB;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -943,7 +943,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(126, 127, 130, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -986,10 +986,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transition: background-color var(--p-transition-duration, .24s) ease;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, 0.20);
+  background-color: rgba(148, 149, 152, .18);
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1014,7 +1014,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -1058,7 +1058,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1070,7 +1070,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -1114,7 +1114,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 .root:focus::before {
-  border: 2px solid #0A0AFF;
+  border: 2px solid #1A44EA;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1126,7 +1126,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, 0.20);
+    background-color: rgba(148, 149, 152, .18);
   }
 }
 "

@@ -4,7 +4,7 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 {
   "backgroundColor": "#0E0E12",
   "backgroundHoverColor": "#292934",
-  "focusColor": "#1E5BEB",
+  "focusColor": "#1A44EA",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -13,7 +13,7 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 {
   "backgroundColor": "#FFF",
   "backgroundHoverColor": "#E0E0E0",
-  "focusColor": "#0A0AFF",
+  "focusColor": "#1A44EA",
   "primaryColor": "#010205",
 }
 `;
@@ -22,7 +22,7 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 {
   "backgroundColor": "#FBFCFF",
   "backgroundHoverColor": "#CECFD1",
-  "focusColor": "#1E5BEB",
+  "focusColor": "#1A44EA",
   "primaryColor": "#010205",
 }
 `;
@@ -31,7 +31,7 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 {
   "backgroundColor": "#010205",
   "backgroundHoverColor": "#535457",
-  "focusColor": "#0A0AFF",
+  "focusColor": "#1A44EA",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -78,7 +78,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -134,7 +134,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -190,7 +190,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -255,7 +255,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -320,7 +320,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -385,7 +385,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -450,7 +450,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -515,7 +515,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -580,7 +580,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -645,7 +645,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -710,7 +710,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -775,7 +775,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -840,7 +840,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -905,7 +905,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -970,7 +970,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
@@ -1035,7 +1035,7 @@ span {
   left: -4px !important;
   right: -4px !important;
   bottom: -4px !important;
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
