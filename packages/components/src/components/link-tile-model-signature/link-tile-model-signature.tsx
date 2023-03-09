@@ -106,7 +106,7 @@ export class LinkTileModelSignature {
         <div class="image-container">
           <slot />
         </div>
-        <PrefixedTagNames.pModelSignature class="signature" theme="dark" model={this.model} />
+        <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
         <div class="content">
           <a {...restPrimaryLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
           {this.subDescription ? (

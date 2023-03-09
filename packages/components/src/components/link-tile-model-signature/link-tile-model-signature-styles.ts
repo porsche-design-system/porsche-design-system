@@ -36,7 +36,7 @@ export const getComponentCss = (
         ...gradientToTopStyle,
       },
     }),
-    signature: {
+    model: {
       position: 'absolute',
       padding: spacingFluidMedium,
       borderRadius: borderRadiusMedium,
