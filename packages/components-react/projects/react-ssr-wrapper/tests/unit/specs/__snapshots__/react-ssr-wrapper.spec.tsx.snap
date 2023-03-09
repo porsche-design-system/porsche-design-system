@@ -3369,7 +3369,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
-.close {
+.dismiss {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -3377,7 +3377,7 @@ h2 {
   border-radius: 4px;
   background-color: #FFF;
 }
-.close:hover {
+.dismiss:hover {
   background-color: transparent;
   border-color: transparent;
 }
@@ -3396,7 +3396,7 @@ h2 {
       tabindex="-1"
     >
       <p-button-pure
-        class="close ssr"
+        class="dismiss ssr"
       >
         <template
           shadowroot="open"
@@ -3511,7 +3511,7 @@ img {
             </span>
           </button>
         </template>
-        Close modal
+        Dismiss modal
       </p-button-pure>
       <slot />
     </div>
