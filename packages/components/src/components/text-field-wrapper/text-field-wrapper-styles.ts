@@ -2,8 +2,8 @@ import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
-import { buildSlottedStyles, getCss } from '../../utils';
-import { isType } from './text-field-wrapper-utils';
+import { getCss } from '../../utils';
+import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
@@ -13,6 +13,7 @@ import {
   fontFamily,
   fontLineHeight,
   spacingStaticMedium,
+  spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
@@ -53,9 +54,12 @@ export const getComponentCss = (
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isNumber = isType(inputType, 'number');
+  const isCalendar = isType(inputType, 'date') || isType(inputType, 'week') || isType(inputType, 'month');
+  const isTime = isType(inputType, 'time');
   const isSearchOrPassword = isSearch || isPassword;
   const isSearchWithoutForm = isSearch && !isWithinForm;
   const isSearchWithForm = isSearch && isWithinForm;
+  const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
 
   return getCss({
     '@global': {
@@ -63,15 +67,16 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
-          [cssVariableInputPaddingRight]: isSearchOrPassword
-            ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
-            : spacingStaticMedium,
+          [cssVariableInputPaddingRight]:
+            isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
+              ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
+              : spacingStaticMedium,
           ...hostHiddenStyles,
         }),
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
-          padding: `8px var(${cssVariableInputPaddingRight}) 8px var(${cssVariableInputPaddingLeft})`,
+          padding: `${spacingStaticSmall} var(${cssVariableInputPaddingRight}) ${spacingStaticSmall} var(${cssVariableInputPaddingLeft})`,
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
@@ -84,7 +89,7 @@ export const getComponentCss = (
         },
       }),
     },
-    ...(isSearchOrPassword && {
+    ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       button: {
         ...baseButtonOrIconStyles,
         right: getButtonOrIconOffsetHorizontal(1),
@@ -131,27 +136,4 @@ export const getComponentCss = (
       padding: 0,
     },
   });
-};
-
-// TODO: should be transferred to normalize styles (getInitialStyles partial)
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
-      '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
-        {
-          WebkitAppearance: 'none',
-          appearance: 'none',
-        },
-      '& input[type="search"]::-webkit-search-cancel-button': {
-        display: 'none',
-      },
-      '& input[type="text"]': {
-        '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
-          // TODO: does it have any effect?
-          marginRight: '2.4375rem',
-        },
-      },
-    })
-  );
 };

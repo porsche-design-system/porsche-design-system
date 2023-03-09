@@ -53,26 +53,26 @@ const HeadingDark = styled.h3({
 // Focus Light
 const NativeButtonLight = styled.button({
   ...textSmallStyle,
-  ...getFocusStyle({ offset: 'medium' }),
+  ...getFocusStyle({ inset: 'medium' }),
   color: themeLightPrimary,
 });
 
 const NativeAnchorLight = styled.a({
   ...textSmallStyle,
-  ...getFocusStyle({ offset: 'small' }),
+  ...getFocusStyle(),
   color: themeLightPrimary,
 });
 
 // Focus Dark
 const NativeButtonDark = styled.button({
   ...textSmallStyle,
-  ...getFocusStyle({ offset: 'medium', theme: 'dark' }),
+  ...getFocusStyle({ inset: 'medium' }),
   color: themeLightPrimary,
 });
 
 const NativeAnchorDark = styled.a({
   ...textSmallStyle,
-  ...getFocusStyle({ offset: 'small', theme: 'dark' }),
+  ...getFocusStyle(),
   color: themeDarkPrimary,
 });
 

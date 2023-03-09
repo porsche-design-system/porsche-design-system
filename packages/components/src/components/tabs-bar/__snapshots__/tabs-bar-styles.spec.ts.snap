@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
@@ -62,7 +62,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
     backdrop-filter: blur(32px) !important;
-    background: rgba(126, 127, 130, 0.20) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
@@ -134,7 +134,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
@@ -150,7 +150,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
     backdrop-filter: blur(32px) !important;
-    background: rgba(148, 149, 152, 0.20) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
@@ -222,7 +222,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
@@ -238,7 +238,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
     backdrop-filter: blur(32px) !important;
-    background: rgba(126, 127, 130, 0.20) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
@@ -310,7 +310,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
@@ -326,7 +326,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
     backdrop-filter: blur(32px) !important;
-    background: rgba(148, 149, 152, 0.20) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
@@ -398,7 +398,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
@@ -414,7 +414,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
     backdrop-filter: blur(32px) !important;
-    background: rgba(148, 149, 152, 0.20) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
@@ -486,7 +486,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   z-index: -1 !important;
 }
 ::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
@@ -502,7 +502,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
     backdrop-filter: blur(32px) !important;
-    background: rgba(148, 149, 152, 0.20) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 

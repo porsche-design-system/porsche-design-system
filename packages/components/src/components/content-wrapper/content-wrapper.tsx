@@ -1,13 +1,13 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps, warnIfDeprecatedComponentIsUsed } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
-import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
-import { getComponentCss } from './content-wrapper-styles';
+import type { ContentWrapperBackgroundColor, ContentWrapperWidth } from './content-wrapper-utils';
 import {
   CONTENT_WRAPPER_BACKGROUND_COLORS,
   CONTENT_WRAPPER_WIDTHS,
   deprecatedContentWrapperComponentMessage,
 } from './content-wrapper-utils';
+import { getComponentCss } from './content-wrapper-styles';
 
 const propTypes: PropTypes<typeof ContentWrapper> = {
   width: AllowedTypes.oneOf<ContentWrapperWidth>(CONTENT_WRAPPER_WIDTHS),

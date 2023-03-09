@@ -689,19 +689,3 @@ p {
 }
 "
 `;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-link-tile picture > img {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-link-tile picture > img {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}"
-`;

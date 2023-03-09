@@ -52,112 +52,128 @@ const BannerPage: NextPage = (): JSX.Element => {
         <span />
       </div>
 
-      <div title="should show banner info position fixed">
+      <div title="should show banner position fixed">
         <PBanner>
-          <span slot="title">Some notification position fixed (1)</span>
-          <span slot="description">
-            Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-          </span>
+          <span slot="title">Slotted title</span>
+          <span slot="description">Slotted description</span>
         </PBanner>
       </div>
 
       <div className="content-wrapper">
-        <div className="playground light" title="should show banner info on light background">
+        <div className="playground light" title="should show banner on light background">
           <PBanner>
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted title (--p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
-        <div className="playground light" title="should show banner info with state neutral on light background">
+        <div className="playground light" title="should show banner with state neutral on light background">
           <PBanner state="neutral">
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted Title (state=neutral --p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
-        <div className="playground dark" title="should show banner info on dark background">
+        <div className="playground dark" title="should show banner on dark background">
           <PBanner theme="dark">
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted Title (--p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
-        <div className="playground dark" title="should show banner info with state neutral on dark background">
+        <div className="playground dark" title="should show banner with state neutral on dark background">
           <PBanner state="neutral" theme="dark">
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted Title (state=neutral --p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
         <div className="playground light" title="should show banner warning on light background">
           <PBanner state="warning">
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted Title (state=warning --p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
         <div className="playground dark" title="should show banner warning on dark background">
           <PBanner state="warning" theme="dark">
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted Title (state=warning --p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
         <div className="playground light" title="should show banner error on light background">
           <PBanner state="error">
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted Title (state=error --p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
         <div className="playground dark" title="should show banner error on dark background">
           <PBanner state="error" theme="dark">
-            <span slot="title">Some notification title</span>
+            <span slot="title">Slotted Title (state=error --p-banner-position-type: static)</span>
             <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              <span>
+                Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+                {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              </span>
             </span>
           </PBanner>
         </div>
 
         <div className="playground light" title="should show banner in persistent mode">
           <PBanner persistent={true}>
-            <span slot="title">Some notification title</span>
-            <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-            </span>
+            <span slot="title">Slotted Title (persistent=true --p-banner-position-type: static)</span>
+            <span slot="description">Slotted description</span>
           </PBanner>
         </div>
 
         <div className="playground light" title="should show banner in basic width">
           <PBanner width="basic">
-            <span slot="title">Some notification title</span>
-            <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-            </span>
+            <span slot="title">Slotted Title (width=basic --p-banner-position-type: static)</span>
+            <span slot="description">Slotted description</span>
           </PBanner>
         </div>
 
         <div className="playground light" title="should show banner in fluid width which is mapped to extended">
           <PBanner width="fluid">
-            <span slot="title">Some notification title</span>
-            <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-            </span>
+            <span slot="title">Slotted Title (width=fluid --p-banner-position-type: static)</span>
+            <span slot="description">Slotted description</span>
           </PBanner>
         </div>
       </div>

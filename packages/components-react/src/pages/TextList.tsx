@@ -207,8 +207,19 @@ export const TextListPage = (): JSX.Element => {
         <PTextList>
           <PTextListItem>
             <span>
-              Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
-              {' '}<em>emphasized</em> and <i>italic</i> text
+              Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
+            </span>
+          </PTextListItem>
+        </PTextList>
+      </div>
+
+      <div className="playground dark" title="should apply custom styles for dedicated slotted content">
+        <PTextList theme="dark">
+          <PTextListItem>
+            <span>
+              Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </PTextListItem>
         </PTextList>
