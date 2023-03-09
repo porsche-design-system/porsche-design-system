@@ -240,18 +240,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-text-list type="alphabetically"></p-text-list>
 ```
 
-#### Changed
-
-- Partials: `getInitialStyles` matches new design language
-- Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
-- `Link Tile` matches new design language
-- Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
-  `LinkPureIcon`
-- `Icon` prop `color` value `disabled` is renamed to `state-disabled`
-- `Tag` prop `color` value `notification-info` is renamed to `notification-info-soft`
-
 #### Added
 
+- `Display` supports value `small` for prop `size`
+- Styles: `displaySmallStyle` and `pds-display-small`
+- Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
 - `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
 - Custom events have consistent names across components and deprecated old event names
   - `Accordion` emits `change` and deprecated `accordionChange` event
@@ -283,11 +276,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
     `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
 
+
+#### Changed
+
+- `Display` uses font-weight regular and font-style normal
+- Partials: `getInitialStyles` matches new design language
+- Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
+- `Link Tile` matches new design language
+- Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
+  `LinkPureIcon`
+- `Icon` prop `color` value `disabled` is renamed to `state-disabled`
+- `Tag` prop `color` value `notification-info` is renamed to `notification-info-soft`
+
 #### Fixed
 
 - `Text Field Wrapper` calendar and time indicator icons respect color definition in dark theme
 - `Text Field Wrapper` has correct height when type date or time is used
 - Partials: Typings of return value with and without options parameter
+
+#### Removed
+
+- `Heading`: value `xxx-large` for prop `size`
+- Styles: `headingXXXLargeStyle` and `pds-heading-xxx-large`
+- Styles: `fontSizeHeadingXXLarge` and `$pds-font-size-heading-xx-large`
 
 ### [3.0.0-alpha.2] - 2023-02-27
 
