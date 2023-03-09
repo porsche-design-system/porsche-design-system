@@ -1546,6 +1546,7 @@ exports[`should render dsr component for PButtonTile 1`] = `
     <style>
       :host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -1613,17 +1614,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-.button-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: transparent no-repeat;
-  border: none;
-  cursor: pointer;
-}
 @media (forced-colors: active) {
   .content {
     background: rgba(0,0,0,0.7);
@@ -1643,12 +1633,6 @@ p {
       <div
         class="content"
       >
-        <button
-          aria-hidden="true"
-          class="button-overlay"
-          tabindex="-1"
-          type="submit"
-        />
         <p />
         <p-button
           class="link-or-button ssr"
@@ -2297,7 +2281,7 @@ exports[`should render dsr component for PDisplay 1`] = `
 .root {
   margin: 0;
   padding: 0;
-  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: italic normal 600 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   text-align: left;
   letter-spacing: normal;
@@ -3217,6 +3201,7 @@ exports[`should render dsr component for PLinkTile 1`] = `
     <style>
       :host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
