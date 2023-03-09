@@ -14,20 +14,22 @@ tbd.
 
 ## Styles
 
-The Styles / Design Tokens are available as JavaScript and SCSS version. Look at the example above to see how the tokens
-work.
+The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
 
 #### JS
 
-JavaScript Design Tokens can be imported by
+JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
 - `frostedGlassStyle`
 
 #### SCSS
 
-SCSS Design Tokens can be imported by `@import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';`
-(make sure your bundler supports scss `~` tilde imports).
+SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`
+
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+ At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
+</p-inline-notification>
 
 - `@mixin pds-frosted-glass()`
 
