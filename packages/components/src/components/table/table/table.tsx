@@ -2,14 +2,13 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@st
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   hasNamedSlot,
   THEMES,
   validateProps,
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
-import { getComponentCss, getSlottedCss } from './table-styles';
+import { getComponentCss } from './table-styles';
 import type { SortingChangeEvent } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
 
@@ -34,10 +33,6 @@ export class Table {
 
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public componentWillLoad(): void {
     warnIfCaptionIsUndefined(this.host, this.caption);

@@ -1,6 +1,6 @@
 import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
-import { buildSlottedStyles, getCss } from '../../../utils';
-import { getBaseSlottedStyles, getThemedColors, addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { getCss } from '../../../utils';
+import { getThemedColors, addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import type { Theme } from '../../../types';
 
 export const cssVariableTableRowHoverColor = '--p-internal-table-row-hover-color';
@@ -35,15 +35,4 @@ export const getComponentCss = (theme: Theme): string => {
       borderCollapse: 'collapse', // needed for row hover state
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      ...getBaseSlottedStyles({ withDarkTheme: true }),
-      '& img': {
-        verticalAlign: 'middle',
-      },
-    })
-  );
 };
