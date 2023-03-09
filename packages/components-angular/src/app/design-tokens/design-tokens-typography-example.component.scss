@@ -30,11 +30,11 @@
   @include pds-display-medium;
 }
 
-// Heading
-.heading-xxx-large {
-  @include pds-heading-xxx-large;
+.display-small {
+  @include pds-display-small;
 }
 
+// Heading
 .heading-xx-large {
   @include pds-heading-xx-large;
 }

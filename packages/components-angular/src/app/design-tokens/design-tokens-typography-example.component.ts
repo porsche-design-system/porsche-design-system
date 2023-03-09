@@ -9,10 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <h3 class="heading">Display</h3>
         <h3 class="display-large typography">The quick brown fox jumps over the lazy dog</h3>
         <h3 class="display-medium typography">The quick brown fox jumps over the lazy dog</h3>
+        <h3 class="display-small typography">The quick brown fox jumps over the lazy dog</h3>
       </div>
       <div class="wrapper">
         <h3 class="heading">Heading</h3>
-        <h6 class="heading-xxx-large typography">The quick brown fox jumps over the lazy dog</h6>
         <h6 class="heading-xx-large typography">The quick brown fox jumps over the lazy dog</h6>
         <h6 class="heading-x-large typography">The quick brown fox jumps over the lazy dog</h6>
         <h6 class="heading-large typography">The quick brown fox jumps over the lazy dog</h6>
