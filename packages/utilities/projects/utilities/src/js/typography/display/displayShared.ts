@@ -1,4 +1,4 @@
-import { fontFamily, fontLineHeight, fontStyleItalic, fontVariant, fontWeightSemiBold } from '../../font';
+import { fontFamily, fontLineHeight, fontStyleNormal, fontVariant, fontWeightRegular } from '../../font';
 
-export const _displayFontPartA = `${fontStyleItalic} ${fontVariant} ${fontWeightSemiBold} `;
+export const _displayFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
 export const _displayFontPartB = `/${fontLineHeight} ${fontFamily}`;
