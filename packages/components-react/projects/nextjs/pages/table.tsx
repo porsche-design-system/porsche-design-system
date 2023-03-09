@@ -33,8 +33,8 @@ const TablePage: NextPage = (): JSX.Element => {
           </span>
           <PTableHead>
             <PTableHeadRow>
-              <PTableHeadCell theme="dark">Column 1</PTableHeadCell>
-              <PTableHeadCell theme="dark">Column 2</PTableHeadCell>
+              <PTableHeadCell>Column 1</PTableHeadCell>
+              <PTableHeadCell>Column 2</PTableHeadCell>
             </PTableHeadRow>
           </PTableHead>
         </PTable>
