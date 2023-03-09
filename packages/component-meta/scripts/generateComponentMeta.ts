@@ -250,7 +250,7 @@ const generateComponentMeta = (): void => {
                 if (variable) {
                   const [, variableImportPath] = source.match(new RegExp(`${variable}[\\s\\S]+?from '(.+)';`)) || [];
                   const componentFilePath = componentFiles.find((file) =>
-                    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\.tsx$`))
+                    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
                   );
                   const variableExportFilePath = variableImportPath.match(/^\./)
                     ? path.resolve(componentFilePath, '..', variableImportPath) // relative path
