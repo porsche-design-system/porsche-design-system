@@ -114,6 +114,7 @@ export const getComponentCss = (
             ...getInsetJssStyle(),
             background: themeDarkBackgroundShading,
             ...frostedGlassStyle,
+            pointerEvents: 'none', // enable scrolling in safari by dragging the scrollbar track
           },
         }),
         overflowY: 'auto', // overrideable
