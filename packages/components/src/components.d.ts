@@ -27,7 +27,7 @@ import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./co
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
-import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./utils";
+import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { MarqueSize } from "./components/marque/marque-size";
@@ -927,7 +927,7 @@ export namespace Components {
     }
     interface PSegmentedControl {
         /**
-          * @deprecated Background color variations
+          * @deprecated since v3.0.0, will be removed with next major release. Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
@@ -2734,7 +2734,7 @@ declare namespace LocalJSX {
     }
     interface PSegmentedControl {
         /**
-          * @deprecated Background color variations
+          * @deprecated since v3.0.0, will be removed with next major release. Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
