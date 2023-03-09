@@ -15,6 +15,7 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
       }
       p-text {
         display: inline-block !important;
+        vertical-align: top;
       }
     `,
   ],

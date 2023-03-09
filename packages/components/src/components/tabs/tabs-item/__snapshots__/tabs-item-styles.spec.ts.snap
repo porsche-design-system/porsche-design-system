@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
+  color: #FBFCFF !important;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -18,7 +19,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   bottom: -4px !important;
 }
 :host(:focus)::before {
-  border: 2px solid #1E5BEB !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 :host(:focus:not(:focus-visible))::before {
@@ -30,6 +31,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
+  color: #010205 !important;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -44,7 +46,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   bottom: -4px !important;
 }
 :host(:focus)::before {
-  border: 2px solid #0A0AFF !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 4px !important;
 }
 :host(:focus:not(:focus-visible))::before {

@@ -9,56 +9,36 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font: revert;
-  line-height: revert;
-  text-size-adjust: revert;
-  -webkit-text-size-adjust: revert;
 }
 
-body {
-  color: deeppink;
-  font-family: serif;
-  font-style: italic;
-  font-weight: bold;
-  font-size: small;
-  line-height: normal;
-  font-variant: small-caps;
-}
-
-body > div,
-body > app-root {
-  font: revert;
-  line-height: revert;
-  text-size-adjust: revert;
-  -webkit-text-size-adjust: revert;
-}
-
-select:focus,
-select {
-  position: relative;
-  z-index: 999999;
-  font: revert;
-  outline: none;
-  outline-offset: 0;
-}
-
+/* Playground */
 .playground {
-  padding: 1rem;
+  padding: 16px;
+}
+
+.playground.auto-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .playground.light {
+  /* TODO: we should generate background color with scss or js styles package */
   background: #fff;
 }
 
 .playground.light.surface {
+  /* TODO: we should generate background color with scss or js styles package */
   background: #eeeff2;
 }
 
 .playground.dark {
+  /* TODO: we should generate background color with scss or js styles package */
   background: #0e0e12;
 }
 
 .playground.dark.surface {
+  /* TODO: we should generate background color with scss or js styles package */
   background: #212225;
 }
 
@@ -66,39 +46,36 @@ select {
 .playground.focus::before,
 .playground.focus-hover::before {
   display: block;
-  background: deeppink;
-  font-size: 16px;
-  line-height: normal;
-  color: white;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  width: 100%;
+  color: deeppink;
 }
 
-/*light*/
-.playground.light.hover::before {
-  content: ':hover (theme=light)';
+.playground.hover:not(.auto-layout)::before,
+.playground.focus:not(.auto-layout)::before,
+.playground.focus-hover:not(.auto-layout)::before {
+  margin-bottom: 16px;
 }
 
-.playground.light.focus::before {
-  content: ':focus-visible (theme=light)';
+.playground.hover::before {
+  content: ':hover';
 }
 
-.playground.light.focus-hover::before {
-  content: ':focus-visible:hover (theme=light)';
+.playground.focus::before {
+  content: ':focus-visible';
 }
 
-/*dark*/
-.playground.dark.hover::before {
-  content: ':hover (theme=dark)';
+.playground.focus-hover::before {
+  content: ':focus-visible:hover';
 }
 
-.playground.dark.focus::before {
-  content: ':focus-visible (theme=dark)';
-}
-
-.playground.dark.focus-hover::before {
-  content: ':focus-visible:hover (theme=dark)';
+/* Select */
+select:focus,
+select {
+  position: relative;
+  z-index: 999999;
+  font: revert;
+  outline: none;
+  outline-offset: 0;
 }
 
 /* Visualize Grid */

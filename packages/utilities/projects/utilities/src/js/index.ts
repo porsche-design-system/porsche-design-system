@@ -6,6 +6,7 @@ export * from './font';
 export * from './frostedGlass';
 export * from './gradient';
 export * from './grid';
+export * from './hover';
 export * from './mediaQuery';
 export * from './spacing';
 export * from './theme';

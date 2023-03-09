@@ -6,6 +6,20 @@ import type {
   CarouselInternationalization,
   CarouselWidth,
 } from './carousel-utils';
+import {
+  CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_WIDTHS,
+  getAmountOfPages,
+  getSlidesAndAddNamedSlots,
+  getSplideBreakpoints,
+  renderPagination,
+  slideNext,
+  slidePrev,
+  updatePagination,
+  updatePrevNextButtons,
+  updateSlidesInert,
+  warnIfHeadingIsMissing,
+} from './carousel-utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
 import { Splide } from '@splidejs/splide';
 import {
@@ -26,20 +40,6 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
-import {
-  CAROUSEL_ALIGN_HEADERS,
-  CAROUSEL_WIDTHS,
-  getAmountOfPages,
-  getSlidesAndAddNamedSlots,
-  getSplideBreakpoints,
-  renderPagination,
-  slideNext,
-  slidePrev,
-  updatePagination,
-  updatePrevNextButtons,
-  updateSlidesInert,
-  warnIfHeadingIsMissing,
-} from './carousel-utils';
 import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {

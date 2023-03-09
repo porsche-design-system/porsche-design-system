@@ -14,7 +14,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('toast-item-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-toast-item ~ p-toast-item { margin-top: 0.5rem; }</style>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          p-toast-item ~ p-toast-item { margin-top: 0.5rem; }
+        </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-toast-item theme="${theme}" text="Some message"></p-toast-item>`;

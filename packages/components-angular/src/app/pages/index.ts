@@ -47,14 +47,7 @@ import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
 import { LinkTileComponent } from './link-tile.component';
 import { MarqueComponent } from './marque.component';
-import { ModalBasicComponent } from './modal-basic.component';
-import { ModalFullscreenComponent } from './modal-fullscreen.component';
-import { ModalFullscreenBreakpointComponent } from './modal-fullscreen-breakpoint.component';
-import { ModalFullWidthSlotComponent } from './modal-full-width-slot.component';
-import { ModalNoHeadingComponent } from './modal-no-heading.component';
-import { ModalPrefixedComponent } from './modal-prefixed.component';
-import { ModalScrollableComponent } from './modal-scrollable.component';
-import { ModalSlottedHeadingComponent } from './modal-slotted-heading.component';
+import { ModalComponent } from './modal.component';
 import { ModelSignatureComponent } from './model-signature.component';
 import { OverviewComponent } from './overview.component';
 import { OverviewNotificationsComponent } from './overview-notifications.component';
@@ -111,14 +104,7 @@ export const generatedPages = [
   LinkSocialComponent,
   LinkTileComponent,
   MarqueComponent,
-  ModalBasicComponent,
-  ModalFullscreenComponent,
-  ModalFullscreenBreakpointComponent,
-  ModalFullWidthSlotComponent,
-  ModalNoHeadingComponent,
-  ModalPrefixedComponent,
-  ModalScrollableComponent,
-  ModalSlottedHeadingComponent,
+  ModalComponent,
   ModelSignatureComponent,
   OverviewComponent,
   OverviewNotificationsComponent,
@@ -268,44 +254,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MarqueComponent,
   },
   {
-    name: 'Modal Basic',
-    path: 'modal-basic',
-    component: ModalBasicComponent,
-  },
-  {
-    name: 'Modal Full Width Slot',
-    path: 'modal-full-width-slot',
-    component: ModalFullWidthSlotComponent,
-  },
-  {
-    name: 'Modal Fullscreen',
-    path: 'modal-fullscreen',
-    component: ModalFullscreenComponent,
-  },
-  {
-    name: 'Modal Fullscreen Breakpoint',
-    path: 'modal-fullscreen-breakpoint',
-    component: ModalFullscreenBreakpointComponent,
-  },
-  {
-    name: 'Modal No Heading',
-    path: 'modal-no-heading',
-    component: ModalNoHeadingComponent,
-  },
-  {
-    name: 'Modal Prefixed',
-    path: 'modal-prefixed',
-    component: ModalPrefixedComponent,
-  },
-  {
-    name: 'Modal Scrollable',
-    path: 'modal-scrollable',
-    component: ModalScrollableComponent,
-  },
-  {
-    name: 'Modal Slotted Heading',
-    path: 'modal-slotted-heading',
-    component: ModalSlottedHeadingComponent,
+    name: 'Modal',
+    path: 'modal',
+    component: ModalComponent,
   },
   {
     name: 'Model Signature',

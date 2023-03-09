@@ -213,7 +213,6 @@ const generateComponentMeta = (): void => {
     let hostAttributes: ComponentMeta['hostAttributes'] = {};
     const [, rawHostAttributes] = /<Host (.*)>/.exec(source) || [];
     if (rawHostAttributes) {
-      // TODO: handle stuff like {...getDataThemeDarkAttribute(this.theme)}
       // console.log(rawHostAttributes);
       hostAttributes = rawHostAttributes
         .split(' ')

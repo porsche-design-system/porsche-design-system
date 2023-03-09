@@ -1,5 +1,4 @@
 export * from './a11y';
-export { attachSlottedCss } from './attachSlottedCss';
 export * from './attribute-observer';
 export { BREAKPOINTS, parseJSON } from './breakpoint-customizable';
 export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
@@ -24,6 +23,6 @@ export * from './has-document';
 export * from './has-window';
 export * from './sync';
 export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
-export { getDataThemeDarkAttribute, isThemeDark, THEMES } from './theme';
+export { isThemeDark, THEMES } from './theme';
 export * from './typography';
 export * from './validation';
