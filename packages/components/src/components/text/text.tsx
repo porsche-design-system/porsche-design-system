@@ -1,11 +1,10 @@
 import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import type { TextTag } from './text-utils';
 import { getTextTagType, TEXT_TAGS } from './text-utils';
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   TEXT_ALIGNS,
   TEXT_COLORS,
   TEXT_SIZES,
@@ -90,11 +89,9 @@ export class Text {
     const TagType = getTextTagType(this.host, this.tag);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <TagType class="root">
-          <slot />
-        </TagType>
-      </Host>
+      <TagType class="root">
+        <slot />
+      </TagType>
     );
   }
 }

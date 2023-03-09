@@ -1,17 +1,48 @@
+import type { Styles } from 'jss';
+import type { TagName } from '@porsche-design-system/shared';
+import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
-import { Styles } from 'jss';
 import {
-  themeDark,
-  fontWeight,
-  themeLight,
-  fontBehavior,
   fontFamily,
-  fontHyphenation,
+  fontHyphenationStyle,
   fontLineHeight,
+  fontWeight,
+  getFocusStyle,
+  getHoverStyle,
 } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule } from '@porsche-design-system/components/src/styles';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
+
+// TODO: Modal + Table will get theme prop soon
+// TODO: extend slotted link case for Carousel, Display, Link Tile, Modal, Switch, Tabs (maybe states test is good enough)
+const tagNamesWithSlottedAnchor: TagName[] = [
+  'p-accordion',
+  'p-banner',
+  'p-carousel',
+  'p-checkbox-wrapper',
+  'p-display',
+  'p-heading',
+  'p-headline',
+  'p-inline-notification',
+  'p-modal',
+  'p-popover',
+  'p-radio-button-wrapper',
+  'p-select-wrapper',
+  'p-switch',
+  'p-table',
+  'p-tabs',
+  'p-text',
+  'p-text-field-wrapper',
+  'p-text-list',
+  'p-textarea-wrapper',
+];
+
+const tagNamesWithSlottedInputIndicator: TagName[] = ['p-text-field-wrapper'];
+
+const tagNamesWithSlottedImage: TagName[] = ['p-table'];
+
+const tagNamesWithSlottedPicture: TagName[] = ['p-link-tile'];
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
@@ -21,55 +52,68 @@ export const generateInitialStylesPartial = (): string => {
 
   const normalizeStyles: Styles = {
     '@global': {
-      '*': {
-        fontFamily: fontFamily,
+      'html, body': {
+        margin: 0,
+        padding: 0,
+        fontFamily,
         lineHeight: fontLineHeight,
-        ...fontBehavior,
+        letterSpacing: 'normal',
+        textSizeAdjust: 'none',
+        WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+      },
+
+      'h1, h2, h3, h4, h5, h6': {
+        fontWeight: fontWeight.semiBold,
       },
 
       p: {
         fontWeight: fontWeight.regular,
-        ...fontHyphenation,
-      },
-
-      'h1, h2, h3, h4, h5, h6': {
-        fontWeight: fontWeight.regular,
-      },
-
-      a: {
-        color: 'inherit',
-        textDecoration: 'underline',
-        '@media(hover:hover)': {
-          transition: 'color var(--p-transition-duration, .24s) ease',
-          '&:hover': {
-            color: themeLight.state.hover,
-          },
-        },
-      },
-
-      '@media(hover:hover)': {
-        '[data-theme="dark"] a:hover': {
-          color: themeDark.state.hover,
-        },
+        ...fontHyphenationStyle,
       },
 
       'b, strong': {
         fontWeight: fontWeight.bold,
       },
 
-      'em, i': {
-        fontStyle: 'normal',
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      [tagNamesWithSlottedAnchor.join()]: {
+        '& a': addImportantToEachRule({
+          textDecoration: 'underline',
+          color: 'currentcolor',
+          // TODO: add smooth transition to hover
+          ...getHoverStyle({ inset: '0 -4px' }),
+          ...getFocusStyle({ inset: '0 -4px' }),
+        }),
       },
 
-      'a, button, input, select, textarea': {
-        outline: '1px solid transparent',
-        outlineOffset: '1px',
-        '&:focus': {
-          outlineColor: 'currentColor',
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      [tagNamesWithSlottedInputIndicator.join()]: {
+        '& input': {
+          '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator':
+            addImportantToEachRule({
+              display: 'none',
+            }),
         },
-        '&:focus:not(:focus-visible)': {
-          outlineColor: 'transparent',
-        },
+      },
+
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      [tagNamesWithSlottedImage.join()]: {
+        '& img': addImportantToEachRule({
+          verticalAlign: 'middle',
+        }),
+      },
+
+      // TODO: add prefix support
+      // TODO: add multi prefix support
+      [tagNamesWithSlottedPicture.join()]: {
+        '& picture > img': addImportantToEachRule({
+          height: '100%',
+          width: '100%',
+          objectFit: 'cover',
+        }),
       },
     },
   };

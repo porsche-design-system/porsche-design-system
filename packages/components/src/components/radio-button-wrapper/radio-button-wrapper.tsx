@@ -1,4 +1,4 @@
-import { Component, Element, Host, JSX, h, Prop, forceUpdate } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

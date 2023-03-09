@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -24,7 +24,6 @@ import {
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
-import type { BreakpointCustomizable } from '../../../types';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
   size: AllowedTypes.breakpoint<StepperHorizontalSize>(STEPPER_HORIZONTAL_SIZES),

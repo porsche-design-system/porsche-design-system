@@ -25,6 +25,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `
         <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
           .playground div { display: flex; }
           .playground div > * { width: 40%; }
           p-textarea-wrapper:not(:last-child) {
@@ -74,17 +75,37 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </div>
         <div>
           <p-textarea-wrapper theme="${theme}">
-            <span slot="label">Slotted label with <a href="#">link</a></span>
-            <span slot="description">Slotted description with <a href="#">link</a></span>
+            <span slot="label">
+              Slotted label
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
+            <span slot="description">
+              Slotted description
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
             ${child}
           </p-textarea-wrapper>
           <p-textarea-wrapper label="Error" description="Some description" state="error" theme="${theme}">
             ${child}
-            <span slot="message">Slotted message with <a href="#">link</a></span>
+            <span slot="message">
+              Slotted error message
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
           </p-textarea-wrapper>
           <p-textarea-wrapper label="Success" description="Some description" state="success" theme="${theme}">
             ${child}
-            <span slot="message">Slotted message with <a href="#">link</a></span>
+            <span slot="message">
+              Slotted success message
+              <span>
+                and some slotted, deeply nested <a href="#">anchor</a>.
+              </span>
+            </span>
           </p-textarea-wrapper>
         </div>`;
 

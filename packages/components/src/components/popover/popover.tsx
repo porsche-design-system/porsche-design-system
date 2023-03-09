@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   addDocumentEventListener,
   POPOVER_ARIA_ATTRIBUTES,

@@ -200,6 +200,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- Partials: `getInitialStyles` matches new design language
+- Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
 - `Link Tile` matches new design language
 - Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
   `LinkPureIcon`
@@ -237,6 +239,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 
 - Partials: Typings of return value with and without options
+
+#### Fixed
+
+- `Text Field Wrapper` calendar and time indicator icons respect color definition in dark theme
+- `Text Field Wrapper` has correct height when type date or time is used
 
 ### [3.0.0-alpha.2] - 2023-02-27
 

@@ -2,14 +2,14 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getLinkButtonThemeForIcon,
   getPrefixedTagNames,
+  hasVisibleIcon,
+  LINK_BUTTON_VARIANTS,
   parseAndGetAriaAttributes,
   THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
-  LINK_BUTTON_VARIANTS,
-  hasVisibleIcon,
-  getLinkButtonThemeForIcon,
 } from '../../utils';
 import type {
   BreakpointCustomizable,

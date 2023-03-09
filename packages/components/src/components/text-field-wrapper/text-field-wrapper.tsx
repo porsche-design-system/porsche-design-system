@@ -3,7 +3,6 @@ import {
   addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
@@ -21,7 +20,7 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
+import { getComponentCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import type {
   TextFieldWrapperActionIcon,
@@ -37,6 +36,7 @@ import {
   isType,
   isWithinForm,
   setInputStyles,
+  showCustomCalendarOrTimeIndicator,
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
@@ -114,6 +114,8 @@ export class TextFieldWrapper {
   private ariaElement: HTMLSpanElement;
   private isSearch: boolean;
   private isPassword: boolean;
+  private isCalendar: boolean;
+  private isTime: boolean;
   private isWithinForm: boolean;
   private hasAction: boolean;
   private hasCounter: boolean;
@@ -121,7 +123,6 @@ export class TextFieldWrapper {
   private hasUnit: boolean;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes(); // on every reconnect
   }
 
@@ -129,12 +130,15 @@ export class TextFieldWrapper {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
-        .map((type) => `input[type=${type}]`)
+        .map((v) => `input[type=${v}]`)
         .join()
     );
+    const { type } = this.input;
     this.observeAttributes(); // once initially
-    this.isSearch = isType(this.input.type, 'search');
-    this.isPassword = isType(this.input.type, 'password');
+    this.isSearch = isType(type, 'search');
+    this.isPassword = isType(type, 'password');
+    this.isCalendar = isType(type, 'date') || isType(type, 'week') || isType(type, 'month');
+    this.isTime = isType(type, 'time');
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
@@ -210,6 +214,11 @@ export class TextFieldWrapper {
     const labelProps = {
       onClick: this.onLabelClick,
     };
+    const buttonProps = {
+      hideLabel: true,
+      theme: this.theme,
+      class: 'button',
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -238,30 +247,36 @@ export class TextFieldWrapper {
           </label>
           {this.isPassword ? (
             <PrefixedTagNames.pButtonPure
-              class="button"
+              {...buttonProps}
               type="button"
-              hideLabel={true}
               icon={this.showPassword ? 'view-off' : 'view'}
               disabled={disabled}
-              theme={this.theme}
               onClick={this.togglePassword}
               aria={{ 'aria-pressed': this.showPassword ? 'true' : 'false' }}
             >
               Toggle password visibility
+            </PrefixedTagNames.pButtonPure>
+          ) : showCustomCalendarOrTimeIndicator(this.isCalendar, this.isTime) ? (
+            <PrefixedTagNames.pButtonPure
+              {...buttonProps}
+              type="button"
+              icon={this.isCalendar ? 'calendar' : 'clock'}
+              disabled={disabled}
+              onClick={() => this.input.showPicker()}
+            >
+              {`Show ${this.isCalendar ? 'date' : 'time'} picker`}
             </PrefixedTagNames.pButtonPure>
           ) : (
             this.isSearch && [
               // TODO: create an own component, which would fix SSR support too
               this.isWithinForm ? (
                 <PrefixedTagNames.pButtonPure
+                  {...buttonProps}
                   key="btn-submit"
-                  class="button"
                   type="submit"
                   icon="search"
                   disabled={disabledOrReadOnly}
-                  theme={this.theme}
                   onClick={this.onSubmit}
-                  hideLabel={true}
                 >
                   Search
                 </PrefixedTagNames.pButtonPure>
@@ -276,29 +291,25 @@ export class TextFieldWrapper {
                 />
               ),
               <PrefixedTagNames.pButtonPure
-                key="btn-clear"
-                class="button"
+                {...buttonProps}
                 type="button"
+                key="btn-clear"
                 icon="close"
-                hideLabel={true}
                 tabIndex={-1}
                 hidden={!this.isClearable}
-                theme={this.theme}
                 disabled={disabledOrReadOnly}
                 onClick={this.onClear}
                 aria-hidden="true"
               />,
               this.hasAction && (
                 <PrefixedTagNames.pButtonPure
-                  key="btn-action"
-                  class="button"
+                  {...buttonProps}
                   type="button"
+                  key="btn-action"
                   icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
-                  theme={this.theme}
                   onClick={!this.actionLoading ? () => this.action.emit() : null}
-                  hideLabel={true}
                   loading={this.actionLoading}
                 >
                   Locate me

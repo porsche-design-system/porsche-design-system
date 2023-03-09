@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`getCachedSlottedCss() should keep CSS Cache clean 1`] = `
-Map {
-  "p-some-element" => "some css",
-  "my-prefix-p-some-element" => "some css",
-  "p-another-element" => "some css",
-}
-`;

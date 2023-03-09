@@ -3,7 +3,6 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
-import * as attachSlottedCssUtils from '../utils/attachSlottedCss';
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
@@ -15,7 +14,6 @@ const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta
 const tagNamesWithRequiredParent = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredParent);
 const tagNamesWithRequiredRootNode = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredRootNode);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
-const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
 const tagNamesWithObserveChildren = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveChildren);
 const tagNamesPublicWithProps = TAG_NAMES.filter(
@@ -166,20 +164,6 @@ it.each<TagName>(tagNamesWithJss)(
     } catch {}
 
     expect(spy).toBeCalledTimes(1); // via render
-  }
-);
-
-it.each<TagName>(tagNamesWithSlottedCss)(
-  'should call attachSlottedCss() with correct parameters via connectedCallback for %s',
-  (tagName) => {
-    const spy = jest.spyOn(attachSlottedCssUtils, 'attachSlottedCss');
-    const component = componentFactory(tagName);
-
-    try {
-      component.connectedCallback();
-    } catch {}
-
-    expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
   }
 );
 

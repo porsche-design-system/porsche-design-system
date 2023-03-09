@@ -59,7 +59,7 @@ h2 {
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -149,7 +149,7 @@ h2 {
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -245,7 +245,7 @@ h2 {
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -798,7 +798,7 @@ h2 {
     min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
-    margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
     border-radius: 8px;
   }
   .root:focus::before {
@@ -834,7 +834,7 @@ h2 {
     min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
-    margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
     border-radius: 8px;
   }
   .root:focus::before {
@@ -867,7 +867,7 @@ h2 {
 
 @media(min-width:1760px) {
   .root {
-    margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
     min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
@@ -944,7 +944,7 @@ h2 {
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -1034,7 +1034,7 @@ h2 {
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -1130,7 +1130,7 @@ h2 {
   min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: max(16px, 7vh) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
   border-radius: 8px;
 }
 .root:focus::before {

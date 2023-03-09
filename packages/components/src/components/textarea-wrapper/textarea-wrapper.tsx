@@ -4,6 +4,7 @@ import {
   addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
+  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
   hasDescription,
@@ -12,11 +13,10 @@ import {
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
+  THEMES,
   unobserveAttributes,
   validateProps,
-  FORM_STATES,
-  THEMES,
-  warnIfDeprecatedPropIsUsed,
+  warnIfDeprecatedPropIsUsed
 } from '../../utils';
 import type { TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';

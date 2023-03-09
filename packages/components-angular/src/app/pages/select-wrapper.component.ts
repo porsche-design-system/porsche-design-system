@@ -361,14 +361,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render label, description and message by slotted content with error state">
       <p-select-wrapper [state]="'error'">
-        <span slot="label">Some label with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
-        <span slot="description">Some description with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="label">
+          <span>
+            Slotted label. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          <span>
+            Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <select>
           <option [value]="'a'">Option A</option>
           <option [value]="'b'">Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
-        <span slot="message">Some error message with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="message">
+          <span>
+            Slotted error message. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-select-wrapper>
     </div>
     <div
@@ -376,14 +391,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with error state on dark theme"
     >
       <p-select-wrapper [state]="'error'" [theme]="'dark'">
-        <span slot="label">Some label with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
-        <span slot="description">Some description with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="label">
+          <span>
+            Slotted label. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          <span>
+            Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <select>
           <option [value]="'a'">Option A</option>
           <option [value]="'b'">Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
-        <span slot="message">Some error message with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="message">
+          <span>
+            Slotted error message. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-select-wrapper>
     </div>
 
@@ -392,14 +422,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with success state"
     >
       <p-select-wrapper [state]="'success'">
-        <span slot="label">Some label with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
-        <span slot="description">Some description with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="label">
+          <span>
+            Slotted label. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          <span>
+            Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <select>
           <option [value]="'a'">Option A</option>
           <option [value]="'b'">Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
-        <span slot="message">Some success message with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="message">
+          <span>
+            Slotted success message. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-select-wrapper>
     </div>
     <div
@@ -407,14 +452,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with success state on dark theme"
     >
       <p-select-wrapper [state]="'success'" [theme]="'dark'">
-        <span slot="label">Some label with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
-        <span slot="description">Some description with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="label">
+          <span>
+            Slotted label. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
+        <span slot="description">
+          <span>
+            Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
         <select>
           <option [value]="'a'">Option A</option>
           <option [value]="'b'">Option B</option>
           <option [value]="'c'">Option C</option>
         </select>
-        <span slot="message">Some success message with a <a [href]="'https://designsystem.porsche.com'">link</a>.</span>
+        <span slot="message">
+          <span>
+            Slotted success message. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
+            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </span>
       </p-select-wrapper>
     </div>
 

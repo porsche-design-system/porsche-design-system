@@ -3,7 +3,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getDataThemeDarkAttribute,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -128,7 +127,7 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (

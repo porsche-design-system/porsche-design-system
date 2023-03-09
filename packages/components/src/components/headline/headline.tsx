@@ -1,11 +1,10 @@
 import type { PropTypes, Theme } from '../../types';
 import type { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagType, HEADLINE_COLORS, HEADLINE_TAGS } from './headline-utils';
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getDataThemeDarkAttribute,
   TEXT_ALIGNS,
   THEMES,
   validateProps,
@@ -56,11 +55,9 @@ export class Headline {
     const TagType = getHeadlineTagType(this.host, this.variant, this.tag);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <TagType class="root">
-          <slot />
-        </TagType>
-      </Host>
+      <TagType class="root">
+        <slot />
+      </TagType>
     );
   }
 }

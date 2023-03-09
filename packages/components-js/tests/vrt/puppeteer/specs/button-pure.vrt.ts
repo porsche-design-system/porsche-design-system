@@ -24,6 +24,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const page = vrt.getPage();
 
       const head = `<style>
+        body { display: grid; grid-template-columns: repeat(2, 50%); }
         p-button-pure:not(:last-child) { margin-right: 16px; }
         div div:not(:first-of-type) { margin-top: 16px; }
       </style>`;

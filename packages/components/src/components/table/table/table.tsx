@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } fr
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   getScrollByX,
   hasNamedSlot,
@@ -10,7 +9,7 @@ import {
   validateProps,
 } from '../../../utils';
 import type { PropTypes } from '../../../types';
-import { getComponentCss, getSlottedCss } from './table-styles';
+import { getComponentCss } from './table-styles';
 import type { TableChangeEvent } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
 
@@ -44,10 +43,6 @@ export class Table {
   private scrollAreaElement: HTMLElement;
   private scrollTriggerElement: HTMLElement;
   private tableElement: HTMLElement;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
 
   public componentWillLoad(): void {
     warnIfCaptionIsUndefined(this.host, this.caption);

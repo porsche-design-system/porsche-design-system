@@ -1,15 +1,14 @@
+import * as jssUtils from './jss';
 import {
   attachComponentCss,
   buildResponsiveStyles,
-  buildSlottedStyles,
+  componentCssMap,
   getCachedComponentCss,
   getCss,
   isObject,
   mergeDeep,
   supportsConstructableStylesheets,
-  componentCssMap,
 } from './jss';
-import * as jssUtils from './jss';
 import type { JssStyle, Styles } from 'jss';
 
 describe('getCss()', () => {
@@ -223,15 +222,6 @@ describe('supportsConstructableStylesheets()', () => {
     delete global.CSSStyleSheet;
     expect(supportsConstructableStylesheets()).toBe(false);
     global.CSSStyleSheet = globalCSSStyleSheet;
-  });
-});
-
-describe('buildSlottedStyles()', () => {
-  it('should return @global styles object with node selector and important styles', () => {
-    const el = document.createElement('p-button');
-    expect(buildSlottedStyles(el, { div: { marginLeft: 5 } })).toStrictEqual({
-      '@global': { 'p-button': { div: { marginLeft: '5 !important' } } },
-    });
   });
 });
 

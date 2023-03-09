@@ -1,5 +1,5 @@
 <template>
-  <p-icon class="icon" name="accessibility" :size="size" color="notification-neutral" aria-hidden="true"></p-icon>
+  <p-icon name="accessibility" :size="size" color="notification-info" aria-hidden="true"></p-icon>
 </template>
 
 <script lang="ts">
@@ -9,12 +9,6 @@
 
   @Component
   export default class A11yIcon extends Vue {
-    @Prop({ default: 'medium' }) public size!: 'medium' | 'small';
+    @Prop({ default: 'large' }) public size!: 'large' | 'medium' | 'small';
   }
 </script>
-
-<style scoped lang="scss">
-  .icon {
-    vertical-align: text-bottom;
-  }
-</style>

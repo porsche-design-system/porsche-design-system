@@ -67,6 +67,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -150,6 +151,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -232,6 +234,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #FBFCFF;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -312,6 +315,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -392,6 +396,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -477,6 +482,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -560,6 +566,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #FBFCFF;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -645,6 +652,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -727,6 +735,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: 0;
@@ -807,6 +816,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #010205;
   padding: 0;
   overflow: hidden;
   height: auto;
@@ -927,6 +937,7 @@ button:not(:focus-visible)::before {
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
+  color: #FBFCFF;
   padding: 0;
   overflow: hidden;
   height: auto;

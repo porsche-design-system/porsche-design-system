@@ -26,7 +26,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('radio-button-wrapper-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-radio-button-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }</style>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          p-radio-button-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }
+        </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-radio-button-wrapper theme="${theme}" label="When input gets hovered or focused">
@@ -53,16 +57,31 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <input type="radio" name="${generateGUID()}" checked />
         </p-radio-button-wrapper>
         <p-radio-button-wrapper theme="${theme}">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <span slot="label">
+            Slotted label
+            <span>
+              and some slotted, deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
           <input type="radio" name="some-name" />
         </p-radio-button-wrapper>
         <p-radio-button-wrapper theme="${theme}" label="Some label" state="error">
           <input type="radio" name="some-name" />
-          <span slot="message">Some error message with a <a href="#">link</a>.</span>
+          <span slot="message">
+            Slotted error message
+            <span>
+              and some slotted, deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
         </p-radio-button-wrapper>
         <p-radio-button-wrapper theme="${theme}" label="Some label" state="success">
           <input type="radio" name="some-name" />
-          <span slot="message">Some success message with a <a href="#">link</a>.</span>
+          <span slot="message">
+            Slotted success message
+            <span>
+              and some slotted, deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
         </p-radio-button-wrapper>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {

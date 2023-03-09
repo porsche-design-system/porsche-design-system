@@ -1,12 +1,5 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getDataThemeDarkAttribute,
-  THEMES,
-  validateProps,
-  warnIfDeprecatedPropIsUsed,
-} from '../../../utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { AllowedTypes, attachComponentCss, THEMES, validateProps, warnIfDeprecatedPropIsUsed } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import type { TextListListType, TextListOrderType, TextListType } from './text-list-utils';
 import { isListTypeOrdered, LIST_TYPES, ORDER_TYPES, TEXT_LIST_TYPES } from './text-list-utils';
@@ -56,11 +49,9 @@ export class TextList {
     const TagType = isListTypeOrdered(this.listType || this.type) ? 'ol' : 'ul';
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <TagType>
-          <slot />
-        </TagType>
-      </Host>
+      <TagType>
+        <slot />
+      </TagType>
     );
   }
 }

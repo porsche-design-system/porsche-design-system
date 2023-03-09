@@ -5,6 +5,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
+  width: 100%;
 }
 :host([hidden]) {
   display: none !important;
@@ -12,6 +13,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 @media(min-width:480px) {
   :host {
     display: inline-block;
+    width: auto;
     vertical-align: top;
   }
 }
@@ -19,12 +21,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 @media(min-width:760px) {
   :host {
     display: block;
+    width: 100%;
   }
 }
 
 @media(min-width:1000px) {
   :host {
     display: inline-block;
+    width: auto;
     vertical-align: top;
   }
 }
@@ -32,12 +36,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 @media(min-width:1300px) {
   :host {
     display: block;
+    width: 100%;
   }
 }
 
 @media(min-width:1760px) {
   :host {
     display: inline-block;
+    width: auto;
     vertical-align: top;
   }
 }
@@ -215,6 +221,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -363,6 +370,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -431,6 +439,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -499,6 +508,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -582,6 +592,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -650,6 +661,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -718,6 +730,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -786,6 +799,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -869,6 +883,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
+  width: 100%;
 }
 :host([hidden]) {
   display: none !important;
@@ -939,6 +954,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: block;
+  width: 100%;
 }
 :host([hidden]) {
   display: none !important;
@@ -1009,6 +1025,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -1064,6 +1081,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
+  width: auto;
   vertical-align: top;
 }
 :host([hidden]) {
