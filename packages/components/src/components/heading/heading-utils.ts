@@ -4,7 +4,7 @@ import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable
 import { hasSpecificSlottedTag } from '../../utils';
 import { HEADING_TAGS } from './heading-tag';
 
-export const HEADING_SIZES = ['small', 'medium', 'large', 'x-large', 'xx-large', 'xxx-large', 'inherit'] as const;
+export const HEADING_SIZES = ['small', 'medium', 'large', 'x-large', 'xx-large', 'inherit'] as const;
 export type HeadingSize = typeof HEADING_SIZES[number];
 
 export const HEADING_COLORS = ['primary', 'inherit'] as const;
@@ -18,8 +18,7 @@ const headingSizeToTagMap: { [key in HeadingSize]: string } = {
   large: 'h4',
   'x-large': 'h3',
   'xx-large': 'h2',
-  'xxx-large': 'h1',
-  inherit: 'h1',
+  inherit: 'h2',
 };
 
 export const getHeadingTagType = (

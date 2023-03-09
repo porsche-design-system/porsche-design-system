@@ -2,8 +2,8 @@
 
 ## Styles
 
-The Styles / Design Tokens give fundamental styles matching the Porsche Design language and are available as JavaScript
-and SCSS version.
+The Styles give fundamental styles matching the Porsche Design language and are available as JavaScript and SCSS
+version.
 
 - [Border](styles/border)
 - [Drop Shadow](styles/drop-shadow)
