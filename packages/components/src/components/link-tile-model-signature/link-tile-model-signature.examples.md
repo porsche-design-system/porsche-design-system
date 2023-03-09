@@ -54,23 +54,25 @@ import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils
 export default class Code extends Vue {
   config = { spacing: 'block' };
   imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
+  primaryLink = '<p-link slot="primary" href="https://www.porsche.com">Primary label</p-link>';
+  secondaryLink = '<p-link slot="secondary" href="https://www.porsche.com">Secondary label</p-link>';
 
   basic = `<p-link-tile-model-signature
-  description="Some description"
-  primary-link-props="{ 'label': 'Primary label', 'href': 'https://www.porsche.com' }"
-  secondary-link-props="{ 'label': 'Secondary label', 'href': 'https://www.porsche.com' }"
+  heading="Some heading"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.primaryLink}
+  ${this.secondaryLink}
 </p-link-tile-model-signature>
 <p-link-tile-model-signature
-  description="Some description"
-  sub-description="Some sub description"
-  primary-link-props="{ 'label': 'Primary label', 'href': 'https://www.porsche.com' }"
-  secondary-link-props="{ 'label': 'Secondary label', 'href': 'https://www.porsche.com' }"
+  heading="Some description"
+  description="Some sub description"
 >
   <picture>
     <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
     <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
+    ${this.primaryLink}
+    ${this.secondaryLink}
   </picture>
 </p-link-tile-model-signature>`;
 
@@ -78,22 +80,22 @@ export default class Code extends Vue {
   aspectRatios = [...LINK_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile-model-signature 
-description="Some Description" 
-primary-link-props="{ 'label': 'Primary label', 'href': 'https://www.porsche.com' }" 
-secondary-link-props="{ 'label': 'Secondary label', 'href': 'https://www.porsche.com' }" 
+heading="Some Heading"
 aspect-ratio="${this.aspectRatio}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.primaryLink}
+  ${this.secondaryLink}
 </p-link-tile>`}
 
   model = '911';
   models = [...MODEL_SIGNATURE_MODELS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get modelMarkup() {
     return`<p-link-tile-model-signature 
-description="Some Description" 
-primary-link-props="{ 'label': 'Primary label', 'href': 'https://www.porsche.com' }" 
-secondary-link-props="{ 'label': 'Secondary label', 'href': 'https://www.porsche.com' }" 
+heading="Some Heading"
 model="${this.model}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.primaryLink}
+  ${this.secondaryLink}
 </p-link-tile>`}
 }
 </script>
