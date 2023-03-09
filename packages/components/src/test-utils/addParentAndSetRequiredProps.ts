@@ -19,20 +19,25 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component.host.append(child);
     component[childTagName] = child;
   }
+
   if (meta.requiredProps) {
     meta.requiredProps.forEach((prop) => {
-      // TODO: Generic way?
-      if (tagName === 'p-link-tile-model-signature') {
-        component[prop] = prop === 'description' ? 'Some description' : { label: 'Some label', href: '#' };
-      } else {
-        component[prop] = 'some value';
-      }
+      component[prop] = 'some value';
     });
   }
 
   if (meta.hasEvent) {
     meta.eventNames.forEach((event) => {
       component[event] = jest.fn();
+    });
+  }
+
+  if (tagName === 'p-link-tile-model-signature') {
+    meta.namedSlots.forEach((slotName) => {
+      const child = document.createElement('p-link');
+      child.href = '#';
+      child.slot = slotName;
+      component.host.appendChild(child);
     });
   }
 };

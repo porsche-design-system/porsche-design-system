@@ -27,7 +27,6 @@ import { InlineNotificationState } from "./components/inline-notification/inline
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { LinkTileModelLinkProps } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
@@ -732,11 +731,15 @@ export namespace Components {
         /**
           * Description text.
          */
-        "description": string;
+        "description"?: string;
         /**
-          * Sets a custom HTML tag containing the model name depending on the usage of the link tile model signature component.
+          * Heading text.
          */
-        "headingTag"?: HeadingTag;
+        "heading": string;
+        /**
+          * Sets a custom HTML tag depending on the usage of the link tile model signature component.
+         */
+        "headingTag"?: Exclude<HeadingTag, 'h1'>;
         /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
@@ -745,18 +748,6 @@ export namespace Components {
           * Adapts the displayed model-signature of the component.
          */
         "model"?: ModelSignatureModel;
-        /**
-          * Contains the label, href and anchor props for the primary link
-         */
-        "primaryLinkProps": LinkTileModelLinkProps;
-        /**
-          * Contains the label, href and anchor props for the secondary link
-         */
-        "secondaryLinkProps": LinkTileModelLinkProps;
-        /**
-          * Sub description text.
-         */
-        "subDescription"?: string;
         /**
           * Font weight of the description.
          */
@@ -2510,9 +2501,13 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Sets a custom HTML tag containing the model name depending on the usage of the link tile model signature component.
+          * Heading text.
          */
-        "headingTag"?: HeadingTag;
+        "heading"?: string;
+        /**
+          * Sets a custom HTML tag depending on the usage of the link tile model signature component.
+         */
+        "headingTag"?: Exclude<HeadingTag, 'h1'>;
         /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
@@ -2521,18 +2516,6 @@ declare namespace LocalJSX {
           * Adapts the displayed model-signature of the component.
          */
         "model"?: ModelSignatureModel;
-        /**
-          * Contains the label, href and anchor props for the primary link
-         */
-        "primaryLinkProps"?: LinkTileModelLinkProps;
-        /**
-          * Contains the label, href and anchor props for the secondary link
-         */
-        "secondaryLinkProps"?: LinkTileModelLinkProps;
-        /**
-          * Sub description text.
-         */
-        "subDescription"?: string;
         /**
           * Font weight of the description.
          */
