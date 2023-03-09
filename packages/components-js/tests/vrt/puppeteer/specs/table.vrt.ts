@@ -15,7 +15,9 @@ import {
 
 const getElementsMarkup: GetThemedMarkup = (theme) => `
 <p-table theme="${theme}">
-  <span slot="caption">Some caption <a href="#">with a link</a></span>
+  <span slot="caption" style="color: ${
+    theme === 'dark' ? 'white' : 'black'
+  }">Some caption <a href="#">with a link</a></span>
   <p-table-head>
     <p-table-head-row>
       <p-table-head-cell style="min-width: 2000px;">Some head cell</p-table-head-cell>
