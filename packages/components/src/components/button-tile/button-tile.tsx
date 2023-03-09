@@ -6,7 +6,7 @@ import type {
   ButtonType,
   LinkButtonIconName,
 } from '../../types';
-import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign } from '../../utils';
+import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, TileProps } from '../../utils';
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -48,7 +48,7 @@ const propTypes: PropTypes<typeof ButtonTile> = {
   tag: 'p-button-tile',
   shadow: { delegatesFocus: true },
 })
-export class ButtonTile {
+export class ButtonTile implements TileProps {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */

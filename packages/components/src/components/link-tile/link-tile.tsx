@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
-import type { LinkTileSize, LinkTileWeight, LinkTileAspectRatio, LinkTileAlign } from '../../utils';
+import type { LinkTileSize, LinkTileWeight, LinkTileAspectRatio, LinkTileAlign, TileProps } from '../../utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -37,7 +37,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
   tag: 'p-link-tile',
   shadow: { delegatesFocus: true },
 })
-export class LinkTile {
+export class LinkTile implements TileProps {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */

@@ -27,3 +27,14 @@ export const throwIfAlignTopAndNotCompact = (
     throw new Error(`Usage of ${getTagName(host)} is not valid. Top alignment is only possible when compact is true.`);
   }
 };
+
+export type TileProps = {
+  size?: BreakpointCustomizable<ButtonTileSize>;
+  weight?: BreakpointCustomizable<ButtonTileWeight>;
+  aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio>;
+  label: string;
+  description: string;
+  align?: ButtonTileAlign;
+  gradient?: boolean;
+  compact?: BreakpointCustomizable<boolean>;
+};
