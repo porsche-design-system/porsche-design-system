@@ -60,6 +60,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-divider direction="horizontal"></p-divider>
 ```
 
+##### Icon:
+
+- Prop `colors`'s value `disabled` is removed, use `state-disabled` instead.
+
+```diff
+- <p-icon color="disabled"></p-icon>
++ <p-icon color="state-disabled"></p-icon>
+```
+
+##### Link Tile:
+
+- Prop `weight`'s value `semibold` is deprecated, use `semi-bold` instead.
+
+```diff
+- <p-link-tile weight="semibold"></p-link-tile>
++ <p-link-tile weight="semi-bold"></p-link-tile>
+```
+
 #### Modal:
 
 - Prop `disableCloseButton` is deprecated, use `dismissButton` instead.
@@ -138,11 +156,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ##### Tabs:
 
 - Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Prop `weight`'s value `semibold` is deprecated, use `semi-bold` instead.
 - Event `tabChange` is deprecated, use `change` event instead.
 
 ```diff
 - <p-tabs gradient-color-scheme="surface"></p-tabs>
 + <p-tabs gradient-color="background-surface"></p-tabs>
+
+- <p-tabs weight="semibold"></p-tabs>
++ <p-tabs weight="semi-bold"></p-tabs>
 
 - <PTabs onTabChange={() => {}} />
 + <PTabs onChange={() => {}} />
@@ -151,14 +173,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ##### Tabs Bar:
 
 - Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Prop `weight`'s value `semibold` is deprecated, use `semi-bold` instead.
 - Event `tabChange` is deprecated, use `change` event instead.
 
 ```diff
 - <p-tabs-bar gradient-color-scheme="surface"></p-tabs-bar>
 + <p-tabs-bar gradient-color="background-surface"></p-tabs-bar>
 
+- <p-tabs-bar weight="semibold"></p-tabs>
++ <p-tabs-bar weight="semi-bold"></p-tabs>
+
 - <PTabsBar onTabChange={() => {}} />
 + <PTabsBar onChange={() => {}} />
+```
+
+##### Tag:
+
+- Prop `color`'s value `notification-warning`, `notification-success` and `notification-error` are deprecated, use
+  `notification-warning-soft`, `notification-success-soft` and `notification-error-soft` instead.
+
+```diff
+- <p-tag color="notification-warning"></p-tag>
++ <p-tag color="notification-warning-soft"></p-tag>
+
+- <p-tag color="notification-success"></p-tag>
++ <p-tag color="notification-success-soft"></p-tag>
+
+- <p-tag color="notification-error"></p-tag>
++ <p-tag color="notification-error-soft"></p-tag>
 ```
 
 ##### Text Field Wrapper:
@@ -205,6 +247,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Link Tile` matches new design language
 - Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
   `LinkPureIcon`
+- `Icon` prop `color` value `disabled` is renamed to `state-disabled`
+- `Tag` prop `color` value `notification-info` is renamed to `notification-info-soft`
 
 #### Added
 
@@ -233,17 +277,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Textarea Wrapper` got `showCounter` prop and deprecated `showCharacterCount` prop
   - `Text List` got `type` prop and deprecated `listType` and `orderType` prop
 - Props have consistent values across components and deprecated old values
-  - TODO..
-  - icon color, tag color, semi-bold
-
-#### Fixed
-
-- Partials: Typings of return value with and without options
+  - `Icon` prop `color` got value `state-disabled` and removed `disabled` value
+  - `Link Tile` prop `weight` got value `semi-bold` and deprecated `semibold` value
+  - `Tabs Bar` and `Tabs` prop `weight` got value `semi-bold` and deprecated `semibold` value
+  - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
+    `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
 
 #### Fixed
 
 - `Text Field Wrapper` calendar and time indicator icons respect color definition in dark theme
 - `Text Field Wrapper` has correct height when type date or time is used
+- Partials: Typings of return value with and without options
 
 ### [3.0.0-alpha.2] - 2023-02-27
 
