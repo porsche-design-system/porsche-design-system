@@ -31,6 +31,11 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 
 ## Weight
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>semi-bold</code> value instead.
+</p-inline-notification>
+
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
@@ -39,6 +44,11 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>gradientColor</code> property instead.
+</p-inline-notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
   <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
@@ -54,7 +64,7 @@ update the `activeTabIndex` when adding or removing elements.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../tabs-bar/tabs-bar-utils';
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS, TABS_BAR_WEIGHTS_DEPRECATED } from '../tabs-bar/tabs-bar-utils';
 import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildTabsItem = (name: string, index: number) => 
@@ -79,8 +89,8 @@ ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
   }
 
-  weight = 'semibold';
-  weights = TABS_BAR_WEIGHTS;
+  weight = 'semi-bold';
+  weights = TABS_BAR_WEIGHTS.map(item => TABS_BAR_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);;
   get weightMarkup() {
     return `<p-tabs weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}

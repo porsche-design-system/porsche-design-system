@@ -78,6 +78,11 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 
 ## Weight
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>semi-bold</code> value instead.
+</p-inline-notification>
+
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
@@ -87,6 +92,11 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>gradientColor</code> property instead.
+</p-inline-notification>
+
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
   <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
 </Playground>
@@ -95,7 +105,7 @@ background and gradient has to align to your chosen background.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
-import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from './tabs-bar-utils';
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS, TABS_BAR_WEIGHTS_DEPRECATED } from './tabs-bar-utils';
 import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
@@ -138,8 +148,8 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
 
-  weight = 'semibold';
-  weights = TABS_BAR_WEIGHTS;
+  weight = 'semi-bold';
+  weights = TABS_BAR_WEIGHTS.map(item => TABS_BAR_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get weightMarkup() {
     return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}

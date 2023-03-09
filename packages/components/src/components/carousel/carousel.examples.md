@@ -73,12 +73,17 @@ first/last slide.
 
 <Playground :markup="rewind" :config="config"></Playground>
 
-## Disable Pagination
+## Remove Pagination
 
-The pagination indicators underneath the slides can be removed via `disablePagination`.
+The pagination indicators underneath the slides can be removed via `pagination="false"`.
 
-<Playground :markup="disablePaginationMarkup" :config="config">
-  <SelectOptions v-model="disablePagination" :values="disablePaginations" name="disablePagination"></SelectOptions>
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>disablePagination</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>pagination</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="paginationMarkup" :config="config">
+  <SelectOptions v-model="pagination" :values="paginations" name="pagination"></SelectOptions>
 </Playground>
 
 ## Focus Behavior
@@ -189,10 +194,10 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  disablePagination = true;
-  disablePaginations = [true, false, '{ base: true, m: false }'];
-  get disablePaginationMarkup() {
-    return `<p-carousel disable-pagination="${this.disablePagination}" heading="${this.basicHeading}">
+  pagination = true;
+  paginations = [false, true, '{ base: false, m: true }'];
+  get paginationMarkup() {
+    return `<p-carousel pagination="${this.pagination}" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 }

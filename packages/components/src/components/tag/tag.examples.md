@@ -9,8 +9,7 @@
 ## Color
 
 <p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
-Following colors have been deprecated and will be removed with the next major release: "background-default",
-"neutral-contrast-high", and "notification-neutral".
+  Following colors have been deprecated and will be removed with the next major release: <span v-html="colorsDeprecated"></span>.
 </p-inline-notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
@@ -60,7 +59,7 @@ to.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { TAG_COLORS } from './tag-utils';
+import { TAG_COLORS, TAG_COLORS_DEPRECATED } from './tag-utils';
 import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 @Component
@@ -71,21 +70,22 @@ export default class Code extends Vue {
   backgroundColors = GRADIENT_COLORS; 
 
   get colorMarkup(){
-    return TAG_COLORS.map((color) => `<p-tag color="${color}">Color ${color}</p-tag>`).join('\n');
+    return TAG_COLORS.map((color) => `<p-tag color="${color}">Color ${color}${TAG_COLORS_DEPRECATED.includes(color) ? ' (deprecated)' : ''}</p-tag>`).join('\n');
   };
 
   icon = `<p-tag icon="car">Some label</p-tag> 
 <p-tag icon-source="${require('../../assets/icon-custom-kaixin.svg')}">Some label</p-tag>`;
 
+  colorsDeprecated = TAG_COLORS_DEPRECATED.map(item => `<code>${item}</code>`).join(', ');
   get buttonMarkup(){
     return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
-  <button type="button">Color ${color}</button>
+  <button type="button">Color ${color}${TAG_COLORS_DEPRECATED.includes(color) ? ' (deprecated)' : ''}</button>
 </p-tag>`).join('\n');
   };
 
   get linkMarkup(){
     return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
-  <a href="https://www.porsche.com">Color ${color}</a>
+  <a href="https://www.porsche.com">Color ${color}${TAG_COLORS_DEPRECATED.includes(color) ? ' (deprecated)' : ''}</a>
 </p-tag>`).join('\n');
   };
 
