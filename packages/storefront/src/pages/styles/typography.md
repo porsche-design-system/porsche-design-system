@@ -14,17 +14,16 @@ tbd.
 
 ## Styles
 
-The Styles / Design Tokens are available as JavaScript and SCSS version. Look at the example above to see how the tokens
-work.
+The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
 
 #### JS
 
-JavaScript Design Tokens can be imported by
+JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
 - `displayLargeStyle`
 - `displayMediumStyle`
-- `headingXXXLargeStyle`
+- `displaySmallStyle`
 - `headingXXLargeStyle`
 - `headingXLargeStyle`
 - `headingLargeStyle`
@@ -38,12 +37,15 @@ JavaScript Design Tokens can be imported by
 
 #### SCSS
 
-SCSS Design Tokens can be imported by `@import '~@porsche-design-system/components-{js|angular|react|vue}/styles/scss';`
-(make sure your bundler supports scss `~` tilde imports).
+SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`
 
-- `@mixin pds-display-medium`
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+ At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
+</p-inline-notification>
+
 - `@mixin pds-display-large`
-- `@mixin pds-heading-xxx-large`
+- `@mixin pds-display-medium`
+- `@mixin pds-display-small`
 - `@mixin pds-heading-xx-large`
 - `@mixin pds-heading-x-large`
 - `@mixin pds-heading-large`

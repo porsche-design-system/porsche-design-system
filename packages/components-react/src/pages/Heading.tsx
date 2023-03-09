@@ -110,7 +110,6 @@ export const HeadingPage = (): JSX.Element => {
         <PHeading size="large">The quick brown fox jumps over the lazy dog</PHeading>
         <PHeading size="x-large">The quick brown fox jumps over the lazy dog</PHeading>
         <PHeading size="xx-large">The quick brown fox jumps over the lazy dog</PHeading>
-        <PHeading size="xxx-large">The quick brown fox jumps over the lazy dog</PHeading>
         <PHeading size="inherit" style={{ fontSize: '5rem' }}>The quick brown fox jumps over the lazy dog</PHeading>
       </div>
 
@@ -120,7 +119,6 @@ export const HeadingPage = (): JSX.Element => {
         <PHeading theme="dark" size="large">The quick brown fox jumps over the lazy dog</PHeading>
         <PHeading theme="dark" size="x-large">The quick brown fox jumps over the lazy dog</PHeading>
         <PHeading theme="dark" size="xx-large">The quick brown fox jumps over the lazy dog</PHeading>
-        <PHeading theme="dark" size="xxx-large">The quick brown fox jumps over the lazy dog</PHeading>
         <PHeading theme="dark" size="inherit" style={{ fontSize: '5rem' }}>The quick brown fox jumps over the lazy dog</PHeading>
       </div>
 
