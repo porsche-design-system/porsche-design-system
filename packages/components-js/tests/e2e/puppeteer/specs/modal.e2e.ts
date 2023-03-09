@@ -155,10 +155,39 @@ it('should have correct transform when closed and opened', async () => {
 describe('can be closed', () => {
   let host: ElementHandle;
 
+  it('should not be closed if content is scrollable and mousedown is inside area of scroll track', async () => {
+    await initBasicModal({
+      content: '<div style="height: 150vh;"></div>',
+    });
+
+    await addEventListener(host, 'close');
+    await page.setViewport({ width: 800, height: 600 });
+    await page.mouse.move(784, 300);
+    await page.mouse.down();
+
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
+
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
+  });
+
   beforeEach(async () => {
     await initBasicModal();
     host = await getHost();
     await addEventListener(host, 'close');
+  });
+
+  it('should be closed if content is not scrollable and mousedown is inside area of scroll track', async () => {
+    await page.setViewport({ width: 800, height: 600 });
+    await page.mouse.move(784, 300);
+    await page.mouse.down();
+
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(1);
+
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(1);
   });
 
   it('should be closable via x button', async () => {
