@@ -42,7 +42,6 @@ const generateComponentMeta = (): void => {
   };
   hasSlot: boolean;
   namedSlots?: string[]; // array of named slots
-  hasSlottedCss: boolean;
   hasEvent: boolean;
   eventNames?: string[];
   deprecatedEventNames?: string[]; // array of event names
@@ -83,7 +82,6 @@ const generateComponentMeta = (): void => {
     };
     hasSlot: boolean;
     namedSlots?: string[]; // array of named slots
-    hasSlottedCss: boolean;
     hasEvent: boolean;
     eventNames?: string[];
     deprecatedEventNames?: string[]; // array of event names
@@ -117,7 +115,6 @@ const generateComponentMeta = (): void => {
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlot = source.includes('<slot');
-    const hasSlottedCss = source.includes('attachSlottedCss');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
@@ -374,7 +371,6 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
       ...(namedSlots.length && { namedSlots }),
-      hasSlottedCss,
       hasEvent,
       ...(eventNames.length && { eventNames }),
       ...(deprecatedEventNames.length && { deprecatedEventNames }),
