@@ -5,7 +5,7 @@ import {
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import type { GetThemedMarkup, StateType } from '../helpers';
+import type { GetThemedMarkup } from '../helpers';
 import {
   defaultViewports,
   getVisualRegressionStatesTester,
