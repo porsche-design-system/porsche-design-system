@@ -22,7 +22,7 @@ import type {
   LinkPureSize,
   LinkPureTarget,
   LinkPureWeight,
-} from '../../utils';
+} from './link-pure-utils';
 import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
