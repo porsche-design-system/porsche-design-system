@@ -5,20 +5,20 @@ import type { LinkTileModelLinkProps } from './link-tile-model-signature-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import type { JssDirections } from '../../styles/jss-direction-styles';
 import { JSS_DIRECTIONS } from '../../styles/jss-direction-styles';
-import { getSlottedCss } from '../../styles/link-button-tile-styles';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
+  HEADING_TAGS,
   parseJSONAttribute,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
 import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
 import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS } from '../link-tile/link-tile-utils';
+import type { HeadingTag } from '../heading/heading-tag';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   primaryLinkProps: AllowedTypes.shape({
@@ -42,7 +42,8 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   description: AllowedTypes.string,
   subDescription: AllowedTypes.string,
-  direction: AllowedTypes.breakpoint<JssDirections>(JSS_DIRECTIONS),
+  linkDirection: AllowedTypes.breakpoint<JssDirections>(JSS_DIRECTIONS),
+  headingTag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
 };
 
 @Component({
@@ -58,13 +59,13 @@ export class LinkTileModelSignature {
   /** Contains the label, href and anchor props for the secondary link */
   @Prop() public secondaryLinkProps: LinkTileModelLinkProps;
 
-  /** Adapts the model of the component. */
+  /** Adapts the displayed model-signature of the component. */
   @Prop() public model?: ModelSignatureModel = '911';
 
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
 
-  /** Aspect ratio of the link-tile-model. */
+  /** Aspect ratio of the link-tile-model-signature. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
 
   /** Description text. */
@@ -74,11 +75,10 @@ export class LinkTileModelSignature {
   @Prop() public subDescription?: string;
 
   /** Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'. */
-  @Prop() public direction?: BreakpointCustomizable<JssDirections> = { base: 'column', xs: 'row' };
+  @Prop() public linkDirection?: BreakpointCustomizable<JssDirections> = { base: 'column', xs: 'row' };
 
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
+  /** Sets a custom HTML tag containing the model name depending on the usage of the link tile model signature component. */
+  @Prop() public headingTag?: HeadingTag = 'h2';
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
@@ -87,7 +87,7 @@ export class LinkTileModelSignature {
       getComponentCss,
       this.aspectRatio,
       this.weight,
-      this.direction,
+      this.linkDirection,
       !!this.subDescription
     );
 
@@ -106,11 +106,13 @@ export class LinkTileModelSignature {
         <div class="image-container">
           <slot />
         </div>
-        <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
+        <this.headingTag>
+          <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
+        </this.headingTag>
         <div class="content">
           <a {...restPrimaryLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
           {this.subDescription ? (
-            <div class="description-group" role="group">
+            <div class="description-group">
               <p class="description">{this.description}</p>
               <p class="sub-description">{this.subDescription}</p>
             </div>
