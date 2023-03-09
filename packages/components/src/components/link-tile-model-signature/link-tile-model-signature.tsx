@@ -1,47 +1,29 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
-import type { LinkTileModelLinkProps } from './link-tile-model-signature-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import type { JssDirections } from '../../styles/jss-direction-styles';
 import { JSS_DIRECTIONS } from '../../styles/jss-direction-styles';
-import type { LinkAriaAttribute } from '../link/link-utils';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   HEADING_TAGS,
-  parseJSONAttribute,
+  throwIfChildCountIsExceeded,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
 import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
 import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS } from '../link-tile/link-tile-utils';
 import type { HeadingTag } from '../heading/heading-tag';
+import { getSlottedPLinksOrThrow } from './link-tile-model-signature-utils';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
-  primaryLinkProps: AllowedTypes.shape({
-    label: AllowedTypes.string,
-    href: AllowedTypes.string,
-    target: AllowedTypes.string,
-    download: AllowedTypes.string,
-    rel: AllowedTypes.string,
-    aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
-  }),
-  secondaryLinkProps: AllowedTypes.shape({
-    label: AllowedTypes.string,
-    href: AllowedTypes.string,
-    target: AllowedTypes.string,
-    download: AllowedTypes.string,
-    rel: AllowedTypes.string,
-    aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
-  }),
   model: AllowedTypes.oneOf<ModelSignatureModel>(MODEL_SIGNATURE_MODELS),
   weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
+  heading: AllowedTypes.string,
   description: AllowedTypes.string,
-  subDescription: AllowedTypes.string,
   linkDirection: AllowedTypes.breakpoint<JssDirections>(JSS_DIRECTIONS),
   headingTag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
 };
@@ -53,12 +35,6 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
 export class LinkTileModelSignature {
   @Element() public host!: HTMLElement;
 
-  /** Contains the label, href and anchor props for the primary link */
-  @Prop() public primaryLinkProps: LinkTileModelLinkProps;
-
-  /** Contains the label, href and anchor props for the secondary link */
-  @Prop() public secondaryLinkProps: LinkTileModelLinkProps;
-
   /** Adapts the displayed model-signature of the component. */
   @Prop() public model?: ModelSignatureModel = '911';
 
@@ -68,37 +44,51 @@ export class LinkTileModelSignature {
   /** Aspect ratio of the link-tile-model-signature. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
 
-  /** Description text. */
-  @Prop() public description: string;
+  /** Heading text. */
+  @Prop() public heading: string;
 
-  /** Sub description text. */
-  @Prop() public subDescription?: string;
+  /** Description text. */
+  @Prop() public description?: string;
 
   /** Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'. */
   @Prop() public linkDirection?: BreakpointCustomizable<JssDirections> = { base: 'column', xs: 'row' };
 
-  /** Sets a custom HTML tag containing the model name depending on the usage of the link tile model signature component. */
-  @Prop() public headingTag?: HeadingTag = 'h2';
+  /** Sets a custom HTML tag depending on the usage of the link tile model signature component. */
+  @Prop() public headingTag?: Exclude<HeadingTag, 'h1'> = 'h2';
+
+  private primaryLink: HTMLPLinkElement;
+
+  public componentWillLoad(): void {
+    throwIfChildCountIsExceeded(this.host, 3);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const [primaryLink] = getSlottedPLinksOrThrow(this.host);
+    this.primaryLink = primaryLink;
+
     attachComponentCss(
       this.host,
       getComponentCss,
       this.aspectRatio,
       this.weight,
       this.linkDirection,
-      !!this.subDescription
+      !!this.description
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const { label: primaryLabel, ...restPrimaryLinkProps } = parseJSONAttribute(this.primaryLinkProps);
-    const { label: secondaryLabel, ...restSecondaryLinkProps } = parseJSONAttribute(this.secondaryLinkProps);
+    const heading = (
+      <this.headingTag>
+        <p class="description">{this.heading}</p>
+      </this.headingTag>
+    );
 
-    const sharedLinkProps = {
-      class: 'link',
-      theme: 'dark',
+    const primaryLinkProps = {
+      href: this.primaryLink.href,
+      target: this.primaryLink.target,
+      download: this.primaryLink.download,
+      rel: this.primaryLink.rel,
     };
 
     return (
@@ -106,31 +96,20 @@ export class LinkTileModelSignature {
         <div class="image-container">
           <slot />
         </div>
-        <this.headingTag>
-          <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
-        </this.headingTag>
+        <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
         <div class="content">
-          <a {...restPrimaryLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
-          {this.subDescription ? (
+          <a {...primaryLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
+          {this.description ? (
             <div class="description-group">
-              <p class="description">{this.description}</p>
-              <p class="sub-description">{this.subDescription}</p>
+              {heading}
+              <p class="sub-description">{this.description}</p>
             </div>
           ) : (
-            <p class="description">{this.description}</p>
+            { heading }
           )}
           <div class="link-group" role="group">
-            <PrefixedTagNames.pLink {...sharedLinkProps} {...restPrimaryLinkProps} key="primary-link" variant="primary">
-              {primaryLabel}
-            </PrefixedTagNames.pLink>
-            <PrefixedTagNames.pLink
-              {...sharedLinkProps}
-              {...restSecondaryLinkProps}
-              key="secondary-link"
-              variant="secondary"
-            >
-              {secondaryLabel}
-            </PrefixedTagNames.pLink>
+            <slot name="primary" />
+            <slot name="secondary" />
           </div>
         </div>
       </div>

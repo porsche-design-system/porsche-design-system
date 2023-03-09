@@ -75,9 +75,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   bottom: 0;
   outline: 0;
 }
-.link {
-  min-height: 54px;
-}
 .model {
   position: absolute;
   padding: clamp(16px, 1.25vw + 12px, 36px);
@@ -252,9 +249,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
   bottom: 0;
   outline: 0;
 }
-.link {
-  min-height: 54px;
-}
 .model {
   position: absolute;
   padding: clamp(16px, 1.25vw + 12px, 36px);
@@ -353,9 +347,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
 }
 .model {
   position: absolute;
@@ -466,9 +457,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   bottom: 0;
   outline: 0;
 }
-.link {
-  min-height: 54px;
-}
 .model {
   position: absolute;
   padding: clamp(16px, 1.25vw + 12px, 36px);
@@ -578,9 +566,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
   bottom: 0;
   outline: 0;
 }
-.link {
-  min-height: 54px;
-}
 .model {
   position: absolute;
   padding: clamp(16px, 1.25vw + 12px, 36px);
@@ -679,9 +664,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
 }
 .model {
   position: absolute;

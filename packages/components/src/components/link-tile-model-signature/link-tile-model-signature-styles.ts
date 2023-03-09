@@ -23,7 +23,7 @@ export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
   weight: BreakpointCustomizable<LinkTileWeight>,
   direction: BreakpointCustomizable<JssDirections>,
-  hasSubDescription: boolean
+  hasDescription: boolean
 ): string => {
   return getCss({
     ...getBaseLinkButtonTileStyles({
@@ -46,12 +46,12 @@ export const getComponentCss = (
       ...gradientToBottomStyle,
     },
     description: {
-      ...(!hasSubDescription && { color: getThemedTypographyColor('dark', 'primary') }),
+      ...(!hasDescription && { color: getThemedTypographyColor('dark', 'primary') }),
       margin: 0,
       ...textLargeStyle,
       ...buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) })),
     },
-    ...(hasSubDescription && {
+    ...(hasDescription && {
       'description-group': {
         color: getThemedTypographyColor('dark', 'primary'),
         maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space

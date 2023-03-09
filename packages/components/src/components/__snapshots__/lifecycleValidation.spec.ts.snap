@@ -273,11 +273,10 @@ exports[`should call validateProps() with correct parameters via render for p-li
 {
   "aspectRatio": "breakpoint",
   "description": "string",
-  "direction": "breakpoint",
+  "heading": "string",
+  "headingTag": "oneOf",
+  "linkDirection": "breakpoint",
   "model": "oneOf",
-  "primaryLinkProps": "shape",
-  "secondaryLinkProps": "shape",
-  "subDescription": "string",
   "weight": "breakpoint",
 }
 `;

@@ -25,9 +25,8 @@ export const getBaseLinkButtonTileStyles = (opts: {
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>;
   additionalGlobalStyles?: JssStyle;
   additionalContentStyles?: JssStyle;
-  additionalLinkStyles?: JssStyle;
 }): Styles => {
-  const { aspectRatio, additionalGlobalStyles, additionalContentStyles, additionalLinkStyles } = opts;
+  const { aspectRatio, additionalGlobalStyles, additionalContentStyles } = opts;
 
   return {
     '@global': {
@@ -91,10 +90,6 @@ export const getBaseLinkButtonTileStyles = (opts: {
       position: 'fixed',
       ...getInsetJssStyle(0),
       outline: 0,
-    },
-    link: {
-      minHeight: '54px', // prevent content shift
-      ...additionalLinkStyles,
     },
   };
 };

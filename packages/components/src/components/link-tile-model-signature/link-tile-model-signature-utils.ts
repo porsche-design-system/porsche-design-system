@@ -1,13 +1,22 @@
-import type { SelectedAriaAttributes, LinkTarget } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
+import { getTagName } from '../../utils';
+import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 
-export type LinkTileModelLinkProps =
-  | string
-  | {
-      label: string;
-      href: string;
-      target?: LinkTarget;
-      download?: string;
-      rel?: string;
-      aria?: SelectedAriaAttributes<LinkAriaAttribute>;
-    };
+// TODO: unit test
+export const getSlottedPLinksOrThrow = (host: HTMLElement): HTMLPLinkElement[] => {
+  const primaryLink = getNamedSlotOrThrow(host, 'primary');
+  const secondaryLink = getNamedSlotOrThrow(host, 'secondary');
+
+  const primaryLinkTagName = getTagName(primaryLink);
+  const secondaryLinkTagName = getTagName(secondaryLink);
+  const getErrorMessage = (slotName: 'primary' | 'secondary', tagName: string): string =>
+    `Named slot '${slotName}' has to be a "p-link" but received "${tagName}"`;
+
+  if (primaryLinkTagName !== 'p-link') {
+    throw new Error(getErrorMessage('primary', primaryLinkTagName));
+  }
+  if (secondaryLinkTagName !== 'p-link') {
+    throw new Error(getErrorMessage('secondary', secondaryLinkTagName));
+  }
+
+  return [primaryLink as HTMLPLinkElement, secondaryLink as HTMLPLinkElement];
+};

@@ -74,10 +74,11 @@ export const getComponentCss = (
           )
         ),
       },
-      additionalLinkStyles: {
-        ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
-      },
     }),
+    link: {
+      minHeight: '54px', // prevent content shift
+      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
+    },
     'link-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
     })),
