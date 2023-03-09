@@ -115,7 +115,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
     return (
       <>
-        {/* @ts-ignore */}
         <template shadowroot="open"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           ${g1.trim().replace(/\n/g, '$&    ')}
@@ -339,7 +338,7 @@ $&`
           );
       }
 
-      return newFileContent;
+      return '// @ts-nocheck\n' + newFileContent;
     });
 
   fs.rmSync(destinationDirectory, { force: true, recursive: true });
