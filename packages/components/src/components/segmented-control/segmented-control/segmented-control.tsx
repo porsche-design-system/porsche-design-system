@@ -36,7 +36,8 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
-  /** @deprecated
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release.
    * Background color variations */
   @Prop() public backgroundColor?: SegmentedControlBackgroundColor;
 

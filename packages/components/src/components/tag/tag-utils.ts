@@ -12,7 +12,7 @@ export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
 /** @deprecated */
 export const TAG_COLORS_DEPRECATED = [
   'neutral-contrast-high', // 'notification-contrast-high' is deprecated (replaced with 'primary')
-  'notification-neutral', // 'notification-neutral' is deprecated (replaced with 'notification-info')
+  'notification-neutral', // 'notification-neutral' is deprecated (replaced with 'notification-info-soft')
   'notification-warning',
   'notification-success',
   'notification-error',
