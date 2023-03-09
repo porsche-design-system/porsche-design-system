@@ -104,12 +104,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should show display in different sizes">
+      <p-display [size]="'small'">The quick brown fox jumps over the lazy dog</p-display>
       <p-display [size]="'medium'">The quick brown fox jumps over the lazy dog</p-display>
       <p-display [size]="'large'">The quick brown fox jumps over the lazy dog</p-display>
       <p-display [size]="'inherit'" style="font-size: 5rem">The quick brown fox jumps over the lazy dog</p-display>
     </div>
 
     <div class="playground dark" title="should show display in different sizes">
+      <p-display [theme]="'dark'" [size]="'small'">The quick brown fox jumps over the lazy dog</p-display>
       <p-display [theme]="'dark'" [size]="'medium'">The quick brown fox jumps over the lazy dog</p-display>
       <p-display [theme]="'dark'" [size]="'large'">The quick brown fox jumps over the lazy dog</p-display>
       <p-display [theme]="'dark'" [size]="'inherit'" style="font-size: 5rem">The quick brown fox jumps over the lazy dog</p-display>

@@ -105,12 +105,14 @@ export const DisplayPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should show display in different sizes">
+        <PDisplay size="small">The quick brown fox jumps over the lazy dog</PDisplay>
         <PDisplay size="medium">The quick brown fox jumps over the lazy dog</PDisplay>
         <PDisplay size="large">The quick brown fox jumps over the lazy dog</PDisplay>
         <PDisplay size="inherit" style={{ fontSize: '5rem' }}>The quick brown fox jumps over the lazy dog</PDisplay>
       </div>
 
       <div className="playground dark" title="should show display in different sizes">
+        <PDisplay theme="dark" size="small">The quick brown fox jumps over the lazy dog</PDisplay>
         <PDisplay theme="dark" size="medium">The quick brown fox jumps over the lazy dog</PDisplay>
         <PDisplay theme="dark" size="large">The quick brown fox jumps over the lazy dog</PDisplay>
         <PDisplay theme="dark" size="inherit" style={{ fontSize: '5rem' }}>The quick brown fox jumps over the lazy dog</PDisplay>
