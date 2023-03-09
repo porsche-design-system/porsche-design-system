@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+exports[`getBaseLinkButtonTileStyles() should return correct css for {
   aspectRatio: '1:1',
-  additionalGlobalStyles: [Object],
-  additionalContentStyles: [Object],
-  additionalLinkStyles: [Object]
+  additionalGlobalStyles: { p: { background: 'black' } },
+  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
 } 1`] = `
 {
   "@global": {
@@ -57,10 +56,6 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
     "position": "absolute",
     "right": 0,
     "top": 0,
-  },
-  "link": {
-    "maxWidth": "400px",
-    "minHeight": "54px",
   },
   "link-overlay": {
     "bottom": 0,
@@ -86,11 +81,10 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+exports[`getBaseLinkButtonTileStyles() should return correct css for {
   aspectRatio: '3:4',
-  additionalGlobalStyles: [Object],
-  additionalContentStyles: [Object],
-  additionalLinkStyles: [Object]
+  additionalGlobalStyles: { p: { background: 'black' } },
+  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
 } 1`] = `
 {
   "@global": {
@@ -143,10 +137,6 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
     "position": "absolute",
     "right": 0,
     "top": 0,
-  },
-  "link": {
-    "maxWidth": "400px",
-    "minHeight": "54px",
   },
   "link-overlay": {
     "bottom": 0,
@@ -172,11 +162,10 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+exports[`getBaseLinkButtonTileStyles() should return correct css for {
   aspectRatio: '4:3',
-  additionalGlobalStyles: [Object],
-  additionalContentStyles: [Object],
-  additionalLinkStyles: [Object]
+  additionalGlobalStyles: { p: { background: 'black' } },
+  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
 } 1`] = `
 {
   "@global": {
@@ -229,10 +218,6 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
     "position": "absolute",
     "right": 0,
     "top": 0,
-  },
-  "link": {
-    "maxWidth": "400px",
-    "minHeight": "54px",
   },
   "link-overlay": {
     "bottom": 0,
@@ -258,11 +243,10 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+exports[`getBaseLinkButtonTileStyles() should return correct css for {
   aspectRatio: '9:16',
-  additionalGlobalStyles: [Object],
-  additionalContentStyles: [Object],
-  additionalLinkStyles: [Object]
+  additionalGlobalStyles: { p: { background: 'black' } },
+  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
 } 1`] = `
 {
   "@global": {
@@ -315,10 +299,6 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
     "position": "absolute",
     "right": 0,
     "top": 0,
-  },
-  "link": {
-    "maxWidth": "400px",
-    "minHeight": "54px",
   },
   "link-overlay": {
     "bottom": 0,
@@ -344,11 +324,10 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
+exports[`getBaseLinkButtonTileStyles() should return correct css for {
   aspectRatio: '16:9',
-  additionalGlobalStyles: [Object],
-  additionalContentStyles: [Object],
-  additionalLinkStyles: [Object]
+  additionalGlobalStyles: { p: { background: 'black' } },
+  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
 } 1`] = `
 {
   "@global": {
@@ -401,10 +380,6 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
     "position": "absolute",
     "right": 0,
     "top": 0,
-  },
-  "link": {
-    "maxWidth": "400px",
-    "minHeight": "54px",
   },
   "link-overlay": {
     "bottom": 0,
@@ -430,11 +405,10 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio: {
-  aspectRatio: [Object],
-  additionalGlobalStyles: [Object],
-  additionalContentStyles: [Object],
-  additionalLinkStyles: [Object]
+exports[`getBaseLinkButtonTileStyles() should return correct css for {
+  aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' },
+  additionalGlobalStyles: { p: { background: 'black' } },
+  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
 } 1`] = `
 {
   "@global": {
@@ -487,10 +461,6 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
     "position": "absolute",
     "right": 0,
     "top": 0,
-  },
-  "link": {
-    "maxWidth": "400px",
-    "minHeight": "54px",
   },
   "link-overlay": {
     "bottom": 0,
@@ -529,20 +499,4 @@ exports[`getBaseLinkButtonTileStyles() should return correct css for aspectRatio
     "transform": "translate3d(0,0,0)",
   },
 }
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-link-tile picture > img {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-link-tile picture > img {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}"
 `;

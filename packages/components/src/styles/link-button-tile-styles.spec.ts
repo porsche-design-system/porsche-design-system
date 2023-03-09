@@ -25,7 +25,7 @@ describe('getBaseLinkButtonTileStyles()', () => {
         additionalContentStyles,
       },
     ],
-  ])('should return correct css for aspectRatio: %s', (...args) => {
+  ])('should return correct css for %o', (...args) => {
     expect(getBaseLinkButtonTileStyles(...args)).toMatchSnapshot();
   });
 });

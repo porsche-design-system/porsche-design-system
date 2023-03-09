@@ -13,7 +13,7 @@ const tagNamesWithSlot: [TagName, string][] = TAG_NAMES.filter((tagName) => {
 })
   // add additional entry for links with slotted anchor tag
   .map<[TagName, string][]>((tagName) =>
-    tagName.includes('link')
+    tagName === 'p-link' || tagName === 'p-link-pure'
       ? [
           [tagName, ''],
           [tagName, '<a href="#">Some link</a>'],
