@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  displaySmallStyle,
   displayLargeStyle,
   displayMediumStyle,
   gridGap,
@@ -9,7 +10,6 @@ import {
   headingSmallStyle,
   headingXLargeStyle,
   headingXXLargeStyle,
-  headingXXXLargeStyle,
   spacingFluidMedium,
   textLargeStyle,
   textMediumStyle,
@@ -50,12 +50,12 @@ const DisplayMediumStyle = styled.h2({
   ...displayMediumStyle,
 });
 
-// Heading
-const HeadingXXXLargeStyle = styled.h1({
+const DisplaySmallStyle = styled.h2({
   ...getTypographyStyle,
-  ...headingXXXLargeStyle,
+  ...displaySmallStyle,
 });
 
+// Heading
 const HeadingXXLargeStyle = styled.h2({
   ...getTypographyStyle,
   ...headingXXLargeStyle,
@@ -115,10 +115,10 @@ export const DesignTokensTypographyExample = (): JSX.Element => {
         <Heading>Display</Heading>
         <DisplayLargeStyle>{content}</DisplayLargeStyle>
         <DisplayMediumStyle>{content}</DisplayMediumStyle>
+        <DisplaySmallStyle>{content}</DisplaySmallStyle>
       </Wrapper>
       <Wrapper>
         <Heading>Heading</Heading>
-        <HeadingXXXLargeStyle>{content}</HeadingXXXLargeStyle>
         <HeadingXXLargeStyle>{content}</HeadingXXLargeStyle>
         <HeadingXLargeStyle>{content}</HeadingXLargeStyle>
         <HeadingLargeStyle>{content}</HeadingLargeStyle>
