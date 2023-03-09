@@ -83,28 +83,28 @@ export default class Code extends Vue {
 
   basicTagMarkup = `<div style="max-width: 600px">
   <p-scroller>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-info">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-info">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-info">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
@@ -138,28 +138,28 @@ export default class Code extends Vue {
   get gradientColorMarkup() {
     return `<div style="max-width: 600px">
   <p-scroller gradient-color="${this.gradientColor}" style="white-space: nowrap">
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-info">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-info">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-info">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
