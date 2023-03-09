@@ -334,20 +334,14 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  // TODO: generic way?
-  const attributes =
-    componentMeta.requiredProps
-      ?.map((prop) => {
-        const value =
-          tagName === 'p-link-tile-model-signature'
-            ? `${prop === 'description' ? 'value' : "{ label: 'Some label', 'href': '#' }"}`
-            : 'value';
+  const attributes = componentMeta.requiredProps?.map((prop) => ` ${paramCase(prop)}="value"`).join('') || '';
 
-        return `${paramCase(prop)}="${value}"`;
-      })
-      .join(' ') || '';
-
-  const componentMarkup = `<${tagName} ${attributes}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
+  // TODO: Should we handle this via componentMeta eg. extend required child?
+  const childMarkup =
+    tagName === 'p-link-tile-model-signature'
+      ? '<p-link slot="primary" href="#">Some label</p-link>\n<p-link slot="secondary" href="#">Some label</p-link>'
+      : buildChildMarkup(componentMeta.requiredChild);
+  const componentMarkup = `<${tagName} ${attributes}>${childMarkup}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, componentMeta);
 };
