@@ -8,24 +8,14 @@ import {
   getPrefixedTagNames,
   parseJSON,
   validateProps,
-  LINK_BUTTON_TILE_SIZES,
-  LINK_BUTTON_TILE_WEIGHTS,
-  LINK_BUTTON_TILE_ASPECT_RATIOS,
-  LINK_BUTTON_TILE_ALIGNS,
   throwIfAlignTopAndNotCompact,
 } from '../../utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { getComponentCss } from './link-tile-styles';
+import { sharedTilePropTypes } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_BUTTON_TILE_SIZES),
-  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
-  label: AllowedTypes.string,
-  description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_BUTTON_TILE_ALIGNS),
-  gradient: AllowedTypes.boolean,
-  compact: AllowedTypes.breakpoint('boolean'),
+  ...sharedTilePropTypes,
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,

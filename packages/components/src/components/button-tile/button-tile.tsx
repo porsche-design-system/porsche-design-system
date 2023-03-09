@@ -19,23 +19,13 @@ import {
   validateProps,
   throwIfAlignTopAndNotCompact,
   isDisabledOrLoading,
-  LINK_BUTTON_TILE_SIZES,
-  LINK_BUTTON_TILE_WEIGHTS,
-  LINK_BUTTON_TILE_ASPECT_RATIOS,
-  LINK_BUTTON_TILE_ALIGNS,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
 import { getButtonAriaAttributes } from '../button/button-utils';
+import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
-  size: AllowedTypes.breakpoint<ButtonTileSize>(LINK_BUTTON_TILE_SIZES),
-  weight: AllowedTypes.breakpoint<ButtonTileWeight>(LINK_BUTTON_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<ButtonTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
-  label: AllowedTypes.string,
-  description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<ButtonTileAlign>(LINK_BUTTON_TILE_ALIGNS),
-  gradient: AllowedTypes.boolean,
-  compact: AllowedTypes.breakpoint('boolean'),
+  ...sharedTilePropTypes,
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
