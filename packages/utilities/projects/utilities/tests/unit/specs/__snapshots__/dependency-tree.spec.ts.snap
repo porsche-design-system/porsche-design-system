@@ -47,16 +47,17 @@ exports[`should have no regression for dependency tree 1`] = `
   "font/fontSizeDisplay.js": [
     "font/fontSizeDisplayLarge.js",
     "font/fontSizeDisplayMedium.js",
+    "font/fontSizeDisplaySmall.js",
   ],
   "font/fontSizeDisplayLarge.js": [],
   "font/fontSizeDisplayMedium.js": [],
+  "font/fontSizeDisplaySmall.js": [],
   "font/fontSizeHeading.js": [
     "font/fontSizeHeadingLarge.js",
     "font/fontSizeHeadingMedium.js",
     "font/fontSizeHeadingSmall.js",
     "font/fontSizeHeadingXLarge.js",
     "font/fontSizeHeadingXXLarge.js",
-    "font/fontSizeHeadingXXXLarge.js",
   ],
   "font/fontSizeHeadingLarge.js": [
     "font/fontSizeTextLarge.js",
@@ -71,7 +72,6 @@ exports[`should have no regression for dependency tree 1`] = `
     "font/fontSizeTextXLarge.js",
   ],
   "font/fontSizeHeadingXXLarge.js": [],
-  "font/fontSizeHeadingXXXLarge.js": [],
   "font/fontSizeText.js": [
     "font/fontSizeTextLarge.js",
     "font/fontSizeTextMedium.js",
@@ -216,13 +216,13 @@ exports[`should have no regression for dependency tree 1`] = `
     "font/fontSizeDisplay.js",
     "font/fontSizeDisplayLarge.js",
     "font/fontSizeDisplayMedium.js",
+    "font/fontSizeDisplaySmall.js",
     "font/fontSizeHeading.js",
     "font/fontSizeHeadingLarge.js",
     "font/fontSizeHeadingMedium.js",
     "font/fontSizeHeadingSmall.js",
     "font/fontSizeHeadingXLarge.js",
     "font/fontSizeHeadingXXLarge.js",
-    "font/fontSizeHeadingXXXLarge.js",
     "font/fontSizeText.js",
     "font/fontSizeTextLarge.js",
     "font/fontSizeTextMedium.js",
@@ -337,12 +337,12 @@ exports[`should have no regression for dependency tree 1`] = `
     "theme/themeLightStateHover.js",
     "typography/display/displayLargeStyle.js",
     "typography/display/displayMediumStyle.js",
+    "typography/display/displaySmallStyle.js",
     "typography/heading/headingLargeStyle.js",
     "typography/heading/headingMediumStyle.js",
     "typography/heading/headingSmallStyle.js",
     "typography/heading/headingXLargeStyle.js",
     "typography/heading/headingXXLargeStyle.js",
-    "typography/heading/headingXXXLargeStyle.js",
     "typography/text/textLargeStyle.js",
     "typography/text/textMediumStyle.js",
     "typography/text/textSmallStyle.js",
@@ -509,6 +509,10 @@ exports[`should have no regression for dependency tree 1`] = `
     "font/fontVariant.js",
     "font/fontWeightSemiBold.js",
   ],
+  "typography/display/displaySmallStyle.js": [
+    "font/fontSizeDisplaySmall.js",
+    "typography/display/displayShared.js",
+  ],
   "typography/heading/headingLargeStyle.js": [
     "font/fontSizeHeadingLarge.js",
     "typography/heading/headingShared.js",
@@ -534,10 +538,6 @@ exports[`should have no regression for dependency tree 1`] = `
   ],
   "typography/heading/headingXXLargeStyle.js": [
     "font/fontSizeHeadingXXLarge.js",
-    "typography/heading/headingShared.js",
-  ],
-  "typography/heading/headingXXXLargeStyle.js": [
-    "font/fontSizeHeadingXXXLarge.js",
     "typography/heading/headingShared.js",
   ],
   "typography/text/textLargeStyle.js": [
