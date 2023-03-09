@@ -28,11 +28,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 <p-banner>
 -  <span slot="title">Some heading</span>
 +  <span slot="heading">Some heading</span>
-  <span slot="description">Some notification description.</span>
+   <span slot="description">Some notification description.</span>
 </p-banner>
 
-+ <p-banner heading="Some heading" description="Some notification description.">
-- <p-banner>
+-<p-banner>
++<p-banner heading="Some heading" description="Some notification description.">
 -  <span slot="title">Some heading</span>
 -  <span slot="description">Some notification description.</span>
 </p-banner>
@@ -208,8 +208,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `showCharacterCount` is deprecated, use `showCounter` instead.
 
 ```diff
-- <p-text-field-wrapper show-character-count="false">
-+ <p-text-field-wrapper show-counter="false">
+-<p-text-field-wrapper show-character-count="false">
++<p-text-field-wrapper show-counter="false">
   <input type="text" maxlength="20" />
 </p-text-field-wrapper>
 ```
@@ -219,8 +219,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `showCharacterCount` is deprecated, use `showCounter` instead.
 
 ```diff
-- <p-textarea-wrapper show-character-count="false">
-+ <p-textarea-wrapper show-counter="false">
+-<p-textarea-wrapper show-character-count="false">
++<p-textarea-wrapper show-counter="false">
   <textarea maxlength="80"></textarea>
 </p-textarea-wrapper>
 ```
@@ -275,7 +275,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Tabs Bar` and `Tabs` prop `weight` got value `semi-bold` and deprecated `semibold` value
   - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
     `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
-
 
 #### Changed
 
