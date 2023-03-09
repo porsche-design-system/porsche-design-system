@@ -36,7 +36,6 @@ export default class Code extends Vue {
       'eventNames',
       'namedSlots',
       'nestedComponents',
-      'hasSlottedCss',
     ];
 
     const content = rowKeys.map(key => {
