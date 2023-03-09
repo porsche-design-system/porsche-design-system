@@ -51,8 +51,13 @@ property.
 
 ## Event Handling
 
-Whenever the selected item changes, a `segmentedControlChange` event gets emitted by the `p-segmented-control`.  
+Whenever the selected item changes, a `change` event gets emitted by the `p-segmented-control`.  
 Each event instance contains the newly selected value at `event.detail.value`.
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>segmentedControlChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
 
 <Playground :frameworkMarkup="eventHandlingMarkup" :config="config">
   <p-segmented-control :theme="theme" :value="eventHandlingValue" v-on:change="eventHandlingValue = $event.detail.value">

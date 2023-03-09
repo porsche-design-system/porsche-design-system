@@ -9,6 +9,11 @@ have a look at [Tabs Bar](components/tabs-bar) component.
 
 <TableOfContents></TableOfContents>
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
+
 ## Basic example
 
 Basic implementation shows a tab list with buttons to switch between the content. For every `p-tabs-item` inside of the

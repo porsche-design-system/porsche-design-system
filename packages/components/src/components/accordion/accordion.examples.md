@@ -16,6 +16,11 @@ behavior.
 
 ## Basic example
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>accordionChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
+
 <Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>
 
 The accordion width is 100% of the parent container. We do strongly advise you to not use the full display width, as
@@ -133,7 +138,7 @@ export default class Code extends Vue {
   
   registerEvents() {
     const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
-    accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', (e) => (e.target.open = e.detail.open)));
+    accordions.forEach(accordionEl => accordionEl.addEventListener('change', (e) => (e.target.open = e.detail.open)));
   }
 }
 </script>

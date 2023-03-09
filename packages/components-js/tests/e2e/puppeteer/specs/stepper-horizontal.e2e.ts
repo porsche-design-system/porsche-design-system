@@ -28,7 +28,7 @@ afterEach(async () => await page.close());
 const clickHandlerScript = `
 <script>
   const stepper = document.querySelector('p-stepper-horizontal');
-  stepper.addEventListener('stepChange', (e) => {
+  stepper.addEventListener('change', (e) => {
     const { activeStepIndex } = e.detail;
     const stepElements = Array.from(e.target.children);
 

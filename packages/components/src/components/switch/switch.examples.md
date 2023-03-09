@@ -21,6 +21,11 @@ interaction. When used with hidden label, it's best practice to provide a descri
 
 ## Framework Implementations
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>switchChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
+
 <Playground :frameworkMarkup="frameworks"></Playground>
 
 ---
@@ -73,7 +78,7 @@ export default class Code extends Vue {
   configInline = { ...this.config, spacing: 'inline' };
 
   frameworks = {
-    'vanilla-js': `switchElement.addEventListener('switchChange', (e) => {
+    'vanilla-js': `switchElement.addEventListener('change', (e) => {
   e.target.checked = e.detail.checked;
 });`,
     angular: `import { Component } from '@angular/core';
@@ -81,12 +86,12 @@ import type { SwitchChangeEvent } from '@porsche-design-system/components-angula
 
 @Component({
   selector: 'some-switch-page',
-  template: \`<p-switch [checked]="checked" (switchChange)="onSwitchChange($event)">Some label</p-switch>\`,
+  template: \`<p-switch [checked]="checked" (change)="onChange($event)">Some label</p-switch>\`,
 })
 export class SomeSwitchPage {
   checked: boolean;
 
-  onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
+  onChange(e: CustomEvent<SwitchChangeEvent>) {
     this.checked = e.detail.checked;
   }
 }`,
@@ -96,11 +101,11 @@ import type { SwitchChangeEvent } from '@porsche-design-system/components-react'
 
 const SomeSwitchPage = (): JSX.Element => {
   const [checked, setChecked] = useState<boolean>();
-  const onSwitchChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
+  const onChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
     setChecked(e.detail.checked);
   }, []);
 
-  return <PSwitch checked={checked} onSwitchChange={onSwitchChange}>Some label</PSwitch>
+  return <PSwitch checked={checked} onChange={onChange}>Some label</PSwitch>
 }`,
   };
 
@@ -154,7 +159,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
   registerEvents() {
     const switches = this.$el.querySelectorAll('.playground .demo p-switch');
-    switches.forEach(switchEl => switchEl.addEventListener('switchChange', (e) => (e.target.checked = e.detail.checked)));
+    switches.forEach(switchEl => switchEl.addEventListener('change', (e) => (e.target.checked = e.detail.checked)));
   }
 }
 </script>
