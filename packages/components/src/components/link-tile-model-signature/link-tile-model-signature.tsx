@@ -54,7 +54,8 @@ export class LinkTileModelSignature {
   @Prop() public description?: string;
 
   /** Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'. */
-  @Prop() public linkDirection?: LinkTileModelSignatureLinkDirection = { base: 'column', xs: 'row' };
+  // prettier-ignore
+  @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = { base: 'column', xs: 'row' };
 
   /** Sets a custom HTML tag depending on the usage of the link tile model signature component. */
   @Prop() public headingTag?: Exclude<HeadingTag, 'h1'> = 'h2';
