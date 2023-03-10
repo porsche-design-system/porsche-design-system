@@ -149,9 +149,13 @@ export class Modal {
   // hack to prevent click event on scrollbar track
   private clickStartedInScrollbarTrack(e: MouseEvent): boolean {
     const hasScrollbars = this.host.scrollHeight > this.host.offsetHeight;
-    const hasOverlayScrollbars = this.host.scrollWidth >= this.host.offsetWidth;
 
-    return !hasScrollbars ? false : e.clientX > this.host.clientWidth - (hasOverlayScrollbars ? 17 : 0);
+    if (!hasScrollbars) {
+      return false;
+    } else {
+      const hasOverlayScrollbars = this.host.scrollWidth === this.host.offsetWidth;
+      return e.clientX > this.host.clientWidth - (hasOverlayScrollbars ? 17 : 0);
+    }
   }
 
   private onMouseDown = (e: MouseEvent): void => {
