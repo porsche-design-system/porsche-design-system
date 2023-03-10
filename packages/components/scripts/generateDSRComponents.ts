@@ -28,6 +28,7 @@ const generateDSRComponents = (): void => {
 
       let newFileContent = fileContent
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
+        .replace(/\simplements\s\w+/g, '')
         .replace(/@Element\(\) /g, '')
         .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
         .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
@@ -115,6 +116,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
     return (
       <>
+        {/* @ts-ignore */}
         <template shadowroot="open"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           ${g1.trim().replace(/\n/g, '$&    ')}
@@ -338,7 +340,7 @@ $&`
           );
       }
 
-      return '// @ts-nocheck\n' + newFileContent;
+      return newFileContent;
     });
 
   fs.rmSync(destinationDirectory, { force: true, recursive: true });
