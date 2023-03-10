@@ -341,7 +341,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     tagName === 'p-link-tile-model-signature'
       ? '<p-link slot="primary" href="#">Some label</p-link>\n<p-link slot="secondary" href="#">Some label</p-link>'
       : buildChildMarkup(componentMeta.requiredChild);
-  const componentMarkup = `<${tagName} ${attributes}>${childMarkup}</${tagName}>`;
+  const componentMarkup = `<${tagName}${attributes}>${childMarkup}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, componentMeta);
 };
