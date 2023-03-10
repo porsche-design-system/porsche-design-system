@@ -7,9 +7,7 @@ import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
-  // @ts-ignore
   const Component = fromComponents[componentName];
-  const LinkComponent = fromComponents['PLink'];
   const tagName = paramCase(componentName) as TagName;
   const componentMeta = getComponentMeta(tagName);
 
@@ -29,6 +27,8 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
         .reduce((res, [key, val]) => ({ ...res, [key]: val }), {})
     : null;
 
+  // Mandatory child for PLinkTileModelSignature
+  const LinkComponent = fromComponents['PLink'];
   // dangerouslySetInnerHTML would obviously be easier than converting to jsx
   // but this does not work since our wrappers internally set children on the server side.
   // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both

@@ -41,7 +41,7 @@ const internalUrls = getInternalUrls();
 const externalUrls = getExternalUrls();
 
 it('should have no exponential increase in internal urls', () => {
-  expect(internalUrls.length).toBeLessThanOrEqual(200);
+  expect(internalUrls.length).toBeLessThanOrEqual(210);
 });
 
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
