@@ -30,7 +30,6 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
 
 @Component({
   tag: 'p-link-tile-model-signature',
-  shadow: { delegatesFocus: true },
 })
 export class LinkTileModelSignature {
   @Element() public host!: HTMLElement;
@@ -76,20 +75,20 @@ export class LinkTileModelSignature {
       !!this.description
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
-    const heading = (
-      <this.headingTag>
-        <p class="description">{this.heading}</p>
-      </this.headingTag>
-    );
-
     const primaryLinkProps = {
       href: this.primaryLink.href,
       target: this.primaryLink.target,
       download: this.primaryLink.download,
       rel: this.primaryLink.rel,
     };
+
+    const heading: JSX.Element = (
+      <this.headingTag>
+        <p class="description">{this.heading}</p>
+      </this.headingTag>
+    );
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <div class="root">
@@ -105,7 +104,7 @@ export class LinkTileModelSignature {
               <p class="sub-description">{this.description}</p>
             </div>
           ) : (
-            { heading }
+            heading
           )}
           <div class="link-group" role="group">
             <slot name="primary" />
