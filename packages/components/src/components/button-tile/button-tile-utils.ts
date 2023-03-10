@@ -1,9 +1,12 @@
 import type { Theme } from '../../utils/theme';
-import type { ButtonVariant, LinkButtonIconName } from '../../types';
+import type { ButtonType, ButtonVariant, LinkButtonIconName } from '../../types';
 
-export type ButtonTileProps = {
+export type ButtonProps = {
   theme: Theme;
   variant: ButtonVariant;
   icon: LinkButtonIconName;
   iconSource: string;
+  type: ButtonType;
+  disabled: boolean;
+  loading: boolean;
 };

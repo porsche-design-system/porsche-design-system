@@ -117,24 +117,20 @@ export class ButtonTile implements Tile {
       variant: 'secondary',
       icon: this.icon,
       iconSource: this.iconSource,
-      ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
-    };
-
-    const sharedButtonProps = {
       type: this.type,
       disabled: this.disabled,
       loading: this.loading,
+      ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
     };
 
     const button: JSX.Element = (
-      <PrefixedTagNames.pButton {...sharedButtonProps} {...buttonProps} key="link-or-button" class="link-or-button">
+      <PrefixedTagNames.pButton {...buttonProps} key="link-or-button" class="link-or-button">
         {this.label}
       </PrefixedTagNames.pButton>
     );
 
     const buttonPure: JSX.Element = (
       <PrefixedTagNames.pButtonPure
-        {...sharedButtonProps}
         {...buttonProps}
         key="link-or-button-pure"
         class="link-or-button-pure"
