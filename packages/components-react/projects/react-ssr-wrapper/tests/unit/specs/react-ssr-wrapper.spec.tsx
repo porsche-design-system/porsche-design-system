@@ -9,6 +9,7 @@ import { paramCase } from 'change-case';
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
   // @ts-ignore
   const Component = fromComponents[componentName];
+  const LinkComponent = fromComponents['PLink'];
   const tagName = paramCase(componentName) as TagName;
   const componentMeta = getComponentMeta(tagName);
 
@@ -38,6 +39,15 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
           <RequiredChildTag {...requiredChildProps} />
         ) : tagName === 'p-carousel' ? ( // we need an actual DOM node here
           <div>Some child</div>
+        ) : tagName === 'p-link-tile-model-signature' ? (
+          <>
+            <LinkComponent slot="primary" href="#" variant="primary" theme="dark">
+              Some label
+            </LinkComponent>
+            <LinkComponent slot="secondary" href="#" variant="secondary" theme="dark">
+              Some label
+            </LinkComponent>
+          </>
         ) : (
           'Some child'
         ),
