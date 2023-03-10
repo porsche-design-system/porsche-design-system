@@ -205,18 +205,20 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
     <slot>
     </slot>
   </div>
-  <p-model-signature class="signature hydrated">
+  <p-model-signature class="model hydrated">
   </p-model-signature>
   <div class="content">
-    <a href="#" class="link-overlay" tabindex="-1" aria-hidden="true">
+    <a href="#" target="_self" class="link-overlay" tabindex="-1" aria-hidden="true">
     </a>
-    <p class="description">
-      value</p>
+    <h2>
+      <p class="description">
+        value</p>
+    </h2>
     <div class="link-group" role="group">
-      <p-link class="link hydrated">
-        Some label</p-link>
-      <p-link class="link hydrated">
-        Some label</p-link>
+      <slot name="primary">
+      </slot>
+      <slot name="secondary">
+      </slot>
     </div>
   </div>
 </div>"
