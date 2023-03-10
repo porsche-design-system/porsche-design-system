@@ -146,14 +146,16 @@ export class Modal {
     setScrollLock(this.host, isOpen, !this.disableCloseButton && this.closeBtn, this.closeModal);
   }
 
+  // hack to prevent click event on scrollbar track
+  private clickStartedInScrollbarTrack(e: MouseEvent): boolean {
+    const hasScrollbars = this.host.scrollHeight > this.host.offsetHeight;
+    const hasOverlayScrollbars = this.host.scrollWidth >= this.host.offsetWidth;
+
+    return !hasScrollbars ? false : e.clientX > this.host.clientWidth - (hasOverlayScrollbars ? 17 : 0);
+  }
+
   private onMouseDown = (e: MouseEvent): void => {
-    // hack to prevent click event on scrollbar track
-    const hasScrollBars = this.host.scrollHeight > this.host.offsetHeight;
-    const hasOverlayScrollbars = hasScrollBars ? this.host.scrollWidth >= this.host.offsetWidth : false;
-    const clickStartedInScrollBar = hasScrollBars
-      ? e.clientX > this.host.clientWidth - (hasOverlayScrollbars ? 17 : 0)
-      : false;
-    if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollBar) {
+    if ((e.composedPath() as HTMLElement[])[0] === this.host && !this.clickStartedInScrollbarTrack(e)) {
       this.closeModal();
     }
   };
