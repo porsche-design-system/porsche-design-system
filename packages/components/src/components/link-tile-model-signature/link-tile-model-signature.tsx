@@ -30,6 +30,7 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
 
 @Component({
   tag: 'p-link-tile-model-signature',
+  shadow: true,
 })
 export class LinkTileModelSignature {
   @Element() public host!: HTMLElement;
