@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Display`: value `small` for prop `size`
 - Styles: `displaySmallStyle` and `pds-display-small`
 - Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
-  -`Button Tile`
+- `Button Tile`
 - 
 #### Changed
 
