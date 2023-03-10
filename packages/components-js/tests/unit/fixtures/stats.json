@@ -106,13 +106,13 @@
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 8247,
-    "gzipSize": 3463
+    "size": 8647,
+    "gzipSize": 3610
   },
   {
     "chunkShortName": "main",
     "size": 67894,
-    "gzipSize": 22909
+    "gzipSize": 22907
   },
   {
     "chunkShortName": "marque",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 7970,
-    "gzipSize": 3152
+    "size": 8041,
+    "gzipSize": 3167
   },
   {
     "chunkShortName": "select-wrapper",
