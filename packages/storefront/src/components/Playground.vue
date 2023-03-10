@@ -101,11 +101,15 @@
     getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
 
     public mounted(): void {
-      this.syncThemeIntoDemoComponents();
+      if (this.config.themeable) {
+        this.syncThemeIntoDemoComponents();
+      }
     }
 
     public updated(): void {
-      this.syncThemeIntoDemoComponents();
+      if (this.config.themeable) {
+        this.syncThemeIntoDemoComponents();
+      }
     }
 
     public switchTheme(theme: Theme): void {

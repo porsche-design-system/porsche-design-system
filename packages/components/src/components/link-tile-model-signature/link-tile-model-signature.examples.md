@@ -52,10 +52,10 @@ import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'block' };
+  config = { spacing: 'block', themeable: true, };
   imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
-  primaryLink = '<p-link slot="primary" href="https://www.porsche.com">Primary label</p-link>';
-  secondaryLink = '<p-link slot="secondary" href="https://www.porsche.com">Secondary label</p-link>';
+  primaryLink = '<p-link slot="primary" theme="dark" href="https://www.porsche.com" variant="primary">Primary label</p-link>';
+  secondaryLink = '<p-link slot="secondary" theme="dark" href="https://www.porsche.com" variant="secondary">Secondary label</p-link>';
 
   basic = `<p-link-tile-model-signature
   heading="Some heading"
@@ -63,20 +63,9 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile-model-signature>
-<p-link-tile-model-signature
-  heading="Some description"
-  description="Some sub description"
->
-  <picture>
-    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
-    <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
-    ${this.primaryLink}
-    ${this.secondaryLink}
-  </picture>
 </p-link-tile-model-signature>`;
 
-  aspectRatio = '4:3';
+  aspectRatio = '9:16';
   aspectRatios = [...LINK_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile-model-signature 
