@@ -129,7 +129,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2'); // revert for certain private members
+        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|primaryLink)/g, '$1$2'); // revert for certain private members
 
       // take care of nested components of PrefixedTagNames
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
@@ -337,6 +337,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
 $&`
           );
+      } else if (tagName === 'p-link-tile-model-signature') {
+        newFileContent = newFileContent.replace(/(getSlottedPLinksOrThrow\(this\.)props/g, '$1host'); // replace this.props to this.host
       }
 
       return newFileContent;
