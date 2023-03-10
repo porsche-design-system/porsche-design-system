@@ -1,8 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import type { JssDirections } from '../../styles/jss-direction-styles';
 import { JSS_DIRECTIONS } from '../../styles/jss-direction-styles';
 import {
   AllowedTypes,
@@ -13,18 +11,23 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
-import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
 import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS } from '../link-tile/link-tile-utils';
 import type { HeadingTag } from '../heading/heading-tag';
-import { getSlottedPLinksOrThrow } from './link-tile-model-signature-utils';
+import type {
+  LinkTileModelSignatureAspectRatio,
+  LinkTileModelSignatureLinkDirection,
+  LinkTileModelSignatureModel,
+  LinkTileModelSignatureWeight,
+} from './link-tile-model-signature-utils';
+import { getSlottedPLinkOrThrow } from './link-tile-model-signature-utils';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
-  model: AllowedTypes.oneOf<ModelSignatureModel>(MODEL_SIGNATURE_MODELS),
-  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
+  model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
+  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_WEIGHTS),
+  aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
-  linkDirection: AllowedTypes.breakpoint<JssDirections>(JSS_DIRECTIONS),
+  linkDirection: AllowedTypes.breakpoint<LinkTileModelSignatureLinkDirection>(JSS_DIRECTIONS),
   headingTag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
 };
 
@@ -36,13 +39,13 @@ export class LinkTileModelSignature {
   @Element() public host!: HTMLElement;
 
   /** Adapts the displayed model-signature of the component. */
-  @Prop() public model?: ModelSignatureModel = '911';
+  @Prop() public model?: LinkTileModelSignatureModel = '911';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileModelSignatureWeight> = 'semibold';
 
   /** Aspect ratio of the link-tile-model-signature. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio> = '4:3';
 
   /** Heading text. */
   @Prop() public heading: string;
@@ -51,7 +54,10 @@ export class LinkTileModelSignature {
   @Prop() public description?: string;
 
   /** Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'. */
-  @Prop() public linkDirection?: BreakpointCustomizable<JssDirections> = { base: 'column', xs: 'row' };
+  @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = {
+    base: 'column',
+    xs: 'row',
+  };
 
   /** Sets a custom HTML tag depending on the usage of the link tile model signature component. */
   @Prop() public headingTag?: Exclude<HeadingTag, 'h1'> = 'h2';
@@ -64,8 +70,7 @@ export class LinkTileModelSignature {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const [primaryLink] = getSlottedPLinksOrThrow(this.host);
-    this.primaryLink = primaryLink;
+    this.primaryLink = getSlottedPLinkOrThrow(this.host);
 
     attachComponentCss(
       this.host,

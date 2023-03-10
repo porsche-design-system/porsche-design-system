@@ -27,10 +27,11 @@ import { InlineNotificationState } from "./components/inline-notification/inline
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
+import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
 import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
@@ -727,7 +728,7 @@ export namespace Components {
         /**
           * Aspect ratio of the link-tile-model-signature.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
         /**
           * Description text.
          */
@@ -743,15 +744,15 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
-        "linkDirection"?: BreakpointCustomizable<JssDirections>;
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
         /**
           * Adapts the displayed model-signature of the component.
          */
-        "model"?: ModelSignatureModel;
+        "model"?: LinkTileModelSignatureModel;
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     interface PMarque {
         /**
@@ -2495,7 +2496,7 @@ declare namespace LocalJSX {
         /**
           * Aspect ratio of the link-tile-model-signature.
          */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
         /**
           * Description text.
          */
@@ -2511,15 +2512,15 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
          */
-        "linkDirection"?: BreakpointCustomizable<JssDirections>;
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
         /**
           * Adapts the displayed model-signature of the component.
          */
-        "model"?: ModelSignatureModel;
+        "model"?: LinkTileModelSignatureModel;
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     interface PMarque {
         /**
