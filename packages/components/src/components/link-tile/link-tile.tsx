@@ -1,6 +1,13 @@
 import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
-import type { LinkTileSize, LinkTileWeight, LinkTileAspectRatio, LinkTileAlign, TileProps } from '../../utils';
+import type {
+  LinkTileSize,
+  LinkTileWeight,
+  LinkTileAspectRatio,
+  LinkTileAlign,
+  Tile,
+  LinkTileWeightDeprecated,
+} from '../../utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -9,6 +16,8 @@ import {
   parseJSON,
   validateProps,
   throwIfAlignTopAndNotCompact,
+  warnIfDeprecatedPropValueIsUsed,
+  LINK_TILE_WEIGHTS,
 } from '../../utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { getComponentCss } from './link-tile-styles';
@@ -16,6 +25,7 @@ import { sharedTilePropTypes } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,
@@ -27,7 +37,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
   tag: 'p-link-tile',
   shadow: { delegatesFocus: true },
 })
-export class LinkTile implements TileProps {
+export class LinkTile implements Tile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
@@ -76,16 +86,17 @@ export class LinkTile implements TileProps {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.aspectRatio,
-      this.size,
-      this.weight,
-      this.align,
-      this.compact,
-      this.gradient
-    );
+    warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeight>(this, 'weight', {
+      semibold: 'semi-bold',
+    });
+    attachComponentCss(this.host, getComponentCss, {
+      aspectRatio: this.aspectRatio,
+      size: this.size,
+      weight: this.weight,
+      align: this.align,
+      compact: this.compact,
+      hasGradient: this.gradient,
+    });
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

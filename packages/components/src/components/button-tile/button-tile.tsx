@@ -6,8 +6,8 @@ import type {
   ButtonType,
   LinkButtonIconName,
 } from '../../types';
-import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, TileProps } from '../../utils';
-import type { ButtonTileProps } from './button-tile-utils';
+import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, Tile } from '../../utils';
+import type { ButtonProps } from './button-tile-utils';
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -19,6 +19,7 @@ import {
   validateProps,
   throwIfAlignTopAndNotCompact,
   isDisabledOrLoading,
+  BUTTON_TILE_WEIGHTS,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
 import { getButtonAriaAttributes } from '../button/button-utils';
@@ -26,6 +27,7 @@ import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   ...sharedTilePropTypes,
+  weight: AllowedTypes.breakpoint<ButtonTileWeight>(BUTTON_TILE_WEIGHTS),
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -38,7 +40,7 @@ const propTypes: PropTypes<typeof ButtonTile> = {
   tag: 'p-button-tile',
   shadow: { delegatesFocus: true },
 })
-export class ButtonTile implements TileProps {
+export class ButtonTile implements Tile {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
@@ -97,22 +99,20 @@ export class ButtonTile implements TileProps {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.aspectRatio,
-      this.size,
-      this.weight,
-      this.align,
-      this.compact,
-      this.gradient,
-      this.disabled,
-      this.loading
-    );
+    attachComponentCss(this.host, getComponentCss, {
+      aspectRatio: this.aspectRatio,
+      size: this.size,
+      weight: this.weight,
+      align: this.align,
+      compact: this.compact,
+      hasGradient: this.gradient,
+      isDisabled: this.disabled,
+      disabledOrLoading: isDisabledOrLoading(this.disabled, this.loading),
+    });
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const buttonProps: ButtonTileProps = {
+    const buttonProps: ButtonProps = {
       theme: 'dark',
       variant: 'secondary',
       icon: this.icon,

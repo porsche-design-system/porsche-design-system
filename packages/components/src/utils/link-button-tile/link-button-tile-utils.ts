@@ -9,9 +9,16 @@ export const LINK_BUTTON_TILE_SIZES = ['default', 'inherit'] as const;
 export type LinkTileSize = typeof LINK_BUTTON_TILE_SIZES[number];
 export type ButtonTileSize = LinkTileSize;
 
-export const LINK_BUTTON_TILE_WEIGHTS = ['regular', 'semi-bold'] as const;
-export type LinkTileWeight = typeof LINK_BUTTON_TILE_WEIGHTS[number];
-export type ButtonTileWeight = LinkTileWeight;
+// 'semibold' is deprecated and will be mapped to 'semi-bold'
+/** @deprecated */
+export const LINK_TILE_WEIGHTS_DEPRECATED = ['semibold'] as const;
+/** @deprecated */
+export type LinkTileWeightDeprecated = typeof LINK_TILE_WEIGHTS_DEPRECATED[number];
+export const LINK_TILE_WEIGHTS = ['regular', 'semi-bold', ...LINK_TILE_WEIGHTS_DEPRECATED] as const;
+export type LinkTileWeight = typeof LINK_TILE_WEIGHTS[number];
+
+export const BUTTON_TILE_WEIGHTS = ['regular', 'semi-bold'] as const;
+export type ButtonTileWeight = typeof BUTTON_TILE_WEIGHTS[number];
 
 export const LINK_BUTTON_TILE_ALIGNS = ['top', 'bottom'] as const;
 export type LinkTileAlign = typeof LINK_BUTTON_TILE_ALIGNS[number];
@@ -28,9 +35,8 @@ export const throwIfAlignTopAndNotCompact = (
   }
 };
 
-export type TileProps = {
+export type Tile = {
   size?: BreakpointCustomizable<ButtonTileSize>;
-  weight?: BreakpointCustomizable<ButtonTileWeight>;
   aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio>;
   label: string;
   description: string;
