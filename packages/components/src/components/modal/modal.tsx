@@ -146,7 +146,6 @@ export class Modal {
     setScrollLock(this.host, isOpen, !this.disableCloseButton && this.closeBtn, this.closeModal);
   }
 
-  /** hack to prevent click event on scrollbar track */
   private clickStartedInScrollbarTrack(e: MouseEvent): boolean {
     const hasScrollbars = this.host.scrollHeight > this.host.offsetHeight;
 
