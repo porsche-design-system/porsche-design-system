@@ -66,11 +66,11 @@ export class LinkTileModelSignature {
 
   public componentWillLoad(): void {
     throwIfChildCountIsExceeded(this.host, 3);
+    this.primaryLink = getSlottedPLinkOrThrow(this.host);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    this.primaryLink = getSlottedPLinkOrThrow(this.host);
 
     attachComponentCss(
       this.host,
