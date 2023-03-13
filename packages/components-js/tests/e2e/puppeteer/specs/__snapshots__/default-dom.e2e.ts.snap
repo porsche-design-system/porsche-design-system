@@ -211,7 +211,7 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
     <a href="#" target="_self" class="link-overlay" tabindex="-1" aria-hidden="true">
     </a>
     <h2>
-      <p class="description">
+      <p class="heading">
         value</p>
     </h2>
     <div class="link-group" role="group">

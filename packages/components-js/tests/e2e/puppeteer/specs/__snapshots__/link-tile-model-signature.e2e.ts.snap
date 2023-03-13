@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "Some image label",
+              "role": "img",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+    {
+      "children": [
+        {
+          "name": "911",
+          "role": "img",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+    {
+      "children": [
+        {
+          "role": "none",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "name": "Some heading",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "",
+              "role": "paragraph",
+            },
+          ],
+          "level": 2,
+          "name": "Some heading",
+          "role": "heading",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "Some label",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "name": "Some label",
+                      "role": "link",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "Some label",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "name": "Some label",
+                      "role": "link",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "name": "",
+          "role": "group",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "",
+  "role": "generic",
+}
+`;
