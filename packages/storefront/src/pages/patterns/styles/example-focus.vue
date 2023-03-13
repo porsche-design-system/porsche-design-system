@@ -18,7 +18,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensFocus extends Vue {}
+  export default class ExampleStylesFocus extends Vue {}
 </script>
 
 <style lang="scss" scoped>

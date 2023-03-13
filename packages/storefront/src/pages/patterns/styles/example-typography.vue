@@ -30,7 +30,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensTypography extends Vue {}
+  export default class ExampleStylesTypography extends Vue {}
 </script>
 
 <style lang="scss" scoped>

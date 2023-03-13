@@ -60,8 +60,8 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensTypographyCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensTypography from '@/pages/patterns/design-tokens/example-typography.vue';
+import { getStylesTypographyCodeSamples } from '@porsche-design-system/shared';
+import ExampleDesignTokensTypography from '@/pages/patterns/styles/example-typography.vue';
 
 @Component({
   components: {
@@ -69,6 +69,6 @@ import ExampleDesignTokensTypography from '@/pages/patterns/design-tokens/exampl
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensTypographyCodeSamples();
+  codeExample = getStylesTypographyCodeSamples();
 }
 </script>

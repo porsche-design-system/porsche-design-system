@@ -24,7 +24,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensMediaQuery extends Vue {}
+  export default class ExampleStylesMediaQuery extends Vue {}
 </script>
 
 <style lang="scss" scoped>

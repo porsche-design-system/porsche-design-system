@@ -12,7 +12,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensDropShadow extends Vue {}
+  export default class ExampleStylesDropShadow extends Vue {}
 </script>
 
 <style lang="scss" scoped>

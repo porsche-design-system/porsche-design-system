@@ -86,8 +86,8 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensGridCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensGrid from '@/pages/patterns/design-tokens/example-grid.vue';
+import { getStylesGridCodeSamples } from '@porsche-design-system/shared';
+import ExampleDesignTokensGrid from '@/pages/patterns/styles/example-grid.vue';
 
 @Component({
   components: {
@@ -95,6 +95,6 @@ import ExampleDesignTokensGrid from '@/pages/patterns/design-tokens/example-grid
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensGridCodeSamples();
+  codeExample = getStylesGridCodeSamples();
 }
 </script>

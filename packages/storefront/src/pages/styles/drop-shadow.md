@@ -40,8 +40,8 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensDroshadowCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensDropShadow from '@/pages/patterns/design-tokens/example-drop-shadow.vue';
+import { getStylesDroshadowCodeSamples } from '@porsche-design-system/shared';
+import ExampleDesignTokensDropShadow from '@/pages/patterns/styles/example-drop-shadow.vue';
 
 @Component({
   components: {
@@ -49,6 +49,6 @@ import ExampleDesignTokensDropShadow from '@/pages/patterns/design-tokens/exampl
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensDroshadowCodeSamples();
+  codeExample = getStylesDroshadowCodeSamples();
 }
 </script>

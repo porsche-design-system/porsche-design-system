@@ -138,7 +138,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensGrid extends Vue {}
+  export default class ExampleStylesGrid extends Vue {}
 </script>
 
 <style lang="scss" scoped>

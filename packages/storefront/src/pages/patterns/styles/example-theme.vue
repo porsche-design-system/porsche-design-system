@@ -52,7 +52,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensTheme extends Vue {}
+  export default class ExampleStylesTheme extends Vue {}
 </script>
 
 <style lang="scss" scoped>

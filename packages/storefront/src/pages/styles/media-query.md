@@ -55,8 +55,8 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensMediaQueryCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensMediaQuery from '@/pages/patterns/design-tokens/example-media-query.vue';
+import { getStylesMediaQueryCodeSamples } from '@porsche-design-system/shared';
+import ExampleDesignTokensMediaQuery from '@/pages/patterns/styles/example-media-query.vue';
 
 @Component({
   components: {
@@ -64,6 +64,6 @@ import ExampleDesignTokensMediaQuery from '@/pages/patterns/design-tokens/exampl
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensMediaQueryCodeSamples();
+  codeExample = getStylesMediaQueryCodeSamples();
 }
 </script>

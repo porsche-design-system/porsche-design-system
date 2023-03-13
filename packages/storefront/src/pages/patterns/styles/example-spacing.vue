@@ -26,7 +26,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensSpacing extends Vue {}
+  export default class ExampleStylesSpacing extends Vue {}
 </script>
 
 <style lang="scss" scoped>

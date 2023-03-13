@@ -36,8 +36,8 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensFocusCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensFocus from '@/pages/patterns/design-tokens/example-focus.vue';
+import { getStylesFocusCodeSamples } from '@porsche-design-system/shared';
+import ExampleDesignTokensFocus from '@/pages/patterns/styles/example-focus.vue';
 
 @Component({
   components: {
@@ -45,6 +45,6 @@ import ExampleDesignTokensFocus from '@/pages/patterns/design-tokens/example-foc
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensFocusCodeSamples();
+  codeExample = getStylesFocusCodeSamples();
 }
 </script>

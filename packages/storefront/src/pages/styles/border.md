@@ -5,7 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensBorder />
+  <ExampleStylesBorder />
 </Playground>
 
 ## Usage
@@ -47,15 +47,15 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensBorderCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensBorder from '@/pages/patterns/design-tokens/example-border.vue';
+import { getStylesBorderCodeSamples } from '@porsche-design-system/shared';
+import ExampleStylesBorder from '@/pages/patterns/styles/example-border.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensBorder
+    ExampleStylesBorder
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensBorderCodeSamples();
+  codeExample = getStylesBorderCodeSamples();
 }
 </script>

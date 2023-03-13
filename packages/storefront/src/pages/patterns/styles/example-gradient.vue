@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
-    <div class="frosted-glass">Frosted Glass</div>
+    <div class="gradient-to-top tile">Gradient To Top</div>
+    <div class="gradient-to-bottom tile">Gradient To Bottom</div>
+    <div class="gradient-to-left tile">Gradient To Left</div>
+    <div class="gradient-to-right tile">Gradient To Right</div>
   </div>
 </template>
 
@@ -9,7 +12,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensFrostedGlass extends Vue {}
+  export default class ExampleStylesGradient extends Vue {}
 </script>
 
 <style lang="scss" scoped>
@@ -19,18 +22,35 @@
   // Wrapper
   .wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    grid-gap: $pds-grid-gap;
     padding: $pds-spacing-fluid-medium;
     background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
   }
 
-  // Frosted Glass
-  .frosted-glass {
+  // Tile
+  .tile {
     @include pds-text-small;
-    @include pds-frosted-glass;
     color: $pds-theme-dark-primary;
-    background: $pds-theme-light-state-hover;
     border-radius: $pds-border-radius-large;
     padding: $pds-spacing-fluid-medium;
+  }
+
+  // Gradient
+  .gradient-to-top {
+    @include pds-gradient-to-top;
+  }
+
+  .gradient-to-bottom {
+    @include pds-gradient-to-bottom;
+  }
+
+  .gradient-to-left {
+    @include pds-gradient-to-left;
+  }
+
+  .gradient-to-right {
+    @include pds-gradient-to-right;
   }
 </style>

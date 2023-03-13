@@ -19,7 +19,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleDesignTokensBorder extends Vue {}
+  export default class ExampleStylesBorder extends Vue {}
 </script>
 
 <style lang="scss" scoped>
