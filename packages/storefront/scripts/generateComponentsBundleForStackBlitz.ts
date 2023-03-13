@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as globby from 'globby';
 
 const frameworks = ['js', 'angular', 'react'] as const;
-type Framework = typeof frameworks[number];
+type Framework = (typeof frameworks)[number];
 
 const targetPath = 'public/porsche-design-system';
 
@@ -12,7 +12,7 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   const targetFile = `${targetPath}/components-${framework}.json`;
   const bundle: { [path: string]: string } = {};
   const distSubFolder = framework === 'js' ? 'components-wrapper' : `${framework}-wrapper`;
-  const files = globby.sync(`../components-${framework}/dist/${distSubFolder}/**/*.{js,mjs,ts,json}`);
+  const files = globby.sync(`../components-${framework}/dist/${distSubFolder}/**/*.{js,mjs,ts,json,scss}`);
 
   if (files.length <= 0) {
     throw new Error(`No build found for @porsche-design-system/components-${framework}`);
