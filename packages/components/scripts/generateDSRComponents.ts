@@ -338,7 +338,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 $&`
           );
       } else if (tagName === 'p-link-tile-model-signature') {
-        newFileContent = newFileContent.replace(/(getSlottedPLinkOrThrow\(this\.)props/g, '$1host'); // replace this.props to this.host
+        newFileContent = newFileContent
+          .replace(/(getSlottedPLinkOrThrow\(this\.)props/g, '$1host') // replace this.props to this.host
+          .replace(/const primaryLinkProps = \{[\w\s:,.]*};/g, '') // remove  object, as it is not defined
+          .replace(/\s\{\.\.\.primaryLinkProps}/g, ''); // remove spread of removed object
       }
 
       return newFileContent;
