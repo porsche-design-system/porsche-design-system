@@ -4,9 +4,8 @@ import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   skipPorscheDesignSystemCDNRequestsDuringTests,
   useToastManager,
-  IconName,
-  TabsChangeEvent,
 } from '../../../src/public-api';
+import type { IconName, TabsChangeEvent } from '../../../src/public-api';
 
 it('should expose componentsReady()', () => {
   expect(typeof componentsReady).toBe('function');
