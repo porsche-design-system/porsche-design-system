@@ -89,14 +89,14 @@ export class LinkTile implements Tile {
     warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeight>(this, 'weight', {
       semibold: 'semi-bold',
     });
-    attachComponentCss(this.host, getComponentCss, {
-      aspectRatio: this.aspectRatio,
-      size: this.size,
-      weight: this.weight,
-      align: this.align,
-      compact: this.compact,
-      hasGradient: this.gradient,
-    });
+    attachComponentCss(this.host, getComponentCss, [
+      this.aspectRatio,
+      this.size,
+      this.weight,
+      this.align,
+      this.compact,
+      this.gradient,
+    ]);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

@@ -4,16 +4,18 @@ import { getCss } from '../../utils';
 import { getLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 import { getInsetJssStyle } from '../../styles';
 
-export const getComponentCss = (props: {
-  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>;
-  size: BreakpointCustomizable<LinkTileSize>;
-  weight: BreakpointCustomizable<LinkTileWeight>;
-  align: LinkTileAlign;
-  compact: BreakpointCustomizable<boolean>;
-  hasGradient: boolean;
-}): string => {
+export const getComponentCss = (
+  args: [
+    BreakpointCustomizable<LinkTileAspectRatio>,
+    BreakpointCustomizable<LinkTileSize>,
+    BreakpointCustomizable<LinkTileWeight>,
+    LinkTileAlign,
+    BreakpointCustomizable<boolean>,
+    boolean
+  ]
+): string => {
   return getCss({
-    ...getLinkButtonTileStyles(props),
+    ...getLinkButtonTileStyles(...args),
     // is used for expanded click-area only
     'link-overlay': {
       position: 'fixed',

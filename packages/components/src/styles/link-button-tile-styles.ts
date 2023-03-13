@@ -55,17 +55,16 @@ const sizeMap: {
   default: { fontSize: fontSizeTextMedium },
 };
 
-export const getLinkButtonTileStyles = (props: {
-  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio | ButtonTileAspectRatio>;
-  size: BreakpointCustomizable<LinkTileSize | ButtonTileSize>;
-  weight: BreakpointCustomizable<LinkTileWeight | ButtonTileWeight>;
-  align: LinkTileAlign | ButtonTileAlign;
-  compact: BreakpointCustomizable<boolean>;
-  hasGradient: boolean;
-  isDisabled?: boolean;
-  isDisabledOrLoading?: boolean;
-}): Styles => {
-  const { aspectRatio, size, weight, align, compact, hasGradient, isDisabled, isDisabledOrLoading } = props;
+export const getLinkButtonTileStyles = (
+  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio | ButtonTileAspectRatio>,
+  size: BreakpointCustomizable<LinkTileSize | ButtonTileSize>,
+  weight: BreakpointCustomizable<LinkTileWeight | ButtonTileWeight>,
+  align: LinkTileAlign | ButtonTileAlign,
+  compact: BreakpointCustomizable<boolean>,
+  hasGradient: boolean,
+  isDisabled?: boolean,
+  isDisabledOrLoading?: boolean
+): Styles => {
   const isTopAligned = align === 'top';
   return {
     '@global': {
