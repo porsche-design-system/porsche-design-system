@@ -52,7 +52,7 @@ import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'block', themeable: true, };
+  config = { spacing: 'block' };
   imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
   primaryLink = '<p-link slot="primary" theme="dark" href="https://www.porsche.com" variant="primary">Primary label</p-link>';
   secondaryLink = '<p-link slot="secondary" theme="dark" href="https://www.porsche.com" variant="secondary">Secondary label</p-link>';
