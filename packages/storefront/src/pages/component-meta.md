@@ -105,16 +105,25 @@ export default class Code extends Vue {
     vertical-align: top;
   }
 
+  /* TODO: align appearance with other code blocks */
   :deep(code) {
+    display: inline-block;
     @include pds-text-x-small;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     padding: 0.125rem $pds-spacing-static-small;
-    background-color: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
-    border-radius: 3px;
-    color: $pds-theme-light-primary;
+    background: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
+    border-radius: $pds-border-radius-small;
+
+    &:not(:first-child) {
+      margin: $pds-spacing-static-small 0 0;
+    }
   }
 
-  :deep(span) {
-    font-family: inherit;
+  :deep(.prop) {
+    cursor: pointer;
+
+    &:hover {
+      color: $pds-theme-light-contrast-medium;
+    }
   }
 </style>
