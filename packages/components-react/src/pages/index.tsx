@@ -33,6 +33,7 @@ import { LinkPage } from './Link';
 import { LinkPurePage } from './LinkPure';
 import { LinkSocialPage } from './LinkSocial';
 import { LinkTilePage } from './LinkTile';
+import { LinkTileModelSignaturePage } from './LinkTileModelSignature';
 import { MarquePage } from './Marque';
 import { ModalPage } from './Modal';
 import { ModelSignaturePage } from './ModelSignature';
@@ -169,6 +170,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Link Tile',
     path: '/link-tile',
     element: <LinkTilePage />,
+  },
+  {
+    name: 'Link Tile Model Signature',
+    path: '/link-tile-model-signature',
+    element: <LinkTileModelSignaturePage />,
   },
   {
     name: 'Marque',
