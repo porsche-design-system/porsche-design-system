@@ -1,9 +1,9 @@
 import {
   expectA11yToMatchSnapshot,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
-  getPageThrownErrorsAmount,
   getProperty,
-  initPageErrorObserver,
+  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -60,52 +60,165 @@ it('should render only heading if description is undefined', async () => {
   expect(await getDescription()).toBeNull();
 });
 
-// describe('validation', () => {
-//   it('should throw error if slot contains more than three children', async () => {
-//     await initPageErrorObserver(page);
-//
-//     await setContentWithDesignSystem(
-//       page,
-//       `<p-link-tile-model-signature
-//   heading="Some heading"
-// >
-//   <img src="${imgSrc}" alt="Some image label"/>
-//   <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
-//   <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
-//   <div></div>
-// </p-link-tile-model-signature>`
-//     );
-//     await waitForStencilLifecycle(page);
-//
-//     expect(getPageThrownErrorsAmount()).toBe(1);
-//   });
-//   describe('primary', () => {
-//     it('should throw error if slot is missing', async () => {
-//       await initPageErrorObserver(page);
-//
-//       await setContentWithDesignSystem(
-//         page,
-//         `<p-link-tile-model-signature
-//   heading="Some heading"
-// >
-//   <img src="${imgSrc}" alt="Some image label"/>
-//   <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
-// </p-link-tile-model-signature>`
-//       );
-//
-//       expect(getPageThrownErrorsAmount()).toBe(1);
-//     });
-//     it('should throw error if slot is not "p-link"', async () => {});
-//     it('should throw error if theme is not "dark"', async () => {});
-//     it('should throw error if variant is not "primary"', async () => {});
-//   });
-//   describe('secondary', () => {
-//     it('should throw error if slot is missing', async () => {});
-//     it('should throw error if slot is not "p-link"', async () => {});
-//     it('should throw error if theme is not "dark"', async () => {});
-//     it('should throw error if variant is not "secondary"', async () => {});
-//   });
-// });
+describe('validation', () => {
+  beforeEach(() => jest.spyOn(console, 'log').mockImplementation(jest.fn())); // Keep console clean for validation tests
+
+  it('should throw error if slot contains more than three children', async () => {
+    await initConsoleObserver(page);
+
+    await setContentWithDesignSystem(
+      page,
+      `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+  <div></div>
+</p-link-tile-model-signature>`
+    );
+
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+
+  describe('primary', () => {
+    it('should throw error if slot is missing', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+
+    it('should throw error if slot is not "p-link"', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <a slot="primary" href="#" variant="primary" theme="dark">Some label</a>
+  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+
+    it('should throw error if theme is not "dark"', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="primary" theme="light">Some label</p-link>
+  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+
+    it('should throw error if variant is not "primary"', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="secondary" theme="dark">Some label</p-link>
+  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+  });
+
+  describe('secondary', () => {
+    it('should throw error if slot is missing', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+
+    it('should throw error if slot is not "p-link"', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <a slot="primary" href="#" variant="primary" theme="dark">Some label</a>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+
+    it('should throw error if theme is not "dark"', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <p-link slot="secondary" href="#" variant="secondary" theme="light">Some label</p-link>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+
+    it('should throw error if variant is not "secondary"', async () => {
+      await initConsoleObserver(page);
+
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <p-link slot="secondary" href="#" variant="primary" theme="dark">Some label</p-link>
+</p-link-tile-model-signature>`
+      );
+
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
+  });
+});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
