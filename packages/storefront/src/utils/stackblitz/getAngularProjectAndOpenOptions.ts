@@ -7,13 +7,8 @@ import {
   removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
-import type {
-  DependencyMap,
-  SharedImportKey,
-  GetStackBlitzProjectAndOpenOptions,
-  ExternalDependency,
-} from '../../utils';
-import type { StackBlitzProjectDependencies } from '../../models';
+import type { DependencyMap, SharedImportKey, GetStackBlitzProjectAndOpenOptions, ExternalDependency } from '@/utils';
+import type { StackBlitzProjectDependencies } from '@/models';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
 
@@ -40,6 +35,7 @@ export const extendMarkupWithAppComponent = (markup: string): string =>
 })
 export class AppComponent {}`;
 
+// TODO: what's the point of this function calling another function?
 export const getAppComponentTs = (
   markup: string,
   isExampleMarkup: boolean,
@@ -55,9 +51,7 @@ export const getAppComponentTs = (
   );
 };
 
-const externalDependencyModuleImportMap: {
-  [key in ExternalDependency]: { module: string; import: string };
-} = {
+const externalDependencyModuleImportMap: Record<ExternalDependency, { module: string; import: string }> = {
   imask: {
     module: 'IMaskModule',
     import: "import { IMaskModule } from 'angular-imask';",

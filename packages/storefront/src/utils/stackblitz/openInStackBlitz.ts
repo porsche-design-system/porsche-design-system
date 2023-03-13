@@ -8,8 +8,8 @@ import type {
   GetStackBlitzProjectAndOpenOptions,
   SharedImportKey,
   ExternalDependency,
-} from '../../utils';
-import type { Theme, BackgroundColor, Framework } from '../../models';
+} from '@/utils';
+import type { Theme, BackgroundColor, Framework } from '@/models';
 import type { PorscheDesignSystemBundle } from '@/utils/stackblitz/types';
 
 export type OpenInStackBlitzOpts = {
@@ -34,16 +34,13 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
   };
 
-  const getProjectAndOpenOptionsCallbackMap: Record<
-    Exclude<Framework, 'shared'>,
-    GetStackBlitzProjectAndOpenOptions
-  > = {
+  const getProjectAndOpenOptionsMap: Record<Exclude<Framework, 'shared'>, GetStackBlitzProjectAndOpenOptions> = {
     'vanilla-js': getVanillaJsProjectAndOpenOptions,
     angular: getAngularProjectAndOpenOptions,
     react: getReactProjectAndOpenOptions,
   };
 
-  const { openFile, ...project } = getProjectAndOpenOptionsCallbackMap[framework](stackBlitzFrameworkOpts);
+  const { openFile, ...project } = getProjectAndOpenOptionsMap[framework](stackBlitzFrameworkOpts);
 
   sdk.openProject(project, { openFile });
 };
