@@ -28,7 +28,7 @@ const generateDSRComponents = (): void => {
 
       let newFileContent = fileContent
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
-        .replace(/\simplements\s\w+/g, '')
+        .replace(/ implements [A-Za-z]+/g, '')
         .replace(/@Element\(\) /g, '')
         .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
         .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
