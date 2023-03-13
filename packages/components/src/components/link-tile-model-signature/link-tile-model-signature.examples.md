@@ -63,6 +63,16 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
   ${this.primaryLink}
   ${this.secondaryLink}
+</p-link-tile-model-signature>
+<p-link-tile-model-signature
+  heading="Some heading"
+>
+  <picture>
+    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
+    <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
+  </picture>
+  ${this.primaryLink}
+  ${this.secondaryLink}
 </p-link-tile-model-signature>`;
 
   aspectRatio = '9:16';
