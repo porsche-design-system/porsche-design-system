@@ -168,47 +168,47 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Styles Drop Shadow Example',
-    path: 'design-tokens-drop-shadow',
+    path: 'styles-drop-shadow',
     component: fromStyles.StylesDropShadowExampleComponent,
   },
   {
     name: 'Styles Focus Example',
-    path: 'design-tokens-focus',
+    path: 'styles-focus',
     component: fromStyles.StylesFocusExampleComponent,
   },
   {
     name: 'Styles Frosted Glass Example',
-    path: 'design-tokens-frosted-glass',
+    path: 'styles-frosted-glass',
     component: fromStyles.StylesFrostedGlassExampleComponent,
   },
   {
     name: 'Styles Gradient Example',
-    path: 'design-tokens-gradient',
+    path: 'styles-gradient',
     component: fromStyles.StylesGradientExampleComponent,
   },
   {
     name: 'Styles Grid Example',
-    path: 'design-tokens-grid',
+    path: 'styles-grid',
     component: fromStyles.StylesGridExampleComponent,
   },
   {
     name: 'Styles Media Query Example',
-    path: 'design-tokens-media-query',
+    path: 'styles-media-query',
     component: fromStyles.StylesMediaQueryExampleComponent,
   },
   {
     name: 'Styles Spacing Example',
-    path: 'design-tokens-spacing',
+    path: 'styles-spacing',
     component: fromStyles.StylesSpacingExampleComponent,
   },
   {
     name: 'Styles Theme Example',
-    path: 'design-tokens-theme',
+    path: 'styles-theme',
     component: fromStyles.StylesThemeExampleComponent,
   },
   {
     name: 'Styles Typography Example',
-    path: 'design-tokens-typography',
+    path: 'styles-typography',
     component: fromStyles.StylesTypographyExampleComponent,
   },
 ];
