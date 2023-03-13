@@ -8,6 +8,7 @@ import {
   getIndexHtml,
   getMainTs,
   replaceSharedImportsWithConstants,
+  hasInlineScss,
 } from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import type { ExternalDependency, SharedImportKey, StackBlitzFrameworkOpts } from '../../src/utils';
 
@@ -113,6 +114,51 @@ describe('extendMarkupWithAppComponent()', () => {
 
     jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertMarkup);
     expect(extendMarkupWithAppComponent('Some Markup')).toMatchSnapshot();
+  });
+});
+
+describe('hasInlineScss()', () => {
+  const template = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'page-example',{{PLACEHOLDER}}
+  template: \`
+    <div></div>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ExampleComponent {}
+`;
+
+  it.each<[string, boolean]>([
+    ['', false],
+    ['div { background: red; }', false],
+    ['.class { background: red; }', false],
+    [
+      `@media only screen and (min-width: 760px) {
+  .class { background: red; }
+}`,
+      false,
+    ],
+    [`@import '@porsche-design-system/components-js/styles/scss';`, true],
+    [`@import '@porsche-design-system/utilities';`, true],
+    [`@use '@porsche-design-system/components-angular/styles/scss';`, true],
+    [
+      `@import '@porsche-design-system/components-angular/styles/scss';
+div { background: $pds-theme-light-primary; }`,
+      true,
+    ],
+  ])('should for styles: %s return: %s', (styles, result) => {
+    styles = styles
+      ? `\n  styles: [
+    \`
+      ${styles.replace(/\n/g, '$&      ')}
+    \`
+  ],`
+      : styles;
+
+    const input = template.replace('{{PLACEHOLDER}}', styles);
+    expect(hasInlineScss(input)).toBe(result);
   });
 });
 

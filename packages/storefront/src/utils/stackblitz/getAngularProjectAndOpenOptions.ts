@@ -35,6 +35,11 @@ export const extendMarkupWithAppComponent = (markup: string): string =>
 })
 export class AppComponent {}`;
 
+export const hasInlineScss = (input: string): boolean => {
+  const [, styles] = input.match(/  styles: \[([\s\S]+?)\]/) || [];
+  return !!styles?.match(/@import|@use/);
+};
+
 // TODO: what's the point of this function calling another function?
 export const getAppComponentTs = (
   markup: string,
