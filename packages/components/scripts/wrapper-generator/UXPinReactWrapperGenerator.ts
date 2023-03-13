@@ -169,7 +169,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
-      // other components receive their component name as default
+      // components receive their component name as default
       cleanedComponent = cleanedComponent
         .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
         .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
