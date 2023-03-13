@@ -55,7 +55,7 @@ export default class Code extends Vue {
               (allowedValues ? ('<div style="display: none">– ' + allowedValues + '</div>') : '')
             });
           } else if (key === 'eventNames') {
-            value = value.map(val => val + (deprecatedEventNames.includes(val) ? '🚫' : ''));
+            value = value.map(val => val + (deprecatedEventNames.includes(val) ? ' 🚫' : ''));
           }
         }
 
