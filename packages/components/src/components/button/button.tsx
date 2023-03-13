@@ -22,7 +22,8 @@ import {
   getLinkButtonThemeForIcon,
 } from '../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
-import { ButtonIcon, getButtonAriaAttributes } from './button-utils';
+import { getButtonAriaAttributes } from './button-utils';
+import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
 
 const propTypes: PropTypes<typeof Button> = {
