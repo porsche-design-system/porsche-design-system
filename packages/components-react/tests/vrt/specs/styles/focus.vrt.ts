@@ -1,6 +1,7 @@
 import { extendedViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-const designToken = 'design-tokens-frosted-glass';
+const id = 'styles-focus';
+// TODO: we need to force focus state by CDP
 it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), designToken, `/${designToken}`)).toBeFalsy();
+  expect(await vrtTest(getVisualRegressionTester(viewport), id, `/${id}`)).toBeFalsy();
 });
