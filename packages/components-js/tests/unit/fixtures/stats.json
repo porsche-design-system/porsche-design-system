@@ -26,8 +26,8 @@
   },
   {
     "chunkShortName": "button-tile",
-    "size": 7623,
-    "gzipSize": 3068
+    "size": 7785,
+    "gzipSize": 3128
   },
   {
     "chunkShortName": "carousel",
@@ -106,13 +106,13 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 6616,
-    "gzipSize": 2697
+    "size": 7213,
+    "gzipSize": 2954
   },
   {
     "chunkShortName": "main",
     "size": 67866,
-    "gzipSize": 22892
+    "gzipSize": 22888
   },
   {
     "chunkShortName": "marque",
