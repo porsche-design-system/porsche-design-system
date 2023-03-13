@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   borderRadiusLarge,
@@ -27,7 +26,7 @@ const FrostedGlass = styled.div({
   padding: spacingFluidMedium,
 });
 
-export const DesignTokensFrostedGlassExample = (): JSX.Element => {
+export const StylesFrostedGlassExample = (): JSX.Element => {
   return (
     <Wrapper>
       <FrostedGlass>Frosted Glass</FrostedGlass>

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   gridGap,
@@ -119,7 +118,7 @@ const SpacingStaticXXLarge = styled.div({
   height: spacingStaticXXLarge,
 });
 
-export const DesignTokensSpacingExample = (): JSX.Element => {
+export const StylesSpacingExample = (): JSX.Element => {
   return (
     <>
       <Wrapper>

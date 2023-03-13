@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   borderRadiusLarge,
@@ -32,7 +31,7 @@ const Heading = styled.h3({
 });
 
 // Tile
-const getTileStyle = {
+const tileBaseStyle = {
   ...textSmallStyle,
   color: themeLightPrimary,
   background: themeLightBackgroundSurface,
@@ -42,21 +41,21 @@ const getTileStyle = {
 
 // Drop Shadow
 const DropShadowLow = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   ...dropShadowLowStyle,
 });
 
 const DropShadowMedium = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   ...dropShadowMediumStyle,
 });
 
 const DropShadowHigh = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   ...dropShadowHighStyle,
 });
 
-export const DesignTokensDropShadowExample = (): JSX.Element => {
+export const StylesDropShadowExample = (): JSX.Element => {
   return (
     <Wrapper>
       <Heading>Drop Shadow</Heading>

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   borderRadiusLarge,
@@ -23,7 +22,7 @@ const Wrapper = styled.div({
 });
 
 // Tile
-const getTileStyle = {
+const tileBaseStyle = {
   ...textSmallStyle,
   color: themeDarkPrimary,
   borderRadius: borderRadiusLarge,
@@ -32,26 +31,26 @@ const getTileStyle = {
 
 // Gradient
 const GradientToTop = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   ...gradientToTopStyle,
 });
 
 const GradientToBottom = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   ...gradientToBottomStyle,
 });
 
 const GradientToLeft = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   ...gradientToLeftStyle,
 });
 
 const GradientToRight = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   ...gradientToRightStyle,
 });
 
-export const DesignTokensGradientExample = (): JSX.Element => {
+export const StylesGradientExample = (): JSX.Element => {
   return (
     <Wrapper>
       <GradientToTop>Gradient To Top</GradientToTop>

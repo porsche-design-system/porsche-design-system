@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import type { AccordionChangeEvent } from '@porsche-design-system/components-react';
 import { PAccordion, PButton } from '@porsche-design-system/components-react';
 import styled from 'styled-components';
@@ -290,7 +290,7 @@ const NarrowContentHalfRight = styled.div({
   gridColumn: `${gridNarrowSpanOneHalf} / ${gridNarrowColumnEnd}`,
 });
 
-export const DesignTokensGridExample = (): JSX.Element => {
+export const StylesGridExample = (): JSX.Element => {
   const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 

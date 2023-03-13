@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   borderRadiusLarge,
@@ -35,7 +34,7 @@ const Heading = styled.h3({
 });
 
 // Tile
-const getTileStyle = {
+const tileBaseStyle = {
   ...textSmallStyle,
   color: themeDarkPrimary,
   background: themeDarkBackgroundBase,
@@ -44,17 +43,17 @@ const getTileStyle = {
 
 // Border Radius
 const BorderRadiusSmall = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   borderRadius: borderRadiusSmall,
 });
 
 const BorderRadiusMedium = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   borderRadius: borderRadiusMedium,
 });
 
 const BorderRadiusLarge = styled.div({
-  ...getTileStyle,
+  ...tileBaseStyle,
   borderRadius: borderRadiusLarge,
 });
 
@@ -79,7 +78,7 @@ const BorderWidthThin = styled.div({
   },
 });
 
-export const DesignTokensBorderExample = (): JSX.Element => {
+export const StylesBorderExample = (): JSX.Element => {
   return (
     <>
       <Wrapper>

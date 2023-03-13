@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   getFocusStyle,
@@ -76,7 +75,7 @@ const NativeAnchorDark = styled.a({
   color: themeDarkPrimary,
 });
 
-export const DesignTokensFocusExample = (): JSX.Element => {
+export const StylesFocusExample = (): JSX.Element => {
   return (
     <>
       <WrapperLight>

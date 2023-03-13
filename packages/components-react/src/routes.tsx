@@ -1,7 +1,7 @@
 import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
-import * as fromDesignTokens from './design-tokens';
+import * as fromStyles from './styles';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -156,53 +156,53 @@ export const routes: RouteType[] = [
     isDisabled: true,
   },
   {
-    name: 'Design Tokens Border',
-    path: '/design-tokens-border',
-    element: <fromDesignTokens.DesignTokensBorderExample />,
+    name: 'Styles Border',
+    path: '/styles-border',
+    element: <fromStyles.StylesBorderExample />,
   },
   {
-    name: 'Design Tokens Drop Shadow',
-    path: '/design-tokens-drop-shadow',
-    element: <fromDesignTokens.DesignTokensDropShadowExample />,
+    name: 'Styles Drop Shadow',
+    path: '/styles-drop-shadow',
+    element: <fromStyles.StylesDropShadowExample />,
   },
   {
-    name: 'Design Tokens Focus',
-    path: '/design-tokens-focus',
-    element: <fromDesignTokens.DesignTokensFocusExample />,
+    name: 'Styles Focus',
+    path: '/styles-focus',
+    element: <fromStyles.StylesFocusExample />,
   },
   {
-    name: 'Design Tokens Frosted Glass',
-    path: '/design-tokens-frosted-glass',
-    element: <fromDesignTokens.DesignTokensFrostedGlassExample />,
+    name: 'Styles Frosted Glass',
+    path: '/styles-frosted-glass',
+    element: <fromStyles.StylesFrostedGlassExample />,
   },
   {
-    name: 'Design Tokens Gradient',
-    path: '/design-tokens-gradient',
-    element: <fromDesignTokens.DesignTokensGradientExample />,
+    name: 'Styles Gradient',
+    path: '/styles-gradient',
+    element: <fromStyles.StylesGradientExample />,
   },
   {
-    name: 'Design Tokens Grid',
-    path: '/design-tokens-grid',
-    element: <fromDesignTokens.DesignTokensGridExample />,
+    name: 'Styles Grid',
+    path: '/styles-grid',
+    element: <fromStyles.StylesGridExample />,
   },
   {
-    name: 'Design Tokens Media Query',
-    path: '/design-tokens-media-query',
-    element: <fromDesignTokens.DesignTokensMediaQueryExample />,
+    name: 'Styles Media Query',
+    path: '/styles-media-query',
+    element: <fromStyles.StylesMediaQueryExample />,
   },
   {
-    name: 'Design Tokens Spacing',
-    path: '/design-tokens-spacing',
-    element: <fromDesignTokens.DesignTokensSpacingExample />,
+    name: 'Styles Spacing',
+    path: '/styles-spacing',
+    element: <fromStyles.StylesSpacingExample />,
   },
   {
-    name: 'Design Tokens Theme',
-    path: '/design-tokens-theme',
-    element: <fromDesignTokens.DesignTokensThemeExample />,
+    name: 'Styles Theme',
+    path: '/styles-theme',
+    element: <fromStyles.StylesThemeExample />,
   },
   {
-    name: 'Design Tokens Typography',
-    path: '/design-tokens-typography',
-    element: <fromDesignTokens.DesignTokensTypographyExample />,
+    name: 'Styles Typography',
+    path: '/styles-typography',
+    element: <fromStyles.StylesTypographyExample />,
   },
 ];

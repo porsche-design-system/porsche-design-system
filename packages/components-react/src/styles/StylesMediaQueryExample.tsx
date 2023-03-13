@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   getMediaQueryMax,
@@ -199,7 +198,7 @@ const BreakpointXXL = styled.p({
   },
 });
 
-export const DesignTokensMediaQueryExample = (): JSX.Element => {
+export const StylesMediaQueryExample = (): JSX.Element => {
   return (
     <>
       <Wrapper>

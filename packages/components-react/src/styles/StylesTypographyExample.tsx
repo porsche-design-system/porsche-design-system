@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   displaySmallStyle,
@@ -29,85 +28,85 @@ const Wrapper = styled.div({
 });
 
 // Typography
-const getTypographyStyle = {
+const typographyBaseStyle = {
   color: themeLightPrimary,
   margin: 0,
 } as const;
 
 const Heading = styled.h3({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...headingMediumStyle,
 });
 
 // Display
 const DisplayLargeStyle = styled.h1({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...displayLargeStyle,
 });
 
 const DisplayMediumStyle = styled.h2({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...displayMediumStyle,
 });
 
 const DisplaySmallStyle = styled.h2({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...displaySmallStyle,
 });
 
 // Heading
 const HeadingXXLargeStyle = styled.h2({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...headingXXLargeStyle,
 });
 
 const HeadingXLargeStyle = styled.h3({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...headingXLargeStyle,
 });
 
 const HeadingLargeStyle = styled.h4({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...headingLargeStyle,
 });
 
 const HeadingMediumStyle = styled.h5({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...headingMediumStyle,
 });
 
 const HeadingSmallStyle = styled.h6({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...headingSmallStyle,
 });
 
 // Text
 const TextXLargeStyle = styled.p({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...textXLargeStyle,
 });
 
 const TextLargeStyle = styled.p({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...textLargeStyle,
 });
 
 const TextMediumStyle = styled.p({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...textMediumStyle,
 });
 
 const TextSmallStyle = styled.p({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...textSmallStyle,
 });
 
 const TextXSmallStyle = styled.p({
-  ...getTypographyStyle,
+  ...typographyBaseStyle,
   ...textXSmallStyle,
 });
 
-export const DesignTokensTypographyExample = (): JSX.Element => {
+export const StylesTypographyExample = (): JSX.Element => {
   const content = 'The quick brown fox jumps over the lazy dog';
   return (
     <>

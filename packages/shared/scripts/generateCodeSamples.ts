@@ -188,7 +188,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-border-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensBorderExample.tsx',
+          componentsReactPath + '/../styles/StylesBorderExample.tsx',
         ],
       ],
     },
@@ -197,7 +197,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-drop-shadow-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensDropShadowExample.tsx',
+          componentsReactPath + '/../styles/StylesDropShadowExample.tsx',
         ],
       ],
     },
@@ -206,7 +206,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-focus-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensFocusExample.tsx',
+          componentsReactPath + '/../styles/StylesFocusExample.tsx',
         ],
       ],
     },
@@ -215,7 +215,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-frosted-glass-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensFrostedGlassExample.tsx',
+          componentsReactPath + '/../styles/StylesFrostedGlassExample.tsx',
         ],
       ],
     },
@@ -224,7 +224,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-gradient-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensGradientExample.tsx',
+          componentsReactPath + '/../styles/StylesGradientExample.tsx',
         ],
       ],
     },
@@ -233,7 +233,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-grid-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensGridExample.tsx',
+          componentsReactPath + '/../styles/StylesGridExample.tsx',
         ],
       ],
     },
@@ -242,7 +242,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-media-query-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensMediaQueryExample.tsx',
+          componentsReactPath + '/../styles/StylesMediaQueryExample.tsx',
         ],
       ],
     },
@@ -251,7 +251,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-spacing-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensSpacingExample.tsx',
+          componentsReactPath + '/../styles/StylesSpacingExample.tsx',
         ],
       ],
     },
@@ -260,7 +260,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-theme-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensThemeExample.tsx',
+          componentsReactPath + '/../styles/StylesThemeExample.tsx',
         ],
       ],
     },
@@ -269,7 +269,7 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-typography-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensTypographyExample.tsx',
+          componentsReactPath + '/../styles/StylesTypographyExample.tsx',
         ],
       ],
     },

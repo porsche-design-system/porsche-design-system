@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   borderRadiusSmall,
@@ -282,7 +281,7 @@ const ThemeDarkStateDisabled = styled.div({
   background: themeDarkStateDisabled,
 });
 
-export const DesignTokensThemeExample = (): JSX.Element => {
+export const StylesThemeExample = (): JSX.Element => {
   return (
     <>
       <WrapperLight>
