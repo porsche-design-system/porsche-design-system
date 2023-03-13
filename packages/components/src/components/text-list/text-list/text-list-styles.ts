@@ -1,6 +1,6 @@
-import type { ListType, OrderType } from './text-list-utils';
+import type { TextListType } from './text-list-utils';
 import type { Theme } from '../../../types';
-import { isListTypeOrdered, isOrderTypeNumbered } from './text-list-utils';
+import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../../styles';
 import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
@@ -13,8 +13,8 @@ const cssVariableOrderedPaddingLeft = '--p-internal-text-list-ordered-padding-le
 const cssVariableListStyleType = '--p-internal-text-list-list-style-type';
 const counter = 'p-text-list-counter';
 
-export const getComponentCss = (listType: ListType, orderType: OrderType, theme: Theme): string => {
-  const isOrderedList = isListTypeOrdered(listType);
+export const getComponentCss = (type: TextListType, theme: Theme): string => {
+  const isOrderedList = isListTypeOrdered(type);
 
   return getCss({
     '@global': {
@@ -47,7 +47,7 @@ export const getComponentCss = (listType: ListType, orderType: OrderType, theme:
         ...(isOrderedList && {
           '&::before': {
             content: `counters(${counter},'.',${
-              isOrderTypeNumbered(orderType) ? 'decimal' : 'lower-latin'
+              isListTypeNumbered(type) ? 'decimal' : 'lower-latin'
             }) var(${cssVariablePseudoSuffix},'.')`,
             counterIncrement: counter,
             position: 'absolute',

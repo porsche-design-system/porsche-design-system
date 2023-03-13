@@ -63,7 +63,7 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
       <p-icon [theme]="'light'" [color]="'notification-error'"></p-icon>
       <p-icon [theme]="'light'" [color]="'notification-info'"></p-icon>
       <p-icon [theme]="'light'" [color]="'notification-neutral'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'disabled'"></p-icon>
+      <p-icon [theme]="'light'" [color]="'state-disabled'"></p-icon>
       <p-icon
         [theme]="'light'"
         [color]="'inherit'"
@@ -86,7 +86,7 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
       <p-icon [theme]="'dark'" [color]="'notification-error'"></p-icon>
       <p-icon [theme]="'dark'" [color]="'notification-info'"></p-icon>
       <p-icon [theme]="'dark'" [color]="'notification-neutral'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'disabled'"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'state-disabled'"></p-icon>
       <p-icon
         [theme]="'dark'"
         [color]="'inherit'"

@@ -14,7 +14,7 @@ import { getComponentCss } from './headline-styles';
 
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
-  tag: AllowedTypes.oneOf<HeadlineTag>([...HEADLINE_TAGS, undefined]),
+  tag: AllowedTypes.oneOf<HeadlineTag>([undefined, ...HEADLINE_TAGS]),
   align: AllowedTypes.oneOf<HeadlineAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<HeadlineColor>(HEADLINE_COLORS),
   ellipsis: AllowedTypes.boolean,

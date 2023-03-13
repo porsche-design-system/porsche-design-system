@@ -56,8 +56,13 @@ export class Accordion {
   /** Displays the Accordion as compact version with thinner border and smaller paddings. */
   @Prop() public compact?: boolean;
 
-  /** Emitted when accordion state is changed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
+
+  /** Emitted when accordion state is changed. */
+  @Event({ bubbles: false }) public change: EventEmitter<AccordionChangeEvent>;
 
   private collapsibleElement: HTMLDivElement;
   private content: HTMLDivElement;
@@ -148,6 +153,7 @@ export class Accordion {
   }
 
   private onButtonClick = (): void => {
+    this.change.emit({ open: !this.open });
     this.accordionChange.emit({ open: !this.open });
   };
 

@@ -17,7 +17,7 @@ type GetFontLinksOptions = {
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
-  const func = `export function getFontLinks(opts?: GetFontLinksOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getFontLinks(opts: GetFontLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getFontLinks(opts?: GetFontLinksOptions): string;
 export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element {
   const { subset, weights, cdn, format }: GetFontLinksOptions = {

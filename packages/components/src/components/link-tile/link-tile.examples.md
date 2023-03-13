@@ -49,6 +49,11 @@ The `size` property changes the font size of the description.
 
 The `weight` property changes the font weight of the description.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>semi-bold</code> value instead.
+</p-inline-notification>
+
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
@@ -85,7 +90,7 @@ It is possible to align the description on top of the component.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { LINK_TILE_ALIGNS, LINK_TILE_ASPECT_RATIOS, LINK_TILE_SIZES, LINK_TILE_WEIGHTS } from './link-tile-utils'; 
+import { LINK_TILE_ALIGNS, LINK_TILE_ASPECT_RATIOS, LINK_TILE_SIZES, LINK_TILE_WEIGHTS, LINK_TILE_WEIGHTS_DEPRECATED } from './link-tile-utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -128,8 +133,8 @@ export default class Code extends Vue {
 </p-link-tile>`
   }
 
-  weight = 'semibold';
-  weights = [...LINK_TILE_WEIGHTS, "{ base: 'semibold', m: 'regular' }"];
+  weight = 'semi-bold';
+  weights = [...LINK_TILE_WEIGHTS.map(item => LINK_TILE_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />

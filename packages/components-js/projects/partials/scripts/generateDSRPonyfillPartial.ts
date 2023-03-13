@@ -9,7 +9,7 @@ export const generateDSRPonyfillPartial = (): string => {
   const filePath = path.resolve(__dirname, '../dist-tmp/dsr-ponyfill.min.js');
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  const func = `export function getDSRPonyfill(opts?: GetDSRPonyfillOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getDSRPonyfill(opts: GetDSRPonyfillOptions & { format: 'jsx' }): JSX.Element;
 export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string;
 export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string | JSX.Element {
   const { format }: GetDSRPonyfillOptions = {

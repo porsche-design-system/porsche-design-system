@@ -14,7 +14,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import type { ColorScheme, Framework, Theme } from '@/models';
+  import type { BackgroundColor, Framework, Theme } from '@/models';
   import { openInStackBlitz } from '@/utils';
   import type { ExternalDependency, SharedImportKey } from '@/utils';
   import { isStableStorefrontRelease } from '@/utils/stackblitz/helper';
@@ -27,7 +27,7 @@
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
-    @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
+    @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
     @Prop({ default: 'Edit in StackBlitz' }) public buttonLabel!: string;
@@ -44,7 +44,7 @@
         framework: this.framework,
         theme: this.theme,
         externalDependencies: this.externalStackBlitzDependencies,
-        backgroundColorScheme: this.colorScheme,
+        backgroundColor: this.backgroundColor,
         sharedImportKeys: this.sharedImportKeys,
         pdsVersion: this.pdsVersion,
       });

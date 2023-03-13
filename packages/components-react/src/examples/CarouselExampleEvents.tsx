@@ -4,14 +4,14 @@ import type { CarouselChangeEvent } from '@porsche-design-system/components-reac
 
 export const CarouselExampleEventsPage = (): JSX.Element => {
   const [lastEventDetail, setLastEventDetail] = useState('none');
-  const onCarouselChange = useCallback(
+  const onChange = useCallback(
     (e: CustomEvent<CarouselChangeEvent>) => setLastEventDetail(JSON.stringify(e.detail)),
     []
   );
 
   return (
     <>
-      <PCarousel heading="Some Heading" onCarouselChange={onCarouselChange}>
+      <PCarousel heading="Some Heading" onChange={onChange}>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>

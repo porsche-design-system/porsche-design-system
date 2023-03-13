@@ -13,8 +13,11 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
+import { getDeprecatedPropWarningMessage } from '../../utils/log/helper';
 
 const propTypes: PropTypes<typeof Banner> = {
+  heading: AllowedTypes.string,
+  description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   persistent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<BannerWidth>(BANNER_WIDTHS),
@@ -27,6 +30,12 @@ const propTypes: PropTypes<typeof Banner> = {
 })
 export class Banner {
   @Element() public host!: HTMLElement;
+
+  /** Heading of the banner. */
+  @Prop() public heading?: string = '';
+
+  /** Description of the banner. */
+  @Prop() public description?: string = '';
 
   /** State of the banner. */
   @Prop() public state?: BannerState = 'info';
@@ -72,6 +81,13 @@ export class Banner {
     warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerWidthDeprecated, BannerWidth>(this, 'width', {
       fluid: 'extended',
     });
+    const hasTitleSlot = hasNamedSlot(this.host, 'title');
+    if (hasTitleSlot) {
+      console.warn(
+        getDeprecatedPropWarningMessage(this.host, 'slot="title"'),
+        'Please use the "heading" prop or slot="heading" instead.'
+      );
+    }
     attachComponentCss(this.host, getComponentCss, this.width);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -80,12 +96,18 @@ export class Banner {
       <PrefixedTagNames.pInlineNotification
         ref={(el) => (this.inlineNotificationElement = el)}
         class="root"
+        heading={this.heading}
+        description={this.description}
         state={this.state}
         persistent={this.persistent}
         theme={this.theme}
         onDismiss={this.removeBanner}
       >
-        {hasNamedSlot(this.host, 'title') && <slot name="title" slot="heading" />}
+        {hasNamedSlot(this.host, 'heading') ? (
+          <slot name="heading" slot="heading" />
+        ) : (
+          hasTitleSlot && <slot name="title" slot="heading" />
+        )}
         {hasNamedSlot(this.host, 'description') && <slot name="description" />}
       </PrefixedTagNames.pInlineNotification>
     );

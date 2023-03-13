@@ -9,11 +9,272 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### 🤖 Property deprecations 🤖
+
+##### Accordion:
+
+- Event `accordionChange` is deprecated, use `change` event instead.
+
+```diff
+- <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
++ <PAccordion onChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
+```
+
+#### Banner:
+
+- Named `slot="title"` is deprecated, use `heading` prop or `slot="heading"` instead.
+
+```diff
+<p-banner>
+-  <span slot="title">Some heading</span>
++  <span slot="heading">Some heading</span>
+   <span slot="description">Some notification description.</span>
+</p-banner>
+
+-<p-banner>
++<p-banner heading="Some heading" description="Some notification description.">
+-  <span slot="title">Some heading</span>
+-  <span slot="description">Some notification description.</span>
+</p-banner>
+```
+
+##### Carousel:
+
+- Prop `disablePagination` is deprecated, use `pagination` instead.
+- Event `carouselChange` is deprecated, use `change` event instead.
+
+```diff
+- <p-carousel disable-pagination="true"></p-carousel>
++ <p-carousel pagination="false"></p-carousel>
+
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
++ <PCarousel onChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
+```
+
+##### Divider:
+
+- Prop `orientation` is deprecated, use `direction` instead.
+
+```diff
+- <p-divider orientation="horizontal"></p-divider>
++ <p-divider direction="horizontal"></p-divider>
+```
+
+##### Icon:
+
+- Prop `colors`'s value `disabled` is removed, use `state-disabled` instead.
+
+```diff
+- <p-icon color="disabled"></p-icon>
++ <p-icon color="state-disabled"></p-icon>
+```
+
+##### Link Tile:
+
+- Prop `weight`'s value `semibold` is deprecated, use `semi-bold` instead.
+
+```diff
+- <p-link-tile weight="semibold"></p-link-tile>
++ <p-link-tile weight="semi-bold"></p-link-tile>
+```
+
+#### Modal:
+
+- Prop `disableCloseButton` is deprecated, use `dismissButton` instead.
+- Event `close` is deprecated, use `dismiss` event instead.
+
+```diff
+- <p-modal disable-close-button="true"></p-modal>
++ <p-modal dismiss-button="false"></p-modal>
+
+- <PModal onClose={(e: CustomEvent<void>) => {}} />
++ <PModal onDismiss={(e: CustomEvent<void>) => {}} />
+```
+
+##### Pagination:
+
+- Props `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` are deprecated.
+- Event `pageChange` is deprecated, use `change` event instead.
+
+```diff
+- <p-pagination ally-label="Paginierung" ally-label-prev="Vorherige Seite" ally-label-next="Nächste Seite" ally-label-page="Seite"></p-pagination>
++ <p-pagination intl="{root: 'Paginierung', prev: 'Vorherige Seite', next: 'Nächste Seite', page: 'Seite'}"></p-pagination>
+
+- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
++ <PPagination onChange={(e: CustomEvent<PaginationChangeEvent>) => {}} />
+```
+
+##### Scroller:
+
+- Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Prop `scrollIndicatorPosition` is deprecated, use `alignScrollIndicator` instead.
+
+```diff
+- <p-scroller gradient-color-scheme="surface"></p-scroller>
++ <p-scroller gradient-color="background-surface"></p-scroller>
+
+- <p-scroller scroll-indicator-position="top"></p-scroller>
++ <p-scroller align-scroll-indicator="top"></p-scroller>
+```
+
+#### Segmented Control:
+
+- Event `segmentedControlChange` is deprecated, use `change` event instead.
+
+```diff
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
++ <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
+```
+
+#### Stepper Horizontal:
+
+- Event `stepChange` is deprecated, use `change` event instead.
+
+```diff
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
++ <PStepperHorizontal onChange={(e: CustomEvent<StepperHorizontalChangeEvent>) => {}} />
+```
+
+#### Switch:
+
+- Event `switchChange` is deprecated, use `change` event instead.
+
+```diff
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
++ <PSwitch onChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
+```
+
+#### Table:
+
+- Event `sortingChange` is deprecated, use `change` event instead.
+
+```diff
+- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
++ <PTable onChange={(e: CustomEvent<TableChangeEvent>) => {}} />
+```
+
+##### Tabs:
+
+- Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Prop `weight`'s value `semibold` is deprecated, use `semi-bold` instead.
+- Event `tabChange` is deprecated, use `change` event instead.
+
+```diff
+- <p-tabs gradient-color-scheme="surface"></p-tabs>
++ <p-tabs gradient-color="background-surface"></p-tabs>
+
+- <p-tabs weight="semibold"></p-tabs>
++ <p-tabs weight="semi-bold"></p-tabs>
+
+- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabs onChange={(e: CustomEvent<TabsChangeEvent>) => {}} />
+```
+
+##### Tabs Bar:
+
+- Prop `gradientColorScheme` is deprecated, use `gradientColor` instead.
+- Prop `weight`'s value `semibold` is deprecated, use `semi-bold` instead.
+- Event `tabChange` is deprecated, use `change` event instead.
+
+```diff
+- <p-tabs-bar gradient-color-scheme="surface"></p-tabs-bar>
++ <p-tabs-bar gradient-color="background-surface"></p-tabs-bar>
+
+- <p-tabs-bar weight="semibold"></p-tabs>
++ <p-tabs-bar weight="semi-bold"></p-tabs>
+
+- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabsBar onChange={(e: CustomEvent<TabsChangeEvent>) => {}} />
+```
+
+##### Tag:
+
+- Prop `color`'s value `notification-warning`, `notification-success` and `notification-error` are deprecated, use
+  `notification-warning-soft`, `notification-success-soft` and `notification-error-soft` instead.
+
+```diff
+- <p-tag color="notification-warning"></p-tag>
++ <p-tag color="notification-warning-soft"></p-tag>
+
+- <p-tag color="notification-success"></p-tag>
++ <p-tag color="notification-success-soft"></p-tag>
+
+- <p-tag color="notification-error"></p-tag>
++ <p-tag color="notification-error-soft"></p-tag>
+```
+
+##### Text Field Wrapper:
+
+- Prop `showCharacterCount` is deprecated, use `showCounter` instead.
+
+```diff
+-<p-text-field-wrapper show-character-count="false">
++<p-text-field-wrapper show-counter="false">
+  <input type="text" maxlength="20" />
+</p-text-field-wrapper>
+```
+
+##### Textarea Wrapper:
+
+- Prop `showCharacterCount` is deprecated, use `showCounter` instead.
+
+```diff
+-<p-textarea-wrapper show-character-count="false">
++<p-textarea-wrapper show-counter="false">
+  <textarea maxlength="80"></textarea>
+</p-textarea-wrapper>
+```
+
+##### Text List
+
+- Props `listType` and `orderType` are deprecated, use `type` instead.
+
+```diff
+- <p-text-list list-type="unordered"></p-text-list>
++ <p-text-list type="unordered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="numbered"></p-text-list>
++ <p-text-list type="numbered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="alphabetically"></p-text-list>
++ <p-text-list type="alphabetically"></p-text-list>
+```
+
 #### Added
 
-- `Display`: value `small` for prop `size`
+- `Display` supports value `small` for prop `size`
 - Styles: `displaySmallStyle` and `pds-display-small`
 - Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
+- `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
+- Custom events have consistent names across components and deprecated old event names
+  - `Accordion` emits `change` and deprecated `accordionChange` event
+  - `Carousel` emits `change` and deprecated `carouselChange` event
+  - `Modal` emits `dismiss` and deprecated `close` event
+  - `Pagination` emits `change` and deprecated `pageChange` event
+  - `Segmented Control` emits `change` and deprecated `segmentedControlChange` event
+  - `Stepper Horizontal` emits `change` and deprecated `stepChange` event
+  - `Switch` emits `change`and deprecated `switchChange` event
+  - `Table` emits `change`and deprecated `sortingChange` event
+  - `Tabs` emits `change`and deprecated `tabChange` event
+  - `Tabs Bar` emits `change`and deprecated `tabChange` event
+- Props have consistent names across components and deprecated old props
+  - `Carousel` got `pagination` prop and deprecated `disablePagination` prop
+  - `Divider` got `direction` prop and deprecated `orientation` prop
+  - `Modal` got `dismissButton` prop and deprecated `disableCloseButton` prop
+  - `Pagination` got `intl` prop and deprecated `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` props
+  - `Scroller` got `gradientColor` prop and deprecated `gradientColorScheme` prop
+  - `Scroller` got `alignScrollIndicator` prop and deprecated `scrollIndicatorPosition` prop
+  - `Tabs` got `gradientColor` prop and deprecated `gradientColorScheme` prop
+  - `Tabs Bar` got `gradientColor` prop and deprecated `gradientColorScheme` prop
+  - `Text Field Wrapper` got `showCounter` prop and deprecated `showCharacterCount` prop
+  - `Textarea Wrapper` got `showCounter` prop and deprecated `showCharacterCount` prop
+  - `Text List` got `type` prop and deprecated `listType` and `orderType` prop
+- Props have consistent values across components and deprecated old values
+  - `Icon` prop `color` got value `state-disabled` and removed `disabled` value
+  - `Link Tile` prop `weight` got value `semi-bold` and deprecated `semibold` value
+  - `Tabs Bar` and `Tabs` prop `weight` got value `semi-bold` and deprecated `semibold` value
+  - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
+    `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
 
 #### Changed
 
@@ -21,11 +282,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Partials: `getInitialStyles` matches new design language
 - Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
 - `Link Tile` matches new design language
+- Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
+  `LinkPureIcon`
+- `Icon` prop `color` value `disabled` is renamed to `state-disabled`
+- `Tag` prop `color` value `notification-info` is renamed to `notification-info-soft`
 
 #### Fixed
 
 - `Text Field Wrapper` calendar and time indicator icons respect color definition in dark theme
 - `Text Field Wrapper` has correct height when type date or time is used
+- Partials: Typings of return value with and without options parameter
 - `Modal` scrolling behavior on mouse drag
 
 #### Removed

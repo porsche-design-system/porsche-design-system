@@ -1,5 +1,6 @@
 import { paramCase } from 'change-case';
-import { getComponentMeta, TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { convertToAngular } from './convertToAngular';
 import { convertToReact } from './convertToReact';
 import type { Framework, Theme } from '../models';

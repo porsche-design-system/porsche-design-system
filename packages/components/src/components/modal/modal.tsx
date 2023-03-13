@@ -8,6 +8,7 @@ import {
   hasNamedSlot,
   parseAndGetAriaAttributes,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
 import {
@@ -21,6 +22,7 @@ import { getComponentCss } from './modal-styles';
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
   disableCloseButton: AllowedTypes.boolean,
+  dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
   heading: AllowedTypes.string,
   fullscreen: AllowedTypes.breakpoint('boolean'),
@@ -35,10 +37,15 @@ export class Modal {
   @Element() public host!: HTMLElement;
 
   /** If true, the modal is open. */
-  @Prop() public open = false;
+  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
-  /** If true, the modal will not have a close button. */
-  @Prop() public disableCloseButton?: boolean = false;
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
+   * If true, the modal will not have a dismiss button. */
+  @Prop() public disableCloseButton?: boolean;
+
+  /** If false, the modal will not have a dismiss button. */
+  @Prop() public dismissButton?: boolean = true;
 
   /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
@@ -52,13 +59,22 @@ export class Modal {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
 
-  /** Emitted when the component requests to be closed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead.
+   * Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
+  /** Emitted when the component requests to be dismissed. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
   private focusedElBeforeOpen: HTMLElement;
-  private closeBtn: HTMLElement;
+  private dismissBtn: HTMLElement;
   private hasHeader: boolean;
   private dialog: HTMLElement;
+
+  private get hasDismissButton(): boolean {
+    return this.disableCloseButton ? false : this.dismissButton;
+  }
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -104,11 +120,12 @@ export class Modal {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }
     this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.hasDismissButton, this.hasHeader);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -126,16 +143,16 @@ export class Modal {
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
         >
-          {!this.disableCloseButton && (
+          {this.hasDismissButton && (
             <PrefixedTagNames.pButtonPure
-              class="close"
+              class="dismiss"
               type="button"
-              ref={(el) => (this.closeBtn = el)}
+              ref={(el) => (this.dismissBtn = el)}
               hideLabel
               icon="close"
-              onClick={this.closeModal}
+              onClick={this.dismissModal}
             >
-              Close modal
+              Dismiss modal
             </PrefixedTagNames.pButtonPure>
           )}
           {this.hasHeader && (
@@ -148,17 +165,18 @@ export class Modal {
   }
 
   private updateScrollLock(isOpen: boolean): void {
-    setScrollLock(this.host, isOpen, !this.disableCloseButton && this.closeBtn, this.closeModal);
+    setScrollLock(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
   }
 
   private onMouseDown = (e: MouseEvent): void => {
     if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {
-      this.closeModal();
+      this.dismissModal();
     }
   };
 
-  private closeModal = (): void => {
-    if (!this.disableCloseButton) {
+  private dismissModal = (): void => {
+    if (this.hasDismissButton) {
+      this.dismiss.emit();
       this.close.emit();
     }
   };

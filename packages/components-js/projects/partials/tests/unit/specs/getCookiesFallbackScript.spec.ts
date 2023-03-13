@@ -10,24 +10,26 @@ jest.mock('../../../src/shared');
 
 describe('format: html', () => {
   it('should return script with cdn url', () => {
-    const result = getCookiesFallbackScript();
+    const result: string = getCookiesFallbackScript();
     expect(result).toMatch(scriptCom);
   });
 
   it('should return script with china cdn url', () => {
-    const result = getCookiesFallbackScript({ cdn: 'cn', format: 'html' });
+    const result: string = getCookiesFallbackScript({ cdn: 'cn', format: 'html' });
     expect(result).toMatch(scriptCn);
   });
 });
 
 describe('format: jsx', () => {
   it('should return script with cdn url', () => {
-    const { container } = render(getCookiesFallbackScript({ format: 'jsx' }));
+    const result: JSX.Element = getCookiesFallbackScript({ format: 'jsx' });
+    const { container } = render(result);
     expect(container.innerHTML).toMatch(scriptCom);
   });
 
   it('should return script with china cdn url', () => {
-    const { container } = render(getCookiesFallbackScript({ cdn: 'cn', format: 'jsx' }));
+    const result: JSX.Element = getCookiesFallbackScript({ cdn: 'cn', format: 'jsx' });
+    const { container } = render(result);
     expect(container.innerHTML).toMatch(scriptCn);
   });
 });
