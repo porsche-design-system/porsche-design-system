@@ -42,7 +42,7 @@ const tagNamesWithSlottedInputIndicator: TagName[] = ['p-text-field-wrapper'];
 
 const tagNamesWithSlottedImage: TagName[] = ['p-table'];
 
-const tagNamesWithSlottedPicture: TagName[] = ['p-link-tile'];
+const tagNamesWithSlottedPicture: TagName[] = ['p-link-tile', 'p-link-tile-model-signature'];
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
