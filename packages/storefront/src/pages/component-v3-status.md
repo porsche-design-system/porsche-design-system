@@ -11,7 +11,7 @@
   (https://webaim.org/techniques/css/invisiblecontent/)
 - Markdown Styles needs to be updated with new design tokens
 - enable ssr wrapper markup snapshot tests ✅
-- generic test für `:host([hidden])` of all components ✅
+- generic test for `:host([hidden])` of all components ✅
 - generic test for `display: xy !important` of all components
 - optimize component chunking
 - we should vrt test modal, banner, (toast), content-wrapper on even larger viewports than 2560px
