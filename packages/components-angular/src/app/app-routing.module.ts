@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
-import * as fromDesignTokens from './design-tokens';
+import * as fromStyles from './styles';
 
 export type ExtendedRoute = Route & {
   name?: string;
@@ -162,54 +162,54 @@ export const routes: ExtendedRoute[] = [
     children: [],
   },
   {
-    name: 'Design Tokens Border Example',
-    path: 'design-tokens-border',
-    component: fromDesignTokens.DesignTokensBorderExampleComponent,
+    name: 'Styles Border Example',
+    path: 'styles-border',
+    component: fromStyles.StylesBorderExampleComponent,
   },
   {
-    name: 'Design Tokens Drop Shadow Example',
+    name: 'Styles Drop Shadow Example',
     path: 'design-tokens-drop-shadow',
-    component: fromDesignTokens.DesignTokensDropShadowExampleComponent,
+    component: fromStyles.StylesDropShadowExampleComponent,
   },
   {
-    name: 'Design Tokens Focus Example',
+    name: 'Styles Focus Example',
     path: 'design-tokens-focus',
-    component: fromDesignTokens.DesignTokensFocusExampleComponent,
+    component: fromStyles.StylesFocusExampleComponent,
   },
   {
-    name: 'Design Tokens Frosted Glass Example',
+    name: 'Styles Frosted Glass Example',
     path: 'design-tokens-frosted-glass',
-    component: fromDesignTokens.DesignTokensFrostedGlassExampleComponent,
+    component: fromStyles.StylesFrostedGlassExampleComponent,
   },
   {
-    name: 'Design Tokens Gradient Example',
+    name: 'Styles Gradient Example',
     path: 'design-tokens-gradient',
-    component: fromDesignTokens.DesignTokensGradientExampleComponent,
+    component: fromStyles.StylesGradientExampleComponent,
   },
   {
-    name: 'Design Tokens Grid Example',
+    name: 'Styles Grid Example',
     path: 'design-tokens-grid',
-    component: fromDesignTokens.DesignTokensGridExampleComponent,
+    component: fromStyles.StylesGridExampleComponent,
   },
   {
-    name: 'Design Tokens Media Query Example',
+    name: 'Styles Media Query Example',
     path: 'design-tokens-media-query',
-    component: fromDesignTokens.DesignTokensMediaQueryExampleComponent,
+    component: fromStyles.StylesMediaQueryExampleComponent,
   },
   {
-    name: 'Design Tokens Spacing Example',
+    name: 'Styles Spacing Example',
     path: 'design-tokens-spacing',
-    component: fromDesignTokens.DesignTokensSpacingExampleComponent,
+    component: fromStyles.StylesSpacingExampleComponent,
   },
   {
-    name: 'Design Tokens Theme Example',
+    name: 'Styles Theme Example',
     path: 'design-tokens-theme',
-    component: fromDesignTokens.DesignTokensThemeExampleComponent,
+    component: fromStyles.StylesThemeExampleComponent,
   },
   {
-    name: 'Design Tokens Typography Example',
+    name: 'Styles Typography Example',
     path: 'design-tokens-typography',
-    component: fromDesignTokens.DesignTokensTypographyExampleComponent,
+    component: fromStyles.StylesTypographyExampleComponent,
   },
 ];
 
