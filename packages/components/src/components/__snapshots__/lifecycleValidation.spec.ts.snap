@@ -110,6 +110,17 @@ exports[`should call validateProps() with correct parameters via render for p-di
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-fieldset: propTypes with ValidatorFunctions 1`] = `
+{
+  "label": "string",
+  "labelSize": "oneOf",
+  "message": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-fieldset-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "label": "string",

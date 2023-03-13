@@ -46,6 +46,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-content-wrapper': `<p-content-wrapper></p-content-wrapper>`,
   'p-display': `<p-display>Some text</p-display>`,
   'p-divider': `<p-divider></p-divider>`,
+  'p-fieldset': `<p-fieldset></p-fieldset>`,
   'p-fieldset-wrapper': `<p-fieldset-wrapper></p-fieldset-wrapper>`,
   'p-flex': `<p-flex>
     <p-flex-item></p-flex-item>
