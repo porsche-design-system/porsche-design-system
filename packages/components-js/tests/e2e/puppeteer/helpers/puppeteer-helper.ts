@@ -1,7 +1,7 @@
 import type { ConsoleMessage, ElementHandle, Page, WaitForOptions, SnapshotOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
-import { ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
 
 export type ClickableTests = {
