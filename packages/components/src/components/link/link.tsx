@@ -13,7 +13,6 @@ import {
 } from '../../utils';
 import type {
   BreakpointCustomizable,
-  LinkButtonIconName,
   LinkTarget,
   LinkVariant,
   PropTypes,
@@ -21,7 +20,7 @@ import type {
   Theme,
 } from '../../types';
 import { getComponentCss } from './link-styles';
-import type { LinkAriaAttribute } from './link-utils';
+import type { LinkAriaAttribute, LinkIcon } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
 
 const propTypes: PropTypes<typeof Link> = {
@@ -48,7 +47,7 @@ export class Link {
   @Prop() public variant?: LinkVariant = 'primary';
 
   /** The icon shown. By choosing 'none', no icon is displayed. */
-  @Prop() public icon?: LinkButtonIconName = 'none';
+  @Prop() public icon?: LinkIcon = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;

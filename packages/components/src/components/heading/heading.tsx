@@ -8,7 +8,7 @@ import { AllowedTypes, attachComponentCss, TEXT_ALIGNS, THEMES, validateProps } 
 import { getComponentCss } from './heading-styles';
 
 const propTypes: PropTypes<typeof Heading> = {
-  tag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
+  tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
   align: AllowedTypes.oneOf<HeadingAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),

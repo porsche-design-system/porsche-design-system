@@ -1,36 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: false 1`] = `
+exports[`getColors() should return correct colors for tagColor: background-base and theme: dark 1`] = `
 {
-  "backgroundColor": "#212225",
-  "backgroundHoverColor": "#3E4045",
+  "backgroundColor": "#0E0E12",
+  "backgroundHoverColor": "#292934",
   "focusColor": "#1A44EA",
   "primaryColor": "#FBFCFF",
 }
 `;
 
-exports[`getColors() should return correct css for theme: dark and hasInvertedTheme: true 1`] = `
+exports[`getColors() should return correct colors for tagColor: background-base and theme: light 1`] = `
 {
-  "backgroundColor": "#212225",
-  "backgroundHoverColor": "#3E4045",
+  "backgroundColor": "#FFF",
+  "backgroundHoverColor": "#E0E0E0",
   "focusColor": "#1A44EA",
   "primaryColor": "#010205",
 }
 `;
 
-exports[`getColors() should return correct css for theme: light and hasInvertedTheme: false 1`] = `
+exports[`getColors() should return correct colors for tagColor: primary and theme: dark 1`] = `
 {
-  "backgroundColor": "#EEEFF2",
-  "backgroundHoverColor": "#CBCED7",
+  "backgroundColor": "#FBFCFF",
+  "backgroundHoverColor": "#CECFD1",
   "focusColor": "#1A44EA",
   "primaryColor": "#010205",
 }
 `;
 
-exports[`getColors() should return correct css for theme: light and hasInvertedTheme: true 1`] = `
+exports[`getColors() should return correct colors for tagColor: primary and theme: light 1`] = `
 {
-  "backgroundColor": "#EEEFF2",
-  "backgroundHoverColor": "#CBCED7",
+  "backgroundColor": "#010205",
+  "backgroundHoverColor": "#535457",
   "focusColor": "#1A44EA",
   "primaryColor": "#FBFCFF",
 }
@@ -278,248 +278,6 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-default, isFocusable: false and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #0E0E12;
-  color: #FBFCFF;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-.icon {
-  margin-left: -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: background-default, isFocusable: false and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #FFF;
-  color: #010205;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-.icon {
-  margin-left: -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: background-default, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #0E0E12;
-  color: #FBFCFF;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-@media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  span:hover {
-    background: #292934;
-  }
-}
-
-.icon {
-  margin-left: -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: background-default, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #FFF;
-  color: #010205;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-@media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  span:hover {
-    background: #E0E0E0;
-  }
-}
-
-.icon {
-  margin-left: -2px;
-}"
-`;
-
 exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
@@ -650,137 +408,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: neutral-contrast-high, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #FBFCFF;
-  color: #010205;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-@media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  span:hover {
-    background: #CECFD1;
-  }
-}
-
-.icon {
-  margin-left: -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: neutral-contrast-high, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #010205;
-  color: #FBFCFF;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-@media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  span:hover {
-    background: #535457;
-  }
-}
-
-.icon {
-  margin-left: -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-error, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-error-soft, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -845,7 +473,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-error, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-error-soft, isFocusable: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -910,7 +538,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-info, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-info-soft, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -975,7 +603,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-info, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-info-soft, isFocusable: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1040,137 +668,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #001A33;
-  color: #FBFCFF;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-@media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  span:hover {
-    background: #0F2943;
-  }
-}
-
-.icon {
-  margin-left: -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-span {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  position: relative;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #E8EEFD;
-  color: #010205;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-  color: inherit !important;
-  appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  text-align: left !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-@media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  span:hover {
-    background: #D6DEF0;
-  }
-}
-
-.icon {
-  margin-left: -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-success-soft, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1235,7 +733,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-success-soft, isFocusable: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1300,7 +798,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-warning-soft, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1365,7 +863,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-warning-soft, isFocusable: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;

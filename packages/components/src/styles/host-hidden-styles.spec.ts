@@ -1,6 +1,7 @@
 import { hostHiddenStyles } from './host-hidden-styles';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   addParentAndSetRequiredProps,
   componentFactory,

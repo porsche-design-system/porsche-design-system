@@ -10,14 +10,15 @@ jest.mock('../../../src/shared');
 
 describe('format: html', () => {
   it('should return content of dsr-ponyfill tmp build within script tag', () => {
-    const result = getDSRPonyfill();
+    const result: string = getDSRPonyfill();
     expect(result).toBe(`<script>${fileContent}</script>`);
   });
 });
 
 describe('format: jsx', () => {
   it('should return content of dsr-ponyfill tmp build within script tag', () => {
-    const { container } = render(getDSRPonyfill({ format: 'jsx' }));
+    const result: JSX.Element = getDSRPonyfill({ format: 'jsx' });
+    const { container } = render(result);
     expect(container.innerHTML).toBe(`<script>${fileContent}</script>`);
   });
 });

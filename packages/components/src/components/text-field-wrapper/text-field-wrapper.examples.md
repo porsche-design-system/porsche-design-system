@@ -47,9 +47,13 @@ changes while this process is performed.
 
 ## Counter
 
-If the `maxLength` attribute is present on the `input` element, a counter will be displayed in the corner.
+If the `maxlength` attribute is present on the `input` element, a counter will be displayed in the corner.  
+To hide it you can set `showCounter` to `false`.
 
-To hide it you can set `showCharacterCount` to `false`.
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>showCharacterCount</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>showCounter</code> property instead.
+</p-inline-notification>
 
 <Playground :markup="counter" :config="config"></Playground>
 
@@ -207,7 +211,7 @@ export default class Code extends Vue {
 `<p-text-field-wrapper label="Some label">
   <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>
-<p-text-field-wrapper label="Some label" show-character-count="false">
+<p-text-field-wrapper label="Some label" show-counter="false">
   <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>`;
 

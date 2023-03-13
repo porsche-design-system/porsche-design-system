@@ -57,25 +57,31 @@ export class Text {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof Text, TextColorDeprecated, TextColor>(this, 'color', {
+    const colorDeprecationMap: Record<TextColorDeprecated, Exclude<TextColor, TextColorDeprecated>> = {
       brand: 'primary',
       default: 'primary',
       'neutral-contrast-low': 'contrast-low',
       'neutral-contrast-medium': 'contrast-medium',
       'neutral-contrast-high': 'contrast-high',
       'notification-neutral': 'notification-info',
-    });
-    warnIfDeprecatedPropValueIsUsed<typeof Text, TextWeightDeprecated, TextWeight>(this, 'weight', {
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextColorDeprecated, TextColor>(this, 'color', colorDeprecationMap);
+    const weightDeprecationMap: Record<TextWeightDeprecated, Exclude<TextWeight, TextWeightDeprecated>> = {
       thin: 'regular',
       semibold: 'semi-bold',
-    });
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextWeightDeprecated, TextWeight>(
+      this,
+      'weight',
+      weightDeprecationMap
+    );
     attachComponentCss(
       this.host,
       getComponentCss,
       this.size,
-      this.weight,
+      (weightDeprecationMap[this.weight] || this.weight) as Exclude<TextWeight, TextWeightDeprecated>,
       this.align,
-      this.color,
+      (colorDeprecationMap[this.color] || this.color) as Exclude<TextColor, TextColorDeprecated>,
       this.ellipsis,
       this.theme
     );

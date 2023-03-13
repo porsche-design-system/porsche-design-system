@@ -15,13 +15,13 @@ import { FIELDSET_LABEL_SIZES } from './../fieldset/fieldset-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import type { FormState } from '../../utils/form/form-state';
+import type { FieldsetWrapperState } from './fieldset-wrapper-utils';
 
 const propTypes: PropTypes<typeof FieldsetWrapper> = {
   label: AllowedTypes.string,
   labelSize: AllowedTypes.oneOf<FieldsetWrapperLabelSize>(FIELDSET_LABEL_SIZES),
   required: AllowedTypes.boolean,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<FieldsetWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -44,7 +44,7 @@ export class FieldsetWrapper {
   @Prop() public required?: boolean = false;
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: FieldsetWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';

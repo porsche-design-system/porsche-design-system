@@ -9,15 +9,15 @@ import {
   ThemedColors,
 } from '../../styles';
 import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
-import type { TagColor } from './tag-utils';
-import { getThemedBackgroundHoverColor, hasInvertedThemeColor } from './tag-utils';
+import type { TagColor, TagColorDeprecated } from './tag-utils';
+import { getThemedBackgroundHoverColor } from './tag-utils';
 import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
 import { getTagFocusJssStyle, getThemedBackgroundColor } from './tag-shared-utils';
 
 export const getColors = (
   themedColors: ThemedColors,
-  tagColor: TagColor,
+  tagColor: Exclude<TagColor, TagColorDeprecated>,
   theme: Theme
 ): {
   primaryColor: string;
@@ -25,20 +25,21 @@ export const getColors = (
   backgroundColor: string;
   backgroundHoverColor: string;
 } => {
-  const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
-
-  const { primaryColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
-  const { focusColor } = themedColors;
+  const { primaryColor } = tagColor === 'primary' ? getInvertedThemedColors(theme) : themedColors;
 
   return {
     primaryColor,
-    focusColor,
+    focusColor: themedColors.focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
     backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
   };
 };
 
-export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
+export const getComponentCss = (
+  tagColor: Exclude<TagColor, TagColorDeprecated>,
+  isFocusable: boolean,
+  theme: Theme
+): string => {
   const themedColors = getThemedColors(theme);
   const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(themedColors, tagColor, theme);
 
@@ -60,14 +61,13 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         color: primaryColor,
         font: textXSmallStyle.font,
         whiteSpace: 'nowrap',
-        ...(isFocusable && {
-          ...hoverMediaQuery({
+        ...(isFocusable &&
+          hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
               background: backgroundHoverColor,
             },
-          }),
-        }),
+          })),
       },
       '::slotted': addImportantToEachRule({
         '&(a),&(button)': {

@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { TagColor, TagColorDeprecated } from './tag-utils';
+import type { TagColor, TagColorDeprecated, TagIcon } from './tag-utils';
 import { getThemeForIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
@@ -11,7 +11,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
-import type { IconName, PropTypes, Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Tag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -34,22 +34,26 @@ export class Tag {
   @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
+  @Prop() public icon?: TagIcon; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', {
-      'notification-neutral': 'notification-info',
-      'neutral-contrast-high': 'primary',
+    const deprecationMap: Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>> = {
       'background-default': 'background-base',
-    });
+      'neutral-contrast-high': 'primary',
+      'notification-neutral': 'notification-info-soft',
+      'notification-warning': 'notification-warning-soft',
+      'notification-success': 'notification-success-soft',
+      'notification-error': 'notification-error-soft',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', deprecationMap);
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.color,
+      (deprecationMap[this.color] || this.color) as Exclude<TagColor, TagColorDeprecated>,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       this.theme
     );

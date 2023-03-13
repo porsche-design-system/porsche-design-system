@@ -7,12 +7,16 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import { getCss } from '../../utils';
-import type { TagDismissibleColor } from './tag-dismissible-utils';
+import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import type { Theme } from '../../types';
 
-export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {
+export const getComponentCss = (
+  color: Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>,
+  hasLabel: boolean,
+  theme: Theme
+): string => {
   const themedColors = getThemedColors(theme);
   const { primaryColor, hoverColor, contrastHighColor } = themedColors;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);

@@ -15,7 +15,7 @@ export const generateBrowserSupportFallbackScriptPartial = (): string => {
     .replace('https://cdn.ui.porsche.com', '${cdnBaseUrl}')
     .trim();
 
-  const func = `export function getBrowserSupportFallbackScript(opts?: GetBrowserSupportFallbackScriptOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getBrowserSupportFallbackScript(opts: GetBrowserSupportFallbackScriptOptions & { format: 'jsx' }): JSX.Element;
 export function getBrowserSupportFallbackScript(opts?: GetBrowserSupportFallbackScriptOptions): string;
 export function getBrowserSupportFallbackScript(opts?: GetBrowserSupportFallbackScriptOptions): string | JSX.Element {
   const { cdn, format }: GetBrowserSupportFallbackScriptOptions = {

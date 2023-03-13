@@ -1,15 +1,4 @@
-import type {
-  AlignLabel,
-  BreakpointCustomizable,
-  LinkButtonIconName,
-  LinkTarget,
-  PropTypes,
-  SelectedAriaAttributes,
-  TextSize,
-  TextWeight,
-  Theme,
-} from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
@@ -26,13 +15,21 @@ import {
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
+import type {
+  LinkPureAlignLabel,
+  LinkPureAriaAttribute,
+  LinkPureIcon,
+  LinkPureSize,
+  LinkPureTarget,
+  LinkPureWeight,
+} from './link-pure-utils';
 import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
-  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<LinkPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
-  size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
+  size: AllowedTypes.breakpoint<LinkPureSize>(TEXT_SIZES),
+  weight: AllowedTypes.oneOf<LinkPureWeight>(TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   underline: AllowedTypes.boolean,
@@ -43,7 +40,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkPureAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -54,22 +51,22 @@ export class LinkPure {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<AlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<LinkPureAlignLabel> = 'right';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
   /** Size of the link. */
-  @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<LinkPureSize> = 'small';
 
   /**
    * The weight of the text (only has effect with visible label).
    * @deprecated since v3.0.0, will be removed with next major release
    */
-  @Prop() public weight?: TextWeight = 'regular';
+  @Prop() public weight?: LinkPureWeight = 'regular';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
-  @Prop() public icon?: LinkButtonIconName = 'arrow-right';
+  @Prop() public icon?: LinkPureIcon = 'arrow-right';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -90,7 +87,7 @@ export class LinkPure {
   @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: LinkPureTarget = '_self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
   @Prop() public download?: string;
@@ -99,7 +96,7 @@ export class LinkPure {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkPureAriaAttribute>;
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);

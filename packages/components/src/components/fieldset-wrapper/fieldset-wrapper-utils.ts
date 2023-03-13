@@ -1,3 +1,5 @@
-import { FieldsetLabelSize } from '../fieldset/fieldset-utils';
+import { FieldsetLabelSize, FieldsetState } from '../fieldset/fieldset-utils';
 
 export type FieldsetWrapperLabelSize = FieldsetLabelSize;
+
+export type FieldsetWrapperState = FieldsetState;

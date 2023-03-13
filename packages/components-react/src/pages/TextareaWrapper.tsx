@@ -142,12 +142,23 @@ export const TextareaWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without counter">
-        <PTextareaWrapper label="Counter hidden" showCharacterCount={false}>
+        <PTextareaWrapper label="showCharacterCount=false" showCharacterCount={false}>
           <textarea maxLength={200} defaultValue="Some value" />
         </PTextareaWrapper>
       </div>
       <div className="playground dark" title="should render without counter on dark theme">
-        <PTextareaWrapper label="Counter hidden" showCharacterCount={false} theme="dark">
+        <PTextareaWrapper label="showCharacterCount=false" showCharacterCount={false} theme="dark">
+          <textarea maxLength={200} defaultValue="Some value" />
+        </PTextareaWrapper>
+      </div>
+
+      <div className="playground light" title="should render without counter">
+        <PTextareaWrapper label="showCounter=false" showCounter={false}>
+          <textarea maxLength={200} defaultValue="Some value" />
+        </PTextareaWrapper>
+      </div>
+      <div className="playground dark" title="should render without counter on dark theme">
+        <PTextareaWrapper label="showCounter=false" showCounter={false} theme="dark">
           <textarea maxLength={200} defaultValue="Some value" />
         </PTextareaWrapper>
       </div>

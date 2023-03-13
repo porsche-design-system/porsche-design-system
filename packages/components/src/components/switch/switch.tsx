@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Listen, Prop } from '@stencil/core';
-import type { AlignLabel, BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
@@ -12,11 +12,12 @@ import {
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
+import type { SwitchAlignLabel } from './switch-utils';
 
 export type SwitchChangeEvent = { checked: boolean };
 
 const propTypes: PropTypes<typeof Switch> = {
-  alignLabel: AllowedTypes.breakpoint<AlignLabel>(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   stretch: AllowedTypes.breakpoint('boolean'),
   checked: AllowedTypes.boolean,
@@ -33,7 +34,7 @@ export class Switch {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<AlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'right';
 
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
@@ -53,8 +54,13 @@ export class Switch {
   /** Adapts the switch color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when checked status is changed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
+
+  /** Emitted when checked status is changed. */
+  @Event({ bubbles: false }) public change: EventEmitter<SwitchChangeEvent>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -116,6 +122,7 @@ export class Switch {
   }
 
   private onSwitchClick = (): void => {
+    this.change.emit({ checked: !this.checked });
     this.switchChange.emit({ checked: !this.checked });
   };
 }

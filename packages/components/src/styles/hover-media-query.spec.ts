@@ -1,6 +1,7 @@
 import { hoverMediaQuery } from './hover-media-query';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   addParentAndSetRequiredProps,
   componentFactory,
@@ -73,14 +74,16 @@ it.each<TagName>(tagNamesWithJss)(
       if (typeof value === 'object') {
         Object.entries(value).forEach(([childKey]) => {
           // nested selectors inside media query
-          if (childKey.match(/:hover[^)]/)) {
+          if (childKey.match(/:hover/)) {
             expect(key).toBe('@media(hover:hover)');
           }
         });
       }
 
       // top level selectors
-      expect(key).not.toMatch(/:hover[^)]/);
+      if (!key.match(/^@media\(hover:hover\)$/)) {
+        expect(key).not.toMatch(/:hover/);
+      }
     });
   }
 );

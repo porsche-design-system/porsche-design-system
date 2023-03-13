@@ -9,7 +9,7 @@ import {
   validateProps,
 } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
-import type { FieldsetLabelSize } from './fieldset-utils';
+import type { FieldsetLabelSize, FieldsetState } from './fieldset-utils';
 import { FIELDSET_LABEL_SIZES } from './fieldset-utils';
 import { getComponentCss } from './fieldset-styles';
 import { StateMessage } from '../common/state-message/state-message';
@@ -42,7 +42,7 @@ export class Fieldset {
   @Prop() public required?: boolean = false;
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: FieldsetState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';

@@ -1,204 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for open: false, fullscreen: false, disableCloseButton: false and hasHeader: false 1`] = `
-":host {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  overflow-y: auto;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-}
-::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 64px) !important;
-  margin: 0 -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:first-child) {
-  margin-top: -2rem !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 0 8px 8px !important;
-}
-h2 {
-  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  color: #010205;
-}
-.root {
-  position: relative;
-  box-sizing: border-box;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
-  transform: scale3d(.9,.9,1);
-  padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
-  outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
-  min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
-  border-radius: 8px;
-}
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid;
-  border-radius: 12px;
-  border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-}
-.root:not(:focus-visible)::before {
-  border: 0;
-}
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
-@media(min-width:1760px) {
-  .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for open: false, fullscreen: false, disableCloseButton: false and hasHeader: true 1`] = `
-":host {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  overflow-y: auto;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-}
-::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 64px) !important;
-  margin: 0 -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 0 8px 8px !important;
-}
-h2 {
-  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  color: #010205;
-}
-.root {
-  position: relative;
-  box-sizing: border-box;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
-  transform: scale3d(.9,.9,1);
-  padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
-  outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
-  min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
-  border-radius: 8px;
-}
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid;
-  border-radius: 12px;
-  border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-}
-.root:not(:focus-visible)::before {
-  border: 0;
-}
-.header {
-  padding: 0 0 8px;
-}
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
-@media(min-width:1760px) {
-  .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for open: false, fullscreen: false, disableCloseButton: true and hasHeader: true 1`] = `
+exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: false and hasHeader: true 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -252,7 +54,7 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
   padding: 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
@@ -277,18 +79,6 @@ h2 {
 .header {
   padding: 0 0 8px;
 }
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
 @media(min-width:1760px) {
   .root {
     margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
@@ -297,7 +87,7 @@ h2 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: false, fullscreen: true, disableCloseButton: false and hasHeader: false 1`] = `
+exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: true and hasHeader: false 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -338,10 +128,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   margin-bottom: -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 !important;
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -354,49 +144,52 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
   padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
-  min-width: 100%;
-  max-width: none;
-  min-height: 100%;
-  margin: 0;
-  border-radius: 0;
+  min-width: 17.2rem;
+  max-width: 96rem;
+  min-height: auto;
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
 .root:focus::before {
   content: "";
   position: fixed;
   border: 2px solid;
-  border-radius: 0;
-  border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
 }
-.close {
+.dismiss {
   position: absolute;
   top: 8px;
   right: 8px;
   border: 2px solid #FFF;
   border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
+  background: #FFF;
 }
 @media(min-width:1760px) {
   .root {
-    margin: 0;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: false, fullscreen: true, disableCloseButton: false and hasHeader: true 1`] = `
+exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: true and hasHeader: true 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -434,10 +227,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   margin-bottom: -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 !important;
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -450,24 +243,24 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
   padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
-  min-width: 100%;
-  max-width: none;
-  min-height: 100%;
-  margin: 0;
-  border-radius: 0;
+  min-width: 17.2rem;
+  max-width: 96rem;
+  min-height: auto;
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
 .root:focus::before {
   content: "";
   position: fixed;
   border: 2px solid;
-  border-radius: 0;
-  border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -475,27 +268,30 @@ h2 {
 .header {
   padding: 0 0 8px;
 }
-.close {
+.dismiss {
   position: absolute;
   top: 8px;
   right: 8px;
   border: 2px solid #FFF;
   border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
+  background: #FFF;
 }
 @media(min-width:1760px) {
   .root {
-    margin: 0;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: false, fullscreen: true, disableCloseButton: true and hasHeader: false 1`] = `
+exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: false and hasHeader: false 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -552,7 +348,7 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
   padding: 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
   min-width: 100%;
   max-width: none;
@@ -574,18 +370,6 @@ h2 {
 .root:not(:focus-visible)::before {
   border: 0;
 }
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
 @media(min-width:1760px) {
   .root {
     margin: 0;
@@ -594,7 +378,7 @@ h2 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: false, fullscreen: true, disableCloseButton: true and hasHeader: true 1`] = `
+exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: false and hasHeader: true 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -648,7 +432,7 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
   padding: 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
   min-width: 100%;
   max-width: none;
@@ -673,18 +457,6 @@ h2 {
 .header {
   padding: 0 0 8px;
 }
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
 @media(min-width:1760px) {
   .root {
     margin: 0;
@@ -693,7 +465,211 @@ h2 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true, fullscreen: { base: true, xs: false, s: true, m: false, l: true, xl: false }, disableCloseButton: false and hasHeader: false 1`] = `
+exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: true and hasHeader: false 1`] = `
+":host {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  overflow-y: auto;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:host::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+}
+::slotted(.stretch-to-full-modal-width) {
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  margin-top: -2rem !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.root {
+  position: relative;
+  box-sizing: border-box;
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+  transform: scale3d(.9,.9,1);
+  padding: 2rem 32px 32px 32px;
+  background: #FFF;
+  outline: 0;
+  min-width: 100%;
+  max-width: none;
+  min-height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.dismiss {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background: #FFF;
+}
+@media(min-width:1760px) {
+  .root {
+    margin: 0;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: true and hasHeader: true 1`] = `
+":host {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  overflow-y: auto;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:host::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+}
+::slotted(.stretch-to-full-modal-width) {
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.root {
+  position: relative;
+  box-sizing: border-box;
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+  transform: scale3d(.9,.9,1);
+  padding: 2rem 32px 32px 32px;
+  background: #FFF;
+  outline: 0;
+  min-width: 100%;
+  max-width: none;
+  min-height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.header {
+  padding: 0 0 8px;
+}
+.dismiss {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background: #FFF;
+}
+@media(min-width:1760px) {
+  .root {
+    margin: 0;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for open: true, fullscreen: { base: true, xs: false, s: true, m: false, l: true, xl: false }, dismissButton: true and hasHeader: false 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -795,7 +771,7 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
   padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
   min-width: 100%;
   max-width: none;
@@ -817,17 +793,13 @@ h2 {
 .root:not(:focus-visible)::before {
   border: 0;
 }
-.close {
+.dismiss {
   position: absolute;
   top: 8px;
   right: 8px;
   border: 2px solid #FFF;
   border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
+  background: #FFF;
 }
 @media(min-width:480px) {
   .root {
@@ -918,208 +890,17 @@ h2 {
     bottom: -4px;
   }
 }
-"
-`;
 
-exports[`getComponentCss() should return correct css for open: true, fullscreen: false, disableCloseButton: false and hasHeader: false 1`] = `
-":host {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
-  overflow-y: auto;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-}
-::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 64px) !important;
-  margin: 0 -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:first-child) {
-  margin-top: -2rem !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 0 8px 8px !important;
-}
-h2 {
-  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  color: #010205;
-}
-.root {
-  position: relative;
-  box-sizing: border-box;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
-  transform: scale3d(1,1,1);
-  padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
-  outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
-  min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
-  border-radius: 8px;
-}
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid;
-  border-radius: 12px;
-  border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-}
-.root:not(:focus-visible)::before {
-  border: 0;
-}
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
-@media(min-width:1760px) {
-  .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true, fullscreen: false, disableCloseButton: false and hasHeader: true 1`] = `
-":host {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
-  overflow-y: auto;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-}
-::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 64px) !important;
-  margin: 0 -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -32px !important;
-}
-::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
-}
-::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 0 8px 8px !important;
-}
-h2 {
-  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  color: #010205;
-}
-.root {
-  position: relative;
-  box-sizing: border-box;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
-  transform: scale3d(1,1,1);
-  padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
-  outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
-  min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
-  border-radius: 8px;
-}
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid;
-  border-radius: 12px;
-  border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-}
-.root:not(:focus-visible)::before {
-  border: 0;
-}
-.header {
-  padding: 0 0 8px;
-}
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
-@media(min-width:1760px) {
-  .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for open: true, fullscreen: false, disableCloseButton: true and hasHeader: true 1`] = `
+exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: false and hasHeader: true 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -1173,7 +954,7 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
   padding: 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
   min-width: 17.2rem;
   max-width: 96rem;
@@ -1198,18 +979,6 @@ h2 {
 .header {
   padding: 0 0 8px;
 }
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
 @media(min-width:1760px) {
   .root {
     margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
@@ -1218,7 +987,7 @@ h2 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true, fullscreen: true, disableCloseButton: false and hasHeader: false 1`] = `
+exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: true and hasHeader: false 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -1259,10 +1028,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   margin-bottom: -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 !important;
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1275,49 +1044,52 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
   padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
-  min-width: 100%;
-  max-width: none;
-  min-height: 100%;
-  margin: 0;
-  border-radius: 0;
+  min-width: 17.2rem;
+  max-width: 96rem;
+  min-height: auto;
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
 .root:focus::before {
   content: "";
   position: fixed;
   border: 2px solid;
-  border-radius: 0;
-  border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
 }
-.close {
+.dismiss {
   position: absolute;
   top: 8px;
   right: 8px;
   border: 2px solid #FFF;
   border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
+  background: #FFF;
 }
 @media(min-width:1760px) {
   .root {
-    margin: 0;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true, fullscreen: true, disableCloseButton: false and hasHeader: true 1`] = `
+exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: true and hasHeader: true 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -1355,10 +1127,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   margin-bottom: -32px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 !important;
+  border-radius: 0 0 8px 8px !important;
 }
 h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1371,24 +1143,24 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
   padding: 2rem 32px 32px 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
-  min-width: 100%;
-  max-width: none;
-  min-height: 100%;
-  margin: 0;
-  border-radius: 0;
+  min-width: 17.2rem;
+  max-width: 96rem;
+  min-height: auto;
+  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  border-radius: 8px;
 }
 .root:focus::before {
   content: "";
   position: fixed;
   border: 2px solid;
-  border-radius: 0;
-  border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  border-radius: 12px;
+  border-color: #FBFCFF;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1396,27 +1168,30 @@ h2 {
 .header {
   padding: 0 0 8px;
 }
-.close {
+.dismiss {
   position: absolute;
   top: 8px;
   right: 8px;
   border: 2px solid #FFF;
   border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
+  background: #FFF;
 }
 @media(min-width:1760px) {
   .root {
-    margin: 0;
+    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true, fullscreen: true, disableCloseButton: true and hasHeader: false 1`] = `
+exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: false and hasHeader: false 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -1473,7 +1248,7 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
   padding: 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
   min-width: 100%;
   max-width: none;
@@ -1495,18 +1270,6 @@ h2 {
 .root:not(:focus-visible)::before {
   border: 0;
 }
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
-}
 @media(min-width:1760px) {
   .root {
     margin: 0;
@@ -1515,7 +1278,7 @@ h2 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true, fullscreen: true, disableCloseButton: true and hasHeader: true 1`] = `
+exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: false and hasHeader: true 1`] = `
 ":host {
   position: fixed !important;
   top: 0 !important;
@@ -1569,7 +1332,7 @@ h2 {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(1,1,1);
   padding: 32px;
-  background-color: #FFF;
+  background: #FFF;
   outline: 0;
   min-width: 100%;
   max-width: none;
@@ -1594,21 +1357,213 @@ h2 {
 .header {
   padding: 0 0 8px;
 }
-.close {
+@media(min-width:1760px) {
+  .root {
+    margin: 0;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: true and hasHeader: false 1`] = `
+":host {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  opacity: 1 !important;
+  visibility: inherit !important;
+  overflow-y: auto;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:host::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+}
+::slotted(.stretch-to-full-modal-width) {
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  margin-top: -2rem !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.root {
+  position: relative;
+  box-sizing: border-box;
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+  transform: scale3d(1,1,1);
+  padding: 2rem 32px 32px 32px;
+  background: #FFF;
+  outline: 0;
+  min-width: 100%;
+  max-width: none;
+  min-height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.dismiss {
   position: absolute;
   top: 8px;
   right: 8px;
   border: 2px solid #FFF;
   border-radius: 4px;
-  background-color: #FFF;
-}
-.close:hover {
-  background-color: transparent;
-  border-color: transparent;
+  background: #FFF;
 }
 @media(min-width:1760px) {
   .root {
     margin: 0;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: true and hasHeader: true 1`] = `
+":host {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  opacity: 1 !important;
+  visibility: inherit !important;
+  overflow-y: auto;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:host::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+}
+::slotted(.stretch-to-full-modal-width) {
+  width: calc(100% + 64px) !important;
+  margin: 0 -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  margin-bottom: -32px !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 !important;
+}
+h2 {
+  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.root {
+  position: relative;
+  box-sizing: border-box;
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+  transform: scale3d(1,1,1);
+  padding: 2rem 32px 32px 32px;
+  background: #FFF;
+  outline: 0;
+  min-width: 100%;
+  max-width: none;
+  min-height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.root:focus::before {
+  content: "";
+  position: fixed;
+  border: 2px solid;
+  border-radius: 0;
+  border-color: #010205;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.header {
+  padding: 0 0 8px;
+}
+.dismiss {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background: #FFF;
+}
+@media(min-width:1760px) {
+  .root {
+    margin: 0;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: transparent;
+    border-color: transparent;
   }
 }
 "

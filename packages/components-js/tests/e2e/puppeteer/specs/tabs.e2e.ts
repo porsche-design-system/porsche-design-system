@@ -304,6 +304,21 @@ describe('events', () => {
 
     expect(await getCountedEvents()).toBe(1);
   });
+
+  it('should emit both tabChange and change event', async () => {
+    await initTabs();
+    const host = await getHost();
+
+    await addEventListener(host, 'tabChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const [, secondButton] = await getAllTabs();
+    await secondButton.click();
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+  });
 });
 
 it('should not crash without children', async () => {

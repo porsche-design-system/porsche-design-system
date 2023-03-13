@@ -5,7 +5,7 @@ import { PTextList, PTextListItem } from '@porsche-design-system/components-reac
 const TextListPage: NextPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should show unordered text list on light background">
+      <div className="playground light" title="should show text list type=unordered on light background">
         <PTextList>
           <PTextListItem>Unordered root list item</PTextListItem>
           <PTextListItem>
@@ -19,7 +19,7 @@ const TextListPage: NextPage = (): JSX.Element => {
         </PTextList>
       </div>
 
-      <div className="playground dark" title="should show unordered text list on dark background">
+      <div className="playground dark" title="should show text list type=unordered on dark background">
         <PTextList theme="dark">
           <PTextListItem>Unordered root list item</PTextListItem>
           <PTextListItem>
@@ -33,7 +33,63 @@ const TextListPage: NextPage = (): JSX.Element => {
         </PTextList>
       </div>
 
-      <div className="playground light" title="should show ordered text list Numbered, on light background">
+      <div className="playground light" title="should show text list type=numbered on light background">
+        <PTextList type="numbered">
+          <PTextListItem>Numbered root list item</PTextListItem>
+          <PTextListItem>
+            Numbered root list item
+            <PTextList type="numbered">
+              <PTextListItem>Numbered nested list item</PTextListItem>
+              <PTextListItem>Numbered nested list item</PTextListItem>
+            </PTextList>
+          </PTextListItem>
+          <PTextListItem>Numbered root list item</PTextListItem>
+        </PTextList>
+      </div>
+
+      <div className="playground dark" title="should show text list type=numbered on dark background">
+        <PTextList type="numbered" theme="dark">
+          <PTextListItem>Numbered root list item</PTextListItem>
+          <PTextListItem>
+            Numbered root list item
+            <PTextList type="numbered" theme="dark">
+              <PTextListItem>Numbered nested list item</PTextListItem>
+              <PTextListItem>Numbered nested list item</PTextListItem>
+            </PTextList>
+          </PTextListItem>
+          <PTextListItem>Numbered root list item</PTextListItem>
+        </PTextList>
+      </div>
+
+      <div className="playground light" title="should show text list type=alphabetically on light background">
+        <PTextList type="alphabetically">
+          <PTextListItem>Alphabetically root list item</PTextListItem>
+          <PTextListItem>
+            Alphabetically root list item
+            <PTextList type="alphabetically">
+              <PTextListItem>Alphabetically nested list item</PTextListItem>
+              <PTextListItem>Alphabetically nested list item</PTextListItem>
+            </PTextList>
+          </PTextListItem>
+          <PTextListItem>Alphabetically root list item</PTextListItem>
+        </PTextList>
+      </div>
+
+      <div className="playground dark" title="should show text list type=alphabetically on dark background">
+        <PTextList type="alphabetically" theme="dark">
+          <PTextListItem>Alphabetically root list item</PTextListItem>
+          <PTextListItem>
+            Alphabetically root list item
+            <PTextList type="alphabetically" theme="dark">
+              <PTextListItem>Alphabetically nested list item</PTextListItem>
+              <PTextListItem>Alphabetically nested list item</PTextListItem>
+            </PTextList>
+          </PTextListItem>
+          <PTextListItem>Alphabetically root list item</PTextListItem>
+        </PTextList>
+      </div>
+
+      <div className="playground light" title="should show ordered text list numbered on light background">
         <PTextList listType="ordered">
           <PTextListItem>
             Numbered, ordered root list item
@@ -53,7 +109,7 @@ const TextListPage: NextPage = (): JSX.Element => {
         </PTextList>
       </div>
 
-      <div className="playground dark" title="should show ordered text list Numbered, on dark background">
+      <div className="playground dark" title="should show ordered text list numbered on dark background">
         <PTextList listType="ordered" theme="dark">
           <PTextListItem>
             Numbered, ordered root list item

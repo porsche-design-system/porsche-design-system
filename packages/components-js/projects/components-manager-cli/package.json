@@ -20,7 +20,7 @@
     "webpack": "^5.75.0"
   },
   "devDependencies": {
-    "@types/glob": "^8.0.1",
+    "@types/glob": "^8.1.0",
     "typescript": "~4.9.5"
   }
 }
