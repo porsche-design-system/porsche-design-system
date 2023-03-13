@@ -45,17 +45,22 @@ An icon can be added via the `icon` or `iconSource` property.
 If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor`
 property.
 
-<Playground :markup="backgroundColorMarkup" :config="{ ...config, colorScheme: backgroundColor.replace('background-', '') }">
+<Playground :markup="backgroundColorMarkup" :config="{ ...config, backgroundColor }">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ## Event Handling
 
-Whenever the selected item changes, a `segmentedControlChange` event gets emitted by the `p-segmented-control`.  
+Whenever the selected item changes, a `change` event gets emitted by the `p-segmented-control`.  
 Each event instance contains the newly selected value at `event.detail.value`.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>segmentedControlChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
+
 <Playground :frameworkMarkup="eventHandlingMarkup" :config="config">
-  <p-segmented-control :theme="theme" :value="eventHandlingValue" v-on:segmentedControlChange="eventHandlingValue = $event.detail.value">
+  <p-segmented-control :theme="theme" :value="eventHandlingValue" v-on:change="eventHandlingValue = $event.detail.value">
     <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
     <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
     <p-segmented-control-item value="3">Option 3</p-segmented-control-item>

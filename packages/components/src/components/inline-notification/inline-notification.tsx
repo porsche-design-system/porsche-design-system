@@ -1,11 +1,6 @@
-import type { IconName, PropTypes, Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 import type { IconColor } from '../icon/icon-utils';
 import type { InlineNotificationState, InlineNotificationStateDeprecated } from './inline-notification-utils';
-import {
-  getContentAriaAttributes,
-  getInlineNotificationIconName,
-  INLINE_NOTIFICATION_STATES,
-} from './inline-notification-utils';
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -17,6 +12,12 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
+import {
+  getContentAriaAttributes,
+  getInlineNotificationIconName,
+  INLINE_NOTIFICATION_STATES,
+} from './inline-notification-utils';
+import type { InlineNotificationActionIcon } from './inline-notification-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
@@ -55,7 +56,7 @@ export class InlineNotification {
   @Prop() public actionLoading?: boolean = false;
 
   /** Action icon of the inline-notification. */
-  @Prop() public actionIcon?: IconName = 'arrow-right';
+  @Prop() public actionIcon?: InlineNotificationActionIcon = 'arrow-right';
 
   /** Adapts the inline-notification color depending on the theme. */
   @Prop() public theme?: Theme = 'light';

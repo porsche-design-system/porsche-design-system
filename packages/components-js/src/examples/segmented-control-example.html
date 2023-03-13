@@ -12,7 +12,7 @@
   const segmentedControl = document.querySelector('p-segmented-control');
   const debugElement = document.querySelector('p-text');
 
-  segmentedControl.addEventListener('segmentedControlChange', (e) => {
+  segmentedControl.addEventListener('change', (e) => {
     const { value } = e.detail;
     segmentedControl.value = value;
     debugElement.innerText = `Current value: ${value}`;

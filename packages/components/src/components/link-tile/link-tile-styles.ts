@@ -1,4 +1,4 @@
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileSize, LinkTileWeight, LinkTileAlign } from './link-tile-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
@@ -15,13 +15,8 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 
-const sizeMap: {
-  inherit: { fontSize: string };
-  default: { fontSize: string };
-} = {
-  inherit: {
-    fontSize: 'inherit',
-  },
+const sizeMap: Record<LinkTileSize, { fontSize: string }> = {
+  inherit: { fontSize: 'inherit' },
   default: { fontSize: fontSizeTextMedium },
 };
 
@@ -49,7 +44,9 @@ export const getComponentCss = (
           ...textLargeStyle,
           ...mergeDeep(
             buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
-            buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
+            buildResponsiveStyles(weight, (w: LinkTileWeight) => ({
+              fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w),
+            }))
           ),
         },
       },

@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
-import type { PopoverDirection } from './popover-utils';
 import {
   addDocumentEventListener,
+  POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
   removeDocumentEventListener,
   updatePopoverStyles,
@@ -15,12 +15,13 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
+import type { PopoverAriaAttribute, PopoverDirection } from './popover-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
-  aria: AllowedTypes.aria<'aria-label'>(['aria-label']),
+  aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -39,7 +40,7 @@ export class Popover {
   @Prop() public description?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
+  @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
   /** Adapts the popover color depending on the theme. */
   @Prop() public theme?: Theme = 'light';

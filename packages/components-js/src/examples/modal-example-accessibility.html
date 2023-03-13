@@ -10,7 +10,7 @@
 
 <script>
   const modal = document.querySelector('p-modal');
-  modal.addEventListener('close', () => {
+  modal.addEventListener('dismiss', () => {
     modal.open = false;
   });
   document.querySelector('p-button').addEventListener('click', () => (modal.open = true));

@@ -23,9 +23,12 @@ describe('render', () => {
     component.render();
 
     expect(spy).toBeCalledWith(component, 'color', {
-      'notification-neutral': 'notification-info',
-      'neutral-contrast-high': 'primary',
       'background-default': 'background-base',
+      'neutral-contrast-high': 'primary',
+      'notification-neutral': 'notification-info-soft',
+      'notification-warning': 'notification-warning-soft',
+      'notification-success': 'notification-success-soft',
+      'notification-error': 'notification-error-soft',
     });
   });
 });

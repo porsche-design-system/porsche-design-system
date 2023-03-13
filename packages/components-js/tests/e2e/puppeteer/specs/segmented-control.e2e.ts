@@ -181,6 +181,21 @@ describe('events', () => {
     await button.click();
     expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
   });
+
+  it('should emit both segmentedControlChange and change event', async () => {
+    await initSegmentedControl();
+    const host = await getHost();
+
+    await addEventListener(host, 'segmentedControlChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const firstItemHost = await getFirstItemHost();
+    await firstItemHost.click();
+    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+  });
 });
 
 describe('keyboard', () => {

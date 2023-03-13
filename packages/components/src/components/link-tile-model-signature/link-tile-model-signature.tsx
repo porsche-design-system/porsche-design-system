@@ -11,7 +11,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
-import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS } from '../link-tile/link-tile-utils';
+import { LINK_TILE_ASPECT_RATIOS } from '../link-tile/link-tile-utils';
 import type { HeadingTag } from '../heading/heading-tag';
 import type {
   LinkTileModelSignatureAspectRatio,
@@ -19,11 +19,11 @@ import type {
   LinkTileModelSignatureModel,
   LinkTileModelSignatureWeight,
 } from './link-tile-model-signature-utils';
-import { getSlottedPLinkOrThrow } from './link-tile-model-signature-utils';
+import { getSlottedPLinkOrThrow, LINK_TILE_MODEL_SIGNATURE_WEIGHTS } from './link-tile-model-signature-utils';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
-  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_MODEL_SIGNATURE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
@@ -42,7 +42,7 @@ export class LinkTileModelSignature {
   @Prop() public model?: LinkTileModelSignatureModel = '911';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileModelSignatureWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileModelSignatureWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile-model-signature. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio> = '4:3';

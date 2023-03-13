@@ -1,12 +1,14 @@
 import { getTagName } from '../../utils';
 import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
-import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
+import type { LinkTileAspectRatio } from '../link-tile/link-tile-utils';
 import type { JssDirections } from '../../styles/jss-direction-styles';
 import { throwIfPropIsNotOfKind } from '../../utils/validation/throwIfPropIsNotOfKind';
 
 export type LinkTileModelSignatureModel = ModelSignatureModel;
-export type LinkTileModelSignatureWeight = LinkTileWeight;
+
+export const LINK_TILE_MODEL_SIGNATURE_WEIGHTS = ['regular', 'semi-bold'] as const;
+export type LinkTileModelSignatureWeight = (typeof LINK_TILE_MODEL_SIGNATURE_WEIGHTS)[number];
 export type LinkTileModelSignatureAspectRatio = LinkTileAspectRatio;
 export type LinkTileModelSignatureLinkDirection = JssDirections;
 

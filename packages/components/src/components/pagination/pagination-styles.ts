@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import type { NumberOfPageLinks } from './pagination-utils';
+import type { PaginationMaxNumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
@@ -34,7 +34,7 @@ const disabledCursorStyle: JssStyle = {
 };
 
 export const getComponentCss = (
-  maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
+  maxNumberOfPageLinks: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>,
   theme: Theme
 ): string => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
@@ -48,7 +48,7 @@ export const getComponentCss = (
       nav: {
         display: 'flex',
         justifyContent: 'center',
-        ...buildResponsiveStyles(maxNumberOfPageLinks, (n: NumberOfPageLinks) => ({
+        ...buildResponsiveStyles(maxNumberOfPageLinks, (n: PaginationMaxNumberOfPageLinks) => ({
           counterReset: `size ${n}`,
         })),
       },

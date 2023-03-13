@@ -17,11 +17,14 @@ import type { JssDirections } from '../../styles/jss-direction-styles';
 import { getJssDirectionStyle } from '../../styles/jss-direction-styles';
 import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
+import type {
+  LinkTileModelSignatureAspectRatio,
+  LinkTileModelSignatureWeight,
+} from './link-tile-model-signature-utils';
 
 export const getComponentCss = (
-  aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
-  weight: BreakpointCustomizable<LinkTileWeight>,
+  aspectRatio: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>,
+  weight: BreakpointCustomizable<LinkTileModelSignatureWeight>,
   direction: BreakpointCustomizable<JssDirections>,
   hasDescription: boolean
 ): string => {
@@ -49,7 +52,7 @@ export const getComponentCss = (
       ...(!hasDescription && { color: getThemedTypographyColor('dark', 'primary') }),
       margin: 0,
       ...textLargeStyle,
-      ...buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) })),
+      ...buildResponsiveStyles(weight, (w: LinkTileModelSignatureWeight) => ({ fontWeight: getFontWeight(w) })),
     },
     ...(hasDescription && {
       'description-group': {

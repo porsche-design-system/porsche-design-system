@@ -4,7 +4,7 @@ import type { CarouselChangeEvent } from '@porsche-design-system/components-angu
 @Component({
   selector: 'page-carousel-example-events',
   template: `
-    <p-carousel [heading]="'Some Heading'" (carouselChange)="onCarouselChange($event)">
+    <p-carousel [heading]="'Some Heading'" (change)="onChange($event)">
       <div>Slide 1</div>
       <div>Slide 2</div>
       <div>Slide 3</div>
@@ -17,7 +17,7 @@ import type { CarouselChangeEvent } from '@porsche-design-system/components-angu
 export class CarouselExampleEventsComponent {
   lastEventDetail = 'none';
 
-  onCarouselChange(e: CustomEvent<CarouselChangeEvent>) {
+  onChange(e: CustomEvent<CarouselChangeEvent>) {
     this.lastEventDetail = JSON.stringify(e.detail);
   }
 }

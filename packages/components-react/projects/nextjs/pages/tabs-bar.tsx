@@ -179,25 +179,49 @@ const TabsBarPage: NextPage = (): JSX.Element => {
 
       <div className="playground light surface" title="should render tabs-bar gradientColorScheme surface on light background">
         <PTabsBar activeTabIndex={0} gradientColorScheme="surface">
-          <a href="#">Tab 1</a>
-          <a href="#">Tab 2</a>
-          <a href="#">Tab 3</a>
-          <a href="#">Tab 4</a>
-          <a href="#">Tab 5</a>
-          <a href="#">Tab 6</a>
-          <a href="#">Tab 7</a>
+          <a href="#">Tab gradientColorScheme 1</a>
+          <a href="#">Tab gradientColorScheme 2</a>
+          <a href="#">Tab gradientColorScheme 3</a>
+          <a href="#">Tab gradientColorScheme 4</a>
+          <a href="#">Tab gradientColorScheme 5</a>
+          <a href="#">Tab gradientColorScheme 6</a>
+          <a href="#">Tab gradientColorScheme 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground dark surface" title="should render tabs-bar gradientColorScheme surface on dark background">
         <PTabsBar activeTabIndex={0} theme="dark" gradientColorScheme="surface">
-          <a href="#">Tab 1</a>
-          <a href="#">Tab 2</a>
-          <a href="#">Tab 3</a>
-          <a href="#">Tab 4</a>
-          <a href="#">Tab 5</a>
-          <a href="#">Tab 6</a>
-          <a href="#">Tab 7</a>
+          <a href="#">Tab gradientColorScheme 1</a>
+          <a href="#">Tab gradientColorScheme 2</a>
+          <a href="#">Tab gradientColorScheme 3</a>
+          <a href="#">Tab gradientColorScheme 4</a>
+          <a href="#">Tab gradientColorScheme 5</a>
+          <a href="#">Tab gradientColorScheme 6</a>
+          <a href="#">Tab gradientColorScheme 7</a>
+        </PTabsBar>
+      </div>
+
+      <div className="playground light surface" title="should render tabs-bar gradientColor surface on light background">
+        <PTabsBar activeTabIndex={0} gradientColor="background-surface">
+          <a href="#">Tab gradientColor 1</a>
+          <a href="#">Tab gradientColor 2</a>
+          <a href="#">Tab gradientColor 3</a>
+          <a href="#">Tab gradientColor 4</a>
+          <a href="#">Tab gradientColor 5</a>
+          <a href="#">Tab gradientColor 6</a>
+          <a href="#">Tab gradientColor 7</a>
+        </PTabsBar>
+      </div>
+
+      <div className="playground dark surface" title="should render tabs-bar gradientColor surface on dark background">
+        <PTabsBar activeTabIndex={0} theme="dark" gradientColor="background-surface">
+          <a href="#">Tab gradientColor 1</a>
+          <a href="#">Tab gradientColor 2</a>
+          <a href="#">Tab gradientColor 3</a>
+          <a href="#">Tab gradientColor 4</a>
+          <a href="#">Tab gradientColor 5</a>
+          <a href="#">Tab gradientColor 6</a>
+          <a href="#">Tab gradientColor 7</a>
         </PTabsBar>
       </div>
 

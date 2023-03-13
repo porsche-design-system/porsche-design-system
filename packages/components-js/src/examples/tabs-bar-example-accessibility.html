@@ -17,7 +17,7 @@
 <script>
   const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
 
-  document.querySelector('p-tabs-bar').addEventListener('tabChange', (e) => {
+  document.querySelector('p-tabs-bar').addEventListener('change', (e) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
 
     panels.forEach((panel, i) => {

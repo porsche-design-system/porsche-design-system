@@ -12,7 +12,7 @@ type GetComponentChunkLinksOptions = {
   format?: Format;
 };`;
 
-  const func = `export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | JSX.Element {
   const { components, cdn, format }: GetComponentChunkLinksOptions = {

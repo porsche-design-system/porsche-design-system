@@ -13,6 +13,8 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 
 exports[`should call validateProps() with correct parameters via render for p-banner: propTypes with ValidatorFunctions 1`] = `
 {
+  "description": "string",
+  "heading": "string",
   "persistent": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
@@ -65,6 +67,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "disablePagination": "breakpoint",
   "heading": "string",
   "intl": "shape",
+  "pagination": "breakpoint",
   "rewind": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
@@ -105,6 +108,7 @@ exports[`should call validateProps() with correct parameters via render for p-di
 exports[`should call validateProps() with correct parameters via render for p-divider: propTypes with ValidatorFunctions 1`] = `
 {
   "color": "oneOf",
+  "direction": "breakpoint",
   "orientation": "breakpoint",
   "theme": "oneOf",
 }
@@ -296,6 +300,7 @@ exports[`should call validateProps() with correct parameters via render for p-mo
   "aria": "aria",
   "disableBackdropClick": "boolean",
   "disableCloseButton": "boolean",
+  "dismissButton": "boolean",
   "fullscreen": "breakpoint",
   "heading": "string",
   "open": "boolean",
@@ -318,6 +323,7 @@ exports[`should call validateProps() with correct parameters via render for p-pa
   "allyLabelNext": "string",
   "allyLabelPage": "string",
   "allyLabelPrev": "string",
+  "intl": "shape",
   "itemsPerPage": "number",
   "maxNumberOfPageLinks": "breakpoint",
   "theme": "oneOf",
@@ -346,6 +352,8 @@ exports[`should call validateProps() with correct parameters via render for p-ra
 
 exports[`should call validateProps() with correct parameters via render for p-scroller: propTypes with ValidatorFunctions 1`] = `
 {
+  "alignScrollIndicator": "oneOf",
+  "gradientColor": "oneOf",
   "gradientColorScheme": "oneOf",
   "scrollIndicatorPosition": "oneOf",
   "scrollToPosition": "shape",
@@ -442,6 +450,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs: propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "gradientColor": "oneOf",
   "gradientColorScheme": "oneOf",
   "size": "breakpoint",
   "theme": "oneOf",
@@ -452,6 +461,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs-bar: propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "gradientColor": "oneOf",
   "gradientColorScheme": "oneOf",
   "size": "breakpoint",
   "theme": "oneOf",
@@ -504,6 +514,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "label": "string",
   "message": "string",
   "showCharacterCount": "boolean",
+  "showCounter": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
   "unit": "string",
@@ -516,6 +527,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "listType": "oneOf",
   "orderType": "oneOf",
   "theme": "oneOf",
+  "type": "oneOf",
 }
 `;
 
@@ -526,6 +538,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "label": "string",
   "message": "string",
   "showCharacterCount": "boolean",
+  "showCounter": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
 }

@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import type { IconAriaAttribute, IconColor } from './icon-utils';
+import type { IconAriaAttribute, IconColor, IconColorDeprecated } from './icon-utils';
 import { buildIconUrl, ICON_ARIA_ATTRIBUTES, ICON_COLORS, IconSize } from './icon-utils';
 import {
   AllowedTypes,
@@ -8,6 +8,7 @@ import {
   TEXT_SIZES,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { getComponentCss } from './icon-styles';
@@ -56,9 +57,23 @@ export class Icon {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.color, this.size, this.theme);
+    const deprecationMap: Record<IconColorDeprecated, Exclude<IconColor, IconColorDeprecated>> = {
+      brand: 'primary',
+      default: 'primary',
+      'neutral-contrast-low': 'contrast-low',
+      'neutral-contrast-medium': 'contrast-medium',
+      'neutral-contrast-high': 'contrast-high',
+      'notification-neutral': 'notification-info',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Icon, IconColorDeprecated, IconColor>(this, 'color', deprecationMap);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      (deprecationMap[this.color] || this.color) as Exclude<IconColor, IconColorDeprecated>,
+      this.size,
+      this.theme
+    );
 
-    // TODO: add validation, which warns if a deprecated color is used
     // TODO: wouldn't it be better to set alt attribute instead of aria-label?
     return <img src={buildIconUrl(this.source || this.name)} {...parseAndGetAriaAttributes(this.aria)} alt="" />;
   }

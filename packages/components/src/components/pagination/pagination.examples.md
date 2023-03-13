@@ -2,6 +2,11 @@
 
 <TableOfContents></TableOfContents>
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>pageChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
+
 ## Basic usage
 
 To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7`

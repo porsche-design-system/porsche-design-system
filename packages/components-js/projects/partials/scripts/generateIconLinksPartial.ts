@@ -14,7 +14,7 @@ type GetIconLinksOptions = {
 
   const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
-  const func = `export function getIconLinks(opts?: GetIconLinksOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getIconLinks(opts: GetIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getIconLinks(opts?: GetIconLinksOptions): string;
 export function getIconLinks(opts?: GetIconLinksOptions): string | JSX.Element {
   const { icons, cdn, format }: GetIconLinksOptions = {

@@ -17,12 +17,16 @@ import {
   THEMES,
   unobserveAttributes,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, IconName, PropTypes, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
-import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import type {
+  TextFieldWrapperActionIcon,
+  TextFieldWrapperState,
+  TextFieldWrapperUnitPosition,
+} from './text-field-wrapper-utils';
 import {
   addInputEventListenerForSearch,
   dispatchInputEvent,
@@ -43,11 +47,12 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   unit: AllowedTypes.string,
   unitPosition: AllowedTypes.oneOf<TextFieldWrapperUnitPosition>(UNIT_POSITIONS),
   description: AllowedTypes.string,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<TextFieldWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
-  actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>(['locate', undefined]),
+  showCounter: AllowedTypes.boolean,
+  actionIcon: AllowedTypes.oneOf<TextFieldWrapperActionIcon>([undefined, 'locate']),
   actionLoading: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -72,7 +77,7 @@ export class TextFieldWrapper {
   @Prop() public description?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: TextFieldWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -80,11 +85,16 @@ export class TextFieldWrapper {
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead.
+   * Show or hide max character count. */
+  @Prop() public showCharacterCount?: boolean;
+
   /** Show or hide max character count. */
-  @Prop() public showCharacterCount?: boolean = true;
+  @Prop() public showCounter?: boolean = true;
 
   /** Action icon can be set to `locate` for `input type="search"` in order to display an action button. */
-  @Prop() public actionIcon?: Extract<IconName, 'locate'>;
+  @Prop() public actionIcon?: TextFieldWrapperActionIcon;
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
@@ -132,7 +142,8 @@ export class TextFieldWrapper {
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.isCounterVisible = this.showCharacterCount && this.hasCounter;
+    this.isCounterVisible =
+      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
 
     if (this.isSearch) {
@@ -177,6 +188,11 @@ export class TextFieldWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof TextFieldWrapper>(
+      this,
+      'showCharacterCount',
+      'Please use showCounter prop instead.'
+    );
     throwIfUnitLengthExceeded(this.unit);
     const { readOnly, disabled, type } = this.input;
 
@@ -269,7 +285,7 @@ export class TextFieldWrapper {
                   key="icon"
                   class="icon"
                   name="search"
-                  color="disabled"
+                  color="state-disabled"
                   theme={this.theme}
                   aria-hidden="true"
                 />

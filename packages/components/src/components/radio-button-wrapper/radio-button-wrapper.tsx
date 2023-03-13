@@ -14,17 +14,16 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import type { FormState } from '../../utils/form/form-state';
 import { addChangeListener } from './radio-button-wrapper-utils';
+import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<RadioButtonWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -41,7 +40,7 @@ export class RadioButtonWrapper {
   @Prop() public label?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: RadioButtonWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';

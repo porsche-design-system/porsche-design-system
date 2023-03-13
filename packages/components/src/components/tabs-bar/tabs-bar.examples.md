@@ -27,8 +27,13 @@ Basic implementation is a tab bar with tabs to switch between the content. Just 
 change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate the window location, inside the
 `<p-tabs-bar>` component and it will handle all styling behaviors.
 
-In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event
+In order to get notified when the active tabs change, you need to register an event listener for the `change` event
 which is emitted by `p-tabs-bar`.
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
 
 ### Framework Implementations
 
@@ -73,25 +78,35 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 
 ## Weight
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>semi-bold</code> value instead.
+</p-inline-notification>
+
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
-## Gradient Color Scheme
+## Gradient color
 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Playground :markup="gradientColorSchemeMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <SelectOptions v-model="gradientColorScheme" :values="gradientColorSchemes" name="gradientColorScheme"></SelectOptions>
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>gradientColor</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
-import { TAB_SIZES, TAB_WEIGHTS } from './tabs-bar-utils';
-import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils'; 
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS, TABS_BAR_WEIGHTS_DEPRECATED } from './tabs-bar-utils';
+import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
 const buildAnchor = (name: string) => `  <a href="https://porsche.com" target="_blank">Tab ${name}</a>`;
@@ -126,25 +141,25 @@ ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
     ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
   size = 'medium';
-  sizes = [...TAB_SIZES, "{ base: 'small', l: 'medium' }"];
+  sizes = [...TABS_BAR_SIZES, "{ base: 'small', l: 'medium' }"];
   get sizeMarkup() {
     return `<p-tabs-bar size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
 
-  weight = 'semibold';
-  weights = TAB_WEIGHTS;
+  weight = 'semi-bold';
+  weights = TABS_BAR_WEIGHTS.map(item => TABS_BAR_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get weightMarkup() {
     return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
 
-  gradientColorScheme = 'surface';
-  gradientColorSchemes = GRADIENT_COLOR_THEMES;
-  get gradientColorSchemeMarkup() {
-    return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
+  gradientColor = 'background-surface';
+  gradientColors = GRADIENT_COLORS;
+  get gradientColorMarkup() {
+    return `<p-tabs-bar gradient-color="${this.gradientColor}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
@@ -178,8 +193,8 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     this.updateAndRegister();
     
     /* theme switch needs to register event listeners again */
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
+    const themeTabsBar = this.$el.querySelectorAll('.playground > p-tabs-bar');
+    themeTabsBar.forEach(tab => tab.addEventListener('change', () => {
       this.updateAndRegister(); 
     }));    
   }
@@ -195,17 +210,17 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('change', this.onTabsBarChange));
 
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-      this.onTabChange(e);
+    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('change', (e: CustomEvent<TabsBarChangeEvent>)=> {
+      this.onTabsBarChange(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
 
-  onTabChange = (e: CustomEvent) => {
+  onTabsBarChange = (e: CustomEvent<TabsBarChangeEvent>) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }
