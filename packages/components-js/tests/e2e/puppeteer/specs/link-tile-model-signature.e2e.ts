@@ -1,5 +1,6 @@
 import {
   expectA11yToMatchSnapshot,
+  getActiveElementTagName,
   getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
@@ -19,6 +20,7 @@ const getHost = () => selectNode(page, 'p-link-tile-model-signature');
 const getRoot = () => selectNode(page, 'p-link-tile-model-signature >>> .root');
 const getOverlayAnchor = () => selectNode(page, 'p-link-tile-model-signature >>> a');
 const getPrimaryLink = () => selectNode(page, 'p-link-tile-model-signature > p-link[slot="primary"] ');
+const getSecondaryLink = () => selectNode(page, 'p-link-tile-model-signature > p-link[slot="secondary"] ');
 const getHeading = () => selectNode(page, 'p-link-tile-model-signature >>> .heading');
 const getDescription = () => selectNode(page, 'p-link-tile-model-signature >>> .description');
 
@@ -256,5 +258,39 @@ describe('accessibility', () => {
     const root = await getRoot();
 
     await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
+  });
+});
+
+describe('focus', () => {
+  it('should have focus on slotted p-links', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<a href="#" id="before">before</a>
+<p-link-tile-model-signature
+    heading="Some heading"
+    >
+  <img src="${imgSrc}" alt="Some image label"/>
+  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+</p-link-tile-model-signature>
+<a href="#" id="after">after</a>`
+    );
+    const primaryLink = await getPrimaryLink();
+    const primaryTagName = await primaryLink.evaluate((el) => el.tagName);
+
+    const secondaryLink = await getSecondaryLink();
+    const secondaryTagName = await secondaryLink.evaluate((el) => el.tagName);
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page), 'active element after first tab click').toBe('A');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page), 'active element after second tab click').toBe(primaryTagName);
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page), 'active element after third tab click').toBe(secondaryTagName);
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page), 'active element after fourth tab click').toBe('A');
   });
 });
