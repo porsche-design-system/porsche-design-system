@@ -23,7 +23,7 @@ export default class Code extends Vue {
   get headRow(): string {
     return ['', ...TAG_NAMES].map((tagName) => {
       const { isDeprecated } = getComponentMeta(tagName) || {};
-      return `<p-table-head-cell>${tagName}${isDeprecated ? '🚫' : ''}</p-table-head-cell>`;
+      return `<p-table-head-cell>${tagName}${isDeprecated ? ' 🚫' : ''}</p-table-head-cell>`;
     }).join('');
   }
 
