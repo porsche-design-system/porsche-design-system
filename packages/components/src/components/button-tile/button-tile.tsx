@@ -99,7 +99,9 @@ export class ButtonTile implements Tile {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, [
+    attachComponentCss(
+      this.host,
+      getComponentCss,
       this.aspectRatio,
       this.size,
       this.weight,
@@ -107,8 +109,8 @@ export class ButtonTile implements Tile {
       this.compact,
       this.gradient,
       this.disabled,
-      isDisabledOrLoading(this.disabled, this.loading),
-    ]);
+      isDisabledOrLoading(this.disabled, this.loading)
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

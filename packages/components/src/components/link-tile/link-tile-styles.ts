@@ -1,19 +1,8 @@
-import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from '../../utils';
 import { getCss } from '../../utils';
 import { getLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 import { getInsetJssStyle } from '../../styles';
 
-export const getComponentCss = (
-  args: [
-    BreakpointCustomizable<LinkTileAspectRatio>,
-    BreakpointCustomizable<LinkTileSize>,
-    BreakpointCustomizable<LinkTileWeight>,
-    LinkTileAlign,
-    BreakpointCustomizable<boolean>,
-    boolean
-  ]
-): string => {
+export const getComponentCss = (...args: Parameters<typeof getLinkButtonTileStyles>): string => {
   return getCss({
     ...getLinkButtonTileStyles(...args),
     // is used for expanded click-area only
