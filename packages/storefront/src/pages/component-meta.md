@@ -51,7 +51,7 @@ export default class Code extends Vue {
             value = value.map(val => {
               let allowedValues = allowedPropValues[val];
               allowedValues = (Array.isArray(allowedValues) && allowedValues.map(x => x === null ? 'undefined' : x).join('<br>– ')) || allowedValues;
-              return ('<span class="prop">' + val + [breakpointCustomizableProps.includes(val) && '🛠️' , deprecatedProps.includes(val) && '🚫'].filter(x => x).join('') + '</span>') +
+              return ('<span class="prop">' + val + [breakpointCustomizableProps.includes(val) && ' 🛠️' , deprecatedProps.includes(val) && ' 🚫'].filter(x => x).join('') + '</span>') +
               (allowedValues ? ('<div style="display: none">– ' + allowedValues + '</div>') : '')
             });
           } else if (key === 'eventNames') {
