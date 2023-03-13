@@ -11,6 +11,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { Page } from 'puppeteer';
+import { HeadingTag } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -47,6 +48,18 @@ it('should mirror anchor props of slot name="primary" onto overlay anchor', asyn
   const overlayAnchor = await getOverlayAnchor();
 
   expect(await getProperty(primaryLink, 'href')).toEqual(await getProperty(overlayAnchor, 'href'));
+});
+
+it('should wrap heading in correct headingTag', async () => {
+  await initLinkTileModelSignature();
+
+  expect(await (await getHeading()).evaluate((heading) => (heading.parentNode as HTMLElement).tagName)).toBe('H2');
+
+  const host = await getHost();
+  await setProperty(host, 'headingTag', 'h3');
+  await waitForStencilLifecycle(page);
+
+  expect(await (await getHeading()).evaluate((heading) => (heading.parentNode as HTMLElement).tagName)).toBe('H3');
 });
 
 it('should render description', async () => {
