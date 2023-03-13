@@ -9,7 +9,7 @@ performance, changing its available columns on mobile (6 content columns + 2 saf
 (8/12/14 content columns + 2 safe zone columns). It has a size range between 320px and 2560px, using fluid sized columns
 and gaps.
 
-<p-link href="patterns/design-tokens/example/grid" target="_blank" variant="secondary">View Porsche Grid in Full
+<p-link href="patterns/styles/example/grid" target="_blank" variant="secondary">View Porsche Grid in Full
 Window</p-link>
 
 <Playground :frameworkMarkup="codeExample">
