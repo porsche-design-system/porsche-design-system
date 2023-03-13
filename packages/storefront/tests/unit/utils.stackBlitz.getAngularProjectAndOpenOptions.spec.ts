@@ -224,7 +224,7 @@ describe('getAppComponentTs()', () => {
     expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
   });
 
-  fit('should replace styles with styleUrls for hasInlineScss = true', () => {
+  it('should replace styles with styleUrls for hasInlineScss = true', () => {
     const input = `@Component({
   selector: 'page-styles-border-example',
   styles: [
