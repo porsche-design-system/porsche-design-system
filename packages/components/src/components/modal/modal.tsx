@@ -10,7 +10,12 @@ import {
   validateProps,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
-import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
+import {
+  MODAL_ARIA_ATTRIBUTES,
+  setScrollLock,
+  warnIfAriaAndHeadingPropsAreUndefined,
+  clickStartedInScrollbarTrack,
+} from './modal-utils';
 import { getComponentCss } from './modal-styles';
 
 const propTypes: PropTypes<typeof Modal> = {
@@ -146,19 +151,8 @@ export class Modal {
     setScrollLock(this.host, isOpen, !this.disableCloseButton && this.closeBtn, this.closeModal);
   }
 
-  private clickStartedInScrollbarTrack(e: MouseEvent): boolean {
-    const hasScrollbars = this.host.scrollHeight > this.host.offsetHeight;
-
-    if (!hasScrollbars) {
-      return false;
-    } else {
-      const hasOverlayScrollbars = this.host.scrollWidth === this.host.offsetWidth;
-      return e.clientX > this.host.clientWidth - (hasOverlayScrollbars ? 17 : 0);
-    }
-  }
-
   private onMouseDown = (e: MouseEvent): void => {
-    if ((e.composedPath() as HTMLElement[])[0] === this.host && !this.clickStartedInScrollbarTrack(e)) {
+    if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {
       this.closeModal();
     }
   };
