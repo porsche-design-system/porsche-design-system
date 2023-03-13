@@ -36,7 +36,7 @@ export const extendMarkupWithAppComponent = (markup: string): string =>
 export class AppComponent {}`;
 
 export const hasMarkupInlineScss = (input: string): boolean => {
-  const [, styles] = input.match(/  styles: \[([\s\S]+?)\]/) || [];
+  const [, styles] = input.match(/ {2}styles: \[([\s\S]+?)\]/) || [];
   return !!styles?.match(/@import|@use/);
 };
 
@@ -44,11 +44,11 @@ export const hasMarkupInlineScss = (input: string): boolean => {
 // therefore we extract inline scss into a separate file and reference it via styleUrls
 // open stackblitz issues: https://github.com/stackblitz/core/search?q=angular.json&type=issues
 export const extractInlineStyles = (input: string, pdsVersion: string): string => {
-  const [, inlineScss = ''] = input.match(/  styles: \[\s+`\n([\s\S]+?)\s+`,\s+\],\n/) || [];
+  const [, inlineScss = ''] = input.match(/ {2}styles: \[\s+`\n([\s\S]+?)\s+`,\s+\],\n/) || [];
 
   return inlineScss
-    .replace(/^      /g, '')
-    .replace(/\n      /g, '\n')
+    .replace(/^ {6}/g, '')
+    .replace(/\n {6}/g, '\n')
     .replace(
       /^(@(?:import|use)) '(@porsche-design-system)/,
       isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '$&' : "$1 '../../$2"
@@ -71,7 +71,7 @@ export const getAppComponentTs = (
   );
 
   if (hasInlineScss) {
-    result = result.replace(/  styles: \[[\s\S]+\],/, "  styleUrls: ['./app.component.scss'],");
+    result = result.replace(/ {2}styles: \[[\s\S]+\],/, "  styleUrls: ['./app.component.scss'],");
   }
 
   return result;
