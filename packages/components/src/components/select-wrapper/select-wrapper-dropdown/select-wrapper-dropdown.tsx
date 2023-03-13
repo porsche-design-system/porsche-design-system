@@ -7,7 +7,11 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
-import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type {
+  DropdownDirectionInternal,
+  SelectWrapperDropdownDirection,
+  SelectWrapperState,
+} from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
   getListAriaAttributes,
@@ -34,7 +38,6 @@ import {
   determineDirection,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
-import type { FormState } from '../../../utils/form/form-state';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
@@ -48,8 +51,8 @@ export class SelectWrapperDropdown {
   @Prop() public label?: string;
   @Prop() public description?: string;
   @Prop() public message?: string;
-  @Prop() public state?: FormState;
-  @Prop() public direction?: DropdownDirection = 'auto';
+  @Prop() public state?: SelectWrapperState;
+  @Prop() public direction?: SelectWrapperDropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
   @Prop() public required?: boolean = false;
@@ -206,7 +209,7 @@ export class SelectWrapperDropdown {
                       <PrefixedTagNames.pIcon
                         aria-hidden="true"
                         name="check"
-                        color={disabled ? 'disabled' : 'primary'}
+                        color={disabled ? 'state-disabled' : 'primary'}
                         theme={this.theme}
                       />
                     )}

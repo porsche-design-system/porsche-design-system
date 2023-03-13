@@ -1,5 +1,5 @@
-import type { LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
-import type { MarqueAriaAttribute } from './marque-utils';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
+import type { MarqueAriaAttribute, MarqueTarget } from './marque-utils';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
@@ -33,7 +33,7 @@ export class Marque {
   @Prop() public href?: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: MarqueTarget = '_self';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttribute>;

@@ -2,7 +2,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { pascalCase, paramCase } from 'change-case';
-import { getComponentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';

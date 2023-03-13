@@ -1,4 +1,6 @@
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
+import type { TextWeightDeprecated } from './text-weight';
+import type { TextColorDeprecated } from './text-color';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
@@ -13,7 +15,7 @@ import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../s
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { TEXT_TAGS } from './text-utils';
 
-const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
+const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-small': fontSizeTextXSmall,
   small: fontSizeTextSmall,
   medium: fontSizeTextMedium,
@@ -23,9 +25,9 @@ const sizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
-  weight: TextWeight,
+  weight: Exclude<TextWeight, TextWeightDeprecated>,
   align: TextAlign,
-  color: TextColor,
+  color: Exclude<TextColor, TextColorDeprecated>,
   ellipsis: boolean,
   theme: Theme
 ): string => {

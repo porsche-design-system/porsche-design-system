@@ -215,6 +215,21 @@ describe('events', () => {
     await page.keyboard.press('Enter');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
   });
+
+  it('should emit both accordionChange and change event', async () => {
+    await initAccordion();
+    const host = await getHost();
+
+    await addEventListener(host, 'accordionChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const button = await getButton();
+    await button.click();
+    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+  });
 });
 
 describe('focus', () => {

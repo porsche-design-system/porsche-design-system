@@ -510,6 +510,21 @@ describe('events', () => {
     await prevButton.click();
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
   });
+
+  it('should emit both carouselChange and change event', async () => {
+    await initCarousel();
+    const host = await getHost();
+
+    await addEventListener(host, 'carouselChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const nextButton = await getButtonNext();
+    await nextButton.click();
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+  });
 });
 
 describe('lifecycle', () => {

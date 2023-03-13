@@ -6,7 +6,7 @@ Avoid using long step names.
 
 The component does not handle the display of your content. When using the component you have to manually take care of
 the content to be rendered beneath. To help with this task, if a step is clicked, the component triggers an event called
-`stepChange` with the index of the clicked step.
+`change` with the index of the clicked step.
 
 **Note**: Maximum of 9 steps are supported.
 
@@ -27,8 +27,13 @@ If the `state` property is `undefined` the step renders as stateless and disable
 This can be used to prevent the user from navigating to a step which is not yet reachable. This is to be used for future
 steps which cannot yet be processed at the time.
 
-By clicking on a previous step, the `p-stepper-horizontal` emits the `stepChange` event, which contains the index of the
+By clicking on a previous step, the `p-stepper-horizontal` emits the `change` event, which contains the index of the
 clicked step.
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>stepChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
 
 <Playground :config="config" :markup="basic"></Playground>
 
@@ -51,8 +56,8 @@ If the amount of steps exceeds the viewport, the component renders arrow buttons
 Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
-  <p-stepper-horizontal :theme="theme" @stepChange="onStepChange">    
-    <p-stepper-horizontal-item v-for="({ state, text }, i) in steps" :state="state">{{ text }}</p-stepper-horizontal-item>
+  <p-stepper-horizontal :theme="theme" @change="onChange">    
+    <p-stepper-horizontal-item v-for="({ state, text }, i) in steps" :key="i" :state="state">{{ text }}</p-stepper-horizontal-item>
   </p-stepper-horizontal>
   <p-text :theme="theme" class="mock-content">{{ stepContent[getActiveStepIndex(steps)] }}</p-text>
 
@@ -155,7 +160,7 @@ export default class Code extends Vue {
     }
   }
 
-  onStepChange(e): void {
+  onChange(e): void {
     const { activeStepIndex } = e.detail;
     for (let i = activeStepIndex + 1; i < this.steps.length; i++) {
       /* reset step state when going back via stepper horizontal item click */

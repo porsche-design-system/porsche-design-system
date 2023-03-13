@@ -20,7 +20,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                 {
                   "children": [
                     {
-                      "name": "Close modal",
+                      "name": "Dismiss modal",
                       "role": "StaticText",
                     },
                   ],
@@ -30,7 +30,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
               "role": "none",
             },
           ],
-          "name": "Close modal",
+          "name": "Dismiss modal",
           "role": "button",
         },
       ],

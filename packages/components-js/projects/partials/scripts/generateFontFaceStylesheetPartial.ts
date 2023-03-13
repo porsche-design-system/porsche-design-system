@@ -23,7 +23,7 @@ export const generateFontFaceStylesheetPartial = (): string => {
       .replace('"$URL"', '{url}')
       .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
 
-  const func = `export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getFontFaceStylesheet(opts: GetFontFaceStylesheetOptions & { format: 'jsx' }): JSX.Element;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): string;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): string | JSX.Element {
   const { cdn, format }: GetFontFaceStylesheetOptions = {

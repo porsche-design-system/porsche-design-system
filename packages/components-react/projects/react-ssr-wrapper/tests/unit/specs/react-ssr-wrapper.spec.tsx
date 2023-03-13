@@ -3,7 +3,8 @@ import * as fromComponents from '../../../src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { paramCase } from 'change-case';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {

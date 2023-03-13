@@ -1,29 +1,23 @@
-import { TagColor } from './tag-utils';
-import { Theme } from '../../utils/theme';
+import type { TagColor, TagColorDeprecated } from './tag-utils';
+import type { Theme } from '../../types';
 import { getThemedColors } from '../../styles';
 import { getThemedBackgroundColor } from './tag-shared-utils';
 
 describe('getThemedBackgroundColor()', () => {
-  it.each<[TagColor, Theme]>([
-    ['background-default', 'light'], // 'background-default' is deprecated (replaced with 'background-base')
+  it.each<[Exclude<TagColor, TagColorDeprecated>, Theme]>([
     ['background-base', 'light'],
-    ['neutral-contrast-high', 'light'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
     ['primary', 'light'],
-    ['notification-success', 'light'],
-    ['notification-warning', 'light'],
-    ['notification-error', 'light'],
-    ['notification-neutral', 'light'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
-    ['notification-info', 'light'],
+    ['notification-success-soft', 'light'],
+    ['notification-warning-soft', 'light'],
+    ['notification-error-soft', 'light'],
+    ['notification-info-soft', 'light'],
     ['background-surface', 'light'],
-    ['background-default', 'dark'], // 'background-default' is deprecated (replaced with 'background-base')
     ['background-base', 'dark'],
-    ['neutral-contrast-high', 'dark'], // 'neutral-contrast-high' is deprecated (replaced with 'primary')
     ['primary', 'dark'],
-    ['notification-success', 'dark'],
-    ['notification-warning', 'dark'],
-    ['notification-error', 'dark'],
-    ['notification-neutral', 'dark'], // 'notification-neutral' is deprecated (replaced with 'notification-info')
-    ['notification-info', 'dark'],
+    ['notification-success-soft', 'dark'],
+    ['notification-warning-soft', 'dark'],
+    ['notification-error-soft', 'dark'],
+    ['notification-info-soft', 'dark'],
     ['background-surface', 'dark'],
   ])('should return correct backgroundColor for color: %s, theme: %s', (color, theme) => {
     const themedColors = getThemedColors(theme);

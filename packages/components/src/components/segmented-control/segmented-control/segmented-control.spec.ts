@@ -59,6 +59,7 @@ describe('componentDidLoad', () => {
     // @ts-ignore
     const spy = jest.spyOn(component, 'updateValue');
     component.componentDidLoad();
+    component.change = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
 
     // click event handler
@@ -76,6 +77,7 @@ describe('componentDidLoad', () => {
 describe('updateValue()', () => {
   const component = new SegmentedControl();
   const emitSpy = jest.fn();
+  component.change = { emit: emitSpy };
   component.segmentedControlChange = { emit: emitSpy };
 
   const item = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;

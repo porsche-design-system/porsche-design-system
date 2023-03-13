@@ -7,7 +7,8 @@ import type {
   TagNamesWithPropertyNames,
 } from '../types';
 import { getUnusedTagNames, incrementTagName } from './count-data-helper';
-import { getComponentMeta, INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
   Object.values(TAG_NAMES).reduce((result, tagName) => {

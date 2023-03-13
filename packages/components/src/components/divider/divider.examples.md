@@ -14,11 +14,16 @@ Slotted content between the component tags won't be displayed.
 **Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
 height on the component itself.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>orientation</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>direction</code> property instead.
+</p-inline-notification>
+
 <Playground :markup="vertical" :config="config"></Playground>
 
 ## Responsive
 
-You can change the Divider orientation by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+You can change the divider's direction by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
 <Playground :markup="responsive" :config="config"></Playground>
 
@@ -48,12 +53,12 @@ export default class Code extends Vue {
 
   vertical = 
 `<div class="divider-vertical-container-example">
-  <p-divider orientation="vertical"></p-divider>
+  <p-divider direction="vertical"></p-divider>
 </div>`;
 
   responsive =
 `<div class="divider-vertical-responsive-container-example">
-  <p-divider orientation="{base: 'horizontal', l: 'vertical'}"></p-divider>
+  <p-divider direction="{base: 'horizontal', l: 'vertical'}"></p-divider>
 </div>`;
 
   color = 'contrast-low';

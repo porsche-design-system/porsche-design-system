@@ -218,6 +218,21 @@ describe('events', () => {
     });
     expect(await hasFocus(host)).toBe(false);
   });
+
+  it('should emit both switchChange and change event', async () => {
+    await initSwitch();
+    const host = await getHost();
+
+    await addEventListener(host, 'switchChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'switchChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const button = await getButton();
+    await button.click();
+    expect((await getEventSummary(host, 'switchChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+  });
 });
 
 describe('focus', () => {

@@ -94,20 +94,12 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
     <div class="narrow-content-grid">
       <div class="narrow-content">
         <span class="info"><b>Narrow</b> for small Components and Content</span
-        ><p-accordion
-          heading="Some Heading"
-          tag="h3"
-          [open]="isAccordion1Open"
-          (accordionChange)="onAccordion1Change($event)"
+        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (change)="onAccordion1Change($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
           </p></p-accordion
-        ><p-accordion
-          heading="Some Heading"
-          tag="h3"
-          [open]="isAccordion2Open"
-          (accordionChange)="onAccordion2Change($event)"
+        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (change)="onAccordion2Change($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
