@@ -3,7 +3,6 @@ import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
-import { paramCase } from 'change-case';
 
 export type ClickableTests = {
   state: string;
@@ -340,7 +339,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const childMarkup =
     tagName === 'p-link-tile-model-signature'
       ? '<p-link slot="primary" href="#" theme="dark" variant="primary">Some label</p-link>\n<p-link slot="secondary" href="#" theme="dark" variant="secondary">Some label</p-link>'
-      : buildChildMarkup(componentMeta.requiredChild);
+      : buildChildMarkup(requiredChild);
   const componentMarkup = `<${tagName}${attributes}>${childMarkup}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);

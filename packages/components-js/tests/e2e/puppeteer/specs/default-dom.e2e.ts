@@ -3,12 +3,10 @@ import {
   expectShadowDomToMatchSnapshot,
   goto,
   selectNode,
-  setProperty,
   waitForComponentsReady,
-  waitForStencilLifecycle,
 } from '../helpers';
 import type { Page } from 'puppeteer';
-import { getComponentMeta, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
