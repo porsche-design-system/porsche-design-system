@@ -27,10 +27,6 @@ it.each<TagName>(tagNamesWithJss)('should have ":host([hidden])" styles for %s',
   // some components require a parent and certain props in order to work
   addParentAndSetRequiredProps(tagName, component);
 
-  if (tagName === 'p-link-tile-model-signature') {
-    // needed as the component reads a property from a slotted anchor in this lifecycle
-    component.componentWillLoad();
-  }
   component.render();
   expect(spy).toBeCalledTimes(1);
 

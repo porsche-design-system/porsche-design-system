@@ -42,10 +42,6 @@ it.each<[TagName, string]>(tagNamesWithSlot)(
       component.host.innerHTML = childrenMarkup;
     }
 
-    if (tagName === 'p-link-tile-model-signature') {
-      // needed as the component reads a property from a slotted anchor in this lifecycle
-      component.componentWillLoad();
-    }
     component.render();
     expect(spy).toBeCalledTimes(1);
 

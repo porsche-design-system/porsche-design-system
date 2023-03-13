@@ -63,9 +63,9 @@ export class LinkTileModelSignature {
   private primaryLink: HTMLPLinkElement;
 
   public render(): JSX.Element {
+    validateProps(this, propTypes);
     throwIfChildCountIsExceeded(this.host, 3);
     this.primaryLink = getSlottedPLinkOrThrow(this.host);
-    validateProps(this, propTypes);
 
     attachComponentCss(
       this.host,

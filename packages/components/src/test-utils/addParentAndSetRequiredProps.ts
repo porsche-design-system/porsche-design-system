@@ -32,7 +32,6 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     });
   }
 
-  // TODO: We could do this for all components if needed?
   if (tagName === 'p-link-tile-model-signature') {
     meta.namedSlots.forEach((slotName, i) => {
       const child = document.createElement('p-link');
