@@ -31,7 +31,7 @@
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
   import Search from '@/components/Search.vue';
-  import { TagName } from '@porsche-design-system/shared';
+  import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
 
   @Component({
