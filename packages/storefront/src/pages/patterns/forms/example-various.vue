@@ -12,7 +12,7 @@
     <p-grid class="form-section-spacing">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate class="form-bottom-spacing" @submit.prevent="onSubmit">
-          <p-fieldset-wrapper
+          <p-fieldset
             label="Grouped list of checkboxes"
             required="true"
             v-bind:state="getState('check')"
@@ -43,9 +43,9 @@
                 v-on:change="onFieldBlur"
               />
             </p-checkbox-wrapper>
-          </p-fieldset-wrapper>
+          </p-fieldset>
 
-          <p-fieldset-wrapper
+          <p-fieldset
             label="Grouped list of radio buttons"
             required="true"
             v-bind:state="getState('radio')"
@@ -87,9 +87,9 @@
                 v-on:change="onFieldBlur"
               />
             </p-radio-button-wrapper>
-          </p-fieldset-wrapper>
+          </p-fieldset>
 
-          <p-fieldset-wrapper
+          <p-fieldset
             label="Grouped short input"
             v-bind:state="[getState('day'), getState('month'), getState('year')].includes('error') ? 'error' : 'none'"
             class="form-section-spacing"
@@ -142,7 +142,7 @@
               <div v-if="bag.errors.day">{{ bag.errors.day }}</div>
               <div v-if="bag.errors.month">{{ bag.errors.month }}</div>
             </span>
-          </p-fieldset-wrapper>
+          </p-fieldset>
         </form>
       </p-grid-item>
     </p-grid>

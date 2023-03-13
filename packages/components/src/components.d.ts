@@ -14,6 +14,7 @@ import { FormState } from "./utils/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerOrientation } from "./components/divider/divider-utils";
+import { FieldsetLabelSize } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
@@ -309,6 +310,32 @@ export namespace Components {
           * Defines orientation.
          */
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PFieldset {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: FieldsetLabelSize;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
         /**
           * Adapts color depending on theme.
          */
@@ -1418,6 +1445,12 @@ declare global {
         prototype: HTMLPDividerElement;
         new (): HTMLPDividerElement;
     };
+    interface HTMLPFieldsetElement extends Components.PFieldset, HTMLStencilElement {
+    }
+    var HTMLPFieldsetElement: {
+        prototype: HTMLPFieldsetElement;
+        new (): HTMLPFieldsetElement;
+    };
     interface HTMLPFieldsetWrapperElement extends Components.PFieldsetWrapper, HTMLStencilElement {
     }
     var HTMLPFieldsetWrapperElement: {
@@ -1711,6 +1744,7 @@ declare global {
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
+        "p-fieldset": HTMLPFieldsetElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
@@ -2032,6 +2066,32 @@ declare namespace LocalJSX {
           * Defines orientation.
          */
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PFieldset {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: FieldsetLabelSize;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
         /**
           * Adapts color depending on theme.
          */
@@ -3081,6 +3141,7 @@ declare namespace LocalJSX {
         "p-content-wrapper": PContentWrapper;
         "p-display": PDisplay;
         "p-divider": PDivider;
+        "p-fieldset": PFieldset;
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
@@ -3144,6 +3205,7 @@ declare module "@stencil/core" {
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
+            "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
