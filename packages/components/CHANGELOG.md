@@ -16,8 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Event `accordionChange` is deprecated, use `change` event instead.
 
 ```diff
-- <PAccordion onAccordionChange={() => {}} />
-+ <PAccordion onChange={() => {}} />
+- <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
++ <PAccordion onChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
 ```
 
 #### Banner:
@@ -47,8 +47,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-carousel disable-pagination="true"></p-carousel>
 + <p-carousel pagination="false"></p-carousel>
 
-- <PCarousel onCarouselChange={() => {}} />
-+ <PCarousel onChange={() => {}} />
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
++ <PCarousel onChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
 ```
 
 ##### Divider:
@@ -87,8 +87,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-modal disable-close-button="true"></p-modal>
 + <p-modal dismiss-button="false"></p-modal>
 
-- <PModal onClose={() => {}} />
-+ <PModal onDismiss={() => {}} />
+- <PModal onClose={(e: CustomEvent<void>) => {}} />
++ <PModal onDismiss={(e: CustomEvent<void>) => {}} />
 ```
 
 ##### Pagination:
@@ -100,8 +100,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-pagination ally-label="Paginierung" ally-label-prev="Vorherige Seite" ally-label-next="Nächste Seite" ally-label-page="Seite"></p-pagination>
 + <p-pagination intl="{root: 'Paginierung', prev: 'Vorherige Seite', next: 'Nächste Seite', page: 'Seite'}"></p-pagination>
 
-- <PPagination onPageChangee={() => {}} />
-+ <PPagination onChange={() => {}} />
+- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
++ <PPagination onChange={(e: CustomEvent<PaginationChangeEvent>) => {}} />
 ```
 
 ##### Scroller:
@@ -122,8 +122,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Event `segmentedControlChange` is deprecated, use `change` event instead.
 
 ```diff
-- <PSegmentedControl onSegmentedControlChange={() => {}} />
-+ <PSegmentedControl onChange={() => {}} />
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
++ <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
 ```
 
 #### Stepper Horizontal:
@@ -131,8 +131,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Event `stepChange` is deprecated, use `change` event instead.
 
 ```diff
-- <PStepperHorizontal onStepChange={() => {}} />
-+ <PStepperHorizontal onChange={() => {}} />
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
++ <PStepperHorizontal onChange={(e: CustomEvent<StepperHorizontalChangeEvent>) => {}} />
 ```
 
 #### Switch:
@@ -140,8 +140,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Event `switchChange` is deprecated, use `change` event instead.
 
 ```diff
-- <PSwitch onSwitchChange={() => {}} />
-+ <PSwitch onChange={() => {}} />
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
++ <PSwitch onChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
 ```
 
 #### Table:
@@ -149,8 +149,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Event `sortingChange` is deprecated, use `change` event instead.
 
 ```diff
-- <PTable onSortingChange={() => {}} />
-+ <PTable onChange={() => {}} />
+- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
++ <PTable onChange={(e: CustomEvent<TableChangeEvent>) => {}} />
 ```
 
 ##### Tabs:
@@ -166,8 +166,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-tabs weight="semibold"></p-tabs>
 + <p-tabs weight="semi-bold"></p-tabs>
 
-- <PTabs onTabChange={() => {}} />
-+ <PTabs onChange={() => {}} />
+- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabs onChange={(e: CustomEvent<TabsChangeEvent>) => {}} />
 ```
 
 ##### Tabs Bar:
@@ -183,8 +183,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - <p-tabs-bar weight="semibold"></p-tabs>
 + <p-tabs-bar weight="semi-bold"></p-tabs>
 
-- <PTabsBar onTabChange={() => {}} />
-+ <PTabsBar onChange={() => {}} />
+- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabsBar onChange={(e: CustomEvent<TabsChangeEvent>) => {}} />
 ```
 
 ##### Tag:
