@@ -1,6 +1,5 @@
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import {
-  buildDefaultComponentMarkup,
   expectToSkipFocusOnComponent,
   getActiveElementTagName,
   selectNode,
@@ -17,7 +16,6 @@ TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEa
   const value = tagName.includes('segmented-control-item') ? ' value="some value"' : '';
   const state = tagName.includes('stepper-horizontal-item') ? ' state="complete"' : '';
 
-  // TODO: we could refactor buildDefaultComponentMarkup() to use it here
   const wrapInRequiredParentIfNeeded = (child: string): string => {
     const { requiredParent } = getComponentMeta(tagName);
     return requiredParent ? `<${requiredParent}>${child}</${requiredParent}>` : child;

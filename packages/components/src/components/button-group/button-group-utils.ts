@@ -1,2 +1,3 @@
-export const BUTTON_GROUP_DIRECTIONS = ['row', 'column'] as const;
-export type ButtonGroupDirection = typeof BUTTON_GROUP_DIRECTIONS[number];
+import type { JssDirections } from '../../styles/jss-direction-styles';
+
+export type ButtonGroupDirection = JssDirections;
