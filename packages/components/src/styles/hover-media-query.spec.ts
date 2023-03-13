@@ -74,14 +74,16 @@ it.each<TagName>(tagNamesWithJss)(
       if (typeof value === 'object') {
         Object.entries(value).forEach(([childKey]) => {
           // nested selectors inside media query
-          if (childKey.match(/:hover[^)]/)) {
+          if (childKey.match(/:hover/)) {
             expect(key).toBe('@media(hover:hover)');
           }
         });
       }
 
       // top level selectors
-      expect(key).not.toMatch(/:hover[^)]/);
+      if (!key.match(/^@media\(hover:hover\)$/)) {
+        expect(key).not.toMatch(/:hover/);
+      }
     });
   }
 );

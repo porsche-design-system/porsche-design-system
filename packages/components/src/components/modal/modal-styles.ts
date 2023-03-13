@@ -16,6 +16,7 @@ import {
   getInsetJssStyle,
   getThemedColors,
   hostHiddenStyles,
+  hoverMediaQuery,
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
@@ -146,7 +147,7 @@ export const getComponentCss = (
         transition: `transform .6s ${transitionTimingFunction}`,
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         padding: hasDismissButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
-        backgroundColor,
+        background: backgroundColor,
         outline: 0,
         '&:focus::before': {
           content: '""',
@@ -179,11 +180,13 @@ export const getComponentCss = (
         right: '8px',
         border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
         borderRadius: '4px',
-        backgroundColor,
-        '&:hover': {
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
-        },
+        background: backgroundColor,
+        ...hoverMediaQuery({
+          '&:hover': {
+            background: 'transparent',
+            borderColor: 'transparent',
+          },
+        }),
       },
     }),
   });
