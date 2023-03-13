@@ -16,7 +16,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
-import type { ModalAriaAttributes, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
+import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
 import type { TagName } from '@porsche-design-system/shared';
 
 let page: Page;
@@ -35,7 +35,7 @@ const initBasicModal = (opts?: {
   isOpen?: boolean;
   content?: string;
   heading?: string;
-  aria?: SelectedAriaAttributes<ModalAriaAttributes>;
+  aria?: SelectedAriaAttributes<ModalAriaAttribute>;
   hasSlottedHeading?: boolean;
   disableCloseButton?: boolean;
 }): Promise<void> => {
@@ -634,7 +634,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, modal);
   });
 
-  it.each<[string, SelectedAriaAttributes<ModalAriaAttributes>, string]>([
+  it.each<[string, SelectedAriaAttributes<ModalAriaAttribute>, string]>([
     ['Some Heading', undefined, 'Some Heading'],
     [undefined, "{'aria-label': 'Some Heading'}", 'Some Heading'],
     ['Some Heading', "{'aria-label': 'Other Heading'}", 'Other Heading'],
