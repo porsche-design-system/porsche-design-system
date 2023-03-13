@@ -2,7 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '@porsche-design-system/shared';
+import { TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 
 const glue = '\n\n';
 
