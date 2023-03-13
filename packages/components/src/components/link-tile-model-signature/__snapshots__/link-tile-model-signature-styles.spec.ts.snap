@@ -84,7 +84,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   right: 0;
   background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
 }
-.description {
+.heading {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -96,7 +96,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   max-width: 34.375rem;
   gap: 4px;
 }
-.sub-description {
+.description {
   margin: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -113,7 +113,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   .root {
     padding-top: 75%;
   }
-  .description {
+  .heading {
     font-weight: 400;
   }
   .link-group {
@@ -126,7 +126,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   .root {
     padding-top: 133.33%;
   }
-  .description {
+  .heading {
     font-weight: 600;
   }
   .link-group {
@@ -139,7 +139,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   .root {
     padding-top: 56.25%;
   }
-  .description {
+  .heading {
     font-weight: 400;
   }
   .link-group {
@@ -152,7 +152,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   .root {
     padding-top: 177.75%;
   }
-  .description {
+  .heading {
     font-weight: 600;
   }
   .link-group {
@@ -165,7 +165,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   .root {
     padding-top: 100%;
   }
-  .description {
+  .heading {
     font-weight: 400;
   }
   .link-group {
@@ -258,7 +258,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
   right: 0;
   background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
 }
-.description {
+.heading {
   color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -357,7 +357,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   right: 0;
   background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
 }
-.description {
+.heading {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -369,7 +369,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
   max-width: 34.375rem;
   gap: 4px;
 }
-.sub-description {
+.description {
   margin: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -466,7 +466,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   right: 0;
   background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
 }
-.description {
+.heading {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -478,7 +478,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
   max-width: 34.375rem;
   gap: 4px;
 }
-.sub-description {
+.description {
   margin: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -575,7 +575,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
   right: 0;
   background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
 }
-.description {
+.heading {
   color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -674,7 +674,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   right: 0;
   background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
 }
-.description {
+.heading {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -686,7 +686,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size
   max-width: 34.375rem;
   gap: 4px;
 }
-.sub-description {
+.description {
   margin: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;

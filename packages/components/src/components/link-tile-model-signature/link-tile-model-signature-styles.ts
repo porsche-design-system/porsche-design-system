@@ -45,7 +45,7 @@ export const getComponentCss = (
       right: 0,
       ...gradientToBottomStyle,
     },
-    description: {
+    heading: {
       ...(!hasDescription && { color: getThemedTypographyColor('dark', 'primary') }),
       margin: 0,
       ...textLargeStyle,
@@ -57,7 +57,7 @@ export const getComponentCss = (
         maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
         gap: spacingStaticXSmall,
       },
-      'sub-description': {
+      description: {
         margin: 0,
         ...textSmallStyle,
       },

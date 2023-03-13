@@ -339,6 +339,7 @@ $&`
           );
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
+          .replace(/this\.primaryLink = getSlottedPLinkOrThrow(.*);/, '')
           .replace(/(getSlottedPLinkOrThrow\(this\.)props/g, '$1host') // replace this.props to this.host
           .replace(/const primaryLinkProps = \{[\w\s:,.]*};/g, '') // remove  object, as it is not defined
           .replace(/\s\{\.\.\.primaryLinkProps}/g, ''); // remove spread of removed object

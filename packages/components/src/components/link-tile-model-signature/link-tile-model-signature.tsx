@@ -62,12 +62,9 @@ export class LinkTileModelSignature {
 
   private primaryLink: HTMLPLinkElement;
 
-  public componentWillLoad(): void {
+  public render(): JSX.Element {
     throwIfChildCountIsExceeded(this.host, 3);
     this.primaryLink = getSlottedPLinkOrThrow(this.host);
-  }
-
-  public render(): JSX.Element {
     validateProps(this, propTypes);
 
     attachComponentCss(
@@ -88,7 +85,7 @@ export class LinkTileModelSignature {
 
     const heading: JSX.Element = (
       <this.headingTag>
-        <p class="description">{this.heading}</p>
+        <p class="heading">{this.heading}</p>
       </this.headingTag>
     );
 
@@ -105,7 +102,7 @@ export class LinkTileModelSignature {
           {this.description ? (
             <div class="description-group">
               {heading}
-              <p class="sub-description">{this.description}</p>
+              <p class="description">{this.description}</p>
             </div>
           ) : (
             heading
