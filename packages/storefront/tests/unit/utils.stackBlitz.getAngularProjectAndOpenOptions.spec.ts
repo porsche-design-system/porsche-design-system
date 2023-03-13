@@ -8,7 +8,8 @@ import {
   getIndexHtml,
   getMainTs,
   replaceSharedImportsWithConstants,
-  hasInlineScss,
+  hasMarkupInlineScss,
+  extractInlineStyles,
 } from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import type { ExternalDependency, SharedImportKey, StackBlitzFrameworkOpts } from '../../src/utils';
 
@@ -117,7 +118,7 @@ describe('extendMarkupWithAppComponent()', () => {
   });
 });
 
-describe('hasInlineScss()', () => {
+describe('hasMarkupInlineScss()', () => {
   const template = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -158,7 +159,31 @@ div { background: $pds-theme-light-primary; }`,
       : styles;
 
     const input = template.replace('{{PLACEHOLDER}}', styles);
-    expect(hasInlineScss(input)).toBe(result);
+    expect(hasMarkupInlineScss(input)).toBe(result);
+  });
+});
+
+describe('extractInlineStyles()', () => {
+  const input = `@Component({
+  selector: 'page-styles-border-example',
+  styles: [
+    \`
+      @import '@porsche-design-system/components-js/styles/scss';
+      .div {
+        color: $pds-theme-light-primary;
+      }
+    \`,
+  ],
+  template: \` <div></div> \`,
+})
+export class ExampleComponent {}`;
+
+  it('should extract inline styles for stable version', () => {
+    expect(extractInlineStyles(input, '1.2.3')).toMatchSnapshot();
+  });
+
+  it('should extract inline styles for temporary version', () => {
+    expect(extractInlineStyles(input, '')).toMatchSnapshot();
   });
 });
 
@@ -174,7 +199,7 @@ describe('getAppComponentTs()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppComponentTs('some markup', true, [], '');
+    getAppComponentTs('some markup', true, [], '', false);
 
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
@@ -192,11 +217,31 @@ describe('getAppComponentTs()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppComponentTs('some markup', false, [], '');
+    getAppComponentTs('some markup', false, [], '', false);
 
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
     expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
+  });
+
+  fit('should replace styles with styleUrls for hasInlineScss = true', () => {
+    const input = `@Component({
+  selector: 'page-styles-border-example',
+  styles: [
+    \`
+      @import '@porsche-design-system/components-js/styles/scss';
+      .div {
+        color: $pds-theme-light-primary;
+      }
+    \`,
+  ],
+  template: \` <div></div> \`,
+})
+export class ExampleComponent {}`;
+
+    const result = getAppComponentTs(input, true, [], '', true);
+
+    expect(result).toMatchSnapshot();
   });
 });
 

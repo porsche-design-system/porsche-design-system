@@ -35,25 +35,46 @@ export const extendMarkupWithAppComponent = (markup: string): string =>
 })
 export class AppComponent {}`;
 
-export const hasInlineScss = (input: string): boolean => {
+export const hasMarkupInlineScss = (input: string): boolean => {
   const [, styles] = input.match(/  styles: \[([\s\S]+?)\]/) || [];
   return !!styles?.match(/@import|@use/);
 };
 
-// TODO: what's the point of this function calling another function?
+// since stackblitz doesn't respect angular.json configurations we can't use the `inlineStyleLanguage: "scss"` option
+// therefore we extract inline scss into a separate file and reference it via styleUrls
+// open stackblitz issues: https://github.com/stackblitz/core/search?q=angular.json&type=issues
+export const extractInlineStyles = (input: string, pdsVersion: string): string => {
+  const [, inlineScss = ''] = input.match(/  styles: \[\s+`\n([\s\S]+?)\s+`,\s+\],\n/) || [];
+
+  return inlineScss
+    .replace(/^      /g, '')
+    .replace(/\n      /g, '\n')
+    .replace(
+      /^(@(?:import|use)) '(@porsche-design-system)/,
+      isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '$&' : "$1 '../../$2"
+    );
+};
+
 export const getAppComponentTs = (
   markup: string,
   isExampleMarkup: boolean,
   sharedImportKeys: SharedImportKey[],
-  pdsVersion: string
+  pdsVersion: string,
+  hasInlineScss: boolean
 ): string => {
-  return convertImportPaths(
+  let result = convertImportPaths(
     isExampleMarkup
       ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
       : extendMarkupWithAppComponent(markup),
     'angular',
     pdsVersion
   );
+
+  if (hasInlineScss) {
+    result = result.replace(/  styles: \[[\s\S]+\],/, "  styleUrls: ['./app.component.scss'],");
+  }
+
+  return result;
 };
 
 const externalDependencyModuleImportMap: Record<ExternalDependency, { module: string; import: string }> = {
@@ -169,6 +190,8 @@ export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions
     pdsVersion,
   } = opts;
 
+  const hasInlineScss = hasMarkupInlineScss(markup);
+
   return {
     files: {
       ...porscheDesignSystemBundle,
@@ -176,8 +199,12 @@ export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions
         markup,
         !!markup.match(classNameRegex),
         sharedImportKeys,
-        pdsVersion
+        pdsVersion,
+        hasInlineScss
       ),
+      ...(hasInlineScss && {
+        'src/app/app.component.scss': extractInlineStyles(markup, pdsVersion),
+      }),
       'src/app/app.module.ts': getAppModuleTs(externalDependencies, pdsVersion),
       'src/index.html': getIndexHtml(globalStyles),
       'src/main.ts': getMainTs(),
