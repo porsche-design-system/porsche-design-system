@@ -12,11 +12,13 @@ const getFormattedCSSWithoutTag = (style: string): string => {
 describe('format: html', () => {
   it('should return core styles', () => {
     const result: string = getInitialStyles();
+    expect(result).toMatchSnapshot();
     expect(getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
 
   it('should add custom prefixes to component names', () => {
     const result: string = getInitialStyles({ prefix: 'custom-prefix' });
+    expect(result).toMatchSnapshot();
     expect(getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
 });
@@ -25,12 +27,14 @@ describe('format: jsx', () => {
   it('should return core styles', () => {
     const result: JSX.Element = getInitialStyles({ format: 'jsx' });
     const { container } = render(result);
+    expect(container.innerHTML).toMatchSnapshot();
     expect(getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
   });
 
   it('should add custom prefix to component names', () => {
     const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' });
     const { container } = render(result);
+    expect(container.innerHTML).toMatchSnapshot();
     expect(getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
   });
 });
