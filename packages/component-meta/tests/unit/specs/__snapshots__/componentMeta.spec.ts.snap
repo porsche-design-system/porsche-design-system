@@ -1745,6 +1745,7 @@ exports[`should match snapshot 1`] = `
         "default",
         "surface",
       ],
+      "hasScrollbar": "boolean",
       "scrollIndicatorPosition": [
         null,
         "top",
@@ -1777,6 +1778,7 @@ exports[`should match snapshot 1`] = `
       "alignScrollIndicator": "center",
       "gradientColor": "background-base",
       "gradientColorScheme": null,
+      "hasScrollbar": false,
       "scrollIndicatorPosition": null,
       "scrollToPosition": null,
       "theme": "light",
@@ -2122,6 +2124,10 @@ exports[`should match snapshot 1`] = `
   "p-table": {
     "allowedPropValues": {
       "caption": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
     },
     "deprecatedEventNames": [
       "sortingChange",
