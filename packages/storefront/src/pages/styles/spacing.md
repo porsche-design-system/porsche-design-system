@@ -4,7 +4,7 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesSpacing />
 </Playground>
 
@@ -62,6 +62,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesSpacingCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesSpacing from '@/pages/patterns/styles/example-spacing.vue';
 
 @Component({
@@ -71,5 +72,9 @@ import ExampleStylesSpacing from '@/pages/patterns/styles/example-spacing.vue';
 })
 export default class Code extends Vue {
   codeExample = getStylesSpacingCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>

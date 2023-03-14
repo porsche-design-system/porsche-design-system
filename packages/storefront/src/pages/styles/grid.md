@@ -12,7 +12,7 @@ and gaps.
 <p-link href="patterns/styles/example/grid" target="_blank" variant="secondary">View Porsche Grid in Full
 Window</p-link>
 
-<Playground :frameworkMarkup="codeExample">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesGrid />
 </Playground>
 
@@ -87,6 +87,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesGridCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 
 @Component({
@@ -96,5 +97,9 @@ import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 })
 export default class Code extends Vue {
   codeExample = getStylesGridCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>
