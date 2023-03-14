@@ -115,6 +115,7 @@ export const getComponentCss = (
             ...getInsetJssStyle(),
             background: themeDarkBackgroundShading,
             ...frostedGlassStyle,
+            pointerEvents: 'none', // enable scrolling in safari by dragging the scrollbar track
           },
         }),
         overflowY: 'auto', // overrideable
@@ -153,6 +154,7 @@ export const getComponentCss = (
           content: '""',
           position: 'fixed',
           border: `${borderWidthBase} solid`,
+          pointerEvents: 'none', // fix text selection in focus state
           ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
             borderColor: fullscreenValue ? lightThemePrimaryColor : darkThemePrimaryColor,

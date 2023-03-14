@@ -29,6 +29,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -66,6 +67,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
   top: -4px;
@@ -116,6 +118,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -156,6 +159,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
   top: -4px;
@@ -218,6 +222,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -255,6 +260,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
   top: -4px;
@@ -320,6 +326,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -360,6 +367,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -407,6 +415,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -444,6 +453,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -494,6 +504,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -534,6 +545,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -596,6 +608,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -633,6 +646,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -698,6 +712,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -783,6 +798,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -929,6 +945,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -966,6 +983,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
   top: -4px;
@@ -1016,6 +1034,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1056,6 +1075,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
   top: -4px;
@@ -1118,6 +1138,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1155,6 +1176,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
   top: -4px;
@@ -1220,6 +1242,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1260,6 +1283,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -1307,6 +1331,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1344,6 +1369,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -1394,6 +1420,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1434,6 +1461,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
@@ -1496,6 +1524,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1533,6 +1562,7 @@ h2 {
   content: "";
   position: fixed;
   border: 2px solid;
+  pointer-events: none;
   border-radius: 0;
   border-color: #010205;
   top: 0;
