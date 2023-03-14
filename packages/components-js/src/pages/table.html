@@ -1,5 +1,5 @@
 <style>
-  .dark span {
+  .dark span.table-caption {
     color: white;
   }
 </style>
@@ -88,7 +88,7 @@
 
 <div class="playground light" title="should render table with unstyled slotted caption on light background">
   <p-table>
-    <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
+    <span slot="caption" class="table-caption">Some unstyled caption <a href="#">with a link</a></span>
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell>Column 1</p-table-head-cell>
@@ -100,7 +100,7 @@
 
 <div class="playground dark" title="should render table with unstyled slotted caption on dark background">
   <p-table theme="dark">
-    <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
+    <span slot="caption" class="table-caption">Some unstyled caption <a href="#">with a link</a></span>
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell>Column 1</p-table-head-cell>
