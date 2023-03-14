@@ -61,6 +61,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesTypographyCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesTypography from '@/pages/patterns/styles/example-typography.vue';
 
 @Component({
@@ -70,5 +71,9 @@ import ExampleStylesTypography from '@/pages/patterns/styles/example-typography.
 })
 export default class Code extends Vue {
   codeExample = getStylesTypographyCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>

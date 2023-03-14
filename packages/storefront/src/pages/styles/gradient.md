@@ -43,6 +43,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesGradientCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesGradient from '@/pages/patterns/styles/example-gradient.vue';
 
 @Component({
@@ -52,5 +53,9 @@ import ExampleStylesGradient from '@/pages/patterns/styles/example-gradient.vue'
 })
 export default class Code extends Vue {
   codeExample = getStylesGradientCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>
