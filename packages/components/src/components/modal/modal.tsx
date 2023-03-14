@@ -11,7 +11,12 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
-import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
+import {
+  MODAL_ARIA_ATTRIBUTES,
+  setScrollLock,
+  warnIfAriaAndHeadingPropsAreUndefined,
+  clickStartedInScrollbarTrack,
+} from './modal-utils';
 import { getComponentCss } from './modal-styles';
 
 const propTypes: PropTypes<typeof Modal> = {
@@ -164,7 +169,7 @@ export class Modal {
   }
 
   private onMouseDown = (e: MouseEvent): void => {
-    if ((e.composedPath() as HTMLElement[])[0] === this.host) {
+    if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {
       this.dismissModal();
     }
   };
