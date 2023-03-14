@@ -16,12 +16,23 @@ The `p-banner` component is positioned absolute above the page content by defaul
 Custom styling" section.
 
 <p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
-Following state has been deprecated and will be removed with the next major release: "neutral".
+  Following state has been deprecated and will be removed with the next major release: "neutral".
 </p-inline-notification>
 
 <Playground :markup="stateMarkup" :config="config">
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
+
+## Slotted heading and description
+
+Rich content for `heading` and `description` can be provided via named slots.
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The named <code>slot="title"</code> has been deprecated and will be removed with the next major release.<br>
+  Please use <code>slot="heading"</code> or the <code>heading</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="slottedHeadingDescription" :config="config"></Playground>
 
 ## Persistent
 
@@ -82,24 +93,26 @@ export default class Code extends Vue {
   state = 'info';
   states = BANNER_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get stateMarkup() {
-    return `<p-banner state="${this.state}">
-  <span slot="title">Some banner title</span>
-  <span slot="description">Some banner description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-</p-banner>`
+    return `<p-banner state="${this.state}" heading="Some heading" description="Some description"></p-banner>`;
   }
+
+  slottedHeadingDescription = `<p-banner state="${this.state}">
+  <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span>
+  <span slot="description">Some description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
+</p-banner>`;
     
   persistent =
 `<p-banner persistent="true">
-  <span slot="title">Some banner title</span>
-  <span slot="description">Some banner description.</span>
+  <span slot="heading">Some heading</span>
+  <span slot="description">Some description.</span>
 </p-banner>`;
 
   width = 'basic';
   widths = BANNER_WIDTHS.map(item => BANNER_WIDTHS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get widthMarkup() {
     return `<p-banner width="${this.width}">
-  <span slot="title">Some banner title</span>
-  <span slot="description">Some banner description.</span>
+  <span slot="heading">Some heading</span>
+  <span slot="description">Some description.</span>
 </p-banner>`;
   }
 
@@ -107,8 +120,8 @@ export default class Code extends Vue {
     const el = document.createElement('p-banner');
     const currentTarget = event.currentTarget;
     el.innerHTML = `
-      <span slot="title">Some banner title</span>
-      <span slot="description">Some banner description.</span>
+      <span slot="heading">Some heading</span>
+      <span slot="description">Some description.</span>
     `;
     document.getElementById('app').append(el);
     el.addEventListener('dismiss', () => {

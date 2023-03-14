@@ -153,13 +153,25 @@ const TextFieldWrapperPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without counter">
-        <PTextFieldWrapper label="Counter hidden" showCharacterCount={false}>
+        <PTextFieldWrapper label="showCharacterCount=false" showCharacterCount={false}>
           <input type="text" maxLength={20} defaultValue="Some value" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground dark" title="should render without counter on dark theme">
-        <PTextFieldWrapper label="Counter hidden" showCharacterCount={false} theme="dark">
+        <PTextFieldWrapper label="showCharacterCount=false" showCharacterCount={false} theme="dark">
+          <input type="text" maxLength={20} defaultValue="Some value" />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render without counter">
+        <PTextFieldWrapper label="showCounter=false" showCounter={false}>
+          <input type="text" maxLength={20} defaultValue="Some value" />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground dark" title="should render without counter on dark theme">
+        <PTextFieldWrapper label="showCounter=false" showCounter={false} theme="dark">
           <input type="text" maxLength={20} defaultValue="Some value" />
         </PTextFieldWrapper>
       </div>

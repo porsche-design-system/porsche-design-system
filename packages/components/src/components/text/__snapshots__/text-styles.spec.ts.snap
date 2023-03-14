@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for size: "inherit", weight: bold, align: center, color: default, ellipsis: false and theme: light 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  text-align: center;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: inherit;
-  font-weight: 700;
-}"
-`;
-
 exports[`getComponentCss() should return correct css for size: "large", weight: semi-bold, align: left, color: notification-info, ellipsis: true and theme: light 1`] = `
 ":host {
   display: block;
@@ -83,50 +43,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", weight: semibold, align: left, color: notification-error, ellipsis: true and theme: light 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #E7323B;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-  font-weight: 600;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for size: "medium", weight: bold, align: right, color: neutral-contrast-high, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for size: "medium", weight: bold, align: right, color: contrast-high, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
 }
@@ -169,46 +86,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", weight: regular, align: left, color: default, ellipsis: false and theme: light 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: 1rem;
-  font-weight: 400;
-}"
-`;
-
 exports[`getComponentCss() should return correct css for size: "small", weight: regular, align: left, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
@@ -246,129 +123,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   white-space: inherit;
   font-size: 1rem;
   font-weight: 400;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for size: "x-large", weight: regular, align: center, color: brand, ellipsis: false and theme: dark 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  text-align: center;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  font-weight: 400;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for size: "x-large", weight: thin, align: right, color: brand, ellipsis: true and theme: dark 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  text-align: right;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  font-weight: 400;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for size: "x-small", weight: semibold, align: left, color: inherit, ellipsis: false and theme: light 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: currentColor;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
 }"
 `;
 

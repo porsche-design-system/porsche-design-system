@@ -54,6 +54,8 @@ export class InputParser {
       .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
       // fix consumer typing for CarouselInternationalization prop with string type
       .replace(/(export declare type CarouselInternationalization = .*?) \| string;/, '$1;')
+      // fix consumer typing for PaginationInternationalization prop with string type
+      .replace(/(export declare type PaginationInternationalization = .*?) \| string;/, '$1;')
       // fix consumer typing for ScrollToPosition prop with string type
       .replace(/(export declare type ScrollToPosition = .*?) \| string;/, '$1;');
 
@@ -130,6 +132,13 @@ export class InputParser {
     return parsedInterface;
   }
 
+  public isPropDeprecated(component: TagName, propName: string): boolean {
+    const rawInterface = this.getRawComponentInterface(component);
+    const [, jsdoc] = rawInterface.match(new RegExp(`(  \\/\\*\\*\\n(?:.*\\n){0,3})?  ${propName}\\??: `)) || [];
+
+    return !!jsdoc?.match(/@deprecated/);
+  }
+
   public hasGeneric(component: TagName): boolean {
     const rawInterface = this.getRawComponentInterface(component);
     return !!rawInterface.match(/: T[^\w]/);
@@ -152,7 +161,7 @@ export class InputParser {
     const fileContent = this.getComponentSourceCode(component);
     // extract values in same line, next line or multi line, but also respect not default
     let [, defaultValue] =
-      fileContent.match(new RegExp(`@Prop\\(.*?\\)\\spublic\\s${prop}(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
+      fileContent.match(new RegExp(`@Prop\\(.*?\\) public ${prop}\\b(?:.|\\s)*?(?:=\\s*((?:.|\\s)*?))?;`)) || [];
 
     // detect if the provided value is a variable
     if (defaultValue?.match(/^(?!true|false)[a-zA-Z]+$/)) {
@@ -167,6 +176,7 @@ export class InputParser {
 
       defaultValue = resolvedDefaultValue;
     }
+
     return defaultValue?.replace(/\s+/g, ' '); // multiline to single line
   }
 }

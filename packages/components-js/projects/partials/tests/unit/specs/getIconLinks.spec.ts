@@ -26,7 +26,7 @@ describe('validation', () => {
 
 describe('format: html', () => {
   it('should return default link', () => {
-    const result = getIconLinks();
+    const result: string = getIconLinks();
     const regex = new RegExp(
       `^<link rel=prefetch href=${baseHrefCom}/arrow-right.min.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
     );
@@ -34,7 +34,7 @@ describe('format: html', () => {
   });
 
   it('should return default link for china cdn', () => {
-    const result = getIconLinks({ cdn: 'cn' });
+    const result: string = getIconLinks({ cdn: 'cn' });
     const regex = new RegExp(
       `^<link rel=prefetch href=${baseHrefCn}/arrow-right.min.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
     );
@@ -42,7 +42,7 @@ describe('format: html', () => {
   });
 
   it('should return multiple links', () => {
-    const result = getIconLinks({ icons: ['truck', 'volume-up', 'mobile'] });
+    const result: string = getIconLinks({ icons: ['truck', 'volume-up', 'mobile'] });
     const regex = new RegExp(
       `^<link rel=prefetch href=${baseHrefCom}/truck.min.${hash}.svg as=image type=image/svg\\+xml crossorigin><link rel=prefetch href=${baseHrefCom}/volume-up.min.${hash}.svg as=image type=image/svg\\+xml crossorigin><link rel=prefetch href=${baseHrefCom}/mobile.min.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
     );
@@ -52,7 +52,7 @@ describe('format: html', () => {
 
   ICON_NAMES.forEach((iconName: IconName) => {
     it(`should match regex for ['${iconName}']`, () => {
-      const result = getIconLinks({ icons: [iconName] });
+      const result: string = getIconLinks({ icons: [iconName] });
       const regex = new RegExp(
         `^<link rel=prefetch href=${baseHrefCom}/${paramCase(
           iconName
@@ -65,7 +65,8 @@ describe('format: html', () => {
 
 describe('format: jsx', () => {
   it('should return default link', () => {
-    const { container } = render(getIconLinks({ format: 'jsx' }));
+    const result: JSX.Element = getIconLinks({ format: 'jsx' });
+    const { container } = render(result);
     const regex = new RegExp(
       `^<link rel="prefetch" href="${baseHrefCom}/arrow-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="">$`
     );
@@ -73,7 +74,8 @@ describe('format: jsx', () => {
   });
 
   it('should return default link for china cdn', () => {
-    const { container } = render(getIconLinks({ format: 'jsx', cdn: 'cn' }));
+    const result: JSX.Element = getIconLinks({ format: 'jsx', cdn: 'cn' });
+    const { container } = render(result);
     const regex = new RegExp(
       `^<link rel="prefetch" href="${baseHrefCn}/arrow-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="">$`
     );
@@ -81,7 +83,8 @@ describe('format: jsx', () => {
   });
 
   it('should return multiple links', () => {
-    const { container } = render(getIconLinks({ format: 'jsx', icons: ['truck', 'volume-up', 'mobile'] }));
+    const result: JSX.Element = getIconLinks({ format: 'jsx', icons: ['truck', 'volume-up', 'mobile'] });
+    const { container } = render(result);
     const regex = new RegExp(
       `^<link rel="prefetch" href="${baseHrefCom}/truck.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin=""><link rel="prefetch" href="${baseHrefCom}/volume-up.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin=""><link rel="prefetch" href="${baseHrefCom}/mobile.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="">$`
     );
@@ -90,7 +93,8 @@ describe('format: jsx', () => {
 
   ICON_NAMES.forEach((iconName: IconName) => {
     it(`should match regex for ['${iconName}']`, () => {
-      const { container } = render(getIconLinks({ format: 'jsx', icons: [iconName] }));
+      const result: JSX.Element = getIconLinks({ format: 'jsx', icons: [iconName] });
+      const { container } = render(result);
       const regex = new RegExp(
         `^<link rel="prefetch" href="${baseHrefCom}/${paramCase(
           iconName

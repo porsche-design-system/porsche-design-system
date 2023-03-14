@@ -5,12 +5,21 @@ import {
   getPrefixedTagNames,
   parseJSON,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
-import type { BreakpointCustomizable, LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
+import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes } from '../../types';
 import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from './link-tile-utils';
+import type {
+  LinkTileAriaAttribute,
+  LinkTileAspectRatio,
+  LinkTileAlign,
+  LinkTileWeight,
+  LinkTileSize,
+  LinkTileWeightDeprecated,
+  LinkTileTarget,
+} from './link-tile-utils';
 import {
   LINK_TILE_ALIGNS,
   LINK_TILE_ASPECT_RATIOS,
@@ -46,7 +55,7 @@ export class LinkTile {
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
@@ -70,7 +79,7 @@ export class LinkTile {
   @Prop() public href: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: LinkTileTarget = '_self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
   @Prop() public download?: string;
@@ -79,7 +88,7 @@ export class LinkTile {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
@@ -88,12 +97,15 @@ export class LinkTile {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
+    warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeight>(this, 'weight', {
+      semibold: 'semi-bold',
+    });
     attachComponentCss(
       this.host,
       getComponentCss,
       this.aspectRatio,
       this.size,
-      this.weight,
+      this.weight, // potentially breakpoint customizable, so we can't easily access the deprecation map
       this.align,
       this.compact,
       this.gradient

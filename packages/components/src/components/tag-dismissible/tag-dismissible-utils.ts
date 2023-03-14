@@ -3,8 +3,8 @@ export const TAG_DISMISSIBLE_COLORS_DEPRECATED = ['background-default'] as const
 /** @deprecated */
 export type TagDismissibleColorDeprecated = typeof TAG_DISMISSIBLE_COLORS_DEPRECATED[number];
 export const TAG_DISMISSIBLE_COLORS = [
-  'background-surface',
   'background-base',
+  'background-surface',
   ...TAG_DISMISSIBLE_COLORS_DEPRECATED,
 ] as const;
 export type TagDismissibleColor = typeof TAG_DISMISSIBLE_COLORS[number];

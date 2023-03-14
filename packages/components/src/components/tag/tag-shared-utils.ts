@@ -1,6 +1,6 @@
 import { getInsetJssStyle, ThemedColors } from '../../styles';
 import type { JssStyle } from 'jss';
-import type { TagColor } from './tag-utils';
+import type { TagColor, TagColorDeprecated } from './tag-utils';
 import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
@@ -18,18 +18,18 @@ export const getTagFocusJssStyle = (themedColors: ThemedColors): JssStyle => {
   };
 };
 
-export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
-  const colorMap: Record<TagColor, string> = {
-    'background-default': themedColors.backgroundColor, // 'background-default' is deprecated (replaced with 'background-base')
+export const getThemedBackgroundColor = (
+  tagColor: Exclude<TagColor, TagColorDeprecated>,
+  themedColors: ThemedColors
+): string => {
+  const colorMap: Record<Exclude<TagColor, TagColorDeprecated>, string> = {
     'background-base': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
-    'neutral-contrast-high': themedColors.primaryColor, // 'neutral-contrast-high' is deprecated (replaced with 'primary')
     primary: themedColors.primaryColor,
-    'notification-neutral': themedColors.infoSoftColor, // 'notification-neutral' is deprecated (replaced with 'notification-info')
-    'notification-info': themedColors.infoSoftColor,
-    'notification-success': themedColors.successSoftColor,
-    'notification-error': themedColors.errorSoftColor,
-    'notification-warning': themedColors.warningSoftColor,
+    'notification-info-soft': themedColors.infoSoftColor,
+    'notification-warning-soft': themedColors.warningSoftColor,
+    'notification-success-soft': themedColors.successSoftColor,
+    'notification-error-soft': themedColors.errorSoftColor,
   };
 
   return colorMap[tagColor];

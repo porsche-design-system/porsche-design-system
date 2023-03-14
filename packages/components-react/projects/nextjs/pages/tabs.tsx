@@ -220,25 +220,49 @@ const TabsPage: NextPage = (): JSX.Element => {
 
       <div className="playground light surface" title="should render tabs gradientColorScheme surface on light background">
         <PTabs gradientColorScheme="surface">
-          <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
-          <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
-          <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
-          <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
-          <PTabsItem label="Tab 5">Tab Content 5</PTabsItem>
-          <PTabsItem label="Tab 6">Tab Content 6</PTabsItem>
-          <PTabsItem label="Tab 7">Tab Content 7</PTabsItem>
+          <PTabsItem label="Tab 1">Tab gradientColorScheme 1</PTabsItem>
+          <PTabsItem label="Tab 2">Tab gradientColorScheme 2</PTabsItem>
+          <PTabsItem label="Tab 3">Tab gradientColorScheme 3</PTabsItem>
+          <PTabsItem label="Tab 4">Tab gradientColorScheme 4</PTabsItem>
+          <PTabsItem label="Tab 5">Tab gradientColorScheme 5</PTabsItem>
+          <PTabsItem label="Tab 6">Tab gradientColorScheme 6</PTabsItem>
+          <PTabsItem label="Tab 7">Tab gradientColorScheme 7</PTabsItem>
         </PTabs>
       </div>
 
       <div className="playground dark surface" title="should render tabs gradientColorScheme surface on dark background">
         <PTabs theme="dark" gradientColorScheme="surface">
-          <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
-          <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
-          <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
-          <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
-          <PTabsItem label="Tab 5">Tab Content 5</PTabsItem>
-          <PTabsItem label="Tab 6">Tab Content 6</PTabsItem>
-          <PTabsItem label="Tab 7">Tab Content 7</PTabsItem>
+          <PTabsItem label="Tab 1">Tab gradientColorScheme 1</PTabsItem>
+          <PTabsItem label="Tab 2">Tab gradientColorScheme 2</PTabsItem>
+          <PTabsItem label="Tab 3">Tab gradientColorScheme 3</PTabsItem>
+          <PTabsItem label="Tab 4">Tab gradientColorScheme 4</PTabsItem>
+          <PTabsItem label="Tab 5">Tab gradientColorScheme 5</PTabsItem>
+          <PTabsItem label="Tab 6">Tab gradientColorScheme 6</PTabsItem>
+          <PTabsItem label="Tab 7">Tab gradientColorScheme 7</PTabsItem>
+        </PTabs>
+      </div>
+
+      <div className="playground light surface" title="should render tabs gradientColor surface on light background">
+        <PTabs gradientColor="background-surface">
+          <PTabsItem label="Tab 1">Tab gradientColor 1</PTabsItem>
+          <PTabsItem label="Tab 2">Tab gradientColor 2</PTabsItem>
+          <PTabsItem label="Tab 3">Tab gradientColor 3</PTabsItem>
+          <PTabsItem label="Tab 4">Tab gradientColor 4</PTabsItem>
+          <PTabsItem label="Tab 5">Tab gradientColor 5</PTabsItem>
+          <PTabsItem label="Tab 6">Tab gradientColor 6</PTabsItem>
+          <PTabsItem label="Tab 7">Tab gradientColor 7</PTabsItem>
+        </PTabs>
+      </div>
+
+      <div className="playground dark surface" title="should render tabs gradientColor surface on dark background">
+        <PTabs theme="dark" gradientColor="background-surface">
+          <PTabsItem label="Tab 1">Tab gradientColor 1</PTabsItem>
+          <PTabsItem label="Tab 2">Tab gradientColor 2</PTabsItem>
+          <PTabsItem label="Tab 3">Tab gradientColor 3</PTabsItem>
+          <PTabsItem label="Tab 4">Tab gradientColor 4</PTabsItem>
+          <PTabsItem label="Tab 5">Tab gradientColor 5</PTabsItem>
+          <PTabsItem label="Tab 6">Tab gradientColor 6</PTabsItem>
+          <PTabsItem label="Tab 7">Tab gradientColor 7</PTabsItem>
         </PTabs>
       </div>
 

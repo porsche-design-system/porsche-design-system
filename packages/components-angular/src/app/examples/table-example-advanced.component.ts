@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { SortingChangeEvent } from '@porsche-design-system/components-angular';
+import type { TableChangeEvent } from '@porsche-design-system/components-angular';
 import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
 @Component({
   selector: 'page-table-example-advanced',
   template: `
-    <p-table (sortingChange)="onSortingChange($event)">
+    <p-table (change)="onChange($event)">
       <p-heading slot="caption" size="large">Some visual caption</p-heading>
       <p-table-head>
         <p-table-head-row>
@@ -47,8 +47,8 @@ export class TableExampleAdvancedComponent {
   public head = headAdvanced;
   public data = dataAdvanced;
 
-  onSortingChange(e: CustomEvent<SortingChangeEvent>): void {
-    const { id, direction } = e.detail as SortingChangeEvent & { id: keyof DataAdvanced };
+  onChange(e: CustomEvent<TableChangeEvent>): void {
+    const { id, direction } = e.detail as TableChangeEvent & { id: keyof DataAdvanced };
     this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])

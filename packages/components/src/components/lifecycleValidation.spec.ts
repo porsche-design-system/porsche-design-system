@@ -1,5 +1,6 @@
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
 import * as attributeObserverUtils from '../utils/attribute-observer';

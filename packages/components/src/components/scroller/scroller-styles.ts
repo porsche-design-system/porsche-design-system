@@ -8,7 +8,7 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import type { Theme } from '../../types';
-import type { GradientColorTheme } from './scroller-utils';
+import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -17,20 +17,19 @@ import {
   frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import type { ScrollIndicatorPosition } from './scroller-utils';
 
-const gradientColorMap: Record<Theme, Record<GradientColorTheme, string>> = {
+const gradientColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
   light: {
-    default: '255,255,255',
-    surface: '238,239,242',
+    'background-base': '255,255,255',
+    'background-surface': '238,239,242',
   },
   dark: {
-    default: '14,14,18',
-    surface: '33,34,37',
+    'background-base': '14,14,18',
+    'background-surface': '33,34,37',
   },
 };
 
-const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme): string => {
+const getGradient = (theme: Theme, gradientColorTheme: ScrollerGradientColor): string => {
   const gradientColor = gradientColorMap[theme][gradientColorTheme];
 
   return (
@@ -42,25 +41,24 @@ const getGradient = (theme: Theme, gradientColorTheme: GradientColorTheme): stri
 };
 
 export const getComponentCss = (
-  gradientColorTheme: GradientColorTheme,
+  gradientColor: ScrollerGradientColor,
   isNextHidden: boolean,
   isPrevHidden: boolean,
-  scrollIndicatorPosition: ScrollIndicatorPosition,
+  scrollIndicatorPosition: ScrollerScrollIndicatorPosition,
   hasScrollbar: boolean,
   theme: Theme
 ): string => {
   const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
-
   const isDarkTheme = isThemeDark(theme);
 
-  const backgroundColorMap: Record<Theme, Record<GradientColorTheme, string>> = {
+  const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
     dark: {
-      default: backgroundSurfaceColor,
-      surface: backgroundColor,
+      'background-base': backgroundSurfaceColor,
+      'background-surface': backgroundColor,
     },
     light: {
-      default: backgroundColor,
-      surface: backgroundSurfaceColor,
+      'background-base': backgroundColor,
+      'background-surface': backgroundSurfaceColor,
     },
   };
 
@@ -90,7 +88,7 @@ export const getComponentCss = (
         border: 0,
         outline: 0,
         cursor: 'pointer',
-        background: backgroundColorMap[theme][gradientColorTheme],
+        background: backgroundColorMap[theme][gradientColor],
         borderRadius: borderRadiusSmall,
         ...frostedGlassStyle,
         visibility: 'hidden',
@@ -165,11 +163,11 @@ export const getComponentCss = (
       marginLeft: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
-      background: `linear-gradient(to right, ${getGradient(theme, gradientColorTheme)} 100%)`,
+      background: `linear-gradient(to right, ${getGradient(theme, gradientColor)} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
       '& button': {
         marginLeft: '8px',
-        // Hide buttons on mobile
+        // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
           visibility: isPrevHidden ? 'hidden' : 'visible',
         }),
@@ -180,11 +178,11 @@ export const getComponentCss = (
       marginRight: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
-      background: `linear-gradient(to left, ${getGradient(theme, gradientColorTheme)} 100%)`,
+      background: `linear-gradient(to left, ${getGradient(theme, gradientColor)} 100%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& button': {
         marginRight: '8px',
-        // Hide buttons on mobile
+        // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
           visibility: isNextHidden ? 'hidden' : 'visible',
         }),

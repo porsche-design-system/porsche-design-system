@@ -1,5 +1,4 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
 import { FORM_STATES } from '../../utils/form/form-state';
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
@@ -17,12 +16,13 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './checkbox-wrapper-styles';
+import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<CheckboxWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -39,7 +39,7 @@ export class CheckboxWrapper {
   @Prop() public label?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: CheckboxWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';

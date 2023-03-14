@@ -1,15 +1,21 @@
-import type { ScrollerDirection, GradientColorTheme } from '../scroller/scroller-utils';
+import type { ScrollerDirection, ScrollerGradientColor, ScrollerGradientColorScheme } from '../scroller/scroller-utils';
 import { setAttribute } from '../../utils';
 
-export const TAB_SIZES = ['small', 'medium'] as const;
-export type TabSize = typeof TAB_SIZES[number];
+export const TABS_BAR_SIZES = ['small', 'medium'] as const;
+export type TabsBarSize = typeof TABS_BAR_SIZES[number];
 
-export const TAB_WEIGHTS = ['regular', 'semibold'] as const;
-export type TabWeight = typeof TAB_WEIGHTS[number];
+/** @deprecated */
+export const TABS_BAR_WEIGHTS_DEPRECATED = ['semibold'] as const;
+/** @deprecated */
+export type TabsBarWeightDeprecated = typeof TABS_BAR_WEIGHTS_DEPRECATED[number];
+export const TABS_BAR_WEIGHTS = ['regular', 'semi-bold', ...TABS_BAR_WEIGHTS_DEPRECATED] as const;
+export type TabsBarWeight = typeof TABS_BAR_WEIGHTS[number];
 
-export type TabChangeEvent = { activeTabIndex: number };
+export type TabsBarChangeEvent = { activeTabIndex: number };
 
-export type TabGradientColorTheme = GradientColorTheme;
+/** @deprecated */
+export type TabsBarGradientColorScheme = ScrollerGradientColorScheme;
+export type TabsBarGradientColor = ScrollerGradientColor;
 
 const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 

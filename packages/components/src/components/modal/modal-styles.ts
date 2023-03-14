@@ -16,6 +16,7 @@ import {
   getInsetJssStyle,
   getThemedColors,
   hostHiddenStyles,
+  hoverMediaQuery,
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
@@ -59,7 +60,7 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
-const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, disableCloseButton: boolean): JssStyle => {
+const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissButton: boolean): JssStyle => {
   const marginPx = `${-marginValue}px`;
   const marginRem = pxToRemWithUnit(-marginValue);
   return {
@@ -69,7 +70,7 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, disableClos
     },
     ...(!hasHeader && {
       [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-        marginTop: !disableCloseButton ? marginRem : marginPx,
+        marginTop: hasDismissButton ? marginRem : marginPx,
       },
     }),
     [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
@@ -81,7 +82,7 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, disableClos
 export const getComponentCss = (
   open: boolean,
   fullscreen: BreakpointCustomizable<boolean>,
-  disableCloseButton: boolean,
+  hasDismissButton: boolean,
   hasHeader: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
@@ -114,13 +115,14 @@ export const getComponentCss = (
             ...getInsetJssStyle(),
             background: themeDarkBackgroundShading,
             ...frostedGlassStyle,
+            pointerEvents: 'none', // enable scrolling in safari by dragging the scrollbar track
           },
         }),
         overflowY: 'auto', // overrideable
       },
       '::slotted': addImportantToEachRule({
         ...mergeDeep(
-          getSlottedJssStyle(32, hasHeader, disableCloseButton),
+          getSlottedJssStyle(32, hasHeader, hasDismissButton),
           buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             [`&(.${stretchToFullModalWidthClassName}`]: {
               '&:first-child)': {
@@ -145,13 +147,14 @@ export const getComponentCss = (
         boxSizing: 'border-box',
         transition: `transform .6s ${transitionTimingFunction}`,
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
-        padding: !disableCloseButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
-        backgroundColor,
+        padding: hasDismissButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
+        background: backgroundColor,
         outline: 0,
         '&:focus::before': {
           content: '""',
           position: 'fixed',
           border: `${borderWidthBase} solid`,
+          pointerEvents: 'none', // fix text selection in focus state
           ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
             borderColor: fullscreenValue ? lightThemePrimaryColor : darkThemePrimaryColor,
@@ -172,17 +175,21 @@ export const getComponentCss = (
         padding: '0 0 8px',
       },
     }),
-    close: {
-      position: 'absolute',
-      top: '8px',
-      right: '8px',
-      border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
-      borderRadius: '4px',
-      backgroundColor,
-      '&:hover': {
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
+    ...(hasDismissButton && {
+      dismiss: {
+        position: 'absolute',
+        top: '8px',
+        right: '8px',
+        border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
+        borderRadius: '4px',
+        background: backgroundColor,
+        ...hoverMediaQuery({
+          '&:hover': {
+            background: 'transparent',
+            borderColor: 'transparent',
+          },
+        }),
       },
-    },
+    }),
   });
 };

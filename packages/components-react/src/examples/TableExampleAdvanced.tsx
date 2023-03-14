@@ -1,4 +1,4 @@
-import type { SortingChangeEvent } from '@porsche-design-system/components-react';
+import type { TableChangeEvent } from '@porsche-design-system/components-react';
 import {
   PButtonPure,
   PHeading,
@@ -18,8 +18,8 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onSortingChange = useCallback((e: CustomEvent<SortingChangeEvent>) => {
-    const { id, direction } = e.detail as SortingChangeEvent & { id: keyof DataAdvanced };
+  const onChange = useCallback((e: CustomEvent<TableChangeEvent>) => {
+    const { id, direction } = e.detail as TableChangeEvent & { id: keyof DataAdvanced };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {
@@ -29,7 +29,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   }, []);
 
   return (
-    <PTable onSortingChange={onSortingChange}>
+    <PTable onChange={onChange}>
       <PHeading slot="caption" size="large">
         Some visual caption
       </PHeading>

@@ -17,8 +17,6 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-table');
 const getTable = () => selectNode(page, 'p-table >>> .table');
-const getTableHead = () => selectNode(page, 'p-table-head');
-const getTableHeadRow = () => selectNode(page, 'p-table-head-row');
 const getFirstTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(1)');
 
 const getFirstTableHeadCellPButtonPure = () => selectNode(page, 'p-table-head-cell:nth-child(1) >>> p-button-pure');
@@ -26,9 +24,6 @@ const getFirstTableHeadCellButton = () =>
   selectNode(page, 'p-table-head-cell:nth-child(1) >>> p-button-pure >>> button');
 const getSecondTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(2)');
 const getThirdTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(3)');
-const getTableBody = () => selectNode(page, 'p-table-body');
-const getFirstTableRow = () => selectNode(page, 'p-table-row:nth-child(1)');
-const getFirstTableRowCell = () => selectNode(page, 'p-table-row:nth-child(1) p-table-cell:nth-child(1)');
 const getCaption = () => selectNode(page, 'p-table >>> .caption');
 
 type InitOptions = {
@@ -118,6 +113,21 @@ describe('events', () => {
 
     const firstTableHeadCellPButtonPure = await getFirstTableHeadCellPButtonPure();
     expect(firstTableHeadCellPButtonPure).toBeNull();
+  });
+
+  it('should emit both sortingChange and change event', async () => {
+    await initTable({ isSortable: true });
+    const host = await getHost();
+
+    await addEventListener(host, 'sortingChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const firstTableHeadCellButton = await getFirstTableHeadCellButton();
+    await firstTableHeadCellButton.click();
+    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
   });
 });
 

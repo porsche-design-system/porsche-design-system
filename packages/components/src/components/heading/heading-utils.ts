@@ -12,7 +12,7 @@ export type HeadingColor = typeof HEADING_COLORS[number];
 
 export type HeadingAlign = TextAlign;
 
-const headingSizeToTagMap: { [key in HeadingSize]: string } = {
+const headingSizeToTagMap: Record<HeadingSize, string> = {
   small: 'h6',
   medium: 'h5',
   large: 'h4',

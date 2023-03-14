@@ -1,8 +1,10 @@
 import type { Page } from 'puppeteer';
 import {
+  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
+  getEventSummary,
   getLifecycleStatus,
   initConsoleObserver,
   selectNode,
@@ -47,6 +49,23 @@ it('should have no errors if disconnected before fully loaded', async () => {
   expect(getConsoleErrorsAmount()).toBe(1);
 });
 
+describe('events', () => {
+  it('should emit both pageChange and change event', async () => {
+    await initPagination();
+    const host = await getHost();
+
+    await addEventListener(host, 'pageChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'pageChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const [, secondPageItem] = await getPaginationItems();
+    await secondPageItem.click();
+    expect((await getEventSummary(host, 'pageChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+  });
+});
+
 // TODO: Component has to be refactored. Test fails atm. because it updates on initial render.
 xdescribe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
@@ -87,8 +106,7 @@ describe('accessibility', () => {
     await initPagination();
 
     const host = await getHost();
-    const paginationItems = await getPaginationItems();
-    const firstPageItem = paginationItems[0];
+    const [firstPageItem] = await getPaginationItems();
 
     expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
 

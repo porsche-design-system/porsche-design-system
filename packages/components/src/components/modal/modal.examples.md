@@ -7,7 +7,7 @@ used thoughtfully and sparingly.
 
 Modals are flexible in the context and can include other components of the Porsche Design System.
 
-It is a controlled component. This grants you flexible control over the Modal's behavior especially whether it should
+It is a controlled component. This grants you flexible control over the modal's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
@@ -24,10 +24,15 @@ It is crucial to note that `p-modal` is displayed within your DOM hierarchy as a
 value. Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place.
 Otherwise, the modal might get clipped or overlapped by other elements.
 
-The most important property of `p-modal` is its `open` attribute. When it is present the Modal will be visible.
+The most important property of `p-modal` is its `open` attribute. When it is present the modal will be visible.
 
-In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
-key you need to register an event listener for the `close` event which is emitted by `p-modal`.
+In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
+key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>close</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>dismiss</code> event instead.
+</p-inline-notification>
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
@@ -40,8 +45,8 @@ guidelines for [Buttons](components/button/usage).
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or
-`Enter` key: The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the modal with `ESC` or
+`Enter` key: The trigger element (e.g. a button) which has opened the modal must **receive focus state again** after the
 Modal is closed. This is important to keep focus order consistent. You can test it out by navigation this example with
 the keyboard only.  
 To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a
@@ -53,7 +58,7 @@ meaningful heading through **ARIA** with the `aria` property.
 
 ## Basic Scrollable
 
-If the Modal's content does not fit into the current boundaries the content becomes scrollable.
+If the modal's content does not fit into the current boundaries the content becomes scrollable.
 
 <Playground :markup="scrollable"></Playground>
 
@@ -74,13 +79,19 @@ cover up your content.
 
 <Playground :markup="withoutHeading"></Playground>
 
-## Without Close Button
+## Without Close/Dismiss Button
 
-It is possible to not render the close button by setting the `disable-close-button` attribute.  
-At the same time this also deactivates closing the Modal by pressing `Escape`.  
-If you want to disable closing the Modal by clicking the backdrop, you can set the `disable-backdrop-click` attribute.
+It is possible to not render the dismiss button by setting the `dismiss-button="false"` attribute.  
+At the same time this also deactivates dismissing the modal by pressing `Escape`.  
+If you want to prevent dismissing the modal by clicking the backdrop, you can set the `disable-backdrop-click`
+attribute.
 
-<Playground :markup="withoutCloseButton"></Playground>
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>disableCloseButton</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>dismissButton</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="withoutDismissButton"></Playground>
 
 ## Full Width Content
 
@@ -130,14 +141,14 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.modals = Array.from(document.querySelectorAll('p-modal'));
+    this.modals = document.querySelectorAll('p-modal');
     
-    const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
+    const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
     
     this.modals.forEach((modal, index) => {
-      modal.addEventListener('close', () => this.closeModal(index));
-      const buttons = Array.from(modal.querySelectorAll('p-button'));
+      modal.addEventListener('dismiss', () => this.closeModal(index));
+      const buttons = modal.querySelectorAll('p-button');
       buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
     });
   }
@@ -190,9 +201,9 @@ export default class Code extends Vue {
   <p-text>Some Content</p-text>
 </p-modal>`;
 
-  withoutCloseButton =
+  withoutDismissButton =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" disable-close-button="true" open="false">
+<p-modal heading="Some Heading" dismiss-button="false" open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
