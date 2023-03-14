@@ -5,7 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensTypography />
+  <ExampleStylesTypography />
 </Playground>
 
 ## Usage
@@ -60,15 +60,15 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensTypographyCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensTypography from '@/pages/patterns/design-tokens/example-typography.vue';
+import { getStylesTypographyCodeSamples } from '@porsche-design-system/shared';
+import ExampleStylesTypography from '@/pages/patterns/styles/example-typography.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensTypography
+    ExampleStylesTypography
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensTypographyCodeSamples();
+  codeExample = getStylesTypographyCodeSamples();
 }
 </script>

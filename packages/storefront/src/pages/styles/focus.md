@@ -5,7 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensFocus />
+  <ExampleStylesFocus />
 </Playground>
 
 ## Usage
@@ -36,15 +36,15 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensFocusCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensFocus from '@/pages/patterns/design-tokens/example-focus.vue';
+import { getStylesFocusCodeSamples } from '@porsche-design-system/shared';
+import ExampleStylesFocus from '@/pages/patterns/styles/example-focus.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensFocus
+    ExampleStylesFocus
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensFocusCodeSamples();
+  codeExample = getStylesFocusCodeSamples();
 }
 </script>

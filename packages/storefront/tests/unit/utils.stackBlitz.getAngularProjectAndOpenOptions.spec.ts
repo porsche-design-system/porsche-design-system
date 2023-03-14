@@ -8,6 +8,8 @@ import {
   getIndexHtml,
   getMainTs,
   replaceSharedImportsWithConstants,
+  hasMarkupInlineScss,
+  extractInlineStyles,
 } from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import type { ExternalDependency, SharedImportKey, StackBlitzFrameworkOpts } from '../../src/utils';
 
@@ -116,6 +118,75 @@ describe('extendMarkupWithAppComponent()', () => {
   });
 });
 
+describe('hasMarkupInlineScss()', () => {
+  const template = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'page-example',{{PLACEHOLDER}}
+  template: \`
+    <div></div>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ExampleComponent {}
+`;
+
+  it.each<[string, boolean]>([
+    ['', false],
+    ['div { background: red; }', false],
+    ['.class { background: red; }', false],
+    [
+      `@media only screen and (min-width: 760px) {
+  .class { background: red; }
+}`,
+      false,
+    ],
+    [`@import '@porsche-design-system/components-js/styles/scss';`, true],
+    [`@import '@porsche-design-system/utilities';`, true],
+    [`@use '@porsche-design-system/components-angular/styles/scss';`, true],
+    [
+      `@import '@porsche-design-system/components-angular/styles/scss';
+div { background: $pds-theme-light-primary; }`,
+      true,
+    ],
+  ])('should for styles: %s return: %s', (styles, result) => {
+    styles = styles
+      ? `\n  styles: [
+    \`
+      ${styles.replace(/\n/g, '$&      ')}
+    \`
+  ],`
+      : styles;
+
+    const input = template.replace('{{PLACEHOLDER}}', styles);
+    expect(hasMarkupInlineScss(input)).toBe(result);
+  });
+});
+
+describe('extractInlineStyles()', () => {
+  const input = `@Component({
+  selector: 'page-styles-border-example',
+  styles: [
+    \`
+      @import '@porsche-design-system/components-js/styles/scss';
+      .div {
+        color: $pds-theme-light-primary;
+      }
+    \`,
+  ],
+  template: \` <div></div> \`,
+})
+export class ExampleComponent {}`;
+
+  it('should extract inline styles for stable version', () => {
+    expect(extractInlineStyles(input, '1.2.3')).toMatchSnapshot();
+  });
+
+  it('should extract inline styles for temporary version', () => {
+    expect(extractInlineStyles(input, '')).toMatchSnapshot();
+  });
+});
+
 describe('getAppComponentTs()', () => {
   it('should call convertImportPaths() + replaceSharedImportsWithConstants()', () => {
     const convertImportPathsSpy = jest.spyOn(stackBlitzHelperUtils, 'convertImportPaths');
@@ -128,7 +199,7 @@ describe('getAppComponentTs()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppComponentTs('some markup', true, [], '');
+    getAppComponentTs('some markup', true, [], '', false);
 
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
@@ -146,11 +217,31 @@ describe('getAppComponentTs()', () => {
       'extendMarkupWithAppComponent'
     );
 
-    getAppComponentTs('some markup', false, [], '');
+    getAppComponentTs('some markup', false, [], '', false);
 
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
     expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
+  });
+
+  it('should replace styles with styleUrls for hasInlineScss = true', () => {
+    const input = `@Component({
+  selector: 'page-styles-border-example',
+  styles: [
+    \`
+      @import '@porsche-design-system/components-js/styles/scss';
+      .div {
+        color: $pds-theme-light-primary;
+      }
+    \`,
+  ],
+  template: \` <div></div> \`,
+})
+export class ExampleComponent {}`;
+
+    const result = getAppComponentTs(input, true, [], '', true);
+
+    expect(result).toMatchSnapshot();
   });
 });
 
@@ -313,7 +404,8 @@ describe('getAngularProjectAndOpenOptions()', () => {
       stackBlitzFrameworkOpts.markup,
       false,
       stackBlitzFrameworkOpts.sharedImportKeys,
-      ''
+      '',
+      false
     );
     expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
     expect(getIndexHtmlSpy).toBeCalledWith(stackBlitzFrameworkOpts.globalStyles);

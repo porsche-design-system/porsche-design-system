@@ -2,10 +2,11 @@ import * as sharedData from '@porsche-design-system/shared/data';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import type {
   BackgroundColor,
+  Framework,
   StackBlitzProjectAndOpenOptions,
   StackBlitzProjectDependencies,
   Theme,
-} from '../../models';
+} from '@/models';
 import type { OpenInStackBlitzOpts } from './openInStackBlitz';
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColor'> & {
@@ -28,9 +29,9 @@ export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): s
 };
 
 export const EXTERNAL_DEPENDENCIES = ['imask'] as const;
-export type ExternalDependency = typeof EXTERNAL_DEPENDENCIES[number];
+export type ExternalDependency = (typeof EXTERNAL_DEPENDENCIES)[number];
 
-export type DependencyMap<T> = { [key in ExternalDependency]: { [K in keyof T]?: T[K] } };
+export type DependencyMap<T> = Record<ExternalDependency, { [K in keyof T]?: T[K] }>;
 
 export const getExternalDependencies = <T>(
   additionalDependencies: ExternalDependency[],
@@ -62,15 +63,11 @@ export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDep
 
 export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
 
-export const convertImportPaths = (
-  markup: string,
-  framework: 'js' | 'angular' | 'react',
-  pdsVersion: string
-): string => {
+export const convertImportPaths = (markup: string, framework: Framework, pdsVersion: string): string => {
   return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
     ? markup
     : markup.replace(
-        new RegExp(`@porsche-design-system\\/components-${framework}`, 'g'),
+        new RegExp(`@porsche-design-system\\/components-${framework.replace(/^vanilla-/, '')}`, 'g'),
         `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
       );
 };

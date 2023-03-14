@@ -7,7 +7,10 @@ import {
 import type { StackBlitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
 
-const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
+// TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
+// as well as code flow, similar to our WrapperGenerator
+
+const externalDependencyToSrcMap: Record<ExternalDependency, string> = {
   imask: 'node_modules/imask/dist/imask.min.js',
 };
 

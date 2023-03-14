@@ -25,6 +25,7 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["@porsche-design-system/shared/css/styles.css"],
+            "inlineStyleLanguage": "scss",
             "scripts": [],
             "indexTransform": "./scripts/transformIndexHtml.ts"
           },
