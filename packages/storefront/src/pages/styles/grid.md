@@ -12,7 +12,7 @@ and gaps.
 <p-link href="patterns/styles/example/grid" target="_blank" variant="secondary">View Porsche Grid in Full
 Window</p-link>
 
-<Playground :frameworkMarkup="codeExample">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesGrid />
 </Playground>
 

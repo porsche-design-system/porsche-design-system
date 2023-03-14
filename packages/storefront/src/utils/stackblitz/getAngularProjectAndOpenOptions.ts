@@ -80,7 +80,7 @@ export const getAppComponentTs = (
   return result;
 };
 
-const externalDependencyModuleImportMap: Record<ExternalDependency, { module: string; import: string }> = {
+const externalDependencyModuleImportMap: Partial<Record<ExternalDependency, { module: string; import: string }>> = {
   imask: {
     module: 'IMaskModule',
     import: "import { IMaskModule } from 'angular-imask';",
@@ -99,7 +99,11 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
       : [`import * as porscheDesignSystem from './../../@porsche-design-system/components-js';`]),
     `import { AppComponent } from './app.component';`,
   ]
-    .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].import))
+    .concat(
+      externalDependencies
+        .map((dependency) => externalDependencyModuleImportMap[dependency]?.import)
+        .filter((item) => item) as string[]
+    )
     .join('\n');
 
   const ngImports = [
@@ -107,7 +111,11 @@ export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVe
     'FormsModule',
     ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? ['PorscheDesignSystemModule'] : []),
   ]
-    .concat(externalDependencies.map((dependency) => externalDependencyModuleImportMap[dependency].module))
+    .concat(
+      externalDependencies
+        .map((dependency) => externalDependencyModuleImportMap[dependency]?.module)
+        .filter((item) => item) as string[]
+    )
     .join(', ');
 
   const ngSchemas = isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? [] : ['CUSTOM_ELEMENTS_SCHEMA'];
@@ -150,7 +158,7 @@ platformBrowserDynamic()
   .catch((err) => console.error(err));`;
 };
 
-export const dependencyMap: DependencyMap<typeof dependencies> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   imask: {
     imask: dependencies['imask'],
     'angular-imask': dependencies['angular-imask'],

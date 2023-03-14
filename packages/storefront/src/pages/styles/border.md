@@ -4,7 +4,7 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesBorder />
 </Playground>
 
