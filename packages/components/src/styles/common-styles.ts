@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import { spacingStaticSmall } from '@porsche-design-system/utilities-v2';
-import { getThemedColors } from './';
+import { getThemedColors, ThemedColors } from './';
 import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -30,6 +30,7 @@ type GetHoverStylesOptions = {
   theme?: Theme;
 };
 
+// TODO: this function is not being used anywhere in project, maybe remove it
 export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
@@ -37,6 +38,12 @@ export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'li
       color: getThemedColors(theme).hoverColor,
     },
   };
+};
+
+// TODO: this is workaround, in order the colors to be bundled in the main bundle, we need to have at least one function here, which is used in project and which calls "getThemedColors"
+// TODO: This mechanism needs to be investigated as part of refactoring
+export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
+  return getThemedColors(theme);
 };
 
 export type GetFocusStylesOptions = {

@@ -1,13 +1,13 @@
 import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { getThemedColors, addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles, doGetThemedColors } from '../../../styles';
 import type { Theme } from '../../../types';
 
 export const cssVariableTableRowHoverColor = '--p-internal-table-row-hover-color';
 export const cssVariableTableBorderColor = '--p-internal-table-border-color';
 export const cssVariableTableTheme = '--p-internal-table-theme';
 export const getComponentCss = (theme: Theme): string => {
-  const { primaryColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
+  const { primaryColor, backgroundSurfaceColor, contrastLowColor } = doGetThemedColors(theme);
 
   return getCss({
     '@global': {
