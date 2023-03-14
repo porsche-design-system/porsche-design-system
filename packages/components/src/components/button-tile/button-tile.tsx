@@ -4,10 +4,9 @@ import type {
   PropTypes,
   ButtonAriaAttribute,
   ButtonType,
-  LinkButtonIconName,
 } from '../../types';
 import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, Tile } from '../../utils';
-import type { ButtonProps } from './button-tile-utils';
+import type { ButtonProps, ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from './button-tile-utils';
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -68,7 +67,7 @@ export class ButtonTile implements Tile {
   @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
 
   /** Specifies the type of the button. */
-  @Prop() public type?: ButtonType = 'submit';
+  @Prop() public type?: ButtonTileType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -77,13 +76,13 @@ export class ButtonTile implements Tile {
   @Prop() public loading?: boolean = false;
 
   /** The icon shown. By choosing 'none', no icon is displayed. */
-  @Prop() public icon?: LinkButtonIconName = 'none';
+  @Prop() public icon?: ButtonTileIcon = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
