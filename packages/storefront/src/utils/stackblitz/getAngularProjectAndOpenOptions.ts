@@ -12,6 +12,9 @@ import type { StackBlitzProjectDependencies } from '@/models';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
 
+// TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
+// as well as code flow, similar to our WrapperGenerator
+
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
