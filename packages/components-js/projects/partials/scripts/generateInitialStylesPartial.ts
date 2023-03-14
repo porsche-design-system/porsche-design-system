@@ -62,7 +62,11 @@ const normalizeStyles: Styles = {
     'b, strong': {
       fontWeight: fontWeight.bold,
     },
+  },
+};
 
+const slottedStyles: Styles = {
+  '@global': {
     '%%tagNamesWithSlottedAnchor%%': {
       '& a': addImportantToEachRule({
         textDecoration: 'underline',
@@ -130,14 +134,15 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const styleProps = { ['data-pds-initial-styles']: '' };
   const styleAttributes = convertPropsToAttributeString(styleProps);
 
+  const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`;
   const hydrationStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
-  const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`
+  const slottedStyles = \`${getMinifiedCss(slottedStyles)}\`
     .replace(/%%tagNamesWithSlottedAnchor%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedAnchor.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedInputIndicator%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedInputIndicator.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedImage.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedPictureImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedPictureImage.map(tagName => tagName +' $1').join() +'$2');
 
-  const styles = hydrationStyles.concat(normalizeStyles);
+  const styles = normalizeStyles.concat(hydrationStyles, slottedStyles);
 
   return format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
