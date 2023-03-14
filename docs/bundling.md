@@ -78,6 +78,89 @@ https://nodejs.org/dist./v14.10.0/docs/api/esm.html#esm_dual_commonjs_es_module_
 
 ## Tree Shaking
 
+### TODOs
+
+Treeshaking in Stencil (Rollup under the hood) works the following way:
+
+- If module M1 has a const C1 where some const C2 of module M2 is being used, and const C1 is used somewhere in
+  components, then M1 and M2 will be located in one bundle
+- Otherwise M1 and M2 will be located in different bundles
+
+It means for us that, if we want to define explicitly that M1 and M2 should land in one bundle, we need to have a
+central module which provides all the constants from M1 and M2:
+
+```
+import { const1 } from './module1';
+import { const2 } from './module2';
+import { func1 } from './module1';
+
+export const const11 = const1;
+export const const22 = const2;
+export const func11 = (par1) => { return func1(par1); }
+```
+
+Then we should use `const11`, `const22` and `func11` in components. As a result, `const1`, `const2` and `func1` will
+land in one bundle.
+
+Right now we use `const1` and `const2` directly from components, and in some cases we expect them to land in one bundle,
+but it doesn't work like that.
+
+#### Workaround example 1
+
+An example of a workaround we have, in `common-styles.ts`:
+
+```
+import { getThemedColors, ThemedColors } from './';
+....
+export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
+  return getThemedColors(theme);
+};
+```
+
+Here's the explanation why we need this workaround.
+
+We want all the constants from `colors.ts` and all the constants from `common-styles.ts` to land in one bundle, but we
+use the constants from components directly:
+
+```
+import { getThemedColors } from '../../styles'; // import const from colors.ts
+```
+
+```
+import { getFocusJssStyle } from '../../styles'; // import const from common-styles.ts
+```
+
+This way stencil doesn't know that `colors.ts` and `common-styles.ts` should land in one bundle. In order to force it,
+we need `doGetThemedColors` workaround, so that we have at least one place where `common-styles.ts` module uses constant
+from `colors.ts`.
+
+The constant `doGetThemedColors` should be used at least once in some component (doesn't matter which one), so that the
+workaround works.
+
+You can easily check it by removing `doGetThemedColors` usage and running `yarn build` in components.
+
+In `components/dist/esm` you'll see constructions like this:
+
+```
+import { g as getThemedColors } from './colors-f67ebc7c.js';
+```
+
+But we expect to have there constructions like this (`getThemedColors` is imported from `validateProps-1841c109.js`):
+
+```
+import { q as forceUpdate, g as getCss, a as addImportantToEachRule, I as getMediaQueryMin, A as AllowedTypes, r as registerInstance, v as validateProps, d as attachComponentCss, i as getPrefixedTagNames, h, H as Host, e as getElement, o as getThemedColors, s as createEvent } from './validateProps-1841c109.js';
+```
+
+#### Workaround example 2
+
+Another workaround we have is in `jss.ts`:
+
+```
+export const doNothing = (): void => {
+  addImportantToEachRule({});
+};
+```
+
 ### Findings
 
 We experience that by using only `brand` in react, other objects and functions are in the final bundle.
@@ -165,12 +248,10 @@ const themeDarkElectric = /*#__PURE__*/ {
 ```
 
 This results in `themeDarkElectric` is tree shaken but `themeDark` will be in the bundle even when there is no usage of
-it in App.tsx.  
-Using `Object.assign` instead of spreed makes no difference.
+it in App.tsx. Using `Object.assign` instead of spreed makes no difference.
 
 ### Conclusion
 
-Having a healthy dependency tree is key to tree shaking.  
-If you don't have tree, it is hard to shake it.
+Having a healthy dependency tree is key to tree shaking. If you don't have tree, it is hard to shake it.
 
 Tree in this context means export and imports from other files.
