@@ -3,8 +3,15 @@ import { TableWithCaption } from '../components';
 import type { NextPage } from 'next';
 
 const TablePage: NextPage = (): JSX.Element => {
+  const style = `
+    .dark span {
+      color: white;
+    }
+  `;
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
+
       <div className="playground light" title="should render table on light background">
         <TableWithCaption />
       </div>
