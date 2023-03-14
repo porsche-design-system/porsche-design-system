@@ -2,8 +2,15 @@ import { PTable, PTableHead, PTableHeadCell, PTableHeadRow } from '@porsche-desi
 import { TableWithCaption } from '../components';
 
 export const TablePage = (): JSX.Element => {
+  const style = `
+      .dark span {
+        color: white;
+      }
+  `;
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
+
       <div className="playground light" title="should render table on light background">
         <TableWithCaption />
       </div>
