@@ -1457,8 +1457,6 @@ exports[`should match snapshot 1`] = `
       "description": "string",
       "heading": "string",
       "headingTag": [
-        null,
-        "h1",
         "h2",
         "h3",
         "h4",

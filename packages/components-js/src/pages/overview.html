@@ -31,6 +31,11 @@
     max-width: 400px;
   }
 
+  p-link-tile-model-signature,
+  my-prefix-p-link-tile-model-signature {
+    max-width: 400px;
+  }
+
   p-banner,
   my-prefix-p-banner {
     --p-banner-position-type: static;
@@ -288,6 +293,19 @@
           alt="Beach"
         />
       </p-link-tile>
+    </div>
+
+    <div class="playground light" title="should render default link-tile-model-signature">
+      <p-link-tile-model-signature heading="Some Label" description="Default">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+          width="50"
+          height="50"
+          alt="Beach"
+        />
+        <p-link slot="primary" variant="primary" theme="dark" href="#">Some label</p-link>
+        <p-link slot="secondary" variant="secondary" theme="dark" href="#">Some label</p-link>
+      </p-link-tile-model-signature>
     </div>
 
     <div class="playground light" title="should render default carousel">
@@ -552,6 +570,19 @@
           alt="Beach"
         />
       </my-prefix-p-link-tile>
+    </div>
+
+    <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
+      <my-prefix-p-link-tile-model-signature heading="Some Label" description="Default">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+          width="50"
+          height="50"
+          alt="Beach"
+        />
+        <my-prefix-p-link slot="primary" variant="primary" theme="dark" href="#">Some label</my-prefix-p-link>
+        <my-prefix-p-link slot="secondary" variant="secondary" theme="dark" href="#">Some label</my-prefix-p-link>
+      </my-prefix-p-link-tile-model-signature>
     </div>
 
     <div class="playground light" title="should render default carousel with custom prefix">
