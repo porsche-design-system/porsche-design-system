@@ -21,6 +21,12 @@ describe('format: html', () => {
     expect(result).toMatchSnapshot();
     expect(getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
+
+  it('should add multiple custom prefixes to component names', () => {
+    const result: string = getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });
+    expect(result).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(result)).toMatchSnapshot();
+  });
 });
 
 describe('format: jsx', () => {
@@ -33,6 +39,13 @@ describe('format: jsx', () => {
 
   it('should add custom prefix to component names', () => {
     const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' });
+    const { container } = render(result);
+    expect(container.innerHTML).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
+  });
+
+  it('should add multiple custom prefix to component names', () => {
+    const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: ['', 'some-prefix', 'another-prefix'] });
     const { container } = render(result);
     expect(container.innerHTML).toMatchSnapshot();
     expect(getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
