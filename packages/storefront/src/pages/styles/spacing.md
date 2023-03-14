@@ -5,7 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensSpacing />
+  <ExampleStylesSpacing />
 </Playground>
 
 ## Usage
@@ -62,11 +62,11 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesSpacingCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensSpacing from '@/pages/patterns/styles/example-spacing.vue';
+import ExampleStylesSpacing from '@/pages/patterns/styles/example-spacing.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensSpacing
+    ExampleStylesSpacing
   },
 })
 export default class Code extends Vue {

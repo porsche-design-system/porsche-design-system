@@ -5,7 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensDropShadow />
+  <ExampleStylesDropShadow />
 </Playground>
 
 ## Usage
@@ -41,11 +41,11 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesDroshadowCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensDropShadow from '@/pages/patterns/styles/example-drop-shadow.vue';
+import ExampleStylesDropShadow from '@/pages/patterns/styles/example-drop-shadow.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensDropShadow
+    ExampleStylesDropShadow
   },
 })
 export default class Code extends Vue {

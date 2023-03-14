@@ -5,7 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensMediaQuery />
+  <ExampleStylesMediaQuery />
 </Playground>
 
 ## Usage
@@ -56,11 +56,11 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesMediaQueryCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensMediaQuery from '@/pages/patterns/styles/example-media-query.vue';
+import ExampleStylesMediaQuery from '@/pages/patterns/styles/example-media-query.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensMediaQuery
+    ExampleStylesMediaQuery
   },
 })
 export default class Code extends Vue {

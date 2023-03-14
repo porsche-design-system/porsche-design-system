@@ -13,7 +13,7 @@ and gaps.
 Window</p-link>
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensGrid />
+  <ExampleStylesGrid />
 </Playground>
 
 ## Usage
@@ -87,11 +87,11 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesGridCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensGrid from '@/pages/patterns/styles/example-grid.vue';
+import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensGrid
+    ExampleStylesGrid
   },
 })
 export default class Code extends Vue {
