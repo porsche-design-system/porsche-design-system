@@ -1,9 +1,14 @@
 import * as sharedData from '@porsche-design-system/shared/data';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import type { ColorScheme, StackBlitzProjectAndOpenOptions, StackBlitzProjectDependencies, Theme } from '../../models';
+import type {
+  BackgroundColor,
+  StackBlitzProjectAndOpenOptions,
+  StackBlitzProjectDependencies,
+  Theme,
+} from '../../models';
 import type { OpenInStackBlitzOpts } from './openInStackBlitz';
 
-export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColorScheme'> & {
+export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColor'> & {
   title: string;
   description: string;
   globalStyles: string;
@@ -36,12 +41,10 @@ export const getExternalDependencies = <T>(
     {} as StackBlitzProjectDependencies
   );
 
-export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): string => {
-  const {
-    background: { base, surface },
-  } = theme === 'light' ? themeLight : themeDark;
+export const getBackgroundColor = (theme: Theme, backgroundColor: BackgroundColor): string => {
+  const { base, surface } = (theme === 'light' ? themeLight : themeDark).background;
 
-  return colorScheme === 'surface' ? surface : base;
+  return backgroundColor === 'background-surface' ? surface : base;
 };
 
 export type GetStackBlitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;

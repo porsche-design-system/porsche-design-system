@@ -10,8 +10,8 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import { getButtonAttributes, getIconColor } from './segmented-control-item-utils';
-import type { IconName, PropTypes, ValidatorFunction } from '../../../types';
-import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
+import type { PropTypes, ValidatorFunction } from '../../../types';
+import type { SegmentedControlItemIcon, SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
@@ -38,7 +38,7 @@ export class SegmentedControlItem {
   @Prop() public label?: string;
 
   /** The icon shown. */
-  @Prop() public icon?: IconName;
+  @Prop() public icon?: SegmentedControlItemIcon;
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;

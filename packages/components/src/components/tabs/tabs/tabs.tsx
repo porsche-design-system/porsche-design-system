@@ -11,19 +11,22 @@ import {
   THEMES,
   unobserveChildren,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from '../../tabs-bar/tabs-bar-utils';
-import { TAB_SIZES, TAB_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
+import type { TabsBarChangeEvent } from '../../tabs-bar/tabs-bar-utils';
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
-import { GRADIENT_COLOR_THEMES } from '../../scroller/scroller-utils';
+import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../../scroller/scroller-utils';
 import { syncTabsItemsProps } from './tabs-utils';
+import type { TabsChangeEvent, TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsWeight } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
-  size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
-  weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
+  size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),
+  weight: AllowedTypes.oneOf<TabsWeight>(TABS_BAR_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
+  gradientColorScheme: AllowedTypes.oneOf<TabsGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
+  gradientColor: AllowedTypes.oneOf<TabsGradientColor>(GRADIENT_COLORS),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -35,28 +38,39 @@ export class Tabs {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<TabsSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: TabWeight = 'regular';
+  @Prop() public weight?: TabsWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
+   * Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColorScheme?: TabsGradientColorScheme;
+
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
+  @Prop() public gradientColor?: TabsGradientColor = 'background-base';
 
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   *  Emitted when active tab is changed. */
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsChangeEvent>;
+
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
+  @Event({ bubbles: false }) public change: EventEmitter<TabsChangeEvent>;
 
   @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
     this.setAccessibilityAttributes();
+    this.change.emit({ activeTabIndex: newValue });
     this.tabChange.emit({ activeTabIndex: newValue });
   }
 
@@ -83,6 +97,7 @@ export class Tabs {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Tabs>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
     attachComponentCss(this.host, getComponentCss);
     syncTabsItemsProps(this.host, this.theme);
 
@@ -96,8 +111,10 @@ export class Tabs {
           weight={this.weight}
           theme={this.theme}
           gradientColorScheme={this.gradientColorScheme}
+          gradientColor={this.gradientColor}
           activeTabIndex={this.activeTabIndex}
-          onTabChange={this.onTabChange}
+          onChange={this.onTabsBarChange}
+          onTabChange={(e) => e.stopPropagation()}
         >
           {this.tabsItemElements.map((tab, index) => (
             <button key={index} type="button">
@@ -140,7 +157,7 @@ export class Tabs {
     this.tabsItemElements.forEach((el) => observeProperties(el, ['label'], () => forceUpdate(this.host)));
   };
 
-  private onTabChange = (e: CustomEvent<TabChangeEvent>): void => {
+  private onTabsBarChange = (e: CustomEvent<TabsBarChangeEvent>): void => {
     e.stopPropagation(); // prevent double event emission because of identical name
     this.activeTabIndex = e.detail.activeTabIndex;
   };

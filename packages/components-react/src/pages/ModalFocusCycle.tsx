@@ -23,7 +23,7 @@ export const ModalFocusCyclePage = (): JSX.Element => {
         Open
       </button>
 
-      <PModal heading="Some Heading" open={isOpen} onClose={() => setIsOpen(false)}>
+      <PModal heading="Some Heading" open={isOpen} onDismiss={() => setIsOpen(false)}>
         {isLoading ? (
           <div id="loading">Loading...</div>
         ) : (

@@ -72,7 +72,7 @@
 
     passHeadItemsToNodes(headAdvanced); // initial state
 
-    table.addEventListener('sortingChange', (e) => {
+    table.addEventListener('change', (e) => {
       const { id, direction } = e.detail;
 
       const sortedHead = headAdvanced.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));

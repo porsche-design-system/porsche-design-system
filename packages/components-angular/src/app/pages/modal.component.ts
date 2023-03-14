@@ -121,6 +121,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-modal>
     </div>
 
+    <div class="playground light" title="should show modal with disableCloseButton=true">
+      <p-modal [open]="true" [heading]="'disableCloseButton=true'" [disableCloseButton]="true">
+        Some Content: should show modal with disableCloseButton=true
+      </p-modal>
+    </div>
+
+    <div class="playground light" title="should show modal with dismissButton=false">
+      <p-modal [open]="true" [heading]="'dismissButton=false'" [dismissButton]="false">
+        Some Content: should show modal with dismissButton=false
+      </p-modal>
+    </div>
+
     <div class="visualize-grid">
       <span></span>
       <span></span>

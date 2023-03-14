@@ -1,4 +1,4 @@
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../../types';
 import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
 import {
@@ -36,13 +36,8 @@ const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTop
   return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
 };
 
-const sizeMap: {
-  inherit: { fontSize: string };
-  default: { fontSize: string };
-} = {
-  inherit: {
-    fontSize: 'inherit',
-  },
+const sizeMap: Record<LinkTileSize, { fontSize: string }> = {
+  inherit: { fontSize: 'inherit' },
   default: { fontSize: fontSizeTextMedium },
 };
 
@@ -83,7 +78,9 @@ export const getComponentCss = (
         ...textLargeStyle,
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
-          buildResponsiveStyles(weight, (w: LinkTileWeight) => ({ fontWeight: getFontWeight(w) }))
+          buildResponsiveStyles(weight, (w: LinkTileWeight) => ({
+            fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w),
+          }))
         ),
       },
     },

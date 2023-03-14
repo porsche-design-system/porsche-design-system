@@ -4,7 +4,8 @@ import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -34,7 +35,7 @@ const generateDSRComponents = (): void => {
         .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@State\(\) /g, '')
-        .replace(/\n.*\n  @Event\(.*\).*\n/g, '')
+        .replace(/(?:\n  \/\*\*(?:.*\n){0,3})?  @Event\(.*\).*\n/g, '')
         .replace(/\n  public connectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentWillLoad\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentDidLoad\(\): void {[\s\S]+?\n  }\n/g, '')
@@ -58,7 +59,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
-        .replace(/\s+onTabChange={.*?}/g, '') // onTabChange props
+        .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
@@ -213,13 +214,29 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
-        .replace(/(const (?:iconProps|btnProps|linkProps)) =/, '$1: any ='); // workaround typing issue
+        .replace(/(const (?:iconProps|btnProps|linkProps)) =/, '$1: any =') // workaround typing issue
+        .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
+        .replace(/Exclude<any, any>/g, 'any'); // workaround typings of deprecation maps
 
       // component based tweaks
       if (tagName === 'p-carousel') {
-        newFileContent = newFileContent.replace(/this\.slides(\.map)/, `otherChildren$1`);
+        newFileContent = newFileContent
+          .replace(/this\.slides(\.map)/, `otherChildren$1`)
+          .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n");
+      } else if (tagName === 'p-banner') {
+        // remove warning about deprecated title slot
+        newFileContent = newFileContent.replace(/.+console\.warn\([\s\S]+?\);\n/g, '');
+      } else if (tagName === 'p-pagination') {
+        // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
+        newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
       } else if (tagName === 'p-modal') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
+          .replace(/hasHeader =/, 'const $&')
+          .replace(
+            /const hasHeader = .+\n/,
+            '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
+          );
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)

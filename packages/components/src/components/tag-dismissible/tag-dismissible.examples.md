@@ -15,7 +15,7 @@
 
 </p-inline-notification>
 
-<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+<Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
@@ -36,14 +36,15 @@ another focusable element. This prevents loosing the focus order.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils'; 
+import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
+import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
 
-  backgroundColor = 'default';
-  backgroundColors = ['default', 'surface'];
+  backgroundColor = 'background-base';
+  backgroundColors = GRADIENT_COLORS;
 
   get colorMarkup(){
     return TAG_DISMISSIBLE_COLORS.map((color) => `<p-tag-dismissible color="${color}">Color ${color}</p-tag-dismissible>`).join('\n');

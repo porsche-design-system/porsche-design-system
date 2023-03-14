@@ -108,30 +108,82 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light" title="should render scroller with scroll indicator position center on light background">
+      <div className="playground light surface" title="should render scroller gradientColor surface on light surface background">
+        <PScroller gradientColor="background-surface">
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+        </PScroller>
+      </div>
+
+      <div className="playground dark surface" title="should render scroller gradientColor surface on dark background">
+        <PScroller theme="dark" gradientColor="background-surface">
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+        </PScroller>
+      </div>
+
+      <div className="playground light" title="should render scroller with scrollIndicatorPosition center on light background">
         <div style={{ height: '3rem', border: '1px solid deeppink', maxWidth: '600px' }}>
           <PScroller scrollIndicatorPosition="center">
-            <button>Scroll indicator position center</button>
-            <button>Scroll indicator position center</button>
-            <button>Scroll indicator position center</button>
-            <button>Scroll indicator position center</button>
-            <button>Scroll indicator position center</button>
-            <button>Scroll indicator position center</button>
-            <button>Scroll indicator position center</button>
+            <button>scrollIndicatorPosition center</button>
+            <button>scrollIndicatorPosition center</button>
+            <button>scrollIndicatorPosition center</button>
+            <button>scrollIndicatorPosition center</button>
+            <button>scrollIndicatorPosition center</button>
+            <button>scrollIndicatorPosition center</button>
+            <button>scrollIndicatorPosition center</button>
           </PScroller>
         </div>
       </div>
 
-      <div className="playground light" title="should render scroller with scroll indicator position top on light background">
+      <div className="playground light" title="should render scroller with scrollIndicatorPosition top on light background">
         <div style={{ height: '3rem', border: '1px solid deeppink', maxWidth: '600px' }}>
           <PScroller scrollIndicatorPosition="top">
-            <button>Scroll indicator position top</button>
-            <button>Scroll indicator position top</button>
-            <button>Scroll indicator position top</button>
-            <button>Scroll indicator position top</button>
-            <button>Scroll indicator position top</button>
-            <button>Scroll indicator position top</button>
-            <button>Scroll indicator position top</button>
+            <button>scrollIndicatorPosition top</button>
+            <button>scrollIndicatorPosition top</button>
+            <button>scrollIndicatorPosition top</button>
+            <button>scrollIndicatorPosition top</button>
+            <button>scrollIndicatorPosition top</button>
+            <button>scrollIndicatorPosition top</button>
+            <button>scrollIndicatorPosition top</button>
+          </PScroller>
+        </div>
+      </div>
+
+      <div className="playground light" title="should render scroller with alignScrollIndicator center on light background">
+        <div style={{ height: '3rem', border: '1px solid deeppink', maxWidth: '600px' }}>
+          <PScroller alignScrollIndicator="center">
+            <button>alignScrollIndicator center</button>
+            <button>alignScrollIndicator center</button>
+            <button>alignScrollIndicator center</button>
+            <button>alignScrollIndicator center</button>
+            <button>alignScrollIndicator center</button>
+            <button>alignScrollIndicator center</button>
+            <button>alignScrollIndicator center</button>
+          </PScroller>
+        </div>
+      </div>
+
+      <div className="playground light" title="should render scroller with alignScrollIndicator top on light background">
+        <div style={{ height: '3rem', border: '1px solid deeppink', maxWidth: '600px' }}>
+          <PScroller alignScrollIndicator="top">
+            <button>alignScrollIndicator top</button>
+            <button>alignScrollIndicator top</button>
+            <button>alignScrollIndicator top</button>
+            <button>alignScrollIndicator top</button>
+            <button>alignScrollIndicator top</button>
+            <button>alignScrollIndicator top</button>
+            <button>alignScrollIndicator top</button>
           </PScroller>
         </div>
       </div>

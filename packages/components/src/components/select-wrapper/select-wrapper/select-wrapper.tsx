@@ -18,22 +18,21 @@ import {
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { DropdownDirection } from './select-wrapper-utils';
+import type { SelectWrapperDropdownDirection, SelectWrapperState } from './select-wrapper-utils';
 import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
-import type { FormState } from '../../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<SelectWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   filter: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  dropdownDirection: AllowedTypes.oneOf<DropdownDirection>(DROPDOWN_DIRECTIONS),
+  dropdownDirection: AllowedTypes.oneOf<SelectWrapperDropdownDirection>(DROPDOWN_DIRECTIONS),
   native: AllowedTypes.boolean,
 };
 
@@ -51,7 +50,7 @@ export class SelectWrapper {
   @Prop() public description?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: SelectWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -66,7 +65,7 @@ export class SelectWrapper {
   @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: DropdownDirection = 'auto';
+  @Prop() public dropdownDirection?: SelectWrapperDropdownDirection = 'auto';
 
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
@@ -146,7 +145,7 @@ export class SelectWrapper {
               class="icon"
               name="arrow-head-down"
               theme={this.theme}
-              color={disabled ? 'disabled' : 'primary'}
+              color={disabled ? 'state-disabled' : 'primary'}
               aria-hidden="true"
               ref={(el) => (this.iconElement = el)}
             />

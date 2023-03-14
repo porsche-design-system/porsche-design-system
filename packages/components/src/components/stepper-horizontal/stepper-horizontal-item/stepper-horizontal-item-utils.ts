@@ -1,20 +1,21 @@
 import type { IconName } from '@porsche-design-system/icons';
-import { getTagName } from '../../../utils';
 import type { Theme } from '../../../types';
+import { getTagName } from '../../../utils';
 
 export type StepperHorizontalItemInternalHTMLProps = {
   theme: Theme;
 };
 
 export const STEPPER_ITEM_STATES = ['current', 'complete', 'warning'] as const;
-// TODO: should be called StepperHorizontalItemState
-export type StepperState = typeof STEPPER_ITEM_STATES[number];
+export type StepperHorizontalItemState = typeof STEPPER_ITEM_STATES[number];
 
-export const isStateCompleteOrWarning = (state: StepperState): boolean => {
+export const isStateCompleteOrWarning = (state: StepperHorizontalItemState): boolean => {
   return state === 'complete' || state === 'warning';
 };
 
-export const getStepperHorizontalIconName = (state: StepperState): Extract<IconName, 'success' | 'warning'> => {
+export const getStepperHorizontalIconName = (
+  state: StepperHorizontalItemState
+): Extract<IconName, 'success' | 'warning'> => {
   return state === 'complete' ? 'success' : 'warning';
 };
 
@@ -27,6 +28,6 @@ export const throwIfCurrentAndDisabled = (host: HTMLElement): void => {
   }
 };
 
-export const isItemClickable = (state: StepperState, disabled: boolean): boolean => {
+export const isItemClickable = (state: StepperHorizontalItemState, disabled: boolean): boolean => {
   return !!state && isStateCompleteOrWarning(state) && !disabled;
 };

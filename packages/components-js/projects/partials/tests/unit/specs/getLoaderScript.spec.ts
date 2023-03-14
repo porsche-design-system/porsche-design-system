@@ -12,23 +12,23 @@ const fileContent = fs.readFileSync(tmpFilePath, 'utf8') + 'porscheDesignSystem.
 jest.mock('../../../src/shared');
 
 it('should not contain componentsReady', () => {
-  const result = getLoaderScript();
+  const result: string = getLoaderScript();
   expect(result).not.toContain('componentsReady');
 });
 
 describe('format: html', () => {
   it('should return content of components-js tmp build within script tag', () => {
-    const result = getLoaderScript();
+    const result: string = getLoaderScript();
     expect(result).toBe(`<script data-pds-loader-script>${fileContent}</script>`);
   });
 
   it('should call load method with supplied prefix', () => {
-    const result = getLoaderScript({ prefix: 'my-prefix' });
+    const result: string = getLoaderScript({ prefix: 'my-prefix' });
     expect(result.endsWith("porscheDesignSystem.load({prefix:'my-prefix'})</script>")).toBe(true);
   });
 
   it('should call load method with supplied prefixes', () => {
-    const result = getLoaderScript({ prefix: ['my-prefix', 'another-prefix'] });
+    const result: string = getLoaderScript({ prefix: ['my-prefix', 'another-prefix'] });
     expect(
       result.endsWith(
         "porscheDesignSystem.load({prefix:'my-prefix'});porscheDesignSystem.load({prefix:'another-prefix'})</script>"
@@ -39,17 +39,20 @@ describe('format: html', () => {
 
 describe('format: jsx', () => {
   it('should return content of components-js tmp build within script tag', () => {
-    const { container } = render(getLoaderScript({ format: 'jsx' }));
+    const result: JSX.Element = getLoaderScript({ format: 'jsx' });
+    const { container } = render(result);
     expect(container.innerHTML).toBe(`<script data-pds-loader-script="">${fileContent}</script>`);
   });
 
   it('should call load method with supplied prefix', () => {
-    const { container } = render(getLoaderScript({ format: 'jsx', prefix: 'my-prefix' }));
+    const result: JSX.Element = getLoaderScript({ format: 'jsx', prefix: 'my-prefix' });
+    const { container } = render(result);
     expect(container.innerHTML.endsWith("porscheDesignSystem.load({prefix:'my-prefix'})</script>")).toBe(true);
   });
 
   it('should call load method with supplied prefixes', () => {
-    const { container } = render(getLoaderScript({ format: 'jsx', prefix: ['my-prefix', 'another-prefix'] }));
+    const result: JSX.Element = getLoaderScript({ format: 'jsx', prefix: ['my-prefix', 'another-prefix'] });
+    const { container } = render(result);
     expect(
       container.innerHTML.endsWith(
         "porscheDesignSystem.load({prefix:'my-prefix'});porscheDesignSystem.load({prefix:'another-prefix'})</script>"

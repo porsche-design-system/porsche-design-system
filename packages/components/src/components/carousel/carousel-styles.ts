@@ -66,7 +66,7 @@ const spacingMap: { [key in CarouselWidth]: JssStyle } = {
 
 export const getComponentCss = (
   width: CarouselWidth,
-  disablePagination: BreakpointCustomizable<boolean>,
+  hasPagination: BreakpointCustomizable<boolean>,
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
@@ -172,10 +172,10 @@ export const getComponentCss = (
     // .splide.is-initialized:not(.is-active) .splide__list {
     //     display: block,
     //   }
-    ...(!disablePagination && {
+    ...(hasPagination && {
       pagination: {
-        ...buildResponsiveStyles(disablePagination, (disablePaginationValue: boolean) => ({
-          display: disablePaginationValue ? 'none' : 'flex',
+        ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
+          display: hasPaginationValue ? 'flex' : 'none',
         })),
         justifyContent: 'center',
         gap: spacingStaticSmall,

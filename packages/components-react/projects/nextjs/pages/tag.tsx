@@ -32,10 +32,10 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag color="neutral-contrast-high">Color neutral-contrast-high</PTag>
         <PTag color="primary">Color primary</PTag>
         <PTag color="notification-neutral">Color notification-neutral</PTag>
-        <PTag color="notification-info">Color notification-info</PTag>
-        <PTag color="notification-success">Color notification-success</PTag>
-        <PTag color="notification-error">Color notification-error</PTag>
-        <PTag color="notification-warning">Color notification-warning</PTag>
+        <PTag color="notification-info-soft">Color notification-info-soft</PTag>
+        <PTag color="notification-success-soft">Color notification-success-soft</PTag>
+        <PTag color="notification-error-soft">Color notification-error-soft</PTag>
+        <PTag color="notification-warning-soft">Color notification-warning-soft</PTag>
       </div>
 
       <div className="playground light surface" title="should show different background colors on light surface background">
@@ -45,10 +45,10 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag color="neutral-contrast-high">Color neutral-contrast-high</PTag>
         <PTag color="primary">Color primary</PTag>
         <PTag color="notification-neutral">Color notification-neutral</PTag>
-        <PTag color="notification-info">Color notification-info</PTag>
-        <PTag color="notification-success">Color notification-success</PTag>
-        <PTag color="notification-error">Color notification-error</PTag>
-        <PTag color="notification-warning">Color notification-warning</PTag>
+        <PTag color="notification-info-soft">Color notification-info-soft</PTag>
+        <PTag color="notification-success-soft">Color notification-success-soft</PTag>
+        <PTag color="notification-error-soft">Color notification-error-soft</PTag>
+        <PTag color="notification-warning-soft">Color notification-warning-soft</PTag>
       </div>
 
       <div className="playground dark" title="should show different background colors on dark background">
@@ -58,10 +58,10 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
         <PTag theme="dark" color="primary">Color primary</PTag>
         <PTag theme="dark" color="notification-neutral">Color notification-neutral</PTag>
-        <PTag theme="dark" color="notification-info">Color notification-info</PTag>
-        <PTag theme="dark" color="notification-success">Color notification-success</PTag>
-        <PTag theme="dark" color="notification-error">Color notification-error</PTag>
-        <PTag theme="dark" color="notification-warning">Color notification-warning</PTag>
+        <PTag theme="dark" color="notification-info-soft">Color notification-info-soft</PTag>
+        <PTag theme="dark" color="notification-success-soft">Color notification-success-soft</PTag>
+        <PTag theme="dark" color="notification-error-soft">Color notification-error-soft</PTag>
+        <PTag theme="dark" color="notification-warning-soft">Color notification-warning-soft</PTag>
       </div>
 
       <div className="playground dark surface" title="should show different background colors on dark surface background">
@@ -71,10 +71,10 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
         <PTag theme="dark" color="primary">Color primary</PTag>
         <PTag theme="dark" color="notification-neutral">Color notification-neutral</PTag>
-        <PTag theme="dark" color="notification-info">Color notification-info</PTag>
-        <PTag theme="dark" color="notification-success">Color notification-success</PTag>
-        <PTag theme="dark" color="notification-error">Color notification-error</PTag>
-        <PTag theme="dark" color="notification-warning">Color notification-warning</PTag>
+        <PTag theme="dark" color="notification-info-soft">Color notification-info-soft</PTag>
+        <PTag theme="dark" color="notification-success-soft">Color notification-success-soft</PTag>
+        <PTag theme="dark" color="notification-error-soft">Color notification-error-soft</PTag>
+        <PTag theme="dark" color="notification-warning-soft">Color notification-warning-soft</PTag>
       </div>
 
       <div className="playground light" title="should show different background colors and icons on light background">
@@ -84,10 +84,10 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag icon="car" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
         <PTag icon="car" color="primary">Color primary</PTag>
         <PTag icon="car" color="notification-neutral">Color notification-neutral</PTag>
-        <PTag icon="car" color="notification-info">Color notification-info</PTag>
-        <PTag icon="car" color="notification-success">Color notification-success</PTag>
-        <PTag icon="car" color="notification-error">Color notification-error</PTag>
-        <PTag icon="car" color="notification-warning">Color notification-warning</PTag>
+        <PTag icon="car" color="notification-info-soft">Color notification-info-soft</PTag>
+        <PTag icon="car" color="notification-success-soft">Color notification-success-soft</PTag>
+        <PTag icon="car" color="notification-error-soft">Color notification-error-soft</PTag>
+        <PTag icon="car" color="notification-warning-soft">Color notification-warning-soft</PTag>
         <PTag iconSource="./assets/icon-custom-kaixin.svg" color="background-surface"> Color background-surface</PTag>
       </div>
 
@@ -98,10 +98,10 @@ const TagPage: NextPage = (): JSX.Element => {
         <PTag theme="dark" icon="car" color="neutral-contrast-high">Color neutral-contrast-high</PTag>
         <PTag theme="dark" icon="car" color="primary">Color primary</PTag>
         <PTag theme="dark" icon="car" color="notification-neutral">Color notification-neutral</PTag>
-        <PTag theme="dark" icon="car" color="notification-info">Color notification-info</PTag>
-        <PTag theme="dark" icon="car" color="notification-success">Color notification-success</PTag>
-        <PTag theme="dark" icon="car" color="notification-error">Color notification-error</PTag>
-        <PTag theme="dark" icon="car" color="notification-warning">Color notification-warning</PTag>
+        <PTag theme="dark" icon="car" color="notification-info-soft">Color notification-info-soft</PTag>
+        <PTag theme="dark" icon="car" color="notification-success-soft">Color notification-success-soft</PTag>
+        <PTag theme="dark" icon="car" color="notification-error-soft">Color notification-error-soft</PTag>
+        <PTag theme="dark" icon="car" color="notification-warning-soft">Color notification-warning-soft</PTag>
         <PTag theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="background-surface">
           Color background-surface</PTag
         >
@@ -164,10 +164,10 @@ const TagPage: NextPage = (): JSX.Element => {
         <div style={{ width: '100px', overflow: 'auto', border: '1px solid deeppink' }}>
           <PTag color="primary">Text that is very long</PTag>
           <PTag color="primary" icon="car">Text with icon that is very long</PTag>
-          <PTag color="notification-success" icon="car">
+          <PTag color="notification-success-soft" icon="car">
             <a href="#">Link with icon that is very long</a>
           </PTag>
-          <PTag color="notification-success" icon="car">
+          <PTag color="notification-success-soft" icon="car">
             <button>Button with icon that is very long</button>
           </PTag>
         </div>
