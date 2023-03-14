@@ -13,6 +13,29 @@ exports[`extendMarkupWithAppComponent() should return correct markup 1`] = `
 export class AppComponent {}"
 `;
 
+exports[`extractInlineStyles() should extract inline styles for stable version 1`] = `
+"@import '@porsche-design-system/components-js/styles/scss';
+.div {
+  color: $pds-theme-light-primary;
+}"
+`;
+
+exports[`extractInlineStyles() should extract inline styles for temporary version 1`] = `
+"@import '../../@porsche-design-system/components-js/styles/scss';
+.div {
+  color: $pds-theme-light-primary;
+}"
+`;
+
+exports[`getAppComponentTs() should replace styles with styleUrls for hasInlineScss = true 1`] = `
+"@Component({
+  selector: 'porsche-design-system-app',
+  styleUrls: ['./app.component.scss'],
+  template: \` <div></div> \`,
+})
+export class AppComponent {}"
+`;
+
 exports[`getAppModuleTs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup for [] as externalDependencies 1`] = `
 "import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

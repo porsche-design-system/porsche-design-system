@@ -55,17 +55,19 @@
       framework: Exclude<Framework, 'shared'>,
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
+      const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
+
       switch (framework) {
         case 'vanilla-js':
-          return await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
+          return jsBundle;
         case 'angular':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...jsBundle,
             ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular', pdsVersion)),
           };
         case 'react':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...jsBundle,
             ...(await CodeEditor.fetchPorscheDesignSystemBundle('react', pdsVersion)),
           };
       }

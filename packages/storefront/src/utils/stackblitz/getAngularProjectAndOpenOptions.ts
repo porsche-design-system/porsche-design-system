@@ -7,15 +7,13 @@ import {
   removeSharedImport,
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
-import type {
-  DependencyMap,
-  SharedImportKey,
-  GetStackBlitzProjectAndOpenOptions,
-  ExternalDependency,
-} from '../../utils';
-import type { StackBlitzProjectDependencies } from '../../models';
+import type { DependencyMap, SharedImportKey, GetStackBlitzProjectAndOpenOptions, ExternalDependency } from '@/utils';
+import type { StackBlitzProjectDependencies } from '@/models';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
+
+// TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
+// as well as code flow, similar to our WrapperGenerator
 
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
@@ -40,24 +38,49 @@ export const extendMarkupWithAppComponent = (markup: string): string =>
 })
 export class AppComponent {}`;
 
+export const hasMarkupInlineScss = (input: string): boolean => {
+  const [, styles] = input.match(/ {2}styles: \[([\s\S]+?)\]/) || [];
+  return !!styles?.match(/@import|@use/);
+};
+
+// since stackblitz doesn't respect angular.json configurations we can't use the `inlineStyleLanguage: "scss"` option
+// therefore we extract inline scss into a separate file and reference it via styleUrls
+// open stackblitz issues: https://github.com/stackblitz/core/search?q=angular.json&type=issues
+export const extractInlineStyles = (input: string, pdsVersion: string): string => {
+  const [, inlineScss = ''] = input.match(/ {2}styles: \[\s+`\n([\s\S]+?)\s+`,\s+\],\n/) || [];
+
+  return inlineScss
+    .replace(/^ {6}/g, '')
+    .replace(/\n {6}/g, '\n')
+    .replace(
+      /^(@(?:import|use)) '(@porsche-design-system)/,
+      isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '$&' : "$1 '../../$2"
+    );
+};
+
 export const getAppComponentTs = (
   markup: string,
   isExampleMarkup: boolean,
   sharedImportKeys: SharedImportKey[],
-  pdsVersion: string
+  pdsVersion: string,
+  hasInlineScss: boolean
 ): string => {
-  return convertImportPaths(
+  let result = convertImportPaths(
     isExampleMarkup
       ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
       : extendMarkupWithAppComponent(markup),
     'angular',
     pdsVersion
   );
+
+  if (hasInlineScss) {
+    result = result.replace(/ {2}styles: \[[\s\S]+\],/, "  styleUrls: ['./app.component.scss'],");
+  }
+
+  return result;
 };
 
-const externalDependencyModuleImportMap: {
-  [key in ExternalDependency]: { module: string; import: string };
-} = {
+const externalDependencyModuleImportMap: Record<ExternalDependency, { module: string; import: string }> = {
   imask: {
     module: 'IMaskModule',
     import: "import { IMaskModule } from 'angular-imask';",
@@ -170,6 +193,8 @@ export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions
     pdsVersion,
   } = opts;
 
+  const hasInlineScss = hasMarkupInlineScss(markup);
+
   return {
     files: {
       ...porscheDesignSystemBundle,
@@ -177,8 +202,12 @@ export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions
         markup,
         !!markup.match(classNameRegex),
         sharedImportKeys,
-        pdsVersion
+        pdsVersion,
+        hasInlineScss
       ),
+      ...(hasInlineScss && {
+        'src/app/app.component.scss': extractInlineStyles(markup, pdsVersion),
+      }),
       'src/app/app.module.ts': getAppModuleTs(externalDependencies, pdsVersion),
       'src/index.html': getIndexHtml(globalStyles),
       'src/main.ts': getMainTs(),

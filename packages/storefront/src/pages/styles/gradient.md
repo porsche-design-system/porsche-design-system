@@ -5,7 +5,7 @@
 ## Example
 
 <Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensGradient />
+  <ExampleStylesGradient />
 </Playground>
 
 ## Usage
@@ -42,15 +42,15 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensGradientCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensGradient from '@/pages/patterns/design-tokens/example-gradient.vue';
+import { getStylesGradientCodeSamples } from '@porsche-design-system/shared';
+import ExampleStylesGradient from '@/pages/patterns/styles/example-gradient.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensGradient
+    ExampleStylesGradient
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensGradientCodeSamples();
+  codeExample = getStylesGradientCodeSamples();
 }
 </script>

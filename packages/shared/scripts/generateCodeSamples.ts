@@ -7,16 +7,16 @@ type CodeSample = {
   component:
     | TagName
     | 'componentsReady'
-    | 'design-tokens-border'
-    | 'design-tokens-drop-shadow'
-    | 'design-tokens-focus'
-    | 'design-tokens-frosted-glass'
-    | 'design-tokens-gradient'
-    | 'design-tokens-grid'
-    | 'design-tokens-media-query'
-    | 'design-tokens-spacing'
-    | 'design-tokens-theme'
-    | 'design-tokens-typography';
+    | 'styles-border'
+    | 'styles-drop-shadow'
+    | 'styles-focus'
+    | 'styles-frosted-glass'
+    | 'styles-gradient'
+    | 'styles-grid'
+    | 'styles-media-query'
+    | 'styles-spacing'
+    | 'styles-theme'
+    | 'styles-typography';
   samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
@@ -184,92 +184,92 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
-      component: 'design-tokens-border',
+      component: 'styles-border',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-border-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensBorderExample.tsx',
+          componentsAngularPath + '/../styles/styles-border-example.component.ts',
+          componentsReactPath + '/../styles/StylesBorderExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-drop-shadow',
+      component: 'styles-drop-shadow',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-drop-shadow-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensDropShadowExample.tsx',
+          componentsAngularPath + '/../styles/styles-drop-shadow-example.component.ts',
+          componentsReactPath + '/../styles/StylesDropShadowExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-focus',
+      component: 'styles-focus',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-focus-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensFocusExample.tsx',
+          componentsAngularPath + '/../styles/styles-focus-example.component.ts',
+          componentsReactPath + '/../styles/StylesFocusExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-frosted-glass',
+      component: 'styles-frosted-glass',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-frosted-glass-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensFrostedGlassExample.tsx',
+          componentsAngularPath + '/../styles/styles-frosted-glass-example.component.ts',
+          componentsReactPath + '/../styles/StylesFrostedGlassExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-gradient',
+      component: 'styles-gradient',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-gradient-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensGradientExample.tsx',
+          componentsAngularPath + '/../styles/styles-gradient-example.component.ts',
+          componentsReactPath + '/../styles/StylesGradientExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-grid',
+      component: 'styles-grid',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-grid-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensGridExample.tsx',
+          componentsAngularPath + '/../styles/styles-grid-example.component.ts',
+          componentsReactPath + '/../styles/StylesGridExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-media-query',
+      component: 'styles-media-query',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-media-query-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensMediaQueryExample.tsx',
+          componentsAngularPath + '/../styles/styles-media-query-example.component.ts',
+          componentsReactPath + '/../styles/StylesMediaQueryExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-spacing',
+      component: 'styles-spacing',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-spacing-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensSpacingExample.tsx',
+          componentsAngularPath + '/../styles/styles-spacing-example.component.ts',
+          componentsReactPath + '/../styles/StylesSpacingExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-theme',
+      component: 'styles-theme',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-theme-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensThemeExample.tsx',
+          componentsAngularPath + '/../styles/styles-theme-example.component.ts',
+          componentsReactPath + '/../styles/StylesThemeExample.tsx',
         ],
       ],
     },
     {
-      component: 'design-tokens-typography',
+      component: 'styles-typography',
       samples: [
         [
-          componentsAngularPath + '/../design-tokens/design-tokens-typography-example.component.ts',
-          componentsReactPath + '/../design-tokens/DesignTokensTypographyExample.tsx',
+          componentsAngularPath + '/../styles/styles-typography-example.component.ts',
+          componentsReactPath + '/../styles/StylesTypographyExample.tsx',
         ],
       ],
     },
