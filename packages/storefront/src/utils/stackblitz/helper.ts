@@ -28,17 +28,17 @@ export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): s
   return sharedImportConstants ? `${sharedImportConstants}\n\n` : '';
 };
 
-export const EXTERNAL_DEPENDENCIES = ['imask'] as const;
+export const EXTERNAL_DEPENDENCIES = ['imask', 'styled-components'] as const;
 export type ExternalDependency = (typeof EXTERNAL_DEPENDENCIES)[number];
 
 export type DependencyMap<T> = Record<ExternalDependency, { [K in keyof T]?: T[K] }>;
 
 export const getExternalDependencies = <T>(
   additionalDependencies: ExternalDependency[],
-  dependenciesMap: DependencyMap<T>
+  dependencyMap: Partial<DependencyMap<T>>
 ): StackBlitzProjectDependencies =>
   additionalDependencies.reduce(
-    (result, current) => ({ ...result, ...dependenciesMap[current] }),
+    (result, current) => ({ ...result, ...dependencyMap[current] }),
     {} as StackBlitzProjectDependencies
   );
 

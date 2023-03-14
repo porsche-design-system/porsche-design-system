@@ -4,7 +4,7 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesFocus />
 </Playground>
 
@@ -37,6 +37,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesFocusCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesFocus from '@/pages/patterns/styles/example-focus.vue';
 
 @Component({
@@ -46,5 +47,9 @@ import ExampleStylesFocus from '@/pages/patterns/styles/example-focus.vue';
 })
 export default class Code extends Vue {
   codeExample = getStylesFocusCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>

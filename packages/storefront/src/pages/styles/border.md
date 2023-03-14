@@ -4,7 +4,7 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesBorder />
 </Playground>
 
@@ -48,6 +48,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesBorderCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesBorder from '@/pages/patterns/styles/example-border.vue';
 
 @Component({
@@ -57,5 +58,9 @@ import ExampleStylesBorder from '@/pages/patterns/styles/example-border.vue';
 })
 export default class Code extends Vue {
   codeExample = getStylesBorderCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>

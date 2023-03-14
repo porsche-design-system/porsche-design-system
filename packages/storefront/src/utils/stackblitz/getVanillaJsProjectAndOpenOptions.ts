@@ -10,7 +10,7 @@ import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOpti
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
 
-const externalDependencyToSrcMap: Record<ExternalDependency, string> = {
+const externalDependencyToSrcMap: Partial<Record<ExternalDependency, string>> = {
   imask: 'node_modules/imask/dist/imask.min.js',
 };
 
@@ -73,7 +73,7 @@ export const getIndexJs = (pdsVersion: string): string => {
 window.porscheDesignSystem = porscheDesignSystem`;
 };
 
-export const dependencyMap: DependencyMap<typeof dependencies> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   imask: {
     imask: dependencies['imask'],
   },

@@ -98,9 +98,12 @@ root.render(
 
 export const getTsconfigJson = (): string => JSON.stringify(tsconfig, null, 2);
 
-export const dependencyMap: DependencyMap<typeof dependencies> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   imask: {
     'react-imask': dependencies['react-imask'],
+  },
+  'styled-components': {
+    'styled-components': dependencies['styled-components'],
   },
 };
 

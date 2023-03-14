@@ -4,7 +4,7 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesMediaQuery />
 </Playground>
 
@@ -56,6 +56,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesMediaQueryCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesMediaQuery from '@/pages/patterns/styles/example-media-query.vue';
 
 @Component({
@@ -65,5 +66,9 @@ import ExampleStylesMediaQuery from '@/pages/patterns/styles/example-media-query
 })
 export default class Code extends Vue {
   codeExample = getStylesMediaQueryCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>
