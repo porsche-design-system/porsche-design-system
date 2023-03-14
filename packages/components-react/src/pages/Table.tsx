@@ -3,7 +3,7 @@ import { TableWithCaption } from '../components';
 
 export const TablePage = (): JSX.Element => {
   const style = `
-      .dark span {
+      .dark span.table-caption {
         color: white;
       }
   `;
@@ -21,7 +21,7 @@ export const TablePage = (): JSX.Element => {
 
       <div className="playground light" title="should render table with unstyled slotted caption on light background">
         <PTable>
-          <span slot="caption">
+          <span slot="caption" className="table-caption">
             Some unstyled caption <a href="https://porsche.com">with a link</a>
           </span>
           <PTableHead>
@@ -35,7 +35,7 @@ export const TablePage = (): JSX.Element => {
 
       <div className="playground dark" title="should render table with unstyled slotted caption on dark background">
         <PTable theme="dark">
-          <span slot="caption">
+          <span slot="caption" className="table-caption">
             Some unstyled caption <a href="https://porsche.com">with a link</a>
           </span>
           <PTableHead>
