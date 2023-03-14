@@ -36,9 +36,10 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
-  /** @deprecated
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release.
    * Background color variations */
-  @Prop() public backgroundColor?: SegmentedControlBackgroundColor; // 'background-color' prop is deprecated
+  @Prop() public backgroundColor?: SegmentedControlBackgroundColor;
 
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -46,8 +47,13 @@ export class SegmentedControl {
   /** Sets the initial value of the segmented-control. */
   @Prop() public value?: string | number;
 
-  /** Emitted when selected element changes. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when selected element changes. */
   @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlChangeEvent>;
+
+  /** Emitted when selected element changes. */
+  @Event({ bubbles: false }) public change: EventEmitter<SegmentedControlChangeEvent>;
 
   public connectedCallback(): void {
     throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
@@ -87,6 +93,7 @@ export class SegmentedControl {
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
     if (item) {
       this.value = item.value; // causes rerender
+      this.change.emit({ value: this.value });
       this.segmentedControlChange.emit({ value: this.value });
       item.focus();
     }

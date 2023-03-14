@@ -7,7 +7,7 @@
         :key="index"
         :heading="category"
         v-bind:open="accordion[category]"
-        v-on:accordionChange="toggleActive(category)"
+        v-on:change="toggleActive(category)"
         compact="true"
       >
         <ul>
@@ -31,7 +31,8 @@
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
   import Search from '@/components/Search.vue';
-  import { getComponentMeta, TagName } from '@porsche-design-system/shared';
+  import type { TagName } from '@porsche-design-system/shared';
+  import { getComponentMeta } from '@porsche-design-system/component-meta';
 
   @Component({
     components: {

@@ -4,7 +4,7 @@ import {
   isStateCompleteOrWarning,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
-import type { StepperState } from './stepper-horizontal-item-utils';
+import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
 import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 
 describe('isStateCompleteOrWarning()', () => {
@@ -53,7 +53,7 @@ describe('throwIfCurrentAndDisabled()', () => {
 });
 
 describe('isItemClickable()', () => {
-  it.each<[state: StepperState, disabled: boolean, expected: boolean]>([
+  it.each<[state: StepperHorizontalItemState, disabled: boolean, expected: boolean]>([
     ['complete', true, false],
     ['warning', true, false],
     ['complete', true, false],

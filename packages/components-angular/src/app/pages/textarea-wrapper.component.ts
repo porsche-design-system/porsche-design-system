@@ -141,12 +141,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render without counter">
-      <p-textarea-wrapper [label]="'Counter hidden'" [showCharacterCount]="false">
+      <p-textarea-wrapper [label]="'showCharacterCount=false'" [showCharacterCount]="false">
         <textarea [maxLength]="200">Some value</textarea>
       </p-textarea-wrapper>
     </div>
     <div class="playground dark" title="should render without counter on dark theme">
-      <p-textarea-wrapper [label]="'Counter hidden'" [showCharacterCount]="false" [theme]="'dark'">
+      <p-textarea-wrapper [label]="'showCharacterCount=false'" [showCharacterCount]="false" [theme]="'dark'">
+        <textarea [maxLength]="200">Some value</textarea>
+      </p-textarea-wrapper>
+    </div>
+
+    <div class="playground light" title="should render without counter">
+      <p-textarea-wrapper [label]="'showCounter=false'" [showCounter]="false">
+        <textarea [maxLength]="200">Some value</textarea>
+      </p-textarea-wrapper>
+    </div>
+    <div class="playground dark" title="should render without counter on dark theme">
+      <p-textarea-wrapper [label]="'showCounter=false'" [showCounter]="false" [theme]="'dark'">
         <textarea [maxLength]="200">Some value</textarea>
       </p-textarea-wrapper>
     </div>

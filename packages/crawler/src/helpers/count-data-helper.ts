@@ -7,7 +7,8 @@ import {
   TagNameData,
   TagNamesAggregated,
 } from '../types';
-import { getComponentMeta, TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggregated): TagName[] =>
   // "Object.keys" returns string[], therefore we need type casting here

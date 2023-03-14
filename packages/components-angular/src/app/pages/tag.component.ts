@@ -30,10 +30,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
       <p-tag [color]="'primary'">Color primary</p-tag>
       <p-tag [color]="'notification-neutral'">Color notification-neutral</p-tag>
-      <p-tag [color]="'notification-info'">Color notification-info</p-tag>
-      <p-tag [color]="'notification-success'">Color notification-success</p-tag>
-      <p-tag [color]="'notification-error'">Color notification-error</p-tag>
-      <p-tag [color]="'notification-warning'">Color notification-warning</p-tag>
+      <p-tag [color]="'notification-info-soft'">Color notification-info-soft</p-tag>
+      <p-tag [color]="'notification-success-soft'">Color notification-success-soft</p-tag>
+      <p-tag [color]="'notification-error-soft'">Color notification-error-soft</p-tag>
+      <p-tag [color]="'notification-warning-soft'">Color notification-warning-soft</p-tag>
     </div>
 
     <div class="playground light surface" title="should show different background colors on light surface background">
@@ -43,10 +43,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
       <p-tag [color]="'primary'">Color primary</p-tag>
       <p-tag [color]="'notification-neutral'">Color notification-neutral</p-tag>
-      <p-tag [color]="'notification-info'">Color notification-info</p-tag>
-      <p-tag [color]="'notification-success'">Color notification-success</p-tag>
-      <p-tag [color]="'notification-error'">Color notification-error</p-tag>
-      <p-tag [color]="'notification-warning'">Color notification-warning</p-tag>
+      <p-tag [color]="'notification-info-soft'">Color notification-info-soft</p-tag>
+      <p-tag [color]="'notification-success-soft'">Color notification-success-soft</p-tag>
+      <p-tag [color]="'notification-error-soft'">Color notification-error-soft</p-tag>
+      <p-tag [color]="'notification-warning-soft'">Color notification-warning-soft</p-tag>
     </div>
 
     <div class="playground dark" title="should show different background colors on dark background">
@@ -56,10 +56,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [theme]="'dark'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
       <p-tag [theme]="'dark'" [color]="'primary'">Color primary</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-info'">Color notification-info</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-success'">Color notification-success</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-error'">Color notification-error</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-warning'">Color notification-warning</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-info-soft'">Color notification-info-soft</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-success-soft'">Color notification-success-soft</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-error-soft'">Color notification-error-soft</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-warning-soft'">Color notification-warning-soft</p-tag>
     </div>
 
     <div class="playground dark surface" title="should show different background colors on dark surface background">
@@ -69,10 +69,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [theme]="'dark'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
       <p-tag [theme]="'dark'" [color]="'primary'">Color primary</p-tag>
       <p-tag [theme]="'dark'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-info'">Color notification-info</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-success'">Color notification-success</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-error'">Color notification-error</p-tag>
-      <p-tag [theme]="'dark'" [color]="'notification-warning'">Color notification-warning</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-info-soft'">Color notification-info-soft</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-success-soft'">Color notification-success-soft</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-error-soft'">Color notification-error-soft</p-tag>
+      <p-tag [theme]="'dark'" [color]="'notification-warning-soft'">Color notification-warning-soft</p-tag>
     </div>
 
     <div class="playground light" title="should show different background colors and icons on light background">
@@ -82,10 +82,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [icon]="'car'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
       <p-tag [icon]="'car'" [color]="'primary'">Color primary</p-tag>
       <p-tag [icon]="'car'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
-      <p-tag [icon]="'car'" [color]="'notification-info'">Color notification-info</p-tag>
-      <p-tag [icon]="'car'" [color]="'notification-success'">Color notification-success</p-tag>
-      <p-tag [icon]="'car'" [color]="'notification-error'">Color notification-error</p-tag>
-      <p-tag [icon]="'car'" [color]="'notification-warning'">Color notification-warning</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-info-soft'">Color notification-info-soft</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-success-soft'">Color notification-success-soft</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-error-soft'">Color notification-error-soft</p-tag>
+      <p-tag [icon]="'car'" [color]="'notification-warning-soft'">Color notification-warning-soft</p-tag>
       <p-tag [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'"> Color background-surface</p-tag>
     </div>
 
@@ -96,10 +96,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag [theme]="'dark'" [icon]="'car'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag>
       <p-tag [theme]="'dark'" [icon]="'car'" [color]="'primary'">Color primary</p-tag>
       <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-neutral'">Color notification-neutral</p-tag>
-      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-info'">Color notification-info</p-tag>
-      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-success'">Color notification-success</p-tag>
-      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-error'">Color notification-error</p-tag>
-      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-warning'">Color notification-warning</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-info-soft'">Color notification-info-soft</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-success-soft'">Color notification-success-soft</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-error-soft'">Color notification-error-soft</p-tag>
+      <p-tag [theme]="'dark'" [icon]="'car'" [color]="'notification-warning-soft'">Color notification-warning-soft</p-tag>
       <p-tag [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'">
         Color background-surface</p-tag
       >
@@ -162,10 +162,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div style="width: 100px; overflow: auto; border: 1px solid deeppink">
         <p-tag [color]="'primary'">Text that is very long</p-tag>
         <p-tag [color]="'primary'" [icon]="'car'">Text with icon that is very long</p-tag>
-        <p-tag [color]="'notification-success'" [icon]="'car'">
+        <p-tag [color]="'notification-success-soft'" [icon]="'car'">
           <a [href]="'#'">Link with icon that is very long</a>
         </p-tag>
-        <p-tag [color]="'notification-success'" [icon]="'car'">
+        <p-tag [color]="'notification-success-soft'" [icon]="'car'">
           <button>Button with icon that is very long</button>
         </p-tag>
       </div>

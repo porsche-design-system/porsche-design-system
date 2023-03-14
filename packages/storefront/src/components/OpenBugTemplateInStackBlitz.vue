@@ -3,7 +3,7 @@
     <p-segmented-control
       :value="selectedFramework"
       aria-label="Choose your Framework:"
-      @segmentedControlChange="(e) => (this.selectedFramework = e.detail.value)"
+      @change="(e) => (this.selectedFramework = e.detail.value)"
     >
       <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
         frameworkNameMap[framework]

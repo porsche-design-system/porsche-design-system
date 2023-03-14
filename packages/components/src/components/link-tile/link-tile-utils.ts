@@ -3,6 +3,9 @@ import type { ButtonTile } from '../button-tile/button-tile';
 import type { LinkTile } from './link-tile';
 import {
   AllowedTypes,
+  ButtonTileAlign,
+  ButtonTileAspectRatio,
+  ButtonTileSize,
   LINK_BUTTON_TILE_ALIGNS,
   LINK_BUTTON_TILE_ASPECT_RATIOS,
   LINK_BUTTON_TILE_SIZES,
@@ -10,6 +13,12 @@ import {
   LinkTileAspectRatio,
   LinkTileSize,
 } from '../../utils';
+import { LinkTarget } from '../../utils/link-button/link-target';
+import { LinkAriaAttribute } from '../link/link-utils';
+
+export type LinkTileTarget = LinkTarget;
+
+export type LinkTileAriaAttribute = LinkAriaAttribute;
 
 type CommonButtonAndLinkTileProps = {
   [K in keyof PropTypes<typeof ButtonTile> & keyof PropTypes<typeof LinkTile>]:
@@ -18,11 +27,11 @@ type CommonButtonAndLinkTileProps = {
 };
 
 export const sharedTilePropTypes: Omit<CommonButtonAndLinkTileProps, 'aria' | 'weight'> = {
-  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_BUTTON_TILE_SIZES),
-  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
+  size: AllowedTypes.breakpoint<ButtonTileSize | LinkTileSize>(LINK_BUTTON_TILE_SIZES),
+  aspectRatio: AllowedTypes.breakpoint<ButtonTileAspectRatio | LinkTileAspectRatio>(LINK_BUTTON_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_BUTTON_TILE_ALIGNS),
+  align: AllowedTypes.oneOf<ButtonTileAlign | LinkTileAlign>(LINK_BUTTON_TILE_ALIGNS),
   gradient: AllowedTypes.boolean,
   compact: AllowedTypes.breakpoint('boolean'),
 };

@@ -69,7 +69,7 @@
   prevButton.addEventListener('click', () => onNextPrevStep('prev'));
   nextButton.addEventListener('click', () => onNextPrevStep('next'));
 
-  stepper.addEventListener('stepChange', (e) => {
+  stepper.addEventListener('change', (e) => {
     const { activeStepIndex } = e.detail;
 
     for (let i = activeStepIndex + 1; i < stepElements.length; i++) {

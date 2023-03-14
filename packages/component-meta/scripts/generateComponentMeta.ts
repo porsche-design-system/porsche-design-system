@@ -2,7 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, INTERNAL_TAG_NAMES, TagName } from '../src/lib/tagNames';
+import { TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 
 const glue = '\n\n';
 
@@ -11,7 +12,7 @@ const generateComponentMeta = (): void => {
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = `import type { TagName } from './tagNames';`;
+  const imports = `import type { TagName } from '@porsche-design-system/shared';`;
 
   const types = [
     `export type ComponentMeta = {
@@ -29,6 +30,11 @@ const generateComponentMeta = (): void => {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
   requiredProps?: string[]; // array of props that are mandatory
+  deprecatedProps?: string[]; // array of props that are deprecated
+  breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+  allowedPropValues?: {
+    [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+  };
   internalProps?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
@@ -37,9 +43,9 @@ const generateComponentMeta = (): void => {
   };
   hasSlot: boolean;
   namedSlots?: string[]; // array of named slots
-  hasSlottedCss: boolean;
   hasEvent: boolean;
   eventNames?: string[];
+  deprecatedEventNames?: string[]; // array of event names
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
   observedAttributes?: string[];
@@ -61,20 +67,25 @@ const generateComponentMeta = (): void => {
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
     nestedComponents?: TagName[]; // array of other pds components
     props?: {
-      [propName: string]: boolean | number | string; // value is the prop's default value
+      [propName: string]: boolean | number | string | object | null; // value is the prop's default value
     };
     requiredProps?: string[]; // array of props that are mandatory
+    deprecatedProps?: string[]; // array of props that are deprecated
+    breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+    allowedPropValues?: {
+      [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+    };
     internalProps?: {
-      [propName: string]: boolean | number | string; // value is the prop's default value
+      [propName: string]: boolean | number | string | object | null; // value is the prop's default value
     };
     hostAttributes?: {
       [attrName: string]: string;
     };
     hasSlot: boolean;
     namedSlots?: string[]; // array of named slots
-    hasSlottedCss: boolean;
     hasEvent: boolean;
     eventNames?: string[];
+    deprecatedEventNames?: string[]; // array of event names
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
     observedAttributes?: string[];
@@ -105,7 +116,6 @@ const generateComponentMeta = (): void => {
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlot = source.includes('<slot');
-    const hasSlottedCss = source.includes('attachSlottedCss');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
@@ -156,18 +166,41 @@ const generateComponentMeta = (): void => {
       .map(([, tagName]) => paramCase(tagName) as TagName)
       .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
+    const deprecatedProps: ComponentMeta['deprecatedProps'] = [];
+
     // props
     const props: ComponentMeta['props'] = Array.from(
-      // regex can handle value on same line and next line only
-      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
-    ).reduce((result, [, propName, , propValue]) => {
-      const cleanedValue =
+      source.matchAll(/(  \/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
+    ).reduce((result, [, jsdoc, propName, , propValue]) => {
+      let cleanedValue: boolean | number | string | object =
         propValue === 'true'
           ? true
           : propValue === 'false'
           ? false
           : // undefined values get lost in JSON.stringify, but null is allowed
-            propValue?.replace(/'/g, '') || null;
+            propValue
+              ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
+              .replace(/\s+/g, ' ') // remove new lines and multiple spaces
+              .replace(/,( })/, '$1') || // remove trailing comma in original multiline objects
+            null;
+
+      if (typeof cleanedValue === 'string') {
+        if (cleanedValue.match(/^\d+$/)) {
+          // parse numbers
+          cleanedValue = parseInt(cleanedValue);
+
+          if (tagName === 'p-model-signature' && cleanedValue === 911) {
+            cleanedValue = `${cleanedValue}`; // convert it back to string
+          }
+        } else if (cleanedValue.match(/^{.+}$/)) {
+          // parse objects
+          cleanedValue = eval(`(${cleanedValue})`);
+        }
+      }
+
+      if (jsdoc?.match(/@deprecated/)) {
+        deprecatedProps.push(propName);
+      }
 
       return {
         ...result,
@@ -177,8 +210,8 @@ const generateComponentMeta = (): void => {
 
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
-      // same regex as above without optional ? modifier
-      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)(?:: (.+?))?(?:= (.+))?;/g)
+      // similar regex as above without optional ? modifier
+      source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
     ).map(([, propName]) => propName);
 
     const [, invalidLinkUsageProp] = /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.(\w+)\);/.exec(source) || [];
@@ -186,6 +219,110 @@ const generateComponentMeta = (): void => {
       // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
     }
+
+    let [, rawPropTypes] = /const [a-z][a-zA-z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
+
+    // handle shared props
+    let sharedPropsExportFile; // also needed for import paths of variables
+    if (rawPropTypes && rawPropTypes.match(/\.{3}[a-zA-Z]+,/g)) {
+      const [, sharedPropsConstName] = rawPropTypes.match(/(shared[a-zA-z]+Types)/);
+      const [, sharedPropsImportPath] = source.match(new RegExp(`${sharedPropsConstName}[\\s\\S]+?from '(.+)';`)) || [];
+      const componentFilePath = componentFiles.find((file) =>
+        file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
+      );
+      const sharedPropsExportFilePath = sharedPropsImportPath.match(/^\./)
+        ? path.resolve(componentFilePath, '..', sharedPropsImportPath) // relative path
+        : sharedPropsImportPath; // absolute path to other package
+
+      sharedPropsExportFile = fs.readFileSync(`${sharedPropsExportFilePath}.ts`, 'utf8');
+      let [, sharedProps] = /const [a-z][a-zA-z]+: .+? = ({[\s\S]+?});/.exec(sharedPropsExportFile) || [];
+
+      sharedProps = sharedProps.replace(/([{}])/g, '');
+
+      rawPropTypes = rawPropTypes.replace(/\.{3}[a-zA-Z]+,/g, sharedProps);
+    }
+
+    rawPropTypes = rawPropTypes
+      ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
+      .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
+
+    const propTypes = eval(`(${rawPropTypes})`) as Record<string, string>;
+
+    // breakpointCustomizableProps
+    const breakpointCustomizableProps: ComponentMeta['breakpointCustomizableProps'] = [];
+
+    // allowedPropValues
+    const allowedPropValues: ComponentMeta['allowedPropValues'] =
+      isInternal || !propTypes
+        ? {} // internal components or ones without propTypes validation don't matter
+        : Object.entries(propTypes).reduce((result, [propName, propType]) => {
+            propType = propType.replace('AllowedTypes.', '');
+            if (propType.match(/^(?:breakpoint|oneOf)/)) {
+              if (propType.match(/^breakpoint/)) {
+                breakpointCustomizableProps.push(propName);
+              }
+
+              let [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
+              if (values.match(/^\[.+]$/) || values.match(/[A-Z_]{5,}/)) {
+                result[propName] = [];
+                if (values.match(/undefined/)) {
+                  (result[propName] as string[]).push(undefined);
+                }
+
+                let [, variable] = (values.match(/([A-Z_]{5,})/) || []) as [string, string | string[]];
+                if (variable) {
+                  let variableImportPath;
+                  if (
+                    (typeof variable === 'string' && source.includes(variable)) ||
+                    (typeof variable !== 'string' && variable.some((v) => source.includes(v)))
+                  ) {
+                    [, variableImportPath] = source.match(new RegExp(`${variable}[\\s\\S]+?from '(.+)';`));
+                  } else {
+                    [, variableImportPath] = sharedPropsExportFile.match(
+                      new RegExp(`${variable}[\\s\\S]+?from '(.+)';`)
+                    );
+                  }
+
+                  const componentFilePath = componentFiles.find((file) =>
+                    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
+                  );
+
+                  const variableExportFilePath = variableImportPath.match(/^\./)
+                    ? path.resolve(componentFilePath, '..', variableImportPath) // relative path
+                    : variableImportPath; // absolute path to other package
+
+                  variable = require(variableExportFilePath)[variable as string];
+
+                  // handle stuff like ICONS_MANIFEST
+                  if (values.match(/^Object\.keys/)) {
+                    variable = Object.keys(variable);
+                  }
+
+                  result[propName] = [...(result[propName] as string[]), ...variable];
+                } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
+                  // TODO: still missing, e.g. in segmented-control
+                  result[propName] = ['// TODO'];
+                } else if (!variable) {
+                  // must be array of inline values
+                  result[propName] = eval(`(${values})`);
+                } else {
+                  throw new Error(
+                    `Unsupported propType for breakpoint or oneOf in "${tagName}" "${propName}": ${propType}`
+                  );
+                }
+              } else if (values === 'boolean' || values === 'number') {
+                result[propName] = values;
+              }
+            } else if (propType === 'boolean' || propType === 'number' || propType === 'string') {
+              result[propName] = propType;
+            } else if (propType.match(/^(?:aria|shape)/)) {
+              // TODO: still missing
+              result[propName] = ['// TODO'];
+            } else {
+              throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
+            }
+            return result;
+          }, {} as ComponentMeta['allowedPropValues']);
 
     // internal props set by parent
     const internalProps: ComponentMeta['internalProps'] = {};
@@ -213,7 +350,6 @@ const generateComponentMeta = (): void => {
     let hostAttributes: ComponentMeta['hostAttributes'] = {};
     const [, rawHostAttributes] = /<Host (.*)>/.exec(source) || [];
     if (rawHostAttributes) {
-      // console.log(rawHostAttributes);
       hostAttributes = rawHostAttributes
         .split(' ')
         .map((attrKeyValuePair) =>
@@ -229,8 +365,18 @@ const generateComponentMeta = (): void => {
       namedSlots.push('message');
     }
 
+    const deprecatedEventNames: ComponentMeta['deprecatedEventNames'] = [];
+
     // events
-    const eventNames = Array.from(source.matchAll(/([A-Za-z]+)\??: EventEmitter/g)).map(([, eventName]) => eventName);
+    const eventNames = Array.from(source.matchAll(/(  \/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter/g)).map(
+      ([, jsdoc, eventName]) => {
+        if (jsdoc?.match(/@deprecated/)) {
+          deprecatedEventNames.push(eventName);
+        }
+
+        return eventName;
+      }
+    );
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
@@ -245,22 +391,26 @@ const generateComponentMeta = (): void => {
       isInternal,
       isThemeable,
       requiredParent,
-      ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
+      ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }), // TODO: singular / plural mismatch?
       requiredChild,
       requiredChildSelector,
-      ...(nestedComponents.length && { nestedComponents: nestedComponents }),
-      ...(Object.keys(props).length && { props: props }),
-      ...(requiredProps.length && { requiredProps: requiredProps }),
-      ...(Object.keys(internalProps).length && { internalProps: internalProps }),
-      ...(Object.keys(hostAttributes).length && { hostAttributes: hostAttributes }),
+      ...(nestedComponents.length && { nestedComponents }),
+      ...(Object.keys(props).length && { props }),
+      ...(requiredProps.length && { requiredProps }),
+      ...(deprecatedProps.length && { deprecatedProps }),
+      ...(Object.keys(allowedPropValues).length && { allowedPropValues }),
+      ...(Object.keys(internalProps).length && { internalProps }),
+      ...(breakpointCustomizableProps.length && { breakpointCustomizableProps }),
+      ...(Object.keys(internalProps).length && { internalProps }),
+      ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
-      ...(namedSlots.length && { namedSlots: namedSlots }),
-      hasSlottedCss,
+      ...(namedSlots.length && { namedSlots }),
       hasEvent,
-      ...(eventNames.length && { eventNames: eventNames }),
+      ...(eventNames.length && { eventNames }),
+      ...(deprecatedEventNames.length && { deprecatedEventNames }),
       hasAriaProp,
       hasObserveAttributes,
-      ...(observedAttributes.length && { observedAttributes: observedAttributes }),
+      ...(observedAttributes.length && { observedAttributes }),
       hasObserveChildren,
       styling,
     };

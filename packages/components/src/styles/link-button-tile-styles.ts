@@ -45,13 +45,8 @@ const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTop
   return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
 };
 
-const sizeMap: {
-  inherit: { fontSize: string };
-  default: { fontSize: string };
-} = {
-  inherit: {
-    fontSize: 'inherit',
-  },
+const sizeMap: Record<LinkTileSize, { fontSize: string }> = {
+  inherit: { fontSize: 'inherit' },
   default: { fontSize: fontSizeTextMedium },
 };
 
@@ -95,7 +90,9 @@ export const getLinkButtonTileStyles = (
         ...textLargeStyle,
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize | ButtonTileSize) => sizeMap[s]),
-          buildResponsiveStyles(weight, (w: LinkTileWeight | ButtonTileWeight) => ({ fontWeight: getFontWeight(w) }))
+          buildResponsiveStyles(weight, (w: LinkTileWeight) => ({
+            fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w),
+          }))
         ),
       },
     },

@@ -1,5 +1,4 @@
-import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
+import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes } from '../../types';
 import type {
   LinkTileSize,
   LinkTileWeight,
@@ -8,6 +7,7 @@ import type {
   Tile,
   LinkTileWeightDeprecated,
 } from '../../utils';
+import type { LinkTileAriaAttribute, LinkTileTarget } from './link-tile-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -19,8 +19,8 @@ import {
   warnIfDeprecatedPropValueIsUsed,
   LINK_TILE_WEIGHTS,
 } from '../../utils';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { getComponentCss } from './link-tile-styles';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { sharedTilePropTypes } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
@@ -30,7 +30,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkTileAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -68,7 +68,7 @@ export class LinkTile implements Tile {
   @Prop() public href: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: LinkTileTarget = '_self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
   @Prop() public download?: string;
@@ -77,7 +77,7 @@ export class LinkTile implements Tile {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
@@ -94,7 +94,7 @@ export class LinkTile implements Tile {
       getComponentCss,
       this.aspectRatio,
       this.size,
-      this.weight,
+      this.weight, // potentially breakpoint customizable, so we can't easily access the deprecation map
       this.align,
       this.compact,
       this.gradient

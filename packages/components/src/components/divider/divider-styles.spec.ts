@@ -14,20 +14,8 @@ describe('getComponentCss()', () => {
     ['contrast-high', 'vertical', 'light'],
     ['contrast-high', 'horizontal', 'dark'],
     ['contrast-high', 'vertical', 'dark'],
-    ['neutral-contrast-low', 'horizontal', 'light'], // deprecated
-    ['neutral-contrast-low', 'vertical', 'light'], // deprecated
-    ['neutral-contrast-low', 'horizontal', 'dark'], // deprecated
-    ['neutral-contrast-low', 'vertical', 'dark'], // deprecated
-    ['neutral-contrast-medium', 'horizontal', 'light'], // deprecated
-    ['neutral-contrast-medium', 'vertical', 'light'], // deprecated
-    ['neutral-contrast-medium', 'horizontal', 'dark'], // deprecated
-    ['neutral-contrast-medium', 'vertical', 'dark'], // deprecated
-    ['neutral-contrast-high', 'horizontal', 'light'], // deprecated
-    ['neutral-contrast-high', 'vertical', 'light'], // deprecated
-    ['neutral-contrast-high', 'horizontal', 'dark'], // deprecated
-    ['neutral-contrast-high', 'vertical', 'dark'], // deprecated
     [
-      'neutral-contrast-low',
+      'contrast-low',
       { base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' },
       'light',
     ],

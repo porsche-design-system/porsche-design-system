@@ -1,5 +1,5 @@
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import type { Theme, ColorScheme } from '../../src/models';
+import type { Theme, BackgroundColor } from '../../src/models';
 import {
   getExternalDependencies,
   getBackgroundColor,
@@ -71,12 +71,12 @@ describe('getExternalDependencies()', () => {
 });
 
 describe('getBackgroundColor()', () => {
-  it.each<[Theme, ColorScheme, string]>([
-    ['light', 'default', themeLight.background.base],
-    ['light', 'surface', themeLight.background.surface],
-    ['dark', 'default', themeDark.background.base],
-    ['dark', 'surface', themeDark.background.surface],
-  ])('should for Theme: %s, colorScheme: %s return %s', (theme, colorScheme, expected) => {
+  it.each<[Theme, BackgroundColor, string]>([
+    ['light', 'background-base', themeLight.background.base],
+    ['light', 'background-surface', themeLight.background.surface],
+    ['dark', 'background-base', themeDark.background.base],
+    ['dark', 'background-surface', themeDark.background.surface],
+  ])('should for Theme: %s, backgroundColor: %s return %s', (theme, colorScheme, expected) => {
     expect(getBackgroundColor(theme, colorScheme)).toBe(expected);
   });
 });

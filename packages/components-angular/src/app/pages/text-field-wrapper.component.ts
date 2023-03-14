@@ -151,13 +151,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render without counter">
-      <p-text-field-wrapper [label]="'Counter hidden'" [showCharacterCount]="false">
+      <p-text-field-wrapper [label]="'showCharacterCount=false'" [showCharacterCount]="false">
         <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground dark" title="should render without counter on dark theme">
-      <p-text-field-wrapper [label]="'Counter hidden'" [showCharacterCount]="false" [theme]="'dark'">
+      <p-text-field-wrapper [label]="'showCharacterCount=false'" [showCharacterCount]="false" [theme]="'dark'">
+        <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div class="playground light" title="should render without counter">
+      <p-text-field-wrapper [label]="'showCounter=false'" [showCounter]="false">
+        <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div class="playground dark" title="should render without counter on dark theme">
+      <p-text-field-wrapper [label]="'showCounter=false'" [showCounter]="false" [theme]="'dark'">
         <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
       </p-text-field-wrapper>
     </div>

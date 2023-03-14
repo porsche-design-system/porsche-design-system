@@ -356,9 +356,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div>Slide 3</div>
       </p-carousel>
     </div>
+    <div class="playground light" title="should render carousel with pagination=false">
+      <p-carousel [heading]="'pagination=false'" [pagination]="false">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
 
     <div class="playground light" title="should render carousel with responsive disablePagination">
       <p-carousel [heading]="'disablePagination={base: false, m: true}'" [disablePagination]="{base: false, m: true}">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+    <div class="playground light" title="should render carousel with responsive pagination">
+      <p-carousel [heading]="'pagination={base: true, m: false}'" [pagination]="{base: true, m: false}">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
