@@ -293,6 +293,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Text Field Wrapper` calendar and time indicator icons respect color definition in dark theme
 - `Text Field Wrapper` has correct height when type date or time is used
 - Partials: Typings of return value with and without options parameter
+- `Modal` scrolling behavior on mouse drag
 
 #### Removed
 
