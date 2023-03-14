@@ -4,6 +4,13 @@ import type { Theme } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-table',
+  styles: [
+    `
+      .dark span {
+        color: white;
+      }
+    `,
+  ],
   template: `
     <div
       [class]="'playground ' + theme"
