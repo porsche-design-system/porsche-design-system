@@ -3333,6 +3333,7 @@ exports[`should render dsr component for PModal 1`] = `
   background: rgba(1, 2, 5, 0.67) !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
+  pointer-events: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
