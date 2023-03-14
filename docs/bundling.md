@@ -58,7 +58,7 @@ On the other hand we need to provide an ESM bundle, because it is treeshakeable.
 
 ## CJS
 
-Not treeshakable but works with node / ts-node and jest, therefore it can be used vor anything build time related.
+Not treeshakable but works with node / ts-node and jest, therefore it can be used for anything build time related.
 
 ## UMD
 
