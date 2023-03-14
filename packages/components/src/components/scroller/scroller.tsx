@@ -75,7 +75,7 @@ export class Scroller {
   @Prop() public theme?: Theme = 'light';
 
   /** Specifies if scrollbar should be shown */
-  @Prop() public hasScrollbar? = false;
+  @Prop() public hasScrollbar?: boolean = false;
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
