@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' }, size: {
-  base: 'semibold',
+exports[`getComponentCss() should return correct css for aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' }, weight: {
+  base: 'semi-bold',
   xs: 'regular',
-  s: 'semibold',
+  s: 'semi-bold',
   m: 'regular',
-  l: 'semibold',
+  l: 'semi-bold',
   xl: 'regular'
-}, weight: {
+}, linkDirection: {
   base: 'column',
   xs: 'row',
   s: 'column',
   m: 'row',
   l: 'column',
   xl: 'row'
-}, align: true, isCompact: %s and hasGradient: %s 1`] = `
+} and hasDescription: true 1`] = `
 ":host {
   display: block;
 }
@@ -188,7 +188,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size: regular, weight: column, align: false, isCompact: %s and hasGradient: %s 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 1:1, weight: regular, linkDirection: column and hasDescription: false 1`] = `
 ":host {
   display: block;
 }
@@ -287,7 +287,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size:
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size: semibold, weight: row, align: true, isCompact: %s and hasGradient: %s 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 3:4, weight: semi-bold, linkDirection: row and hasDescription: true 1`] = `
 ":host {
   display: block;
 }
@@ -396,7 +396,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size:
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size: semibold, weight: row, align: true, isCompact: %s and hasGradient: %s 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 4:3, weight: semi-bold, linkDirection: row and hasDescription: true 1`] = `
 ":host {
   display: block;
 }
@@ -505,7 +505,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size:
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size: semibold, weight: row, align: false, isCompact: %s and hasGradient: %s 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 9:16, weight: semi-bold, linkDirection: row and hasDescription: false 1`] = `
 ":host {
   display: block;
 }
@@ -604,7 +604,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size: regular, weight: column, align: true, isCompact: %s and hasGradient: %s 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 16:9, weight: regular, linkDirection: column and hasDescription: true 1`] = `
 ":host {
   display: block;
 }

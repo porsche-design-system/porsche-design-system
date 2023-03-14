@@ -6,6 +6,8 @@ import type { JssDirections } from '../../styles/jss-direction-styles';
 import { throwIfPropIsNotOfKind } from '../../utils/validation/throwIfPropIsNotOfKind';
 
 export type LinkTileModelSignatureModel = ModelSignatureModel;
+export const LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
+export type LinkTileModelSignatureHeadingTag = (typeof LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS)[number];
 
 export const LINK_TILE_MODEL_SIGNATURE_WEIGHTS = ['regular', 'semi-bold'] as const;
 export type LinkTileModelSignatureWeight = (typeof LINK_TILE_MODEL_SIGNATURE_WEIGHTS)[number];

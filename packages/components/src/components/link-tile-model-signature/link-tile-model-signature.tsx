@@ -6,20 +6,23 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  HEADING_TAGS,
   throwIfChildCountIsExceeded,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
 import { LINK_TILE_ASPECT_RATIOS } from '../link-tile/link-tile-utils';
-import type { HeadingTag } from '../heading/heading-tag';
 import type {
   LinkTileModelSignatureAspectRatio,
   LinkTileModelSignatureLinkDirection,
   LinkTileModelSignatureModel,
   LinkTileModelSignatureWeight,
+  LinkTileModelSignatureHeadingTag,
 } from './link-tile-model-signature-utils';
-import { getSlottedPLinkOrThrow, LINK_TILE_MODEL_SIGNATURE_WEIGHTS } from './link-tile-model-signature-utils';
+import {
+  getSlottedPLinkOrThrow,
+  LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
+  LINK_TILE_MODEL_SIGNATURE_WEIGHTS,
+} from './link-tile-model-signature-utils';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
@@ -28,7 +31,7 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   linkDirection: AllowedTypes.breakpoint<LinkTileModelSignatureLinkDirection>(JSS_DIRECTIONS),
-  headingTag: AllowedTypes.oneOf<HeadingTag>([...HEADING_TAGS, undefined]),
+  headingTag: AllowedTypes.oneOf<LinkTileModelSignatureHeadingTag>(LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS),
 };
 
 @Component({
@@ -58,7 +61,7 @@ export class LinkTileModelSignature {
   @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = { base: 'column', xs: 'row' };
 
   /** Sets a custom HTML tag depending on the usage of the link tile model signature component. */
-  @Prop() public headingTag?: Exclude<HeadingTag, 'h1'> = 'h2';
+  @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
 
   private primaryLink: HTMLPLinkElement;
 
