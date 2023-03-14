@@ -38,7 +38,6 @@ const tagNamesWithSlottedInputIndicator = joinArrayElementsToString(['p-text-fie
 const tagNamesWithSlottedImage = joinArrayElementsToString(['p-table'] as TagName[]);
 const tagNamesWithSlottedPictureImage = joinArrayElementsToString(['p-link-tile'] as TagName[]);
 
-// TODO: add multi prefix support
 const normalizeStyles: Styles = {
   '@global': {
     'html, body': {
@@ -101,7 +100,7 @@ const normalizeStyles: Styles = {
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
-  prefix?: string;
+  prefix?: string | string[];
   format?: Format;
 };`;
 
@@ -128,26 +127,36 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   throwIfRunInBrowser('getInitialStyles');
 
-  const styleProps = { [\`data-pds-initial-styles\$\{prefix ? '-' + prefix : ''\}\`]: '' };
+  const styleProps = { ['data-pds-initial-styles']: '' };
   const styleAttributes = convertPropsToAttributeString(styleProps);
 
-  const prefixedTagNamesStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
+  const hydrationStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
   const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`
     .replace(/%%tagNamesWithSlottedAnchor%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedAnchor.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedInputIndicator%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedInputIndicator.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedImage.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedPictureImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedPictureImage.map(tagName => tagName +' $1').join() +'$2');
 
-  const styles = prefixedTagNamesStyles.concat(normalizeStyles);
+  const styles = hydrationStyles.concat(normalizeStyles);
 
   return format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
     : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
 }`;
 
-  const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
-  return prefix ? tagNames.map((x) => \`\${prefix}-\${x}\`) : tagNames;
-};`;
+  const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string | string[]): string[] => {
+    if (prefix && typeof prefix === 'string') {
+      return tagNames.map((tagName) => \`\${prefix}-\${tagName}\`);
+    } else if (Array.isArray(prefix) && prefix.length) {
+      const tagNamesArray = [];
+      prefix.forEach((_prefix) => {
+        tagNamesArray.push(tagNames.map((tagName) => \`\${_prefix ? _prefix + '-' : ''}\${tagName}\`));
+      });
+      return tagNamesArray.flat();
+    } else {
+      return tagNames;
+    }
+  };`;
 
   return [types, initialStylesFunction, helperFunction].join('\n\n');
 };
