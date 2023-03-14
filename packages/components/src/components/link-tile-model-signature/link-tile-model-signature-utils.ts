@@ -1,4 +1,4 @@
-import { getTagName } from '../../utils';
+import { getPrefixedTagNames, getTagName } from '../../utils';
 import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
 import type { LinkTileAspectRatio } from '../link-tile/link-tile-utils';
@@ -25,15 +25,16 @@ export const getSlottedPLinkOrThrow = (host: HTMLElement): HTMLPLinkElement => {
   const primaryLink = getNamedSlotOrThrow(host, 'primary') as HTMLPLinkElement;
   const secondaryLink = getNamedSlotOrThrow(host, 'secondary') as HTMLPLinkElement;
 
+  const prefixedTagNames = getPrefixedTagNames(host);
   const primaryLinkTagName = getTagName(primaryLink);
   const secondaryLinkTagName = getTagName(secondaryLink);
   const getErrorMessage = (slotName: 'primary' | 'secondary', tagName: string): string =>
     `Named slot '${slotName}' has to be a "p-link" but received "${tagName}"`;
 
-  if (primaryLinkTagName !== 'p-link') {
+  if (primaryLinkTagName !== prefixedTagNames.pLink) {
     throw new Error(getErrorMessage('primary', primaryLinkTagName));
   }
-  if (secondaryLinkTagName !== 'p-link') {
+  if (secondaryLinkTagName !== prefixedTagNames.pLink) {
     throw new Error(getErrorMessage('secondary', secondaryLinkTagName));
   }
 
