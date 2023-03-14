@@ -44,7 +44,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
       </div>
 
       <div className="playground light grid" title="should render different models on light background">
-        <PLinkTileModelSignature heading="718" model="718">
+        <PLinkTileModelSignature heading="Model 718" model="718">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -55,7 +55,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="boxster" model="boxster">
+        <PLinkTileModelSignature heading="Model boxster" model="boxster">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -66,7 +66,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="cayenne" model="cayenne">
+        <PLinkTileModelSignature heading="Model cayenne" model="cayenne">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -77,7 +77,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="cayman" model="cayman">
+        <PLinkTileModelSignature heading="Model cayman" model="cayman">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -88,7 +88,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="macan" model="macan">
+        <PLinkTileModelSignature heading="Model macan" model="macan">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -99,7 +99,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="panamera" model="panamera">
+        <PLinkTileModelSignature heading="Model panamera" model="panamera">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -110,7 +110,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="taycan" model="taycan">
+        <PLinkTileModelSignature heading="Model taycan" model="taycan">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -121,7 +121,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="turbo-s" model="turbo-s">
+        <PLinkTileModelSignature heading="Model turbo-s" model="turbo-s">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
@@ -132,7 +132,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
         </PLinkTileModelSignature>
 
-        <PLinkTileModelSignature heading="turbo" model="turbo">
+        <PLinkTileModelSignature heading="Model turbo" model="turbo">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}

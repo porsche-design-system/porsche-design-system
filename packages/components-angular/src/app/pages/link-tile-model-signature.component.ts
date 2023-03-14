@@ -43,7 +43,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light grid" title="should render different models on light background">
-      <p-link-tile-model-signature [heading]="718" [model]="'718'">
+      <p-link-tile-model-signature [heading]="'Model 718'" [model]="'718'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -54,7 +54,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'boxster'" [model]="'boxster'">
+      <p-link-tile-model-signature [heading]="'Model boxster'" [model]="'boxster'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -65,7 +65,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'cayenne'" [model]="'cayenne'">
+      <p-link-tile-model-signature [heading]="'Model cayenne'" [model]="'cayenne'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -76,7 +76,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'cayman'" [model]="'cayman'">
+      <p-link-tile-model-signature [heading]="'Model cayman'" [model]="'cayman'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -87,7 +87,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'macan'" [model]="'macan'">
+      <p-link-tile-model-signature [heading]="'Model macan'" [model]="'macan'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -98,7 +98,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'panamera'" [model]="'panamera'">
+      <p-link-tile-model-signature [heading]="'Model panamera'" [model]="'panamera'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -109,7 +109,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'taycan'" [model]="'taycan'">
+      <p-link-tile-model-signature [heading]="'Model taycan'" [model]="'taycan'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -120,7 +120,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'turbo-s'" [model]="'turbo-s'">
+      <p-link-tile-model-signature [heading]="'Model turbo-s'" [model]="'turbo-s'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
@@ -131,7 +131,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="secondary" [href]="'#'" [variant]="'secondary'" [theme]="'dark'">Some label</p-link>
       </p-link-tile-model-signature>
 
-      <p-link-tile-model-signature [heading]="'turbo'" [model]="'turbo'">
+      <p-link-tile-model-signature [heading]="'Model turbo'" [model]="'turbo'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
           [width]="50"
