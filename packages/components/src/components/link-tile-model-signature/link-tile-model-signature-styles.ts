@@ -1,5 +1,5 @@
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { pxToRemWithUnit } from '../../styles';
+import { addImportantToRule, pxToRemWithUnit } from '../../styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
@@ -21,6 +21,7 @@ import type {
   LinkTileModelSignatureAspectRatio,
   LinkTileModelSignatureWeight,
 } from './link-tile-model-signature-utils';
+import { LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS } from './link-tile-model-signature-utils';
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>,
@@ -31,6 +32,11 @@ export const getComponentCss = (
   return getCss({
     ...getBaseLinkButtonTileStyles({
       aspectRatio,
+      additionalGlobalStyles: {
+        [LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS.join(',')]: {
+          margin: addImportantToRule(0),
+        },
+      },
       additionalContentStyles: {
         bottom: 0,
         padding: `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
