@@ -4,8 +4,8 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensFrostedGlass />
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
+  <ExampleStylesFrostedGlass />
 </Playground>
 
 ## Usage
@@ -36,15 +36,20 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensFrostedGlassCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensFrostedGlass from '@/pages/patterns/design-tokens/example-frosted-glass.vue';
+import { getStylesFrostedGlassCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
+import ExampleStylesFrostedGlass from '@/pages/patterns/styles/example-frosted-glass.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensFrostedGlass
+    ExampleStylesFrostedGlass
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensFrostedGlassCodeSamples();
+  codeExample = getStylesFrostedGlassCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>
