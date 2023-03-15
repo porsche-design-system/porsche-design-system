@@ -9,7 +9,7 @@ This can be optimized by prefetching used icons in parallel while the applicatio
 that prefetching is not yet supported on Safari and Safari on iOS, so you will not see a performance benefit there.
 [Current prefetch status on CanIUse](https://caniuse.com/link-rel-prefetch)
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
