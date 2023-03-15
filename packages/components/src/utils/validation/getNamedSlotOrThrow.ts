@@ -1,7 +1,6 @@
 import { getTagName } from '../tag-name';
 import { getNamedSlot } from '../getNamedSlot';
 
-// Refactor to getNamedSlot
 export const getNamedSlotOrThrow = (el: HTMLElement, slotName: string): HTMLElement => {
   const slot = getNamedSlot(el, slotName);
 
@@ -9,5 +8,5 @@ export const getNamedSlotOrThrow = (el: HTMLElement, slotName: string): HTMLElem
     throw new Error(`Named slot '${slotName}' is missing on element ${getTagName(el)}`);
   }
 
-  return slot as HTMLElement;
+  return slot;
 };

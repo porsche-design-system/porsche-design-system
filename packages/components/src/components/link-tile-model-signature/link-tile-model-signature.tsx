@@ -12,7 +12,11 @@ import type {
   LinkTileModelSignatureWeight,
   LinkTileModelSignatureHeadingTag,
 } from './link-tile-model-signature-utils';
-import { getSlottedPLinkOrThrow, LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS } from './link-tile-model-signature-utils';
+import {
+  getSlottedPLinksOrThrow,
+  LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
+  setRequiredPropsOfSlottedLinks,
+} from './link-tile-model-signature-utils';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
@@ -57,8 +61,10 @@ export class LinkTileModelSignature {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    // TODO: move to lifecycle
-    this.primaryLink = getSlottedPLinkOrThrow(this.host);
+    // If we do this earlier than render, there are cases where this.primaryLink.href is undefined
+    const [primaryLink, secondaryLink] = getSlottedPLinksOrThrow(this.host);
+    this.primaryLink = primaryLink;
+    setRequiredPropsOfSlottedLinks([primaryLink, secondaryLink]);
 
     attachComponentCss(
       this.host,
@@ -69,7 +75,6 @@ export class LinkTileModelSignature {
       !!this.description
     );
 
-    // slotted anchor?
     const primaryLinkProps = {
       href: this.primaryLink.href,
       target: this.primaryLink.target,

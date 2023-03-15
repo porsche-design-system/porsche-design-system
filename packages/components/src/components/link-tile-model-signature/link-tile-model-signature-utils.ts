@@ -3,7 +3,6 @@ import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow'
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
 import type { LinkTileAspectRatio, LinkTileWeightWithoutDeprecated } from '../link-tile/link-tile-utils';
 import type { JssDirections } from '../../styles/jss-direction-styles';
-import { throwIfPropIsNotOfKind } from '../../utils/validation/throwIfPropIsNotOfKind';
 import type { LinkVariant } from '../../types';
 
 export type LinkTileModelSignatureModel = ModelSignatureModel;
@@ -15,11 +14,10 @@ export type LinkTileModelSignatureAspectRatio = LinkTileAspectRatio;
 export type LinkTileModelSignatureLinkDirection = JssDirections;
 
 // TODO: unit test
-export const throwIfInvalidPropsOfSlottedLinks = (pLinks: HTMLPLinkElement[]): void => {
-  pLinks.forEach((link, i) => {
-    // Set this from parent
-    throwIfPropIsNotOfKind(link, 'variant', i < 1 ? 'primary' : 'secondary');
-    throwIfPropIsNotOfKind(link, 'theme', 'dark');
+export const setRequiredPropsOfSlottedLinks = (links: HTMLPLinkElement[]): void => {
+  links.forEach((link) => {
+    link.theme = 'dark';
+    link.variant = link.slot as LinkVariant;
   });
 };
 
@@ -31,13 +29,13 @@ export const throwIfSlotIsNotPLink = (host: HTMLElement, slot: HTMLElement, slot
     throw new Error(`Named slot "${slotName}" has to be a "${pLink}" but received "${slotTagName}"`);
   }
 };
-export const getSlottedPLinkOrThrow = (host: HTMLElement): HTMLPLinkElement => {
+
+export const getSlottedPLinksOrThrow = (host: HTMLElement): HTMLPLinkElement[] => {
   const primaryLink = getNamedSlotOrThrow(host, 'primary') as HTMLPLinkElement;
   const secondaryLink = getNamedSlotOrThrow(host, 'secondary') as HTMLPLinkElement;
 
   throwIfSlotIsNotPLink(host, primaryLink, 'primary');
   throwIfSlotIsNotPLink(host, secondaryLink, 'secondary');
-  throwIfInvalidPropsOfSlottedLinks([primaryLink, secondaryLink]);
 
-  return primaryLink;
+  return [primaryLink, secondaryLink];
 };

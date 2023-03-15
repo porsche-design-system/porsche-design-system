@@ -34,12 +34,10 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
   }
 
   if (tagName === 'p-link-tile-model-signature') {
-    namedSlots.forEach((slotName, i) => {
+    namedSlots.forEach((slotName) => {
       const child = document.createElement('p-link');
       child.href = '#';
       child.slot = slotName;
-      child.variant = i < 1 ? 'primary' : 'secondary';
-      child.theme = 'dark';
 
       component.host.appendChild(child);
     });
