@@ -4,24 +4,31 @@ import { routes } from '../routes';
 import Link from 'next/link';
 
 const HomePage: NextPage = (): JSX.Element => {
-  return <>
-    <PHeadline>
-      Welcome to <a href="https://nextjs.org">Next.js!</a>
-    </PHeadline>
+  return (
+    <>
+      <PHeadline>
+        Welcome to <a href="https://nextjs.org">Next.js!</a>
+      </PHeadline>
 
-    <ul>
-      {routes.map((route) => (
-        <li key={route.path}>
-          <Link href={route.path}>
-            {route.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </>;
+      <ul>
+        {routes.map((route) => (
+          <li key={route.path}>
+            <Link href={route.path}>{route.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 export default HomePage;
+
+export const manualRoutes: Record<string, { path: string; name: string }> = {
+  'link-example': {
+    path: './link-example',
+    name: 'Link Example',
+  },
+};
 
 /* Auto Generated Below */
 
