@@ -521,7 +521,7 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-fieldset-wrapper": {
+  "p-fieldset": {
     "allowedPropValues": {
       "label": "string",
       "labelSize": [
@@ -546,6 +546,49 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "namedSlots": [
+      "label",
+      "message",
+    ],
+    "props": {
+      "label": null,
+      "labelSize": "medium",
+      "message": null,
+      "required": false,
+      "state": "none",
+      "theme": "light",
+    },
+    "styling": "jss",
+  },
+  "p-fieldset-wrapper": {
+    "allowedPropValues": {
+      "label": "string",
+      "labelSize": [
+        "small",
+        "medium",
+      ],
+      "message": "string",
+      "required": "boolean",
+      "state": [
+        "none",
+        "error",
+        "success",
+      ],
+      "theme": [
+        "light",
+        "dark",
+      ],
+    },
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.",
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
