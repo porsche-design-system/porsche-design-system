@@ -6,12 +6,37 @@ import { TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
 
 const glue = '\n\n';
+// can't resolve @porsche-design-system/components without building it first, therefore we use relative path
+const sourceDirectory = path.resolve('../components/src/components');
+const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
+let sharedPropsExportFile;
+
+const getExportFilePath = (source: string, constName: string | string[], tagName: TagName): string => {
+  let importPath;
+  if (
+    (typeof constName === 'string' && source.includes(constName)) ||
+    (typeof constName !== 'string' && constName.some((v) => source.includes(v)))
+  ) {
+    [, importPath] = source.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
+  } else if (sharedPropsExportFile) {
+    [, importPath] = sharedPropsExportFile.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
+  }
+
+  const componentFilePath = componentFiles.find((file) =>
+    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
+  );
+  return importPath?.match(/^\./)
+    ? path.resolve(componentFilePath, '..', importPath) // relative path
+    : importPath; // absolute path to other package
+};
+
+const getEvaluablePropTypeString = (propTypes: string): string => {
+  return propTypes
+    ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
+    .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
+};
 
 const generateComponentMeta = (): void => {
-  // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
-  const sourceDirectory = path.resolve('../components/src/components');
-  const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
-
   const imports = `import type { TagName } from '@porsche-design-system/shared';`;
 
   const types = [
@@ -220,31 +245,36 @@ const generateComponentMeta = (): void => {
       requiredProps.push(invalidLinkUsageProp);
     }
 
-    let [, rawPropTypes] = /const [a-z][a-zA-z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
+    let [, rawPropTypes] = /const [a-z][a-zA-Z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
 
     // handle shared props
-    let sharedPropsExportFile; // also needed for import paths of variables
-    if (rawPropTypes && rawPropTypes.match(/\.{3}[a-zA-Z]+,/g)) {
-      const [, sharedPropsConstName] = rawPropTypes.match(/(shared[a-zA-z]+Types)/);
-      const [, sharedPropsImportPath] = source.match(new RegExp(`${sharedPropsConstName}[\\s\\S]+?from '(.+)';`)) || [];
-      const componentFilePath = componentFiles.find((file) =>
-        file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
-      );
-      const sharedPropsExportFilePath = sharedPropsImportPath.match(/^\./)
-        ? path.resolve(componentFilePath, '..', sharedPropsImportPath) // relative path
-        : sharedPropsImportPath; // absolute path to other package
+    const sharedPropsName = rawPropTypes?.match(/(?<=\.{3})(([a-zA-Z]+)(?=,))/g);
+    if (sharedPropsName) {
+      // TODO: currently the scenario for multiple shared props is not supported
+      if (sharedPropsName.length > 1) {
+        throw new Error('Currently the scenario for multiple shared props is not supported.');
+      }
+      const sharedPropsConstName = sharedPropsName[0];
+      const sharedPropsExportFilePath = getExportFilePath(source, sharedPropsConstName, tagName);
 
       sharedPropsExportFile = fs.readFileSync(`${sharedPropsExportFilePath}.ts`, 'utf8');
-      let [, sharedProps] = /const [a-z][a-zA-z]+: .+? = ({[\s\S]+?});/.exec(sharedPropsExportFile) || [];
+      let [, sharedProps] = /const [a-z][a-zA-Z]+: .+? = ({[\s\S]+?});/.exec(sharedPropsExportFile) || [];
+
+      // since it is more verbose to address shared proptypes using require(),
+      // the next steps are to ensure the extracted object matches the required type
+      const evaluableSharedProps = getEvaluablePropTypeString(sharedProps);
+      const requiredKeys = Object.keys(require(sharedPropsExportFilePath)[sharedPropsConstName]).sort();
+      const readFileKeys = Object.keys(eval(`(${evaluableSharedProps})`) as Record<string, string>).sort();
+      // TODO: currently the scenario for shared props imported from multiple files is not supported
+      if (JSON.stringify(requiredKeys) !== JSON.stringify(readFileKeys)) {
+        throw new Error('Currently the scenario for shared props imported from multiple files is not supported.');
+      }
 
       sharedProps = sharedProps.replace(/([{}])/g, '');
-
       rawPropTypes = rawPropTypes.replace(/\.{3}[a-zA-Z]+,/g, sharedProps);
     }
 
-    rawPropTypes = rawPropTypes
-      ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
-      .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
+    rawPropTypes = getEvaluablePropTypeString(rawPropTypes);
 
     const propTypes = eval(`(${rawPropTypes})`) as Record<string, string>;
 
@@ -271,25 +301,7 @@ const generateComponentMeta = (): void => {
 
                 let [, variable] = (values.match(/([A-Z_]{5,})/) || []) as [string, string | string[]];
                 if (variable) {
-                  let variableImportPath;
-                  if (
-                    (typeof variable === 'string' && source.includes(variable)) ||
-                    (typeof variable !== 'string' && variable.some((v) => source.includes(v)))
-                  ) {
-                    [, variableImportPath] = source.match(new RegExp(`${variable}[\\s\\S]+?from '(.+)';`));
-                  } else {
-                    [, variableImportPath] = sharedPropsExportFile.match(
-                      new RegExp(`${variable}[\\s\\S]+?from '(.+)';`)
-                    );
-                  }
-
-                  const componentFilePath = componentFiles.find((file) =>
-                    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
-                  );
-
-                  const variableExportFilePath = variableImportPath.match(/^\./)
-                    ? path.resolve(componentFilePath, '..', variableImportPath) // relative path
-                    : variableImportPath; // absolute path to other package
+                  const variableExportFilePath = getExportFilePath(source, variable, tagName);
 
                   variable = require(variableExportFilePath)[variable as string];
 
