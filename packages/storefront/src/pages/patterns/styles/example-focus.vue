@@ -1,14 +1,22 @@
 <template>
   <div>
     <div class="wrapper wrapper--light">
-      <h3 class="heading heading--light">Focus Light (only visible by keyboard navigation)</h3>
-      <button class="native-button native-button--light">Some Button</button>
+      <h3 class="heading">Focus Light (only visible by keyboard navigation)</h3>
+      <button class="native-button">Some Button</button>
       <a href="#" class="native-anchor native-anchor--light">Some Anchor</a>
+      <p style="max-width: 15rem">
+        Lorem Ipsum <a href="#" class="native-anchor native-anchor--light">is simply dummy text of the printing</a>and
+        typesetting industry.
+      </p>
     </div>
     <div class="wrapper wrapper--dark">
-      <h3 class="heading heading--dark">Focus Dark (only visible by keyboard navigation)</h3>
-      <button class="native-button native-button--dark">Some Button</button>
+      <h3 class="heading">Focus Dark (only visible by keyboard navigation)</h3>
+      <button class="native-button">Some Button</button>
       <a href="#" class="native-anchor native-anchor--dark">Some Anchor</a>
+      <p style="max-width: 15rem">
+        Lorem Ipsum <a href="#" class="native-anchor native-anchor--dark">is simply dummy text of the printing</a>and
+        typesetting industry.
+      </p>
     </div>
   </div>
 </template>
@@ -36,10 +44,12 @@
 
     &--light {
       background: $pds-theme-light-background-base;
+      color: $pds-theme-light-primary;
     }
 
     &--dark {
       background: $pds-theme-dark-background-base;
+      color: $pds-theme-dark-primary;
     }
   }
 
@@ -49,41 +59,24 @@
     text-align: center;
     width: 100%;
     margin: 0;
-
-    &--light {
-      color: $pds-theme-light-primary;
-    }
-
-    &--dark {
-      color: $pds-theme-dark-primary;
-    }
   }
 
   // Native Button
   .native-button {
     @include pds-text-small;
-
-    &--light {
-      @include pds-focus;
-      color: $pds-theme-light-primary;
-    }
-
-    &--dark {
-      @include pds-focus;
-    }
+    @include pds-focus;
   }
 
   // Native Anchor
   .native-anchor {
     @include pds-text-small;
+    @include pds-focus;
 
     &--light {
-      @include pds-focus;
       color: $pds-theme-light-primary;
     }
 
     &--dark {
-      @include pds-focus;
       color: $pds-theme-dark-primary;
     }
   }
