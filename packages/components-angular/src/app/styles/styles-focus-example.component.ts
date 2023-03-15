@@ -45,12 +45,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         @include pds-text-small;
 
         &--light {
-          @include pds-focus('medium');
+          @include pds-focus;
           color: $pds-theme-light-primary;
         }
 
         &--dark {
-          @include pds-focus('medium');
+          @include pds-focus;
         }
       }
 
