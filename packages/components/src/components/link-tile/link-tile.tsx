@@ -18,19 +18,19 @@ import type {
   LinkTileSize,
   LinkTileWeightDeprecated,
   LinkTileTarget,
+  LinkTileWeight,
 } from './link-tile-utils';
 import {
   LINK_TILE_ALIGNS,
   LINK_TILE_ASPECT_RATIOS,
   LINK_TILE_SIZES,
-  LINK_TILE_WEIGHTS_WITH_DEPRECATED,
-  LinkTileWeightWithDeprecated,
+  LINK_TILE_WEIGHTS,
   throwIfAlignTopAndNotCompact,
 } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZES),
-  weight: AllowedTypes.breakpoint<LinkTileWeightWithDeprecated>(LINK_TILE_WEIGHTS_WITH_DEPRECATED),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,
@@ -55,7 +55,7 @@ export class LinkTile {
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileWeightWithDeprecated> = 'semi-bold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
@@ -97,13 +97,9 @@ export class LinkTile {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeightWithDeprecated>(
-      this,
-      'weight',
-      {
-        semibold: 'semi-bold',
-      }
-    );
+    warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeight>(this, 'weight', {
+      semibold: 'semi-bold',
+    });
     attachComponentCss(
       this.host,
       getComponentCss,

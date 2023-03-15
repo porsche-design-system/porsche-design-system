@@ -1,7 +1,7 @@
 import { getPrefixedTagNames, getTagName } from '../../utils';
 import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
-import type { LinkTileAspectRatio, LinkTileWeight } from '../link-tile/link-tile-utils';
+import type { LinkTileAspectRatio, LinkTileWeightWithoutDeprecated } from '../link-tile/link-tile-utils';
 import type { JssDirections } from '../../styles/jss-direction-styles';
 import { throwIfPropIsNotOfKind } from '../../utils/validation/throwIfPropIsNotOfKind';
 import type { LinkVariant } from '../../types';
@@ -10,7 +10,7 @@ export type LinkTileModelSignatureModel = ModelSignatureModel;
 export const LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type LinkTileModelSignatureHeadingTag = (typeof LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS)[number];
 
-export type LinkTileModelSignatureWeight = LinkTileWeight;
+export type LinkTileModelSignatureWeight = LinkTileWeightWithoutDeprecated;
 export type LinkTileModelSignatureAspectRatio = LinkTileAspectRatio;
 export type LinkTileModelSignatureLinkDirection = JssDirections;
 

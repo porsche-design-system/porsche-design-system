@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../../types';
-import type { LinkTileAspectRatio, LinkTileSize, LinkTileAlign, LinkTileWeightWithDeprecated } from './link-tile-utils';
+import type { LinkTileAspectRatio, LinkTileSize, LinkTileAlign, LinkTileWeight } from './link-tile-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import { pxToRemWithUnit } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
@@ -27,7 +27,7 @@ const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTop
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileAspectRatio>,
   size: BreakpointCustomizable<LinkTileSize>,
-  weight: BreakpointCustomizable<LinkTileWeightWithDeprecated>,
+  weight: BreakpointCustomizable<LinkTileWeight>,
   align: LinkTileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean
@@ -44,7 +44,7 @@ export const getComponentCss = (
           ...textLargeStyle,
           ...mergeDeep(
             buildResponsiveStyles(size, (s: LinkTileSize) => sizeMap[s]),
-            buildResponsiveStyles(weight, (w: LinkTileWeightWithDeprecated) => ({
+            buildResponsiveStyles(weight, (w: LinkTileWeight) => ({
               fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w),
             }))
           ),

@@ -4,7 +4,7 @@ import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { JSS_DIRECTIONS } from '../../styles/jss-direction-styles';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
-import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS } from '../link-tile/link-tile-utils';
+import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED } from '../link-tile/link-tile-utils';
 import type {
   LinkTileModelSignatureAspectRatio,
   LinkTileModelSignatureLinkDirection,
@@ -16,7 +16,7 @@ import { getSlottedPLinkOrThrow, LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS } from '
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
-  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED),
   aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
