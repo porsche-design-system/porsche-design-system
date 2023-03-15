@@ -3,6 +3,7 @@ export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleEvents';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
+export * from './LinkExample';
 export * from './ModalExampleAccessibility';
 export * from './ScrollerExample';
 export * from './SegmentedControlExample';
