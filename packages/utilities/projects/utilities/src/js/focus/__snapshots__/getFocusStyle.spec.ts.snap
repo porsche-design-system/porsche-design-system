@@ -1,73 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getFocusStyle() should return correct css for opts: { inset: '-4px -2px', borderRadius: '6px' } 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
 {
-  "&:focus::after": {
-    "border": "2px solid #1A44EA",
-    "borderRadius": "6px",
-    "content": """",
-    "inset": "-4px -2px",
-    "pointerEvents": "none",
-    "position": "absolute",
+  "&:focus": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "3px",
   },
-  "&:focus:not(:focus-visible)::after": {
-    "borderColor": "transparent",
+  "&:focus:not(:focus-visible)": {
+    "outlineColor": "transparent",
   },
-  "outline": 0,
-  "position": "relative",
+  "borderRadius": "6px",
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { inset: 'medium', borderRadius: 'medium' } 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { offset: 'medium', borderRadius: 'medium' } 1`] = `
 {
-  "&:focus::after": {
-    "border": "2px solid #1A44EA",
-    "borderRadius": "8px",
-    "content": """",
-    "inset": "-6px",
-    "pointerEvents": "none",
-    "position": "absolute",
+  "&:focus": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "medium",
   },
-  "&:focus:not(:focus-visible)::after": {
-    "borderColor": "transparent",
+  "&:focus:not(:focus-visible)": {
+    "outlineColor": "transparent",
   },
-  "outline": 0,
-  "position": "relative",
+  "borderRadius": "8px",
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { inset: 'small', borderRadius: 'small' } 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
 {
-  "&:focus::after": {
-    "border": "2px solid #1A44EA",
-    "borderRadius": "4px",
-    "content": """",
-    "inset": "-4px",
-    "pointerEvents": "none",
-    "position": "absolute",
+  "&:focus": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
   },
-  "&:focus:not(:focus-visible)::after": {
-    "borderColor": "transparent",
+  "&:focus:not(:focus-visible)": {
+    "outlineColor": "transparent",
   },
-  "outline": 0,
-  "position": "relative",
+  "borderRadius": "4px",
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { inset: undefined, borderRadius: undefined } 1`] = `
+exports[`getFocusStyle() should return correct css for opts: { offset: undefined, borderRadius: undefined } 1`] = `
 {
-  "&:focus::after": {
-    "border": "2px solid #1A44EA",
-    "borderRadius": "4px",
-    "content": """",
-    "inset": "-4px",
-    "pointerEvents": "none",
-    "position": "absolute",
+  "&:focus": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "0",
   },
-  "&:focus:not(:focus-visible)::after": {
-    "borderColor": "transparent",
+  "&:focus:not(:focus-visible)": {
+    "outlineColor": "transparent",
   },
-  "outline": 0,
-  "position": "relative",
+  "borderRadius": "4px",
 }
 `;

@@ -11,7 +11,7 @@ describe('pds-focus()', () => {
     {},
     { offset: 'small', borderRadius: 'small' },
     { offset: 'medium', borderRadius: 'medium' },
-    { inset: '-4px -2px', borderRadius: '6px' },
+    { offset: '3px', borderRadius: '6px' },
   ])('should return correct css for opts: %s', (opts) => {
     const result = sass.compileString(`${borderVariables} ${themeVariables} ${focusMixin} div {
       @include pds-focus(${opts ? Object.values(opts).join(', ') : ''});

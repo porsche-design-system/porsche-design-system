@@ -193,7 +193,6 @@ exports[`should have no regression for dependency tree 1`] = `
   "hover/getHoverStyle.js": [
     "border/borderRadiusMedium.js",
     "border/borderRadiusSmall.js",
-    "frostedGlass/frostedGlassStyle.js",
     "theme/themeLightStateHover.js",
   ],
   "index.js": [

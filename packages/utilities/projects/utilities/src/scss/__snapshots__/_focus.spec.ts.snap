@@ -1,73 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pds-focus() should return correct css for opts: { inset: '-4px -2px', borderRadius: '6px' } 1`] = `
+exports[`pds-focus() should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
 "div {
-  position: relative;
-  outline: 0;
-}
-div:focus::after {
-  content: "";
-  position: absolute;
-  inset: -4px -2px;
-  pointer-events: none;
-  border: 2px solid #1a44ea;
   border-radius: 6px;
 }
-div:focus:not(:focus-visible)::before {
-  border-color: transparent;
+div:focus {
+  outline: 2px solid #1a44ea;
+  outline-offset: 3px;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
 }"
 `;
 
 exports[`pds-focus() should return correct css for opts: { offset: 'medium', borderRadius: 'medium' } 1`] = `
 "div {
-  position: relative;
-  outline: 0;
-}
-div:focus::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  pointer-events: none;
-  border: 2px solid #1a44ea;
   border-radius: 8px;
 }
-div:focus:not(:focus-visible)::before {
-  border-color: transparent;
+div:focus {
+  outline: 2px solid #1a44ea;
+  outline-offset: medium;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
 }"
 `;
 
 exports[`pds-focus() should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
 "div {
-  position: relative;
-  outline: 0;
-}
-div:focus::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  pointer-events: none;
-  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
-div:focus:not(:focus-visible)::before {
-  border-color: transparent;
+div:focus {
+  outline: 2px solid #1a44ea;
+  outline-offset: 2px;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
 }"
 `;
 
 exports[`pds-focus() should return correct css for opts: {} 1`] = `
 "div {
-  position: relative;
-  outline: 0;
-}
-div:focus::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  pointer-events: none;
-  border: 2px solid #1a44ea;
   border-radius: 4px;
 }
-div:focus:not(:focus-visible)::before {
-  border-color: transparent;
+div:focus {
+  outline: 2px solid #1a44ea;
+  outline-offset: 2px;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
 }"
 `;

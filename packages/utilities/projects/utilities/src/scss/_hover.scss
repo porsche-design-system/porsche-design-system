@@ -25,7 +25,7 @@ $pds-offset-horizontal: 2px;
   padding-left: $pds-offset-horizontal;
   padding-right: $pds-offset-horizontal;
   @media (hover: hover) {
-    &: {
+    & {
       transition: background var(--p-transition-duration, 0.24s) ease;
     }
     &:hover {
