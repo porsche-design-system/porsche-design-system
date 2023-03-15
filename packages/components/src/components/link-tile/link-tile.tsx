@@ -4,7 +4,7 @@ import type {
   LinkTileWeight,
   LinkTileAspectRatio,
   LinkTileAlign,
-  Tile,
+  ITileProps,
   LinkTileWeightDeprecated,
 } from '../../utils';
 import type { LinkTileAriaAttribute, LinkTileTarget } from './link-tile-utils';
@@ -37,7 +37,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
   tag: 'p-link-tile',
   shadow: { delegatesFocus: true },
 })
-export class LinkTile implements Tile {
+export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */

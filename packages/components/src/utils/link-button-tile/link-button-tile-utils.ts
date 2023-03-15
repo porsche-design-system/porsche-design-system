@@ -35,7 +35,7 @@ export const throwIfAlignTopAndNotCompact = (
   }
 };
 
-export type Tile = {
+export type ITileProps = {
   size?: BreakpointCustomizable<ButtonTileSize>;
   aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio>;
   label: string;

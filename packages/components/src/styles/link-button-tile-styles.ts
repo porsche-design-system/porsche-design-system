@@ -91,7 +91,7 @@ export const getLinkButtonTileStyles = (
         ...mergeDeep(
           buildResponsiveStyles(size, (s: LinkTileSize | ButtonTileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: LinkTileWeight) => ({
-            fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w),
+            fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w), // mapping of the deprecated weight semibold
           }))
         ),
       },
