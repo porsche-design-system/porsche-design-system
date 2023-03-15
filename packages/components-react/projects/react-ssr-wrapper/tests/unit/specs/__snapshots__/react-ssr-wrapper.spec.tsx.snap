@@ -5072,11 +5072,13 @@ exports[`should render dsr component for PTable 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  --p-internal-table-row-hover-color: #EEEFF2 !important;
+  --p-internal-table-border-color: #D8D8DB !important;
+  --p-internal-table-theme: light !important;
+}
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
-}
-.root {
-  position: relative;
 }
 .table {
   position: relative;
@@ -5091,17 +5093,14 @@ exports[`should render dsr component for PTable 1`] = `
   border-collapse: collapse;
 }
     </style>
-    <div
-      class="root"
+    <p-scroller
+      class="ssr"
     >
-      <p-scroller
-        class="ssr"
+      <template
+        shadowroot="open"
       >
-        <template
-          shadowroot="open"
-        >
-          <style>
-            :host {
+        <style>
+          :host {
   display: block !important;
   height: inherit !important;
 }
@@ -5203,135 +5202,134 @@ button {
   margin-right: 8px;
 }
 
-          </style>
+        </style>
+        <div
+          class="root"
+        >
           <div
-            class="root"
+            class="scroll-area"
           >
             <div
-              class="scroll-area"
+              class="scroll-wrapper"
             >
+              <slot />
               <div
-                class="scroll-wrapper"
-              >
-                <slot />
-                <div
-                  class="trigger"
-                />
-                <div
-                  class="trigger"
-                />
-              </div>
-            </div>
-            <div
-              class="action-prev"
-            >
-              <button
-                aria-hidden="true"
-                aria-label="prev"
-                tabindex="-1"
-                type="button"
-              >
-                <p-icon
-                  class="icon ssr"
-                >
-                  <template
-                    shadowroot="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                    </style>
-                    <img
-                      alt=""
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
-                    />
-                  </template>
-                </p-icon>
-              </button>
-            </div>
-            <div
-              class="action-next"
-            >
-              <button
-                aria-hidden="true"
-                aria-label="next"
-                tabindex="-1"
-                type="button"
-              >
-                <p-icon
-                  class="icon ssr"
-                >
-                  <template
-                    shadowroot="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                    </style>
-                    <img
-                      alt=""
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
-                    />
-                  </template>
-                </p-icon>
-              </button>
+                class="trigger"
+              />
+              <div
+                class="trigger"
+              />
             </div>
           </div>
-        </template>
-        <div
-          class="table"
-          role="table"
-        >
-          <slot />
+          <div
+            class="action-prev"
+          >
+            <button
+              aria-hidden="true"
+              aria-label="prev"
+              tabindex="-1"
+              type="button"
+            >
+              <p-icon
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                  />
+                </template>
+              </p-icon>
+            </button>
+          </div>
+          <div
+            class="action-next"
+          >
+            <button
+              aria-hidden="true"
+              aria-label="next"
+              tabindex="-1"
+              type="button"
+            >
+              <p-icon
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                  />
+                </template>
+              </p-icon>
+            </button>
+          </div>
         </div>
-      </p-scroller>
-    </div>
+      </template>
+      <div
+        class="table"
+        role="table"
+      >
+        <slot />
+      </div>
+    </p-scroller>
   </template>
   Some child
 </p-table>
@@ -5372,7 +5370,7 @@ exports[`should render dsr component for PTableCell 1`] = `
   display: table-cell !important;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid #D8D8DB !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   white-space: nowrap !important;
   transform: translate3d(0,0,0) !important;
   vertical-align: middle;
@@ -5422,7 +5420,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
       :host {
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid #D8D8DB !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -5479,6 +5477,9 @@ exports[`should render dsr component for PTableRow 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:host::before {
+  content: "" !important;
 }
 
     </style>
