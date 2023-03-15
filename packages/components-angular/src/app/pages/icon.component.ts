@@ -26,6 +26,10 @@ import { ICON_NAMES } from '@porsche-design-system/assets';
 
     <div class="playground light" title="should render in different sizes and be in sync with text sizes">
       <div>
+        <p-icon [size]="'xx-small'"></p-icon>
+        <p-text [size]="'xx-small'">XX Small</p-text>
+      </div>
+      <div>
         <p-icon [size]="'x-small'"></p-icon>
         <p-text [size]="'x-small'">X Small</p-text>
       </div>

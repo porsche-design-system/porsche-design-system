@@ -8,6 +8,7 @@ import {
   fontSizeTextSmall,
   fontSizeTextXLarge,
   fontSizeTextXSmall,
+  fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import type { IconColor, IconColorDeprecated } from './icon-utils';
@@ -31,6 +32,7 @@ import {
 } from '../../styles/color-filters';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
+  'xx-small': fontSizeTextXXSmall,
   'x-small': fontSizeTextXSmall,
   small: fontSizeTextSmall,
   medium: fontSizeTextMedium,
