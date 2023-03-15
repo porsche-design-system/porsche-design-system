@@ -7,7 +7,7 @@ This results in a waterfall like loading behaviour where your application bootst
 Design System Core and when any component rendered the corresponding component chunk gets loaded afterwards.  
 This can be optimized by fetching used chunks in parallel while the application is bootstrapping.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options

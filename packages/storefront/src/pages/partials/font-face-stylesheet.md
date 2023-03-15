@@ -7,7 +7,7 @@ your application as soon as our core is loaded. Regarding which font-styles you 
 downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. To improve
 rendering we recommend that you load the stylesheet on your own.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 We suggest that `getFontFaceStylesheet()` partial is implemented in every application that uses the Porsche Design

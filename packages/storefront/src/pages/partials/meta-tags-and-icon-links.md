@@ -6,7 +6,7 @@ Meta Icons are a set of icons to be used for the following purposes: **Favicon**
 Icons** and **Microsoft Windows Tiles**. To simplify the implementation process we provide a `getMetaTagsAndIconLinks`
 partial.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options

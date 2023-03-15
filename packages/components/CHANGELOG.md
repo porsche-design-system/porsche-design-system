@@ -243,6 +243,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `Display` supports value `small` for prop `size`
+- Partials: `getInitialStyles` supports multi prefix, e.g.
+  `getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });`
 - Styles: `displaySmallStyle` and `pds-display-small`
 - Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
 - `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
