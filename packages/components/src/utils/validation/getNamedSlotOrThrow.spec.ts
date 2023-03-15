@@ -1,14 +1,14 @@
-import * as getHTMLElementUtils from '../dom/getHTMLElement';
+import * as getNamedSlotUtils from '../getNamedSlot';
 import { getNamedSlotOrThrow } from './getNamedSlotOrThrow';
 
-it('should call getHTMLElement() with correct parameters', () => {
-  const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValue(document.createElement('a'));
+it('should call getNamedSlot() with correct parameters', () => {
+  const spy = jest.spyOn(getNamedSlotUtils, 'getNamedSlot').mockReturnValue(document.createElement('a'));
   const host = document.createElement('div');
   const slotName = 'slot';
 
   getNamedSlotOrThrow(host, slotName);
 
-  expect(spy).toBeCalledWith(host, `[slot="${slotName}"]`);
+  expect(spy).toBeCalledWith(host, slotName);
 });
 
 it('should throw error if there is no named slot', () => {
@@ -20,9 +20,9 @@ it('should throw error if there is no named slot', () => {
   );
 });
 
-it('should return result of getHTMLElement()', () => {
+it('should return result of getNamedSlot()', () => {
   const mockedEl = document.createElement('button');
-  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValue(mockedEl);
+  jest.spyOn(getNamedSlotUtils, 'getNamedSlot').mockReturnValue(mockedEl);
   const host = document.createElement('div');
 
   expect(getNamedSlotOrThrow(host, 'slot')).toBe(mockedEl);
