@@ -3,6 +3,7 @@ import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynami
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { LinkExampleComponent } from './link-example.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
@@ -22,6 +23,7 @@ export const examples = [
   CarouselExampleEventsComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  LinkExampleComponent,
   ModalExampleAccessibilityComponent,
   ScrollerExampleComponent,
   SegmentedControlExampleComponent,
@@ -41,6 +43,7 @@ export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './link-example.component';
 export * from './modal-example-accessibility.component';
 export * from './scroller-example.component';
 export * from './segmented-control-example.component';
