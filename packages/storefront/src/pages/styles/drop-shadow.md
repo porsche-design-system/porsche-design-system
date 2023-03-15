@@ -4,8 +4,8 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensDropShadow />
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
+  <ExampleStylesDropShadow />
 </Playground>
 
 ## Usage
@@ -40,15 +40,20 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensDroshadowCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensDropShadow from '@/pages/patterns/design-tokens/example-drop-shadow.vue';
+import { getStylesDroshadowCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
+import ExampleStylesDropShadow from '@/pages/patterns/styles/example-drop-shadow.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensDropShadow
+    ExampleStylesDropShadow
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensDroshadowCodeSamples();
+  codeExample = getStylesDroshadowCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>

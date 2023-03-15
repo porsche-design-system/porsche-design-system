@@ -133,6 +133,7 @@ describe('isStableStorefrontRelease()', () => {
 });
 
 describe('convertImportPaths()', () => {
+  // TODO: global flag isn't covered, stable release check as well
   const markup = `
 'import * from '@porsche-design-system/components-js';
 'import * from '@porsche-design-system/components-angular';
@@ -141,21 +142,21 @@ describe('convertImportPaths()', () => {
   it('should return markup without modification', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(true);
 
-    expect(convertImportPaths(markup, 'js', '1.2.3')).toMatchSnapshot();
+    expect(convertImportPaths(markup, 'vanilla-js', '1.2.3')).toMatchSnapshot();
   });
 
-  it('should return markup without updated import path for js', () => {
+  it('should return markup with updated import path for js', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
 
-    expect(convertImportPaths(markup, 'js', '1.2.3')).toMatchSnapshot();
+    expect(convertImportPaths(markup, 'vanilla-js', '1.2.3')).toMatchSnapshot();
   });
 
-  it('should return markup without updated import path for angular', () => {
+  it('should return markup with updated import path for angular', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
 
     expect(convertImportPaths(markup, 'angular', '1.2.3')).toMatchSnapshot();
   });
-  it('should return markup without updated import path for react', () => {
+  it('should return markup with updated import path for react', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
 
     expect(convertImportPaths(markup, 'react', '1.2.3')).toMatchSnapshot();
@@ -170,7 +171,7 @@ describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
     ],
     ['<img src="img/image.png" alt="Some alt text">', '<img src="http://localhost/img/image.png" alt="Some alt text">'],
   ])(
-    'should for  input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters',
+    'should for input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters',
     (input, output) => {
       const div = document.createElement('div');
       const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValueOnce(div);
