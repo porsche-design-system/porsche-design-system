@@ -81,6 +81,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .text-x-small {
         @include pds-text-x-small;
       }
+
+      .text-xx-small {
+        @include pds-text-xx-small;
+      }
     `,
   ],
   template: `
@@ -106,6 +110,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p class="text-medium typography">The quick brown fox jumps over the lazy dog</p>
         <p class="text-small typography">The quick brown fox jumps over the lazy dog</p>
         <p class="text-x-small typography">The quick brown fox jumps over the lazy dog</p>
+        <p class="text-xx-small typography">The quick brown fox jumps over the lazy dog</p>
       </div>
     </div>
   `,
