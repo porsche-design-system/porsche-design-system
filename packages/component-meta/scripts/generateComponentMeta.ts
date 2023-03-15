@@ -9,18 +9,9 @@ const glue = '\n\n';
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
 const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
-let sharedPropsExportFile;
 
 const getExportFilePath = (source: string, constName: string | string[], tagName: TagName): string => {
-  let importPath;
-  if (
-    (typeof constName === 'string' && source.includes(constName)) ||
-    (typeof constName !== 'string' && constName.some((v) => source.includes(v)))
-  ) {
-    [, importPath] = source.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
-  } else if (sharedPropsExportFile) {
-    [, importPath] = sharedPropsExportFile.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
-  }
+  const [, importPath] = source.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
 
   const componentFilePath = componentFiles.find((file) =>
     file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
@@ -132,7 +123,7 @@ const generateComponentMeta = (): void => {
   }, {} as Record<TagName, string>);
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
-    const source = componentSourceCode[tagName];
+    let source = componentSourceCode[tagName];
 
     const [deprecated, rawDeprecationMessage] = /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(source) || [];
     const isDeprecated = !!deprecated;
@@ -257,8 +248,14 @@ const generateComponentMeta = (): void => {
       const sharedPropsConstName = sharedPropsName[0];
       const sharedPropsExportFilePath = getExportFilePath(source, sharedPropsConstName, tagName);
 
-      sharedPropsExportFile = fs.readFileSync(`${sharedPropsExportFilePath}.ts`, 'utf8');
+      const sharedPropsExportFile = fs.readFileSync(`${sharedPropsExportFilePath}.ts`, 'utf8');
       let [, sharedProps] = /const [a-z][a-zA-Z]+: .+? = ({[\s\S]+?});/.exec(sharedPropsExportFile) || [];
+
+      // add imports of shared properties
+      // TODO: currently the scenario for multiple shared props is not supported
+      // TODO: currently no other imports than from packages/components/src/utils/index.ts are supported
+      const allSharedConstants = sharedPropsExportFile.match(/([A-Z]{2,}(_[A-Z]+)*)/g).join(', ');
+      source = `import { ${allSharedConstants} } from '../../utils';\n${source}`;
 
       // since it is more verbose to address shared proptypes using require(),
       // the next steps are to ensure the extracted object matches the required type
