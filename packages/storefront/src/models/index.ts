@@ -5,7 +5,6 @@ export * from './storefrontConfig';
 export * from './theme';
 export type {
   Project as StackBlitzProject,
-  OpenOptions as StackBlitzOpenOptions,
   ProjectDependencies as StackBlitzProjectDependencies,
 } from '@stackblitz/sdk';
 

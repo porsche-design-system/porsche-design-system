@@ -4,8 +4,8 @@
 
 ## Example
 
-<Playground :frameworkMarkup="codeExample">
-  <ExampleDesignTokensMediaQuery />
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
+  <ExampleStylesMediaQuery />
 </Playground>
 
 ## Usage
@@ -55,15 +55,20 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getDesignTokensMediaQueryCodeSamples } from '@porsche-design-system/shared';
-import ExampleDesignTokensMediaQuery from '@/pages/patterns/design-tokens/example-media-query.vue';
+import { getStylesMediaQueryCodeSamples } from '@porsche-design-system/shared';
+import { adjustSelectedFramework } from '@/utils';
+import ExampleStylesMediaQuery from '@/pages/patterns/styles/example-media-query.vue';
 
 @Component({
   components: {
-    ExampleDesignTokensMediaQuery
+    ExampleStylesMediaQuery
   },
 })
 export default class Code extends Vue {
-  codeExample = getDesignTokensMediaQueryCodeSamples();
+  codeExample = getStylesMediaQueryCodeSamples();
+
+  public mounted(): void {
+    adjustSelectedFramework(this.codeExample);
+  }
 }
 </script>
