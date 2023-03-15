@@ -13,7 +13,6 @@ export type LinkTileModelSignatureWeight = LinkTileWeightWithoutDeprecated;
 export type LinkTileModelSignatureAspectRatio = LinkTileAspectRatio;
 export type LinkTileModelSignatureLinkDirection = JssDirections;
 
-// TODO: unit test
 export const setRequiredPropsOfSlottedLinks = (links: HTMLPLinkElement[]): void => {
   links.forEach((link) => {
     link.theme = 'dark';
