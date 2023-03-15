@@ -3246,6 +3246,9 @@ exports[`should render dsr component for PLinkTileModelSignature 1`] = `
   width: 100% !important;
   object-fit: cover !important;
 }
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
+}
 .root {
   height: 0;
   position: relative;
@@ -3412,11 +3415,11 @@ img {
   text-align: left;
   appearance: none;
   text-decoration: none;
-  border: 2px solid #FBFCFF;
+  border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
-  background-color: #FBFCFF;
-  color: #010205;
+  background-color: #010205;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3474,10 +3477,10 @@ img {
   text-align: left;
   appearance: none;
   text-decoration: none;
-  border: 2px solid #FBFCFF;
+  border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
-  background-color: transparent;
+  background-color: #010205;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;

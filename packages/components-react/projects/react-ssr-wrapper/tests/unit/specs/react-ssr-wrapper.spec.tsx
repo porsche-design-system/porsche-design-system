@@ -42,10 +42,10 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
           <div>Some child</div>
         ) : tagName === 'p-link-tile-model-signature' ? (
           <>
-            <LinkComponent slot="primary" href="#" variant="primary" theme="dark">
+            <LinkComponent slot="primary" href="#">
               Some label
             </LinkComponent>
-            <LinkComponent slot="secondary" href="#" variant="secondary" theme="dark">
+            <LinkComponent slot="secondary" href="#">
               Some label
             </LinkComponent>
           </>
