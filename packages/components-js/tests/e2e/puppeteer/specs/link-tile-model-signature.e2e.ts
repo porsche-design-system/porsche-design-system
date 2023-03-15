@@ -11,7 +11,6 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { Page } from 'puppeteer';
-import { HeadingTag } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
