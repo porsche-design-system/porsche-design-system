@@ -126,6 +126,7 @@ export const TextPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should show text in different sizes">
+        <PText size="xx-small">The quick brown fox jumps over the lazy dog</PText>
         <PText size="x-small">The quick brown fox jumps over the lazy dog</PText>
         <PText>The quick brown fox jumps over the lazy dog</PText>
         <PText size="medium">The quick brown fox jumps over the lazy dog</PText>
