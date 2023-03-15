@@ -203,6 +203,7 @@ exports[`should match snapshot 1`] = `
       "iconSource": "string",
       "loading": "boolean",
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",
@@ -1151,6 +1152,7 @@ exports[`should match snapshot 1`] = `
         "zoom-out",
       ],
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",
@@ -1307,6 +1309,7 @@ exports[`should match snapshot 1`] = `
       "iconSource": "string",
       "rel": "string",
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",
@@ -2555,6 +2558,7 @@ exports[`should match snapshot 1`] = `
       ],
       "ellipsis": "boolean",
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",

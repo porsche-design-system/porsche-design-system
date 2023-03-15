@@ -21,6 +21,7 @@
       <p class="text-medium typography">The quick brown fox jumps over the lazy dog</p>
       <p class="text-small typography">The quick brown fox jumps over the lazy dog</p>
       <p class="text-x-small typography">The quick brown fox jumps over the lazy dog</p>
+      <p class="text-xx-small typography">The quick brown fox jumps over the lazy dog</p>
     </div>
   </div>
 </template>
@@ -111,5 +112,9 @@
 
   .text-x-small {
     @include pds-text-x-small;
+  }
+
+  .text-xx-small {
+    @include pds-text-xx-small;
   }
 </style>
