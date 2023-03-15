@@ -25,8 +25,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -38,8 +38,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -51,8 +51,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model boxster" model="boxster">
@@ -62,8 +62,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model cayenne" model="cayenne">
@@ -73,8 +73,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model cayman" model="cayman">
@@ -84,8 +84,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model macan" model="macan">
@@ -95,8 +95,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model panamera" model="panamera">
@@ -106,8 +106,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model taycan" model="taycan">
@@ -117,8 +117,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model turbo-s" model="turbo-s">
@@ -128,8 +128,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
 
         <PLinkTileModelSignature heading="Model turbo" model="turbo">
@@ -139,8 +139,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -152,8 +152,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature
           heading="Weight responsive"
@@ -165,8 +165,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -178,8 +178,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature heading="Aspect ratio 1:1" aspectRatio="1:1">
           <img
@@ -188,8 +188,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature heading="Aspect ratio 3:4" aspectRatio="3:4">
           <img
@@ -198,8 +198,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature heading="Aspect ratio 9:16" aspectRatio="9:16">
           <img
@@ -208,8 +208,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature
           heading="Aspect ratio responsive"
@@ -221,8 +221,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -234,8 +234,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature
           heading="Link direction responsive"
@@ -247,8 +247,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -262,8 +262,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature heading="Some description">
           <img
@@ -272,12 +272,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark"
-            >Some super long label which causes line breaks in the link</PLink
-          >
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark"
-            >Some super long label which causes line breaks in the link</PLink
-          >
+          <PLink slot="primary" href="#">Some super long label which causes line breaks in the link</PLink>
+          <PLink slot="secondary" href="#">Some super long label which causes line breaks in the link</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature
           heading="Some heading"
@@ -289,8 +285,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
         <PLinkTileModelSignature
           heading="Some long text on white background to overflow the box. Some long text on white background  to overflow the box. Some long text on white background  to overflow the box."
@@ -302,8 +298,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -320,8 +316,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
               alt="Some alt text"
             />
           </picture>
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
 
@@ -335,8 +331,8 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
             height={50}
             alt="Some alt text"
           />
-          <PLink slot="primary" href="#" variant="primary" theme="dark">Some label</PLink>
-          <PLink slot="secondary" href="#" variant="secondary" theme="dark">Some label</PLink>
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
       </div>
     </>

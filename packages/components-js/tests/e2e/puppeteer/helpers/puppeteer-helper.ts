@@ -335,10 +335,9 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
 
   const attributes = requiredProps?.map((prop) => ` ${prop}="${props[prop] ?? 'value'}"`).join() || '';
 
-  // TODO: Should we handle this via componentMeta eg. extend required child?
   const childMarkup =
     tagName === 'p-link-tile-model-signature'
-      ? '<p-link slot="primary" href="#" theme="dark" variant="primary">Some label</p-link>\n<p-link slot="secondary" href="#" theme="dark" variant="secondary">Some label</p-link>'
+      ? '<p-link slot="primary" href="#">Some label</p-link>\n<p-link slot="secondary" href="#">Some label</p-link>'
       : buildChildMarkup(requiredChild);
   const componentMarkup = `<${tagName}${attributes}>${childMarkup}</${tagName}>`;
 

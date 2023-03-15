@@ -313,8 +313,8 @@ const OverviewPage: NextPage = (): JSX.Element => {
                 height={50}
                 alt="Beach"
               />
-              <PLink slot="primary" variant="primary" theme="dark" href="#">Some label</PLink>
-              <PLink slot="secondary" variant="secondary" theme="dark" href="#">Some label</PLink>
+              <PLink slot="primary" href="#">Some label</PLink>
+              <PLink slot="secondary" href="#">Some label</PLink>
             </PLinkTileModelSignature>
           </div>
 
@@ -591,8 +591,8 @@ const OverviewPage: NextPage = (): JSX.Element => {
                   height={50}
                   alt="Beach"
                 />
-                <PLink slot="primary" variant="primary" theme="dark" href="#">Some label</PLink>
-                <PLink slot="secondary" variant="secondary" theme="dark" href="#">Some label</PLink>
+                <PLink slot="primary" href="#">Some label</PLink>
+                <PLink slot="secondary" href="#">Some label</PLink>
               </PLinkTileModelSignature>
             </div>
 

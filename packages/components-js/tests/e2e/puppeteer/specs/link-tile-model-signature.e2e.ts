@@ -1,6 +1,7 @@
 import {
   expectA11yToMatchSnapshot,
   getActiveElementTagName,
+  getConsoleErrorMessages,
   getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
@@ -34,8 +35,8 @@ const initLinkTileModelSignature = (opts?: { description: string }): Promise<voi
     page,
     `<p-link-tile-model-signature heading="Some heading"${description ? ` description="${description}"` : ''}>
   <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="https://porsche.com/" variant="primary" theme="dark">Some label</p-link>
-  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+  <p-link slot="primary" href="https://porsche.com/">Some label</p-link>
+  <p-link slot="secondary" href="#">Some label</p-link>
 </p-link-tile-model-signature>`
   );
 };
@@ -74,26 +75,20 @@ it('should render only heading if description is undefined', async () => {
   expect(await getDescription()).toBeNull();
 });
 
+it('should set correct props on slotted p-links', async () => {
+  await initLinkTileModelSignature();
+
+  const primaryLink = await getPrimaryLink();
+  const secondaryLink = await getSecondaryLink();
+
+  expect(await getProperty(primaryLink, 'variant')).toBe('primary');
+  expect(await getProperty(secondaryLink, 'variant')).toBe('secondary');
+  expect(await getProperty(primaryLink, 'theme')).toBe('dark');
+  expect(await getProperty(secondaryLink, 'theme')).toBe('dark');
+});
+
 describe('validation', () => {
   beforeEach(() => jest.spyOn(console, 'log').mockImplementation(jest.fn())); // Keep console clean for validation tests
-
-  it('should throw error if slot contains more than three children', async () => {
-    await initConsoleObserver(page);
-
-    await setContentWithDesignSystem(
-      page,
-      `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
-  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
-  <div></div>
-</p-link-tile-model-signature>`
-    );
-
-    expect(getConsoleErrorsAmount()).toBe(1);
-  });
 
   describe('primary', () => {
     it('should throw error if slot is missing', async () => {
@@ -105,7 +100,7 @@ describe('validation', () => {
   heading="Some heading"
 >
   <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
+  <p-link slot="secondary" href="#">Some label</p-link>
 </p-link-tile-model-signature>`
       );
 
@@ -121,41 +116,7 @@ describe('validation', () => {
   heading="Some heading"
 >
   <img src="${imgSrc}" alt="Some image label"/>
-  <a slot="primary" href="#" variant="primary" theme="dark">Some label</a>
-  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-
-    it('should throw error if theme is not "dark"', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="primary" theme="light">Some label</p-link>
-  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-
-    it('should throw error if variant is not "primary"', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="secondary" theme="dark">Some label</p-link>
+  <a slot="primary" href="#">Some label</a>
   <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
 </p-link-tile-model-signature>`
       );
@@ -174,7 +135,7 @@ describe('validation', () => {
   heading="Some heading"
 >
   <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <p-link slot="primary" href="https://porsche.com/">Some label</p-link>
 </p-link-tile-model-signature>`
       );
 
@@ -190,42 +151,8 @@ describe('validation', () => {
   heading="Some heading"
 >
   <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
-  <a slot="primary" href="#" variant="primary" theme="dark">Some label</a>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-
-    it('should throw error if theme is not "dark"', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
-  <p-link slot="secondary" href="#" variant="secondary" theme="light">Some label</p-link>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-
-    it('should throw error if variant is not "secondary"', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
-  <p-link slot="secondary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <p-link slot="primary" href="https://porsche.com/">Some label</p-link>
+  <a slot="secondary" href="#">Some label</a>
 </p-link-tile-model-signature>`
       );
 
@@ -282,7 +209,7 @@ describe('focus', () => {
     heading="Some heading"
     >
   <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="#" variant="primary" theme="dark">Some label</p-link>
+  <p-link slot="primary" href="#">Some label</p-link>
   <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
 </p-link-tile-model-signature>
 <a href="#" id="after">after</a>`
