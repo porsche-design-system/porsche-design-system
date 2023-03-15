@@ -304,7 +304,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default link-tile-model-signature">
-            <PLinkTileModelSignature heading="Some Label" description="Default">
+            <PLinkTileModelSignature heading="Some Heading" description="Default">
               <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
                 width={50}
@@ -582,7 +582,7 @@ export const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default link-tile-model-signature with custom prefix">
-              <PLinkTileModelSignature heading="Some Label" description="Default">
+              <PLinkTileModelSignature heading="Some Heading" description="Default">
                 <img
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
                   width={50}

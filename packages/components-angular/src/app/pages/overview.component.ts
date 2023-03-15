@@ -303,7 +303,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default link-tile-model-signature">
-          <p-link-tile-model-signature [heading]="'Some Label'" [description]="'Default'">
+          <p-link-tile-model-signature [heading]="'Some Heading'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
               [width]="50"
@@ -580,7 +580,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
-          <my-prefix-p-link-tile-model-signature p-link-tile-model-signature [heading]="'Some Label'" [description]="'Default'">
+          <my-prefix-p-link-tile-model-signature p-link-tile-model-signature [heading]="'Some Heading'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
               [width]="50"
