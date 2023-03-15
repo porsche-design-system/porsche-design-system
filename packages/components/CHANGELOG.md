@@ -301,15 +301,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Styles: `headingXXXLargeStyle` and `pds-heading-xxx-large`
 - Styles: `fontSizeHeadingXXLarge` and `$pds-font-size-heading-xx-large`
 
-#### 🤖 Property deprecations 🤖
-
-- #### Link Tile
-
-```diff
-- <p-link-tile href="#" label="Some label" description="Some description" weight="semibold">Some text</p-text>
-+ <p-link-tile href="#" label="Some label" description="Some description" weight="semi-bold">Some text</p-text>
-```
-
 ### [3.0.0-alpha.2] - 2023-02-27
 
 #### 🤖 Property deprecations 🤖

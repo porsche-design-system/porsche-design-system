@@ -5,13 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkButtonIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAspectRatio, ButtonTileSize, ButtonTileWeight, LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./utils";
+import { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from "./components/button-tile/button-tile-utils";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -218,7 +219,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
           * Aspect ratio of the button-tile.
          */
@@ -242,7 +243,7 @@ export namespace Components {
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: LinkButtonIconName;
+        "icon"?: ButtonTileIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -262,7 +263,7 @@ export namespace Components {
         /**
           * Specifies the type of the button.
          */
-        "type"?: ButtonType;
+        "type"?: ButtonTileType;
         /**
           * Font weight of the description.
          */
@@ -2058,7 +2059,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
           * Aspect ratio of the button-tile.
          */
@@ -2082,7 +2083,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: LinkButtonIconName;
+        "icon"?: ButtonTileIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -2102,7 +2103,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the type of the button.
          */
-        "type"?: ButtonType;
+        "type"?: ButtonTileType;
         /**
           * Font weight of the description.
          */
