@@ -242,11 +242,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Text`, `Icon`, `Button Pure` and `Link Pure` support value `xx-small` for prop `size`
 - `Display` supports value `small` for prop `size`
 - Partials: `getInitialStyles` supports multi prefix, e.g.
   `getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });`
 - Styles: `displaySmallStyle` and `pds-display-small`
+- Styles: `textXXSmallStyle` and `pds-text-xx-small`
 - Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
+- Styles: `fontSizeTextXXSmall` and `$pds-font-size-text-xx-small`
 - Styles: `getHoverStyle` and `pds-hover`
 - `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
 - Custom events have consistent names across components and deprecated old event names

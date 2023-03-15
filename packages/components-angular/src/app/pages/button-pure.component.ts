@@ -122,6 +122,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render button with different size">
+      <p-button-pure [size]="'xx-small'">Label size xx-small</p-button-pure>
+      <br />
       <p-button-pure [size]="'x-small'">Label size x-small</p-button-pure>
       <br />
       <p-button-pure [size]="'small'">Label size small</p-button-pure>
