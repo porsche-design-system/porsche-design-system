@@ -1,13 +1,16 @@
-import type { NextPage } from 'next';
 import { PLink, PLinkProps } from '@porsche-design-system/components-react/ssr';
-import { NextRouter, useRouter } from 'next/router';
 import { MouseEvent, useCallback } from 'react';
-import Link from 'next/link';
+import { Link, useNavigate } from '@remix-run/react';
 
-// push and replace via `as` prop on Link
-// active detection: router.asPath === href or router.pathname
+// https://remix.run/docs/en/main/components/link#md-react-router-link
+// wrapper around react-router's Link: https://reactrouter.com/en/main/components/link
+// active, isPending https://remix.run/docs/en/main/components/nav-link
+// relative / replace
 
-const RouterPLinkHooked = ({ navigate, ...props }: PLinkProps & { navigate?: NextRouter['push'] }): JSX.Element => {
+const RouterPLinkHooked = ({
+  navigate,
+  ...props
+}: PLinkProps & { navigate?: ReturnType<typeof useNavigate> }): JSX.Element => {
   const onClick = useCallback((e: MouseEvent & { target: PLinkProps }) => {
     e.preventDefault();
     // @ts-ignore
@@ -17,12 +20,11 @@ const RouterPLinkHooked = ({ navigate, ...props }: PLinkProps & { navigate?: Nex
   return <PLink {...props} {...(navigate && { onClick })} />;
 };
 
-const LinkExamplePage: NextPage = (): JSX.Element => {
-  const router = useRouter();
-
+const LinkExamplePage = (): JSX.Element => {
+  const navigate = useNavigate();
   const onClick = useCallback((e: MouseEvent & { target: PLinkProps }) => {
     e.preventDefault();
-    router.push(e.target.href!);
+    navigate(e.target.href!);
   }, []);
 
   return (
@@ -31,10 +33,10 @@ const LinkExamplePage: NextPage = (): JSX.Element => {
       <PLink href="/" onClick={onClick}>
         Link 2 click listener
       </PLink>
-      <Link href="/" passHref>
-        <PLink>Link 3 passHref (check markup)</PLink>
+      <Link to="/">
+        <PLink>Link 3 wrapped by Link (check markup)</PLink>
       </Link>
-      <RouterPLinkHooked href="/" navigate={router.push}>
+      <RouterPLinkHooked href="/" navigate={navigate}>
         Link 4 hooked
       </RouterPLinkHooked>
     </>
