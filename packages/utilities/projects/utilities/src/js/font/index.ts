@@ -3,6 +3,7 @@ export { fontHyphenationStyle } from './fontHyphenationStyle';
 export { fontLineHeight } from './fontLineHeight';
 export { fontSize } from './fontSize';
 export { fontSizeText } from './fontSizeText';
+export { fontSizeTextXXSmall } from './fontSizeTextXXSmall';
 export { fontSizeTextXSmall } from './fontSizeTextXSmall';
 export { fontSizeTextSmall } from './fontSizeTextSmall';
 export { fontSizeTextMedium } from './fontSizeTextMedium';

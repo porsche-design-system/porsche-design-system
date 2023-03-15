@@ -181,6 +181,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with different size">
+      <p-link-pure [href]="'https://www.porsche.com'" [size]="'xx-small'">Label size xx-small</p-link-pure>
+      <p-link-pure [size]="'xx-small'"><a [href]="'https://www.porsche.com'">Label slotted size xx-small</a></p-link-pure>
+      <br />
       <p-link-pure [href]="'https://www.porsche.com'" [size]="'x-small'">Label size x-small</p-link-pure>
       <p-link-pure [size]="'x-small'"><a [href]="'https://www.porsche.com'">Label slotted size x-small</a></p-link-pure>
       <br />

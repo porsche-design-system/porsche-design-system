@@ -28,6 +28,10 @@ const IconPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in different sizes and be in sync with text sizes">
         <div>
+          <PIcon size="xx-small" />
+          <PText size="xx-small">XX Small</PText>
+        </div>
+        <div>
           <PIcon size="x-small" />
           <PText size="x-small">X Small</PText>
         </div>
