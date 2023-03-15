@@ -2,15 +2,9 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { JSS_DIRECTIONS } from '../../styles/jss-direction-styles';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  throwIfChildCountIsExceeded,
-  validateProps,
-} from '../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
-import { LINK_TILE_ASPECT_RATIOS } from '../link-tile/link-tile-utils';
+import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS } from '../link-tile/link-tile-utils';
 import type {
   LinkTileModelSignatureAspectRatio,
   LinkTileModelSignatureLinkDirection,
@@ -18,15 +12,11 @@ import type {
   LinkTileModelSignatureWeight,
   LinkTileModelSignatureHeadingTag,
 } from './link-tile-model-signature-utils';
-import {
-  getSlottedPLinkOrThrow,
-  LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
-  LINK_TILE_MODEL_SIGNATURE_WEIGHTS,
-} from './link-tile-model-signature-utils';
+import { getSlottedPLinkOrThrow, LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS } from './link-tile-model-signature-utils';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
-  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_MODEL_SIGNATURE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
@@ -67,7 +57,7 @@ export class LinkTileModelSignature {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    throwIfChildCountIsExceeded(this.host, 3);
+    // TODO: move to lifecycle
     this.primaryLink = getSlottedPLinkOrThrow(this.host);
 
     attachComponentCss(
@@ -79,6 +69,7 @@ export class LinkTileModelSignature {
       !!this.description
     );
 
+    // slotted anchor?
     const primaryLinkProps = {
       href: this.primaryLink.href,
       target: this.primaryLink.target,

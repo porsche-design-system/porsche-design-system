@@ -29,7 +29,7 @@ import { InlineNotificationActionIcon, InlineNotificationState } from "./compone
 import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeightWithDeprecated } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
@@ -746,7 +746,7 @@ export namespace Components {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeightWithDeprecated>;
     }
     interface PLinkTileModelSignature {
         /**
@@ -2574,7 +2574,7 @@ declare namespace LocalJSX {
         /**
           * Font weight of the description.
          */
-        "weight"?: BreakpointCustomizable<LinkTileWeight>;
+        "weight"?: BreakpointCustomizable<LinkTileWeightWithDeprecated>;
     }
     interface PLinkTileModelSignature {
         /**
