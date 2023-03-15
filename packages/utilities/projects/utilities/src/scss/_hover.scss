@@ -1,47 +1,36 @@
 @import 'lib/border';
-@import 'lib/frosted-glass';
+// @import 'lib/frosted-glass';
 @import 'lib/theme';
-
-$pds-focus-inset-map: (
-  'small': -4px,
-  'medium': -6px,
-);
 
 $pds-focus-border-radius-map: (
   'small': $pds-border-radius-small,
   'medium': $pds-border-radius-medium,
 );
 
-@mixin pds-hover($inset: 'small', $border-radius: 'small') {
-  position: relative;
-  z-index: 0; // ensures pseudo-element gets behind text node but not behind parent node
+$pds-offset-horizontal: 2px;
+
+@mixin pds-hover($border-radius: 'small') {
+  // it can easily be overwritten on purpose (when placed here) and visually reflected
+  @if map-has-key($pds-focus-border-radius-map, $border-radius) {
+    border-radius: map-get($pds-focus-border-radius-map, $border-radius);
+  } @else {
+    @if ($border-radius) {
+      border-radius: $border-radius;
+    } @else {
+      border-radius: map-get($pds-focus-border-radius-map, 'small');
+    }
+  }
+  margin-left: -#{$pds-offset-horizontal};
+  margin-right: -#{$pds-offset-horizontal};
+  padding-left: $pds-offset-horizontal;
+  padding-right: $pds-offset-horizontal;
   @media (hover: hover) {
-    &:hover::before {
-      @include pds-frosted-glass;
-      content: '';
-      position: absolute;
-      // we can use inset as soon as browser support is sufficient
-      @if map-has-key($pds-focus-inset-map, $inset) {
-        inset: map-get($pds-focus-inset-map, $inset);
-      } @else {
-        @if ($inset) {
-          inset: $inset;
-        } @else {
-          inset: map-get($pds-focus-inset-map, 'small');
-        }
-      }
-      pointer-events: none; // necessary to be able to select elements behind ::before pseudo-element
-      z-index: -1; // ensures pseudo-element gets behind text node
+    &: {
+      transition: background var(--p-transition-duration, 0.24s) ease;
+    }
+    &:hover {
+      // @include pds-frosted-glass;
       background: $pds-theme-light-state-hover;
-      @if map-has-key($pds-focus-border-radius-map, $border-radius) {
-        border-radius: map-get($pds-focus-border-radius-map, $border-radius);
-      } @else {
-        @if ($border-radius) {
-          border-radius: $border-radius;
-        } @else {
-          border-radius: map-get($pds-focus-border-radius-map, 'small');
-        }
-      }
     }
   }
 }

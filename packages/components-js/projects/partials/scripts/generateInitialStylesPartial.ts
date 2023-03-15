@@ -71,9 +71,8 @@ const slottedStyles: Styles = {
       '& a': addImportantToEachRule({
         textDecoration: 'underline',
         color: 'currentcolor',
-        // TODO: add smooth transition to hover
-        ...getHoverStyle({ inset: '0 -4px' }),
-        ...getFocusStyle({ inset: '0 -4px' }),
+        ...getHoverStyle(),
+        ...getFocusStyle(),
       }),
     },
 

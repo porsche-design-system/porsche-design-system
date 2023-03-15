@@ -1,16 +1,15 @@
 import { themeLightStateFocus } from '../theme';
 import { borderRadiusMedium, borderRadiusSmall, borderWidthBase } from '../border';
 
-type Size = 'small' | 'medium';
-type Inset = Size;
-type BorderRadius = Size;
+type Offset = 'small' | 'none';
+type BorderRadius = 'small' | 'medium';
 type Options = {
-  inset?: Inset | string;
+  offset?: Offset | string;
   borderRadius?: BorderRadius | string;
 };
 
 export const getFocusStyle = (opts?: Options) => {
-  const inset = opts?.inset === 'small' ? '-4px' : opts?.inset === 'medium' ? '-6px' : opts?.inset || '-4px';
+  const outlineOffset = opts?.offset === 'small' ? '2px' : opts?.offset === 'none' ? '0' : opts?.offset || '0';
   const borderRadius =
     opts?.borderRadius === 'small'
       ? borderRadiusSmall
@@ -19,20 +18,14 @@ export const getFocusStyle = (opts?: Options) => {
       : opts?.borderRadius || borderRadiusSmall;
 
   return {
-    position: 'relative',
-    // we can't use outline, since border-radius has no effect on outline style in Safari
-    outline: 0,
-    '&:focus::after': {
-      content: '""',
-      position: 'absolute',
-      inset,
-      pointerEvents: 'none', // necessary to be able to select elements behind pseudo-element
-      border: `${borderWidthBase} solid ${themeLightStateFocus}`, // focus color is equal for light and dark theme
-      borderRadius,
+    borderRadius, // it's visually being reflected on both (when placed here), element and focus outline
+    '&:focus': {
+      outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+      outlineOffset,
     },
     // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
-    '&:focus:not(:focus-visible)::after': {
-      borderColor: 'transparent',
+    '&:focus:not(:focus-visible)': {
+      outlineColor: 'transparent',
     },
   } as const;
 };
