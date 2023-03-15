@@ -358,10 +358,11 @@ $&`
         newFileContent = newFileContent
           .replace(/const \[primaryLink, secondaryLink] = getSlottedPLinksOrThrow\(.*\);/g, '')
           .replace(/this\.primaryLink = primaryLink;/, '')
-          .replace(/: this\.primaryLink\.\w+;/g, '')
+          .replace(/: this\.primaryLink\.\w+/g, '')
           .replace(
             /setRequiredPropsOfSlottedLinks\(\[primaryLink, secondaryLink]\);/,
-            `namedSlotChildren.forEach((link) => {
+            `const { href, target, download, rel } = namedSlotChildren[0].props;
+    namedSlotChildren.forEach((link) => {
       const variant = link.props.slot;
       link.props = {
         ...link.props,
