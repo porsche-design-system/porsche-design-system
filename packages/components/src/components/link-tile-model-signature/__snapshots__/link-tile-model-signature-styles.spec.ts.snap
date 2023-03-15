@@ -38,6 +38,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   width: 100% !important;
   object-fit: cover !important;
 }
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
+}
 .root {
   height: 0;
   position: relative;
@@ -212,6 +215,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: 1:1, weigh
   width: 100% !important;
   object-fit: cover !important;
 }
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
+}
 .root {
   height: 0;
   position: relative;
@@ -310,6 +316,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: 3:4, weigh
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
+}
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
 }
 .root {
   height: 0;
@@ -420,6 +429,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: 4:3, weigh
   width: 100% !important;
   object-fit: cover !important;
 }
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
+}
 .root {
   height: 0;
   position: relative;
@@ -529,6 +541,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: 9:16, weig
   width: 100% !important;
   object-fit: cover !important;
 }
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
+}
 .root {
   height: 0;
   position: relative;
@@ -627,6 +642,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: 16:9, weig
   height: 100% !important;
   width: 100% !important;
   object-fit: cover !important;
+}
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
 }
 .root {
   height: 0;
