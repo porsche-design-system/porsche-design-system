@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import Image from 'next/image';
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
@@ -129,8 +129,8 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </PTextareaWrapper>
           </div>
 
-          <div className="playground light" title="should render default fieldset-wrapper">
-            <PFieldsetWrapper label="Some label" />
+          <div className="playground light" title="should render default fieldset">
+            <PFieldset label="Some label" />
           </div>
 
           <div className="playground light" title="should render default content-wrapper">
@@ -394,8 +394,8 @@ const OverviewPage: NextPage = (): JSX.Element => {
               </PTextareaWrapper>
             </div>
 
-            <div className="playground light" title="should render default fieldset-wrapper with custom prefix">
-              <PFieldsetWrapper label="Some label" />
+            <div className="playground light" title="should render default fieldset with custom prefix">
+              <PFieldset label="Some label" />
             </div>
 
             <div className="playground light" title="should render default content-wrapper with custom prefix">

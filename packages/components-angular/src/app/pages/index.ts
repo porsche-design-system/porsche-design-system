@@ -34,6 +34,7 @@ import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
 import { DisplayComponent } from './display.component';
 import { DividerComponent } from './divider.component';
+import { FieldsetComponent } from './fieldset.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
 import { GridComponent } from './grid.component';
@@ -90,6 +91,7 @@ export const generatedPages = [
   CoreInitializerComponent,
   DisplayComponent,
   DividerComponent,
+  FieldsetComponent,
   FieldsetWrapperComponent,
   FlexComponent,
   GridComponent,
@@ -185,6 +187,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Divider',
     path: 'divider',
     component: DividerComponent,
+  },
+  {
+    name: 'Fieldset',
+    path: 'fieldset',
+    component: FieldsetComponent,
   },
   {
     name: 'Fieldset Wrapper',

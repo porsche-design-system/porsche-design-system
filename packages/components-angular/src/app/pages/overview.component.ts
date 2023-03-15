@@ -126,8 +126,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-textarea-wrapper>
         </div>
 
-        <div class="playground light" title="should render default fieldset-wrapper">
-          <p-fieldset-wrapper [label]="'Some label'"></p-fieldset-wrapper>
+        <div class="playground light" title="should render default fieldset">
+          <p-fieldset [label]="'Some label'"></p-fieldset>
         </div>
 
         <div class="playground light" title="should render default content-wrapper">
@@ -390,8 +390,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </my-prefix-p-textarea-wrapper>
         </div>
 
-        <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-          <my-prefix-p-fieldset-wrapper p-fieldset-wrapper [label]="'Some label'"></my-prefix-p-fieldset-wrapper>
+        <div class="playground light" title="should render default fieldset with custom prefix">
+          <my-prefix-p-fieldset p-fieldset [label]="'Some label'"></my-prefix-p-fieldset>
         </div>
 
         <div class="playground light" title="should render default content-wrapper with custom prefix">
