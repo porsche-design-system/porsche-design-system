@@ -242,6 +242,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `p-link-tile-model-signature`
 - `Display` supports value `small` for prop `size`
 - Partials: `getInitialStyles` supports multi prefix, e.g.
   `getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });`
