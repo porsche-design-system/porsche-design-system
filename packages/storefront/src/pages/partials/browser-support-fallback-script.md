@@ -6,7 +6,7 @@ The Porsche Design System components rely on dedicated JavaScript features like 
 `MutationObserver`, `customElements` and others. If any of the requirements are not met, a blocking overlay is displayed
 which recommends the user to update the browser.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected before the closing `</body>` of your `index.html`.
 
 <p-button v-on:click="showFallback">Force display of browser support fallback</p-button>
