@@ -36,7 +36,7 @@ const Component1 = styled.a`
 
 const Component2 = styled.a`
 -  ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
-+  ${getFocusStyle({ offset: 'small', borderRadius: 'small', theme: 'light' })}
++  ${getFocusStyle({ offset: '1px' })}
 `;
 ```
 
@@ -277,7 +277,7 @@ a {
 
 button {
 -  @include p-focus($p-color-state-focus, 1px, '::before');
-+  @include pds-focus('small', 'small', 'light');
++  @include pds-focus(1px);
 }
 ```
 
