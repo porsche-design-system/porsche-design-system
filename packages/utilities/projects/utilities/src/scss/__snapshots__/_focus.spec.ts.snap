@@ -13,13 +13,13 @@ div:focus:not(:focus-visible) {
 }"
 `;
 
-exports[`pds-focus() should return correct css for opts: { offset: 'medium', borderRadius: 'medium' } 1`] = `
+exports[`pds-focus() should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
 "div {
   border-radius: 8px;
 }
 div:focus {
   outline: 2px solid #1a44ea;
-  outline-offset: medium;
+  outline-offset: 0;
 }
 div:focus:not(:focus-visible) {
   outline-color: transparent;

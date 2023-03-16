@@ -10,7 +10,7 @@ describe('pds-focus()', () => {
   it.each([
     {},
     { offset: 'small', borderRadius: 'small' },
-    { offset: 'medium', borderRadius: 'medium' },
+    { offset: 'none', borderRadius: 'medium' },
     { offset: '3px', borderRadius: '6px' },
   ])('should return correct css for opts: %s', (opts) => {
     const result = sass.compileString(`${borderVariables} ${themeVariables} ${focusMixin} div {

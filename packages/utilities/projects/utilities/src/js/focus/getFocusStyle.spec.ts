@@ -9,7 +9,7 @@ describe('getFocusStyle()', () => {
   it.each<Parameters<typeof getFocusStyle>>([
     [{ offset: undefined, borderRadius: undefined }],
     [{ offset: 'small', borderRadius: 'small' }],
-    [{ offset: 'medium', borderRadius: 'medium' }],
+    [{ offset: 'none', borderRadius: 'medium' }],
     [{ offset: '3px', borderRadius: '6px' }],
   ])('should return correct css for opts: %s', (...args) => {
     expect(getFocusStyle(...args)).toMatchSnapshot();
