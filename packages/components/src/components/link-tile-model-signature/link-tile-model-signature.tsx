@@ -4,7 +4,7 @@ import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { LINK_BUTTON_GROUP_DIRECTIONS } from '../../styles/link-button-group-direction-styles';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
-import { LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED } from '../link-tile/link-tile-utils';
+import { LINK_TILE_ASPECT_RATIOS, TILE_WEIGHTS } from '../link-tile/link-tile-utils';
 import type {
   LinkTileModelSignatureAspectRatio,
   LinkTileModelSignatureLinkDirection,
@@ -20,7 +20,7 @@ import {
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
-  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED),
+  weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(LINK_TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
@@ -57,13 +57,11 @@ export class LinkTileModelSignature {
   /** Sets a custom headline tag which wraps the heading to enhance semantics. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
 
-  private primaryLink: HTMLPLinkElement;
-
+  // TODO: Check SSR in NExtjs for anchor inside content
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    // If we do this earlier than render, there are cases where this.primaryLink.href is undefined
+    // If we do this earlier than render, there are cases where primaryLink.href is undefined
     const [primaryLink, secondaryLink] = getSlottedPLinksOrThrow(this.host);
-    this.primaryLink = primaryLink;
     setRequiredPropsOfSlottedLinks([primaryLink, secondaryLink]);
 
     attachComponentCss(
@@ -76,17 +74,11 @@ export class LinkTileModelSignature {
     );
 
     const primaryLinkProps = {
-      href: this.primaryLink.href,
-      target: this.primaryLink.target,
-      download: this.primaryLink.download,
-      rel: this.primaryLink.rel,
+      href: primaryLink.href,
+      target: primaryLink.target,
+      download: primaryLink.download,
+      rel: primaryLink.rel,
     };
-
-    const heading: JSX.Element = (
-      <this.headingTag>
-        <p class="heading">{this.heading}</p>
-      </this.headingTag>
-    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -98,14 +90,8 @@ export class LinkTileModelSignature {
         <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
         <div class="content">
           <a {...primaryLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
-          {this.description ? (
-            <div class="description-group">
-              {heading}
-              <p class="description">{this.description}</p>
-            </div>
-          ) : (
-            heading
-          )}
+          <this.headingTag class="heading">{this.heading}</this.headingTag>
+          {this.description && <p class="description">{this.description}</p>}
           <div class="link-group" role="group">
             <slot name="primary" />
             <slot name="secondary" />

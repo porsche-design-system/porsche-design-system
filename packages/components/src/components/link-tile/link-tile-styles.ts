@@ -51,6 +51,7 @@ export const getComponentCss = (
         },
       },
       additionalContentStyles: {
+        display: 'grid',
         ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
         padding:
           align === 'bottom'

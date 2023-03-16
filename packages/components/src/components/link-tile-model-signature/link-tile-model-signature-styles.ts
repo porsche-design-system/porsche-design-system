@@ -9,7 +9,6 @@ import {
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
-  spacingStaticXSmall,
   textLargeStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
@@ -38,10 +37,10 @@ export const getComponentCss = (
         },
       },
       additionalContentStyles: {
+        display: 'flex',
+        flexDirection: 'column',
         bottom: 0,
         padding: `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
-        gridTemplateRows: 'auto auto',
-        gridTemplateColumns: 'auto',
         ...gradientToTopStyle,
       },
     }),
@@ -55,18 +54,15 @@ export const getComponentCss = (
       ...gradientToBottomStyle,
     },
     heading: {
-      ...(!hasDescription && { color: getThemedTypographyColor('dark', 'primary') }),
+      color: getThemedTypographyColor('dark', 'primary'),
       margin: 0,
       ...textLargeStyle,
       ...buildResponsiveStyles(weight, (w: LinkTileModelSignatureWeight) => ({ fontWeight: getFontWeight(w) })),
     },
     ...(hasDescription && {
-      'description-group': {
-        color: getThemedTypographyColor('dark', 'primary'),
-        gap: spacingStaticXSmall,
-      },
       description: {
-        margin: 0,
+        color: getThemedTypographyColor('dark', 'primary'),
+        margin: '-12px 0 0 ',
         ...textSmallStyle,
       },
     }),
