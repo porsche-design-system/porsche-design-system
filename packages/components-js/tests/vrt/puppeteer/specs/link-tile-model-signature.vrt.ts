@@ -41,15 +41,15 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <div class="grid">
           <p-link-tile-model-signature heading="Some heading">
             ${image}
-            <p-link slot="primary" href="#" variant="primary" theme="dark">Some Label</p-link>
-            <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some Label</p-link>
+            <p-link slot="primary" href="#">Some Label</p-link>
+            <p-link slot="secondary" href="#">Some Label</p-link>
           </p-link-tile-model-signature>
           <p-link-tile-model-signature heading="Some heading" description="Some description">
             <picture>
              ${image}
             </picture>
-            <p-link slot="primary" href="#" variant="primary" theme="dark">Some Label</p-link>
-            <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some Label</p-link>
+            <p-link slot="primary" href="#">Some Label</p-link>
+            <p-link slot="secondary" href="#">Some Label</p-link>
            </p-link-tile-model-signature>
         </div>`;
 

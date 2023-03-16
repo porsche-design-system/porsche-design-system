@@ -14,7 +14,7 @@ export const WHITELISTED_TAG_NAMES = [
   'p-table-head-cell',
   'p-table-cell',
 ] as const;
-type TagNameWhitelisted = typeof WHITELISTED_TAG_NAMES[number];
+type TagNameWhitelisted = (typeof WHITELISTED_TAG_NAMES)[number];
 
 type TagNameRelevant = Exclude<
   TagName,
@@ -69,8 +69,8 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   </p-link-tile>`,
   'p-link-tile-model-signature': `<p-link-tile-model-signature heading="Some label" description="Some description" aspectRatio="4:3">
     <img src="">
-    <p-link slot="primary" href="#" theme="dark" variant="primary">Some link</p-link>
-    <p-link slot="secondary" href="#" theme="dark" variant="secondary">Some link</p-link>
+    <p-link slot="primary" href="#">Some link</p-link>
+    <p-link slot="secondary" href="#">Some link</p-link>
   </p-link-tile-model-signature>`,
   'p-marque': `<p-marque></p-marque>`,
   'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,

@@ -23,17 +23,14 @@ const getOverlayAnchor = () => selectNode(page, 'p-link-tile-model-signature >>>
 const getPrimaryLink = () => selectNode(page, 'p-link-tile-model-signature > p-link[slot="primary"] ');
 const getSecondaryLink = () => selectNode(page, 'p-link-tile-model-signature > p-link[slot="secondary"] ');
 const getHeading = () => selectNode(page, 'p-link-tile-model-signature >>> .heading');
-const getDescription = () => selectNode(page, 'p-link-tile-model-signature >>> .description');
 
 const imgSrc =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=';
 
-const initLinkTileModelSignature = (opts?: { description: string }): Promise<void> => {
-  const { description } = opts || {};
-
+const initLinkTileModelSignature = (): Promise<void> => {
   return setContentWithDesignSystem(
     page,
-    `<p-link-tile-model-signature heading="Some heading"${description ? ` description="${description}"` : ''}>
+    `<p-link-tile-model-signature heading="Some heading">
   <img src="${imgSrc}" alt="Some image label"/>
   <p-link slot="primary" href="https://porsche.com/">Some label</p-link>
   <p-link slot="secondary" href="#">Some label</p-link>
@@ -60,19 +57,6 @@ it('should wrap heading in correct headingTag', async () => {
   await waitForStencilLifecycle(page);
 
   expect(await (await getHeading()).evaluate((heading) => (heading.parentNode as HTMLElement).tagName)).toBe('H3');
-});
-
-it('should render description', async () => {
-  await initLinkTileModelSignature({ description: 'Some description' });
-
-  expect(await getDescription()).not.toBeNull();
-});
-
-it('should render only heading if description is undefined', async () => {
-  await initLinkTileModelSignature();
-
-  expect(await getHeading()).not.toBeNull();
-  expect(await getDescription()).toBeNull();
 });
 
 it('should set correct props on slotted p-links', async () => {
