@@ -45,7 +45,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .native-anchor {
         @include pds-text-small;
         @include pds-hover;
-        @include pds-focus;
+        @include pds-focus('none');
         color: inherit;
       }
     `,

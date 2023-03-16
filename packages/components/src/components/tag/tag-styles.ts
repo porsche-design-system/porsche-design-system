@@ -2,6 +2,7 @@ import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   getInvertedThemedColors,
+  getResetInitialStylesForSlottedAnchor,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -71,6 +72,7 @@ export const getComponentCss = (
       },
       '::slotted': addImportantToEachRule({
         '&(a),&(button)': {
+          ...getResetInitialStylesForSlottedAnchor,
           display: 'inline',
           position: 'static',
           textDecoration: 'underline',
