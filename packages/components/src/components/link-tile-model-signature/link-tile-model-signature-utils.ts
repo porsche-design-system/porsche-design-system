@@ -2,7 +2,7 @@ import { getPrefixedTagNames, getTagName } from '../../utils';
 import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
 import type { LinkTileAspectRatio, LinkTileWeightWithoutDeprecated } from '../link-tile/link-tile-utils';
-import type { JssDirections } from '../../styles/jss-direction-styles';
+import type { LinkButtonGroupDirection } from '../../styles/link-button-group-direction-styles';
 import type { LinkVariant } from '../../types';
 
 export type LinkTileModelSignatureModel = ModelSignatureModel;
@@ -11,7 +11,7 @@ export type LinkTileModelSignatureHeadingTag = (typeof LINK_TILE_MODEL_SIGNATURE
 
 export type LinkTileModelSignatureWeight = LinkTileWeightWithoutDeprecated;
 export type LinkTileModelSignatureAspectRatio = LinkTileAspectRatio;
-export type LinkTileModelSignatureLinkDirection = JssDirections;
+export type LinkTileModelSignatureLinkDirection = LinkButtonGroupDirection;
 
 export const setRequiredPropsOfSlottedLinks = (links: HTMLPLinkElement[]): void => {
   links.forEach((link) => {

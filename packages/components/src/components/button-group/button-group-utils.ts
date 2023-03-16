@@ -1,3 +1,3 @@
-import type { JssDirections } from '../../styles/jss-direction-styles';
+import type { LinkButtonGroupDirection } from '../../styles/link-button-group-direction-styles';
 
-export type ButtonGroupDirection = JssDirections;
+export type ButtonGroupDirection = LinkButtonGroupDirection;
