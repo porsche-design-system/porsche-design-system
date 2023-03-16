@@ -16,6 +16,7 @@ import { NavigateFunction } from 'react-router/dist/lib/hooks';
 // https://react-location.tanstack.com/docs/api#link
 // global config https://mui.com/material-ui/guides/routing/#global-theme-link
 // next.js adapter https://github.com/mui/material-ui/blob/HEAD/examples/material-next-ts/src/Link.tsx
+// active, history replace and push
 
 const RouterPLink = (props: PLinkProps): JSX.Element => {
   const navigate = useNavigate();

@@ -20,13 +20,17 @@ import { LocationStrategy } from '@angular/common';
 @Component({
   selector: 'page-link-example',
   template: `
+    <a [routerLink]="'/'">Link 1 default</a>
     <p-link [href]="'/'">Link 1 default</p-link>
     <p-link [href]="'/'" (click)="onClick($event)">Link 2 click listener</p-link>
     <p-link [routerLink]="'/'">Link 3 routerLink</p-link>
     <p-link [href]="'/'" [routerLink]="'/'">Link 3 routerLink with href</p-link>
-    <p-link [href]="'/'" [routerLink]="'/'" (click)="$event.preventDefault()"
-      >Link 3 routerLink with href and prevent</p-link
-    >
+    <p-link [href]="'/'" [routerLink]="'/'" (click)="$event.preventDefault()">
+      Link 3 routerLink with href and prevent
+    </p-link>
+
+    <br />
+
     <p-link [routerLink]="'/'">Link 4 routerLink</p-link>
     <my-prefix-p-link p-link [routerLink]="'/link-example'">Link 4 routerLink prefixed</my-prefix-p-link>
     <p-link-pure [routerLink]="'/'">Link 4 routerLink</p-link-pure>
