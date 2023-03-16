@@ -10,7 +10,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min-content, 400px));
       gap: 10px;
     }
   `;
@@ -267,9 +267,9 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
           <PLink slot="primary" href="#">Some label</PLink>
           <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
-        <PLinkTileModelSignature heading="Some description">
+        <PLinkTileModelSignature heading="Some heading">
           <Image
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
             height={50}
             alt="Some alt text"
@@ -326,6 +326,19 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
       <div className="playground light container-large" title="should render with max width description text on light background">
         <PLinkTileModelSignature
           heading="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
+        >
+          <Image
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+            width={50}
+            height={50}
+            alt="Some alt text"
+          />
+          <PLink slot="primary" href="#">Some label</PLink>
+          <PLink slot="secondary" href="#">Some label</PLink>
+        </PLinkTileModelSignature>
+        <PLinkTileModelSignature
+          heading="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
+          description="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
         >
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
