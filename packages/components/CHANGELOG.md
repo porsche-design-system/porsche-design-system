@@ -242,7 +242,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `p-link-tile-model-signature`
+- `Link Tile Model Signature`
 - `Text`, `Icon`, `Button Pure` and `Link Pure` support value `xx-small` for prop `size`
 - `Display` supports value `small` for prop `size`
 - Partials: `getInitialStyles` supports multi prefix, e.g.
