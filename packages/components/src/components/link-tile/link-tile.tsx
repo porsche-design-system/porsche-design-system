@@ -15,10 +15,10 @@ import type {
   LinkTileAriaAttribute,
   LinkTileAspectRatio,
   LinkTileAlign,
+  LinkTileWeight,
   LinkTileSize,
   LinkTileWeightDeprecated,
   LinkTileTarget,
-  LinkTileWeight,
 } from './link-tile-utils';
 import {
   LINK_TILE_ALIGNS,
