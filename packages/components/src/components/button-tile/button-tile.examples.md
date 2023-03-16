@@ -92,7 +92,7 @@ It is possible to align the description on top of the component.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { LINK_BUTTON_TILE_ALIGNS, LINK_BUTTON_TILE_ASPECT_RATIOS, LINK_BUTTON_TILE_SIZES, BUTTON_TILE_WEIGHTS } from '../../utils'; 
+import { LINK_BUTTON_TILE_ALIGNS, LINK_BUTTON_TILE_ASPECT_RATIOS, LINK_BUTTON_TILE_SIZES, TILE_WEIGHTS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -144,7 +144,7 @@ export default class Code extends Vue {
   }
 
   weight = 'semi-bold';
-  weights = [...BUTTON_TILE_WEIGHTS, "{ base: 'semi-bold', m: 'regular' }"];
+  weights = [...TILE_WEIGHTS, "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-button-tile label="Some Label" description="Some Description" weight="${this.weight}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
