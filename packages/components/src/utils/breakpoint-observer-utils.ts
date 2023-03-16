@@ -6,7 +6,7 @@ import { BREAKPOINTS } from './breakpoint-customizable';
 
 export const flippedBreakpoint = Object.entries(breakpoint).reduce(
   (result, [key, val]) => ({ ...result, [val]: key }),
-  {} as Record<string, Breakpoint>
+  {} as Record<number, Breakpoint>
 );
 
 export const getCurrentBreakpointKey = (): BreakpointKey => {
@@ -15,10 +15,7 @@ export const getCurrentBreakpointKey = (): BreakpointKey => {
     .map((item) => item.media)
     .pop();
 
-  const matchingBreakpoint = flippedBreakpoint[/\d+px/.exec(lastMatchingMediaQuery)[0]];
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return matchingBreakpoint === 'xxs' ? 'base' : (matchingBreakpoint as BreakpointKey);
+  return flippedBreakpoint[/\d+/.exec(lastMatchingMediaQuery)[0]] as BreakpointKey;
 };
 
 export const getCurrentMatchingBreakpointValue = <T>(data: BreakpointCustomizable<T>): T => {

@@ -26,7 +26,7 @@ export const getSplideBreakpoints = (perPage: Exclude<BreakpointCustomizable<num
     ? Object.entries(perPage).reduce(
         (result, [key, val]: [BreakpointKey, number]) => ({
           ...result,
-          [key === 'base' ? 0 : breakpoint[key]]: {
+          [breakpoint[key]]: {
             // round to sanitize floating numbers
             perPage: Math.round(val),
           },
