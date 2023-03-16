@@ -1,7 +1,7 @@
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../../styles';
-import { spacingFluidSmall } from '@porsche-design-system/utilities-v2';
-import { cssVariableTableBorderColor } from '../table/table-styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { borderRadiusSmall, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
+import { cssVariableTableRowBackgroundColor } from '../table-row/table-row-styles';
 
 export const getComponentCss = (multiline: boolean): string => {
   return getCss({
@@ -11,10 +11,17 @@ export const getComponentCss = (multiline: boolean): string => {
           display: 'table-cell',
           padding: spacingFluidSmall,
           margin: 0,
-          borderBottom: `1px solid var(${cssVariableTableBorderColor}, ${getThemedColors('light').contrastLowColor})`,
           whiteSpace: multiline ? 'normal' : 'nowrap',
+          background: `var(${cssVariableTableRowBackgroundColor}, transparent)`,
+          '&(:first-child)': {
+            borderTopLeftRadius: borderRadiusSmall,
+            borderBottomLeftRadius: borderRadiusSmall,
+          },
+          '&(:last-child)': {
+            borderTopRightRadius: borderRadiusSmall,
+            borderBottomRightRadius: borderRadiusSmall,
+          },
           ...hostHiddenStyles,
-          transform: 'translate3d(0,0,0)', // Change stacking context for hover state
         }),
         verticalAlign: 'middle',
       },

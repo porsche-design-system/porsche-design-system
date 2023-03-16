@@ -1,15 +1,9 @@
 import { getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  getInsetJssStyle,
-  getTransition,
-  getThemedColors,
-} from '../../../styles';
-import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
-import { cssVariableTableRowHoverColor } from '../table/table-styles';
+import { addImportantToEachRule, hostHiddenStyles, hoverMediaQuery } from '../../../styles';
+import { cssVariableTableBorderColor, cssVariableTableRowHoverColor } from '../table/table-styles';
 
+export const cssVariableTableRowBackgroundColor = '--p-internal-table-row-background-color';
+export const cssVariableTableRowBorderColor = '--p-internal-table-row-border-color';
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
@@ -17,18 +11,14 @@ export const getComponentCss = (): string => {
         position: 'relative',
         display: 'table-row',
         ...hostHiddenStyles,
-        '&::before': {
-          content: '""', // we need it also for ssr, because without it the table structure would be broken (since ::before affects table cells' amount)
-          ...hoverMediaQuery({
-            position: 'absolute',
-            ...getInsetJssStyle(-2),
-            borderRadius: borderRadiusSmall,
-            transition: getTransition('background-color'),
-          }),
-        },
+        borderTop: `1px solid var(${cssVariableTableBorderColor})`,
         ...hoverMediaQuery({
-          '&(:hover)::before': {
-            background: `var(${cssVariableTableRowHoverColor}, ${getThemedColors('light').backgroundSurfaceColor})`,
+          '&(:hover)': {
+            borderTopColor: 'transparent',
+            borderBottom: '1px solid transparent',
+          },
+          '&(:hover) ::slotted(*)': {
+            [cssVariableTableRowBackgroundColor]: `var(${cssVariableTableRowHoverColor})`, // hoverColor is the same for light and dark
           },
         }),
       }),

@@ -1,15 +1,8 @@
 import type { Direction } from '../table/table-utils';
 import { getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getTextHiddenJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-  hoverMediaQuery,
-} from '../../../styles';
+import { addImportantToEachRule, getTextHiddenJssStyle, hostHiddenStyles, hoverMediaQuery } from '../../../styles';
 import { fontWeight, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
-import { cssVariableTableBorderColor } from '../table/table-styles';
 
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
@@ -26,7 +19,6 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         display: 'table-cell',
         padding: `2px ${spacingFluidSmall} ${spacingFluidSmall} ${spacingFluidSmall}`,
-        borderBottom: `1px solid var(${cssVariableTableBorderColor}, ${getThemedColors('light').contrastLowColor})`,
         verticalAlign: 'bottom',
         fontWeight: fontWeightSemiBold,
         whiteSpace: multiline ? 'normal' : 'nowrap',
