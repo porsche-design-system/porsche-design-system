@@ -7,7 +7,7 @@ import { paramCase, pascalCase } from 'change-case';
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
-type FormComponentName = 'Checkbox' | 'Fieldset' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
+type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
 
 const addNestedIndentation = (x: string): string => `  ${x}`;
 
