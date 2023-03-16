@@ -41,6 +41,12 @@ const Heading = styled.h3({
   margin: 0,
 });
 
+const Paragraph = styled.p({
+  ...textSmallStyle,
+  margin: 0,
+  maxWidth: '15rem',
+});
+
 // Button
 const NativeButton = styled.button({
   ...textSmallStyle,
@@ -48,16 +54,10 @@ const NativeButton = styled.button({
 });
 
 // Anchor
-const NativeAnchorLight = styled.a({
+const NativeAnchor = styled.a({
   ...textSmallStyle,
   ...getFocusStyle(),
-  color: themeLightPrimary,
-});
-
-const NativeAnchorDark = styled.a({
-  ...textSmallStyle,
-  ...getFocusStyle(),
-  color: themeDarkPrimary,
+  color: 'inherit',
 });
 
 export const StylesFocusExample = (): JSX.Element => {
@@ -66,22 +66,20 @@ export const StylesFocusExample = (): JSX.Element => {
       <WrapperLight>
         <Heading>Focus Light (only visible by keyboard navigation)</Heading>
         <NativeButton>Some Button</NativeButton>
-        <NativeAnchorLight href="#">Some Anchor</NativeAnchorLight>
-        <p style={{ maxWidth: '15rem' }}>
-          Lorem Ipsum
-          <NativeAnchorLight href="#">is simply dummy text of the printing</NativeAnchorLight>
-          typesetting industry.
-        </p>
+        <NativeAnchor href="#">Some Anchor</NativeAnchor>
+        <Paragraph>
+          Lorem Ipsum <NativeAnchor href="#">is simply dummy text of the printing</NativeAnchor> and typesetting
+          industry.
+        </Paragraph>
       </WrapperLight>
       <WrapperDark>
         <Heading>Focus Dark (only visible by keyboard navigation)</Heading>
         <NativeButton>Some Button</NativeButton>
-        <NativeAnchorDark href="#">Some Anchor</NativeAnchorDark>
-        <p style={{ maxWidth: '15rem' }}>
-          Lorem Ipsum
-          <NativeAnchorDark href="#">is simply dummy text of the printing</NativeAnchorDark>
-          typesetting industry.
-        </p>
+        <NativeAnchor href="#">Some Anchor</NativeAnchor>
+        <Paragraph>
+          Lorem Ipsum <NativeAnchor href="#">is simply dummy text of the printing</NativeAnchor> and typesetting
+          industry.
+        </Paragraph>
       </WrapperDark>
     </>
   );
