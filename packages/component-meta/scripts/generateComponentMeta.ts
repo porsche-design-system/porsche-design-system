@@ -240,10 +240,11 @@ const generateComponentMeta = (): void => {
 
     // handle shared props
     let sourceWithSharedProps;
-    const [, sharedPropsName] = rawPropTypes?.match(/\n {2}\.{3}(([a-zA-Z]+))/) || [];
+    const sharedPropsRegex = /\n {2}\.{3}(([a-zA-Z]+))/;
+    const [, sharedPropsName] = rawPropTypes?.match(sharedPropsRegex) || [];
     if (sharedPropsName) {
       // TODO: currently the scenario for multiple shared props is not supported
-      if (rawPropTypes.match(/\n {2}\.{3}(([a-zA-Z]+))/g).length > 1) {
+      if (rawPropTypes.match(new RegExp(sharedPropsRegex, 'g')).length > 1) {
         // global flag allows iterative matches and returns array of all matches
         throw new Error('Currently the scenario for multiple shared props is not supported.');
       }
@@ -268,7 +269,8 @@ const generateComponentMeta = (): void => {
       }
 
       sharedProps = sharedProps.replace(/[{}]/g, ''); // remove curly brackets
-      rawPropTypes = rawPropTypes.replace(/\.{3}[a-zA-Z]+,/g, sharedProps);
+      rawPropTypes = rawPropTypes.replace(sharedPropsRegex, sharedProps);
+      rawPropTypes = rawPropTypes.replace(/\n,/, ''); // remove leftover comma
     }
 
     rawPropTypes = getEvaluablePropTypeString(rawPropTypes);
