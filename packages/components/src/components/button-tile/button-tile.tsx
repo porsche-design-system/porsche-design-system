@@ -22,7 +22,6 @@ import {
   TILE_WEIGHTS,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
-import { getButtonAriaAttributes } from '../button/button-utils';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
@@ -125,7 +124,7 @@ export class ButtonTile implements ITileProps {
       type: this.type,
       disabled: this.disabled,
       loading: this.loading,
-      ...getButtonAriaAttributes(this.disabled, this.loading, this.aria),
+      aria: this.aria,
     };
 
     const button: JSX.Element = (
