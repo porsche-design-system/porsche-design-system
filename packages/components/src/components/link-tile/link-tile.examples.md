@@ -134,7 +134,7 @@ export default class Code extends Vue {
   }
 
   weight = 'semi-bold';
-  weights = [...LINK_TILE_WEIGHTS.map(item => LINK_TILE_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'semi-bold', m: 'regular' }"];
+  weights = [...LINK_TILE_WEIGHTS.map(item => ['semibold'].includes(item) ? item + ' (deprecated)' : item), "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
