@@ -18,7 +18,7 @@ import {
   validateProps,
   throwIfAlignTopAndNotCompact,
   isDisabledOrLoading,
-  BUTTON_TILE_WEIGHTS,
+  TILE_WEIGHTS,
 } from '../../utils';
 import { getComponentCss } from './button-tile-styles';
 import { getButtonAriaAttributes } from '../button/button-utils';
@@ -26,7 +26,7 @@ import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   ...sharedTilePropTypes,
-  weight: AllowedTypes.breakpoint<ButtonTileWeight>(BUTTON_TILE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<ButtonTileWeight>(TILE_WEIGHTS),
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
