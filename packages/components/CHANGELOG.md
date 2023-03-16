@@ -242,7 +242,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### 🤡 Component deprecations 🤡
 
-##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404/files)
+##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
