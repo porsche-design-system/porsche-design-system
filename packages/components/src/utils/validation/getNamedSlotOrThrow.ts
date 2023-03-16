@@ -1,7 +1,7 @@
 import { getTagName } from '../tag-name';
 import { getNamedSlot } from '../getNamedSlot';
 
-export const getNamedSlotOrThrow = (el: HTMLElement, slotName: string): HTMLElement => {
+export const getNamedSlotOrThrow = (el: HTMLElement, slotName: string): HTMLSlotElement => {
   const slot = getNamedSlot(el, slotName);
 
   if (!slot) {
