@@ -126,6 +126,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should show text in different sizes">
+      <p-text [size]="'xx-small'">The quick brown fox jumps over the lazy dog</p-text>
       <p-text [size]="'x-small'">The quick brown fox jumps over the lazy dog</p-text>
       <p-text>The quick brown fox jumps over the lazy dog</p-text>
       <p-text [size]="'medium'">The quick brown fox jumps over the lazy dog</p-text>

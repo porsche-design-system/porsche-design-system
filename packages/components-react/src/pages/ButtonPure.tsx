@@ -122,6 +122,8 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button with different size">
+        <PButtonPure size="xx-small">Label size xx-small</PButtonPure>
+        <br />
         <PButtonPure size="x-small">Label size x-small</PButtonPure>
         <br />
         <PButtonPure size="small">Label size small</PButtonPure>

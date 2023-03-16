@@ -20,6 +20,7 @@ describe('getComponentCss()', () => {
     ['notification-error', 'small', 'dark'],
     ['notification-info', 'small', 'light'],
     ['notification-info', 'small', 'dark'],
+    ['primary', 'xx-small', 'light'],
     ['primary', 'x-small', 'light'],
     ['primary', 'medium', 'light'],
     ['primary', 'large', 'light'],
