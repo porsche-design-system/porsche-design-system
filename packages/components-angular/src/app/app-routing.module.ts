@@ -192,6 +192,11 @@ export const routes: ExtendedRoute[] = [
     component: fromStyles.StylesGridExampleComponent,
   },
   {
+    name: 'Styles Hover Example',
+    path: 'styles-hover',
+    component: fromStyles.StylesHoverExampleComponent,
+  },
+  {
     name: 'Styles Media Query Example',
     path: 'styles-media-query',
     component: fromStyles.StylesMediaQueryExampleComponent,
