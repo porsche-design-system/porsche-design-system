@@ -66,7 +66,6 @@ export const getBaseLinkButtonTileStyles = (opts: {
       })),
     },
     content: {
-      display: 'grid',
       position: 'absolute',
       left: 0,
       right: 0,

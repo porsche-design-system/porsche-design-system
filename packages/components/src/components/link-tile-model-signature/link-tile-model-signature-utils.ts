@@ -1,7 +1,7 @@
 import { getPrefixedTagNames, getTagName } from '../../utils';
 import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
-import type { LinkTileAspectRatio, LinkTileWeightWithoutDeprecated } from '../link-tile/link-tile-utils';
+import type { LinkTileAspectRatio, TileWeight } from '../link-tile/link-tile-utils';
 import type { LinkButtonGroupDirection } from '../../styles/link-button-group-direction-styles';
 import type { LinkVariant } from '../../types';
 
@@ -9,18 +9,18 @@ export type LinkTileModelSignatureModel = ModelSignatureModel;
 export const LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS = ['h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type LinkTileModelSignatureHeadingTag = (typeof LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS)[number];
 
-export type LinkTileModelSignatureWeight = LinkTileWeightWithoutDeprecated;
+export type LinkTileModelSignatureWeight = TileWeight;
 export type LinkTileModelSignatureAspectRatio = LinkTileAspectRatio;
 export type LinkTileModelSignatureLinkDirection = LinkButtonGroupDirection;
 
-export const setRequiredPropsOfSlottedLinks = (links: HTMLPLinkElement[]): void => {
-  links.forEach((link) => {
+export const setRequiredPropsOfSlottedLinks = (linkElements: [HTMLPLinkElement, HTMLPLinkElement]): void => {
+  linkElements.forEach((link) => {
     link.theme = 'dark';
     link.variant = link.slot as LinkVariant;
   });
 };
 
-export const throwIfSlotIsNotPLink = (host: HTMLElement, slot: HTMLElement, slotName: LinkVariant): void => {
+export const throwIfSlotIsNotPLink = (host: HTMLElement, slot: HTMLSlotElement, slotName: LinkVariant): void => {
   const { pLink } = getPrefixedTagNames(host);
   const slotTagName = getTagName(slot);
 
@@ -29,12 +29,12 @@ export const throwIfSlotIsNotPLink = (host: HTMLElement, slot: HTMLElement, slot
   }
 };
 
-export const getSlottedPLinksOrThrow = (host: HTMLElement): HTMLPLinkElement[] => {
-  const primaryLink = getNamedSlotOrThrow(host, 'primary') as HTMLPLinkElement;
-  const secondaryLink = getNamedSlotOrThrow(host, 'secondary') as HTMLPLinkElement;
+export const getSlottedPLinksOrThrow = (host: HTMLElement): [HTMLPLinkElement, HTMLPLinkElement] => {
+  const primaryLink = getNamedSlotOrThrow(host, 'primary');
+  const secondaryLink = getNamedSlotOrThrow(host, 'secondary');
 
   throwIfSlotIsNotPLink(host, primaryLink, 'primary');
   throwIfSlotIsNotPLink(host, secondaryLink, 'secondary');
 
-  return [primaryLink, secondaryLink];
+  return [primaryLink as unknown as HTMLPLinkElement, secondaryLink as unknown as HTMLPLinkElement];
 };

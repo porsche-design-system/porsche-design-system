@@ -4,12 +4,12 @@ import type { LinkTarget } from '../../utils/link-button/link-target';
 import type { LinkAriaAttribute } from '../link/link-utils';
 
 /** @deprecated */
-export const LINK_TILE_WEIGHTS_DEPRECATED = ['semibold'] as const;
-/** @deprecated */
-export type LinkTileWeightDeprecated = (typeof LINK_TILE_WEIGHTS_DEPRECATED)[number];
-export const LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED = ['regular', 'semi-bold'] as const;
-export type LinkTileWeightWithoutDeprecated = (typeof LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED)[number];
-export const LINK_TILE_WEIGHTS = [...LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED, ...LINK_TILE_WEIGHTS_DEPRECATED] as const;
+export type LinkTileWeightDeprecated = 'semibold';
+
+export const TILE_WEIGHTS = ['regular', 'semi-bold'] as const;
+export type TileWeight = (typeof TILE_WEIGHTS)[number];
+
+export const LINK_TILE_WEIGHTS = [...TILE_WEIGHTS, 'semibold'] as const;
 export type LinkTileWeight = (typeof LINK_TILE_WEIGHTS)[number];
 
 export const LINK_TILE_SIZES = ['default', 'inherit'] as const;
