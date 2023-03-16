@@ -280,7 +280,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Tabs Bar` and `Tabs` prop `weight` got value `semi-bold` and deprecated `semibold` value
   - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
     `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
-- Prop `hasScrollbar` for `Scroller`
+- Prop `scrollbar` for `Scroller`
 
 #### Changed
 
