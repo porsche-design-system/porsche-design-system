@@ -95,6 +95,13 @@ exports[`should have no basic DOM regression for p-display 1`] = `
 
 exports[`should have no basic DOM regression for p-divider 1`] = `"<hr>"`;
 
+exports[`should have no basic DOM regression for p-fieldset 1`] = `
+"<fieldset>
+  <slot>
+  </slot>
+</fieldset>"
+`;
+
 exports[`should have no basic DOM regression for p-fieldset-wrapper 1`] = `
 "<fieldset>
   <slot>
