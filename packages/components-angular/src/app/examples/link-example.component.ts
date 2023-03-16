@@ -28,7 +28,9 @@ import { LocationStrategy } from '@angular/common';
       >Link 3 routerLink with href and prevent</p-link
     >
     <p-link [routerLink]="'/'">Link 4 routerLink</p-link>
-    <my-prefix-p-link p-link [routerLink]="'/'">Link 4 routerLink prefixed</my-prefix-p-link>
+    <my-prefix-p-link p-link [routerLink]="'/link-example'">Link 4 routerLink prefixed</my-prefix-p-link>
+    <p-link-pure [routerLink]="'/'">Link 4 routerLink</p-link-pure>
+    <p-link-pure [routerLink]="'/link-example'">Link 4 routerLink</p-link-pure>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -42,7 +44,7 @@ export class LinkExampleComponent {
 }
 
 @Directive({
-  selector: 'p-link[routerLink],[p-link][routerLink]',
+  selector: 'p-link[routerLink],[p-link][routerLink],p-link-pure[routerLink],[p-link-pure][routerLink]',
 })
 export class RouterLinkDirectiveDelegate implements OnInit, OnChanges {
   constructor(
@@ -62,9 +64,14 @@ export class RouterLinkDirectiveDelegate implements OnInit, OnChanges {
 
   private updateHref() {
     if (this.routerLink?.urlTree) {
-      this.elementRef.nativeElement.href = this.locationStrategy.prepareExternalUrl(
-        this.router.serializeUrl(this.routerLink.urlTree)
-      );
+      const { nativeElement } = this.elementRef;
+      nativeElement.href = this.locationStrategy.prepareExternalUrl(this.router.serializeUrl(this.routerLink.urlTree));
+      nativeElement.active = this.router.isActive(nativeElement.href, {
+        paths: 'exact',
+        queryParams: 'exact',
+        fragment: 'ignored',
+        matrixParams: 'ignored',
+      });
     }
   }
 
