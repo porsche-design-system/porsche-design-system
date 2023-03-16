@@ -72,7 +72,7 @@ const slottedStyles: Styles = {
         textDecoration: 'underline',
         color: 'currentcolor',
         ...getHoverStyle(),
-        ...getFocusStyle(),
+        ...getFocusStyle({ offset: 'none' }),
       }),
     },
 
