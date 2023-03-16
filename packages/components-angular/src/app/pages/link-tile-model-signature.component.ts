@@ -333,6 +333,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="primary" [href]="'#'">Some label</p-link>
         <p-link slot="secondary" [href]="'#'">Some label</p-link>
       </p-link-tile-model-signature>
+
       <p-link-tile-model-signature
         [heading]="'Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles.'"
         [description]="'Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles.'"

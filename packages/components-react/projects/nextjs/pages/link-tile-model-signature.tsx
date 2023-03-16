@@ -336,6 +336,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
           <PLink slot="primary" href="#">Some label</PLink>
           <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
+
         <PLinkTileModelSignature
           heading="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
           description="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
