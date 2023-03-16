@@ -3,7 +3,7 @@ import type { MarqueAriaAttribute, MarqueTarget } from './marque-utils';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
-import { breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpointL } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
 import type { MarqueSize } from './marque-size';
 import { MARQUE_SIZES } from './marque-size';
@@ -43,7 +43,7 @@ export class Marque {
     attachComponentCss(this.host, getComponentCss, this.size);
 
     const innerManifest = getInnerManifest(this.trademark);
-    const mediumMedia = `(min-width: ${breakpoint.l})`;
+    const mediumMedia = `(min-width: ${breakpointL}px)`;
 
     const picture = (
       <picture>
