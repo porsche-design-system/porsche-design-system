@@ -96,7 +96,6 @@ h2,h3,h4,h5,h6 {
 }
 .description-group {
   color: #FBFCFF;
-  max-width: 34.375rem;
   gap: 4px;
 }
 .description {
@@ -375,7 +374,6 @@ h2,h3,h4,h5,h6 {
 }
 .description-group {
   color: #FBFCFF;
-  max-width: 34.375rem;
   gap: 4px;
 }
 .description {
@@ -487,7 +485,6 @@ h2,h3,h4,h5,h6 {
 }
 .description-group {
   color: #FBFCFF;
-  max-width: 34.375rem;
   gap: 4px;
 }
 .description {
@@ -701,7 +698,6 @@ h2,h3,h4,h5,h6 {
 }
 .description-group {
   color: #FBFCFF;
-  max-width: 34.375rem;
   gap: 4px;
 }
 .description {

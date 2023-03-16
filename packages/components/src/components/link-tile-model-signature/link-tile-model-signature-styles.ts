@@ -1,5 +1,5 @@
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToRule, pxToRemWithUnit } from '../../styles';
+import { addImportantToRule } from '../../styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
@@ -63,7 +63,6 @@ export const getComponentCss = (
     ...(hasDescription && {
       'description-group': {
         color: getThemedTypographyColor('dark', 'primary'),
-        maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
         gap: spacingStaticXSmall,
       },
       description: {
