@@ -41,7 +41,7 @@ const propTypes: PropTypes<typeof Scroller> = {
     ...SCROLL_INDICATOR_POSITIONS,
   ]),
   alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLL_INDICATOR_POSITIONS),
-  hasScrollbar: AllowedTypes.boolean,
+  scrollbar: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -75,7 +75,7 @@ export class Scroller {
   @Prop() public theme?: Theme = 'light';
 
   /** Specifies if scrollbar should be shown */
-  @Prop() public hasScrollbar?: boolean = false;
+  @Prop() public scrollbar?: boolean = false;
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
@@ -140,7 +140,7 @@ export class Scroller {
       this.isNextHidden,
       this.isPrevHidden,
       this.scrollIndicatorPosition || this.alignScrollIndicator,
-      this.hasScrollbar,
+      this.scrollbar,
       this.theme
     );
 

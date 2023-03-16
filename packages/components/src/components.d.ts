@@ -913,10 +913,6 @@ export namespace Components {
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
-          * Specifies if scrollbar should be shown
-         */
-        "hasScrollbar"?: boolean;
-        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
@@ -924,6 +920,10 @@ export namespace Components {
           * Scrolls the scroll area to the left either smooth or immediately
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
+        /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2728,10 +2728,6 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
-          * Specifies if scrollbar should be shown
-         */
-        "hasScrollbar"?: boolean;
-        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
@@ -2739,6 +2735,10 @@ declare namespace LocalJSX {
           * Scrolls the scroll area to the left either smooth or immediately
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
+        /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
