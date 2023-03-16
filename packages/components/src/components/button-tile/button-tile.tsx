@@ -116,7 +116,7 @@ export class ButtonTile implements ITileProps {
 
     const buttonProps: Pick<
       InstanceType<typeof Button>,
-      'theme' | 'variant' | 'icon' | 'iconSource' | 'type' | 'disabled' | 'loading'
+      'theme' | 'variant' | 'icon' | 'iconSource' | 'type' | 'disabled' | 'loading' | 'aria'
     > = {
       theme: 'dark',
       variant: 'secondary',
