@@ -29,6 +29,14 @@ JavaScript styles can be imported by
 - `breakpointL`
 - `breakpointXL`
 - `breakpointXXL`
+- `breakpointUnitless`
+- `breakpointUnitlessBase`
+- `breakpointUnitlessXS`
+- `breakpointUnitlessS`
+- `breakpointUnitlessM`
+- `breakpointUnitlessL`
+- `breakpointUnitlessXL`
+- `breakpointUnitlessXXL`
 - `getMediaQueryMin('base'|'xs'|'s'|'m' |'l'|'xl'|'xxl')`
 - `getMediaQueryMax('xs'|'s'|'m' |'l'|'xl'|'xxl')`
 - `getMediaQueryMinMax('base'|'xs'|'s'|'m' |'l'|'xl', 'xs'|'s'|'m' |'l'|'xl'|'xxl')`
@@ -50,6 +58,13 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 - `$pds-breakpoint-l`
 - `$pds-breakpoint-xl`
 - `$pds-breakpoint-xxl`
+- `$pds-breakpoint-unitless-base`
+- `$pds-breakpoint-unitless-xs`
+- `$pds-breakpoint-unitless-s`
+- `$pds-breakpoint-unitless-m`
+- `$pds-breakpoint-unitless-l`
+- `$pds-breakpoint-unitless-xl`
+- `$pds-breakpoint-unitless-xxl`
 - `@mixin pds-media-query-min('base'|'xs'|'s'|'m' |'l'|'xl'|'xxl')`
 - `@mixin pds-media-query-max('xs'|'s'|'m' |'l'|'xl'|'xxl')`
 - `@mixin pds-media-query-min-max('base'|'xs'|'s'|'m' |'l'|'xl', 'xs'|'s'|'m' |'l'|'xl'|'xxl')`
