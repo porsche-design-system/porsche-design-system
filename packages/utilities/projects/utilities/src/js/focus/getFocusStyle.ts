@@ -9,7 +9,7 @@ type Options = {
 };
 
 export const getFocusStyle = (opts?: Options) => {
-  const outlineOffset = opts?.offset === 'small' ? '2px' : opts?.offset === 'none' ? '0' : opts?.offset || '0';
+  const outlineOffset = opts?.offset === 'small' ? '2px' : opts?.offset === 'none' ? 0 : opts?.offset || '2px';
   const borderRadius =
     opts?.borderRadius === 'small'
       ? borderRadiusSmall
