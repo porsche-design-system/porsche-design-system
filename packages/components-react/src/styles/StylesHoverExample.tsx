@@ -60,7 +60,7 @@ export const StylesHoverExample = (): JSX.Element => {
   return (
     <>
       <WrapperLight>
-        <Heading>Focus Light (only visible by keyboard navigation)</Heading>
+        <Heading>Hover Light</Heading>
         <NativeAnchor href="#">Some Anchor</NativeAnchor>
         <Paragraph>
           Lorem Ipsum <NativeAnchor href="#">is simply dummy text of the printing</NativeAnchor> and typesetting
@@ -68,7 +68,7 @@ export const StylesHoverExample = (): JSX.Element => {
         </Paragraph>
       </WrapperLight>
       <WrapperDark>
-        <Heading>Focus Dark (only visible by keyboard navigation)</Heading>
+        <Heading>Hover Dark</Heading>
         <NativeAnchor href="#">Some Anchor</NativeAnchor>
         <Paragraph>
           Lorem Ipsum <NativeAnchor href="#">is simply dummy text of the printing</NativeAnchor> and typesetting
