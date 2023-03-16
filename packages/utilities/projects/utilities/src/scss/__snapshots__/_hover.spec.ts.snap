@@ -1,81 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pds-hover() should return correct css for opts: { inset: '-4px -2px', borderRadius: '6px' } 1`] = `
+exports[`pds-hover() should return correct css for opts: { borderRadius: '6px' } 1`] = `
 "div {
-  position: relative;
-  z-index: 0;
+  border-radius: 6px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 @media (hover: hover) {
-  div:hover::before {
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
-    content: "";
-    position: absolute;
-    inset: -4px -2px;
-    pointer-events: none;
-    z-index: -1;
+  div {
+    transition: background var(--p-transition-duration, 0.24s) ease;
+  }
+  div:hover {
     background: rgba(148, 149, 152, 0.18);
-    border-radius: 6px;
   }
 }"
 `;
 
-exports[`pds-hover() should return correct css for opts: { offset: 'medium', borderRadius: 'medium' } 1`] = `
+exports[`pds-hover() should return correct css for opts: { borderRadius: 'medium' } 1`] = `
 "div {
-  position: relative;
-  z-index: 0;
+  border-radius: 8px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 @media (hover: hover) {
-  div:hover::before {
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
-    content: "";
-    position: absolute;
-    inset: -6px;
-    pointer-events: none;
-    z-index: -1;
+  div {
+    transition: background var(--p-transition-duration, 0.24s) ease;
+  }
+  div:hover {
     background: rgba(148, 149, 152, 0.18);
-    border-radius: 8px;
   }
 }"
 `;
 
-exports[`pds-hover() should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
+exports[`pds-hover() should return correct css for opts: { borderRadius: 'small' } 1`] = `
 "div {
-  position: relative;
-  z-index: 0;
+  border-radius: 4px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 @media (hover: hover) {
-  div:hover::before {
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
-    content: "";
-    position: absolute;
-    inset: -4px;
-    pointer-events: none;
-    z-index: -1;
+  div {
+    transition: background var(--p-transition-duration, 0.24s) ease;
+  }
+  div:hover {
     background: rgba(148, 149, 152, 0.18);
-    border-radius: 4px;
   }
 }"
 `;
 
 exports[`pds-hover() should return correct css for opts: {} 1`] = `
 "div {
-  position: relative;
-  z-index: 0;
+  border-radius: 4px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 @media (hover: hover) {
-  div:hover::before {
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
-    content: "";
-    position: absolute;
-    inset: -4px;
-    pointer-events: none;
-    z-index: -1;
+  div {
+    transition: background var(--p-transition-duration, 0.24s) ease;
+  }
+  div:hover {
     background: rgba(148, 149, 152, 0.18);
-    border-radius: 4px;
   }
 }"
 `;

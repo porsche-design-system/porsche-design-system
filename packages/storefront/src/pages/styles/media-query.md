@@ -29,9 +29,11 @@ JavaScript styles can be imported by
 - `breakpointL`
 - `breakpointXL`
 - `breakpointXXL`
-- `getMediaQueryMin(…)`
-- `getMediaQueryMax(…)`
-- `getMediaQueryMinMax(…)`
+- `getMediaQueryMin('base'|'xs'|'s'|'m' |'l'|'xl'|'xxl')`
+- `getMediaQueryMax('xs'|'s'|'m' |'l'|'xl'|'xxl')`
+- `getMediaQueryMinMax('base'|'xs'|'s'|'m' |'l'|'xl', 'xs'|'s'|'m' |'l'|'xl'|'xxl')`
+
+---
 
 #### SCSS
 
@@ -48,9 +50,9 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 - `$pds-breakpoint-l`
 - `$pds-breakpoint-xl`
 - `$pds-breakpoint-xxl`
-- `@mixin pds-media-query-min(…)`
-- `@mixin pds-media-query-max(…)`
-- `@mixin pds-media-query-min-max(…)`
+- `@mixin pds-media-query-min('base'|'xs'|'s'|'m' |'l'|'xl'|'xxl')`
+- `@mixin pds-media-query-max('xs'|'s'|'m' |'l'|'xl'|'xxl')`
+- `@mixin pds-media-query-min-max('base'|'xs'|'s'|'m' |'l'|'xl', 'xs'|'s'|'m' |'l'|'xl'|'xxl')`
 
 <script lang="ts">
 import Vue from 'vue';

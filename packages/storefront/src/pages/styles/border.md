@@ -30,6 +30,8 @@ JavaScript styles can be imported by
 - `borderWidthBase`
 - `borderWidthThin`
 
+---
+
 #### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`

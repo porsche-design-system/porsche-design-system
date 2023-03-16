@@ -36,6 +36,8 @@ JavaScript styles can be imported by
 - `textXSmallStyle`
 - `textXXSmallStyle`
 
+---
+
 #### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`
