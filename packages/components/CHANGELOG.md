@@ -288,6 +288,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Partials: `getInitialStyles` matches new design language
 - Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
 - Styles: `getFocusStyle` and `pds-focus` doesn't need `theme` parameter anymore
+- Styles: `breakpoint{Base|XS|S|M|L|XL|XXL}` and `$pds-breakpoint-{base|xs|s|m|l|xl|xxl}` are provided as number without
+  unit (px)
 - `Link Tile` matches new design language
 - Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
   `LinkPureIcon`

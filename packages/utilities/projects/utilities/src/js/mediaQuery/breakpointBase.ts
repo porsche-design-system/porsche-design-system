@@ -1,1 +1,1 @@
-export const breakpointBase = '0px';
+export const breakpointBase = 0;
