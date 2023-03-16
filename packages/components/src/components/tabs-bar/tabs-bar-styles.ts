@@ -3,6 +3,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
+  getResetInitialStylesForSlottedAnchor,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -44,6 +45,7 @@ export const getComponentCss = (
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser
         [transformSelector('::slotted([role])')]: {
+          ...getResetInitialStylesForSlottedAnchor,
           display: 'inline-block',
           position: 'relative',
           margin: '0 0 4px 0',
