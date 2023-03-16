@@ -1,8 +1,8 @@
 # Link Tile Model Signature
 
 The `p-link-tile-model-signature` is a navigational component that displays a provided image to tease content and
-provides two `links` to navigate to further information within one container. In addition to the `p-link-tile` it shows
-one of the `model signatures` at the top.
+provides two `p-links` to navigate to further information within one container. In addition to the `p-link-tile` it
+shows one of the model signatures at the top.
 
 **Note:** The component does not take care of processing and aligning the image.
 
@@ -13,7 +13,7 @@ one of the `model signatures` at the top.
 An `img` or `picture` tag has to be provided in the slot of the `p-link-tile-model-signature` component.
 
 To work properly the `p-link-tile-model-signature` component needs two `p-link` components as named slots,
-'slot="primary"' and 'slot="secondary"', which are mandatory. Also the `heading` property is required. It is used as a
+`slot="primary"` and `slot="secondary"` which are mandatory. Also the `heading` property is required. It is used as a
 teaser with a more detailed description of where the link leads to.
 
 <Playground :markup="basic" :config="config"></Playground>
@@ -81,21 +81,21 @@ can change the height by using different aspect ratios.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import {LINK_TILE_ASPECT_RATIOS, LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED} from '../link-tile/link-tile-utils'; 
+import { LINK_TILE_ASPECT_RATIOS, TILE_WEIGHTS} from '../link-tile/link-tile-utils'; 
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils'; 
-import {LINK_BUTTON_GROUP_DIRECTIONS} from "../../styles/link-button-group-direction-styles"; 
+import { LINK_BUTTON_GROUP_DIRECTIONS } from '../../styles/link-button-group-direction-styles'; 
 
 @Component
 export default class Code extends Vue {
   config = { spacing: 'block' };
-  imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
+  img =  `<img src="${require('@/assets/image-grid.png')}" width="3000" height="2000" alt="Some alt text" />`;
   primaryLink = '<p-link slot="primary" href="https://www.porsche.com">Primary label</p-link>';
   secondaryLink = '<p-link slot="secondary" href="https://www.porsche.com">Secondary label</p-link>';
 
   basic = `<p-link-tile-model-signature
   heading="Some heading"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile-model-signature>
@@ -111,13 +111,13 @@ export default class Code extends Vue {
 </p-link-tile-model-signature>`;
 
   weight = 'semi-bold';
-  weights = [...LINK_TILE_WEIGHTS_WITHOUT_DEPRECATED, "{ base: 'semi-bold', m: 'regular' }"];
+  weights = [...TILE_WEIGHTS, "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-link-tile-model-signature
   heading="Some heading"
   weight="${this.weight}"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile-model-signature>
@@ -126,7 +126,7 @@ export default class Code extends Vue {
   weight="${this.weight}"
   description="Some description"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile-model-signature>`
@@ -136,7 +136,7 @@ export default class Code extends Vue {
   heading="Some heading"
   description="Some description"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile-model-signature>`;
@@ -149,7 +149,7 @@ export default class Code extends Vue {
   heading="Some heading"
   link-direction="${this.linkDirection}"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile-model-signature>`
@@ -161,19 +161,19 @@ export default class Code extends Vue {
     return`<p-link-tile-model-signature 
 heading="Some Heading"
 aspect-ratio="${this.aspectRatio}">
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile>`
   };
 
   model = '911';
-  models = [...MODEL_SIGNATURE_MODELS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  models = MODEL_SIGNATURE_MODELS;
   get modelMarkup() {
     return`<p-link-tile-model-signature 
 heading="Some Heading"
 model="${this.model}">
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile>`
