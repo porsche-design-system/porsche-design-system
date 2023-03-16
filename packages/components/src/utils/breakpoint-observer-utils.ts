@@ -16,6 +16,8 @@ export const getCurrentBreakpointKey = (): BreakpointKey => {
     .pop();
 
   const matchingBreakpoint = flippedBreakpoint[/\d+px/.exec(lastMatchingMediaQuery)[0]];
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return matchingBreakpoint === 'xxs' ? 'base' : (matchingBreakpoint as BreakpointKey);
 };
 
