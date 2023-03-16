@@ -37,7 +37,7 @@ const initScroller = (opts?: InitOptions) => {
 
   const attrs = [
     scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
-    hasScrollbar ? `hasScrollbar="${hasScrollbar}"` : '',
+    hasScrollbar ? `scrollbar="${hasScrollbar}"` : '',
   ].join(' ');
 
   const content = `<p-scroller ${attrs}>
@@ -90,8 +90,8 @@ describe('scrolling', () => {
   });
 });
 
-describe('scroller with hasScrollbar', () => {
-  it('should have overflow: "auto hidden" for scroll area when hasScrollbar is set to true', async () => {
+describe('scroller with scrollbar', () => {
+  it('should have overflow: "auto hidden" for scroll area when scrollbar is set to true', async () => {
     await initScroller({ hasScrollbar: true });
 
     expect(await getScrollAreaOverflow()).toBe('auto hidden');
