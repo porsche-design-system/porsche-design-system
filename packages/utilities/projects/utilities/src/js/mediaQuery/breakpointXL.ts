@@ -1,1 +1,3 @@
-export const breakpointXL = '1760px';
+import { breakpointUnitlessXL } from './breakpointUnitlessXL';
+
+export const breakpointXL = breakpointUnitlessXL + 'px';

@@ -20,6 +20,7 @@ import * as heading from '../src/js/typography/heading';
 import * as text from '../src/js/typography/text';
 import * as display from '../src/js/typography/display';
 import * as breakpoint from '../src/js/mediaQuery/breakpoint';
+import * as breakpointUnitless from '../src/js/mediaQuery/breakpointUnitless';
 import { paramCase, camelCase } from 'change-case';
 import { getCss } from '@porsche-design-system/shared';
 
@@ -96,6 +97,7 @@ generateVariables({
   theme,
   spacing,
   breakpoint,
+  breakpointUnitless,
   gridGap,
   gridWidth,
   gridSafeZone,

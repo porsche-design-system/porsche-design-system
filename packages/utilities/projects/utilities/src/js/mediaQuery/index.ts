@@ -1,4 +1,12 @@
-export type { Breakpoint } from './breakpoint';
+export type { Breakpoint } from './mediaQueryShared';
+export { breakpointUnitless } from './breakpointUnitless';
+export { breakpointUnitlessBase } from './breakpointUnitlessBase';
+export { breakpointUnitlessXS } from './breakpointUnitlessXS';
+export { breakpointUnitlessS } from './breakpointUnitlessS';
+export { breakpointUnitlessM } from './breakpointUnitlessM';
+export { breakpointUnitlessL } from './breakpointUnitlessL';
+export { breakpointUnitlessXL } from './breakpointUnitlessXL';
+export { breakpointUnitlessXXL } from './breakpointUnitlessXXL';
 export { breakpoint } from './breakpoint';
 export { breakpointBase } from './breakpointBase';
 export { breakpointXS } from './breakpointXS';

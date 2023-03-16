@@ -1,1 +1,3 @@
-export const breakpointBase = '0px';
+import { breakpointUnitlessBase } from './breakpointUnitlessBase';
+
+export const breakpointBase = breakpointUnitlessBase + 'px';

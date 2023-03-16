@@ -20,6 +20,17 @@ $pds-breakpoint-xxl: 1920px;
 "
 `;
 
+exports[`should contain correct content for auto generated file ./src/scss/lib/_breakpoint-unitless.scss 1`] = `
+"$pds-breakpoint-unitless-base: 0;
+$pds-breakpoint-unitless-xs: 480;
+$pds-breakpoint-unitless-s: 760;
+$pds-breakpoint-unitless-m: 1000;
+$pds-breakpoint-unitless-l: 1300;
+$pds-breakpoint-unitless-xl: 1760;
+$pds-breakpoint-unitless-xxl: 1920;
+"
+`;
+
 exports[`should contain correct content for auto generated file ./src/scss/lib/_display.scss 1`] = `
 "@mixin pds-display-small {
   font: normal normal 400 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)/calc(6px + 2.125ex) "Porsche Next", "Arial Narrow",
