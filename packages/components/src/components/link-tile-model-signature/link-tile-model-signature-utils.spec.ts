@@ -49,7 +49,7 @@ describe('throwIfSlotIsNotPLink()', () => {
     expect(() => throwIfSlotIsNotPLink(host, slot, 'primary')).toThrow();
   });
 
-  it('should not throw error if return value of getTagName === getPrefixedTagNames().pLink', () => {
+  it('should not throw error if slot is "p-link"', () => {
     expect(() => throwIfSlotIsNotPLink(host, link, 'primary')).not.toThrow();
   });
 });

@@ -762,7 +762,7 @@ export namespace Components {
          */
         "heading": string;
         /**
-          * Sets a custom HTML tag depending on the usage of the link tile model signature component.
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**
@@ -770,11 +770,11 @@ export namespace Components {
          */
         "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
         /**
-          * Adapts the displayed model-signature of the component.
+          * Adapts the model of the component.
          */
         "model"?: LinkTileModelSignatureModel;
         /**
-          * Font weight of the description.
+          * Adapts the font weight of the heading.
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
@@ -2590,7 +2590,7 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Sets a custom HTML tag depending on the usage of the link tile model signature component.
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**
@@ -2598,11 +2598,11 @@ declare namespace LocalJSX {
          */
         "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
         /**
-          * Adapts the displayed model-signature of the component.
+          * Adapts the model of the component.
          */
         "model"?: LinkTileModelSignatureModel;
         /**
-          * Font weight of the description.
+          * Adapts the font weight of the heading.
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }

@@ -35,10 +35,10 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
 export class LinkTileModelSignature {
   @Element() public host!: HTMLElement;
 
-  /** Adapts the displayed model-signature of the component. */
+  /** Adapts the model of the component. */
   @Prop() public model?: LinkTileModelSignatureModel = '911';
 
-  /** Font weight of the description. */
+  /** Adapts the font weight of the heading. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileModelSignatureWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile-model-signature. */
@@ -54,7 +54,7 @@ export class LinkTileModelSignature {
   // prettier-ignore
   @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = { base: 'column', xs: 'row' };
 
-  /** Sets a custom HTML tag depending on the usage of the link tile model signature component. */
+  /** Sets a custom headline tag which wraps the heading to enhance semantics. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
 
   private primaryLink: HTMLPLinkElement;
