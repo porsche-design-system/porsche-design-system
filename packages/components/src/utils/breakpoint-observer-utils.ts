@@ -5,7 +5,7 @@ import type { BreakpointCustomizable, BreakpointKey } from './breakpoint-customi
 import { BREAKPOINTS } from './breakpoint-customizable';
 
 export const flippedBreakpoint = Object.entries(breakpoint).reduce(
-  (result, [key, val]) => ({ ...result, [val + 'px']: key }),
+  (result, [key, val]) => ({ ...result, [`${val}px`]: key }),
   {} as Record<string, Breakpoint>
 );
 
