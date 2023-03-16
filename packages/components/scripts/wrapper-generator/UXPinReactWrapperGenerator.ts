@@ -300,10 +300,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-fieldset': {
         props: { label: 'Fieldset' },
         children: '<DummyFieldset uxpId="dummy-fieldset" />',
-        formComponent: {
-          name: 'Fieldset',
-          extraProps: { label: 'My Fieldset', checked: true },
-        },
       },
       'p-link-tile': {
         props: { label: 'Some label', description: 'Some description' },
