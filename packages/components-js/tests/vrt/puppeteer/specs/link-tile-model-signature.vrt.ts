@@ -57,12 +57,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoverState(page, '.hover p-link-tile-model-signature >>> .root');
       await forceHoverState(page, '.hover p-link-tile-model-signature p-link >>> .root');
-      await forceHoverState(page, '.hover p-link-tile-model-signature >>> a');
       await forceHoverState(page, '.focus p-link-tile-model-signature >>> .root');
       await forceFocusState(page, '.focus p-link-tile-model-signature p-link >>> .root');
-      await forceFocusState(page, '.focus p-link-tile-model-signature >>> a');
       await forceHoverState(page, '.focus-hover p-link-tile-model-signature >>> .root');
-      await forceHoverState(page, '.focus-hover p-link-tile-model-signature >>> a');
       await forceFocusHoverState(page, '.focus-hover p-link-tile-model-signature p-link >>> .root');
     })
   ).toBeFalsy();

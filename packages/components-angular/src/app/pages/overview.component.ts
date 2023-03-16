@@ -33,10 +33,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       p-link-tile,
-      my-prefix-p-link-tile {
-        max-width: 400px;
-      }
-    
+      my-prefix-p-link-tile,
       p-link-tile-model-signature,
       my-prefix-p-link-tile-model-signature {
         max-width: 400px;

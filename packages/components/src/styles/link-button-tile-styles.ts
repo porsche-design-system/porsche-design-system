@@ -1,4 +1,3 @@
-// TODO: unit test this
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
 import {
