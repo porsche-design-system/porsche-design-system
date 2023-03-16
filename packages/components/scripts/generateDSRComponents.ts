@@ -357,8 +357,7 @@ $&`
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/const \[primaryLink, secondaryLink] = getSlottedPLinksOrThrow\(.*\);/g, '')
-          .replace(/this\.props.primaryLink = primaryLink;/, '')
-          .replace(/: this\.props.primaryLink\.\w+/g, '')
+          .replace(/: primaryLink\.\w+/g, '')
           .replace(
             /setRequiredPropsOfSlottedLinks\(\[primaryLink, secondaryLink]\);/,
             `const { href, target, download, rel } = namedSlotChildren[0].props;
