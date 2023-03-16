@@ -2,6 +2,7 @@ import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
+  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -100,9 +101,17 @@ describe('accessibility', () => {
 
     await setProperty(host, 'aria', {
       'aria-label': 'Some more detailed label',
+      'aria-expanded': true,
+      'aria-haspopup': true,
+    });
+
+    await waitForStencilLifecycle(page);
+    await expectA11yToMatchSnapshot(page, button, { message: 'initial aria attributes' });
+
+    await setProperty(host, 'aria', {
+      'aria-pressed': true,
     });
     await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, button);
+    await expectA11yToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
   });
 });
