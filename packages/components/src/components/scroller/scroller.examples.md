@@ -73,7 +73,7 @@ If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 
 ## Scrollbar
 
-The `p-scroller` component may have scrollbar by setting `hasScrollbar` property to `true`.
+The `p-scroller` component may have scrollbar by setting `scrollbar` property to `true`.
 
 <Playground :markup="scrollbar" :config="config"></Playground>
 
@@ -182,7 +182,7 @@ export default class Code extends Vue {
 </div>`;
   }
   scrollbar = `<div style="max-width: 600px">
-  <p-scroller hasScrollbar="true">
+  <p-scroller scrollbar="true">
     <p-text-list>
       <p-text-list-item>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
