@@ -10,7 +10,7 @@ const glue = '\n\n';
 const sourceDirectory = path.resolve('../components/src/components');
 const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-const getExportFilePath = (source: string, constName: string | string[], tagName: TagName): string => {
+const getExportFilePath = (source: string, constName: string, tagName: TagName): string => {
   const [, importPath] = source.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
 
   const componentFilePath = componentFiles.find((file) =>
@@ -123,7 +123,7 @@ const generateComponentMeta = (): void => {
   }, {} as Record<TagName, string>);
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
-    let source = componentSourceCode[tagName];
+    const source = componentSourceCode[tagName];
 
     const [deprecated, rawDeprecationMessage] = /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(source) || [];
     const isDeprecated = !!deprecated;
@@ -239,14 +239,15 @@ const generateComponentMeta = (): void => {
     let [, rawPropTypes] = /const [a-z][a-zA-Z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
 
     // handle shared props
-    const sharedPropsName = rawPropTypes?.match(/(?<=\.{3})(([a-zA-Z]+)(?=,))/g);
+    let sourceWithSharedProps;
+    const [, sharedPropsName] = rawPropTypes?.match(/\n {2}\.{3}(([a-zA-Z]+))/) || [];
     if (sharedPropsName) {
       // TODO: currently the scenario for multiple shared props is not supported
-      if (sharedPropsName.length > 1) {
+      if (rawPropTypes.match(/\n {2}\.{3}(([a-zA-Z]+))/g).length > 1) {
+        // global flag allows iterative matches and returns array of all matches
         throw new Error('Currently the scenario for multiple shared props is not supported.');
       }
-      const sharedPropsConstName = sharedPropsName[0];
-      const sharedPropsExportFilePath = getExportFilePath(source, sharedPropsConstName, tagName);
+      const sharedPropsExportFilePath = getExportFilePath(source, sharedPropsName, tagName);
 
       const sharedPropsExportFile = fs.readFileSync(`${sharedPropsExportFilePath}.ts`, 'utf8');
       let [, sharedProps] = /const [a-z][a-zA-Z]+: .+? = ({[\s\S]+?});/.exec(sharedPropsExportFile) || [];
@@ -255,19 +256,18 @@ const generateComponentMeta = (): void => {
       // TODO: currently the scenario for multiple shared props is not supported
       // TODO: currently no other imports than from packages/components/src/utils/index.ts are supported
       const allSharedConstants = sharedPropsExportFile.match(/([A-Z]{2,}(_[A-Z]+)*)/g).join(', ');
-      source = `import { ${allSharedConstants} } from '../../utils';\n${source}`;
+      sourceWithSharedProps = `import { ${allSharedConstants} } from '../../utils';\n${source}`;
 
       // since it is more verbose to address shared proptypes using require(),
       // the next steps are to ensure the extracted object matches the required type
       const evaluableSharedProps = getEvaluablePropTypeString(sharedProps);
-      const requiredKeys = Object.keys(require(sharedPropsExportFilePath)[sharedPropsConstName]).sort();
-      const readFileKeys = Object.keys(eval(`(${evaluableSharedProps})`) as Record<string, string>).sort();
-      // TODO: currently the scenario for shared props imported from multiple files is not supported
-      if (JSON.stringify(requiredKeys) !== JSON.stringify(readFileKeys)) {
+      const requiredKeys = Object.keys(require(sharedPropsExportFilePath)[sharedPropsName]);
+      const readFileKeys = Object.keys(eval(`(${evaluableSharedProps})`) as Record<string, string>);
+      if (requiredKeys.length !== readFileKeys.length || !requiredKeys.every((key) => readFileKeys.includes(key))) {
         throw new Error('Currently the scenario for shared props imported from multiple files is not supported.');
       }
 
-      sharedProps = sharedProps.replace(/([{}])/g, '');
+      sharedProps = sharedProps.replace(/[{}]/g, ''); // remove curly brackets
       rawPropTypes = rawPropTypes.replace(/\.{3}[a-zA-Z]+,/g, sharedProps);
     }
 
@@ -298,7 +298,11 @@ const generateComponentMeta = (): void => {
 
                 let [, variable] = (values.match(/([A-Z_]{5,})/) || []) as [string, string | string[]];
                 if (variable) {
-                  const variableExportFilePath = getExportFilePath(source, variable, tagName);
+                  const variableExportFilePath = getExportFilePath(
+                    source.includes(variable as string) ? source : sourceWithSharedProps,
+                    variable as string,
+                    tagName
+                  );
 
                   variable = require(variableExportFilePath)[variable as string];
 
