@@ -5,7 +5,7 @@
 Although the Porsche Design System does not rely on browser cookies, a blocking overlay is shown asking the user to
 activate browser cookies in case those are disabled completely.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected before the closing `</body>` of your `index.html`.
 
 <p-button v-on:click="showFallback">Force display of cookies fallback</p-button>
