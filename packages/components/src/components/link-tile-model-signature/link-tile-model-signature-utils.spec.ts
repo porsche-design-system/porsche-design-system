@@ -25,7 +25,7 @@ describe('setRequiredPropsOfSlottedLinks()', () => {
 
 describe('throwIfSlotIsNotPLink()', () => {
   const host = document.createElement('div');
-  const link = document.createElement('p-link');
+  const link = document.createElement('p-link') as unknown as HTMLSlotElement;
 
   it('should call getPrefixedTagNames() with correct parameters', () => {
     const spy = jest.spyOn(getPrefixedTagNamesUtils, 'getPrefixedTagNames');
@@ -44,7 +44,7 @@ describe('throwIfSlotIsNotPLink()', () => {
   });
 
   it('should throw error if slot is not "p-link"', () => {
-    const slot = document.createElement('a');
+    const slot = document.createElement('a') as unknown as HTMLSlotElement;
 
     expect(() => throwIfSlotIsNotPLink(host, slot, 'primary')).toThrow();
   });
@@ -68,7 +68,7 @@ describe('getSlottedPLinksOrThrow()', () => {
   });
 
   it('should call throwIfSlotIsNotPLink() with correct parameters', () => {
-    const namedSlotMock = document.createElement('div');
+    const namedSlotMock = document.createElement('div') as unknown as HTMLSlotElement;
     jest.spyOn(getNamedSlotOrThrowUtils, 'getNamedSlotOrThrow').mockReturnValue(namedSlotMock);
 
     const spy = jest.spyOn(linkTileModelSignatureUtils, 'throwIfSlotIsNotPLink').mockImplementation(jest.fn());

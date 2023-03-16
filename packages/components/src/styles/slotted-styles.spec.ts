@@ -14,7 +14,7 @@ const tagNamesWithSlot: [TagName, string][] = TAG_NAMES.filter((tagName) => {
 })
   // add additional entry for links with slotted anchor tag
   .map<[TagName, string][]>((tagName) =>
-    tagName === 'p-link' || tagName === 'p-link-pure'
+    tagName.includes('link')
       ? [
           [tagName, ''],
           [tagName, '<a href="#">Some link</a>'],
@@ -40,7 +40,9 @@ it.each<[TagName, string]>(tagNamesWithSlot)(
       if (childrenMarkup.match(/^<a/)) {
         (component as any).href = undefined;
       }
-      component.host.innerHTML = childrenMarkup;
+      if (tagName !== 'p-link-tile-model-signature') {
+        component.host.innerHTML = childrenMarkup;
+      }
     }
 
     component.render();
