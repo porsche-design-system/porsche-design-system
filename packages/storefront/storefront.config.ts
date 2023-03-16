@@ -98,6 +98,8 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Grid: [() => import('@/pages/styles/grid.md')],
     // @ts-ignore
+    Hover: [() => import('@/pages/styles/hover.md')],
+    // @ts-ignore
     'Media Query': [() => import('@/pages/styles/media-query.md')],
     // @ts-ignore
     Spacing: [() => import('@/pages/styles/spacing.md')],

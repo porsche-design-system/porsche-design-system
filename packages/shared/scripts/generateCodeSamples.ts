@@ -13,6 +13,7 @@ type CodeSample = {
     | 'styles-frosted-glass'
     | 'styles-gradient'
     | 'styles-grid'
+    | 'styles-hover'
     | 'styles-media-query'
     | 'styles-spacing'
     | 'styles-theme'
@@ -234,6 +235,15 @@ const generateCodeSamples = (): void => {
         [
           componentsAngularPath + '/../styles/styles-grid-example.component.ts',
           componentsReactPath + '/../styles/StylesGridExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-hover',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-hover-example.component.ts',
+          componentsReactPath + '/../styles/StylesHoverExample.tsx',
         ],
       ],
     },

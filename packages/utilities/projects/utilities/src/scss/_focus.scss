@@ -1,9 +1,9 @@
 @import 'lib/border';
 @import 'lib/theme';
 
-$pds-focus-inset-map: (
-  'small': -4px,
-  'medium': -6px,
+$pds-focus-offset-map: (
+  'small': 2px,
+  'none': 0,
 );
 
 $pds-focus-border-radius-map: (
@@ -11,37 +11,31 @@ $pds-focus-border-radius-map: (
   'medium': $pds-border-radius-medium,
 );
 
-@mixin pds-focus($inset: 'small', $border-radius: 'small') {
-  position: relative;
-  // we can't use outline, since border-radius has no effect on outline style in Safari
-  outline: 0;
-  &:focus::after {
-    content: '';
-    position: absolute;
-    // we can use inset as soon as browser support is sufficient
-    @if map-has-key($pds-focus-inset-map, $inset) {
-      inset: map-get($pds-focus-inset-map, $inset);
+@mixin pds-focus($offset: 'small', $border-radius: 'small') {
+  // it can easily be overwritten on purpose (when placed here) and visually reflected
+  @if map-has-key($pds-focus-border-radius-map, $border-radius) {
+    border-radius: map-get($pds-focus-border-radius-map, $border-radius);
+  } @else {
+    @if ($border-radius) {
+      border-radius: $border-radius;
     } @else {
-      @if ($inset) {
-        inset: $inset;
-      } @else {
-        inset: map-get($pds-focus-inset-map, 'small');
-      }
+      border-radius: map-get($pds-focus-border-radius-map, 'none');
     }
-    pointer-events: none; // necessary to be able to select elements behind ::before pseudo-element
-    border: $pds-border-width-base solid $pds-theme-light-state-focus;
-    @if map-has-key($pds-focus-border-radius-map, $border-radius) {
-      border-radius: map-get($pds-focus-border-radius-map, $border-radius);
+  }
+  &:focus {
+    outline: $pds-border-width-base solid $pds-theme-light-state-focus;
+    @if map-has-key($pds-focus-offset-map, $offset) {
+      outline-offset: map-get($pds-focus-offset-map, $offset);
     } @else {
-      @if ($border-radius) {
-        border-radius: $border-radius;
+      @if ($offset) {
+        outline-offset: $offset;
       } @else {
-        border-radius: map-get($pds-focus-border-radius-map, 'small');
+        outline-offset: map-get($pds-focus-offset-map, 'small');
       }
     }
   }
   // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
-  &:focus:not(:focus-visible)::before {
-    border-color: transparent;
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
   }
 }

@@ -251,6 +251,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Styles: `textXXSmallStyle` and `pds-text-xx-small`
 - Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
 - Styles: `fontSizeTextXXSmall` and `$pds-font-size-text-xx-small`
+- Styles: `getHoverStyle` and `pds-hover`
 - `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
 - Custom events have consistent names across components and deprecated old event names
   - `Accordion` emits `change` and deprecated `accordionChange` event
@@ -287,6 +288,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Display` uses font-weight regular and font-style normal
 - Partials: `getInitialStyles` matches new design language
 - Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
+- Styles: `getFocusStyle` and `pds-focus` doesn't need `theme` parameter anymore
 - `Link Tile` matches new design language
 - Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
   `LinkPureIcon`
