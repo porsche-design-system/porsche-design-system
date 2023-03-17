@@ -1,25 +1,33 @@
 import type {
   BreakpointCustomizable,
-  SelectedAriaAttributes,
-  PropTypes,
   ButtonAriaAttribute,
   ButtonType,
+  PropTypes,
+  SelectedAriaAttributes,
 } from '../../types';
-import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, ITileProps } from '../../utils';
-import type { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from './button-tile-utils';
-import { Component, Element, h, Listen, Prop } from '@stencil/core';
+import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
-  BUTTON_TYPES,
   BUTTON_ARIA_ATTRIBUTES,
+  BUTTON_TYPES,
   getPrefixedTagNames,
-  parseJSON,
-  validateProps,
-  throwIfAlignTopAndNotCompact,
   isDisabledOrLoading,
+  parseJSON,
+  throwIfAlignTopAndNotCompact,
   TILE_WEIGHTS,
+  validateProps,
 } from '../../utils';
+import type {
+  ButtonTileAlign,
+  ButtonTileAriaAttribute,
+  ButtonTileAspectRatio,
+  ButtonTileIcon,
+  ButtonTileSize,
+  ButtonTileType,
+  ButtonTileWeight,
+} from './button-tile-utils';
+import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import { getComponentCss } from './button-tile-styles';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
 

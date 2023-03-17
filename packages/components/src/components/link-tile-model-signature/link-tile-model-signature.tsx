@@ -2,9 +2,15 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { LINK_BUTTON_GROUP_DIRECTIONS } from '../../styles/link-button-group-direction-styles';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  TILE_ASPECT_RATIOS,
+  TILE_WEIGHTS,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
-import { LINK_TILE_ASPECT_RATIOS, TILE_WEIGHTS } from '../link-tile/link-tile-utils';
 import type {
   LinkTileModelSignatureAspectRatio,
   LinkTileModelSignatureLinkDirection,
@@ -21,7 +27,7 @@ import {
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
   weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(LINK_TILE_ASPECT_RATIOS),
+  aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   linkDirection: AllowedTypes.breakpoint<LinkTileModelSignatureLinkDirection>(LINK_BUTTON_GROUP_DIRECTIONS),

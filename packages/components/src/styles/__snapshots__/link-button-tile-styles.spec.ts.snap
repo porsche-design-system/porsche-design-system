@@ -1,496 +1,212 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for {
-  aspectRatio: '1:1',
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getButtonLinkTileContentStyles() should return correct css for 'bottom' 1`] = `
 {
-  "@global": {
-    "::slotted(img)": {
-      "height": "100% !important",
-      "objectFit": "cover !important",
-      "width": "100% !important",
-    },
-    "::slotted(picture)": {
-      "bottom": "0 !important",
-      "left": "0 !important",
-      "position": "absolute !important",
-      "right": "0 !important",
-      "top": "0 !important",
-    },
-    "::slotted(picture),::slotted(img)": {
-      "WebkitBackfaceVisibility": "hidden !important",
-      "backfaceVisibility": "hidden !important",
-      "transition": "transform var(--p-transition-duration, .24s) ease !important",
-    },
-    ":host": {
-      "&([hidden])": {
-        "display": "none !important",
-      },
-      "display": "block",
-    },
-    "p": {
-      "background": "black",
-    },
+  "alignItems": "center",
+  "bottom": 0,
+  "display": "grid",
+  "gridTemplateColumns": "auto 24px",
+  "gridTemplateRows": "auto",
+  "padding": "clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px)",
+}
+`;
+
+exports[`getButtonLinkTileContentStyles() should return correct css for 'top' 1`] = `
+{
+  "background": "linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);",
+  "display": "grid",
+  "gridTemplateColumns": "auto",
+  "gridTemplateRows": "auto auto",
+  "padding": "clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px)",
+  "top": 0,
+}
+`;
+
+exports[`getButtonLinkTileContentStyles() should return correct css for 'top' 2`] = `
+{
+  "@media(min-width:1000px)": {
+    "alignItems": "center",
+    "gridTemplateColumns": "auto 24px",
+    "gridTemplateRows": "auto",
+    "top": 0,
   },
-  "content": {
-    "@media (forced-colors: active)": {
-      "background": "rgba(0,0,0,0.7)",
-    },
-    "borderRadius": "8px",
-    "gap": "16px",
+  "@media(min-width:1300px)": {
     "gridTemplateColumns": "auto",
     "gridTemplateRows": "auto auto",
-    "justifyItems": "start",
-    "left": 0,
-    "position": "absolute",
-    "right": 0,
   },
-  "image-container": {
-    "borderRadius": "8px",
-    "bottom": 0,
-    "left": 0,
-    "overflow": "hidden",
-    "position": "absolute",
-    "right": 0,
+  "@media(min-width:1760px)": {
+    "alignItems": "center",
+    "gridTemplateColumns": "auto 24px",
+    "gridTemplateRows": "auto",
     "top": 0,
   },
-  "link-overlay": {
-    "bottom": 0,
-    "left": 0,
-    "outline": 0,
-    "position": "fixed",
-    "right": 0,
+  "@media(min-width:480px)": {
+    "alignItems": "center",
+    "gridTemplateColumns": "auto 24px",
+    "gridTemplateRows": "auto",
     "top": 0,
   },
-  "root": {
-    "@media(hover:hover)": {
-      "&:hover": {
-        "& ::slotted(picture),::slotted(img)": {
-          "transform": "scale3d(1.05, 1.05, 1.05) !important",
-        },
-      },
-    },
-    "height": 0,
-    "paddingTop": "100%",
-    "position": "relative",
-    "transform": "translate3d(0,0,0)",
+  "@media(min-width:760px)": {
+    "gridTemplateColumns": "auto",
+    "gridTemplateRows": "auto auto",
+  },
+  "display": "grid",
+  "gridTemplateColumns": "auto",
+  "gridTemplateRows": "auto auto",
+  "padding": "clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px)",
+  "top": 0,
+}
+`;
+
+exports[`getButtonLinkTilePStyles() should return correct css for 'default' 1`] = `
+{
+  "p": {
+    "color": "#FBFCFF",
+    "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+    "fontWeight": 600,
+    "hyphens": "auto",
+    "margin": 0,
+    "maxWidth": "34.375rem",
+    "overflowWrap": "break-word",
   },
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for {
-  aspectRatio: '3:4',
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getButtonLinkTilePStyles() should return correct css for 'default' 2`] = `
 {
-  "@global": {
-    "::slotted(img)": {
-      "height": "100% !important",
-      "objectFit": "cover !important",
-      "width": "100% !important",
-    },
-    "::slotted(picture)": {
-      "bottom": "0 !important",
-      "left": "0 !important",
-      "position": "absolute !important",
-      "right": "0 !important",
-      "top": "0 !important",
-    },
-    "::slotted(picture),::slotted(img)": {
-      "WebkitBackfaceVisibility": "hidden !important",
-      "backfaceVisibility": "hidden !important",
-      "transition": "transform var(--p-transition-duration, .24s) ease !important",
-    },
-    ":host": {
-      "&([hidden])": {
-        "display": "none !important",
-      },
-      "display": "block",
-    },
-    "p": {
-      "background": "black",
-    },
-  },
-  "content": {
-    "@media (forced-colors: active)": {
-      "background": "rgba(0,0,0,0.7)",
-    },
-    "borderRadius": "8px",
-    "gap": "16px",
-    "gridTemplateColumns": "auto",
-    "gridTemplateRows": "auto auto",
-    "justifyItems": "start",
-    "left": 0,
-    "position": "absolute",
-    "right": 0,
-  },
-  "image-container": {
-    "borderRadius": "8px",
-    "bottom": 0,
-    "left": 0,
-    "overflow": "hidden",
-    "position": "absolute",
-    "right": 0,
-    "top": 0,
-  },
-  "link-overlay": {
-    "bottom": 0,
-    "left": 0,
-    "outline": 0,
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-  },
-  "root": {
-    "@media(hover:hover)": {
-      "&:hover": {
-        "& ::slotted(picture),::slotted(img)": {
-          "transform": "scale3d(1.05, 1.05, 1.05) !important",
-        },
-      },
-    },
-    "height": 0,
-    "paddingTop": "133.33%",
-    "position": "relative",
-    "transform": "translate3d(0,0,0)",
+  "p": {
+    "color": "#FBFCFF",
+    "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+    "fontWeight": 400,
+    "hyphens": "auto",
+    "margin": 0,
+    "maxWidth": "34.375rem",
+    "overflowWrap": "break-word",
   },
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for {
-  aspectRatio: '4:3',
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getButtonLinkTilePStyles() should return correct css for 'inherit' 1`] = `
 {
-  "@global": {
-    "::slotted(img)": {
-      "height": "100% !important",
-      "objectFit": "cover !important",
-      "width": "100% !important",
-    },
-    "::slotted(picture)": {
-      "bottom": "0 !important",
-      "left": "0 !important",
-      "position": "absolute !important",
-      "right": "0 !important",
-      "top": "0 !important",
-    },
-    "::slotted(picture),::slotted(img)": {
-      "WebkitBackfaceVisibility": "hidden !important",
-      "backfaceVisibility": "hidden !important",
-      "transition": "transform var(--p-transition-duration, .24s) ease !important",
-    },
-    ":host": {
-      "&([hidden])": {
-        "display": "none !important",
-      },
-      "display": "block",
-    },
-    "p": {
-      "background": "black",
-    },
-  },
-  "content": {
-    "@media (forced-colors: active)": {
-      "background": "rgba(0,0,0,0.7)",
-    },
-    "borderRadius": "8px",
-    "gap": "16px",
-    "gridTemplateColumns": "auto",
-    "gridTemplateRows": "auto auto",
-    "justifyItems": "start",
-    "left": 0,
-    "position": "absolute",
-    "right": 0,
-  },
-  "image-container": {
-    "borderRadius": "8px",
-    "bottom": 0,
-    "left": 0,
-    "overflow": "hidden",
-    "position": "absolute",
-    "right": 0,
-    "top": 0,
-  },
-  "link-overlay": {
-    "bottom": 0,
-    "left": 0,
-    "outline": 0,
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-  },
-  "root": {
-    "@media(hover:hover)": {
-      "&:hover": {
-        "& ::slotted(picture),::slotted(img)": {
-          "transform": "scale3d(1.05, 1.05, 1.05) !important",
-        },
-      },
-    },
-    "height": 0,
-    "paddingTop": "75%",
-    "position": "relative",
-    "transform": "translate3d(0,0,0)",
+  "p": {
+    "color": "#FBFCFF",
+    "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "inherit",
+    "fontWeight": 600,
+    "hyphens": "auto",
+    "margin": 0,
+    "maxWidth": "34.375rem",
+    "overflowWrap": "break-word",
   },
 }
 `;
 
-exports[`getBaseLinkButtonTileStyles() should return correct css for {
-  aspectRatio: '9:16',
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
+exports[`getButtonLinkTilePStyles() should return correct css for {
+  base: 'inherit',
+  xs: 'default',
+  s: 'inherit',
+  m: 'default',
+  l: 'inherit',
+  xl: 'default'
 } 1`] = `
 {
-  "@global": {
-    "::slotted(img)": {
-      "height": "100% !important",
-      "objectFit": "cover !important",
-      "width": "100% !important",
-    },
-    "::slotted(picture)": {
-      "bottom": "0 !important",
-      "left": "0 !important",
-      "position": "absolute !important",
-      "right": "0 !important",
-      "top": "0 !important",
-    },
-    "::slotted(picture),::slotted(img)": {
-      "WebkitBackfaceVisibility": "hidden !important",
-      "backfaceVisibility": "hidden !important",
-      "transition": "transform var(--p-transition-duration, .24s) ease !important",
-    },
-    ":host": {
-      "&([hidden])": {
-        "display": "none !important",
-      },
-      "display": "block",
-    },
-    "p": {
-      "background": "black",
-    },
-  },
-  "content": {
-    "@media (forced-colors: active)": {
-      "background": "rgba(0,0,0,0.7)",
-    },
-    "borderRadius": "8px",
-    "gap": "16px",
-    "gridTemplateColumns": "auto",
-    "gridTemplateRows": "auto auto",
-    "justifyItems": "start",
-    "left": 0,
-    "position": "absolute",
-    "right": 0,
-  },
-  "image-container": {
-    "borderRadius": "8px",
-    "bottom": 0,
-    "left": 0,
-    "overflow": "hidden",
-    "position": "absolute",
-    "right": 0,
-    "top": 0,
-  },
-  "link-overlay": {
-    "bottom": 0,
-    "left": 0,
-    "outline": 0,
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-  },
-  "root": {
-    "@media(hover:hover)": {
-      "&:hover": {
-        "& ::slotted(picture),::slotted(img)": {
-          "transform": "scale3d(1.05, 1.05, 1.05) !important",
-        },
-      },
-    },
-    "height": 0,
-    "paddingTop": "177.75%",
-    "position": "relative",
-    "transform": "translate3d(0,0,0)",
-  },
-}
-`;
-
-exports[`getBaseLinkButtonTileStyles() should return correct css for {
-  aspectRatio: '16:9',
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
-{
-  "@global": {
-    "::slotted(img)": {
-      "height": "100% !important",
-      "objectFit": "cover !important",
-      "width": "100% !important",
-    },
-    "::slotted(picture)": {
-      "bottom": "0 !important",
-      "left": "0 !important",
-      "position": "absolute !important",
-      "right": "0 !important",
-      "top": "0 !important",
-    },
-    "::slotted(picture),::slotted(img)": {
-      "WebkitBackfaceVisibility": "hidden !important",
-      "backfaceVisibility": "hidden !important",
-      "transition": "transform var(--p-transition-duration, .24s) ease !important",
-    },
-    ":host": {
-      "&([hidden])": {
-        "display": "none !important",
-      },
-      "display": "block",
-    },
-    "p": {
-      "background": "black",
-    },
-  },
-  "content": {
-    "@media (forced-colors: active)": {
-      "background": "rgba(0,0,0,0.7)",
-    },
-    "borderRadius": "8px",
-    "gap": "16px",
-    "gridTemplateColumns": "auto",
-    "gridTemplateRows": "auto auto",
-    "justifyItems": "start",
-    "left": 0,
-    "position": "absolute",
-    "right": 0,
-  },
-  "image-container": {
-    "borderRadius": "8px",
-    "bottom": 0,
-    "left": 0,
-    "overflow": "hidden",
-    "position": "absolute",
-    "right": 0,
-    "top": 0,
-  },
-  "link-overlay": {
-    "bottom": 0,
-    "left": 0,
-    "outline": 0,
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-  },
-  "root": {
-    "@media(hover:hover)": {
-      "&:hover": {
-        "& ::slotted(picture),::slotted(img)": {
-          "transform": "scale3d(1.05, 1.05, 1.05) !important",
-        },
-      },
-    },
-    "height": 0,
-    "paddingTop": "56.25%",
-    "position": "relative",
-    "transform": "translate3d(0,0,0)",
-  },
-}
-`;
-
-exports[`getBaseLinkButtonTileStyles() should return correct css for {
-  aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' },
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
-{
-  "@global": {
-    "::slotted(img)": {
-      "height": "100% !important",
-      "objectFit": "cover !important",
-      "width": "100% !important",
-    },
-    "::slotted(picture)": {
-      "bottom": "0 !important",
-      "left": "0 !important",
-      "position": "absolute !important",
-      "right": "0 !important",
-      "top": "0 !important",
-    },
-    "::slotted(picture),::slotted(img)": {
-      "WebkitBackfaceVisibility": "hidden !important",
-      "backfaceVisibility": "hidden !important",
-      "transition": "transform var(--p-transition-duration, .24s) ease !important",
-    },
-    ":host": {
-      "&([hidden])": {
-        "display": "none !important",
-      },
-      "display": "block",
-    },
-    "p": {
-      "background": "black",
-    },
-  },
-  "content": {
-    "@media (forced-colors: active)": {
-      "background": "rgba(0,0,0,0.7)",
-    },
-    "borderRadius": "8px",
-    "gap": "16px",
-    "gridTemplateColumns": "auto",
-    "gridTemplateRows": "auto auto",
-    "justifyItems": "start",
-    "left": 0,
-    "position": "absolute",
-    "right": 0,
-  },
-  "image-container": {
-    "borderRadius": "8px",
-    "bottom": 0,
-    "left": 0,
-    "overflow": "hidden",
-    "position": "absolute",
-    "right": 0,
-    "top": 0,
-  },
-  "link-overlay": {
-    "bottom": 0,
-    "left": 0,
-    "outline": 0,
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-  },
-  "root": {
-    "@media(hover:hover)": {
-      "&:hover": {
-        "& ::slotted(picture),::slotted(img)": {
-          "transform": "scale3d(1.05, 1.05, 1.05) !important",
-        },
-      },
-    },
+  "p": {
     "@media(min-width:1000px)": {
-      "paddingTop": "56.25%",
+      "fontSize": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+      "fontWeight": 400,
     },
     "@media(min-width:1300px)": {
-      "paddingTop": "177.75%",
+      "fontSize": "inherit",
+      "fontWeight": 600,
     },
     "@media(min-width:1760px)": {
-      "paddingTop": "100%",
+      "fontSize": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+      "fontWeight": 400,
     },
     "@media(min-width:480px)": {
-      "paddingTop": "75%",
+      "fontSize": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+      "fontWeight": 400,
     },
     "@media(min-width:760px)": {
-      "paddingTop": "133.33%",
+      "fontSize": "inherit",
+      "fontWeight": 600,
     },
-    "height": 0,
-    "paddingTop": "100%",
-    "position": "relative",
-    "transform": "translate3d(0,0,0)",
+    "color": "#FBFCFF",
+    "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "inherit",
+    "fontWeight": 600,
+    "hyphens": "auto",
+    "margin": 0,
+    "maxWidth": "34.375rem",
+    "overflowWrap": "break-word",
+  },
+}
+`;
+
+exports[`getButtonLinkTileSharedStyles() should return correct css for { base: false, xs: true, s: false, m: true, l: false, xl: true } 1`] = `
+{
+  "link-or-button": {
+    "@media(min-width:1000px)": {
+      "display": "none",
+    },
+    "@media(min-width:1300px)": {
+      "display": "inline-block",
+    },
+    "@media(min-width:1760px)": {
+      "display": "none",
+    },
+    "@media(min-width:480px)": {
+      "display": "none",
+    },
+    "@media(min-width:760px)": {
+      "display": "inline-block",
+    },
+    "display": "inline-block",
+    "minHeight": "54px",
+  },
+  "link-or-button-pure": {
+    "@media(min-width:1000px)": {
+      "display": "inline-block",
+    },
+    "@media(min-width:1300px)": {
+      "display": "none",
+    },
+    "@media(min-width:1760px)": {
+      "display": "inline-block",
+    },
+    "@media(min-width:480px)": {
+      "display": "inline-block",
+    },
+    "@media(min-width:760px)": {
+      "display": "none",
+    },
+    "display": "none",
+  },
+}
+`;
+
+exports[`getButtonLinkTileSharedStyles() should return correct css for false 1`] = `
+{
+  "link-or-button": {
+    "display": "inline-block",
+    "minHeight": "54px",
+  },
+  "link-or-button-pure": {
+    "display": "none",
+  },
+}
+`;
+
+exports[`getButtonLinkTileSharedStyles() should return correct css for true 1`] = `
+{
+  "link-or-button": {
+    "display": "none",
+    "minHeight": "54px",
+  },
+  "link-or-button-pure": {
+    "display": "inline-block",
   },
 }
 `;

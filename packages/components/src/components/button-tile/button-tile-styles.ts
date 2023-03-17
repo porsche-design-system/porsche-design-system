@@ -1,6 +1,31 @@
+import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../utils';
 import { getCss } from '../../utils';
-import { getLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import {
+  getButtonLinkTileContentStyles,
+  getButtonLinkTilePStyles,
+  getButtonLinkTileSharedStyles,
+} from '../../styles/link-button-tile-styles';
+import { getTileStyles } from '../../styles/tile-styles';
 
-export const getComponentCss = (...args: Parameters<typeof getLinkButtonTileStyles>): string => {
-  return getCss(getLinkButtonTileStyles(...args));
+export const getComponentCss = (
+  aspectRatio: BreakpointCustomizable<TileAspectRatio>,
+  size: BreakpointCustomizable<TileSize>,
+  weight: BreakpointCustomizable<TileWeight>,
+  align: TileAlign,
+  compact: BreakpointCustomizable<boolean>,
+  hasGradient: boolean,
+  isDisabled: boolean,
+  isDisabledOrLoading: boolean
+): string => {
+  return getCss({
+    ...getTileStyles({
+      aspectRatio,
+      isDisabled,
+      additionalHostStyles: { cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer' },
+      additionalGlobalStyles: getButtonLinkTilePStyles(size, weight),
+      additionalContentStyles: getButtonLinkTileContentStyles(align, hasGradient, compact),
+    }),
+    ...getButtonLinkTileSharedStyles(compact),
+  });
 };

@@ -1,31 +1,39 @@
-import { getBaseLinkButtonTileStyles } from './link-button-tile-styles';
-import type { JssStyle } from 'jss';
+import {
+  getButtonLinkTileContentStyles,
+  getButtonLinkTilePStyles,
+  getButtonLinkTileSharedStyles,
+} from './link-button-tile-styles';
 
-describe('getBaseLinkButtonTileStyles()', () => {
-  const additionalGlobalStyles: JssStyle = {
-    p: {
-      background: 'black',
-    },
-  };
-  const additionalContentStyles: JssStyle = {
-    gridTemplateRows: 'auto auto',
-    gridTemplateColumns: 'auto',
-  };
-
-  it.each<Parameters<typeof getBaseLinkButtonTileStyles>>([
-    [{ aspectRatio: '4:3', additionalGlobalStyles, additionalContentStyles }],
-    [{ aspectRatio: '1:1', additionalGlobalStyles, additionalContentStyles }],
-    [{ aspectRatio: '3:4', additionalGlobalStyles, additionalContentStyles }],
-    [{ aspectRatio: '16:9', additionalGlobalStyles, additionalContentStyles }],
-    [{ aspectRatio: '9:16', additionalGlobalStyles, additionalContentStyles }],
+describe('getButtonLinkTilePStyles()', () => {
+  it.each<Parameters<typeof getButtonLinkTilePStyles>>([
+    ['default', 'semi-bold'],
+    ['inherit', 'semibold'],
+    ['default', 'regular'],
     [
-      {
-        aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' },
-        additionalGlobalStyles,
-        additionalContentStyles,
-      },
+      { base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default' },
+      { base: 'semi-bold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semi-bold', xl: 'regular' },
     ],
   ])('should return correct css for %o', (...args) => {
-    expect(getBaseLinkButtonTileStyles(...args)).toMatchSnapshot();
+    expect(getButtonLinkTilePStyles(...args)).toMatchSnapshot();
+  });
+});
+
+describe('getButtonLinkTileContentStyles()', () => {
+  it.each<Parameters<typeof getButtonLinkTileContentStyles>>([
+    ['top', true, false],
+    ['bottom', false, true],
+    ['top', false, { base: false, xs: true, s: false, m: true, l: false, xl: true }],
+  ])('should return correct css for %o', (...args) => {
+    expect(getButtonLinkTileContentStyles(...args)).toMatchSnapshot();
+  });
+});
+
+describe('getButtonLinkTileSharedStyles()', () => {
+  it.each<Parameters<typeof getButtonLinkTileSharedStyles>>([
+    [true],
+    [false],
+    [{ base: false, xs: true, s: false, m: true, l: false, xl: true }],
+  ])('should return correct css for %o', (...args) => {
+    expect(getButtonLinkTileSharedStyles(...args)).toMatchSnapshot();
   });
 });

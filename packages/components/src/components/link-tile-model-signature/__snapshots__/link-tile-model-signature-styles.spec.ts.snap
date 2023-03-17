@@ -47,6 +47,15 @@ h2,h3,h4,h5,h6 {
   transform: translate3d(0,0,0);
   padding-top: 100%;
 }
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .content {
   position: absolute;
   left: 0;
@@ -59,23 +68,6 @@ h2,h3,h4,h5,h6 {
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-}
-.image-container {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.link-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
 }
 .model {
   position: absolute;
@@ -107,6 +99,14 @@ h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
 }
 @media(min-width:480px) {
   .root {
@@ -220,6 +220,15 @@ h2,h3,h4,h5,h6 {
   transform: translate3d(0,0,0);
   padding-top: 100%;
 }
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .content {
   position: absolute;
   left: 0;
@@ -232,23 +241,6 @@ h2,h3,h4,h5,h6 {
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-}
-.image-container {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.link-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
 }
 .model {
   position: absolute;
@@ -273,6 +265,14 @@ h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -321,6 +321,15 @@ h2,h3,h4,h5,h6 {
   transform: translate3d(0,0,0);
   padding-top: 133.33%;
 }
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .content {
   position: absolute;
   left: 0;
@@ -333,23 +342,6 @@ h2,h3,h4,h5,h6 {
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-}
-.image-container {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.link-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
 }
 .model {
   position: absolute;
@@ -381,6 +373,14 @@ h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: center;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -429,6 +429,15 @@ h2,h3,h4,h5,h6 {
   transform: translate3d(0,0,0);
   padding-top: 75%;
 }
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .content {
   position: absolute;
   left: 0;
@@ -441,23 +450,6 @@ h2,h3,h4,h5,h6 {
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-}
-.image-container {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.link-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
 }
 .model {
   position: absolute;
@@ -489,6 +481,14 @@ h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: center;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -537,6 +537,15 @@ h2,h3,h4,h5,h6 {
   transform: translate3d(0,0,0);
   padding-top: 177.75%;
 }
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .content {
   position: absolute;
   left: 0;
@@ -549,23 +558,6 @@ h2,h3,h4,h5,h6 {
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-}
-.image-container {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.link-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
 }
 .model {
   position: absolute;
@@ -590,6 +582,14 @@ h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: center;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -638,6 +638,15 @@ h2,h3,h4,h5,h6 {
   transform: translate3d(0,0,0);
   padding-top: 56.25%;
 }
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .content {
   position: absolute;
   left: 0;
@@ -650,23 +659,6 @@ h2,h3,h4,h5,h6 {
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-}
-.image-container {
-  position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.link-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
 }
 .model {
   position: absolute;
@@ -698,6 +690,14 @@ h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
 }
 @media (forced-colors: active) {
   .content {

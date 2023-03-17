@@ -1,5 +1,5 @@
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToRule } from '../../styles';
+import { addImportantToRule, getInsetJssStyle } from '../../styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
@@ -14,7 +14,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import type { LinkButtonGroupDirection } from '../../styles/link-button-group-direction-styles';
 import { getLinkButtonGroupDirectionStyles } from '../../styles/link-button-group-direction-styles';
-import { getBaseLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
+import { getTileStyles } from '../../styles/tile-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type {
   LinkTileModelSignatureAspectRatio,
@@ -29,7 +29,7 @@ export const getComponentCss = (
   hasDescription: boolean
 ): string => {
   return getCss({
-    ...getBaseLinkButtonTileStyles({
+    ...getTileStyles({
       aspectRatio,
       additionalGlobalStyles: {
         [LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS.join(',')]: {
@@ -71,6 +71,12 @@ export const getComponentCss = (
       width: '100%',
       gap: spacingFluidSmall,
       ...buildResponsiveStyles(direction, getLinkButtonGroupDirectionStyles),
+    },
+    // is used for expanded click-area only
+    'link-overlay': {
+      position: 'fixed',
+      ...getInsetJssStyle(0),
+      outline: 0,
     },
   });
 };
