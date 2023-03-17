@@ -59,16 +59,16 @@ it('should have no visual regression for :hover + :focus-visible and light theme
 
       await forceFocusState(page, '.focus p-table-cell a');
       await forceFocusState(page, '.focus [slot="caption"] a');
-      await forceFocusState(page, '.focus p-table-head-cell >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-table-head-cell >>> button');
 
       await forceFocusHoverState(page, '.focus-hover p-table-cell a');
       await forceFocusHoverState(page, '.focus-hover [slot="caption"] a');
-      await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> button');
 
       await forceHoverState(page, '.hover p-table-cell a');
       await forceHoverState(page, '.hover [slot="caption"] a');
       await forceHoverState(page, '.hover p-table-row:nth-child(3)');
-      await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-table-head-cell >>> button');
     })
   ).toBeFalsy();
 });
@@ -89,16 +89,16 @@ it('should have no visual regression for :hover + :focus-visible and dark theme'
 
       await forceFocusState(page, '.focus p-table-cell a');
       await forceFocusState(page, '.focus [slot="caption"] a');
-      await forceFocusState(page, '.focus p-table-head-cell >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-table-head-cell >>> button');
 
       await forceFocusHoverState(page, '.focus-hover p-table-cell a');
       await forceFocusHoverState(page, '.focus-hover [slot="caption"] a');
-      await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-table-head-cell >>> button');
 
       await forceHoverState(page, '.hover p-table-cell a');
       await forceHoverState(page, '.hover [slot="caption"] a');
       await forceHoverState(page, '.hover p-table-row:nth-child(3)');
-      await forceHoverState(page, '.hover p-table-head-cell >>> p-button-pure >>> button');
+      await forceHoverState(page, '.hover p-table-head-cell >>> button');
     })
   ).toBeFalsy();
 });
