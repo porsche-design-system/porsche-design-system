@@ -1,5 +1,5 @@
-import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
-import type { PropTypes, Theme } from '../../../types';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,7 +8,7 @@ import {
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { createSortedEventInitDictDetail, getAriaSort, getTableTheme, isSortable } from './table-head-cell-utils';
+import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
 import type { Direction, TableChangeEvent, TableHeadCellSort } from '../table/table-utils';
 import { SORT_EVENT_NAME } from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
@@ -39,15 +39,9 @@ export class TableHeadCell {
   /** Displays slotted text multiline or forced into a single line. */
   @Prop() public multiline?: boolean = false;
 
-  @State() private tableTheme: Theme;
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-table-head-row');
     throwIfElementHasAttribute(this.host, 'sort');
-  }
-
-  public componentDidLoad(): void {
-    this.tableTheme = getTableTheme(this.host);
   }
 
   public render(): JSX.Element {
@@ -60,23 +54,12 @@ export class TableHeadCell {
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
         {isSortable(active, direction) ? (
-          <PrefixedTagNames.pButtonPure
-            class="button-pure"
-            icon="none"
-            onClick={this.onButtonClick}
-            theme={this.tableTheme}
-          >
-            <div class="button-root">
+          <button type="button" onClick={this.onButtonClick}>
+            <span class="label">
               <slot />
-              <PrefixedTagNames.pIcon // we use slotted icon instead of built-in icon because we need to style it from here (for active state and for sorting)
-                class="icon"
-                color="primary"
-                name="arrow-up"
-                aria-hidden="true"
-                theme={this.tableTheme}
-              />
-            </div>
-          </PrefixedTagNames.pButtonPure>
+            </span>
+            <PrefixedTagNames.pIcon class="icon" color="inherit" name="arrow-up" aria-hidden="true" />
+          </button>
         ) : (
           <span>
             <slot />

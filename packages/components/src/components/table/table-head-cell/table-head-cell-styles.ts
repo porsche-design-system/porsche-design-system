@@ -1,9 +1,27 @@
 import type { Direction } from '../table/table-utils';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getTextHiddenJssStyle, hostHiddenStyles, hoverMediaQuery } from '../../../styles';
-import { fontWeight, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import {
+  addImportantToEachRule,
+  getTextHiddenJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../../styles';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontWeight,
+  frostedGlassStyle,
+  spacingFluidSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
+import { getFontSizeText } from '../../../styles/font-size-text-styles';
+import { offsetHorizontal, offsetVertical } from '../../../styles/link-button-pure-styles';
 
+const { primaryColor, hoverColor, focusColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
 export const getComponentCss = (
@@ -26,18 +44,54 @@ export const getComponentCss = (
       }),
       ...(sortable
         ? {
-            '.button-pure': {
+            button: {
+              transform: 'translate3d(0,0,0)', // creates new stacking context
+              display: 'flex',
+              gap: spacingStaticXSmall,
+              width: 'auto',
+              margin: 0,
+              padding: 0,
+              color: primaryColor,
+              outline: 0,
+              ...textSmallStyle,
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start',
+              fontSize: getFontSizeText('small'),
+              appearance: 'none',
+              background: 'transparent',
+              textAlign: 'left',
+              border: 0,
+              cursor: 'pointer',
+              '&::before': {
+                content: '""',
+                position: 'absolute', // mobile Safari -> prevent lagging active state
+                top: offsetVertical,
+                bottom: offsetVertical,
+                right: offsetHorizontal,
+                left: offsetHorizontal,
+                borderRadius: borderRadiusSmall,
+                transition: getTransition('background-color'),
+              },
               ...hoverMediaQuery({
                 '&:hover, &:focus': {
                   '& .icon': {
                     opacity: 1,
                   },
                 },
+                '&:hover::before': {
+                  ...frostedGlassStyle,
+                  backgroundColor: hoverColor,
+                },
               }),
+              '&:focus::before': {
+                border: `${borderWidthBase} solid ${focusColor}`,
+              },
+              '&:not(:focus-visible)::before': {
+                border: 0,
+              },
             },
-            '.button-root': {
-              display: 'flex',
-              alignItems: 'flex-end',
+            '.label': {
+              position: 'relative', // needed for hover state
             },
           }
         : hideLabel && {
