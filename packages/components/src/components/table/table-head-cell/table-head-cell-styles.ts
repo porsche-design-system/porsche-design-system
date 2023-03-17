@@ -21,7 +21,7 @@ import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 import { getFontSizeText } from '../../../styles/font-size-text-styles';
 import { offsetHorizontal, offsetVertical } from '../../../styles/link-button-pure-styles';
 
-const { primaryColor, hoverColor, focusColor } = getThemedColors('light');
+const { hoverColor, focusColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
 export const getComponentCss = (
@@ -51,11 +51,11 @@ export const getComponentCss = (
               width: 'auto',
               margin: 0,
               padding: 0,
-              color: primaryColor,
+              color: 'inherit',
               outline: 0,
               ...textSmallStyle,
               justifyContent: 'flex-start',
-              alignItems: 'flex-start',
+              alignItems: 'flex-end',
               fontSize: getFontSizeText('small'),
               appearance: 'none',
               background: 'transparent',
