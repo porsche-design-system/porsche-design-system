@@ -7,7 +7,6 @@ import type {
 } from '../../types';
 import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, ITileProps } from '../../utils';
 import type { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from './button-tile-utils';
-import type { Button } from '../button/button';
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -113,10 +112,7 @@ export class ButtonTile implements ITileProps {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const buttonProps: Pick<
-      InstanceType<typeof Button>,
-      'theme' | 'variant' | 'icon' | 'iconSource' | 'type' | 'disabled' | 'loading' | 'aria'
-    > = {
+    const buttonProps = {
       theme: 'dark',
       variant: 'secondary',
       icon: this.icon,
