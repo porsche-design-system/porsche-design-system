@@ -211,7 +211,7 @@ export default class Code extends Vue {
 
 <style scoped lang="scss">
 
-  :deep(p-scroller) {
+  :deep(p-scroller > p-text-list) {
     white-space: nowrap;
   }
   :deep(p-scroller > *) {
