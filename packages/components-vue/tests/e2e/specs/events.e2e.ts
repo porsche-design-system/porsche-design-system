@@ -175,7 +175,7 @@ describe('table', () => {
   it('should emit events once', async () => {
     await goto(page, 'events');
 
-    const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> p-button-pure >>> button');
+    const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> button');
     const tableChangeEventCounter = await selectNode(page, 'p-table + p');
 
     await tableHeadBtn.click();
