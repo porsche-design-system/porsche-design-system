@@ -2,15 +2,8 @@ import { PTable, PTableHead, PTableHeadCell, PTableHeadRow } from '@porsche-desi
 import { TableWithCaption } from '../components';
 
 export const TablePage = (): JSX.Element => {
-  const style = `
-      .dark span.table-caption {
-        color: white;
-      }
-  `;
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: style }} />
-
       <div className="playground light" title="should render table on light background">
         <TableWithCaption />
       </div>
@@ -21,7 +14,7 @@ export const TablePage = (): JSX.Element => {
 
       <div className="playground light" title="should render table with unstyled slotted caption on light background">
         <PTable>
-          <span slot="caption" className="table-caption">
+          <span slot="caption">
             Some unstyled caption <a href="https://porsche.com">with a link</a>
           </span>
           <PTableHead>
@@ -35,7 +28,7 @@ export const TablePage = (): JSX.Element => {
 
       <div className="playground dark" title="should render table with unstyled slotted caption on dark background">
         <PTable theme="dark">
-          <span slot="caption" className="table-caption">
+          <span slot="caption">
             Some unstyled caption <a href="https://porsche.com">with a link</a>
           </span>
           <PTableHead>
