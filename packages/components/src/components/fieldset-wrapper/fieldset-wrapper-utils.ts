@@ -1,6 +1,5 @@
-import type { FormState } from '../../utils/form/form-state';
+import { FieldsetLabelSize, FieldsetState } from '../fieldset/fieldset-utils';
 
-export const FIELDSET_WRAPPER_LABEL_SIZES = ['small', 'medium'] as const;
-export type FieldsetWrapperLabelSize = typeof FIELDSET_WRAPPER_LABEL_SIZES[number];
+export type FieldsetWrapperLabelSize = FieldsetLabelSize;
 
-export type FieldsetWrapperState = FormState;
+export type FieldsetWrapperState = FieldsetState;

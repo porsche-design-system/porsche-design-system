@@ -1,13 +1,8 @@
-# Fieldset Wrapper
+# Fieldset
 
-The `p-fieldset-wrapper` is a grouping component for wrapping contextual associated form elements. Its visible part is
-an HTML _legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some
-usage examples on our [form patterns section](patterns/forms/resources).
-
-<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
-  This component is deprecated and will be removed with the next major release.
-Please use <a href="components/fieldset">p-fieldset</a> instead.
-</p-inline-notification>
+The `p-fieldset` is a grouping component for wrapping contextual associated form elements. Its visible part is an HTML
+_legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some usage
+examples on our [form patterns section](patterns/forms/resources).
 
 <TableOfContents></TableOfContents>
 
@@ -33,9 +28,9 @@ Please use <a href="components/fieldset">p-fieldset</a> instead.
 
 ## Required
 
-If the `p-fieldset-wrapper` is set to `required="true"`, only the label of the `p-fieldset-wraper` gets an asterisk. It
-is removed from all wrapped child components, as long as they are Porsche Design System form elements. You should still
-set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
+If the `p-fieldset` is set to `required="true"`, only the label of the `p-fieldset` gets an asterisk. It is removed from
+all wrapped child components, as long as they are Porsche Design System form elements. You should still set required on
+the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
 
 <Playground :markup="requiredMarkup" :config="config"></Playground>
 
@@ -66,43 +61,43 @@ export default class Code extends Vue {
   config = { spacing: 'block', themeable: true }; 
   
   withLabelMarkup =
-`<p-fieldset-wrapper label="Some legend label">
+`<p-fieldset label="Some legend label">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
-</p-fieldset-wrapper>`;
+</p-fieldset>`;
 
   slottedLabelMarkup =
-`<p-fieldset-wrapper>
+`<p-fieldset>
   <span slot="label">Some legend label</span>
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
-</p-fieldset-wrapper>`;
+</p-fieldset>`;
 
   labelSize = 'small';
   labelSizes = FIELDSET_LABEL_SIZES;
   get labelSizeMarkup() {
-    return `<p-fieldset-wrapper label="Some legend label" label-size=${this.labelSize}>
+    return `<p-fieldset label="Some legend label" label-size=${this.labelSize}>
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
-</p-fieldset-wrapper>`;
+</p-fieldset>`;
   }
 
   requiredMarkup =
-`<p-fieldset-wrapper label="Some legend label" required="true">
+`<p-fieldset label="Some legend label" required="true">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" required />
   </p-text-field-wrapper>
-</p-fieldset-wrapper>`;
+</p-fieldset>`;
 
   state = 'error';
   states = FORM_STATES;
   get stateMarkup() {
     const message = this.state === 'error' ? 'Some error message' : 'Some success message';
     const attr = `state="${this.state}" message="${message}"`;
-    return `<p-fieldset-wrapper label="Some legend label" ${attr} class="state-markup">
+    return `<p-fieldset label="Some legend label" ${attr} class="state-markup">
   <p-text-field-wrapper label="Some label" state="${this.state}">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
@@ -112,19 +107,19 @@ export default class Code extends Vue {
   <p-checkbox-wrapper label="Some label" hide-label="false" state="${this.state}">
     <input type="checkbox" name="some-name" />
   </p-checkbox-wrapper>
-</p-fieldset-wrapper>`;
+</p-fieldset>`;
   }
 
   slottedMessage = 'error';
   slottedMessages = FORM_STATES;
   get slottedMessageMarkup() {
     const content = this.slottedMessage === 'error' ? 'Some error message' : 'Some success message';
-    return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMessage}>
+    return `<p-fieldset label="Some legend label" state=${this.slottedMessage}>
   <p-text-field-wrapper label="Some label" state=${this.slottedMessage}>
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
   <span slot="message">${content}</span>
-</p-fieldset-wrapper>`;
+</p-fieldset>`;
   }
 }
 </script>

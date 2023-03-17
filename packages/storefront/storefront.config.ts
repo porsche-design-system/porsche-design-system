@@ -185,6 +185,14 @@ export const config: StorefrontConfig = {
     },
     Fieldset: {
       // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/fieldset/fieldset.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/fieldset/fieldset.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/fieldset/fieldset.props.md')],
+    },
+    'Fieldset Wrapper': {
+      // @ts-ignore
       Examples: [() => import('@/../../components/src/components/fieldset-wrapper/fieldset-wrapper.examples.md')],
       // @ts-ignore
       Usage: [() => import('@/../../components/src/components/fieldset-wrapper/fieldset-wrapper.usage.md')],

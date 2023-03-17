@@ -2329,6 +2329,46 @@ hr {
 </p-divider>
 `;
 
+exports[`should render dsr component for PFieldset 1`] = `
+<p-fieldset
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+  >
+    <style>
+      :host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+    </style>
+    <fieldset>
+      <slot />
+    </fieldset>
+  </template>
+  Some child
+</p-fieldset>
+`;
+
 exports[`should render dsr component for PFieldsetWrapper 1`] = `
 <p-fieldset-wrapper
   class="ssr"
