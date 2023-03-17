@@ -11,6 +11,8 @@ import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
+import { ButtonTileAlign, ButtonTileAspectRatio, ButtonTileSize, ButtonTileWeight, LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./utils";
+import { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from "./components/button-tile/button-tile-utils";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -29,8 +31,7 @@ import { InlineNotificationActionIcon, InlineNotificationState } from "./compone
 import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+import { LinkTileAriaAttribute, LinkTileTarget } from "./components/link-tile/link-tile-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -209,6 +210,64 @@ export namespace Components {
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: ButtonPureWeight;
+    }
+    interface PButtonTile {
+        /**
+          * Alignment of button and description.
+         */
+        "align"?: ButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
+        /**
+          * Aspect ratio of the button-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Displays the button-tile as compact version with description and button icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description": string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: ButtonTileIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label": string;
+        /**
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonTileType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     interface PCarousel {
         /**
@@ -708,7 +767,7 @@ export namespace Components {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -747,36 +806,6 @@ export namespace Components {
           * Font weight of the description.
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
-    }
-    interface PLinkTileModelSignature {
-        /**
-          * Aspect ratio of the link-tile-model-signature.
-         */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
-        /**
-          * Description text.
-         */
-        "description"?: string;
-        /**
-          * Heading text.
-         */
-        "heading": string;
-        /**
-          * Sets a custom headline tag which wraps the heading to enhance semantics.
-         */
-        "headingTag"?: LinkTileModelSignatureHeadingTag;
-        /**
-          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
-         */
-        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
-        /**
-          * Adapts the model of the component.
-         */
-        "model"?: LinkTileModelSignatureModel;
-        /**
-          * Adapts the font weight of the heading.
-         */
-        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     interface PMarque {
         /**
@@ -1479,6 +1508,12 @@ declare global {
         prototype: HTMLPButtonPureElement;
         new (): HTMLPButtonPureElement;
     };
+    interface HTMLPButtonTileElement extends Components.PButtonTile, HTMLStencilElement {
+    }
+    var HTMLPButtonTileElement: {
+        prototype: HTMLPButtonTileElement;
+        new (): HTMLPButtonTileElement;
+    };
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
     }
     var HTMLPCarouselElement: {
@@ -1586,12 +1621,6 @@ declare global {
     var HTMLPLinkTileElement: {
         prototype: HTMLPLinkTileElement;
         new (): HTMLPLinkTileElement;
-    };
-    interface HTMLPLinkTileModelSignatureElement extends Components.PLinkTileModelSignature, HTMLStencilElement {
-    }
-    var HTMLPLinkTileModelSignatureElement: {
-        prototype: HTMLPLinkTileModelSignatureElement;
-        new (): HTMLPLinkTileModelSignatureElement;
     };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
@@ -1803,6 +1832,7 @@ declare global {
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
+        "p-button-tile": HTMLPButtonTileElement;
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
@@ -1821,7 +1851,6 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
-        "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -2021,6 +2050,64 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "weight"?: ButtonPureWeight;
+    }
+    interface PButtonTile {
+        /**
+          * Alignment of button and description.
+         */
+        "align"?: ButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
+        /**
+          * Aspect ratio of the button-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Displays the button-tile as compact version with description and button icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: ButtonTileIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label"?: string;
+        /**
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonTileType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     interface PCarousel {
         /**
@@ -2536,7 +2623,7 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -2575,36 +2662,6 @@ declare namespace LocalJSX {
           * Font weight of the description.
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
-    }
-    interface PLinkTileModelSignature {
-        /**
-          * Aspect ratio of the link-tile-model-signature.
-         */
-        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
-        /**
-          * Description text.
-         */
-        "description"?: string;
-        /**
-          * Heading text.
-         */
-        "heading"?: string;
-        /**
-          * Sets a custom headline tag which wraps the heading to enhance semantics.
-         */
-        "headingTag"?: LinkTileModelSignatureHeadingTag;
-        /**
-          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
-         */
-        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
-        /**
-          * Adapts the model of the component.
-         */
-        "model"?: LinkTileModelSignatureModel;
-        /**
-          * Adapts the font weight of the heading.
-         */
-        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     interface PMarque {
         /**
@@ -3296,6 +3353,7 @@ declare namespace LocalJSX {
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
+        "p-button-tile": PButtonTile;
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
@@ -3314,7 +3372,6 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
-        "p-link-tile-model-signature": PLinkTileModelSignature;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -3360,6 +3417,7 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
+            "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
@@ -3378,7 +3436,6 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
-            "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;

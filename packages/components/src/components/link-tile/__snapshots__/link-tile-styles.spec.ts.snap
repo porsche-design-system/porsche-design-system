@@ -8,15 +8,16 @@ exports[`getComponentCss() should return correct css for aspectRatio: { base: '1
   l: 'inherit',
   xl: 'default'
 }, weight: {
-  base: 'semibold',
+  base: 'semi-bold',
   xs: 'regular',
-  s: 'semibold',
+  s: 'semi-bold',
   m: 'regular',
-  l: 'semibold',
+  l: 'semi-bold',
   xl: 'regular'
 }, align: top, isCompact: { base: true, xs: false, s: true, m: false, l: true, xl: false } and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -89,21 +90,6 @@ p {
   transform: translate3d(0,0,0);
   padding-top: 100%;
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
-  display: grid;
-  top: 0;
-  padding: clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px);
-  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  align-items: center;
-  grid-template-columns: auto 24px;
-  grid-template-rows: auto;
-}
 .image-container {
   position: absolute;
   overflow: hidden;
@@ -113,6 +99,28 @@ p {
   right: 0;
   bottom: 0;
 }
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  border-radius: 8px;
+  padding: clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px);
+  gap: 16px;
+  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  align-items: center;
+  grid-template-columns: auto 24px;
+  grid-template-rows: auto;
+}
+.link-or-button-pure {
+  display: inline-block;
+}
+.link-or-button {
+  min-height: 54px;
+  display: none;
+}
 .link-overlay {
   position: fixed;
   top: 0;
@@ -120,13 +128,6 @@ p {
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
-  display: none;
-}
-.link-pure {
-  display: inline-block;
 }
 @media(min-width:480px) {
   .root {
@@ -137,11 +138,11 @@ p {
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
-  .link {
-    display: inline-block;
-  }
-  .link-pure {
+  .link-or-button-pure {
     display: none;
+  }
+  .link-or-button {
+    display: inline-block;
   }
 }
 
@@ -156,11 +157,11 @@ p {
     grid-template-rows: auto;
     top: 0;
   }
-  .link {
-    display: none;
-  }
-  .link-pure {
+  .link-or-button-pure {
     display: inline-block;
+  }
+  .link-or-button {
+    display: none;
   }
 }
 
@@ -173,11 +174,11 @@ p {
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
-  .link {
-    display: inline-block;
-  }
-  .link-pure {
+  .link-or-button-pure {
     display: none;
+  }
+  .link-or-button {
+    display: inline-block;
   }
 }
 
@@ -192,11 +193,11 @@ p {
     grid-template-rows: auto;
     top: 0;
   }
-  .link {
-    display: none;
-  }
-  .link-pure {
+  .link-or-button-pure {
     display: inline-block;
+  }
+  .link-or-button {
+    display: none;
   }
 }
 
@@ -209,11 +210,11 @@ p {
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
-  .link {
-    display: inline-block;
-  }
-  .link-pure {
+  .link-or-button-pure {
     display: none;
+  }
+  .link-or-button {
+    display: inline-block;
   }
 }
 
@@ -234,6 +235,7 @@ p {
 exports[`getComponentCss() should return correct css for aspectRatio: 1:1, size: inherit, weight: regular, align: bottom, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -271,20 +273,6 @@ p {
   transform: translate3d(0,0,0);
   padding-top: 100%;
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
-  display: grid;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
-}
 .image-container {
   position: absolute;
   overflow: hidden;
@@ -294,6 +282,27 @@ p {
   right: 0;
   bottom: 0;
 }
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  border-radius: 8px;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  gap: 16px;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-or-button-pure {
+  display: none;
+}
+.link-or-button {
+  min-height: 54px;
+  display: inline-block;
+}
 .link-overlay {
   position: fixed;
   top: 0;
@@ -301,13 +310,6 @@ p {
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
-  display: inline-block;
-}
-.link-pure {
-  display: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -323,9 +325,10 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size: default, weight: semibold, align: top, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size: default, weight: semi-bold, align: top, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -363,20 +366,6 @@ p {
   transform: translate3d(0,0,0);
   padding-top: 133.33%;
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
-  display: grid;
-  top: 0;
-  padding: clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
-}
 .image-container {
   position: absolute;
   overflow: hidden;
@@ -386,6 +375,27 @@ p {
   right: 0;
   bottom: 0;
 }
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  border-radius: 8px;
+  padding: clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px);
+  gap: 16px;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-or-button-pure {
+  display: none;
+}
+.link-or-button {
+  min-height: 54px;
+  display: inline-block;
+}
 .link-overlay {
   position: fixed;
   top: 0;
@@ -393,13 +403,6 @@ p {
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
-  display: inline-block;
-}
-.link-pure {
-  display: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -415,9 +418,10 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size: default, weight: semibold, align: bottom, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 4:3, size: default, weight: semi-bold, align: bottom, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -455,20 +459,6 @@ p {
   transform: translate3d(0,0,0);
   padding-top: 75%;
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
-  display: grid;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
-}
 .image-container {
   position: absolute;
   overflow: hidden;
@@ -478,6 +468,27 @@ p {
   right: 0;
   bottom: 0;
 }
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  border-radius: 8px;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  gap: 16px;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-or-button-pure {
+  display: none;
+}
+.link-or-button {
+  min-height: 54px;
+  display: inline-block;
+}
 .link-overlay {
   position: fixed;
   top: 0;
@@ -485,13 +496,6 @@ p {
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
-  display: inline-block;
-}
-.link-pure {
-  display: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -507,9 +511,10 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size: default, weight: semibold, align: bottom, isCompact: false and hasGradient: false 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: 9:16, size: default, weight: semi-bold, align: bottom, isCompact: false and hasGradient: false 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -547,19 +552,6 @@ p {
   transform: translate3d(0,0,0);
   padding-top: 177.75%;
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
-  display: grid;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
-}
 .image-container {
   position: absolute;
   overflow: hidden;
@@ -569,6 +561,26 @@ p {
   right: 0;
   bottom: 0;
 }
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  border-radius: 8px;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  gap: 16px;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-or-button-pure {
+  display: none;
+}
+.link-or-button {
+  min-height: 54px;
+  display: inline-block;
+}
 .link-overlay {
   position: fixed;
   top: 0;
@@ -576,13 +588,6 @@ p {
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
-  display: inline-block;
-}
-.link-pure {
-  display: none;
 }
 @media (forced-colors: active) {
   .content {
@@ -601,6 +606,7 @@ p {
 exports[`getComponentCss() should return correct css for aspectRatio: 16:9, size: inherit, weight: regular, align: top, isCompact: true and hasGradient: false 1`] = `
 ":host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -638,20 +644,6 @@ p {
   transform: translate3d(0,0,0);
   padding-top: 56.25%;
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
-  display: grid;
-  top: 0;
-  padding: clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px);
-  align-items: center;
-  grid-template-columns: auto 24px;
-  grid-template-rows: auto;
-}
 .image-container {
   position: absolute;
   overflow: hidden;
@@ -661,6 +653,27 @@ p {
   right: 0;
   bottom: 0;
 }
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  border-radius: 8px;
+  padding: clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px);
+  gap: 16px;
+  align-items: center;
+  grid-template-columns: auto 24px;
+  grid-template-rows: auto;
+}
+.link-or-button-pure {
+  display: inline-block;
+}
+.link-or-button {
+  min-height: 54px;
+  display: none;
+}
 .link-overlay {
   position: fixed;
   top: 0;
@@ -668,13 +681,6 @@ p {
   right: 0;
   bottom: 0;
   outline: 0;
-}
-.link {
-  min-height: 54px;
-  display: none;
-}
-.link-pure {
-  display: inline-block;
 }
 @media (forced-colors: active) {
   .content {

@@ -29,6 +29,7 @@ const generateDSRComponents = (): void => {
 
       let newFileContent = fileContent
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
+        .replace(/ implements [A-Za-z]+/g, '')
         .replace(/@Element\(\) /g, '')
         .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
         .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
@@ -214,7 +215,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
-        .replace(/(const (?:iconProps|btnProps|linkProps)) =/, '$1: any =') // workaround typing issue
+        .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
         .replace(/Exclude<any, any>/g, 'any'); // workaround typings of deprecation maps
 

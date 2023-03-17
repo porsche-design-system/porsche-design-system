@@ -33,9 +33,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       p-link-tile,
+      p-button-tile,
       my-prefix-p-link-tile,
-      p-link-tile-model-signature,
-      my-prefix-p-link-tile-model-signature {
+      my-prefix-p-button-tile {
         max-width: 400px;
       }
     
@@ -299,17 +299,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-link-tile>
         </div>
 
-        <div class="playground light" title="should render default link-tile-model-signature">
-          <p-link-tile-model-signature [heading]="'Some Heading'" [description]="'Default'">
+        <div class="playground light" title="should render default button-tile">
+          <p-button-tile [label]="'Some Label'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
               [width]="50"
               [height]="50"
               [alt]="'Beach'"
             />
-            <p-link slot="primary" [href]="'#'">Some label</p-link>
-            <p-link slot="secondary" [href]="'#'">Some label</p-link>
-          </p-link-tile-model-signature>
+          </p-button-tile>
         </div>
 
         <div class="playground light" title="should render default carousel">
@@ -576,17 +574,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </my-prefix-p-link-tile>
         </div>
 
-        <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
-          <my-prefix-p-link-tile-model-signature p-link-tile-model-signature [heading]="'Some Heading'" [description]="'Default'">
+        <div class="playground light" title="should render default button-tile with custom prefix">
+          <my-prefix-p-button-tile p-button-tile [label]="'Some Label'" [description]="'Default'">
             <img
               [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
               [width]="50"
               [height]="50"
               [alt]="'Beach'"
             />
-            <my-prefix-p-link p-link slot="primary" [href]="'#'">Some label</my-prefix-p-link>
-            <my-prefix-p-link p-link slot="secondary" [href]="'#'">Some label</my-prefix-p-link>
-          </my-prefix-p-link-tile-model-signature>
+          </my-prefix-p-button-tile>
         </div>
 
         <div class="playground light" title="should render default carousel with custom prefix">

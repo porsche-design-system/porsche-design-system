@@ -35,6 +35,9 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-button': `<p-button>Some label</p-button>`,
   'p-button-group': `<p-button-group></p-button-group>`,
   'p-button-pure': `<p-button-pure>Some label</p-button-pure>`,
+  'p-button-tile': `<p-button-tile label="Some label" description="Some description" aspectRatio="4:3">
+    <img src="">
+   </p-button-tile>`,
   'p-carousel': `<p-carousel heading="Some heading">
     <div>1</div>
     <div>2</div>
