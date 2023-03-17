@@ -137,7 +137,7 @@
         // Horizontal Rules
         hr {
           margin: {
-            top: 3.5rem;
+            top: $pds-spacing-fluid-large;
             bottom: $pds-spacing-static-medium;
           }
           border: 0;
@@ -164,15 +164,15 @@
 
         // Blockquote
         blockquote {
-          padding-left: 1.5rem;
-          border-left: 0.3125rem solid $pds-theme-light-contrast-low;
+          padding-left: $pds-spacing-static-medium;
+          border-left: 5px solid $pds-theme-light-contrast-low;
         }
 
         // Lists
         ul,
         ol {
           @include pds-text-small;
-          margin-top: 1.5rem;
+          margin-top: $pds-spacing-fluid-medium;
           padding-left: $pds-spacing-static-large;
 
           ul,
@@ -201,7 +201,7 @@
         }
 
         :not(pre) > code {
-          padding: 0.125rem $pds-spacing-static-small;
+          padding: 2px $pds-spacing-static-small;
           background-color: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
           border-radius: 3px;
           color: $pds-theme-light-primary;
@@ -210,7 +210,7 @@
         pre {
           margin-top: $pds-spacing-static-small;
           display: block;
-          padding: $pds-spacing-static-small 1.5rem;
+          padding: $pds-spacing-static-small $pds-spacing-static-medium;
           word-break: break-all;
           word-wrap: break-word;
           background-color: $pds-theme-light-background-surface;
@@ -221,7 +221,7 @@
 
         // Tables
         table {
-          margin-top: 1.5rem;
+          margin-top: $pds-spacing-fluid-medium;
           border-collapse: collapse;
 
           code ~ code::before {
@@ -255,25 +255,15 @@
 
           th ~ th,
           td ~ td {
-            padding-left: 1.5rem;
+            padding-left: $pds-spacing-static-medium;
           }
         }
 
         // Links
-        a:not(.p-button):not(.p-link) {
-          text-decoration: underline;
-          color: $pds-theme-light-primary;
-          outline: transparent solid 1px;
-          outline-offset: 1px;
-          transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-          &:hover {
-            color: $pds-theme-light-state-hover;
-          }
-
-          &:focus {
-            outline-color: $pds-theme-light-state-focus;
-          }
+        a {
+          color: inherit;
+          @include pds-hover;
+          @include pds-focus('none');
         }
 
         // Media

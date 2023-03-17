@@ -68,6 +68,7 @@ const normalizeStyles: Styles = {
 const slottedStyles: Styles = {
   '@global': {
     '%%tagNamesWithSlottedAnchor%%': {
+      // it's important to reset following styles again for components supporting ::slotted(a) like Link, Link-Pure, Tag and Tabs-Bar,…
       '& a': addImportantToEachRule({
         textDecoration: 'underline',
         color: 'currentcolor',
