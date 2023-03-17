@@ -105,7 +105,6 @@ export const getComponentCss = (
     },
     ...(sortable && {
       icon: {
-        marginLeft: spacingStaticXSmall,
         transition: getTransition('opacity'),
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
