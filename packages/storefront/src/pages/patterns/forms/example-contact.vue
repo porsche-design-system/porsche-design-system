@@ -12,7 +12,7 @@
     <p-grid class="form-section-spacing">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate @submit.prevent="onSubmit">
-          <p-fieldset-wrapper label="Your message">
+          <p-fieldset label="Your message">
             <p-flex class="form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
                 <p-select-wrapper
@@ -64,8 +64,8 @@
                 required
               ></textarea>
             </p-textarea-wrapper>
-          </p-fieldset-wrapper>
-          <p-fieldset-wrapper label="Personal data" class="form-section-spacing">
+          </p-fieldset>
+          <p-fieldset label="Personal data" class="form-section-spacing">
             <p-flex direction="{ base: 'column', m: 'row' }" class="form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-grid-item">
                 <p-select-wrapper
@@ -165,8 +165,8 @@
                 v-on:blur="onFieldBlur"
               />
             </p-text-field-wrapper>
-          </p-fieldset-wrapper>
-          <p-fieldset-wrapper label="Your Porsche" class="form-section-spacing">
+          </p-fieldset>
+          <p-fieldset label="Your Porsche" class="form-section-spacing">
             <p-text-field-wrapper
               label="VIN (Vehicle Identification Number)"
               v-bind:message="bag.errors.vin"
@@ -230,8 +230,8 @@
                 required
               />
             </p-text-field-wrapper>
-          </p-fieldset-wrapper>
-          <p-fieldset-wrapper label="Your Porsche dealer" class="form-section-spacing">
+          </p-fieldset>
+          <p-fieldset label="Your Porsche dealer" class="form-section-spacing">
             <p-select-wrapper
               label="Porsche dealer"
               v-bind:message="bag.errors.dealer"
@@ -250,7 +250,7 @@
                 <option value="3">Option 3</option>
               </select>
             </p-select-wrapper>
-          </p-fieldset-wrapper>
+          </p-fieldset>
           <p-flex class="form-section-spacing form-grid-item-container">
             <p-flex-item class="form-grid-item">
               <p-checkbox-wrapper v-bind:message="bag.errors.privacy" v-bind:state="getState('privacy')">
