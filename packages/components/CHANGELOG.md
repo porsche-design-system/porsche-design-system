@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Link Tile Model Signature`
+
 ### [3.0.0-alpha.3] - 2023-03-17
 
 #### 🤖 Property deprecations 🤖
@@ -244,7 +248,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Link Tile Model Signature`
 - `Text`, `Icon`, `Button Pure` and `Link Pure` support value `xx-small` for prop `size`
 - `Display` supports value `small` for prop `size`
 - Partials: `getInitialStyles` supports multi prefix, e.g.

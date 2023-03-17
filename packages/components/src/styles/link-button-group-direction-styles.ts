@@ -3,6 +3,7 @@ import type { GetJssStyleFunction } from '../utils';
 
 export const LINK_BUTTON_GROUP_DIRECTIONS = ['row', 'column'] as const;
 export type LinkButtonGroupDirection = (typeof LINK_BUTTON_GROUP_DIRECTIONS)[number];
+
 export const getLinkButtonGroupDirectionStyles: GetJssStyleFunction = (
   direction: LinkButtonGroupDirection
 ): JssStyle => {
