@@ -198,7 +198,11 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -273,7 +277,11 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -348,7 +356,11 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -425,7 +437,11 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -502,7 +518,11 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -579,7 +599,11 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -656,7 +680,11 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;

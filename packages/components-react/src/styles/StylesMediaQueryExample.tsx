@@ -152,49 +152,49 @@ const MediaQueryMinMax = styled.p({
 const BreakpointBase = styled.p({
   ...getTypographyStyle,
   '&::after': {
-    content: `" ${breakpointBase}"`,
+    content: `" ${breakpointBase}px"`,
   },
 });
 
 const BreakpointXS = styled.p({
   ...getTypographyStyle,
   '&::after': {
-    content: `" ${breakpointXS}"`,
+    content: `" ${breakpointXS}px"`,
   },
 });
 
 const BreakpointS = styled.p({
   ...getTypographyStyle,
   '&::after': {
-    content: `" ${breakpointS}"`,
+    content: `" ${breakpointS}px"`,
   },
 });
 
 const BreakpointM = styled.p({
   ...getTypographyStyle,
   '&::after': {
-    content: `" ${breakpointM}"`,
+    content: `" ${breakpointM}px"`,
   },
 });
 
 const BreakpointL = styled.p({
   ...getTypographyStyle,
   '&::after': {
-    content: `" ${breakpointL}"`,
+    content: `" ${breakpointL}px"`,
   },
 });
 
 const BreakpointXL = styled.p({
   ...getTypographyStyle,
   '&::after': {
-    content: `" ${breakpointXL}"`,
+    content: `" ${breakpointXL}px"`,
   },
 });
 
 const BreakpointXXL = styled.p({
   ...getTypographyStyle,
   '&::after': {
-    content: `" ${breakpointXXL}"`,
+    content: `" ${breakpointXXL}px"`,
   },
 });
 

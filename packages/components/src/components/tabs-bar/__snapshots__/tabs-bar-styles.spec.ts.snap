@@ -10,10 +10,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -25,15 +28,12 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -98,10 +98,13 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -113,15 +116,12 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -186,10 +186,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -201,15 +204,12 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -274,10 +274,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -289,15 +292,12 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -362,10 +362,13 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -377,15 +380,12 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -450,10 +450,13 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -465,15 +468,12 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;

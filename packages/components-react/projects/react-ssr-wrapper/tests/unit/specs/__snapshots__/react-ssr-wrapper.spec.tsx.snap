@@ -2704,7 +2704,11 @@ exports[`should render dsr component for PLink 1`] = `
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -2786,7 +2790,11 @@ exports[`should render dsr component for PLinkPure 1`] = `
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -2915,7 +2923,11 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -3149,7 +3161,11 @@ p {
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -5636,10 +5652,13 @@ exports[`should render dsr component for PTabs 1`] = `
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -5651,15 +5670,12 @@ exports[`should render dsr component for PTabs 1`] = `
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -5970,10 +5986,13 @@ exports[`should render dsr component for PTabsBar 1`] = `
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -5985,15 +6004,12 @@ exports[`should render dsr component for PTabsBar 1`] = `
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -6336,17 +6352,18 @@ span {
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: 0 !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
-  outline: 0 !important;
   color: inherit !important;
   appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
   border: 0 !important;
   text-align: left !important;
 }
