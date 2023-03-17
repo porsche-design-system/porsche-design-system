@@ -17,6 +17,7 @@ import { BannerPage } from './Banner';
 import { ButtonPage } from './Button';
 import { ButtonGroupPage } from './ButtonGroup';
 import { ButtonPurePage } from './ButtonPure';
+import { ButtonTilePage } from './ButtonTile';
 import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { ContentWrapperPage } from './ContentWrapper';
@@ -89,6 +90,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Button Pure',
     path: '/button-pure',
     element: <ButtonPurePage />,
+  },
+  {
+    name: 'Button Tile',
+    path: '/button-tile',
+    element: <ButtonTilePage />,
   },
   {
     name: 'Carousel',

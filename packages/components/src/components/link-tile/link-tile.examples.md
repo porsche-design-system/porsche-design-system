@@ -1,7 +1,8 @@
 # Link Tile
 
 The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further
-information within one container.
+information within one container. In case you want the user to execute an action, you should select the
+[Button Tile](components/button-tile) component instead.
 
 **Note:** The component does not take care of processing and aligning the image.
 
@@ -90,7 +91,7 @@ It is possible to align the description on top of the component.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { LINK_TILE_ALIGNS, LINK_TILE_ASPECT_RATIOS, LINK_TILE_SIZES, LINK_TILE_WEIGHTS, LINK_TILE_WEIGHTS_DEPRECATED } from './link-tile-utils'; 
+import { LINK_BUTTON_TILE_ALIGNS, LINK_BUTTON_TILE_ASPECT_RATIOS, LINK_BUTTON_TILE_SIZES, LINK_TILE_WEIGHTS, TILE_WEIGHTS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -116,14 +117,14 @@ export default class Code extends Vue {
 </p-link-tile>`;
 
   aspectRatio = '4:3';
-  aspectRatios = [...LINK_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  aspectRatios = [...LINK_BUTTON_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`}
 
   size = 'default';
-  sizes = [...LINK_TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
+  sizes = [...LINK_BUTTON_TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
   get sizeMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
@@ -134,7 +135,7 @@ export default class Code extends Vue {
   }
 
   weight = 'semi-bold';
-  weights = [...LINK_TILE_WEIGHTS.map(item => LINK_TILE_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'semi-bold', m: 'regular' }"];
+  weights = [...LINK_TILE_WEIGHTS.map(item => item === 'semibold' ? item + ' (deprecated)' : item), "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" weight="${this.weight}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
@@ -178,7 +179,7 @@ export default class Code extends Vue {
 </p-link-tile>`};
 
   align = 'top';
-  aligns = LINK_TILE_ALIGNS;
+  aligns = LINK_BUTTON_TILE_ALIGNS;
   get alignMarkup() {
     return `<p-link-tile
   href="https://www.porsche.com"

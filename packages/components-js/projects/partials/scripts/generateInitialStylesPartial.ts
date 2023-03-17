@@ -36,7 +36,7 @@ const tagNamesWithSlottedAnchor = joinArrayElementsToString([
 ] as TagName[]);
 const tagNamesWithSlottedInputIndicator = joinArrayElementsToString(['p-text-field-wrapper'] as TagName[]);
 const tagNamesWithSlottedImage = joinArrayElementsToString(['p-table'] as TagName[]);
-const tagNamesWithSlottedPictureImage = joinArrayElementsToString(['p-link-tile'] as TagName[]);
+const tagNamesWithSlottedPictureImage = joinArrayElementsToString(['p-button-tile', 'p-link-tile'] as TagName[]);
 
 const normalizeStyles: Styles = {
   '@global': {
