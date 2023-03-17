@@ -4,13 +4,6 @@ import type { Theme } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-table',
-  styles: [
-    `
-      .dark span.table-caption {
-        color: white;
-      }
-    `,
-  ],
   template: `
     <div
       [class]="'playground ' + theme"
@@ -61,7 +54,7 @@ import type { Theme } from '@porsche-design-system/components-angular';
       *ngFor="let theme of themes"
     >
       <p-table [theme]="theme">
-        <span slot="caption" class="table-caption">Some unstyled caption <a href="#">with a link</a></span>
+        <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell>Column 1</p-table-head-cell>
