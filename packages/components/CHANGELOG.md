@@ -281,6 +281,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
     `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
 - Prop `scrollbar` for `Scroller`
+- Prop `theme` for `Table`
 
 #### Changed
 
@@ -346,7 +347,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Model Signature`
 - Props `align-header` and `width` for `Carousel`
 - Vue: plugin functions `createPorscheDesignSystem` and `usePorscheDesignSystemPlugin`
-- Prop `theme` for `Table`
 
 #### Fixed
 
