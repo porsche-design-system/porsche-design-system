@@ -52,7 +52,7 @@ const Paragraph = styled.p({
 const NativeAnchor = styled.a({
   ...textSmallStyle,
   ...getHoverStyle(),
-  ...getFocusStyle(),
+  ...getFocusStyle({ offset: 'none' }),
   color: 'inherit',
 });
 

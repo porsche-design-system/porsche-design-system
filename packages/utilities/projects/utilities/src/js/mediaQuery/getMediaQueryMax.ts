@@ -9,5 +9,5 @@ export function getMediaQueryMax(max: BKey<'l'>): '@media(max-width:1299px)';
 export function getMediaQueryMax(max: BKey<'xl'>): '@media(max-width:1759px)';
 export function getMediaQueryMax(max: BKey<'xxl'>): '@media(max-width:1919px)';
 export function getMediaQueryMax(max: Exclude<Breakpoint, 'base'>): string {
-  return `@media(max-width:${(breakpoint[max].slice(0, -2) as unknown as number) - 1}px)`;
+  return `@media(max-width:${breakpoint[max] - 1}px)`;
 }
