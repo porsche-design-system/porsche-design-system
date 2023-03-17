@@ -98,6 +98,8 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Grid: [() => import('@/pages/styles/grid.md')],
     // @ts-ignore
+    Hover: [() => import('@/pages/styles/hover.md')],
+    // @ts-ignore
     'Media Query': [() => import('@/pages/styles/media-query.md')],
     // @ts-ignore
     Spacing: [() => import('@/pages/styles/spacing.md')],
@@ -140,6 +142,14 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/button-pure/button-pure.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/button-pure/button-pure.props.md')],
+    },
+    'Button Tile': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/button-tile/button-tile.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/button-tile/button-tile.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/button-tile/button-tile.props.md')],
     },
     Carousel: {
       // @ts-ignore

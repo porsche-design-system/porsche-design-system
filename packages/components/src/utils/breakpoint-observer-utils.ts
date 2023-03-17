@@ -5,7 +5,7 @@ import type { BreakpointCustomizable, BreakpointKey } from './breakpoint-customi
 import { BREAKPOINTS } from './breakpoint-customizable';
 
 export const flippedBreakpoint = Object.entries(breakpoint).reduce(
-  (result, [key, val]) => ({ ...result, [val]: key }),
+  (result, [key, val]) => ({ ...result, [`${val}px`]: key }),
   {} as Record<string, Breakpoint>
 );
 
@@ -15,8 +15,7 @@ export const getCurrentBreakpointKey = (): BreakpointKey => {
     .map((item) => item.media)
     .pop();
 
-  const matchingBreakpoint = flippedBreakpoint[/\d+px/.exec(lastMatchingMediaQuery)[0]];
-  return matchingBreakpoint === 'xxs' ? 'base' : (matchingBreakpoint as BreakpointKey);
+  return flippedBreakpoint[/\d+px/.exec(lastMatchingMediaQuery)[0]] as BreakpointKey;
 };
 
 export const getCurrentMatchingBreakpointValue = <T>(data: BreakpointCustomizable<T>): T => {

@@ -24,69 +24,62 @@ const getWrapperStyle = {
 const WrapperLight = styled.div({
   ...getWrapperStyle,
   background: themeLightBackgroundBase,
+  color: themeLightPrimary,
 });
 
 const WrapperDark = styled.div({
   ...getWrapperStyle,
   background: themeDarkBackgroundBase,
+  color: themeDarkPrimary,
 });
 
 // Typography
-const headingStyle = {
+const Heading = styled.h3({
   ...headingMediumStyle,
   textAlign: 'center',
   width: '100%',
   margin: 0,
-} as const;
-
-const HeadingLight = styled.h3({
-  ...headingStyle,
-  color: themeLightPrimary,
 });
 
-const HeadingDark = styled.h3({
-  ...headingStyle,
-  color: themeDarkPrimary,
-});
-
-// Focus Light
-const NativeButtonLight = styled.button({
+const Paragraph = styled.p({
   ...textSmallStyle,
-  ...getFocusStyle({ inset: 'medium' }),
-  color: themeLightPrimary,
+  margin: 0,
+  maxWidth: '15rem',
 });
 
-const NativeAnchorLight = styled.a({
+// Button
+const NativeButton = styled.button({
   ...textSmallStyle,
   ...getFocusStyle(),
-  color: themeLightPrimary,
 });
 
-// Focus Dark
-const NativeButtonDark = styled.button({
-  ...textSmallStyle,
-  ...getFocusStyle({ inset: 'medium' }),
-  color: themeLightPrimary,
-});
-
-const NativeAnchorDark = styled.a({
+// Anchor
+const NativeAnchor = styled.a({
   ...textSmallStyle,
   ...getFocusStyle(),
-  color: themeDarkPrimary,
+  color: 'inherit',
 });
 
 export const StylesFocusExample = (): JSX.Element => {
   return (
     <>
       <WrapperLight>
-        <HeadingLight>Focus Light (only visible by keyboard navigation)</HeadingLight>
-        <NativeButtonLight>Some Button</NativeButtonLight>
-        <NativeAnchorLight href="#">Some Anchor</NativeAnchorLight>
+        <Heading>Focus Light (only visible by keyboard navigation)</Heading>
+        <NativeButton>Some Button</NativeButton>
+        <NativeAnchor href="#">Some Anchor</NativeAnchor>
+        <Paragraph>
+          Lorem Ipsum <NativeAnchor href="#">is simply dummy text of the printing</NativeAnchor> and typesetting
+          industry.
+        </Paragraph>
       </WrapperLight>
       <WrapperDark>
-        <HeadingDark>Focus Dark (only visible by keyboard navigation)</HeadingDark>
-        <NativeButtonDark>Some Button</NativeButtonDark>
-        <NativeAnchorDark href="#">Some Anchor</NativeAnchorDark>
+        <Heading>Focus Dark (only visible by keyboard navigation)</Heading>
+        <NativeButton>Some Button</NativeButton>
+        <NativeAnchor href="#">Some Anchor</NativeAnchor>
+        <Paragraph>
+          Lorem Ipsum <NativeAnchor href="#">is simply dummy text of the printing</NativeAnchor> and typesetting
+          industry.
+        </Paragraph>
       </WrapperDark>
     </>
   );

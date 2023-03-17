@@ -135,37 +135,37 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       // Breakpoint
       .breakpoint-base {
         &::after {
-          content: ' #{$pds-breakpoint-base}';
+          content: ' #{$pds-breakpoint-base}px';
         }
       }
       .breakpoint-xs {
         &::after {
-          content: ' #{$pds-breakpoint-xs}';
+          content: ' #{$pds-breakpoint-xs}px';
         }
       }
       .breakpoint-s {
         &::after {
-          content: ' #{$pds-breakpoint-s}';
+          content: ' #{$pds-breakpoint-s}px';
         }
       }
       .breakpoint-m {
         &::after {
-          content: ' #{$pds-breakpoint-m}';
+          content: ' #{$pds-breakpoint-m}px';
         }
       }
       .breakpoint-l {
         &::after {
-          content: ' #{$pds-breakpoint-l}';
+          content: ' #{$pds-breakpoint-l}px';
         }
       }
       .breakpoint-xl {
         &::after {
-          content: ' #{$pds-breakpoint-xl}';
+          content: ' #{$pds-breakpoint-xl}px';
         }
       }
       .breakpoint-xxl {
         &::after {
-          content: ' #{$pds-breakpoint-xxl}';
+          content: ' #{$pds-breakpoint-xxl}px';
         }
       }
     `,

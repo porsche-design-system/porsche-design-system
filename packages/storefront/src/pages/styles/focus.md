@@ -4,6 +4,13 @@
 
 ## Example
 
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+ Safari < 16.4 isn't able to visualize a rounded focus outline, instead it will be edgy. 
+We implemented the focus style with a standard CSS outline anyway because of too many disadvantages caused by alternative integrations, e.g. with pseudo-elements. 
+<br>
+In addition, the way the focus style is integrated it will only be visible with keyboard navigation, not with mouse interaction.
+</p-inline-notification>
+
 <Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesFocus />
 </Playground>
@@ -21,7 +28,9 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
-- `getFocusStyle(…)`
+- `getFocusStyle({offset: 'small'|'none'|string, borderRadius: 'small'|'medium'|string})`
+
+---
 
 #### SCSS
 
@@ -31,7 +40,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
  At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
 </p-inline-notification>
 
-- `@mixin pds-focus(…)`
+- `@mixin pds-focus($offset: 'small'|'none'|any, $border-radius: 'small'|'medium'|any)`
 
 <script lang="ts">
 import Vue from 'vue';

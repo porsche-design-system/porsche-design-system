@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import Image from 'next/image';
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PButtonTile, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
@@ -33,7 +33,9 @@ const OverviewPage: NextPage = (): JSX.Element => {
     }
 
     p-link-tile,
-    my-prefix-p-link-tile {
+    p-button-tile,
+    my-prefix-p-link-tile,
+    my-prefix-p-button-tile {
       max-width: 400px;
     }
 
@@ -300,6 +302,17 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </PLinkTile>
           </div>
 
+          <div className="playground light" title="should render default button-tile">
+            <PButtonTile label="Some Label" description="Default">
+              <Image
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                width={50}
+                height={50}
+                alt="Beach"
+              />
+            </PButtonTile>
+          </div>
+
           <div className="playground light" title="should render default carousel">
             <PCarousel heading="Heading">
               <div>Slide 1</div>
@@ -563,6 +576,17 @@ const OverviewPage: NextPage = (): JSX.Element => {
                   alt="Beach"
                 />
               </PLinkTile>
+            </div>
+
+            <div className="playground light" title="should render default button-tile with custom prefix">
+              <PButtonTile label="Some Label" description="Default">
+                <Image
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                  width={50}
+                  height={50}
+                  alt="Beach"
+                />
+              </PButtonTile>
             </div>
 
             <div className="playground light" title="should render default carousel with custom prefix">

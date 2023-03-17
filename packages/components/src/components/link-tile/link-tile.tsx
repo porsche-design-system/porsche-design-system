@@ -1,3 +1,13 @@
+import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes } from '../../types';
+import type {
+  LinkTileSize,
+  LinkTileWeight,
+  LinkTileAspectRatio,
+  LinkTileAlign,
+  ITileProps,
+  LinkTileWeightDeprecated,
+} from '../../utils';
+import type { LinkTileAriaAttribute, LinkTileTarget } from './link-tile-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -5,50 +15,29 @@ import {
   getPrefixedTagNames,
   parseJSON,
   validateProps,
+  throwIfAlignTopAndNotCompact,
   warnIfDeprecatedPropValueIsUsed,
+  LINK_TILE_WEIGHTS,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
-import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type {
-  LinkTileAriaAttribute,
-  LinkTileAspectRatio,
-  LinkTileAlign,
-  LinkTileWeight,
-  LinkTileSize,
-  LinkTileWeightDeprecated,
-  LinkTileTarget,
-} from './link-tile-utils';
-import {
-  LINK_TILE_ALIGNS,
-  LINK_TILE_ASPECT_RATIOS,
-  LINK_TILE_SIZES,
-  LINK_TILE_WEIGHTS,
-  throwIfAlignTopAndNotCompact,
-} from './link-tile-utils';
+import { sharedTilePropTypes } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZES),
+  ...sharedTilePropTypes,
   weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
-  label: AllowedTypes.string,
-  description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_TILE_ALIGNS),
-  gradient: AllowedTypes.boolean,
-  compact: AllowedTypes.breakpoint('boolean'),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkTileAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
   tag: 'p-link-tile',
   shadow: { delegatesFocus: true },
 })
-export class LinkTile {
+export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
@@ -72,7 +61,7 @@ export class LinkTile {
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;
 
-  /** Displays the tile-link as compact version with description and link icon only. */
+  /** Displays the link-tile as compact version with description and link icon only. */
   @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
 
   /** href of the `<a>`. */
@@ -115,6 +104,7 @@ export class LinkTile {
 
     const linkProps = {
       theme: 'dark',
+      variant: 'secondary',
       aria: this.aria,
     };
 
@@ -126,7 +116,7 @@ export class LinkTile {
     };
 
     const link: JSX.Element = (
-      <PrefixedTagNames.pLink {...sharedLinkProps} {...linkProps} key="link" class="link" variant="secondary">
+      <PrefixedTagNames.pLink {...sharedLinkProps} {...linkProps} key="link-or-button" class="link-or-button">
         {this.label}
       </PrefixedTagNames.pLink>
     );
@@ -135,8 +125,8 @@ export class LinkTile {
       <PrefixedTagNames.pLinkPure
         {...sharedLinkProps}
         {...linkProps}
-        key="link-pure"
-        class="link-pure"
+        key="link-or-button-pure"
+        class="link-or-button-pure"
         hideLabel={true}
         icon="arrow-right"
       >

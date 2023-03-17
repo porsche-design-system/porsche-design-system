@@ -33,7 +33,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       p-link-tile,
-      my-prefix-p-link-tile {
+      p-button-tile,
+      my-prefix-p-link-tile,
+      my-prefix-p-button-tile {
         max-width: 400px;
       }
     
@@ -295,6 +297,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               [alt]="'Beach'"
             />
           </p-link-tile>
+        </div>
+
+        <div class="playground light" title="should render default button-tile">
+          <p-button-tile [label]="'Some Label'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
+              [alt]="'Beach'"
+            />
+          </p-button-tile>
         </div>
 
         <div class="playground light" title="should render default carousel">
@@ -559,6 +572,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               [alt]="'Beach'"
             />
           </my-prefix-p-link-tile>
+        </div>
+
+        <div class="playground light" title="should render default button-tile with custom prefix">
+          <my-prefix-p-button-tile p-button-tile [label]="'Some Label'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
+              [alt]="'Beach'"
+            />
+          </my-prefix-p-button-tile>
         </div>
 
         <div class="playground light" title="should render default carousel with custom prefix">

@@ -36,7 +36,7 @@ const tagNamesWithSlottedAnchor = joinArrayElementsToString([
 ] as TagName[]);
 const tagNamesWithSlottedInputIndicator = joinArrayElementsToString(['p-text-field-wrapper'] as TagName[]);
 const tagNamesWithSlottedImage = joinArrayElementsToString(['p-table'] as TagName[]);
-const tagNamesWithSlottedPictureImage = joinArrayElementsToString(['p-link-tile'] as TagName[]);
+const tagNamesWithSlottedPictureImage = joinArrayElementsToString(['p-button-tile', 'p-link-tile'] as TagName[]);
 
 const normalizeStyles: Styles = {
   '@global': {
@@ -68,12 +68,12 @@ const normalizeStyles: Styles = {
 const slottedStyles: Styles = {
   '@global': {
     '%%tagNamesWithSlottedAnchor%%': {
+      // it's important to reset following styles again for components supporting ::slotted(a) like Link, Link-Pure, Tag and Tabs-Bar,…
       '& a': addImportantToEachRule({
         textDecoration: 'underline',
         color: 'currentcolor',
-        // TODO: add smooth transition to hover
-        ...getHoverStyle({ inset: '0 -4px' }),
-        ...getFocusStyle({ inset: '0 -4px' }),
+        ...getHoverStyle(),
+        ...getFocusStyle({ offset: 'none' }),
       }),
     },
 

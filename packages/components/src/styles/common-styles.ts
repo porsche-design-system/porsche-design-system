@@ -62,6 +62,15 @@ export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
   };
 };
 
+// reset initial styles, e.g. in case link-pure is used with slotted anchor and nested within e.g. an accordion
+export const getResetInitialStylesForSlottedAnchor: JssStyle = {
+  margin: 0,
+  padding: 0,
+  outline: 0,
+  borderRadius: 0,
+  background: 'transparent',
+};
+
 export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
   const {
     pseudo,

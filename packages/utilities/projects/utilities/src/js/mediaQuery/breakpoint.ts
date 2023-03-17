@@ -8,7 +8,7 @@ import { breakpointXXL } from './breakpointXXL';
 
 export type Breakpoint = 'base' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
-export const breakpoint: { [key in Breakpoint]: string } = {
+export const breakpoint: { [key in Breakpoint]: number } = {
   base: breakpointBase,
   xs: breakpointXS,
   s: breakpointS,

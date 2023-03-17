@@ -26,6 +26,8 @@ JavaScript styles can be imported by
 - `gradientToRightStyle`
 - `gradientToTopStyle`
 
+---
+
 #### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`
