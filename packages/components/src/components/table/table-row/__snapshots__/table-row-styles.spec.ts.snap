@@ -4,25 +4,18 @@ exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   position: relative !important;
   display: table-row !important;
+  border-top: 1px solid var(--p-internal-table-border-color) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-:host::before {
-  content: "" !important;
-}
 @media(hover:hover) {
-  :host(:hover)::before {
-    background: var(--p-internal-table-row-hover-color, #EEEFF2) !important;
+  :host(:hover) {
+    border-top-color: transparent !important;
+    border-bottom: 1px solid transparent !important;
   }
-  :host::before {
-    position: absolute !important;
-    top: -2px !important;
-    left: -2px !important;
-    right: -2px !important;
-    bottom: -2px !important;
-    border-radius: 4px !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
+  :host(:hover) ::slotted(*) {
+    --p-internal-table-row-background-color: var(--p-internal-table-row-hover-color) !important;
   }
 }
 "

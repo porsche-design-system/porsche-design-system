@@ -8,9 +8,10 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   display: none !important;
 }
 ::slotted(*) {
+  color: #FBFCFF !important;
   --p-internal-table-row-hover-color: #212225 !important;
   --p-internal-table-border-color: #404044 !important;
-  --p-internal-table-theme: dark !important;
+  --p-internal-table-head-cell-icon-filter: invert(100%) !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -37,9 +38,10 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   display: none !important;
 }
 ::slotted(*) {
+  color: #010205 !important;
   --p-internal-table-row-hover-color: #EEEFF2 !important;
   --p-internal-table-border-color: #D8D8DB !important;
-  --p-internal-table-theme: light !important;
+  --p-internal-table-head-cell-icon-filter: none !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);

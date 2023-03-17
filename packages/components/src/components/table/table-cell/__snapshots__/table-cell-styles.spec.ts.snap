@@ -5,10 +5,17 @@ exports[`getComponentCss() should return correct css for multiline: false 1`] = 
   display: table-cell !important;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   white-space: nowrap !important;
-  transform: translate3d(0,0,0) !important;
+  background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
+}
+:host(:first-child) {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+:host(:last-child) {
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -20,10 +27,17 @@ exports[`getComponentCss() should return correct css for multiline: true 1`] = `
   display: table-cell !important;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   white-space: normal !important;
-  transform: translate3d(0,0,0) !important;
+  background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
+}
+:host(:first-child) {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+:host(:last-child) {
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
 }
 :host([hidden]) {
   display: none !important;
