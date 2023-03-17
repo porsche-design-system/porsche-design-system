@@ -16,6 +16,7 @@ export const getComponentCss = (theme: Theme): string => {
         ...hostHiddenStyles,
       }),
       '::slotted(*)': addImportantToEachRule({
+        color: primaryColor,
         [cssVariableTableRowHoverColor]: backgroundSurfaceColor,
         [cssVariableTableBorderColor]: contrastLowColor,
         [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
