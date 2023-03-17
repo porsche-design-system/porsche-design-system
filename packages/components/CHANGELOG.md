@@ -11,10 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
+- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
-- Prop `scrollbar` for `Scroller`
-- Prop `theme` for `Table`
+- Prop `scrollbar` for `Scroller` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+- Prop `theme` for `Table` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
 
 #### 🤡 Component deprecations 🤡
 
