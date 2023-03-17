@@ -75,9 +75,9 @@ describe('parseAndGetAriaAttributes()', () => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
   });
 
-  // 'p-link-tile' has to excluded because parseAndGetAriaAttributes() is not applied
+  // 'p-button-tile' and 'p-link-tile' have to be excluded because parseAndGetAriaAttributes() is not applied
   const tagNamesWithAriaProp = TAG_NAMES.filter(
-    (tagName) => getComponentMeta(tagName).hasAriaProp && tagName !== 'p-link-tile'
+    (tagName) => getComponentMeta(tagName).hasAriaProp && tagName !== 'p-button-tile' && tagName !== 'p-link-tile'
   );
 
   it.each<TagName>(tagNamesWithAriaProp)('should call parseAndGetAriaAttributes() via render for %s', (tagName) => {
