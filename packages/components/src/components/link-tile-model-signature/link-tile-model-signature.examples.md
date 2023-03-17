@@ -81,7 +81,7 @@ can change the height by using different aspect ratios.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { LINK_TILE_ASPECT_RATIOS, TILE_WEIGHTS} from '../link-tile/link-tile-utils'; 
+import { TILE_WEIGHTS, TILE_ASPECT_RATIOS } from '../../utils'; 
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils'; 
 import { LINK_BUTTON_GROUP_DIRECTIONS } from '../../styles/link-button-group-direction-styles'; 
 
@@ -156,7 +156,7 @@ export default class Code extends Vue {
   };
 
   aspectRatio = '9:16';
-  aspectRatios = [...LINK_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile-model-signature 
 heading="Some Heading"
