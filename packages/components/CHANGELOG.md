@@ -9,6 +9,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
+- `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+
+#### 🤡 Component deprecations 🤡
+
+##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+
+```diff
+- <p-fieldset-wrapper label="Some legend label">
+-   <p-text-field-wrapper label="Some label">
+-     <input type="text" name="some-name" />
+-   </p-text-field-wrapper>
+- </p-fieldset-wrapper>
++ <p-fieldset label="Some legend label">
++   <p-text-field-wrapper label="Some label">
++     <input type="text" name="some-name" />
++   </p-text-field-wrapper>
++ </p-fieldset>
+```
+
 ### [3.0.0-alpha.3] - 2023-03-17
 
 #### 🤖 Property deprecations 🤖
@@ -242,23 +264,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-text-list type="alphabetically"></p-text-list>
 ```
 
-#### 🤡 Component deprecations 🤡
-
-##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
-
-```diff
-- <p-fieldset-wrapper label="Some legend label">
--   <p-text-field-wrapper label="Some label">
--     <input type="text" name="some-name" />
--   </p-text-field-wrapper>
-- </p-fieldset-wrapper>
-+ <p-fieldset label="Some legend label">
-+   <p-text-field-wrapper label="Some label">
-+     <input type="text" name="some-name" />
-+   </p-text-field-wrapper>
-+ </p-fieldset>
-```
-
 #### Added
 
 - `Text`, `Icon`, `Button Pure` and `Link Pure` support value `xx-small` for prop `size`
@@ -300,8 +305,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Tabs Bar` and `Tabs` prop `weight` got value `semi-bold` and deprecated `semibold` value
   - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
     `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
-  - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
 #### Changed
 
