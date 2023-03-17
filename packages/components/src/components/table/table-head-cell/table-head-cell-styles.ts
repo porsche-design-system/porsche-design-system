@@ -20,6 +20,7 @@ import {
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 import { getFontSizeText } from '../../../styles/font-size-text-styles';
 import { offsetHorizontal, offsetVertical } from '../../../styles/link-button-pure-styles';
+import { cssVariableTableHeadCellIconFilter } from '../table/table-styles';
 
 const { hoverColor, focusColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
 const { semiBold: fontWeightSemiBold } = fontWeight;
@@ -108,6 +109,7 @@ export const getComponentCss = (
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS
+        filter: `var(${cssVariableTableHeadCellIconFilter})`,
       },
     }),
   });

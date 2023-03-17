@@ -1,11 +1,11 @@
 import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
-import { getCss } from '../../../utils';
+import { getCss, isThemeDark } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles, doGetThemedColors } from '../../../styles';
 import type { Theme } from '../../../types';
 
 export const cssVariableTableRowHoverColor = '--p-internal-table-row-hover-color';
 export const cssVariableTableBorderColor = '--p-internal-table-border-color';
-export const cssVariableTableTheme = '--p-internal-table-theme';
+export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
 export const getComponentCss = (theme: Theme): string => {
   const { primaryColor, backgroundSurfaceColor, contrastLowColor } = doGetThemedColors(theme);
 
@@ -18,7 +18,7 @@ export const getComponentCss = (theme: Theme): string => {
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableRowHoverColor]: backgroundSurfaceColor,
         [cssVariableTableBorderColor]: contrastLowColor,
-        [cssVariableTableTheme]: theme,
+        [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
       }),
     },
     caption: {
