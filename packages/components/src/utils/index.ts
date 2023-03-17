@@ -12,6 +12,8 @@ export * from './form';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export * from './jss';
 export { parseJSONAttribute } from './json';
+export * from './link-button/getLinkButtonThemeForIcon';
+export * from './link-button-tile/link-button-tile-utils';
 export * from './log';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './pds-fetch';
@@ -24,4 +26,3 @@ export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-
 export { isThemeDark, THEMES } from './theme';
 export * from './typography';
 export * from './validation';
-export * from './link-button/getLinkButtonThemeForIcon';

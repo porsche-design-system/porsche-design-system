@@ -7,6 +7,7 @@ exports[`should match snapshot 1`] = `
   "p-button",
   "p-button-group",
   "p-button-pure",
+  "p-button-tile",
   "p-carousel",
   "p-checkbox-wrapper",
   "p-content-wrapper",
