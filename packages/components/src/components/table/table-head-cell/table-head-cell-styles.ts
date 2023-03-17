@@ -37,7 +37,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'table-cell',
-        padding: `2px ${spacingFluidSmall} ${spacingFluidSmall} ${spacingFluidSmall}`,
+        padding: `2px ${spacingFluidSmall} ${spacingFluidSmall}`,
         verticalAlign: 'bottom',
         fontWeight: fontWeightSemiBold,
         whiteSpace: multiline ? 'normal' : 'nowrap',
