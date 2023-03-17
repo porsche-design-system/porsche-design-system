@@ -5300,9 +5300,10 @@ exports[`should render dsr component for PTable 1`] = `
   display: none !important;
 }
 ::slotted(*) {
+  color: #010205 !important;
   --p-internal-table-row-hover-color: #EEEFF2 !important;
   --p-internal-table-border-color: #D8D8DB !important;
-  --p-internal-table-theme: light !important;
+  --p-internal-table-head-cell-icon-filter: none !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -5573,6 +5574,7 @@ exports[`should render dsr component for PTableBody 1`] = `
     <style>
       :host {
   display: table-row-group !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5597,10 +5599,17 @@ exports[`should render dsr component for PTableCell 1`] = `
   display: table-cell !important;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
   white-space: nowrap !important;
-  transform: translate3d(0,0,0) !important;
+  background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
+}
+:host(:first-child) {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+:host(:last-child) {
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5623,6 +5632,7 @@ exports[`should render dsr component for PTableHead 1`] = `
     <style>
       :host {
   display: table-header-group !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5646,8 +5656,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
     <style>
       :host {
   display: table-cell !important;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
-  border-bottom: 1px solid var(--p-internal-table-border-color, #D8D8DB) !important;
+  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -5679,9 +5688,6 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:host::before {
-  content: "" !important;
-}
     </style>
     <slot />
   </template>
@@ -5701,12 +5707,10 @@ exports[`should render dsr component for PTableRow 1`] = `
       :host {
   position: relative !important;
   display: table-row !important;
+  border-top: 1px solid var(--p-internal-table-border-color) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
 }
 
     </style>
