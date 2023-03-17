@@ -210,10 +210,8 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
   <div class="content">
     <a href="#" target="_self" class="link-overlay" tabindex="-1" aria-hidden="true">
     </a>
-    <h2>
-      <p class="heading">
-        value</p>
-    </h2>
+    <h2 class="heading">
+      value</h2>
     <div class="link-group" role="group">
       <slot name="primary">
       </slot>
