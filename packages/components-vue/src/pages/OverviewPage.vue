@@ -318,8 +318,8 @@
         <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            width="{50}"
-            height="{50}"
+            width="50"
+            height="50"
             alt="Beach"
           />
           <PLink slot="primary" :href="'#'">Some label</PLink>
