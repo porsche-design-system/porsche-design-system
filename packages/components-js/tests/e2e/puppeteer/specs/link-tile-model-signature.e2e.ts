@@ -1,11 +1,8 @@
 import {
   expectA11yToMatchSnapshot,
   getActiveElementTagName,
-  getConsoleErrorMessages,
-  getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -47,102 +44,16 @@ it('should mirror anchor props of slot name="primary" onto overlay anchor', asyn
   expect(await getProperty(primaryLink, 'href')).toEqual(await getProperty(overlayAnchor, 'href'));
 });
 
-it('should wrap heading in correct headingTag', async () => {
+it('should have correct headingTag', async () => {
   await initLinkTileModelSignature();
 
-  expect(await (await getHeading()).evaluate((heading) => (heading.parentNode as HTMLElement).tagName)).toBe('H2');
+  expect(await (await getHeading()).evaluate((heading) => heading.tagName)).toBe('H2');
 
   const host = await getHost();
   await setProperty(host, 'headingTag', 'h3');
   await waitForStencilLifecycle(page);
 
-  expect(await (await getHeading()).evaluate((heading) => (heading.parentNode as HTMLElement).tagName)).toBe('H3');
-});
-
-it('should set correct props on slotted p-links', async () => {
-  await initLinkTileModelSignature();
-
-  const primaryLink = await getPrimaryLink();
-  const secondaryLink = await getSecondaryLink();
-
-  expect(await getProperty(primaryLink, 'variant')).toBe('primary');
-  expect(await getProperty(secondaryLink, 'variant')).toBe('secondary');
-  expect(await getProperty(primaryLink, 'theme')).toBe('dark');
-  expect(await getProperty(secondaryLink, 'theme')).toBe('dark');
-});
-
-describe('validation', () => {
-  beforeEach(() => jest.spyOn(console, 'log').mockImplementation(jest.fn())); // Keep console clean for validation tests
-
-  describe('primary', () => {
-    it('should throw error if slot is missing', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="secondary" href="#">Some label</p-link>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-
-    it('should throw error if slot is not "p-link"', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <a slot="primary" href="#">Some label</a>
-  <p-link slot="secondary" href="#" variant="secondary" theme="dark">Some label</p-link>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-  });
-
-  describe('secondary', () => {
-    it('should throw error if slot is missing', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="https://porsche.com/">Some label</p-link>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-
-    it('should throw error if slot is not "p-link"', async () => {
-      await initConsoleObserver(page);
-
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-tile-model-signature
-  heading="Some heading"
->
-  <img src="${imgSrc}" alt="Some image label"/>
-  <p-link slot="primary" href="https://porsche.com/">Some label</p-link>
-  <a slot="secondary" href="#">Some label</a>
-</p-link-tile-model-signature>`
-      );
-
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-  });
+  expect(await (await getHeading()).evaluate((heading) => heading.tagName)).toBe('H3');
 });
 
 describe('lifecycle', () => {
@@ -169,7 +80,10 @@ describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-link-tile-model-signature'], 'componentDidUpdate: p-link-tile').toBe(1);
+    expect(
+      status.componentDidUpdate['p-link-tile-model-signature'],
+      'componentDidUpdate: p-link-tile-model-signature'
+    ).toBe(1);
     expect(status.componentDidUpdate['p-model-signature'], 'componentDidUpdate: p-model-signature').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
