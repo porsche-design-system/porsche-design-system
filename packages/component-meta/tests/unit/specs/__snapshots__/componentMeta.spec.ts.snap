@@ -1869,7 +1869,6 @@ exports[`should match snapshot 1`] = `
         "default",
         "surface",
       ],
-      "hasScrollbar": "boolean",
       "scrollIndicatorPosition": [
         null,
         "top",
@@ -1878,6 +1877,7 @@ exports[`should match snapshot 1`] = `
       "scrollToPosition": [
         "// TODO",
       ],
+      "scrollbar": "boolean",
       "theme": [
         "light",
         "dark",
@@ -1902,9 +1902,9 @@ exports[`should match snapshot 1`] = `
       "alignScrollIndicator": "center",
       "gradientColor": "background-base",
       "gradientColorScheme": null,
-      "hasScrollbar": false,
       "scrollIndicatorPosition": null,
       "scrollToPosition": null,
+      "scrollbar": false,
       "theme": "light",
     },
     "styling": "jss",
@@ -2355,7 +2355,6 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "nestedComponents": [
-      "p-button-pure",
       "p-icon",
     ],
     "props": {
