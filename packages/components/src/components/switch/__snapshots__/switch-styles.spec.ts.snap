@@ -57,7 +57,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   height: 20px;
   display: block;
   border-radius: 50%;
-  background-color: #010205;
+  background-color: CanvasText;
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
@@ -68,7 +68,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #010205;
+  color: CanvasText;
   order: -1;
   position: absolute;
   height: 1px;
@@ -82,11 +82,11 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 }
 @media(hover:hover) {
   .root:hover .switch {
-    border-color: #010205;
+    border-color: CanvasText;
     background-color: transparent;
   }
   .root:hover .switch .toggle {
-    background-color: #010205;
+    background-color: CanvasText;
   }
 }
 "
@@ -149,7 +149,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 20px;
   display: block;
   border-radius: 50%;
-  background-color: #010205;
+  background-color: CanvasText;
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
@@ -160,7 +160,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #010205;
+  color: CanvasText;
   order: 0;
   position: static;
   width: auto;
@@ -173,11 +173,11 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 }
 @media(hover:hover) {
   .root:hover .switch {
-    border-color: #010205;
+    border-color: CanvasText;
     background-color: transparent;
   }
   .root:hover .switch .toggle {
-    background-color: #010205;
+    background-color: CanvasText;
   }
 }
 "
@@ -226,7 +226,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid GrayText;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
@@ -240,7 +240,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 20px;
   display: block;
   border-radius: 50%;
-  background-color: #949598;
+  background-color: GrayText;
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
@@ -251,7 +251,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #949598;
+  color: GrayText;
   order: 0;
   position: static;
   width: auto;
@@ -320,7 +320,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 20px;
   display: block;
   border-radius: 50%;
-  background-color: #010205;
+  background-color: CanvasText;
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
@@ -331,7 +331,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #010205;
+  color: CanvasText;
   order: 0;
   position: static;
   width: auto;
@@ -344,11 +344,11 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 }
 @media(hover:hover) {
   .root:hover .switch {
-    border-color: #010205;
+    border-color: CanvasText;
     background-color: transparent;
   }
   .root:hover .switch .toggle {
-    background-color: #010205;
+    background-color: CanvasText;
   }
 }
 "
@@ -396,7 +396,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid GrayText;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
@@ -428,7 +428,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #949598;
+  color: GrayText;
   order: 0;
   position: static;
   width: auto;
@@ -483,7 +483,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #7E7F82;
+  border: 2px solid GrayText;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
@@ -515,7 +515,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #7E7F82;
+  color: GrayText;
   order: 0;
   position: static;
   width: auto;
@@ -570,7 +570,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid GrayText;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
@@ -602,7 +602,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #949598;
+  color: GrayText;
   order: 0;
   position: static;
   width: auto;
@@ -657,9 +657,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #32B85B;
+  border: 2px solid Highlight;
   border-radius: 14px;
-  background-color: #32B85B;
+  background-color: Highlight;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
@@ -682,7 +682,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #010205;
+  color: CanvasText;
   order: 0;
   position: static;
   width: auto;
@@ -695,8 +695,8 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 }
 @media(hover:hover) {
   .root:hover .switch {
-    border-color: #258843;
-    background-color: #258843;
+    border-color: Highlight;
+    background-color: Highlight;
   }
   .root:hover .switch .toggle {
     background-color: #FFF;
@@ -799,7 +799,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   height: 20px;
   display: block;
   border-radius: 50%;
-  background-color: #010205;
+  background-color: CanvasText;
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
@@ -810,7 +810,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   padding-top: 2px;
   min-width: 0;
   min-height: 0;
-  color: #010205;
+  color: CanvasText;
   order: -1;
   position: absolute;
   height: 1px;
@@ -911,11 +911,11 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 
 @media(hover:hover) {
   .root:hover .switch {
-    border-color: #010205;
+    border-color: CanvasText;
     background-color: transparent;
   }
   .root:hover .switch .toggle {
-    background-color: #010205;
+    background-color: CanvasText;
   }
 }
 "
