@@ -41,10 +41,10 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
         ) : tagName === 'p-carousel' ? ( // we need an actual DOM node here
           <div>Some child</div>
         ) : requiredSlots ? (
-          requiredSlots.map(({ slot, tagName }) => {
-            const Component = fromComponents[pascalCase(tagName)];
+          requiredSlots.map(({ slot, slotTagName }) => {
+            const Component = fromComponents[pascalCase(slotTagName)];
             return (
-              <Component slot={slot} href={tagName.includes('link') ? '#' : undefined}>
+              <Component slot={slot} href={slotTagName.includes('link') ? '#' : undefined}>
                 Some label
               </Component>
             );

@@ -1646,11 +1646,11 @@ exports[`should match snapshot 1`] = `
     "requiredSlots": [
       {
         "slot": "primary",
-        "tagName": "p-link",
+        "slotTagName": "p-link",
       },
       {
         "slot": "secondary",
-        "tagName": "p-link",
+        "slotTagName": "p-link",
       },
     ],
     "styling": "jss",

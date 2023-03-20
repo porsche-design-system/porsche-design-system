@@ -89,10 +89,10 @@ export class LinkTileModelSignature {
     );
 
     const primaryLinkProps = {
-      href: href,
-      target: target,
-      download: download,
-      rel: rel,
+      href,
+      target,
+      download,
+      rel,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

@@ -22,8 +22,8 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
   }
 
   if (requiredSlots) {
-    requiredSlots.forEach(({ slot, tagName }) => {
-      const child = document.createElement(tagName);
+    requiredSlots.forEach(({ slot, slotTagName }) => {
+      const child = document.createElement(slotTagName);
       child.slot = slot;
       component.host.appendChild(child);
     });

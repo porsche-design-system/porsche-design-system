@@ -41,7 +41,7 @@ const generateComponentMeta = (): void => {
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child of kind
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
-  requiredSlots?: { slot: string; tagName: TagName }[];
+  requiredSlots?: { slot: string; slotTagName: TagName }[];
   nestedComponents?: TagName[]; // array of other pds components
   props?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -82,7 +82,7 @@ const generateComponentMeta = (): void => {
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child of kind
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
-    requiredSlots?: { slot: string; tagName: TagName }[];
+    requiredSlots?: { slot: string; slotTagName: TagName }[];
     nestedComponents?: TagName[]; // array of other pds components
     props?: {
       [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -182,7 +182,7 @@ const generateComponentMeta = (): void => {
     // required slots
     let requiredSlots;
     const elAndRequiredSlotName = Array.from(
-      source.matchAll(/const (.*) = getSlottedElementOrThrow\(this\.host, '(\w+)'\)/g)
+      source.matchAll(/const (.*) = getNamedSlotOrThrow\(this\.host, '(\w+)'\)/g)
     ).map(([, constName, requiredSlotName]) => ({
       constName,
       requiredSlotName,
@@ -195,7 +195,7 @@ const generateComponentMeta = (): void => {
 
         return {
           slot: requiredSlotName,
-          tagName: tagName,
+          slotTagName: tagName,
         };
       });
     }
