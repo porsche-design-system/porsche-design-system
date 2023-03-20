@@ -11,8 +11,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- Styles:
+  - `gridSafeZoneS` and `pds-grid-safe-zone-s`
+  - `gridWide`
+  - `gridWideColumnStart` and `pds-grid-wide-column-start`
+  - `gridWideColumnEnd` and `pds-grid-wide-column-end`
 - `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+
+#### Changed
+
+- Styles: `gridStyles` and `pds-grid` are supporting an additional column range `wide`
 
 #### 🤡 Component deprecations 🤡
 
