@@ -65,6 +65,7 @@ services:
       - utilities-styles-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/styles/node_modules
       - utilities-deprecated-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
       - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/projects/utilities/node_modules
+      - wordmark-node-modules:/opt/porsche-design-system-app/packages/wordmark/node-modules
   change-volume-owner:
     image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal-v3-alpha-6
     volumes:
@@ -100,6 +101,7 @@ services:
       - utilities-styles-node-modules:/opt/porsche-design-system-volumes/utilities-styles-node_modules
       - utilities-deprecated-node-modules:/opt/porsche-design-system-volumes/utilities-deprecated-node_modules
       - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-volumes/utilities-deprecated-utilities-node_modules
+      - wordmark-node-modules:/opt/porsche-design-system-volumes/wordmark/node-modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
 volumes:
@@ -135,3 +137,4 @@ volumes:
   utilities-styles-node-modules:
   utilities-deprecated-node-modules:
   utilities-deprecated-utilities-node-modules:
+  wordmark-node-modules:
