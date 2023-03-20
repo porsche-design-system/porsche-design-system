@@ -104,7 +104,7 @@ export default class Code extends Vue {
 >
   <picture>
     <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
-    <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
+    ${this.img}
   </picture>
   ${this.primaryLink}
   ${this.secondaryLink}
