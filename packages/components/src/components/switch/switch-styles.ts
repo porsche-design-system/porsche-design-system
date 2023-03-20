@@ -10,6 +10,8 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { JssStyle } from 'jss';
+import { getForcedColorsMediaQuery } from '../../styles/schemed-high-contrast-media-query';
 
 const getColors = (
   checked: boolean,
@@ -17,29 +19,74 @@ const getColors = (
   loading: boolean,
   theme: Theme
 ): {
-  buttonBorderColor: string;
+  buttonBorderColor: JssStyle;
   buttonBorderColorHover: string;
-  buttonBackgroundColor: string;
-  buttonBackgroundColorHover: string;
-  toggleBackgroundColor: string;
-  toggleBackgroundColorHover: string;
+  buttonBackgroundColor: JssStyle;
+  buttonBackgroundColorHover: JssStyle;
+  toggleBackgroundColor: JssStyle;
+  toggleBackgroundColorHover: JssStyle;
   textColor: string;
 } => {
   const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
   const checkedColor = successColor;
   const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
+  const disabledOrLoadingColorHighContrast = isDisabledOrLoading(disabled, loading) && 'GrayText';
 
   return {
-    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
+    buttonBorderColor: {
+      borderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
+      [getForcedColorsMediaQuery]: {
+        borderColor:
+          (checked && disabled && 'GrayText') || disabledOrLoadingColorHighContrast || (checked && 'Highlight'),
+      },
+    },
     buttonBorderColorHover: checked ? successColorDarken : primaryColor,
-    buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked ? successColorDarken : 'transparent',
+    buttonBackgroundColor: checked
+      ? {
+          backgroundColor: disabledOrLoadingColor || checkedColor,
+          [getForcedColorsMediaQuery]: {
+            backgroundColor: disabledOrLoadingColorHighContrast || 'Highlight',
+          },
+        }
+      : { backgroundColor: 'transparent' },
+    buttonBackgroundColorHover: checked
+      ? {
+          backgroundColor: successColorDarken,
+          [getForcedColorsMediaQuery]: {
+            backgroundColor: 'Highlight',
+          },
+        }
+      : { backgroundColor: 'transparent' },
     toggleBackgroundColor:
-      (loading && 'transparent') ||
-      (disabled && !checked && disabledColor) ||
-      (checked ? lightThemeBackgroundColor : primaryColor),
-    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : primaryColor,
+      (loading && { backgroundColor: 'transparent' }) ||
+      (disabled &&
+        !checked && {
+          backgroundColor: disabledColor,
+          [getForcedColorsMediaQuery]: {
+            backgroundColor: 'GrayText',
+          },
+        }) ||
+      (checked
+        ? {
+            backgroundColor: lightThemeBackgroundColor,
+          }
+        : {
+            backgroundColor: primaryColor,
+            [getForcedColorsMediaQuery]: {
+              backgroundColor: 'ButtonText',
+            },
+          }),
+    toggleBackgroundColorHover: checked
+      ? {
+          backgroundColor: lightThemeBackgroundColor,
+        }
+      : {
+          backgroundColor: primaryColor,
+          [getForcedColorsMediaQuery]: {
+            backgroundColor: 'inherit',
+          },
+        },
     textColor: disabledOrLoadingColor || primaryColor,
   };
 };
@@ -95,9 +142,9 @@ export const getComponentCss = (
         hoverMediaQuery({
           '&:hover .switch': {
             borderColor: buttonBorderColorHover,
-            backgroundColor: buttonBackgroundColorHover,
+            buttonBackgroundColorHover,
             '& .toggle': {
-              backgroundColor: toggleBackgroundColorHover,
+              toggleBackgroundColorHover,
             },
           },
         })),
@@ -118,9 +165,9 @@ export const getComponentCss = (
       height: '28px',
       flexShrink: 0,
       boxSizing: 'border-box',
-      border: `${borderWidthBase} solid ${buttonBorderColor}`,
+      border: `${borderWidthBase} solid`,
       borderRadius: '14px',
-      backgroundColor: buttonBackgroundColor,
+      ...mergeDeep(buttonBorderColor, buttonBackgroundColor),
       cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
       transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
     },
@@ -132,7 +179,7 @@ export const getComponentCss = (
       height: '20px',
       display: 'block',
       borderRadius: '50%',
-      backgroundColor: toggleBackgroundColor,
+      ...toggleBackgroundColor,
       transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
       transition: `${getTransition('background-color')},${getTransition('transform')}`,
     },
