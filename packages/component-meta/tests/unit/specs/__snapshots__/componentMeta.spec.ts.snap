@@ -79,6 +79,14 @@ exports[`should match snapshot 1`] = `
         "fluid",
       ],
     },
+    "deprecatedPropValues": {
+      "state": [
+        "neutral",
+      ],
+      "width": [
+        "fluid",
+      ],
+    },
     "eventNames": [
       "dismiss",
     ],
@@ -235,6 +243,12 @@ exports[`should match snapshot 1`] = `
       "alignLabel",
       "stretch",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "thin",
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "weight",
     ],
@@ -581,6 +595,13 @@ exports[`should match snapshot 1`] = `
       "orientation",
       "direction",
     ],
+    "deprecatedPropValues": {
+      "color": [
+        "neutral-contrast-high",
+        "neutral-contrast-medium",
+        "neutral-contrast-low",
+      ],
+    },
     "deprecatedProps": [
       "orientation",
     ],
@@ -1416,6 +1437,12 @@ exports[`should match snapshot 1`] = `
       "size",
       "hideLabel",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "thin",
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "weight",
     ],
@@ -2420,6 +2447,11 @@ exports[`should match snapshot 1`] = `
     "deprecatedEventNames": [
       "tabChange",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "gradientColorScheme",
     ],
@@ -2480,6 +2512,11 @@ exports[`should match snapshot 1`] = `
     "deprecatedEventNames": [
       "tabChange",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "gradientColorScheme",
     ],
@@ -2556,6 +2593,15 @@ exports[`should match snapshot 1`] = `
         "dark",
       ],
     },
+    "deprecatedPropValues": {
+      "color": [
+        "neutral-contrast-high",
+        "notification-neutral",
+        "notification-warning",
+        "notification-success",
+        "notification-error",
+      ],
+    },
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -2589,6 +2635,11 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+      ],
+    },
+    "deprecatedPropValues": {
+      "color": [
+        "background-default",
       ],
     },
     "hasAriaProp": true,
@@ -2670,6 +2721,20 @@ exports[`should match snapshot 1`] = `
     "breakpointCustomizableProps": [
       "size",
     ],
+    "deprecatedPropValues": {
+      "color": [
+        "brand",
+        "default",
+        "neutral-contrast-low",
+        "neutral-contrast-medium",
+        "neutral-contrast-high",
+        "notification-neutral",
+      ],
+      "weight": [
+        "thin",
+        "semibold",
+      ],
+    },
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
