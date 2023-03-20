@@ -36,7 +36,7 @@ const createManifestAndCopyAssets = (cdn: string, files: string[]): void => {
     path.normalize('./index.ts'),
     `${CDN_KEY_TYPE_DEFINITION}
 
-export const WORDMARKS_CDN_BASE_URL = ${cdn};
+export const CDN_BASE_URL = ${cdn};
 export const WORDMARKS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 

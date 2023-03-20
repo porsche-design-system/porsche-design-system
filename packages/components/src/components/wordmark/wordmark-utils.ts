@@ -1,5 +1,5 @@
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import { WORDMARKS_CDN_BASE_URL, WORDMARKS_MANIFEST } from '@porsche-design-system/wordmark';
+import { CDN_BASE_URL as WORDMARKS_CDN_BASE_URL, WORDMARKS_MANIFEST } from '@porsche-design-system/wordmark';
 
 export const WORDMARK_SIZES = ['fluid', 'inherit'] as const;
 export type WordmarkSize = (typeof WORDMARK_SIZES)[number];

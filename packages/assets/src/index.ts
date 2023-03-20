@@ -9,6 +9,7 @@ import {
   MODEL_SIGNATURES_MANIFEST,
 } from '@porsche-design-system/model-signatures';
 import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
+import { CDN_BASE_URL as WORDMARKS_CDN_BASE_URL, WORDMARKS_MANIFEST } from '@porsche-design-system/wordmark';
 
 // reexports are needed in order to build standalone typings
 export {
@@ -28,4 +29,6 @@ export {
   MODEL_SIGNATURES_CDN_BASE_URL,
   MODEL_SIGNATURES_MANIFEST,
   FONT_FACE_CDN_URL,
+  WORDMARKS_CDN_BASE_URL,
+  WORDMARKS_MANIFEST,
 };
