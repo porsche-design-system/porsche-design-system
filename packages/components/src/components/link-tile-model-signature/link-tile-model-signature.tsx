@@ -19,10 +19,11 @@ import type {
   LinkTileModelSignatureHeadingTag,
 } from './link-tile-model-signature-utils';
 import {
-  getSlottedPLinksOrThrow,
   LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
+import { throwIfElementIsNotOfKind } from '../../utils/validation/throwIfElementIsNotOfKind';
+import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
@@ -66,8 +67,17 @@ export class LinkTileModelSignature {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     // If we do this earlier than render, there are cases where primaryLink.href is undefined
-    const [primaryLink, secondaryLink] = getSlottedPLinksOrThrow(this.host);
-    setRequiredPropsOfSlottedLinks([primaryLink, secondaryLink]);
+    // TODO: Here and in other components, validation happens only on initial render. We could extend this to watch props of the required slots.
+    const primaryLink = getNamedSlotOrThrow(this.host, 'primary');
+    const secondaryLink = getNamedSlotOrThrow(this.host, 'secondary');
+    throwIfElementIsNotOfKind(this.host, primaryLink, 'p-link');
+    throwIfElementIsNotOfKind(this.host, secondaryLink, 'p-link');
+    setRequiredPropsOfSlottedLinks([
+      primaryLink as unknown as HTMLPLinkElement,
+      secondaryLink as unknown as HTMLPLinkElement,
+    ]);
+
+    const { href, target, download, rel } = primaryLink as unknown as HTMLPLinkElement;
 
     attachComponentCss(
       this.host,
@@ -79,10 +89,10 @@ export class LinkTileModelSignature {
     );
 
     const primaryLinkProps = {
-      href: primaryLink.href,
-      target: primaryLink.target,
-      download: primaryLink.download,
-      rel: primaryLink.rel,
+      href: href,
+      target: target,
+      download: download,
+      rel: rel,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
