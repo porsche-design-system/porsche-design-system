@@ -30,6 +30,7 @@ import {
   filterLightNotificationWarning,
   filterLightPrimary,
 } from '../../styles/color-filters';
+import { getSchemedHighContrastMediaQuery } from '../../styles/schemed-high-contrast-media-query';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
@@ -98,6 +99,14 @@ export const getComponentCss = (
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
+          ...getSchemedHighContrastMediaQuery(
+            {
+              filter: filter.light[color],
+            },
+            {
+              filter: filter.dark[color],
+            }
+          ),
           WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
