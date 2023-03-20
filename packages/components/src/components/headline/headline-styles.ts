@@ -16,6 +16,7 @@ import {
   fontSizeTextSmall,
   fontSizeTextXLarge,
   fontSizeTextXSmall,
+  fontSizeTextXXSmall,
   headingXXLargeStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
@@ -39,6 +40,7 @@ const getHeadlineVariantJssStyle = (variant: HeadlineVariantType): JssStyle => {
 };
 
 const textSizeMap: { [key in Exclude<TextSize, 'inherit'>]: string } = {
+  'xx-small': fontSizeTextXXSmall,
   'x-small': fontSizeTextXSmall,
   small: fontSizeTextSmall,
   medium: fontSizeTextMedium,

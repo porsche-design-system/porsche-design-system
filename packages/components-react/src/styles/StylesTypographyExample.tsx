@@ -15,6 +15,7 @@ import {
   textSmallStyle,
   textXLargeStyle,
   textXSmallStyle,
+  textXXSmallStyle,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
 
@@ -106,6 +107,11 @@ const TextXSmallStyle = styled.p({
   ...textXSmallStyle,
 });
 
+const TextXXSmallStyle = styled.p({
+  ...typographyBaseStyle,
+  ...textXXSmallStyle,
+});
+
 export const StylesTypographyExample = (): JSX.Element => {
   const content = 'The quick brown fox jumps over the lazy dog';
   return (
@@ -131,6 +137,7 @@ export const StylesTypographyExample = (): JSX.Element => {
         <TextMediumStyle>{content}</TextMediumStyle>
         <TextSmallStyle>{content}</TextSmallStyle>
         <TextXSmallStyle>{content}</TextXSmallStyle>
+        <TextXXSmallStyle>{content}</TextXXSmallStyle>
       </Wrapper>
     </>
   );

@@ -11,11 +11,14 @@ import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
+import { ButtonTileAlign, ButtonTileAspectRatio, ButtonTileSize, ButtonTileWeight, LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./utils";
+import { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from "./components/button-tile/button-tile-utils";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
+import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
@@ -29,7 +32,7 @@ import { InlineNotificationActionIcon, InlineNotificationState } from "./compone
 import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileAriaAttribute, LinkTileTarget } from "./components/link-tile/link-tile-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -209,6 +212,64 @@ export namespace Components {
          */
         "weight"?: ButtonPureWeight;
     }
+    interface PButtonTile {
+        /**
+          * Alignment of button and description.
+         */
+        "align"?: ButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
+        /**
+          * Aspect ratio of the button-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Displays the button-tile as compact version with description and button icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description": string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: ButtonTileIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label": string;
+        /**
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonTileType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
+    }
     interface PCarousel {
         /**
           * Alignment of heading and description
@@ -333,6 +394,32 @@ export namespace Components {
           * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead. Defines orientation.
          */
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PFieldset {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: FieldsetLabelSize;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FieldsetState;
         /**
           * Adapts color depending on theme.
          */
@@ -707,7 +794,7 @@ export namespace Components {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -1448,6 +1535,12 @@ declare global {
         prototype: HTMLPButtonPureElement;
         new (): HTMLPButtonPureElement;
     };
+    interface HTMLPButtonTileElement extends Components.PButtonTile, HTMLStencilElement {
+    }
+    var HTMLPButtonTileElement: {
+        prototype: HTMLPButtonTileElement;
+        new (): HTMLPButtonTileElement;
+    };
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
     }
     var HTMLPCarouselElement: {
@@ -1477,6 +1570,12 @@ declare global {
     var HTMLPDividerElement: {
         prototype: HTMLPDividerElement;
         new (): HTMLPDividerElement;
+    };
+    interface HTMLPFieldsetElement extends Components.PFieldset, HTMLStencilElement {
+    }
+    var HTMLPFieldsetElement: {
+        prototype: HTMLPFieldsetElement;
+        new (): HTMLPFieldsetElement;
     };
     interface HTMLPFieldsetWrapperElement extends Components.PFieldsetWrapper, HTMLStencilElement {
     }
@@ -1766,11 +1865,13 @@ declare global {
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
+        "p-button-tile": HTMLPButtonTileElement;
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
+        "p-fieldset": HTMLPFieldsetElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
@@ -1984,6 +2085,64 @@ declare namespace LocalJSX {
          */
         "weight"?: ButtonPureWeight;
     }
+    interface PButtonTile {
+        /**
+          * Alignment of button and description.
+         */
+        "align"?: ButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
+        /**
+          * Aspect ratio of the button-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Displays the button-tile as compact version with description and button icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: ButtonTileIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label"?: string;
+        /**
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonTileType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
+    }
     interface PCarousel {
         /**
           * Alignment of heading and description
@@ -2116,6 +2275,32 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead. Defines orientation.
          */
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PFieldset {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: FieldsetLabelSize;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FieldsetState;
         /**
           * Adapts color depending on theme.
          */
@@ -2498,7 +2683,7 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -3228,11 +3413,13 @@ declare namespace LocalJSX {
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
+        "p-button-tile": PButtonTile;
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
         "p-display": PDisplay;
         "p-divider": PDivider;
+        "p-fieldset": PFieldset;
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
@@ -3291,11 +3478,13 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
+            "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
+            "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;

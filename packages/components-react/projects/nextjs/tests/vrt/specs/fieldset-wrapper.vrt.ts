@@ -2,7 +2,7 @@ import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-d
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'fieldset-wrapper', '/fieldset-wrapper', {
+    await vrtTest(getVisualRegressionTester(viewport), 'fieldset', '/fieldset-wrapper', {
       javaScriptEnabled: false,
     })
   ).toBeFalsy();

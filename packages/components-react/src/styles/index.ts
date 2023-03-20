@@ -4,6 +4,7 @@ export * from './StylesFocusExample';
 export * from './StylesFrostedGlassExample';
 export * from './StylesGradientExample';
 export * from './StylesGridExample';
+export * from './StylesHoverExample';
 export * from './StylesMediaQueryExample';
 export * from './StylesSpacingExample';
 export * from './StylesThemeExample';

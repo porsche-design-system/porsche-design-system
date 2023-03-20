@@ -1,1 +1,1 @@
-export const breakpointXL = '1760px';
+export const breakpointXL = 1760;

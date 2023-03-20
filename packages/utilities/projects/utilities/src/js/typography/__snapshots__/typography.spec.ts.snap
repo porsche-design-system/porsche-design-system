@@ -87,3 +87,11 @@ exports[`should contain correct values for textXSmallStyle 1`] = `
   "overflowWrap": "break-word",
 }
 `;
+
+exports[`should contain correct values for textXXSmallStyle 1`] = `
+{
+  "font": "normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+}
+`;

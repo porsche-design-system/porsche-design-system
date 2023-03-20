@@ -191,6 +191,11 @@ export const routes: RouteType[] = [
     element: <fromStyles.StylesGridExample />,
   },
   {
+    name: 'Styles Hover',
+    path: '/styles-hover',
+    element: <fromStyles.StylesHoverExample />,
+  },
+  {
     name: 'Styles Media Query',
     path: '/styles-media-query',
     element: <fromStyles.StylesMediaQueryExample />,

@@ -12,11 +12,13 @@ const components: Component[] = [
   'button',
   'button-group',
   'button-pure',
+  'button-tile',
   'carousel',
   'checkbox-wrapper',
   'content-wrapper',
   'display',
   'divider',
+  'fieldset',
   'fieldset-wrapper',
   'heading',
   'headline',
@@ -57,22 +59,32 @@ const scenarioModal = async (page: Page) => {
 
 it.each(components)('should have no visual regression for component in high-contrast light: %s', async (component) => {
   expect(
-    await vrtTest(getVisualRegressionStatesTester(), `${component}-high-contrast-light`, `/#${component}`, {
-      ...(component === 'popover' && { scenario: scenarioPopover }),
-      ...(component === 'modal' && { scenario: scenarioModal }),
-      forcedColorsEnabled: true,
-      prefersColorScheme: 'light',
-    })
+    await vrtTest(
+      getVisualRegressionStatesTester(),
+      `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-high-contrast-light`,
+      `/#${component}`,
+      {
+        ...(component === 'popover' && { scenario: scenarioPopover }),
+        ...(component === 'modal' && { scenario: scenarioModal }),
+        forcedColorsEnabled: true,
+        prefersColorScheme: 'light',
+      }
+    )
   ).toBeFalsy();
 });
 
 it.each(components)('should have no visual regression for component in high-contrast dark: %s', async (component) => {
   expect(
-    await vrtTest(getVisualRegressionStatesTester(), `${component}-high-contrast-dark`, `/#${component}`, {
-      ...(component === 'popover' && { scenario: scenarioPopover }),
-      ...(component === 'modal' && { scenario: scenarioModal }),
-      forcedColorsEnabled: true,
-      prefersColorScheme: 'dark',
-    })
+    await vrtTest(
+      getVisualRegressionStatesTester(),
+      `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-high-contrast-dark`,
+      `/#${component}`,
+      {
+        ...(component === 'popover' && { scenario: scenarioPopover }),
+        ...(component === 'modal' && { scenario: scenarioModal }),
+        forcedColorsEnabled: true,
+        prefersColorScheme: 'dark',
+      }
+    )
   ).toBeFalsy();
 });

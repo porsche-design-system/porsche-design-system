@@ -181,6 +181,9 @@ export const LinkPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with different size">
+        <PLinkPure href="https://www.porsche.com" size="xx-small">Label size xx-small</PLinkPure>
+        <PLinkPure size="xx-small"><a href="https://www.porsche.com">Label slotted size xx-small</a></PLinkPure>
+        <br />
         <PLinkPure href="https://www.porsche.com" size="x-small">Label size x-small</PLinkPure>
         <PLinkPure size="x-small"><a href="https://www.porsche.com">Label slotted size x-small</a></PLinkPure>
         <br />

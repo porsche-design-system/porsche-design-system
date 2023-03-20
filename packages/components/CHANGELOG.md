@@ -9,6 +9,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
+- `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+
+#### 🤡 Component deprecations 🤡
+
+##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+
+```diff
+- <p-fieldset-wrapper label="Some legend label">
+-   <p-text-field-wrapper label="Some label">
+-     <input type="text" name="some-name" />
+-   </p-text-field-wrapper>
+- </p-fieldset-wrapper>
++ <p-fieldset label="Some legend label">
++   <p-text-field-wrapper label="Some label">
++     <input type="text" name="some-name" />
++   </p-text-field-wrapper>
++ </p-fieldset>
+```
+
+### [3.0.0-alpha.3] - 2023-03-17
+
 #### 🤖 Property deprecations 🤖
 
 ##### Accordion:
@@ -242,9 +266,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Text`, `Icon`, `Button Pure` and `Link Pure` support value `xx-small` for prop `size`
 - `Display` supports value `small` for prop `size`
+- Partials: `getInitialStyles` supports multi prefix, e.g.
+  `getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });`
 - Styles: `displaySmallStyle` and `pds-display-small`
+- Styles: `textXXSmallStyle` and `pds-text-xx-small`
 - Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
+- Styles: `fontSizeTextXXSmall` and `$pds-font-size-text-xx-small`
+- Styles: `getHoverStyle` and `pds-hover`
 - `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
 - Custom events have consistent names across components and deprecated old event names
   - `Accordion` emits `change` and deprecated `accordionChange` event
@@ -281,6 +311,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Display` uses font-weight regular and font-style normal
 - Partials: `getInitialStyles` matches new design language
 - Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
+- Styles: `getFocusStyle` and `pds-focus` doesn't need `theme` parameter anymore
+- Styles: `breakpoint{Base|XS|S|M|L|XL|XXL}` and `$pds-breakpoint-{base|xs|s|m|l|xl|xxl}` are provided as number without
+  unit (px)
 - `Link Tile` matches new design language
 - Typings for all component props start with the component name, e.g. `SwitchAlignLabel`, `TabsBarGradientColor` or
   `LinkPureIcon`

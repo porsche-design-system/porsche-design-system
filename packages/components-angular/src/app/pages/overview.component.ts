@@ -33,7 +33,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       p-link-tile,
-      my-prefix-p-link-tile {
+      p-button-tile,
+      my-prefix-p-link-tile,
+      my-prefix-p-button-tile {
         max-width: 400px;
       }
     
@@ -126,8 +128,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-textarea-wrapper>
         </div>
 
-        <div class="playground light" title="should render default fieldset-wrapper">
-          <p-fieldset-wrapper [label]="'Some label'"></p-fieldset-wrapper>
+        <div class="playground light" title="should render default fieldset">
+          <p-fieldset [label]="'Some label'"></p-fieldset>
         </div>
 
         <div class="playground light" title="should render default content-wrapper">
@@ -297,6 +299,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-link-tile>
         </div>
 
+        <div class="playground light" title="should render default button-tile">
+          <p-button-tile [label]="'Some Label'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
+              [alt]="'Beach'"
+            />
+          </p-button-tile>
+        </div>
+
         <div class="playground light" title="should render default carousel">
           <p-carousel [heading]="'Heading'">
             <div>Slide 1</div>
@@ -390,8 +403,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </my-prefix-p-textarea-wrapper>
         </div>
 
-        <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-          <my-prefix-p-fieldset-wrapper p-fieldset-wrapper [label]="'Some label'"></my-prefix-p-fieldset-wrapper>
+        <div class="playground light" title="should render default fieldset with custom prefix">
+          <my-prefix-p-fieldset p-fieldset [label]="'Some label'"></my-prefix-p-fieldset>
         </div>
 
         <div class="playground light" title="should render default content-wrapper with custom prefix">
@@ -559,6 +572,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               [alt]="'Beach'"
             />
           </my-prefix-p-link-tile>
+        </div>
+
+        <div class="playground light" title="should render default button-tile with custom prefix">
+          <my-prefix-p-button-tile p-button-tile [label]="'Some Label'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
+              [alt]="'Beach'"
+            />
+          </my-prefix-p-button-tile>
         </div>
 
         <div class="playground light" title="should render default carousel with custom prefix">

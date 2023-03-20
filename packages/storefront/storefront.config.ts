@@ -98,6 +98,8 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Grid: [() => import('@/pages/styles/grid.md')],
     // @ts-ignore
+    Hover: [() => import('@/pages/styles/hover.md')],
+    // @ts-ignore
     'Media Query': [() => import('@/pages/styles/media-query.md')],
     // @ts-ignore
     Spacing: [() => import('@/pages/styles/spacing.md')],
@@ -141,6 +143,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/button-pure/button-pure.props.md')],
     },
+    'Button Tile': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/button-tile/button-tile.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/button-tile/button-tile.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/button-tile/button-tile.props.md')],
+    },
     Carousel: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/carousel/carousel.examples.md')],
@@ -174,6 +184,14 @@ export const config: StorefrontConfig = {
       Props: [() => import('@/../../components/src/components/divider/divider.props.md')],
     },
     Fieldset: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/fieldset/fieldset.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/fieldset/fieldset.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/fieldset/fieldset.props.md')],
+    },
+    'Fieldset Wrapper': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/fieldset-wrapper/fieldset-wrapper.examples.md')],
       // @ts-ignore

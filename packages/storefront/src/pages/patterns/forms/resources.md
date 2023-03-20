@@ -54,7 +54,7 @@ Below you can find the explanations of the used class names.
   <p-grid class="form-section-spacing">
     <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
       <form novalidate>
-        <p-fieldset-wrapper label="Form legend text">
+        <p-fieldsetlabel="Form legend text">
           <p-flex direction="{base: 'column', m: 'row'}" class="form-grid-item-container">
             <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-quarter'}">
               <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
@@ -89,7 +89,7 @@ Below you can find the explanations of the used class names.
             </p-flex-item>
           </p-flex>
           <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>
-        </p-fieldset-wrapper>
+        </p-fieldset>
         <p-button-group class="form-section-spacing form-bottom-spacing">
           <p-button type="submit">Send</p-button>
           <p-button variant="tertiary" icon="close"type="reset">Cancel</p-button>

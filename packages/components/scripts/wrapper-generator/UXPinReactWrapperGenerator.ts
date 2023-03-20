@@ -249,7 +249,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     switch (component) {
       case 'p-accordion':
       case 'p-button-group':
+      case 'p-button-tile':
       case 'p-checkbox-wrapper':
+      case 'p-fieldset':
       case 'p-link-tile':
       case 'p-modal':
       case 'p-radio-button-wrapper':
@@ -288,6 +290,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           '<Button variant="secondary" uxpId="button-secondary" />',
         ].join(glue),
       },
+      'p-button-tile': {
+        props: { label: 'Some label', description: 'Some description' },
+        children: '<DummyImg uxpId="dummy-img" />',
+      },
       'p-checkbox-wrapper': {
         props: { label: 'CheckboxWrapper' },
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
@@ -295,6 +301,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           name: 'Checkbox',
           extraProps: { label: 'My Checkbox', checked: true },
         },
+      },
+      'p-fieldset': {
+        props: { label: 'Fieldset' },
       },
       'p-link-tile': {
         props: { label: 'Some label', description: 'Some description' },

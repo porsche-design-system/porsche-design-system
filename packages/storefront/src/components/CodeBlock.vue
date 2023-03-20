@@ -259,7 +259,7 @@
     max-height: 20rem;
     overflow: auto;
     margin-top: $pds-spacing-static-medium;
-    @include pds-focus(0);
+    @include pds-focus('small', 1px);
 
     :deep(code) {
       .token.important,

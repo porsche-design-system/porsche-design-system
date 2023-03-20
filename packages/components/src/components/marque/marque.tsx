@@ -43,7 +43,7 @@ export class Marque {
     attachComponentCss(this.host, getComponentCss, this.size);
 
     const innerManifest = getInnerManifest(this.trademark);
-    const mediumMedia = `(min-width: ${breakpoint.l})`;
+    const mediumMedia = `(min-width: ${breakpoint.l}px)`;
 
     const picture = (
       <picture>

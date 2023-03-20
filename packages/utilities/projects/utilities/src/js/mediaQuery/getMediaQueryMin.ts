@@ -10,5 +10,5 @@ export function getMediaQueryMin(min: BKey<'l'>): '@media(min-width:1300px)';
 export function getMediaQueryMin(min: BKey<'xl'>): '@media(min-width:1760px)';
 export function getMediaQueryMin(min: BKey<'xxl'>): '@media(min-width:1920px)';
 export function getMediaQueryMin(min: Breakpoint): string {
-  return `@media(min-width:${breakpoint[min]})`;
+  return `@media(min-width:${breakpoint[min]}px)`;
 }

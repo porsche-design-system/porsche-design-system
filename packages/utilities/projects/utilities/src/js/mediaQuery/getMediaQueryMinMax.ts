@@ -39,7 +39,5 @@ export function getMediaQueryMinMax(
   max: BKey<'xxl'>
 ): '@media(min-width:1760px) and (max-width:1919px)';
 export function getMediaQueryMinMax(min: Exclude<Breakpoint, 'xxl'>, max: Exclude<Breakpoint, 'base'>): string {
-  return `@media(min-width:${breakpoint[min]}) and (max-width:${
-    (breakpoint[max].slice(0, -2) as unknown as number) - 1
-  }px)`;
+  return `@media(min-width:${breakpoint[min]}px) and (max-width:${breakpoint[max] - 1}px)`;
 }

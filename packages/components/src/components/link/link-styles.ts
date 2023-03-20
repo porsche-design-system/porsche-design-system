@@ -1,7 +1,12 @@
 import { getCss, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors } from '../../styles';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getResetInitialStylesForSlottedAnchor,
+  getThemedColors,
+} from '../../styles';
 import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -20,6 +25,7 @@ export const getComponentCss = (
         '@global': addImportantToEachRule({
           '::slotted': {
             '&(a)': {
+              ...getResetInitialStylesForSlottedAnchor,
               outline: 0,
               textDecoration: 'none',
               font: 'inherit',

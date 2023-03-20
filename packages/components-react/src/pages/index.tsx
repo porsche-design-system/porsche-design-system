@@ -17,11 +17,13 @@ import { BannerPage } from './Banner';
 import { ButtonPage } from './Button';
 import { ButtonGroupPage } from './ButtonGroup';
 import { ButtonPurePage } from './ButtonPure';
+import { ButtonTilePage } from './ButtonTile';
 import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { ContentWrapperPage } from './ContentWrapper';
 import { DisplayPage } from './Display';
 import { DividerPage } from './Divider';
+import { FieldsetPage } from './Fieldset';
 import { FieldsetWrapperPage } from './FieldsetWrapper';
 import { FlexPage } from './Flex';
 import { GridPage } from './Grid';
@@ -91,6 +93,11 @@ export const generatedRoutes: RouteType[] = [
     element: <ButtonPurePage />,
   },
   {
+    name: 'Button Tile',
+    path: '/button-tile',
+    element: <ButtonTilePage />,
+  },
+  {
     name: 'Carousel',
     path: '/carousel',
     element: <CarouselPage />,
@@ -114,6 +121,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Divider',
     path: '/divider',
     element: <DividerPage />,
+  },
+  {
+    name: 'Fieldset',
+    path: '/fieldset',
+    element: <FieldsetPage />,
   },
   {
     name: 'Fieldset Wrapper',

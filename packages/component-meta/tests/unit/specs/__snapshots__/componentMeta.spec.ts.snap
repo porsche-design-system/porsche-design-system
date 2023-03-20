@@ -203,6 +203,7 @@ exports[`should match snapshot 1`] = `
       "iconSource": "string",
       "loading": "boolean",
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",
@@ -264,6 +265,84 @@ exports[`should match snapshot 1`] = `
       "type": "submit",
       "weight": "regular",
     },
+    "styling": "jss",
+  },
+  "p-button-tile": {
+    "allowedPropValues": {
+      "align": [
+        "top",
+        "bottom",
+      ],
+      "aria": [
+        "// TODO",
+      ],
+      "aspectRatio": [
+        "1:1",
+        "4:3",
+        "3:4",
+        "16:9",
+        "9:16",
+      ],
+      "compact": "boolean",
+      "description": "string",
+      "disabled": "boolean",
+      "gradient": "boolean",
+      "icon": "string",
+      "iconSource": "string",
+      "label": "string",
+      "loading": "boolean",
+      "size": [
+        "default",
+        "inherit",
+      ],
+      "type": [
+        "button",
+        "submit",
+        "reset",
+      ],
+      "weight": [
+        "regular",
+        "semi-bold",
+      ],
+    },
+    "breakpointCustomizableProps": [
+      "size",
+      "aspectRatio",
+      "compact",
+      "weight",
+    ],
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-button",
+      "p-button-pure",
+    ],
+    "props": {
+      "align": "bottom",
+      "aria": null,
+      "aspectRatio": "4:3",
+      "compact": false,
+      "description": null,
+      "disabled": false,
+      "gradient": true,
+      "icon": "none",
+      "iconSource": null,
+      "label": null,
+      "loading": false,
+      "size": "default",
+      "type": "submit",
+      "weight": "semi-bold",
+    },
+    "requiredProps": [
+      "label",
+      "description",
+    ],
     "styling": "jss",
   },
   "p-carousel": {
@@ -521,7 +600,7 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-fieldset-wrapper": {
+  "p-fieldset": {
     "allowedPropValues": {
       "label": "string",
       "labelSize": [
@@ -546,6 +625,49 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "namedSlots": [
+      "label",
+      "message",
+    ],
+    "props": {
+      "label": null,
+      "labelSize": "medium",
+      "message": null,
+      "required": false,
+      "state": "none",
+      "theme": "light",
+    },
+    "styling": "jss",
+  },
+  "p-fieldset-wrapper": {
+    "allowedPropValues": {
+      "label": "string",
+      "labelSize": [
+        "small",
+        "medium",
+      ],
+      "message": "string",
+      "required": "boolean",
+      "state": [
+        "none",
+        "error",
+        "success",
+      ],
+      "theme": [
+        "light",
+        "dark",
+      ],
+    },
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.",
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
@@ -1108,6 +1230,7 @@ exports[`should match snapshot 1`] = `
         "zoom-out",
       ],
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",
@@ -1264,6 +1387,7 @@ exports[`should match snapshot 1`] = `
       "iconSource": "string",
       "rel": "string",
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",
@@ -1407,9 +1531,9 @@ exports[`should match snapshot 1`] = `
     },
     "breakpointCustomizableProps": [
       "size",
-      "weight",
       "aspectRatio",
       "compact",
+      "weight",
     ],
     "hasAriaProp": true,
     "hasEvent": false,
@@ -2512,6 +2636,7 @@ exports[`should match snapshot 1`] = `
       ],
       "ellipsis": "boolean",
       "size": [
+        "xx-small",
         "x-small",
         "small",
         "medium",

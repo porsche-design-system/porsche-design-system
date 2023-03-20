@@ -1,8 +1,13 @@
-# Fieldset
+# Fieldset Wrapper
 
 The `p-fieldset-wrapper` is a grouping component for wrapping contextual associated form elements. Its visible part is
 an HTML _legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some
 usage examples on our [form patterns section](patterns/forms/resources).
+
+<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+  This component is deprecated and will be removed with the next major release.
+Please use <a href="components/fieldset">p-fieldset</a> instead.
+</p-inline-notification>
 
 <TableOfContents></TableOfContents>
 
@@ -53,7 +58,7 @@ set required on the input of the wrapped form elements to ensure accessibility, 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
+import { FIELDSET_LABEL_SIZES } from './../fieldset/fieldset-utils';
 import { FORM_STATES } from '../../utils'; 
 
 @Component
@@ -76,7 +81,7 @@ export default class Code extends Vue {
 </p-fieldset-wrapper>`;
 
   labelSize = 'small';
-  labelSizes = FIELDSET_WRAPPER_LABEL_SIZES;
+  labelSizes = FIELDSET_LABEL_SIZES;
   get labelSizeMarkup() {
     return `<p-fieldset-wrapper label="Some legend label" label-size=${this.labelSize}>
   <p-text-field-wrapper label="Some label">

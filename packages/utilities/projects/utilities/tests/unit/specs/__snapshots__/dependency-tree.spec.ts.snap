@@ -78,12 +78,14 @@ exports[`should have no regression for dependency tree 1`] = `
     "font/fontSizeTextSmall.js",
     "font/fontSizeTextXLarge.js",
     "font/fontSizeTextXSmall.js",
+    "font/fontSizeTextXXSmall.js",
   ],
   "font/fontSizeTextLarge.js": [],
   "font/fontSizeTextMedium.js": [],
   "font/fontSizeTextSmall.js": [],
   "font/fontSizeTextXLarge.js": [],
   "font/fontSizeTextXSmall.js": [],
+  "font/fontSizeTextXXSmall.js": [],
   "font/fontStyle.js": [
     "font/fontStyleItalic.js",
     "font/fontStyleNormal.js",
@@ -193,7 +195,6 @@ exports[`should have no regression for dependency tree 1`] = `
   "hover/getHoverStyle.js": [
     "border/borderRadiusMedium.js",
     "border/borderRadiusSmall.js",
-    "frostedGlass/frostedGlassStyle.js",
     "theme/themeLightStateHover.js",
   ],
   "index.js": [
@@ -229,6 +230,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "font/fontSizeTextSmall.js",
     "font/fontSizeTextXLarge.js",
     "font/fontSizeTextXSmall.js",
+    "font/fontSizeTextXXSmall.js",
     "font/fontStyle.js",
     "font/fontStyleItalic.js",
     "font/fontStyleNormal.js",
@@ -348,6 +350,7 @@ exports[`should have no regression for dependency tree 1`] = `
     "typography/text/textSmallStyle.js",
     "typography/text/textXLargeStyle.js",
     "typography/text/textXSmallStyle.js",
+    "typography/text/textXXSmallStyle.js",
   ],
   "mediaQuery/breakpoint.js": [
     "mediaQuery/breakpointBase.js",
@@ -570,6 +573,11 @@ exports[`should have no regression for dependency tree 1`] = `
   "typography/text/textXSmallStyle.js": [
     "font/fontHyphenationStyle.js",
     "font/fontSizeTextXSmall.js",
+    "typography/text/textShared.js",
+  ],
+  "typography/text/textXXSmallStyle.js": [
+    "font/fontHyphenationStyle.js",
+    "font/fontSizeTextXXSmall.js",
     "typography/text/textShared.js",
   ],
 }

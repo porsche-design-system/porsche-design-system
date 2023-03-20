@@ -1535,6 +1535,176 @@ img {
 </p-button-pure>
 `;
 
+exports[`should render dsr component for PButtonTile 1`] = `
+<p-button-tile
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+  >
+    <style>
+      :host {
+  display: block;
+  cursor: pointer;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture),::slotted(img) {
+  transition: transform var(--p-transition-duration, .24s) ease !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+p {
+  color: #FBFCFF;
+  max-width: 34.375rem;
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  font-weight: 600;
+}
+.root {
+  height: 0;
+  position: relative;
+  transform: translate3d(0,0,0);
+  padding-top: 75%;
+}
+.image-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  justify-items: start;
+  border-radius: 8px;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  gap: 16px;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.link-or-button-pure {
+  display: none;
+}
+.link-or-button {
+  min-height: 54px;
+  display: inline-block;
+}
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <div
+        class="content"
+      >
+        <p />
+        <p-button
+          class="link-or-button ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+          >
+            <style>
+              :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 54px;
+  min-height: 54px;
+  box-sizing: border-box;
+  outline: 0;
+  text-align: left;
+  appearance: none;
+  text-decoration: none;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: transparent;
+  color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  padding: 13px 26px;
+  gap: 8px;
+  cursor: pointer;
+}
+.label {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}
+.icon {
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}
+
+            </style>
+            <button
+              class="root"
+              type="submit"
+            >
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+        </p-button>
+      </div>
+    </div>
+  </template>
+  Some child
+</p-button-tile>
+`;
+
 exports[`should render dsr component for PCarousel 1`] = `
 <p-carousel
   class="ssr"
@@ -2159,6 +2329,46 @@ hr {
 </p-divider>
 `;
 
+exports[`should render dsr component for PFieldset 1`] = `
+<p-fieldset
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+  >
+    <style>
+      :host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+    </style>
+    <fieldset>
+      <slot />
+    </fieldset>
+  </template>
+  Some child
+</p-fieldset>
+`;
+
 exports[`should render dsr component for PFieldsetWrapper 1`] = `
 <p-fieldset-wrapper
   class="ssr"
@@ -2704,7 +2914,11 @@ exports[`should render dsr component for PLink 1`] = `
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -2786,7 +3000,11 @@ exports[`should render dsr component for PLinkPure 1`] = `
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -2915,7 +3133,11 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -3031,6 +3253,7 @@ exports[`should render dsr component for PLinkTile 1`] = `
     <style>
       :host {
   display: block;
+  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
@@ -3091,10 +3314,10 @@ p {
   grid-template-rows: auto auto;
   grid-template-columns: auto;
 }
-.link-pure {
+.link-or-button-pure {
   display: none;
 }
-.link {
+.link-or-button {
   min-height: 54px;
   display: inline-block;
 }
@@ -3133,7 +3356,7 @@ p {
         />
         <p />
         <p-link
-          class="link ssr"
+          class="link-or-button ssr"
         >
           <template
             shadowroot="open"
@@ -3149,7 +3372,11 @@ p {
   display: none !important;
 }
 ::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
   outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font: inherit !important;
   color: inherit !important;
@@ -5338,10 +5565,13 @@ exports[`should render dsr component for PTabs 1`] = `
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -5353,15 +5583,12 @@ exports[`should render dsr component for PTabs 1`] = `
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -5672,10 +5899,13 @@ exports[`should render dsr component for PTabsBar 1`] = `
   display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  position: relative !important;
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -5687,15 +5917,12 @@ exports[`should render dsr component for PTabsBar 1`] = `
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 0 !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
   color: #010205 !important;
   cursor: pointer !important;
-  border-radius: 4px !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -6038,17 +6265,18 @@ span {
   white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: 0 !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
-  outline: 0 !important;
   color: inherit !important;
   appearance: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
   border: 0 !important;
   text-align: left !important;
 }

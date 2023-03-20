@@ -1,4 +1,4 @@
-# Fieldset
+# Fieldset Wrapper
 
 <TableOfContents></TableOfContents>
 
@@ -17,5 +17,5 @@ more information in the [Form pattern guideline](patterns/forms).
 
 <div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-heading size="large" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
-    <img src="./assets/fieldset-examples.png" alt="Examples for fieldset" />
+    <img src="./../fieldset/assets/fieldset-examples.png" alt="Examples for fieldset" />
 </div>

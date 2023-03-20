@@ -63,6 +63,8 @@ JavaScript styles can be imported by
 - `themeLightStateFocus`
 - `themeLightStateDisabled`
 
+---
+
 #### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`

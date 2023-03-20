@@ -28,12 +28,14 @@ import { BannerComponent } from './banner.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
+import { ButtonTileComponent } from './button-tile.component';
 import { CarouselComponent } from './carousel.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
 import { DisplayComponent } from './display.component';
 import { DividerComponent } from './divider.component';
+import { FieldsetComponent } from './fieldset.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
 import { GridComponent } from './grid.component';
@@ -84,12 +86,14 @@ export const generatedPages = [
   ButtonComponent,
   ButtonGroupComponent,
   ButtonPureComponent,
+  ButtonTileComponent,
   CarouselComponent,
   CheckboxWrapperComponent,
   ContentWrapperComponent,
   CoreInitializerComponent,
   DisplayComponent,
   DividerComponent,
+  FieldsetComponent,
   FieldsetWrapperComponent,
   FlexComponent,
   GridComponent,
@@ -162,6 +166,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ButtonPureComponent,
   },
   {
+    name: 'Button Tile',
+    path: 'button-tile',
+    component: ButtonTileComponent,
+  },
+  {
     name: 'Carousel',
     path: 'carousel',
     component: CarouselComponent,
@@ -185,6 +194,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Divider',
     path: 'divider',
     component: DividerComponent,
+  },
+  {
+    name: 'Fieldset',
+    path: 'fieldset',
+    component: FieldsetComponent,
   },
   {
     name: 'Fieldset Wrapper',

@@ -34,6 +34,9 @@ JavaScript styles can be imported by
 - `textMediumStyle`
 - `textSmallStyle`
 - `textXSmallStyle`
+- `textXXSmallStyle`
+
+---
 
 #### SCSS
 
@@ -56,6 +59,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 - `@mixin pds-text-medium`
 - `@mixin pds-text-small`
 - `@mixin pds-text-x-small`
+- `@mixin pds-text-xx-small`
 
 <script lang="ts">
 import Vue from 'vue';

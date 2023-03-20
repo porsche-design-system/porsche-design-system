@@ -6,12 +6,28 @@ import { TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
 
 const glue = '\n\n';
+// can't resolve @porsche-design-system/components without building it first, therefore we use relative path
+const sourceDirectory = path.resolve('../components/src/components');
+const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
+
+const getExportFilePath = (source: string, constName: string, tagName: TagName): string => {
+  const [, importPath] = source.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
+
+  const componentFilePath = componentFiles.find((file) =>
+    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
+  );
+  return importPath?.match(/^\./)
+    ? path.resolve(componentFilePath, '..', importPath) // relative path
+    : importPath; // absolute path to other package
+};
+
+const getEvaluablePropTypeString = (propTypes: string): string => {
+  return propTypes
+    ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
+    .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
+};
 
 const generateComponentMeta = (): void => {
-  // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
-  const sourceDirectory = path.resolve('../components/src/components');
-  const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
-
   const imports = `import type { TagName } from '@porsche-design-system/shared';`;
 
   const types = [
@@ -220,10 +236,45 @@ const generateComponentMeta = (): void => {
       requiredProps.push(invalidLinkUsageProp);
     }
 
-    let [, rawPropTypes] = /const [a-z][a-zA-z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
-    rawPropTypes = rawPropTypes
-      ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
-      .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
+    let [, rawPropTypes] = /const [a-z][a-zA-Z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
+
+    // handle shared props
+    let sourceWithSharedProps;
+    const sharedPropsRegex = /\n {2}\.{3}(([a-zA-Z]+))/;
+    const [, sharedPropsName] = rawPropTypes?.match(sharedPropsRegex) || [];
+    if (sharedPropsName) {
+      // TODO: currently the scenario for multiple shared props is not supported
+      if (rawPropTypes.match(new RegExp(sharedPropsRegex, 'g')).length > 1) {
+        // global flag allows iterative matches and returns array of all matches
+        throw new Error('Currently the scenario for multiple shared props is not supported.');
+      }
+      const sharedPropsExportFilePath = getExportFilePath(source, sharedPropsName, tagName);
+
+      const sharedPropsExportFile = fs.readFileSync(`${sharedPropsExportFilePath}.ts`, 'utf8');
+      let [, sharedProps] = /const [a-z][a-zA-Z]+: .+? = ({[\s\S]+?});/.exec(sharedPropsExportFile) || [];
+
+      // add imports of shared properties
+      // TODO: currently the scenario for multiple shared props is not supported
+      // TODO: currently no other imports than from packages/components/src/utils/index.ts are supported
+      const allSharedConstants = sharedPropsExportFile.match(/([A-Z]{2,}(_[A-Z]+)*)/g).join(', ');
+      sourceWithSharedProps = `import { ${allSharedConstants} } from '../../utils';\n${source}`;
+
+      // since it is more verbose to address shared proptypes using require(),
+      // the next steps are to ensure the extracted object matches the required type
+      const evaluableSharedProps = getEvaluablePropTypeString(sharedProps);
+      const requiredKeys = Object.keys(require(sharedPropsExportFilePath)[sharedPropsName]);
+      const readFileKeys = Object.keys(eval(`(${evaluableSharedProps})`) as Record<string, string>);
+      if (requiredKeys.length !== readFileKeys.length || !requiredKeys.every((key) => readFileKeys.includes(key))) {
+        throw new Error('Currently the scenario for shared props imported from multiple files is not supported.');
+      }
+
+      sharedProps = sharedProps.replace(/[{}]/g, ''); // remove curly brackets
+      rawPropTypes = rawPropTypes.replace(sharedPropsRegex, sharedProps);
+      rawPropTypes = rawPropTypes.replace(/\n,/, ''); // remove leftover comma
+    }
+
+    rawPropTypes = getEvaluablePropTypeString(rawPropTypes);
+
     const propTypes = eval(`(${rawPropTypes})`) as Record<string, string>;
 
     // breakpointCustomizableProps
@@ -249,13 +300,11 @@ const generateComponentMeta = (): void => {
 
                 let [, variable] = (values.match(/([A-Z_]{5,})/) || []) as [string, string | string[]];
                 if (variable) {
-                  const [, variableImportPath] = source.match(new RegExp(`${variable}[\\s\\S]+?from '(.+)';`)) || [];
-                  const componentFilePath = componentFiles.find((file) =>
-                    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
+                  const variableExportFilePath = getExportFilePath(
+                    source.includes(variable as string) ? source : sourceWithSharedProps,
+                    variable as string,
+                    tagName
                   );
-                  const variableExportFilePath = variableImportPath.match(/^\./)
-                    ? path.resolve(componentFilePath, '..', variableImportPath) // relative path
-                    : variableImportPath; // absolute path to other package
 
                   variable = require(variableExportFilePath)[variable as string];
 
@@ -316,7 +365,6 @@ const generateComponentMeta = (): void => {
     let hostAttributes: ComponentMeta['hostAttributes'] = {};
     const [, rawHostAttributes] = /<Host (.*)>/.exec(source) || [];
     if (rawHostAttributes) {
-      // console.log(rawHostAttributes);
       hostAttributes = rawHostAttributes
         .split(' ')
         .map((attrKeyValuePair) =>
