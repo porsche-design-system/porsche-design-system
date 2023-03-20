@@ -63,7 +63,6 @@ export class LinkTileModelSignature {
   /** Sets a custom headline tag which wraps the heading to enhance semantics. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
 
-  // TODO: Check SSR in NExtjs for anchor inside content
   public render(): JSX.Element {
     validateProps(this, propTypes);
     // If we do this earlier than render, there are cases where primaryLink.href is undefined
