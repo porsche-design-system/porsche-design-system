@@ -6,16 +6,19 @@ import { TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
 
 const glue = '\n\n';
+
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
 const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-const getExportFilePath = (source: string, constName: string, tagName: TagName): string => {
+const getComponentFilePath = (tagName: TagName): string => {
+  return componentFiles.find((file) => file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`)));
+};
+
+const getImportFilePath = (source: string, constName: string, tagName: TagName): string => {
+  const componentFilePath = getComponentFilePath(tagName);
   const [, importPath] = source.match(new RegExp(`${constName}[\\s\\S]+?from '(.+)';`));
 
-  const componentFilePath = componentFiles.find((file) =>
-    file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`))
-  );
   return importPath?.match(/^\./)
     ? path.resolve(componentFilePath, '..', importPath) // relative path
     : importPath; // absolute path to other package
@@ -50,6 +53,9 @@ const generateComponentMeta = (): void => {
   breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
   allowedPropValues?: {
     [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+  };
+  deprecatedPropValues?: {
+    [propName: string]: string[];
   };
   internalProps?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -90,6 +96,9 @@ const generateComponentMeta = (): void => {
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
     allowedPropValues?: {
       [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+    };
+    deprecatedPropValues?: {
+      [propName: string]: string[];
     };
     internalProps?: {
       [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -239,7 +248,8 @@ const generateComponentMeta = (): void => {
     let [, rawPropTypes] = /const [a-z][a-zA-Z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
 
     // handle shared props
-    let sourceWithSharedProps;
+    let sourceWithSharedProps: string;
+
     const sharedPropsRegex = /\n {2}\.{3}(([a-zA-Z]+))/;
     const [, sharedPropsName] = rawPropTypes?.match(sharedPropsRegex) || [];
     if (sharedPropsName) {
@@ -248,7 +258,7 @@ const generateComponentMeta = (): void => {
         // global flag allows iterative matches and returns array of all matches
         throw new Error('Currently the scenario for multiple shared props is not supported.');
       }
-      const sharedPropsExportFilePath = getExportFilePath(source, sharedPropsName, tagName);
+      const sharedPropsExportFilePath = getImportFilePath(source, sharedPropsName, tagName);
 
       const sharedPropsExportFile = fs.readFileSync(`${sharedPropsExportFilePath}.ts`, 'utf8');
       let [, sharedProps] = /const [a-z][a-zA-Z]+: .+? = ({[\s\S]+?});/.exec(sharedPropsExportFile) || [];
@@ -280,6 +290,9 @@ const generateComponentMeta = (): void => {
     // breakpointCustomizableProps
     const breakpointCustomizableProps: ComponentMeta['breakpointCustomizableProps'] = [];
 
+    // deprecatedPropValues
+    const deprecatedPropValues: ComponentMeta['deprecatedPropValues'] = {};
+
     // allowedPropValues
     const allowedPropValues: ComponentMeta['allowedPropValues'] =
       isInternal || !propTypes
@@ -298,22 +311,29 @@ const generateComponentMeta = (): void => {
                   (result[propName] as string[]).push(undefined);
                 }
 
-                let [, variable] = (values.match(/([A-Z_]{5,})/) || []) as [string, string | string[]];
+                const [, variable] = values.match(/([A-Z_]{5,})/) || [];
                 if (variable) {
-                  const variableExportFilePath = getExportFilePath(
-                    source.includes(variable as string) ? source : sourceWithSharedProps,
-                    variable as string,
+                  const variableImportFilePath = getImportFilePath(
+                    source.includes(variable) ? source : sourceWithSharedProps,
+                    variable,
                     tagName
                   );
 
-                  variable = require(variableExportFilePath)[variable as string];
+                  // can be shared utils barrel, cross import from other component or component utils
+                  const variableModule = require(variableImportFilePath);
+                  let variableValues: string[] = variableModule[variable];
+
+                  // check if there is a _DEPRECATED array to import
+                  if (variableModule[`${variable}_DEPRECATED`]) {
+                    deprecatedPropValues[propName] = variableModule[`${variable}_DEPRECATED`];
+                  }
 
                   // handle stuff like ICONS_MANIFEST
                   if (values.match(/^Object\.keys/)) {
-                    variable = Object.keys(variable);
+                    variableValues = Object.keys(variableValues);
                   }
 
-                  result[propName] = [...(result[propName] as string[]), ...variable];
+                  result[propName] = [...(result[propName] as string[]), ...variableValues];
                 } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
                   // TODO: still missing, e.g. in segmented-control
                   result[propName] = ['// TODO'];
@@ -414,6 +434,7 @@ const generateComponentMeta = (): void => {
       ...(requiredProps.length && { requiredProps }),
       ...(deprecatedProps.length && { deprecatedProps }),
       ...(Object.keys(allowedPropValues).length && { allowedPropValues }),
+      ...(Object.keys(deprecatedPropValues).length && { deprecatedPropValues }),
       ...(Object.keys(internalProps).length && { internalProps }),
       ...(breakpointCustomizableProps.length && { breakpointCustomizableProps }),
       ...(Object.keys(internalProps).length && { internalProps }),
