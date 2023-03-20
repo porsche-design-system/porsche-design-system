@@ -1,7 +1,6 @@
 import { CDN_BASE_PATH_WORDMARK, CDN_BASE_URL_DYNAMIC, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 import * as fs from 'fs';
 import * as path from 'path';
-import { optimize, Config } from 'svgo';
 import globby from 'globby';
 import * as crypto from 'crypto';
 import { paramCase } from 'change-case';
@@ -12,37 +11,25 @@ type Manifest = {
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const createManifestAndCopyAssets = (cdn: string, files: string[], config: Config): void => {
+const createManifestAndCopyAssets = (cdn: string, files: string[]): void => {
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/wordmark'), { recursive: true });
 
   const manifest: Manifest = {};
 
-  // TODO: loop is not needed for only one file
   for (const file of files) {
     const svgRawPath = path.normalize(file);
     const svgRawName = path.basename(svgRawPath, '.svg');
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
-    const svgOptimizedData = optimize(svgRawData, config).data;
-    const svgOptimizedHash = toHash(svgOptimizedData);
-    const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
-    const svgOptimizedPath = path.normalize(`./dist/wordmark/${svgOptimizedFilename}`);
+    const hash = toHash(svgRawData);
+    const filename = `${paramCase(svgRawName)}.min.${hash}.svg`;
+    const targetPath = path.normalize(`./dist/wordmark/${filename}`);
 
-    manifest[svgRawName] = svgOptimizedFilename;
+    manifest[svgRawName] = filename;
 
-    fs.copyFileSync(svgRawPath, svgOptimizedPath);
+    fs.copyFileSync(svgRawPath, targetPath);
 
     console.log(`Wordmark "${svgRawName}" copied`);
-
-    const svgRawSize = fs.statSync(svgRawPath).size;
-    const svgOptimizedSize = fs.statSync(svgOptimizedPath).size;
-    const svgSizeDiff = svgOptimizedSize - svgRawSize;
-
-    console.log(
-      `Icon "${svgRawName}" optimized: ${
-        svgSizeDiff < 0 ? svgSizeDiff : '+' + svgSizeDiff
-      } bytes (size: ${svgOptimizedSize} bytes)`
-    );
   }
 
   fs.writeFileSync(
@@ -57,7 +44,6 @@ export const WORDMARKS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_WORDMARK}'`;
-const files = globby.sync('./src/raw/*.svg').sort();
-const config: Config = require('../svgo.config.js');
+const files = globby.sync('./src/optimized/*.svg').sort();
 
-createManifestAndCopyAssets(cdn, files, config);
+createManifestAndCopyAssets(cdn, files);
