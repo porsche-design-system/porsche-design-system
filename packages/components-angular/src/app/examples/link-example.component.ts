@@ -35,6 +35,7 @@ import { LocationStrategy } from '@angular/common';
     <my-prefix-p-link p-link [routerLink]="'/link-example'">Link 4 routerLink prefixed</my-prefix-p-link>
     <p-link-pure [routerLink]="'/'">Link 4 routerLink</p-link-pure>
     <p-link-pure [routerLink]="'/link-example'">Link 4 routerLink</p-link-pure>
+    <p-link-pure [routerLink]="'/'" [fragment]="'top'">Link 5 routerLink with fragment</p-link-pure>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
