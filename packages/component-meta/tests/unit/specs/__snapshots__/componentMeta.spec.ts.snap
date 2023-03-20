@@ -1643,6 +1643,16 @@ exports[`should match snapshot 1`] = `
     "requiredProps": [
       "heading",
     ],
+    "requiredSlots": [
+      {
+        "slot": "primary",
+        "tagName": "p-link",
+      },
+      {
+        "slot": "secondary",
+        "tagName": "p-link",
+      },
+    ],
     "styling": "jss",
   },
   "p-marque": {

@@ -41,6 +41,7 @@ const generateComponentMeta = (): void => {
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child of kind
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
+  requiredSlots?: { slot: string; tagName: TagName }[];
   nestedComponents?: TagName[]; // array of other pds components
   props?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -81,6 +82,7 @@ const generateComponentMeta = (): void => {
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child of kind
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
+    requiredSlots?: { slot: string; tagName: TagName }[];
     nestedComponents?: TagName[]; // array of other pds components
     props?: {
       [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -175,6 +177,27 @@ const generateComponentMeta = (): void => {
         requiredChild = cleanSelector(requiredChild);
         requiredChildSelector = value;
       }
+    }
+
+    // required slots
+    let requiredSlots;
+    const elAndRequiredSlotName = Array.from(
+      source.matchAll(/const (.*) = getSlottedElementOrThrow\(this\.host, '(\w+)'\)/g)
+    ).map(([, constName, requiredSlotName]) => ({
+      constName,
+      requiredSlotName,
+    }));
+
+    if (elAndRequiredSlotName) {
+      requiredSlots = elAndRequiredSlotName.map(({ constName, requiredSlotName }) => {
+        const [, tagName] =
+          new RegExp(`throwIfElementIsNotOfKind\\(this\\.host, ${constName}, '([\\w-]+)'\\)`).exec(source) || [];
+
+        return {
+          slot: requiredSlotName,
+          tagName: tagName,
+        };
+      });
     }
 
     // nested pds components
@@ -409,6 +432,7 @@ const generateComponentMeta = (): void => {
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }), // TODO: singular / plural mismatch?
       requiredChild,
       requiredChildSelector,
+      ...(requiredSlots.length && { requiredSlots }),
       ...(nestedComponents.length && { nestedComponents }),
       ...(Object.keys(props).length && { props }),
       ...(requiredProps.length && { requiredProps }),
