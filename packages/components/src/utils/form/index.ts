@@ -5,7 +5,7 @@ export { hasDescription } from './hasDescription';
 export { hasHeading } from './hasHeading';
 export { hasLabel } from './hasLabel';
 export { hasMessage } from './hasMessage';
-export { isParentFieldsetWrapperRequired } from './isParentFieldsetWrapperRequired';
+export { isParentFieldsetRequired } from './isParentFieldsetRequired';
 export { isRequired } from './isRequired';
 export { isRequiredAndParentNotRequired } from './isRequiredAndParentNotRequired';
 export { isVisibleFormState } from './isVisibleFormState';

@@ -251,6 +251,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-button-group':
       case 'p-button-tile':
       case 'p-checkbox-wrapper':
+      case 'p-fieldset':
       case 'p-link-tile':
       case 'p-link-tile-model-signature':
       case 'p-modal':
@@ -301,6 +302,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           name: 'Checkbox',
           extraProps: { label: 'My Checkbox', checked: true },
         },
+      },
+      'p-fieldset': {
+        props: { label: 'Fieldset' },
       },
       'p-link-tile': {
         props: { label: 'Some label', description: 'Some description' },

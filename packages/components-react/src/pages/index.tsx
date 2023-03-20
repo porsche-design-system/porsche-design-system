@@ -23,6 +23,7 @@ import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { ContentWrapperPage } from './ContentWrapper';
 import { DisplayPage } from './Display';
 import { DividerPage } from './Divider';
+import { FieldsetPage } from './Fieldset';
 import { FieldsetWrapperPage } from './FieldsetWrapper';
 import { FlexPage } from './Flex';
 import { GridPage } from './Grid';
@@ -121,6 +122,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Divider',
     path: '/divider',
     element: <DividerPage />,
+  },
+  {
+    name: 'Fieldset',
+    path: '/fieldset',
+    element: <FieldsetPage />,
   },
   {
     name: 'Fieldset Wrapper',

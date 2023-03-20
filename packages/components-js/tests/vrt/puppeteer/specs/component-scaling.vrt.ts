@@ -17,6 +17,7 @@ const components: Component[] = [
   'content-wrapper',
   'display',
   'divider',
+  'fieldset',
   'fieldset-wrapper',
   'heading',
   'headline',
@@ -49,16 +50,21 @@ const components: Component[] = [
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
   expect(
-    await vrtTest(getVisualRegressionStatesTester(), `${component}-scaling`, `/#${component}`, {
-      scenario: async (page) => {
-        if (component === 'popover') {
-          await openPopoversAndHighlightSpacer(page);
-        }
-        if (component === 'modal') {
-          await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
-        }
-      },
-      scalePageFontSize: true,
-    })
+    await vrtTest(
+      getVisualRegressionStatesTester(),
+      `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-scaling`,
+      `/#${component}`,
+      {
+        scenario: async (page) => {
+          if (component === 'popover') {
+            await openPopoversAndHighlightSpacer(page);
+          }
+          if (component === 'modal') {
+            await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
+          }
+        },
+        scalePageFontSize: true,
+      }
+    )
   ).toBeFalsy();
 });
