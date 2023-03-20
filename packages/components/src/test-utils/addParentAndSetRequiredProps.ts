@@ -2,7 +2,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
-  const { requiredParent, requiredChild, requiredProps, props, hasEvent, eventNames, namedSlots } =
+  const { requiredParent, requiredChild, requiredProps, props, hasEvent, eventNames, requiredSlots } =
     getComponentMeta(tagName);
   if (requiredParent) {
     const parent = document.createElement(requiredParent);
@@ -21,6 +21,14 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component[childTagName] = child;
   }
 
+  if (requiredSlots) {
+    requiredSlots.forEach(({ slot, tagName }) => {
+      const child = document.createElement(tagName);
+      child.slot = slot;
+      component.host.appendChild(child);
+    });
+  }
+
   if (requiredProps) {
     requiredProps.forEach((prop) => {
       component[prop] = props[prop] ?? 'some value';
@@ -30,16 +38,6 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
   if (hasEvent) {
     eventNames.forEach((event) => {
       component[event] = jest.fn();
-    });
-  }
-
-  if (tagName === 'p-link-tile-model-signature') {
-    namedSlots.forEach((slotName) => {
-      const child = document.createElement('p-link');
-      child.href = '#';
-      child.slot = slotName;
-
-      component.host.appendChild(child);
     });
   }
 };

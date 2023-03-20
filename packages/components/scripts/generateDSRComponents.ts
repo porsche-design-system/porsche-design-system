@@ -357,20 +357,18 @@ $&`
           );
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
-          .replace(/const \[primaryLink, secondaryLink] = getSlottedPLinksOrThrow\(.*\);/g, '')
-          .replace(/: primaryLink\.\w+/g, '')
+          .replace(/.*getNamedSlotOrThrow.*/g, '')
+          .replace(/.*throwIfElementIsNotOfKind\(.*\);/g, '')
+          .replace(/primaryLink as unknown;/g, 'namedSlotChildren[0].props;')
           .replace(
-            /setRequiredPropsOfSlottedLinks\(\[primaryLink, secondaryLink]\);/,
-            `const { href, target, download, rel } = namedSlotChildren[0].props;
-    namedSlotChildren.forEach((link) => {
-      const variant = link.props.slot;
-      link.props = {
-        ...link.props,
-        theme: 'dark',
-        variant,
-      };
-    });`
-          );
+            /setRequiredPropsOfSlottedLinks\(\[[\w\s,]*]\);/,
+            `const manipulatedChildren = children.map((child) =>
+      typeof child === 'object' && 'props' in child && namedSlotChildren.includes(child)
+        ? { ...child, props: { ...child.props, theme: 'dark', variant: child.props.slot } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       }
 
       return newFileContent;

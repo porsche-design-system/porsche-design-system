@@ -5,7 +5,7 @@ import * as minifyCssUtils from '../../../src/minifyCss';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { paramCase } from 'change-case';
+import { paramCase, pascalCase } from 'change-case';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
   const Component = fromComponents[componentName];
@@ -16,7 +16,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   jest.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
 
   // default children
-  const { requiredChild, hasSlot } =
+  const { requiredChild, hasSlot, requiredSlots } =
     tagName === 'p-tabs'
       ? { ...componentMeta, requiredChild: 'p-tabs-item label=TabItem' } // TODO: validation for this is missing and therefore componentMeta doesn't contain it
       : componentMeta;
@@ -40,15 +40,15 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
           <RequiredChildTag {...requiredChildProps} />
         ) : tagName === 'p-carousel' ? ( // we need an actual DOM node here
           <div>Some child</div>
-        ) : tagName === 'p-link-tile-model-signature' ? (
-          <>
-            <LinkComponent slot="primary" href="#">
-              Some label
-            </LinkComponent>
-            <LinkComponent slot="secondary" href="#">
-              Some label
-            </LinkComponent>
-          </>
+        ) : requiredSlots ? (
+          requiredSlots.map(({ slot, tagName }) => {
+            const Component = fromComponents[pascalCase(tagName)];
+            return (
+              <Component slot={slot} href={tagName.includes('link') ? '#' : undefined}>
+                Some label
+              </Component>
+            );
+          })
         ) : (
           'Some child'
         ),

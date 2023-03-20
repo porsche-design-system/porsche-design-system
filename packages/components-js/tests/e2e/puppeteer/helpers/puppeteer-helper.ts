@@ -314,11 +314,18 @@ export const goto = async (page: Page, url: string) => {
 };
 
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
-  const { props, requiredProps, requiredChild, requiredParent } = getComponentMeta(tagName);
+  const { props, requiredProps, requiredChild, requiredParent, requiredSlots } = getComponentMeta(tagName);
 
   const buildChildMarkup = (requiredChild: string): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
+    } else if (requiredSlots) {
+      return requiredSlots
+        .map(
+          ({ slot, tagName }) =>
+            `<${tagName} slot="${slot}"${tagName.includes('link') ? ' href="#"' : ''}>Some label</>`
+        )
+        .join('\n');
     } else {
       return 'Some child';
     }
@@ -335,11 +342,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
 
   const attributes = requiredProps?.map((prop) => ` ${prop}="${props[prop] ?? 'value'}"`).join() || '';
 
-  const childMarkup =
-    tagName === 'p-link-tile-model-signature'
-      ? '<p-link slot="primary" href="#">Some label</p-link>\n<p-link slot="secondary" href="#">Some label</p-link>'
-      : buildChildMarkup(requiredChild);
-  const componentMarkup = `<${tagName}${attributes}>${childMarkup}</${tagName}>`;
+  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(requiredChild)}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);
 };
