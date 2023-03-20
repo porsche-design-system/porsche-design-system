@@ -10,9 +10,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
-        position: 'relative',
-        display: 'inline-flex',
-        verticalAlign: 'top',
+        display: 'block',
         ...addImportantToEachRule({
           outline: 0,
           ...hostHiddenStyles,
@@ -31,7 +29,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         display: 'block',
         // pointerEvents: 'none', // prevents image drag // TODO: check if needed
         filter: theme === 'light' ? filterLightPrimary : filterDarkPrimary,
-        ...(isSizeInherit && { height: size }),
+        height: isSizeInherit ? size : 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)',
       },
     },
   });

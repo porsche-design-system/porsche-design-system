@@ -40,14 +40,15 @@ export class Wordmark {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.theme);
 
-    const picture = <img src={getWordmarkSvgUrl()} height={36} alt="Porsche" />;
+    const image = <img src={getWordmarkSvgUrl()} height={36} alt="Porsche" />;
+
     return (
       <Host>
         {this.href === undefined ? (
-          picture
+          image
         ) : (
           <a href={this.href} target={this.target} {...parseAndGetAriaAttributes(this.aria)}>
-            {picture}
+            {image}
           </a>
         )}
       </Host>
