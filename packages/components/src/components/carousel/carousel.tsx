@@ -20,7 +20,7 @@ import {
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
@@ -61,6 +61,7 @@ const propTypes: PropTypes<typeof Carousel> = {
     slide: AllowedTypes.string,
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  activeSlideIndex: AllowedTypes.number,
 };
 
 @Component({
@@ -108,6 +109,9 @@ export class Carousel {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Defines which slide to be active (zero-based numbering). */
+  @Prop() public activeSlideIndex?: number = 0;
+
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
    * Emitted when carousel's content slides. */
@@ -117,6 +121,11 @@ export class Carousel {
   @Event({ bubbles: false }) public change: EventEmitter<CarouselChangeEvent>;
 
   @State() private amountOfPages: number;
+
+  @Watch('activeSlideIndex')
+  public activeSlideHandler(newValue: number): void {
+    this.splide.go(newValue); // change event is emitted via splide.on('move')
+  }
 
   private splide: Splide;
   private container: HTMLElement;
@@ -145,6 +154,7 @@ export class Carousel {
 
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
+      start: this.activeSlideIndex,
       arrows: false,
       pagination: false,
       rewind: this.rewind,
@@ -160,6 +170,11 @@ export class Carousel {
     });
 
     this.registerSplideHandlers(this.splide);
+  }
+
+  // we need to prevent splide reinitialization via splide.refresh() when only the activeSlideIndex is changed from outside
+  public componentShouldUpdate(_: unknown, __: unknown, propertyName: keyof InstanceType<typeof Carousel>): boolean {
+    return propertyName !== 'activeSlideIndex';
   }
 
   public componentDidUpdate(): void {
@@ -261,7 +276,7 @@ export class Carousel {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
-      renderPagination(this.paginationEl, this.amountOfPages, 0); // initial pagination
+      renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {

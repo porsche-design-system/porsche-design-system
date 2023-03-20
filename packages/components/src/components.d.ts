@@ -272,6 +272,10 @@ export namespace Components {
     }
     interface PCarousel {
         /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
@@ -2144,6 +2148,10 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     interface PCarousel {
+        /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
         /**
           * Alignment of heading and description
          */

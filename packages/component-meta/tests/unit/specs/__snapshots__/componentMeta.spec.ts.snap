@@ -347,6 +347,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-carousel": {
     "allowedPropValues": {
+      "activeSlideIndex": "number",
       "alignHeader": [
         "left",
         "center",
@@ -402,6 +403,7 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
+      "activeSlideIndex": 0,
       "alignHeader": "left",
       "description": null,
       "disablePagination": null,
