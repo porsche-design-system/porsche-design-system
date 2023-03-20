@@ -1964,7 +1964,8 @@ exports[`should match snapshot 1`] = `
         "dark",
       ],
       "value": [
-        "// TODO",
+        "string",
+        "number",
       ],
     },
     "deprecatedEventNames": [
@@ -2002,7 +2003,8 @@ exports[`should match snapshot 1`] = `
       "iconSource": "string",
       "label": "string",
       "value": [
-        "// TODO",
+        "string",
+        "number",
       ],
     },
     "hasAriaProp": false,

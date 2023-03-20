@@ -342,8 +342,19 @@ const generateComponentMeta = (): void => {
                     result[propName] = [...(result[propName] as string[]), ...variableValues];
                   }
                 } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
-                  // TODO: still missing, e.g. in segmented-control, segmented-control-item
-                  result[propName] = ['// TODO'];
+                  // e.g. in segmented-control, segmented-control-item
+                  const [, oneOfParam] = propType.match(/\(((?:.|\n)+)\)/);
+                  const [, oneOfValues] = oneOfParam.match(/^\[(.+)]$/) || [];
+
+                  if (oneOfValues) {
+                    // it's an array
+                    const values = oneOfValues.split(',').map((x) => x.trim().replace(/^AllowedTypes./, ''));
+                    result[propName] = values;
+                  } else {
+                    // TODO: supported this scenario once it occurs
+                    console.log('unsupported scenario', propType);
+                    result[propName] = ['// TODO'];
+                  }
                 } else if (!variable) {
                   // must be array of inline values
                   result[propName] = eval(`(${values})`);
