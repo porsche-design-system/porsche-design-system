@@ -65,6 +65,7 @@ import { TypographyCyrilPage } from './TypographyCyril';
 import { TypographyFallbackStrategyPage } from './TypographyFallbackStrategy';
 import { TypographyGreekAndCopticPage } from './TypographyGreekAndCoptic';
 import { TypographyLatinPage } from './TypographyLatin';
+import { WordmarkPage } from './Wordmark';
 
 export const generatedRoutes: RouteType[] = [
   {
@@ -331,5 +332,10 @@ export const generatedRoutes: RouteType[] = [
     name: 'Typography Latin',
     path: '/typography-latin',
     element: <TypographyLatinPage />,
+  },
+  {
+    name: 'Wordmark',
+    path: '/wordmark',
+    element: <WordmarkPage />,
   },
 ];

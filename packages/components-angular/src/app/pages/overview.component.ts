@@ -164,8 +164,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'">Some label</p-link-social>
         </div>
 
-        <div class="playground light" title="should render default marque">
-          <p-marque></p-marque>
+        <div class="playground light" title="should render default wordmark">
+          <p-wordmark></p-wordmark>
         </div>
 
         <div class="playground light" title="should render default model-signature">
@@ -439,8 +439,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <my-prefix-p-link-social p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'">Some label</my-prefix-p-link-social>
         </div>
 
-        <div class="playground light" title="should render default marque with custom prefix">
-          <my-prefix-p-marque p-marque></my-prefix-p-marque>
+        <div class="playground light" title="should render default wordmark with custom prefix">
+          <my-prefix-p-wordmark p-wordmark></my-prefix-p-wordmark>
         </div>
 
         <div class="playground light" title="should render default model-signature with custom prefix">
