@@ -1469,10 +1469,6 @@ export namespace Components {
           * Adapts color depending on theme.
          */
         "theme"?: Theme;
-        /**
-          * Show/hide trademark sign.
-         */
-        "trademark"?: boolean;
     }
 }
 export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
@@ -3462,10 +3458,6 @@ declare namespace LocalJSX {
           * Adapts color depending on theme.
          */
         "theme"?: Theme;
-        /**
-          * Show/hide trademark sign.
-         */
-        "trademark"?: boolean;
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;

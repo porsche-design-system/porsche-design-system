@@ -7,7 +7,6 @@ import { validateProps } from '../../utils/validation/validateProps';
 import { getComponentCss } from './wordmark-styles';
 
 const propTypes: PropTypes<typeof Wordmark> = {
-  trademark: AllowedTypes.boolean,
   size: AllowedTypes.oneOf<WordmarkSize>(WORDMARK_SIZES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   href: AllowedTypes.string,
@@ -22,13 +21,8 @@ const propTypes: PropTypes<typeof Wordmark> = {
 export class Wordmark {
   @Element() public host!: HTMLElement;
 
-  // TODO: discuss if trademark is needed within this component
-  /** Show/hide trademark sign. */
-  @Prop() public trademark?: boolean = true;
-
-  // TODO: do we name the default size responsive or fluid?
   /** Adapts sizing of wordmark. */
-  @Prop() public size?: WordmarkSize = 'responsive';
+  @Prop() public size?: WordmarkSize = 'fluid';
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
