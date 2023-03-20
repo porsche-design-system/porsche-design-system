@@ -63,7 +63,7 @@
     "start:utilities-deprecated": "yarn --cwd ./packages/utilities-deprecated start",
     "build": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components' && concurrently -n 'components-js' 'yarn build:components-js' && concurrently --kill-others-on-fail -n 'components-angular,components-react,components-vue' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:components-vue' && yarn build:storefront",
     "build-prod": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components-prod' && concurrently -n 'components-js' 'yarn build:components-js-prod' && concurrently --kill-others-on-fail -n 'components-angular,components-react,components-vue' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:components-vue' && yarn build:storefront",
-    "build:core-dependencies": "concurrently -n 'email,fallbacks,fonts,icons,marque,meta-icons,model-signatures,shared' 'yarn build:email' 'yarn build:fallbacks' 'yarn build:fonts' 'yarn build:icons' 'yarn build:marque' 'yarn build:meta-icons' 'yarn build:model-signatures' 'yarn build:shared' && concurrently --kill-others-on-fail -n 'utilities,utilities-deprecated' 'yarn build:utilities' 'yarn build:utilities-deprecated' && concurrently -n 'assets' 'yarn build:assets' && concurrently -n 'component-meta' 'yarn build:component-meta'",
+    "build:core-dependencies": "concurrently -n 'email,fallbacks,fonts,icons,marque,meta-icons,model-signatures,shared,wordmark' 'yarn build:email' 'yarn build:fallbacks' 'yarn build:fonts' 'yarn build:icons' 'yarn build:marque' 'yarn build:meta-icons' 'yarn build:model-signatures' 'yarn build:shared' 'yarn build:wordmark' && concurrently --kill-others-on-fail -n 'utilities,utilities-deprecated' 'yarn build:utilities' 'yarn build:utilities-deprecated' && concurrently -n 'assets' 'yarn build:assets' && concurrently -n 'component-meta' 'yarn build:component-meta'",
     "build:assets": "yarn --cwd ./packages/assets build",
     "build:assetsCopyComponentsOnly": "yarn --cwd ./packages/assets buildCopyComponentsOnly",
     "build:component-meta": "yarn --cwd ./packages/component-meta build",
@@ -74,6 +74,7 @@
     "build:marque": "yarn --cwd ./packages/marque build",
     "build:meta-icons": "yarn --cwd packages/meta-icons build",
     "build:model-signatures": "yarn --cwd packages/model-signatures build",
+    "build:wordmark": "yarn --cwd packages/wordmark build",
     "build:components": "yarn --cwd ./packages/components build",
     "build:components-prod": "yarn --cwd ./packages/components build-prod",
     "build:components-js": "yarn --cwd ./packages/components-js build && yarn build:assetsCopyComponentsOnly",
@@ -132,8 +133,8 @@
     "test:smoke:components-js": "yarn --cwd ./packages/components-js test:smoke",
     "updateAlgolia": "yarn --cwd ./packages/storefront updateAlgolia",
     "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn clean:assets:node_modules && yarn clean:component-meta:node_modules && yarn clean:components:node_modules && yarn clean:components-angular:node_modules && yarn clean:components-js:node_modules && yarn clean:components-react:node_modules && yarn clean:components-vue:node_modules && yarn clean:crawler:node_modules && yarn clean:email:node_modules && yarn clean:fonts:node_modules && yarn clean:icons:node_modules && yarn clean:marque:node_modules && yarn clean:meta-icons:node_modules && yarn clean:shared:node_modules && yarn clean:storefront:node_modules && yarn clean:utilities:node_modules && yarn clean:utilities-deprecated:node_modules",
-    "clean:build": "yarn clean:assets:build && yarn clean:component-meta:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:components-vue:build && yarn clean:email:build && yarn clean:fonts:build && yarn clean:icons:build && yarn clean:marque:build && yarn clean:meta-icons:build && yarn clean:shared:build && yarn clean:storefront:build && yarn clean:utilities:build && yarn clean:utilities-deprecated:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn clean:assets:node_modules && yarn clean:component-meta:node_modules && yarn clean:components:node_modules && yarn clean:components-angular:node_modules && yarn clean:components-js:node_modules && yarn clean:components-react:node_modules && yarn clean:components-vue:node_modules && yarn clean:crawler:node_modules && yarn clean:email:node_modules && yarn clean:fonts:node_modules && yarn clean:icons:node_modules && yarn clean:marque:node_modules && yarn clean:meta-icons:node_modules && yarn clean:shared:node_modules && yarn clean:storefront:node_modules && yarn clean:utilities:node_modules && yarn clean:utilities-deprecated:node_modules && yarn clean:wordmark:node_modules",
+    "clean:build": "yarn clean:assets:build && yarn clean:component-meta:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:components-vue:build && yarn clean:email:build && yarn clean:fonts:build && yarn clean:icons:build && yarn clean:marque:build && yarn clean:meta-icons:build && yarn clean:shared:build && yarn clean:storefront:build && yarn clean:utilities:build && yarn clean:utilities-deprecated:build && yarn clean:wordmark:build",
     "clean:assets:node_modules": "yarn --cwd ./packages/assets clean:node_modules",
     "clean:assets:build": "yarn --cwd ./packages/assets clean:build",
     "clean:component-meta:node_modules": "yarn --cwd ./packages/component-meta clean:node_modules",
@@ -166,7 +167,9 @@
     "clean:utilities:node_modules": "yarn --cwd ./packages/utilities clean:node_modules",
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build",
     "clean:utilities-deprecated:node_modules": "yarn --cwd ./packages/utilities-deprecated clean:node_modules",
-    "clean:utilities-deprecated:build": "yarn --cwd ./packages/utilities-deprecated clean:build"
+    "clean:utilities-deprecated:build": "yarn --cwd ./packages/utilities-deprecated clean:build",
+    "clean:wordmark:node_modules": "yarn --cwd ./packages/wordmark clean:node_modules",
+    "clean:wordmark:build": "yarn --cwd ./packages/wordmark clean:build"
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
