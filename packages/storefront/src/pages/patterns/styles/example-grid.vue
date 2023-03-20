@@ -1,7 +1,7 @@
 <template>
   <div style="transform: translate3d(0, 0, 0)">
     <div class="visualize-grid">
-      <span v-for="n in new Array(16)" :key="n" />
+      <span v-for="n in new Array(18)" :key="n" />
     </div>
     <div class="hero-grid">
       <div class="hero-media">

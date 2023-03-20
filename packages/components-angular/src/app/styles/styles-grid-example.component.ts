@@ -278,7 +278,7 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
   ],
   template: `
     <div class="visualize-grid">
-      <span *ngFor="let n of counter(16)" class="visualize-grid-columns"></span>
+      <span *ngFor="let n of counter(18)" class="visualize-grid-columns"></span>
     </div>
     <div class="hero-grid">
       <div class="hero-media">

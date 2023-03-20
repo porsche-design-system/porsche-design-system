@@ -50,6 +50,8 @@ const BannerPage: NextPage = (): JSX.Element => {
         <span />
         <span />
         <span />
+        <span />
+        <span />
       </div>
 
       <div title="should show banner position fixed">

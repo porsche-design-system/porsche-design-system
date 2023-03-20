@@ -48,6 +48,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <span></span>
       <span></span>
       <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div title="should show banner position fixed">
