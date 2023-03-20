@@ -70,21 +70,38 @@
                   value = value.map((val) => {
                     let allowedValues = allowedPropValues[val] as string;
                     if (Array.isArray(allowedValues)) {
+                      // props that support certain values validated with oneOf
                       const deprecatedValues = deprecatedPropValues[val];
                       allowedValues = allowedValues
                         .map((x) => (x === null ? 'undefined' : x))
                         .map((x) => (deprecatedValues?.includes(x) ? x + ' 🚫' : x))
-                        .join('<br>– ');
+                        .map((x) => `– ${x}`)
+                        .join('<br>');
+                    } else if (typeof allowedValues === 'object') {
+                      // props that take objects like aria, intl and sort
+                      allowedValues = Object.entries(allowedValues)
+                        .map(([key, val]) => {
+                          // nested scenario like in p-table-head-cell
+                          if (Array.isArray(val)) {
+                            val = val.map((v) => (v === null ? 'undefined' : v)).join(' | ');
+                          }
+                          return `- ${key}: ${val}`;
+                        })
+                        .join('<br>');
+                    } else {
+                      // just string, boolean or number
+                      allowedValues = `- ${allowedValues}`;
                     }
 
+                    const propFlags = [
+                      deprecatedProps.includes(val) && ' 🚫',
+                      breakpointCustomizableProps.includes(val) && ' 🛠️',
+                    ]
+                      .filter((x) => x)
+                      .join('');
                     return (
-                      '<span class="prop">' +
-                      val +
-                      [deprecatedProps.includes(val) && ' 🚫', breakpointCustomizableProps.includes(val) && ' 🛠️']
-                        .filter((x) => x)
-                        .join('') +
-                      '</span>' +
-                      (allowedValues ? '<div style="display: none">– ' + allowedValues + '</div>' : '')
+                      `<span class="prop">${val}${propFlags}</span>` +
+                      (allowedValues ? `<div style="display: none">${allowedValues}</div>` : '')
                     );
                   });
                 } else if (key === 'eventNames') {

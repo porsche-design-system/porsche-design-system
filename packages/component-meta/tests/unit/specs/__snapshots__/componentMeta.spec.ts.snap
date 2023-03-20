@@ -118,9 +118,12 @@ exports[`should match snapshot 1`] = `
   },
   "p-button": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-expanded": "string",
+        "aria-haspopup": "string",
+        "aria-label": "string",
+        "aria-pressed": "string",
+      },
       "disabled": "boolean",
       "hideLabel": "boolean",
       "icon": "string",
@@ -202,9 +205,12 @@ exports[`should match snapshot 1`] = `
         "left",
         "right",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-expanded": "string",
+        "aria-haspopup": "string",
+        "aria-label": "string",
+        "aria-pressed": "string",
+      },
       "disabled": "boolean",
       "hideLabel": "boolean",
       "icon": "string",
@@ -287,9 +293,12 @@ exports[`should match snapshot 1`] = `
         "top",
         "bottom",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-expanded": "string",
+        "aria-haspopup": "string",
+        "aria-label": "string",
+        "aria-pressed": "string",
+      },
       "aspectRatio": [
         "1:1",
         "4:3",
@@ -368,9 +377,14 @@ exports[`should match snapshot 1`] = `
       "description": "string",
       "disablePagination": "boolean",
       "heading": "string",
-      "intl": [
-        "// TODO",
-      ],
+      "intl": {
+        "first": "string",
+        "last": "string",
+        "next": "string",
+        "prev": "string",
+        "slide": "string",
+        "slideLabel": "string",
+      },
       "pagination": "boolean",
       "rewind": "boolean",
       "slidesPerPage": "number",
@@ -1046,9 +1060,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-icon": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "color": [
         "primary",
         "contrast-low",
@@ -1340,9 +1354,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-link": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "download": "string",
       "hideLabel": "boolean",
       "href": "string",
@@ -1398,9 +1412,9 @@ exports[`should match snapshot 1`] = `
         "left",
         "right",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "download": "string",
       "hideLabel": "boolean",
       "href": "string",
@@ -1528,9 +1542,9 @@ exports[`should match snapshot 1`] = `
         "top",
         "bottom",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "aspectRatio": [
         "1:1",
         "4:3",
@@ -1598,9 +1612,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-marque": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "href": "string",
       "size": [
         "responsive",
@@ -1629,9 +1643,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-modal": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "disableBackdropClick": "boolean",
       "disableCloseButton": "boolean",
       "dismissButton": "boolean",
@@ -1733,9 +1747,12 @@ exports[`should match snapshot 1`] = `
       "allyLabelNext": "string",
       "allyLabelPage": "string",
       "allyLabelPrev": "string",
-      "intl": [
-        "// TODO",
-      ],
+      "intl": {
+        "next": "string",
+        "page": "string",
+        "prev": "string",
+        "root": "string",
+      },
       "itemsPerPage": "number",
       "maxNumberOfPageLinks": [
         5,
@@ -1802,9 +1819,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-popover": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "description": "string",
       "direction": [
         "top",
@@ -1901,9 +1918,10 @@ exports[`should match snapshot 1`] = `
         "top",
         "center",
       ],
-      "scrollToPosition": [
-        "// TODO",
-      ],
+      "scrollToPosition": {
+        "isSmooth": "boolean",
+        "scrollPosition": "number",
+      },
       "theme": [
         "light",
         "dark",
@@ -2113,9 +2131,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-spinner": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "size": [
         "small",
         "medium",
@@ -2355,9 +2373,15 @@ exports[`should match snapshot 1`] = `
     "allowedPropValues": {
       "hideLabel": "boolean",
       "multiline": "boolean",
-      "sort": [
-        "// TODO",
-      ],
+      "sort": {
+        "active": "boolean",
+        "direction": [
+          null,
+          "asc",
+          "desc",
+        ],
+        "id": "string",
+      },
     },
     "breakpointCustomizableProps": [
       "hideLabel",
@@ -2623,9 +2647,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-tag-dismissible": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "color": [
         "background-base",
         "background-surface",

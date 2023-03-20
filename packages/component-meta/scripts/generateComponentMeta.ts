@@ -7,6 +7,8 @@ import type { TagName } from '@porsche-design-system/shared';
 
 const glue = '\n\n';
 
+global.ROLLUP_REPLACE_IS_STAGING = 'staging';
+
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
 const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
@@ -299,7 +301,7 @@ const generateComponentMeta = (): void => {
         ? {} // internal components or ones without propTypes validation don't matter
         : Object.entries(propTypes).reduce((result, [propName, propType]) => {
             propType = propType.replace('AllowedTypes.', '');
-            if (propType.match(/^(?:breakpoint|oneOf)/)) {
+            if (propType.match(/^(?:breakpoint|oneOf|aria)/)) {
               if (propType.match(/^breakpoint/)) {
                 breakpointCustomizableProps.push(propName);
               }
@@ -333,9 +335,14 @@ const generateComponentMeta = (): void => {
                     variableValues = Object.keys(variableValues);
                   }
 
-                  result[propName] = [...(result[propName] as string[]), ...variableValues];
+                  // aria is needs to be converted to object
+                  if (propType.match(/^aria/)) {
+                    result[propName] = variableValues.reduce((res, curr) => ({ ...res, [curr]: 'string' }), {});
+                  } else {
+                    result[propName] = [...(result[propName] as string[]), ...variableValues];
+                  }
                 } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
-                  // TODO: still missing, e.g. in segmented-control
+                  // TODO: still missing, e.g. in segmented-control, segmented-control-item
                   result[propName] = ['// TODO'];
                 } else if (!variable) {
                   // must be array of inline values
@@ -350,9 +357,25 @@ const generateComponentMeta = (): void => {
               }
             } else if (propType === 'boolean' || propType === 'number' || propType === 'string') {
               result[propName] = propType;
-            } else if (propType.match(/^(?:aria|shape)/)) {
-              // TODO: still missing
-              result[propName] = ['// TODO'];
+            } else if (propType.match(/^shape/)) {
+              const [, shapeValues] = propType.match(/({[\s\S]+?})/) || [];
+              const shapeValuesObject = eval(`(${shapeValues})`) as Record<string, string>;
+              result[propName] = Object.fromEntries(
+                Object.entries(shapeValuesObject).map(([key, val]) => {
+                  val = val.replace('AllowedTypes.', '');
+
+                  if (val.match(/^oneOf/)) {
+                    // extract oneOf parameter
+                    let [, values] = val.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
+                    if (values.match(/^\[.+]$/)) {
+                      // only inline values are supported
+                      val = eval(`(${values})`);
+                    }
+                  }
+
+                  return [key, val];
+                })
+              );
             } else {
               throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
             }
