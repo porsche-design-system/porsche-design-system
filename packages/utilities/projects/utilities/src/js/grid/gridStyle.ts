@@ -3,14 +3,17 @@ import { gridGap } from './gridGap';
 import { gridWidthMin } from './gridWidthMin';
 import { gridWidthMax } from './gridWidthMax';
 import { gridSafeZoneBase } from './gridSafeZoneBase';
+import { gridSafeZoneS } from './gridSafeZoneS';
 import { gridSafeZoneXXL } from './gridSafeZoneXXL';
 import { gridFullColumnStart } from './gridFullColumnStart';
+import { gridWideColumnStart } from './gridWideColumnStart';
 import { gridExtendedColumnStart } from './gridExtendedColumnStart';
 import { gridBasicColumnStart } from './gridBasicColumnStart';
 import { gridNarrowColumnStart } from './gridNarrowColumnStart';
 import { gridNarrowColumnEnd } from './gridNarrowColumnEnd';
 import { gridBasicColumnEnd } from './gridBasicColumnEnd';
 import { gridExtendedColumnEnd } from './gridExtendedColumnEnd';
+import { gridWideColumnEnd } from './gridWideColumnEnd';
 import { gridFullColumnEnd } from './gridFullColumnEnd';
 import {
   _cssVariableGridBasicSpanOneHalf,
@@ -27,16 +30,18 @@ const getColumns = (repeat: number): string => (repeat > 1 ? `repeat(${repeat}, 
 const getColumnSpan = (span: number): string => `span ${span}`;
 const getGridTemplateColumns = (layout: 'mobile' | 'desktop') =>
   layout === 'mobile'
-    ? `[${gridFullColumnStart}] ${outerColumn} [${gridExtendedColumnStart} ${gridBasicColumnStart} ${gridNarrowColumnStart}] ${getColumns(
+    ? `[${gridFullColumnStart}] ${outerColumn} [${gridWideColumnStart} ${gridExtendedColumnStart} ${gridBasicColumnStart} ${gridNarrowColumnStart}] ${getColumns(
         6
-      )} [${gridNarrowColumnEnd} ${gridBasicColumnEnd} ${gridExtendedColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`
-    : `[${gridFullColumnStart}] ${outerColumn} [${gridExtendedColumnStart}] ${getColumns(
+      )} [${gridNarrowColumnEnd} ${gridBasicColumnEnd} ${gridExtendedColumnEnd} ${gridWideColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`
+    : `[${gridFullColumnStart}] ${outerColumn} [${gridWideColumnStart}] ${getColumns(
         1
-      )} [${gridBasicColumnStart}] ${getColumns(2)} [${gridNarrowColumnStart}] ${getColumns(
-        8
-      )} [${gridNarrowColumnEnd}] ${getColumns(2)} [${gridBasicColumnEnd}] ${getColumns(
+      )} [${gridExtendedColumnStart}] ${getColumns(1)} [${gridBasicColumnStart}] ${getColumns(
+        2
+      )} [${gridNarrowColumnStart}] ${getColumns(8)} [${gridNarrowColumnEnd}] ${getColumns(
+        2
+      )} [${gridBasicColumnEnd}] ${getColumns(1)} [${gridExtendedColumnEnd}] ${getColumns(
         1
-      )} [${gridExtendedColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`;
+      )} [${gridWideColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`;
 
 export const gridStyle = {
   [_cssVariableGridSafeZone]: gridSafeZoneBase,
@@ -54,6 +59,7 @@ export const gridStyle = {
   padding: `0 calc(50% - ${gridWidthMax} / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
+    [_cssVariableGridSafeZone]: gridSafeZoneS,
     [_cssVariableGridExtendedSpanOneHalf]: getColumnSpan(7),
     [_cssVariableGridBasicSpanOneHalf]: getColumnSpan(6),
     [_cssVariableGridBasicSpanOneThird]: getColumnSpan(4),
