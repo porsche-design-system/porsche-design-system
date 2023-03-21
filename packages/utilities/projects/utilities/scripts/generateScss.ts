@@ -8,6 +8,7 @@ import * as frostedGlass from '../src/js/frostedGlass';
 import * as gradient from '../src/js/gradient';
 import * as grid from '../src/js/grid/gridStyle';
 import * as gridGap from '../src/js/grid/gridGap';
+import * as gridColumnWidth from '../src/js/grid/gridColumnWidth';
 import * as gridWidth from '../src/js/grid/gridWidth';
 import * as gridSafeZone from '../src/js/grid/gridSafeZone';
 import * as gridFull from '../src/js/grid/gridFull';
@@ -97,6 +98,7 @@ generateVariables({
   spacing,
   breakpoint,
   gridGap,
+  gridColumnWidth,
   gridWidth,
   gridSafeZone,
   gridFull,
