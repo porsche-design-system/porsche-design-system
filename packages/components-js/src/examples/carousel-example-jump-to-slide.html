@@ -21,7 +21,6 @@
 
   buttons.forEach((el) => {
     el.addEventListener('click', (e) => {
-      console.log(e.target.innerText);
       syncButtonsAndCarousel(parseInt(e.target.innerText) - 1);
     });
   });
