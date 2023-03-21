@@ -2,7 +2,6 @@ import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
-import { CarouselExampleJumpToSlidePage } from './examples/CarouselExampleJumpToSlide';
 
 export type RouteType = RouteProps & {
   name: string;

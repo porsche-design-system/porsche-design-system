@@ -5,6 +5,7 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
   undefined,
   {
     "arrows": false,
+    "autoWidth": false,
     "breakpoints": {
       "0": {
         "perPage": 1,
@@ -18,6 +19,7 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
     "rewind": true,
     "rewindByDrag": true,
     "speed": 400,
+    "start": 0,
   },
 ]
 `;
