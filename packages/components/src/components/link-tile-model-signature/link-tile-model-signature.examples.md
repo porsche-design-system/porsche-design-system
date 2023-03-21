@@ -83,7 +83,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { TILE_WEIGHTS, TILE_ASPECT_RATIOS } from '../../utils'; 
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils'; 
-import { LINK_BUTTON_GROUP_DIRECTIONS } from '../../styles/link-button-group-direction-styles'; 
+import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles'; 
 
 @Component
 export default class Code extends Vue {
@@ -143,7 +143,7 @@ export default class Code extends Vue {
 
 
   linkDirection = 'row';
-  linkDirections = [...LINK_BUTTON_GROUP_DIRECTIONS, "{ base: 'row', m: 'column' }"];
+  linkDirections = [...GROUP_DIRECTIONS, "{ base: 'row', m: 'column' }"];
   get linkDirectionMarkup() {
     return`<p-link-tile-model-signature
   heading="Some heading"

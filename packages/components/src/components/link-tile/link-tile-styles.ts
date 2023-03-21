@@ -2,7 +2,7 @@ import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../uti
 import { getCss } from '../../utils';
 import { getTileStyles } from '../../styles/tile-styles';
 import { getInsetJssStyle } from '../../styles';
-import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import {
   getButtonLinkTileContentStyles,
   getButtonLinkTilePStyles,

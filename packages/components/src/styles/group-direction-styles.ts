@@ -1,0 +1,20 @@
+import type { JssStyle } from 'jss';
+import type { GetJssStyleFunction } from '../utils';
+
+export const GROUP_DIRECTIONS = ['row', 'column'] as const;
+export type GroupDirection = (typeof GROUP_DIRECTIONS)[number];
+
+const style: Record<GroupDirection, JssStyle> = {
+  column: {
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch',
+  },
+  row: {
+    flexFlow: 'row wrap',
+    alignItems: 'center',
+  },
+};
+
+export const getGroupDirectionStyles: GetJssStyleFunction = (direction: GroupDirection): JssStyle => {
+  return style[direction];
+};

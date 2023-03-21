@@ -1,6 +1,6 @@
 import type { TileAspectRatio, TileWeight } from '../../utils';
 import type { ModelSignatureModel } from '../model-signature/model-signature-utils';
-import type { LinkButtonGroupDirection } from '../../styles/link-button-group-direction-styles';
+import type { GroupDirection } from '../../styles/group-direction-styles';
 import type { LinkVariant } from '../../types';
 
 export type LinkTileModelSignatureModel = ModelSignatureModel;
@@ -9,7 +9,7 @@ export type LinkTileModelSignatureHeadingTag = (typeof LINK_TILE_MODEL_SIGNATURE
 
 export type LinkTileModelSignatureWeight = TileWeight;
 export type LinkTileModelSignatureAspectRatio = TileAspectRatio;
-export type LinkTileModelSignatureLinkDirection = LinkButtonGroupDirection;
+export type LinkTileModelSignatureLinkDirection = GroupDirection;
 
 export const setRequiredPropsOfSlottedLinks = (linkElements: [HTMLPLinkElement, HTMLPLinkElement]): void => {
   linkElements.forEach((link) => {

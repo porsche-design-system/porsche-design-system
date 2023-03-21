@@ -1,11 +1,13 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { LINK_BUTTON_GROUP_DIRECTIONS } from '../../styles/link-button-group-direction-styles';
+import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 import {
   AllowedTypes,
   attachComponentCss,
+  getNamedSlotOrThrow,
   getPrefixedTagNames,
+  throwIfElementIsNotOfKind,
   TILE_ASPECT_RATIOS,
   TILE_WEIGHTS,
   validateProps,
@@ -13,17 +15,15 @@ import {
 import { getComponentCss } from './link-tile-model-signature-styles';
 import type {
   LinkTileModelSignatureAspectRatio,
+  LinkTileModelSignatureHeadingTag,
   LinkTileModelSignatureLinkDirection,
   LinkTileModelSignatureModel,
   LinkTileModelSignatureWeight,
-  LinkTileModelSignatureHeadingTag,
 } from './link-tile-model-signature-utils';
 import {
   LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
-import { throwIfElementIsNotOfKind } from '../../utils/validation/throwIfElementIsNotOfKind';
-import { getNamedSlotOrThrow } from '../../utils/validation/getNamedSlotOrThrow';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
@@ -31,7 +31,7 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
-  linkDirection: AllowedTypes.breakpoint<LinkTileModelSignatureLinkDirection>(LINK_BUTTON_GROUP_DIRECTIONS),
+  linkDirection: AllowedTypes.breakpoint<LinkTileModelSignatureLinkDirection>(GROUP_DIRECTIONS),
   headingTag: AllowedTypes.oneOf<LinkTileModelSignatureHeadingTag>(LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS),
 };
 
