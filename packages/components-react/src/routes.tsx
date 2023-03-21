@@ -2,6 +2,7 @@ import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
+import { CarouselExampleJumpToSlidePage } from './examples/CarouselExampleJumpToSlide';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -72,14 +73,19 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
+    name: 'Carousel Example Dynamic Slides',
+    path: '/carousel-example-dynamic-slides',
+    element: <fromExamples.CarouselExampleDynamicSlidesPage />,
+  },
+  {
     name: 'Carousel Example Events',
     path: '/carousel-example-events',
     element: <fromExamples.CarouselExampleEventsPage />,
   },
   {
-    name: 'Carousel Example Dynamic Slides',
-    path: '/carousel-example-dynamic-slides',
-    element: <fromExamples.CarouselExampleDynamicSlidesPage />,
+    name: 'Carousel Example Jump to Slide',
+    path: '/carousel-example-jump-to-slide',
+    element: <fromExamples.CarouselExampleJumpToSlidePage />,
   },
   {
     name: 'Inline Notification Example Action Button',

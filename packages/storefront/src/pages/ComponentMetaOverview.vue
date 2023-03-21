@@ -23,7 +23,7 @@
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
-  import { SwitchChangeEvent } from '../../../components-angular/dist/angular-wrapper';
+  import { SwitchChangeEvent } from '../../../components/dist/types/bundle';
 
   @Component
   export default class ComponentMetaOverview extends Vue {
