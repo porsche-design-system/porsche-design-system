@@ -19,4 +19,3 @@ export const CDN_BASE_PATH_MARQUE = `${basePath}/marque`;
 export const CDN_BASE_PATH_META_ICONS = `${basePath}/meta-icons`;
 export const CDN_BASE_PATH_MODEL_SIGNATURES = `${basePath}/model-signatures`;
 export const CDN_BASE_PATH_STYLES = `${basePath}/styles`;
-export const CDN_BASE_PATH_WORDMARK = `${basePath}/wordmark`;

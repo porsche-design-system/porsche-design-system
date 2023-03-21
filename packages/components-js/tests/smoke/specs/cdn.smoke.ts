@@ -12,8 +12,6 @@ import {
   META_ICONS_MANIFEST,
   MODEL_SIGNATURES_MANIFEST,
   MODEL_SIGNATURES_CDN_BASE_URL,
-  WORDMARKS_MANIFEST,
-  WORDMARKS_CDN_BASE_URL,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
@@ -202,11 +200,6 @@ describe('cdn', () => {
     describe('model-signatures', () => {
       const modelSignatures = objectToFlatArray(MODEL_SIGNATURES_MANIFEST);
       bulkRequestItems(modelSignatures, MODEL_SIGNATURES_CDN_BASE_URL);
-    });
-
-    describe('wordmark', () => {
-      const wordmarks = objectToFlatArray(WORDMARKS_MANIFEST);
-      bulkRequestItems(wordmarks, WORDMARKS_CDN_BASE_URL);
     });
 
     describe('styles', () => {

@@ -14,7 +14,6 @@ const cdnPathPackageMap = {
     'meta-icons': '@porsche-design-system/meta-icons',
     'model-signatures': '@porsche-design-system/model-signatures',
     styles: '@porsche-design-system/styles',
-    wordmark: '@porsche-design-system/wordmark',
   }),
 };
 

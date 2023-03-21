@@ -2,7 +2,7 @@ import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type { WordmarkSize, WordmarkTarget, WordmarkAriaAttribute } from './wordmark-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, THEMES } from '../../utils';
-import { getWordmarkSvgUrl, WORDMARK_ARIA_ATTRIBUTES, WORDMARK_SIZES } from './wordmark-utils';
+import { WORDMARK_ARIA_ATTRIBUTES, WORDMARK_SIZES } from './wordmark-utils';
 import { validateProps } from '../../utils/validation/validateProps';
 import { getComponentCss } from './wordmark-styles';
 
@@ -40,7 +40,7 @@ export class Wordmark {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.theme);
 
-    const image = <img src={getWordmarkSvgUrl()} height={36} alt="Porsche" />;
+    const image = <img src="./../../assets/wordmark.svg" height={36} alt="Porsche" />;
 
     return (
       <Host>
