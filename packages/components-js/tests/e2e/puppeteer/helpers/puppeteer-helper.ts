@@ -323,7 +323,9 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
       return requiredSlots
         .map(
           ({ slot, slotTagName }) =>
-            `<${slotTagName} slot="${slot}"${slotTagName.includes('link') ? ' href="#"' : ''}>Some label</>`
+            `<${slotTagName} slot="${slot}"${
+              slotTagName.includes('link') ? ' href="#"' : ''
+            }>Some label</${slotTagName}>`
         )
         .join('\n');
     } else {
