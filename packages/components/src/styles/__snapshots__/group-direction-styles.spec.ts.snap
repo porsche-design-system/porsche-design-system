@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getGroupDirectionStyles() should return correct css for direction: {
+  base: 'column',
+  xs: 'row',
+  s: 'column',
+  m: 'row',
+  l: 'column',
+  xl: 'row'
+} 1`] = `undefined`;
+
+exports[`getGroupDirectionStyles() should return correct css for direction: column 1`] = `
+{
+  "alignItems": "stretch",
+  "flexFlow": "column nowrap",
+}
+`;
+
+exports[`getGroupDirectionStyles() should return correct css for direction: row 1`] = `
+{
+  "alignItems": "center",
+  "flexFlow": "row wrap",
+}
+`;

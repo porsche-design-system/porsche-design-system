@@ -58,6 +58,7 @@ exports[`getTileStyles() should return correct css for {
     "position": "absolute",
     "right": 0,
     "top": 0,
+    "transform": "translateZ(0)",
   },
   "root": {
     "@media(hover:hover)": {
@@ -133,6 +134,7 @@ exports[`getTileStyles() should return correct css for {
     "position": "absolute",
     "right": 0,
     "top": 0,
+    "transform": "translateZ(0)",
   },
   "root": {
     "height": 0,
@@ -201,6 +203,7 @@ exports[`getTileStyles() should return correct css for {
     "position": "absolute",
     "right": 0,
     "top": 0,
+    "transform": "translateZ(0)",
   },
   "root": {
     "height": 0,
@@ -269,6 +272,7 @@ exports[`getTileStyles() should return correct css for {
     "position": "absolute",
     "right": 0,
     "top": 0,
+    "transform": "translateZ(0)",
   },
   "root": {
     "height": 0,
@@ -337,6 +341,7 @@ exports[`getTileStyles() should return correct css for {
     "position": "absolute",
     "right": 0,
     "top": 0,
+    "transform": "translateZ(0)",
   },
   "root": {
     "@media(hover:hover)": {
@@ -412,6 +417,7 @@ exports[`getTileStyles() should return correct css for {
     "position": "absolute",
     "right": 0,
     "top": 0,
+    "transform": "translateZ(0)",
   },
   "root": {
     "@media(hover:hover)": {

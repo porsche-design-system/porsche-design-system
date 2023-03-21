@@ -72,6 +72,7 @@ export const getTileStyles = (opts: {
       position: 'absolute',
       overflow: 'hidden',
       borderRadius: borderRadiusMedium,
+      transform: 'translateZ(0)', // Fixes Safari rounded corners on hover
       ...getInsetJssStyle(0),
     },
     content: {
