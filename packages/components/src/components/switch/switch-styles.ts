@@ -1,5 +1,5 @@
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, highContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
@@ -27,14 +27,14 @@ const getColors = (
 } => {
   const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const checkedColor = successColor;
+  const checkedColor = highContrastMode ? primaryColor : successColor;
   const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
 
   return {
     buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
-    buttonBorderColorHover: checked ? successColorDarken : primaryColor,
+    buttonBorderColorHover: checked ? (highContrastMode ? primaryColor : successColorDarken) : primaryColor,
     buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked ? successColorDarken : 'transparent',
+    buttonBackgroundColorHover: checked ? (highContrastMode ? primaryColor : successColorDarken) : 'transparent',
     toggleBackgroundColor:
       (loading && 'transparent') ||
       (disabled && !checked && disabledColor) ||

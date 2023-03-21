@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../types';
 import type { Styles } from 'jss';
-import { buildResponsiveStyles } from '../utils';
+import { buildResponsiveStyles, highContrastMode } from '../utils';
 import {
   addImportantToEachRule,
   getFormCheckboxRadioHiddenJssStyle,
@@ -59,7 +59,7 @@ export const getCheckboxRadioJssStyle = (
         },
         '&(input:checked)': {
           borderColor: checkedColor,
-          backgroundColor: checkedColor,
+          backgroundColor: !highContrastMode && checkedColor,
         },
         ...(!isDisabled && {
           ...hoverMediaQuery({

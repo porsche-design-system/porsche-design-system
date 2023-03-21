@@ -31,7 +31,7 @@ type Colors = {
 };
 
 const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor, focusColor } = getThemedColors(theme);
 
   const colors: {
     [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
@@ -39,14 +39,14 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
     primary: {
       textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
       borderColor: primaryColor,
-      borderColorHover: contrastHighColor,
+      borderColorHover: highContrastMode ? focusColor : contrastHighColor,
       backgroundColor: !highContrastMode && primaryColor,
       backgroundColorHover: contrastHighColor,
     },
     secondary: {
       textColor: primaryColor,
       borderColor: primaryColor,
-      borderColorHover: contrastMediumColor,
+      borderColorHover: highContrastMode ? focusColor : contrastMediumColor,
       backgroundColor: 'transparent',
       backgroundColorHover: hoverColor,
     },
