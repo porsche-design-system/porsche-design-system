@@ -14,7 +14,7 @@ export const WHITELISTED_TAG_NAMES = [
   'p-table-head-cell',
   'p-table-cell',
 ] as const;
-type TagNameWhitelisted = typeof WHITELISTED_TAG_NAMES[number];
+type TagNameWhitelisted = (typeof WHITELISTED_TAG_NAMES)[number];
 
 type TagNameRelevant = Exclude<
   TagName,
@@ -138,6 +138,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <textarea />
   </p-textarea-wrapper>`,
   'p-toast': `<p-toast></p-toast>`,
+  'p-wordmark': `<p-wordmark></p-wordmark>`,
 };
 
 export const getMarkup = (tagName: TagName): string => tagNameMarkup[tagName];
