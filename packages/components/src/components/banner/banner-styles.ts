@@ -11,6 +11,7 @@ import {
   gridSafeZoneBase,
   gridSafeZoneS,
   gridSafeZoneXXL,
+  gridWidthMax,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
@@ -28,10 +29,7 @@ const mediaQueryXXL = getMediaQueryMin('xxl');
 const bannerPositionVertical = '56px';
 const bannerPositionHorizontalBase = gridSafeZoneBase;
 const bannerPositionHorizontalS = `calc(${gridSafeZoneS} + ${gridGap} + ${gridColumnWidthS})`;
-const bannerPositionHorizontalXXL = `calc(${gridSafeZoneXXL.replace(
-  /min\((.*),.*\)/gm,
-  'calc($1)'
-)} + ${gridGap} + ${gridColumnWidthXXL})`;
+const bannerPositionHorizontalXXL = `calc(max(0px, (100% - ${gridWidthMax}) / 2) + ${gridSafeZoneXXL} + ${gridGap} + ${gridColumnWidthXXL})`;
 
 const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
   getKeyframes(direction, {
