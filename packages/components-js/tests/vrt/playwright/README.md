@@ -5,7 +5,7 @@
 As discovered, in some cases playwright ignores `filter: xxx` css, which means it's working in Safari and it looks good
 with `headless: false`, but it's not visible (not applied) on screenshots.
 
-### Steps to reproduce
+### Steps to reproduce scenario 1
 
 1. Set `headless: false` in playwright config
 2. Do `await page.waitForTimeout(5000);` in `executeVisualRegressionTest` in `playwright-helper.ts`, so that page is not
@@ -51,6 +51,29 @@ yarn test:vrt:playwright sometestname
 You'll see now blue screenshot as a result.
 
 _Note_: don't forget to remove `results` folder before you start test, otherwise sometimes Playwright caches the result.
+
+### Steps to reproduce scenario 2 (previous element)
+
+The same as scenario 1, but with different code:
+
+```
+<style>
+  .prev-element {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .myelement {
+    height: 300px;
+    background: red;
+    filter: invert(100%);
+  }
+</style>
+
+<div class="prev-element"></div>
+<div class="myelement"></div>
+```
+
+You'll see that in this case it's also not working. So previous element affects element's css filter as well.
 
 ### Pre-conditions
 
