@@ -11,8 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
+- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+- Props `autoWidth` and `activeSlideIndex` to `Carousel`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
 
 #### 🤡 Component deprecations 🤡
 
