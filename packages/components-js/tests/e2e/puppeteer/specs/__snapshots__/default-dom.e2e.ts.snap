@@ -497,3 +497,5 @@ exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-toast 1`] = `""`;
+
+exports[`should have no basic DOM regression for p-wordmark 1`] = `"<img src="./../../assets/wordmark.svg" height="36" alt="Porsche">"`;
