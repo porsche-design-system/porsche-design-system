@@ -78,7 +78,7 @@ const themeLight = {
   infoColor: '#1E5BEB',
   infoSoftColor: '#E8EEFD',
   infoSoftColorDarken: '#D6DEF0',
-  infoSoftColorLighten: '#FFFFFF',
+  infoSoftColorLighten: '#FFFFFF'
 };
 
 const themeDark = {
@@ -117,18 +117,19 @@ const themeDark = {
   infoColor: '#027FFC',
   infoSoftColor: '#001A33',
   infoSoftColorDarken: '#040A11',
-  infoSoftColorLighten: '#0F2943',
+  infoSoftColorLighten: '#0F2943'
 };
 
 const themes = {
-  light: themeLight,
-  dark: themeDark,
+  'light': themeLight,
+  'dark': themeDark
 };
 /* Auto Generated End */
 
 const schemeHighContrast: Partial<ThemedColors> = {
   primaryColor: 'CanvasText',
   disabledColor: 'GrayText',
+  focusColor: 'Highlight',
   successColor: 'Highlight',
   successColorDarken: 'Highlight',
 };

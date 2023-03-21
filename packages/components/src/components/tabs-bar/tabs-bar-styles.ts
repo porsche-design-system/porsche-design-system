@@ -1,6 +1,6 @@
 import type { TabsBarSize, TabsBarWeight, TabsBarWeightDeprecated } from './tabs-bar-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss, highContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getResetInitialStylesForSlottedAnchor,
@@ -112,9 +112,9 @@ export const getComponentCss = (
       display: 'block',
       position: 'absolute',
       width: 0,
-      height: weight === 'semi-bold' ? '2px' : '1.5px',
+      height: highContrastMode ? '4px' : weight === 'semi-bold' ? '2px' : '1.5px',
       left: 0,
-      bottom: '-4px',
+      bottom: highContrastMode ? '-1px' : '-4px',
       background: primaryColor,
       '&--enable-transition': {
         willChange: 'width',
