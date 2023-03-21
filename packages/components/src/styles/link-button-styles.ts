@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, hasVisibleIcon } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, highContrastMode } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
@@ -40,7 +40,7 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
       textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
       borderColor: primaryColor,
       borderColorHover: contrastHighColor,
-      backgroundColor: primaryColor,
+      backgroundColor: !highContrastMode && primaryColor,
       backgroundColorHover: contrastHighColor,
     },
     secondary: {
