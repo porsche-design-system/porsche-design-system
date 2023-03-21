@@ -39,5 +39,4 @@ export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string
   }
 };
 
-export const highContrastMode = (): boolean =>
-  hasWindow && window.matchMedia && matchMedia('(forced-colors: active)').matches;
+export const highContrastMode = hasWindow && window.matchMedia && matchMedia('(forced-colors: active)').matches;

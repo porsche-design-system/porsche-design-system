@@ -1,5 +1,5 @@
 import type { TextSize, Theme } from '../../types';
-import { getCss, isThemeDark } from '../../utils';
+import { getCss, isThemeDark, highContrastMode } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -99,14 +99,15 @@ export const getComponentCss = (
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
-          ...getSchemedHighContrastMediaQuery(
-            {
-              filter: filter.light[color],
-            },
-            {
-              filter: filter.dark[color],
-            }
-          ),
+          ...(highContrastMode &&
+            getSchemedHighContrastMediaQuery(
+              {
+                filter: filter.light[color],
+              },
+              {
+                filter: filter.dark[color],
+              }
+            )),
           WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
