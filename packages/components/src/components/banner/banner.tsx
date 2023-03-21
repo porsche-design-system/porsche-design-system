@@ -88,7 +88,7 @@ export class Banner {
         'Please use the "heading" prop or slot="heading" instead.'
       );
     }
-    attachComponentCss(this.host, getComponentCss, this.width);
+    attachComponentCss(this.host, getComponentCss);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

@@ -1,29 +1,37 @@
 import type { JssStyle } from 'jss';
-import type { BannerWidth } from './banner-utils';
 import type { KeyframesDirection } from './banner-styles-shared';
-import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
-import { getCss, mergeDeep } from '../../utils';
-import { BANNER_Z_INDEX } from '../../constants';
-import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-styles-shared';
+import { getAnimationIn, getAnimationOut, getKeyframes, getKeyframesMobile } from './banner-styles-shared';
 import {
-  getAnimationIn,
-  getAnimationOut,
-  getBoxShadow,
-  getKeyframes,
-  getKeyframesMobile,
-} from './banner-styles-shared';
+  dropShadowHighStyle,
+  getMediaQueryMin,
+  getMediaQueryMinMax,
+  gridColumnWidthS,
+  gridColumnWidthXXL,
+  gridGap,
+  gridSafeZoneBase,
+  gridSafeZoneS,
+  gridSafeZoneXXL,
+} from '@porsche-design-system/utilities-v2';
+import { getCss } from '../../utils';
+import { BANNER_Z_INDEX } from '../../constants';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 
-const bannerPositionTypeVar = '--p-banner-position-type';
-const bannerPositionTopVar = '--p-banner-position-top';
-const bannerPositionBottomVar = '--p-banner-position-bottom';
-const bannerZIndexVar = '--p-internal-banner-z-index';
-const bannerAnimationDurationVar = '--p-animation-duration';
+const cssVariableTop = '--p-banner-position-top';
+const cssVariableBottom = '--p-banner-position-bottom';
+const cssVariableAnimationDuration = '--p-animation-duration';
+const cssVariableZIndex = '--p-internal-banner-z-index';
 
-const bannerOffset = '56px';
-
-const mediaQueryBase = getMediaQueryMinMax('base', 's');
+const mediaQueryBaseToS = getMediaQueryMinMax('base', 's');
 const mediaQueryS = getMediaQueryMin('s');
+const mediaQueryXXL = getMediaQueryMin('xxl');
+
+const bannerPositionVertical = '56px';
+const bannerPositionHorizontalBase = gridSafeZoneBase;
+const bannerPositionHorizontalS = `calc(${gridSafeZoneS} + ${gridGap} + ${gridColumnWidthS})`;
+const bannerPositionHorizontalXXL = `calc(${gridSafeZoneXXL.replace(
+  /min\((.*),.*\)/gm,
+  'calc($1)'
+)} + ${gridGap} + ${gridColumnWidthXXL})`;
 
 const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
   getKeyframes(direction, {
@@ -31,54 +39,50 @@ const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): Jss
     transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
   });
 
-const widthMap: Record<BannerWidth, BannerWidth> = {
-  fluid: 'extended',
-  extended: 'extended',
-  basic: 'basic',
-};
-
-export const getComponentCss = (width: BannerWidth): string => {
+export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': {
-        // TODO: Why is nothing set as important here?
-        [bannerPositionTopVar]: bannerOffset,
-        [bannerPositionBottomVar]: bannerOffset,
-        position: `var(${bannerPositionTypeVar},fixed)`,
-        zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
         opacity: 0,
-        left: 0,
-        right: 0,
-        willChange: 'opacity,transform',
-        // mergeDeep needed to get media queries coming from getContentWrapperStyle() together
-        ...mergeDeep(
-          addImportantToEachRule({
-            ...getContentWrapperStyle(widthMap[width]),
-            ...hostHiddenStyles,
-          }),
-          {
-            [mediaQueryBase]: {
-              bottom: `var(${bannerPositionBottomVar})`,
-            },
-            [mediaQueryS]: {
-              top: `var(${bannerPositionTopVar})`,
-            },
-          }
-        ),
+        ...addImportantToEachRule({
+          [cssVariableTop]: bannerPositionVertical,
+          [cssVariableBottom]: bannerPositionVertical,
+          position: 'fixed',
+          left: bannerPositionHorizontalBase,
+          right: bannerPositionHorizontalBase,
+          margin: 0,
+          padding: 0,
+          width: 'auto',
+          zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
+          willChange: 'opacity,transform',
+          [mediaQueryBaseToS]: {
+            bottom: `var(${cssVariableBottom})`,
+          },
+          [mediaQueryS]: {
+            top: `var(${cssVariableTop})`,
+            left: bannerPositionHorizontalS,
+            right: bannerPositionHorizontalS,
+          },
+          [mediaQueryXXL]: {
+            left: bannerPositionHorizontalXXL,
+            right: bannerPositionHorizontalXXL,
+          },
+          ...hostHiddenStyles,
+        }),
         '&(.hydrated),&(.ssr)': {
-          [mediaQueryBase]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
-          [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
+          [mediaQueryBaseToS]: getAnimationIn('mobileIn', cssVariableAnimationDuration),
+          [mediaQueryS]: getAnimationIn('desktopIn', cssVariableAnimationDuration),
         },
         '&(.banner--close)': {
-          [mediaQueryBase]: getAnimationOut('mobileOut'),
+          [mediaQueryBaseToS]: getAnimationOut('mobileOut'),
           [mediaQueryS]: getAnimationOut('desktopOut'),
         },
       },
-      '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),
-      '@keyframes mobileOut': getKeyframesMobile('out', bannerPositionBottomVar),
-      '@keyframes desktopIn': getKeyframesDesktop('in', bannerPositionTopVar),
-      '@keyframes desktopOut': getKeyframesDesktop('out', bannerPositionTopVar),
+      '@keyframes mobileIn': getKeyframesMobile('in', cssVariableBottom),
+      '@keyframes mobileOut': getKeyframesMobile('out', cssVariableBottom),
+      '@keyframes desktopIn': getKeyframesDesktop('in', cssVariableTop),
+      '@keyframes desktopOut': getKeyframesDesktop('out', cssVariableTop),
     },
-    root: getBoxShadow(),
+    root: dropShadowHighStyle,
   });
 };
