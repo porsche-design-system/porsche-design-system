@@ -8,7 +8,7 @@ export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
   const onChange = useCallback((e: CustomEvent<CarouselChangeEvent>) => setActiveSlideIndex(e.detail.activeIndex), []);
   const onButtonClick = useCallback(
     (e: MouseEvent<HTMLButtonElement> & { target: HTMLButtonElement }) =>
-      setActiveSlideIndex(parseInt(e.target.innerText)),
+      setActiveSlideIndex(parseInt(e.target.innerText) - 1),
     []
   );
 
