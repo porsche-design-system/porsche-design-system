@@ -12,16 +12,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - Styles:
-  - `gridSafeZoneS` and `pds-grid-safe-zone-s`
   - `gridWide`
   - `gridWideColumnStart` and `pds-grid-wide-column-start`
   - `gridWideColumnEnd` and `pds-grid-wide-column-end`
+  - `gridSafeZoneS` and `pds-grid-safe-zone-s`
+  - `gridColumnWidth`
+  - `gridColumnWidthBase` and `pds-grid-column-width-base`
+  - `gridColumnWidthS` and `pds-grid-column-width-s`
+  - `gridColumnWidthXXL` and `pds-grid-column-width-xxl`
 - `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
 #### Changed
 
-- Styles: `gridStyles` and `pds-grid` are supporting an additional column range `wide`
+- Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
+- Styles:
+  - `gridSafeZoneBase` and `pds-grid-safe-zone-base` calculation
+  - `gridSafeZoneXXL` and `pds-grid-safe-zone-xxl` calculation
+
+#### Removed
+
+- `Banner`: CSS variable `--p-banner-position-type`
 
 #### 🤡 Component deprecations 🤡
 
