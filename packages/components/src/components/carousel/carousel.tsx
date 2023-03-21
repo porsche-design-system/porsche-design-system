@@ -105,7 +105,7 @@ export class Carousel {
   @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
-  @Prop() public intl?: CarouselInternationalization = {};
+  @Prop() public intl?: CarouselInternationalization;
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -171,13 +171,13 @@ export class Carousel {
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>),
       // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.intl),
+      i18n: parseJSONAttribute(this.intl || {}), // can only applied initially atm
     });
 
     this.registerSplideHandlers(this.splide);
   }
 
-  // we need to prevent splide reinitialization via splide.refresh() when only the activeSlideIndex is changed from outside
+  // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
   public componentShouldUpdate(_: unknown, __: unknown, propertyName: keyof InstanceType<typeof Carousel>): boolean {
     return propertyName !== 'activeSlideIndex';
   }
