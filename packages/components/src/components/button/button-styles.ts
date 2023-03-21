@@ -17,12 +17,12 @@ const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: 
   } = {
     primary: {
       textColor: highContrastMode ? disabledColor : contrastHighColor,
-      borderColor: loading ? contrastHighColor : disabledColor,
+      borderColor: highContrastMode ? disabledColor : loading ? contrastHighColor : disabledColor,
       backgroundColor: !highContrastMode && (loading ? contrastHighColor : disabledColor),
     },
     secondary: {
       textColor: disabledColor,
-      borderColor: loading ? contrastMediumColor : disabledColor,
+      borderColor: highContrastMode ? disabledColor : loading ? contrastMediumColor : disabledColor,
       backgroundColor: loading ? hoverColor : 'transparent',
     },
   };
