@@ -16,8 +16,11 @@ import {
   fontSizeTextSmall,
   getMediaQueryMax,
   getMediaQueryMin,
+  gridColumnWidthS,
+  gridColumnWidthXXL,
   gridGap,
   gridSafeZoneBase,
+  gridSafeZoneS,
   gridSafeZoneXXL,
   gridWidthMax,
   headingXLargeStyle,
@@ -42,24 +45,29 @@ const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
 const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
 
-// we don't need to abstract spacing definitions since component content-wrapper is deprecated and will be removed soon
-const gridColumn1FrS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
-const gridColumn1FrXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
+const paddingHorizontalBase = gridSafeZoneBase;
+const paddingHorizontalS = (width: CarouselWidth): string =>
+  `calc(${gridSafeZoneS} + (${gridGap} + ${gridColumnWidthS})${width === 'extended' ? '' : ' * 2'})`;
+const paddingHorizontalXXL = (width: CarouselWidth): string =>
+  `calc(${gridSafeZoneXXL} + (${gridGap} + ${gridColumnWidthXXL})${width === 'extended' ? '' : ' * 2'})`;
 
 const spacingMap: { [key in CarouselWidth]: JssStyle } = {
   basic: {
-    padding: `0 ${gridSafeZoneBase}`,
+    padding: `0 ${paddingHorizontalBase}`,
     [mediaQueryS]: {
-      padding: `0 calc(${gridSafeZoneBase} + ${gridGap} + ${gridColumn1FrS})`,
+      padding: `0 ${paddingHorizontalS('basic')}`,
     },
     [mediaQueryXXL]: {
-      padding: `0 calc(${gridSafeZoneXXL} + ${gridGap} + ${gridColumn1FrXXL})`,
+      padding: `0 ${paddingHorizontalXXL('basic')}`,
     },
   },
   extended: {
-    padding: `0 ${gridSafeZoneBase}`,
+    padding: `0 ${paddingHorizontalBase}`,
+    [mediaQueryS]: {
+      padding: `0 ${paddingHorizontalS('extended')}`,
+    },
     [mediaQueryXXL]: {
-      padding: `0 ${gridSafeZoneXXL}`,
+      padding: `0 ${paddingHorizontalXXL('extended')}`,
     },
   },
 };
