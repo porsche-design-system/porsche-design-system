@@ -11,7 +11,7 @@ describe('getThemedColors()', () => {
   it.each<Parameters<typeof getThemedColors>>([['light'], ['dark']])(
     'should return correct partial high contrast mode scheme colors for theme: %s',
     (theme) => {
-      jest.spyOn(a11yUtils, 'highContrastMode').mockReturnValue(true);
+      Object.defineProperty(a11yUtils, 'highContrastMode', { value: true });
       expect(getThemedColors(theme)).toMatchSnapshot();
     }
   );
