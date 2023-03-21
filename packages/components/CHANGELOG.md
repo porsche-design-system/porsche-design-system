@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
-- `Link Tile Model Signature`
+- `Link Tile Model Signature` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2388)
 
 #### 🤡 Component deprecations 🤡
 
