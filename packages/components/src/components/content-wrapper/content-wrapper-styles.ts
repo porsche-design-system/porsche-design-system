@@ -18,7 +18,7 @@ const columnAmount: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: n
   extended: 1,
 };
 
-const offsetHorizontalXXL = `max(0px, (100% - ${gridWidthMax}) / 2)`;
+const offsetHorizontalXXL = `max(0px, 50% - ${gridWidthMax} / 2)`;
 
 const paddingHorizontalBase = gridSafeZoneBase;
 const paddingHorizontalS = (width: ContentWrapperWidth): string =>

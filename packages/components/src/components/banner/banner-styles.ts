@@ -29,7 +29,7 @@ const mediaQueryXXL = getMediaQueryMin('xxl');
 const bannerPositionVertical = '56px';
 const bannerPositionHorizontalBase = gridSafeZoneBase;
 const bannerPositionHorizontalS = `calc(${gridSafeZoneS} + ${gridGap} + ${gridColumnWidthS})`;
-const bannerPositionHorizontalXXL = `calc(max(0px, (100% - ${gridWidthMax}) / 2) + ${gridSafeZoneXXL} + ${gridGap} + ${gridColumnWidthXXL})`;
+const bannerPositionHorizontalXXL = `calc(max(0px, 50% - ${gridWidthMax} / 2) + ${gridSafeZoneXXL} + ${gridGap} + ${gridColumnWidthXXL})`;
 
 const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
   getKeyframes(direction, {
