@@ -45,6 +45,7 @@ const components: Component[] = [
   'text-list',
   'textarea-wrapper',
   'toast-basic',
+  'wordmark',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
