@@ -144,7 +144,7 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(27); // all the components summed up
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30); // all the components summed up
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -152,7 +152,7 @@ describe('lifecycle', () => {
     await initTable();
     const initialStatus = await getLifecycleStatus(page);
 
-    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(27);
+    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
     expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
     const host = await getHost();
