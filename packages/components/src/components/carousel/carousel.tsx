@@ -126,17 +126,17 @@ export class Carousel {
 
   @State() private amountOfPages: number;
 
-  @Watch('activeSlideIndex')
-  public activeSlideHandler(newValue: number): void {
-    this.splide.go(newValue); // change event is emitted via splide.on('move')
-  }
-
   private splide: Splide;
   private container: HTMLElement;
   private btnPrev: ButtonPure;
   private btnNext: ButtonPure;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
+
+  @Watch('activeSlideIndex')
+  public activeSlideHandler(newValue: number): void {
+    this.splide.go(newValue); // change event is emitted via splide.on('move')
+  }
 
   public connectedCallback(): void {
     observeChildren(this.host, this.updateSlidesAndPagination);
