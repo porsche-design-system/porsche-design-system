@@ -121,7 +121,7 @@ select {
         calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
       )
       [full-end];
-    --pds-internal-grid-safe-zone: max(22px, 5vw - 16px);
+    --pds-internal-grid-safe-zone: calc(5vw - 16px);
     --pds-grid-basic-span-one-half: span 6;
     --pds-grid-basic-span-one-third: span 4;
     --pds-grid-narrow-span-one-half: span 4;
