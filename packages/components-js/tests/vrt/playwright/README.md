@@ -1,9 +1,11 @@
 # Playwright - known bugs
 
-As discovered, in some cases playwright ignores `filter: xxx` css, which means it's working in Safari and it looks
-normally with `headless: false`, but it's not visible (not applied) on screenshots.
+## Ignoring css filter
 
-Steps to reproduce it:
+As discovered, in some cases playwright ignores `filter: xxx` css, which means it's working in Safari and it looks good
+with `headless: false`, but it's not visible (not applied) on screenshots.
+
+### Steps to reproduce
 
 1. Set `headless: false` in playwright config
 2. Do `await page.waitForTimeout(5000);` in `executeVisualRegressionTest` in `playwright-helper.ts`, so that page is not
@@ -48,4 +50,25 @@ yarn test:vrt:playwright sometestname
 
 You'll see now blue screenshot as a result.
 
-Note: don't forget to remove `results` folder before you start test, otherwise sometimes Playwright caches the result.
+_Note_: don't forget to remove `results` folder before you start test, otherwise sometimes Playwright caches the result.
+
+### Pre-conditions
+
+This bug happens in one of the following known scenarios. CSS `filter` property doesn't take plase on screenshots, if
+one of the following conditions is met:
+
+1. `-webkit-backdrop-filter` or `transform` is applied to the element
+2. `-webkit-backdrop-filter` or `transform` is applied to some previous element inside the same DOM parent
+3. `-webkit-backdrop-filter` or `transform` is applied to some previous element inside the same Shadow DOM of some other
+   element
+4. `-webkit-backdrop-filter` or `transform` is applied to some children of the element or to elements in Shadow DOM of
+   children of the element
+
+**But:** If `-webkit-backdrop-filter` or `transform` is applied to parent element - then the bug is not reproducible.
+
+### List of examples in project
+
+Curently we have the following examples where screenshot is not correct (css filter is not applied):
+
+- Table: icons in table head are not visible for `dark` theme, because we have `-webkit-backdrop-filter` inside of
+  `scroller` (being used by table) and `transform` inside of table head cell.
