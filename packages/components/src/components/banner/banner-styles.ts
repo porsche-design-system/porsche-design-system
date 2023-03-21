@@ -5,13 +5,10 @@ import {
   dropShadowHighStyle,
   getMediaQueryMin,
   getMediaQueryMinMax,
+  gridColumnWidthBase,
   gridColumnWidthS,
   gridColumnWidthXXL,
   gridGap,
-  gridSafeZoneBase,
-  gridSafeZoneS,
-  gridSafeZoneXXL,
-  gridWidthMax,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
@@ -26,11 +23,6 @@ const mediaQueryBaseToS = getMediaQueryMinMax('base', 's');
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
-const bannerPositionVertical = '56px';
-const bannerPositionHorizontalBase = gridSafeZoneBase;
-const bannerPositionHorizontalS = `calc(${gridSafeZoneS} + ${gridGap} + ${gridColumnWidthS})`;
-const bannerPositionHorizontalXXL = `calc(max(0px, 50% - ${gridWidthMax} / 2) + ${gridSafeZoneXXL} + ${gridGap} + ${gridColumnWidthXXL})`;
-
 const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
   getKeyframes(direction, {
     opacity: 0,
@@ -43,14 +35,14 @@ export const getComponentCss = (): string => {
       ':host': {
         opacity: 0,
         ...addImportantToEachRule({
-          [cssVariableTop]: bannerPositionVertical,
-          [cssVariableBottom]: bannerPositionVertical,
+          [cssVariableTop]: '56px',
+          [cssVariableBottom]: '56px',
           position: 'fixed',
-          left: bannerPositionHorizontalBase,
-          right: bannerPositionHorizontalBase,
-          margin: 0,
+          left: 0,
+          right: 0,
+          margin: '0 auto',
           padding: 0,
-          width: 'auto',
+          width: `calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)`,
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           willChange: 'opacity,transform',
           [mediaQueryBaseToS]: {
@@ -58,12 +50,10 @@ export const getComponentCss = (): string => {
           },
           [mediaQueryS]: {
             top: `var(${cssVariableTop})`,
-            left: bannerPositionHorizontalS,
-            right: bannerPositionHorizontalS,
+            width: `calc(${gridColumnWidthS} * 14 + ${gridGap} * 13)`,
           },
           [mediaQueryXXL]: {
-            left: bannerPositionHorizontalXXL,
-            right: bannerPositionHorizontalXXL,
+            width: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`,
           },
           ...hostHiddenStyles,
         }),
