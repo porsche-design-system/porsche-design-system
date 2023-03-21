@@ -181,20 +181,20 @@ const generateComponentMeta = (): void => {
 
     // required slots
     let requiredSlots;
-    const elAndRequiredSlotName = Array.from(
+    const constNameAndSlot = Array.from(
       source.matchAll(/const (.*) = getNamedSlotOrThrow\(this\.host, '(\w+)'\)/g)
-    ).map(([, constName, requiredSlotName]) => ({
+    ).map(([, constName, slot]) => ({
       constName,
-      requiredSlotName,
+      slot,
     }));
 
-    if (elAndRequiredSlotName) {
-      requiredSlots = elAndRequiredSlotName.map(({ constName, requiredSlotName }) => {
+    if (constNameAndSlot) {
+      requiredSlots = constNameAndSlot.map(({ constName, slot }) => {
         const [, tagName] =
           new RegExp(`throwIfElementIsNotOfKind\\(this\\.host, ${constName}, '([\\w-]+)'\\)`).exec(source) || [];
 
         return {
-          slot: requiredSlotName,
+          slot,
           slotTagName: tagName,
         };
       });
