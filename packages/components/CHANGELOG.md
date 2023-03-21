@@ -34,6 +34,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Banner`: CSS variable `--p-banner-position-type`
 
+#### 🤖 Property deprecations 🤖
+
+##### Banner:
+
+- Prop `width` has no effect anymore, instead the component is aligned with Porsche Grid "extended" by default.
+
 #### 🤡 Component deprecations 🤡
 
 ##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)

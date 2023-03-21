@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { BannerState, BannerStateDeprecated, BannerWidth, BannerWidthDeprecated } from './banner-utils';
+import type { BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
 import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
 import {
   AllowedTypes,
@@ -10,6 +10,7 @@ import {
   hasNamedSlot,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
@@ -43,8 +44,11 @@ export class Banner {
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
 
-  /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
-  @Prop() public width?: BannerWidth = 'extended';
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
+  @Prop() public width?: BannerWidth;
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -78,9 +82,11 @@ export class Banner {
     warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerStateDeprecated, BannerState>(this, 'state', {
       neutral: 'info',
     });
-    warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerWidthDeprecated, BannerWidth>(this, 'width', {
-      fluid: 'extended',
-    });
+    warnIfDeprecatedPropIsUsed<typeof Banner>(
+      this,
+      'width',
+      'The component is aligned with Porsche Grid "extended" by default.'
+    );
     const hasTitleSlot = hasNamedSlot(this.host, 'title');
     if (hasTitleSlot) {
       console.warn(
