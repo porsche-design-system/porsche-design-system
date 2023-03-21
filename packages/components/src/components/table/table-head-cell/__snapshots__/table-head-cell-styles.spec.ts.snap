@@ -63,7 +63,6 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  margin-left: 4px;
   transition: opacity var(--p-transition-duration, .24s) ease;
   opacity: 0;
   transform: rotate3d(0,0,1,0deg);
@@ -135,7 +134,6 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  margin-left: 4px;
   transition: opacity var(--p-transition-duration, .24s) ease;
   opacity: 0;
   transform: rotate3d(0,0,1,180deg);
@@ -207,7 +205,6 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  margin-left: 4px;
   transition: opacity var(--p-transition-duration, .24s) ease;
   opacity: 1;
   transform: rotate3d(0,0,1,0deg);
@@ -279,7 +276,6 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  margin-left: 4px;
   transition: opacity var(--p-transition-duration, .24s) ease;
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
@@ -351,7 +347,6 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  margin-left: 4px;
   transition: opacity var(--p-transition-duration, .24s) ease;
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
