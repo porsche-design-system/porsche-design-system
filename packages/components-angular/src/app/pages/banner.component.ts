@@ -35,7 +35,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <span></span>
     </div>
 
-    <div class="playground light" title="should show banner with heading and description on light background">
+    <div
+      class="playground light"
+      title="should show banner with heading and description on light background"
+      style="background: transparent"
+    >
       <p-banner [heading]="'Heading'" [description]="'Description'"></p-banner>
     </div>
 

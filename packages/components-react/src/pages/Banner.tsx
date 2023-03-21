@@ -36,7 +36,11 @@ export const BannerPage = (): JSX.Element => {
         <span />
       </div>
 
-      <div className="playground light" title="should show banner with heading and description on light background">
+      <div
+        className="playground light"
+        title="should show banner with heading and description on light background"
+        style={{ background: 'transparent' }}
+      >
         <PBanner heading="Heading" description="Description" />
       </div>
 
