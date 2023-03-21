@@ -34,7 +34,7 @@ export class Wordmark {
   @Prop() public target?: WordmarkTarget = '_self';
 
   /** Add ARIA attributes. */
-  @Prop() aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
