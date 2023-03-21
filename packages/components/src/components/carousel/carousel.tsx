@@ -62,6 +62,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
+  autoWidth: AllowedTypes.boolean,
 };
 
 @Component({
@@ -112,6 +113,9 @@ export class Carousel {
   /** Defines which slide to be active (zero-based numbering). */
   @Prop() public activeSlideIndex?: number = 0;
 
+  /** If set to true, the carousel respects the width of each slide which has to be defined via CSS. This option overrides the `slidesPerPage` prop. */
+  @Prop() public autoWidth?: boolean = false;
+
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
    * Emitted when carousel's content slides. */
@@ -155,6 +159,7 @@ export class Carousel {
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
+      autoWidth: this.autoWidth, // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       pagination: false,
       rewind: this.rewind,

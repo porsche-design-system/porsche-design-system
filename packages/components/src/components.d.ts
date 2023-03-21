@@ -280,6 +280,10 @@ export namespace Components {
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
+          * If set to true, the carousel respects the width of each slide which has to be defined via CSS. This option overrides the `slidesPerPage` prop.
+         */
+        "autoWidth"?: boolean;
+        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -2156,6 +2160,10 @@ declare namespace LocalJSX {
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
+        /**
+          * If set to true, the carousel respects the width of each slide which has to be defined via CSS. This option overrides the `slidesPerPage` prop.
+         */
+        "autoWidth"?: boolean;
         /**
           * Defines the description used in the carousel.
          */
