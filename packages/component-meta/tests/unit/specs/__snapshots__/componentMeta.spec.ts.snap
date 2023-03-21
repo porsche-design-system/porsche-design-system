@@ -410,7 +410,7 @@ exports[`should match snapshot 1`] = `
       "description": null,
       "disablePagination": null,
       "heading": null,
-      "intl": "{}",
+      "intl": null,
       "pagination": true,
       "rewind": true,
       "slidesPerPage": 1,
