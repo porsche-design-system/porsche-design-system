@@ -17,7 +17,7 @@
   {
     "chunkShortName": "button-group",
     "size": 941,
-    "gzipSize": 537
+    "gzipSize": 539
   },
   {
     "chunkShortName": "button-pure",
@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 7565,
-    "gzipSize": 3229
+    "size": 8618,
+    "gzipSize": 3747
   },
   {
     "chunkShortName": "main",
