@@ -316,7 +316,7 @@ export const goto = async (page: Page, url: string) => {
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const { props, requiredProps, requiredChild, requiredParent, requiredSlots } = getComponentMeta(tagName);
 
-  const buildChildMarkup = (requiredChild: string): string => {
+  const buildChildMarkup = (requiredChild: string, requiredSlots: { slot: string; slotTagName: TagName }[]): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
     } else if (requiredSlots) {
@@ -344,7 +344,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
 
   const attributes = requiredProps?.map((prop) => ` ${prop}="${props[prop] ?? 'value'}"`).join() || '';
 
-  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(requiredChild)}</${tagName}>`;
+  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(requiredChild, requiredSlots)}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);
 };
