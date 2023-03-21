@@ -32,7 +32,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const head = `
         <style>
           body { display: grid; grid-template-columns: repeat(2, 50%); }
-          .playground p-banner { --p-banner-position-type: static; }
+          .playground { transform: translate3d(0, 0, 0); height: 20rem; }
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
