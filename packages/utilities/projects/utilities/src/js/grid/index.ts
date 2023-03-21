@@ -1,4 +1,8 @@
 export { gridStyle } from './gridStyle';
+export { gridColumnWidth } from './gridColumnWidth';
+export { gridColumnWidthBase } from './gridColumnWidthBase';
+export { gridColumnWidthS } from './gridColumnWidthS';
+export { gridColumnWidthXXL } from './gridColumnWidthXXL';
 export { gridFull } from './gridFull';
 export { gridFullColumnStart } from './gridFullColumnStart';
 export { gridFullColumnEnd } from './gridFullColumnEnd';
