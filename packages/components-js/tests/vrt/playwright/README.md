@@ -95,3 +95,7 @@ Curently we have the following examples where screenshot is not correct (css fil
 
 - Table: icons in table head are not visible for `dark` theme, because we have `-webkit-backdrop-filter` inside of
   `scroller` (being used by table) and `transform` inside of table head cell.
+
+### Bug report
+
+Reported the bug [HERE](https://github.com/microsoft/playwright/issues/13605#issuecomment-1477592706)
