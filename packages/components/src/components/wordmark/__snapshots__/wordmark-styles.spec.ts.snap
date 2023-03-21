@@ -2,35 +2,32 @@
 
 exports[`getComponentCss() should return correct css for size: fluid and theme: dark 1`] = `
 ":host {
-  display: block;
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
   outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 a {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
   display: block;
   text-decoration: none;
-  outline: 0;
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
 }
 a:focus::before {
-  outline-color: #010205;
-}
-a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+  content: "";
+  position: absolute;
+  border: 2px solid #1A44EA;
+  border-radius: 8px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
 img {
   display: block;
@@ -41,35 +38,32 @@ img {
 
 exports[`getComponentCss() should return correct css for size: fluid and theme: light 1`] = `
 ":host {
-  display: block;
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
   outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 a {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
   display: block;
   text-decoration: none;
-  outline: 0;
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
 }
 a:focus::before {
-  outline-color: #010205;
-}
-a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+  content: "";
+  position: absolute;
+  border: 2px solid #1A44EA;
+  border-radius: 8px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
 img {
   display: block;
@@ -80,35 +74,32 @@ img {
 
 exports[`getComponentCss() should return correct css for size: inherit and theme: dark 1`] = `
 ":host {
-  display: block;
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
   outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 a {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
   display: block;
   text-decoration: none;
-  outline: 0;
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
 }
 a:focus::before {
-  outline-color: #010205;
-}
-a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+  content: "";
+  position: absolute;
+  border: 2px solid #1A44EA;
+  border-radius: 8px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
 img {
   display: block;
@@ -119,35 +110,32 @@ img {
 
 exports[`getComponentCss() should return correct css for size: inherit and theme: light 1`] = `
 ":host {
-  display: block;
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
   outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 a {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
   display: block;
   text-decoration: none;
-  outline: 0;
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
 }
 a:focus::before {
-  outline-color: #010205;
-}
-a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+  content: "";
+  position: absolute;
+  border: 2px solid #1A44EA;
+  border-radius: 8px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
 }
 img {
   display: block;
