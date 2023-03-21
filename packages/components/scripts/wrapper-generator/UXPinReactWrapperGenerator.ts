@@ -314,8 +314,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { heading: 'Some heading' },
         children: [
           '<DummyImg uxpId="dummy-img" />',
-          '<Link slot="primary" href="#">Some link</Link>',
-          '<Link slot="secondary" href="#">Some link</Link>',
+          '<Link slot="primary" variant="primary" theme="dark" href="#" uxpId="link-primary">Some link</Link>',
+          '<Link slot="secondary" variant="secondary" theme="dark" href="#" uxpId="link-secondary">Some link</Link>',
         ].join(glue),
       },
       'p-modal': {
