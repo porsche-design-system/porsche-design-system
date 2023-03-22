@@ -183,6 +183,7 @@ export class Carousel {
   }
 
   public componentDidUpdate(): void {
+    // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     updateSlidesInert(this.splide);
