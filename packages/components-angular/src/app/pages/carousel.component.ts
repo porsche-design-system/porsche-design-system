@@ -349,8 +349,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with autoWidth">
-      <p-carousel [heading]="'autoWidth=true'" [autoWidth]="true">
+    <div class="playground light" title="should render carousel with slidesPerPage=auto">
+      <p-carousel [heading]="'slidesPerPage=auto'" slidesPerPage="auto">
         <div style="width: 10vw">Slide 1 10vw</div>
         <div style="width: 200px">Slide 2 200px</div>
         <div style="width: 100px">Slide 3 100px</div>

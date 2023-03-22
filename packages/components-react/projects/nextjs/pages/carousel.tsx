@@ -351,8 +351,8 @@ const CarouselPage: NextPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with autoWidth">
-        <PCarousel heading="autoWidth=true" autoWidth={true}>
+      <div className="playground light" title="should render carousel with slidesPerPage=auto">
+        <PCarousel heading="slidesPerPage=auto" slidesPerPage="auto">
           <div style={{ width: '10vw' }}>Slide 1 10vw</div>
           <div style={{ width: '200px' }}>Slide 2 200px</div>
           <div style={{ width: '100px' }}>Slide 3 100px</div>
