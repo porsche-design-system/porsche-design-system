@@ -1,10 +1,5 @@
-import {
-  forceFocusHoverState,
-  forceFocusState,
-  getBodyMarkup,
-  GetMarkup,
-  setContentWithDesignSystem,
-} from '../helpers';
+import type { GetThemedMarkup } from '../helpers';
+import { forceFocusHoverState, forceFocusState, getThemedBodyMarkup, setContentWithDesignSystem } from '../helpers';
 import {
   defaultViewports,
   getVisualRegressionStatesTester,
@@ -21,13 +16,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
   expect(
     await vrt.test('wordmark-states', async () => {
       const page = vrt.getPage();
-      const head = `<style>
-  p-wordmark:not(:last-child) { margin-right: 0.5rem; }
-</style>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          p-link:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }
+          p-wordmark:not(:last-child) { margin-right: 0.5rem; }
+        </style>`;
 
-      const getElementsMarkup: GetMarkup = () => `<p-wordmark href="https://www.porsche.com"></p-wordmark>
-<p-wordmark href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
+        <p-wordmark theme="${theme}" href="https://www.porsche.com"></p-wordmark>
+        <p-wordmark theme="${theme}"  href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceFocusState(page, '.focus p-wordmark'); // native outline should not be visible
       await forceFocusState(page, '.focus p-wordmark >>> a');
