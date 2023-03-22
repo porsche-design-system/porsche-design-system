@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkBut
 import { getCss, highContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/utilities-v2';
-import { getThemedColors, getTransition } from '../../styles';
+import { getHighContrastColors, getThemedColors, getTransition } from '../../styles';
 
 type Colors = {
   textColor: string;
@@ -11,6 +11,7 @@ type Colors = {
 };
 const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: Theme): Colors => {
   const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { canvasColor } = getHighContrastColors();
 
   const colors: {
     [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
@@ -18,12 +19,12 @@ const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: 
     primary: {
       textColor: highContrastMode ? disabledColor : contrastHighColor,
       borderColor: highContrastMode ? disabledColor : loading ? contrastHighColor : disabledColor,
-      backgroundColor: !highContrastMode && (loading ? contrastHighColor : disabledColor),
+      backgroundColor: highContrastMode ? canvasColor : loading ? contrastHighColor : disabledColor,
     },
     secondary: {
       textColor: disabledColor,
       borderColor: highContrastMode ? disabledColor : loading ? contrastMediumColor : disabledColor,
-      backgroundColor: loading ? hoverColor : 'transparent',
+      backgroundColor: highContrastMode ? canvasColor : loading ? hoverColor : 'transparent',
     },
   };
 

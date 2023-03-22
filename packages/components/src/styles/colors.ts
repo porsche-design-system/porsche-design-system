@@ -127,7 +127,6 @@ const themes = {
 /* Auto Generated End */
 
 const schemeHighContrastMerged: Partial<ThemedColors> = {
-  // primaryColor: 'CanvasText',
   disabledColor: 'GrayText',
   focusColor: 'Highlight',
 };

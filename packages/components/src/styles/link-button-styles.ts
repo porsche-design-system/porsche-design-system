@@ -3,6 +3,7 @@ import { buildResponsiveStyles, hasVisibleIcon, highContrastMode } from '../util
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
+  getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -32,6 +33,7 @@ type Colors = {
 
 const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
   const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } = getThemedColors(theme);
+  const { canvasColor } = getHighContrastColors();
 
   const colors: {
     [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
@@ -47,7 +49,7 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
       textColor: primaryColor,
       borderColor: primaryColor,
       borderColorHover: contrastMediumColor,
-      backgroundColor: 'transparent',
+      backgroundColor: highContrastMode ? canvasColor : 'transparent',
       backgroundColorHover: hoverColor,
     },
   };
