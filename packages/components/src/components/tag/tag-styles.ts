@@ -1,4 +1,4 @@
-import { getCss } from '../../utils';
+import { getCss, highContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getInvertedThemedColors,
@@ -62,6 +62,9 @@ export const getComponentCss = (
         color: primaryColor,
         font: textXSmallStyle.font,
         whiteSpace: 'nowrap',
+        ...(highContrastMode && {
+          outline: '1px solid transparent',
+        }),
         ...(isFocusable &&
           hoverMediaQuery({
             transition: getTransition('background-color'),

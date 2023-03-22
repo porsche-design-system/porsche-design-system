@@ -25,7 +25,9 @@ export const getComponentCss = (
     mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme), {
       ...(hasSlottedAnchor && {
         root: {
-          borderColor: highContrastMode && linkColor,
+          ...(highContrastMode && {
+            borderColor: linkColor,
+          }),
         },
         '@global': addImportantToEachRule({
           '::slotted': {
