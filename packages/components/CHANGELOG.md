@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- Styles:
+- Styles: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
   - `gridWide`
   - `gridWideColumnStart` and `pds-grid-wide-column-start`
   - `gridWideColumnEnd` and `pds-grid-wide-column-end`
@@ -26,21 +26,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
-- Styles:
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- Styles: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
   - `gridSafeZoneBase` and `pds-grid-safe-zone-base` calculation
   - `gridSafeZoneXXL` and `pds-grid-safe-zone-xxl` calculation
 - Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
   `@porsche-design-system/components-js/styles/scss`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### Removed
 
 - `Banner`: CSS variable `--p-banner-position-type`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### 🤖 Property deprecations 🤖
 
 ##### Banner:
 
 - Prop `width` has no effect anymore, instead the component is aligned with Porsche Grid "extended" by default.
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### 🤡 Component deprecations 🤡
 
