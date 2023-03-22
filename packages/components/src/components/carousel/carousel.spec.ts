@@ -111,6 +111,19 @@ describe('componentDidLoad', () => {
     expect(component['splide']).toBe(splideMock);
   });
 
+  it('should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto', () => {
+    const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+
+    const component = new Carousel();
+    component.slidesPerPage = 'auto';
+    expect(component['splide']).toBeUndefined();
+
+    component.componentDidLoad();
+    expect(spy).toBeCalledTimes(1);
+    expect(spy.mock.calls[0]).toMatchSnapshot();
+    expect(component['splide']).toBe(splideMock);
+  });
+
   it('should call this.registerSplideHandlers() with correct parameters', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const component = new Carousel();
@@ -133,6 +146,7 @@ describe('render', () => {
 
     expect(spy).toBeCalledWith(component, 'wrapContent');
   });
+
   it('should call warnIfHeadingIsMissing() with correct parameters', () => {
     const spy = jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing');
     const component = new Carousel();
@@ -352,6 +366,25 @@ describe('updateAmountOfPages()', () => {
     expect(getCurrentMatchingBreakpointValueSpy).toBeCalledWith(1);
     expect(mathRoundSpy).toBeCalledWith(11);
     expect(getAmountOfPagesSpy).toBeCalledWith(2, 12);
+    expect(component['amountOfPages']).toBe(5);
+  });
+
+  it('should call getCurrentMatchingBreakpointValue() and getAmountOfPages() with correct parameters and set this.amountOfPages for slidesPerPage=auto', () => {
+    const getAmountOfPagesSpy = jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const getCurrentMatchingBreakpointValueSpy = jest.spyOn(
+      breakpointObserverUtilsUtils,
+      'getCurrentMatchingBreakpointValue'
+    );
+    const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
+    const component = new Carousel();
+    component.slidesPerPage = 'auto';
+    component['slides'] = Array(2);
+    expect(component['amountOfPages']).toBeUndefined();
+
+    component['updateAmountOfPages']();
+    expect(getCurrentMatchingBreakpointValueSpy).not.toBeCalledWith();
+    expect(mathRoundSpy).not.toBeCalled();
+    expect(getAmountOfPagesSpy).toBeCalledWith(2, 1); // 'auto' causes a value of 1
     expect(component['amountOfPages']).toBe(5);
   });
 
