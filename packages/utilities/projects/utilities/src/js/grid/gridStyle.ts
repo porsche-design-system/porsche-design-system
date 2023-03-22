@@ -56,7 +56,7 @@ export const gridStyle = {
   minWidth: gridWidthMin,
   maxWidth: gridWidthMax,
   margin: 0,
-  padding: `0 calc(50% - ${gridWidthMax} / 2)`,
+  padding: `0 calc(50vw - ${gridWidthMax} / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
     [_cssVariableGridSafeZone]: gridSafeZoneS,
