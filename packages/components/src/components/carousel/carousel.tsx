@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
 import type { ButtonPure } from '../button-pure/button-pure';
 import type {
   CarouselAlignHeader,
@@ -49,7 +49,10 @@ const propTypes: PropTypes<typeof Carousel> = {
   rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
-  slidesPerPage: AllowedTypes.breakpoint('number'),
+  slidesPerPage: AllowedTypes.oneOf<ValidatorFunction>([
+    AllowedTypes.breakpoint('number'),
+    AllowedTypes.oneOf(['auto']),
+  ]),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
@@ -62,7 +65,6 @@ const propTypes: PropTypes<typeof Carousel> = {
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
-  autoWidth: AllowedTypes.boolean,
 };
 
 @Component({
@@ -93,8 +95,8 @@ export class Carousel {
   /** Defines the outer spacings between the carousel and the left and right screen sides. */
   @Prop() public width?: CarouselWidth = 'basic';
 
-  /** Sets the amount of slides visible at the same time. */
-  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
+  /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
+  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
@@ -112,9 +114,6 @@ export class Carousel {
 
   /** Defines which slide to be active (zero-based numbering). */
   @Prop() public activeSlideIndex?: number = 0;
-
-  /** If set to true, the carousel respects the width of each slide which has to be defined via CSS. This option overrides the `slidesPerPage` prop. */
-  @Prop() public autoWidth?: boolean = false;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
@@ -159,7 +158,7 @@ export class Carousel {
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
-      autoWidth: this.autoWidth, // https://splidejs.com/guides/auto-width/#auto-width
+      autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       pagination: false,
       rewind: this.rewind,
@@ -169,7 +168,7 @@ export class Carousel {
       speed: carouselTransitionDuration,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>),
+      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
     });
@@ -311,7 +310,7 @@ export class Carousel {
     this.amountOfPages = getAmountOfPages(
       this.slides.length,
       // round to sanitize floating numbers
-      Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
+      this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
     renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
     updateSlidesInert(this.splide);

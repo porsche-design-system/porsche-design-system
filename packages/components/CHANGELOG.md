@@ -13,7 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
-- Props `autoWidth` and `activeSlideIndex` to `Carousel`
+- Prop `activeSlideIndex` to `Carousel` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- Prop `slidesPerPage` supports value `auto` of `Carousel`
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
 
 #### Fixed

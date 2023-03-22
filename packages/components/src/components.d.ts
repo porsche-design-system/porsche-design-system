@@ -280,10 +280,6 @@ export namespace Components {
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
-          * If set to true, the carousel respects the width of each slide which has to be defined via CSS. This option overrides the `slidesPerPage` prop.
-         */
-        "autoWidth"?: boolean;
-        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -308,9 +304,9 @@ export namespace Components {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
@@ -2161,10 +2157,6 @@ declare namespace LocalJSX {
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
-          * If set to true, the carousel respects the width of each slide which has to be defined via CSS. This option overrides the `slidesPerPage` prop.
-         */
-        "autoWidth"?: boolean;
-        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -2197,9 +2189,9 @@ declare namespace LocalJSX {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
