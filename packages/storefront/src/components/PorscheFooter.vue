@@ -73,7 +73,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @import '@porsche-design-system/components-js/styles';
 
   .main-footer {
     @include pds-grid;

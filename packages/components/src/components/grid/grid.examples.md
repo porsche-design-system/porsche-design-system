@@ -175,7 +175,7 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid>
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @import '@porsche-design-system/components-js/styles';
   
   :deep(p-grid-item) {
     @include pds-text-small;

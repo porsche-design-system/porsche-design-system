@@ -15,7 +15,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @import '@porsche-design-system/components-js/styles';
 
   .disclaimer {
     padding: $pds-spacing-static-small $pds-spacing-static-large;

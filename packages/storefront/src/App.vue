@@ -72,7 +72,7 @@
 </script>
 
 <style lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @import '@porsche-design-system/components-js/styles';
 
   * {
     margin: 0;
@@ -261,7 +261,7 @@
 
 <style scoped lang="scss">
   @use 'sass:math';
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @import '@porsche-design-system/components-js/styles';
 
   .content {
     position: relative;

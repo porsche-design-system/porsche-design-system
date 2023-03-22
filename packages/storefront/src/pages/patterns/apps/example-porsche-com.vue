@@ -588,7 +588,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @import '@porsche-design-system/components-js/styles';
 
   .teaser {
     @include pds-grid;
