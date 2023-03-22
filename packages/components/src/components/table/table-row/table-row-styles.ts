@@ -3,7 +3,6 @@ import { addImportantToEachRule, hostHiddenStyles, hoverMediaQuery } from '../..
 import { cssVariableTableBorderColor, cssVariableTableRowHoverColor } from '../table/table-styles';
 
 export const cssVariableTableRowBackgroundColor = '--p-internal-table-row-background-color';
-export const cssVariableTableRowBorderColor = '--p-internal-table-row-border-color';
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
