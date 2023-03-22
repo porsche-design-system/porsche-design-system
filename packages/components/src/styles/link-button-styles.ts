@@ -31,7 +31,7 @@ type Colors = {
 };
 
 const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } = getThemedColors(theme);
 
   const colors: {
     [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
@@ -39,14 +39,14 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
     primary: {
       textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
       borderColor: primaryColor,
-      borderColorHover: highContrastMode ? focusColor : contrastHighColor,
-      backgroundColor: !highContrastMode && primaryColor,
+      borderColorHover: contrastHighColor,
+      backgroundColor: primaryColor,
       backgroundColorHover: contrastHighColor,
     },
     secondary: {
       textColor: primaryColor,
       borderColor: primaryColor,
-      borderColorHover: highContrastMode ? focusColor : contrastMediumColor,
+      borderColorHover: contrastMediumColor,
       backgroundColor: 'transparent',
       backgroundColorHover: hoverColor,
     },
@@ -122,7 +122,7 @@ export const getLinkButtonStyles = (
         hoverMediaQuery({
           '&:hover': {
             backgroundColor: backgroundColorHover,
-            borderColor: borderColorHover,
+            borderColor: highContrastMode ? focusColor : borderColorHover,
             ...(!isPrimary && frostedGlassStyle),
           },
         })),

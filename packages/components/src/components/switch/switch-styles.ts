@@ -8,6 +8,7 @@ import {
   getInsetJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
+  getHighContrastColors,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
@@ -27,19 +28,26 @@ const getColors = (
 } => {
   const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const checkedColor = highContrastMode ? primaryColor : successColor;
+  const { canvasColor, canvasTextColor } = getHighContrastColors();
+  const checkedColor = highContrastMode ? canvasTextColor : successColor;
   const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
 
   return {
     buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
     buttonBorderColorHover: checked ? (highContrastMode ? primaryColor : successColorDarken) : primaryColor,
     buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked ? (highContrastMode ? primaryColor : successColorDarken) : 'transparent',
+    buttonBackgroundColorHover: checked ? (highContrastMode ? checkedColor : successColorDarken) : 'transparent',
     toggleBackgroundColor:
       (loading && 'transparent') ||
       (disabled && !checked && disabledColor) ||
-      (checked ? lightThemeBackgroundColor : primaryColor),
-    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : primaryColor,
+      (checked
+        ? highContrastMode
+          ? canvasColor
+          : lightThemeBackgroundColor
+        : highContrastMode
+        ? canvasTextColor
+        : primaryColor),
+    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : highContrastMode ? canvasTextColor : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,
   };
 };

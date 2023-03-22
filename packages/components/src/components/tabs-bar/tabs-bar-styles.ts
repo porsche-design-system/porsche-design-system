@@ -3,6 +3,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, highContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
   getTransition,
@@ -29,6 +30,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
+  const { canvasTextColor } = getHighContrastColors();
 
   return getCss({
     '@global': {
@@ -115,7 +117,7 @@ export const getComponentCss = (
       height: highContrastMode ? '4px' : weight === 'semi-bold' ? '2px' : '1.5px',
       left: 0,
       bottom: highContrastMode ? '-1px' : '-4px',
-      background: primaryColor,
+      background: highContrastMode ? canvasTextColor : primaryColor,
       '&--enable-transition': {
         willChange: 'width',
         transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,
