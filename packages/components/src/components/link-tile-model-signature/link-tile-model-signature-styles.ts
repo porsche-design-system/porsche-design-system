@@ -13,7 +13,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { GroupDirection } from '../../styles/group-direction-styles';
-import { getGroupDirectionStyles } from '../../styles/group-direction-styles';
+import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
 import { getTileStyles } from '../../styles/tile-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type {
@@ -70,7 +70,7 @@ export const getComponentCss = (
       display: 'flex',
       width: '100%',
       gap: spacingFluidSmall,
-      ...buildResponsiveStyles(direction, getGroupDirectionStyles),
+      ...buildResponsiveStyles(direction, getGroupDirectionJssStyles),
     },
     // is used for expanded click-area only
     'link-overlay': {

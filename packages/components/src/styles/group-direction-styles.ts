@@ -15,6 +15,6 @@ const style: Record<GroupDirection, JssStyle> = {
   },
 };
 
-export const getGroupDirectionStyles: GetJssStyleFunction = (direction: GroupDirection): JssStyle => {
+export const getGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDirection): JssStyle => {
   return style[direction];
 };
