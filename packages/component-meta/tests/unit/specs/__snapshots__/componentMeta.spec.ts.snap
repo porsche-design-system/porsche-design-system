@@ -79,6 +79,9 @@ exports[`should match snapshot 1`] = `
         "fluid",
       ],
     },
+    "deprecatedProps": [
+      "width",
+    ],
     "eventNames": [
       "dismiss",
     ],
