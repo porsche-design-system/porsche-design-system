@@ -73,7 +73,7 @@ If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 
 ## Scrollbar
 
-The `p-scroller` component may have scrollbar by setting `scrollbar` property to `true`.
+The `p-scroller` component may have a scrollbar by setting the `scrollbar` property to `true`.
 
 <Playground :markup="scrollbar" :config="config"></Playground>
 
