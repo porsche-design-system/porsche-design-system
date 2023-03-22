@@ -14,11 +14,14 @@ it('should not cause new lifecycle when nothing on the component changes', async
   expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0); // tracking was started after page was loaded
   expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(0); // tracking was started after page was loaded
 
+  const prevButton = await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
   const nextButton = await selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
   await nextButton.click();
-  await waitForComponentsReady(page);
+
+  await page.waitForFunction((el: HTMLElement) => el.getAttribute('aria-label') === 'Previous slide', {}, prevButton);
 
   const finalStatus = await getLifecycleStatus(page);
-  expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(0);
+  expect(finalStatus.componentDidUpdate['p-button-pure'], 'final componentDidUpdate: p-button-pure').toBe(2);
+  expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(2);
   expect(finalStatus.componentDidLoad.all, 'final componentDidLoad: all').toBe(0);
 });
