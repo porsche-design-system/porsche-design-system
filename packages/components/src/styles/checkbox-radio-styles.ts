@@ -4,6 +4,7 @@ import { buildResponsiveStyles, highContrastMode } from '../utils';
 import {
   addImportantToEachRule,
   getFormCheckboxRadioHiddenJssStyle,
+  getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -24,6 +25,7 @@ export const getCheckboxRadioJssStyle = (
 ): Styles => {
   const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { canvasTextColor } = getHighContrastColors();
 
   const uncheckedColor = isDisabled ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
@@ -58,17 +60,17 @@ export const getCheckboxRadioJssStyle = (
           cursor: isDisabled ? 'not-allowed' : 'pointer',
         },
         '&(input:checked)': {
-          borderColor: checkedColor,
-          backgroundColor: !highContrastMode && checkedColor,
+          borderColor: highContrastMode ? canvasTextColor : checkedColor,
+          backgroundColor: highContrastMode ? canvasTextColor : checkedColor,
         },
         ...(!isDisabled && {
           ...hoverMediaQuery({
             '&(input:hover), .text:hover ~ &(input)': {
-              borderColor: uncheckedHoverColor,
+              borderColor: !highContrastMode && uncheckedHoverColor,
             },
             '&(input:checked:hover), .text:hover ~ &(input:checked)': {
-              borderColor: checkedHoverColor,
-              backgroundColor: checkedHoverColor,
+              borderColor: !highContrastMode && checkedHoverColor,
+              backgroundColor: !highContrastMode && checkedHoverColor,
             },
           }),
           '&(input:focus)::before': {
