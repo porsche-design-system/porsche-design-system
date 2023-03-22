@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 - Prop `scrollbar` for `Scroller` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
 - Prop `theme` for `Table` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+- `Table` matches new design language
 
 #### 🤡 Component deprecations 🤡
 
