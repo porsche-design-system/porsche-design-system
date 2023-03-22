@@ -43,7 +43,7 @@ export const getNotificationRootJssStyle = (
     background: getBackgroundColor(state, theme),
     borderRadius: borderRadiusSmall,
     ...(highContrastMode && {
-      border: '1px solid',
+      outline: '1px solid transparent',
     }),
     [mediaQueryMinS]: {
       // 4 columns are for icon, content, optional action button and optional close button
