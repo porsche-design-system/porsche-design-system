@@ -230,13 +230,21 @@ $pds-grid-basic-span-two-thirds: var(--pds-grid-basic-span-two-thirds);
 "
 `;
 
-exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-column-width.scss 1`] = `
-"$pds-grid-column-width-base: calc(
-  (max(100vw, 320px) - max(22px, 10.625vw - 12px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5)/6
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-basic-offset.scss 1`] = `
+"$pds-grid-basic-offset-base: max(22px, 10.625vw - 12px);
+$pds-grid-basic-offset-s: calc(
+  calc(5vw - 16px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) * 2
 );
-$pds-grid-column-width-s: calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16);
-$pds-grid-column-width-xxl: calc(
-  (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16
+$pds-grid-basic-offset-xxl: calc(
+  max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) * 2
 );
 "
 `;
@@ -248,9 +256,33 @@ $pds-grid-extended-span-one-half: var(--pds-grid-extended-span-one-half);
 "
 `;
 
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-extended-offset.scss 1`] = `
+"$pds-grid-extended-offset-base: max(22px, 10.625vw - 12px);
+$pds-grid-extended-offset-s: calc(
+  calc(5vw - 16px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) * 1
+);
+$pds-grid-extended-offset-xxl: calc(
+  max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) * 1
+);
+"
+`;
+
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-full.scss 1`] = `
 "$pds-grid-full-column-start: full-start;
 $pds-grid-full-column-end: full-end;
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-full-offset.scss 1`] = `
+"$pds-grid-full-offset: max(0px, 50vw - 2560px/2);
 "
 `;
 
@@ -266,10 +298,22 @@ $pds-grid-narrow-span-one-half: var(--pds-grid-narrow-span-one-half);
 "
 `;
 
-exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-safe-zone.scss 1`] = `
-"$pds-grid-safe-zone-base: max(22px, 10.625vw - 12px);
-$pds-grid-safe-zone-s: calc(5vw - 16px);
-$pds-grid-safe-zone-xxl: min(50vw - 880px, 400px);
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-narrow-offset.scss 1`] = `
+"$pds-grid-narrow-offset-base: max(22px, 10.625vw - 12px);
+$pds-grid-narrow-offset-s: calc(
+  calc(5vw - 16px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) * 4
+);
+$pds-grid-narrow-offset-xxl: calc(
+  max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) * 4
+);
 "
 `;
 
@@ -279,9 +323,10 @@ $pds-grid-wide-column-end: wide-end;
 "
 `;
 
-exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-width.scss 1`] = `
-"$pds-grid-width-min: 320px;
-$pds-grid-width-max: 2560px;
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-wide-offset.scss 1`] = `
+"$pds-grid-wide-offset-base: max(22px, 10.625vw - 12px);
+$pds-grid-wide-offset-s: calc(5vw - 16px);
+$pds-grid-wide-offset-xxl: calc(max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px));
 "
 `;
 

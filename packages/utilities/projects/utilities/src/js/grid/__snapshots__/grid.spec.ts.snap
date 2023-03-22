@@ -14,25 +14,25 @@ exports[`should contain correct values for gridBasicColumnEnd 1`] = `"basic-end"
 
 exports[`should contain correct values for gridBasicColumnStart 1`] = `"basic-start"`;
 
+exports[`should contain correct values for gridBasicOffset 1`] = `
+{
+  "base": "max(22px, 10.625vw - 12px)",
+  "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+  "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+}
+`;
+
+exports[`should contain correct values for gridBasicOffsetBase 1`] = `"max(22px, 10.625vw - 12px)"`;
+
+exports[`should contain correct values for gridBasicOffsetS 1`] = `"calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)"`;
+
+exports[`should contain correct values for gridBasicOffsetXXL 1`] = `"calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)"`;
+
 exports[`should contain correct values for gridBasicSpanOneHalf 1`] = `"var(--pds-grid-basic-span-one-half)"`;
 
 exports[`should contain correct values for gridBasicSpanOneThird 1`] = `"var(--pds-grid-basic-span-one-third)"`;
 
 exports[`should contain correct values for gridBasicSpanTwoThirds 1`] = `"var(--pds-grid-basic-span-two-thirds)"`;
-
-exports[`should contain correct values for gridColumnWidth 1`] = `
-{
-  "base": "calc((max(100vw, 320px) - max(22px, 10.625vw - 12px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)",
-  "s": "calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)",
-  "xxl": "calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)",
-}
-`;
-
-exports[`should contain correct values for gridColumnWidthBase 1`] = `"calc((max(100vw, 320px) - max(22px, 10.625vw - 12px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5) / 6)"`;
-
-exports[`should contain correct values for gridColumnWidthS 1`] = `"calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)"`;
-
-exports[`should contain correct values for gridColumnWidthXXL 1`] = `"calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)"`;
 
 exports[`should contain correct values for gridExtended 1`] = `
 {
@@ -46,6 +46,20 @@ exports[`should contain correct values for gridExtendedColumnEnd 1`] = `"extende
 
 exports[`should contain correct values for gridExtendedColumnStart 1`] = `"extended-start"`;
 
+exports[`should contain correct values for gridExtendedOffset 1`] = `
+{
+  "base": "max(22px, 10.625vw - 12px)",
+  "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+  "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+}
+`;
+
+exports[`should contain correct values for gridExtendedOffsetBase 1`] = `"max(22px, 10.625vw - 12px)"`;
+
+exports[`should contain correct values for gridExtendedOffsetS 1`] = `"calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)"`;
+
+exports[`should contain correct values for gridExtendedOffsetXXL 1`] = `"calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)"`;
+
 exports[`should contain correct values for gridExtendedSpanOneHalf 1`] = `"var(--pds-grid-extended-span-one-half)"`;
 
 exports[`should contain correct values for gridFull 1`] = `
@@ -58,6 +72,8 @@ exports[`should contain correct values for gridFull 1`] = `
 exports[`should contain correct values for gridFullColumnEnd 1`] = `"full-end"`;
 
 exports[`should contain correct values for gridFullColumnStart 1`] = `"full-start"`;
+
+exports[`should contain correct values for gridFullOffset 1`] = `"max(0px, 50vw - 2560px / 2)"`;
 
 exports[`should contain correct values for gridGap 1`] = `"clamp(16px, 1.25vw + 12px, 36px)"`;
 
@@ -73,21 +89,21 @@ exports[`should contain correct values for gridNarrowColumnEnd 1`] = `"narrow-en
 
 exports[`should contain correct values for gridNarrowColumnStart 1`] = `"narrow-start"`;
 
-exports[`should contain correct values for gridNarrowSpanOneHalf 1`] = `"var(--pds-grid-narrow-span-one-half)"`;
-
-exports[`should contain correct values for gridSafeZone 1`] = `
+exports[`should contain correct values for gridNarrowOffset 1`] = `
 {
   "base": "max(22px, 10.625vw - 12px)",
-  "s": "calc(5vw - 16px)",
-  "xxl": "min(50vw - 880px, 400px)",
+  "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+  "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
 }
 `;
 
-exports[`should contain correct values for gridSafeZoneBase 1`] = `"max(22px, 10.625vw - 12px)"`;
+exports[`should contain correct values for gridNarrowOffsetBase 1`] = `"max(22px, 10.625vw - 12px)"`;
 
-exports[`should contain correct values for gridSafeZoneS 1`] = `"calc(5vw - 16px)"`;
+exports[`should contain correct values for gridNarrowOffsetS 1`] = `"calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)"`;
 
-exports[`should contain correct values for gridSafeZoneXXL 1`] = `"min(50vw - 880px, 400px)"`;
+exports[`should contain correct values for gridNarrowOffsetXXL 1`] = `"calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)"`;
+
+exports[`should contain correct values for gridNarrowSpanOneHalf 1`] = `"var(--pds-grid-narrow-span-one-half)"`;
 
 exports[`should contain correct values for gridStyle 1`] = `
 {
@@ -131,13 +147,16 @@ exports[`should contain correct values for gridWideColumnEnd 1`] = `"wide-end"`;
 
 exports[`should contain correct values for gridWideColumnStart 1`] = `"wide-start"`;
 
-exports[`should contain correct values for gridWidth 1`] = `
+exports[`should contain correct values for gridWideOffset 1`] = `
 {
-  "max": "2560px",
-  "min": "320px",
+  "base": "max(22px, 10.625vw - 12px)",
+  "s": "calc(5vw - 16px)",
+  "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))",
 }
 `;
 
-exports[`should contain correct values for gridWidthMax 1`] = `"2560px"`;
+exports[`should contain correct values for gridWideOffsetBase 1`] = `"max(22px, 10.625vw - 12px)"`;
 
-exports[`should contain correct values for gridWidthMin 1`] = `"320px"`;
+exports[`should contain correct values for gridWideOffsetS 1`] = `"calc(5vw - 16px)"`;
+
+exports[`should contain correct values for gridWideOffsetXXL 1`] = `"calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))"`;
