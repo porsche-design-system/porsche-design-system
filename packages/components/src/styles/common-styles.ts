@@ -26,20 +26,6 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-type GetHoverStylesOptions = {
-  theme?: Theme;
-};
-
-// TODO: this function is not being used anywhere in project, maybe remove it
-export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
-  return {
-    transition: getTransition('color'),
-    '&:hover': {
-      color: getThemedColors(theme).hoverColor,
-    },
-  };
-};
-
 // TODO: this is workaround, in order the colors to be bundled in the main bundle, we need to have at least one function here, which is used in project and which calls "getThemedColors"
 // TODO: This mechanism needs to be investigated as part of refactoring
 export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {

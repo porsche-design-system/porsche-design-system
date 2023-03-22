@@ -8,7 +8,6 @@ import {
   getBackfaceVisibilityJssStyle,
   getFocusJssStyle,
   getFormTextHiddenJssStyle,
-  getHoverJssStyle,
   getInsetJssStyle,
   getTextHiddenJssStyle,
   getTransition,
@@ -70,12 +69,6 @@ describe('addImportantToEachRule()', () => {
 
   it('should have no mutation on input', () => {
     expect(addImportantToEachRule(input)).not.toEqual(input);
-  });
-});
-
-xdescribe('getHoverJssStyles()', () => {
-  it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverJssStyle({ theme })).toMatchSnapshot();
   });
 });
 
