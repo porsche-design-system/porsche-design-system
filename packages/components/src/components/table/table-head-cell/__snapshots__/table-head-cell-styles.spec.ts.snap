@@ -5,14 +5,13 @@ exports[`getComponentCss() should return correct css for active: false, directio
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
-  transform: translate3d(0,0,0);
+  position: relative;
   display: flex;
   gap: 4px;
   width: auto;
@@ -30,6 +29,7 @@ button {
   background: transparent;
   text-align: left;
   border: 0;
+  z-index: 0;
   cursor: pointer;
 }
 button::before {
@@ -40,6 +40,7 @@ button::before {
   right: -4px;
   left: -4px;
   border-radius: 4px;
+  z-index: -1;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:focus::before {
@@ -47,9 +48,6 @@ button:focus::before {
 }
 button:not(:focus-visible)::before {
   border: 0;
-}
-.label {
-  position: relative;
 }
 @media(hover:hover) {
   button:hover::before {
@@ -76,14 +74,13 @@ exports[`getComponentCss() should return correct css for active: false, directio
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
-  transform: translate3d(0,0,0);
+  position: relative;
   display: flex;
   gap: 4px;
   width: auto;
@@ -101,6 +98,7 @@ button {
   background: transparent;
   text-align: left;
   border: 0;
+  z-index: 0;
   cursor: pointer;
 }
 button::before {
@@ -111,6 +109,7 @@ button::before {
   right: -4px;
   left: -4px;
   border-radius: 4px;
+  z-index: -1;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:focus::before {
@@ -118,9 +117,6 @@ button:focus::before {
 }
 button:not(:focus-visible)::before {
   border: 0;
-}
-.label {
-  position: relative;
 }
 @media(hover:hover) {
   button:hover::before {
@@ -147,14 +143,13 @@ exports[`getComponentCss() should return correct css for active: true, direction
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
-  transform: translate3d(0,0,0);
+  position: relative;
   display: flex;
   gap: 4px;
   width: auto;
@@ -172,6 +167,7 @@ button {
   background: transparent;
   text-align: left;
   border: 0;
+  z-index: 0;
   cursor: pointer;
 }
 button::before {
@@ -182,6 +178,7 @@ button::before {
   right: -4px;
   left: -4px;
   border-radius: 4px;
+  z-index: -1;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:focus::before {
@@ -189,9 +186,6 @@ button:focus::before {
 }
 button:not(:focus-visible)::before {
   border: 0;
-}
-.label {
-  position: relative;
 }
 @media(hover:hover) {
   button:hover::before {
@@ -218,14 +212,13 @@ exports[`getComponentCss() should return correct css for active: true, direction
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
-  transform: translate3d(0,0,0);
+  position: relative;
   display: flex;
   gap: 4px;
   width: auto;
@@ -243,6 +236,7 @@ button {
   background: transparent;
   text-align: left;
   border: 0;
+  z-index: 0;
   cursor: pointer;
 }
 button::before {
@@ -253,6 +247,7 @@ button::before {
   right: -4px;
   left: -4px;
   border-radius: 4px;
+  z-index: -1;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:focus::before {
@@ -260,9 +255,6 @@ button:focus::before {
 }
 button:not(:focus-visible)::before {
   border: 0;
-}
-.label {
-  position: relative;
 }
 @media(hover:hover) {
   button:hover::before {
@@ -289,14 +281,13 @@ exports[`getComponentCss() should return correct css for active: true, direction
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: normal !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 button {
-  transform: translate3d(0,0,0);
+  position: relative;
   display: flex;
   gap: 4px;
   width: auto;
@@ -314,6 +305,7 @@ button {
   background: transparent;
   text-align: left;
   border: 0;
+  z-index: 0;
   cursor: pointer;
 }
 button::before {
@@ -324,6 +316,7 @@ button::before {
   right: -4px;
   left: -4px;
   border-radius: 4px;
+  z-index: -1;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:focus::before {
@@ -331,9 +324,6 @@ button:focus::before {
 }
 button:not(:focus-visible)::before {
   border: 0;
-}
-.label {
-  position: relative;
 }
 @media(hover:hover) {
   button:hover::before {
@@ -360,7 +350,6 @@ exports[`getComponentCss() should return correct css for active: undefined, dire
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {
@@ -373,7 +362,6 @@ exports[`getComponentCss() should return correct css for active: undefined, dire
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {

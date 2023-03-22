@@ -163,24 +163,6 @@ exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden
 }
 `;
 
-exports[`getHoverJssStyles() should return correct JssStyle for theme: 'dark' 1`] = `
-{
-  "&:hover": {
-    "color": "#ff0223",
-  },
-  "transition": "color var(--p-transition-duration, .24s) ease",
-}
-`;
-
-exports[`getHoverJssStyles() should return correct JssStyle for theme: 'light' 1`] = `
-{
-  "&:hover": {
-    "color": "#d5001c",
-  },
-  "transition": "color var(--p-transition-duration, .24s) ease",
-}
-`;
-
 exports[`getInsetJssStyle() should return correct JssStyle for parameter: 'auto' 1`] = `
 {
   "bottom": "auto",

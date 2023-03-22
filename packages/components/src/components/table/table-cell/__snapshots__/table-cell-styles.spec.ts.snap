@@ -6,6 +6,7 @@ exports[`getComponentCss() should return correct css for multiline: false 1`] = 
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: nowrap !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
   background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
 }
@@ -28,6 +29,7 @@ exports[`getComponentCss() should return correct css for multiline: true 1`] = `
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: normal !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
   background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
 }
