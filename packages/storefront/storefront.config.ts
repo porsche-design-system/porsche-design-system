@@ -505,6 +505,14 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/text/text.props.md'),
       ],
     },
+    Wordmark: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/wordmark/wordmark.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/wordmark/wordmark.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/wordmark/wordmark.props.md')],
+    },
   },
   Partials: {
     // @ts-ignore
