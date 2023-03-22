@@ -39,9 +39,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         max-width: 400px;
       }
     
-      p-banner,
-      my-prefix-p-banner {
-        --p-banner-position-type: static;
+      .playground--banner {
+        transform: translate3d(0, 0, 0);
+        height: 10rem;
       }
     `,
   ],
@@ -60,7 +60,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-display>Some Display</p-display>
         </div>
 
-        <div class="playground light" title="should render default banner">
+        <div class="playground light playground--banner" title="should render default banner">
           <p-banner>
             <span slot="title">Default banner component</span>
             <span slot="description">Some slotted banner description</span>
@@ -332,7 +332,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <my-prefix-p-display p-display>Some Display</my-prefix-p-display>
         </div>
 
-        <div class="playground light" title="should render default banner with custom prefix">
+        <div class="playground light playground--banner" title="should render default banner with custom prefix">
           <my-prefix-p-banner p-banner>
             <span slot="title">Prefixed banner component</span>
             <span slot="description">Some slotted banner description</span>

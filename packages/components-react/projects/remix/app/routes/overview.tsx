@@ -37,9 +37,9 @@ const OverviewPage = (): JSX.Element => {
       max-width: 400px;
     }
 
-    p-banner,
-    my-prefix-p-banner {
-      --p-banner-position-type: static;
+    .playground--banner {
+      transform: translate3d(0, 0, 0);
+      height: 10rem;
     }
   `;
 
@@ -61,7 +61,7 @@ const OverviewPage = (): JSX.Element => {
             <PDisplay>Some Display</PDisplay>
           </div>
 
-          <div className="playground light" title="should render default banner">
+          <div className="playground light playground--banner" title="should render default banner">
             <PBanner>
               <span slot="title">Default banner component</span>
               <span slot="description">Some slotted banner description</span>
@@ -334,7 +334,7 @@ const OverviewPage = (): JSX.Element => {
               <PDisplay>Some Display</PDisplay>
             </div>
 
-            <div className="playground light" title="should render default banner with custom prefix">
+            <div className="playground light playground--banner" title="should render default banner with custom prefix">
               <PBanner>
                 <span slot="title">Prefixed banner component</span>
                 <span slot="description">Some slotted banner description</span>
