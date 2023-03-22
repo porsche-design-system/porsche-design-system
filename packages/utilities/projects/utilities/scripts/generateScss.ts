@@ -9,10 +9,15 @@ import * as gradient from '../src/js/gradient';
 import * as grid from '../src/js/grid/gridStyle';
 import * as gridGap from '../src/js/grid/gridGap';
 import * as gridFull from '../src/js/grid/gridFull';
+import * as gridFullOffset from '../src/js/grid/gridFullOffset';
 import * as gridWide from '../src/js/grid/gridWide';
+import * as gridWideOffset from '../src/js/grid/gridWideOffset';
 import * as gridExtended from '../src/js/grid/gridExtended';
+import * as gridExtendedOffset from '../src/js/grid/gridExtendedOffset';
 import * as gridBasic from '../src/js/grid/gridBasic';
+import * as gridBasicOffset from '../src/js/grid/gridBasicOffset';
 import * as gridNarrow from '../src/js/grid/gridNarrow';
+import * as gridNarrowOffset from '../src/js/grid/gridNarrowOffset';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
 import * as heading from '../src/js/typography/heading';
@@ -97,9 +102,14 @@ generateVariables({
   breakpoint,
   gridGap,
   gridFull,
+  gridFullOffset,
   gridWide,
+  gridWideOffset,
   gridExtended,
+  gridExtendedOffset,
   gridBasic,
+  gridBasicOffset,
   gridNarrow,
+  gridNarrowOffset,
 });
 generateMixins({ heading, text, display, grid, dropShadow, frostedGlass, gradient });
