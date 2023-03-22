@@ -359,7 +359,7 @@ $&`
         newFileContent = newFileContent
           .replace(/.*getNamedSlotOrThrow.*/g, '')
           .replace(/.*throwIfElementIsNotOfKind\(.*\);/g, '')
-          .replace(/primaryLink as unknown;/g, 'namedSlotChildren[0].props;')
+          .replace(/primaryLink;/g, 'namedSlotChildren[0].props;')
           .replace(
             /setRequiredPropsOfSlottedLinks\(\[[\w\s,]*]\);/,
             `const manipulatedChildren = children.map((child) =>

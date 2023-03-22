@@ -12,20 +12,20 @@ import {
   textLargeStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import type { GroupDirection } from '../../styles/group-direction-styles';
 import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
 import { getTileStyles } from '../../styles/tile-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type {
   LinkTileModelSignatureAspectRatio,
   LinkTileModelSignatureWeight,
+  LinkTileModelSignatureLinkDirection,
 } from './link-tile-model-signature-utils';
 import { LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS } from './link-tile-model-signature-utils';
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>,
   weight: BreakpointCustomizable<LinkTileModelSignatureWeight>,
-  direction: BreakpointCustomizable<GroupDirection>,
+  direction: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>,
   hasDescription: boolean
 ): string => {
   return getCss({

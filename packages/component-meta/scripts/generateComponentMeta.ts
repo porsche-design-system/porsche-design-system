@@ -180,9 +180,9 @@ const generateComponentMeta = (): void => {
     }
 
     // required slots
-    let requiredSlots;
-    const constNameAndSlot = Array.from(
-      source.matchAll(/const (.*) = getNamedSlotOrThrow\(this\.host, '(\w+)'\)/g)
+    let requiredSlots = [];
+    const constNameAndSlot: { constName: string; slot: string }[] = Array.from(
+      source.matchAll(/const (\w+) = getNamedSlotOrThrow\(this\.host, '(\w+)'\)/g)
     ).map(([, constName, slot]) => ({
       constName,
       slot,

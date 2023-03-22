@@ -1,8 +1,9 @@
 import * as getPrefixedTagNamesUtils from '../tag-name';
+import { getPrefixedTagNames } from '../tag-name';
 import { throwIfElementIsNotOfKind } from './throwIfElementIsNotOfKind';
 
 const host = document.createElement('div');
-const link = document.createElement('p-link') as unknown as HTMLSlotElement;
+const link = document.createElement('p-link');
 
 it('should call getPrefixedTagNames() with correct parameters', () => {
   const spy = jest.spyOn(getPrefixedTagNamesUtils, 'getPrefixedTagNames');
@@ -20,10 +21,13 @@ it('should call getTagName() with correct parameters', () => {
   expect(spy).toBeCalledWith(link);
 });
 
-it('should throw error if slot is not of kind', () => {
-  const slot = document.createElement('a') as unknown as HTMLSlotElement;
+it('should throw error if return value of getPrefixedTagNames() !== getTagName()', () => {
+  const prefixedTagNameMock = { ...getPrefixedTagNames(host), pLink: 'p-link' };
+  jest.spyOn(getPrefixedTagNamesUtils, 'getPrefixedTagNames').mockReturnValue(prefixedTagNameMock);
+  jest.spyOn(getPrefixedTagNamesUtils, 'getTagName').mockReturnValue('p-button');
+  const slot = document.createElement('a');
 
-  expect(() => throwIfElementIsNotOfKind(host, slot, 'p-button')).toThrow();
+  expect(() => throwIfElementIsNotOfKind(host, slot, 'p-link')).toThrow();
 });
 
 it('should not throw error if slot is of kind', () => {
@@ -32,6 +36,6 @@ it('should not throw error if slot is of kind', () => {
 
 it('should not throw error if prefixed slot is of kind', () => {
   const prefixedHost = document.createElement('prefixed-p-link-tile-model-signature');
-  const prefixedLink = document.createElement('prefixed-p-link') as unknown as HTMLSlotElement;
+  const prefixedLink = document.createElement('prefixed-p-link');
   expect(() => throwIfElementIsNotOfKind(prefixedHost, prefixedLink, 'p-link')).not.toThrow();
 });

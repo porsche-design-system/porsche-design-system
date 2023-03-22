@@ -31,19 +31,17 @@ it.each<[TagName, string]>(tagNamesWithSlot)(
 
     const component = componentFactory(tagName);
 
-    // some components like grid-item and text-list-item require a parent to apply styles
-    // some components require a parent and certain props in order to work
-    addParentAndSetRequiredProps(tagName, component);
-
     if (childrenMarkup) {
       // unset href prop for slotted link to receive ::slotted css
       if (childrenMarkup.match(/^<a/)) {
         (component as any).href = undefined;
       }
-      if (tagName !== 'p-link-tile-model-signature') {
-        component.host.innerHTML = childrenMarkup;
-      }
+      component.host.innerHTML = childrenMarkup;
     }
+
+    // some components like grid-item and text-list-item require a parent to apply styles
+    // some components require a parent and certain props in order to work
+    addParentAndSetRequiredProps(tagName, component);
 
     component.render();
     expect(spy).toBeCalledTimes(1);

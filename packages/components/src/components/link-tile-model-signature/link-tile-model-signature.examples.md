@@ -1,7 +1,7 @@
 # Link Tile Model Signature
 
 The `p-link-tile-model-signature` is a navigational component that displays a provided image to tease content and
-provides two `p-links` to navigate to further information within one container. In addition to the `p-link-tile` it
+provides two `p-link's` to navigate to further information within one container. In addition to the `p-link-tile` it
 shows one of the model signatures at the top.
 
 **Note:** The component does not take care of processing and aligning the image.
@@ -51,7 +51,7 @@ The `weight` property changes the font weight of the heading.
 
 ## Link Direction
 
-The `link-diretion` property defines the direction of the main and cross axis of the links. The default is "{base:
+The `link-direction` property defines the direction of the main and cross axis of the links. The default is "{base:
 'row', xs: 'column'}" showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from
 breakpoint 'xs'.
 
@@ -88,7 +88,7 @@ import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 @Component
 export default class Code extends Vue {
   config = { spacing: 'block' };
-  img =  `<img src="${require('@/assets/image-grid.png')}" width="3000" height="2000" alt="Some alt text" />`;
+  img = `<img src="${require('@/assets/image-grid.png')}" width="3000" height="2000" alt="Some alt text" />`;
   primaryLink = '<p-link slot="primary" href="https://www.porsche.com">Primary label</p-link>';
   secondaryLink = '<p-link slot="secondary" href="https://www.porsche.com">Secondary label</p-link>';
 

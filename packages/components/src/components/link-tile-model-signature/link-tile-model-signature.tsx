@@ -68,16 +68,11 @@ export class LinkTileModelSignature {
     validateProps(this, propTypes);
     // If we do this earlier than render, there are cases where primaryLink.href is undefined
     // TODO: Here and in other components, validation happens only on initial render. We could extend this to watch props of the required slots.
-    const primaryLink = getNamedSlotOrThrow(this.host, 'primary');
-    const secondaryLink = getNamedSlotOrThrow(this.host, 'secondary');
+    const primaryLink = getNamedSlotOrThrow(this.host, 'primary') as HTMLPLinkElement;
+    const secondaryLink = getNamedSlotOrThrow(this.host, 'secondary') as HTMLPLinkElement;
     throwIfElementIsNotOfKind(this.host, primaryLink, 'p-link');
     throwIfElementIsNotOfKind(this.host, secondaryLink, 'p-link');
-    setRequiredPropsOfSlottedLinks([
-      primaryLink as unknown as HTMLPLinkElement,
-      secondaryLink as unknown as HTMLPLinkElement,
-    ]);
-
-    const { href, target, download, rel } = primaryLink as unknown as HTMLPLinkElement;
+    setRequiredPropsOfSlottedLinks([primaryLink, secondaryLink]);
 
     attachComponentCss(
       this.host,
@@ -88,11 +83,16 @@ export class LinkTileModelSignature {
       !!this.description
     );
 
-    const primaryLinkProps = {
+    const { href, target, download, rel } = primaryLink;
+
+    const overlayLinkProps = {
       href,
       target,
       download,
       rel,
+      class: 'link-overlay',
+      tabIndex: -1,
+      ariaHidden: 'true',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -104,7 +104,7 @@ export class LinkTileModelSignature {
         </div>
         <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
         <div class="content">
-          <a {...primaryLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
+          <a {...overlayLinkProps}></a>
           <this.headingTag class="heading">{this.heading}</this.headingTag>
           {this.description && <p class="description">{this.description}</p>}
           <div class="link-group" role="group">
