@@ -375,7 +375,6 @@ exports[`should match snapshot 1`] = `
         "left",
         "center",
       ],
-      "autoWidth": "boolean",
       "description": "string",
       "disablePagination": "boolean",
       "heading": "string",
@@ -389,7 +388,10 @@ exports[`should match snapshot 1`] = `
       },
       "pagination": "boolean",
       "rewind": "boolean",
-      "slidesPerPage": "number",
+      "slidesPerPage": [
+        "number",
+        "auto",
+      ],
       "theme": [
         "light",
         "dark",
@@ -434,7 +436,6 @@ exports[`should match snapshot 1`] = `
     "props": {
       "activeSlideIndex": 0,
       "alignHeader": "left",
-      "autoWidth": false,
       "description": null,
       "disablePagination": null,
       "heading": null,
