@@ -12,6 +12,7 @@ import * as gridColumnWidth from '../src/js/grid/gridColumnWidth';
 import * as gridWidth from '../src/js/grid/gridWidth';
 import * as gridSafeZone from '../src/js/grid/gridSafeZone';
 import * as gridFull from '../src/js/grid/gridFull';
+import * as gridWide from '../src/js/grid/gridWide';
 import * as gridExtended from '../src/js/grid/gridExtended';
 import * as gridBasic from '../src/js/grid/gridBasic';
 import * as gridNarrow from '../src/js/grid/gridNarrow';
@@ -102,6 +103,7 @@ generateVariables({
   gridWidth,
   gridSafeZone,
   gridFull,
+  gridWide,
   gridExtended,
   gridBasic,
   gridNarrow,
