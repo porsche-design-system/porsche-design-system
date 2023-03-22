@@ -24,13 +24,16 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         ...addImportantToEachRule({
           outline: 0,
           ...hostHiddenStyles,
+          ...(!isSizeInherit && { height: 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)' }),
         }),
+        ...(isSizeInherit && { height: size }),
       },
       a: {
         ...getResetInitialStylesForSlottedAnchor,
         outline: 0,
         display: 'block',
         textDecoration: 'none',
+        height: 'inherit',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -48,8 +51,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         display: 'block',
         pointerEvents: 'none', // prevents image drag
         filter: theme === 'light' ? filterLightPrimary : filterDarkPrimary,
-        width: '100%',
-        height: isSizeInherit ? size : 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)',
+        height: 'inherit',
       },
     },
   });
