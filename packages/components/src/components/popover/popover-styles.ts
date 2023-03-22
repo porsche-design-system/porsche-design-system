@@ -7,9 +7,10 @@ import {
   frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getCss } from '../../utils';
+import { getCss, highContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  getHighContrastColors,
   getInsetJssStyle,
   getTextHiddenJssStyle,
   getThemedColors,
@@ -21,8 +22,7 @@ import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
 
 const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
-
-const mediaQueryForcedColors = '@media (forced-colors: active)';
+const { canvasColor, canvasTextColor } = getHighContrastColors();
 
 const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   top: {
@@ -49,8 +49,7 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
 
 const borderWidth = '12px';
 const transparentColor = 'transparent';
-const canvas = 'canvas';
-const canvasText = 'canvastext';
+
 const join = (...arr: (string | number)[]): string => arr.join(' ');
 
 const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
@@ -59,40 +58,36 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(borderWidth, borderWidth, 0),
-    borderColor: join(backgroundColorThemeLight, transparentColor, transparentColor),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvasText, canvas, canvas),
-    },
+    borderColor: highContrastMode
+      ? join(canvasTextColor, canvasColor, canvasColor)
+      : join(backgroundColorThemeLight, transparentColor, transparentColor),
   },
   right: {
     top: '50%',
     right: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
-    borderColor: join(transparentColor, backgroundColorThemeLight, transparentColor, transparentColor),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvas, canvasText, canvas, canvas),
-    },
+    borderColor: highContrastMode
+      ? join(canvasColor, canvasTextColor, canvasColor, canvasColor)
+      : join(transparentColor, backgroundColorThemeLight, transparentColor, transparentColor),
   },
   bottom: {
     bottom: 0,
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(0, borderWidth, borderWidth),
-    borderColor: join(transparentColor, transparentColor, backgroundColorThemeLight),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvas, canvas, canvasText),
-    },
+    borderColor: highContrastMode
+      ? join(canvasColor, canvasColor, canvasTextColor)
+      : join(transparentColor, transparentColor, backgroundColorThemeLight),
   },
   left: {
     top: '50%',
     left: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
-    borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColorThemeLight),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvas, canvas, canvas, canvasText),
-    },
+    borderColor: highContrastMode
+      ? join(canvasColor, canvasColor, canvasColor, canvasTextColor)
+      : join(transparentColor, transparentColor, transparentColor, backgroundColorThemeLight),
   },
 };
 
@@ -189,9 +184,9 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       color: primaryColorThemeLight,
       whiteSpace: 'inherit',
       borderRadius: borderRadiusSmall,
-      [mediaQueryForcedColors]: {
-        outline: `1px solid ${canvasText}`,
-      },
+      ...(highContrastMode && {
+        outline: `1px solid ${canvasTextColor}`,
+      }),
     },
     '@keyframes fadeIn': {
       from: {
