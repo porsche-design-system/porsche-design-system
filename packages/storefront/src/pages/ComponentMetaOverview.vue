@@ -23,7 +23,7 @@
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
-  import { SwitchChangeEvent } from '../../../components/dist/types/bundle';
+  import type { SwitchChangeEvent } from '../../../components/dist/types/bundle';
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 

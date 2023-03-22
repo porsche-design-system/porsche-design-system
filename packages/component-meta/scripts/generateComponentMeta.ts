@@ -335,7 +335,7 @@ const generateComponentMeta = (): void => {
                     variableValues = Object.keys(variableValues);
                   }
 
-                  // aria is needs to be converted to object
+                  // aria needs to be converted to object
                   if (propType.match(/^aria/)) {
                     result[propName] = variableValues.reduce((res, curr) => ({ ...res, [curr]: 'string' }), {});
                   } else {
@@ -351,7 +351,7 @@ const generateComponentMeta = (): void => {
                     const values = oneOfValues.split(',').map((x) => x.trim().replace(/^AllowedTypes./, ''));
                     result[propName] = values;
                   } else {
-                    // TODO: supported this scenario once it occurs
+                    // TODO: support this scenario once it occurs
                     console.log('unsupported scenario', propType);
                     result[propName] = ['// TODO'];
                   }
