@@ -360,6 +360,7 @@ $&`
           .replace(/.*getNamedSlotOrThrow.*/g, '')
           .replace(/.*throwIfElementIsNotOfKind\(.*\);/g, '')
           .replace(/primaryLink;/g, 'namedSlotChildren[0].props;')
+          .replace(/(const overlayLinkProps = \{[\s\w,]+rel,)[\s\w\d',-:]*(};)/g, '$1\n    $2')
           .replace(
             /setRequiredPropsOfSlottedLinks\(\[[\w\s,]*]\);/,
             `const manipulatedChildren = children.map((child) =>
