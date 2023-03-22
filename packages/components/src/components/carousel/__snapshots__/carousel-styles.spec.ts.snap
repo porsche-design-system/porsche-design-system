@@ -5,9 +5,6 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -83,12 +80,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     justify-items: center;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -103,10 +100,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
@@ -123,9 +120,6 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -200,11 +194,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -219,10 +213,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
@@ -239,9 +233,6 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -333,12 +324,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     justify-items: center;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -353,10 +344,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
@@ -373,9 +364,6 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -467,12 +455,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     justify-items: center;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -487,10 +475,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
@@ -507,9 +495,6 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -600,11 +585,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -619,10 +604,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
@@ -639,9 +624,6 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -732,11 +714,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -751,10 +733,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
@@ -771,9 +753,6 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -871,12 +850,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     justify-items: center;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
     display: flex;
@@ -885,7 +864,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
   .pagination {
     display: none;
@@ -912,10 +891,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
@@ -932,9 +911,6 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -1031,11 +1007,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
     display: flex;
@@ -1044,7 +1020,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
   .pagination {
     display: none;
@@ -1071,10 +1047,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
@@ -1091,9 +1067,6 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -1169,12 +1142,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     justify-items: center;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
     display: flex;
@@ -1183,16 +1156,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
@@ -1209,9 +1182,6 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -1286,11 +1256,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
     display: flex;
@@ -1299,16 +1269,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
@@ -1325,9 +1295,6 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -1419,12 +1386,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     justify-items: center;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
     display: flex;
@@ -1433,16 +1400,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
@@ -1459,9 +1426,6 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -1552,11 +1516,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
     display: flex;
@@ -1565,16 +1529,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .splide__track {
-    padding: 0 calc(min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16))) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 

@@ -8,11 +8,7 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 @media(min-width:760px) {
@@ -37,11 +33,7 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 @media(min-width:760px) {
@@ -66,11 +58,7 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
   padding: 0 max(0px, 50vw - 2560px / 2);
 }"
 `;
@@ -83,11 +71,7 @@ exports[`getComponentCss() should return correct css for width: full 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
   padding: 0 max(0px, 50vw - 2560px / 2);
 }"
 `;
@@ -100,11 +84,7 @@ exports[`getComponentCss() should return correct css for width: narrow 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 @media(min-width:760px) {
