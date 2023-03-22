@@ -39,6 +39,7 @@ a:focus:not(:focus-visible)::before {
 img {
   display: block;
   pointer-events: none;
+  transform: translateZ(0);
   filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   height: inherit;
 }"
@@ -83,6 +84,7 @@ a:focus:not(:focus-visible)::before {
 img {
   display: block;
   pointer-events: none;
+  transform: translateZ(0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   height: inherit;
 }"
@@ -127,6 +129,7 @@ a:focus:not(:focus-visible)::before {
 img {
   display: block;
   pointer-events: none;
+  transform: translateZ(0);
   filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
   height: inherit;
 }"
@@ -171,6 +174,7 @@ a:focus:not(:focus-visible)::before {
 img {
   display: block;
   pointer-events: none;
+  transform: translateZ(0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   height: inherit;
 }"

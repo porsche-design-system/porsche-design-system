@@ -50,6 +50,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
       img: {
         display: 'block',
         pointerEvents: 'none', // prevents image drag
+        transform: 'translateZ(0)', // mobile safari render theme switch
         filter: theme === 'light' ? filterLightPrimary : filterDarkPrimary,
         height: 'inherit',
       },
