@@ -36,8 +36,6 @@ const selectorDescription = 'p,::slotted([slot=description])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
-const gridWidthMax = '2560px';
-
 // we need an explicit grid template, therefor we need to calculate the button group width
 const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
@@ -63,10 +61,6 @@ export const getComponentCss = (
         display: 'flex',
         gap: spacingFluidMedium,
         flexDirection: 'column',
-        maxWidth: gridWidthMax,
-        // relevant for viewport width > 2560px
-        paddingLeft: `calc(50vw - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
-        paddingRight: `calc(50vw - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
         boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
         ...hostHiddenStyles,
       }),
