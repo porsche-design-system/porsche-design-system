@@ -59,6 +59,7 @@ export const getComponentCss = (
               background: 'transparent',
               textAlign: 'left',
               border: 0,
+              zIndex: 0,
               cursor: 'pointer',
               '&::before': {
                 content: '""',
@@ -68,6 +69,7 @@ export const getComponentCss = (
                 right: offsetHorizontal,
                 left: offsetHorizontal,
                 borderRadius: borderRadiusSmall,
+                zIndex: -1,
                 transition: getTransition('background-color'),
               },
               ...hoverMediaQuery({
@@ -87,9 +89,6 @@ export const getComponentCss = (
               '&:not(:focus-visible)::before': {
                 border: 0,
               },
-            },
-            '.label': {
-              position: 'relative', // needed for hover state
             },
           }
         : hideLabel && {
