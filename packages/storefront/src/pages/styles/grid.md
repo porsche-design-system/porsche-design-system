@@ -30,6 +30,7 @@ JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
 - `gridStyle`
+- `gridGap`
 - `gridNarrow`
 - `gridNarrowColumnStart`
 - `gridNarrowColumnEnd`
@@ -50,14 +51,6 @@ JavaScript styles can be imported by
 - `gridFull`
 - `gridFullColumnEnd`
 - `gridFullColumnStart`
-- `gridGap`
-- `gridSafeZone`
-- `gridSafeZoneBase`
-- `gridSafeZoneS`
-- `gridSafeZoneXXL`
-- `gridWidth`
-- `gridWidthMax`
-- `gridWidthMin`
 
 ---
 
@@ -70,6 +63,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 </p-inline-notification>
 
 - `@mixin pds-grid()`
+- `$pds-grid-gap`
 - `$pds-grid-narrow-column-start`
 - `$pds-grid-narrow-column-end`
 - `$pds-grid-narrow-span-one-half`
@@ -85,12 +79,6 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 - `$pds-grid-wide-column-end`
 - `$pds-grid-full-column-start`
 - `$pds-grid-full-column-end`
-- `$pds-grid-gap`
-- `$pds-grid-safe-zone-base`
-- `$pds-grid-safe-zone-s`
-- `$pds-grid-safe-zone-xxl`
-- `$pds-grid-width-min`
-- `$pds-grid-width-max`
 
 <script lang="ts">
 import Vue from 'vue';
