@@ -19,19 +19,26 @@ a {
   display: block;
   text-decoration: none;
 }
-a:focus::before {
+a::before {
   content: "";
   position: absolute;
-  border: 2px solid #1A44EA;
   border-radius: 8px;
   top: -6px;
   left: -6px;
   right: -6px;
   bottom: -6px;
 }
+a:focus::before {
+  border: 2px solid #1A44EA;
+}
+a:focus:not(:focus-visible)::before {
+  border: 0;
+}
 img {
   display: block;
+  pointer-events: none;
   filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  width: 100%;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem);
 }"
 `;
@@ -55,19 +62,26 @@ a {
   display: block;
   text-decoration: none;
 }
-a:focus::before {
+a::before {
   content: "";
   position: absolute;
-  border: 2px solid #1A44EA;
   border-radius: 8px;
   top: -6px;
   left: -6px;
   right: -6px;
   bottom: -6px;
 }
+a:focus::before {
+  border: 2px solid #1A44EA;
+}
+a:focus:not(:focus-visible)::before {
+  border: 0;
+}
 img {
   display: block;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  width: 100%;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem);
 }"
 `;
@@ -91,19 +105,26 @@ a {
   display: block;
   text-decoration: none;
 }
-a:focus::before {
+a::before {
   content: "";
   position: absolute;
-  border: 2px solid #1A44EA;
   border-radius: 8px;
   top: -6px;
   left: -6px;
   right: -6px;
   bottom: -6px;
 }
+a:focus::before {
+  border: 2px solid #1A44EA;
+}
+a:focus:not(:focus-visible)::before {
+  border: 0;
+}
 img {
   display: block;
+  pointer-events: none;
   filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  width: 100%;
   height: inherit;
 }"
 `;
@@ -127,19 +148,26 @@ a {
   display: block;
   text-decoration: none;
 }
-a:focus::before {
+a::before {
   content: "";
   position: absolute;
-  border: 2px solid #1A44EA;
   border-radius: 8px;
   top: -6px;
   left: -6px;
   right: -6px;
   bottom: -6px;
 }
+a:focus::before {
+  border: 2px solid #1A44EA;
+}
+a:focus:not(:focus-visible)::before {
+  border: 0;
+}
 img {
   display: block;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  width: 100%;
   height: inherit;
 }"
 `;

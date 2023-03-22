@@ -31,18 +31,24 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         outline: 0,
         display: 'block',
         textDecoration: 'none',
-        '&:focus::before': {
+        '&::before': {
           content: '""',
           position: 'absolute',
-          border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
           ...getInsetJssStyle(-6),
+        },
+        '&:focus::before': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+        },
+        '&:focus:not(:focus-visible)::before': {
+          border: 0,
         },
       },
       img: {
         display: 'block',
-        // pointerEvents: 'none', // prevents image drag // TODO: check if needed
+        pointerEvents: 'none', // prevents image drag
         filter: theme === 'light' ? filterLightPrimary : filterDarkPrimary,
+        width: '100%',
         height: isSizeInherit ? size : 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)',
       },
     },
