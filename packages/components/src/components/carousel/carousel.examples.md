@@ -31,14 +31,13 @@ The value can either be a static number, or a breakpoint customizable object.
 
 ## Slides with flexible widths
 
-In case you want to have slides with different widths you can use the `autoWidth` property.  
-This overrides the behavior of the `slidesPerPage` option.
+In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
 
 <p-inline-notification heading="Attention" state="warning" persistent="true">
  It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
 </p-inline-notification>
 
-<Playground :markup="autoWidthMarkup" :config="config"></Playground>
+<Playground :markup="slidesPerPageAutoMarkup" :config="config"></Playground>
 
 ## Heading
 
@@ -193,7 +192,7 @@ export default class Code extends Vue {
 </p-carousel>`;
   }
 
-  autoWidthMarkup = `<p-carousel auto-width="true" heading="${this.basicHeading}">
+  slidesPerPageAutoMarkup = `<p-carousel slides-per-page="auto" heading="${this.basicHeading}">
   <div style="width: 10vw">Slide 1 <p>(10vw)</p></div>
   <div style="width: 200px">Slide 2 <p>(200px)</p></div>
   <div style="width: 100px">Slide 3 <p>(100px)</p></div>
