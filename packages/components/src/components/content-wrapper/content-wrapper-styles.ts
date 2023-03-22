@@ -25,11 +25,7 @@ export const getComponentCss = (width: ContentWrapperWidth): string => {
       },
     },
     root: {
-      display: 'block',
-      margin: 0,
-      width: 'auto', // ensure value is set to default width, although style is used in light dom
       minWidth: 0, // needed for some flex context
-      maxWidth: '2560px',
       ...(['full', 'fluid'].includes(width)
         ? {
             padding: `0 ${gridFullOffset}`,
