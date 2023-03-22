@@ -3,27 +3,18 @@ import { getCss } from '../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
   getMediaQueryMin,
-  gridColumnWidthS,
-  gridColumnWidthXXL,
-  gridGap,
-  gridSafeZoneBase,
-  gridSafeZoneS,
-  gridSafeZoneXXL,
-  gridWidthMax,
+  gridFullOffset,
+  gridNarrowOffset,
+  gridBasicOffset,
+  gridExtendedOffset,
 } from '@porsche-design-system/utilities-v2';
 
-const columnAmount: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: number } = {
-  narrow: 4,
-  basic: 2,
-  extended: 1,
-};
-
-const offsetHorizontalXXL = `max(0px, 50vw - ${gridWidthMax} / 2)`;
-
-const getPaddingHorizontalS = (width: ContentWrapperWidth): string =>
-  `calc(${gridSafeZoneS} + (${gridGap} + ${gridColumnWidthS}) * ${columnAmount[width]})`;
-const getPaddingHorizontalXXL = (width: ContentWrapperWidth): string =>
-  `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + (${gridGap} + ${gridColumnWidthXXL}) * ${columnAmount[width]})`;
+const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: { base: string; s: string; xxl: string } } =
+  {
+    narrow: gridNarrowOffset,
+    basic: gridBasicOffset,
+    extended: gridExtendedOffset,
+  };
 
 export const getComponentCss = (width: ContentWrapperWidth): string => {
   return getCss({
@@ -38,18 +29,18 @@ export const getComponentCss = (width: ContentWrapperWidth): string => {
       margin: 0,
       width: 'auto', // ensure value is set to default width, although style is used in light dom
       minWidth: 0, // needed for some flex context
-      maxWidth: gridWidthMax,
+      maxWidth: '2560px',
       ...(['full', 'fluid'].includes(width)
         ? {
-            padding: `0 ${offsetHorizontalXXL}`,
+            padding: `0 ${gridFullOffset}`,
           }
         : {
-            padding: `0 ${gridSafeZoneBase}`,
+            padding: `0 ${widthMap[width].base}`,
             [getMediaQueryMin('s')]: {
-              padding: `0 ${getPaddingHorizontalS(width)}`,
+              padding: `0 ${widthMap[width].s}`,
             },
             [getMediaQueryMin('xxl')]: {
-              padding: `0 ${getPaddingHorizontalXXL(width)}`,
+              padding: `0 ${widthMap[width].xxl}`,
             },
           }),
     },
