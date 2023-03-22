@@ -45,29 +45,28 @@ const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
 const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
 
-const paddingHorizontalBase = gridSafeZoneBase;
-const paddingHorizontalS = (width: CarouselWidth): string =>
+const getPaddingHorizontalS = (width: CarouselWidth): string =>
   `calc(${gridSafeZoneS} + (${gridGap} + ${gridColumnWidthS})${width === 'extended' ? '' : ' * 2'})`;
-const paddingHorizontalXXL = (width: CarouselWidth): string =>
+const getPaddingHorizontalXXL = (width: CarouselWidth): string =>
   `calc(${gridSafeZoneXXL} + (${gridGap} + ${gridColumnWidthXXL})${width === 'extended' ? '' : ' * 2'})`;
 
 const spacingMap: { [key in CarouselWidth]: JssStyle } = {
   basic: {
-    padding: `0 ${paddingHorizontalBase}`,
+    padding: `0 ${gridSafeZoneBase}`,
     [mediaQueryS]: {
-      padding: `0 ${paddingHorizontalS('basic')}`,
+      padding: `0 ${getPaddingHorizontalS('basic')}`,
     },
     [mediaQueryXXL]: {
-      padding: `0 ${paddingHorizontalXXL('basic')}`,
+      padding: `0 ${getPaddingHorizontalXXL('basic')}`,
     },
   },
   extended: {
-    padding: `0 ${paddingHorizontalBase}`,
+    padding: `0 ${gridSafeZoneBase}`,
     [mediaQueryS]: {
-      padding: `0 ${paddingHorizontalS('extended')}`,
+      padding: `0 ${getPaddingHorizontalS('extended')}`,
     },
     [mediaQueryXXL]: {
-      padding: `0 ${paddingHorizontalXXL('extended')}`,
+      padding: `0 ${getPaddingHorizontalXXL('extended')}`,
     },
   },
 };

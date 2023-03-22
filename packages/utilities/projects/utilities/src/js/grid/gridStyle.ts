@@ -28,7 +28,7 @@ const outerColumn = `minmax(0, calc(var(${_cssVariableGridSafeZone}) - ${gridGap
 const column = 'minmax(0, 1fr)';
 const getColumns = (repeat: number): string => (repeat > 1 ? `repeat(${repeat}, ${column})` : column);
 const getColumnSpan = (span: number): string => `span ${span}`;
-const getGridTemplateColumns = (layout: 'mobile' | 'desktop') =>
+const getGridTemplateColumns = (layout: 'mobile' | 'desktop'): string =>
   layout === 'mobile'
     ? `[${gridFullColumnStart}] ${outerColumn} [${gridWideColumnStart} ${gridExtendedColumnStart} ${gridBasicColumnStart} ${gridNarrowColumnStart}] ${getColumns(
         6

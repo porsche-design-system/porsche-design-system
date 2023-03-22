@@ -6,7 +6,48 @@ import {
 } from '@porsche-design-system/shared/testing';
 import type { Component } from '../helpers';
 
-const components: Component[] = ['banner'];
+const components: Component[] = [
+  'accordion',
+  'banner',
+  'button',
+  'button-group',
+  'button-pure',
+  'button-tile',
+  'carousel',
+  'checkbox-wrapper',
+  'content-wrapper',
+  'display',
+  'divider',
+  'fieldset',
+  'fieldset-wrapper',
+  'heading',
+  'headline',
+  'icon',
+  'inline-notification',
+  'link',
+  'link-pure',
+  'link-social',
+  'link-tile',
+  'modal',
+  // 'overview',
+  'pagination',
+  'popover',
+  'radio-button-wrapper',
+  'scroller',
+  'segmented-control',
+  'select-wrapper',
+  'spinner',
+  'stepper-horizontal',
+  'switch',
+  'tabs',
+  'tabs-bar',
+  'tag',
+  'tag-dismissible',
+  'text-field-wrapper',
+  'text-list',
+  'textarea-wrapper',
+  'toast-basic',
+];
 
 const scenarioPopover = async (page: Page) => {
   await openPopoversAndHighlightSpacer(page);

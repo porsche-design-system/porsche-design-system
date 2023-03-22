@@ -5,10 +5,13 @@ import {
   dropShadowHighStyle,
   getMediaQueryMin,
   getMediaQueryMinMax,
-  gridColumnWidthBase,
   gridColumnWidthS,
   gridColumnWidthXXL,
   gridGap,
+  gridSafeZoneBase,
+  gridSafeZoneS,
+  gridSafeZoneXXL,
+  gridWidthMax,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
@@ -23,6 +26,11 @@ const mediaQueryBaseToS = getMediaQueryMinMax('base', 's');
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
+const positionVertical = '56px';
+const positionHorizontal = gridSafeZoneBase;
+const positionHorizontalS = `calc(${gridSafeZoneS} + ${gridGap} + ${gridColumnWidthS})`;
+const positionHorizontalXXL = `calc(max(0px, 50vw - ${gridWidthMax} / 2) + ${gridSafeZoneXXL} + ${gridGap} + ${gridColumnWidthXXL})`;
+
 const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
   getKeyframes(direction, {
     opacity: 0,
@@ -35,25 +43,28 @@ export const getComponentCss = (): string => {
       ':host': {
         opacity: 0,
         ...addImportantToEachRule({
-          [cssVariableTop]: '56px',
-          [cssVariableBottom]: '56px',
+          [cssVariableTop]: positionVertical,
+          [cssVariableBottom]: positionVertical,
           position: 'fixed',
-          left: 0,
-          right: 0,
-          margin: '0 auto',
+          top: 'auto',
+          bottom: `var(${cssVariableBottom})`,
+          left: positionHorizontal,
+          right: positionHorizontal,
+          margin: 0,
           padding: 0,
-          width: `calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)`,
+          width: 'auto',
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           willChange: 'opacity,transform',
-          [mediaQueryBaseToS]: {
-            bottom: `var(${cssVariableBottom})`,
-          },
+          ...dropShadowHighStyle,
           [mediaQueryS]: {
             top: `var(${cssVariableTop})`,
-            width: `calc(${gridColumnWidthS} * 14 + ${gridGap} * 13)`,
+            bottom: 'auto',
+            left: positionHorizontalS,
+            right: positionHorizontalS,
           },
           [mediaQueryXXL]: {
-            width: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`,
+            left: positionHorizontalXXL,
+            right: positionHorizontalXXL,
           },
           ...hostHiddenStyles,
         }),
@@ -71,6 +82,5 @@ export const getComponentCss = (): string => {
       '@keyframes desktopIn': getKeyframesDesktop('in', cssVariableTop),
       '@keyframes desktopOut': getKeyframesDesktop('out', cssVariableTop),
     },
-    root: dropShadowHighStyle,
   });
 };

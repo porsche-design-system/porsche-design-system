@@ -18,12 +18,11 @@ const columnAmount: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: n
   extended: 1,
 };
 
-const offsetHorizontalXXL = `max(0px, 50% - ${gridWidthMax} / 2)`;
+const offsetHorizontalXXL = `max(0px, 50vw - ${gridWidthMax} / 2)`;
 
-const paddingHorizontalBase = gridSafeZoneBase;
-const paddingHorizontalS = (width: ContentWrapperWidth): string =>
+const getPaddingHorizontalS = (width: ContentWrapperWidth): string =>
   `calc(${gridSafeZoneS} + (${gridGap} + ${gridColumnWidthS}) * ${columnAmount[width]})`;
-const paddingHorizontalXXL = (width: ContentWrapperWidth): string =>
+const getPaddingHorizontalXXL = (width: ContentWrapperWidth): string =>
   `calc(${offsetHorizontalXXL} + ${gridSafeZoneXXL} + (${gridGap} + ${gridColumnWidthXXL}) * ${columnAmount[width]})`;
 
 export const getComponentCss = (width: ContentWrapperWidth): string => {
@@ -45,12 +44,12 @@ export const getComponentCss = (width: ContentWrapperWidth): string => {
             padding: `0 ${offsetHorizontalXXL}`,
           }
         : {
-            padding: `0 ${paddingHorizontalBase}`,
+            padding: `0 ${gridSafeZoneBase}`,
             [getMediaQueryMin('s')]: {
-              padding: `0 ${paddingHorizontalS(width)}`,
+              padding: `0 ${getPaddingHorizontalS(width)}`,
             },
             [getMediaQueryMin('xxl')]: {
-              padding: `0 ${paddingHorizontalXXL(width)}`,
+              padding: `0 ${getPaddingHorizontalXXL(width)}`,
             },
           }),
     },

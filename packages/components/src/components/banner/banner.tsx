@@ -101,7 +101,6 @@ export class Banner {
     return (
       <PrefixedTagNames.pInlineNotification
         ref={(el) => (this.inlineNotificationElement = el)}
-        class="root"
         heading={this.heading}
         description={this.description}
         state={this.state}

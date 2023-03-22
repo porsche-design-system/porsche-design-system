@@ -40,6 +40,8 @@ export const OverviewPage = (): JSX.Element => {
     .playground--banner {
       transform: translate3d(0, 0, 0);
       height: 10rem;
+      padding: 0;
+      margin: 1rem;
     }
   `;
 
