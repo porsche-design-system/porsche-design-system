@@ -11,12 +11,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
-- `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+- `Button Tile` [#2361](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
+- `Fieldset` [#2369](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+- `Wordmark` [#2135](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
 
 #### 🤡 Component deprecations 🤡
 
-##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+##### Marque [#2135](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+
+```diff
+- <p-marque></p-marque>
++ <p-wordmark></p-wordmark>
+```
+
+##### Fieldset Wrapper: [#2369](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
