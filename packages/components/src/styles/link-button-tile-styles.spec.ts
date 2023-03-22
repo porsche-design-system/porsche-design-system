@@ -1,7 +1,7 @@
 import {
-  getButtonLinkTileContentStyles,
+  getButtonLinkTileAdditionalContentStyles,
   getButtonLinkTilePStyles,
-  getButtonLinkTileSharedStyles,
+  getButtonLinkTileSharedClassesStyles,
 } from './link-button-tile-styles';
 
 describe('getButtonLinkTilePStyles()', () => {
@@ -13,27 +13,27 @@ describe('getButtonLinkTilePStyles()', () => {
       { base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default' },
       { base: 'semi-bold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semi-bold', xl: 'regular' },
     ],
-  ])('should return correct css for %o', (...args) => {
+  ])('should return correct css for size: "%s" and weight: "%s"', (...args) => {
     expect(getButtonLinkTilePStyles(...args)).toMatchSnapshot();
   });
 });
 
-describe('getButtonLinkTileContentStyles()', () => {
-  it.each<Parameters<typeof getButtonLinkTileContentStyles>>([
+describe('getButtonLinkTileAdditionalContentStyles()', () => {
+  it.each<Parameters<typeof getButtonLinkTileAdditionalContentStyles>>([
     ['top', true, false],
     ['bottom', false, true],
     ['top', false, { base: false, xs: true, s: false, m: true, l: false, xl: true }],
-  ])('should return correct css for %o', (...args) => {
-    expect(getButtonLinkTileContentStyles(...args)).toMatchSnapshot();
+  ])('should return correct css for align: "%s", hasGradient: "%s" and compact: "%s"', (...args) => {
+    expect(getButtonLinkTileAdditionalContentStyles(...args)).toMatchSnapshot();
   });
 });
 
-describe('getButtonLinkTileSharedStyles()', () => {
-  it.each<Parameters<typeof getButtonLinkTileSharedStyles>>([
+describe('getButtonLinkTileSharedClassesStyles()', () => {
+  it.each<Parameters<typeof getButtonLinkTileSharedClassesStyles>>([
     [true],
     [false],
     [{ base: false, xs: true, s: false, m: true, l: false, xl: true }],
-  ])('should return correct css for %o', (...args) => {
-    expect(getButtonLinkTileSharedStyles(...args)).toMatchSnapshot();
+  ])('should return correct css for compact: "%s"', (...args) => {
+    expect(getButtonLinkTileSharedClassesStyles(...args)).toMatchSnapshot();
   });
 });

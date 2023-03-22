@@ -42,7 +42,7 @@ export const getButtonLinkTilePStyles = (
   },
 });
 
-export const getButtonLinkTileContentStyles = (
+export const getButtonLinkTileAdditionalContentStyles = (
   align: TileAlign,
   hasGradient: boolean,
   compact: BreakpointCustomizable<boolean>
@@ -72,7 +72,7 @@ export const getButtonLinkTileContentStyles = (
   };
 };
 
-export const getButtonLinkTileSharedStyles = (compact: BreakpointCustomizable<boolean>): Styles => ({
+export const getButtonLinkTileSharedClassesStyles = (compact: BreakpointCustomizable<boolean>): Styles => ({
   'link-or-button-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
     display: isCompact ? 'inline-block' : 'none',
   })),
