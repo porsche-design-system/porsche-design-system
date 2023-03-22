@@ -1,10 +1,5 @@
 import { getMediaQueryMin } from '../mediaQuery';
 import { gridGap } from './gridGap';
-import { gridWidthMin } from './gridWidthMin';
-import { gridWidthMax } from './gridWidthMax';
-import { gridSafeZoneBase } from './gridSafeZoneBase';
-import { gridSafeZoneS } from './gridSafeZoneS';
-import { gridSafeZoneXXL } from './gridSafeZoneXXL';
 import { gridFullColumnStart } from './gridFullColumnStart';
 import { gridWideColumnStart } from './gridWideColumnStart';
 import { gridExtendedColumnStart } from './gridExtendedColumnStart';
@@ -22,6 +17,11 @@ import {
   _cssVariableGridExtendedSpanOneHalf,
   _cssVariableGridNarrowSpanOneHalf,
   _cssVariableGridSafeZone,
+  _gridSafeZoneBase,
+  _gridSafeZoneS,
+  _gridSafeZoneXXL,
+  _gridWidthMax,
+  _gridWidthMin,
 } from './gridShared';
 
 const outerColumn = `minmax(0, calc(var(${_cssVariableGridSafeZone}) - ${gridGap}))`;
@@ -44,7 +44,7 @@ const getGridTemplateColumns = (layout: 'mobile' | 'desktop'): string =>
       )} [${gridWideColumnEnd}] ${outerColumn} [${gridFullColumnEnd}]`;
 
 export const gridStyle = {
-  [_cssVariableGridSafeZone]: gridSafeZoneBase,
+  [_cssVariableGridSafeZone]: _gridSafeZoneBase,
   [_cssVariableGridExtendedSpanOneHalf]: getColumnSpan(3),
   [_cssVariableGridBasicSpanOneHalf]: getColumnSpan(3),
   [_cssVariableGridBasicSpanOneThird]: getColumnSpan(2),
@@ -53,13 +53,13 @@ export const gridStyle = {
   display: 'grid',
   gridGap,
   gridTemplateColumns: getGridTemplateColumns('mobile'),
-  minWidth: gridWidthMin,
-  maxWidth: gridWidthMax,
+  minWidth: _gridWidthMin,
+  maxWidth: _gridWidthMax,
   margin: 0,
-  padding: `0 calc(50vw - ${gridWidthMax} / 2)`,
+  padding: `0 calc(50vw - ${_gridWidthMax} / 2)`, // TODO: use _gridPadding instead, it needs to be ensured that sass isn't stripping unit of max(0px,…
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
-    [_cssVariableGridSafeZone]: gridSafeZoneS,
+    [_cssVariableGridSafeZone]: _gridSafeZoneS,
     [_cssVariableGridExtendedSpanOneHalf]: getColumnSpan(7),
     [_cssVariableGridBasicSpanOneHalf]: getColumnSpan(6),
     [_cssVariableGridBasicSpanOneThird]: getColumnSpan(4),
@@ -68,6 +68,6 @@ export const gridStyle = {
     gridTemplateColumns: getGridTemplateColumns('desktop'),
   },
   [getMediaQueryMin('xxl')]: {
-    [_cssVariableGridSafeZone]: gridSafeZoneXXL,
+    [_cssVariableGridSafeZone]: _gridSafeZoneXXL,
   },
 } as const;
