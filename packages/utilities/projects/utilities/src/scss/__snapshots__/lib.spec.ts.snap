@@ -176,7 +176,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 "@mixin pds-grid {
   margin: 0;
   display: grid;
-  padding: 0 calc(50% - 2560px/2);
+  padding: 0 calc(50vw - 2560px/2);
   grid-gap: clamp(16px, 1.25vw + 12px, 36px);
   max-width: 2560px;
   min-width: 320px;
@@ -206,7 +206,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
         0,
         calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
       ) [full-end];
-    --pds-internal-grid-safe-zone: max(22px, 5vw - 16px);
+    --pds-internal-grid-safe-zone: calc(5vw - 16px);
     --pds-grid-basic-span-one-half: span 6;
     --pds-grid-basic-span-one-third: span 4;
     --pds-grid-narrow-span-one-half: span 4;
@@ -227,6 +227,17 @@ $pds-grid-basic-column-end: basic-end;
 $pds-grid-basic-span-one-half: var(--pds-grid-basic-span-one-half);
 $pds-grid-basic-span-one-third: var(--pds-grid-basic-span-one-third);
 $pds-grid-basic-span-two-thirds: var(--pds-grid-basic-span-two-thirds);
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-column-width.scss 1`] = `
+"$pds-grid-column-width-base: calc(
+  (max(100vw, 320px) - max(22px, 10.625vw - 12px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 5)/6
+);
+$pds-grid-column-width-s: calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16);
+$pds-grid-column-width-xxl: calc(
+  (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16
+);
 "
 `;
 
@@ -257,8 +268,14 @@ $pds-grid-narrow-span-one-half: var(--pds-grid-narrow-span-one-half);
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-safe-zone.scss 1`] = `
 "$pds-grid-safe-zone-base: max(22px, 10.625vw - 12px);
-$pds-grid-safe-zone-s: max(22px, 5vw - 16px);
+$pds-grid-safe-zone-s: calc(5vw - 16px);
 $pds-grid-safe-zone-xxl: min(50vw - 880px, 400px);
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-wide.scss 1`] = `
+"$pds-grid-wide-column-start: wide-start;
+$pds-grid-wide-column-end: wide-end;
 "
 `;
 

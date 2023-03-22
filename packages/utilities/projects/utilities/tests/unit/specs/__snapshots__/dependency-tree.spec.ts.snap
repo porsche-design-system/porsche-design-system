@@ -133,6 +133,25 @@ exports[`should have no regression for dependency tree 1`] = `
   "grid/gridBasicSpanTwoThirds.js": [
     "grid/gridShared.js",
   ],
+  "grid/gridColumnWidth.js": [
+    "grid/gridColumnWidthBase.js",
+    "grid/gridColumnWidthS.js",
+    "grid/gridColumnWidthXXL.js",
+  ],
+  "grid/gridColumnWidthBase.js": [
+    "grid/gridGap.js",
+    "grid/gridSafeZoneBase.js",
+    "grid/gridWidthMin.js",
+  ],
+  "grid/gridColumnWidthS.js": [
+    "grid/gridGap.js",
+    "grid/gridSafeZoneS.js",
+  ],
+  "grid/gridColumnWidthXXL.js": [
+    "grid/gridGap.js",
+    "grid/gridSafeZoneXXL.js",
+    "grid/gridWidthMax.js",
+  ],
   "grid/gridExtended.js": [
     "grid/gridExtendedColumnEnd.js",
     "grid/gridExtendedColumnStart.js",
@@ -261,6 +280,10 @@ exports[`should have no regression for dependency tree 1`] = `
     "grid/gridBasicSpanOneHalf.js",
     "grid/gridBasicSpanOneThird.js",
     "grid/gridBasicSpanTwoThirds.js",
+    "grid/gridColumnWidth.js",
+    "grid/gridColumnWidthBase.js",
+    "grid/gridColumnWidthS.js",
+    "grid/gridColumnWidthXXL.js",
     "grid/gridExtended.js",
     "grid/gridExtendedColumnEnd.js",
     "grid/gridExtendedColumnStart.js",
