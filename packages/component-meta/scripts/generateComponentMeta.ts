@@ -11,10 +11,10 @@ global.ROLLUP_REPLACE_IS_STAGING = 'staging';
 
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
-const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
+const componentFileNames = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
 const getComponentFilePath = (tagName: TagName): string => {
-  return componentFiles.find((file) => file.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`)));
+  return componentFileNames.find((fileName) => fileName.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`)));
 };
 
 const getImportFilePath = (source: string, constName: string, tagName: TagName): string => {
@@ -57,7 +57,7 @@ const generateComponentMeta = (): void => {
     [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
   };
   deprecatedPropValues?: {
-    [propName: string]: string[];
+    [propName: string]: string[]; // array of values of a prop that are deprecated
   };
   internalProps?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -100,7 +100,7 @@ const generateComponentMeta = (): void => {
       [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
     };
     deprecatedPropValues?: {
-      [propName: string]: string[];
+      [propName: string]: string[]; // array of values of a prop that are deprecated
     };
     internalProps?: {
       [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -122,7 +122,7 @@ const generateComponentMeta = (): void => {
 
   type ComponentsMeta = Record<TagName, ComponentMeta>;
 
-  const componentSourceCode: Record<TagName, string> = componentFiles.reduce((result, filePath) => {
+  const componentSourceCode: Record<TagName, string> = componentFileNames.reduce((result, filePath) => {
     const tagName: TagName = ('p-' + path.basename(filePath).replace('.tsx', '')) as TagName;
 
     // get rid of functional components like StateMessage
