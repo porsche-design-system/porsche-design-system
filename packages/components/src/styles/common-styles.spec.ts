@@ -1,6 +1,5 @@
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import type { Theme } from '../types';
 import type { GetFocusStylesOptions } from './common-styles';
 import {
   addImportantToEachRule,
