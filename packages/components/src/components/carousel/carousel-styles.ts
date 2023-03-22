@@ -1,7 +1,6 @@
-import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
@@ -16,13 +15,10 @@ import {
   fontSizeTextSmall,
   getMediaQueryMax,
   getMediaQueryMin,
-  gridColumnWidthS,
-  gridColumnWidthXXL,
+  gridBasicOffset,
+  gridBasicOffsetBase,
+  gridExtendedOffset,
   gridGap,
-  gridSafeZoneBase,
-  gridSafeZoneS,
-  gridSafeZoneXXL,
-  gridWidthMax,
   headingXLargeStyle,
   spacingFluidMedium,
   spacingFluidXSmall,
@@ -40,35 +36,16 @@ const selectorDescription = 'p,::slotted([slot=description])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
+const gridWidthMax = '2560px';
+
 // we need an explicit grid template, therefor we need to calculate the button group width
 const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
 const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
 
-const getPaddingHorizontalS = (width: CarouselWidth): string =>
-  `calc(${gridSafeZoneS} + (${gridGap} + ${gridColumnWidthS})${width === 'extended' ? '' : ' * 2'})`;
-const getPaddingHorizontalXXL = (width: CarouselWidth): string =>
-  `calc(${gridSafeZoneXXL} + (${gridGap} + ${gridColumnWidthXXL})${width === 'extended' ? '' : ' * 2'})`;
-
-const spacingMap: { [key in CarouselWidth]: JssStyle } = {
-  basic: {
-    padding: `0 ${gridSafeZoneBase}`,
-    [mediaQueryS]: {
-      padding: `0 ${getPaddingHorizontalS('basic')}`,
-    },
-    [mediaQueryXXL]: {
-      padding: `0 ${getPaddingHorizontalXXL('basic')}`,
-    },
-  },
-  extended: {
-    padding: `0 ${gridSafeZoneBase}`,
-    [mediaQueryS]: {
-      padding: `0 ${getPaddingHorizontalS('extended')}`,
-    },
-    [mediaQueryXXL]: {
-      padding: `0 ${getPaddingHorizontalXXL('extended')}`,
-    },
-  },
+const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: string } } = {
+  basic: gridBasicOffset,
+  extended: gridExtendedOffset,
 };
 
 export const getComponentCss = (
@@ -88,8 +65,8 @@ export const getComponentCss = (
         flexDirection: 'column',
         maxWidth: gridWidthMax,
         // relevant for viewport width > 2560px
-        paddingLeft: `calc(50% - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
-        paddingRight: `calc(50% - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
+        paddingLeft: `calc(50vw - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
+        paddingRight: `calc(50vw - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
         boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
         ...hostHiddenStyles,
       }),
@@ -117,17 +94,20 @@ export const getComponentCss = (
     },
     header: {
       display: 'grid',
-      ...mergeDeep(spacingMap[width], {
-        [mediaQueryS]: {
-          fontFamily, // relevant for button group width calculation, which is based on ex unit
-          fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
-          columnGap: spacingStaticMedium,
-          gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
-          ...(isHeaderAlignCenter && {
-            justifyItems: 'center', // relevant when max-width of heading or description is reached
-          }),
-        },
-      }),
+      padding: `0 ${spacingMap[width].base}`,
+      [mediaQueryS]: {
+        fontFamily, // relevant for button group width calculation, which is based on ex unit
+        fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
+        columnGap: spacingStaticMedium,
+        gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
+        ...(isHeaderAlignCenter && {
+          justifyItems: 'center', // relevant when max-width of heading or description is reached
+        }),
+        padding: `0 ${spacingMap[width].s}`,
+      },
+      [mediaQueryXXL]: {
+        padding: `0 ${spacingMap[width].xxl}`,
+      },
     },
     nav: {
       display: 'none',
@@ -148,9 +128,15 @@ export const getComponentCss = (
         cursor: 'grab',
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
-          ...spacingMap[width],
+          padding: `0 ${spacingMap[width].base}`,
           [getMediaQueryMax('xs')]: {
-            paddingRight: `calc(${gridSafeZoneBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
+            paddingRight: `calc(${gridBasicOffsetBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
+          },
+          [mediaQueryS]: {
+            padding: `0 ${spacingMap[width].s}`,
+          },
+          [mediaQueryXXL]: {
+            padding: `0 ${spacingMap[width].xxl}`,
           },
         }),
         '&--draggable': {
