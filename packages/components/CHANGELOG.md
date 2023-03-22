@@ -28,14 +28,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
--   <p-text-field-wrapper label="Some label">
--     <input type="text" name="some-name" />
--   </p-text-field-wrapper>
-- </p-fieldset-wrapper>
 + <p-fieldset label="Some legend label">
-+   <p-text-field-wrapper label="Some label">
-+     <input type="text" name="some-name" />
-+   </p-text-field-wrapper>
+  <p-text-field-wrapper label="Some label">
+    <input type="text" name="some-name" />
+  </p-text-field-wrapper>
+- </p-fieldset-wrapper>
 + </p-fieldset>
 ```
 
