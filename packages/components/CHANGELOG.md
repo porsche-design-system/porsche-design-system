@@ -15,11 +15,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `gridWide`
   - `gridWideColumnStart` and `pds-grid-wide-column-start`
   - `gridWideColumnEnd` and `pds-grid-wide-column-end`
-  - `gridSafeZoneS` and `pds-grid-safe-zone-s`
-  - `gridColumnWidth`
-  - `gridColumnWidthBase` and `pds-grid-column-width-base`
-  - `gridColumnWidthS` and `pds-grid-column-width-s`
-  - `gridColumnWidthXXL` and `pds-grid-column-width-xxl`
+  - `gridNarrowOffset`, `gridNarrowOffsetBase`, `gridNarrowOffsetS`, `gridNarrowOffsetXXL` and
+    `$pds-grid-narrow-offset-base`, `$pds-grid-narrow-offset-s`, `$pds-grid-narrow-offset-xxl`
+  - `gridBasicOffset`, `gridBasicOffsetBase`, `gridBasicOffsetS`, `gridBasicOffsetXXL` and
+    `$pds-grid-basic-offset-base`, `$pds-grid-basic-offset-s`, `$pds-grid-basic-offset-xxl`
+  - `gridExtendedOffset`, `gridExtendedOffsetBase`, `gridExtendedOffsetS`, `gridExtendedOffsetXXL` and
+    `$pds-grid-extended-offset-base`, `$pds-grid-extended-offset-s`, `$pds-grid-extended-offset-xxl`
+  - `gridWideOffset`, `gridWideOffsetBase`, `gridWideOffsetS`, `gridWideOffsetXXL` and `$pds-grid-wide-offset-base`,
+    `$pds-grid-wide-offset-s`, `$pds-grid-wide-offset-xxl`
+  - `gridFullOffset` and `$pds-grid-full-offset`
 - `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
@@ -27,9 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
-- Styles: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
-  - `gridSafeZoneBase` and `pds-grid-safe-zone-base` calculation
-  - `gridSafeZoneXXL` and `pds-grid-safe-zone-xxl` calculation
 - Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
   `@porsche-design-system/components-js/styles/scss`
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
@@ -37,6 +38,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Removed
 
 - `Banner`: CSS variable `--p-banner-position-type`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### 🤖 Property deprecations 🤖
