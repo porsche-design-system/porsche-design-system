@@ -43,7 +43,7 @@ export const getComponentCss = (
       ...(sortable
         ? {
             button: {
-              transform: 'translate3d(0,0,0)', // creates new stacking context
+              position: 'relative',
               display: 'flex',
               gap: spacingStaticXSmall,
               width: 'auto',
