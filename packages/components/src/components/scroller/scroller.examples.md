@@ -205,7 +205,8 @@ export default class Code extends Vue {
         </p-text-list>
       </p-text-list-item>
     </p-text-list>
-  </p-scroller>`;
+  </p-scroller>
+</div>`;
 }
 </script>
 
