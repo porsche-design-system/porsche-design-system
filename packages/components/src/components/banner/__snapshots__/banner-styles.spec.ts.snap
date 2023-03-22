@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for width: basic 1`] = `
+exports[`getComponentCss() should return correct css 1`] = `
 ":host {
-  --p-banner-position-top: 56px;
-  --p-banner-position-bottom: 56px;
-  position: var(--p-banner-position-type,fixed);
-  z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
-  left: 0;
-  right: 0;
-  will-change: opacity,transform;
-  display: block !important;
+  --p-banner-position-top: 56px !important;
+  --p-banner-position-bottom: 56px !important;
+  position: fixed !important;
+  top: auto !important;
+  bottom: var(--p-banner-position-bottom) !important;
+  left: max(22px, 10.625vw - 12px) !important;
+  right: max(22px, 10.625vw - 12px) !important;
   margin: 0 !important;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 !important;
   width: auto !important;
-  min-width: 0 !important;
-  max-width: 2560px !important;
+  z-index: var(--p-internal-banner-z-index,99) !important;
+  will-change: opacity,transform !important;
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -61,9 +61,6 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
   }
 }
 @media(min-width:0px) and (max-width:759px) {
-    :host {
-      bottom: var(--p-banner-position-bottom);
-    }
     :host(.banner--close) {
       animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
@@ -74,8 +71,10 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
 
 @media(min-width:760px) {
     :host {
-      padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
-      top: var(--p-banner-position-top);
+      top: var(--p-banner-position-top) !important;
+      bottom: auto !important;
+      left: calc(calc(5vw - 16px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) !important;
+      right: calc(calc(5vw - 16px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) !important;
     }
     :host(.banner--close) {
       animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
@@ -87,201 +86,9 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
 
 @media(min-width:1920px) {
     :host {
-      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+      left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) !important;
+      right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) !important;
     }
 }
-
-  .root {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
-  }"
-`;
-
-exports[`getComponentCss() should return correct css for width: extended 1`] = `
-":host {
-  --p-banner-position-top: 56px;
-  --p-banner-position-bottom: 56px;
-  position: var(--p-banner-position-type,fixed);
-  z-index: var(--p-internal-banner-z-index,99);
-  opacity: 0;
-  left: 0;
-  right: 0;
-  will-change: opacity,transform;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: 2560px !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-@keyframes mobileIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes mobileOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-}
-@keyframes desktopIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes desktopOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-}
-@media(min-width:0px) and (max-width:759px) {
-    :host {
-      bottom: var(--p-banner-position-bottom);
-    }
-    :host(.banner--close) {
-      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
-}
-
-@media(min-width:760px) {
-    :host {
-      top: var(--p-banner-position-top);
-    }
-    :host(.banner--close) {
-      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
-}
-
-@media(min-width:1920px) {
-    :host {
-      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
-    }
-}
-
-  .root {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
-  }"
-`;
-
-exports[`getComponentCss() should return correct css for width: fluid 1`] = `
-":host {
-  --p-banner-position-top: 56px;
-  --p-banner-position-bottom: 56px;
-  position: var(--p-banner-position-type,fixed);
-  z-index: var(--p-internal-banner-z-index,99);
-  opacity: 0;
-  left: 0;
-  right: 0;
-  will-change: opacity,transform;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: 2560px !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-@keyframes mobileIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes mobileOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-}
-@keyframes desktopIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes desktopOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-}
-@media(min-width:0px) and (max-width:759px) {
-    :host {
-      bottom: var(--p-banner-position-bottom);
-    }
-    :host(.banner--close) {
-      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
-}
-
-@media(min-width:760px) {
-    :host {
-      top: var(--p-banner-position-top);
-    }
-    :host(.banner--close) {
-      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
-}
-
-@media(min-width:1920px) {
-    :host {
-      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
-    }
-}
-
-  .root {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
-  }"
+"
 `;
