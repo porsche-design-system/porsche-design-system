@@ -28,8 +28,6 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
         .reduce((res, [key, val]) => ({ ...res, [key]: val }), {})
     : null;
 
-  // Mandatory child for PLinkTileModelSignature
-  const LinkComponent = fromComponents['PLink'];
   // dangerouslySetInnerHTML would obviously be easier than converting to jsx
   // but this does not work since our wrappers internally set children on the server side.
   // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both

@@ -46,7 +46,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           </p-link-tile-model-signature>
           <p-link-tile-model-signature heading="Some heading" description="Some description">
             <picture>
-             ${image}
+              ${image}
             </picture>
             <p-link slot="primary" href="#">Some Label</p-link>
             <p-link slot="secondary" href="#">Some Label</p-link>
