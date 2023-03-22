@@ -9,7 +9,18 @@
       </div>
       <div class="hero-header">
         <h1 class="display">Hero Heading</h1>
-        <p class="text-large">Subline for the Hero Header in Extended Grid</p>
+        <p class="text-large">Subline for the Hero Header in Wide Grid</p>
+      </div>
+    </div>
+    <div class="wide-grid">
+      <div class="wide-sidebar">
+        <span class="info"><b>Wide Sidebar</b></span>
+        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
+        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
+        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
+      </div>
+      <div class="wide-content">
+        <span class="info"><b>Wide Content</b></span>
       </div>
     </div>
     <div class="extended-content-grid">
@@ -155,8 +166,15 @@
 
     > span {
       background: rgba(0, 0, 255, 0.1);
+      &:first-child,
+      &:last-child {
+        background: rgba(125, 0, 255, 0.1);
+      }
 
       @include pds-media-query-max('s') {
+        &:nth-child(8) {
+          background: rgba(125, 0, 255, 0.1);
+        }
         &:nth-child(n + 9) {
           display: none;
         }
@@ -171,6 +189,7 @@
       'green': rgba(0, 255, 0, 0.25),
       'purple': rgba(255, 0, 255, 0.25),
       'yellow': rgba(255, 255, 0, 0.25),
+      'orange': rgba(255, 125, 0, 0.25),
     );
     @if $padding == 'medium' {
       padding: $pds-spacing-fluid-medium;
@@ -253,12 +272,36 @@
 
   .hero-header {
     @include tile('green', false, false);
-    grid-column: $pds-grid-extended-column-start / $pds-grid-extended-column-end;
+    grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
     grid-row: 1;
     padding-bottom: $pds-spacing-fluid-medium;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+  }
+
+  // Wide Content
+  .wide-grid {
+    @include pds-grid;
+    margin-top: $pds-spacing-fluid-large;
+  }
+
+  .wide-sidebar {
+    @include tile('orange');
+    grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
+
+    @include pds-media-query-min('s') {
+      grid-column: $pds-grid-wide-column-start / span 5;
+    }
+  }
+
+  .wide-content {
+    @include tile('orange');
+    grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
+
+    @include pds-media-query-min('s') {
+      grid-column: span 11 / $pds-grid-wide-column-end;
+    }
   }
 
   // Extended Content

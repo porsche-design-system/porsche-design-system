@@ -23,6 +23,8 @@ import {
   gridNarrowColumnStart,
   gridNarrowSpanOneHalf,
   gridStyle,
+  gridWideColumnEnd,
+  gridWideColumnStart,
   headingLargeStyle,
   headingXLargeStyle,
   spacingFluidLarge,
@@ -48,7 +50,13 @@ const VisualizeGrid = styled.div({
 
 const VisualizeGridColumns = styled.span({
   background: 'rgba(0, 0, 255, 0.1)',
+  '&:first-child,&:last-child': {
+    background: 'rgba(125, 0, 255, 0.1)',
+  },
   [getMediaQueryMax('s')]: {
+    '&:nth-child(8)': {
+      background: 'rgba(125, 0, 255, 0.1)',
+    },
     '&:nth-child(n+9)': {
       display: 'none',
     },
@@ -56,7 +64,7 @@ const VisualizeGridColumns = styled.span({
 });
 
 // Tile
-type Color = 'blue' | 'green' | 'purple' | 'yellow';
+type Color = 'blue' | 'green' | 'purple' | 'yellow' | 'orange';
 const getTileStyle = (color: Color, padding: 'medium' | 'small' | false = 'medium', borderRadius: boolean = true) => {
   const opacity = 0.25;
   const colorMap: { [key in Color]: string } = {
@@ -64,6 +72,7 @@ const getTileStyle = (color: Color, padding: 'medium' | 'small' | false = 'mediu
     green: `rgba(0, 255, 0, ${opacity})`,
     purple: `rgba(255, 0, 255, ${opacity})`,
     yellow: `rgba(255, 255, 0, ${opacity})`,
+    orange: `rgba(255, 125, 0, ${opacity})`,
   };
   return {
     padding: padding === 'medium' ? spacingFluidMedium : padding === 'small' ? spacingFluidSmall : 0,
@@ -129,12 +138,34 @@ const HeroMedia = styled.div({
 
 const HeroHeader = styled.div({
   ...getTileStyle('green', false, false),
-  gridColumn: `${gridExtendedColumnStart} / ${gridExtendedColumnEnd}`,
+  gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
   gridRow: 1,
   paddingBottom: spacingFluidMedium,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',
+});
+
+// Wide Content
+const WideGrid = styled.div({
+  ...gridStyle,
+  marginTop: spacingFluidLarge,
+});
+
+const WideSidebar = styled.div({
+  ...getTileStyle('orange'),
+  gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
+  [getMediaQueryMin('s')]: {
+    gridColumn: `${gridWideColumnStart} / span 5`,
+  },
+});
+
+const WideContent = styled.div({
+  ...getTileStyle('orange'),
+  gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
+  [getMediaQueryMin('s')]: {
+    gridColumn: `span 11 / ${gridWideColumnEnd}`,
+  },
 });
 
 // Extended Content
@@ -304,7 +335,7 @@ export const StylesGridExample = (): JSX.Element => {
   return (
     <>
       <VisualizeGrid>
-        {[...Array(16)].map((_, i) => (
+        {[...Array(18)].map((_, i) => (
           <VisualizeGridColumns key={i} />
         ))}
       </VisualizeGrid>
@@ -316,9 +347,24 @@ export const StylesGridExample = (): JSX.Element => {
         </HeroMedia>
         <HeroHeader>
           <Display>Hero Heading</Display>
-          <TextLarge>Subline for the Hero Header in Extended Grid</TextLarge>
+          <TextLarge>Subline for the Hero Header in Wide Grid</TextLarge>
         </HeroHeader>
       </HeroGrid>
+      <WideGrid>
+        <WideSidebar>
+          <Info>
+            <b>Wide Sidebar</b>
+          </Info>
+          <PAccordion heading="Some Heading" tag="h3" />
+          <PAccordion heading="Some Heading" tag="h3" />
+          <PAccordion heading="Some Heading" tag="h3" />
+        </WideSidebar>
+        <WideContent>
+          <Info>
+            <b>Wide Content</b>
+          </Info>
+        </WideContent>
+      </WideGrid>
       <ExtendedContentGrid>
         <ExtendedContentHalfLeft>
           <Info>
