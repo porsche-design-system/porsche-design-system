@@ -3023,9 +3023,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-wordmark": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "href": "string",
       "size": [
         "fluid",
