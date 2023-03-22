@@ -574,6 +574,24 @@ describe('activeSlideIndex', () => {
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
   });
 
+  it('should not cause new lifecycle', async () => {
+    await initCarousel();
+    const host = await getHost();
+
+    const initialStatus = await getLifecycleStatus(page);
+    expect(initialStatus.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(2); // modified after render
+    expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(2);
+    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(5);
+
+    await setProperty(host, 'activeSlideIndex', 1);
+    await waitForStencilLifecycle(page);
+
+    const finalStatus = await getLifecycleStatus(page);
+    expect(finalStatus.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(4); // aria and disabled props where modified
+    expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(4);
+    expect(finalStatus.componentDidLoad.all, 'final componentDidLoad: all').toBe(5);
+  });
+
   it('should emit change event', async () => {
     await initCarousel();
     const host = await getHost();
