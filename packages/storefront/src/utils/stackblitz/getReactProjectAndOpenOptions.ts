@@ -143,7 +143,7 @@ export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions =
       'index.html': '<div id="root"></div>',
       'index.tsx': getIndexTsx(pdsVersion),
       'tsconfig.json': getTsconfigJson(),
-      'style.css': globalStyles,
+      'style.css': `html, body { margin: 0; padding: 0; } ${globalStyles}`,
     },
     template: 'create-react-app',
     title,
