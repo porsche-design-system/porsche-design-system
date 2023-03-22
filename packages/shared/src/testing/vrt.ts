@@ -13,7 +13,7 @@ export const furtherExtendedViewports = [...extendedViewports, 3000] as const;
 type Viewport = (typeof furtherExtendedViewports)[number];
 
 export const marqueViewports = [1299, 1300] as const;
-type marqueViewport = (typeof marqueViewports)[number];
+type MarqueViewport = (typeof marqueViewports)[number];
 
 const defaultOptions: VisualRegressionTestOptions = {
   viewports: defaultViewports as unknown as number[],
@@ -55,7 +55,7 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   });
 };
 
-export const getVisualRegressionMarque2xTester = (viewport: marqueViewport): VisualRegressionTester => {
+export const getVisualRegressionMarque2xTester = (viewport: MarqueViewport): VisualRegressionTester => {
   return new VisualRegressionTester(browser, {
     ...defaultOptions,
     ...customOptions,
@@ -65,7 +65,7 @@ export const getVisualRegressionMarque2xTester = (viewport: marqueViewport): Vis
   });
 };
 
-export const getVisualRegressionMarque3xTester = (viewport: marqueViewport): VisualRegressionTester => {
+export const getVisualRegressionMarque3xTester = (viewport: MarqueViewport): VisualRegressionTester => {
   return new VisualRegressionTester(browser, {
     ...defaultOptions,
     ...customOptions,
