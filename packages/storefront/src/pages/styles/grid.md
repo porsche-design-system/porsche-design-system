@@ -35,22 +35,39 @@ JavaScript styles can be imported by
 - `gridNarrowColumnStart`
 - `gridNarrowColumnEnd`
 - `gridNarrowSpanOneHalf`
+- `gridNarrowOffset`
+- `gridNarrowOffsetBase`
+- `gridNarrowOffsetS`
+- `gridNarrowOffsetXXL`
 - `gridBasic`
 - `gridBasicColumnStart`
 - `gridBasicColumnEnd`
 - `gridBasicSpanOneHalf`
 - `gridBasicSpanOneThird`
 - `gridBasicSpanTwoThirds`
+- `gridBasicOffset`
+- `gridBasicOffsetBase`
+- `gridBasicOffsetS`
+- `gridBasicOffsetXXL`
 - `gridExtended`
 - `gridExtendedColumnStart`
 - `gridExtendedColumnEnd`
 - `gridExtendedSpanOneHalf`
+- `gridExtendedOffset`
+- `gridExtendedOffsetBase`
+- `gridExtendedOffsetS`
+- `gridExtendedOffsetXXL`
 - `gridWide`
 - `gridWideColumnStart`
 - `gridWideColumnEnd`
+- `gridWideOffset`
+- `gridWideOffsetBase`
+- `gridWideOffsetS`
+- `gridWideOffsetXXL`
 - `gridFull`
 - `gridFullColumnEnd`
 - `gridFullColumnStart`
+- `gridFullOffset`
 
 ---
 
@@ -67,18 +84,31 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 - `$pds-grid-narrow-column-start`
 - `$pds-grid-narrow-column-end`
 - `$pds-grid-narrow-span-one-half`
+- `$pds-grid-narrow-offset-base`
+- `$pds-grid-narrow-offset-s`
+- `$pds-grid-narrow-offset-xxl`
 - `$pds-grid-basic-column-start`
 - `$pds-grid-basic-column-end`
 - `$pds-grid-basic-span-one-half`
 - `$pds-grid-basic-span-one-third`
 - `$pds-grid-basic-span-two-thirds`
+- `$pds-grid-basic-offset-base`
+- `$pds-grid-basic-offset-s`
+- `$pds-grid-basic-offset-xxl`
 - `$pds-grid-extended-column-start`
 - `$pds-grid-extended-column-end`
 - `$pds-grid-extended-span-one-half`
+- `$pds-grid-extended-offset-base`
+- `$pds-grid-extended-offset-s`
+- `$pds-grid-extended-offset-xxl`
 - `$pds-grid-wide-column-start`
 - `$pds-grid-wide-column-end`
+- `$pds-grid-wide-offset-base`
+- `$pds-grid-wide-offset-s`
+- `$pds-grid-wide-offset-xxl`
 - `$pds-grid-full-column-start`
 - `$pds-grid-full-column-end`
+- `$pds-grid-full-offset`
 
 <script lang="ts">
 import Vue from 'vue';
