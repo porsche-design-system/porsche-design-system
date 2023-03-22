@@ -164,7 +164,7 @@ aspect-ratio="${this.aspectRatio}">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile>`
+</p-link-tile-model-signature>`
   };
 
   model = '911';
@@ -176,7 +176,7 @@ model="${this.model}">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile>`
+</p-link-tile-model-signature>`
   };
 }
 </script>

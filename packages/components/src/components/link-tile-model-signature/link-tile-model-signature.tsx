@@ -92,7 +92,7 @@ export class LinkTileModelSignature {
       rel,
       class: 'link-overlay',
       tabIndex: -1,
-      ariaHidden: 'true',
+      'aria-hidden': 'true',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
