@@ -266,7 +266,7 @@ undesirable impact on the origin character of the company typeface. This include
 ![Example for uppercase text](./assets/typography-donts.png)
 
 <style lang="scss" scoped>
-  @import '@porsche-design-system/components-js/styles';
+  @use '@porsche-design-system/components-js/styles' as *;
   
   .type-scale {
     display: inline-block;

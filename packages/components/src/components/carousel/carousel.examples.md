@@ -241,7 +241,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '@porsche-design-system/components-js/styles';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   :deep(p-carousel div) {
     display: flex;

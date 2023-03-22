@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Styles:
   - `gridSafeZoneBase` and `pds-grid-safe-zone-base` calculation
   - `gridSafeZoneXXL` and `pds-grid-safe-zone-xxl` calculation
+- Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
+  `@porsche-design-system/components-js/styles/scss`
 
 #### Removed
 

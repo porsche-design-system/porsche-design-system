@@ -90,7 +90,7 @@ We continually assess and work to ensure that our Web presence is in conformance
 </script>
 
 <style scoped lang="scss">
-  @import '@porsche-design-system/components-js/styles';
+  @use '@porsche-design-system/components-js/styles' as *;
 
 .p-accessibility-statement {
   p-text,
