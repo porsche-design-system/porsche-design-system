@@ -5,13 +5,9 @@ import {
   dropShadowHighStyle,
   getMediaQueryMin,
   getMediaQueryMinMax,
-  gridColumnWidthS,
-  gridColumnWidthXXL,
-  gridGap,
-  gridSafeZoneBase,
-  gridSafeZoneS,
-  gridSafeZoneXXL,
-  gridWidthMax,
+  gridExtendedOffset,
+  gridExtendedOffsetS,
+  gridExtendedOffsetXXL,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
@@ -26,11 +22,6 @@ const mediaQueryBaseToS = getMediaQueryMinMax('base', 's');
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
-const positionVertical = '56px';
-const positionHorizontal = gridSafeZoneBase;
-const positionHorizontalS = `calc(${gridSafeZoneS} + ${gridGap} + ${gridColumnWidthS})`;
-const positionHorizontalXXL = `calc(max(0px, 50vw - ${gridWidthMax} / 2) + ${gridSafeZoneXXL} + ${gridGap} + ${gridColumnWidthXXL})`;
-
 const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
   getKeyframes(direction, {
     opacity: 0,
@@ -43,13 +34,13 @@ export const getComponentCss = (): string => {
       ':host': {
         opacity: 0,
         ...addImportantToEachRule({
-          [cssVariableTop]: positionVertical,
-          [cssVariableBottom]: positionVertical,
+          [cssVariableTop]: '56px',
+          [cssVariableBottom]: '56px',
           position: 'fixed',
           top: 'auto',
           bottom: `var(${cssVariableBottom})`,
-          left: positionHorizontal,
-          right: positionHorizontal,
+          left: gridExtendedOffset,
+          right: gridExtendedOffset,
           margin: 0,
           padding: 0,
           width: 'auto',
@@ -59,12 +50,12 @@ export const getComponentCss = (): string => {
           [mediaQueryS]: {
             top: `var(${cssVariableTop})`,
             bottom: 'auto',
-            left: positionHorizontalS,
-            right: positionHorizontalS,
+            left: gridExtendedOffsetS,
+            right: gridExtendedOffsetS,
           },
           [mediaQueryXXL]: {
-            left: positionHorizontalXXL,
-            right: positionHorizontalXXL,
+            left: gridExtendedOffsetXXL,
+            right: gridExtendedOffsetXXL,
           },
           ...hostHiddenStyles,
         }),
