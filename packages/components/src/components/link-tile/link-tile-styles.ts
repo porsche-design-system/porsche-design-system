@@ -4,9 +4,9 @@ import { getTileStyles } from '../../styles/tile-styles';
 import { getInsetJssStyle } from '../../styles';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import {
-  getButtonLinkTileContentStyles,
+  getButtonLinkTileAdditionalContentStyles,
   getButtonLinkTilePStyles,
-  getButtonLinkTileSharedStyles,
+  getButtonLinkTileSharedClassesStyles,
 } from '../../styles/link-button-tile-styles';
 import type { LinkTileWeight } from './link-tile-utils';
 
@@ -22,7 +22,7 @@ export const getComponentCss = (
     ...getTileStyles({
       aspectRatio,
       additionalGlobalStyles: getButtonLinkTilePStyles(size, weight),
-      additionalContentStyles: getButtonLinkTileContentStyles(align, hasGradient, compact),
+      additionalContentStyles: getButtonLinkTileAdditionalContentStyles(align, hasGradient, compact),
     }),
     // is used for expanded click-area only
     'link-overlay': {
@@ -30,6 +30,6 @@ export const getComponentCss = (
       ...getInsetJssStyle(0),
       outline: 0,
     },
-    ...getButtonLinkTileSharedStyles(compact),
+    ...getButtonLinkTileSharedClassesStyles(compact),
   });
 };

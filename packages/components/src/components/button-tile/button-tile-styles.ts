@@ -2,9 +2,9 @@ import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../uti
 import { getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import {
-  getButtonLinkTileContentStyles,
+  getButtonLinkTileAdditionalContentStyles,
   getButtonLinkTilePStyles,
-  getButtonLinkTileSharedStyles,
+  getButtonLinkTileSharedClassesStyles,
 } from '../../styles/link-button-tile-styles';
 import { getTileStyles } from '../../styles/tile-styles';
 
@@ -24,8 +24,8 @@ export const getComponentCss = (
       isDisabled,
       additionalHostStyles: { cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer' },
       additionalGlobalStyles: getButtonLinkTilePStyles(size, weight),
-      additionalContentStyles: getButtonLinkTileContentStyles(align, hasGradient, compact),
+      additionalContentStyles: getButtonLinkTileAdditionalContentStyles(align, hasGradient, compact),
     }),
-    ...getButtonLinkTileSharedStyles(compact),
+    ...getButtonLinkTileSharedClassesStyles(compact),
   });
 };

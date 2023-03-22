@@ -48,6 +48,7 @@ export class LinkTileModelSignature {
   /** Adapts the font weight of the heading. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileModelSignatureWeight> = 'semi-bold';
 
+  // TODO: change default aspect ratio to 3:4 (this affects all vrt tests)
   /** Aspect ratio of the link-tile-model-signature. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio> = '4:3';
 

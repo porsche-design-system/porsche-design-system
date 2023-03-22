@@ -156,7 +156,7 @@ export default class Code extends Vue {
   };
 
   aspectRatio = '9:16';
-  aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', m: '9:16' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile-model-signature 
 heading="Some Heading"
