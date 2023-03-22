@@ -11,7 +11,6 @@ import {
 import {
   borderRadiusSmall,
   borderWidthBase,
-  fontWeight,
   frostedGlassStyle,
   spacingFluidSmall,
   spacingStaticXSmall,
@@ -23,7 +22,6 @@ import { offsetHorizontal, offsetVertical } from '../../../styles/link-button-pu
 import { cssVariableTableHeadCellIconFilter } from '../table/table-styles';
 
 const { hoverColor, focusColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
-const { semiBold: fontWeightSemiBold } = fontWeight;
 
 export const getComponentCss = (
   active: boolean,
@@ -39,7 +37,6 @@ export const getComponentCss = (
         display: 'table-cell',
         padding: `2px ${spacingFluidSmall} ${spacingFluidSmall}`,
         verticalAlign: 'bottom',
-        fontWeight: fontWeightSemiBold,
         whiteSpace: multiline ? 'normal' : 'nowrap',
         ...hostHiddenStyles,
       }),
