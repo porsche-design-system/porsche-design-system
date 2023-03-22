@@ -27,7 +27,7 @@
     "build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder": "ts-node scripts/replaceCdnBaseUrlDynamicPlaceholder.ts",
     "build:components-wrapper:generateChunksManifest": "ts-node scripts/generateChunksManifest.ts",
     "build:components-wrapper:copyUtilitiesBuildToComponentsJs": "TARGET=./dist/components-wrapper/styles && rm -rf $TARGET && cp -r ../utilities/projects/utilities/dist/js $TARGET && cp -r ../utilities/projects/utilities/dist/scss $TARGET/scss",
-    "build:components-wrapper:createUtilitiesScssEntryPoint": "echo \"@import 'scss/_index.scss';\" > ./dist/components-wrapper/styles/scss.scss && echo \"@import 'scss/_index.scss';\" > ./dist/components-wrapper/styles/_index.scss",
+    "build:components-wrapper:createUtilitiesScssEntryPoint": "echo \"@import 'scss/_index.scss';\" > ./dist/components-wrapper/styles/_index.scss",
     "build:cleanEnvironment": "rm -f ../../cdn.config.js && rm -rf ./projects/components-wrapper/environment.js",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
     "build:jsdom-polyfill": "yarn --cwd ./projects/jsdom-polyfill build",
