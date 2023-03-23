@@ -3033,7 +3033,7 @@ exports[`should match snapshot 1`] = `
       },
       "href": "string",
       "size": [
-        "fluid",
+        "small",
         "inherit",
       ],
       "target": "string",
@@ -3053,7 +3053,7 @@ exports[`should match snapshot 1`] = `
     "props": {
       "aria": null,
       "href": null,
-      "size": "fluid",
+      "size": "small",
       "target": "_self",
       "theme": "light",
     },
