@@ -49,7 +49,7 @@ const buildConfig = (packagePath) => {
       copy({
         targets: [
           {
-            src: `${projectDir}/src/styles/scss.scss`,
+            src: `${projectDir}/src/styles/_index.scss`,
             dest: `${outputDir}/styles`,
           },
         ],

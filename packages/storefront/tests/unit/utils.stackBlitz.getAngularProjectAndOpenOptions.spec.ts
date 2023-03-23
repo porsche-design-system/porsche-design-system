@@ -141,7 +141,7 @@ export class ExampleComponent {}
 }`,
       false,
     ],
-    [`@import '@porsche-design-system/components-js/styles/scss';`, true],
+    [`@use '@porsche-design-system/components-js/styles' as *;`, true],
     [`@import '@porsche-design-system/utilities';`, true],
     [`@use '@porsche-design-system/components-angular/styles/scss';`, true],
     [
@@ -168,7 +168,7 @@ describe('extractInlineStyles()', () => {
   selector: 'page-styles-border-example',
   styles: [
     \`
-      @import '@porsche-design-system/components-js/styles/scss';
+      @use '@porsche-design-system/components-js/styles' as *;
       .div {
         color: $pds-theme-light-primary;
       }
@@ -229,7 +229,7 @@ describe('getAppComponentTs()', () => {
   selector: 'page-styles-border-example',
   styles: [
     \`
-      @import '@porsche-design-system/components-js/styles/scss';
+      @use '@porsche-design-system/components-js/styles' as *;
       .div {
         color: $pds-theme-light-primary;
       }

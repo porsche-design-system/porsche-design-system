@@ -12,3 +12,12 @@ it('should have no visual regression', async () => {
     })
   ).toBeFalsy();
 });
+
+it('should have no visual regression', async () => {
+  expect(
+    await vrtTest(getVisualRegressionOverviewTester(), 'overview-flaky', '/overview-flaky', {
+      javaScriptEnabled: false,
+      scenario: (page) => openPopoversAndHighlightSpacer(page),
+    })
+  ).toBeFalsy();
+});

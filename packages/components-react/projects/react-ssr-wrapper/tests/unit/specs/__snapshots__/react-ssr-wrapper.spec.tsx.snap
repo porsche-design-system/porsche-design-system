@@ -981,20 +981,20 @@ exports[`should render dsr component for PBanner 1`] = `
   >
     <style>
       :host {
-  --p-banner-position-top: 56px;
-  --p-banner-position-bottom: 56px;
-  position: var(--p-banner-position-type,fixed);
-  z-index: var(--p-internal-banner-z-index,99);
   opacity: 0;
-  left: 0;
-  right: 0;
-  will-change: opacity,transform;
-  display: block !important;
+  --p-banner-position-top: 56px !important;
+  --p-banner-position-bottom: 56px !important;
+  position: fixed !important;
+  top: auto !important;
+  bottom: var(--p-banner-position-bottom) !important;
+  left: max(22px, 10.625vw - 12px) !important;
+  right: max(22px, 10.625vw - 12px) !important;
   margin: 0 !important;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 !important;
   width: auto !important;
-  min-width: 0 !important;
-  max-width: 2560px !important;
+  z-index: var(--p-internal-banner-z-index,99) !important;
+  will-change: opacity,transform !important;
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1040,9 +1040,6 @@ exports[`should render dsr component for PBanner 1`] = `
   }
 }
 @media(min-width:0px) and (max-width:759px) {
-    :host {
-      bottom: var(--p-banner-position-bottom);
-    }
     :host(.banner--close) {
       animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
@@ -1053,7 +1050,10 @@ exports[`should render dsr component for PBanner 1`] = `
 
 @media(min-width:760px) {
     :host {
-      top: var(--p-banner-position-top);
+      top: var(--p-banner-position-top) !important;
+      bottom: auto !important;
+      left: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+      right: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
     }
     :host(.banner--close) {
       animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
@@ -1065,16 +1065,14 @@ exports[`should render dsr component for PBanner 1`] = `
 
 @media(min-width:1920px) {
     :host {
-      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
+      left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+      right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
     }
 }
 
-  .root {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
-  }
     </style>
     <p-inline-notification
-      class="root ssr"
+      class="ssr"
     >
       <template
         shadowroot="open"
@@ -1717,9 +1715,6 @@ exports[`should render dsr component for PCarousel 1`] = `
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -1748,7 +1743,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 .header {
   display: grid;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
+  padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
   display: none;
@@ -1761,7 +1756,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
   display: flex;
@@ -1810,11 +1805,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -1823,22 +1818,22 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
 @media(max-width:479px) {
   .splide__track {
-    padding-right: calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 
@@ -2223,16 +2218,18 @@ exports[`should render dsr component for PContentWrapper 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
+  padding: 0 max(22px, 10.625vw - 12px);
 }
+@media(min-width:760px) {
+  .root {
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+  }
+}
+
 @media(min-width:1920px) {
   .root {
-    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
 }
 
@@ -3591,10 +3588,10 @@ h2 {
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .dismiss {
@@ -3607,7 +3604,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 
@@ -6760,8 +6757,8 @@ exports[`should render dsr component for PToast 1`] = `
     <style>
       :host {
   position: fixed !important;
-  left: clamp(22px, 10.625vw - 12px, 192px) !important;
-  right: clamp(22px, 10.625vw - 12px, 192px) !important;
+  left: max(22px, 10.625vw - 12px) !important;
+  right: max(22px, 10.625vw - 12px) !important;
   --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
   bottom: var(--p-internal-toast-position-bottom) !important;
   max-width: 42rem !important;

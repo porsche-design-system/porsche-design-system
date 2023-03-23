@@ -139,6 +139,7 @@ export const getIndexHtml = (globalStyles: string): string => {
     <meta charset="utf-8" />
     <title>Porsche Design System - Angular</title>
     <style>
+      html, body { margin: 0; padding: 0; }
       ${globalStyles}
     </style>
   </head>

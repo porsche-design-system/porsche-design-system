@@ -302,7 +302,7 @@ describe('getReactProjectAndOpenOptions()', () => {
         'index.html': '<div id="root"></div>',
         'index.tsx': mockedIndexTsx,
         'tsconfig.json': mockedTsConfigJson,
-        'style.css': stackBlitzFrameworkOpts.globalStyles,
+        'style.css': 'html, body { margin: 0; padding: 0; } ' + stackBlitzFrameworkOpts.globalStyles,
       },
       template: 'create-react-app',
       title: stackBlitzFrameworkOpts.title,

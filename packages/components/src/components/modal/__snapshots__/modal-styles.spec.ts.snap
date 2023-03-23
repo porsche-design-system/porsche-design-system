@@ -57,10 +57,10 @@ h2 {
   padding: 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -83,7 +83,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 "
@@ -149,10 +149,10 @@ h2 {
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -180,7 +180,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 
@@ -250,10 +250,10 @@ h2 {
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -284,7 +284,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 
@@ -819,10 +819,10 @@ h2 {
 }
 @media(min-width:480px) {
   .root {
-    min-width: 17.2rem;
-    max-width: 96rem;
+    min-width: 276px;
+    max-width: 1535.5px;
     min-height: auto;
-    margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+    margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
     border-radius: 8px;
   }
   .root:focus::before {
@@ -855,10 +855,10 @@ h2 {
 
 @media(min-width:1000px) {
   .root {
-    min-width: 17.2rem;
-    max-width: 96rem;
+    min-width: 276px;
+    max-width: 1535.5px;
     min-height: auto;
-    margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+    margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
     border-radius: 8px;
   }
   .root:focus::before {
@@ -891,9 +891,9 @@ h2 {
 
 @media(min-width:1760px) {
   .root {
-    margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
-    min-width: 17.2rem;
-    max-width: 96rem;
+    margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
+    min-width: 276px;
+    max-width: 1535.5px;
     min-height: auto;
     border-radius: 8px;
   }
@@ -973,10 +973,10 @@ h2 {
   padding: 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -999,7 +999,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 "
@@ -1065,10 +1065,10 @@ h2 {
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -1096,7 +1096,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 
@@ -1166,10 +1166,10 @@ h2 {
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .root:focus::before {
@@ -1200,7 +1200,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 
