@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `activeSlideIndex` to `Carousel` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
 - Prop `slidesPerPage` supports value `auto` of `Carousel`
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
-- - `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+- `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
 
 #### Fixed
 
