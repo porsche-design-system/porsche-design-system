@@ -553,6 +553,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Remix'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react/remix
       - name: 'VRT Test components-react/nextjs'
         uses: ./.github/actions/docker-run-playwright
         with:
