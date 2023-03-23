@@ -22,19 +22,21 @@ const getLink = () => selectNode(page, 'p-wordmark >>> a');
 const getImage = () => selectNode(page, 'p-wordmark >>> img');
 
 const initWordmark = (opts?: {
-  href?: boolean;
+  hasHref?: boolean;
   isWrapped?: boolean;
   hasFocusableElementBefore?: boolean;
   hasFocusableElementAfter?: boolean;
 }): Promise<void> => {
-  const { href = false } = opts || {};
-  const { isWrapped = false } = opts || {};
-  const { hasFocusableElementBefore = false } = opts || {};
-  const { hasFocusableElementAfter = false } = opts || {};
+  const {
+    hasHref = false,
+    isWrapped = false,
+    hasFocusableElementBefore = false,
+    hasFocusableElementAfter = false,
+  } = opts || {};
 
   const focusableElementBefore = hasFocusableElementBefore ? `<a href="#" id="before">before</a>` : '';
   const focusableElementAfter = hasFocusableElementAfter ? `<a href="#" id="after">after</a>` : '';
-  const markup = `<p-wordmark ${href ? 'href="about:blank#" ' : ''} id="my-wordmark"></p-wordmark>`;
+  const markup = `<p-wordmark ${hasHref ? 'href="about:blank#" ' : ''} id="my-wordmark"></p-wordmark>`;
 
   return setContentWithDesignSystem(
     page,
@@ -56,7 +58,7 @@ describe('with link', () => {
   });
 
   it('should sync href and target prop when changed programmatically', async () => {
-    await initWordmark({ href: true });
+    await initWordmark({ hasHref: true });
     const host = await getHost();
     const link = await getLink();
 
@@ -72,7 +74,7 @@ describe('with link', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await initWordmark({ href: true, isWrapped: true });
+    await initWordmark({ hasHref: true, isWrapped: true });
 
     const wrapper = await selectNode(page, 'div');
     const host = await getHost();
@@ -92,7 +94,7 @@ describe('with link', () => {
 
   it('should trigger focus & blur events at the correct time', async () => {
     await initWordmark({
-      href: true,
+      hasHref: true,
       isWrapped: true,
       hasFocusableElementBefore: true,
       hasFocusableElementAfter: true,
@@ -172,7 +174,7 @@ describe('with link', () => {
   });
 
   it('should provide methods to focus & blur the element', async () => {
-    await initWordmark({ href: true, isWrapped: true, hasFocusableElementBefore: true });
+    await initWordmark({ hasHref: true, isWrapped: true, hasFocusableElementBefore: true });
     const host = await getHost();
     const before = await selectNode(page, '#before');
     const wordmarkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-wordmark'));
@@ -203,13 +205,11 @@ describe('lifecycle', () => {
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
     await initWordmark();
-    const image = await getImage();
-
-    await expectA11yToMatchSnapshot(page, image);
+    await expectA11yToMatchSnapshot(page, await getHost(), { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree if accessibility properties are set', async () => {
-    await initWordmark({ href: true });
+    await initWordmark({ hasHref: true });
     const host = await getHost();
     const link = await getLink();
 

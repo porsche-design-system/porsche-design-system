@@ -9,6 +9,19 @@ exports[`accessibility should expose correct accessibility tree if accessibility
 
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
 {
+  "children": [
+    {
+      "name": "Porsche",
+      "role": "img",
+    },
+  ],
+  "name": "",
+  "role": "generic",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree on image 1`] = `
+{
   "name": "Porsche",
   "role": "img",
 }
