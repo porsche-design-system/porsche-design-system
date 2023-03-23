@@ -24,7 +24,6 @@
     PLinkPure,
     PLinkSocial,
     PLinkTile,
-    PMarque,
     PModelSignature,
     PorscheDesignSystemProvider,
     PPagination,
@@ -55,6 +54,7 @@
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
+    PWordmark,
   } from '@porsche-design-system/components-vue';
 </script>
 
@@ -179,8 +179,8 @@
         <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
       </div>
 
-      <div class="playground light" title="should render default marque">
-        <PMarque />
+      <div class="playground light" title="should render default wordmark">
+        <PWordmark />
       </div>
 
       <div class="playground light" title="should render default model-signature">
@@ -454,8 +454,8 @@
           <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
         </div>
 
-        <div class="playground light" title="should render default marque with custom prefix">
-          <PMarque />
+        <div class="playground light" title="should render default wordmark with custom prefix">
+          <PWordmark />
         </div>
 
         <div class="playground light" title="should render default model-signature with custom prefix">
