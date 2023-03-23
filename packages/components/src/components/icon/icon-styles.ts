@@ -10,7 +10,7 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles, getSchemedHighContrastMediaQuery } from '../../styles';
 import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {
   filterDarkContrastHigh,
@@ -30,7 +30,6 @@ import {
   filterLightNotificationWarning,
   filterLightPrimary,
 } from '../../styles/color-filters';
-import { getSchemedHighContrastMediaQuery } from '../../styles/schemed-high-contrast-media-query';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,

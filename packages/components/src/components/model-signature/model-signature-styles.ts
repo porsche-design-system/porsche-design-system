@@ -1,5 +1,5 @@
-import { getCss } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { getCss, highContrastMode } from '../../utils';
+import { addImportantToEachRule, hostHiddenStyles, getSchemedHighContrastMediaQuery } from '../../styles';
 import type { ModelSignatureColor, ModelSignatureSize } from './model-signature-utils';
 import type { Theme } from '../../types';
 import {
@@ -41,7 +41,18 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
       img: {
         display: 'block',
         pointerEvents: 'none', // prevents image drag
-        ...(!isColorInherit && { filter: colorToFilterMap[theme][color] }),
+        ...(!isColorInherit && {
+          filter: colorToFilterMap[theme][color],
+          ...(highContrastMode &&
+            getSchemedHighContrastMediaQuery(
+              {
+                filter: colorToFilterMap.light[color],
+              },
+              {
+                filter: colorToFilterMap.dark[color],
+              }
+            )),
+        }),
         ...(isSizeInherit && { height: size }),
       },
     },
