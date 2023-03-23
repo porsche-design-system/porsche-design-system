@@ -5,12 +5,15 @@ and represents the quality of the product.
 
 <TableOfContents></TableOfContents>
 
-## Default
+## Size
 
-Without any additional configuration, the `p-wordmark` has a fluid height with a minimum of 0.63rem and a maximum of
-1rem.
+By default, the sizing is fluid, which can be changed to the following values.
 
-<Playground :markup="basicMarkup" :config="config"></Playground>
+<Playground :markup="sizeMarkup" :config="config">
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+</Playground>
+
+---
 
 ## Link
 
@@ -23,21 +26,13 @@ The `p-wordmark` will be rendered as `<a>`-tag as soon as an `href` is provided.
 If the `p-wordmark` is used with a link, make sure to add a descriptive label to inform screen reader users what the
 link stands for. This can be done through **ARIA** with the `aria` property.
 
+---
+
 ## Bind events to the link
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the custom element.
 
 <Playground :markup="eventsMarkup" :config="config"></Playground>
-
----
-
-## Size
-
-By default, the sizing is fluid, which can be changed to the following values.
-
-<Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
-</Playground>
 
 ---
 
