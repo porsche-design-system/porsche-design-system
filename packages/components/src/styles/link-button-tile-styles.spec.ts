@@ -13,7 +13,7 @@ describe('getButtonLinkTilePStyles()', () => {
       { base: 'inherit', xs: 'default', s: 'inherit', m: 'default', l: 'inherit', xl: 'default' },
       { base: 'semi-bold', xs: 'regular', s: 'semibold', m: 'regular', l: 'semi-bold', xl: 'regular' },
     ],
-  ])('should return correct css for size: "%s" and weight: "%s"', (...args) => {
+  ])('should return correct css for size: %j and weight: %j', (...args) => {
     expect(getButtonLinkTilePStyles(...args)).toMatchSnapshot();
   });
 });
@@ -23,7 +23,7 @@ describe('getButtonLinkTileAdditionalContentStyles()', () => {
     ['top', true, false],
     ['bottom', false, true],
     ['top', false, { base: false, xs: true, s: false, m: true, l: false, xl: true }],
-  ])('should return correct css for align: "%s", hasGradient: "%s" and compact: "%s"', (...args) => {
+  ])('should return correct css for align: %s, hasGradient: %s and compact: %j', (...args) => {
     expect(getButtonLinkTileAdditionalContentStyles(...args)).toMatchSnapshot();
   });
 });
@@ -33,7 +33,7 @@ describe('getButtonLinkTileSharedClassesStyles()', () => {
     [true],
     [false],
     [{ base: false, xs: true, s: false, m: true, l: false, xl: true }],
-  ])('should return correct css for compact: "%s"', (...args) => {
+  ])('should return correct css for compact: o', (...args) => {
     expect(getButtonLinkTileSharedClassesStyles(...args)).toMatchSnapshot();
   });
 });

@@ -28,7 +28,10 @@ describe('getTileStyles()', () => {
         additionalContentStyles,
       },
     ],
-  ])('should return correct css for %o', (args) => {
-    expect(getTileStyles(args)).toMatchSnapshot();
-  });
+  ])(
+    'should return correct css for aspectRatio: %j, isDisabled: %s additionalHostStyles: %j, additionalGlobalStyles: %j and additionalContentStyles: %j',
+    (args) => {
+      expect(getTileStyles(args)).toMatchSnapshot();
+    }
+  );
 });

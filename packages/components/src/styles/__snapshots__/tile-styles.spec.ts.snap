@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getTileStyles() should return correct css for {
-  aspectRatio: '1:1',
-  isDisabled: false,
-  additionalHostStyles: { cursor: 'not-allowed' },
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getTileStyles() should return correct css for aspectRatio: {"aspectRatio":"1:1","isDisabled":false,"additionalHostStyles":{"cursor":"not-allowed"},"additionalGlobalStyles":{"p":{"background":"black"}},"additionalContentStyles":{"gridTemplateRows":"auto auto","gridTemplateColumns":"auto"}}, isDisabled: %s additionalHostStyles: %j, additionalGlobalStyles: %j and additionalContentStyles: %j 1`] = `
 {
   "@global": {
     "::slotted(img)": {
@@ -76,13 +70,7 @@ exports[`getTileStyles() should return correct css for {
 }
 `;
 
-exports[`getTileStyles() should return correct css for {
-  aspectRatio: '3:4',
-  isDisabled: true,
-  additionalHostStyles: { cursor: 'not-allowed' },
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getTileStyles() should return correct css for aspectRatio: {"aspectRatio":"3:4","isDisabled":true,"additionalHostStyles":{"cursor":"not-allowed"},"additionalGlobalStyles":{"p":{"background":"black"}},"additionalContentStyles":{"gridTemplateRows":"auto auto","gridTemplateColumns":"auto"}}, isDisabled: %s additionalHostStyles: %j, additionalGlobalStyles: %j and additionalContentStyles: %j 1`] = `
 {
   "@global": {
     "::slotted(img)": {
@@ -145,13 +133,7 @@ exports[`getTileStyles() should return correct css for {
 }
 `;
 
-exports[`getTileStyles() should return correct css for {
-  aspectRatio: '4:3',
-  isDisabled: true,
-  additionalHostStyles: { cursor: 'not-allowed' },
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getTileStyles() should return correct css for aspectRatio: {"aspectRatio":"4:3","isDisabled":true,"additionalHostStyles":{"cursor":"not-allowed"},"additionalGlobalStyles":{"p":{"background":"black"}},"additionalContentStyles":{"gridTemplateRows":"auto auto","gridTemplateColumns":"auto"}}, isDisabled: %s additionalHostStyles: %j, additionalGlobalStyles: %j and additionalContentStyles: %j 1`] = `
 {
   "@global": {
     "::slotted(img)": {
@@ -214,13 +196,7 @@ exports[`getTileStyles() should return correct css for {
 }
 `;
 
-exports[`getTileStyles() should return correct css for {
-  aspectRatio: '9:16',
-  isDisabled: true,
-  additionalHostStyles: { cursor: 'not-allowed' },
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getTileStyles() should return correct css for aspectRatio: {"aspectRatio":"9:16","isDisabled":true,"additionalHostStyles":{"cursor":"not-allowed"},"additionalGlobalStyles":{"p":{"background":"black"}},"additionalContentStyles":{"gridTemplateRows":"auto auto","gridTemplateColumns":"auto"}}, isDisabled: %s additionalHostStyles: %j, additionalGlobalStyles: %j and additionalContentStyles: %j 1`] = `
 {
   "@global": {
     "::slotted(img)": {
@@ -283,13 +259,7 @@ exports[`getTileStyles() should return correct css for {
 }
 `;
 
-exports[`getTileStyles() should return correct css for {
-  aspectRatio: '16:9',
-  isDisabled: false,
-  additionalHostStyles: { cursor: 'not-allowed' },
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getTileStyles() should return correct css for aspectRatio: {"aspectRatio":"16:9","isDisabled":false,"additionalHostStyles":{"cursor":"not-allowed"},"additionalGlobalStyles":{"p":{"background":"black"}},"additionalContentStyles":{"gridTemplateRows":"auto auto","gridTemplateColumns":"auto"}}, isDisabled: %s additionalHostStyles: %j, additionalGlobalStyles: %j and additionalContentStyles: %j 1`] = `
 {
   "@global": {
     "::slotted(img)": {
@@ -359,13 +329,7 @@ exports[`getTileStyles() should return correct css for {
 }
 `;
 
-exports[`getTileStyles() should return correct css for {
-  aspectRatio: { base: '1:1', xs: '4:3', s: '3:4', m: '16:9', l: '9:16', xl: '1:1' },
-  isDisabled: false,
-  additionalHostStyles: { cursor: 'not-allowed' },
-  additionalGlobalStyles: { p: { background: 'black' } },
-  additionalContentStyles: { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
-} 1`] = `
+exports[`getTileStyles() should return correct css for aspectRatio: {"aspectRatio":{"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"},"isDisabled":false,"additionalHostStyles":{"cursor":"not-allowed"},"additionalGlobalStyles":{"p":{"background":"black"}},"additionalContentStyles":{"gridTemplateRows":"auto auto","gridTemplateColumns":"auto"}}, isDisabled: %s additionalHostStyles: %j, additionalGlobalStyles: %j and additionalContentStyles: %j 1`] = `
 {
   "@global": {
     "::slotted(img)": {
