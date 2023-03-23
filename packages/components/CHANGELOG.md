@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 
 - React: missing animation of `Carousel` in certain scenarios
+- High-Contrast-Mode issues: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2420)
 
 #### 🤡 Component deprecations 🤡
 
