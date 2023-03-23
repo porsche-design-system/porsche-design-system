@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { AriaAttributes, BreakpointCustomizable, PropTypes } from '../../types';
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 import {
   AllowedTypes,
@@ -24,6 +24,7 @@ import {
   LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
+import { JSXBase } from '@stencil/core/internal';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
@@ -84,14 +85,12 @@ export class LinkTileModelSignature {
       !!this.description
     );
 
-    const { href, target, download, rel } = primaryLink;
-
-    const overlayLinkProps = {
-      href,
-      target,
-      download,
-      rel,
+    const overlayLinkProps: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement> & AriaAttributes & { class: string } = {
       class: 'link-overlay',
+      href: primaryLink.href,
+      target: primaryLink.target,
+      download: primaryLink.download,
+      rel: primaryLink.rel,
       tabIndex: -1,
       'aria-hidden': 'true',
     };
@@ -105,7 +104,7 @@ export class LinkTileModelSignature {
         </div>
         <PrefixedTagNames.pModelSignature class="model" theme="dark" model={this.model} />
         <div class="content">
-          <a {...overlayLinkProps}></a>
+          <a {...overlayLinkProps} />
           <this.headingTag class="heading">{this.heading}</this.headingTag>
           {this.description && <p class="description">{this.description}</p>}
           <div class="link-group" role="group">
