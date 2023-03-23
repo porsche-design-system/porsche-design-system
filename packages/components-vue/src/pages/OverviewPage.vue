@@ -5,7 +5,6 @@
     PButton,
     PButtonGroup,
     PButtonPure,
-    PButtonTile,
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
@@ -23,8 +22,8 @@
     PLink,
     PLinkPure,
     PLinkSocial,
-    PLinkTile,
     PMarque,
+    PModal,
     PModelSignature,
     PorscheDesignSystemProvider,
     PPagination,
@@ -35,8 +34,6 @@
     PSegmentedControlItem,
     PSelectWrapper,
     PSpinner,
-    PStepperHorizontal,
-    PStepperHorizontalItem,
     PSwitch,
     PTable,
     PTableBody,
@@ -52,6 +49,7 @@
     PTagDismissible,
     PText,
     PTextareaWrapper,
+    PFieldset,
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
@@ -81,6 +79,10 @@
         </PBanner>
       </div>
       <!-- eslint-enable -->
+
+      <div class="playground light playground--modal" title="should render default modal">
+        <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+      </div>
 
       <div class="playground light" title="should render default inline-notification">
         <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
@@ -141,6 +143,10 @@
         <PTextareaWrapper :label="'Some label'">
           <textarea />
         </PTextareaWrapper>
+      </div>
+
+      <div class="playground light" title="should render default fieldset">
+        <PFieldset :label="'Some label'"></PFieldset>
       </div>
 
       <div class="playground light" title="should render default fieldset-wrapper">
@@ -321,6 +327,10 @@
         </div>
         <!-- eslint-enable -->
 
+        <div class="playground light playground--modal" title="should render default modal with custom prefix">
+          <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+        </div>
+
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
         </div>
@@ -380,6 +390,10 @@
           <PTextareaWrapper :label="'Some label'">
             <textarea />
           </PTextareaWrapper>
+        </div>
+
+        <div class="playground light" title="should render default fieldset with custom prefix">
+          <PFieldset :label="'Some label'"></PFieldset>
         </div>
 
         <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
@@ -568,10 +582,15 @@
     background: deepskyblue;
   }
 
-  .playground--banner {
+  .playground--banner,
+  .playground--modal {
     transform: translate3d(0, 0, 0);
     height: 10rem;
     padding: 0;
     margin: 1rem;
+  }
+
+  .playground--modal {
+    height: 20rem;
   }
 </style>
