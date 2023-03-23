@@ -11,8 +11,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
+- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+- Prop `activeSlideIndex` to `Carousel` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- Prop `slidesPerPage` supports value `auto` of `Carousel`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+
+#### Fixed
+
+- React: missing animation of `Carousel` in certain scenarios
 
 #### 🤡 Component deprecations 🤡
 

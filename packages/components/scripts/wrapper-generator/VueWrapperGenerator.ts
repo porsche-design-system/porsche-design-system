@@ -64,8 +64,10 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
         if (defaultValue !== undefined) {
           const defaultPropValue = isDefaultValueComplex ? `() => (${defaultValue})` : defaultValue;
 
+          // vue linting doesn't like certain values and would prefer a string, so we disable the rule for those
           const eslintAnnotation =
-            (component === 'p-headline' || component === 'p-heading') && key === 'color'
+            ((component === 'p-headline' || component === 'p-heading') && key === 'color') ||
+            (component === 'p-carousel' && key === 'slidesPerPage')
               ? ' // eslint-disable-line vue/require-valid-default-prop'
               : '';
 

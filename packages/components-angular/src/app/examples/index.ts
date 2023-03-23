@@ -1,6 +1,7 @@
 import { AccordionExampleComponent } from './accordion-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
+import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
@@ -20,6 +21,7 @@ export const examples = [
   AccordionExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleEventsComponent,
+  CarouselExampleJumpToSlideComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   ModalExampleAccessibilityComponent,
@@ -39,6 +41,7 @@ export const examples = [
 export * from './accordion-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
+export * from './carousel-example-jump-to-slide.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './modal-example-accessibility.component';
