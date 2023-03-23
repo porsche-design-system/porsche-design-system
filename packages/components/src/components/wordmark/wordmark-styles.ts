@@ -3,13 +3,13 @@ import type { Theme } from '../../types';
 import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   getInsetJssStyle,
-  getResetInitialStylesForSlottedAnchor,
   getThemedColors,
   hostHiddenStyles,
 } from '../../styles';
-import { filterDarkPrimary, filterLightPrimary } from '../../styles/color-filters';
-import { borderWidthBase, borderRadiusMedium } from '@porsche-design-system/utilities-v2/';
+import { filterLightPrimary, filterDarkPrimary } from '../../styles/color-filters';
+import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2/';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
   const isSizeInherit = size === 'inherit';
@@ -24,12 +24,11 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         ...addImportantToEachRule({
           outline: 0,
           ...hostHiddenStyles,
-          ...(!isSizeInherit && { height: 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)' }),
+          boxSizing: 'content-box', // needed for custom clickarea to revert normalize styles
         }),
-        ...(isSizeInherit && { height: size }),
+        height: isSizeInherit ? size : addImportantToRule('clamp(0.63rem, 0.42vw + 0.5rem, 1rem)'),
       },
       a: {
-        ...getResetInitialStylesForSlottedAnchor,
         outline: 0,
         display: 'block',
         textDecoration: 'none',
@@ -37,7 +36,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         '&::before': {
           content: '""',
           position: 'absolute',
-          borderRadius: borderRadiusMedium,
+          borderRadius: borderRadiusSmall,
           ...getInsetJssStyle(-6),
         },
         '&:focus::before': {
@@ -47,7 +46,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
           border: 0,
         },
       },
-      img: {
+      svg: {
         display: 'block',
         pointerEvents: 'none', // prevents image drag
         filter: theme === 'light' ? filterLightPrimary : filterDarkPrimary,
