@@ -70,6 +70,7 @@ export default class Code extends Vue {
   onfocusin="console.log('focusin')"
   onblur="console.log('blur')"
   onfocusout="console.log('focusout')"
+  aria="{ 'aria-label': 'Porsche Homepage' }"
 ></p-wordmark>`;
 
   clickableAreaMarkup = `<p-wordmark href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 1.5rem"></p-wordmark>`;
