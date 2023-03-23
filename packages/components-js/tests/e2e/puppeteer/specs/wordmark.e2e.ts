@@ -19,7 +19,6 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-wordmark');
 const getLink = () => selectNode(page, 'p-wordmark >>> a');
-const getImage = () => selectNode(page, 'p-wordmark >>> img');
 
 const initWordmark = (opts?: {
   hasHref?: boolean;
