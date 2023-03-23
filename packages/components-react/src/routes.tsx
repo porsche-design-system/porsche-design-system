@@ -28,6 +28,11 @@ export const routes: RouteType[] = [
     element: <fromPages.OverviewPage />,
   },
   {
+    name: 'Overview Flaky',
+    path: '/overview-flaky',
+    element: <fromPages.OverviewFlakyPage />,
+  },
+  {
     name: 'Overview Notifications',
     path: '/overview-notifications',
     element: <fromPages.OverviewNotificationsPage />,
