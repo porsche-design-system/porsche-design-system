@@ -1,3 +1,4 @@
+import type { JssStyle } from 'jss';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToRule, getInsetJssStyle } from '../../styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
@@ -11,7 +12,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
-import { getTileBaseStyles } from '../../styles/tile-base-styles';
+import { getTileBaseStyles } from '../../styles/tile/tile-base-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type {
   LinkTileModelSignatureAspectRatio,
@@ -26,37 +27,38 @@ export const getComponentCss = (
   direction: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>,
   hasDescription: boolean
 ): string => {
+  const tileBaseStyles = getTileBaseStyles(aspectRatio);
   return getCss({
-    ...getTileBaseStyles({
-      aspectRatio,
-      additionalGlobalStyles: {
-        [LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS.join(',')]: {
-          margin: addImportantToRule(0),
-        },
+    ...tileBaseStyles,
+    '@global': {
+      ...(tileBaseStyles['@global'] as JssStyle),
+      [LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS.join(',')]: {
+        margin: addImportantToRule(0),
       },
-      additionalContentStyles: {
-        display: 'flex',
-        flexDirection: 'column',
-        bottom: 0,
-        padding: `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
-        ...gradientToTopStyle,
-      },
-    }),
+    },
+    content: {
+      ...(tileBaseStyles.content as JssStyle),
+      display: 'flex', // TODO: move to base
+      flexDirection: 'column',
+      bottom: 0,
+      padding: `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
+      ...gradientToTopStyle,
+    },
     model: {
       position: 'absolute',
       top: spacingFluidMedium,
       left: spacingFluidMedium,
     },
     heading: {
-      color: getThemedTypographyColor('dark', 'primary'),
+      color: getThemedTypographyColor('dark', 'primary'), // TODO: should probably be defined on .root base styles
       margin: 0,
       ...textLargeStyle,
       ...buildResponsiveStyles(weight, (w: LinkTileModelSignatureWeight) => ({ fontWeight: getFontWeight(w) })),
     },
     ...(hasDescription && {
       description: {
-        color: getThemedTypographyColor('dark', 'primary'),
-        margin: '-12px 0 0 ',
+        color: getThemedTypographyColor('dark', 'primary'), // TODO: should probably be defined on .root base styles
+        margin: '-12px 0 0 ', // TODO: perhaps gap should be overridden instead
         ...textSmallStyle,
       },
     }),
@@ -68,8 +70,8 @@ export const getComponentCss = (
     },
     // is used for expanded click-area only
     'link-overlay': {
-      position: 'fixed',
-      ...getInsetJssStyle(0),
+      position: 'fixed', // TODO: absolute
+      ...getInsetJssStyle(),
       outline: 0,
     },
   });

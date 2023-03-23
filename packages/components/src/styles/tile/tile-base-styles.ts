@@ -1,16 +1,17 @@
-import type { JssStyle, Styles } from 'jss';
-import type { BreakpointCustomizable } from '../types';
-import { buildResponsiveStyles } from '../utils';
+import type { Styles } from 'jss';
+import type { BreakpointCustomizable } from '../../types';
+import type { TileAspectRatio } from '../../utils';
+import { buildResponsiveStyles } from '../../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   getBackfaceVisibilityJssStyle,
   getInsetJssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-} from './';
+} from '../';
 import { borderRadiusMedium, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
-import type { TileAspectRatio } from '../utils';
 
 const aspectRatioPaddingMap: Record<TileAspectRatio, string> = {
   '1:1': '100%',
@@ -20,23 +21,12 @@ const aspectRatioPaddingMap: Record<TileAspectRatio, string> = {
   '9:16': '177.75%',
 };
 
-export const getTileBaseStyles = (opts: {
-  aspectRatio: BreakpointCustomizable<TileAspectRatio>;
-  isDisabled?: boolean;
-  additionalHostStyles?: JssStyle;
-  additionalGlobalStyles?: Styles;
-  additionalContentStyles?: JssStyle;
-}): Styles => {
-  const { aspectRatio, isDisabled, additionalHostStyles, additionalGlobalStyles, additionalContentStyles } = opts;
-
+export const getTileBaseStyles = (aspectRatio: BreakpointCustomizable<TileAspectRatio>): Styles => {
   return {
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule({
-          ...hostHiddenStyles,
-          ...additionalHostStyles,
-        }),
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       ...addImportantToEachRule({
         '::slotted(picture),::slotted(img)': {
@@ -45,7 +35,7 @@ export const getTileBaseStyles = (opts: {
         },
         '::slotted(picture)': {
           position: 'absolute',
-          ...getInsetJssStyle(0),
+          ...getInsetJssStyle(),
         },
         '::slotted(img)': {
           height: '100%',
@@ -53,30 +43,28 @@ export const getTileBaseStyles = (opts: {
           objectFit: 'cover',
         },
       }),
-      ...additionalGlobalStyles,
     },
     root: {
       height: 0,
       position: 'relative',
       transform: 'translate3d(0,0,0)', // Change stacking context for position fixed
-      ...(!isDisabled &&
-        hoverMediaQuery({
-          '&:hover': {
-            '& ::slotted(picture),::slotted(img)': addImportantToEachRule({
-              transform: 'scale3d(1.05, 1.05, 1.05)',
-            }),
-          },
-        })),
       ...buildResponsiveStyles(aspectRatio, (ratio: TileAspectRatio) => ({
         paddingTop: aspectRatioPaddingMap[ratio],
       })),
+      ...hoverMediaQuery({
+        '&:hover': {
+          '& ::slotted(picture),::slotted(img)': {
+            transform: addImportantToRule('scale3d(1.05, 1.05, 1.05)'),
+          },
+        },
+      }),
     },
     'image-container': {
       position: 'absolute',
       overflow: 'hidden',
       borderRadius: borderRadiusMedium,
       transform: 'translateZ(0)', // Fixes Safari rounded corners on hover
-      ...getInsetJssStyle(0),
+      ...getInsetJssStyle(),
     },
     content: {
       position: 'absolute',
@@ -88,7 +76,6 @@ export const getTileBaseStyles = (opts: {
       '@media (forced-colors: active)': {
         background: 'rgba(0,0,0,0.7)',
       },
-      ...additionalContentStyles,
     },
   };
 };

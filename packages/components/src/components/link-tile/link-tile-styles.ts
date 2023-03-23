@@ -1,35 +1,15 @@
-import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../utils';
 import { getCss } from '../../utils';
-import { getTileBaseStyles } from '../../styles/tile-base-styles';
 import { getInsetJssStyle } from '../../styles';
-import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import {
-  getButtonLinkTileAdditionalContentStyles,
-  getButtonLinkTilePStyles,
-  getButtonLinkTileSharedClassesStyles,
-} from '../../styles/link-button-tile-styles';
-import type { LinkTileWeight } from './link-tile-utils';
+import { getButtonLinkTileStyles } from '../../styles/tile/button-link-tile-styles';
 
-export const getComponentCss = (
-  aspectRatio: BreakpointCustomizable<TileAspectRatio>,
-  size: BreakpointCustomizable<TileSize>,
-  weight: BreakpointCustomizable<TileWeight | LinkTileWeight>,
-  align: TileAlign,
-  compact: BreakpointCustomizable<boolean>,
-  hasGradient: boolean
-): string => {
+export const getComponentCss = (...args: Parameters<typeof getButtonLinkTileStyles>): string => {
   return getCss({
-    ...getTileBaseStyles({
-      aspectRatio,
-      additionalGlobalStyles: getButtonLinkTilePStyles(size, weight),
-      additionalContentStyles: getButtonLinkTileAdditionalContentStyles(align, hasGradient, compact),
-    }),
+    ...getButtonLinkTileStyles(...args),
     // is used for expanded click-area only
     'link-overlay': {
-      position: 'fixed',
-      ...getInsetJssStyle(0),
+      position: 'fixed', // TODO: absolute
+      ...getInsetJssStyle(),
       outline: 0,
     },
-    ...getButtonLinkTileSharedClassesStyles(compact),
   });
 };

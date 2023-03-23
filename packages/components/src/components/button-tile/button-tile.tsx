@@ -108,14 +108,14 @@ export class ButtonTile implements ITileProps {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.disabled,
+      isDisabledOrLoading(this.disabled, this.loading),
       this.aspectRatio,
       this.size,
       this.weight,
       this.align,
       this.compact,
-      this.gradient,
-      this.disabled,
-      isDisabledOrLoading(this.disabled, this.loading)
+      this.gradient
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
