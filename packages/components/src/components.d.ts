@@ -272,6 +272,10 @@ export namespace Components {
     }
     interface PCarousel {
         /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
@@ -300,9 +304,9 @@ export namespace Components {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
@@ -2153,6 +2157,10 @@ declare namespace LocalJSX {
     }
     interface PCarousel {
         /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
@@ -2189,9 +2197,9 @@ declare namespace LocalJSX {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
