@@ -64,6 +64,11 @@ const generateCodeSamples = (): void => {
           componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
           componentsReactPath + '/CarouselExampleDynamicSlides.tsx',
         ],
+        [
+          componentsJsPath + '/carousel-example-jump-to-slide.html',
+          componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
+          componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
+        ],
       ],
     },
     {

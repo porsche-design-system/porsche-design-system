@@ -11,20 +11,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Button Tile` [#2361](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
-- `Fieldset` [#2369](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
-- `Wordmark` [#2135](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
+- `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+- Prop `activeSlideIndex` to `Carousel` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- Prop `slidesPerPage` supports value `auto` of `Carousel`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- - `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+
+#### Fixed
+
+- React: missing animation of `Carousel` in certain scenarios
 
 #### 🤡 Component deprecations 🤡
 
-##### Marque [#2135](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+##### Marque [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
 
 ```diff
 - <p-marque></p-marque>
 + <p-wordmark></p-wordmark>
 ```
 
-##### Fieldset Wrapper: [#2369](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
