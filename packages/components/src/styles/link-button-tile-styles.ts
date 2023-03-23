@@ -41,8 +41,14 @@ const aspectRatioPaddingTop: Record<LinkTileAspectRatio | ButtonTileAspectRatio,
   '9:16': '177.75%',
 };
 
+const gradientHighContrastStyle = { background: 'rgba(0,0,0,0.7)' };
+
 const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): JssStyle => {
-  return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
+  return highContrastMode
+    ? gradientHighContrastStyle
+    : isCompact && isTopAligned
+    ? gradientToBottomStyle
+    : gradientToTopStyle;
 };
 
 const sizeMap: Record<LinkTileSize, { fontSize: string }> = {
@@ -146,9 +152,6 @@ export const getLinkButtonTileStyles = (
             : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
         )
       ),
-      ...(highContrastMode && {
-        background: 'rgba(0,0,0,0.7)',
-      }),
     },
     'link-or-button-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',
