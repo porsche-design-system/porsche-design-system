@@ -7,7 +7,6 @@ exports[`getComponentCss() should return correct css for size: inherit and theme
   vertical-align: top;
   outline: 0 !important;
   box-sizing: content-box !important;
-  height: inherit;
 }
 :host([hidden]) {
   display: none !important;
@@ -49,7 +48,6 @@ exports[`getComponentCss() should return correct css for size: inherit and theme
   vertical-align: top;
   outline: 0 !important;
   box-sizing: content-box !important;
-  height: inherit;
 }
 :host([hidden]) {
   display: none !important;

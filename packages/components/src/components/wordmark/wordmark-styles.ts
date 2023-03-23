@@ -1,19 +1,14 @@
 import type { WordmarkSize } from './wordmark-utils';
 import type { Theme } from '../../types';
-import { getCss } from '../../utils';
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  getInsetJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-} from '../../styles';
+import { getCss, isThemeDark } from '../../utils';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 import { filterLightPrimary, filterDarkPrimary } from '../../styles/color-filters';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2/';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
-  const isSizeInherit = size === 'inherit';
+  const isSizeFluid = size === 'small';
   const { focusColor } = getThemedColors(theme);
+  const isDark = isThemeDark(theme);
 
   return getCss({
     '@global': {
@@ -24,9 +19,9 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         ...addImportantToEachRule({
           outline: 0,
           ...hostHiddenStyles,
-          boxSizing: 'content-box', // needed for custom clickarea to revert normalize styles
+          boxSizing: 'content-box', // needed for custom clickarea to revert styles from Vue component
+          ...(isSizeFluid && { height: 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)' }),
         }),
-        height: isSizeInherit ? size : addImportantToRule('clamp(0.63rem, 0.42vw + 0.5rem, 1rem)'),
       },
       a: {
         outline: 0,
@@ -50,7 +45,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         display: 'block',
         pointerEvents: 'none', // prevents image drag
         transform: 'translateZ(0)', // Safari IOS render dark theme filter
-        filter: theme === 'light' ? filterLightPrimary : filterDarkPrimary,
+        filter: isDark ? filterDarkPrimary : filterLightPrimary,
         height: 'inherit',
       },
     },
