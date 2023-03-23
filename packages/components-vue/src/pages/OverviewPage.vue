@@ -24,6 +24,7 @@
     PLinkPure,
     PLinkSocial,
     PLinkTile,
+    PMarque,
     PModelSignature,
     PorscheDesignSystemProvider,
     PPagination,
@@ -177,6 +178,10 @@
 
       <div class="playground light" title="should render default link-social">
         <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
+      </div>
+
+      <div class="playground light" title="should render default marque">
+        <PMarque />
       </div>
 
       <div class="playground light" title="should render default wordmark">
@@ -452,6 +457,10 @@
 
         <div class="playground light" title="should render default link-social with custom prefix">
           <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
+        </div>
+
+        <div class="playground light" title="should render default marque with custom prefix">
+          <PMarque />
         </div>
 
         <div class="playground light" title="should render default wordmark with custom prefix">

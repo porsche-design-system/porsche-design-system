@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PButtonTile, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PButtonTile, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage = (): JSX.Element => {
   const style = `
@@ -163,6 +163,10 @@ const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default link-social">
             <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
+          </div>
+
+          <div className="playground light" title="should render default marque">
+            <PMarque />
           </div>
 
           <div className="playground light" title="should render default wordmark">
@@ -439,6 +443,10 @@ const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default link-social with custom prefix">
               <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
+            </div>
+
+            <div className="playground light" title="should render default marque with custom prefix">
+              <PMarque />
             </div>
 
             <div className="playground light" title="should render default wordmark with custom prefix">
