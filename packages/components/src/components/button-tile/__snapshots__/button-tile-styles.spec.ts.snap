@@ -210,12 +210,6 @@ p {
   }
 }
 
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -294,13 +288,7 @@ p {
 .link-or-button {
   min-height: 54px;
   display: inline-block;
-}
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for aspectRatio: 3:4, size: default, weight: semi-bold, align: top, isCompact: false and hasGradient: true 1`] = `
@@ -374,12 +362,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -459,12 +441,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -543,12 +519,6 @@ p {
   min-height: 54px;
   display: inline-block;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -627,11 +597,5 @@ p {
 .link-or-button {
   min-height: 54px;
   display: none;
-}
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-"
+}"
 `;

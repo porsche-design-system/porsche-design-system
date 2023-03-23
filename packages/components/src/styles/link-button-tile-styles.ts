@@ -21,7 +21,7 @@ import {
 } from './';
 import { getFontWeight } from './font-weight-styles';
 import { getThemedTypographyColor } from './text-icon-styles';
-import { buildResponsiveStyles, mergeDeep } from '../utils';
+import { buildResponsiveStyles, highContrastMode, mergeDeep } from '../utils';
 import {
   textLargeStyle,
   fontSizeTextMedium,
@@ -146,9 +146,9 @@ export const getLinkButtonTileStyles = (
             : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
         )
       ),
-      '@media (forced-colors: active)': {
+      ...(highContrastMode && {
         background: 'rgba(0,0,0,0.7)',
-      },
+      }),
     },
     'link-or-button-pure': buildResponsiveStyles(compact, (isCompact: boolean) => ({
       display: isCompact ? 'inline-block' : 'none',

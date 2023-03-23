@@ -218,12 +218,6 @@ p {
   }
 }
 
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -311,12 +305,6 @@ p {
   bottom: 0;
   outline: 0;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -404,12 +392,6 @@ p {
   bottom: 0;
   outline: 0;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -497,12 +479,6 @@ p {
   bottom: 0;
   outline: 0;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -589,12 +565,6 @@ p {
   bottom: 0;
   outline: 0;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
@@ -682,12 +652,6 @@ p {
   bottom: 0;
   outline: 0;
 }
-@media (forced-colors: active) {
-  .content {
-    background: rgba(0,0,0,0.7);
-  }
-}
-
 @media(hover:hover) {
   .root:hover ::slotted(picture), .root:hover ::slotted(img) {
     transform: scale3d(1.05, 1.05, 1.05) !important;
