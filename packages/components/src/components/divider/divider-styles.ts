@@ -1,6 +1,6 @@
 import type { DividerColor, DividerDirection, DividerColorDeprecated } from './divider-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, highContrastMode } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
 
 export const getComponentCss = (
@@ -26,7 +26,7 @@ export const getComponentCss = (
         padding: 0,
         border: 'none',
         textAlign: 'left',
-        background: highContrastMode ? primaryColor : colorMap[color],
+        background: isHighContrastMode ? primaryColor : colorMap[color],
         ...buildResponsiveStyles(orientation, (o: DividerDirection) =>
           o === 'horizontal' ? { height: '1px', width: '100%' } : { height: '100%', width: '1px' }
         ),

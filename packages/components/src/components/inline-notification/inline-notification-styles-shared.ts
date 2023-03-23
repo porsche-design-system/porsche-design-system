@@ -10,7 +10,7 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from '../../styles';
-import { highContrastMode } from '../../utils';
+import { isHighContrastMode } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
@@ -42,7 +42,7 @@ export const getNotificationRootJssStyle = (
     padding: spacingStaticMedium,
     background: getBackgroundColor(state, theme),
     borderRadius: borderRadiusSmall,
-    ...(highContrastMode && {
+    ...(isHighContrastMode && {
       outline: '1px solid transparent',
     }),
     [mediaQueryMinS]: {

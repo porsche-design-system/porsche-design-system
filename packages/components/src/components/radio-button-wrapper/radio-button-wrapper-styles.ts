@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { addImportantToEachRule, getHighContrastColors, getThemedColors } from '../../styles';
 import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
-import { getCss, highContrastMode, mergeDeep } from '../../utils';
+import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 
@@ -23,7 +23,7 @@ export const getComponentCss = (
           },
           '&(input:checked)': {
             backgroundImage: getInlineSVGBackgroundImage(
-              `<circle fill="${highContrastMode ? canvasColor : checkedIconColor}" cx="12" cy="12" r="6"/>`
+              `<circle fill="${isHighContrastMode ? canvasColor : checkedIconColor}" cx="12" cy="12" r="6"/>`
             ),
           },
           ...(!isDisabled && {

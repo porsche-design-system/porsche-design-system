@@ -21,7 +21,7 @@ import {
 } from './';
 import { getFontWeight } from './font-weight-styles';
 import { getThemedTypographyColor } from './text-icon-styles';
-import { buildResponsiveStyles, highContrastMode, mergeDeep } from '../utils';
+import { buildResponsiveStyles, isHighContrastMode, mergeDeep } from '../utils';
 import {
   textLargeStyle,
   fontSizeTextMedium,
@@ -44,7 +44,7 @@ const aspectRatioPaddingTop: Record<LinkTileAspectRatio | ButtonTileAspectRatio,
 const gradientHighContrastStyle = { background: 'rgba(0,0,0,0.7)' };
 
 const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): JssStyle => {
-  return highContrastMode
+  return isHighContrastMode
     ? gradientHighContrastStyle
     : isCompact && isTopAligned
     ? gradientToBottomStyle

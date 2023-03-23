@@ -1,5 +1,5 @@
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, highContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
@@ -29,25 +29,29 @@ const getColors = (
   const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
   const { canvasColor, canvasTextColor } = getHighContrastColors();
-  const checkedColor = highContrastMode ? canvasTextColor : successColor;
+  const checkedColor = isHighContrastMode ? canvasTextColor : successColor;
   const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
 
   return {
     buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
-    buttonBorderColorHover: checked ? (highContrastMode ? primaryColor : successColorDarken) : primaryColor,
+    buttonBorderColorHover: checked ? (isHighContrastMode ? primaryColor : successColorDarken) : primaryColor,
     buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked ? (highContrastMode ? checkedColor : successColorDarken) : 'transparent',
+    buttonBackgroundColorHover: checked ? (isHighContrastMode ? checkedColor : successColorDarken) : 'transparent',
     toggleBackgroundColor:
       (loading && 'transparent') ||
       (disabled && !checked && disabledColor) ||
       (checked
-        ? highContrastMode
+        ? isHighContrastMode
           ? canvasColor
           : lightThemeBackgroundColor
-        : highContrastMode
+        : isHighContrastMode
         ? canvasTextColor
         : primaryColor),
-    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : highContrastMode ? canvasTextColor : primaryColor,
+    toggleBackgroundColorHover: checked
+      ? lightThemeBackgroundColor
+      : isHighContrastMode
+      ? canvasTextColor
+      : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,
   };
 };

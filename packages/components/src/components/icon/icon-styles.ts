@@ -1,5 +1,5 @@
 import type { TextSize, Theme } from '../../types';
-import { getCss, isThemeDark, highContrastMode } from '../../utils';
+import { getCss, isThemeDark, isHighContrastMode } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -98,7 +98,7 @@ export const getComponentCss = (
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
-          ...(highContrastMode &&
+          ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery(
               {
                 filter: filter.light[color],

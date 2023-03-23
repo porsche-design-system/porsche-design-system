@@ -1,6 +1,6 @@
 import type { TabsBarSize, TabsBarWeight, TabsBarWeightDeprecated } from './tabs-bar-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, highContrastMode } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getHighContrastColors,
@@ -114,10 +114,10 @@ export const getComponentCss = (
       display: 'block',
       position: 'absolute',
       width: 0,
-      height: highContrastMode ? '4px' : weight === 'semi-bold' ? '2px' : '1.5px',
+      height: isHighContrastMode ? '4px' : weight === 'semi-bold' ? '2px' : '1.5px',
       left: 0,
-      bottom: highContrastMode ? '-1px' : '-4px',
-      background: highContrastMode ? canvasTextColor : primaryColor,
+      bottom: isHighContrastMode ? '-1px' : '-4px',
+      background: isHighContrastMode ? canvasTextColor : primaryColor,
       '&--enable-transition': {
         willChange: 'width',
         transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,

@@ -1,4 +1,4 @@
-import { getCss, highContrastMode, mergeDeep } from '../../utils';
+import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
 import {
@@ -25,7 +25,7 @@ export const getComponentCss = (
     mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme), {
       ...(hasSlottedAnchor && {
         root: {
-          ...(highContrastMode && {
+          ...(isHighContrastMode && {
             borderColor: linkColor,
           }),
         },

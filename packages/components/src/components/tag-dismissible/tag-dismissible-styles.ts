@@ -6,7 +6,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../../styles';
-import { getCss, highContrastMode } from '../../utils';
+import { getCss, isHighContrastMode } from '../../utils';
 import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-shared-utils';
@@ -43,7 +43,7 @@ export const getComponentCss = (
         color: primaryColor,
         textAlign: 'left',
         ...textSmallStyle,
-        outline: highContrastMode ? '1px solid transparent' : 0,
+        outline: isHighContrastMode ? '1px solid transparent' : 0,
         ...getTagFocusJssStyle(themedColors),
         ...hoverMediaQuery({
           '&:hover > .icon': {

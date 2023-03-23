@@ -1,4 +1,4 @@
-import { getCss, highContrastMode } from '../../../utils';
+import { getCss, isHighContrastMode } from '../../../utils';
 import {
   addImportantToEachRule,
   getHighContrastColors,
@@ -39,7 +39,7 @@ export const getColors = (
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
-    borderColor: isSelected ? (highContrastMode ? highlightColor : primaryColor) : contrastLowColor,
+    borderColor: isSelected ? (isHighContrastMode ? highlightColor : primaryColor) : contrastLowColor,
     hoverBorderColor: primaryColor,
   };
 };

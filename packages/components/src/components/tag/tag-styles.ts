@@ -1,4 +1,4 @@
-import { getCss, highContrastMode } from '../../utils';
+import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getInvertedThemedColors,
@@ -62,7 +62,7 @@ export const getComponentCss = (
         color: primaryColor,
         font: textXSmallStyle.font,
         whiteSpace: 'nowrap',
-        ...(highContrastMode && {
+        ...(isHighContrastMode && {
           outline: '1px solid transparent',
         }),
         ...(isFocusable &&

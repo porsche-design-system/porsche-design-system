@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, hasVisibleIcon, highContrastMode } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
@@ -49,7 +49,7 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
       textColor: primaryColor,
       borderColor: primaryColor,
       borderColorHover: contrastMediumColor,
-      backgroundColor: highContrastMode ? canvasColor : 'transparent',
+      backgroundColor: isHighContrastMode ? canvasColor : 'transparent',
       backgroundColorHover: hoverColor,
     },
   };
@@ -124,7 +124,7 @@ export const getLinkButtonStyles = (
         hoverMediaQuery({
           '&:hover': {
             backgroundColor: backgroundColorHover,
-            borderColor: highContrastMode ? focusColor : borderColorHover,
+            borderColor: isHighContrastMode ? focusColor : borderColorHover,
             ...(!isPrimary && frostedGlassStyle),
           },
         })),

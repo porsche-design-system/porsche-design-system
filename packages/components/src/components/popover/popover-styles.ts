@@ -7,7 +7,7 @@ import {
   frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getCss, highContrastMode } from '../../utils';
+import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getHighContrastColors,
@@ -58,7 +58,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(borderWidth, borderWidth, 0),
-    borderColor: highContrastMode
+    borderColor: isHighContrastMode
       ? join(canvasTextColor, canvasColor, canvasColor)
       : join(backgroundColorThemeLight, transparentColor, transparentColor),
   },
@@ -67,7 +67,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     right: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
-    borderColor: highContrastMode
+    borderColor: isHighContrastMode
       ? join(canvasColor, canvasTextColor, canvasColor, canvasColor)
       : join(transparentColor, backgroundColorThemeLight, transparentColor, transparentColor),
   },
@@ -76,7 +76,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(0, borderWidth, borderWidth),
-    borderColor: highContrastMode
+    borderColor: isHighContrastMode
       ? join(canvasColor, canvasColor, canvasTextColor)
       : join(transparentColor, transparentColor, backgroundColorThemeLight),
   },
@@ -85,7 +85,7 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
-    borderColor: highContrastMode
+    borderColor: isHighContrastMode
       ? join(canvasColor, canvasColor, canvasColor, canvasTextColor)
       : join(transparentColor, transparentColor, transparentColor, backgroundColorThemeLight),
   },
@@ -184,7 +184,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       color: primaryColorThemeLight,
       whiteSpace: 'inherit',
       borderRadius: borderRadiusSmall,
-      ...(highContrastMode && {
+      ...(isHighContrastMode && {
         outline: `1px solid ${canvasTextColor}`,
       }),
     },
