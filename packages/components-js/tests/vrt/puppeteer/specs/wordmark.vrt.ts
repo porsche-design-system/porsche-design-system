@@ -19,13 +19,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const head = `
         <style>
           body { display: grid; grid-template-columns: repeat(2, 50%); }
-          p-link:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }
-          p-wordmark:not(:last-child) { margin-right: 0.5rem; }
+          p-wordmark:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem;  }
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-wordmark theme="${theme}" href="https://www.porsche.com"></p-wordmark>
-        <p-wordmark theme="${theme}"  href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
+        <p-wordmark theme="${theme}" href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceFocusState(page, '.focus p-wordmark'); // native outline should not be visible
