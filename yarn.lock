@@ -3153,10 +3153,10 @@
   resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
   integrity sha512-IhoHGmsPoO4VBoCebNGejBNHJFdAldV3m8kAoO458MJeaQJODM2b1UFzvGeTXGOMIFH4pkshcjZcF36vQvsn9w==
 
-"@porsche-design-system/visual-regression-tester@^4.3.0":
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.3.2.tgz#0b82d45f31f55b493eef2646340419f9eb43c23e"
-  integrity sha512-R5XKSiLshU4dcug4dmb4x1lNDHAOZVkbNqrYIqOg39JDNJuP//R83NzhDT9ceaWdKtJpdrWbMTsU5Br+PXLGwg==
+"@porsche-design-system/visual-regression-tester@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.4.0.tgz#878a8a47ca3048e79df48ee33e82e5a741d51495"
+  integrity sha512-SJ8hElwFtk+CJISRtpwo0m9fmnYrwR9yTd8KyVVx8X1QxyIE+SDyd7zdiGR+h2kctGmSF6+m9/nZgI9JDUy4pg==
   dependencies:
     pixelmatch "^5.3.0"
     sharp "^0.30.5"
