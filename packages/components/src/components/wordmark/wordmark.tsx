@@ -22,7 +22,7 @@ export class Wordmark {
   @Element() public host!: HTMLElement;
 
   /** Adapts sizing of wordmark. */
-  @Prop() public size?: WordmarkSize = 'fluid';
+  @Prop() public size?: WordmarkSize = 'small';
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';

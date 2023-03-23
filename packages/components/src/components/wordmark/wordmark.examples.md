@@ -60,7 +60,7 @@ export default class Code extends Vue {
   basicMarkup = `<p-wordmark></p-wordmark>`;
   linkMarkup = `<p-wordmark href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-wordmark>`;
 
-  size = 'fluid';
+  size = 'small';
   sizes = WORDMARK_SIZES;
   get sizeMarkup() {
     const style = this.size === 'inherit' ? ' style="height: 20px"' : '';
