@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 16706,
-    "gzipSize": 7956
+    "size": 16530,
+    "gzipSize": 7855
   },
   {
     "chunkShortName": "inline-notification",
@@ -117,7 +117,7 @@
   {
     "chunkShortName": "main",
     "size": 68523,
-    "gzipSize": 23025
+    "gzipSize": 23028
   },
   {
     "chunkShortName": "marque",
@@ -131,8 +131,8 @@
   },
   {
     "chunkShortName": "model-signature",
-    "size": 2566,
-    "gzipSize": 1329
+    "size": 2562,
+    "gzipSize": 1328
   },
   {
     "chunkShortName": "pagination",
@@ -231,7 +231,7 @@
   },
   {
     "chunkShortName": "wordmark",
-    "size": 3593,
-    "gzipSize": 1708
+    "size": 3616,
+    "gzipSize": 1722
   }
 ]
