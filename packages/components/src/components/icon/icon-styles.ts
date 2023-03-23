@@ -98,7 +98,6 @@ export const getComponentCss = (
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
       },
-      ...(!isColorInherit && {}),
     },
   });
 };
