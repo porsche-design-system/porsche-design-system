@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `Table` matches new design language
+
 #### Added
 
 - `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
@@ -18,7 +22,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
 - Prop `scrollbar` for `Scroller` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
 - Prop `theme` for `Table` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
-- `Table` matches new design language
 
 #### Fixed
 
