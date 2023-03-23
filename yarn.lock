@@ -3161,6 +3161,14 @@
     pixelmatch "^5.3.0"
     sharp "^0.30.5"
 
+"@porsche-design-system/visual-regression-tester@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.5.0.tgz#50ccba4bb67029936be2ca1d6f576487014ffa92"
+  integrity sha512-Q4c3CCXCwsyuLeLETNj2rEsRi37dVchaK4cWaiVtlNEbbN/9MbVikRNAMX9yO6dvyXaysDPtKABIyN7UXnLBYg==
+  dependencies:
+    pixelmatch "^5.3.0"
+    sharp "^0.30.5"
+
 "@remix-run/dev@^1.14.0":
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.14.0.tgz#58e99a0514e8b01dce68c406378331d84ba3ddfc"

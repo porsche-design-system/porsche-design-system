@@ -38,6 +38,9 @@ const injectCSSOverrides = async () => {
   }, styles);
 };
 
+// TODO: we shouldn't rely on retries since computed result has to be deterministic
+jest.retryTimes(1);
+
 for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
   for (const [page, tabs] of Object.entries(pages).sort(([a], [b]) => a.localeCompare(b))) {
     ((category: string, page: string) => {
