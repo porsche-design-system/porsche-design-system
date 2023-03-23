@@ -13,18 +13,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(68%) sepia(6%) saturate(108%) hue-rotate(187deg) brightness(104%) contrast(88%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -41,18 +32,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(40%) sepia(2%) saturate(686%) hue-rotate(187deg) brightness(80%) contrast(94%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -69,18 +51,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(20%) sepia(7%) saturate(421%) hue-rotate(202deg) brightness(97%) contrast(82%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -97,18 +70,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(93%) sepia(11%) saturate(36%) hue-rotate(201deg) brightness(89%) contrast(102%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -125,18 +89,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(54%) sepia(4%) saturate(229%) hue-rotate(187deg) brightness(91%) contrast(84%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -153,18 +108,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -217,18 +163,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(28%) sepia(34%) saturate(3133%) hue-rotate(333deg) brightness(95%) contrast(100%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -245,18 +182,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(25%) sepia(62%) saturate(2003%) hue-rotate(335deg) brightness(100%) contrast(97%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -273,18 +201,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -301,18 +220,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -329,18 +239,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(59%) sepia(22%) saturate(1342%) hue-rotate(86deg) brightness(96%) contrast(88%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -357,18 +258,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(62%) sepia(61%) saturate(551%) hue-rotate(86deg) brightness(86%) contrast(80%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -385,18 +277,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(72%) sepia(94%) saturate(303%) hue-rotate(354deg) brightness(89%) contrast(94%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -413,18 +296,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(74%) sepia(91%) saturate(343%) hue-rotate(348deg) brightness(92%) contrast(86%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -441,17 +315,8 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -468,18 +333,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -496,18 +352,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -523,19 +370,10 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
-  -webkit-animation: rerender-dark 1ms;
+  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -552,18 +390,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -580,18 +409,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -608,18 +428,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -636,18 +447,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: .75rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -664,18 +466,9 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(54%) sepia(4%) saturate(229%) hue-rotate(187deg) brightness(91%) contrast(84%);
-  -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-dark {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
 
@@ -692,17 +485,8 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
-  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
 }"
 `;
