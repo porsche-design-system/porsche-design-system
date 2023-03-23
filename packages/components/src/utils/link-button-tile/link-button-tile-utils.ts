@@ -1,8 +1,8 @@
-// does not take care of breakpoint customizable
 import type { BreakpointCustomizable } from '../breakpoint-customizable';
 import { getTagName } from '../tag-name';
 import type { TileAlign, TileAspectRatio, TileSize } from '../';
 
+// does not take care of breakpoint customizable
 export const throwIfAlignTopAndNotCompact = (
   host: HTMLElement,
   align: TileAlign,
