@@ -370,6 +370,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-carousel": {
     "allowedPropValues": {
+      "activeSlideIndex": "number",
       "alignHeader": [
         "left",
         "center",
@@ -387,7 +388,10 @@ exports[`should match snapshot 1`] = `
       },
       "pagination": "boolean",
       "rewind": "boolean",
-      "slidesPerPage": "number",
+      "slidesPerPage": [
+        "number",
+        "auto",
+      ],
       "theme": [
         "light",
         "dark",
@@ -430,11 +434,12 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
+      "activeSlideIndex": 0,
       "alignHeader": "left",
       "description": null,
       "disablePagination": null,
       "heading": null,
-      "intl": "{}",
+      "intl": null,
       "pagination": true,
       "rewind": true,
       "slidesPerPage": 1,
