@@ -63,7 +63,7 @@ export default class Code extends Vue {
   size = 'fluid';
   sizes = WORDMARK_SIZES;
   get sizeMarkup() {
-    const style = this.size === 'inherit' ? ' style="height: 100px"' : '';
+    const style = this.size === 'inherit' ? ' style="height: 20px"' : '';
     return `<p-wordmark size="${this.size}"${style}></p-wordmark>`;
   }
 
