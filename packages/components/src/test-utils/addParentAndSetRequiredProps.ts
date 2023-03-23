@@ -2,8 +2,9 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
-  const { requiredParent, requiredChild, requiredProps, props, hasEvent, eventNames, requiredSlots } =
+  const { requiredParent, requiredChild, requiredProps, props, hasEvent, eventNames, requiredNamedSlots } =
     getComponentMeta(tagName);
+
   if (requiredParent) {
     const parent = document.createElement(requiredParent);
     parent.append(component.host as HTMLElement);
@@ -21,10 +22,10 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component[childTagName] = child;
   }
 
-  if (requiredSlots) {
-    requiredSlots.forEach(({ slot, slotTagName }) => {
-      const child = document.createElement(slotTagName);
-      child.slot = slot;
+  if (requiredNamedSlots) {
+    requiredNamedSlots.forEach(({ slotName, tagName }) => {
+      const child = document.createElement(tagName);
+      child.slot = slotName;
       component.host.appendChild(child);
     });
   }

@@ -16,7 +16,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   jest.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
 
   // default children
-  const { requiredChild, hasSlot, requiredSlots } =
+  const { requiredChild, hasSlot, requiredNamedSlots } =
     tagName === 'p-tabs'
       ? { ...componentMeta, requiredChild: 'p-tabs-item label=TabItem' } // TODO: validation for this is missing and therefore componentMeta doesn't contain it
       : componentMeta;
@@ -38,11 +38,11 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
           <RequiredChildTag {...requiredChildProps} />
         ) : tagName === 'p-carousel' ? ( // we need an actual DOM node here
           <div>Some child</div>
-        ) : requiredSlots ? (
-          requiredSlots.map(({ slot, slotTagName }) => {
-            const Component = fromComponents[pascalCase(slotTagName)];
+        ) : requiredNamedSlots ? (
+          requiredNamedSlots.map(({ slotName, tagName }) => {
+            const Component = fromComponents[pascalCase(tagName)];
             return (
-              <Component slot={slot} href={slotTagName.includes('link') ? '#' : undefined}>
+              <Component slot={slotName} href={tagName.includes('link') ? '#' : undefined}>
                 Some label
               </Component>
             );

@@ -46,7 +46,6 @@ const generateComponentMeta = (): void => {
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child of kind
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
-  requiredSlots?: { slot: string; slotTagName: TagName }[];
   nestedComponents?: TagName[]; // array of other pds components
   props?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -68,6 +67,7 @@ const generateComponentMeta = (): void => {
   };
   hasSlot: boolean;
   namedSlots?: string[]; // array of named slots
+  requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
   hasEvent: boolean;
   eventNames?: string[];
   deprecatedEventNames?: string[]; // array of event names
@@ -90,7 +90,6 @@ const generateComponentMeta = (): void => {
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child of kind
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
-    requiredSlots?: { slot: string; slotTagName: TagName }[];
     nestedComponents?: TagName[]; // array of other pds components
     props?: {
       [propName: string]: boolean | number | string | object | null; // value is the prop's default value
@@ -112,6 +111,7 @@ const generateComponentMeta = (): void => {
     };
     hasSlot: boolean;
     namedSlots?: string[]; // array of named slots
+    requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
     hasEvent: boolean;
     eventNames?: string[];
     deprecatedEventNames?: string[]; // array of event names
@@ -188,27 +188,6 @@ const generateComponentMeta = (): void => {
         requiredChild = cleanSelector(requiredChild);
         requiredChildSelector = value;
       }
-    }
-
-    // required slots
-    let requiredSlots = [];
-    const constNameAndSlot: { constName: string; slot: string }[] = Array.from(
-      source.matchAll(/const (\w+) = getNamedSlotOrThrow\(this\.host, '(\w+)'\)/g)
-    ).map(([, constName, slot]) => ({
-      constName,
-      slot,
-    }));
-
-    if (constNameAndSlot) {
-      requiredSlots = constNameAndSlot.map(({ constName, slot }) => {
-        const [, tagName] =
-          new RegExp(`throwIfElementIsNotOfKind\\(this\\.host, ${constName}, '([\\w-]+)'\\)`).exec(source) || [];
-
-        return {
-          slot,
-          slotTagName: tagName,
-        };
-      });
     }
 
     // nested pds components
@@ -466,6 +445,21 @@ const generateComponentMeta = (): void => {
       namedSlots.push('message');
     }
 
+    // required named slots
+    const requiredNamedSlots: ComponentMeta['requiredNamedSlots'] = Array.from(
+      source.matchAll(/const ([a-zA-Z]+) = getNamedSlotOrThrow\(this\.host, '([a-zA-Z]+)'\)/g)
+    ).map(([, constName, slotName]) => {
+      if (!namedSlots.includes(slotName)) {
+        throw new Error(`Extracted slotName '${slotName}' is not included in namedSlots: ${namedSlots.join(', ')}`);
+      }
+
+      const [, tagName] = (new RegExp(`throwIfElementIsNotOfKind\\(this\\.host, ${constName}, '([a-zA-Z-]+)'\\)`).exec(
+        source
+      ) || []) as unknown as [string, TagName];
+
+      return { slotName, tagName };
+    });
+
     const deprecatedEventNames: ComponentMeta['deprecatedEventNames'] = [];
 
     // events
@@ -495,7 +489,6 @@ const generateComponentMeta = (): void => {
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }), // TODO: singular / plural mismatch?
       requiredChild,
       requiredChildSelector,
-      ...(requiredSlots.length && { requiredSlots }),
       ...(nestedComponents.length && { nestedComponents }),
       ...(Object.keys(props).length && { props }),
       ...(requiredProps.length && { requiredProps }),
@@ -508,6 +501,7 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
       ...(namedSlots.length && { namedSlots }),
+      ...(requiredNamedSlots.length && { requiredNamedSlots }),
       hasEvent,
       ...(eventNames.length && { eventNames }),
       ...(deprecatedEventNames.length && { deprecatedEventNames }),

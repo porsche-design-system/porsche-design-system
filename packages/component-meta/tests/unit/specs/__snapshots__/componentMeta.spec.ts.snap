@@ -1686,18 +1686,18 @@ exports[`should match snapshot 1`] = `
       "model": 911,
       "weight": "semi-bold",
     },
+    "requiredNamedSlots": [
+      {
+        "slotName": "primary",
+        "tagName": "p-link",
+      },
+      {
+        "slotName": "secondary",
+        "tagName": "p-link",
+      },
+    ],
     "requiredProps": [
       "heading",
-    ],
-    "requiredSlots": [
-      {
-        "slot": "primary",
-        "slotTagName": "p-link",
-      },
-      {
-        "slot": "secondary",
-        "slotTagName": "p-link",
-      },
     ],
     "styling": "jss",
   },
