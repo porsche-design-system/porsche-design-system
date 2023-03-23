@@ -5600,6 +5600,7 @@ exports[`should render dsr component for PTableCell 1`] = `
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: nowrap !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
   background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
 }
@@ -5658,7 +5659,6 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
   display: table-cell !important;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {
