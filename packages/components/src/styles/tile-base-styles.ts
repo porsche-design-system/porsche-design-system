@@ -12,7 +12,7 @@ import {
 import { borderRadiusMedium, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { TileAspectRatio } from '../utils';
 
-const aspectRatioPaddingTop: Record<TileAspectRatio, string> = {
+const aspectRatioPaddingMap: Record<TileAspectRatio, string> = {
   '1:1': '100%',
   '4:3': '75%',
   '3:4': '133.33%',
@@ -20,7 +20,7 @@ const aspectRatioPaddingTop: Record<TileAspectRatio, string> = {
   '9:16': '177.75%',
 };
 
-export const getTileStyles = (opts: {
+export const getTileBaseStyles = (opts: {
   aspectRatio: BreakpointCustomizable<TileAspectRatio>;
   isDisabled?: boolean;
   additionalHostStyles?: JssStyle;
@@ -33,7 +33,10 @@ export const getTileStyles = (opts: {
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule({ ...hostHiddenStyles, ...additionalHostStyles }),
+        ...addImportantToEachRule({
+          ...hostHiddenStyles,
+          ...additionalHostStyles,
+        }),
       },
       ...addImportantToEachRule({
         '::slotted(picture),::slotted(img)': {
@@ -65,7 +68,7 @@ export const getTileStyles = (opts: {
           },
         })),
       ...buildResponsiveStyles(aspectRatio, (ratio: TileAspectRatio) => ({
-        paddingTop: aspectRatioPaddingTop[ratio],
+        paddingTop: aspectRatioPaddingMap[ratio],
       })),
     },
     'image-container': {

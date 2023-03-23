@@ -6,7 +6,7 @@ import {
   getButtonLinkTilePStyles,
   getButtonLinkTileSharedClassesStyles,
 } from '../../styles/link-button-tile-styles';
-import { getTileStyles } from '../../styles/tile-styles';
+import { getTileBaseStyles } from '../../styles/tile-base-styles';
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
@@ -19,7 +19,7 @@ export const getComponentCss = (
   isDisabledOrLoading: boolean
 ): string => {
   return getCss({
-    ...getTileStyles({
+    ...getTileBaseStyles({
       aspectRatio,
       isDisabled,
       additionalHostStyles: { cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer' },

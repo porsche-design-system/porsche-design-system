@@ -3,8 +3,6 @@ import { addImportantToRule, getInsetJssStyle } from '../../styles';
 import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
-  borderRadiusMedium,
-  gradientToBottomStyle,
   gradientToTopStyle,
   spacingFluidLarge,
   spacingFluidMedium,
@@ -13,7 +11,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
-import { getTileStyles } from '../../styles/tile-styles';
+import { getTileBaseStyles } from '../../styles/tile-base-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type {
   LinkTileModelSignatureAspectRatio,
@@ -29,7 +27,7 @@ export const getComponentCss = (
   hasDescription: boolean
 ): string => {
   return getCss({
-    ...getTileStyles({
+    ...getTileBaseStyles({
       aspectRatio,
       additionalGlobalStyles: {
         [LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS.join(',')]: {
@@ -46,12 +44,8 @@ export const getComponentCss = (
     }),
     model: {
       position: 'absolute',
-      padding: spacingFluidMedium,
-      borderRadius: borderRadiusMedium,
-      top: 0,
-      left: 0,
-      right: 0,
-      ...gradientToBottomStyle,
+      top: spacingFluidMedium,
+      left: spacingFluidMedium,
     },
     heading: {
       color: getThemedTypographyColor('dark', 'primary'),

@@ -15,10 +15,6 @@ import type { LinkTileWeight } from '../components/link-tile/link-tile-utils';
 import { buildResponsiveStyles, mergeDeep } from '../utils';
 import { getFontWeight } from './font-weight-styles';
 
-const getGradientBackground = (isCompact: BreakpointCustomizable<boolean>, isTopAligned: boolean): JssStyle => {
-  return isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle;
-};
-
 const sizeMap: Record<TileSize, { fontSize: string }> = {
   inherit: { fontSize: 'inherit' },
   default: { fontSize: fontSizeTextMedium },
@@ -57,7 +53,9 @@ export const getButtonLinkTileAdditionalContentStyles = (
         : `${spacingFluidMedium} ${spacingFluidMedium} ${spacingFluidLarge}`,
     ...mergeDeep(
       hasGradient &&
-        buildResponsiveStyles(compact, (isCompact: boolean) => getGradientBackground(isCompact, isTopAligned)),
+        buildResponsiveStyles(compact, (isCompact: boolean) =>
+          isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle
+        ),
       buildResponsiveStyles(compact, (isCompact: boolean) =>
         isCompact
           ? {
@@ -66,7 +64,10 @@ export const getButtonLinkTileAdditionalContentStyles = (
               gridTemplateRows: 'auto',
               ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
             }
-          : { gridTemplateRows: 'auto auto', gridTemplateColumns: 'auto' }
+          : {
+              gridTemplateRows: 'auto auto',
+              gridTemplateColumns: 'auto',
+            }
       )
     ),
   };
@@ -78,6 +79,8 @@ export const getButtonLinkTileSharedClassesStyles = (compact: BreakpointCustomiz
   })),
   'link-or-button': {
     minHeight: '54px', // prevent content shift
-    ...buildResponsiveStyles(compact, (isCompact: boolean) => ({ display: isCompact ? 'none' : 'inline-block' })),
+    ...buildResponsiveStyles(compact, (isCompact: boolean) => ({
+      display: isCompact ? 'none' : 'inline-block',
+    })),
   },
 });

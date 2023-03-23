@@ -1,6 +1,6 @@
 import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../utils';
 import { getCss } from '../../utils';
-import { getTileStyles } from '../../styles/tile-styles';
+import { getTileBaseStyles } from '../../styles/tile-base-styles';
 import { getInsetJssStyle } from '../../styles';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import {
@@ -19,7 +19,7 @@ export const getComponentCss = (
   hasGradient: boolean
 ): string => {
   return getCss({
-    ...getTileStyles({
+    ...getTileBaseStyles({
       aspectRatio,
       additionalGlobalStyles: getButtonLinkTilePStyles(size, weight),
       additionalContentStyles: getButtonLinkTileAdditionalContentStyles(align, hasGradient, compact),
