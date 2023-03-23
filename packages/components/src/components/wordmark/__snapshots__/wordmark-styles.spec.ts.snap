@@ -1,110 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for size: fluid and theme: dark 1`] = `
-":host {
-  position: relative;
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
-  height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-a {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border-radius: 0;
-  background: transparent;
-  display: block;
-  text-decoration: none;
-  height: inherit;
-}
-a::before {
-  content: "";
-  position: absolute;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-a:focus::before {
-  border: 2px solid #1A44EA;
-}
-a:focus:not(:focus-visible)::before {
-  border: 0;
-}
-img {
-  display: block;
-  pointer-events: none;
-  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
-  height: inherit;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for size: fluid and theme: light 1`] = `
-":host {
-  position: relative;
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
-  height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-a {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border-radius: 0;
-  background: transparent;
-  display: block;
-  text-decoration: none;
-  height: inherit;
-}
-a::before {
-  content: "";
-  position: absolute;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-a:focus::before {
-  border: 2px solid #1A44EA;
-}
-a:focus:not(:focus-visible)::before {
-  border: 0;
-}
-img {
-  display: block;
-  pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  height: inherit;
-}"
-`;
-
 exports[`getComponentCss() should return correct css for size: inherit and theme: dark 1`] = `
 ":host {
   position: relative;
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
+  box-sizing: content-box !important;
   height: inherit;
 }
 :host([hidden]) {
   display: none !important;
 }
 a {
-  margin: 0;
-  padding: 0;
   outline: 0;
-  border-radius: 0;
-  background: transparent;
   display: block;
   text-decoration: none;
   height: inherit;
@@ -112,7 +21,7 @@ a {
 a::before {
   content: "";
   position: absolute;
-  border-radius: 8px;
+  border-radius: 4px;
   top: -6px;
   left: -6px;
   right: -6px;
@@ -124,7 +33,7 @@ a:focus::before {
 a:focus:not(:focus-visible)::before {
   border: 0;
 }
-img {
+svg {
   display: block;
   pointer-events: none;
   filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
@@ -138,17 +47,14 @@ exports[`getComponentCss() should return correct css for size: inherit and theme
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
+  box-sizing: content-box !important;
   height: inherit;
 }
 :host([hidden]) {
   display: none !important;
 }
 a {
-  margin: 0;
-  padding: 0;
   outline: 0;
-  border-radius: 0;
-  background: transparent;
   display: block;
   text-decoration: none;
   height: inherit;
@@ -156,7 +62,7 @@ a {
 a::before {
   content: "";
   position: absolute;
-  border-radius: 8px;
+  border-radius: 4px;
   top: -6px;
   left: -6px;
   right: -6px;
@@ -168,7 +74,89 @@ a:focus::before {
 a:focus:not(:focus-visible)::before {
   border: 0;
 }
-img {
+svg {
+  display: block;
+  pointer-events: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  height: inherit;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: small and theme: dark 1`] = `
+":host {
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
+  box-sizing: content-box !important;
+  height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+a {
+  outline: 0;
+  display: block;
+  text-decoration: none;
+  height: inherit;
+}
+a::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+}
+a:focus::before {
+  border: 2px solid #1A44EA;
+}
+a:focus:not(:focus-visible)::before {
+  border: 0;
+}
+svg {
+  display: block;
+  pointer-events: none;
+  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  height: inherit;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: small and theme: light 1`] = `
+":host {
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
+  box-sizing: content-box !important;
+  height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+a {
+  outline: 0;
+  display: block;
+  text-decoration: none;
+  height: inherit;
+}
+a::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+}
+a:focus::before {
+  border: 2px solid #1A44EA;
+}
+a:focus:not(:focus-visible)::before {
+  border: 0;
+}
+svg {
   display: block;
   pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
