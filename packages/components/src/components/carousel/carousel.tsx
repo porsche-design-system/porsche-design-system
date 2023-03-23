@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
 import type { ButtonPure } from '../button-pure/button-pure';
 import type {
   CarouselAlignHeader,
@@ -20,7 +20,7 @@ import {
   updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
@@ -49,7 +49,10 @@ const propTypes: PropTypes<typeof Carousel> = {
   rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
-  slidesPerPage: AllowedTypes.breakpoint('number'),
+  slidesPerPage: AllowedTypes.oneOf<ValidatorFunction>([
+    AllowedTypes.breakpoint('number'),
+    AllowedTypes.oneOf(['auto']),
+  ]),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
@@ -61,6 +64,7 @@ const propTypes: PropTypes<typeof Carousel> = {
     slide: AllowedTypes.string,
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  activeSlideIndex: AllowedTypes.number,
 };
 
 @Component({
@@ -91,8 +95,8 @@ export class Carousel {
   /** Defines the outer spacings between the carousel and the left and right screen sides. */
   @Prop() public width?: CarouselWidth = 'basic';
 
-  /** Sets the amount of slides visible at the same time. */
-  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
+  /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
+  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
@@ -103,10 +107,13 @@ export class Carousel {
   @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
-  @Prop() public intl?: CarouselInternationalization = {};
+  @Prop() public intl?: CarouselInternationalization;
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Defines which slide to be active (zero-based numbering). */
+  @Prop() public activeSlideIndex?: number = 0;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
@@ -124,6 +131,11 @@ export class Carousel {
   private btnNext: ButtonPure;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
+
+  @Watch('activeSlideIndex')
+  public activeSlideHandler(newValue: number): void {
+    this.splide.go(newValue); // change event is emitted via splide.on('move')
+  }
 
   public connectedCallback(): void {
     observeChildren(this.host, this.updateSlidesAndPagination);
@@ -145,6 +157,8 @@ export class Carousel {
 
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
+      start: this.activeSlideIndex,
+      autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       pagination: false,
       rewind: this.rewind,
@@ -154,15 +168,21 @@ export class Carousel {
       speed: carouselTransitionDuration,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>),
+      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>),
       // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.intl),
+      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
     });
 
     this.registerSplideHandlers(this.splide);
   }
 
+  // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
+  public componentShouldUpdate(_: unknown, __: unknown, propertyName: keyof InstanceType<typeof Carousel>): boolean {
+    return propertyName !== 'activeSlideIndex';
+  }
+
   public componentDidUpdate(): void {
+    // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     updateSlidesInert(this.splide);
@@ -261,7 +281,7 @@ export class Carousel {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
-      renderPagination(this.paginationEl, this.amountOfPages, 0); // initial pagination
+      renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
@@ -290,7 +310,7 @@ export class Carousel {
     this.amountOfPages = getAmountOfPages(
       this.slides.length,
       // round to sanitize floating numbers
-      Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
+      this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
     renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
     updateSlidesInert(this.splide);

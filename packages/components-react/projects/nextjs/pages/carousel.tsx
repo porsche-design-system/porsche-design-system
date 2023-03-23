@@ -351,6 +351,17 @@ const CarouselPage: NextPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
+      <div className="playground light" title="should render carousel with slidesPerPage=auto">
+        <PCarousel heading="slidesPerPage=auto" slidesPerPage="auto">
+          <div style={{ width: '10vw' }}>Slide 1 10vw</div>
+          <div style={{ width: '200px' }}>Slide 2 200px</div>
+          <div style={{ width: '100px' }}>Slide 3 100px</div>
+          <div style={{ width: '40vw' }}>Slide 4 40vw</div>
+          <div style={{ width: '150px' }}>Slide 5 150px</div>
+          <div style={{ width: '50vw' }}>Slide 6 50vw</div>
+        </PCarousel>
+      </div>
+
       <div className="playground light" title="should render carousel with disablePagination=true">
         <PCarousel heading="disablePagination=true" disablePagination={true}>
           <div>Slide 1</div>

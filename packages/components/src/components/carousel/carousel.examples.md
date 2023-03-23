@@ -29,6 +29,16 @@ The value can either be a static number, or a breakpoint customizable object.
   <SelectOptions v-model="slidesPerPage" :values="slidesPerPages" name="slidesPerPage"></SelectOptions>
 </Playground>
 
+## Slides with flexible widths
+
+In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
+
+<p-inline-notification heading="Attention" state="warning" persistent="true">
+ It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
+</p-inline-notification>
+
+<Playground :markup="slidesPerPageAutoMarkup" :config="config"></Playground>
+
 ## Heading
 
 In order to have an accessible `p-carousel`, it is mandatory to have a `heading` either set via property or by having a
@@ -95,6 +105,16 @@ For browsers that don't support the `inert` attribute, yet, the component adds a
 `button`, `p-button`, `p-button-pure`, `p-link` and `p-link-pure` elements as a fallback
 
 <Playground :markup="focusBehavior" :config="config"></Playground>
+
+## Jump to slide (activeSlideIndex)
+
+To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
+
+<Playground :frameworkMarkup="jumpToSlideExamples" :config="{ ...config, withoutDemo: true }">
+  <p-carousel :theme="theme" :heading="basicHeading" :active-slide-index="activeSlideIndex" v-html="getSlides(3)" @change="(e) => activeSlideIndex = e.detail.activeIndex" style="margin: 0 0 1rem">
+  </p-carousel>
+  <button v-for="(_, index) in Array(3)" :key="index" type="button" @click="activeSlideIndex = index" :disabled="activeSlideIndex === index">{{index + 1}}</button>
+</Playground>
 
 ## Event Handling
 
@@ -172,6 +192,15 @@ export default class Code extends Vue {
 </p-carousel>`;
   }
 
+  slidesPerPageAutoMarkup = `<p-carousel slides-per-page="auto" heading="${this.basicHeading}">
+  <div style="width: 10vw">Slide 1 <p>(10vw)</p></div>
+  <div style="width: 200px">Slide 2 <p>(200px)</p></div>
+  <div style="width: 100px">Slide 3 <p>(100px)</p></div>
+  <div style="width: 40vw">Slide 4 <p>(40vw)</p></div>
+  <div style="width: 150px">Slide 5 <p>(150px)</p></div>
+  <div style="width: 50vw">Slide 6 <p>(50vw)</p></div>
+</p-carousel>`;
+
   heading = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>
@@ -226,6 +255,9 @@ export default class Code extends Vue {
     .replace(/Slide 4/, '$& with a <button type="button">button</button>')
   }
 </p-carousel>`;
+
+  activeSlideIndex = 1;
+  jumpToSlideExamples = getCarouselCodeSamples('example-jump-to-slide');
 
   lastEventDetail = 'none';
   eventHandlingExamples = getCarouselCodeSamples('example-events');

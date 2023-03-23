@@ -29,7 +29,7 @@ const getImportFilePath = (source: string, constName: string, tagName: TagName):
 const getEvaluablePropTypeString = (propTypes: string): string => {
   return propTypes
     ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
-    .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
+    .replace(/[^"](AllowedTypes\.(?:shape|oneOf).+\([{[][\s\S]+?(?: {2}|\b)[}\]]\)),/g, '`$1`,'); // wrap multiline shape object and oneOf array in backticks
 };
 
 const generateComponentMeta = (): void => {
@@ -300,14 +300,14 @@ const generateComponentMeta = (): void => {
       isInternal || !propTypes
         ? {} // internal components or ones without propTypes validation don't matter
         : Object.entries(propTypes).reduce((result, [propName, propType]) => {
-            propType = propType.replace('AllowedTypes.', '');
+            propType = propType.replace('AllowedTypes.', ''); // replace just the first one
             if (propType.match(/^(?:breakpoint|oneOf|aria)/)) {
-              if (propType.match(/^breakpoint/)) {
+              if (propType.match('breakpoint')) {
                 breakpointCustomizableProps.push(propName);
               }
 
-              let [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
-              if (values.match(/^\[.+]$/) || values.match(/[A-Z_]{5,}/)) {
+              let [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)$/);
+              if (values.match(/^\[[\s\S]+?]$/) || values.match(/[A-Z_]{5,}/)) {
                 result[propName] = [];
                 if (values.match(/undefined/)) {
                   (result[propName] as string[]).push(undefined);
@@ -342,13 +342,22 @@ const generateComponentMeta = (): void => {
                     result[propName] = [...(result[propName] as string[]), ...variableValues];
                   }
                 } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
-                  // e.g. in segmented-control, segmented-control-item
+                  // e.g. in segmented-control, segmented-control-item or carousel
                   const [, oneOfParam] = propType.match(/\(((?:.|\n)+)\)/);
-                  const [, oneOfValues] = oneOfParam.match(/^\[(.+)]$/) || [];
+                  const [, oneOfValues] = oneOfParam.match(/^\[((?:.|\n)+)]$/) || [];
 
                   if (oneOfValues) {
                     // it's an array
-                    const values = oneOfValues.split(',').map((x) => x.trim().replace(/^AllowedTypes./, ''));
+                    const values = oneOfValues
+                      .split(',')
+                      .map(
+                        (val) =>
+                          val
+                            .trim()
+                            .replace(/^AllowedTypes./, '')
+                            .replace(/.*'([a-z]+)'.*/, '$1') // extract string values like 'number' or 'auto' that are passed to a nested validator funnction
+                      )
+                      .filter((val) => val);
                     result[propName] = values;
                   } else {
                     // TODO: support this scenario once it occurs
