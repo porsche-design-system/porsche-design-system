@@ -49,6 +49,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
       svg: {
         display: 'block',
         pointerEvents: 'none', // prevents image drag
+        transform: 'translateZ(0)', // Safari IOS render dark theme filter
         filter: theme === 'light' ? filterLightPrimary : filterDarkPrimary,
         height: 'inherit',
       },
