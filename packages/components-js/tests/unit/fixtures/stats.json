@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 5318,
-    "gzipSize": 2205
+    "size": 5197,
+    "gzipSize": 2240
   },
   {
     "chunkShortName": "button",
@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 41248,
-    "gzipSize": 16768
+    "size": 41554,
+    "gzipSize": 16914
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -41,8 +41,8 @@
   },
   {
     "chunkShortName": "content-wrapper",
-    "size": 2311,
-    "gzipSize": 1050
+    "size": 2440,
+    "gzipSize": 1197
   },
   {
     "chunkShortName": "display",
@@ -117,7 +117,7 @@
   {
     "chunkShortName": "main",
     "size": 68255,
-    "gzipSize": 22932
+    "gzipSize": 22931
   },
   {
     "chunkShortName": "marque",
@@ -126,8 +126,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 8350,
-    "gzipSize": 3520
+    "size": 8428,
+    "gzipSize": 3560
   },
   {
     "chunkShortName": "model-signature",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 8383,
-    "gzipSize": 3180
+    "size": 8443,
+    "gzipSize": 3202
   },
   {
     "chunkShortName": "segmented-control",
@@ -226,7 +226,7 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 6795,
-    "gzipSize": 2883
+    "size": 6917,
+    "gzipSize": 2934
   }
 ]
