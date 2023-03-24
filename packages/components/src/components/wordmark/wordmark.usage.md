@@ -4,8 +4,6 @@
 
 ## Do's & Don'ts
 
-- The Porsche `p-wordmark` **may not be used against coloured or busy backgrounds** (e.g. shading)
-
 ### Do
 
 - Use the `p-wordmark` as the main brand identifier.
