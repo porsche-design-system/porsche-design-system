@@ -2,19 +2,20 @@
 
 <TableOfContents></TableOfContents>
 
-## Sizes
-
-Slight adjustments ensure that the `p-wordmark` is optimally perceived as equally possible.
-
----
-
-## Usage
-
-- Within static digital applications, the `p-wordmark` is **always used without shadow**. For moving images a separate
-  Crest with shadow is available.
-
----
-
 ## Do's & Don'ts
 
 - The Porsche `p-wordmark` **may not be used against coloured or busy backgrounds** (e.g. shading)
+
+### Do
+
+- Use the `p-wordmark` as the main brand identifier.
+- Use the `p-wordmark` only in dedicated situations, like global navigation.
+- Position the `p-wordmark` centered whenever possible.
+- Use the crest only as an additional small brand identifier (e.g., within contact cards).
+- Switch from the `p-wordmark` to the crest on small viewports below 480px (automatically implemented in global
+  navigation and footer).
+
+### Don't
+
+- Use the crest as the primary brand identifier by default.
+- Display the `p-wordmark` too often (usually once is enough).
