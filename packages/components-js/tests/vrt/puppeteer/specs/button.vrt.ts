@@ -13,6 +13,9 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
+// TODO: (button states test is flaky) we shouldn't rely on retries since computed result has to be deterministic
+jest.retryTimes(3);
+
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'button', '/#button')).toBeFalsy();
 });

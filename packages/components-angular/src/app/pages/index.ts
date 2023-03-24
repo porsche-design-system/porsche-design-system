@@ -21,6 +21,7 @@ export * from './utilities.component';
 
 /* Auto Generated Below */
 export * from './core-initializer.component';
+export * from './overview-flaky.component';
 export * from './overview-notifications.component';
 export * from './overview.component';
 import { AccordionComponent } from './accordion.component';
@@ -51,6 +52,7 @@ import { MarqueComponent } from './marque.component';
 import { ModalComponent } from './modal.component';
 import { ModelSignatureComponent } from './model-signature.component';
 import { OverviewComponent } from './overview.component';
+import { OverviewFlakyComponent } from './overview-flaky.component';
 import { OverviewNotificationsComponent } from './overview-notifications.component';
 import { PaginationComponent } from './pagination.component';
 import { PopoverComponent } from './popover.component';
@@ -110,6 +112,7 @@ export const generatedPages = [
   ModalComponent,
   ModelSignatureComponent,
   OverviewComponent,
+  OverviewFlakyComponent,
   OverviewNotificationsComponent,
   PaginationComponent,
   PopoverComponent,

@@ -36,6 +36,8 @@ export const CarouselPage = (): JSX.Element => {
         <span />
         <span />
         <span />
+        <span />
+        <span />
       </div>
 
       <div className="playground light" title="should render carousel on light background">

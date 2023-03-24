@@ -35,6 +35,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <span></span>
       <span></span>
       <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="playground light" title="should render carousel on light background">

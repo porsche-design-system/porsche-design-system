@@ -5,7 +5,6 @@
     PButton,
     PButtonGroup,
     PButtonPure,
-    PButtonTile,
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
@@ -23,8 +22,8 @@
     PLink,
     PLinkPure,
     PLinkSocial,
-    PLinkTile,
     PMarque,
+    PModal,
     PModelSignature,
     PorscheDesignSystemProvider,
     PPagination,
@@ -35,8 +34,6 @@
     PSegmentedControlItem,
     PSelectWrapper,
     PSpinner,
-    PStepperHorizontal,
-    PStepperHorizontalItem,
     PSwitch,
     PTable,
     PTableBody,
@@ -52,6 +49,7 @@
     PTagDismissible,
     PText,
     PTextareaWrapper,
+    PFieldset,
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
@@ -75,13 +73,17 @@
       </div>
 
       <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-      <div class="playground light" title="should render default banner">
+      <div class="playground light playground--banner" title="should render default banner">
         <PBanner>
           <span slot="title">Default banner component</span>
           <span slot="description">Some slotted banner description</span>
         </PBanner>
       </div>
       <!-- eslint-enable -->
+
+      <div class="playground light playground--modal" title="should render default modal">
+        <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+      </div>
 
       <div class="playground light" title="should render default inline-notification">
         <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
@@ -142,6 +144,10 @@
         <PTextareaWrapper :label="'Some label'">
           <textarea />
         </PTextareaWrapper>
+      </div>
+
+      <div class="playground light" title="should render default fieldset">
+        <PFieldset :label="'Some label'"></PFieldset>
       </div>
 
       <div class="playground light" title="should render default fieldset-wrapper">
@@ -275,20 +281,6 @@
         <PSwitch>Some label</PSwitch>
       </div>
 
-      <div class="playground light" title="should render default stepper-horizontal">
-        <PStepperHorizontal>
-          <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
-        </PStepperHorizontal>
-      </div>
-
       <div class="playground light" title="should render default scroller">
         <PScroller>
           <button>Default</button>
@@ -306,28 +298,6 @@
           <button>Default</button>
           <button>Default</button>
         </PScroller>
-      </div>
-
-      <div class="playground light" title="should render default link-tile">
-        <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
-          <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            width="50"
-            height="50"
-            alt="Beach"
-          />
-        </PLinkTile>
-      </div>
-
-      <div class="playground light" title="should render default button-tile">
-        <PButtonTile :label="'Some Label'" :description="'Default'">
-          <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            width="50"
-            height="50"
-            alt="Beach"
-          />
-        </PButtonTile>
       </div>
 
       <div class="playground light" title="should render default carousel">
@@ -354,13 +324,17 @@
         </div>
 
         <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-        <div class="playground light" title="should render default banner with custom prefix">
+        <div class="playground light playground--banner" title="should render default banner with custom prefix">
           <PBanner>
             <span slot="title">Prefixed banner component</span>
             <span slot="description">Some slotted banner description</span>
           </PBanner>
         </div>
         <!-- eslint-enable -->
+
+        <div class="playground light playground--modal" title="should render default modal with custom prefix">
+          <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+        </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
@@ -421,6 +395,10 @@
           <PTextareaWrapper :label="'Some label'">
             <textarea />
           </PTextareaWrapper>
+        </div>
+
+        <div class="playground light" title="should render default fieldset with custom prefix">
+          <PFieldset :label="'Some label'"></PFieldset>
         </div>
 
         <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
@@ -554,20 +532,6 @@
           <PSwitch>Some label</PSwitch>
         </div>
 
-        <div class="playground light" title="should render default stepper-horizontal with custom prefix">
-          <PStepperHorizontal>
-            <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
-          </PStepperHorizontal>
-        </div>
-
         <div class="playground light" title="should render default scroller with custom prefix">
           <PScroller>
             <button>Default</button>
@@ -585,28 +549,6 @@
             <button>Default</button>
             <button>Default</button>
           </PScroller>
-        </div>
-
-        <div class="playground light" title="should render default link-tile with custom prefix">
-          <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-              width="50"
-              height="50"
-              alt="Beach"
-            />
-          </PLinkTile>
-        </div>
-
-        <div class="playground light" title="should render default button-tile with custom prefix">
-          <PButtonTile :label="'Some Label'" :description="'Default'">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-              width="50"
-              height="50"
-              alt="Beach"
-            />
-          </PButtonTile>
         </div>
 
         <div class="playground light" title="should render default carousel with custom prefix">
@@ -649,15 +591,15 @@
     background: deepskyblue;
   }
 
-  p-link-tile,
-  p-button-tile,
-  my-prefix-p-link-tile,
-  my-prefix-p-button-tile {
-    max-width: 400px;
+  .playground--banner,
+  .playground--modal {
+    transform: translate3d(0, 0, 0);
+    height: 10rem;
+    padding: 0;
+    margin: 1rem;
   }
 
-  p-banner,
-  my-prefix-p-banner {
-    --p-banner-position-type: static;
+  .playground--modal {
+    height: 20rem;
   }
 </style>

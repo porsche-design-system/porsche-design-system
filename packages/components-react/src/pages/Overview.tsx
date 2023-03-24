@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PButtonTile, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 
 export const OverviewPage = (): JSX.Element => {
   const style = `
@@ -30,16 +30,11 @@ export const OverviewPage = (): JSX.Element => {
       background: deepskyblue;
     }
 
-    p-link-tile,
-    p-button-tile,
-    my-prefix-p-link-tile,
-    my-prefix-p-button-tile {
-      max-width: 400px;
-    }
-
-    p-banner,
-    my-prefix-p-banner {
-      --p-banner-position-type: static;
+    .playground--banner {
+      transform: translate3d(0, 0, 0);
+      height: 10rem;
+      padding: 0;
+      margin: 1rem;
     }
   `;
 
@@ -61,7 +56,7 @@ export const OverviewPage = (): JSX.Element => {
             <PDisplay>Some Display</PDisplay>
           </div>
 
-          <div className="playground light" title="should render default banner">
+          <div className="playground light playground--banner" title="should render default banner">
             <PBanner>
               <span slot="title">Default banner component</span>
               <span slot="description">Some slotted banner description</span>
@@ -169,10 +164,6 @@ export const OverviewPage = (): JSX.Element => {
             <PMarque />
           </div>
 
-          <div className="playground light" title="should render default wordmark">
-            <PWordmark />
-          </div>
-
           <div className="playground light" title="should render default model-signature">
             <PModelSignature />
           </div>
@@ -260,20 +251,6 @@ export const OverviewPage = (): JSX.Element => {
             <PSwitch>Some label</PSwitch>
           </div>
 
-          <div className="playground light" title="should render default stepper-horizontal">
-            <PStepperHorizontal>
-              <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
-              <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
-            </PStepperHorizontal>
-          </div>
-
           <div className="playground light" title="should render default scroller">
             <PScroller>
               <button>Default</button>
@@ -291,28 +268,6 @@ export const OverviewPage = (): JSX.Element => {
               <button>Default</button>
               <button>Default</button>
             </PScroller>
-          </div>
-
-          <div className="playground light" title="should render default link-tile">
-            <PLinkTile href="#" label="Some Label" description="Default">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-                width={50}
-                height={50}
-                alt="Beach"
-              />
-            </PLinkTile>
-          </div>
-
-          <div className="playground light" title="should render default button-tile">
-            <PButtonTile label="Some Label" description="Default">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-                width={50}
-                height={50}
-                alt="Beach"
-              />
-            </PButtonTile>
           </div>
 
           <div className="playground light" title="should render default carousel">
@@ -338,7 +293,7 @@ export const OverviewPage = (): JSX.Element => {
               <PDisplay>Some Display</PDisplay>
             </div>
 
-            <div className="playground light" title="should render default banner with custom prefix">
+            <div className="playground light playground--banner" title="should render default banner with custom prefix">
               <PBanner>
                 <span slot="title">Prefixed banner component</span>
                 <span slot="description">Some slotted banner description</span>
@@ -449,10 +404,6 @@ export const OverviewPage = (): JSX.Element => {
               <PMarque />
             </div>
 
-            <div className="playground light" title="should render default wordmark with custom prefix">
-              <PWordmark />
-            </div>
-
             <div className="playground light" title="should render default model-signature with custom prefix">
               <PModelSignature />
             </div>
@@ -540,20 +491,6 @@ export const OverviewPage = (): JSX.Element => {
               <PSwitch>Some label</PSwitch>
             </div>
 
-            <div className="playground light" title="should render default stepper-horizontal with custom prefix">
-              <PStepperHorizontal>
-                <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
-                <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
-              </PStepperHorizontal>
-            </div>
-
             <div className="playground light" title="should render default scroller with custom prefix">
               <PScroller>
                 <button>Default</button>
@@ -571,28 +508,6 @@ export const OverviewPage = (): JSX.Element => {
                 <button>Default</button>
                 <button>Default</button>
               </PScroller>
-            </div>
-
-            <div className="playground light" title="should render default link-tile with custom prefix">
-              <PLinkTile href="#" label="Some Label" description="Default">
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-                  width={50}
-                  height={50}
-                  alt="Beach"
-                />
-              </PLinkTile>
-            </div>
-
-            <div className="playground light" title="should render default button-tile with custom prefix">
-              <PButtonTile label="Some Label" description="Default">
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-                  width={50}
-                  height={50}
-                  alt="Beach"
-                />
-              </PButtonTile>
             </div>
 
             <div className="playground light" title="should render default carousel with custom prefix">

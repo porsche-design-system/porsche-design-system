@@ -30,7 +30,7 @@ JavaScript styles can be imported by
 
 #### SCSS
 
-SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`
+SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles' as *;`
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
  At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.

@@ -150,6 +150,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <span></span>
       <span></span>
       <span></span>
+      <span></span>
+      <span></span>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
