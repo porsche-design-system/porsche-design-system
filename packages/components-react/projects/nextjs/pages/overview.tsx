@@ -1,9 +1,13 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
+    body {
+      overflow: auto !important;
+    }
+
     p-flex-item > p,
     my-prefix-p-flex-item > p,
     p-grid-item > p,
@@ -31,11 +35,16 @@ const OverviewPage: NextPage = (): JSX.Element => {
       background: deepskyblue;
     }
 
-    .playground--banner {
+    .playground--banner,
+    .playground--modal {
       transform: translate3d(0, 0, 0);
       height: 10rem;
       padding: 0;
       margin: 1rem;
+    }
+
+    .playground--modal {
+      height: 20rem;
     }
   `;
 
@@ -62,6 +71,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
               <span slot="title">Default banner component</span>
               <span slot="description">Some slotted banner description</span>
             </PBanner>
+          </div>
+
+          <div className="playground light playground--modal" title="should render default modal">
+            <PModal heading="Heading" open={true}>Some Content</PModal>
           </div>
 
           <div className="playground light" title="should render default inline-notification">
@@ -129,6 +142,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
             <PFieldset label="Some label" />
           </div>
 
+          <div className="playground light" title="should render default fieldset-wrapper">
+            <PFieldsetWrapper label="Some label" />
+          </div>
+
           <div className="playground light" title="should render default content-wrapper">
             <PContentWrapper>
               <p>Some content</p>
@@ -163,6 +180,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default marque">
             <PMarque />
+          </div>
+
+          <div className="playground light" title="should render default wordmark">
+            <PWordmark />
           </div>
 
           <div className="playground light" title="should render default model-signature">
@@ -301,6 +322,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
               </PBanner>
             </div>
 
+            <div className="playground light playground--modal" title="should render default modal with custom prefix">
+              <PModal heading="Heading" open={true}>Some Content</PModal>
+            </div>
+
             <div className="playground light" title="should render default inline-notification with custom prefix">
               <PInlineNotification
                 heading="Some heading"
@@ -369,6 +394,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
               <PFieldset label="Some label" />
             </div>
 
+            <div className="playground light" title="should render default fieldset-wrapper with custom prefix">
+              <PFieldsetWrapper label="Some label" />
+            </div>
+
             <div className="playground light" title="should render default content-wrapper with custom prefix">
               <PContentWrapper>
                 <p>Some content</p>
@@ -403,6 +432,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default marque with custom prefix">
               <PMarque />
+            </div>
+
+            <div className="playground light" title="should render default wordmark with custom prefix">
+              <PWordmark />
             </div>
 
             <div className="playground light" title="should render default model-signature with custom prefix">
