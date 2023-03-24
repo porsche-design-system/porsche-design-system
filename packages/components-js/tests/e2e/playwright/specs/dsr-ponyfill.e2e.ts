@@ -19,7 +19,7 @@ export const setPageWithContent = async (page: Page): Promise<void> => {
   </head>
   <body>
     <p-button>
-      <template shadowrootmode="open">
+      <template shadowroot="open" shadowrootmode="open">
         <style>
           button {
             color: rgb(9, 1, 1);
