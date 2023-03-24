@@ -37,6 +37,8 @@ export const ContentWrapperPage = (): JSX.Element => {
         <span />
         <span />
         <span />
+        <span />
+        <span />
       </div>
 
       <div title="should render with width 'fluid' (desktop: 16 columns)">

@@ -30,6 +30,8 @@ import { ToastManager } from '@porsche-design-system/components-angular';
       <span></span>
       <span></span>
       <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="playground light" title="should render toast info on light background">

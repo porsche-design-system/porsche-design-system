@@ -59,7 +59,7 @@ it.each(components)('should have no visual regression for scaled component %s', 
           if (component === 'popover') {
             await openPopoversAndHighlightSpacer(page);
           }
-          if (component === 'modal') {
+          if (['modal', 'banner'].includes(component)) {
             await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
           }
         },

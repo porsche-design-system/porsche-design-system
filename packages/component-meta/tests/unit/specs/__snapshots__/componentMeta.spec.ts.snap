@@ -83,10 +83,10 @@ exports[`should match snapshot 1`] = `
       "state": [
         "neutral",
       ],
-      "width": [
-        "fluid",
-      ],
     },
+    "deprecatedProps": [
+      "width",
+    ],
     "eventNames": [
       "dismiss",
     ],

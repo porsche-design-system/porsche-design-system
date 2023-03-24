@@ -1,16 +1,4 @@
-import {
-  getAnimationIn,
-  getAnimationOut,
-  getBoxShadow,
-  getKeyframesMobile,
-  KeyframesDirection,
-} from './banner-styles-shared';
-
-describe('getBoxShadow()', () => {
-  it('should return correct JssStyle', () => {
-    expect(getBoxShadow()).toMatchSnapshot();
-  });
-});
+import { getAnimationIn, getAnimationOut, getKeyframesMobile, KeyframesDirection } from './banner-styles-shared';
 
 describe('getAnimationIn()', () => {
   it.each<string[]>([

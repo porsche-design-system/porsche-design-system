@@ -12,8 +12,8 @@ component is best for a particular scenario.
 
 ## Basic implementation
 
-The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "
-Custom styling" section.
+The `p-banner` component is positioned fixed above the page content by default. For personal adjustments, go to " Custom
+styling" section.
 
 <p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
   Following state has been deprecated and will be removed with the next major release: "neutral".
@@ -42,16 +42,9 @@ If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 
 ## Width
 
-The `p-banner` behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with
-your layout.
-
 <p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
-Following state has been deprecated and will be removed with the next major release: "fluid".
+This property is deprecated and has no effect anymore. Instead, the component is aligned with Porsche Grid "extended" by default.
 </p-inline-notification>
-
-<Playground :markup="widthMarkup" :config="config">
-  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
-</Playground>
 
 ## Example with user interaction
 
@@ -70,7 +63,6 @@ The `p-banner` component has some values which can be overwritten by CSS Custom 
 
 ```scss
 // default CSS variables
---p-banner-position-type: fixed;
 --p-banner-position-top: p-px-to-rem(56px);
 --p-banner-position-bottom: p-px-to-rem(56px);
 
@@ -84,7 +76,7 @@ p-banner {
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { componentsReady } from '@porsche-design-system/components-js';
-import { BANNER_STATES, BANNER_STATES_DEPRECATED, BANNER_WIDTHS, BANNER_WIDTHS_DEPRECATED } from './banner-utils'; 
+import { BANNER_STATES, BANNER_STATES_DEPRECATED } from './banner-utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -107,8 +99,6 @@ export default class Code extends Vue {
   <span slot="description">Some description.</span>
 </p-banner>`;
 
-  width = 'basic';
-  widths = BANNER_WIDTHS.map(item => BANNER_WIDTHS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get widthMarkup() {
     return `<p-banner width="${this.width}">
   <span slot="heading">Some heading</span>
@@ -142,7 +132,8 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  :deep(.demo p-banner) {
-    --p-banner-position-type: static;
+  :deep(.demo) {
+    transform: translate3d(0, 0, 0);
+    height: 10rem;
   }
 </style>

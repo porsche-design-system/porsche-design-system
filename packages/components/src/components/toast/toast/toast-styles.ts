@@ -1,11 +1,11 @@
-import { getMediaQueryMin, gridSafeZoneBase } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles-shared';
 
-const toastPositionBottomVarPublic = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
-const toastPositionBottomVarInternal = '--p-internal-toast-position-bottom';
+const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
+const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
 export const toastCloseClassName = 'close';
 
 export const getComponentCss = (): string => {
@@ -13,24 +13,24 @@ export const getComponentCss = (): string => {
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
-        left: gridSafeZoneBase,
-        right: gridSafeZoneBase,
+        left: gridExtendedOffsetBase,
+        right: gridExtendedOffsetBase,
         // Needs a not overridable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
-        [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, 56px)`,
-        bottom: `var(${toastPositionBottomVarInternal})`,
+        [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 56px)`,
+        bottom: `var(${cssVariablePositionBottomInternal})`,
         maxWidth: '42rem',
         zIndex: TOAST_Z_INDEX,
         [getMediaQueryMin('s')]: {
           left: '64px',
           right: 'auto',
-          [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, 64px)`,
-          bottom: `var(${toastPositionBottomVarInternal})`,
+          [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 64px)`,
+          bottom: `var(${cssVariablePositionBottomInternal})`,
         },
         ...hostHiddenStyles,
       }),
-      '@keyframes in': getKeyframesMobile('in', toastPositionBottomVarInternal),
-      '@keyframes out': getKeyframesMobile('out', toastPositionBottomVarInternal),
+      '@keyframes in': getKeyframesMobile('in', cssVariablePositionBottomInternal),
+      '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },
     hydrated: getAnimationIn(
       'in',

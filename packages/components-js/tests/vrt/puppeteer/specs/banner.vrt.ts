@@ -14,7 +14,13 @@ import {
 } from '@porsche-design-system/shared/testing';
 
 it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner')).toBeFalsy();
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner', {
+      scenario: async (page) => {
+        await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
+      },
+    })
+  ).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
@@ -26,7 +32,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const head = `
         <style>
           body { display: grid; grid-template-columns: repeat(2, 50%); }
-          .playground p-banner { --p-banner-position-type: static; }
+          .playground { transform: translate3d(0, 0, 0); height: 20rem; }
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `

@@ -7,7 +7,7 @@ import {
   borderWidthBase,
   frostedGlassStyle,
   getMediaQueryMin,
-  gridSafeZoneBase,
+  gridExtendedOffsetBase,
   headingLargeStyle,
   themeDarkBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
@@ -38,10 +38,10 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         borderRadius: 0,
       }
     : {
-        minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
-        maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
+        minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
+        maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
-        margin: `clamp(16px, 7vh, 192px) ${gridSafeZoneBase}`,
+        margin: `clamp(16px, 7vh, 192px) ${gridExtendedOffsetBase}`,
         borderRadius: borderRadiusMedium,
       };
 };
@@ -165,7 +165,7 @@ export const getComponentCss = (
           border: 0,
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridSafeZoneBase}`,
+          margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
         },
       },
       buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any
