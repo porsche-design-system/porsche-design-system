@@ -830,6 +830,7 @@ exports[`should render dsr component for PAccordion 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -921,6 +922,7 @@ button::before {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -978,6 +980,7 @@ exports[`should render dsr component for PBanner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1076,6 +1079,7 @@ exports[`should render dsr component for PBanner 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -1132,6 +1136,7 @@ h5,p {
         >
           <template
             shadowroot="open"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1187,6 +1192,7 @@ img {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1257,6 +1263,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -1313,6 +1320,7 @@ exports[`should render dsr component for PButton 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1380,6 +1388,7 @@ exports[`should render dsr component for PButtonGroup 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1419,6 +1428,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1489,6 +1499,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -1540,6 +1551,7 @@ exports[`should render dsr component for PButtonTile 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1639,6 +1651,7 @@ p {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1710,6 +1723,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1854,6 +1868,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1924,6 +1939,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -1971,6 +1987,7 @@ img {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -2041,6 +2058,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -2120,6 +2138,7 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2210,6 +2229,7 @@ exports[`should render dsr component for PContentWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2251,6 +2271,7 @@ exports[`should render dsr component for PDisplay 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2304,6 +2325,7 @@ exports[`should render dsr component for PDivider 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2333,6 +2355,7 @@ exports[`should render dsr component for PFieldset 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2373,6 +2396,7 @@ exports[`should render dsr component for PFieldsetWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2413,6 +2437,7 @@ exports[`should render dsr component for PFlex 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2439,6 +2464,7 @@ exports[`should render dsr component for PFlexItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2465,6 +2491,7 @@ exports[`should render dsr component for PGrid 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2492,6 +2519,7 @@ exports[`should render dsr component for PGridItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2518,6 +2546,7 @@ exports[`should render dsr component for PHeading 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2571,6 +2600,7 @@ exports[`should render dsr component for PHeadline 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2624,6 +2654,7 @@ exports[`should render dsr component for PIcon 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2666,6 +2697,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2722,6 +2754,7 @@ h5,p {
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -2777,6 +2810,7 @@ img {
       <template
         shadowroot="open"
         shadowrootdelegatesfocus="true"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -2847,6 +2881,7 @@ img {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -2901,6 +2936,7 @@ exports[`should render dsr component for PLink 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2985,6 +3021,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3069,6 +3106,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -3120,6 +3158,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3196,6 +3235,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -3247,6 +3287,7 @@ exports[`should render dsr component for PLinkTile 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3359,6 +3400,7 @@ p {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -3744,6 +3786,7 @@ exports[`should render dsr component for PMarque 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3825,6 +3868,7 @@ exports[`should render dsr component for PModal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3921,6 +3965,7 @@ h2 {
         <template
           shadowroot="open"
           shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -3991,6 +4036,7 @@ h2 {
             >
               <template
                 shadowroot="open"
+                shadowrootmode="open"
               >
                 <style>
                   :host {
@@ -4046,6 +4092,7 @@ exports[`should render dsr component for PModelSignature 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4076,6 +4123,7 @@ exports[`should render dsr component for PPagination 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4172,6 +4220,7 @@ span[aria-disabled] {
             >
               <template
                 shadowroot="open"
+                shadowrootmode="open"
               >
                 <style>
                   :host {
@@ -4230,6 +4279,7 @@ img {
             >
               <template
                 shadowroot="open"
+                shadowrootmode="open"
               >
                 <style>
                   :host {
@@ -4279,6 +4329,7 @@ exports[`should render dsr component for PPopover 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4404,6 +4455,7 @@ button::before {
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -4455,6 +4507,7 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4542,6 +4595,7 @@ exports[`should render dsr component for PScroller 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4684,6 +4738,7 @@ button {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -4734,6 +4789,7 @@ img {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -4783,6 +4839,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4808,6 +4865,7 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4874,6 +4932,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4978,6 +5037,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -5026,6 +5086,7 @@ exports[`should render dsr component for PSpinner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5132,6 +5193,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5152,6 +5214,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -5294,6 +5357,7 @@ button {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -5344,6 +5408,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -5397,6 +5462,7 @@ exports[`should render dsr component for PStepperHorizontalItem 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5487,6 +5553,7 @@ exports[`should render dsr component for PSwitch 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5586,6 +5653,7 @@ exports[`should render dsr component for PTable 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5687,6 +5755,7 @@ exports[`should render dsr component for PTableBody 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5709,6 +5778,7 @@ exports[`should render dsr component for PTableCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5736,6 +5806,7 @@ exports[`should render dsr component for PTableHead 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5759,6 +5830,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5788,6 +5860,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5810,6 +5883,7 @@ exports[`should render dsr component for PTableRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5832,6 +5906,7 @@ exports[`should render dsr component for PTabs 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5849,6 +5924,7 @@ exports[`should render dsr component for PTabs 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -5926,6 +6002,7 @@ exports[`should render dsr component for PTabs 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -6068,6 +6145,7 @@ button {
                   >
                     <template
                       shadowroot="open"
+                      shadowrootmode="open"
                     >
                       <style>
                         :host {
@@ -6118,6 +6196,7 @@ img {
                   >
                     <template
                       shadowroot="open"
+                      shadowrootmode="open"
                     >
                       <style>
                         :host {
@@ -6183,6 +6262,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6260,6 +6340,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -6402,6 +6483,7 @@ button {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -6452,6 +6534,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -6506,6 +6589,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6538,6 +6622,7 @@ exports[`should render dsr component for PTag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6601,6 +6686,7 @@ exports[`should render dsr component for PTagDismissible 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6665,6 +6751,7 @@ button {
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -6711,6 +6798,7 @@ exports[`should render dsr component for PText 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6767,6 +6855,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6885,6 +6974,7 @@ exports[`should render dsr component for PTextList 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6926,6 +7016,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6955,6 +7046,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -7051,6 +7143,7 @@ exports[`should render dsr component for PToast 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
