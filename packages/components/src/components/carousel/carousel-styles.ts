@@ -1,7 +1,6 @@
-import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
@@ -17,10 +16,10 @@ import {
   fontSizeTextSmall,
   getMediaQueryMax,
   getMediaQueryMin,
+  gridBasicOffset,
+  gridBasicOffsetBase,
+  gridExtendedOffset,
   gridGap,
-  gridSafeZoneBase,
-  gridSafeZoneXXL,
-  gridWidthMax,
   headingXLargeStyle,
   spacingFluidMedium,
   spacingFluidXSmall,
@@ -43,26 +42,9 @@ const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
 const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
 
-// we don't need to abstract spacing definitions since component content-wrapper is deprecated and will be removed soon
-const gridColumn1FrS = `calc((100% - ${gridSafeZoneBase} * 2 - ${gridGap} * 13) / 14)`;
-const gridColumn1FrXXL = `calc((min(100%, ${gridWidthMax}) - ${gridSafeZoneXXL} * 2 - ${gridGap} * 13) / 14)`;
-
-const spacingMap: { [key in CarouselWidth]: JssStyle } = {
-  basic: {
-    padding: `0 ${gridSafeZoneBase}`,
-    [mediaQueryS]: {
-      padding: `0 calc(${gridSafeZoneBase} + ${gridGap} + ${gridColumn1FrS})`,
-    },
-    [mediaQueryXXL]: {
-      padding: `0 calc(${gridSafeZoneXXL} + ${gridGap} + ${gridColumn1FrXXL})`,
-    },
-  },
-  extended: {
-    padding: `0 ${gridSafeZoneBase}`,
-    [mediaQueryXXL]: {
-      padding: `0 ${gridSafeZoneXXL}`,
-    },
-  },
+const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: string } } = {
+  basic: gridBasicOffset,
+  extended: gridExtendedOffset,
 };
 
 export const getComponentCss = (
@@ -81,10 +63,6 @@ export const getComponentCss = (
         display: 'flex',
         gap: spacingFluidMedium,
         flexDirection: 'column',
-        maxWidth: gridWidthMax,
-        // relevant for viewport width > 2560px
-        paddingLeft: `calc(50% - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
-        paddingRight: `calc(50% - ${gridWidthMax} / 2)`, // padding instead of margin to be able to set a background color
         boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
         ...hostHiddenStyles,
       }),
@@ -112,17 +90,20 @@ export const getComponentCss = (
     },
     header: {
       display: 'grid',
-      ...mergeDeep(spacingMap[width], {
-        [mediaQueryS]: {
-          fontFamily, // relevant for button group width calculation, which is based on ex unit
-          fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
-          columnGap: spacingStaticMedium,
-          gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
-          ...(isHeaderAlignCenter && {
-            justifyItems: 'center', // relevant when max-width of heading or description is reached
-          }),
-        },
-      }),
+      padding: `0 ${spacingMap[width].base}`,
+      [mediaQueryS]: {
+        fontFamily, // relevant for button group width calculation, which is based on ex unit
+        fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
+        columnGap: spacingStaticMedium,
+        gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
+        ...(isHeaderAlignCenter && {
+          justifyItems: 'center', // relevant when max-width of heading or description is reached
+        }),
+        padding: `0 ${spacingMap[width].s}`,
+      },
+      [mediaQueryXXL]: {
+        padding: `0 ${spacingMap[width].xxl}`,
+      },
     },
     nav: {
       display: 'none',
@@ -143,9 +124,15 @@ export const getComponentCss = (
         cursor: 'grab',
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
-          ...spacingMap[width],
+          padding: `0 ${spacingMap[width].base}`,
           [getMediaQueryMax('xs')]: {
-            paddingRight: `calc(${gridSafeZoneBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
+            paddingRight: `calc(${gridBasicOffsetBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
+          },
+          [mediaQueryS]: {
+            padding: `0 ${spacingMap[width].s}`,
+          },
+          [mediaQueryXXL]: {
+            padding: `0 ${spacingMap[width].xxl}`,
           },
         }),
         '&--draggable': {

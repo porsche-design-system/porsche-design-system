@@ -10,6 +10,9 @@ export default function Index(): JSX.Element {
         <li>
           <Link to="/overview">Overview</Link>
         </li>
+        <li>
+          <Link to="/overview-flaky">Overview Flaky</Link>
+        </li>
       </ul>
     </main>
   );

@@ -30,6 +30,8 @@ export const ToastBasicPage = (): JSX.Element => {
         <span />
         <span />
         <span />
+        <span />
+        <span />
       </div>
 
       <div className="playground light" title="should render toast info on light background">

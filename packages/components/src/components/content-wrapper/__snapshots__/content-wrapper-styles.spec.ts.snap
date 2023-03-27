@@ -8,22 +8,18 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
+  padding: 0 max(22px, 10.625vw - 12px);
 }
 @media(min-width:760px) {
   .root {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
 }
 
 @media(min-width:1920px) {
   .root {
-    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
 }
 "
@@ -37,16 +33,18 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
+  padding: 0 max(22px, 10.625vw - 12px);
 }
+@media(min-width:760px) {
+  .root {
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+  }
+}
+
 @media(min-width:1920px) {
   .root {
-    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
 }
 "
@@ -60,12 +58,8 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  padding: 0 max(0px, (100% - 2560px) / 2);
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
+  padding: 0 max(0px, 50vw - 2560px / 2);
 }"
 `;
 
@@ -77,12 +71,8 @@ exports[`getComponentCss() should return correct css for width: full 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  padding: 0 max(0px, (100% - 2560px) / 2);
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
+  padding: 0 max(0px, 50vw - 2560px / 2);
 }"
 `;
 
@@ -94,22 +84,18 @@ exports[`getComponentCss() should return correct css for width: narrow 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
+  padding: 0 max(22px, 10.625vw - 12px);
 }
 @media(min-width:760px) {
   .root {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) * 3 + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 3);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4);
   }
 }
 
 @media(min-width:1920px) {
   .root {
-    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) * 3 + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14) * 3);
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4);
   }
 }
 "

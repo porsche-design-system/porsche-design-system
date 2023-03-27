@@ -57,6 +57,7 @@ export const getIndexHtml = (
     ${porscheDesignSystemLoaderScript}
     ${externalScripts}
     <style>
+      html, body { margin: 0; padding: 0; }
       ${globalStyles}
     </style>
   </head>

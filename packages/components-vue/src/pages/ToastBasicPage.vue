@@ -20,6 +20,8 @@
     <span></span>
     <span></span>
     <span></span>
+    <span></span>
+    <span></span>
   </div>
 
   <div class="playground light">
