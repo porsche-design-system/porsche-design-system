@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Table` matches new design language
+- `Table` matches new design language [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
 
 #### Added
 
