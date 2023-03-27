@@ -230,7 +230,7 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
   <p-model-signature class="model hydrated">
   </p-model-signature>
   <div class="content">
-    <a href="#" target="_self" class="link-overlay" tabindex="-1" aria-hidden="true">
+    <a class="link-overlay" href="#" target="_self" tabindex="-1" aria-hidden="true">
     </a>
     <h2 class="heading">
       value</h2>
