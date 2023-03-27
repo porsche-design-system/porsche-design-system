@@ -2,7 +2,6 @@ import type { Styles } from 'jss';
 import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../utils';
 import type { LinkTileWeight } from '../../components/link-tile/link-tile-utils';
 import type { BreakpointCustomizable } from '../../types';
-import { getThemedTypographyColor } from '../text-icon-styles';
 import { pxToRemWithUnit } from '../';
 import {
   fontSizeTextMedium,
@@ -36,7 +35,6 @@ export const getButtonLinkTileStyles = (
     ...mergeDeep(getTileBaseStyles(aspectRatio, isDisabled), {
       '@global': {
         p: {
-          color: getThemedTypographyColor('dark', 'primary'), // TODO: why not put the color on the .root class in the base styles
           maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
           margin: 0,
           ...textLargeStyle,

@@ -140,7 +140,7 @@ export class LinkTile implements ITileProps {
           <slot />
         </div>
         <div class="content">
-          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
+          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true" />
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>

@@ -1,18 +1,18 @@
-import { getCss, mergeDeep } from '../../utils';
+import type { JssStyle } from 'jss';
+import { getCss } from '../../utils';
 import { getButtonLinkTileStyles } from '../../styles/tile/button-link-tile-styles';
-import { addImportantToRule } from '../../styles';
 
 export const getComponentCss = (
   isDisabledOrLoading: boolean,
   ...args: Parameters<typeof getButtonLinkTileStyles>
 ): string => {
-  return getCss(
-    mergeDeep(getButtonLinkTileStyles(...args), {
-      '@global': {
-        ':host': {
-          cursor: addImportantToRule(isDisabledOrLoading ? 'not-allowed' : 'pointer'),
-        },
-      },
-    })
-  );
+  const buttonLinkTileStyles = getButtonLinkTileStyles(...args);
+
+  return getCss({
+    ...buttonLinkTileStyles,
+    root: {
+      ...(buttonLinkTileStyles.root as JssStyle),
+      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+    },
+  });
 };

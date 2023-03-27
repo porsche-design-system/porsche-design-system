@@ -7,11 +7,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: "1:1", wei
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-}
 ::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
@@ -28,16 +23,17 @@ h2,h3,h4,h5,h6 {
   margin: 0 !important;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 100%;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  transform: translateZ(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -47,10 +43,10 @@ h2,h3,h4,h5,h6 {
   position: absolute;
   left: 0;
   right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
   display: flex;
+  justify-items: start;
+  gap: 16px;
+  border-radius: 8px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -62,7 +58,6 @@ h2,h3,h4,h5,h6 {
   left: clamp(16px, 1.25vw + 12px, 36px);
 }
 .heading {
-  color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -82,7 +77,6 @@ h2,h3,h4,h5,h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -91,8 +85,8 @@ h2,h3,h4,h5,h6 {
 }
 
 @media(hover:hover) {
-  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05) !important;
+  .root:hover .image-container {
+    transform: scale3d(1.05,1.05,1.05);
   }
 }
 "
@@ -105,11 +99,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: "3:4", wei
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-}
 ::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
@@ -126,16 +115,17 @@ h2,h3,h4,h5,h6 {
   margin: 0 !important;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 133.33%;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  transform: translateZ(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -145,10 +135,10 @@ h2,h3,h4,h5,h6 {
   position: absolute;
   left: 0;
   right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
   display: flex;
+  justify-items: start;
+  gap: 16px;
+  border-radius: 8px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -160,7 +150,6 @@ h2,h3,h4,h5,h6 {
   left: clamp(16px, 1.25vw + 12px, 36px);
 }
 .heading {
-  color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -168,7 +157,6 @@ h2,h3,h4,h5,h6 {
   font-weight: 600;
 }
 .description {
-  color: #FBFCFF;
   margin: -12px 0 0 ;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -187,7 +175,6 @@ h2,h3,h4,h5,h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -196,8 +183,8 @@ h2,h3,h4,h5,h6 {
 }
 
 @media(hover:hover) {
-  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05) !important;
+  .root:hover .image-container {
+    transform: scale3d(1.05,1.05,1.05);
   }
 }
 "
@@ -210,11 +197,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: "4:3", wei
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-}
 ::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
@@ -231,16 +213,17 @@ h2,h3,h4,h5,h6 {
   margin: 0 !important;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 75%;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  transform: translateZ(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -250,10 +233,10 @@ h2,h3,h4,h5,h6 {
   position: absolute;
   left: 0;
   right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
   display: flex;
+  justify-items: start;
+  gap: 16px;
+  border-radius: 8px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -265,7 +248,6 @@ h2,h3,h4,h5,h6 {
   left: clamp(16px, 1.25vw + 12px, 36px);
 }
 .heading {
-  color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -273,7 +255,6 @@ h2,h3,h4,h5,h6 {
   font-weight: 600;
 }
 .description {
-  color: #FBFCFF;
   margin: -12px 0 0 ;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -292,7 +273,6 @@ h2,h3,h4,h5,h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -301,8 +281,8 @@ h2,h3,h4,h5,h6 {
 }
 
 @media(hover:hover) {
-  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05) !important;
+  .root:hover .image-container {
+    transform: scale3d(1.05,1.05,1.05);
   }
 }
 "
@@ -315,11 +295,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: "9:16", we
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-}
 ::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
@@ -336,16 +311,17 @@ h2,h3,h4,h5,h6 {
   margin: 0 !important;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 177.75%;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  transform: translateZ(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -355,10 +331,10 @@ h2,h3,h4,h5,h6 {
   position: absolute;
   left: 0;
   right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
   display: flex;
+  justify-items: start;
+  gap: 16px;
+  border-radius: 8px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -370,7 +346,6 @@ h2,h3,h4,h5,h6 {
   left: clamp(16px, 1.25vw + 12px, 36px);
 }
 .heading {
-  color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -390,7 +365,6 @@ h2,h3,h4,h5,h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -399,8 +373,8 @@ h2,h3,h4,h5,h6 {
 }
 
 @media(hover:hover) {
-  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05) !important;
+  .root:hover .image-container {
+    transform: scale3d(1.05,1.05,1.05);
   }
 }
 "
@@ -413,11 +387,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: "16:9", we
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-}
 ::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
@@ -434,16 +403,17 @@ h2,h3,h4,h5,h6 {
   margin: 0 !important;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 56.25%;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  transform: translateZ(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -453,10 +423,10 @@ h2,h3,h4,h5,h6 {
   position: absolute;
   left: 0;
   right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
   display: flex;
+  justify-items: start;
+  gap: 16px;
+  border-radius: 8px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -468,7 +438,6 @@ h2,h3,h4,h5,h6 {
   left: clamp(16px, 1.25vw + 12px, 36px);
 }
 .heading {
-  color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -476,7 +445,6 @@ h2,h3,h4,h5,h6 {
   font-weight: 400;
 }
 .description {
-  color: #FBFCFF;
   margin: -12px 0 0 ;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -495,7 +463,6 @@ h2,h3,h4,h5,h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -504,8 +471,8 @@ h2,h3,h4,h5,h6 {
 }
 
 @media(hover:hover) {
-  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05) !important;
+  .root:hover .image-container {
+    transform: scale3d(1.05,1.05,1.05);
   }
 }
 "
@@ -518,11 +485,6 @@ exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-}
 ::slotted(picture) {
   position: absolute !important;
   top: 0 !important;
@@ -539,16 +501,17 @@ h2,h3,h4,h5,h6 {
   margin: 0 !important;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 100%;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
-  transform: translateZ(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -558,10 +521,10 @@ h2,h3,h4,h5,h6 {
   position: absolute;
   left: 0;
   right: 0;
-  justify-items: start;
-  border-radius: 8px;
-  gap: 16px;
   display: flex;
+  justify-items: start;
+  gap: 16px;
+  border-radius: 8px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -573,7 +536,6 @@ h2,h3,h4,h5,h6 {
   left: clamp(16px, 1.25vw + 12px, 36px);
 }
 .heading {
-  color: #FBFCFF;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -581,7 +543,6 @@ h2,h3,h4,h5,h6 {
   font-weight: 600;
 }
 .description {
-  color: #FBFCFF;
   margin: -12px 0 0 ;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -600,7 +561,6 @@ h2,h3,h4,h5,h6 {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 0;
 }
 @media(min-width:480px) {
   .root {
@@ -674,8 +634,8 @@ h2,h3,h4,h5,h6 {
 }
 
 @media(hover:hover) {
-  .root:hover ::slotted(picture), .root:hover ::slotted(img) {
-    transform: scale3d(1.05, 1.05, 1.05) !important;
+  .root:hover .image-container {
+    transform: scale3d(1.05,1.05,1.05);
   }
 }
 "

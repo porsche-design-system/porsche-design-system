@@ -123,7 +123,6 @@ export class ButtonTile implements ITileProps {
     const buttonProps = {
       theme: 'dark',
       variant: 'secondary',
-      icon: this.icon,
       iconSource: this.iconSource,
       type: this.type,
       disabled: this.disabled,
@@ -132,7 +131,7 @@ export class ButtonTile implements ITileProps {
     };
 
     const button: JSX.Element = (
-      <PrefixedTagNames.pButton {...buttonProps} key="link-or-button" class="link-or-button">
+      <PrefixedTagNames.pButton {...buttonProps} icon={this.icon} key="link-or-button" class="link-or-button">
         {this.label}
       </PrefixedTagNames.pButton>
     );

@@ -5,11 +5,10 @@ import { getButtonLinkTileStyles } from '../../styles/tile/button-link-tile-styl
 export const getComponentCss = (...args: Parameters<typeof getButtonLinkTileStyles>): string => {
   return getCss({
     ...getButtonLinkTileStyles(...args),
-    // is used for expanded click-area only
     'link-overlay': {
-      position: 'fixed', // TODO: absolute
+      // covers entire tile, used for expanded click-area only
+      position: 'fixed',
       ...getInsetJssStyle(),
-      outline: 0,
     },
   });
 };

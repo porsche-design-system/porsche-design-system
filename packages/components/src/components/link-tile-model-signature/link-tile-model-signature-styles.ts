@@ -1,7 +1,6 @@
 import type { JssStyle } from 'jss';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToRule, getInsetJssStyle } from '../../styles';
-import { getThemedTypographyColor } from '../../styles/text-icon-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
   gradientToTopStyle,
@@ -28,6 +27,7 @@ export const getComponentCss = (
   hasDescription: boolean
 ): string => {
   const tileBaseStyles = getTileBaseStyles(aspectRatio);
+
   return getCss({
     ...tileBaseStyles,
     '@global': {
@@ -38,7 +38,6 @@ export const getComponentCss = (
     },
     content: {
       ...(tileBaseStyles.content as JssStyle),
-      display: 'flex', // TODO: move to base
       flexDirection: 'column',
       bottom: 0,
       padding: `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
@@ -50,14 +49,12 @@ export const getComponentCss = (
       left: spacingFluidMedium,
     },
     heading: {
-      color: getThemedTypographyColor('dark', 'primary'), // TODO: should probably be defined on .root base styles
       margin: 0,
       ...textLargeStyle,
       ...buildResponsiveStyles(weight, (w: LinkTileModelSignatureWeight) => ({ fontWeight: getFontWeight(w) })),
     },
     ...(hasDescription && {
       description: {
-        color: getThemedTypographyColor('dark', 'primary'), // TODO: should probably be defined on .root base styles
         margin: '-12px 0 0 ', // TODO: perhaps gap should be overridden instead
         ...textSmallStyle,
       },
@@ -68,11 +65,10 @@ export const getComponentCss = (
       gap: spacingFluidSmall,
       ...buildResponsiveStyles(direction, getGroupDirectionJssStyles),
     },
-    // is used for expanded click-area only
     'link-overlay': {
-      position: 'fixed', // TODO: absolute
+      // covers entire tile, used for expanded click-area only
+      position: 'fixed',
       ...getInsetJssStyle(),
-      outline: 0,
     },
   });
 };
