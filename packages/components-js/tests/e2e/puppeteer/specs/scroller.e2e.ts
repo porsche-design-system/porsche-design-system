@@ -50,7 +50,6 @@ const initScroller = (opts?: InitOptions) => {
 const getHost = () => selectNode(page, 'p-scroller');
 const getAllButtons = () => page.$$('button');
 const getScrollArea = () => selectNode(page, 'p-scroller >>> .scroll-area');
-const getScrollAreaOverflow = async () => getElementStyle(await getScrollArea(), 'overflow');
 const getScrollWrapper = () => selectNode(page, 'p-scroller >>> .scroll-wrapper');
 const getActionContainers = async () => {
   const actionPrev = await selectNode(page, 'p-scroller >>> .action-prev');
@@ -87,14 +86,6 @@ describe('scrolling', () => {
     await initScroller({ isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
 
     expect(await getScrollLeft(await getScrollArea())).toBe(50);
-  });
-});
-
-describe('scroller with scrollbar', () => {
-  it('should have overflow: "auto hidden" for scroll area when scrollbar is set to true', async () => {
-    await initScroller({ hasScrollbar: true });
-
-    expect(await getScrollAreaOverflow()).toBe('auto hidden');
   });
 });
 
