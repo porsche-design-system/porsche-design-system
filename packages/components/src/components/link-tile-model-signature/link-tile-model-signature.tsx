@@ -75,7 +75,7 @@ export class LinkTileModelSignature {
     throwIfElementIsNotOfKind(this.host, primaryLink, 'p-link');
     throwIfElementIsNotOfKind(this.host, secondaryLink, 'p-link');
     setRequiredPropsOfSlottedLinks([primaryLink, secondaryLink]);
-    const linkEl = getLinkOrSlottedAnchorElement(primaryLink);
+    const linkEl = getLinkOrSlottedAnchorElement(primaryLink); // support for slotted a tag within p-link
 
     attachComponentCss(
       this.host,
