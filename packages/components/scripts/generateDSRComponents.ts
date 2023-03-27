@@ -357,19 +357,19 @@ $&`
           );
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
-          .replace(/.*getNamedSlotOrThrow.*/g, '')
-          .replace(/.*throwIfElementIsNotOfKind\(.*\);/g, '')
-          .replace(/primaryLink;/g, 'namedSlotChildren[0].props;')
-          .replace(/(const overlayLinkProps = \{[\s\w,]+rel,)[\s\w,'\-:]*(};)/g, '$1\n    $2')
+          .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
+          .replace(/ {4}.*throwIfElementIsNotOfKind[\s\S]+?;\n/g, '')// remove validation
+          .replace(/\bprimaryLink\b/g, 'namedSlotChildren[0].props') // rewire reference
+          .replace(/(const overlayLinkProps).+?=([\s\S]+?);/, '$1 = $2 as const;') // remove typing
           .replace(
-            /setRequiredPropsOfSlottedLinks\(\[[\w\s,]*]\);/,
+            /setRequiredPropsOfSlottedLinks.+?;/,
             `const manipulatedChildren = children.map((child) =>
       typeof child === 'object' && 'props' in child && namedSlotChildren.includes(child)
         ? { ...child, props: { ...child.props, theme: 'dark', variant: child.props.slot } }
         : child
-    );`
+    );` // manipulate p-link children
           )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       }
 
       return newFileContent;
