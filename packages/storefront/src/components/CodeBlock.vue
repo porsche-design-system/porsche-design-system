@@ -72,7 +72,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
   .code-block {

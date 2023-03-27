@@ -10,7 +10,7 @@ import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 /** array of html file names that don't get converted */
 const PAGES_TO_SKIP: string[] = ['table'];
 /** array of html file names that are converted but without route since it is maintained manually */
-const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-notifications'];
+const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-flaky', 'overview-notifications'];
 
 type Framework = 'angular' | 'react' | 'nextjs' | 'remix';
 
@@ -107,7 +107,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
 
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
-    .filter(([component]) => (framework === 'remix' ? component === 'overview' : true)) // only overview page for remix
+    .filter(([component]) => (framework === 'remix' ? ['overview', 'overview-flaky'].includes(component) : true)) // only overview page for remix
     .map(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 

@@ -152,6 +152,8 @@ const ModalPage: NextPage = (): JSX.Element => {
         <span />
         <span />
         <span />
+        <span />
+        <span />
       </div>
     </PorscheDesignSystemProvider>
   );

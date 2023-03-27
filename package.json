@@ -80,6 +80,8 @@
     "build:components-js-prod": "yarn --cwd ./packages/components-js build-prod && yarn build:assetsCopyComponentsOnly",
     "build:components-angular": "yarn --cwd ./packages/components-angular build",
     "build:components-react": "yarn --cwd ./packages/components-react build",
+    "build:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs build-app",
+    "build:components-react/remix": "yarn --cwd ./packages/components-react/projects/remix build-app",
     "build:components-vue": "yarn --cwd ./packages/components-vue build",
     "build:shared": "yarn --cwd ./packages/shared build",
     "build:storefront": "yarn --cwd ./packages/storefront build",

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-styles-hover-example',
   styles: [
     `
-      @import '@porsche-design-system/components-js/styles/scss';
+      @use '@porsche-design-system/components-js/styles' as *;
 
       // Wrapper
       .wrapper {

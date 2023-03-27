@@ -109,7 +109,8 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }
@@ -2023,7 +2024,8 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }

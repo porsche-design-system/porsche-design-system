@@ -11,6 +11,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- Styles: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  - `gridWide`
+  - `gridWideColumnStart` and `pds-grid-wide-column-start`
+  - `gridWideColumnEnd` and `pds-grid-wide-column-end`
+  - `gridNarrowOffset`, `gridNarrowOffsetBase`, `gridNarrowOffsetS`, `gridNarrowOffsetXXL` and
+    `$pds-grid-narrow-offset-base`, `$pds-grid-narrow-offset-s`, `$pds-grid-narrow-offset-xxl`
+  - `gridBasicOffset`, `gridBasicOffsetBase`, `gridBasicOffsetS`, `gridBasicOffsetXXL` and
+    `$pds-grid-basic-offset-base`, `$pds-grid-basic-offset-s`, `$pds-grid-basic-offset-xxl`
+  - `gridExtendedOffset`, `gridExtendedOffsetBase`, `gridExtendedOffsetS`, `gridExtendedOffsetXXL` and
+    `$pds-grid-extended-offset-base`, `$pds-grid-extended-offset-s`, `$pds-grid-extended-offset-xxl`
+  - `gridWideOffset`, `gridWideOffsetBase`, `gridWideOffsetS`, `gridWideOffsetXXL` and `$pds-grid-wide-offset-base`,
+    `$pds-grid-wide-offset-s`, `$pds-grid-wide-offset-xxl`
+  - `gridFullOffset` and `$pds-grid-full-offset`
 - `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 - `Link Tile Model Signature` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2388)
@@ -21,6 +34,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 
 - React: missing animation of `Carousel` in certain scenarios
+
+#### Changed
+
+- Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
+  `@porsche-design-system/components-js/styles/scss`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+
+#### Removed
+
+- `Banner`: CSS variable `--p-banner-position-type`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+
+#### 🤖 Property deprecations 🤖
+
+##### Banner:
+
+- Prop `width` has no effect anymore, instead the component is aligned with Porsche Grid "extended" by default.
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### 🤡 Component deprecations 🤡
 
