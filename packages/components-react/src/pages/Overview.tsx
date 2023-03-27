@@ -1,8 +1,12 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 
 export const OverviewPage = (): JSX.Element => {
   const style = `
+    body {
+      overflow: auto !important;
+    }
+
     p-flex-item > p,
     my-prefix-p-flex-item > p,
     p-grid-item > p,
@@ -30,11 +34,16 @@ export const OverviewPage = (): JSX.Element => {
       background: deepskyblue;
     }
 
-    .playground--banner {
+    .playground--banner,
+    .playground--modal {
       transform: translate3d(0, 0, 0);
       height: 10rem;
       padding: 0;
       margin: 1rem;
+    }
+
+    .playground--modal {
+      height: 20rem;
     }
   `;
 
@@ -61,6 +70,10 @@ export const OverviewPage = (): JSX.Element => {
               <span slot="title">Default banner component</span>
               <span slot="description">Some slotted banner description</span>
             </PBanner>
+          </div>
+
+          <div className="playground light playground--modal" title="should render default modal">
+            <PModal heading="Heading" open={true}>Some Content</PModal>
           </div>
 
           <div className="playground light" title="should render default inline-notification">
@@ -126,6 +139,10 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default fieldset">
             <PFieldset label="Some label" />
+          </div>
+
+          <div className="playground light" title="should render default fieldset-wrapper">
+            <PFieldsetWrapper label="Some label" />
           </div>
 
           <div className="playground light" title="should render default content-wrapper">
@@ -300,6 +317,10 @@ export const OverviewPage = (): JSX.Element => {
               </PBanner>
             </div>
 
+            <div className="playground light playground--modal" title="should render default modal with custom prefix">
+              <PModal heading="Heading" open={true}>Some Content</PModal>
+            </div>
+
             <div className="playground light" title="should render default inline-notification with custom prefix">
               <PInlineNotification
                 heading="Some heading"
@@ -366,6 +387,10 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default fieldset with custom prefix">
               <PFieldset label="Some label" />
+            </div>
+
+            <div className="playground light" title="should render default fieldset-wrapper with custom prefix">
+              <PFieldsetWrapper label="Some label" />
             </div>
 
             <div className="playground light" title="should render default content-wrapper with custom prefix">
