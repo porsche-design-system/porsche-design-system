@@ -33,7 +33,7 @@ export const getTileBaseStyles = (
       },
       ...addImportantToEachRule({
         '::slotted(picture),::slotted(img)': {
-          transition: getTransition('transform'),
+          transition: getTransition('transform'), // TODO: why not scale the .image-container?
           ...getBackfaceVisibilityJssStyle(),
         },
         '::slotted(picture)': {

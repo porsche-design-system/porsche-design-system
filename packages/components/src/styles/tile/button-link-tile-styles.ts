@@ -49,7 +49,7 @@ export const getButtonLinkTileStyles = (
         },
       },
       content: {
-        display: 'grid', // TODO: flex
+        display: 'grid', // TODO: flex via getTileBaseStyles
         ...(isTopAligned ? { top: 0 } : { bottom: 0 }),
         padding: isTopAligned
           ? `${spacingFluidMedium} ${spacingFluidMedium} ${spacingFluidLarge}`
@@ -60,7 +60,7 @@ export const getButtonLinkTileStyles = (
               isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle
             ),
           buildResponsiveStyles(compact, (isCompact: boolean) =>
-            isCompact
+            isCompact // TODO: use flex
               ? {
                   alignItems: 'center',
                   gridTemplateColumns: 'auto 24px',
