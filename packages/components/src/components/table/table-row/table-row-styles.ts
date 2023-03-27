@@ -1,23 +1,20 @@
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles, hoverMediaQuery } from '../../../styles';
-import { cssVariableTableBorderColor, cssVariableTableRowHoverColor } from '../table/table-styles';
+import { addImportantToEachRule, getTransition, hostHiddenStyles, hoverMediaQuery } from '../../../styles';
+import { cssVariableTableBorderColor, cssVariableTableHoverColor } from '../table/table-styles';
 
-export const cssVariableTableRowBackgroundColor = '--p-internal-table-row-background-color';
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        position: 'relative',
         display: 'table-row',
-        ...hostHiddenStyles,
         borderTop: `1px solid var(${cssVariableTableBorderColor})`,
+        borderBottom: `1px solid var(${cssVariableTableBorderColor})`,
+        transition: getTransition('background'),
+        ...hostHiddenStyles,
         ...hoverMediaQuery({
           '&(:hover)': {
-            borderTopColor: 'transparent',
-            borderBottom: '1px solid transparent',
-          },
-          '&(:hover) ::slotted(*)': {
-            [cssVariableTableRowBackgroundColor]: `var(${cssVariableTableRowHoverColor})`, // hoverColor is the same for light and dark
+            // ...frostedGlassStyle, // will result in not smooth transition when applied
+            background: `var(${cssVariableTableHoverColor})`,
           },
         }),
       }),

@@ -1,13 +1,14 @@
+import type { Theme } from '../../../types';
 import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
 import { getCss, isThemeDark } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles, doGetThemedColors } from '../../../styles';
-import type { Theme } from '../../../types';
 
-export const cssVariableTableRowHoverColor = '--p-internal-table-row-hover-color';
+export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
 export const cssVariableTableBorderColor = '--p-internal-table-border-color';
 export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
+
 export const getComponentCss = (theme: Theme): string => {
-  const { primaryColor, backgroundSurfaceColor, contrastLowColor } = doGetThemedColors(theme);
+  const { primaryColor, hoverColor, contrastLowColor } = doGetThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -16,8 +17,7 @@ export const getComponentCss = (theme: Theme): string => {
         ...hostHiddenStyles,
       }),
       '::slotted(*)': addImportantToEachRule({
-        color: primaryColor,
-        [cssVariableTableRowHoverColor]: backgroundSurfaceColor,
+        [cssVariableTableHoverColor]: hoverColor,
         [cssVariableTableBorderColor]: contrastLowColor,
         [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
       }),
@@ -26,14 +26,13 @@ export const getComponentCss = (theme: Theme): string => {
       marginBottom: spacingFluidMedium,
     },
     table: {
-      position: 'relative',
-      width: '100%',
       display: 'table',
+      borderCollapse: 'collapse',
+      width: '100%',
       ...textSmallStyle,
       textAlign: 'left',
       color: primaryColor,
       whiteSpace: 'nowrap',
-      borderCollapse: 'collapse', // needed for row hover state
     },
   });
 };
