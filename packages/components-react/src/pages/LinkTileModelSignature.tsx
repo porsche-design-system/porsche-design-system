@@ -191,7 +191,7 @@ export const LinkTileModelSignaturePage = (): JSX.Element => {
           <PLink slot="primary" href="#">Some label</PLink>
           <PLink slot="secondary" href="#">Some label</PLink>
         </PLinkTileModelSignature>
-        <PLinkTileModelSignature heading="Aspect ratio 3:4" aspectRatio="3:4">
+        <PLinkTileModelSignature heading="Aspect ratio 4:3" aspectRatio="4:3">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
