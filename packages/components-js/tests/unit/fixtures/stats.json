@@ -26,8 +26,8 @@
   },
   {
     "chunkShortName": "button-tile",
-    "size": 6928,
-    "gzipSize": 2837
+    "size": 6876,
+    "gzipSize": 2828
   },
   {
     "chunkShortName": "carousel",
@@ -87,7 +87,7 @@
   {
     "chunkShortName": "icon",
     "size": 16613,
-    "gzipSize": 7937
+    "gzipSize": 7946
   },
   {
     "chunkShortName": "inline-notification",
@@ -111,18 +111,18 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 7109,
-    "gzipSize": 2928
+    "size": 6972,
+    "gzipSize": 2894
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 8389,
-    "gzipSize": 3688
+    "size": 8261,
+    "gzipSize": 3686
   },
   {
     "chunkShortName": "main",
     "size": 68722,
-    "gzipSize": 23036
+    "gzipSize": 23038
   },
   {
     "chunkShortName": "marque",
