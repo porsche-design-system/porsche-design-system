@@ -269,14 +269,6 @@ describe('validateGetLoaderScriptUsage()', () => {
 });
 
 describe('validateGetInitialStylesUsage()', () => {
-  it('should call getPorscheDesignSystemPrefixesForVersions() with correct parameters', () => {
-    const spy = jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions');
-
-    validateGetInitialStylesUsage();
-
-    expect(spy).toBeCalledWith();
-  });
-
   it('should call document.querySelector() thrice with correct parameters', () => {
     jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
       '1.2.3': [''],
@@ -288,9 +280,7 @@ describe('validateGetInitialStylesUsage()', () => {
     validateGetInitialStylesUsage();
 
     expect(spy).toBeCalledWith('style[data-pds-initial-styles]');
-    expect(spy).toBeCalledWith('style[data-pds-initial-styles-prefix]');
-    expect(spy).toBeCalledWith('style[data-pds-initial-styles-my-prefix]');
-    expect(spy).toBeCalledTimes(3);
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should call throwPartialValidationWarning() thrice with correct parameters when initial style is not found', () => {
@@ -303,10 +293,8 @@ describe('validateGetInitialStylesUsage()', () => {
 
     validateGetInitialStylesUsage();
 
-    expect(spy).toBeCalledWith('getInitialStyles', '');
-    expect(spy).toBeCalledWith('getInitialStyles', 'prefix');
-    expect(spy).toBeCalledWith('getInitialStyles', 'my-prefix');
-    expect(spy).toBeCalledTimes(3);
+    expect(spy).toBeCalledWith('getInitialStyles');
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should not call throwPartialValidationWarning() when initial style tags are found for each prefix', () => {
@@ -348,7 +336,7 @@ describe('throwPartialValidationWarning()', () => {
 describe('getWarningRecommendation()', () => {
   it('should return string with correct parameters when called with partial getFontLinks()', () => {
     expect(getWarningRecommendation('getFontLinks')).toEqual(
-      'We recommend the usage of the getFontLinks() partial as described at https://designsystem.porsche.com/v2/partials/font-links to enhance loading behavior.'
+      'The usage of the getFontLinks() partial is recommended as described at https://designsystem.porsche.com/v2/partials/font-links to enhance loading behavior.'
     );
   });
 });

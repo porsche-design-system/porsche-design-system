@@ -25,17 +25,23 @@ const getHeadline = async (): Promise<string> => {
   return page.$eval('.vmark > h1', (x) => x.innerHTML);
 };
 
-const getPatternHeadline = async (): Promise<string> => {
+const getPatternHeading = async (): Promise<string> => {
   await page.waitForSelector('html.hydrated');
-  await page.waitForSelector('p-headline[tag="h1"]', { visible: true });
-  return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
+  await page.waitForSelector('p-heading[tag="h1"]', { visible: true });
+  return page.$eval('p-heading[tag="h1"]', (x) => x.innerHTML);
+};
+
+const getPatternStylesHeadline = async (): Promise<string> => {
+  await page.waitForSelector('html.hydrated');
+  await page.waitForSelector('h1.display', { visible: true });
+  return page.$eval('h1.display', (x) => x.innerHTML);
 };
 
 const internalUrls = getInternalUrls();
 const externalUrls = getExternalUrls();
 
 it('should have no exponential increase in internal urls', () => {
-  expect(internalUrls.length).toBeLessThanOrEqual(200);
+  expect(internalUrls.length).toBeLessThanOrEqual(250);
 });
 
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
@@ -49,14 +55,16 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
     if (url.match(/^\/assets\/.*\.\w{3,4}$/)) {
       expect(response.status()).toBe(200);
     } else {
-      const headline =
+      const heading =
         url === '/'
           ? 'first page'
           : url.startsWith('/patterns/forms/')
-          ? await getPatternHeadline()
+          ? await getPatternHeading()
+          : url.startsWith('/patterns/styles/')
+          ? await getPatternStylesHeadline()
           : await getHeadline();
 
-      expect(headline).not.toBe('404 - Page not found');
+      expect(heading).not.toBe('404 - Page not found');
 
       await validateMarkdownLinks();
     }

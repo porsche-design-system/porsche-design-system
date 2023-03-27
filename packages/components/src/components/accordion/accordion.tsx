@@ -3,15 +3,15 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  HEADLINE_TAGS,
-  THEMES_EXTENDED_ELECTRIC,
+  HEADING_TAGS,
+  THEMES,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
-import type { HeadlineTag } from '../headline/headline-utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
+  AccordionTag,
   getContentHeight,
   observeResize,
   removeResizeObserverFallback,
@@ -19,15 +19,14 @@ import {
   setCollapsibleElementHeight,
   unobserveResize,
   useResizeObserverFallback,
-  warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
-  tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
+  tag: AllowedTypes.oneOf<AccordionTag>(HEADING_TAGS),
   open: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
 };
@@ -43,13 +42,13 @@ export class Accordion {
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
 
   /** Sets a headline tag, so it fits correctly within the outline of the page. */
-  @Prop() public tag?: HeadlineTag = 'h2';
+  @Prop() public tag?: AccordionTag = 'h2';
 
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
@@ -57,8 +56,13 @@ export class Accordion {
   /** Displays the Accordion as compact version with thinner border and smaller paddings. */
   @Prop() public compact?: boolean;
 
-  /** Emitted when accordion state is changed. */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
+
+  /** Emitted when accordion state is changed. */
+  @Event({ bubbles: false }) public change: EventEmitter<AccordionChangeEvent>;
 
   private collapsibleElement: HTMLDivElement;
   private content: HTMLDivElement;
@@ -73,10 +77,6 @@ export class Accordion {
     if (useResizeObserverFallback) {
       resizeObserverFallback(this.host, this.setContentHeight, true);
     }
-  }
-
-  public componentWillLoad(): void {
-    warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
   }
 
   public componentDidLoad(): void {
@@ -116,6 +116,7 @@ export class Accordion {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const Heading = this.tag;
 
+    // TODO: why .root div for a condition border-bottom style? could be applied on :host directly
     return (
       <div class="root">
         <Heading class="heading">
@@ -129,8 +130,7 @@ export class Accordion {
             {this.heading || <slot name="heading" />}
             <PrefixedTagNames.pIcon
               class="icon"
-              color="inherit"
-              name="arrow-head-down"
+              name={this.open ? 'minus' : 'plus'}
               theme={this.theme}
               size="inherit"
               aria-hidden="true"
@@ -153,6 +153,7 @@ export class Accordion {
   }
 
   private onButtonClick = (): void => {
+    this.change.emit({ open: !this.open });
     this.accordionChange.emit({ open: !this.open });
   };
 

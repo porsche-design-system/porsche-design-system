@@ -4,17 +4,22 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
+  THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
-import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
-import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
-import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import type { TagColor } from '../tag/tag-utils';
-import { TAG_COLORS } from '../tag/tag-utils';
+import type {
+  TagDismissibleAriaAttribute,
+  TagDismissibleColor,
+  TagDismissibleColorDeprecated,
+} from './tag-dismissible-utils';
+import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof TagDismissible> = {
-  color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
+  color: AllowedTypes.oneOf<TagDismissibleColor>(TAG_DISMISSIBLE_COLORS),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   label: AllowedTypes.string,
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
 };
@@ -29,6 +34,9 @@ export class TagDismissible {
   /** Background color variations */
   @Prop() public color?: TagDismissibleColor = 'background-surface';
 
+  /** Adapts the color when used on dark background. */
+  @Prop() public theme?: Theme = 'light';
+
   /** The label text. */
   @Prop() public label?: string;
 
@@ -37,15 +45,34 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
+    const deprecationMap: Record<
+      TagDismissibleColorDeprecated,
+      Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>
+    > = {
+      'background-default': 'background-base',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof TagDismissible, TagDismissibleColorDeprecated, TagDismissibleColor>(
+      this,
+      'color',
+      deprecationMap
+    );
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      (deprecationMap[this.color] || this.color) as Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>,
+      !!this.label,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <button type="button" {...parseAndGetAriaAttributes(this.aria)}>
         <span class="sr-only">Remove:</span>
-        {this.label && <span class="label">{this.label}</span>}
-        <slot />
-        <PrefixedTagNames.pIcon class="icon" name="close" color="inherit" aria-hidden="true" />
+        <span>
+          {this.label && <span class="label">{this.label}</span>}
+          <slot />
+        </span>
+        <PrefixedTagNames.pIcon class="icon" name="close" theme={this.theme} aria-hidden="true" />
       </button>
     );
   }

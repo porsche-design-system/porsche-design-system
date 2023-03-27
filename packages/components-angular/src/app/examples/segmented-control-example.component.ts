@@ -4,7 +4,7 @@ import type { SegmentedControlChangeEvent } from '@porsche-design-system/compone
 @Component({
   selector: 'page-segmented-control-example',
   template: `
-    <p-segmented-control [value]="currentValue" (segmentedControlChange)="onSegmentedControlChange($event)">
+    <p-segmented-control [value]="currentValue" (change)="onChange($event)">
       <p-segmented-control-item [value]="1">Option 1</p-segmented-control-item>
       <p-segmented-control-item [value]="2">Option 2</p-segmented-control-item>
       <p-segmented-control-item [value]="3">Option 3</p-segmented-control-item>
@@ -19,7 +19,7 @@ import type { SegmentedControlChangeEvent } from '@porsche-design-system/compone
 export class SegmentedControlExampleComponent {
   currentValue = 1;
 
-  onSegmentedControlChange(e: CustomEvent<SegmentedControlChangeEvent>) {
+  onChange(e: CustomEvent<SegmentedControlChangeEvent>) {
     this.currentValue = e.detail.value as number;
   }
 }

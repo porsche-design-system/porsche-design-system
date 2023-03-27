@@ -1,7 +1,7 @@
 @import 'lib/_breakpoint.scss';
 
 $pds-breakpoints: (
-  'xxs': $pds-breakpoint-xxs,
+  'base': $pds-breakpoint-base,
   'xs': $pds-breakpoint-xs,
   's': $pds-breakpoint-s,
   'm': $pds-breakpoint-m,
@@ -12,7 +12,7 @@ $pds-breakpoints: (
 
 @mixin pds-media-query-min($min: null) {
   @if map-has-key($pds-breakpoints, $min) {
-    @media (min-width: #{map-get($pds-breakpoints, $min)}) {
+    @media (min-width: #{map-get($pds-breakpoints, $min)}px) {
       @content;
     }
   } @else {
@@ -22,7 +22,7 @@ $pds-breakpoints: (
 
 @mixin pds-media-query-max($max: null) {
   @if map-has-key($pds-breakpoints, $max) {
-    @media (max-width: #{map-get($pds-breakpoints, $max) - 1px}) {
+    @media (max-width: #{map-get($pds-breakpoints, $max) - 1}px) {
       @content;
     }
   } @else {
@@ -32,7 +32,7 @@ $pds-breakpoints: (
 
 @mixin pds-media-query-min-max($min: null, $max: null) {
   @if map-has-key($pds-breakpoints, $min) and map-has-key($pds-breakpoints, $max) {
-    @media (min-width: #{map-get($pds-breakpoints, $min)}) and (max-width: #{map-get($pds-breakpoints, $max) - 1px}) {
+    @media (min-width: #{map-get($pds-breakpoints, $min)}px) and (max-width: #{map-get($pds-breakpoints, $max) - 1}px) {
       @content;
     }
   } @else {

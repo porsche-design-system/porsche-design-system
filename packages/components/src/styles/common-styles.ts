@@ -1,8 +1,7 @@
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import { fontWeight } from '@porsche-design-system/utilities-v2';
+import { spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
-import { hoverMediaQuery } from './hover-media-query';
 import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -56,6 +55,15 @@ export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
   };
 };
 
+// reset initial styles, e.g. in case link-pure is used with slotted anchor and nested within e.g. an accordion
+export const getResetInitialStylesForSlottedAnchor: JssStyle = {
+  margin: 0,
+  padding: 0,
+  outline: 0,
+  borderRadius: 0,
+  background: 'transparent',
+};
+
 export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
   const {
     pseudo,
@@ -102,27 +110,6 @@ export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
       };
 };
 
-export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: false }): Styles => {
-  return {
-    '& a': {
-      color: 'inherit',
-      textDecoration: 'underline',
-      ...getFocusJssStyle({ offset: 1 }),
-      ...hoverMediaQuery(getHoverJssStyle()),
-    },
-    ...(opts.withDarkTheme &&
-      ({
-        '&[data-theme="dark"] a:hover': hoverMediaQuery(getHoverJssStyle({ theme: 'dark' })['&:hover'] as JssStyle),
-      } as Styles)),
-    '& b, & strong': {
-      fontWeight: fontWeight.bold,
-    },
-    '& em, & i': {
-      fontStyle: 'normal',
-    },
-  };
-};
-
 export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
   isHidden
     ? getScreenReaderOnlyJssStyle()
@@ -140,13 +127,12 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
 export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
   width: 'fit-content',
-  padding: `0 0 ${pxToRemWithUnit(4)}`,
 });
 
 export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
   width: 'auto',
-  padding: `0 0 0 ${pxToRemWithUnit(8)}`,
+  padding: `2px 0 0 ${spacingStaticSmall}`,
 });
 
 /**

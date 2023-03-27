@@ -7,17 +7,26 @@ you should consider the use of a data table.
 
 <TableOfContents></TableOfContents>
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>listType</code> and <code>orderType</code> properties have been deprecated and will be removed with the next major release.<br>
+  Please use the <code>type</code> property instead.
+</p-inline-notification>
+
 ## Unordered list
 
 <Playground :markup="list()" :config="config"></Playground>
 
 ## Ordered list - numbered
 
-<Playground :markup="list('ordered')" :config="config"></Playground>
+<Playground :markup="list('numbered')" :config="config"></Playground>
 
 ## Ordered list - alphabetically
 
-<Playground :markup="list('ordered', 'alphabetically')" :config="config"></Playground>
+<Playground :markup="list('alphabetically')" :config="config"></Playground>
+
+## Mixed list - (ordered / unordered)
+
+<Playground :markup="listMixed()" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -27,20 +36,27 @@ import Component from 'vue-class-component';
 export default class Code extends Vue {
   config = { themeable: true };
   
-  list(listType?: string, orderType?: string) {
-    const attr = (listType ? ` list-type="${listType}"` : '') + (orderType ? ` order-type="${orderType}"` : '');
+  list(type?: string) {
+    const attr = type ? ` type="${type}"` : '';
     return `<p-text-list${attr}>
   <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-  <p-text-list-item>The quick <a href="https://porsche.com">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+  <p-text-list-item>The quick brown fox jumps over the lazy dog
     <p-text-list${attr}>
       <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-      <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
-        <p-text-list-item>The quick <a href="https://porsche.com">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
-          <p-text-list${attr}>
-            <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-            <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
-          </p-text-list>
-        </p-text-list-item>
+      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+    </p-text-list>
+  </p-text-list-item>
+  <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+</p-text-list>`;
+  }
+
+  listMixed() {
+    return `<p-text-list type="numbered">
+  <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+  <p-text-list-item>The quick brown fox jumps over the lazy dog
+    <p-text-list>
+      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
     </p-text-list>
   </p-text-list-item>
   <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>

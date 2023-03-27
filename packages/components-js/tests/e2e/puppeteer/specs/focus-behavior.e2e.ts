@@ -1,4 +1,5 @@
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   expectToSkipFocusOnComponent,
   getActiveElementTagName,
@@ -49,21 +50,5 @@ ${component}
 
     expect(await getActiveElementTagName(page)).toBe(elTagName);
     expect(await page.evaluate(() => document.activeElement.shadowRoot.activeElement.tagName)).not.toBeNull();
-  });
-});
-
-['p-button', 'p-button-pure', 'p-switch'].forEach((tagName) => {
-  it(`should be removed from tab order when tabbable is false for ${tagName}`, async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<a href="#" id="before">before</a>
-<${tagName} tabbable="false">Some label</${tagName}>
-<a href="#" id="after">after</a>`
-    );
-
-    const host = await selectNode(page, tagName);
-    const before = await selectNode(page, '#before');
-
-    await expectToSkipFocusOnComponent(page, host, before);
   });
 });

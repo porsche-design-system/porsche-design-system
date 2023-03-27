@@ -1,31 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pds-focus() should return correct css for opts: { color: 'deeppink' } 1`] = `
+exports[`pds-focus() should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
 "div {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
-}
-div::-moz-focus-inner {
-  border: 0;
+  border-radius: 6px;
 }
 div:focus {
-  outline-color: deeppink;
+  outline: 2px solid #1a44ea;
+  outline-offset: 3px;
 }
 div:focus:not(:focus-visible) {
   outline-color: transparent;
 }"
 `;
 
-exports[`pds-focus() should return correct css for opts: { color: 'royalblue', offset: '20px' } 1`] = `
+exports[`pds-focus() should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
 "div {
-  outline: transparent solid 1px;
-  outline-offset: 20px;
-}
-div::-moz-focus-inner {
-  border: 0;
+  border-radius: 8px;
 }
 div:focus {
-  outline-color: royalblue;
+  outline: 2px solid #1a44ea;
+  outline-offset: 0;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
+"div {
+  border-radius: 4px;
+}
+div:focus {
+  outline: 2px solid #1a44ea;
+  outline-offset: 2px;
 }
 div:focus:not(:focus-visible) {
   outline-color: transparent;
@@ -34,14 +41,11 @@ div:focus:not(:focus-visible) {
 
 exports[`pds-focus() should return correct css for opts: {} 1`] = `
 "div {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
-}
-div::-moz-focus-inner {
-  border: 0;
+  border-radius: 4px;
 }
 div:focus {
-  outline-color: currentColor;
+  outline: 2px solid #1a44ea;
+  outline-offset: 2px;
 }
 div:focus:not(:focus-visible) {
   outline-color: transparent;

@@ -60,16 +60,6 @@ exports[`accessibility should expose correct accessibility tree if rendered with
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],
@@ -212,16 +202,6 @@ exports[`accessibility should expose correct initial accessibility tree in open 
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],

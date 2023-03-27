@@ -6,7 +6,7 @@
     <div class="teaser">
       <img src="./assets/teaser.jpg" width="3600" height="1744" alt="" />
       <div class="teaser__content">
-        <p-headline variant="large-title" theme="dark">Soul<br />electrified</p-headline>
+        <p-heading variant="large-title" theme="dark">Soul<br />electrified</p-heading>
         <p-text size="medium" theme="dark">Der neue Taycan Cross Turismo</p-text>
         <p-button theme="dark">Entdecke den neuen Taycan</p-button>
       </div>
@@ -44,7 +44,7 @@
       >
         <img src="./assets/compare.png" width="1207" height="414" alt="" />
         <template #top>
-          <p-headline variant="headline-3" tag="h2">Vergleichen alle unsere Modelle</p-headline>
+          <p-heading size="large" tag="h2">Vergleichen alle unsere Modelle</p-heading>
           <p-text
             >Vergleiche alle unsere Modelle Verbrenner, Hybrid und E-Modelle miteinander. Egal ob 718, 911, Taycan,
             Panamera, Macan oder Cayenne.</p-text
@@ -446,7 +446,7 @@
       >
         <img src="./assets/car-box.png" alt="" />
         <template #top>
-          <p-headline variant="headline-3">Immer das richtige Fahrzeugzubehör zur Hand</p-headline>
+          <p-heading size="large">Immer das richtige Fahrzeugzubehör zur Hand</p-heading>
           <p-button variant="tertiary">Zum Porsche Tequipment Shop</p-button>
         </template>
       </Card>
@@ -459,14 +459,14 @@
       >
         <img src="./assets/chrono.png" alt="" />
         <template #top>
-          <p-headline variant="headline-3">Finde die Porsche Accessoires zu deinem Traumsportwagen</p-headline>
+          <p-heading size="large">Finde die Porsche Accessoires zu deinem Traumsportwagen</p-heading>
           <p-button variant="tertiary">Zum Porsche Design Shop</p-button>
         </template>
       </Card>
       <Card class="accessories__card accessories__card--electric" :height="{ min: '25rem', val: '50vh', max: '35rem' }">
         <img src="./assets/teaser-ev.png" width="1280" height="624" alt="" />
         <template #top>
-          <p-headline theme="dark" variant="headline-3">Porsche E-Performance</p-headline>
+          <p-heading theme="dark" size="large">Porsche E-Performance</p-heading>
           <p-text theme="dark"
             >Entdecke unsere Porsche E-Performance mit unseren Elektro- und Plug-in-Hybrid-Modellen, der 800V und
             unserer durchdachten weltweiten Ladeinfrastruktur.</p-text
@@ -588,7 +588,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   .teaser {
     @include pds-grid;
@@ -606,10 +606,10 @@
 
     &__content {
       grid-area: 1 / content-start / 1 / content-end;
-      margin-bottom: $pds-spacing-large;
+      margin-bottom: $pds-spacing-static-large;
       display: flex;
       flex-direction: column;
-      gap: $pds-spacing-medium;
+      gap: $pds-spacing-static-medium;
       align-items: flex-start;
     }
   }
@@ -660,8 +660,8 @@
     @include pds-grid;
     margin-top: calc(#{$pds-grid-gap} * 3);
     background: $pds-theme-light-background-surface;
-    padding-top: $pds-spacing-large;
-    padding-bottom: $pds-spacing-large;
+    padding-top: $pds-spacing-static-large;
+    padding-bottom: $pds-spacing-static-large;
 
     &__card {
       grid-column: content-start / content-end;
@@ -672,8 +672,8 @@
     position: relative;
     @include pds-grid;
     background: $pds-theme-light-background-surface;
-    padding-top: $pds-spacing-large;
-    padding-bottom: $pds-spacing-large;
+    padding-top: $pds-spacing-static-large;
+    padding-bottom: $pds-spacing-static-large;
 
     p-carousel {
       grid-column: grid-start / grid-end;
@@ -719,7 +719,7 @@
 
     picture {
       display: block;
-      padding: $pds-spacing-large;
+      padding: $pds-spacing-static-large;
     }
 
     img {
@@ -730,11 +730,11 @@
 
     h3 {
       @include pds-heading-small;
-      margin: 0 0 $pds-spacing-small;
+      margin: 0 0 $pds-spacing-static-small;
     }
 
     p {
-      margin: 0 0 $pds-spacing-medium;
+      margin: 0 0 $pds-spacing-static-medium;
     }
 
     p-link {
@@ -745,7 +745,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      padding: $pds-spacing-large;
+      padding: $pds-spacing-static-large;
       @include pds-text-small;
     }
   }

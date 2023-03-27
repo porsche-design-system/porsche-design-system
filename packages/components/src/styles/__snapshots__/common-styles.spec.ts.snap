@@ -22,107 +22,6 @@ exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
 }
 `;
 
-exports[`getBaseSlottedStyles() should return correct styles 1`] = `
-{
-  "& a": {
-    "&::-moz-focus-inner": {
-      "border": 0,
-    },
-    "&:focus": {
-      "outlineColor": "currentColor",
-    },
-    "&:focus:not(:focus-visible)": {
-      "outlineColor": "transparent",
-    },
-    "@media(hover:hover)": {
-      "&:hover": {
-        "color": "#d5001c",
-      },
-      "transition": "color var(--p-transition-duration, .24s) ease",
-    },
-    "color": "inherit",
-    "outline": "1px solid transparent",
-    "outlineOffset": "1px",
-    "textDecoration": "underline",
-  },
-  "& b, & strong": {
-    "fontWeight": 700,
-  },
-  "& em, & i": {
-    "fontStyle": "normal",
-  },
-}
-`;
-
-exports[`getBaseSlottedStyles() should return correct styles with dark theme 1`] = `
-{
-  "& a": {
-    "&::-moz-focus-inner": {
-      "border": 0,
-    },
-    "&:focus": {
-      "outlineColor": "currentColor",
-    },
-    "&:focus:not(:focus-visible)": {
-      "outlineColor": "transparent",
-    },
-    "@media(hover:hover)": {
-      "&:hover": {
-        "color": "#d5001c",
-      },
-      "transition": "color var(--p-transition-duration, .24s) ease",
-    },
-    "color": "inherit",
-    "outline": "1px solid transparent",
-    "outlineOffset": "1px",
-    "textDecoration": "underline",
-  },
-  "& b, & strong": {
-    "fontWeight": 700,
-  },
-  "& em, & i": {
-    "fontStyle": "normal",
-  },
-  "&[data-theme="dark"] a:hover": {
-    "@media(hover:hover)": {
-      "color": "#ff0223",
-    },
-  },
-}
-`;
-
-exports[`getBaseSlottedStyles() should return correct styles without dark theme 1`] = `
-{
-  "& a": {
-    "&::-moz-focus-inner": {
-      "border": 0,
-    },
-    "&:focus": {
-      "outlineColor": "currentColor",
-    },
-    "&:focus:not(:focus-visible)": {
-      "outlineColor": "transparent",
-    },
-    "@media(hover:hover)": {
-      "&:hover": {
-        "color": "#d5001c",
-      },
-      "transition": "color var(--p-transition-duration, .24s) ease",
-    },
-    "color": "inherit",
-    "outline": "1px solid transparent",
-    "outlineOffset": "1px",
-    "textDecoration": "underline",
-  },
-  "& b, & strong": {
-    "fontWeight": 700,
-  },
-  "& em, & i": {
-    "fontStyle": "normal",
-  },
-}
-`;
-
 exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 1, pseudo: '::before' } 1`] = `
 {
   "&::-moz-focus-inner": {
@@ -244,7 +143,6 @@ exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden
   "height": "auto",
   "margin": 0,
   "overflow": "visible",
-  "padding": "0 0 0.25rem",
   "position": "static",
   "whiteSpace": "normal",
   "width": "fit-content",
@@ -259,7 +157,6 @@ exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden
   "height": "1px",
   "margin": "-1px",
   "overflow": "hidden",
-  "padding": "0 0 0.25rem",
   "position": "absolute",
   "whiteSpace": "nowrap",
   "width": "fit-content",

@@ -4,7 +4,8 @@ import * as jsonUtils from '../json';
 import * as setAttributeUtils from '../dom/setAttribute';
 import * as removeAttributeUtils from '../dom/removeAttribute';
 import type { AriaAttributes } from '../../types';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { componentFactory } from '../../test-utils';
 
@@ -74,14 +75,17 @@ describe('parseAndGetAriaAttributes()', () => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
   });
 
-  const tagNamesWithAriaProp = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasAriaProp);
+  // 'p-button-tile' and 'p-link-tile' have to be excluded because parseAndGetAriaAttributes() is not applied
+  const tagNamesWithAriaProp = TAG_NAMES.filter(
+    (tagName) => getComponentMeta(tagName).hasAriaProp && tagName !== 'p-button-tile' && tagName !== 'p-link-tile'
+  );
 
   it.each<TagName>(tagNamesWithAriaProp)('should call parseAndGetAriaAttributes() via render for %s', (tagName) => {
     const spy = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
     const component = componentFactory(tagName);
     component['aria'] = { 'aria-label': 'Some label' };
 
-    if (['p-link', 'p-link-pure', 'p-marque', 'p-link-tile'].includes(tagName)) {
+    if (['p-link', 'p-link-pure', 'p-marque'].includes(tagName)) {
       component['href'] = 'https://porsche.com';
     }
 

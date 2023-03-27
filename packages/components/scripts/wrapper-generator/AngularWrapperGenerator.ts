@@ -74,8 +74,12 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const classMembers = [
       'protected el: HTMLElement;',
-      ...inputProps.map((x) => `${x.key}: ${x.rawValueType};`),
-      ...outputProps.map((x) => `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`),
+      ...inputProps.map((x) => (x.isDeprecated ? '/** @deprecated */\n  ' : '') + `${x.key}: ${x.rawValueType};`),
+      ...outputProps.map(
+        (x) =>
+          (x.isDeprecated ? '/** @deprecated */\n  ' : '') +
+          `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`
+      ),
     ].join('\n  ');
 
     const constructorCode = [
@@ -90,7 +94,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     return `${inputsAndOutputs}
 
-@ProxyCmp({
+${this.inputParser.getDeprecationMessage(component)}@ProxyCmp({
   ${decoratorOpts}
 })
 @Component({

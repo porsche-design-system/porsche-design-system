@@ -1,5 +1,5 @@
-import type { BreakpointCustomizable, TextSize } from '../../types';
-import { getHTMLElement } from '../../utils';
+import type { BreakpointCustomizable, TextAlign, TextSize } from '../../types';
+import { hasSpecificSlottedTag } from '../../utils';
 
 export const HEADLINE_VARIANTS = [
   'large-title',
@@ -10,26 +10,25 @@ export const HEADLINE_VARIANTS = [
   'headline-5',
 ] as const;
 
-export type VariantType = typeof HEADLINE_VARIANTS[number];
+export type HeadlineVariantType = typeof HEADLINE_VARIANTS[number];
 
 type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
 
-export type HeadlineVariant = VariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>;
+export type HeadlineVariant = HeadlineVariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>;
 
 export const HEADLINE_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadlineTag = typeof HEADLINE_TAGS[number];
 
-export const isVariantType = (variant: HeadlineVariant): boolean => {
-  return HEADLINE_VARIANTS.includes(variant as VariantType);
+export const HEADLINE_COLORS = ['primary', 'default', 'inherit'] as const;
+export type HeadlineColor = typeof HEADLINE_COLORS[number];
+
+export type HeadlineAlign = TextAlign;
+
+export const isValidVariantType = (variant: HeadlineVariant): boolean => {
+  return HEADLINE_VARIANTS.includes(variant as HeadlineVariantType);
 };
 
-export const hasSlottedHeadlineTag = (host: HTMLElement): boolean => {
-  // TODO: needs to be direct and only child
-  const el = getHTMLElement(host, ':first-child');
-  return el?.matches('h1, h2, h3, h4, h5, h6');
-};
-
-const variantToTagMap: { [key in VariantType]: string } = {
+const variantToTagMap: Record<HeadlineVariantType, string> = {
   'large-title': 'h1',
   'headline-1': 'h1',
   'headline-2': 'h2',
@@ -38,14 +37,12 @@ const variantToTagMap: { [key in VariantType]: string } = {
   'headline-5': 'h5',
 };
 
-export const getHeadlineTagName = (host: HTMLElement, variant?: HeadlineVariant, tag?: HeadlineTag): string => {
-  if (hasSlottedHeadlineTag(host)) {
+export const getHeadlineTagType = (host: HTMLElement, variant: HeadlineVariant, tag: HeadlineTag): string => {
+  if (hasSpecificSlottedTag(host, HEADLINE_TAGS.join())) {
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isVariantType(variant)) {
-    return 'h1';
   } else {
-    return variantToTagMap[variant as VariantType];
+    return variantToTagMap[variant as HeadlineVariantType] || 'h1';
   }
 };

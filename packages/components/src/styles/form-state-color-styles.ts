@@ -1,5 +1,5 @@
 import { getThemedColors } from './';
-import type { ThemeDefault } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { FormState } from '../utils/form/form-state';
 
 type ThemedFormStateColors = {
@@ -7,7 +7,7 @@ type ThemedFormStateColors = {
   formStateHoverColor: string | undefined; // form state: "none" => undefined
 };
 
-export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
+export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
   const themedColors = getThemedColors(theme);
   return {
     formStateColor: themedColors[`${state}Color`],

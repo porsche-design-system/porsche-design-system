@@ -1,5 +1,5 @@
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
-import { getComponentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { camelCase, pascalCase } from 'change-case';
@@ -49,21 +49,25 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
     const propsName = this.generatePropsName(component);
     const eventNamesAndTypes = extendedProps
       .filter(({ isEvent }) => isEvent)
-      .map(({ key, rawValueType }) => {
+      .map(({ key, rawValueType, isDeprecated }) => {
         const [, type] = /<(\w+)>/.exec(rawValueType) || [];
         return {
           eventName: camelCase(key.replace('on', '')),
           type,
+          isDeprecated,
         };
       });
 
     const defaultPropsWithValue = extendedProps
-      .map(({ key, defaultValue, isEvent, isDefaultValueComplex }) => {
-        if (!(isEvent || defaultValue === undefined)) {
+      .filter(({ isEvent }) => !isEvent)
+      .map(({ key, defaultValue, isDefaultValueComplex }) => {
+        if (defaultValue !== undefined) {
           const defaultPropValue = isDefaultValueComplex ? `() => (${defaultValue})` : defaultValue;
 
+          // vue linting doesn't like certain values and would prefer a string, so we disable the rule for those
           const eslintAnnotation =
-            component === 'p-headline' && key === 'color'
+            ((component === 'p-headline' || component === 'p-heading') && key === 'color') ||
+            (component === 'p-carousel' && key === 'slidesPerPage')
               ? ' // eslint-disable-line vue/require-valid-default-prop'
               : '';
 
@@ -84,10 +88,15 @@ ${defaultPropsWithValue}
 
     const pdsComponentRef = `const pdsComponentRef = ref<${propsName} & HTMLElement>();`;
 
-    const defineEmits = extendedProps.some(({ isEvent }) => isEvent)
-      ? `const emit = defineEmits<{ ${eventNamesAndTypes
-          .map(({ eventName, type }) => `(e: '${eventName}', value: ${type}): void;`)
-          .join(' ')} }>();`
+    const defineEmits = eventNamesAndTypes.length
+      ? `const emit = defineEmits<{
+  ${eventNamesAndTypes
+    .map(
+      ({ eventName, type, isDeprecated }) =>
+        (isDeprecated ? '/** @deprecated */\n  ' : '') + `(e: '${eventName}', value: ${type}): void;`
+    )
+    .join('\n  ')}
+}>();`
       : '';
 
     const addEventListener = eventNamesAndTypes

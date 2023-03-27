@@ -4,11 +4,19 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
+  transform: translate3d(0,0,0) !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -20,51 +28,59 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
-  color: #fff !important;
+  color: #FBFCFF !important;
   cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #ff0223 !important;
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  right: -4px !important;
+  border-radius: 4px !important;
+  z-index: -1 !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
+::slotted(a:focus)::before,::slotted(button:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
+  margin-right: 16px !important;
 }
 @media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #ff0223 !important;
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .bar {
   display: block;
   position: absolute;
   width: 0;
-  height: .09375em;
+  height: 1.5px;
   left: 0;
-  bottom: -0.25rem;
-  background: #ff0223;
+  bottom: -4px;
+  background: #FBFCFF;
 }
 .bar--enable-transition {
   will-change: width;
@@ -76,83 +92,19 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
+  transform: translate3d(0,0,0) !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
-  vertical-align: top !important;
-  font-family: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  white-space: nowrap !important;
-  box-sizing: border-box !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-  text-decoration: none !important;
-  text-align: left !important;
-  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
   background: transparent !important;
-  color: #000 !important;
-  cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #d5001c !important;
-}
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
-::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
-}
-@media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #d5001c !important;
-  }
-}
-
-.scroller {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 400;
-  font-size: 1.5rem;
-}
-.bar {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: .09375em;
-  left: 0;
-  bottom: -0.25rem;
-  background: #d5001c;
-}
-.bar--enable-transition {
-  will-change: width;
-  transition: transform .4s,width .4s;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for size: "medium", weight: regular and theme: light-electric 1`] = `
-":host {
-  display: block;
+  display: inline-block !important;
   position: relative !important;
-}
-::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
-  padding: 0 !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -164,51 +116,59 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
-  color: #000 !important;
+  color: #010205 !important;
   cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #00b0f4 !important;
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  right: -4px !important;
+  border-radius: 4px !important;
+  z-index: -1 !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
+::slotted(a:focus)::before,::slotted(button:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
+  margin-right: 16px !important;
 }
 @media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #00b0f4 !important;
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .bar {
   display: block;
   position: absolute;
   width: 0;
-  height: .09375em;
+  height: 1.5px;
   left: 0;
-  bottom: -0.25rem;
-  background: #00b0f4;
+  bottom: -4px;
+  background: #010205;
 }
 .bar--enable-transition {
   will-change: width;
@@ -220,11 +180,19 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
+  transform: translate3d(0,0,0) !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -236,38 +204,46 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
-  color: #fff !important;
+  color: #FBFCFF !important;
   cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #ff0223 !important;
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  right: -4px !important;
+  border-radius: 4px !important;
+  z-index: -1 !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
+::slotted(a:focus)::before,::slotted(button:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
+  margin-right: 16px !important;
 }
 @media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #ff0223 !important;
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
@@ -277,10 +253,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: absolute;
   width: 0;
-  height: .09375em;
+  height: 1.5px;
   left: 0;
-  bottom: -0.25rem;
-  background: #ff0223;
+  bottom: -4px;
+  background: #FBFCFF;
 }
 .bar--enable-transition {
   will-change: width;
@@ -292,11 +268,19 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
+  transform: translate3d(0,0,0) !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -308,38 +292,46 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
-  color: #000 !important;
+  color: #010205 !important;
   cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #d5001c !important;
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  right: -4px !important;
+  border-radius: 4px !important;
+  z-index: -1 !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
+::slotted(a:focus)::before,::slotted(button:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
+  margin-right: 16px !important;
 }
 @media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #d5001c !important;
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
@@ -349,10 +341,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: absolute;
   width: 0;
-  height: .09375em;
+  height: 1.5px;
   left: 0;
-  bottom: -0.25rem;
-  background: #d5001c;
+  bottom: -4px;
+  background: #010205;
 }
 .bar--enable-transition {
   will-change: width;
@@ -360,15 +352,23 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", weight: regular and theme: light-electric 1`] = `
+exports[`getComponentCss() should return correct css for size: "small", weight: semi-bold and theme: light 1`] = `
 ":host {
   display: block;
   position: relative !important;
+  transform: translate3d(0,0,0) !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -380,110 +380,46 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
-  color: #000 !important;
+  color: #010205 !important;
   cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #00b0f4 !important;
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  right: -4px !important;
+  border-radius: 4px !important;
+  z-index: -1 !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
+::slotted(a:focus)::before,::slotted(button:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
+  margin-right: 16px !important;
 }
 @media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #00b0f4 !important;
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 400;
-  font-size: 1rem;
-}
-.bar {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: .09375em;
-  left: 0;
-  bottom: -0.25rem;
-  background: #00b0f4;
-}
-.bar--enable-transition {
-  will-change: width;
-  transition: transform .4s,width .4s;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for size: "small", weight: semibold and theme: light 1`] = `
-":host {
-  display: block;
-  position: relative !important;
-}
-::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
-  padding: 0 !important;
-  vertical-align: top !important;
-  font-family: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  white-space: nowrap !important;
-  box-sizing: border-box !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-  text-decoration: none !important;
-  text-align: left !important;
-  border: 0 !important;
-  background: transparent !important;
-  color: #000 !important;
-  cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #d5001c !important;
-}
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}
-::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
-}
-@media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #d5001c !important;
-  }
-}
-
-.scroller {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
@@ -493,10 +429,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: absolute;
   width: 0;
-  height: .125em;
+  height: 2px;
   left: 0;
-  bottom: -0.25rem;
-  background: #d5001c;
+  bottom: -4px;
+  background: #010205;
 }
 .bar--enable-transition {
   will-change: width;
@@ -508,11 +444,19 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
   position: relative !important;
+  transform: translate3d(0,0,0) !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 ::slotted(a),::slotted(button) {
-  display: inline-block !important;
-  margin: 0 0 calc(.5em - 0.25rem) 0 !important;
+  margin: 0 0 4px 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  display: inline-block !important;
+  position: relative !important;
   vertical-align: top !important;
   font-family: inherit !important;
   font-style: inherit !important;
@@ -524,38 +468,46 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
-  background: transparent !important;
-  color: #000 !important;
+  color: #010205 !important;
   cursor: pointer !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]) {
-  color: #d5001c !important;
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -4px !important;
+  right: -4px !important;
+  border-radius: 4px !important;
+  z-index: -1 !important;
 }
-::slotted(a:focus),::slotted(button:focus) {
-  outline-color: currentColor !important;
+::slotted(a:focus)::before,::slotted(button:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 1em !important;
+  margin-right: 16px !important;
 }
 @media(hover:hover) {
-  ::slotted(a:hover),::slotted(button:hover) {
-    color: #d5001c !important;
+  ::slotted(a)::before, ::slotted(button)::before {
+    transition: background var(--p-transition-duration, .24s) ease !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
   }
 }
 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
@@ -565,10 +517,10 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   display: block;
   position: absolute;
   width: 0;
-  height: .09375em;
+  height: 1.5px;
   left: 0;
-  bottom: -0.25rem;
-  background: #d5001c;
+  bottom: -4px;
+  background: #010205;
 }
 .bar--enable-transition {
   will-change: width;
@@ -576,7 +528,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 @media(min-width:480px) {
   .scroller {
-    font-size: 1.5rem;
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   }
 }
 
@@ -588,7 +540,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 
 @media(min-width:1000px) {
   .scroller {
-    font-size: 1.5rem;
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   }
 }
 
@@ -600,7 +552,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 
 @media(min-width:1760px) {
   .scroller {
-    font-size: 1.5rem;
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   }
 }
 "

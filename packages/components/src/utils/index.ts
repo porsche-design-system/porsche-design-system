@@ -12,23 +12,17 @@ export * from './form';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export * from './jss';
 export { parseJSONAttribute } from './json';
+export * from './link-button/getLinkButtonThemeForIcon';
+export * from './link-button-tile/link-button-tile-utils';
+export * from './log';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './pds-fetch';
 export * from './property-observer';
 export * from './scrolling';
-export * from './slotted-styles';
 export * from './has-document';
 export * from './has-window';
 export * from './sync';
 export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
-export {
-  getDataThemeDarkAttribute,
-  isThemeDark,
-  isThemeLightElectric,
-  isThemeDarkElectric,
-  THEMES,
-  THEMES_EXTENDED_ELECTRIC,
-  THEMES_EXTENDED_ELECTRIC_DARK,
-} from './theme';
+export { isThemeDark, THEMES } from './theme';
 export * from './typography';
 export * from './validation';

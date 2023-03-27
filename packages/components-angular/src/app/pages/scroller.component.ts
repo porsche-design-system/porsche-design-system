@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         margin-right: 0.5rem;
       }
       p-scroller > button {
+        border: 0;
         line-height: 1.5;
         font-size: 16px;
       }
@@ -28,6 +29,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     
       .scroller > span:not(:last-child) {
         margin-right: 1rem;
+      }
+    
+      .light button {
+        background: black;
+        color: white;
+      }
+    
+      .dark button {
+        background: white;
       }
     `,
   ],
@@ -70,18 +80,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground light-electric" title="should render scroller on light-electric background">
-      <p-scroller [theme]="'light-electric'">
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-        <button>Light electric</button>
-      </p-scroller>
-    </div>
-
     <div
       class="playground light surface"
       title="should render scroller gradientColorScheme surface on light surface background"
@@ -109,30 +107,82 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground light" title="should render scroller with scroll indicator position center on light background">
-      <div style="height: 50px; border: 1px solid deeppink; max-width: 600px">
+    <div class="playground light surface" title="should render scroller gradientColor surface on light surface background">
+      <p-scroller [gradientColor]="'background-surface'">
+        <button>Light surface</button>
+        <button>Light surface</button>
+        <button>Light surface</button>
+        <button>Light surface</button>
+        <button>Light surface</button>
+        <button>Light surface</button>
+        <button>Light surface</button>
+      </p-scroller>
+    </div>
+
+    <div class="playground dark surface" title="should render scroller gradientColor surface on dark background">
+      <p-scroller [theme]="'dark'" [gradientColor]="'background-surface'">
+        <button>Dark surface</button>
+        <button>Dark surface</button>
+        <button>Dark surface</button>
+        <button>Dark surface</button>
+        <button>Dark surface</button>
+        <button>Dark surface</button>
+        <button>Dark surface</button>
+      </p-scroller>
+    </div>
+
+    <div class="playground light" title="should render scroller with scrollIndicatorPosition center on light background">
+      <div style="height: 3rem; border: 1px solid deeppink; max-width: 600px">
         <p-scroller [scrollIndicatorPosition]="'center'">
-          <button>Scroll indicator position center</button>
-          <button>Scroll indicator position center</button>
-          <button>Scroll indicator position center</button>
-          <button>Scroll indicator position center</button>
-          <button>Scroll indicator position center</button>
-          <button>Scroll indicator position center</button>
-          <button>Scroll indicator position center</button>
+          <button>scrollIndicatorPosition center</button>
+          <button>scrollIndicatorPosition center</button>
+          <button>scrollIndicatorPosition center</button>
+          <button>scrollIndicatorPosition center</button>
+          <button>scrollIndicatorPosition center</button>
+          <button>scrollIndicatorPosition center</button>
+          <button>scrollIndicatorPosition center</button>
         </p-scroller>
       </div>
     </div>
 
-    <div class="playground light" title="should render scroller with scroll indicator position top on light background">
-      <div style="height: 50px; border: 1px solid deeppink; max-width: 600px">
+    <div class="playground light" title="should render scroller with scrollIndicatorPosition top on light background">
+      <div style="height: 3rem; border: 1px solid deeppink; max-width: 600px">
         <p-scroller [scrollIndicatorPosition]="'top'">
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
+          <button>scrollIndicatorPosition top</button>
+          <button>scrollIndicatorPosition top</button>
+          <button>scrollIndicatorPosition top</button>
+          <button>scrollIndicatorPosition top</button>
+          <button>scrollIndicatorPosition top</button>
+          <button>scrollIndicatorPosition top</button>
+          <button>scrollIndicatorPosition top</button>
+        </p-scroller>
+      </div>
+    </div>
+
+    <div class="playground light" title="should render scroller with alignScrollIndicator center on light background">
+      <div style="height: 3rem; border: 1px solid deeppink; max-width: 600px">
+        <p-scroller [alignScrollIndicator]="'center'">
+          <button>alignScrollIndicator center</button>
+          <button>alignScrollIndicator center</button>
+          <button>alignScrollIndicator center</button>
+          <button>alignScrollIndicator center</button>
+          <button>alignScrollIndicator center</button>
+          <button>alignScrollIndicator center</button>
+          <button>alignScrollIndicator center</button>
+        </p-scroller>
+      </div>
+    </div>
+
+    <div class="playground light" title="should render scroller with alignScrollIndicator top on light background">
+      <div style="height: 3rem; border: 1px solid deeppink; max-width: 600px">
+        <p-scroller [alignScrollIndicator]="'top'">
+          <button>alignScrollIndicator top</button>
+          <button>alignScrollIndicator top</button>
+          <button>alignScrollIndicator top</button>
+          <button>alignScrollIndicator top</button>
+          <button>alignScrollIndicator top</button>
+          <button>alignScrollIndicator top</button>
+          <button>alignScrollIndicator top</button>
         </p-scroller>
       </div>
     </div>
@@ -163,7 +213,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render scroller with initial scroll position on light background">
       <div style="max-width: 600px">
-        <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 290}">
+        <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 280}">
           <span>Start</span>
           <span>Middle</span>
           <span>End</span>

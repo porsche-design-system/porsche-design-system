@@ -3,22 +3,10 @@ import * as accordionUtils from './accordion-utils';
 import { isResizeObserverDefined, useResizeObserverFallbackOverride } from './accordion-utils';
 
 jest.mock('../../utils/dom');
-jest.mock('../../utils/slotted-styles');
 
 describe('accordion', () => {
   afterEach(() => {
     useResizeObserverFallbackOverride(!isResizeObserverDefined());
-  });
-
-  describe('componentWillLoad', () => {
-    it('should call throwIfCompactAndSizeIsSet() with correct parameters', () => {
-      const spy = jest.spyOn(accordionUtils, 'warnIfCompactAndSizeIsSet');
-      const component = new Accordion();
-      component.host = document.createElement('p-accordion');
-      component.componentWillLoad();
-
-      expect(spy).toBeCalledWith(component.host, undefined, 'small');
-    });
   });
 
   describe('connectedCallback', () => {
@@ -82,7 +70,7 @@ describe('accordion', () => {
         x: 0,
         y: 0,
       });
-      expect(component['contentHeight']).toBe('0rem');
+      expect(component['contentHeight']).toBe('0px');
     });
   });
 

@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `MODEL_SIGNATURES_CDN_BASE_URL` and `MODEL_SIGNATURES_MANIFEST`
+
 ### [5.0.2] - 2022-06-22
 
 ### [5.0.2-rc.0] - 2022-06-21

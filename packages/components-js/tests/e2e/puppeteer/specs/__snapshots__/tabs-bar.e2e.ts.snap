@@ -10,6 +10,9 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
             {
               "children": [
                 {
+                  "role": "none",
+                },
+                {
                   "children": [
                     {
                       "children": [
@@ -73,34 +76,6 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -119,34 +94,6 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -178,6 +125,9 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
             {
               "children": [
                 {
+                  "role": "none",
+                },
+                {
                   "children": [
                     {
                       "children": [
@@ -241,34 +191,6 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -287,34 +209,6 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -345,6 +239,9 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
           "children": [
             {
               "children": [
+                {
+                  "role": "none",
+                },
                 {
                   "children": [
                     {
@@ -410,34 +307,6 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -456,34 +325,6 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -514,6 +355,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
           "children": [
             {
               "children": [
+                {
+                  "role": "none",
+                },
                 {
                   "children": [
                     {
@@ -580,34 +424,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -626,34 +442,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -685,6 +473,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
             {
               "children": [
                 {
+                  "role": "none",
+                },
+                {
                   "children": [
                     {
                       "children": [
@@ -749,34 +540,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -795,34 +558,6 @@ exports[`accessibility should render correct accessibility tree on focus change 
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -854,6 +589,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
             {
               "children": [
                 {
+                  "role": "none",
+                },
+                {
                   "children": [
                     {
                       "children": [
@@ -928,34 +666,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -974,34 +684,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -1033,6 +715,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
             {
               "children": [
                 {
+                  "role": "none",
+                },
+                {
                   "children": [
                     {
                       "children": [
@@ -1107,34 +792,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],
@@ -1153,34 +810,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            {
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
                       "role": "none",
                     },
                   ],

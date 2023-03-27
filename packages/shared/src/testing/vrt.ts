@@ -9,7 +9,8 @@ export type {
 
 export const defaultViewports = [320, 480, 760, 1000, 1300, 1760] as const;
 export const extendedViewports = [...defaultViewports, 1920, 2560] as const;
-type Viewport = typeof extendedViewports[number];
+export const furtherExtendedViewports = [...extendedViewports, 3000] as const;
+type Viewport = typeof furtherExtendedViewports[number];
 
 export const marqueViewports = [1299, 1300] as const;
 type MarqueViewport = typeof marqueViewports[number];
@@ -84,7 +85,10 @@ export const getVisualRegressionPropTableTester = (): VisualRegressionTester => 
 
 type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
+  scalePageFontSize?: boolean;
   javaScriptEnabled?: boolean;
+  forcedColorsEnabled?: boolean;
+  prefersColorScheme?: 'light' | 'dark';
 };
 
 export const vrtTest = (
@@ -93,9 +97,11 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, javaScriptEnabled, ...otherOptions } = {
+  const { scenario, scalePageFontSize, javaScriptEnabled, forcedColorsEnabled, prefersColorScheme, ...otherOptions } = {
     scenario: undefined,
+    scalePageFontSize: false,
     javaScriptEnabled: true,
+    forcedColorsEnabled: false,
     ...options,
   };
   const { baseUrl } = customOptions || defaultOptions;
@@ -105,6 +111,29 @@ export const vrtTest = (
     async () => {
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
+
+      const cdpSession = await page.target().createCDPSession();
+
+      if (scalePageFontSize) {
+        await cdpSession.send('Page.enable');
+        await cdpSession.send('Page.setFontSizes', {
+          fontSizes: {
+            standard: 32,
+            fixed: 48,
+          },
+        });
+      }
+
+      // NOTE: 'forced-colors' isn't supported by page.emulateMediaFeatures, yet https://pptr.dev/api/puppeteer.page.emulatemediafeatures
+      // also it looks like cdpSession.send() can't be combined with page.emulateMediaFeatures since it affects each other
+      // reset or fallback is needed since it is shared across pages, parallel tests are affected by this
+      await cdpSession.send('Emulation.setEmulatedMedia', {
+        features: [
+          { name: 'forced-colors', value: forcedColorsEnabled ? 'active' : 'none' },
+          { name: 'prefers-color-scheme', value: prefersColorScheme || 'light' },
+        ],
+      });
+
       await page.goto(baseUrl + url, { waitUntil: 'networkidle0' });
 
       // componentsReady is undefined in utilities package

@@ -29,3 +29,6 @@ export const FLEX_ALIGN_CONTENTS = [
   'space-evenly',
 ] as const;
 export type FlexAlignContent = typeof FLEX_ALIGN_CONTENTS[number];
+
+export const deprecatedFlexComponentMessage =
+  'Please use native CSS Flex (https://css-tricks.com/snippets/css/a-guide-to-flexbox) instead for better performance and more standardized layout technique.';

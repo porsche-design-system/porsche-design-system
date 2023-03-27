@@ -16,7 +16,7 @@
           }"
         >
           <template v-slot:item="{ item }">
-            <p-headline variant="headline-5" tag="h2" class="category">{{ item.category }}</p-headline>
+            <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
             <ul>
               <li v-for="(hit, index) in item.hits" :key="index">
                 <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">
@@ -108,7 +108,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   ul,
   li {
@@ -117,7 +117,7 @@
 
   .link {
     width: 100%;
-    margin: $pds-spacing-x-small 0;
+    margin: $pds-spacing-static-x-small 0;
     display: inline-block;
     text-decoration: none;
   }
@@ -135,10 +135,10 @@
   }
 
   .category {
-    padding-bottom: $pds-spacing-small;
+    padding-bottom: $pds-spacing-static-small;
   }
 
   :deep(.hits__item) {
-    padding: $pds-spacing-small $pds-spacing-large $pds-spacing-small;
+    padding: $pds-spacing-static-small $pds-spacing-static-large $pds-spacing-static-small;
   }
 </style>

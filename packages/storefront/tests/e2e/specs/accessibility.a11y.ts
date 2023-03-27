@@ -20,6 +20,7 @@ const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
 it('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain(':root');
   expect(rootStyles).toContain('--p-transition-duration: 0s');
+  expect(rootStyles).toContain('--p-animation-duration: 0s');
 });
 
 const cycleFrameworkTabs = async (theme: string): Promise<void> => {
@@ -37,9 +38,14 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
   if (buttons.length) {
     expect(buttons.length).toBe(2);
 
+    const [vanillaJsButton] = await page.$x("//button[text() = 'Vanilla JS']");
+
     for (const button of buttons) {
-      // angular and react can't be selected initially
-      expect(await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'))).toBe('false');
+      // pages for styles sub-package don't have vanilla js examples and angular is selected initially
+      if (vanillaJsButton) {
+        // angular and react can't be selected initially
+        expect(await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'))).toBe('false');
+      }
 
       await button.click();
       await page.waitForFunction((el: HTMLElement) => el.getAttribute('aria-selected') === 'true', {}, button);

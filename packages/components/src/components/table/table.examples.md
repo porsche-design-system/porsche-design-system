@@ -68,8 +68,12 @@ type TableHeadCellSort = {
 };
 ```
 
-Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should
-subscribe to.
+Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `change` event that you should subscribe to.
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
 
 <Playground :frameworkMarkup="sorting">
   <p-table caption="Some caption" ref="tableSorting">
@@ -103,7 +107,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
 
 <Playground :frameworkMarkup="advanced">
   <p-table ref="tableAdvanced">
-    <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
+    <p-heading slot="caption" size="large">Some visual caption</p-heading>
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>
@@ -179,7 +183,7 @@ export default class Code extends Vue {
 </p-table>`;
 
   captionSlot = `<p-table>
-  <p-headline slot="caption" variant="headline-3">Some slotted caption</p-headline>
+  <p-heading slot="caption" size="large">Some slotted caption</p-heading>
   ${this.basicTableHead}
   ${this.basicTableBody}
 </p-table>`;
@@ -201,14 +205,14 @@ export default class Code extends Vue {
   }
 
   registerEvents(): void {
-    this.$refs.tableAdvanced.addEventListener('sortingChange', (e) => {
+    this.$refs.tableAdvanced.addEventListener('change', (e) => {
       const { id, direction } = e.detail;
       this.headAdvanced = this.headAdvanced.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
       this.dataAdvanced = [...this.dataAdvanced].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
       this.syncHeadCellProperties();
     });
 
-    this.$refs.tableSorting.addEventListener('sortingChange', (e) => {
+    this.$refs.tableSorting.addEventListener('change', (e) => {
       const { id, direction } = e.detail;
       this.headSorting = this.headSorting.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
       this.dataSorting = [...this.dataSorting].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));

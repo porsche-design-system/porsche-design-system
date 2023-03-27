@@ -1,10 +1,11 @@
-import type { BreakpointCustomizable } from '../../types';
-import { getTagName, hasWindow, observeChildren, unobserveChildren } from '../../utils';
-import { pxToRemWithUnit } from '../../styles';
+import type { HeadingTag } from '../heading/heading-tag';
+import { hasWindow, observeChildren, unobserveChildren } from '../../utils';
 
 export const ACCORDION_SIZES = ['small', 'medium'] as const;
 export type AccordionSize = typeof ACCORDION_SIZES[number];
 export type AccordionChangeEvent = { open: boolean };
+
+export type AccordionTag = HeadingTag;
 
 export const setCollapsibleElementHeight = (
   collapsibleElement: HTMLDivElement,
@@ -16,17 +17,7 @@ export const setCollapsibleElementHeight = (
   }
 };
 
-export const getContentHeight = ({ height }: DOMRectReadOnly): string => pxToRemWithUnit(height);
-
-export const warnIfCompactAndSizeIsSet = (
-  host: HTMLElement,
-  compact: boolean,
-  size: BreakpointCustomizable<AccordionSize>
-): void => {
-  if (compact && size !== 'small') {
-    console.warn(`Property "size" of ${getTagName(host)} is ignored when property "compact" is set to "true".`);
-  }
-};
+export const getContentHeight = ({ height }: DOMRectReadOnly): string => `${height}px`;
 
 export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Map();
 

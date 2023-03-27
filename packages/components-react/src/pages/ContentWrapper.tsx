@@ -10,61 +10,70 @@ export const ContentWrapperPage = (): JSX.Element => {
       color: white;
       background-color: lightskyblue;
     }
+
+    div:not(.visualize-grid) {
+      margin: 16px 0;
+    }
   `;
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground" title="should render with width 'basic'">
-        <PContentWrapper>
-          <p>Some content</p>
-        </PContentWrapper>
+      <div className="visualize-grid">
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
       </div>
 
-      <div className="playground" title="should render with width 'extended'">
-        <PContentWrapper width="extended">
-          <p>Some content</p>
-        </PContentWrapper>
-      </div>
-
-      <div className="playground" title="should render with width 'fluid'">
+      <div title="should render with width 'fluid' (desktop: 16 columns)">
         <PContentWrapper width="fluid">
-          <p>Some content</p>
+          <p>Fluid</p>
         </PContentWrapper>
       </div>
 
-      <div className="playground" title="should render with 'default' background color" style={{ background: 'deeppink' }}>
-        <PContentWrapper backgroundColor="default">
-          <p>Some content</p>
+      <div title="should render with width 'full' (desktop: 16 columns)">
+        <PContentWrapper width="full">
+          <p>Full</p>
         </PContentWrapper>
       </div>
 
-      <div
-        className="playground"
-        title="should render with 'default' background color and dark theme"
-        style={{ background: 'deeppink' }}
-      >
-        <PContentWrapper backgroundColor="default" theme="dark">
-          <p>Some content</p>
+      <div title="should render with width 'extended' (desktop: 14 columns)">
+        <PContentWrapper>
+          <p>Extended</p>
         </PContentWrapper>
       </div>
 
-      <div className="playground" title="should color full width although width 'basic' is enabled">
-        <PContentWrapper width="basic" style={{ background: 'deeppink' }}>
-          <p>Some content</p>
-        </PContentWrapper>
-      </div>
-
-      <div className="playground" title="should not cut off to wide content">
+      <div title="should render with width 'basic' (desktop: 12 columns)">
         <PContentWrapper width="basic">
-          <p style={{ marginLeft: '-2000px', marginRight: '-2000px' }}>Some content</p>
+          <p>Basic</p>
         </PContentWrapper>
       </div>
 
-      <div className="playground" title="should render background for set height" style={{ background: 'deeppink' }}>
-        <PContentWrapper backgroundColor="default" style={{ height: '100px' }}>
-          <p>Some content</p>
+      <div title="should render with width 'narrow' (desktop: 8 columns)">
+        <PContentWrapper width="narrow">
+          <p>Narrow</p>
+        </PContentWrapper>
+      </div>
+
+      <div title="should color full width although width 'basic' is enabled">
+        <PContentWrapper width="basic" style={{ background: 'deeppink' }}>
+          <p>Full viewport is colored with custom color</p>
         </PContentWrapper>
       </div>
     </>

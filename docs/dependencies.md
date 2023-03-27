@@ -1,4 +1,30 @@
-# Dependencies 02.01.2023
+# Dependencies 03.03.2023
+
+## UX-Pin Wrappers
+
+UX-Pin is not ready for the major babel loader upgrade jet.
+
+### Affected dependencies:
+
+- ` babel-loader`
+
+### Affected dependencies:
+
+- `@webcomponents/template-shadowroot`
+
+## Shared
+
+- upgrading `octokit` causes a memory leak.
+- upgrading `puppeteer` leads to issues with the high contrast mode vrt. It seems parallel running tests overwrite
+  `cdp.send`.
+- upgrading Jest causes errors in our `carousel` unit test with `splide`. Needs to be fixed before we can upgrade it.
+
+### Affected dependencies:
+
+- `@octokit/core`
+- `puppeteer`
+- `@types/jest`
+- `jest`
 
 ## Playwright
 

@@ -1,7 +1,6 @@
-import { textXSmall } from './textXSmall';
-import { textSmall } from './textSmall';
-import { textMedium } from './textMedium';
-import { textLarge } from './textLarge';
-import { textXLarge } from './textXLarge';
-
-export { textXSmall, textSmall, textMedium, textLarge, textXLarge };
+export { textXXSmallStyle } from './textXXSmallStyle';
+export { textXSmallStyle } from './textXSmallStyle';
+export { textSmallStyle } from './textSmallStyle';
+export { textMediumStyle } from './textMediumStyle';
+export { textLargeStyle } from './textLargeStyle';
+export { textXLargeStyle } from './textXLargeStyle';

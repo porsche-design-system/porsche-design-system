@@ -1,62 +1,70 @@
 import {
-  addImportantToRule,
-  getFocusJssStyle,
-  getHoverJssStyle,
+  addImportantToEachRule,
+  getInsetJssStyle,
   getInvertedThemedColors,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
-  pxToRemWithUnit,
+  hostHiddenStyles,
+  hoverMediaQuery,
 } from '../../../styles';
-import { fontLineHeight, textSmall } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  frostedGlassStyle,
+  spacingFluidXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
-import type { StepperState } from './stepper-horizontal-item-utils';
-import { hoverMediaQuery } from '../../../styles/hover-media-query';
+import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
 import type { JssStyle } from 'jss';
+import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 
-// source for svg can be found in sprite.sketch file
-// svg is created via Sketch export, then run trough ImageOptim and optimized via icons package
-const getSvg = (color: string): string =>
-  `url("data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" fill="${color}" width="90" height="10" viewBox="0 0 90 10"><path d="M5.524 9h.996V.456h-.828L3.16 1.464v.912l2.364-.888zm7.006 0h5.017v-.792H13.49v-.156c0-.804.396-1.224 1.476-1.956l.924-.612c.84-.552 1.74-1.236 1.74-2.724 0-1.548-.84-2.448-2.652-2.448-1.908 0-2.604 1.056-2.664 2.832h.936c.096-1.452.624-1.92 1.728-1.92 1.056 0 1.656.444 1.656 1.536 0 1.164-.768 1.68-1.524 2.184l-.924.612c-.948.636-1.656 1.332-1.656 2.652zm9.689-2.592c.084 1.86.9 2.736 2.808 2.736 1.788 0 2.736-.924 2.736-2.424 0-1.236-.504-1.86-1.32-2.136.756-.348 1.128-1.08 1.128-1.848 0-1.524-.852-2.424-2.664-2.424-1.872 0-2.592 1.092-2.688 2.832h.948c.096-1.44.672-1.92 1.74-1.92 1.056 0 1.68.456 1.68 1.512 0 .948-.528 1.488-1.62 1.488h-.804V5.1h.864c1.26 0 1.752.564 1.752 1.62 0 1.152-.588 1.632-1.752 1.632-1.26 0-1.776-.552-1.872-1.944zm9.736.624h3.876V9h.96V7.032h1.212v-.84H36.79V.456h-1.392l-3.444 5.832zm1.044-.84 2.832-4.848v4.848zm9.411-.648h.889c.204-.732.66-1.14 1.704-1.14 1.332 0 1.8.636 1.8 1.944 0 1.344-.444 2.004-1.8 2.004-1.236 0-1.728-.552-1.788-1.656h-.948c.072 1.632.984 2.448 2.736 2.448 1.776 0 2.784-.828 2.784-2.832 0-1.86-.876-2.736-2.688-2.736-.768 0-1.368.24-1.74.66l.252-2.868h3.792V.456h-4.584L42.41 5.16zm9.809.768c0 2.004.984 2.832 2.796 2.832 1.776 0 2.784-.828 2.784-2.832 0-1.86-.9-2.736-2.688-2.736-.396 0-.744.072-1.068.228L56.25.456h-1.068l-2.16 3.312c-.516.792-.804 1.488-.804 2.544zm.996.048c0-1.332.468-1.956 1.8-1.956s1.788.624 1.788 1.956-.444 1.992-1.788 1.992c-1.356 0-1.8-.66-1.8-1.992zm9.075-4.992h4.369L63.215 9h1.02l3.48-7.824v-.72H62.29zm9.929 5.352c0 1.68.96 2.424 2.784 2.424s2.784-.744 2.784-2.424c0-1.008-.408-1.716-1.308-2.052.66-.324 1.116-.9 1.116-1.956 0-1.488-.804-2.4-2.592-2.4-1.764 0-2.592.912-2.592 2.4 0 1.056.468 1.632 1.104 1.956-.9.336-1.296 1.044-1.296 2.052zm.984-.012c0-1.068.564-1.572 1.8-1.572s1.8.504 1.8 1.572c0 1.152-.564 1.644-1.8 1.644s-1.8-.492-1.8-1.644zm1.8-2.4c-1.164 0-1.608-.588-1.608-1.56 0-1.068.54-1.524 1.608-1.524s1.608.456 1.608 1.524c0 .972-.444 1.56-1.608 1.56zm9.904 1.608c.348 0 .684-.06.984-.192L83.767 9h1.068l2.124-3.348c.504-.792.792-1.488.792-2.568 0-1.98-.996-2.772-2.748-2.772-1.764 0-2.76.804-2.76 2.784 0 1.86.888 2.82 2.664 2.82zm.096-.828c-1.284 0-1.764-.66-1.764-1.992 0-1.2.444-1.872 1.764-1.872 1.308 0 1.764.672 1.764 1.872 0 1.332-.48 1.992-1.764 1.992z"/></svg>`
-  )}")`;
-
-const getColors = (
-  state: StepperState,
-  theme: Theme
-): { baseColor: string; hoverColor: string; iconColor: string; invertedBaseColor: string; disabledColor: string } => {
-  const { baseColor, hoverColor, warningColor, successColor, disabledColor } = getThemedColors(theme);
-
-  const stateToColorMap: Record<StepperState, string> = {
-    current: 'inherit',
-    complete: successColor,
-    warning: warningColor,
-  };
-
-  return {
-    baseColor,
-    hoverColor,
-    iconColor: stateToColorMap[state],
-    invertedBaseColor: getInvertedThemedColors(theme).baseColor,
-    disabledColor,
-  };
+type NumberedCircleColors = {
+  primaryColor: string;
+  invertedBaseColor: string;
+  disabledColor: string;
 };
 
-// following constants are defined in em to ensure proportional size based on parents font size
-// TODO: to be sure counter sizing and positioning is in sync with icon, then we need to use a svg instead
-// TODO: simplify calculation of positioning by using css grid and/or svg
-const spriteStepSize = 0.625; // 10px / font size in px
-const spriteWidth = `${9 * spriteStepSize}em`; // 9 steps
-const spriteHeight = `${spriteStepSize}em`; // height of sprite / font size in px
-const counterCirclePosition = '0.171875em'; // 2.75px
-const counterCircleSize = `calc(${fontLineHeight} - ${counterCirclePosition} * 2)`;
-const counterValuePosition = `calc((${fontLineHeight} - ${spriteStepSize}em) / 2)`;
-const counterValueSize = spriteHeight;
+const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColors, isStateCurrent: boolean): string => {
+  // # of the hexcolor starts a fragment identifier in URLs, so we have to replace it with the escaped value of # = %23
+  numberedCircleColors = Object.entries(numberedCircleColors).reduce(
+    (result, [key, value]) => ({ ...result, [key]: value.replace(/#/g, '%23') }),
+    {} as NumberedCircleColors
+  );
 
-export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
-  const { baseColor, hoverColor, iconColor, invertedBaseColor, disabledColor } = getColors(state, theme);
-  const isStateCurrentOrUndefined = !state || state === 'current';
+  const { disabledColor, invertedBaseColor, primaryColor } = numberedCircleColors;
+  const fillColor = isStateCurrent ? invertedBaseColor : disabledColor;
+
+  const svgCirclePath = `<circle fill="${isStateCurrent ? primaryColor : 'none'}"${
+    isStateCurrent ? '' : ` stroke="${fillColor}"`
+  } stroke-width="1px" cx="12" cy="12" r="9"/>`;
+
+  // Full SVG is provided by design (./numbers_raw.svg), created with illustrator and optimized with ImageOptim.
+  // The optimized file can be found in ./numbers_optim.svg.
+  // TODO: could certainly be optimized size wise by exporting icons larger and having less decimals
+  const svgNumberedCirclePaths = [
+    `${svgCirclePath}<path fill="${fillColor}" d="m12.33 8.67-2.43.91v-.94l2.6-1.03h.85v8.78h-1.02z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m9.46 15.58c0-1.35.73-2.07 1.7-2.72l.95-.63c.78-.52 1.57-1.05 1.57-2.24 0-1.12-.62-1.58-1.7-1.58s-1.68.48-1.78 1.97h-.96c.06-1.82.78-2.91 2.74-2.91s2.72.92 2.72 2.52-.92 2.23-1.79 2.8l-.95.63c-1.11.75-1.52 1.18-1.52 2.01v.16h4.17v.81h-5.15v-.81z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m10.1 13.73c.1 1.43.63 2 1.92 2 1.2 0 1.8-.49 1.8-1.68 0-1.08-.51-1.66-1.8-1.66h-.89v-.9h.83c1.12 0 1.66-.56 1.66-1.53 0-1.08-.64-1.55-1.73-1.55s-1.69.49-1.79 1.97h-.97c.1-1.79.84-2.91 2.76-2.91s2.74.92 2.74 2.49c0 .79-.38 1.54-1.16 1.9.84.28 1.36.92 1.36 2.19 0 1.54-.97 2.49-2.81 2.49-1.96 0-2.8-.9-2.88-2.81z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m8.87 13.6 3.54-5.99h1.43v5.89h1.25v.86h-1.25v2.02h-.99v-2.02h-3.98zm3.98-.1v-4.98l-2.91 4.98z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m9.34 12.45.42-4.83h4.71v.94h-3.9l-.26 2.95c.38-.43 1-.68 1.79-.68 1.86 0 2.76.9 2.76 2.81 0 2.06-1.03 2.91-2.86 2.91s-2.74-.84-2.81-2.51h.97c.06 1.13.57 1.7 1.84 1.7 1.39 0 1.85-.68 1.85-2.06s-.48-2-1.85-2c-1.07 0-1.54.42-1.75 1.17h-.91v-.39z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m9.97 11.02 2.22-3.4h1.1l-2.27 3.44c.33-.16.69-.23 1.1-.23 1.84 0 2.76.9 2.76 2.81 0 2.06-1.04 2.91-2.86 2.91s-2.87-.85-2.87-2.91c0-1.08.3-1.8.83-2.61zm2.05 4.71c1.38 0 1.84-.68 1.84-2.05s-.47-2.01-1.84-2.01-1.85.64-1.85 2.01.46 2.05 1.85 2.05z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m9.21 7.61h5.57v.74l-3.58 8.04h-1.05l3.54-7.84h-4.49v-.94z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m10.47 11.94c-.65-.33-1.13-.92-1.13-2.01 0-1.53.85-2.47 2.66-2.47s2.66.94 2.66 2.47c0 1.08-.47 1.68-1.15 2.01.92.35 1.34 1.07 1.34 2.11 0 1.73-.99 2.49-2.86 2.49s-2.86-.76-2.86-2.49c0-1.04.41-1.76 1.33-2.11zm1.53 3.78c1.27 0 1.85-.51 1.85-1.69 0-1.1-.58-1.61-1.85-1.61s-1.85.52-1.85 1.61c0 1.18.58 1.69 1.85 1.69zm1.65-5.76c0-1.1-.56-1.56-1.65-1.56s-1.65.47-1.65 1.56c0 1 .46 1.6 1.65 1.6s1.65-.6 1.65-1.6z"/>`,
+    `${svgCirclePath}<path fill="${fillColor}" d="m9.16 10.33c0-2.03 1.02-2.86 2.83-2.86s2.82.81 2.82 2.85c0 1.11-.3 1.82-.81 2.64l-2.18 3.44h-1.1l2.18-3.37c-.31.14-.65.2-1.01.2-1.82 0-2.74-.99-2.74-2.9zm4.65 0c0-1.23-.47-1.92-1.81-1.92s-1.81.69-1.81 1.92c0 1.37.49 2.05 1.81 2.05s1.81-.68 1.81-2.05z"/>`,
+  ];
+
+  return svgNumberedCirclePaths[stepCount];
+};
+
+export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean, theme: Theme): string => {
+  const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
+
+  const isStateCurrent = state === 'current';
+  const isStateCurrentOrUndefined = !state || isStateCurrent;
   const isDisabled = !state || disabled;
 
   return getCss({
@@ -66,94 +74,82 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
           Array.from(Array(9)).reduce(
             (result, _, i) => ({
               ...result,
-              [`&(:nth-of-type(${i + 1})) $button::after`]: {
-                backgroundPositionX: `${-i * spriteStepSize}em`,
+              [`&(:nth-of-type(${i + 1})) $button::before`]: {
+                backgroundImage: getInlineSVGBackgroundImage(
+                  getSVGPath(
+                    i,
+                    {
+                      primaryColor,
+                      invertedBaseColor: getInvertedThemedColors(theme).primaryColor,
+                      disabledColor,
+                    },
+                    isStateCurrent
+                  )
+                ),
               },
             }),
             {} as JssStyle
           )),
-        fontSize: addImportantToRule('inherit'),
-        '&(:not(:last-of-type))': {
-          marginRight: addImportantToRule('1em'),
-        },
+        ...addImportantToEachRule({
+          fontSize: 'inherit',
+          ...hostHiddenStyles,
+          '&(:not(:last-of-type))': {
+            margin: `0 ${spacingFluidXSmall} 0 0`,
+          },
+        }),
       },
       button: {
+        display: 'flex',
         position: 'relative',
-        color: isDisabled ? disabledColor : baseColor,
-        transition: getTransition('color'),
-        margin: 0,
-        padding: `0 0 0 calc(${fontLineHeight} + ${pxToRemWithUnit(4)})`, // icon height + 4px
+        gap: '3px',
+        color: isDisabled ? disabledColor : primaryColor,
+        padding: '4px 10px 4px 6px',
         background: 0,
         border: 0,
-        ...textSmall,
+        outline: 0,
+        ...textSmallStyle,
         fontSize: 'inherit',
-        whiteSpace: 'nowrap',
-        ...getFocusJssStyle(),
-        ...(isStateCurrentOrUndefined
-          ? // counter circle icon via css
-            {
-              cursor: isDisabled ? 'not-allowed' : 'auto',
-              // TODO: combine &::before and &::after element
-              '&::before': {
-                // circle of counter element
-                content: '""',
-                position: 'absolute',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                left: counterCirclePosition,
-                height: counterCircleSize,
-                width: counterCircleSize,
-                borderRadius: '50%',
-                ...(isDisabled
-                  ? {
-                      boxSizing: 'border-box',
-                      border: `1px solid ${disabledColor}`,
-                    }
-                  : {
-                      background: baseColor,
-                    }),
-              },
-              '&::after': {
-                // value of counter element
-                content: '""',
-                position: 'absolute',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                left: counterValuePosition,
-                width: counterValueSize,
-                height: counterValueSize,
-                background: `${getSvg(
-                  isDisabled ? disabledColor : invertedBaseColor
-                )} 0 50% / ${spriteWidth} ${spriteHeight} no-repeat`,
-              },
-            }
-          : // other icons via icon component
-          isDisabled
-          ? {
-              cursor: 'not-allowed',
-              textDecoration: 'none',
-            }
-          : {
-              cursor: 'pointer',
-              textDecoration: 'underline',
-              ...hoverMediaQuery({
-                ...getHoverJssStyle(),
-                '&:hover .icon': {
-                  color: hoverColor,
-                },
-              }),
-            }),
+        width: 'max-content',
+        cursor: isDisabled ? 'not-allowed' : 'pointer',
+        borderRadius: borderRadiusSmall,
+        ...(isStateCurrent && {
+          ...frostedGlassStyle,
+          background: hoverColor,
+        }),
+        ...(!isDisabled &&
+          hoverMediaQuery({
+            transition: getTransition('background-color'),
+            '&:hover': {
+              ...frostedGlassStyle,
+              background: hoverColor,
+            },
+          })),
+        ...(isStateCurrentOrUndefined && {
+          // counter
+          // Pseudo element is needed to center the counter to the text, as it is not working optimal directly on the button
+          '&::before': {
+            content: '""',
+            height: fontLineHeight,
+            width: fontLineHeight,
+          },
+        }),
+        '&:focus::after': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(0),
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusSmall,
+        },
+        '&:focus:not(:focus-visible)::after': {
+          borderColor: 'transparent',
+        },
       },
     },
     ...(!isStateCurrentOrUndefined && {
-      // other icons via icon component
+      // complete / warning icons via icon component
       icon: {
-        position: 'absolute',
-        left: 0,
         height: fontLineHeight,
         width: fontLineHeight,
-        color: isDisabled ? disabledColor : iconColor,
-        transition: getTransition('color'),
       },
     }),
     'sr-only': getScreenReaderOnlyJssStyle(),

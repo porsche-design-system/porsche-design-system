@@ -42,10 +42,24 @@ export const config: StorefrontConfig = {
     'Next Js': {
       // @ts-ignore
       'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
-      // @ts-ignore
-      'Ssr Support': [() => import('@/pages/start-coding/next-js/ssr-support.md')],
+      'Ssr Support': [
+        // @ts-ignore
+        () => import('@/pages/start-coding/next-js/ssr-support.md'),
+        // @ts-ignore
+        () => import('@/pages/start-coding/ssr-support-table.md'),
+      ],
       // @ts-ignore
       Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
+    },
+    Remix: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/remix/getting-started.md')],
+      'Ssr Support': [
+        // @ts-ignore
+        () => import('@/pages/start-coding/remix/ssr-support.md'),
+        // @ts-ignore
+        () => import('@/pages/start-coding/ssr-support-table.md'),
+      ],
     },
   },
   News: {
@@ -67,6 +81,32 @@ export const config: StorefrontConfig = {
     Versioning: [() => import('@/pages/news/versioning.md')],
     // @ts-ignore
     Roadmap: [() => import('@/pages/news/roadmap.md')],
+  },
+  Styles: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/styles/introduction.md')],
+    // @ts-ignore
+    Border: [() => import('@/pages/styles/border.md')],
+    // @ts-ignore
+    'Drop Shadow': [() => import('@/pages/styles/drop-shadow.md')],
+    // @ts-ignore
+    Focus: [() => import('@/pages/styles/focus.md')],
+    // @ts-ignore
+    'Frosted Glass': [() => import('@/pages/styles/frosted-glass.md')],
+    // @ts-ignore
+    Gradient: [() => import('@/pages/styles/gradient.md')],
+    // @ts-ignore
+    Grid: [() => import('@/pages/styles/grid.md')],
+    // @ts-ignore
+    Hover: [() => import('@/pages/styles/hover.md')],
+    // @ts-ignore
+    'Media Query': [() => import('@/pages/styles/media-query.md')],
+    // @ts-ignore
+    Spacing: [() => import('@/pages/styles/spacing.md')],
+    // @ts-ignore
+    Theme: [() => import('@/pages/styles/theme.md')],
+    // @ts-ignore
+    Typography: [() => import('@/pages/styles/typography.md')],
   },
   Components: {
     Accordion: {
@@ -103,6 +143,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/button-pure/button-pure.props.md')],
     },
+    'Button Tile': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/button-tile/button-tile.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/button-tile/button-tile.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/button-tile/button-tile.props.md')],
+    },
     Carousel: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/carousel/carousel.examples.md')],
@@ -118,12 +166,6 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.props.md')],
-    },
-    Color: {
-      // @ts-ignore
-      Examples: [() => import('@/pages/design-tokens/color/color.examples.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/design-tokens/color/color.usage.md')],
     },
     'Content Wrapper': {
       // @ts-ignore
@@ -142,6 +184,14 @@ export const config: StorefrontConfig = {
       Props: [() => import('@/../../components/src/components/divider/divider.props.md')],
     },
     Fieldset: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/fieldset/fieldset.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/fieldset/fieldset.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/fieldset/fieldset.props.md')],
+    },
+    'Fieldset Wrapper': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/fieldset-wrapper/fieldset-wrapper.examples.md')],
       // @ts-ignore
@@ -229,6 +279,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/modal/modal.props.md')],
     },
+    'Model Signature': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/model-signature/model-signature.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/model-signature/model-signature.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/model-signature/model-signature.props.md')],
+    },
     Notifications: {
       // @ts-ignore
       Introduction: [() => import('@/pages/components/notifications/notifications.usage.md')],
@@ -237,7 +295,7 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/inline-notification/inline-notification.examples.md'),
       ],
       // @ts-ignore
-      Toast: [() => import('@/../../components/src/components/toast/toast/toast.examples.md')],
+      Toast: [() => import('@/../../components/src/components/toast/toast.examples.md')],
       // @ts-ignore
       Banner: [() => import('@/../../components/src/components/banner/banner.examples.md')],
       // @ts-ignore
@@ -302,12 +360,6 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.props.md'),
       ],
-    },
-    Spacing: {
-      // @ts-ignore
-      Examples: [() => import('@/pages/design-tokens/spacing/spacing.examples.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/design-tokens/spacing/spacing.usage.md')],
     },
     'Segmented Control': {
       // @ts-ignore
@@ -433,18 +485,50 @@ export const config: StorefrontConfig = {
     },
     Typography: {
       // @ts-ignore
-      Text: [() => import('@/../../components/src/components/text/text.code.md')],
+      Text: [() => import('@/../../components/src/components/text/text.example.md')],
       // @ts-ignore
-      Headline: [() => import('@/../../components/src/components/headline/headline.code.md')],
+      Heading: [() => import('@/../../components/src/components/heading/heading.example.md')],
+      // @ts-ignore
+      Headline: [() => import('@/../../components/src/components/headline/headline.example.md')],
+      // @ts-ignore
+      Display: [() => import('@/../../components/src/components/display/display.example.md')],
       // @ts-ignore
       Usage: [() => import('@/pages/components/typography/typography.usage.md')],
       Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/display/display.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/heading/heading.props.md'),
         // @ts-ignore
         () => import('@/../../components/src/components/headline/headline.props.md'),
         // @ts-ignore
         () => import('@/../../components/src/components/text/text.props.md'),
       ],
     },
+  },
+  Partials: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/partials/introduction.md')],
+    // @ts-ignore
+    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
+    // @ts-ignore
+    'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
+    // @ts-ignore
+    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
+    // @ts-ignore
+    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
+    // @ts-ignore
+    'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
+    // @ts-ignore
+    'Font Links': [() => import('@/pages/partials/font-links.md')],
+    // @ts-ignore
+    'Icon Links': [() => import('@/pages/partials/icon-links.md')],
+    // @ts-ignore
+    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
+    // @ts-ignore
+    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
+    // @ts-ignore
+    'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
   },
   Help: {
     // @ts-ignore
@@ -486,7 +570,7 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Fonts: [() => import('@/pages/assets/fonts.md')],
   },
-  Utilities: {
+  'Utilities Deprecated': {
     // @ts-ignore
     Introduction: [() => import('@/pages/utilities/introduction.md')],
     Scss: {
@@ -505,30 +589,6 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Helper: [() => import('@/pages/utilities/js/helper.md')],
     },
-  },
-  Partials: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/partials/introduction.md')],
-    // @ts-ignore
-    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
-    // @ts-ignore
-    'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
-    // @ts-ignore
-    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
-    // @ts-ignore
-    'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
-    // @ts-ignore
-    'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
-    // @ts-ignore
-    'Font Links': [() => import('@/pages/partials/font-links.md')],
-    // @ts-ignore
-    'Icon Links': [() => import('@/pages/partials/icon-links.md')],
-    // @ts-ignore
-    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
-    // @ts-ignore
-    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
-    // @ts-ignore
-    'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
   },
   Performance: {
     // @ts-ignore

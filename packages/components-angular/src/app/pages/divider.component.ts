@@ -23,16 +23,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-divider></p-divider>
     </div>
 
-    <div class="playground light" title="should show vertical divider">
+    <div class="playground light" title="should show divider with orientation=vertical">
       <div class="divider-vertical-container-example">
         <p-divider [orientation]="'vertical'"></p-divider>
       </div>
     </div>
+    <div class="playground light" title="should show divider with direction=vertical">
+      <div class="divider-vertical-container-example">
+        <p-divider [direction]="'vertical'"></p-divider>
+      </div>
+    </div>
 
-    <div class="playground light" title="should show responsive vertical divider">
+    <div class="playground light" title="should show responsive divider with orientation">
       <div class="divider-vertical-responsive-container-example">
         <p-divider
           [orientation]="{ base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' }"
+        ></p-divider>
+      </div>
+    </div>
+    <div class="playground light" title="should show responsive divider with direction">
+      <div class="divider-vertical-responsive-container-example">
+        <p-divider
+          [direction]="{ base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' }"
         ></p-divider>
       </div>
     </div>
@@ -40,9 +52,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should show different colors of divider with light theme">
       <p-divider></p-divider>
       <br />
+      <p-divider [color]="'contrast-medium'"></p-divider>
+      <br />
+      <p-divider [color]="'contrast-high'"></p-divider>
+      <br />
+      <p-divider [color]="'neutral-contrast-low'"></p-divider>
       <br />
       <p-divider [color]="'neutral-contrast-medium'"></p-divider>
-      <br />
       <br />
       <p-divider [color]="'neutral-contrast-high'"></p-divider>
     </div>
@@ -50,9 +66,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground dark" title="should show different colors of divider with dark theme">
       <p-divider [theme]="'dark'"></p-divider>
       <br />
+      <p-divider [theme]="'dark'" [color]="'contrast-medium'"></p-divider>
+      <br />
+      <p-divider [theme]="'dark'" [color]="'contrast-high'"></p-divider>
+      <br />
+      <p-divider [theme]="'dark'" [color]="'neutral-contrast-low'"></p-divider>
       <br />
       <p-divider [theme]="'dark'" [color]="'neutral-contrast-medium'"></p-divider>
-      <br />
       <br />
       <p-divider [theme]="'dark'" [color]="'neutral-contrast-high'"></p-divider>
     </div>

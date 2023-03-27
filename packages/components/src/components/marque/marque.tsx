@@ -1,10 +1,12 @@
-import type { LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
-import type { MarqueAriaAttribute, MarqueSize } from './marque-utils';
-import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_SIZES } from './marque-utils';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
+import type { MarqueAriaAttribute, MarqueTarget } from './marque-utils';
+import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
+import type { MarqueSize } from './marque-size';
+import { MARQUE_SIZES } from './marque-size';
 
 const propTypes: PropTypes<typeof Marque> = {
   trademark: AllowedTypes.boolean,
@@ -31,7 +33,7 @@ export class Marque {
   @Prop() public href?: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: MarqueTarget = '_self';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttribute>;
@@ -41,7 +43,7 @@ export class Marque {
     attachComponentCss(this.host, getComponentCss, this.size);
 
     const innerManifest = getInnerManifest(this.trademark);
-    const mediumMedia = `(min-width: ${breakpoint.l})`;
+    const mediumMedia = `(min-width: ${breakpoint.l}px)`;
 
     const picture = (
       <picture>

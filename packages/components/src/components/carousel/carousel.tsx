@@ -1,4 +1,27 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
+import type { ButtonPure } from '../button-pure/button-pure';
+import type {
+  CarouselAlignHeader,
+  CarouselChangeEvent,
+  CarouselInternationalization,
+  CarouselWidth,
+} from './carousel-utils';
+import {
+  CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_WIDTHS,
+  getAmountOfPages,
+  getSlidesAndAddNamedSlots,
+  getSplideBreakpoints,
+  renderPagination,
+  slideNext,
+  slidePrev,
+  updatePagination,
+  updatePrevNextButtons,
+  updateSlidesInert,
+  warnIfHeadingIsMissing,
+} from './carousel-utils';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -14,33 +37,24 @@ import {
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { getComponentCss } from './carousel-styles';
-import { Splide } from '@splidejs/splide';
-import type { CarouselChangeEvent, CarouselInternationalization } from './carousel-utils';
-import {
-  getAmountOfPages,
-  getSlidesAndAddNamedSlots,
-  getSplideBreakpoints,
-  renderPagination,
-  slideNext,
-  slidePrev,
-  updatePagination,
-  updatePrevNextButtons,
-  updateSlidesInert,
-  warnIfHeadingIsMissing,
-} from './carousel-utils';
-import { ButtonPure } from '../button-pure/button-pure';
-import { spacing } from '@porsche-design-system/utilities-v2';
+import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
+import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
+  alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,
   wrapContent: AllowedTypes.boolean,
-  slidesPerPage: AllowedTypes.breakpoint('number'),
+  width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
+  slidesPerPage: AllowedTypes.oneOf<ValidatorFunction>([
+    AllowedTypes.breakpoint('number'),
+    AllowedTypes.oneOf(['auto']),
+  ]),
   disablePagination: AllowedTypes.breakpoint('boolean'),
+  pagination: AllowedTypes.breakpoint('boolean'),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -50,6 +64,7 @@ const propTypes: PropTypes<typeof Carousel> = {
     slide: AllowedTypes.string,
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  activeSlideIndex: AllowedTypes.number,
 };
 
 @Component({
@@ -65,26 +80,48 @@ export class Carousel {
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
 
+  /** Alignment of heading and description */
+  @Prop() public alignHeader?: CarouselAlignHeader = 'left';
+
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
 
-  /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
   @Prop() public wrapContent?: boolean;
 
-  /** Sets the amount of slides visible at the same time. */
-  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
+  /** Defines the outer spacings between the carousel and the left and right screen sides. */
+  @Prop() public width?: CarouselWidth = 'basic';
 
-  /** If true, the carousel will not show pagination bullets at the bottom. */
-  @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean> = false;
+  /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
+  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1;
+
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
+   * If true, the carousel will not show pagination bullets at the bottom. */
+  @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean>;
+
+  /** If false, the carousel will not show pagination bullets at the bottom. */
+  @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
-  @Prop() public intl?: CarouselInternationalization = {};
+  @Prop() public intl?: CarouselInternationalization;
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when carousel's content slides. */
+  /** Defines which slide to be active (zero-based numbering). */
+  @Prop() public activeSlideIndex?: number = 0;
+
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when carousel's content slides. */
   @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselChangeEvent>;
+
+  /** Emitted when carousel's content slides. */
+  @Event({ bubbles: false }) public change: EventEmitter<CarouselChangeEvent>;
 
   @State() private amountOfPages: number;
 
@@ -92,8 +129,13 @@ export class Carousel {
   private container: HTMLElement;
   private btnPrev: ButtonPure;
   private btnNext: ButtonPure;
-  private pagination: HTMLElement;
+  private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
+
+  @Watch('activeSlideIndex')
+  public activeSlideHandler(newValue: number): void {
+    this.splide.go(newValue); // change event is emitted via splide.on('move')
+  }
 
   public connectedCallback(): void {
     observeChildren(this.host, this.updateSlidesAndPagination);
@@ -115,29 +157,32 @@ export class Carousel {
 
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
+      start: this.activeSlideIndex,
+      autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true
       perMove: 1,
       mediaQuery: 'min',
-      padding: {
-        right: '7%', // together with wrapContent this is overridden via css
-      },
+      speed: carouselTransitionDuration,
+      gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
-        base: spacing.small,
-        s: spacing.medium,
-        l: spacing.large,
-      }),
+      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>),
       // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.intl),
+      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
     });
 
     this.registerSplideHandlers(this.splide);
   }
 
+  // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
+  public componentShouldUpdate(_: unknown, __: unknown, propertyName: keyof InstanceType<typeof Carousel>): boolean {
+    return propertyName !== 'activeSlideIndex';
+  }
+
   public componentDidUpdate(): void {
+    // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     updateSlidesInert(this.splide);
@@ -151,9 +196,26 @@ export class Carousel {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
+    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
+    this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.width,
+      // flip boolean values of disablePagination since it is the inverse of pagination
+      this.disablePagination
+        ? typeof this.disablePagination === 'object'
+          ? (Object.fromEntries(
+              Object.entries(this.disablePagination).map(([key, value]) => [key, !value])
+            ) as BreakpointCustomizable<boolean>)
+          : !this.disablePagination
+        : this.pagination,
+      this.alignHeader,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -208,7 +270,9 @@ export class Carousel {
           </div>
         </div>
 
-        {this.disablePagination !== true && <div class="pagination" ref={(ref) => (this.pagination = ref)} />}
+        {(this.disablePagination ? this.disablePagination !== true : this.pagination) && (
+          <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
+        )}
       </Host>
     );
   }
@@ -217,13 +281,14 @@ export class Carousel {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
-      renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
+      renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
-      updatePagination(this.pagination, activeIndex);
+      updatePagination(this.paginationEl, activeIndex);
+      this.change.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
 
@@ -245,9 +310,9 @@ export class Carousel {
     this.amountOfPages = getAmountOfPages(
       this.slides.length,
       // round to sanitize floating numbers
-      Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
+      this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
-    renderPagination(this.pagination, this.amountOfPages, this.splide?.index || 0);
+    renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
     updateSlidesInert(this.splide);
   };
 }

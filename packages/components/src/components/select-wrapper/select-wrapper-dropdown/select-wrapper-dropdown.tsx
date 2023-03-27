@@ -7,7 +7,11 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
-import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type {
+  DropdownDirectionInternal,
+  SelectWrapperDropdownDirection,
+  SelectWrapperState,
+} from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
   getListAriaAttributes,
@@ -34,7 +38,6 @@ import {
   determineDirection,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
-import type { FormState } from '../../../utils/form/form-state';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
@@ -48,8 +51,8 @@ export class SelectWrapperDropdown {
   @Prop() public label?: string;
   @Prop() public description?: string;
   @Prop() public message?: string;
-  @Prop() public state?: FormState;
-  @Prop() public direction?: DropdownDirection = 'auto';
+  @Prop() public state?: SelectWrapperState;
+  @Prop() public direction?: SelectWrapperDropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
   @Prop() public required?: boolean = false;
@@ -102,8 +105,8 @@ export class SelectWrapperDropdown {
       getComponentCss,
       this.direction === 'auto' ? determineDirection(this.host) : this.direction,
       this.isOpen,
-      this.disabled,
       this.state,
+      this.disabled,
       this.filter,
       this.theme
     );
@@ -151,7 +154,8 @@ export class SelectWrapperDropdown {
               labelId,
               descriptionId,
               dropdownId,
-              getHighlightedOptionMapIndex(this.optionMaps))}
+              getHighlightedOptionMapIndex(this.optionMaps)
+            )}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onComboboxKeyDown}
           />
@@ -202,7 +206,12 @@ export class SelectWrapperDropdown {
                   >
                     {value}
                     {selected && !disabled && (
-                      <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
+                      <PrefixedTagNames.pIcon
+                        aria-hidden="true"
+                        name="check"
+                        color={disabled ? 'state-disabled' : 'primary'}
+                        theme={this.theme}
+                      />
                     )}
                   </li>,
                 ];

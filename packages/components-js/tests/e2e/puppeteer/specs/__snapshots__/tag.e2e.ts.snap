@@ -6,19 +6,6 @@ exports[`accessibility should expose correct accessibility tree with icon 1`] = 
     {
       "children": [
         {
-          "children": [
-            {
-              "children": [
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
           "role": "none",
         },
       ],

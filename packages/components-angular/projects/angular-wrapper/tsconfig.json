@@ -6,5 +6,5 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["./src/partials.ts", "./src/utilities/js.ts"]
+  "include": ["./src/partials/index.ts", "./src/styles/index.ts", "./src/testing/index.ts"]
 }

@@ -35,6 +35,9 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-button': `<p-button>Some label</p-button>`,
   'p-button-group': `<p-button-group></p-button-group>`,
   'p-button-pure': `<p-button-pure>Some label</p-button-pure>`,
+  'p-button-tile': `<p-button-tile label="Some label" description="Some description" aspectRatio="4:3">
+    <img src="">
+   </p-button-tile>`,
   'p-carousel': `<p-carousel heading="Some heading">
     <div>1</div>
     <div>2</div>
@@ -44,7 +47,9 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <input type="checkbox" />
 </p-checkbox-wrapper>`,
   'p-content-wrapper': `<p-content-wrapper></p-content-wrapper>`,
+  'p-display': `<p-display>Some text</p-display>`,
   'p-divider': `<p-divider></p-divider>`,
+  'p-fieldset': `<p-fieldset></p-fieldset>`,
   'p-fieldset-wrapper': `<p-fieldset-wrapper></p-fieldset-wrapper>`,
   'p-flex': `<p-flex>
     <p-flex-item></p-flex-item>
@@ -54,6 +59,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>
   </p-grid>`,
+  'p-heading': `<p-heading>Some text</p-heading>`,
   'p-headline': `<p-headline>Some text</p-headline>`,
   'p-icon': `<p-icon></p-icon>`,
   'p-inline-notification': `<p-inline-notification heading="Some banner title" action-label="Retry">
@@ -67,6 +73,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   </p-link-tile>`,
   'p-marque': `<p-marque></p-marque>`,
   'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,
+  'p-model-signature': `<p-model-signature></p-model-signature>`,
   'p-pagination': `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`,
   'p-popover': `<p-popover>Some Popover Content</p-popover>`,
   'p-radio-button-wrapper': `<p-radio-button-wrapper label="Some label">

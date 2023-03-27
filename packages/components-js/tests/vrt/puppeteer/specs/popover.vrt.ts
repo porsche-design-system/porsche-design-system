@@ -5,12 +5,13 @@ import {
   openPopoversAndHighlightSpacer,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-import type { GetMarkup } from '../helpers';
+import type { GetThemedMarkup } from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
   getBodyMarkup,
+  getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import type { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
@@ -155,18 +156,32 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('popover-states', async () => {
       const page = vrt.getPage();
 
-      const getElementsMarkup: GetMarkup = () => `
-        <p-popover>Some content with a <a>link</a></p-popover>`;
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          .playground { height: 100px; }
+        </style>`;
 
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup));
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
+        <p-popover theme="${theme}" direction="right">
+          Slotted Content
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
+        </p-popover>`;
+
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
       await openPopoversAndHighlightSpacer(page);
 
-      await forceHoverState(page, '.hover > p-popover >>> p-button-pure >>> button');
-      await forceHoverState(page, '.hover > p-popover > a');
-      await forceFocusState(page, '.focus > p-popover >>> p-button-pure >>> button');
-      await forceFocusState(page, '.focus > p-popover > a');
-      await forceFocusHoverState(page, '.focus-hover > p-popover >>> p-button-pure >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-popover > a');
+      await forceHoverState(page, '.hover p-popover >>> button');
+      await forceHoverState(page, '.hover p-popover > a');
+      await forceHoverState(page, '.hover p-popover a');
+      await forceFocusState(page, '.focus p-popover >>> button');
+      await forceFocusState(page, '.focus p-popover > a');
+      await forceFocusState(page, '.focus p-popover a');
+      await forceFocusHoverState(page, '.focus-hover p-popover >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-popover > a');
+      await forceFocusHoverState(page, '.focus-hover p-popover a');
     })
   ).toBeFalsy();
 });

@@ -4,73 +4,65 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
+import {
+  forceFocusHoverState,
+  forceFocusState,
+  forceHoverState,
+  getBodyMarkup,
+  GetMarkup,
+  setContentWithDesignSystem,
+} from '../helpers';
 
-it.each(extendedViewports)('should have no visual regression for basic modal for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-basic', '/#modal-basic')).toBeFalsy();
-});
-
-// TODO: flaky vrt test, check in a newer version of puppeteer if issue still remains
-xit.each(extendedViewports)(
-  'should have no visual regression for scrollable modal for viewport %s',
-  async (viewport) => {
-    expect(
-      await vrtTest(getVisualRegressionTester(viewport), 'modal-scrollable', '/#modal-scrollable', {
-        scenario: async (page) => {
-          await page.tap('#scroll-into-view');
-        },
-      })
-    ).toBeFalsy();
-  }
-);
-
-it('should have no visual regression for prefixed modal', async () => {
-  // single resolution
-  expect(await vrtTest(getVisualRegressionStatesTester(), 'modal-prefixed', '/#modal-prefixed')).toBeFalsy();
-});
-
-it.each(extendedViewports)(
-  'should have no visual regression for fullscreen modal for viewport %s',
-  async (viewport) => {
-    expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-fullscreen', '/#modal-fullscreen')).toBeFalsy();
-  }
-);
-
-it.each(extendedViewports)(
-  'should have no visual regression for fullscreen breakpoint modal for viewport %s',
-  async (viewport) => {
-    const vrt = getVisualRegressionTester(viewport);
-
-    expect(await vrtTest(vrt, 'modal-fullscreen-breakpoint', '/#modal-fullscreen-breakpoint')).toBeFalsy();
-
-    expect(
-      await vrtTest(vrt, 'modal-fullscreen-breakpoint-m', '/#modal-fullscreen-breakpoint', {
-        scenario: (page) =>
-          page.evaluate(() => {
-            (document.querySelector('p-modal') as any).fullscreen = { base: false, m: true };
-          }),
-      })
-    ).toBeFalsy();
-  }
-);
-
-it.each(extendedViewports)('should have no visual regression for full-width-slot for viewport %s', async (viewport) => {
+it.each(extendedViewports)('should have no visual regression for modal for viewport %s', async (viewport) => {
   expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'modal-full-width-slot', '/#modal-full-width-slot')
+    await vrtTest(getVisualRegressionTester(viewport), 'modal', '/#modal', {
+      scenario: async (page) => {
+        await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
+      },
+    })
   ).toBeFalsy();
 });
 
-it.each(extendedViewports)(
-  'should have no visual regression for modal without heading for viewport %s',
-  async (viewport) => {
-    expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-no-heading', '/#modal-no-heading')).toBeFalsy();
-  }
-);
+it('should have no visual regression for :hover + :focus-visible', async () => {
+  const vrt = getVisualRegressionStatesTester();
+  expect(
+    await vrt.test('modal-states', async () => {
+      const page = vrt.getPage();
 
-it.each(extendedViewports)(
-  'should have no visual regression for modal with slotted heading for viewport %s',
-  async (viewport) => {
-    expect(
-      await vrtTest(getVisualRegressionTester(viewport), 'modal-slotted-heading', '/#modal-slotted-heading')
-    ).toBeFalsy();
-  }
-);
+      const head = `
+        <style>
+          .playground {
+            height: 300px;
+            transform: translate3d(0, 0, 0);
+          }
+        </style>`;
+
+      const getElementsMarkup: GetMarkup = () => `
+        <p-modal open="true">
+          <div slot="heading">
+            Some slotted heading
+            <span>
+              and some slotted, deeply nested <a href="#">anchor</a>.
+            </span>
+          </div>
+          Some content
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
+        </p-modal>`;
+
+      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
+
+      await forceHoverState(page, '.hover p-modal a');
+      await forceHoverState(page, '.hover p-modal >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-modal a');
+      await forceFocusState(page, '.focus p-modal >>> div');
+      await forceFocusState(page, '.focus p-modal >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-modal a');
+      await forceFocusHoverState(page, '.focus-hover p-modal >>> div');
+      await forceFocusHoverState(page, '.focus-hover p-modal >>> p-button-pure >>> button');
+    })
+  ).toBeFalsy();
+});

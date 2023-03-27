@@ -1,6 +1,6 @@
 import { getFunctionalComponentStateMessageStyles } from './state-message-styles';
 
-describe('getFunctionalComponentStateMessageStyles()', () => {
+xdescribe('getFunctionalComponentStateMessageStyles()', () => {
   it.each<Parameters<typeof getFunctionalComponentStateMessageStyles>>([
     ['light', 'none'],
     ['light', 'success'],

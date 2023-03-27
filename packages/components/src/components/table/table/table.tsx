@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } fr
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
   getScrollByX,
   hasNamedSlot,
@@ -10,8 +9,8 @@ import {
   validateProps,
 } from '../../../utils';
 import type { PropTypes } from '../../../types';
-import { getComponentCss, getSlottedCss } from './table-styles';
-import type { SortingChangeEvent } from './table-utils';
+import { getComponentCss } from './table-styles';
+import type { TableChangeEvent } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
 
 const propTypes: PropTypes<typeof Table> = {
@@ -29,8 +28,13 @@ export class Table {
    * Use an element with an attribute of `slot="caption"` for a visible caption. */
   @Prop() public caption?: string;
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when sorting is changed. */
+  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableChangeEvent>;
+
   /** Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
+  @Event({ bubbles: false }) public change: EventEmitter<TableChangeEvent>;
 
   @State() private isScrollIndicatorVisible = false;
   @State() private isScrollable = false;
@@ -40,14 +44,11 @@ export class Table {
   private scrollTriggerElement: HTMLElement;
   private tableElement: HTMLElement;
 
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
-
   public componentWillLoad(): void {
     warnIfCaptionIsUndefined(this.host, this.caption);
-    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<SortingChangeEvent>) => {
+    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableChangeEvent>) => {
       e.stopPropagation();
+      this.change.emit(e.detail);
       this.sortingChange.emit(e.detail);
     });
   }

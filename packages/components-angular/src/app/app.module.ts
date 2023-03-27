@@ -6,9 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { IMaskModule } from 'angular-imask';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromStyles from './styles';
 
 @NgModule({
-  declarations: [AppComponent, ...fromPages.pages, ...fromPages.generatedPages, ...fromExamples.examples],
+  declarations: [
+    AppComponent,
+    ...fromPages.pages,
+    ...fromPages.generatedPages,
+    ...fromExamples.examples,
+    ...fromStyles.examples,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -3,6 +3,7 @@ import * as segmentedControlUtils from './segmented-control-utils';
 import * as getClickedItemUtils from '../../../utils/dom/getClickedItem';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 
 describe('connectedCallback', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
@@ -26,7 +27,19 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, component.value, component.backgroundColor, component.theme);
+    expect(spy).toBeCalledWith(component.host, component.value, component.theme);
+  });
+
+  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
+    const spy = jest.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
+    const component = new SegmentedControl();
+    component.host = document.createElement('p-segmented-control');
+    component.backgroundColor = 'background-surface';
+    component.host.attachShadow({ mode: 'open' });
+
+    component.render();
+
+    expect(spy).toBeCalledWith(component, 'backgroundColor');
   });
 });
 
@@ -46,6 +59,7 @@ describe('componentDidLoad', () => {
     // @ts-ignore
     const spy = jest.spyOn(component, 'updateValue');
     component.componentDidLoad();
+    component.change = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
 
     // click event handler
@@ -63,6 +77,7 @@ describe('componentDidLoad', () => {
 describe('updateValue()', () => {
   const component = new SegmentedControl();
   const emitSpy = jest.fn();
+  component.change = { emit: emitSpy };
   component.segmentedControlChange = { emit: emitSpy };
 
   const item = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;

@@ -16,16 +16,12 @@ component is best for a particular scenario.
 
 ## State
 
-Coloring can be controlled via the `state` property.
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+Following state has been deprecated and will be removed with the next major release: "neutral".
+</p-inline-notification>
 
-<Playground :markup="stateDemo" :config="config">
-  <select v-model="state" aria-label="Select state">
-    <option disabled>Select state</option>
-    <option value="neutral">Neutral</option>
-    <option value="success">Success</option>
-    <option value="warning">Warning</option>
-    <option value="error">Error</option>
-  </select>
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ## Persistent
@@ -79,13 +75,12 @@ Rich markup for the `description` can be used by the unnamed default slot.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getInlineNotificationCodeSamples } from '@porsche-design-system/shared';
+import { INLINE_NOTIFICATION_STATES } from './inline-notification-utils';
+import { BANNER_STATES_DEPRECATED } from '../banner/banner-utils';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
-  
-  state = 'neutral';
-  width = 'basic';
 
   defaultHeading = 'Some heading';
   defaultDescription = 'Some description.';
@@ -100,12 +95,14 @@ export default class Code extends Vue {
 <p-inline-notification heading="${this.defaultHeading}">
   ${this.defaultDescription}
 </p-inline-notification>`;
-    
-  get stateDemo() {
+
+  state = 'info';
+  states = INLINE_NOTIFICATION_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  get stateMarkup() {
     return `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" state="${this.state}">
 </p-inline-notification>`;
   }
-    
+
   persistent =
 `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" persistent="true">
 </p-inline-notification>`;

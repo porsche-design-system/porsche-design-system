@@ -1,27 +1,33 @@
-import { textSmall, spacing, mediaQueryMin } from '@porsche-design-system/utilities-v2';
-import { buildSlottedStyles, getCss } from '../../../utils';
 import {
-  addImportantToRule,
-  getBaseSlottedStyles,
+  getMediaQueryMin,
+  spacingStaticLarge,
+  spacingStaticMedium,
+  spacingStaticSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
+import { getCss } from '../../../utils';
+import {
+  addImportantToEachRule,
   getFocusJssStyle,
-  pxToRemWithUnit,
   getThemedColors,
+  hostHiddenStyles,
+  pxToRemWithUnit,
 } from '../../../styles';
 
-const { baseColor } = getThemedColors('light');
-const { small: spacingSmall, medium: spacingMedium, large: spacingLarge } = spacing;
+const { primaryColor } = getThemedColors('light');
 
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
-      ':host': {
-        display: addImportantToRule('block'),
-      },
+      ':host': addImportantToEachRule({
+        display: 'block',
+        ...hostHiddenStyles,
+      }),
     },
     caption: {
-      marginBottom: spacingSmall,
-      [mediaQueryMin('m')]: {
-        marginBottom: spacingMedium,
+      marginBottom: spacingStaticSmall,
+      [getMediaQueryMin('m')]: {
+        marginBottom: spacingStaticMedium,
       },
     },
     root: {
@@ -35,9 +41,9 @@ export const getComponentCss = (): string => {
       position: 'relative',
       width: '100%',
       display: 'table',
-      ...textSmall,
+      ...textSmallStyle,
       textAlign: 'left',
-      color: baseColor,
+      color: primaryColor,
       whiteSpace: 'nowrap',
     },
     'scroll-trigger': {
@@ -53,7 +59,7 @@ export const getComponentCss = (): string => {
       top: 0,
       right: 0,
       bottom: 0,
-      paddingLeft: spacingLarge,
+      paddingLeft: spacingStaticLarge,
       pointerEvents: 'none',
       display: 'flex',
       alignItems: 'center',
@@ -73,15 +79,4 @@ export const getComponentCss = (): string => {
       pointerEvents: 'auto',
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      ...getBaseSlottedStyles(),
-      '& img': {
-        verticalAlign: 'middle',
-      },
-    })
-  );
 };

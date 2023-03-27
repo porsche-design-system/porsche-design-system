@@ -1,6 +1,5 @@
 import { COMPONENT_CHUNK_NAMES, COMPONENT_CHUNKS_MANIFEST } from '../../components-wrapper';
 import { CDN_BASE_PATH_COMPONENTS } from '../../../../../cdn.config';
-import { withoutTagsOption } from './utils';
 
 export const generateComponentChunkLinksPartial = (): string => {
   const chunkNamesTypeLiteral = COMPONENT_CHUNK_NAMES.map((x) => `'${x}'`).join(' | ');
@@ -10,21 +9,15 @@ export const generateComponentChunkLinksPartial = (): string => {
 type GetComponentChunkLinksOptions = {
   components?: ComponentChunkName[];
   cdn?: Cdn;
-  ${withoutTagsOption}
   format?: Format;
-};
-type GetComponentChunkLinksOptionsFormatHtml = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & { format: 'html' };
-type GetComponentChunkLinksOptionsFormatJsx = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & { format: 'jsx' };
-type GetComponentChunkLinksOptionsWithoutTags = Omit<GetComponentChunkLinksOptions, 'format'>;`;
+};`;
 
-  const func = `export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsFormatJsx): JSX.Element;
-export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsFormatHtml): string;
-export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsWithoutTags): string[];
-export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | string[] | JSX.Element {
-  const { components, cdn, withoutTags, format }: GetComponentChunkLinksOptions = {
+  const func = `export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'jsx' }): JSX.Element;
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string;
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | JSX.Element {
+  const { components, cdn, format }: GetComponentChunkLinksOptions = {
     components: [],
     cdn: 'auto',
-    withoutTags: false,
     format: 'html',
     ...opts,
   };
@@ -51,11 +44,11 @@ Please use only valid component chunk names:
     .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? ' crossorigin' : ''}>\`)
     .join('');
 
-  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true' })} />);
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: '' })} />);
 
-  const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
-
-  return withoutTags ? urls : markup;
+  return format === 'html'
+    ? linksHtml
+    : <>{linksJsx}</>;
 }`;
 
   return [types, func].join('\n\n');

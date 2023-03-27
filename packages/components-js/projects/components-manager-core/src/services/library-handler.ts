@@ -27,14 +27,14 @@ export type LoadComponentLibraryOptions = {
  */
 export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
   const data = getLibraryHandlerData(version) || {};
-  const { isInjected, prefixes, registerCustomElements } = data;
+  const { isInjected, prefixes = [], registerCustomElements } = data;
 
   const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
-    ([v, data]) => v !== version && data.prefixes.includes(prefix)
+    ([v, cmData]) => v !== version && cmData.prefixes.includes(prefix)
   );
   if (collidingVersion) {
     throw new Error(
-      `Prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
+      `[Porsche Design System] Prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
 Take a look at document.${CM_KEY} for more details.`
     );
   }

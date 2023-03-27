@@ -11,7 +11,7 @@ const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-const allThemes: Theme[] = ['light', 'dark', 'light-electric', 'dark-electric'];
+const allThemes: Theme[] = ['light', 'dark'];
 const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
 export type StateType = typeof ALL_STATES[number];
@@ -28,19 +28,17 @@ export const getBodyMarkup = (getElements: GetMarkup) =>
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { themes?: Theme[]; states?: StateType[]; withSurface?: boolean }
+  opts?: { states?: StateType[]; withSurface?: boolean }
 ): string => {
-  const { themes = ['light', 'dark'], states = ALL_STATES, withSurface = false } = opts || {};
+  const { states = ALL_STATES, withSurface = false } = opts || {};
 
   return states
     .map((state) =>
-      allThemes
-        .filter((theme) => themes.includes(theme))
-        .map(
-          (theme) =>
-            `<div class="playground ${theme} ${state}">${getThemedElements(theme)}</div>` +
-            (withSurface ? `<div class="playground ${theme} surface ${state}">${getThemedElements(theme)}</div>` : '')
-        )
+      allThemes.map(
+        (theme) =>
+          `<div class="playground ${theme} ${state}">${getThemedElements(theme)}</div>` +
+          (withSurface ? `<div class="playground ${theme} surface ${state}">${getThemedElements(theme)}</div>` : '')
+      )
     )
     .flat()
     .join('\n');

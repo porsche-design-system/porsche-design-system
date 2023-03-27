@@ -9,7 +9,7 @@
         example: true,
         'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
         'example--dark': mergedConfig.themeable && theme === 'dark',
-        'example--surface': mergedConfig.colorScheme === 'surface',
+        'example--surface': mergedConfig.backgroundColor === 'background-surface',
         'example--height-fixed': mergedConfig.height === 'fixed',
         'example--spacing-inline': mergedConfig.spacing === 'inline',
         'example--spacing-block': mergedConfig.spacing === 'block',
@@ -33,7 +33,7 @@
           :markup="codeBlockMarkup"
           :convert-markup="!hasFrameworkMarkup"
           :theme="theme"
-          :colorScheme="config.colorScheme"
+          :backgroundColor="config.backgroundColor"
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor
@@ -43,7 +43,7 @@
           :framework="activeFramework"
           :externalStackBlitzDependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
           :sharedImportKeys="sharedImportKeys"
-          :colorScheme="config.colorScheme"
+          :backgroundColor="config.backgroundColor"
         ></CodeEditor>
       </template>
     </div>
@@ -57,14 +57,14 @@
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
   import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
-  import { componentMeta } from '@porsche-design-system/shared';
-  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '../models';
+  import { componentMeta } from '@porsche-design-system/component-meta';
+  import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
-  import { getExternalDependenciesOrThrow } from '../utils/stackblitz/helper';
+  import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
 
   export type PlaygroundConfig = {
     themeable: boolean;
-    colorScheme: ColorScheme;
+    backgroundColor: BackgroundColor;
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
@@ -73,7 +73,7 @@
 
   export const initialConfig: PlaygroundConfig = {
     themeable: false,
-    colorScheme: 'default',
+    backgroundColor: 'background-base',
     height: 'auto',
     spacing: 'none',
     overflowX: 'auto',
@@ -181,11 +181,11 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
   .example {
-    padding: $pds-spacing-large;
+    padding: $pds-spacing-static-large;
     overflow-x: auto;
     border: 1px solid transparent;
 
@@ -227,18 +227,18 @@
       &::before {
         content: '';
         display: block;
-        margin-top: -$pds-spacing-medium;
+        margin-top: -$pds-spacing-static-medium;
       }
 
       :deep(> *) {
-        margin-top: $pds-spacing-medium;
+        margin-top: $pds-spacing-static-medium;
       }
     }
 
     &--spacing-inline .demo {
       :deep(> *) {
         &:not(:last-child) {
-          margin-right: $pds-spacing-medium;
+          margin-right: $pds-spacing-static-medium;
         }
       }
     }
@@ -247,24 +247,24 @@
       &::before {
         content: '';
         display: block;
-        margin-top: -$pds-spacing-small;
+        margin-top: -$pds-spacing-static-small;
       }
 
       :deep(> *) {
-        margin-top: $pds-spacing-small;
+        margin-top: $pds-spacing-static-small;
       }
     }
 
     .configurator ~ .demo {
-      margin-top: $pds-spacing-large;
+      margin-top: $pds-spacing-static-large;
     }
 
     .demo ~ .code-block {
-      margin-top: $pds-spacing-large;
+      margin-top: $pds-spacing-static-large;
     }
 
     .code-block ~ p-button {
-      margin-top: $pds-spacing-medium;
+      margin-top: $pds-spacing-static-medium;
     }
 
     .code-block {

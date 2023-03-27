@@ -11,30 +11,40 @@ import {
   observeChildren,
   parseJSON,
   setAttribute,
-  THEMES_EXTENDED_ELECTRIC,
+  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
-import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type {
+  TabsBarChangeEvent,
+  TabsBarGradientColor,
+  TabsBarGradientColorScheme,
+  TabsBarSize,
+  TabsBarWeight,
+  TabsBarWeightDeprecated,
+} from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
   getPrevNextTabIndex,
   sanitizeActiveTabIndex,
   setBarStyle,
-  TAB_SIZES,
-  TAB_WEIGHTS,
+  TABS_BAR_SIZES,
+  TABS_BAR_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { ScrollerDirection } from '../scroller/scroller-utils';
-import { GRADIENT_COLOR_THEMES } from '../scroller/scroller-utils';
+import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
-  size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
-  weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
-  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
+  size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
+  weight: AllowedTypes.oneOf<TabsBarWeight>(TABS_BAR_WEIGHTS),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+  gradientColorScheme: AllowedTypes.oneOf<TabsBarGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
+  gradientColor: AllowedTypes.oneOf<TabsBarGradientColor>(GRADIENT_COLORS),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -46,22 +56,32 @@ export class TabsBar {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
+  @Prop() public size?: BreakpointCustomizable<TabsBarSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: TabWeight = 'regular';
+  @Prop() public weight?: TabsBarWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
+
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
+   * Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColorScheme?: TabsBarGradientColorScheme;
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
+  @Prop() public gradientColor?: TabsBarGradientColor = 'background-base';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
-  @Prop() public activeTabIndex?: number | undefined;
+  @Prop({ mutable: true }) public activeTabIndex?: number | undefined;
+
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * Emitted when active tab is changed. */
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsBarChangeEvent>;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
+  @Event({ bubbles: false }) public change: EventEmitter<TabsBarChangeEvent>;
 
   @State() private tabElements: HTMLElement[] = [];
 
@@ -86,7 +106,7 @@ export class TabsBar {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
     this.setTabElements();
 
-    // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
+    // TODO: wouldn't a slot change listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     observeChildren(this.host, () => {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
@@ -100,6 +120,7 @@ export class TabsBar {
 
   public componentDidLoad(): void {
     // TODO: validation of active element index inside of tabs bar!
+    // TODO: why not do this in connectedCallback?
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
 
     if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
@@ -128,7 +149,22 @@ export class TabsBar {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
+    warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    const deprecationMap: Record<TabsBarWeightDeprecated, Exclude<TabsBarWeight, TabsBarWeightDeprecated>> = {
+      semibold: 'semi-bold',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof TabsBar, TabsBarWeightDeprecated, TabsBarWeight>(
+      this,
+      'weight',
+      deprecationMap
+    );
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.size,
+      (deprecationMap[this.weight] || this.weight) as Exclude<TabsBarWeight, TabsBarWeightDeprecated>,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -138,7 +174,8 @@ export class TabsBar {
         role="tablist"
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
-        scrollIndicatorPosition="top"
+        gradientColor={this.gradientColor}
+        alignScrollIndicator="top"
         ref={(el) => (this.scrollerElement = el)}
       >
         <slot />
@@ -180,6 +217,7 @@ export class TabsBar {
   };
 
   private onTabClick = (newTabIndex: number): void => {
+    this.change.emit({ activeTabIndex: newTabIndex });
     this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 

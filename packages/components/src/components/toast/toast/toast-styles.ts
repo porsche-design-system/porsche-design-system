@@ -1,12 +1,11 @@
-import { gridSafeZone, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
-import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
-import { TOAST_ANIMATION_DURATION_VAR } from './toast-manager';
+import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles-shared';
 
-const toastPositionBottomVarPublic = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
-const toastPositionBottomVarInternal = `${toastPositionBottomVarPublic}-internal`;
+const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
+const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
 export const toastCloseClassName = 'close';
 
 export const getComponentCss = (): string => {
@@ -14,27 +13,28 @@ export const getComponentCss = (): string => {
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
-        left: gridSafeZone.base,
-        right: gridSafeZone.base,
-        // Needs a not overwritable internal css variable to cover default position depending on viewport size and to handle animation properly.
+        left: gridExtendedOffsetBase,
+        right: gridExtendedOffsetBase,
+        // Needs a not overridable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
-        [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, ${pxToRemWithUnit(56)})`,
-        bottom: `var(${toastPositionBottomVarInternal})`,
+        [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 56px)`,
+        bottom: `var(${cssVariablePositionBottomInternal})`,
         maxWidth: '42rem',
         zIndex: TOAST_Z_INDEX,
-        [mediaQueryMin('s')]: {
-          left: pxToRemWithUnit(64),
+        [getMediaQueryMin('s')]: {
+          left: '64px',
           right: 'auto',
-          [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, ${pxToRemWithUnit(64)})`,
-          bottom: `var(${toastPositionBottomVarInternal})`,
+          [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 64px)`,
+          bottom: `var(${cssVariablePositionBottomInternal})`,
         },
+        ...hostHiddenStyles,
       }),
-      '@keyframes in': getKeyframesMobile('in', toastPositionBottomVarInternal),
-      '@keyframes out': getKeyframesMobile('out', toastPositionBottomVarInternal),
+      '@keyframes in': getKeyframesMobile('in', cssVariablePositionBottomInternal),
+      '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },
     hydrated: getAnimationIn(
       'in',
-      ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test' && TOAST_ANIMATION_DURATION_VAR
+      ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test' && '--p-animation-duration'
     ),
     [toastCloseClassName]: getAnimationOut('out'),
   });

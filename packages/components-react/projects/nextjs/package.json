@@ -6,7 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestartAndBuild": "yarn clean:build && ts-node --project tsconfig.json scripts/prepareSharedStyles.ts",
+    "prestartAndBuild": "yarn clean:build && ts-node scripts/prepareSharedStyles.ts",
     "start": "yarn prestartAndBuild && concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'next start'",
     "build-app": "yarn prestartAndBuild && next build",
@@ -18,22 +18,22 @@
     "clean:build": "rm -rf ./.next"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.19.1-rc.1",
-    "next": "^13.1.1",
+    "@porsche-design-system/assets": "5.0.2",
+    "@porsche-design-system/components-react": "3.0.0-alpha.3",
+    "next": "^13.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.10",
+    "@types/node": "^18.14.5",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "concurrently": "^7.6.0",
-    "eslint": "^8.31.0",
-    "eslint-config-next": "^13.1.1",
+    "eslint": "^8.35.0",
+    "eslint-config-next": "^13.2.3",
     "ts-node": "^10.9.1",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.5"
   },
   "eslintConfig": {
     "extends": [

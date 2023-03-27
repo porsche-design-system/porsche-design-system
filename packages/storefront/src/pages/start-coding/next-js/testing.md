@@ -9,7 +9,7 @@ However, it doesn't support JavaScript modules as described in this
 [issue](https://github.com/jsdom/jsdom/issues/2475).  
 Also, it doesn't support `CSSStyleSheet.replace()`, `Intersection Observer`, `Element.prototype.scrollTo` and others.
 
-As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react/ssr` package.
+As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react` package.
 
 To apply the polyfill, simply import it in your **setupTest.{js|ts}** file.
 
@@ -31,17 +31,17 @@ import '@porsche-design-system/components-react/jsdom-polyfill';
 
 import { useCallback, useState } from 'react';
 import { PTabsBar } from '@porsche-design-system/components-react/ssr';
-import type { TabChangeEvent } from '@porsche-design-system/components-react/ssr';
+import type { TabsBarChangeEvent } from '@porsche-design-system/components-react/ssr';
 
 export const SingleComponent = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState(0);
-  const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+  const onChange = useCallback((e: CustomEvent<TabsBarChangeEvent>) => {
     setActiveTab(e.detail.activeTabIndex);
   }, []);
 
   return (
     <>
-      <PTabsBar activeTabIndex={activeTab} onTabChange={onTabChange} data-testid="host">
+      <PTabsBar activeTabIndex={activeTab} onChange={onChange} data-testid="host">
         <button data-testid="button1">Some label</button>
         <button data-testid="button2">Some label</button>
         <button data-testid="button3">Some label</button>
@@ -231,10 +231,10 @@ As a solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
 import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
 
 it('should work for PAccordion', async () => {
-  render(<PAccordion heading="Headline">Content</PAccordion>);
+  render(<PAccordion heading="Heading">Content</PAccordion>);
   await componentsReady();
 
-  const el = getByTextShadowed('Headline');
+  const el = getByTextShadowed('Heading');
   expect(el).toBeInTheDocument();
   expect(el.tagName).toBe('BUTTON');
 });

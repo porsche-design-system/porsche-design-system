@@ -1,7 +1,7 @@
 <template>
   <div class="main-footer">
     <div class="main-footer__content main-footer__content--country-language-chooser">
-      <p-headline theme="dark" variant="headline-4">Andere(s) Land/Region wählen:</p-headline>
+      <p-heading theme="dark" size="medium">Andere(s) Land/Region wählen:</p-heading>
       <p-select-wrapper theme="dark" label="Land">
         <select name="country">
           <option value="" hidden="hidden"></option>
@@ -73,18 +73,18 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   .main-footer {
     @include pds-grid;
-    margin-top: $pds-spacing-xx-large;
-    padding-top: $pds-spacing-x-large;
-    padding-bottom: $pds-spacing-x-large;
+    margin-top: $pds-spacing-static-xx-large;
+    padding-top: $pds-spacing-static-x-large;
+    padding-bottom: $pds-spacing-static-x-large;
     background: $pds-theme-dark-background-base;
 
     @include pds-media-query-min('s') {
-      padding-top: $pds-spacing-xx-large;
-      padding-bottom: $pds-spacing-xx-large;
+      padding-top: $pds-spacing-static-xx-large;
+      padding-bottom: $pds-spacing-static-xx-large;
     }
 
     &__content {
@@ -97,7 +97,7 @@
       &--country-language-chooser {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: $pds-spacing-medium;
+        gap: $pds-spacing-static-medium;
 
         @include pds-media-query-min('s') {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -122,7 +122,7 @@
       &--imprint {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: $pds-spacing-medium;
+        gap: $pds-spacing-static-medium;
       }
     }
   }

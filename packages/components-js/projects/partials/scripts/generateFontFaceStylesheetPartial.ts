@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { minifyHTML, withoutTagsOption } from './utils';
+import { minifyHTML } from './utils';
 import { CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
 
 export const generateFontFaceStylesheetPartial = (): string => {
@@ -8,12 +8,8 @@ export const generateFontFaceStylesheetPartial = (): string => {
 
   const types = `type GetFontFaceStylesheetOptions = {
   cdn?: Cdn;
-  ${withoutTagsOption}
   format?: Format;
-};
-type GetFontFaceStylesheetOptionsFormatHtml = Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & { format: 'html' };
-type GetFontFaceStylesheetOptionsFormatJsx = Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & { format: 'jsx' };
-type GetFontFaceStylesheetOptionsWithoutTags = Omit<GetFontFaceStylesheetOptions, 'format'>;`;
+};`;
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
@@ -23,17 +19,15 @@ type GetFontFaceStylesheetOptionsWithoutTags = Omit<GetFontFaceStylesheetOptions
     .replace('$URL', '${url}')
     .replace(/\$CDN_URL/g, '${cdnBaseUrl}');
   const linksJsx =
-    `<link rel="preconnect" href="$CDN_URL" crossOrigin="true" /><link rel="dns-prefetch" href="$CDN_URL" crossOrigin="true" /><link rel="stylesheet" href="$URL" type="text/css" crossOrigin="true" />`
+    `<link rel="preconnect" href="$CDN_URL" crossOrigin="" /><link rel="dns-prefetch" href="$CDN_URL" crossOrigin="" /><link rel="stylesheet" href="$URL" type="text/css" crossOrigin="" />`
       .replace('"$URL"', '{url}')
       .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
 
-  const func = `export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptionsFormatHtml): string;
-export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptionsFormatJsx): JSX.Element;
-export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptionsWithoutTags): string;
+  const func = `export function getFontFaceStylesheet(opts: GetFontFaceStylesheetOptions & { format: 'jsx' }): JSX.Element;
+export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): string;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): string | JSX.Element {
-  const { cdn, withoutTags, format }: GetFontFaceStylesheetOptions = {
+  const { cdn, format }: GetFontFaceStylesheetOptions = {
     cdn: 'auto',
-    withoutTags: false,
     format: 'html',
     ...opts,
   };
@@ -46,13 +40,9 @@ export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): stri
     : '${cssFileCom}'
   }\`;
 
-  const markup = format === 'html'
+  return format === 'html'
     ? \`${linksHtml}\`
     : <>${linksJsx}</>;
-
-  return withoutTags
-    ? url
-    : markup;
 }`;
 
   return [types, func].join('\n\n');

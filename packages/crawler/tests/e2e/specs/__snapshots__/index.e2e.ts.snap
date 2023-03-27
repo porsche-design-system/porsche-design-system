@@ -2,7 +2,7 @@
 
 exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
 {
-  "2.19.1-rc.1": {
+  "3.0.0-alpha.3": {
     "": [
       {
         "p-text": {
@@ -10,7 +10,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -27,7 +27,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -79,7 +79,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
       },
     ],
   },
-  "2.19.1-rc.1": {
+  "3.0.0-alpha.3": {
     "test-prefix": [
       {
         "p-text": {
@@ -87,7 +87,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -104,7 +104,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "hostPdsComponent": null,
           "properties": {
             "align": "left",
-            "color": "default",
+            "color": "primary",
             "ellipsis": false,
             "size": "small",
             "tag": "p",
@@ -120,28 +120,19 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
 
 exports[`should retrieve children and hostPdsComponent correctly 1`] = `
 {
-  "2.19.1-rc.1": {
+  "3.0.0-alpha.3": {
     "": [
       {
         "p-banner": {
           "children": "<span slot="title">Some notification title</span><span slot="description">(the content was stripped)</span>",
           "hostPdsComponent": null,
           "properties": {
+            "description": "",
+            "heading": "",
             "persistent": false,
-            "state": "neutral",
+            "state": "info",
             "theme": "dark",
-            "width": "basic",
-          },
-        },
-      },
-      {
-        "p-content-wrapper": {
-          "children": "<p-inline-notification class="root hydrated">(the content was stripped)</p-inline-notification>",
-          "hostPdsComponent": "p-banner",
-          "properties": {
-            "backgroundColor": "transparent",
-            "theme": "light",
-            "width": "basic",
+            "width": "extended",
           },
         },
       },
@@ -150,12 +141,12 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "children": "<slot name="title" slot="heading"></slot><slot name="description"></slot>",
           "hostPdsComponent": "p-banner",
           "properties": {
-            "actionIcon": "arrow-head-right",
+            "actionIcon": "arrow-right",
             "actionLoading": false,
             "description": "",
             "heading": "",
             "persistent": false,
-            "state": "neutral",
+            "state": "info",
             "theme": "dark",
           },
         },
@@ -165,11 +156,11 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "children": null,
           "hostPdsComponent": "p-inline-notification",
           "properties": {
-            "color": "inherit",
+            "color": "notification-info",
             "lazy": false,
-            "name": "information",
+            "name": "information-filled",
             "size": "small",
-            "theme": "light",
+            "theme": "dark",
           },
         },
       },
@@ -186,8 +177,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
             "loading": false,
             "size": "small",
             "stretch": false,
-            "tabbable": true,
-            "theme": "light",
+            "theme": "dark",
             "type": "button",
             "weight": "regular",
           },
@@ -198,11 +188,11 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "children": null,
           "hostPdsComponent": "p-button-pure",
           "properties": {
-            "color": "inherit",
+            "color": "primary",
             "lazy": false,
             "name": "close",
             "size": "inherit",
-            "theme": "light",
+            "theme": "dark",
           },
         },
       },
@@ -213,7 +203,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
 
 exports[`should retrieve children correctly and put stripped content 1`] = `
 {
-  "2.19.1-rc.1": {
+  "3.0.0-alpha.3": {
     "": [
       {
         "p-flex": {
@@ -264,7 +254,7 @@ exports[`should retrieve children correctly and put stripped content 1`] = `
 
 exports[`should retrieve hostPdsComponent correctly 1`] = `
 {
-  "2.19.1-rc.1": {
+  "3.0.0-alpha.3": {
     "": [
       {
         "p-button": {
@@ -275,25 +265,11 @@ exports[`should retrieve hostPdsComponent correctly 1`] = `
           "properties": {
             "disabled": false,
             "hideLabel": false,
-            "icon": "arrow-head-right",
+            "icon": "none",
             "loading": false,
-            "tabbable": true,
             "theme": "light",
             "type": "submit",
             "variant": "primary",
-          },
-        },
-      },
-      {
-        "p-icon": {
-          "children": null,
-          "hostPdsComponent": "p-button",
-          "properties": {
-            "color": "inherit",
-            "lazy": false,
-            "name": "arrow-head-right",
-            "size": "inherit",
-            "theme": "dark",
           },
         },
       },
@@ -304,7 +280,7 @@ exports[`should retrieve hostPdsComponent correctly 1`] = `
 
 exports[`should retrieve object value from string correctly 1`] = `
 {
-  "2.19.1-rc.1": {
+  "3.0.0-alpha.3": {
     "": [
       {
         "p-spinner": {

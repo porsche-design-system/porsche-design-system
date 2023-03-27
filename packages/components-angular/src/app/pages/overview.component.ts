@@ -32,25 +32,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         background: deepskyblue;
       }
     
-      p-link-tile,
-      my-prefix-p-link-tile {
-        max-width: 400px;
-      }
-    
-      p-banner,
-      my-prefix-p-banner {
-        --p-banner-position-type: static;
+      .playground--banner {
+        transform: translate3d(0, 0, 0);
+        height: 10rem;
+        padding: 0;
+        margin: 1rem;
       }
     `,
   ],
   template: `
     <div class="root" style="display: flex">
       <div style="flex: 1">
-        <div class="playground light" title="should render default headline">
-          <p-headline>Default Components</p-headline>
+        <div class="playground light" title="should render default heading">
+          <p-heading>Default Components</p-heading>
         </div>
 
-        <div class="playground light" title="should render default banner">
+        <div class="playground light" title="should render default headline">
+          <p-headline>Some Headline</p-headline>
+        </div>
+
+        <div class="playground light" title="should render default display">
+          <p-display>Some Display</p-display>
+        </div>
+
+        <div class="playground light playground--banner" title="should render default banner">
           <p-banner>
             <span slot="title">Default banner component</span>
             <span slot="description">Some slotted banner description</span>
@@ -118,8 +123,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-textarea-wrapper>
         </div>
 
-        <div class="playground light" title="should render default fieldset-wrapper">
-          <p-fieldset-wrapper [label]="'Some label'"></p-fieldset-wrapper>
+        <div class="playground light" title="should render default fieldset">
+          <p-fieldset [label]="'Some label'"></p-fieldset>
         </div>
 
         <div class="playground light" title="should render default content-wrapper">
@@ -156,6 +161,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default marque">
           <p-marque></p-marque>
+        </div>
+
+        <div class="playground light" title="should render default model-signature">
+          <p-model-signature></p-model-signature>
         </div>
 
         <div class="playground light" title="should render default pagination">
@@ -241,20 +250,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-switch>Some label</p-switch>
         </div>
 
-        <div class="playground light" title="should render default stepper-horizontal">
-          <p-stepper-horizontal>
-            <p-stepper-horizontal-item [state]="'current'">Step 1</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 2</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 3</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 5</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
-            <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
-          </p-stepper-horizontal>
-        </div>
-
         <div class="playground light" title="should render default scroller">
           <p-scroller>
             <button>Default</button>
@@ -274,17 +269,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-scroller>
         </div>
 
-        <div class="playground light" title="should render default link-tile">
-          <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
-            <img
-              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
-              [width]="50"
-              [height]="50"
-              [alt]="'Beach'"
-            />
-          </p-link-tile>
-        </div>
-
         <div class="playground light" title="should render default carousel">
           <p-carousel [heading]="'Heading'">
             <div>Slide 1</div>
@@ -295,11 +279,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div style="flex: 1">
-        <div class="playground light" title="should render default headline with custom prefix">
-          <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
+        <div class="playground light" title="should render default heading with custom prefix">
+          <my-prefix-p-heading p-heading>Prefixed Components</my-prefix-p-heading>
         </div>
 
-        <div class="playground light" title="should render default banner with custom prefix">
+        <div class="playground light" title="should render default headline with custom prefix">
+          <my-prefix-p-headline p-headline>Some Headline</my-prefix-p-headline>
+        </div>
+
+        <div class="playground light" title="should render default display with custom prefix">
+          <my-prefix-p-display p-display>Some Display</my-prefix-p-display>
+        </div>
+
+        <div class="playground light playground--banner" title="should render default banner with custom prefix">
           <my-prefix-p-banner p-banner>
             <span slot="title">Prefixed banner component</span>
             <span slot="description">Some slotted banner description</span>
@@ -370,8 +362,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </my-prefix-p-textarea-wrapper>
         </div>
 
-        <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-          <my-prefix-p-fieldset-wrapper p-fieldset-wrapper [label]="'Some label'"></my-prefix-p-fieldset-wrapper>
+        <div class="playground light" title="should render default fieldset with custom prefix">
+          <my-prefix-p-fieldset p-fieldset [label]="'Some label'"></my-prefix-p-fieldset>
         </div>
 
         <div class="playground light" title="should render default content-wrapper with custom prefix">
@@ -408,6 +400,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default marque with custom prefix">
           <my-prefix-p-marque p-marque></my-prefix-p-marque>
+        </div>
+
+        <div class="playground light" title="should render default model-signature with custom prefix">
+          <my-prefix-p-model-signature p-model-signature></my-prefix-p-model-signature>
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">
@@ -493,20 +489,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <my-prefix-p-switch p-switch>Some label</my-prefix-p-switch>
         </div>
 
-        <div class="playground light" title="should render default stepper-horizontal with custom prefix">
-          <my-prefix-p-stepper-horizontal p-stepper-horizontal>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item [state]="'current'">Step 1</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 2</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 3</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 4</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 5</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 6</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 7</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 8</my-prefix-p-stepper-horizontal-item>
-            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 9</my-prefix-p-stepper-horizontal-item>
-          </my-prefix-p-stepper-horizontal>
-        </div>
-
         <div class="playground light" title="should render default scroller with custom prefix">
           <my-prefix-p-scroller p-scroller>
             <button>Default</button>
@@ -524,17 +506,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <button>Default</button>
             <button>Default</button>
           </my-prefix-p-scroller>
-        </div>
-
-        <div class="playground light" title="should render default link-tile with custom prefix">
-          <my-prefix-p-link-tile p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
-            <img
-              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
-              [width]="50"
-              [height]="50"
-              [alt]="'Beach'"
-            />
-          </my-prefix-p-link-tile>
         </div>
 
         <div class="playground light" title="should render default carousel with custom prefix">

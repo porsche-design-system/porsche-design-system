@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-modal-example-accessibility',
   template: `
-    <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="handleModalOpen()">Open Modal</p-button>
-    <p-modal [open]="isModalOpen" (close)="handleModalClose()">
+    <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Modal</p-button>
+    <p-modal [open]="isModalOpen" (dismiss)="onDismiss()">
       <p-text>Some Content</p-text>
       <p-button-group class="footer">
         <p-button>Save</p-button>
@@ -17,10 +17,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class ModalExampleAccessibilityComponent {
   isModalOpen = false;
 
-  handleModalOpen() {
+  onOpen() {
     this.isModalOpen = true;
   }
-  handleModalClose() {
+  onDismiss() {
     this.isModalOpen = false;
   }
 }

@@ -29,21 +29,24 @@ consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
 
 The size of the scroll indicator arrows depends on the `font-size` set onto the `p-scroller` component.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>scrollIndicatorPosition</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>alignScrollIndicator</code> property instead.
+</p-inline-notification>
+
 <Playground :markup="scrollIndicatorSize" :config="config"></Playground>
 
-## Gradient color scheme
+## Gradient color
 
 The background and gradient has to align with your chosen background.
 
-<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <label>
-    <p-text :theme="theme">Select color scheme:</p-text>
-    <select v-model="gradientColorScheme" aria-label="Select color scheme">
-      <option disabled>Select gradient-color-scheme</option>
-      <option value="default">Default</option>
-      <option value="surface">Surface</option>
-    </select>
-  </label>
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>gradientColor</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
 </Playground>
 
 ## Scroll to position
@@ -73,6 +76,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getScrollerCodeSamples } from '@porsche-design-system/shared';
 import type { Theme } from '@/models';
+import { GRADIENT_COLORS } from './scroller-utils'; 
   
 @Component
 export default class Code extends Vue {
@@ -82,37 +86,35 @@ export default class Code extends Vue {
     return this.$store.getters.theme;
   }
 
-  gradientColorScheme = 'surface';
   scrollIndicatorPosition = 'top';
-
-  scrollToPosition = '{scrollPosition: 220}';
+  scrollToPosition = '{ scrollPosition: 220 }';
 
   codeExample = getScrollerCodeSamples();
 
   basicTagMarkup = `<div style="max-width: 600px">
   <p-scroller>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
@@ -141,48 +143,49 @@ export default class Code extends Vue {
   </p-scroller>
 </div>`;
 
-  get gradientMarkup() {
+  gradientColor = 'background-surface';
+  gradientColors = GRADIENT_COLORS;
+  get gradientColorMarkup() {
     return `<div style="max-width: 600px">
-  <p-scroller gradient-color-scheme="${this.gradientColorScheme}" style="white-space: nowrap">
-    <p-tag color="neutral-contrast-high">
+  <p-scroller gradient-color="${this.gradientColor}" style="white-space: nowrap">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-warning">
+    <p-tag color="notification-warning-soft">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="neutral-contrast-high">
+    <p-tag color="primary">
       <button type="button">Some tag content</button>
     </p-tag>
-    <p-tag color="notification-neutral">
+    <p-tag color="notification-info-soft">
       <button type="button">Some tag content</button>
     </p-tag>
   </p-scroller>
 </div>`;
   }
 }
-
 </script>
 
 <style scoped lang="scss">
-  p-scroller > * {
+  :deep(p-scroller > *) {
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 16px;
     }
   }
 
   .demo > button {
-    margin: 0 1rem 1rem 0;
+    margin: 0 16px 16px 0;
   }
 </style>

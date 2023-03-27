@@ -28,7 +28,7 @@ afterEach(async () => await page.close());
 const clickHandlerScript = `
 <script>
   const stepper = document.querySelector('p-stepper-horizontal');
-  stepper.addEventListener('stepChange', (e) => {
+  stepper.addEventListener('change', (e) => {
     const { activeStepIndex } = e.detail;
     const stepElements = Array.from(e.target.children);
 
@@ -54,7 +54,7 @@ const initStepperHorizontal = (opts?: InitOptions) => {
   const steps = Array.from(Array(amount))
     .map(
       (_, i) =>
-        `<p-stepper-horizontal-item${`${getState(i) ? ` state="${getState(i)}"` : ''}`}>Step ${
+        `<p-stepper-horizontal-item${getState(i) ? ` state="${getState(i)}"` : ''}>Step ${
           i + 1
         }</p-stepper-horizontal-item>`
     )
@@ -288,7 +288,7 @@ describe('events', () => {
 
     await addEventListener(host, 'stepChange');
 
-    await page.mouse.click((await getOffsetWidth(item1)) + 8, 18);
+    await page.mouse.click((await getOffsetWidth(item1)) + 6, 18);
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
 
     await item1.click();
@@ -339,6 +339,21 @@ describe('events', () => {
     await item1.click();
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
   });
+
+  it('should emit both stepChange and change event', async () => {
+    await initStepperHorizontal({ currentStep: 2 });
+    const host = await getHost();
+
+    await addEventListener(host, 'stepChange');
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+    const [item1] = await getStepItems();
+    await item1.click();
+    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+  });
 });
 
 describe('lifecycle', () => {
@@ -349,10 +364,9 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-stepper-horizontal'], 'componentDidLoad: p-stepper-horizontal').toBe(1);
     expect(status.componentDidLoad['p-stepper-horizontal-item'], 'componentDidLoad: p-stepper-horizontal-item').toBe(3);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -363,10 +377,9 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-stepper-horizontal'], 'componentDidLoad: p-stepper-horizontal').toBe(1);
     expect(status.componentDidLoad['p-stepper-horizontal-item'], 'componentDidLoad: p-stepper-horizontal-item').toBe(3);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(4);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -388,7 +401,7 @@ describe('lifecycle', () => {
       'componentDidUpdate: p-stepper-horizontal-item'
     ).toBe(3);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 });

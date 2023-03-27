@@ -18,6 +18,9 @@ import type { StackBlitzProjectDependencies } from '../../models';
 
 const componentNameRegex = /(export const )[a-zA-Z]+( = \(\): JSX.Element => {)/;
 
+// TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
+// as well as code flow, similar to our WrapperGenerator
+
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
@@ -95,9 +98,12 @@ root.render(
 
 export const getTsconfigJson = (): string => JSON.stringify(tsconfig, null, 2);
 
-export const dependencyMap: DependencyMap<typeof dependencies> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   imask: {
     'react-imask': dependencies['react-imask'],
+  },
+  'styled-components': {
+    'styled-components': dependencies['styled-components'],
   },
 };
 
@@ -137,7 +143,7 @@ export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions =
       'index.html': '<div id="root"></div>',
       'index.tsx': getIndexTsx(pdsVersion),
       'tsconfig.json': getTsconfigJson(),
-      'style.css': globalStyles,
+      'style.css': `html, body { margin: 0; padding: 0; } ${globalStyles}`,
     },
     template: 'create-react-app',
     title,

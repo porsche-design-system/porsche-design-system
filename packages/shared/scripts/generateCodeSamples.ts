@@ -4,7 +4,20 @@ import { pascalCase } from 'change-case';
 import type { TagName } from '../src/lib/tagNames';
 
 type CodeSample = {
-  component: TagName | 'componentsReady';
+  component:
+    | TagName
+    | 'componentsReady'
+    | 'styles-border'
+    | 'styles-drop-shadow'
+    | 'styles-focus'
+    | 'styles-frosted-glass'
+    | 'styles-gradient'
+    | 'styles-grid'
+    | 'styles-hover'
+    | 'styles-media-query'
+    | 'styles-spacing'
+    | 'styles-theme'
+    | 'styles-typography';
   samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
@@ -50,6 +63,11 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/carousel-example-dynamic-slides.html',
           componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
           componentsReactPath + '/CarouselExampleDynamicSlides.tsx',
+        ],
+        [
+          componentsJsPath + '/carousel-example-jump-to-slide.html',
+          componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
+          componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
         ],
       ],
     },
@@ -168,6 +186,105 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/toast-example.html',
           componentsAngularPath + '/toast-example.component.ts',
           componentsReactPath + '/ToastExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-border',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-border-example.component.ts',
+          componentsReactPath + '/../styles/StylesBorderExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-drop-shadow',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-drop-shadow-example.component.ts',
+          componentsReactPath + '/../styles/StylesDropShadowExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-focus',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-focus-example.component.ts',
+          componentsReactPath + '/../styles/StylesFocusExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-frosted-glass',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-frosted-glass-example.component.ts',
+          componentsReactPath + '/../styles/StylesFrostedGlassExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-gradient',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-gradient-example.component.ts',
+          componentsReactPath + '/../styles/StylesGradientExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-grid',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-grid-example.component.ts',
+          componentsReactPath + '/../styles/StylesGridExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-hover',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-hover-example.component.ts',
+          componentsReactPath + '/../styles/StylesHoverExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-media-query',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-media-query-example.component.ts',
+          componentsReactPath + '/../styles/StylesMediaQueryExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-spacing',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-spacing-example.component.ts',
+          componentsReactPath + '/../styles/StylesSpacingExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-theme',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-theme-example.component.ts',
+          componentsReactPath + '/../styles/StylesThemeExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-typography',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-typography-example.component.ts',
+          componentsReactPath + '/../styles/StylesTypographyExample.tsx',
         ],
       ],
     },

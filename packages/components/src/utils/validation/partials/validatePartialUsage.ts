@@ -58,7 +58,7 @@ export const validateGetComponentChunkLinksUsage = (): void => {
 
   Object.entries(usedTagNamesWithoutPreloadForVersions).forEach(([version, tagNames]) => {
     console.warn(
-      `Usage of Porsche Design System v${version} component '${tagNames.join(
+      `[Porsche Design System] Usage of Porsche Design System v${version} component '${tagNames.join(
         ', '
       )}' detected without preloading. ${getWarningRecommendation('getComponentChunkLinks')}`
     );
@@ -72,20 +72,16 @@ export const validateGetLoaderScriptUsage = (): void => {
 };
 
 export const validateGetInitialStylesUsage = (): void => {
-  Object.values(getPorscheDesignSystemPrefixesForVersions())
-    .flat()
-    .forEach((prefix) => {
-      if (!document.head.querySelector(`style[data-pds-initial-styles${prefix ? `-${prefix}` : ''}]`)) {
-        throwPartialValidationWarning('getInitialStyles', prefix);
-      }
-    });
+  if (!document.head.querySelector('style[data-pds-initial-styles]')) {
+    throwPartialValidationWarning('getInitialStyles');
+  }
 };
 
 export const throwPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   console.warn(
-    `You are using the Porsche Design System ${
+    `[Porsche Design System] The Porsche Design System ${
       prefix ? `with prefix: '${prefix}' ` : ''
-    }without using the ${partialName}() partial. ${getWarningRecommendation(partialName)}`
+    }is used without using the ${partialName}() partial. ${getWarningRecommendation(partialName)}`
   );
 };
 
@@ -94,5 +90,5 @@ export const getWarningRecommendation = (partialName: string): string => {
     .replace('get', '')
     .replace(/([a-z])([A-Z])/g, '$1-$2') // camelCase to param-case
     .toLowerCase();
-  return `We recommend the usage of the ${partialName}() partial as described at https://designsystem.porsche.com/v2/partials/${partialUrl} to enhance loading behavior.`;
+  return `The usage of the ${partialName}() partial is recommended as described at https://designsystem.porsche.com/v2/partials/${partialUrl} to enhance loading behavior.`;
 };

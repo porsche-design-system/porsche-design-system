@@ -2,16 +2,19 @@ import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
-import { themeLight, themeDark, themeLightElectric, themeDarkElectric } from '@porsche-design-system/utilities-v2';
+import { themeLight, themeDark } from '@porsche-design-system/utilities-v2';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'change-case';
 
-const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString();
+const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString().toUpperCase();
+const darkenColorSlightly = (color: string) => tinycolor2(color).darken(6).desaturate(37).toHexString().toUpperCase();
+
+const lightenColor = (color: string) => tinycolor2(color).lighten(12).toHexString().toUpperCase();
+const lightenColorSlightly = (color: string) => tinycolor2(color).lighten(6).desaturate(37).toHexString().toUpperCase();
 
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
-    base: baseColor,
-    brand: brandColor,
+    primary: primaryColor,
     background: { base: backgroundColor, surface: backgroundSurfaceColor },
     contrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
@@ -22,26 +25,30 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
       successSoft: successSoftColor,
       warning: warningColor,
       warningSoft: warningSoftColor,
-      neutral: neutralColor,
-      neutralSoft: neutralSoftColor,
+      info: infoColor,
+      infoSoft: infoSoftColor,
     },
   } = {
     light: themeLight,
     dark: themeDark,
-    'light-electric': themeLightElectric,
-    'dark-electric': themeDarkElectric,
   }[theme];
 
   return {
-    baseColor,
-    baseColorDarken: darkenColor(baseColor),
-    brandColor,
+    primaryColor,
+    primaryColorDarken: darkenColor(primaryColor),
     backgroundColor,
+    // TODO: since such colors are being used only in Tag, it makes sense to move such colors into tag utils,
+    //  in order to decrease the chances to use the wrong colors
+    backgroundColorDarken: darkenColor(backgroundColor),
+    backgroundColorLighten: lightenColor(backgroundColor),
     backgroundSurfaceColor,
+    backgroundSurfaceColorDarken: darkenColor(backgroundSurfaceColor),
+    backgroundSurfaceColorLighten: lightenColor(backgroundSurfaceColor),
     contrastLowColor,
     contrastMediumColor,
     contrastHighColor,
     contrastHighColorDarken: darkenColor(contrastHighColor),
+    contrastHighColorLighten: lightenColor(contrastHighColor),
     hoverColor,
     hoverColorDarken: darkenColor(hoverColor),
     activeColor,
@@ -50,21 +57,27 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
     errorColor,
     errorColorDarken: darkenColor(errorColor),
     errorSoftColor,
+    errorSoftColorDarken: darkenColorSlightly(errorSoftColor),
+    errorSoftColorLighten: lightenColorSlightly(errorSoftColor),
     successColor,
     successColorDarken: darkenColor(successColor),
     successSoftColor,
+    successSoftColorDarken: darkenColorSlightly(successSoftColor),
+    successSoftColorLighten: lightenColorSlightly(successSoftColor),
     warningColor,
     warningSoftColor,
-    neutralColor,
-    neutralSoftColor,
+    warningSoftColorDarken: darkenColorSlightly(warningSoftColor),
+    warningSoftColorLighten: lightenColorSlightly(warningSoftColor),
+    infoColor,
+    infoSoftColor,
+    infoSoftColorDarken: darkenColorSlightly(infoSoftColor),
+    infoSoftColorLighten: lightenColorSlightly(infoSoftColor),
   };
 };
 
 const themes: { [key in Theme]: ThemedColors } = {
   light: getStaticThemedColors('light'),
   dark: getStaticThemedColors('dark'),
-  'light-electric': getStaticThemedColors('light-electric'),
-  'dark-electric': getStaticThemedColors('dark-electric'),
 };
 
 const objectToConst = (obj: object, constName: string): string =>

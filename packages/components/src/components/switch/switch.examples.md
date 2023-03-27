@@ -15,16 +15,16 @@ The `p-switch` component can be used with a visible or hidden label, but it's re
 better accessibility whenever possible. A `label` is a caption which informs the user which action is followed by
 interaction. When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
-<Playground :markup="basic" :config="config">
-  <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="show">With label</option>
-    <option value="hide">Without label</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="hideLabelMarkup" :config="configInline">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
 ## Framework Implementations
+
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>switchChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
 
 <Playground :frameworkMarkup="frameworks"></Playground>
 
@@ -32,13 +32,13 @@ interaction. When used with hidden label, it's best practice to provide a descri
 
 ## Disabled
 
-<Playground :markup="disabled" :config="config"></Playground>
+<Playground :markup="disabled" :config="configInline"></Playground>
 
 ---
 
 ## Loading
 
-<Playground :markup="loading" :config="config"></Playground>
+<Playground :markup="loading" :config="configInline"></Playground>
 
 ---
 
@@ -47,13 +47,8 @@ interaction. When used with hidden label, it's best practice to provide a descri
 The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which
 is recommended on mobile views.
 
-<Playground :markup="alignment" :config="config">
-  <select v-model="alignLabel" aria-label="Select alignment">
-    <option disabled>Select alignment</option>
-    <option value="right">Right</option>
-    <option value="left">Left</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="alignLabelMarkup" :config="configInline">
+  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
 </Playground>
 
 ---
@@ -62,28 +57,28 @@ is recommended on mobile views.
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the **Switch**.
 
-<Playground :markup="events" :config="config"></Playground>
+<Playground :markup="events" :config="configInline"></Playground>
 
 ---
 
 ## Remove Switch from tab order
 
-**NOTICE:** The property `tabbable` is deprecated since v2.8.0 and will be removed in v3.0.0.
-
 By setting the `tabindex` attribute to `-1` you can remove the **Switch** from the tab order.
 
-<Playground :markup="taborder" :config="config"></Playground>
+<Playground :markup="taborder" :config="configInline"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { ALIGN_LABELS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
+  configInline = { ...this.config, spacing: 'inline' };
 
   frameworks = {
-    'vanilla-js': `switchElement.addEventListener('switchChange', (e) => {
+    'vanilla-js': `switchElement.addEventListener('change', (e) => {
   e.target.checked = e.detail.checked;
 });`,
     angular: `import { Component } from '@angular/core';
@@ -91,12 +86,12 @@ import type { SwitchChangeEvent } from '@porsche-design-system/components-angula
 
 @Component({
   selector: 'some-switch-page',
-  template: \`<p-switch [checked]="checked" (switchChange)="onSwitchChange($event)">Some label</p-switch>\`,
+  template: \`<p-switch [checked]="checked" (change)="onChange($event)">Some label</p-switch>\`,
 })
 export class SomeSwitchPage {
   checked: boolean;
 
-  onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
+  onChange(e: CustomEvent<SwitchChangeEvent>) {
     this.checked = e.detail.checked;
   }
 }`,
@@ -106,27 +101,27 @@ import type { SwitchChangeEvent } from '@porsche-design-system/components-react'
 
 const SomeSwitchPage = (): JSX.Element => {
   const [checked, setChecked] = useState<boolean>();
-  const onSwitchChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
+  const onChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
     setChecked(e.detail.checked);
   }, []);
 
-  return <PSwitch checked={checked} onSwitchChange={onSwitchChange}>Some label</PSwitch>
+  return <PSwitch checked={checked} onChange={onChange}>Some label</PSwitch>
 }`,
   };
 
-  label = 'show';
-  alignLabel = 'right';
-
-  get basic() {
-    const hideLabel = this.label === 'hide' ? ' hide-label="true"' : this.label === 'responsive' ? ' hide-label="{ base: true, l: false }"' : '';
-    return `<p-switch${hideLabel}>Some label</p-switch>
-<p-switch${hideLabel} checked="true">Some label</p-switch>`;
+  hideLabel = false;
+  hideLabels = [true, false, '{ base: true, l: false }'];
+  get hideLabelMarkup() {
+    return `<p-switch hide-label="${this.hideLabel}">Some label</p-switch>
+<p-switch hide-label="${this.hideLabel}" checked="true">Some label</p-switch>`;
   };
 
-  get alignment() {
-    const alignLabel = this.alignLabel === 'left' ? ' align-label="left"' : this.alignLabel === 'responsive' ? ' align-label="{ base: \'left\', l: \'right\' }"  stretch="{ base: true, l: false }"' : '';
-    return `<p-switch${alignLabel}>Some label</p-switch>
-<p-switch${alignLabel} checked="true">Some label</p-switch>`;
+  alignLabel = 'right';
+  alignLabels = [...ALIGN_LABELS, "{ base: 'left', l: 'right' }"];
+  get alignLabelMarkup() {
+    const attr = this.alignLabel.includes('base') ? ' stretch="{ base: true, l: false }"' : '';
+    return `<p-switch align-label="${this.alignLabel}"${attr}>Some label</p-switch>
+<p-switch align-label="${this.alignLabel}"${attr} checked="true">Some label</p-switch>`;
   };
 
   disabled = `<p-switch disabled="true">Some label</p-switch>
@@ -153,7 +148,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
     /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
+    themeTabs.forEach(tab => tab.addEventListener('change', () => {
       this.registerEvents();
     }));
   }
@@ -164,7 +159,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
   registerEvents() {
     const switches = this.$el.querySelectorAll('.playground .demo p-switch');
-    switches.forEach(switchEl => switchEl.addEventListener('switchChange', (e) => (e.target.checked = e.detail.checked)));
+    switches.forEach(switchEl => switchEl.addEventListener('change', (e) => (e.target.checked = e.detail.checked)));
   }
 }
 </script>

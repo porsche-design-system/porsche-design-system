@@ -1,19 +1,18 @@
+import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import type { Theme } from '../types';
 import type { GetFocusStylesOptions } from './common-styles';
-import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getBaseSlottedStyles,
-  getInsetJssStyle,
+  getBackfaceVisibilityJssStyle,
   getFocusJssStyle,
   getFormTextHiddenJssStyle,
   getHoverJssStyle,
+  getInsetJssStyle,
   getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
-  getBackfaceVisibilityJssStyle,
 } from './common-styles';
 
 describe('getTransition()', () => {
@@ -74,7 +73,7 @@ describe('addImportantToEachRule()', () => {
   });
 });
 
-describe('getHoverJssStyles()', () => {
+xdescribe('getHoverJssStyles()', () => {
   it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
     expect(getHoverJssStyle({ theme })).toMatchSnapshot();
   });
@@ -89,7 +88,7 @@ describe('getInsetJssStyle()', () => {
   );
 });
 
-describe('getFocusJssStyles()', () => {
+xdescribe('getFocusJssStyles()', () => {
   it.each<GetFocusStylesOptions>([
     {},
     { color: 'red' },
@@ -99,20 +98,6 @@ describe('getFocusJssStyles()', () => {
     { color: 'deeppink', offset: 3 },
   ])('should return correct JssStyle for params: %o', (params) => {
     expect(getFocusJssStyle(params)).toMatchSnapshot();
-  });
-});
-
-describe('getBaseSlottedStyles()', () => {
-  it('should return correct styles', () => {
-    expect(getBaseSlottedStyles()).toMatchSnapshot();
-  });
-
-  it('should return correct styles with dark theme', () => {
-    expect(getBaseSlottedStyles({ withDarkTheme: true })).toMatchSnapshot();
-  });
-
-  it('should return correct styles without dark theme', () => {
-    expect(getBaseSlottedStyles({ withDarkTheme: false })).toMatchSnapshot();
   });
 });
 

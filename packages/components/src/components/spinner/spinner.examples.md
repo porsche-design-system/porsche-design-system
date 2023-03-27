@@ -17,13 +17,7 @@ There are predefined sizes for the component available which should cover most u
 the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option>small</option>
-    <option>medium</option>
-    <option>large</option>
-    <option>inherit</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ### Responsive
@@ -45,20 +39,21 @@ For automated visual regression tests the spinner animation can be disabled by s
 
 ```
 :root {
-  --p-animation-duration__spinner: 0s !important;
+  --pds-animation-duration: 0s !important;
 }
 ```
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { SPINNER_SIZES } from './spinner-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
   
   size = 'small';
-  
+  sizes = SPINNER_SIZES;
   get sizeMarkup() {
     const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
     return `<p-spinner size="${this.size}"${style} aria="{ 'aria-label': 'Loading page content' }" />`;

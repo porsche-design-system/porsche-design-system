@@ -85,8 +85,8 @@ easier for the user to tap due to a larger visible touch area and also allows to
 Though it's technically possible to use multiline text in Porsche Buttons, it's recommended to keep the Button label
 short and, therefore, avoid multiline Buttons.
 
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
+<div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
+    <p-heading size="large" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
     <img src="./assets/button-examples.png" alt="Examples for button usage"/>
 </div>
 

@@ -1,14 +1,10 @@
-import { getComponentCss, getSlottedCss } from './text-styles';
+import { getComponentCss } from './text-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['small', 'regular', 'left', 'default', false, 'light'],
-    ['x-large', 'thin', 'right', 'brand', true, 'dark'],
-    ['x-large', 'regular', 'center', 'brand', false, 'dark'],
-    ['large', 'semibold', 'left', 'notification-error', true, 'light'],
-    ['medium', 'bold', 'right', 'neutral-contrast-high', true, 'dark'],
-    ['x-small', 'semibold', 'left', 'inherit', false, 'light'],
-    ['inherit', 'bold', 'center', 'default', false, 'light'],
+    ['small', 'regular', 'left', 'primary', false, 'light'],
+    ['large', 'semi-bold', 'left', 'notification-info', true, 'light'],
+    ['medium', 'bold', 'right', 'contrast-high', true, 'dark'],
     [
       { base: 'small', xs: 'large', s: 'medium', m: 'inherit', l: 'x-small', xl: 'x-large' },
       'bold',
@@ -23,16 +19,4 @@ describe('getComponentCss()', () => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
-});
-
-describe('getSlottedCss()', () => {
-  it('should return correct css', () => {
-    const host = document.createElement('p-text');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
-
-  it('should return correct css with prefix', () => {
-    const host = document.createElement('prefixed-p-text');
-    expect(getSlottedCss(host)).toMatchSnapshot();
-  });
 });

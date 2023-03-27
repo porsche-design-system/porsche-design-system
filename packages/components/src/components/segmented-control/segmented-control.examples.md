@@ -36,26 +36,31 @@ An icon can be added via the `icon` or `iconSource` property.
 
 <Playground :markup="withIconsMarkup" :config="config"></Playground>
 
-## Background Color
+## Background Color (deprecated)
+
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The background-color prop is deprecated and will be removed with next major release.
+</p-inline-notification>
 
 If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor`
 property.
 
-<Playground :markup="backgroundColorMarkup" :config="{ ...config, colorScheme: backgroundColor.replace('background-', '') }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="background-default">Background Default</option>
-    <option value="background-surface">Background Surface</option>
-  </select>
+<Playground :markup="backgroundColorMarkup" :config="{ ...config, backgroundColor }">
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ## Event Handling
 
-Whenever the selected item changes, a `segmentedControlChange` event gets emitted by the `p-segmented-control`.  
+Whenever the selected item changes, a `change` event gets emitted by the `p-segmented-control`.  
 Each event instance contains the newly selected value at `event.detail.value`.
 
+<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+  The <code>segmentedControlChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>change</code> event instead.
+</p-inline-notification>
+
 <Playground :frameworkMarkup="eventHandlingMarkup" :config="config">
-  <p-segmented-control :value="eventHandlingValue" v-on:segmentedControlChange="eventHandlingValue = $event.detail.value">
+  <p-segmented-control :theme="theme" :value="eventHandlingValue" v-on:change="eventHandlingValue = $event.detail.value">
     <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
     <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
     <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
@@ -71,11 +76,11 @@ import Component from 'vue-class-component';
 import { getSegmentedControlCodeSamples } from '@porsche-design-system/shared';
 import { getAnchorLink } from '@/utils';
 import type { Theme } from '@/models';
+import { SEGMENTED_CONTROL_BACKGROUND_COLORS } from './segmented-control/segmented-control-utils'; 
   
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
-  backgroundColor = 'background-surface';
   eventHandlingUrl = getAnchorLink('event-handling');
 
   shirtSizeItems = `<p-segmented-control-item value="xs">XS</p-segmented-control-item>
@@ -115,6 +120,8 @@ export default class Code extends Vue {
 </p-segmented-control>`;
   };
 
+  backgroundColor = 'background-surface';
+  backgroundColors = SEGMENTED_CONTROL_BACKGROUND_COLORS;
   get backgroundColorMarkup() {
     return `<p-segmented-control background-color="${this.backgroundColor}" aria-label="Choose an option">
   ${this.optionItems}
