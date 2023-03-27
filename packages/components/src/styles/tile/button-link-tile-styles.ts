@@ -27,12 +27,13 @@ export const getButtonLinkTileStyles = (
   weight: BreakpointCustomizable<TileWeight | LinkTileWeight>, // to get deprecated semibold typed
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
-  hasGradient: boolean
+  hasGradient: boolean,
+  isDisabled?: boolean
 ): Styles => {
   const isTopAligned = align === 'top';
 
   return {
-    ...mergeDeep(getTileBaseStyles(aspectRatio), {
+    ...mergeDeep(getTileBaseStyles(aspectRatio, isDisabled), {
       '@global': {
         p: {
           color: getThemedTypographyColor('dark', 'primary'), // TODO: why not put the color on the .root class in the base styles

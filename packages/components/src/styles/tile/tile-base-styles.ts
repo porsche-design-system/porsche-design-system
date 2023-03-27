@@ -21,7 +21,10 @@ const aspectRatioPaddingMap: Record<TileAspectRatio, string> = {
   '9:16': '177.75%',
 };
 
-export const getTileBaseStyles = (aspectRatio: BreakpointCustomizable<TileAspectRatio>): Styles => {
+export const getTileBaseStyles = (
+  aspectRatio: BreakpointCustomizable<TileAspectRatio>,
+  isDisabled?: boolean
+): Styles => {
   return {
     '@global': {
       ':host': {
@@ -51,13 +54,14 @@ export const getTileBaseStyles = (aspectRatio: BreakpointCustomizable<TileAspect
       ...buildResponsiveStyles(aspectRatio, (ratio: TileAspectRatio) => ({
         paddingTop: aspectRatioPaddingMap[ratio],
       })),
-      ...hoverMediaQuery({
-        '&:hover': {
-          '& ::slotted(picture),::slotted(img)': {
-            transform: addImportantToRule('scale3d(1.05, 1.05, 1.05)'),
+      ...(!isDisabled &&
+        hoverMediaQuery({
+          '&:hover': {
+            '& ::slotted(picture),::slotted(img)': {
+              transform: addImportantToRule('scale3d(1.05, 1.05, 1.05)'),
+            },
           },
-        },
-      }),
+        })),
     },
     'image-container': {
       position: 'absolute',
