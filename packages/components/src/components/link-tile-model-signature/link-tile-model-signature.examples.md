@@ -10,11 +10,11 @@ shows one of the model signatures at the top.
 
 ## Basic
 
-An `img` or `picture` tag has to be provided in the slot of the `p-link-tile-model-signature` component.
+An `img` or `picture` element has to be available as a child of the `p-link-tile-model-signature` component.
 
-To work properly the `p-link-tile-model-signature` component needs two `p-link` components as named slots,
-`slot="primary"` and `slot="secondary"` which are mandatory. Also the `heading` property is required. It is used as a
-teaser with a more detailed description of where the link leads to.
+It is required to have two `p-link` components as named slots, `slot="primary"` and `slot="secondary"`.  
+The `heading` property is required, too. It is used as a teaser with a more detailed description of where the link leads
+to.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -30,8 +30,7 @@ default `h2` to e.g. `h3`.
 
 ## Description
 
-If your heading needs further explanation or you want to provide additional information like e.g. a price tage, use the
-`description` property.
+If you want to add additional text like a price tag, use the `description` property.
 
 <Playground :markup="description" :config="config"></Playground>
 
@@ -45,9 +44,9 @@ The `weight` property changes the font weight of the heading.
 
 ## Link Direction
 
-The `link-direction` property defines the direction of the main and cross axis of the links. The default is `{base:
-'row', xs: 'column'}` showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from
-breakpoint `xs`.
+The `link-direction` property defines the direction of the main and cross axis of the links. The default is
+`{base: 'row', xs: 'column'}` showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal
+row from breakpoint `xs`.
 
 <Playground :markup="linkDirectionMarkup" :config="config">
   <SelectOptions v-model="linkDirection" :values="linkDirections" name="linkDirection"></SelectOptions>
@@ -68,6 +67,32 @@ can change the dimensions by using different aspect ratios.
   <SelectOptions v-model="model" :values="models" name="model"></SelectOptions>
 </Playground>
 
+## Framework Routing
+
+While the `p-link-tile-model-signature` supports slotted `a` links within its required `p-link` children, clicking
+anything besides the two `p-link` elements needs to be handled manually.
+
+<Playground>
+  <p-link-tile-model-signature heading="Some heading" aspect-ratio="16:9" @click="onClick">
+    <img :src="imgSrc" width="3000" height="2000" alt="Some alt text" />
+    <p-link slot="primary"><a href="https://www.porsche.com/#primary">Primary label</a></p-link>
+    <p-link slot="secondary"><a href="https://www.porsche.com/#secondary">Secondary label</a></p-link>
+  </p-link-tile-model-signature>
+  <p-text>clicked href: {{clickedHref}}</p-text>
+</Playground>
+
+The easiest way to achieve this is to add a `click` event listener on the component itself, call
+`event.preventDefault()` once the event handler is invoked and read the `href` value from the target.
+
+```ts
+const linkEl = document.querySelector('p-link-tile-model-signature');
+linkEl.addEventListener('click', (event) => {
+  event.preventDefault();
+  const { href } = event.composedPath()[0];
+  history.pushState({}, '', href); // or whatever your routing library provides as a hook or service
+});
+```
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -78,22 +103,20 @@ import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 @Component
 export default class Code extends Vue {
   config = { spacing: 'block' };
-  img = `<img src="${require('@/assets/image-grid.png')}" width="3000" height="2000" alt="Some alt text" />`;
-  primaryLink = '<p-link slot="primary" href="https://www.porsche.com">Primary label</p-link>';
-  secondaryLink = '<p-link slot="secondary" href="https://www.porsche.com">Secondary label</p-link>';
+  imgSrc = require('@/assets/image-grid.png');
+  img = `<img src="${this.imgSrc}" width="3000" height="2000" alt="Some alt text" />`;
+  primaryLink = '<p-link slot="primary" href="https://www.porsche.com/#primary">Primary label</p-link>';
+  secondaryLink = '<p-link slot="secondary" href="https://www.porsche.com/#secondary">Secondary label</p-link>';
 
-  basic = `<p-link-tile-model-signature
-  heading="Some heading"
->
+  basic = `<p-link-tile-model-signature heading="Some heading">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
 </p-link-tile-model-signature>
-<p-link-tile-model-signature
-  heading="Some heading"
->
+
+<p-link-tile-model-signature heading="Some heading">
   <picture>
-    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
+    <source media="(min-width:400px)" srcset="${this.imgSrc}" />
     ${this.img}
   </picture>
   ${this.primaryLink}
@@ -103,29 +126,14 @@ export default class Code extends Vue {
   weight = 'semi-bold';
   weights = [...TILE_WEIGHTS, "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
-    return`<p-link-tile-model-signature
-  heading="Some heading"
-  weight="${this.weight}"
->
+    return`<p-link-tile-model-signature heading="Some heading" weight="${this.weight}" description="Some description">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile-model-signature>
-<p-link-tile-model-signature
-  heading="Some heading"
-  weight="${this.weight}"
-  description="Some description"
->
-  ${this.img}
-  ${this.primaryLink}
-  ${this.secondaryLink}
-</p-link-tile-model-signature>`
+</p-link-tile-model-signature>`;
   };
 
-  description = `<p-link-tile-model-signature
-  heading="Some heading"
-  description="Some description"
->
+  description = `<p-link-tile-model-signature heading="Some heading" description="Some description">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
@@ -135,39 +143,39 @@ export default class Code extends Vue {
   linkDirection = 'row';
   linkDirections = [...GROUP_DIRECTIONS, "{ base: 'row', m: 'column' }"];
   get linkDirectionMarkup() {
-    return`<p-link-tile-model-signature
-  heading="Some heading"
-  link-direction="${this.linkDirection}"
->
+    return`<p-link-tile-model-signature heading="Some heading" link-direction="${this.linkDirection}">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile-model-signature>`
+</p-link-tile-model-signature>`;
   };
 
   aspectRatio = '3:4';
   aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', m: '9:16' }"];
   get aspectRatioMarkup() {
-    return`<p-link-tile-model-signature 
-heading="Some Heading"
-aspect-ratio="${this.aspectRatio}">
+    return`<p-link-tile-model-signature heading="Some Heading" aspect-ratio="${this.aspectRatio}">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile-model-signature>`
+</p-link-tile-model-signature>`;
   };
 
   model = '911';
   models = MODEL_SIGNATURE_MODELS;
   get modelMarkup() {
-    return`<p-link-tile-model-signature 
-heading="Some Heading"
-model="${this.model}">
+    return`<p-link-tile-model-signature heading="Some Heading" model="${this.model}">
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile-model-signature>`
+</p-link-tile-model-signature>`;
   };
+
+  clickedHref = '';
+  onClick(event){
+    event.preventDefault();
+    const { href } = event.composedPath()[0];
+    this.clickedHref = href;
+  }
 }
 </script>
 
