@@ -5,6 +5,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-overview',
   styles: [
     `
+      body {
+        overflow: auto !important;
+      }
+    
       p-flex-item > p,
       my-prefix-p-flex-item > p,
       p-grid-item > p,
@@ -32,11 +36,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         background: deepskyblue;
       }
     
-      .playground--banner {
+      .playground--banner,
+      .playground--modal {
         transform: translate3d(0, 0, 0);
         height: 10rem;
         padding: 0;
         margin: 1rem;
+      }
+    
+      .playground--modal {
+        height: 20rem;
       }
     `,
   ],
@@ -60,6 +69,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <span slot="title">Default banner component</span>
             <span slot="description">Some slotted banner description</span>
           </p-banner>
+        </div>
+
+        <div class="playground light playground--modal" title="should render default modal">
+          <p-modal [heading]="'Heading'" [open]="true">Some Content</p-modal>
         </div>
 
         <div class="playground light" title="should render default inline-notification">
@@ -125,6 +138,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default fieldset">
           <p-fieldset [label]="'Some label'"></p-fieldset>
+        </div>
+
+        <div class="playground light" title="should render default fieldset-wrapper">
+          <p-fieldset-wrapper [label]="'Some label'"></p-fieldset-wrapper>
         </div>
 
         <div class="playground light" title="should render default content-wrapper">
@@ -298,6 +315,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </my-prefix-p-banner>
         </div>
 
+        <div class="playground light playground--modal" title="should render default modal with custom prefix">
+          <my-prefix-p-modal p-modal [heading]="'Heading'" [open]="true">Some Content</my-prefix-p-modal>
+        </div>
+
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <my-prefix-p-inline-notification p-inline-notification
             [heading]="'Some heading'"
@@ -364,6 +385,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default fieldset with custom prefix">
           <my-prefix-p-fieldset p-fieldset [label]="'Some label'"></my-prefix-p-fieldset>
+        </div>
+
+        <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
+          <my-prefix-p-fieldset-wrapper p-fieldset-wrapper [label]="'Some label'"></my-prefix-p-fieldset-wrapper>
         </div>
 
         <div class="playground light" title="should render default content-wrapper with custom prefix">
