@@ -2,16 +2,33 @@ type Props = {
   videoUrl: string;
   fallbackUrl: string;
   posterUrl: string;
-  width: string; // CSS pixels or % seem to work
-  // Optional attributes
   controls?: boolean;
   loop?: boolean;
   playsInline?: boolean;
+  objectFit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
 };
 
-export default function Video({ videoUrl, fallbackUrl, posterUrl, width, controls, loop, playsInline }: Props) {
+export default function Video({
+  videoUrl,
+  fallbackUrl,
+  posterUrl,
+  controls,
+  loop,
+  playsInline,
+  objectFit = 'cover',
+}: Props) {
+  const style = {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    height: '100%',
+    width: '100%',
+    objectFit,
+    zIndex: -1,
+  };
   return (
-    <video loop={loop} controls={controls} poster={posterUrl} playsInline={playsInline} width={width}>
+    <video loop={loop} controls={controls} poster={posterUrl} playsInline={playsInline} style={style}>
       <source src={fallbackUrl} />
       <source src={videoUrl} />
     </video>
