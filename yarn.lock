@@ -3153,14 +3153,6 @@
   resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
   integrity sha512-IhoHGmsPoO4VBoCebNGejBNHJFdAldV3m8kAoO458MJeaQJODM2b1UFzvGeTXGOMIFH4pkshcjZcF36vQvsn9w==
 
-"@porsche-design-system/visual-regression-tester@^4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.4.0.tgz#878a8a47ca3048e79df48ee33e82e5a741d51495"
-  integrity sha512-SJ8hElwFtk+CJISRtpwo0m9fmnYrwR9yTd8KyVVx8X1QxyIE+SDyd7zdiGR+h2kctGmSF6+m9/nZgI9JDUy4pg==
-  dependencies:
-    pixelmatch "^5.3.0"
-    sharp "^0.30.5"
-
 "@porsche-design-system/visual-regression-tester@^4.5.0":
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.5.0.tgz#50ccba4bb67029936be2ca1d6f576487014ffa92"
@@ -5578,10 +5570,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@webcomponents/template-shadowroot@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@webcomponents/template-shadowroot/-/template-shadowroot-0.1.0.tgz#adb3438d0d9a18e8fced08abc253f56b7eadab00"
-  integrity sha512-ry84Vft6xtRBbd4M/ptRodbOLodV5AD15TYhyRghCRgIcJJKmYmJ2v2BaaWxygENwh6Uq3zTfGPmlckKT/GXsQ==
+"@webcomponents/template-shadowroot@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@webcomponents/template-shadowroot/-/template-shadowroot-0.2.1.tgz#b20182f25f3af9baa9b7cbecce8dd6a7ab7fc39f"
+  integrity sha512-fXL/vIUakyZL62hyvUh+EMwbVoTc0hksublmRz6ai6et8znHkJa6gtqMUZo1oc7dIz46exHSIImml9QTdknMHg==
 
 "@webpack-cli/configtest@^2.0.1":
   version "2.0.1"
