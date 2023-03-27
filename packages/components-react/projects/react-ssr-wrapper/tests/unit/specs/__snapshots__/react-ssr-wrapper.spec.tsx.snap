@@ -6644,6 +6644,7 @@ exports[`should render dsr component for PWordmark 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6681,9 +6682,7 @@ svg {
 }
     </style>
     <svg
-      height="100%"
       viewBox="0 0 4383 300"
-      width="100%"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
