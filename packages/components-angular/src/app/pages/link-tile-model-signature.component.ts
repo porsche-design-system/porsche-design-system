@@ -24,8 +24,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Default'">
@@ -35,8 +35,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary"><a [href]="'#'">Slotted anchor</a></p-link>
-        <p-link slot="secondary"><a [href]="'#'">Slotted anchor</a></p-link>
+        <p-link slot="primary">
+          <a [href]="'#primary'">Slotted anchor</a>
+        </p-link>
+        <p-link slot="secondary">
+          <a [href]="'#secondary'">Slotted anchor</a>
+        </p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -48,8 +52,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -61,8 +65,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model boxster'" [model]="'boxster'">
@@ -72,8 +76,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model cayenne'" [model]="'cayenne'">
@@ -83,8 +87,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model cayman'" [model]="'cayman'">
@@ -94,8 +98,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model macan'" [model]="'macan'">
@@ -105,8 +109,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model panamera'" [model]="'panamera'">
@@ -116,8 +120,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model taycan'" [model]="'taycan'">
@@ -127,8 +131,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model turbo-s'" [model]="'turbo-s'">
@@ -138,8 +142,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature [heading]="'Model turbo'" [model]="'turbo'">
@@ -149,8 +153,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -162,8 +166,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature
         [heading]="'Weight responsive'"
@@ -175,8 +179,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -188,8 +192,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature [heading]="'Aspect ratio 1:1'" aspect-ratio="1:1">
         <img
@@ -198,8 +202,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature [heading]="'Aspect ratio 4:3'" aspect-ratio="4:3">
         <img
@@ -208,8 +212,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature [heading]="'Aspect ratio 9:16'" aspect-ratio="9:16">
         <img
@@ -218,8 +222,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature
         [heading]="'Aspect ratio responsive'"
@@ -231,8 +235,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -244,8 +248,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature
         [heading]="'Link direction responsive'"
@@ -257,8 +261,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -272,8 +276,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature [heading]="'Some heading'">
         <img
@@ -282,8 +286,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some super long label which causes line breaks in the link</p-link>
-        <p-link slot="secondary" [href]="'#'">Some super long label which causes line breaks in the link</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some super long label which causes line breaks in the link</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some super long label which causes line breaks in the link</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature
         [heading]="'Some heading'"
@@ -295,8 +299,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
       <p-link-tile-model-signature
         [heading]="'Some long text on white background to overflow the box. Some long text on white background  to overflow the box. Some long text on white background  to overflow the box.'"
@@ -308,8 +312,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -326,8 +330,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             [alt]="'Some alt text'"
           />
         </picture>
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
 
@@ -341,8 +345,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
 
       <p-link-tile-model-signature
@@ -355,8 +359,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           [height]="50"
           [alt]="'Some alt text'"
         />
-        <p-link slot="primary" [href]="'#'">Some label</p-link>
-        <p-link slot="secondary" [href]="'#'">Some label</p-link>
+        <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+        <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
       </p-link-tile-model-signature>
     </div>
   `,

@@ -65,11 +65,10 @@ const OverviewFlakyPage: NextPage = (): JSX.Element => {
                 height={50}
                 alt="Beach"
               />
-              <PLink slot="primary" href="#">Some label</PLink>
-              <PLink slot="secondary" href="#">Some label</PLink>
+              <PLink slot="primary" href="#primary">Some label</PLink>
+              <PLink slot="secondary" href="#secondary">Some label</PLink>
             </PLinkTileModelSignature>
           </div>
-
         </div>
 
         <div style={{ flex: 1 }}>
@@ -117,11 +116,10 @@ const OverviewFlakyPage: NextPage = (): JSX.Element => {
                 height={50}
                 alt="Beach"
               />
-              <PLink slot="primary" href="#">Some label</PLink>
-              <PLink slot="secondary" href="#">Some label</PLink>
+              <PLink slot="primary" href="#primary">Some label</PLink>
+              <PLink slot="secondary" href="#secondary">Some label</PLink>
             </PLinkTileModelSignature>
           </div>
-
         </div>
       </div>
     </PorscheDesignSystemProvider>

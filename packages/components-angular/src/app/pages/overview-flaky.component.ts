@@ -62,11 +62,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               [height]="50"
               [alt]="'Beach'"
             />
-            <p-link slot="primary" [href]="'#'">Some label</p-link>
-            <p-link slot="secondary" [href]="'#'">Some label</p-link>
+            <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+            <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
           </p-link-tile-model-signature>
         </div>
-
       </div>
 
       <div style="flex: 1">
@@ -114,11 +113,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               [height]="50"
               [alt]="'Beach'"
             />
-            <my-prefix-p-link p-link slot="primary" [href]="'#'">Some label</my-prefix-p-link>
-            <my-prefix-p-link p-link slot="secondary" [href]="'#'">Some label</my-prefix-p-link>
+            <my-prefix-p-link p-link slot="primary" [href]="'#primary'">Some label</my-prefix-p-link>
+            <my-prefix-p-link p-link slot="secondary" [href]="'#secondary'">Some label</my-prefix-p-link>
           </my-prefix-p-link-tile-model-signature>
         </div>
-
       </div>
     </div>
   `,

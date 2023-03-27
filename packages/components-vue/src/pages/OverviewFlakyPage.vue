@@ -58,8 +58,8 @@
             height="50"
             alt="Beach"
           />
-          <PLink slot="primary" :href="'#'">Some label</PLink>
-          <PLink slot="secondary" :href="'#'">Some label</PLink>
+          <PLink slot="primary" :href="'#primary'">Some label</PLink>
+          <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
         </PLinkTileModelSignature>
         <!-- eslint-enable vue/no-deprecated-slot-attribute -->
       </div>
@@ -112,8 +112,8 @@
               height="{50}"
               alt="Beach"
             />
-            <PLink slot="primary" :href="'#'">Some label</PLink>
-            <PLink slot="secondary" :href="'#'">Some label</PLink>
+            <PLink slot="primary" :href="'#primary'">Some label</PLink>
+            <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
           </PLinkTileModelSignature>
           <!-- eslint-enable vue/no-deprecated-slot-attribute -->
         </div>
