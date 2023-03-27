@@ -17,3 +17,7 @@ export const setRequiredPropsOfSlottedLinks = (linkElements: [HTMLPLinkElement, 
     link.variant = link.slot as LinkVariant;
   });
 };
+
+export const getLinkOrSlottedAnchorElement = (linkElement: HTMLPLinkElement): HTMLPLinkElement | HTMLAnchorElement => {
+  return linkElement.href ? linkElement : linkElement.querySelector('a');
+};

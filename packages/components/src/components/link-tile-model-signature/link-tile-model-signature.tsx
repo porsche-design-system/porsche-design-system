@@ -21,6 +21,7 @@ import type {
   LinkTileModelSignatureWeight,
 } from './link-tile-model-signature-utils';
 import {
+  getLinkOrSlottedAnchorElement,
   LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
@@ -74,6 +75,7 @@ export class LinkTileModelSignature {
     throwIfElementIsNotOfKind(this.host, primaryLink, 'p-link');
     throwIfElementIsNotOfKind(this.host, secondaryLink, 'p-link');
     setRequiredPropsOfSlottedLinks([primaryLink, secondaryLink]);
+    const linkEl = getLinkOrSlottedAnchorElement(primaryLink);
 
     attachComponentCss(
       this.host,
@@ -86,10 +88,10 @@ export class LinkTileModelSignature {
 
     const overlayLinkProps: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement> & AriaAttributes & { class: string } = {
       class: 'link-overlay',
-      href: primaryLink.href,
-      target: primaryLink.target,
-      download: primaryLink.download,
-      rel: primaryLink.rel,
+      href: linkEl.href,
+      target: linkEl.target,
+      download: linkEl.download,
+      rel: linkEl.rel,
       tabIndex: -1,
       'aria-hidden': 'true',
     };
