@@ -26,6 +26,11 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     requiredNamedSlots.forEach(({ slotName, tagName: requiredTagName }) => {
       const child = document.createElement(requiredTagName);
       child.slot = slotName;
+
+      if (requiredTagName.includes('link')) {
+        (child as any).href = '#';
+      }
+
       component.host.appendChild(child);
     });
   }
