@@ -1141,7 +1141,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2704,7 +2704,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
