@@ -27,8 +27,6 @@ still can occur issues with color contrast ratios, especially if different aspec
 used. So, always **check readability** and play around with the `size` and `weight` properties to achieve the best
 results.
 
----
-
 ## States
 
 <Playground :markup="stateMarkup" :config="config">

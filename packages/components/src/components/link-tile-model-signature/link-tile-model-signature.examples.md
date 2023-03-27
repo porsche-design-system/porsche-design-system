@@ -28,16 +28,12 @@ used. So, always **check readability** and play around with the `weight` propert
 To provide more contextual HTML semantics you can use the `headingTag` property to change the heading parent from
 default `h2` to e.g. `h3`.
 
----
-
 ## Description
 
 If your heading needs further explanation or you want to provide additional information like e.g. a price tage, use the
 `description` property.
 
 <Playground :markup="description" :config="config"></Playground>
-
----
 
 ## Weight
 
@@ -47,30 +43,24 @@ The `weight` property changes the font weight of the heading.
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
----
-
 ## Link Direction
 
-The `link-direction` property defines the direction of the main and cross axis of the links. The default is "{base:
-'row', xs: 'column'}" showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from
-breakpoint 'xs'.
+The `link-direction` property defines the direction of the main and cross axis of the links. The default is `{base:
+'row', xs: 'column'}` showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from
+breakpoint `xs`.
 
 <Playground :markup="linkDirectionMarkup" :config="config">
   <SelectOptions v-model="linkDirection" :values="linkDirections" name="linkDirection"></SelectOptions>
 </Playground>
 
----
-
 ## Aspect Ratio
 
 The component takes its height from the width provided and places the image via CSS `object-fit: cover`. Therefore, you
-can change the height by using different aspect ratios.
+can change the dimensions by using different aspect ratios.
 
 <Playground :markup="aspectRatioMarkup">
   <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
 </Playground>
-
----
 
 ## Model
 
@@ -155,7 +145,7 @@ export default class Code extends Vue {
 </p-link-tile-model-signature>`
   };
 
-  aspectRatio = '9:16';
+  aspectRatio = '3:4';
   aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', m: '9:16' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile-model-signature 

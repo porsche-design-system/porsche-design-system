@@ -27,8 +27,6 @@ still can occur issues with color contrast ratios, especially if different aspec
 used. So, always **check readability** and play around with the `size` and `weight` properties to achieve the best
 results.
 
----
-
 ## Aspect Ratio
 
 The component takes its height from the width provided and places the image via CSS `object-fit: cover`. Therefore, you
