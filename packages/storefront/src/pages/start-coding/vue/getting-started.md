@@ -1,0 +1,99 @@
+# Vue
+
+<TableOfContents></TableOfContents>
+
+## Quick start
+
+To build your own **Vue** application with the **Vue** components of the Porsche Design System, follow these steps:
+
+- Create a new application by executing:
+
+```shell script
+// install with yarn:
+yarn create vite
+
+// install with npm:
+npm init vue@latest
+```
+
+- Follow the installation wizard to set everything up:
+
+```
+// install with yarn:
+✔ Package name: my-app
+✔ Select a framework: › Vue
+✔ Select a variant: › TypeScript
+
+
+// with npm:
+✔ Project name: <my-app>
+✔ Add TypeScript? Yes
+✔ Add JSX Support? … No / Yes
+✔ Add Vue Router for Single Page Application development? … No / Yes
+✔ Add Pinia for state management? … No / Yes
+✔ Add Vitest for Unit testing? … No / Yes
+✔ Add Cypress for both Unit and End-to-End testing? … No / Yes
+✔ Add ESLint for code quality? … No / Yes
+✔ Add Prettier for code formatting? … No / Yes
+```
+
+- Install the Porsche Design System within your project directory (e.g. "my-app"):
+
+```shell script
+// install with yarn:
+cd my-app
+yarn add @porsche-design-system/components-vue
+
+// install with npm:
+cd my-app
+npm install @porsche-design-system/components-vue
+```
+
+You are ready to start building your own application.
+
+## Integration
+
+After adding the `@porsche-design-system/components-vue` package to your project, you've to extend your standard vue
+setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` file
+
+The following setup is a standard Vue stetup with the following adaptions:
+
+Extend `App.vue` by the necessary `PorscheDesignSystemProvider`:
+
+```tsx
+// pages/App.vue
+
+<script setup lang="ts">
+  import AppComponent from "./components/AppComponent.vue";
+  import { PorscheDesignSystemProvider } from "@porsche-design-system/components-vue";
+</script>
+
+<template>
+  <PorscheDesignSystemProvider>
+    <AppComponent />
+  </PorscheDesignSystemProvider>
+</template>
+```
+
+Change your AppComponent to use at least one Porsche Design System component, for example:
+
+```tsx
+// AppComponent.vue
+
+<script setup lang="ts">
+  import { ref } from "vue";
+  import { PHeading } from "@porsche-design-system/components-vue";
+</script>
+
+<template>
+  <PHeading>Heading</PHeading>
+</template>
+```
+
+Run `yarn vite` or `npm start` and check if the components are displayed correctly.
+
+## When are Porsche Design System components initialized?
+
+See [componentsReady()](helpers/components-ready) for further information.
+
+[//]: # 'TODO: add sample vue?'
