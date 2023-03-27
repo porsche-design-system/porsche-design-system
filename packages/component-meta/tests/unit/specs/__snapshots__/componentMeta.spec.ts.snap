@@ -1263,6 +1263,7 @@ exports[`should match snapshot 1`] = `
         "warning-filled",
         "weight",
         "wifi",
+        "wordmark",
         "work",
         "wrench",
         "wrenches",
@@ -1675,7 +1676,7 @@ exports[`should match snapshot 1`] = `
       "p-model-signature",
     ],
     "props": {
-      "aspectRatio": "4:3",
+      "aspectRatio": "3:4",
       "description": null,
       "heading": null,
       "headingTag": "h2",
