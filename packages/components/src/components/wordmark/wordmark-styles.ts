@@ -4,6 +4,7 @@ import { getCss, isThemeDark } from '../../utils';
 import { addImportantToEachRule, getInsetJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 import { filterLightPrimary, filterDarkPrimary } from '../../styles/color-filters';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2/';
+import { wordmarkFluidHeight } from './wordmark-utils';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
   const isSizeFluid = size === 'small';
@@ -20,7 +21,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
           outline: 0,
           ...hostHiddenStyles,
           boxSizing: 'content-box', // needed for custom clickarea to revert styles from Vue component
-          ...(isSizeFluid && { height: 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)' }),
+          ...(isSizeFluid && { height: wordmarkFluidHeight }),
         }),
       },
       a: {
