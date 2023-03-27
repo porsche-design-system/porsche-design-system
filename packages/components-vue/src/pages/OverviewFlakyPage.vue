@@ -1,9 +1,5 @@
 <script setup lang="ts">
-  import {
-    PButtonTile,
-    PLinkTile,
-    PLinkTileModelSignature,
-  } from '@porsche-design-system/components-vue';
+  import { PButtonTile, PLinkTile, PLinkTileModelSignature } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -46,6 +42,7 @@
       </div>
 
       <div className="playground light" title="should render default link-tile-model-signature">
+        <!-- eslint-disable vue/no-deprecated-slot-attribute -->
         <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -56,8 +53,8 @@
           <PLink slot="primary" :href="'#'">Some label</PLink>
           <PLink slot="secondary" :href="'#'">Some label</PLink>
         </PLinkTileModelSignature>
+        <!-- eslint-enable vue/no-deprecated-slot-attribute -->
       </div>
-
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
@@ -99,6 +96,7 @@
         </div>
 
         <div className="playground light" title="should render default link-tile-model-signature with custom prefix">
+          <!-- eslint-disable vue/no-deprecated-slot-attribute -->
           <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -109,8 +107,8 @@
             <PLink slot="primary" :href="'#'">Some label</PLink>
             <PLink slot="secondary" :href="'#'">Some label</PLink>
           </PLinkTileModelSignature>
+          <!-- eslint-enable vue/no-deprecated-slot-attribute -->
         </div>
-
       </div>
     </PorscheDesignSystemProvider>
   </div>

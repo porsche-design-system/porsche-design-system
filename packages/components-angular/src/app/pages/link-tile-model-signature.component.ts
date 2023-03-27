@@ -27,6 +27,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-link slot="primary" [href]="'#'">Some label</p-link>
         <p-link slot="secondary" [href]="'#'">Some label</p-link>
       </p-link-tile-model-signature>
+
+      <p-link-tile-model-signature [heading]="'Default'">
+        <img
+          [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+          [width]="50"
+          [height]="50"
+          [alt]="'Some alt text'"
+        />
+        <p-link slot="primary"><a [href]="'#'">Slotted anchor</a></p-link>
+        <p-link slot="secondary"><a [href]="'#'">Slotted anchor</a></p-link>
+      </p-link-tile-model-signature>
     </div>
 
     <div class="playground light grid" title="should render with description on light background">
