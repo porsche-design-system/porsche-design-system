@@ -1,5 +1,13 @@
 <script setup lang="ts">
-  import { PButtonTile, PLinkTile, PLinkTileModelSignature } from '@porsche-design-system/components-vue';
+  import {
+    PButtonTile,
+    PLink,
+    PLinkTile,
+    PLinkTileModelSignature,
+    PStepperHorizontal,
+    PStepperHorizontalItem,
+    PorscheDesignSystemProvider,
+  } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
