@@ -10,6 +10,7 @@ export const getThemedTypographyColor = (
   theme: Theme,
   textColor: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor
 ): string => {
+  // TODO: don't destructure for better minification
   const {
     primaryColor,
     contrastHighColor,

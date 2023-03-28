@@ -67,6 +67,7 @@ const generateComponentMeta = (): void => {
   };
   hasSlot: boolean;
   namedSlots?: string[]; // array of named slots
+  requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
   hasEvent: boolean;
   eventNames?: string[];
   deprecatedEventNames?: string[]; // array of event names
@@ -110,6 +111,7 @@ const generateComponentMeta = (): void => {
     };
     hasSlot: boolean;
     namedSlots?: string[]; // array of named slots
+    requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
     hasEvent: boolean;
     eventNames?: string[];
     deprecatedEventNames?: string[]; // array of event names
@@ -241,7 +243,8 @@ const generateComponentMeta = (): void => {
       source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
     ).map(([, propName]) => propName);
 
-    const [, invalidLinkUsageProp] = /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.(\w+)\);/.exec(source) || [];
+    const [, invalidLinkUsageProp] =
+      /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.([a-zA-Z]+)\);/.exec(source) || [];
     if (invalidLinkUsageProp) {
       // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
@@ -443,6 +446,21 @@ const generateComponentMeta = (): void => {
       namedSlots.push('message');
     }
 
+    // required named slots
+    const requiredNamedSlots: ComponentMeta['requiredNamedSlots'] = Array.from(
+      source.matchAll(/const ([a-zA-Z]+) = getNamedSlotOrThrow\(this\.host, '([a-zA-Z]+)'\)/g)
+    ).map(([, constName, slotName]) => {
+      if (!namedSlots.includes(slotName)) {
+        throw new Error(`Extracted slotName '${slotName}' is not included in namedSlots: ${namedSlots.join(', ')}`);
+      }
+
+      const [, tagName] = (new RegExp(`throwIfElementIsNotOfKind\\(this\\.host, ${constName}, '([a-zA-Z-]+)'\\)`).exec(
+        source
+      ) || []) as unknown as [string, TagName];
+
+      return { slotName, tagName };
+    });
+
     const deprecatedEventNames: ComponentMeta['deprecatedEventNames'] = [];
 
     // events
@@ -484,6 +502,7 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
       ...(namedSlots.length && { namedSlots }),
+      ...(requiredNamedSlots.length && { requiredNamedSlots }),
       hasEvent,
       ...(eventNames.length && { eventNames }),
       ...(deprecatedEventNames.length && { deprecatedEventNames }),

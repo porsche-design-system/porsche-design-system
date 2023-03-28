@@ -1,12 +1,14 @@
 /* Auto Generated File */
-import { PButtonTile, PLinkTile, PorscheDesignSystemProvider, PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-system/components-react';
+import { PButtonTile, PLink, PLinkTile, PLinkTileModelSignature, PorscheDesignSystemProvider, PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-system/components-react';
 
 export const OverviewFlakyPage = (): JSX.Element => {
   const style = `
     p-link-tile,
     p-button-tile,
+    p-link-tile-model-signature,
     my-prefix-p-link-tile,
-    my-prefix-p-button-tile {
+    my-prefix-p-button-tile,
+    my-prefix-p-link-tile-model-signature {
       max-width: 400px;
     }
   `;
@@ -52,6 +54,19 @@ export const OverviewFlakyPage = (): JSX.Element => {
               />
             </PButtonTile>
           </div>
+
+          <div className="playground light" title="should render default link-tile-model-signature">
+            <PLinkTileModelSignature heading="Some Heading" description="Default">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                width={50}
+                height={50}
+                alt="Beach"
+              />
+              <PLink slot="primary" href="#primary">Some label</PLink>
+              <PLink slot="secondary" href="#secondary">Some label</PLink>
+            </PLinkTileModelSignature>
+          </div>
         </div>
 
         <div style={{ flex: 1 }}>
@@ -89,6 +104,19 @@ export const OverviewFlakyPage = (): JSX.Element => {
                 alt="Beach"
               />
             </PButtonTile>
+          </div>
+
+          <div className="playground light" title="should render default link-tile-model-signature with custom prefix">
+            <PLinkTileModelSignature heading="Some Heading" description="Default">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+                width={50}
+                height={50}
+                alt="Beach"
+              />
+              <PLink slot="primary" href="#primary">Some label</PLink>
+              <PLink slot="secondary" href="#secondary">Some label</PLink>
+            </PLinkTileModelSignature>
           </div>
         </div>
       </div>

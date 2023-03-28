@@ -1615,6 +1615,92 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-link-tile-model-signature": {
+    "allowedPropValues": {
+      "aspectRatio": [
+        "1:1",
+        "4:3",
+        "3:4",
+        "16:9",
+        "9:16",
+      ],
+      "description": "string",
+      "heading": "string",
+      "headingTag": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+      ],
+      "linkDirection": [
+        "row",
+        "column",
+      ],
+      "model": [
+        "718",
+        "911",
+        "boxster",
+        "cayenne",
+        "cayman",
+        "macan",
+        "panamera",
+        "taycan",
+        "turbo-s",
+        "turbo",
+      ],
+      "weight": [
+        "regular",
+        "semi-bold",
+      ],
+    },
+    "breakpointCustomizableProps": [
+      "weight",
+      "aspectRatio",
+      "linkDirection",
+    ],
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "namedSlots": [
+      "primary",
+      "secondary",
+    ],
+    "nestedComponents": [
+      "p-model-signature",
+    ],
+    "props": {
+      "aspectRatio": "3:4",
+      "description": null,
+      "heading": null,
+      "headingTag": "h2",
+      "linkDirection": {
+        "base": "column",
+        "xs": "row",
+      },
+      "model": 911,
+      "weight": "semi-bold",
+    },
+    "requiredNamedSlots": [
+      {
+        "slotName": "primary",
+        "tagName": "p-link",
+      },
+      {
+        "slotName": "secondary",
+        "tagName": "p-link",
+      },
+    ],
+    "requiredProps": [
+      "heading",
+    ],
+    "styling": "jss",
+  },
   "p-marque": {
     "allowedPropValues": {
       "aria": {

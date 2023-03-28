@@ -1,27 +1,27 @@
-import type { BreakpointCustomizable, SelectedAriaAttributes, PropTypes } from '../../types';
-import type {
-  LinkTileSize,
-  LinkTileWeight,
-  LinkTileAspectRatio,
-  LinkTileAlign,
-  ITileProps,
-  LinkTileWeightDeprecated,
-} from '../../utils';
-import type { LinkTileAriaAttribute, LinkTileTarget } from './link-tile-utils';
-import { Component, Element, h, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
+import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   parseJSON,
-  validateProps,
   throwIfAlignTopAndNotCompact,
+  validateProps,
   warnIfDeprecatedPropValueIsUsed,
-  LINK_TILE_WEIGHTS,
 } from '../../utils';
+import type {
+  LinkTileAlign,
+  LinkTileAriaAttribute,
+  LinkTileAspectRatio,
+  LinkTileSize,
+  LinkTileTarget,
+  LinkTileWeight,
+  LinkTileWeightDeprecated,
+} from './link-tile-utils';
+import { LINK_TILE_WEIGHTS, sharedTilePropTypes } from './link-tile-utils';
+import { Component, Element, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-styles';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import { sharedTilePropTypes } from './link-tile-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
@@ -140,7 +140,7 @@ export class LinkTile implements ITileProps {
           <slot />
         </div>
         <div class="content">
-          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true"></a>
+          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true" />
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>

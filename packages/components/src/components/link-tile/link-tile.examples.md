@@ -27,8 +27,6 @@ still can occur issues with color contrast ratios, especially if different aspec
 used. So, always **check readability** and play around with the `size` and `weight` properties to achieve the best
 results.
 
----
-
 ## Aspect Ratio
 
 The component takes its height from the width provided and places the image via CSS `object-fit: cover`. Therefore, you
@@ -91,7 +89,8 @@ It is possible to align the description on top of the component.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { LINK_BUTTON_TILE_ALIGNS, LINK_BUTTON_TILE_ASPECT_RATIOS, LINK_BUTTON_TILE_SIZES, LINK_TILE_WEIGHTS, TILE_WEIGHTS } from '../../utils'; 
+import { LINK_TILE_WEIGHTS } from './link-tile-utils';
+import { TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_SIZES } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -117,14 +116,14 @@ export default class Code extends Vue {
 </p-link-tile>`;
 
   aspectRatio = '4:3';
-  aspectRatios = [...LINK_BUTTON_TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`}
 
   size = 'default';
-  sizes = [...LINK_BUTTON_TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
+  sizes = [...TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
   get sizeMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
@@ -179,7 +178,7 @@ export default class Code extends Vue {
 </p-link-tile>`};
 
   align = 'top';
-  aligns = LINK_BUTTON_TILE_ALIGNS;
+  aligns = TILE_ALIGNS;
   get alignMarkup() {
     return `<p-link-tile
   href="https://www.porsche.com"
