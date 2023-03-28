@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Marque` 75 years variant [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2433)
+- `Marque` with `variant` property, including 75 years variant [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2433)
 
 ### [2.20.0] - 2023-02-06
 
