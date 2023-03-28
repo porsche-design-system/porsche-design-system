@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.21.0-rc.0] - 2023-03-28
+
 #### Added
 
 - `Marque` now has a `variant` property, including 75 years variant [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2433)
