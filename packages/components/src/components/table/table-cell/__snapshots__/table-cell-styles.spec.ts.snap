@@ -6,17 +6,7 @@ exports[`getComponentCss() should return correct css for multiline: false 1`] = 
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: nowrap !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
-  background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
-}
-:host(:first-child) {
-  border-top-left-radius: 4px !important;
-  border-bottom-left-radius: 4px !important;
-}
-:host(:last-child) {
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -29,17 +19,7 @@ exports[`getComponentCss() should return correct css for multiline: true 1`] = `
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: normal !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
-  background: var(--p-internal-table-row-background-color, transparent) !important;
   vertical-align: middle;
-}
-:host(:first-child) {
-  border-top-left-radius: 4px !important;
-  border-bottom-left-radius: 4px !important;
-}
-:host(:last-child) {
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
 }
 :host([hidden]) {
   display: none !important;

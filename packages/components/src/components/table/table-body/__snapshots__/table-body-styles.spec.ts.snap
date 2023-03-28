@@ -3,7 +3,6 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: table-row-group !important;
-  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
 }
 :host([hidden]) {
   display: none !important;

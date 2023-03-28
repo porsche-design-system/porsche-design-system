@@ -3,13 +3,17 @@
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
   display: block !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  color: #FBFCFF !important;
+  text-align: left !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  color: #FBFCFF !important;
-  --p-internal-table-row-hover-color: #212225 !important;
+  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
   --p-internal-table-border-color: #404044 !important;
   --p-internal-table-head-cell-icon-filter: invert(100%) !important;
 }
@@ -17,29 +21,27 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
 .table {
-  position: relative;
-  width: 100%;
   display: table;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-align: left;
-  color: #FBFCFF;
-  white-space: nowrap;
   border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
   display: block !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  color: #010205 !important;
+  text-align: left !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  color: #010205 !important;
-  --p-internal-table-row-hover-color: #EEEFF2 !important;
+  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
   --p-internal-table-border-color: #D8D8DB !important;
   --p-internal-table-head-cell-icon-filter: none !important;
 }
@@ -47,15 +49,9 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
 .table {
-  position: relative;
-  width: 100%;
   display: table;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-align: left;
-  color: #010205;
-  white-space: nowrap;
   border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
 }"
 `;

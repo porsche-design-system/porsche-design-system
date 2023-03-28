@@ -2,20 +2,17 @@
 
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
-  position: relative !important;
   display: table-row !important;
   border-top: 1px solid var(--p-internal-table-border-color) !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 @media(hover:hover) {
   :host(:hover) {
-    border-top-color: transparent !important;
-    border-bottom: 1px solid transparent !important;
-  }
-  :host(:hover) ::slotted(*) {
-    --p-internal-table-row-background-color: var(--p-internal-table-row-hover-color) !important;
+    background: var(--p-internal-table-hover-color) !important;
   }
 }
 "
