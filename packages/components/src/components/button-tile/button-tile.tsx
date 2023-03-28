@@ -1,25 +1,33 @@
 import type {
   BreakpointCustomizable,
-  SelectedAriaAttributes,
-  PropTypes,
   ButtonAriaAttribute,
   ButtonType,
+  PropTypes,
+  SelectedAriaAttributes,
 } from '../../types';
-import type { ButtonTileSize, ButtonTileWeight, ButtonTileAspectRatio, ButtonTileAlign, ITileProps } from '../../utils';
-import type { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from './button-tile-utils';
-import { Component, Element, h, Listen, Prop } from '@stencil/core';
+import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
-  BUTTON_TYPES,
   BUTTON_ARIA_ATTRIBUTES,
+  BUTTON_TYPES,
   getPrefixedTagNames,
-  parseJSON,
-  validateProps,
-  throwIfAlignTopAndNotCompact,
   isDisabledOrLoading,
+  parseJSON,
+  throwIfAlignTopAndNotCompact,
   TILE_WEIGHTS,
+  validateProps,
 } from '../../utils';
+import type {
+  ButtonTileAlign,
+  ButtonTileAriaAttribute,
+  ButtonTileAspectRatio,
+  ButtonTileIcon,
+  ButtonTileSize,
+  ButtonTileType,
+  ButtonTileWeight,
+} from './button-tile-utils';
+import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import { getComponentCss } from './button-tile-styles';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
 
@@ -100,14 +108,14 @@ export class ButtonTile implements ITileProps {
     attachComponentCss(
       this.host,
       getComponentCss,
+      isDisabledOrLoading(this.disabled, this.loading),
       this.aspectRatio,
       this.size,
       this.weight,
       this.align,
       this.compact,
       this.gradient,
-      this.disabled,
-      isDisabledOrLoading(this.disabled, this.loading)
+      this.disabled
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -115,7 +123,6 @@ export class ButtonTile implements ITileProps {
     const buttonProps = {
       theme: 'dark',
       variant: 'secondary',
-      icon: this.icon,
       iconSource: this.iconSource,
       type: this.type,
       disabled: this.disabled,
@@ -124,7 +131,7 @@ export class ButtonTile implements ITileProps {
     };
 
     const button: JSX.Element = (
-      <PrefixedTagNames.pButton {...buttonProps} key="link-or-button" class="link-or-button">
+      <PrefixedTagNames.pButton {...buttonProps} icon={this.icon} key="link-or-button" class="link-or-button">
         {this.label}
       </PrefixedTagNames.pButton>
     );

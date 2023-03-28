@@ -25,7 +25,7 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
   return hideLabel
     ? {
         position: 'absolute',
-        ...getInsetJssStyle(0),
+        ...getInsetJssStyle(),
         whiteSpace: 'nowrap',
         textIndent: '-999999px',
       }

@@ -269,6 +269,17 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/link-tile/link-tile.props.md')],
     },
+    'Link Tile Model Signature': {
+      Examples: [
+        () =>
+          // @ts-ignore
+          import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md'),
+      ],
+    },
     Marque: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/marque/marque.examples.md')],

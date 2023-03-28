@@ -1,15 +1,14 @@
 import { getCss } from '../../utils';
-import { getLinkButtonTileStyles } from '../../styles/link-button-tile-styles';
 import { getInsetJssStyle } from '../../styles';
+import { getButtonLinkTileStyles } from '../../styles/tile/button-link-tile-styles';
 
-export const getComponentCss = (...args: Parameters<typeof getLinkButtonTileStyles>): string => {
+export const getComponentCss = (...args: Parameters<typeof getButtonLinkTileStyles>): string => {
   return getCss({
-    ...getLinkButtonTileStyles(...args),
-    // is used for expanded click-area only
+    ...getButtonLinkTileStyles(...args),
     'link-overlay': {
+      // covers entire tile, used for expanded click-area only
       position: 'fixed',
-      ...getInsetJssStyle(0),
-      outline: 0,
+      ...getInsetJssStyle(),
     },
   });
 };

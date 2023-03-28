@@ -7,8 +7,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `
       p-link-tile,
       p-button-tile,
+      p-link-tile-model-signature,
       my-prefix-p-link-tile,
-      my-prefix-p-button-tile {
+      my-prefix-p-button-tile,
+      my-prefix-p-link-tile-model-signature {
         max-width: 400px;
       }
     `,
@@ -51,6 +53,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             />
           </p-button-tile>
         </div>
+
+        <div class="playground light" title="should render default link-tile-model-signature">
+          <p-link-tile-model-signature [heading]="'Some Heading'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
+              [alt]="'Beach'"
+            />
+            <p-link slot="primary" [href]="'#primary'">Some label</p-link>
+            <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
+          </p-link-tile-model-signature>
+        </div>
       </div>
 
       <div style="flex: 1">
@@ -88,6 +103,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               [alt]="'Beach'"
             />
           </my-prefix-p-button-tile>
+        </div>
+
+        <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
+          <my-prefix-p-link-tile-model-signature p-link-tile-model-signature [heading]="'Some Heading'" [description]="'Default'">
+            <img
+              [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+              [width]="50"
+              [height]="50"
+              [alt]="'Beach'"
+            />
+            <my-prefix-p-link p-link slot="primary" [href]="'#primary'">Some label</my-prefix-p-link>
+            <my-prefix-p-link p-link slot="secondary" [href]="'#secondary'">Some label</my-prefix-p-link>
+          </my-prefix-p-link-tile-model-signature>
         </div>
       </div>
     </div>

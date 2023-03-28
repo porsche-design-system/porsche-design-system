@@ -1,60 +1,12 @@
 <script setup lang="ts">
   import {
-    PAccordion,
-    PBanner,
-    PButton,
-    PButtonGroup,
-    PButtonPure,
     PButtonTile,
-    PCarousel,
-    PCheckboxWrapper,
-    PContentWrapper,
-    PDisplay,
-    PDivider,
-    PFieldsetWrapper,
-    PFlex,
-    PFlexItem,
-    PGrid,
-    PGridItem,
-    PHeading,
-    PHeadline,
-    PIcon,
-    PInlineNotification,
     PLink,
-    PLinkPure,
-    PLinkSocial,
     PLinkTile,
-    PMarque,
-    PModelSignature,
-    PorscheDesignSystemProvider,
-    PPagination,
-    PPopover,
-    PRadioButtonWrapper,
-    PScroller,
-    PSegmentedControl,
-    PSegmentedControlItem,
-    PSelectWrapper,
-    PSpinner,
+    PLinkTileModelSignature,
     PStepperHorizontal,
     PStepperHorizontalItem,
-    PSwitch,
-    PTable,
-    PTableBody,
-    PTableCell,
-    PTableHead,
-    PTableHeadCell,
-    PTableHeadRow,
-    PTableRow,
-    PTabs,
-    PTabsBar,
-    PTabsItem,
-    PTag,
-    PTagDismissible,
-    PText,
-    PTextareaWrapper,
-    PTextFieldWrapper,
-    PTextList,
-    PTextListItem,
+    PorscheDesignSystemProvider,
   } from '@porsche-design-system/components-vue';
 </script>
 
@@ -96,6 +48,21 @@
           />
         </PButtonTile>
       </div>
+
+      <div className="playground light" title="should render default link-tile-model-signature">
+        <!-- eslint-disable vue/no-deprecated-slot-attribute -->
+        <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width="50"
+            height="50"
+            alt="Beach"
+          />
+          <PLink slot="primary" :href="'#primary'">Some label</PLink>
+          <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
+        </PLinkTileModelSignature>
+        <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+      </div>
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
@@ -135,6 +102,21 @@
             />
           </PButtonTile>
         </div>
+
+        <div className="playground light" title="should render default link-tile-model-signature with custom prefix">
+          <!-- eslint-disable vue/no-deprecated-slot-attribute -->
+          <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+              width="{50}"
+              height="{50}"
+              alt="Beach"
+            />
+            <PLink slot="primary" :href="'#primary'">Some label</PLink>
+            <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
+          </PLinkTileModelSignature>
+          <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+        </div>
       </div>
     </PorscheDesignSystemProvider>
   </div>
@@ -143,8 +125,10 @@
 <style scoped>
   p-link-tile,
   p-button-tile,
+  p-link-tile-model-signature,
   my-prefix-p-link-tile,
-  my-prefix-p-button-tile {
+  my-prefix-p-button-tile,
+  my-prefix-p-link-tile-model-signature {
     max-width: 400px;
   }
 </style>
