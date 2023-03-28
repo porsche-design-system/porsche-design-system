@@ -7,5 +7,3 @@ export type WordmarkTarget = LinkTarget;
 
 export const WORDMARK_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type WordmarkAriaAttribute = (typeof WORDMARK_ARIA_ATTRIBUTES)[number];
-
-export const wordmarkFluidHeight = 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)'; // not exported from utilities package yet

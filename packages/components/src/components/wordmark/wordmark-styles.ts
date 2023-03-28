@@ -1,53 +1,47 @@
 import type { WordmarkSize } from './wordmark-utils';
 import type { Theme } from '../../types';
-import { getCss, isThemeDark } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
-import { filterLightPrimary, filterDarkPrimary } from '../../styles/color-filters';
-import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2/';
-import { wordmarkFluidHeight } from './wordmark-utils';
+import { getCss } from '../../utils';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
+import { borderWidthBase, themeLightStateFocus } from '@porsche-design-system/utilities-v2/';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
-  const isSizeFluid = size === 'small';
-  const { focusColor } = getThemedColors(theme);
-  const isDark = isThemeDark(theme);
-
   return getCss({
     '@global': {
       ':host': {
         position: 'relative',
-        display: 'inline-flex',
+        display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
           outline: 0,
+          boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
+          ...(!(size === 'inherit') && { height: 'clamp(0.63rem, 0.42vw + 0.5rem, 1rem)' }),
           ...hostHiddenStyles,
-          boxSizing: 'content-box', // needed for custom clickarea to revert styles from Vue component
-          ...(isSizeFluid && { height: wordmarkFluidHeight }),
         }),
       },
       a: {
-        outline: 0,
         display: 'block',
         textDecoration: 'none',
         height: 'inherit',
+        outline: 0,
         '&::before': {
           content: '""',
           position: 'absolute',
-          borderRadius: borderRadiusSmall,
-          ...getInsetJssStyle(-6),
+          inset: 0,
+          borderRadius: '1px',
         },
         '&:focus::before': {
-          border: `${borderWidthBase} solid ${focusColor}`,
+          outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+          outlineOffset: '2px',
         },
+        // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
         '&:focus:not(:focus-visible)::before': {
-          border: 0,
+          outlineColor: 'transparent',
         },
       },
       svg: {
         display: 'block',
-        pointerEvents: 'none', // prevents image drag
-        transform: 'translateZ(0)', // Safari IOS render dark theme filter
-        filter: isDark ? filterDarkPrimary : filterLightPrimary,
         height: 'inherit',
+        fill: getThemedColors(theme).primaryColor,
       },
     },
   });
