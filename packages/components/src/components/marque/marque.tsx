@@ -1,6 +1,13 @@
 import type { LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
-import type { MarqueAriaAttribute, MarqueSize } from './marque-utils';
-import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_SIZES } from './marque-utils';
+import type { MarqueAriaAttribute, MarqueSize, MarqueVariant } from './marque-utils';
+import {
+  buildSrcSet,
+  cdnBaseUrl,
+  getInnerManifest,
+  MARQUE_ARIA_ATTRIBUTES,
+  MARQUE_SIZES,
+  MARQUE_VARIANTS,
+} from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
@@ -8,6 +15,7 @@ import { getComponentCss } from './marque-styles';
 
 const propTypes: PropTypes<typeof Marque> = {
   trademark: AllowedTypes.boolean,
+  variant: AllowedTypes.oneOf<MarqueVariant>(MARQUE_VARIANTS),
   size: AllowedTypes.oneOf<MarqueSize>(MARQUE_SIZES),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
@@ -21,8 +29,11 @@ const propTypes: PropTypes<typeof Marque> = {
 export class Marque {
   @Element() public host!: HTMLElement;
 
-  /** Show/hide trademark sign. */
+  /** Show/hide trademark sign (only has effect when variant is set to default). */
   @Prop() public trademark?: boolean = true;
+
+  /** Shows marque in special editions */
+  @Prop() public variant?: MarqueVariant = 'default';
 
   /** Adapts sizing of marque. */
   @Prop() public size?: MarqueSize = 'responsive';
@@ -40,7 +51,7 @@ export class Marque {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
 
-    const innerManifest = getInnerManifest(this.trademark);
+    const innerManifest = getInnerManifest(this.variant, this.trademark);
     const mediumMedia = `(min-width: ${breakpoint.l})`;
 
     const picture = (

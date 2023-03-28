@@ -24,7 +24,7 @@ import { InlineNotificationState } from "./components/inline-notification/inline
 import { LinkAriaAttribute } from "./components/link/link-utils";
 import { SocialIconName } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { MarqueAriaAttribute, MarqueSize } from "./components/marque/marque-utils";
+import { MarqueAriaAttribute, MarqueSize, MarqueVariant } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
 import { PopoverDirection } from "./components/popover/popover-utils";
@@ -667,9 +667,13 @@ export namespace Components {
          */
         "target"?: LinkTarget;
         /**
-          * Show/hide trademark sign.
+          * Show/hide trademark sign (only has effect when variant is set to default).
          */
         "trademark"?: boolean;
+        /**
+          * Shows marque in special editions
+         */
+        "variant"?: MarqueVariant;
     }
     interface PModal {
         /**
@@ -2275,9 +2279,13 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTarget;
         /**
-          * Show/hide trademark sign.
+          * Show/hide trademark sign (only has effect when variant is set to default).
          */
         "trademark"?: boolean;
+        /**
+          * Shows marque in special editions
+         */
+        "variant"?: MarqueVariant;
     }
     interface PModal {
         /**
