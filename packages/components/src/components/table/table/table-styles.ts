@@ -14,6 +14,9 @@ export const getComponentCss = (theme: Theme): string => {
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
+        ...textSmallStyle,
+        color: primaryColor,
+        textAlign: 'left',
         ...hostHiddenStyles,
       }),
       '::slotted(*)': addImportantToEachRule({
@@ -29,10 +32,7 @@ export const getComponentCss = (theme: Theme): string => {
       display: 'table',
       borderCollapse: 'collapse',
       width: '100%',
-      ...textSmallStyle,
-      textAlign: 'left',
-      color: primaryColor,
-      whiteSpace: 'nowrap',
+      whiteSpace: 'nowrap', // shouldn't be inherited for caption, that's why it's defined here
     },
   });
 };
