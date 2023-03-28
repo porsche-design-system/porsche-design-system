@@ -1,11 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { dataVrt, headVrt } from '@porsche-design-system/shared';
+import type { Theme } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-table',
   template: `
-    <div class="playground light" title="should render table">
-      <p-table caption="Some caption">
+    <div
+      [class]="'playground ' + theme"
+      [title]="'should render table with ' + theme + ' mode'"
+      *ngFor="let theme of themes"
+    >
+      <p-table caption="Some caption" [theme]="theme">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell
@@ -35,16 +40,20 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
             <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>
-              <p-button-pure icon="edit" style="padding: .5rem;">Edit</p-button-pure>
-              <p-button-pure icon="delete" style="padding: .5rem;">Delete</p-button-pure>
+              <p-button-pure [theme]="theme" icon="edit" style="padding: .5rem;">Edit</p-button-pure>
+              <p-button-pure [theme]="theme" icon="delete" style="padding: .5rem;">Delete</p-button-pure>
             </p-table-cell>
           </p-table-row>
         </p-table-body>
       </p-table>
     </div>
 
-    <div class="playground light" title="should render table with unstyled slotted caption">
-      <p-table>
+    <div
+      [class]="'playground ' + theme"
+      [title]="'should render table with unstyled slotted caption with ' + theme + ' mode'"
+      *ngFor="let theme of themes"
+    >
+      <p-table [theme]="theme">
         <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
         <p-table-head>
           <p-table-head-row>
@@ -60,4 +69,5 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
 export class TableComponent {
   public head = headVrt;
   public data = dataVrt;
+  public themes: Theme[] = ['light', 'dark'];
 }

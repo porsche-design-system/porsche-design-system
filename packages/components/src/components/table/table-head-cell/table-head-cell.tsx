@@ -56,7 +56,7 @@ export class TableHeadCell {
         {isSortable(active, direction) ? (
           <button type="button" onClick={this.onButtonClick}>
             <slot />
-            <PrefixedTagNames.pIcon class="icon" color="inherit" name="arrow-up" aria-hidden="true" />
+            <PrefixedTagNames.pIcon class="icon" color="inherit" size="x-small" name="arrow-up" aria-hidden="true" />
           </button>
         ) : (
           <span>

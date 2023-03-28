@@ -1,6 +1,6 @@
 import { getComponentCss } from './table-row-styles';
 
-xdescribe('getComponentCss()', () => {
+describe('getComponentCss()', () => {
   it('should return correct css', () => {
     expect(getComponentCss()).toMatchSnapshot();
   });

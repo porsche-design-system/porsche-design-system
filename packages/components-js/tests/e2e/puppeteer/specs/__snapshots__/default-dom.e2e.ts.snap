@@ -397,16 +397,12 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-table 1`] = `
-"<div class="root">
-  <div class="scroll-area">
-    <div class="table" role="table">
-      <slot>
-      </slot>
-      <span class="scroll-trigger">
-      </span>
-    </div>
+"<p-scroller class="hydrated">
+  <div class="table" role="table">
+    <slot>
+    </slot>
   </div>
-</div>"
+</p-scroller>"
 `;
 
 exports[`should have no basic DOM regression for p-table-body 1`] = `

@@ -3,11 +3,16 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: table-row !important;
-  transition: background-color var(--p-transition-duration, .24s) ease !important;
+  border-top: 1px solid var(--p-internal-table-border-color) !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 @media(hover:hover) {
   :host(:hover) {
-    background-color: #f2f2f2 !important;
+    background: var(--p-internal-table-hover-color) !important;
   }
 }
 "

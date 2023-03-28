@@ -1043,6 +1043,10 @@ export namespace Components {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
@@ -1204,6 +1208,10 @@ export namespace Components {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -2990,6 +2998,10 @@ declare namespace LocalJSX {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
@@ -3183,6 +3195,10 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when sorting is changed.
          */
         "onSortingChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
