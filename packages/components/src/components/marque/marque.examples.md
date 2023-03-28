@@ -23,7 +23,7 @@ markets.
 
 ### Marque with 75 years variant
 
-This variant shall be used during 75 years celebration until June 2023.
+This variant shall be used during the 75 years campaign until the release of the new design language in June 2023.
 
 <Playground :markup="marque75Markup"></Playground>
 
