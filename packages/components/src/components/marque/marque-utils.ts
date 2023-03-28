@@ -12,7 +12,7 @@ export type MarqueFormat = 'png' | 'webp';
 export const cdnBaseUrl =
   ROLLUP_REPLACE_IS_STAGING === 'production' ? MARQUES_CDN_BASE_URL : 'http://localhost:3001/marque';
 
-export const getInnerManifest = (variant: MarqueVariant, trademark?: boolean): InnerManifest =>
+export const getInnerManifest = (variant?: MarqueVariant, trademark?: boolean): InnerManifest =>
   MARQUES_MANIFEST[variant === '75-years' ? 'porscheMarque75' : `porscheMarque${trademark ? 'Trademark' : ''}`];
 
 export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, format: MarqueFormat): string =>
