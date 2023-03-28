@@ -355,6 +355,32 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
 $&`
           );
+      } else if (tagName === 'p-link-tile-model-signature') {
+        newFileContent = newFileContent
+          .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
+          .replace(/ {4}.*throwIfElementIsNotOfKind[\s\S]+?;\n/g, '') // remove validation
+          .replace(/(const overlayLinkProps).+?=([\s\S]+?);/, '$1 = $2 as const;') // remove typing
+          .replace(
+            /setRequiredPropsOfSlottedLinks.+?;/,
+            `const manipulatedChildren = children.map((child) =>
+      typeof child === 'object' && 'props' in child && namedSlotChildren.includes(child)
+        ? { ...child, props: { ...child.props, theme: 'dark', variant: child.props.slot } }
+        : child
+    );` // manipulate p-link children like our web component does at runtime
+          )
+          .replace(
+            /(const linkEl) = getLinkOrSlottedAnchorElement.+;/,
+            `const primaryLink = manipulatedChildren.find(
+      (child) => typeof child === 'object' && 'props' in child && child.props.variant === 'primary'
+    ) as any;
+    $1 = primaryLink.props.href
+      ? primaryLink.props
+      : (Array.isArray(primaryLink.props.children) ? primaryLink.props.children : [primaryLink.props.children]).find(
+          (child) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
+        ).props;`
+          ) // rewire source for linkEl
+          .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       }
 
       return newFileContent;

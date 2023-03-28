@@ -136,7 +136,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         '&:focus::after': {
           content: '""',
           position: 'absolute',
-          ...getInsetJssStyle(0),
+          ...getInsetJssStyle(),
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusSmall,
         },
