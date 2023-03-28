@@ -11,7 +11,7 @@ const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
 
 describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))('%s', (tagName) => {
   const componentName = tagName.replace(/^p-/, '');
-  const sourceFilePath = sourceFilePaths.find((item) => item.endsWith(`${componentName}.tsx`));
+  const sourceFilePath = sourceFilePaths.find((item) => item.endsWith(`/${componentName}.tsx`));
   const sourceFileContent = fs.readFileSync(sourceFilePath, 'utf8');
 
   const { props = {}, eventNames = [] } = getComponentMeta(tagName);

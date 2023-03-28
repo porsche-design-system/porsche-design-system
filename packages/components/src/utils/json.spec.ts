@@ -14,4 +14,10 @@ describe('parseJSONAttribute()', () => {
       'aria-label': 'Some label',
     });
   });
+
+  it('should return parsed object if value is a number', () => {
+    expect(parseJSONAttribute('{ scrollToPosition: 4 }')).toEqual({
+      scrollToPosition: 4,
+    });
+  });
 });

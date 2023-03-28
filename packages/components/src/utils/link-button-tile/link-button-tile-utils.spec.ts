@@ -1,9 +1,9 @@
-import type { LinkTileAlign, ButtonTileAlign } from './link-button-tile-utils';
+import type { TileAlign } from '../';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { throwIfAlignTopAndNotCompact } from './link-button-tile-utils';
 
 describe('throwIfAlignTopAndNotCompact()', () => {
-  it.each<[LinkTileAlign | ButtonTileAlign, BreakpointCustomizable<boolean>]>([
+  it.each<[TileAlign, BreakpointCustomizable<boolean>]>([
     ['top', false],
     ['top', 'false'],
   ])('should throw error for align: %s and compact: %s', (align, compact) => {
@@ -13,7 +13,7 @@ describe('throwIfAlignTopAndNotCompact()', () => {
     );
   });
 
-  it.each<[LinkTileAlign | ButtonTileAlign, BreakpointCustomizable<boolean>]>([
+  it.each<[TileAlign, BreakpointCustomizable<boolean>]>([
     ['top', true],
     ['bottom', true],
     ['bottom', false],
