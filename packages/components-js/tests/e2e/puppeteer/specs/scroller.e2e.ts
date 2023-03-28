@@ -24,17 +24,21 @@ type InitOptions = {
   otherMarkup?: string;
   tag?: 'a' | 'button' | 'span';
   scrollToPosition?: ScrollToPosition;
+  hasScrollbar?: boolean;
 };
 
 const initScroller = (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts || {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition, hasScrollbar } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const attrs = scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '';
+  const attrs = [
+    scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
+    hasScrollbar ? `scrollbar="${hasScrollbar}"` : '',
+  ].join(' ');
 
   const content = `<p-scroller ${attrs}>
   ${elements}

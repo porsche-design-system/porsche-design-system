@@ -3,21 +3,25 @@
 exports[`getComponentCss() should return correct css for multiline: false 1`] = `
 ":host {
   display: table-cell !important;
-  padding: 0.75rem !important;
+  padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid #e3e4e5 !important;
   white-space: nowrap !important;
   vertical-align: middle;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for multiline: true 1`] = `
 ":host {
   display: table-cell !important;
-  padding: 0.75rem !important;
+  padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid #e3e4e5 !important;
   white-space: normal !important;
   vertical-align: middle;
+}
+:host([hidden]) {
+  display: none !important;
 }"
 `;

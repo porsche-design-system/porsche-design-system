@@ -2,19 +2,26 @@ import type { Direction } from '../table/table-utils';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  getFocusJssStyle,
-  getHoverJssStyle,
   getTextHiddenJssStyle,
-  pxToRemWithUnit,
   getThemedColors,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../../../styles';
-import { fontWeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  frostedGlassStyle,
+  spacingFluidSmall,
+  spacingStaticXSmall,
+} from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
+import { cssVariableTableHeadCellIconFilter } from '../table/table-styles';
 
-const { contrastMediumColor, primaryColor } = getThemedColors('light');
-const { semiBold: fontWeightSemiBold } = fontWeight;
+const { hoverColor, focusColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
+
+const buttonBeforeOffsetVertical = '-2px';
+const buttonBeforeOffsetHorizontal = '-4px';
 
 export const getComponentCss = (
   active: boolean,
@@ -28,38 +35,58 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'table-cell',
-        padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
-        borderBottom: `1px solid ${contrastMediumColor}`,
+        padding: `2px ${spacingFluidSmall} ${spacingFluidSmall}`,
         verticalAlign: 'bottom',
-        fontWeight: fontWeightSemiBold,
         whiteSpace: multiline ? 'normal' : 'nowrap',
         ...hostHiddenStyles,
       }),
       ...(sortable
         ? {
             button: {
+              position: 'relative',
               display: 'flex',
-              alignItems: 'flex-end',
+              gap: spacingStaticXSmall,
+              width: 'auto',
+              margin: 0,
               padding: 0,
-              boxSizing: 'border-box',
+              font: 'inherit',
+              color: 'inherit',
+              outline: 0,
+              alignItems: 'flex-end',
               appearance: 'none',
-              border: 'none',
-              ...textSmallStyle,
-              fontWeight: fontWeightSemiBold,
-              color: primaryColor,
-              textDecoration: 'none',
-              textAlign: 'left',
               background: 'transparent',
+              textAlign: 'left',
+              border: 0,
+              zIndex: 0,
               cursor: 'pointer',
-              ...getFocusJssStyle({ offset: 1 }),
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: buttonBeforeOffsetVertical,
+                bottom: buttonBeforeOffsetVertical,
+                right: buttonBeforeOffsetHorizontal,
+                left: buttonBeforeOffsetHorizontal,
+                borderRadius: borderRadiusSmall,
+                zIndex: -1, // needed so that text behind element is selectable and/or visible
+                transition: getTransition('background-color'),
+              },
               ...hoverMediaQuery({
-                ...getHoverJssStyle(),
                 '&:hover, &:focus': {
                   '& .icon': {
                     opacity: 1,
                   },
                 },
+                '&:hover::before': {
+                  ...frostedGlassStyle,
+                  backgroundColor: hoverColor,
+                },
               }),
+              '&:focus::before': {
+                border: `${borderWidthBase} solid ${focusColor}`,
+              },
+              '&:not(:focus-visible)::before': {
+                border: 0,
+              },
             },
           }
         : hideLabel && {
@@ -72,10 +99,11 @@ export const getComponentCss = (
     },
     ...(sortable && {
       icon: {
-        marginLeft: spacingStaticXSmall,
+        transition: getTransition('opacity'),
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS
+        filter: `var(${cssVariableTableHeadCellIconFilter})`,
       },
     }),
   });
