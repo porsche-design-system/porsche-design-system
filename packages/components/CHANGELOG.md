@@ -536,6 +536,17 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
 </p-link-pure>
 ```
 
+##### Marque:
+
+- Removed `variant` property.
+
+```diff
+- <p-marque variant="75-years"></p-marque>
++ <p-marque></p-marque>
+// or even better, replace component by wordmark
++ <p-wordmark></p-wordmark>
+```
+
 ##### Switch:
 
 - Removed deprecated prop `tabbable`.
