@@ -304,6 +304,18 @@ exports[`should call validateProps() with correct parameters via render for p-li
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-link-tile-model-signature: propTypes with ValidatorFunctions 1`] = `
+{
+  "aspectRatio": "breakpoint",
+  "description": "string",
+  "heading": "string",
+  "headingTag": "oneOf",
+  "linkDirection": "breakpoint",
+  "model": "oneOf",
+  "weight": "breakpoint",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-marque: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
