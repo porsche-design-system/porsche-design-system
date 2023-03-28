@@ -21,6 +21,12 @@ markets.
 
 <Playground :markup="withoutTrademarkMarkup"></Playground>
 
+### Marque with 75 years variant
+
+This variant shall be used during 75 years celebration until June 2023.
+
+<Playground :markup="marque75Markup"></Playground>
+
 ## Link
 
 The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provided.
@@ -72,6 +78,7 @@ export default class Code extends Vue {
 
   basicMarkup = `<p-marque></p-marque>`;
   withoutTrademarkMarkup = `<p-marque trademark="false"></p-marque>`;
+  marque75Markup = `<p-marque variant="75-years"></p-marque>`;
   linkMarkup = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-marque>`;
 
   get sizeMarkup() {
