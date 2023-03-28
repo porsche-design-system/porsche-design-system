@@ -553,6 +553,7 @@ exports[`should match snapshot 1`] = `
       "size": "responsive",
       "target": "_self",
       "trademark": true,
+      "variant": "default",
     },
     "styling": "jss",
   },
