@@ -15,12 +15,16 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
 
 it.each(marqueViewports)('should have no visual regression on retina 2x display for viewport %s', async (viewport) => {
   expect(
-    await vrtTest(getVisualRegressionMarque2xTester(viewport), 'marque-2x', '/marque', { javaScriptEnabled: false })
+    await vrtTest(getVisualRegressionMarque2xTester(viewport), 'marque-2x', '/marque', {
+      javaScriptEnabled: false,
+    })
   ).toBeFalsy();
 });
 
 it.each(marqueViewports)('should have no visual regression on retina 3x display for viewport %s', async (viewport) => {
   expect(
-    await vrtTest(getVisualRegressionMarque3xTester(viewport), 'marque-3x', '/marque', { javaScriptEnabled: false })
+    await vrtTest(getVisualRegressionMarque3xTester(viewport), 'marque-3x', '/marque', {
+      javaScriptEnabled: false,
+    })
   ).toBeFalsy();
 });

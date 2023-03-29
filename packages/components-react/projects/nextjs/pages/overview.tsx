@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
@@ -180,6 +180,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default marque">
             <PMarque />
+          </div>
+
+          <div className="playground light" title="should render default wordmark">
+            <PWordmark />
           </div>
 
           <div className="playground light" title="should render default model-signature">
@@ -428,6 +432,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default marque with custom prefix">
               <PMarque />
+            </div>
+
+            <div className="playground light" title="should render default wordmark with custom prefix">
+              <PWordmark />
             </div>
 
             <div className="playground light" title="should render default model-signature with custom prefix">
