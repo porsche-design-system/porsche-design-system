@@ -1,1 +1,1 @@
-export const themeLightNotificationSuccess = '#32B85B';
+export const themeLightNotificationSuccess = '#197E10';
