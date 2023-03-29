@@ -15,6 +15,7 @@ import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, Button
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
+import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
@@ -360,6 +361,20 @@ export namespace Components {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
@@ -1625,6 +1640,12 @@ declare global {
         prototype: HTMLPContentWrapperElement;
         new (): HTMLPContentWrapperElement;
     };
+    interface HTMLPCrestElement extends Components.PCrest, HTMLStencilElement {
+    }
+    var HTMLPCrestElement: {
+        prototype: HTMLPCrestElement;
+        new (): HTMLPCrestElement;
+    };
     interface HTMLPDisplayElement extends Components.PDisplay, HTMLStencilElement {
     }
     var HTMLPDisplayElement: {
@@ -1947,6 +1968,7 @@ declare global {
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
+        "p-crest": HTMLPCrestElement;
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
         "p-fieldset": HTMLPFieldsetElement;
@@ -2320,6 +2342,20 @@ declare namespace LocalJSX {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
@@ -3562,6 +3598,7 @@ declare namespace LocalJSX {
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
+        "p-crest": PCrest;
         "p-display": PDisplay;
         "p-divider": PDivider;
         "p-fieldset": PFieldset;
@@ -3629,6 +3666,7 @@ declare module "@stencil/core" {
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
+            "p-crest": LocalJSX.PCrest & JSXBase.HTMLAttributes<HTMLPCrestElement>;
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;

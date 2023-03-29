@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css 1`] = `
+":host {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+a {
+  display: block;
+  text-decoration: none;
+  outline: 0;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 0px;
+}
+a:focus::before {
+  outline-color: #010205;
+}
+a:focus:not(:focus-visible)::before {
+  outline-color: transparent;
+}
+picture {
+  display: block;
+  width: 30px;
+  height: 40px;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}"
+`;
