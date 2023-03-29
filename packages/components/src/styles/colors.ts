@@ -91,7 +91,7 @@ const themeDark = {
   backgroundSurfaceColorDarken: '#040405',
   backgroundSurfaceColorLighten: '#3E4045',
   contrastLowColor: '#404044',
-  contrastMediumColor: '#7E7F82',
+  contrastMediumColor: '#88898C',
   contrastHighColor: '#AFB0B3',
   contrastHighColorDarken: '#909195',
   contrastHighColorLighten: '#CECFD1',
