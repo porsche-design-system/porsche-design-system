@@ -40,6 +40,7 @@ const components: Component[] = [
   'spinner',
   'stepper-horizontal',
   'switch',
+  'table',
   'tabs',
   'tabs-bar',
   'tag',
@@ -48,6 +49,7 @@ const components: Component[] = [
   'text-list',
   'textarea-wrapper',
   'toast-basic',
+  'wordmark',
 ];
 
 const scenarioPopover = async (page: Page) => {

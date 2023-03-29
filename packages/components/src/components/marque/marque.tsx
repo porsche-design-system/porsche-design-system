@@ -2,7 +2,13 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { MarqueAriaAttribute, MarqueTarget } from './marque-utils';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  parseAndGetAriaAttributes,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
 import type { MarqueSize } from './marque-size';
@@ -16,6 +22,7 @@ const propTypes: PropTypes<typeof Marque> = {
   aria: AllowedTypes.aria<MarqueAriaAttribute>(MARQUE_ARIA_ATTRIBUTES),
 };
 
+/** @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead. */
 @Component({
   tag: 'p-marque',
   shadow: { delegatesFocus: true },
@@ -40,6 +47,7 @@ export class Marque {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-wordmark" component instead.');
     attachComponentCss(this.host, getComponentCss, this.size);
 
     const innerManifest = getInnerManifest(this.trademark);

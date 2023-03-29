@@ -60,6 +60,7 @@ import { TextListListType, TextListOrderType, TextListType } from "./components/
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
+import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -1043,6 +1044,10 @@ export namespace Components {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
@@ -1204,6 +1209,10 @@ export namespace Components {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -1479,6 +1488,28 @@ export namespace Components {
         "text"?: string;
         /**
           * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
          */
         "theme"?: Theme;
     }
@@ -1900,6 +1931,12 @@ declare global {
         prototype: HTMLPToastItemElement;
         new (): HTMLPToastItemElement;
     };
+    interface HTMLPWordmarkElement extends Components.PWordmark, HTMLStencilElement {
+    }
+    var HTMLPWordmarkElement: {
+        prototype: HTMLPWordmarkElement;
+        new (): HTMLPWordmarkElement;
+    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1961,6 +1998,7 @@ declare global {
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
+        "p-wordmark": HTMLPWordmarkElement;
     }
 }
 declare namespace LocalJSX {
@@ -2990,6 +3028,10 @@ declare namespace LocalJSX {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
@@ -3183,6 +3225,10 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when sorting is changed.
          */
         "onSortingChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -3484,6 +3530,28 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
@@ -3545,6 +3613,7 @@ declare namespace LocalJSX {
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
         "p-toast-item": PToastItem;
+        "p-wordmark": PWordmark;
     }
 }
 export { LocalJSX as JSX };
@@ -3611,6 +3680,7 @@ declare module "@stencil/core" {
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
+            "p-wordmark": LocalJSX.PWordmark & JSXBase.HTMLAttributes<HTMLPWordmarkElement>;
         }
     }
 }

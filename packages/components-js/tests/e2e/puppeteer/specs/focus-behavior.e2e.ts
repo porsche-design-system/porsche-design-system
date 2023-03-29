@@ -13,7 +13,8 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
-  const href = tagName.includes('link') || tagName.includes('marque') ? ' href="#"' : '';
+  const href =
+    tagName.includes('link') || tagName.includes('wordmark') || tagName.includes('marque') ? ' href="#"' : '';
   const value = tagName.includes('segmented-control-item') ? ' value="some value"' : '';
   const state = tagName.includes('stepper-horizontal-item') ? ' state="complete"' : '';
 

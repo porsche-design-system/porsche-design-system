@@ -1,79 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css 1`] = `
+exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
   display: block !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  color: #FBFCFF !important;
+  text-align: left !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
+  --p-internal-table-border-color: #404044 !important;
+  --p-internal-table-head-cell-icon-filter: invert(100%) !important;
+}
 .caption {
-  margin-bottom: 8px;
-}
-.root {
-  position: relative;
-}
-.scroll-area {
-  overflow: auto visible;
-  outline: 1px solid transparent;
-  outline-offset: -1px;
-}
-.scroll-area::-moz-focus-inner {
-  border: 0;
-}
-.scroll-area:focus {
-  outline-color: currentColor;
-}
-.scroll-area:focus:not(:focus-visible) {
-  outline-color: transparent;
+  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
 .table {
-  position: relative;
-  width: 100%;
   display: table;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-align: left;
-  color: #010205;
+  border-collapse: collapse;
+  width: 100%;
   white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for theme: light 1`] = `
+":host {
+  display: block !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  color: #010205 !important;
+  text-align: left !important;
 }
-.scroll-trigger {
-  position: absolute;
-  top: 0;
-  right: 1px;
-  width: 1px;
-  height: 1px;
-  visibility: hidden;
+:host([hidden]) {
+  display: none !important;
 }
-.scroll-indicator {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  padding-left: 32px;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+::slotted(*) {
+  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
+  --p-internal-table-border-color: #D8D8DB !important;
+  --p-internal-table-head-cell-icon-filter: none !important;
 }
-.scroll-indicator::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 3rem;
-  pointer-events: auto;
+.caption {
+  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
-.scroll-button {
-  padding: 0.75rem;
-  pointer-events: auto;
-}
-@media(min-width:1000px) {
-  .caption {
-    margin-bottom: 16px;
-  }
-}
-"
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+}"
 `;

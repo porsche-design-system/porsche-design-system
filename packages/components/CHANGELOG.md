@@ -11,6 +11,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+
+### [3.0.0-alpha.4] - 2023-03-28
+
+#### Changed
+
+- `Table` matches new design language [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+
+#### Added
+
 - Styles: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
   - `gridWide`
   - `gridWideColumnStart` and `pds-grid-wide-column-start`
@@ -30,6 +40,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `activeSlideIndex` to `Carousel` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
 - Prop `slidesPerPage` supports value `auto` of `Carousel`
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- Prop `scrollbar` for `Scroller` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+- Prop `theme` for `Table` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
 
 #### Fixed
 
@@ -60,6 +72,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### 🤡 Component deprecations 🤡
+
+##### Marque [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+
+```diff
+- <p-marque></p-marque>
++ <p-wordmark></p-wordmark>
+```
 
 ##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
@@ -526,6 +545,17 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
   Some label
 -   <p slot="subline">Some Subline</p>
 </p-link-pure>
+```
+
+##### Marque:
+
+- Removed `variant` property.
+
+```diff
+- <p-marque variant="75-years"></p-marque>
++ <p-marque></p-marque>
+// or even better, replace component by wordmark
++ <p-wordmark></p-wordmark>
 ```
 
 ##### Switch:

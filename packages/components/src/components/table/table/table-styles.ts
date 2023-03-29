@@ -1,82 +1,38 @@
-import {
-  getMediaQueryMin,
-  spacingStaticLarge,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
-import { getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getFocusJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-  pxToRemWithUnit,
-} from '../../../styles';
+import type { Theme } from '../../../types';
+import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
+import { getCss, isThemeDark } from '../../../utils';
+import { addImportantToEachRule, hostHiddenStyles, doGetThemedColors } from '../../../styles';
 
-const { primaryColor } = getThemedColors('light');
+export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
+export const cssVariableTableBorderColor = '--p-internal-table-border-color';
+export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
 
-export const getComponentCss = (): string => {
+export const getComponentCss = (theme: Theme): string => {
+  const { primaryColor, hoverColor, contrastLowColor } = doGetThemedColors(theme);
+
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
+        ...textSmallStyle,
+        color: primaryColor,
+        textAlign: 'left',
         ...hostHiddenStyles,
+      }),
+      '::slotted(*)': addImportantToEachRule({
+        [cssVariableTableHoverColor]: hoverColor,
+        [cssVariableTableBorderColor]: contrastLowColor,
+        [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
       }),
     },
     caption: {
-      marginBottom: spacingStaticSmall,
-      [getMediaQueryMin('m')]: {
-        marginBottom: spacingStaticMedium,
-      },
-    },
-    root: {
-      position: 'relative',
-    },
-    'scroll-area': {
-      overflow: 'auto visible',
-      ...getFocusJssStyle({ offset: -1 }),
+      marginBottom: spacingFluidMedium,
     },
     table: {
-      position: 'relative',
-      width: '100%',
       display: 'table',
-      ...textSmallStyle,
-      textAlign: 'left',
-      color: primaryColor,
-      whiteSpace: 'nowrap',
-    },
-    'scroll-trigger': {
-      position: 'absolute',
-      top: 0,
-      right: '1px',
-      width: '1px',
-      height: '1px',
-      visibility: 'hidden',
-    },
-    'scroll-indicator': {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      paddingLeft: spacingStaticLarge,
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      background: 'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%)',
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        width: pxToRemWithUnit(48),
-        pointerEvents: 'auto',
-      },
-    },
-    'scroll-button': {
-      padding: pxToRemWithUnit(12),
-      pointerEvents: 'auto',
+      borderCollapse: 'collapse',
+      width: '100%',
+      whiteSpace: 'nowrap', // shouldn't be inherited for caption, that's why it's defined here
     },
   });
 };

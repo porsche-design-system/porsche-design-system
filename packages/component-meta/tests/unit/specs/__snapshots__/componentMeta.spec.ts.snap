@@ -1715,12 +1715,14 @@ exports[`should match snapshot 1`] = `
       "target": "string",
       "trademark": "boolean",
     },
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.",
     "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
     "isDelegatingFocus": true,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -2013,6 +2015,7 @@ exports[`should match snapshot 1`] = `
         "isSmooth": "boolean",
         "scrollPosition": "number",
       },
+      "scrollbar": "boolean",
       "theme": [
         "light",
         "dark",
@@ -2039,6 +2042,7 @@ exports[`should match snapshot 1`] = `
       "gradientColorScheme": null,
       "scrollIndicatorPosition": null,
       "scrollToPosition": null,
+      "scrollbar": false,
       "theme": "light",
     },
     "styling": "jss",
@@ -2384,6 +2388,10 @@ exports[`should match snapshot 1`] = `
   "p-table": {
     "allowedPropValues": {
       "caption": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
     },
     "deprecatedEventNames": [
       "sortingChange",
@@ -2399,15 +2407,16 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "caption",
     ],
     "nestedComponents": [
-      "p-button-pure",
+      "p-scroller",
     ],
     "props": {
       "caption": null,
+      "theme": "light",
     },
     "styling": "jss",
   },
@@ -3108,6 +3117,39 @@ exports[`should match snapshot 1`] = `
     "requiredRootNode": [
       "p-toast",
     ],
+    "styling": "jss",
+  },
+  "p-wordmark": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "href": "string",
+      "size": [
+        "small",
+        "inherit",
+      ],
+      "target": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
+    },
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": {
+      "aria": null,
+      "href": null,
+      "size": "small",
+      "target": "_self",
+      "theme": "light",
+    },
     "styling": "jss",
   },
 }

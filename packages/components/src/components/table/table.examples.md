@@ -11,8 +11,8 @@ behavior.
 
 ## Basic Table
 
-<Playground :frameworkMarkup="basic">
-  <p-table caption="Some caption" ref="tableBasic">
+<Playground :frameworkMarkup="basic" :config="config">
+  <p-table :theme="theme" caption="Some caption" ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headBasic" :key="index">{{ item }}</p-table-head-cell>
@@ -41,13 +41,13 @@ to fulfill accessibility criteria.
 
 Using the `caption` property doesn't display the caption but instead can be used to improve accessibility of the table.
 
-<Playground :markup="captionProperty"></Playground>
+<Playground :markup="captionProperty" :config="config"></Playground>
 
 ### Via slot
 
 When using the `caption` slot its content will be rendered while offering full control of appearance.
 
-<Playground :markup="captionSlot"></Playground>
+<Playground :markup="captionSlot" :config="config"></Playground>
 
 ---
 
@@ -75,8 +75,8 @@ Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `cha
   Please use the <code>change</code> event instead.
 </p-inline-notification>
 
-<Playground :frameworkMarkup="sorting">
-  <p-table caption="Some caption" ref="tableSorting">
+<Playground :frameworkMarkup="sorting" :config="config">
+  <p-table caption="Some caption" ref="tableSorting" :theme="theme">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headSorting" :key="index" ref="headCellsSorting">{{ item.name }}</p-table-head-cell>
@@ -97,7 +97,7 @@ Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `cha
 Sometimes you want to hide the label of a table column for example when the column's content is self-explanatory. This
 can be achieved by setting the `hide-label` property.
 
-<Playground :markup="hideLabel"></Playground>
+<Playground :markup="hideLabel" :config="config"></Playground>
 
 ---
 
@@ -105,8 +105,8 @@ can be achieved by setting the `hide-label` property.
 
 The appearance of a table's contents can be customized as illustrated in the following example.
 
-<Playground :frameworkMarkup="advanced">
-  <p-table ref="tableAdvanced">
+<Playground :frameworkMarkup="advanced" :config="config">
+  <p-table ref="tableAdvanced" :theme="theme">
     <p-heading slot="caption" size="large">Some visual caption</p-heading>
     <p-table-head>
       <p-table-head-row>
@@ -121,8 +121,8 @@ The appearance of a table's contents can be customized as illustrated in the fol
               <img :src="item.imageUrl" width="80" height="45" style="margin-right: 0.5rem" alt="">
             </p-flex-item>
             <p-flex-item>
-              <p-text weight="semibold">{{ item.model }}</p-text>
-              <p-text size="x-small">{{ item.date }}</p-text>
+              <p-text :theme="theme" weight="semibold">{{ item.model }}</p-text>
+              <p-text :theme="theme" size="x-small">{{ item.date }}</p-text>
             </p-flex-item>
           </p-flex>
         </p-table-cell>
@@ -133,8 +133,8 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell multiline="true" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
         <p-table-cell>{{ item.leadId }}</p-table-cell>
         <p-table-cell>
-          <p-button-pure icon="edit" style="padding: .5rem">Edit</p-button-pure>
-          <p-button-pure icon="delete" style="padding: .5rem">Delete</p-button-pure>
+          <p-button-pure :theme="theme" icon="edit" style="padding: .5rem">Edit</p-button-pure>
+          <p-button-pure :theme="theme" icon="delete" style="padding: .5rem">Delete</p-button-pure>
         </p-table-cell>
       </p-table-row>
     </p-table-body>
@@ -145,9 +145,16 @@ The appearance of a table's contents can be customized as illustrated in the fol
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { dataBasic, headBasic, dataSorting, headSorting, dataAdvanced, headAdvanced, getTableCodeSamples } from '@porsche-design-system/shared';
+import type { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
+  config = { themeable: true };
+
+  get theme(): Theme {
+    return this.$store.getters.theme;
+  }
+
   headBasic = headBasic;
   dataBasic = dataBasic;
   headSorting = headSorting;

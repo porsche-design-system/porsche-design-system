@@ -38,6 +38,7 @@ const components: Component[] = [
   'spinner',
   'stepper-horizontal',
   'switch',
+  'table',
   'tabs',
   'tabs-bar',
   'tag',
@@ -46,6 +47,7 @@ const components: Component[] = [
   'text-list',
   'textarea-wrapper',
   'toast-basic',
+  'wordmark',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
