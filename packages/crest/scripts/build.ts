@@ -95,7 +95,7 @@ const createManifestAndCopyCrest = (): void => {
     `${CDN_KEY_TYPE_DEFINITION}
 
 export const CDN_BASE_URL = ${cdn};
-export const CREST_MANIFEST = ${JSON.stringify(manifest)};`
+export const CRESTS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
   console.log('Created crest manifest.');

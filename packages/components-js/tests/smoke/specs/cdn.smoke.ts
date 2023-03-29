@@ -1,7 +1,7 @@
 import type { Page } from 'puppeteer';
 import {
-  CREST_CDN_BASE_URL,
-  CREST_MANIFEST,
+  CRESTS_CDN_BASE_URL,
+  CRESTS_MANIFEST,
   FALLBACKS_MANIFEST,
   FALLBACKS_CDN_BASE_URL,
   FONTS_CDN_BASE_URL,
@@ -175,8 +175,8 @@ describe('cdn', () => {
     });
 
     describe('crest', () => {
-      const crests = objectToFlatArray(CREST_MANIFEST);
-      bulkRequestItems(crests, CREST_CDN_BASE_URL);
+      const crests = objectToFlatArray(CRESTS_MANIFEST);
+      bulkRequestItems(crests, CRESTS_CDN_BASE_URL);
     });
 
     describe('fallbacks', () => {
