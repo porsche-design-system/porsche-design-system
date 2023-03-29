@@ -2,7 +2,7 @@ import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import type { ThemedColors } from './';
-import { spacingStaticSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { spacingStaticSmall, borderWidthBase, themeLightStateFocus } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -65,7 +65,7 @@ export const focusPseudoJssStyle: JssStyle = {
     position: 'absolute',
     ...getInsetJssStyle(),
     borderRadius: '1px',
-    outline: `${borderWidthBase} solid ${getThemedColors('light').focusColor}`,
+    outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
     outlineOffset: '2px',
   },
   '&:focus:not(:focus-visible)::before': {
