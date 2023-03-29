@@ -1,5 +1,5 @@
 import type { TextSize, Theme } from '../../types';
-import { getCss } from '../../utils';
+import { getCss, isThemeDark } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -65,6 +65,17 @@ const filter: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inh
   },
 };
 
+const forceRerenderAnimationStyle = {
+  '0%': {
+    transform: 'rotateZ(0)',
+  },
+  '100%': {
+    transform: 'rotateZ(0)',
+  },
+};
+const keyFramesLight = 'rerender-light';
+const keyFramesDark = 'rerender-dark';
+
 export const getComponentCss = (
   color: Exclude<IconColor, IconColorDeprecated>,
   size: TextSize,
@@ -72,6 +83,7 @@ export const getComponentCss = (
 ): string => {
   const isColorInherit = color === 'inherit';
   const isSizeInherit = size === 'inherit';
+  const isDark = isThemeDark(theme);
 
   return getCss({
     '@global': {
@@ -86,6 +98,7 @@ export const getComponentCss = (
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
+          WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
           ? {
@@ -98,6 +111,9 @@ export const getComponentCss = (
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
       },
+      ...(!isColorInherit && {
+        [`@keyframes ${isDark ? keyFramesDark : keyFramesLight}`]: forceRerenderAnimationStyle,
+      }),
     },
   });
 };
