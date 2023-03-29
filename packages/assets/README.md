@@ -1,6 +1,6 @@
 # Porsche Design System - Assets
 
-This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc. Visit the
+This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marque, crest, etc. Visit the
 [Porsche Design System](https://designsystem.porsche.com) to learn more.
 
 ## Using the Porsche Design System Assets
