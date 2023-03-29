@@ -8,6 +8,7 @@
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
+    PCrest,
     PDisplay,
     PDivider,
     PFieldsetWrapper,
@@ -192,6 +193,10 @@
 
       <div class="playground light" title="should render default wordmark">
         <PWordmark />
+      </div>
+
+      <div class="playground light" title="should render default crest">
+        <PCrest />
       </div>
 
       <div class="playground light" title="should render default model-signature">
@@ -443,6 +448,10 @@
 
         <div class="playground light" title="should render default wordmark with custom prefix">
           <PWordmark />
+        </div>
+
+        <div class="playground light" title="should render default crest with custom prefix">
+          <PCrest />
         </div>
 
         <div class="playground light" title="should render default model-signature with custom prefix">

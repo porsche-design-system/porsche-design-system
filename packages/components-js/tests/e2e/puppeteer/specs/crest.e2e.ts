@@ -4,7 +4,6 @@ import {
   getActiveElementId,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,

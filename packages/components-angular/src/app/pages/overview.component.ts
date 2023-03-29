@@ -184,6 +184,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-wordmark></p-wordmark>
         </div>
 
+        <div class="playground light" title="should render default crest">
+          <p-crest></p-crest>
+        </div>
+
         <div class="playground light" title="should render default model-signature">
           <p-model-signature></p-model-signature>
         </div>
@@ -433,6 +437,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default wordmark with custom prefix">
           <my-prefix-p-wordmark p-wordmark></my-prefix-p-wordmark>
+        </div>
+
+        <div class="playground light" title="should render default crest with custom prefix">
+          <my-prefix-p-crest p-crest></my-prefix-p-crest>
         </div>
 
         <div class="playground light" title="should render default model-signature with custom prefix">
