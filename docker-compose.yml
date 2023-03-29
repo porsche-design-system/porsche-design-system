@@ -48,6 +48,7 @@ services:
       - components-react-remix-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/remix/node_modules
       - components-vue-node-modules:/opt/porsche-design-system-app/packages/components-vue/node_modules
       - crawler-node-modules:/opt/porsche-design-system-app/packages/crawler/node_modules
+      - crest-node-modules:/opt/porsche-design-system-app/packages/crest/node_modules
       - email-node-modules:/opt/porsche-design-system-app/packages/email/node_modules
       - fallbacks-node-modules:/opt/porsche-design-system-app/packages/fallbacks/node_modules
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
@@ -83,6 +84,7 @@ services:
       - components-react-remix-node-modules:/opt/porsche-design-system-volumes/components-react-remix-node_modules
       - components-vue-node-modules:/opt/porsche-design-system-volumes/components-vue-node_modules
       - crawler-node-modules:/opt/porsche-design-system-volumes/crawler-node_modules
+      - crest-node-modules:/opt/porsche-design-system-volumes/crest-node_modules
       - email-node-modules:/opt/porsche-design-system-volumes/email-node_modules
       - fallbacks-node-modules:/opt/porsche-design-system-volumes/fallbacks-node_modules
       - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
@@ -118,6 +120,7 @@ volumes:
   components-react-remix-node-modules:
   components-vue-node-modules:
   crawler-node-modules:
+  crest-node-modules:
   email-node-modules:
   fallbacks-node-modules:
   fonts-node-modules:
