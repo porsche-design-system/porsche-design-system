@@ -38,7 +38,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: p
 img {
   display: block;
   pointer-events: none;
-  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   height: inherit;
 }"
 `;
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
 img {
   display: block;
   pointer-events: none;
-  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
 }"
 `;
 

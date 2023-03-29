@@ -1715,12 +1715,14 @@ exports[`should match snapshot 1`] = `
       "target": "string",
       "trademark": "boolean",
     },
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.",
     "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
     "isDelegatingFocus": true,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -3115,6 +3117,39 @@ exports[`should match snapshot 1`] = `
     "requiredRootNode": [
       "p-toast",
     ],
+    "styling": "jss",
+  },
+  "p-wordmark": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "href": "string",
+      "size": [
+        "small",
+        "inherit",
+      ],
+      "target": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
+    },
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": {
+      "aria": null,
+      "href": null,
+      "size": "small",
+      "target": "_self",
+      "theme": "light",
+    },
     "styling": "jss",
   },
 }

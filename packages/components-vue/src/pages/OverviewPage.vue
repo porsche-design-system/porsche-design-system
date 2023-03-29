@@ -53,6 +53,7 @@
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
+    PWordmark,
   } from '@porsche-design-system/components-vue';
 </script>
 
@@ -187,6 +188,10 @@
 
       <div class="playground light" title="should render default marque">
         <PMarque />
+      </div>
+
+      <div class="playground light" title="should render default wordmark">
+        <PWordmark />
       </div>
 
       <div class="playground light" title="should render default model-signature">
@@ -434,6 +439,10 @@
 
         <div class="playground light" title="should render default marque with custom prefix">
           <PMarque />
+        </div>
+
+        <div class="playground light" title="should render default wordmark with custom prefix">
+          <PWordmark />
         </div>
 
         <div class="playground light" title="should render default model-signature with custom prefix">
