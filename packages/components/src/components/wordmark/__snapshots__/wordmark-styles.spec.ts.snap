@@ -3,7 +3,7 @@
 exports[`getComponentCss() should return correct css for size: inherit and theme: dark 1`] = `
 ":host {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
   outline: 0 !important;
   box-sizing: content-box !important;
@@ -12,39 +12,35 @@ exports[`getComponentCss() should return correct css for size: inherit and theme
   display: none !important;
 }
 a {
-  outline: 0;
   display: block;
   text-decoration: none;
   height: inherit;
+  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  border-radius: 4px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+  inset: 0;
+  border-radius: 1px;
 }
 a:focus::before {
-  border: 2px solid #1A44EA;
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 a:focus:not(:focus-visible)::before {
-  border: 0;
+  outline-color: transparent;
 }
 svg {
   display: block;
-  pointer-events: none;
-  transform: translateZ(0);
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   height: inherit;
+  fill: #FBFCFF;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for size: inherit and theme: light 1`] = `
 ":host {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
   outline: 0 !important;
   box-sizing: content-box !important;
@@ -53,39 +49,35 @@ exports[`getComponentCss() should return correct css for size: inherit and theme
   display: none !important;
 }
 a {
-  outline: 0;
   display: block;
   text-decoration: none;
   height: inherit;
+  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  border-radius: 4px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+  inset: 0;
+  border-radius: 1px;
 }
 a:focus::before {
-  border: 2px solid #1A44EA;
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 a:focus:not(:focus-visible)::before {
-  border: 0;
+  outline-color: transparent;
 }
 svg {
   display: block;
-  pointer-events: none;
-  transform: translateZ(0);
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   height: inherit;
+  fill: #010205;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for size: small and theme: dark 1`] = `
 ":host {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
   outline: 0 !important;
   box-sizing: content-box !important;
@@ -95,39 +87,35 @@ exports[`getComponentCss() should return correct css for size: small and theme: 
   display: none !important;
 }
 a {
-  outline: 0;
   display: block;
   text-decoration: none;
   height: inherit;
+  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  border-radius: 4px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+  inset: 0;
+  border-radius: 1px;
 }
 a:focus::before {
-  border: 2px solid #1A44EA;
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 a:focus:not(:focus-visible)::before {
-  border: 0;
+  outline-color: transparent;
 }
 svg {
   display: block;
-  pointer-events: none;
-  transform: translateZ(0);
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   height: inherit;
+  fill: #FBFCFF;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for size: small and theme: light 1`] = `
 ":host {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
   outline: 0 !important;
   box-sizing: content-box !important;
@@ -137,31 +125,27 @@ exports[`getComponentCss() should return correct css for size: small and theme: 
   display: none !important;
 }
 a {
-  outline: 0;
   display: block;
   text-decoration: none;
   height: inherit;
+  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  border-radius: 4px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+  inset: 0;
+  border-radius: 1px;
 }
 a:focus::before {
-  border: 2px solid #1A44EA;
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 a:focus:not(:focus-visible)::before {
-  border: 0;
+  outline-color: transparent;
 }
 svg {
   display: block;
-  pointer-events: none;
-  transform: translateZ(0);
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   height: inherit;
+  fill: #010205;
 }"
 `;
