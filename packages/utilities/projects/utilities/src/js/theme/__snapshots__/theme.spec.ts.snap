@@ -11,7 +11,7 @@ exports[`should contain correct values for theme 1`] = `
     "contrast": {
       "high": "#AFB0B3",
       "low": "#404044",
-      "medium": "#7E7F82",
+      "medium": "#88898C",
     },
     "notification": {
       "error": "#CB3333",
@@ -40,7 +40,7 @@ exports[`should contain correct values for theme 1`] = `
     "contrast": {
       "high": "#535457",
       "low": "#D8D8DB",
-      "medium": "#949598",
+      "medium": "#6B6D70",
     },
     "notification": {
       "error": "#E7323B",
@@ -73,7 +73,7 @@ exports[`should contain correct values for themeDark 1`] = `
   "contrast": {
     "high": "#AFB0B3",
     "low": "#404044",
-    "medium": "#7E7F82",
+    "medium": "#88898C",
   },
   "notification": {
     "error": "#CB3333",
@@ -105,7 +105,7 @@ exports[`should contain correct values for themeDarkContrastHigh 1`] = `"#AFB0B3
 
 exports[`should contain correct values for themeDarkContrastLow 1`] = `"#404044"`;
 
-exports[`should contain correct values for themeDarkContrastMedium 1`] = `"#7E7F82"`;
+exports[`should contain correct values for themeDarkContrastMedium 1`] = `"#88898C"`;
 
 exports[`should contain correct values for themeDarkNotificationError 1`] = `"#CB3333"`;
 
@@ -143,7 +143,7 @@ exports[`should contain correct values for themeLight 1`] = `
   "contrast": {
     "high": "#535457",
     "low": "#D8D8DB",
-    "medium": "#949598",
+    "medium": "#6B6D70",
   },
   "notification": {
     "error": "#E7323B",
@@ -175,7 +175,7 @@ exports[`should contain correct values for themeLightContrastHigh 1`] = `"#53545
 
 exports[`should contain correct values for themeLightContrastLow 1`] = `"#D8D8DB"`;
 
-exports[`should contain correct values for themeLightContrastMedium 1`] = `"#949598"`;
+exports[`should contain correct values for themeLightContrastMedium 1`] = `"#6B6D70"`;
 
 exports[`should contain correct values for themeLightNotificationError 1`] = `"#E7323B"`;
 
