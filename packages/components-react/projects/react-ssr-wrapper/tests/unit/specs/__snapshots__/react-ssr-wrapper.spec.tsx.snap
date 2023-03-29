@@ -699,7 +699,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -726,7 +726,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -853,7 +853,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -880,7 +880,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1058,7 +1058,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 shadowrootmode="open"
               >
                 <style>
-                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);width:inherit;height:inherit}
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light 1ms;width:inherit;height:inherit}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                 </style>
                 <img
                   alt=""
@@ -1117,7 +1117,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}
+            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
           </style>
           <img
             alt=""
@@ -1152,7 +1152,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 shadowrootmode="open"
               >
                 <style>
-                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);width:inherit;height:inherit}
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light 1ms;width:inherit;height:inherit}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                 </style>
                 <img
                   alt=""
@@ -1337,8 +1337,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
               </style>
               <img
@@ -1542,9 +1551,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
             </style>
             <img
@@ -1660,8 +1678,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                   </style>
                   <img
@@ -1887,8 +1914,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
           </style>
           <img
@@ -2313,8 +2349,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                   </style>
                   <img
@@ -2423,8 +2468,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                   </style>
                   <img
@@ -3010,9 +3064,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
     </style>
     <img
@@ -3101,9 +3164,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
         </style>
         <img
@@ -3219,8 +3291,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
               </style>
               <img
@@ -3435,8 +3516,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
           </style>
           <img
@@ -3555,8 +3645,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+  -webkit-animation: rerender-dark 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-dark {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
           </style>
           <img
@@ -4335,8 +4434,17 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: inherit;
   height: inherit;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                 </style>
                 <img
@@ -4510,9 +4618,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                 </style>
                 <img
@@ -4560,9 +4677,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                 </style>
                 <img
@@ -4727,9 +4853,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
           </style>
           <img
@@ -5001,9 +5136,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
               </style>
               <img
@@ -5043,9 +5187,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
               </style>
               <img
@@ -5282,9 +5435,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
             </style>
             <img
@@ -5593,9 +5755,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                   </style>
                   <img
@@ -5635,9 +5806,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                   </style>
                   <img
@@ -6545,9 +6725,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                       </style>
                       <img
@@ -6587,9 +6776,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                       </style>
                       <img
@@ -6865,9 +7063,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                   </style>
                   <img
@@ -6907,9 +7114,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
                   </style>
                   <img
@@ -7115,9 +7331,18 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
 }
           </style>
           <img
@@ -7512,7 +7737,7 @@ exports[`should render dsr component for PWordmark 1`] = `
     <style>
       :host {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
   outline: 0 !important;
   box-sizing: content-box !important;
@@ -7522,34 +7747,32 @@ exports[`should render dsr component for PWordmark 1`] = `
   display: none !important;
 }
 a {
-  outline: 0;
   display: block;
   text-decoration: none;
   height: inherit;
+  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  border-radius: 4px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+  inset: 0;
+  border-radius: 1px;
 }
 svg {
   display: block;
-  pointer-events: none;
-  transform: translateZ(0);
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   height: inherit;
+  fill: #010205;
 }
     </style>
     <svg
       viewBox="0 0 4383 300"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>
+        Porsche
+      </title>
       <path
-        d="M492 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79zm6-143v65c0 7.8-4.2 12-12 12H68V66h418c7.8 0 12 4.2 12 12zm220 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h407c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74zm401-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H724c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12zm657-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-351v79h-68V0h492c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-418v89zm155-81c0-48.1 25.9-74 74-74h482v56h-476c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h412c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-482v-56h476c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-412c-48.1 0-74-25.9-74-74zm643 0c0-48.1 25.9-74 74-74h470v66h-464c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h464v66h-470c-48.1 0-74-25.9-74-74zM3718 0v300h-68V183h-397v117h-68V0h68v117h397V0zm148 56v66h517v56h-517v66h517v56h-585V0h585v56z"
+        d="M492 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h424zm6-143v65c0 7.8-4.2 12-12 12H68V66h418c7.8 0 12 4.2 12 12zm220 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h407c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H718zm401-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H724c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h395zm657-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-351v79h-68V0h492c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-418v89h418zm155-81c0-48.1 25.9-74 74-74h482v56h-476c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h412c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-482v-56h476c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-412c-48.1 0-74-25.9-74-74V74zm643 0c0-48.1 25.9-74 74-74h470v66h-464c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h464v66h-470c-48.1 0-74-25.9-74-74V74zM3718 0v300h-68V183h-397v117h-68V0h68v117h397V0h68zm148 56v66h517v56h-517v66h517v56h-585V0h585v56h-517z"
       />
     </svg>
   </template>
