@@ -25,7 +25,7 @@ it('should have no visual regression on retina 3x display for viewport %s', asyn
   expect(await vrtTest(getVisualRegressionCrest3xTester(1000), 'crest-3x', '/#crest')).toBeFalsy();
 });
 
-xit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('crest-states', async () => {
