@@ -313,7 +313,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #7E7F82;
+  background: #88898C;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
@@ -574,7 +574,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #7E7F82;
+  background: #88898C;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;

@@ -13,7 +13,7 @@ exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
   "contrastHighColorDarken": "#909195",
   "contrastHighColorLighten": "#CECFD1",
   "contrastLowColor": "#404044",
-  "contrastMediumColor": "#7E7F82",
+  "contrastMediumColor": "#88898C",
   "disabledColor": "#7E7F82",
   "errorColor": "#CB3333",
   "errorColorDarken": "#9A2727",

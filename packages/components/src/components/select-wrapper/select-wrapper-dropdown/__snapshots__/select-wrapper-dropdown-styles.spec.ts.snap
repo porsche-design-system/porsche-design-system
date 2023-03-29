@@ -4389,8 +4389,8 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #7E7F82;
-  border-top: 1px solid #7E7F82 !important;
+  border: 2px solid #88898C;
+  border-top: 1px solid #88898C !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -4586,7 +4586,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #FBFCFF;
-  border-top: 1px solid #7E7F82 !important;
+  border-top: 1px solid #88898C !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -4781,8 +4781,8 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #7E7F82;
-  border-bottom: 1px solid #7E7F82 !important;
+  border: 2px solid #88898C;
+  border-bottom: 1px solid #88898C !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -4978,7 +4978,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #FBFCFF;
-  border-bottom: 1px solid #7E7F82 !important;
+  border-bottom: 1px solid #88898C !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;

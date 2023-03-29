@@ -506,7 +506,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #7E7F82 !important;
+  border: 2px solid #88898C !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1143,7 +1143,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #7E7F82 !important;
+  border: 2px solid #88898C !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
