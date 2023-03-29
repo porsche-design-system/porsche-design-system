@@ -26,7 +26,7 @@
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
+    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'vue' | 'shared'>;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
@@ -52,7 +52,7 @@
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared'>,
+      framework: Exclude<Framework, 'vue' | 'shared'>,
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
       const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);

@@ -13,28 +13,15 @@ To build your own **Vue** application with the **Vue** components of the Porsche
 yarn create vite
 
 // install with npm:
-npm init vue@latest
+npm create vite
 ```
 
 - Follow the installation wizard to set everything up:
 
 ```
-// install with yarn:
 ✔ Package name: my-app
 ✔ Select a framework: › Vue
 ✔ Select a variant: › TypeScript
-
-
-// with npm:
-✔ Project name: <my-app>
-✔ Add TypeScript? Yes
-✔ Add JSX Support? … No / Yes
-✔ Add Vue Router for Single Page Application development? … No / Yes
-✔ Add Pinia for state management? … No / Yes
-✔ Add Vitest for Unit testing? … No / Yes
-✔ Add Cypress for both Unit and End-to-End testing? … No / Yes
-✔ Add ESLint for code quality? … No / Yes
-✔ Add Prettier for code formatting? … No / Yes
 ```
 
 - Install the Porsche Design System within your project directory (e.g. "my-app"):
