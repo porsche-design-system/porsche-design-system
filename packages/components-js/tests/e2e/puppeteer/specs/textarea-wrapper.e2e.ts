@@ -132,7 +132,7 @@ it('should render characterCountElement when maxlength is set', async () => {
 
 describe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
-  const defaultBorderColor = 'rgb(148, 149, 152)';
+  const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   it('should show hover state on input when label is hovered', async () => {
