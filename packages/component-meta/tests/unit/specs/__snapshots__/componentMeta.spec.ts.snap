@@ -2015,6 +2015,7 @@ exports[`should match snapshot 1`] = `
         "isSmooth": "boolean",
         "scrollPosition": "number",
       },
+      "scrollbar": "boolean",
       "theme": [
         "light",
         "dark",
@@ -2041,6 +2042,7 @@ exports[`should match snapshot 1`] = `
       "gradientColorScheme": null,
       "scrollIndicatorPosition": null,
       "scrollToPosition": null,
+      "scrollbar": false,
       "theme": "light",
     },
     "styling": "jss",
@@ -2386,6 +2388,10 @@ exports[`should match snapshot 1`] = `
   "p-table": {
     "allowedPropValues": {
       "caption": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
     },
     "deprecatedEventNames": [
       "sortingChange",
@@ -2401,15 +2407,16 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "caption",
     ],
     "nestedComponents": [
-      "p-button-pure",
+      "p-scroller",
     ],
     "props": {
       "caption": null,
+      "theme": "light",
     },
     "styling": "jss",
   },

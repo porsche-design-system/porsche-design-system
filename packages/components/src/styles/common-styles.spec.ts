@@ -1,6 +1,5 @@
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import type { Theme } from '../types';
 import type { GetFocusStylesOptions } from './common-styles';
 import {
   addImportantToEachRule,
@@ -8,7 +7,6 @@ import {
   getBackfaceVisibilityJssStyle,
   getFocusJssStyle,
   getFormTextHiddenJssStyle,
-  getHoverJssStyle,
   getInsetJssStyle,
   getTextHiddenJssStyle,
   getTransition,
@@ -70,12 +68,6 @@ describe('addImportantToEachRule()', () => {
 
   it('should have no mutation on input', () => {
     expect(addImportantToEachRule(input)).not.toEqual(input);
-  });
-});
-
-xdescribe('getHoverJssStyles()', () => {
-  it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverJssStyle({ theme })).toMatchSnapshot();
   });
 });
 

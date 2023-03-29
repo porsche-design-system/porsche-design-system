@@ -388,6 +388,7 @@ exports[`should call validateProps() with correct parameters via render for p-sc
   "gradientColorScheme": "oneOf",
   "scrollIndicatorPosition": "oneOf",
   "scrollToPosition": "shape",
+  "scrollbar": "boolean",
   "theme": "oneOf",
 }
 `;
@@ -461,6 +462,7 @@ exports[`should call validateProps() with correct parameters via render for p-sw
 exports[`should call validateProps() with correct parameters via render for p-table: propTypes with ValidatorFunctions 1`] = `
 {
   "caption": "string",
+  "theme": "oneOf",
 }
 `;
 

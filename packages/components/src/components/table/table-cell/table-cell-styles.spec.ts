@@ -1,7 +1,10 @@
 import { getComponentCss } from './table-cell-styles';
 
-xdescribe('getComponentCss()', () => {
-  it.each<boolean>([true, false])('should return correct css for multiline: %s', (multiline) => {
-    expect(getComponentCss(multiline)).toMatchSnapshot();
-  });
+describe('getComponentCss()', () => {
+  it.each<Parameters<typeof getComponentCss>>([[true], [false]])(
+    'should return correct css for multiline: %s',
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
+    }
+  );
 });
