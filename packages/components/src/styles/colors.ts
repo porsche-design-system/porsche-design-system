@@ -52,7 +52,7 @@ const themeLight = {
   backgroundSurfaceColorDarken: '#CBCED7',
   backgroundSurfaceColorLighten: '#FFFFFF',
   contrastLowColor: '#D8D8DB',
-  contrastMediumColor: '#949598',
+  contrastMediumColor: '#6B6D70',
   contrastHighColor: '#535457',
   contrastHighColorDarken: '#353638',
   contrastHighColorLighten: '#717276',
