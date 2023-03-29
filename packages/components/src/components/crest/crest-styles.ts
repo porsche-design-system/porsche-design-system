@@ -1,5 +1,5 @@
 import { getCss } from '../../utils';
-import { addImportantToEachRule, getFocusJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, focusPseudoJssStyle, hostHiddenStyles } from '../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -16,11 +16,7 @@ export const getComponentCss = (): string => {
       a: {
         display: 'block',
         textDecoration: 'none',
-        ...getFocusJssStyle({
-          color: getThemedColors('light').primaryColor,
-          offset: 0,
-          pseudo: '::before',
-        }),
+        ...focusPseudoJssStyle,
       },
       picture: {
         display: 'block',
