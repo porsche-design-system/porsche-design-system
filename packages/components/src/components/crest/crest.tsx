@@ -1,10 +1,9 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { CrestAriaAttribute, CrestTarget } from './crest-utils';
-import { buildCrestSrcSet, crestCdnBaseUrl, CREST_ARIA_ATTRIBUTES } from './crest-utils';
+import { buildCrestSrcSet, CREST_ARIA_ATTRIBUTES, crestCdnBaseUrl, crestInnerManifest } from './crest-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
 import { getComponentCss } from './crest-styles';
-import { CRESTS_MANIFEST } from '@porsche-design-system/crest';
 
 const propTypes: PropTypes<typeof Crest> = {
   href: AllowedTypes.string,
@@ -36,7 +35,7 @@ export class Crest {
       <picture>
         <source key="webp" srcSet={buildCrestSrcSet('webp')} type="image/webp" />
         <source key="png" srcSet={buildCrestSrcSet('png')} type="image/png" />
-        <img src={`${crestCdnBaseUrl}/${CRESTS_MANIFEST.porscheCrest['2x'].png}`} alt="Porsche" />
+        <img src={`${crestCdnBaseUrl}/${crestInnerManifest['2x'].png}`} alt="Porsche" />
       </picture>
     );
 
