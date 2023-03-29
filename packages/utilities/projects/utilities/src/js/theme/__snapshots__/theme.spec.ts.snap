@@ -14,14 +14,14 @@ exports[`should contain correct values for theme 1`] = `
       "medium": "#88898C",
     },
     "notification": {
-      "error": "#CB3333",
-      "errorSoft": "#290A0A",
-      "info": "#027FFC",
-      "infoSoft": "#001A33",
-      "success": "#00C77E",
+      "error": "#FC4040",
+      "errorSoft": "#3A0F0F",
+      "info": "#178BFF",
+      "infoSoft": "#04294E",
+      "success": "#09D087",
       "successSoft": "#003320",
-      "warning": "#DDB84B",
-      "warningSoft": "#2B2208",
+      "warning": "#F7CB47",
+      "warningSoft": "#362B0A",
     },
     "primary": "#FBFCFF",
     "state": {
@@ -43,14 +43,14 @@ exports[`should contain correct values for theme 1`] = `
       "medium": "#6B6D70",
     },
     "notification": {
-      "error": "#E7323B",
-      "errorSoft": "#FCE8E9",
-      "info": "#1E5BEB",
-      "infoSoft": "#E8EEFD",
-      "success": "#32B85B",
-      "successSoft": "#EBFAF0",
-      "warning": "#FECC1B",
-      "warningSoft": "#FFF9E6",
+      "error": "#CC1922",
+      "errorSoft": "#FFE2E4",
+      "info": "#2762EC",
+      "infoSoft": "#D3E1FF",
+      "success": "#197E10",
+      "successSoft": "#E4FFEC",
+      "warning": "#F3BE00",
+      "warningSoft": "#FFF4D2",
     },
     "primary": "#010205",
     "state": {
@@ -76,14 +76,14 @@ exports[`should contain correct values for themeDark 1`] = `
     "medium": "#88898C",
   },
   "notification": {
-    "error": "#CB3333",
-    "errorSoft": "#290A0A",
-    "info": "#027FFC",
-    "infoSoft": "#001A33",
-    "success": "#00C77E",
+    "error": "#FC4040",
+    "errorSoft": "#3A0F0F",
+    "info": "#178BFF",
+    "infoSoft": "#04294E",
+    "success": "#09D087",
     "successSoft": "#003320",
-    "warning": "#DDB84B",
-    "warningSoft": "#2B2208",
+    "warning": "#F7CB47",
+    "warningSoft": "#362B0A",
   },
   "primary": "#FBFCFF",
   "state": {
@@ -107,21 +107,21 @@ exports[`should contain correct values for themeDarkContrastLow 1`] = `"#404044"
 
 exports[`should contain correct values for themeDarkContrastMedium 1`] = `"#88898C"`;
 
-exports[`should contain correct values for themeDarkNotificationError 1`] = `"#CB3333"`;
+exports[`should contain correct values for themeDarkNotificationError 1`] = `"#FC4040"`;
 
-exports[`should contain correct values for themeDarkNotificationErrorSoft 1`] = `"#290A0A"`;
+exports[`should contain correct values for themeDarkNotificationErrorSoft 1`] = `"#3A0F0F"`;
 
-exports[`should contain correct values for themeDarkNotificationInfo 1`] = `"#027FFC"`;
+exports[`should contain correct values for themeDarkNotificationInfo 1`] = `"#178BFF"`;
 
-exports[`should contain correct values for themeDarkNotificationInfoSoft 1`] = `"#001A33"`;
+exports[`should contain correct values for themeDarkNotificationInfoSoft 1`] = `"#04294E"`;
 
-exports[`should contain correct values for themeDarkNotificationSuccess 1`] = `"#00C77E"`;
+exports[`should contain correct values for themeDarkNotificationSuccess 1`] = `"#09D087"`;
 
 exports[`should contain correct values for themeDarkNotificationSuccessSoft 1`] = `"#003320"`;
 
-exports[`should contain correct values for themeDarkNotificationWarning 1`] = `"#DDB84B"`;
+exports[`should contain correct values for themeDarkNotificationWarning 1`] = `"#F7CB47"`;
 
-exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] = `"#2B2208"`;
+exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] = `"#362B0A"`;
 
 exports[`should contain correct values for themeDarkPrimary 1`] = `"#FBFCFF"`;
 
@@ -146,14 +146,14 @@ exports[`should contain correct values for themeLight 1`] = `
     "medium": "#6B6D70",
   },
   "notification": {
-    "error": "#E7323B",
-    "errorSoft": "#FCE8E9",
-    "info": "#1E5BEB",
-    "infoSoft": "#E8EEFD",
-    "success": "#32B85B",
-    "successSoft": "#EBFAF0",
-    "warning": "#FECC1B",
-    "warningSoft": "#FFF9E6",
+    "error": "#CC1922",
+    "errorSoft": "#FFE2E4",
+    "info": "#2762EC",
+    "infoSoft": "#D3E1FF",
+    "success": "#197E10",
+    "successSoft": "#E4FFEC",
+    "warning": "#F3BE00",
+    "warningSoft": "#FFF4D2",
   },
   "primary": "#010205",
   "state": {
@@ -177,21 +177,21 @@ exports[`should contain correct values for themeLightContrastLow 1`] = `"#D8D8DB
 
 exports[`should contain correct values for themeLightContrastMedium 1`] = `"#6B6D70"`;
 
-exports[`should contain correct values for themeLightNotificationError 1`] = `"#E7323B"`;
+exports[`should contain correct values for themeLightNotificationError 1`] = `"#CC1922"`;
 
-exports[`should contain correct values for themeLightNotificationErrorSoft 1`] = `"#FCE8E9"`;
+exports[`should contain correct values for themeLightNotificationErrorSoft 1`] = `"#FFE2E4"`;
 
-exports[`should contain correct values for themeLightNotificationInfo 1`] = `"#1E5BEB"`;
+exports[`should contain correct values for themeLightNotificationInfo 1`] = `"#2762EC"`;
 
-exports[`should contain correct values for themeLightNotificationInfoSoft 1`] = `"#E8EEFD"`;
+exports[`should contain correct values for themeLightNotificationInfoSoft 1`] = `"#D3E1FF"`;
 
-exports[`should contain correct values for themeLightNotificationSuccess 1`] = `"#32B85B"`;
+exports[`should contain correct values for themeLightNotificationSuccess 1`] = `"#197E10"`;
 
-exports[`should contain correct values for themeLightNotificationSuccessSoft 1`] = `"#EBFAF0"`;
+exports[`should contain correct values for themeLightNotificationSuccessSoft 1`] = `"#E4FFEC"`;
 
-exports[`should contain correct values for themeLightNotificationWarning 1`] = `"#FECC1B"`;
+exports[`should contain correct values for themeLightNotificationWarning 1`] = `"#F3BE00"`;
 
-exports[`should contain correct values for themeLightNotificationWarningSoft 1`] = `"#FFF9E6"`;
+exports[`should contain correct values for themeLightNotificationWarningSoft 1`] = `"#FFF4D2"`;
 
 exports[`should contain correct values for themeLightPrimary 1`] = `"#010205"`;
 
