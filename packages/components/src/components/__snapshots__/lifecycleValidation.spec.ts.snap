@@ -582,3 +582,13 @@ exports[`should call validateProps() with correct parameters via render for p-to
   "theme": "oneOf",
 }
 `;
+
+exports[`should call validateProps() with correct parameters via render for p-wordmark: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "href": "string",
+  "size": "oneOf",
+  "target": "string",
+  "theme": "oneOf",
+}
+`;

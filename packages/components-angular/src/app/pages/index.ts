@@ -82,6 +82,7 @@ import { TypographyCyrilComponent } from './typography-cyril.component';
 import { TypographyFallbackStrategyComponent } from './typography-fallback-strategy.component';
 import { TypographyGreekAndCopticComponent } from './typography-greek-and-coptic.component';
 import { TypographyLatinComponent } from './typography-latin.component';
+import { WordmarkComponent } from './wordmark.component';
 
 export const generatedPages = [
   AccordionComponent,
@@ -142,6 +143,7 @@ export const generatedPages = [
   TypographyFallbackStrategyComponent,
   TypographyGreekAndCopticComponent,
   TypographyLatinComponent,
+  WordmarkComponent,
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [
@@ -414,5 +416,10 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Typography Latin',
     path: 'typography-latin',
     component: TypographyLatinComponent,
+  },
+  {
+    name: 'Wordmark',
+    path: 'wordmark',
+    component: WordmarkComponent,
   },
 ];

@@ -49,6 +49,7 @@ const components: Component[] = [
   'text-list',
   'textarea-wrapper',
   'toast-basic',
+  'wordmark',
 ];
 
 const scenarioPopover = async (page: Page) => {
