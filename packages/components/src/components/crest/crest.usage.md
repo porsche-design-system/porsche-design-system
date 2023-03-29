@@ -2,6 +2,4 @@
 
 <TableOfContents></TableOfContents>
 
-## Variant
-
 tbd.

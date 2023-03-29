@@ -4,37 +4,24 @@ The `p-crest` gives the Porsche brand a distinctive look, sets it apart from oth
 and represents the quality of the product.
 
 <p-inline-notification heading="Deprecation hint" state="error" persistent="true">
-  This component is deprecated and will be removed with the next major release.
-Please use <a href="components/wordmark">p-wordmark</a> instead.
+  This component shall only be used on viewports below 480px (breakpoint "S"). Otherwise, <a href="components/wordmark">p-wordmark</a> has to be used.
 </p-inline-notification>
 
 <TableOfContents></TableOfContents>
 
-## Variants
-
-### Marque with registered trademark (®)
-
-In web applications for the United States and/or Canada as well as with international purpose _including_ United States
-and/or Canada, the Porsche marque must always be used with the ®. The ® is optimized to match the respective crest size.
+## Basic example
 
 <Playground :markup="basicMarkup"></Playground>
 
-### Marque without registered trademark (®)
-
-This variant is to be used whenever the United States and/or Canada are not part of the web application's target
-markets.
-
-<Playground :markup="withoutTrademarkMarkup"></Playground>
-
 ## Link
 
-The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provided.
+The Porsche Crest will be rendered as `<a>`-tag as soon as an `href` is provided.
 
 <Playground :markup="linkMarkup"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-If the Marque is used with a link, make sure to add a descriptive label to inform screen reader users what the link
+If `p-crest` is used with a link, make sure to add a descriptive label to inform screen reader users what the link
 stands for. This can be done through **ARIA** with the `aria` property.
 
 ## Bind events to the link
@@ -45,19 +32,9 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Size
-
-By default, the sizing is responsive, but can be changed to a static size when needed.
-
-<Playground :markup="sizeMarkup">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
-</Playground>
-
----
-
 ## Custom clickable/focusable area
 
-Sometimes it might be useful to enlarge the clickable/focusable area of the Porsche marque. Therefore a custom padding
+Sometimes it might be useful to enlarge the clickable/focusable area of the Porsche Crest. Therefore, a custom padding
 can be set on the host element.
 
 <Playground :markup="clickableAreaMarkup"></Playground>
@@ -65,30 +42,22 @@ can be set on the host element.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { MARQUE_SIZES } from './marque-size';
 
 @Component
 export default class Code extends Vue {
-  basicMarkup = `<p-marque></p-marque>`;
-  withoutTrademarkMarkup = `<p-marque trademark="false"></p-marque>`;
-  linkMarkup = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-marque>`;
-
-  size = 'small';
-  sizes = MARQUE_SIZES;
-  get sizeMarkup() {
-    return `<p-marque size="${this.size}"></p-marque>`;
-  }
+  basicMarkup = `<p-crest></p-crest>`;
+  linkMarkup = `<p-crest href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-crest>`;
 
   eventsMarkup =
-`<p-marque
+`<p-crest
   href="https://www.porsche.com"
   onclick="alert('click'); return false;"
   onfocus="console.log('focus')"
   onfocusin="console.log('focusin')"
   onblur="console.log('blur')"
   onfocusout="console.log('focusout')"
-></p-marque>`;
+></p-crest>`;
 
-  clickableAreaMarkup = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 1.5rem"></p-marque>`;
+  clickableAreaMarkup = `<p-crest href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 16px"></p-crest>`;
 }
 </script>
