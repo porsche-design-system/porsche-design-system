@@ -43,7 +43,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
@@ -135,7 +135,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
@@ -306,7 +306,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
@@ -785,7 +785,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;

@@ -227,7 +227,7 @@ hr {
   padding: 0;
   border: none;
   text-align: left;
-  background: #949598;
+  background: #6B6D70;
   height: 1px;
   width: 100%;
 }"
@@ -263,7 +263,7 @@ hr {
   padding: 0;
   border: none;
   text-align: left;
-  background: #949598;
+  background: #6B6D70;
   height: 100%;
   width: 1px;
 }"

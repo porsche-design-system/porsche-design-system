@@ -444,7 +444,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #949598;
+  background: #6B6D70;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
@@ -703,7 +703,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #949598;
+  background: #6B6D70;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
@@ -833,7 +833,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #949598;
+  background: #6B6D70;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
@@ -990,7 +990,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #949598;
+  background: #6B6D70;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
@@ -1375,7 +1375,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #949598;
+  background: #6B6D70;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
@@ -1505,7 +1505,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #949598;
+  background: #6B6D70;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;

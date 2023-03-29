@@ -589,7 +589,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  border: 2px solid #949598 !important;
+  border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 50% !important;
@@ -1580,7 +1580,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  border: 2px solid #949598 !important;
+  border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 50% !important;

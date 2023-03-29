@@ -20,7 +20,7 @@ exports[`getThemedTextColor() should return correct css for theme: light and tex
 
 exports[`getThemedTextColor() should return correct css for theme: light and textColor: contrast-low 1`] = `"#D8D8DB"`;
 
-exports[`getThemedTextColor() should return correct css for theme: light and textColor: contrast-medium 1`] = `"#949598"`;
+exports[`getThemedTextColor() should return correct css for theme: light and textColor: contrast-medium 1`] = `"#6B6D70"`;
 
 exports[`getThemedTextColor() should return correct css for theme: light and textColor: default 1`] = `"#010205"`;
 

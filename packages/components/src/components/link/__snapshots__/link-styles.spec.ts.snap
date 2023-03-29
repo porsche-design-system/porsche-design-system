@@ -500,7 +500,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 @media(hover:hover) {
   .root:hover {
     background-color: rgba(148, 149, 152, .18);
-    border-color: #949598;
+    border-color: #6B6D70;
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }
@@ -662,7 +662,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 @media(hover:hover) {
   .root:hover {
     background-color: rgba(148, 149, 152, .18);
-    border-color: #949598;
+    border-color: #6B6D70;
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }

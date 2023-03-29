@@ -46,7 +46,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #949598",
+    "border": "2px solid #6B6D70",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#010205",
