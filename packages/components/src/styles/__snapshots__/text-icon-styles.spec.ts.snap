@@ -10,11 +10,11 @@ exports[`getThemedTextColor() should return correct css for theme: dark and text
 
 exports[`getThemedTextColor() should return correct css for theme: dark and textColor: inherit 1`] = `"currentColor"`;
 
-exports[`getThemedTextColor() should return correct css for theme: dark and textColor: notification-error 1`] = `"#CB3333"`;
+exports[`getThemedTextColor() should return correct css for theme: dark and textColor: notification-error 1`] = `"#FC4040"`;
 
-exports[`getThemedTextColor() should return correct css for theme: dark and textColor: notification-success 1`] = `"#00C77E"`;
+exports[`getThemedTextColor() should return correct css for theme: dark and textColor: notification-success 1`] = `"#09D087"`;
 
-exports[`getThemedTextColor() should return correct css for theme: dark and textColor: notification-warning 1`] = `"#DDB84B"`;
+exports[`getThemedTextColor() should return correct css for theme: dark and textColor: notification-warning 1`] = `"#F7CB47"`;
 
 exports[`getThemedTextColor() should return correct css for theme: light and textColor: contrast-high 1`] = `"#535457"`;
 
@@ -26,8 +26,8 @@ exports[`getThemedTextColor() should return correct css for theme: light and tex
 
 exports[`getThemedTextColor() should return correct css for theme: light and textColor: inherit 1`] = `"currentColor"`;
 
-exports[`getThemedTextColor() should return correct css for theme: light and textColor: notification-error 1`] = `"#E7323B"`;
+exports[`getThemedTextColor() should return correct css for theme: light and textColor: notification-error 1`] = `"#CC1922"`;
 
-exports[`getThemedTextColor() should return correct css for theme: light and textColor: notification-success 1`] = `"#32B85B"`;
+exports[`getThemedTextColor() should return correct css for theme: light and textColor: notification-success 1`] = `"#197E10"`;
 
-exports[`getThemedTextColor() should return correct css for theme: light and textColor: notification-warning 1`] = `"#FECC1B"`;
+exports[`getThemedTextColor() should return correct css for theme: light and textColor: notification-warning 1`] = `"#F3BE00"`;

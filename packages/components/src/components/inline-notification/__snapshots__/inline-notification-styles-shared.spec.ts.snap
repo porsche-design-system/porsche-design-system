@@ -24,7 +24,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#FCE8E9",
+  "background": "#FFE2E4",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -39,7 +39,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#290A0A",
+  "background": "#3A0F0F",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -54,7 +54,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#E8EEFD",
+  "background": "#D3E1FF",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -69,7 +69,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "background": "#E8EEFD",
+  "background": "#D3E1FF",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -84,7 +84,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#001A33",
+  "background": "#04294E",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -99,7 +99,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto",
   },
-  "background": "#E8EEFD",
+  "background": "#D3E1FF",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -114,7 +114,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr) auto auto",
   },
-  "background": "#E8EEFD",
+  "background": "#D3E1FF",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -129,7 +129,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#E8EEFD",
+  "background": "#D3E1FF",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -144,7 +144,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#001A33",
+  "background": "#04294E",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -159,7 +159,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#EBFAF0",
+  "background": "#E4FFEC",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -189,7 +189,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#FFF9E6",
+  "background": "#FFF4D2",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",
@@ -204,7 +204,7 @@ exports[`getNotificationRootJssStyles() should return correct JssStyle for state
   "@media(min-width:760px)": {
     "gridTemplateColumns": "auto minmax(auto, 1fr)",
   },
-  "background": "#2B2208",
+  "background": "#362B0A",
   "borderRadius": "4px",
   "display": "grid",
   "gap": "16px",

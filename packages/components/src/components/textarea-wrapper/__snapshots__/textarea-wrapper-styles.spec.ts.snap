@@ -380,7 +380,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #E7323B !important;
+  border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -406,7 +406,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 
@@ -447,12 +447,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #E7323B;
+  color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 "
@@ -474,7 +474,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #E7323B !important;
+  border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -500,7 +500,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 
@@ -550,7 +550,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #E7323B;
+  color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -567,7 +567,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 "
@@ -796,7 +796,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #32B85B !important;
+  border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -822,7 +822,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 
@@ -863,12 +863,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #32B85B;
+  color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 "
@@ -890,7 +890,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #32B85B !important;
+  border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -916,7 +916,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 
@@ -966,7 +966,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #32B85B;
+  color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -983,7 +983,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 "
@@ -1005,7 +1005,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #E7323B !important;
+  border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1031,7 +1031,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 
@@ -1073,12 +1073,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #E7323B;
+  color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 "
@@ -1100,7 +1100,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #E7323B !important;
+  border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1126,7 +1126,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 
@@ -1177,7 +1177,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #E7323B;
+  color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -1194,7 +1194,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 "
@@ -1425,7 +1425,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #32B85B !important;
+  border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1451,7 +1451,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 
@@ -1493,12 +1493,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #32B85B;
+  color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 "
@@ -1520,7 +1520,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #32B85B !important;
+  border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1546,7 +1546,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 
@@ -1597,7 +1597,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #32B85B;
+  color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -1614,7 +1614,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #258843 !important;
+    border-color: #0E4809 !important;
   }
 }
 "
@@ -1636,7 +1636,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #E7323B !important;
+  border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1662,7 +1662,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 @media(hover:hover) {
   ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 
@@ -1703,12 +1703,12 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #E7323B;
+  color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #C51720 !important;
+    border-color: #951219 !important;
   }
 }
 "

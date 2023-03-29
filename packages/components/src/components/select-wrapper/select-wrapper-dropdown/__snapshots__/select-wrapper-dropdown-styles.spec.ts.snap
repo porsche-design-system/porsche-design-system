@@ -23,7 +23,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
 }
 "
@@ -52,7 +52,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #C51720;
+    border-color: #951219;
   }
 }
 "
@@ -139,7 +139,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #008A57;
+    border-color: #069561;
   }
 }
 "
@@ -168,7 +168,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #258843;
+    border-color: #0E4809;
   }
 }
 "
@@ -2860,10 +2860,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
 }
 "
@@ -2925,10 +2925,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #C51720;
+    border-color: #951219;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #C51720;
+    border-color: #951219;
   }
 }
 "
@@ -2990,10 +2990,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
 }
 "
@@ -3055,10 +3055,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #C51720;
+    border-color: #951219;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #C51720;
+    border-color: #951219;
   }
 }
 "
@@ -3380,10 +3380,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #008A57;
+    border-color: #069561;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #008A57;
+    border-color: #069561;
   }
 }
 "
@@ -3445,10 +3445,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #258843;
+    border-color: #0E4809;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #258843;
+    border-color: #0E4809;
   }
 }
 "
@@ -3510,10 +3510,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #008A57;
+    border-color: #069561;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #008A57;
+    border-color: #069561;
   }
 }
 "
@@ -3575,10 +3575,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #258843;
+    border-color: #0E4809;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #258843;
+    border-color: #0E4809;
   }
 }
 "
