@@ -39,7 +39,7 @@ export class Wordmark {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.theme);
 
-    // optimized with ImageOptim and svgo
+    // optimized with SVGO, see docs in assets folder
     const svg = (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4383 300">
         <title>Porsche</title>
