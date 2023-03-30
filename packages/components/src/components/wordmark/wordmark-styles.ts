@@ -1,7 +1,13 @@
 import type { WordmarkSize } from './wordmark-utils';
 import type { Theme } from '../../types';
-import { getCss } from '../../utils';
-import { addImportantToEachRule, focusPseudoJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
+import { getCss, isHighContrastMode } from '../../utils';
+import {
+  addImportantToEachRule,
+  focusPseudoJssStyle,
+  getHighContrastColors,
+  getThemedColors,
+  hostHiddenStyles,
+} from '../../styles';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
   return getCss({
@@ -26,7 +32,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
       svg: {
         display: 'block',
         height: 'inherit',
-        fill: getThemedColors(theme).primaryColor,
+        fill: isHighContrastMode ? getHighContrastColors().canvasTextColor : getThemedColors(theme).primaryColor,
       },
     },
   });
