@@ -82,5 +82,3 @@ Run `yarn vite` or `npm start` and check if the components are displayed correct
 ## When are Porsche Design System components initialized?
 
 See [componentsReady()](helpers/components-ready) for further information.
-
-[//]: # 'TODO: add sample vue?'
