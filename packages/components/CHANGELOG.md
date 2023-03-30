@@ -12,8 +12,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+
+#### Changed
+
 - Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
   of `Styles` subpackage [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2436)
+
+#### Fixed
+
+- Color Contrast issues and rendering in Windows High Contrast Mode
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2420)
 
 ### [3.0.0-alpha.4] - 2023-03-28
 
