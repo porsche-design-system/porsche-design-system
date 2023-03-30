@@ -15,124 +15,30 @@ exports[`addImportantToEachRule() should add !important to each rule 1`] = `
 }
 `;
 
-exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
+exports[`focusPseudoJssStyle should return correct jss style 1`] = `
 {
-  "WebkitBackfaceVisibility": "hidden",
-  "backfaceVisibility": "hidden",
-}
-`;
-
-exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 1, pseudo: '::before' } 1`] = `
-{
-  "&::-moz-focus-inner": {
-    "border": 0,
-  },
-  "&::before": {
-    "bottom": 0,
-    "content": """",
-    "left": 0,
-    "outline": "1px solid transparent",
-    "outlineOffset": "1px",
-    "position": "absolute",
-    "right": 0,
-    "top": 0,
-  },
   "&:focus::before": {
-    "outlineColor": "deeppink",
-  },
-  "&:focus:not(:focus-visible)::before": {
-    "outlineColor": "transparent",
-  },
-  "outline": 0,
-}
-`;
-
-exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 2, pseudo: '::after' } 1`] = `
-{
-  "&::-moz-focus-inner": {
-    "border": 0,
-  },
-  "&::after": {
+    "borderRadius": "1px",
     "bottom": 0,
     "content": """",
     "left": 0,
-    "outline": "1px solid transparent",
+    "outline": "2px solid #1A44EA",
     "outlineOffset": "2px",
     "position": "absolute",
     "right": 0,
     "top": 0,
   },
-  "&:focus::after": {
-    "outlineColor": "deeppink",
-  },
-  "&:focus:not(:focus-visible)::after": {
-    "outlineColor": "transparent",
+  "&:focus:not(:focus-visible)::before": {
+    "outline": 0,
   },
   "outline": 0,
 }
 `;
 
-exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 3 } 1`] = `
+exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
 {
-  "&::-moz-focus-inner": {
-    "border": 0,
-  },
-  "&:focus": {
-    "outlineColor": "deeppink",
-  },
-  "&:focus:not(:focus-visible)": {
-    "outlineColor": "transparent",
-  },
-  "outline": "1px solid transparent",
-  "outlineOffset": "3px",
-}
-`;
-
-exports[`getFocusJssStyles() should return correct JssStyle for params: { color: 'red' } 1`] = `
-{
-  "&::-moz-focus-inner": {
-    "border": 0,
-  },
-  "&:focus": {
-    "outlineColor": "red",
-  },
-  "&:focus:not(:focus-visible)": {
-    "outlineColor": "transparent",
-  },
-  "outline": "1px solid transparent",
-  "outlineOffset": "2px",
-}
-`;
-
-exports[`getFocusJssStyles() should return correct JssStyle for params: { offset: 1 } 1`] = `
-{
-  "&::-moz-focus-inner": {
-    "border": 0,
-  },
-  "&:focus": {
-    "outlineColor": "currentColor",
-  },
-  "&:focus:not(:focus-visible)": {
-    "outlineColor": "transparent",
-  },
-  "outline": "1px solid transparent",
-  "outlineOffset": "1px",
-}
-`;
-
-exports[`getFocusJssStyles() should return correct JssStyle for params: {} 1`] = `
-{
-  "&::-moz-focus-inner": {
-    "border": 0,
-  },
-  "&:focus": {
-    "outlineColor": "currentColor",
-  },
-  "&:focus:not(:focus-visible)": {
-    "outlineColor": "transparent",
-  },
-  "outline": "1px solid transparent",
-  "outlineOffset": "2px",
+  "WebkitBackfaceVisibility": "hidden",
+  "backfaceVisibility": "hidden",
 }
 `;
 

@@ -1,8 +1,7 @@
 import type { WordmarkSize } from './wordmark-utils';
 import type { Theme } from '../../types';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
-import { borderWidthBase } from '@porsche-design-system/utilities-v2/';
+import { addImportantToEachRule, focusPseudoJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
   return getCss({
@@ -22,21 +21,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         display: 'block',
         textDecoration: 'none',
         height: 'inherit',
-        outline: 0,
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(),
-          borderRadius: '1px',
-        },
-        '&:focus::before': {
-          outline: `${borderWidthBase} solid ${getThemedColors(theme).focusColor}`,
-          outlineOffset: '2px',
-        },
-        // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
-        '&:focus:not(:focus-visible)::before': {
-          outlineColor: 'transparent',
-        },
+        ...focusPseudoJssStyle,
       },
       svg: {
         display: 'block',

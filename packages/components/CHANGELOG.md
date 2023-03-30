@@ -9,19 +9,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Color Contrast issues and rendering in Windows High Contrast Mode
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2420)
+
+### [3.0.0-alpha.5] - 2023-03-30
+
 #### Added
 
 - `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+- `Crest` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2437)
 
 #### Changed
 
 - Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
   of `Styles` subpackage [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2436)
-
-#### Fixed
-
-- Color Contrast issues and rendering in Windows High Contrast Mode
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2420)
 
 ### [3.0.0-alpha.4] - 2023-03-28
 
@@ -56,7 +59,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 
 - React: missing animation of `Carousel` in certain scenarios
-- High-Contrast-Mode issues: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2420)
 
 #### Changed
 

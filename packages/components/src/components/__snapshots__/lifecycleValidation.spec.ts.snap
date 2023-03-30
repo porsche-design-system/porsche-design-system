@@ -114,6 +114,14 @@ exports[`should call validateProps() with correct parameters via render for p-co
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-crest: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "href": "string",
+  "target": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-display: propTypes with ValidatorFunctions 1`] = `
 {
   "align": "oneOf",

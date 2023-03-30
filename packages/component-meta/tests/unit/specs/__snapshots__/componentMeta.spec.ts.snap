@@ -533,6 +533,29 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-crest": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "href": "string",
+      "target": "string",
+    },
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "props": {
+      "aria": null,
+      "href": null,
+      "target": "_self",
+    },
+    "styling": "jss",
+  },
   "p-display": {
     "allowedPropValues": {
       "align": [
