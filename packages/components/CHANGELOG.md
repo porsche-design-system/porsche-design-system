@@ -9,6 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+- Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
+  of `Styles` subpackage [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2436)
+
 ### [3.0.0-alpha.4] - 2023-03-28
 
 #### Changed
@@ -69,6 +75,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### 🤡 Component deprecations 🤡
+
+##### Marque [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+
+```diff
+- <p-marque></p-marque>
++ <p-wordmark></p-wordmark>
+```
 
 ##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 

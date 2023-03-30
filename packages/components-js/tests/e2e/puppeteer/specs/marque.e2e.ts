@@ -350,23 +350,6 @@ describe('with link', () => {
     expect(await getLink()).not.toBe(null);
   });
 
-  it('should sync href and target prop when changed programmatically', async () => {
-    await setContentWithLink();
-
-    const host = await getHost();
-    const link = await getLink();
-
-    expect(await getAttribute(link, 'href')).toBe('about:blank#');
-    expect(await getAttribute(link, 'target')).toBe('_self');
-
-    await setProperty(host, 'href', '#some-link');
-    await setProperty(host, 'target', '_blank');
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(link, 'href')).toBe('#some-link');
-    expect(await getAttribute(link, 'target')).toBe('_blank');
-  });
-
   it('should dispatch correct click events', async () => {
     await setContentWithLink();
 
