@@ -271,10 +271,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </p-segmented-control>
         </div>
 
-        <div class="playground light" title="should render default switch">
-          <p-switch>Some label</p-switch>
-        </div>
-
         <div class="playground light" title="should render default scroller">
           <p-scroller>
             <button>Default</button>
@@ -524,10 +520,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'l'">L</my-prefix-p-segmented-control-item>
             <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'xl'">XL</my-prefix-p-segmented-control-item>
           </my-prefix-p-segmented-control>
-        </div>
-
-        <div class="playground light" title="should render default switch with custom prefix">
-          <my-prefix-p-switch p-switch>Some label</my-prefix-p-switch>
         </div>
 
         <div class="playground light" title="should render default scroller with custom prefix">

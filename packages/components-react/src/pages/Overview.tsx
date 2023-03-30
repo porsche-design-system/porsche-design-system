@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react';
 
 export const OverviewPage = (): JSX.Element => {
   const style = `
@@ -272,10 +272,6 @@ export const OverviewPage = (): JSX.Element => {
             </PSegmentedControl>
           </div>
 
-          <div className="playground light" title="should render default switch">
-            <PSwitch>Some label</PSwitch>
-          </div>
-
           <div className="playground light" title="should render default scroller">
             <PScroller>
               <button>Default</button>
@@ -526,10 +522,6 @@ export const OverviewPage = (): JSX.Element => {
                 <PSegmentedControlItem value="l">L</PSegmentedControlItem>
                 <PSegmentedControlItem value="xl">XL</PSegmentedControlItem>
               </PSegmentedControl>
-            </div>
-
-            <div className="playground light" title="should render default switch with custom prefix">
-              <PSwitch>Some label</PSwitch>
             </div>
 
             <div className="playground light" title="should render default scroller with custom prefix">

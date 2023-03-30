@@ -35,7 +35,6 @@
     PSegmentedControlItem,
     PSelectWrapper,
     PSpinner,
-    PSwitch,
     PTable,
     PTableBody,
     PTableCell,
@@ -280,10 +279,6 @@
           <PSegmentedControlItem :value="'l'">L</PSegmentedControlItem>
           <PSegmentedControlItem :value="'xl'">XL</PSegmentedControlItem>
         </PSegmentedControl>
-      </div>
-
-      <div class="playground light" title="should render default switch">
-        <PSwitch>Some label</PSwitch>
       </div>
 
       <div class="playground light" title="should render default scroller">
@@ -535,10 +530,6 @@
             <PSegmentedControlItem :value="'l'">L</PSegmentedControlItem>
             <PSegmentedControlItem :value="'xl'">XL</PSegmentedControlItem>
           </PSegmentedControl>
-        </div>
-
-        <div class="playground light" title="should render default switch with custom prefix">
-          <PSwitch>Some label</PSwitch>
         </div>
 
         <div class="playground light" title="should render default scroller with custom prefix">
