@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-alpha.5] - 2023-03-30
+
 #### Added
 
 - `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
