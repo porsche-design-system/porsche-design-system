@@ -43,7 +43,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
@@ -135,7 +135,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
@@ -306,7 +306,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
@@ -657,9 +657,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #32B85B;
+  border: 2px solid #197E10;
   border-radius: 14px;
-  background-color: #32B85B;
+  background-color: #197E10;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
@@ -695,8 +695,8 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 }
 @media(hover:hover) {
   .root:hover .switch {
-    border-color: #258843;
-    background-color: #258843;
+    border-color: #0E4809;
+    background-color: #0E4809;
   }
   .root:hover .switch .toggle {
     background-color: #FFF;
@@ -785,7 +785,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;

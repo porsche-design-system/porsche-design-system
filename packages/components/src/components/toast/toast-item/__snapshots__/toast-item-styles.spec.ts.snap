@@ -7,7 +7,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #001A33;
+  background: #04294E;
   border-radius: 4px;
   filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
@@ -50,7 +50,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #E8EEFD;
+  background: #D3E1FF;
   border-radius: 4px;
   filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
@@ -93,7 +93,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #001A33;
+  background: #04294E;
   border-radius: 4px;
   filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
@@ -136,7 +136,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #E8EEFD;
+  background: #D3E1FF;
   border-radius: 4px;
   filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
@@ -222,7 +222,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #EBFAF0;
+  background: #E4FFEC;
   border-radius: 4px;
   filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }

@@ -209,7 +209,7 @@ hr {
   padding: 0;
   border: none;
   text-align: left;
-  background: #7E7F82;
+  background: #88898C;
   height: 1px;
   width: 100%;
 }"
@@ -227,7 +227,7 @@ hr {
   padding: 0;
   border: none;
   text-align: left;
-  background: #949598;
+  background: #6B6D70;
   height: 1px;
   width: 100%;
 }"
@@ -245,7 +245,7 @@ hr {
   padding: 0;
   border: none;
   text-align: left;
-  background: #7E7F82;
+  background: #88898C;
   height: 100%;
   width: 1px;
 }"
@@ -263,7 +263,7 @@ hr {
   padding: 0;
   border: none;
   text-align: left;
-  background: #949598;
+  background: #6B6D70;
   height: 100%;
   width: 1px;
 }"

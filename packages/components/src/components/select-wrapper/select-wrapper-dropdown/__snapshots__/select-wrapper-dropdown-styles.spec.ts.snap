@@ -23,7 +23,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
 }
 "
@@ -52,7 +52,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #C51720;
+    border-color: #951219;
   }
 }
 "
@@ -139,7 +139,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #008A57;
+    border-color: #069561;
   }
 }
 "
@@ -168,7 +168,7 @@ button:disabled {
 }
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
-    border-color: #258843;
+    border-color: #0E4809;
   }
 }
 "
@@ -357,7 +357,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 button {
   position: absolute;
@@ -403,8 +403,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-top: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -496,7 +496,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 input {
   display: block;
@@ -575,8 +575,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-top: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -717,8 +717,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-top: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -886,8 +886,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-top: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -979,7 +979,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 button {
   position: absolute;
@@ -1022,7 +1022,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-top: 1px solid #949598 !important;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -1114,7 +1114,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 input {
   display: block;
@@ -1190,7 +1190,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-top: 1px solid #949598 !important;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -1328,7 +1328,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-top: 1px solid #949598 !important;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -1493,7 +1493,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-top: 1px solid #949598 !important;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -1585,7 +1585,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 button {
   position: absolute;
@@ -1631,8 +1631,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-bottom: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -1724,7 +1724,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 input {
   display: block;
@@ -1803,8 +1803,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-bottom: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -1945,8 +1945,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-bottom: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -2114,8 +2114,8 @@ ul {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-bottom: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -2207,7 +2207,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 button {
   position: absolute;
@@ -2250,7 +2250,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-bottom: 1px solid #949598 !important;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -2342,7 +2342,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   padding-top: 3.375rem;
   left: 0;
   right: 0;
-  color: #949598;
+  color: #6B6D70;
 }
 input {
   display: block;
@@ -2418,7 +2418,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-bottom: 1px solid #949598 !important;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -2556,7 +2556,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-bottom: 1px solid #949598 !important;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -2721,7 +2721,7 @@ ul {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-bottom: 1px solid #949598 !important;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -2860,10 +2860,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
 }
 "
@@ -2925,10 +2925,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #C51720;
+    border-color: #951219;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #C51720;
+    border-color: #951219;
   }
 }
 "
@@ -2990,10 +2990,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #9A2727;
+    border-color: #FB0404;
   }
 }
 "
@@ -3055,10 +3055,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #C51720;
+    border-color: #951219;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #C51720;
+    border-color: #951219;
   }
 }
 "
@@ -3380,10 +3380,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #008A57;
+    border-color: #069561;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #008A57;
+    border-color: #069561;
   }
 }
 "
@@ -3445,10 +3445,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #258843;
+    border-color: #0E4809;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #258843;
+    border-color: #0E4809;
   }
 }
 "
@@ -3510,10 +3510,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #008A57;
+    border-color: #069561;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #008A57;
+    border-color: #069561;
   }
 }
 "
@@ -3575,10 +3575,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
-    border-color: #258843;
+    border-color: #0E4809;
   }
   input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #258843;
+    border-color: #0E4809;
   }
 }
 "
@@ -4389,8 +4389,8 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #7E7F82;
-  border-top: 1px solid #7E7F82 !important;
+  border: 2px solid #88898C;
+  border-top: 1px solid #88898C !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -4489,8 +4489,8 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-top: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -4586,7 +4586,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #FBFCFF;
-  border-top: 1px solid #7E7F82 !important;
+  border-top: 1px solid #88898C !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -4682,7 +4682,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-top: 1px solid #949598 !important;
+  border-top: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
@@ -4781,8 +4781,8 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #7E7F82;
-  border-bottom: 1px solid #7E7F82 !important;
+  border: 2px solid #88898C;
+  border-bottom: 1px solid #88898C !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -4881,8 +4881,8 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #949598;
-  border-bottom: 1px solid #949598 !important;
+  border: 2px solid #6B6D70;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -4978,7 +4978,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #FBFCFF;
-  border-bottom: 1px solid #7E7F82 !important;
+  border-bottom: 1px solid #88898C !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
@@ -5074,7 +5074,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   border: 2px solid #010205;
-  border-bottom: 1px solid #949598 !important;
+  border-bottom: 1px solid #6B6D70 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   scrollbar-width: thin;
