@@ -184,6 +184,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p-wordmark></p-wordmark>
         </div>
 
+        <div class="playground light" title="should render default crest">
+          <p-crest></p-crest>
+        </div>
+
         <div class="playground light" title="should render default model-signature">
           <p-model-signature></p-model-signature>
         </div>
@@ -265,10 +269,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
             <p-segmented-control-item [value]="'xl'">XL</p-segmented-control-item>
           </p-segmented-control>
-        </div>
-
-        <div class="playground light" title="should render default switch">
-          <p-switch>Some label</p-switch>
         </div>
 
         <div class="playground light" title="should render default scroller">
@@ -435,6 +435,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <my-prefix-p-wordmark p-wordmark></my-prefix-p-wordmark>
         </div>
 
+        <div class="playground light" title="should render default crest with custom prefix">
+          <my-prefix-p-crest p-crest></my-prefix-p-crest>
+        </div>
+
         <div class="playground light" title="should render default model-signature with custom prefix">
           <my-prefix-p-model-signature p-model-signature></my-prefix-p-model-signature>
         </div>
@@ -516,10 +520,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'l'">L</my-prefix-p-segmented-control-item>
             <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'xl'">XL</my-prefix-p-segmented-control-item>
           </my-prefix-p-segmented-control>
-        </div>
-
-        <div class="playground light" title="should render default switch with custom prefix">
-          <my-prefix-p-switch p-switch>Some label</my-prefix-p-switch>
         </div>
 
         <div class="playground light" title="should render default scroller with custom prefix">

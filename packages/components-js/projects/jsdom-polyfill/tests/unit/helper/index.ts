@@ -47,6 +47,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <input type="checkbox" />
 </p-checkbox-wrapper>`,
   'p-content-wrapper': `<p-content-wrapper></p-content-wrapper>`,
+  'p-crest': '<p-crest></p-crest>',
   'p-display': `<p-display>Some text</p-display>`,
   'p-divider': `<p-divider></p-divider>`,
   'p-fieldset': `<p-fieldset></p-fieldset>`,

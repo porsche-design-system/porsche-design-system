@@ -22,6 +22,7 @@ import { ButtonTilePage } from './ButtonTile';
 import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { ContentWrapperPage } from './ContentWrapper';
+import { CrestPage } from './Crest';
 import { DisplayPage } from './Display';
 import { DividerPage } from './Divider';
 import { FieldsetPage } from './Fieldset';
@@ -114,6 +115,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Content Wrapper',
     path: '/content-wrapper',
     element: <ContentWrapperPage />,
+  },
+  {
+    name: 'Crest',
+    path: '/crest',
+    element: <CrestPage />,
   },
   {
     name: 'Display',
