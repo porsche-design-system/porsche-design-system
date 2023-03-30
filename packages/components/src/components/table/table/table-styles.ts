@@ -1,6 +1,6 @@
 import type { Theme } from '../../../types';
 import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
-import { getCss, isThemeDark } from '../../../utils';
+import { getCss, isThemeDark, isHighContrastMode } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles, doGetThemedColors } from '../../../styles';
 
 export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
@@ -22,7 +22,11 @@ export const getComponentCss = (theme: Theme): string => {
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableHoverColor]: hoverColor,
         [cssVariableTableBorderColor]: contrastLowColor,
-        [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
+        [cssVariableTableHeadCellIconFilter]: isHighContrastMode
+          ? 'none'
+          : isThemeDark(theme)
+          ? 'invert(100%)'
+          : 'none',
       }),
     },
     caption: {
