@@ -55,6 +55,26 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   });
 };
 
+export const getVisualRegressionCrest2xTester = (viewport: 1000): VisualRegressionTester => {
+  return new VisualRegressionTester(browser, {
+    ...defaultOptions,
+    ...customOptions,
+    viewports: [1000],
+    deviceScaleFactor: 2,
+    ...(viewport && { viewports: [viewport] }),
+  });
+};
+
+export const getVisualRegressionCrest3xTester = (viewport: 1000): VisualRegressionTester => {
+  return new VisualRegressionTester(browser, {
+    ...defaultOptions,
+    ...customOptions,
+    viewports: [1000],
+    deviceScaleFactor: 3,
+    ...(viewport && { viewports: [viewport] }),
+  });
+};
+
 export const getVisualRegressionMarque2xTester = (viewport: MarqueViewport): VisualRegressionTester => {
   return new VisualRegressionTester(browser, {
     ...defaultOptions,

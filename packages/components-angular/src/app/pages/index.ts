@@ -34,6 +34,7 @@ import { CarouselComponent } from './carousel.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
+import { CrestComponent } from './crest.component';
 import { DisplayComponent } from './display.component';
 import { DividerComponent } from './divider.component';
 import { FieldsetComponent } from './fieldset.component';
@@ -95,6 +96,7 @@ export const generatedPages = [
   CheckboxWrapperComponent,
   ContentWrapperComponent,
   CoreInitializerComponent,
+  CrestComponent,
   DisplayComponent,
   DividerComponent,
   FieldsetComponent,
@@ -191,6 +193,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Content Wrapper',
     path: 'content-wrapper',
     component: ContentWrapperComponent,
+  },
+  {
+    name: 'Crest',
+    path: 'crest',
+    component: CrestComponent,
   },
   {
     name: 'Display',
