@@ -6,6 +6,7 @@
     PLinkTileModelSignature,
     PStepperHorizontal,
     PStepperHorizontalItem,
+    PSwitch,
     PorscheDesignSystemProvider,
   } from '@porsche-design-system/components-vue';
 </script>
