@@ -1,8 +1,9 @@
+import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import { spacingStaticSmall } from '@porsche-design-system/utilities-v2';
-import { getThemedColors, ThemedColors } from './';
-import type { Theme } from '../types';
+import type { ThemedColors } from './';
+import { spacingStaticSmall, borderWidthBase, themeLightStateFocus } from '@porsche-design-system/utilities-v2';
+import { getThemedColors } from './';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -57,50 +58,19 @@ export const getResetInitialStylesForSlottedAnchor: JssStyle = {
   background: 'transparent',
 };
 
-export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
-  const {
-    pseudo,
-    offset: outlineOffset,
-    color: outlineColor,
-  }: GetFocusStylesOptions = {
-    color: 'currentColor',
-    offset: 2,
-    ...opts,
-  };
-
-  return pseudo
-    ? {
-        outline: 0,
-        '&::-moz-focus-inner': {
-          border: 0,
-        },
-        [`&${pseudo}`]: {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(),
-          outline: '1px solid transparent',
-          outlineOffset: `${outlineOffset}px`,
-        },
-        [`&:focus${pseudo}`]: {
-          outlineColor,
-        },
-        [`&:focus:not(:focus-visible)${pseudo}`]: {
-          outlineColor: 'transparent',
-        },
-      }
-    : {
-        outline: '1px solid transparent',
-        outlineOffset: `${outlineOffset}px`,
-        '&::-moz-focus-inner': {
-          border: 0,
-        },
-        '&:focus': {
-          outlineColor,
-        },
-        '&:focus:not(:focus-visible)': {
-          outlineColor: 'transparent',
-        },
-      };
+export const focusPseudoJssStyle: JssStyle = {
+  outline: 0,
+  '&:focus::before': {
+    content: '""',
+    position: 'absolute',
+    ...getInsetJssStyle(),
+    borderRadius: '1px',
+    outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+    outlineOffset: '2px',
+  },
+  '&:focus:not(:focus-visible)::before': {
+    outline: 0,
+  },
 };
 
 export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>

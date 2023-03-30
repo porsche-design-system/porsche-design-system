@@ -6,6 +6,7 @@
     PLinkTileModelSignature,
     PStepperHorizontal,
     PStepperHorizontalItem,
+    PSwitch,
     PorscheDesignSystemProvider,
   } from '@porsche-design-system/components-vue';
 </script>
@@ -63,6 +64,10 @@
         </PLinkTileModelSignature>
         <!-- eslint-enable vue/no-deprecated-slot-attribute -->
       </div>
+
+      <div class="playground light" title="should render default switch">
+        <PSwitch>Some label</PSwitch>
+      </div>
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
@@ -116,6 +121,10 @@
             <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
           </PLinkTileModelSignature>
           <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+        </div>
+
+        <div class="playground light" title="should render default switch with custom prefix">
+          <PSwitch>Some label</PSwitch>
         </div>
       </div>
     </PorscheDesignSystemProvider>

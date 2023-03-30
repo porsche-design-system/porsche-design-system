@@ -11,6 +11,7 @@ exports[`should match snapshot 1`] = `
   "p-carousel",
   "p-checkbox-wrapper",
   "p-content-wrapper",
+  "p-crest",
   "p-display",
   "p-divider",
   "p-fieldset",

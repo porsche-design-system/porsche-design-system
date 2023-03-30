@@ -66,6 +66,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <p-link slot="secondary" [href]="'#secondary'">Some label</p-link>
           </p-link-tile-model-signature>
         </div>
+
+        <div class="playground light" title="should render default switch">
+          <p-switch>Some label</p-switch>
+        </div>
       </div>
 
       <div style="flex: 1">
@@ -116,6 +120,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <my-prefix-p-link p-link slot="primary" [href]="'#primary'">Some label</my-prefix-p-link>
             <my-prefix-p-link p-link slot="secondary" [href]="'#secondary'">Some label</my-prefix-p-link>
           </my-prefix-p-link-tile-model-signature>
+        </div>
+
+        <div class="playground light" title="should render default switch with custom prefix">
+          <my-prefix-p-switch p-switch>Some label</my-prefix-p-switch>
         </div>
       </div>
     </div>

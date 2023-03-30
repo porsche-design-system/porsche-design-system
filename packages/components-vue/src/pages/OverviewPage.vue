@@ -8,6 +8,7 @@
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
+    PCrest,
     PDisplay,
     PDivider,
     PFieldsetWrapper,
@@ -34,7 +35,6 @@
     PSegmentedControlItem,
     PSelectWrapper,
     PSpinner,
-    PSwitch,
     PTable,
     PTableBody,
     PTableCell,
@@ -194,6 +194,10 @@
         <PWordmark />
       </div>
 
+      <div class="playground light" title="should render default crest">
+        <PCrest />
+      </div>
+
       <div class="playground light" title="should render default model-signature">
         <PModelSignature />
       </div>
@@ -275,10 +279,6 @@
           <PSegmentedControlItem :value="'l'">L</PSegmentedControlItem>
           <PSegmentedControlItem :value="'xl'">XL</PSegmentedControlItem>
         </PSegmentedControl>
-      </div>
-
-      <div class="playground light" title="should render default switch">
-        <PSwitch>Some label</PSwitch>
       </div>
 
       <div class="playground light" title="should render default scroller">
@@ -445,6 +445,10 @@
           <PWordmark />
         </div>
 
+        <div class="playground light" title="should render default crest with custom prefix">
+          <PCrest />
+        </div>
+
         <div class="playground light" title="should render default model-signature with custom prefix">
           <PModelSignature />
         </div>
@@ -526,10 +530,6 @@
             <PSegmentedControlItem :value="'l'">L</PSegmentedControlItem>
             <PSegmentedControlItem :value="'xl'">XL</PSegmentedControlItem>
           </PSegmentedControl>
-        </div>
-
-        <div class="playground light" title="should render default switch with custom prefix">
-          <PSwitch>Some label</PSwitch>
         </div>
 
         <div class="playground light" title="should render default scroller with custom prefix">
