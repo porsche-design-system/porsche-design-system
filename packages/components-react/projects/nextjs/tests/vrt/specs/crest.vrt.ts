@@ -6,13 +6,13 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'crest', '/crest', { javaScriptEnabled: false })
   ).toBeFalsy();
 });
 
-xit('should have no visual regression on retina 2x display', async () => {
+it('should have no visual regression on retina 2x display', async () => {
   expect(
     await vrtTest(getVisualRegressionCrest2xTester(1000), 'crest-2x', '/crest', {
       javaScriptEnabled: false,
@@ -20,7 +20,7 @@ xit('should have no visual regression on retina 2x display', async () => {
   ).toBeFalsy();
 });
 
-xit('should have no visual regression on retina 3x display', async () => {
+it('should have no visual regression on retina 3x display', async () => {
   expect(
     await vrtTest(getVisualRegressionCrest3xTester(1000), 'crest-3x', '/crest', {
       javaScriptEnabled: false,
