@@ -1,1 +1,1 @@
-export const themeLightNotificationInfoSoft = '#E8EEFD';
+export const themeLightNotificationInfoSoft = '#D3E1FF';
