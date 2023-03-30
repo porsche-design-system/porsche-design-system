@@ -6,7 +6,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #E7323B",
+    "border": "2px solid #CC1922",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#010205",
@@ -34,7 +34,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
   },
   "@media(hover:hover)": {
     "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-      "borderColor": "#C51720",
+      "borderColor": "#951219",
     },
   },
 }
@@ -46,7 +46,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #949598",
+    "border": "2px solid #6B6D70",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#010205",
@@ -86,7 +86,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #32B85B",
+    "border": "2px solid #197E10",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#010205",
@@ -114,7 +114,7 @@ exports[`getBaseChildStyles() should return correct css for child: input, state:
   },
   "@media(hover:hover)": {
     "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-      "borderColor": "#258843",
+      "borderColor": "#0E4809",
     },
   },
 }
@@ -126,7 +126,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #CB3333",
+    "border": "2px solid #FC4040",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#FBFCFF",
@@ -150,7 +150,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
   },
   "@media(hover:hover)": {
     "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
-      "borderColor": "#9A2727",
+      "borderColor": "#FB0404",
     },
   },
 }
@@ -162,7 +162,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #7E7F82",
+    "border": "2px solid #88898C",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#FBFCFF",
@@ -198,7 +198,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #00C77E",
+    "border": "2px solid #09D087",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#FBFCFF",
@@ -222,7 +222,7 @@ exports[`getBaseChildStyles() should return correct css for child: select, state
   },
   "@media(hover:hover)": {
     "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover)": {
-      "borderColor": "#008A57",
+      "borderColor": "#069561",
     },
   },
 }
@@ -234,7 +234,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #CB3333",
+    "border": "2px solid #FC4040",
     "borderRadius": "4px",
     "bottom": 5,
     "boxSizing": "border-box",
@@ -263,7 +263,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-      "borderColor": "#9A2727",
+      "borderColor": "#FB0404",
     },
   },
 }
@@ -275,7 +275,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #CB3333",
+    "border": "2px solid #FC4040",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#FBFCFF",
@@ -303,7 +303,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-      "borderColor": "#9A2727",
+      "borderColor": "#FB0404",
     },
   },
 }
@@ -315,7 +315,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #7E7F82",
+    "border": "2px solid #88898C",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#FBFCFF",
@@ -355,7 +355,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
     "WebkitAppearance": "none",
     "appearance": "none",
     "background": "transparent",
-    "border": "2px solid #00C77E",
+    "border": "2px solid #09D087",
     "borderRadius": "4px",
     "boxSizing": "border-box",
     "color": "#FBFCFF",
@@ -383,7 +383,7 @@ exports[`getBaseChildStyles() should return correct css for child: textarea, sta
   },
   "@media(hover:hover)": {
     "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-      "borderColor": "#008A57",
+      "borderColor": "#069561",
     },
   },
 }
@@ -401,7 +401,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#9A2727 !important",
+            "borderColor": "#FB0404 !important",
           },
         },
       },
@@ -497,7 +497,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#C51720 !important",
+            "borderColor": "#951219 !important",
           },
         },
       },
@@ -575,7 +575,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#258843 !important",
+            "borderColor": "#0E4809 !important",
           },
         },
       },
@@ -614,7 +614,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#C51720 !important",
+            "borderColor": "#951219 !important",
           },
         },
       },
@@ -694,7 +694,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#258843 !important",
+            "borderColor": "#0E4809 !important",
           },
         },
       },
@@ -733,7 +733,7 @@ exports[`getLabelStyles() should return correct css for child: input, hideLabel:
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(input:not(:disabled):not(:focus):not([readonly])),::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#C51720 !important",
+            "borderColor": "#951219 !important",
           },
         },
       },
@@ -773,7 +773,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#9A2727 !important",
+            "borderColor": "#FB0404 !important",
           },
         },
       },
@@ -851,7 +851,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#008A57 !important",
+            "borderColor": "#069561 !important",
           },
         },
       },
@@ -890,7 +890,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#9A2727 !important",
+            "borderColor": "#FB0404 !important",
           },
         },
       },
@@ -970,7 +970,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#008A57 !important",
+            "borderColor": "#069561 !important",
           },
         },
       },
@@ -1009,7 +1009,7 @@ exports[`getLabelStyles() should return correct css for child: textarea, hideLab
       "@media(hover:hover)": {
         "&:hover": {
           "&~::slotted(textarea:not(:disabled):not(:focus):not([readonly])),::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover)": {
-            "borderColor": "#9A2727 !important",
+            "borderColor": "#FB0404 !important",
           },
         },
       },

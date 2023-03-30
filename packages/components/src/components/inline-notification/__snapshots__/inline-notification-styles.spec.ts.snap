@@ -7,7 +7,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #290A0A !important;
+  background: #3A0F0F !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -57,7 +57,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #FCE8E9 !important;
+  background: #FFE2E4 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -107,7 +107,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -157,7 +157,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -207,7 +207,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -257,7 +257,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -307,7 +307,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -360,7 +360,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -413,7 +413,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -466,7 +466,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -519,7 +519,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -569,7 +569,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -619,7 +619,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -669,7 +669,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -719,7 +719,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -772,7 +772,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -825,7 +825,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #001A33 !important;
+  background: #04294E !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -878,7 +878,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -981,7 +981,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #EBFAF0 !important;
+  background: #E4FFEC !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -1031,7 +1031,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #2B2208 !important;
+  background: #362B0A !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -1081,7 +1081,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #FFF9E6 !important;
+  background: #FFF4D2 !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
