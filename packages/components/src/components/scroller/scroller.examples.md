@@ -67,7 +67,7 @@ If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
       <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
       <p-tag-dismissible>END - some tag content</p-tag-dismissible>
     </p-scroller>
-    <p-text :theme="theme">{{scrollToPosition}}</p-text>
+    <p-text>{{scrollToPosition}}</p-text>
   </div>
 </Playground>
 
