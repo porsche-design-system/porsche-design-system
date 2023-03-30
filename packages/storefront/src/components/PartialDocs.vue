@@ -123,43 +123,40 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
 
       const exampleVue =
         `<!-- prerequisite -->
-  <!-- install with yarn:  -->
-  yarn add vite-plugin-html
+<!-- install with yarn -->
+yarn add vite-plugin-html
 
-  <!-- install with npm:  -->
-  npm install vite-plugin-html
+<!-- install with npm -->
+npm install vite-plugin-html
 
 <!-- index.html -->
-  <${this.location}>
-    <%- ${this.name} %>
-  </${this.location}>
+<${this.location}>
+  <%- ${this.name} %>
+</${this.location}>
 
 <!-- vite.config.ts -->
-  import { defineConfig } from 'vite'
-  import vue from '@vitejs/plugin-vue'
-  import { createHtmlPlugin } from 'vite-plugin-html'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
-  export default defineConfig({
-    plugins: [
-      vue(),
-      createHtmlPlugin({
-        inject: {
-          data: {\n  ` +
+export default defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data: {\n  ` +
         this.params
           .map(({ value, comment }) =>
-            [
-              comment && `          // Alternative: ${comment}`,
-              `          ${this.name}: ${partialRequirePath}(${value}),`,
-            ]
+            [comment && `        // Alternative: ${comment}`, `        ${this.name}: ${partialRequirePath}(${value}),`]
               .filter((x) => x)
               .join(glue)
           )
           .join('\n\n  ') +
-        `\n          },
-        },
-      }),
-    ],
-  })`;
+        `\n        },
+      },
+    }),
+  ],
+})`;
 
       return {
         'vanilla-js': exampleJs,
