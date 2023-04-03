@@ -8,10 +8,6 @@ UX-Pin is not ready for the major babel loader upgrade jet.
 
 - ` babel-loader`
 
-## Partials
-
-Upgrading `@webcomponents/template-shadowroot` causes the dsr-ponyfill tests in playwright to fail
-
 ### Affected dependencies:
 
 - `@webcomponents/template-shadowroot`

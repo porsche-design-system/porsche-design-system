@@ -1,14 +1,11 @@
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import type { Theme } from '../types';
-import type { GetFocusStylesOptions } from './common-styles';
 import {
   addImportantToEachRule,
   addImportantToRule,
+  focusPseudoJssStyle,
   getBackfaceVisibilityJssStyle,
-  getFocusJssStyle,
   getFormTextHiddenJssStyle,
-  getHoverJssStyle,
   getInsetJssStyle,
   getTextHiddenJssStyle,
   getTransition,
@@ -73,12 +70,6 @@ describe('addImportantToEachRule()', () => {
   });
 });
 
-xdescribe('getHoverJssStyles()', () => {
-  it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverJssStyle({ theme })).toMatchSnapshot();
-  });
-});
-
 describe('getInsetJssStyle()', () => {
   it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2], [-1]])(
     'should return correct JssStyle for parameter: %o',
@@ -88,16 +79,9 @@ describe('getInsetJssStyle()', () => {
   );
 });
 
-xdescribe('getFocusJssStyles()', () => {
-  it.each<GetFocusStylesOptions>([
-    {},
-    { color: 'red' },
-    { offset: 1 },
-    { color: 'deeppink', offset: 1, pseudo: '::before' },
-    { color: 'deeppink', offset: 2, pseudo: '::after' },
-    { color: 'deeppink', offset: 3 },
-  ])('should return correct JssStyle for params: %o', (params) => {
-    expect(getFocusJssStyle(params)).toMatchSnapshot();
+describe('focusPseudoJssStyle', () => {
+  it('should return correct jss style', () => {
+    expect(focusPseudoJssStyle).toMatchSnapshot();
   });
 });
 

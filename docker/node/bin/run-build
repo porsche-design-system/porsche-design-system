@@ -6,6 +6,7 @@ set -o pipefail
 if
   [[ "--core-dependencies" == "${1}" ]] ||
   [[ "--assets" == "${1}" ]] ||
+  [[ "--crest" == "${1}" ]] ||
   [[ "--email" == "${1}" ]] ||
   [[ "--icons" == "${1}" ]] ||
   [[ "--fallbacks" == "${1}" ]] ||
@@ -18,6 +19,8 @@ if
   [[ "--components-js-prod" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
+  [[ "--components-react/nextjs" == "${1}" ]] ||
+  [[ "--components-react/remix" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--shared" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||

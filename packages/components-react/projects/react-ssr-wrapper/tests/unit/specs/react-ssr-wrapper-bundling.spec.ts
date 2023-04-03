@@ -19,7 +19,7 @@ describe('nextjs', () => {
       (_, jsFilePath) => {
         const fileContent = fs.readFileSync(jsFilePath, 'utf8');
 
-        expect(fileContent).not.toContain('shadowroot');
+        expect(fileContent).not.toContain('shadowrootmode');
         expect(fileContent).not.toContain('shadowrootdelegatesfocus');
         expect(fileContent).not.toContain('process.browser');
         expect(fileContent).not.toContain('"ssr"'); // added className from server build
@@ -60,7 +60,7 @@ describe('remix', () => {
       (_, jsFilePath) => {
         const fileContent = fs.readFileSync(jsFilePath, 'utf8');
 
-        expect(fileContent).not.toContain('shadowroot');
+        expect(fileContent).not.toContain('shadowrootmode');
         expect(fileContent).not.toContain('shadowrootdelegatesfocus');
         expect(fileContent).not.toContain('process.browser');
         expect(fileContent).not.toContain('"ssr"'); // added className from server build

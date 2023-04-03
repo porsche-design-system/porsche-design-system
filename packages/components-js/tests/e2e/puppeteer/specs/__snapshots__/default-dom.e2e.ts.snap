@@ -20,7 +20,7 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-banner 1`] = `
-"<p-inline-notification class="root hydrated">
+"<p-inline-notification class="hydrated">
 </p-inline-notification>"
 `;
 
@@ -99,6 +99,14 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
   <slot>
   </slot>
 </div>"
+`;
+
+exports[`should have no basic DOM regression for p-crest 1`] = `
+"<picture>
+  <source srcset="http://localhost:3001/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x" type="image/webp">
+  <source srcset="http://localhost:3001/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x" type="image/png">
+  <img src="http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png" alt="Porsche">
+</picture>"
 `;
 
 exports[`should have no basic DOM regression for p-display 1`] = `
@@ -217,6 +225,29 @@ exports[`should have no basic DOM regression for p-link-tile 1`] = `
       value</p>
     <p-link class="link-or-button hydrated">
       value</p-link>
+  </div>
+</div>"
+`;
+
+exports[`should have no basic DOM regression for p-link-tile-model-signature 1`] = `
+"<div class="root">
+  <div class="image-container">
+    <slot>
+    </slot>
+  </div>
+  <p-model-signature class="model hydrated">
+  </p-model-signature>
+  <div class="content">
+    <a class="link-overlay" href="#" target="_self" tabindex="-1" aria-hidden="true">
+    </a>
+    <h2 class="heading">
+      value</h2>
+    <div class="link-group" role="group">
+      <slot name="primary">
+      </slot>
+      <slot name="secondary">
+      </slot>
+    </div>
   </div>
 </div>"
 `;
@@ -374,16 +405,12 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-table 1`] = `
-"<div class="root">
-  <div class="scroll-area">
-    <div class="table" role="table">
-      <slot>
-      </slot>
-      <span class="scroll-trigger">
-      </span>
-    </div>
+"<p-scroller class="hydrated">
+  <div class="table" role="table">
+    <slot>
+    </slot>
   </div>
-</div>"
+</p-scroller>"
 `;
 
 exports[`should have no basic DOM regression for p-table-body 1`] = `
@@ -497,3 +524,12 @@ exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-toast 1`] = `""`;
+
+exports[`should have no basic DOM regression for p-wordmark 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4383 300">
+  <title>
+    Porsche</title>
+  <path d="M492 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h424zm6-143v65c0 7.8-4.2 12-12 12H68V66h418c7.8 0 12 4.2 12 12zm220 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h407c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H718zm401-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H724c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h395zm657-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-351v79h-68V0h492c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-418v89h418zm155-81c0-48.1 25.9-74 74-74h482v56h-476c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h412c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-482v-56h476c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-412c-48.1 0-74-25.9-74-74V74zm643 0c0-48.1 25.9-74 74-74h470v66h-464c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h464v66h-470c-48.1 0-74-25.9-74-74V74zM3718 0v300h-68V183h-397v117h-68V0h68v117h397V0h68zm148 56v66h517v56h-517v66h517v56h-585V0h585v56h-517z">
+  </path>
+</svg>"
+`;

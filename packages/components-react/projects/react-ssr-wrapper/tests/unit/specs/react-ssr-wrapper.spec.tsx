@@ -5,10 +5,10 @@ import * as minifyCssUtils from '../../../src/minifyCss';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { paramCase } from 'change-case';
+import { paramCase, pascalCase } from 'change-case';
+import Link from 'next/link';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
-  // @ts-ignore
   const Component = fromComponents[componentName];
   const tagName = paramCase(componentName) as TagName;
   const componentMeta = getComponentMeta(tagName);
@@ -17,7 +17,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   jest.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
 
   // default children
-  const { requiredChild, hasSlot } =
+  const { requiredChild, hasSlot, requiredNamedSlots } =
     tagName === 'p-tabs'
       ? { ...componentMeta, requiredChild: 'p-tabs-item label=TabItem' } // TODO: validation for this is missing and therefore componentMeta doesn't contain it
       : componentMeta;
@@ -39,6 +39,15 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
           <RequiredChildTag {...requiredChildProps} />
         ) : tagName === 'p-carousel' ? ( // we need an actual DOM node here
           <div>Some child</div>
+        ) : requiredNamedSlots ? (
+          requiredNamedSlots.map(({ slotName, tagName }) => {
+            const Component = fromComponents[pascalCase(tagName)];
+            return (
+              <Component key={slotName} slot={slotName} href={tagName.includes('link') ? '#' : undefined}>
+                Some label
+              </Component>
+            );
+          })
         ) : (
           'Some child'
         ),
@@ -54,7 +63,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   expect(container.firstElementChild).toMatchSnapshot();
 });
 
-xdescribe('manual test cases', () => {
+describe('manual test cases', () => {
   const testCases: Partial<Record<TagName, (() => JSX.Element)[]>> = {
     'p-grid-item': [
       () => (
@@ -68,6 +77,49 @@ xdescribe('manual test cases', () => {
           <fromComponents.PGridItem>Item 1</fromComponents.PGridItem>
           <fromComponents.PGridItem>Item 2</fromComponents.PGridItem>
         </fromComponents.PGrid>
+      ),
+    ],
+    'p-link-tile-model-signature': [
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary" href="#primary">
+            Primary
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary" href="#secondary">
+            Secondary
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
+      ),
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary">
+            <a href="#primary-slotted">Primary slotted</a>
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary">
+            <a href="#secondary-slotted">Secondary slotted</a>
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
+      ),
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary">
+            <Link href="#primary-framework">Primary Framework</Link>
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary">
+            <Link href="#secondary-framework">Secondary Framework</Link>
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
+      ),
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary">
+            <a href="#primary-slotted">Primary slotted with span</a>
+            <span>Something else</span>
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary">
+            <a href="#secondary-slotted">Secondary slotted</a>
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
       ),
     ],
     'p-tabs-item': [

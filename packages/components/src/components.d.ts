@@ -11,11 +11,11 @@ import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
-import { ButtonTileAlign, ButtonTileAspectRatio, ButtonTileSize, ButtonTileWeight, LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./utils";
-import { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from "./components/button-tile/button-tile-utils";
+import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
+import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
@@ -32,7 +32,8 @@ import { InlineNotificationActionIcon, InlineNotificationState } from "./compone
 import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
-import { LinkTileAriaAttribute, LinkTileTarget } from "./components/link-tile/link-tile-utils";
+import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -60,6 +61,7 @@ import { TextListListType, TextListOrderType, TextListType } from "./components/
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
+import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -109,7 +111,8 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }
@@ -272,6 +275,10 @@ export namespace Components {
     }
     interface PCarousel {
         /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
@@ -300,9 +307,9 @@ export namespace Components {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
@@ -354,6 +361,20 @@ export namespace Components {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
@@ -834,6 +855,36 @@ export namespace Components {
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
+    interface PLinkTileModelSignature {
+        /**
+          * Aspect ratio of the link-tile-model-signature.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Heading text.
+         */
+        "heading": string;
+        /**
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
+         */
+        "headingTag"?: LinkTileModelSignatureHeadingTag;
+        /**
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+         */
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: LinkTileModelSignatureModel;
+        /**
+          * Adapts the font weight of the heading.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -1008,6 +1059,10 @@ export namespace Components {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
@@ -1169,6 +1224,10 @@ export namespace Components {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -1447,6 +1506,28 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
 }
 export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1559,6 +1640,12 @@ declare global {
         prototype: HTMLPContentWrapperElement;
         new (): HTMLPContentWrapperElement;
     };
+    interface HTMLPCrestElement extends Components.PCrest, HTMLStencilElement {
+    }
+    var HTMLPCrestElement: {
+        prototype: HTMLPCrestElement;
+        new (): HTMLPCrestElement;
+    };
     interface HTMLPDisplayElement extends Components.PDisplay, HTMLStencilElement {
     }
     var HTMLPDisplayElement: {
@@ -1654,6 +1741,12 @@ declare global {
     var HTMLPLinkTileElement: {
         prototype: HTMLPLinkTileElement;
         new (): HTMLPLinkTileElement;
+    };
+    interface HTMLPLinkTileModelSignatureElement extends Components.PLinkTileModelSignature, HTMLStencilElement {
+    }
+    var HTMLPLinkTileModelSignatureElement: {
+        prototype: HTMLPLinkTileModelSignatureElement;
+        new (): HTMLPLinkTileModelSignatureElement;
     };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
@@ -1859,6 +1952,12 @@ declare global {
         prototype: HTMLPToastItemElement;
         new (): HTMLPToastItemElement;
     };
+    interface HTMLPWordmarkElement extends Components.PWordmark, HTMLStencilElement {
+    }
+    var HTMLPWordmarkElement: {
+        prototype: HTMLPWordmarkElement;
+        new (): HTMLPWordmarkElement;
+    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1869,6 +1968,7 @@ declare global {
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
+        "p-crest": HTMLPCrestElement;
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
         "p-fieldset": HTMLPFieldsetElement;
@@ -1885,6 +1985,7 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
+        "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -1919,6 +2020,7 @@ declare global {
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
+        "p-wordmark": HTMLPWordmarkElement;
     }
 }
 declare namespace LocalJSX {
@@ -1982,7 +2084,8 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }
@@ -2145,6 +2248,10 @@ declare namespace LocalJSX {
     }
     interface PCarousel {
         /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
@@ -2181,9 +2288,9 @@ declare namespace LocalJSX {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
@@ -2235,6 +2342,20 @@ declare namespace LocalJSX {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
@@ -2723,6 +2844,36 @@ declare namespace LocalJSX {
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
+    interface PLinkTileModelSignature {
+        /**
+          * Aspect ratio of the link-tile-model-signature.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Heading text.
+         */
+        "heading"?: string;
+        /**
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
+         */
+        "headingTag"?: LinkTileModelSignatureHeadingTag;
+        /**
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+         */
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: LinkTileModelSignatureModel;
+        /**
+          * Adapts the font weight of the heading.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -2912,6 +3063,10 @@ declare namespace LocalJSX {
           * Scrolls the scroll area to the left either smooth or immediately
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
+        /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
@@ -3106,6 +3261,10 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when sorting is changed.
          */
         "onSortingChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -3407,6 +3566,28 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
@@ -3417,6 +3598,7 @@ declare namespace LocalJSX {
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
+        "p-crest": PCrest;
         "p-display": PDisplay;
         "p-divider": PDivider;
         "p-fieldset": PFieldset;
@@ -3433,6 +3615,7 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
+        "p-link-tile-model-signature": PLinkTileModelSignature;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -3467,6 +3650,7 @@ declare namespace LocalJSX {
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
         "p-toast-item": PToastItem;
+        "p-wordmark": PWordmark;
     }
 }
 export { LocalJSX as JSX };
@@ -3482,6 +3666,7 @@ declare module "@stencil/core" {
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
+            "p-crest": LocalJSX.PCrest & JSXBase.HTMLAttributes<HTMLPCrestElement>;
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
@@ -3498,6 +3683,7 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
+            "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
@@ -3532,6 +3718,7 @@ declare module "@stencil/core" {
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
+            "p-wordmark": LocalJSX.PWordmark & JSXBase.HTMLAttributes<HTMLPWordmarkElement>;
         }
     }
 }

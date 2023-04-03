@@ -38,7 +38,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: p
 img {
   display: block;
   pointer-events: none;
-  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   height: inherit;
 }"
 `;
@@ -124,7 +124,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 img {
   display: block;
   pointer-events: none;
-  filter: invert(54%) sepia(4%) saturate(229%) hue-rotate(187deg) brightness(91%) contrast(84%);
+  filter: invert(66%) sepia(3%) saturate(333%) hue-rotate(187deg) brightness(82%) contrast(86%);
 }"
 `;
 
@@ -138,7 +138,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
 img {
   display: block;
   pointer-events: none;
-  filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
+  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
 }"
 `;
 
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
 img {
   display: block;
   pointer-events: none;
-  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
 }"
 `;
 

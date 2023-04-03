@@ -35,6 +35,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <span></span>
       <span></span>
       <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="playground light" title="should render carousel on light background">
@@ -346,6 +348,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div>Slide 4</div>
         <div>Slide 5</div>
         <div>Slide 6</div>
+      </p-carousel>
+    </div>
+
+    <div class="playground light" title="should render carousel with slidesPerPage=auto">
+      <p-carousel [heading]="'slidesPerPage=auto'" [slidesPerPage]="'auto'">
+        <div style="width: 10vw">Slide 1 10vw</div>
+        <div style="width: 200px">Slide 2 200px</div>
+        <div style="width: 100px">Slide 3 100px</div>
+        <div style="width: 40vw">Slide 4 40vw</div>
+        <div style="width: 150px">Slide 5 150px</div>
+        <div style="width: 50vw">Slide 6 50vw</div>
       </p-carousel>
     </div>
 

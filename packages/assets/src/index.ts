@@ -1,3 +1,4 @@
+import { CDN_BASE_URL as CRESTS_CDN_BASE_URL, CRESTS_MANIFEST } from '@porsche-design-system/crest';
 import { CDN_BASE_URL as EMAIL_CDN_BASE_URL, EMAIL_MANIFEST } from '@porsche-design-system/email';
 import { CDN_BASE_URL as FALLBACKS_CDN_BASE_URL, FALLBACKS_MANIFEST } from '@porsche-design-system/fallbacks';
 import { CDN_BASE_URL as FONTS_CDN_BASE_URL, FONTS_MANIFEST } from '@porsche-design-system/fonts';
@@ -12,6 +13,8 @@ import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
 
 // reexports are needed in order to build standalone typings
 export {
+  CRESTS_CDN_BASE_URL,
+  CRESTS_MANIFEST,
   EMAIL_CDN_BASE_URL,
   EMAIL_MANIFEST,
   FALLBACKS_CDN_BASE_URL,

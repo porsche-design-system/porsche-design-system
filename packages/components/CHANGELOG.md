@@ -9,12 +9,81 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-alpha.5] - 2023-03-30
+
 #### Added
 
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
+- `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+- `Crest` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2437)
+- Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
+  of `Styles` subpackage [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2436)
+
+### [3.0.0-alpha.4] - 2023-03-28
+
+#### Changed
+
+- `Table` matches new design language [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+
+#### Added
+
+- Styles: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  - `gridWide`
+  - `gridWideColumnStart` and `pds-grid-wide-column-start`
+  - `gridWideColumnEnd` and `pds-grid-wide-column-end`
+  - `gridNarrowOffset`, `gridNarrowOffsetBase`, `gridNarrowOffsetS`, `gridNarrowOffsetXXL` and
+    `$pds-grid-narrow-offset-base`, `$pds-grid-narrow-offset-s`, `$pds-grid-narrow-offset-xxl`
+  - `gridBasicOffset`, `gridBasicOffsetBase`, `gridBasicOffsetS`, `gridBasicOffsetXXL` and
+    `$pds-grid-basic-offset-base`, `$pds-grid-basic-offset-s`, `$pds-grid-basic-offset-xxl`
+  - `gridExtendedOffset`, `gridExtendedOffsetBase`, `gridExtendedOffsetS`, `gridExtendedOffsetXXL` and
+    `$pds-grid-extended-offset-base`, `$pds-grid-extended-offset-s`, `$pds-grid-extended-offset-xxl`
+  - `gridWideOffset`, `gridWideOffsetBase`, `gridWideOffsetS`, `gridWideOffsetXXL` and `$pds-grid-wide-offset-base`,
+    `$pds-grid-wide-offset-s`, `$pds-grid-wide-offset-xxl`
+  - `gridFullOffset` and `$pds-grid-full-offset`
+- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
 - `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+- `Link Tile Model Signature` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2388)
+- Prop `activeSlideIndex` to `Carousel` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- Prop `slidesPerPage` supports value `auto` of `Carousel`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- Prop `scrollbar` for `Scroller` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+- Prop `theme` for `Table` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+
+#### Fixed
+
+- React: missing animation of `Carousel` in certain scenarios
+
+#### Changed
+
+- Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
+  `@porsche-design-system/components-js/styles/scss`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+
+#### Removed
+
+- `Banner`: CSS variable `--p-banner-position-type`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+
+#### 🤖 Property deprecations 🤖
+
+##### Banner:
+
+- Prop `width` has no effect anymore, instead the component is aligned with Porsche Grid "extended" by default.
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
 
 #### 🤡 Component deprecations 🤡
+
+##### Marque [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+
+```diff
+- <p-marque></p-marque>
++ <p-wordmark></p-wordmark>
+```
 
 ##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
 
@@ -481,6 +550,17 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
   Some label
 -   <p slot="subline">Some Subline</p>
 </p-link-pure>
+```
+
+##### Marque:
+
+- Removed `variant` property.
+
+```diff
+- <p-marque variant="75-years"></p-marque>
++ <p-marque></p-marque>
+// or even better, replace component by wordmark
++ <p-wordmark></p-wordmark>
 ```
 
 ##### Switch:

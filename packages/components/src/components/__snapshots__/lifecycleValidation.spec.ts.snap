@@ -81,6 +81,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 
 exports[`should call validateProps() with correct parameters via render for p-carousel: propTypes with ValidatorFunctions 1`] = `
 {
+  "activeSlideIndex": "number",
   "alignHeader": "oneOf",
   "description": "string",
   "disablePagination": "breakpoint",
@@ -88,7 +89,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "intl": "shape",
   "pagination": "breakpoint",
   "rewind": "boolean",
-  "slidesPerPage": "breakpoint",
+  "slidesPerPage": "oneOf",
   "theme": "oneOf",
   "width": "oneOf",
   "wrapContent": "boolean",
@@ -110,6 +111,14 @@ exports[`should call validateProps() with correct parameters via render for p-co
   "backgroundColor": "oneOf",
   "theme": "oneOf",
   "width": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-crest: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "href": "string",
+  "target": "string",
 }
 `;
 
@@ -303,6 +312,18 @@ exports[`should call validateProps() with correct parameters via render for p-li
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-link-tile-model-signature: propTypes with ValidatorFunctions 1`] = `
+{
+  "aspectRatio": "breakpoint",
+  "description": "string",
+  "heading": "string",
+  "headingTag": "oneOf",
+  "linkDirection": "breakpoint",
+  "model": "oneOf",
+  "weight": "breakpoint",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-marque: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
@@ -375,6 +396,7 @@ exports[`should call validateProps() with correct parameters via render for p-sc
   "gradientColorScheme": "oneOf",
   "scrollIndicatorPosition": "oneOf",
   "scrollToPosition": "shape",
+  "scrollbar": "boolean",
   "theme": "oneOf",
 }
 `;
@@ -448,6 +470,7 @@ exports[`should call validateProps() with correct parameters via render for p-sw
 exports[`should call validateProps() with correct parameters via render for p-table: propTypes with ValidatorFunctions 1`] = `
 {
   "caption": "string",
+  "theme": "oneOf",
 }
 `;
 
@@ -564,6 +587,16 @@ exports[`should call validateProps() with correct parameters via render for p-te
 
 exports[`should call validateProps() with correct parameters via render for p-toast: propTypes with ValidatorFunctions 1`] = `
 {
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-wordmark: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "href": "string",
+  "size": "oneOf",
+  "target": "string",
   "theme": "oneOf",
 }
 `;

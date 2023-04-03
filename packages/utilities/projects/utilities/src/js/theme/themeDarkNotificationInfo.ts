@@ -1,1 +1,1 @@
-export const themeDarkNotificationInfo = '#027FFC';
+export const themeDarkNotificationInfo = '#178BFF';

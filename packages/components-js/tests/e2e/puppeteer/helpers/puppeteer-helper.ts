@@ -2,6 +2,7 @@ import type { ConsoleMessage, ElementHandle, Page, WaitForOptions, SnapshotOptio
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
 
 export type ClickableTests = {
@@ -314,11 +315,18 @@ export const goto = async (page: Page, url: string) => {
 };
 
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
-  const { props, requiredProps, requiredChild, requiredParent } = getComponentMeta(tagName);
+  const { props, requiredProps, requiredChild, requiredParent, requiredNamedSlots } = getComponentMeta(tagName);
 
-  const buildChildMarkup = (requiredChild: string): string => {
+  const buildChildMarkup = (requiredChild: string, requiredNamedSlots: ComponentMeta['requiredNamedSlots']): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
+    } else if (requiredNamedSlots) {
+      return requiredNamedSlots
+        .map(
+          ({ slotName, tagName }) =>
+            `<${tagName} slot="${slotName}"${tagName.includes('link') ? ' href="#"' : ''}>Some label</${tagName}>`
+        )
+        .join('\n');
     } else {
       return 'Some child';
     }
@@ -335,7 +343,10 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
 
   const attributes = requiredProps?.map((prop) => ` ${prop}="${props[prop] ?? 'value'}"`).join() || '';
 
-  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(requiredChild)}</${tagName}>`;
+  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
+    requiredChild,
+    requiredNamedSlots
+  )}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);
 };

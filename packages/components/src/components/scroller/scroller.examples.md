@@ -56,7 +56,7 @@ The `p-scroller` component provides the `scrollToPosition` property. It accepts
 
 If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 
-<Playground :frameworkMarkup="codeExample" :config="{ themable: false }">
+<Playground :frameworkMarkup="codeExample" :config="{ themeable: false }">
   <button id="start" @click="scrollToPosition = '{scrollPosition: 0, isSmooth: true }'">Scroll to start</button>
   <button id="middle" @click="scrollToPosition = '{scrollPosition: 220, isSmooth: true }'">Scroll to middle</button>
   <button id="end" @click="scrollToPosition = '{scrollPosition: 720, isSmooth: true }'">Scroll to end</button>
@@ -67,9 +67,15 @@ If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
       <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
       <p-tag-dismissible>END - some tag content</p-tag-dismissible>
     </p-scroller>
-    <p-text :theme="theme">{{scrollToPosition}}</p-text>
+    <p-text>{{scrollToPosition}}</p-text>
   </div>
 </Playground>
+
+## Scrollbar
+
+The `p-scroller` component may have a scrollbar by setting the `scrollbar` property to `true`.
+
+<Playground :markup="scrollbar" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -175,10 +181,40 @@ export default class Code extends Vue {
   </p-scroller>
 </div>`;
   }
+  scrollbar = `<div style="max-width: 600px">
+  <p-scroller scrollbar="true">
+    <p-text-list>
+      <p-text-list-item>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+      </p-text-list-item>
+      <p-text-list-item>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+        <p-text-list>
+          <p-text-list-item>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+            rebum.
+          </p-text-list-item>
+          <p-text-list-item>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+            rebum.
+          </p-text-list-item>
+        </p-text-list>
+      </p-text-list-item>
+    </p-text-list>
+  </p-scroller>
+</div>`;
 }
 </script>
 
 <style scoped lang="scss">
+
+  :deep(p-scroller > p-text-list) {
+    white-space: nowrap;
+  }
   :deep(p-scroller > *) {
     &:not(:last-child) {
       margin-right: 16px;

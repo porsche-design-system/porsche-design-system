@@ -83,10 +83,10 @@ exports[`should match snapshot 1`] = `
       "state": [
         "neutral",
       ],
-      "width": [
-        "fluid",
-      ],
     },
+    "deprecatedProps": [
+      "width",
+    ],
     "eventNames": [
       "dismiss",
     ],
@@ -370,6 +370,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-carousel": {
     "allowedPropValues": {
+      "activeSlideIndex": "number",
       "alignHeader": [
         "left",
         "center",
@@ -387,7 +388,10 @@ exports[`should match snapshot 1`] = `
       },
       "pagination": "boolean",
       "rewind": "boolean",
-      "slidesPerPage": "number",
+      "slidesPerPage": [
+        "number",
+        "auto",
+      ],
       "theme": [
         "light",
         "dark",
@@ -430,11 +434,12 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
+      "activeSlideIndex": 0,
       "alignHeader": "left",
       "description": null,
       "disablePagination": null,
       "heading": null,
-      "intl": "{}",
+      "intl": null,
       "pagination": true,
       "rewind": true,
       "slidesPerPage": 1,
@@ -525,6 +530,29 @@ exports[`should match snapshot 1`] = `
       "backgroundColor": "transparent",
       "theme": "light",
       "width": "extended",
+    },
+    "styling": "jss",
+  },
+  "p-crest": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "href": "string",
+      "target": "string",
+    },
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "props": {
+      "aria": null,
+      "href": null,
+      "target": "_self",
     },
     "styling": "jss",
   },
@@ -1610,6 +1638,92 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-link-tile-model-signature": {
+    "allowedPropValues": {
+      "aspectRatio": [
+        "1:1",
+        "4:3",
+        "3:4",
+        "16:9",
+        "9:16",
+      ],
+      "description": "string",
+      "heading": "string",
+      "headingTag": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+      ],
+      "linkDirection": [
+        "row",
+        "column",
+      ],
+      "model": [
+        "718",
+        "911",
+        "boxster",
+        "cayenne",
+        "cayman",
+        "macan",
+        "panamera",
+        "taycan",
+        "turbo-s",
+        "turbo",
+      ],
+      "weight": [
+        "regular",
+        "semi-bold",
+      ],
+    },
+    "breakpointCustomizableProps": [
+      "weight",
+      "aspectRatio",
+      "linkDirection",
+    ],
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "namedSlots": [
+      "primary",
+      "secondary",
+    ],
+    "nestedComponents": [
+      "p-model-signature",
+    ],
+    "props": {
+      "aspectRatio": "3:4",
+      "description": null,
+      "heading": null,
+      "headingTag": "h2",
+      "linkDirection": {
+        "base": "column",
+        "xs": "row",
+      },
+      "model": 911,
+      "weight": "semi-bold",
+    },
+    "requiredNamedSlots": [
+      {
+        "slotName": "primary",
+        "tagName": "p-link",
+      },
+      {
+        "slotName": "secondary",
+        "tagName": "p-link",
+      },
+    ],
+    "requiredProps": [
+      "heading",
+    ],
+    "styling": "jss",
+  },
   "p-marque": {
     "allowedPropValues": {
       "aria": {
@@ -1624,12 +1738,14 @@ exports[`should match snapshot 1`] = `
       "target": "string",
       "trademark": "boolean",
     },
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.",
     "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
     "isDelegatingFocus": true,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -1922,6 +2038,7 @@ exports[`should match snapshot 1`] = `
         "isSmooth": "boolean",
         "scrollPosition": "number",
       },
+      "scrollbar": "boolean",
       "theme": [
         "light",
         "dark",
@@ -1948,6 +2065,7 @@ exports[`should match snapshot 1`] = `
       "gradientColorScheme": null,
       "scrollIndicatorPosition": null,
       "scrollToPosition": null,
+      "scrollbar": false,
       "theme": "light",
     },
     "styling": "jss",
@@ -2293,6 +2411,10 @@ exports[`should match snapshot 1`] = `
   "p-table": {
     "allowedPropValues": {
       "caption": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
     },
     "deprecatedEventNames": [
       "sortingChange",
@@ -2308,15 +2430,16 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "caption",
     ],
     "nestedComponents": [
-      "p-button-pure",
+      "p-scroller",
     ],
     "props": {
       "caption": null,
+      "theme": "light",
     },
     "styling": "jss",
   },
@@ -3017,6 +3140,39 @@ exports[`should match snapshot 1`] = `
     "requiredRootNode": [
       "p-toast",
     ],
+    "styling": "jss",
+  },
+  "p-wordmark": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "href": "string",
+      "size": [
+        "small",
+        "inherit",
+      ],
+      "target": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
+    },
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": {
+      "aria": null,
+      "href": null,
+      "size": "small",
+      "target": "_self",
+      "theme": "light",
+    },
     "styling": "jss",
   },
 }

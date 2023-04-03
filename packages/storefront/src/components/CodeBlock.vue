@@ -72,7 +72,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
   .code-block {
@@ -156,13 +156,13 @@
             .token.char,
             .token.builtin,
             .token.inserted {
-              color: #a55a00;
+              color: #7e4603;
             }
 
             .token.atrule,
             .token.attr-value,
             .token.function {
-              color: #3d7b3c;
+              color: #30612f;
             }
           }
         }

@@ -8,21 +8,21 @@ exports[`getThemedBackgroundColor() should return correct backgroundColor for co
 
 exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-surface, theme: light 1`] = `"#EEEFF2"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error-soft, theme: dark 1`] = `"#290A0A"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error-soft, theme: dark 1`] = `"#3A0F0F"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error-soft, theme: light 1`] = `"#FCE8E9"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-error-soft, theme: light 1`] = `"#FFE2E4"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-info-soft, theme: dark 1`] = `"#001A33"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-info-soft, theme: dark 1`] = `"#04294E"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-info-soft, theme: light 1`] = `"#E8EEFD"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-info-soft, theme: light 1`] = `"#D3E1FF"`;
 
 exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success-soft, theme: dark 1`] = `"#003320"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success-soft, theme: light 1`] = `"#EBFAF0"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-success-soft, theme: light 1`] = `"#E4FFEC"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning-soft, theme: dark 1`] = `"#2B2208"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning-soft, theme: dark 1`] = `"#362B0A"`;
 
-exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning-soft, theme: light 1`] = `"#FFF9E6"`;
+exports[`getThemedBackgroundColor() should return correct backgroundColor for color: notification-warning-soft, theme: light 1`] = `"#FFF4D2"`;
 
 exports[`getThemedBackgroundColor() should return correct backgroundColor for color: primary, theme: dark 1`] = `"#FBFCFF"`;
 

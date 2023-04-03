@@ -35,6 +35,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.OverviewComponent,
   },
   {
+    name: 'Overview Flaky',
+    path: 'overview-flaky',
+    component: fromPages.OverviewFlakyComponent,
+  },
+  {
     name: 'Overview Notifications',
     path: 'overview-notifications',
     component: fromPages.OverviewNotificationsComponent,
@@ -76,14 +81,19 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
+    name: 'Carousel Example Dynamic Slides',
+    path: 'carousel-example-dynamic-slides',
+    component: fromExamples.CarouselExampleDynamicSlidesComponent,
+  },
+  {
     name: 'Carousel Example Events',
     path: 'carousel-example-events',
     component: fromExamples.CarouselExampleEventsComponent,
   },
   {
-    name: 'Carousel Example Dynamic Slides',
-    path: 'carousel-example-dynamic-slides',
-    component: fromExamples.CarouselExampleDynamicSlidesComponent,
+    name: 'Carousel Example Jump to Slide',
+    path: 'carousel-example-jump-to-slide',
+    component: fromExamples.CarouselExampleJumpToSlideComponent,
   },
   {
     name: 'Inline Notification Example Action Button',

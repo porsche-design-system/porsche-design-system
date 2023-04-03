@@ -15,10 +15,13 @@ const components: Component[] = [
   'carousel',
   'checkbox-wrapper',
   'content-wrapper',
+  'crest',
   'display',
   'divider',
   'fieldset',
   'fieldset-wrapper',
+  'flex',
+  'grid',
   'heading',
   'headline',
   'icon',
@@ -27,7 +30,10 @@ const components: Component[] = [
   'link-pure',
   'link-social',
   'link-tile',
+  'link-tile-model-signature',
+  'marque',
   'modal',
+  'model-signature',
   'pagination',
   'popover',
   'radio-button-wrapper',
@@ -37,14 +43,17 @@ const components: Component[] = [
   'spinner',
   'stepper-horizontal',
   'switch',
+  'table',
   'tabs',
   'tabs-bar',
   'tag',
   'tag-dismissible',
+  'text',
   'text-field-wrapper',
   'text-list',
   'textarea-wrapper',
   'toast-basic',
+  'wordmark',
 ];
 
 it.each(components)('should have no visual regression for scaled component %s', async (component) => {
@@ -58,7 +67,7 @@ it.each(components)('should have no visual regression for scaled component %s', 
           if (component === 'popover') {
             await openPopoversAndHighlightSpacer(page);
           }
-          if (component === 'modal') {
+          if (['modal', 'banner'].includes(component)) {
             await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
           }
         },

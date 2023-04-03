@@ -496,7 +496,7 @@ describe('hover state', () => {
 });
 
 describe('dropdown position', () => {
-  const expectedDropdownStyle = '1px solid rgb(148, 149, 152)';
+  const expectedDropdownStyle = '1px solid rgb(107, 109, 112)';
 
   it('should set direction to up', async () => {
     await initSelect({ dropdownDirection: 'up' });
