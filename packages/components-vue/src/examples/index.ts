@@ -2,3 +2,4 @@ export { default as InlineNotificationExampleActionButton } from './InlineNotifi
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as ModalExampleAccessibility } from './ModalExampleAccessibility.vue';
 export { default as ScrollerExample } from './ScrollerExample.vue';
+export { default as SegmentedControlExample } from './SegmentedControlExample.vue';

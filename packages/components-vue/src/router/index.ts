@@ -7,6 +7,7 @@ import {
   InlineNotificationExampleEvents,
   ModalExampleAccessibility,
   ScrollerExample,
+  SegmentedControlExample,
 } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
@@ -39,6 +40,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/scroller-example',
     name: 'Scroller Example',
     component: ScrollerExample,
+  },
+  {
+    path: '/segmented-control-example',
+    name: 'Segmented Control Example',
+    component: SegmentedControlExample,
   },
 ];
 

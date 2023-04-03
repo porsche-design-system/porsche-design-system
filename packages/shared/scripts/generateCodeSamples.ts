@@ -118,6 +118,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/segmented-control-example.html',
           componentsAngularPath + '/segmented-control-example.component.ts',
           componentsReactPath + '/SegmentedControlExample.tsx',
+          componentsVuePath + '/SegmentedControlExample.vue',
         ],
       ],
     },
