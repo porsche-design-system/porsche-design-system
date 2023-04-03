@@ -4860,15 +4860,6 @@ button::before {
     opacity: 1;
   }
 }
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvas canvastext;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-
     </style>
     <button
       type="button"
