@@ -21,11 +21,12 @@ type CodeSample = {
   samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
-type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';
+type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js' | 'vue';
 
 const componentsJsPath = '../components-js/src/examples';
 const componentsAngularPath = '../components-angular/src/app/examples';
 const componentsReactPath = '../components-react/src/examples';
+const componentsVuePath = '../components-vue/src/examples';
 
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
@@ -78,11 +79,13 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/inline-notification-example-events.html',
           componentsAngularPath + '/inline-notification-example-events.component.ts',
           componentsReactPath + '/InlineNotificationExampleEvents.tsx',
+          componentsVuePath + '/InlineNotificationExampleEvents.vue',
         ],
         [
           componentsJsPath + '/inline-notification-example-action-button.html',
           componentsAngularPath + '/inline-notification-example-action-button.component.ts',
           componentsReactPath + '/InlineNotificationExampleActionButton.tsx',
+          componentsVuePath + '/InlineNotificationExampleActionButton.vue',
         ],
       ],
     },
@@ -93,6 +96,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/modal-example-accessibility.html',
           componentsAngularPath + '/modal-example-accessibility.component.ts',
           componentsReactPath + '/ModalExampleAccessibility.tsx',
+          componentsVuePath + '/ModalExampleAccessibility.vue',
         ],
       ],
     },
@@ -293,7 +297,7 @@ const generateCodeSamples = (): void => {
   const packagesFolder = path.resolve(__dirname, '../../');
 
   const types = [
-    `type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';`,
+    `type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js' | 'vue';`,
     `type FrameworkMarkup = { [key in Framework]?: string };`,
   ].join('\n');
 
