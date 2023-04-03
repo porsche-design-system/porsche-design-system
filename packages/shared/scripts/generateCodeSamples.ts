@@ -129,6 +129,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/stepper-horizontal-example.html',
           componentsAngularPath + '/stepper-horizontal-example.component.ts',
           componentsReactPath + '/StepperHorizontalExample.tsx',
+          componentsVuePath + '/StepperHorizontalExample.vue',
         ],
       ],
     },
