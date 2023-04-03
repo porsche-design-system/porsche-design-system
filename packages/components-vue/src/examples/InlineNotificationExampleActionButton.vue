@@ -3,10 +3,7 @@
   import { ref } from 'vue';
 
   const isLoading = ref(false);
-
-  const onAction = () => {
-    isLoading.value = !isLoading.value;
-  };
+  const onAction = () => (isLoading.value = !isLoading.value);
 </script>
 
 <template>
