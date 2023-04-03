@@ -6,6 +6,7 @@ import {
   InlineNotificationExampleActionButton,
   InlineNotificationExampleEvents,
   ModalExampleAccessibility,
+  ScrollerExample,
 } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
@@ -33,6 +34,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/modal-example-accessibility',
     name: 'Modal Example Accessibility',
     component: ModalExampleAccessibility,
+  },
+  {
+    path: '/scroller-example',
+    name: 'Scroller Example',
+    component: ScrollerExample,
   },
 ];
 

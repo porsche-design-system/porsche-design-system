@@ -107,6 +107,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/scroller-example.html',
           componentsAngularPath + '/scroller-example.component.ts',
           componentsReactPath + '/ScrollerExample.tsx',
+          componentsVuePath + '/ScrollerExample.vue',
         ],
       ],
     },
