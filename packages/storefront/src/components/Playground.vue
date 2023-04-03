@@ -37,7 +37,7 @@
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor
-          v-if="showCodeEditor"
+          v-if="showCodeEditor && activeFramework !== 'vue'"
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
