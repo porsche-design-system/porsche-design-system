@@ -10,11 +10,10 @@
 
 ## Usage
 
-tbd.
-
-## Styles
-
-The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
+- Use breakpoints as building blocks of responsive design to control layout adaptation at specific viewport or device
+  sizes.
+- Follow a mobile-first approach, starting with the breakpoint base and layering on styles for larger devices.
+- Test the application on different breakpoints to ensure that it works on all devices.
 
 #### JS
 

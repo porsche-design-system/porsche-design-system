@@ -2,74 +2,49 @@
 
 <TableOfContents></TableOfContents>
 
-## When to use
+Use tags to label, categorize, or organize items using keywords that describe them.
 
-- Indicate or highlight a certain attribute of an item.
-- Show that content is mapped to one or multiple categories.
-- Indicate that a certain filter is active.
+### Usage
 
-### Content
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
-Use short text content for easy scanning. Use two words only if necessary to describe the status and differentiate it
-from other tags.
+##### Do:
 
-### Scalable
+- Use to indicate or highlight a certain attribute of an item.
+- Use to show that content is mapped to one or multiple categories.
+- Use to indicate that a certain filter is active.
+- Use short labeling for easy scanning.
+- Have a large number of tags horizontally scrollable, swipeable, or navigable with arrows.
+- Have tags in a predefined space and move to the next line once they meet the boundary.
+- Use color themes such as success, neutral, warning, and error for better visual perception
+- Include icons to improve the faster perception.
+- Add a link for further explanation about the tag for better understandability (With modal).
+- Add a link for additional information that is not necessary for the task completion (With modal).
 
-Technically a UI could have as many tags as needed, there are different options when a set of tags cannot fit on screen:
+##### Don’t:
 
-- A group of tags becomes horizontal scrollable, swipeable, or navigable with arrows.
-- Tags are set in a predefined space and move to the next line once they meet the boundary.
-
----
-
-## Types
-
-### Tag
-
-| Name    | Usage                                                                        |
-| ------- | ---------------------------------------------------------------------------- |
-| `p-tag` | To indicate that an item has a certain attribute or is mapped to a category. |
-
-| Variants            |                                                                                                                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Color               | Color themes such as success, neutral, warrning and error can be selected for better visual perception.                                                                                    |
-| Icon                | Include icons to improve faster perception.                                                                                                                                                |
-| With link or button | To show additional information a link or button can be passed into the tag. By doing this, the entire component becomes clickable and no other content than the button or link is allowed. |
-
-#### With link or button
-
-A link within a tag allows adding certain information such as:
-
-- Further explanation about the tag for better understandability.
-- Additional information that is not necessary for the task completion.
-
-Suitable methods to show additional information could be the [Modal](components/modal) component.  
-A button or link within a tag is not allowed to be used for navigation.
+- Don’t use more than two words (only if necessary).
+- Don’t implement something else than a link or button.
+- Don’t use Tags for navigation.
 
 ---
 
-### Tag Dismissible
+# Tag Dismissible
 
-| Name                | Usage                                                                                                          |
-| ------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `p-tag-dismissible` | To show that a certain filter is active. By clicking the tag it is dismissed and the selection is deactivated. |
+Allows users to quickly refine the result of data they want to be presented on the page.
 
-| Variants |                                                                                                                |
-| -------- | -------------------------------------------------------------------------------------------------------------- |
-| Label    | If additional information for better orientation is needed. E.G. to which category an attribute/filter refers. |
+### Usage
 
-#### Interaction
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
-On click or tap the entire component should be dismissed for the purpose of deactivating a certain filter. No other
-interaction with this component is allowed.
+##### Do:
 
-#### Scalable
+- Use to show that a certain filter is active.
+- Use this component with a label if additional information is needed (e.g. category an attribute/filter refers to).
 
-In case of long label or value dismissible tags can handle multiline text. This is not recommended and should be
-avoided.
+##### Don’t:
 
----
-
-## Related Components
-
-- [Modal](components/modal)
+- Don’t use it for other interactions than dismissing a selection.
+- Don’t have long content that causes multiline.

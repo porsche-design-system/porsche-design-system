@@ -10,7 +10,14 @@
 
 ## Usage
 
-tbd.
+##### Do:
+
+- Reduce the use of shadows within the panels. Rather use a combination of different background colors like base and
+  surface to create a visual hierarchy.
+- Use same style for common components that are arranged in the row.
+- Reserve drop-shadow for elements that require it, such as flyouts, notifications, or navigation menus.
+- Use medium for sticky elements.
+- Use high for element that have high priority.
 
 ## Styles
 

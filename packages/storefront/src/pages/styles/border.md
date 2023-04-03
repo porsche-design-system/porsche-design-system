@@ -10,7 +10,27 @@
 
 ## Usage
 
-tbd.
+#### Border-Radius
+
+##### Do:
+
+- Use the large border-radius for parent elements such as images and containers.
+- Adapt nested elements within a parent element with a medium border-radius for better visual appearance.
+- Use the small border-radius for all interactive elements (e.g. Buttons).
+- Icons should be designed with a 2px border-radius when feasible.
+
+##### Don’t:
+
+- Don’t use other border-radius than the defined tokens.
+- Don’t use a border-radius when an element touches the side of a parent element or the browser.
+
+#### Border-Width
+
+Standardized stroke-widths are used for all components for a consistent appearance.
+
+##### Don’t
+
+- Use borders to create a minimalistic interface. Use other than the defined stroke widths.
 
 ## Styles
 

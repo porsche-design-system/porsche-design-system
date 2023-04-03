@@ -2,60 +2,23 @@
 
 <TableOfContents></TableOfContents>
 
-## When to use
+### Usage
 
-- Use button-tiles to display a prominent button with image as a stand-alone element or in a group.
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
----
+##### Do:
 
-## Types
+- Use Button-Tile for **on-page interactivity**.
+- Use Link-Tile [Link-Tile](components/link-tile) instead if you want to **navigate** to another page.
+- Use Button-Tile with appropriate aspect ratios and short descriptions (80 characters or fewer).
+- Use basic Button-Tile for better perception tests and compact Button-tile for improved spacing (especially on mobile).
+- Use gradient Button-Tile when image contrast is insufficient and select images with natural contrast.
+- Use font size for visual hierarchy and customize image type and font size for responsiveness.
+- Use engaging verbs and product names in compact Button-tile.
+- Create assets upfront for image processing.
 
-| Type    | Usage                                                                               |
-| ------- | ----------------------------------------------------------------------------------- |
-| Basic   | for prominent links (performs best in perception tests)                             |
-| Compact | improved spacing for more button-tiles in a group (alternative for basic on mobile) |
+##### Don’t:
 
-| Variant      | Usage                                                                             |
-| ------------ | --------------------------------------------------------------------------------- |
-| Gradient     | when the image does not provide enough contrast for description + label           |
-| Size (Font)  | to create a visual hierarchy among other button-tiles and elements                |
-| Aspect Ratio | changes dimensions to landscape, portrait or square formats according to use case |
-
-### Description
-
-A button-tile provides a description to let the user know what to expect. The description should be short (around 80
-characters or fewer) for fast perception.
-
-**Note:** in some cases, e.g. manual font scaling via browser settings or too long description can cause overflowing
-content. This should be avoided by e.g. using different aspect-ratios for mobile and desktop.
-
-### UX Writing
-
-| Type    | Usage                                                                                                                                |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Basic   | Create curiosity and desire for the described product in the description. The label should be held short, descriptive and technical. |
-| Compact | Work with an engaging verb and the name of your product or service.                                                                  |
-
-### Image
-
-The used image should refer to the topic of the button-tile. Select an image with the focus in the center or slightly
-above since the component places the image centered in the desired aspect ratio and masks the picture.
-
-Further, the image must provide adequate contrast for the description and label. Avoid adding any manipulation to the
-image. The goal is to display the image as naturally as possible.
-
-### Image Processing
-
-The component does not do any adjustments to the image. The assets need to be created upfront.
-
-### Aspect Ratio
-
-Select an aspect ratio appropriate to your use case. For a set of button-tiles use 1:1, 4:3, 3:4, or 16:9. A set of two
-tiles in a row work with 3:4. A single, large button-tile should use 4:3 or 16:9. Be aware that 16:9 and 9:16 can cause
-issues due to the extreme format. May switch aspect ratios on different viewports.
-
-### Responsive
-
-The image, type (compact) and font size can be breakpoint customizable. Keep in mind that the topic and link destination
-should stay the same. The padding adjusts based on the viewport. Within one viewport there is only one consistent
-padding for all button-tiles.
+- Don’t manipulate images, keep them natural and contrasted.
+- Don’t write long descriptions that overflow content (especially on mobile).

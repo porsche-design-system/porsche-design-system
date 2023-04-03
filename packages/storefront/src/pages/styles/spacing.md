@@ -10,7 +10,23 @@
 
 ## Usage
 
-tbd.
+Fluid spacing scale up or down based on the size of the viewing device or browser window in a predefined range. This is
+in contrast to using static spacing, which is set using a specific pixel value and does not scale.
+
+**Do:**
+
+- Use the fluid spacers to ensure a smooth and proportional scaling of space between elements, groups, and sections that
+  are aligned with the fluid typography and grid.
+- Use "m" as the default space value since it corresponds to the grid-gap .
+- Use values from "xs" to "l" for distances within a container, such as between heading, text, and buttons, or for
+  spacing and grouping of form fields.
+- Use values from "l" to "xxl" for spacing between sections on a page.
+
+**Don't:**
+
+- Only use the static spacers when needed (e.g. within custom components).
+- Don't use values outside of the recommended range for specific types of spacing.
+- Don’t change the spacer manually based on different viewports.
 
 ## Styles
 

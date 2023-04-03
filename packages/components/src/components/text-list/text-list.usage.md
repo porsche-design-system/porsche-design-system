@@ -2,39 +2,21 @@
 
 <TableOfContents></TableOfContents>
 
-## When to use
+### Usage
 
-- Use a Text List to display short pieces of information in form of an unordered or ordered list.
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
----
+Do:
 
-## Types
+- Use to display short pieces of information in the form of an unordered or ordered list.
+- Use an Unordered List to display content with equal value and an Ordered List for sequenced content.
+- Arrange list items in a logical way such as from highest to the lowest level. If necessary split the content into
+  smaller and more specific categories and group them.
+- Stick to a homogeneous writing structure and style within one list.
+- Use sentence-style capitalization for each list item capitalizing only the first letter.
 
-To ensure a seamless UX in all Porsche web applications it is recommended to use the Text List as follows
+Don’t:
 
-| Type           | Usage                                                     |
-| -------------- | --------------------------------------------------------- |
-| Unordered List | Content with equal value is displayed in unordered lists. |
-| Ordered List   | Sequenced content should be displayed in an ordered list. |
-
-## Usage
-
-### Order
-
-Arrange list items in a logical way, e.g. from highest to lowest level. If necessary (depending on the total length of
-the list) you should split the content into smaller and more specific categories and group them.
-
-### Writing style
-
-It is recommended to stick to a homogeneous writing structure and style within one list. Avoid e.g. mixing active with
-passive voice or declarative with imperative sentences.
-
-### Capitalization
-
-Use sentence-style capitalization for each list item. Capitalize only the first letter of the item.
-
-## Do's & Don'ts
-
-### Hierarchy
-
-Text Lists should not exceed two hierarchy levels.
+- Don’t exceed two hierarchy levels in Text Lists.
+- Don’t mix active with passive voice or declarative with imperative sentences within one list.

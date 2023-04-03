@@ -11,10 +11,6 @@ export const config: StorefrontConfig = {
   'Start Designing': {
     // @ts-ignore
     Introduction: [() => import('@/pages/start-designing/introduction.md')],
-    // @ts-ignore
-    'Design Workflow': [() => import('@/pages/start-designing/design-workflow.md')],
-    // @ts-ignore
-    'Sketch Plugins': [() => import('@/pages/start-designing/sketch-plugins.md')],
   },
   'Start Coding': {
     // @ts-ignore

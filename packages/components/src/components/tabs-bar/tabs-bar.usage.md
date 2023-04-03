@@ -2,40 +2,22 @@
 
 <TableOfContents></TableOfContents>
 
-## When to use
+### Usage
 
-- Use Tabs Bar as a Skip-Navigation to jump to sections on a longer page.
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
----
+##### Do:
 
-## Types
+- Use as an anchor navigation to jump to a section on a longer page.
+- Use it to switch between different stages of content.
+- Use it to show different types of a element.
 
-To ensure a seamless UX in all Porsche web applications it is recommended to use the Tabs Bar as follows
+##### Don’t:
 
-| Type      | Usage                                                                                                                          |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Standard  | Standard (regular) will be used on a monochrome background.                                                                    |
-| Highlight | Highlight (semi-bold) will be used on a polychrome background (e.g. on images) for better comprehensibility and accessibility. |
-| Small     | Small are used to provide an additional level or for smaller viewports.                                                        |
-| Medium    | Medium tabs are usually used in page header or for larger viewports.                                                           |
-
-## Behavior
-
-### Overflow
-
-When a set of Tabs cannot fit on screen the tab bar becomes horizontal swibeable and navigable with arrows. To navigate
-back and forth use the arrows.
-
-## Usage
-
-### Scalable
-
-As Tabs can horizontally scroll, technically a UI could have as many tabs as needed. You should use no more than six
-tabs.
-
-### Text label
-
-It is recommended to always keep the label short. Try not to use more than two words for a tab label.
+- Don’t place more than six tabs within a group.
+- Don’t use more than two words for a tab label whenever possible.
+- Don’t use it for primary navigation.
 
 ---
 

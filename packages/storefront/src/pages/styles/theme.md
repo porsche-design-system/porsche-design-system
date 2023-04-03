@@ -10,7 +10,19 @@
 
 ## Usage
 
-tbd.
+##### Do:
+
+- Always choose the Light Theme as the first choice for designing Porsche applications. Stick to the limited color set
+  provided.
+- Use accessibility-safe colors, i.e., neutral contrast high and neutral contrast medium, to guarantee optimal contrast.
+- Play with darker/lighter grey shades to make an element stand out from the background or to set emphasis on it.
+- Mix color themes within the application on rarely. Ensure a sufficient contrast ratio.
+
+Don’t:
+
+- Don’t use neutral contrast low for displaying crucial information.
+- Mix colors of different themes (e.g. primary-light with base-dark).
+- Avoid adding new colors to the color palette.
 
 ## Styles
 
