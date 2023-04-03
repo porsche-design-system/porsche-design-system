@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import * as fromPages from '../pages';
 import { paramCase } from 'change-case';
-import { InlineNotificationExampleActionButton } from '../examples';
+import { InlineNotificationExampleActionButton, InlineNotificationExampleEvents } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
   const name = page.replace(/Page$/, '');
@@ -19,6 +19,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/inline-notification-example-action-button',
     name: 'Inline Notification Example Action Button',
     component: InlineNotificationExampleActionButton,
+  },
+  {
+    path: '/inline-notification-example-events',
+    name: 'Inline Notification Example Events',
+    component: InlineNotificationExampleEvents,
   },
 ];
 
