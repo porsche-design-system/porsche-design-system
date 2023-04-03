@@ -8,7 +8,7 @@ export const getComponentCss = (
   orientation: BreakpointCustomizable<DividerDirection>,
   theme: Theme
 ): string => {
-  const { contrastLowColor, contrastMediumColor, contrastHighColor, primaryColor } = getThemedColors(theme);
+  const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const colorMap: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
     'contrast-low': contrastLowColor,
     'contrast-medium': contrastMediumColor,
