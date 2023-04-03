@@ -152,6 +152,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/table-example-advanced.html',
           componentsAngularPath + '/table-example-advanced.component.ts',
           componentsReactPath + '/TableExampleAdvanced.tsx',
+          componentsVuePath + '/TableExampleAdvanced.vue',
           'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
         ],
       ],

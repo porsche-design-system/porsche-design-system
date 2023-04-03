@@ -9,6 +9,7 @@ import {
   ScrollerExample,
   SegmentedControlExample,
   StepperHorizontalExample,
+  TableExampleAdvanced,
 } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
@@ -51,6 +52,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/stepper-horizontal-example',
     name: 'Stepper Horizontal Example',
     component: StepperHorizontalExample,
+  },
+  {
+    path: '/table-example-advanced',
+    name: 'Table Example Advanced',
+    component: TableExampleAdvanced,
   },
 ];
 

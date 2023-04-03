@@ -4,6 +4,7 @@
     PButtonGroup,
     PStepperHorizontal,
     PStepperHorizontalItem,
+    PText,
   } from '@porsche-design-system/components-vue';
   import type { StepperHorizontalItemState, StepperHorizontalChangeEvent } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
@@ -51,7 +52,7 @@
   };
 
   const onChange = (e: CustomEvent<StepperHorizontalChangeEvent>): void => {
-    const { activeStepIndex } = e.detail; // TODO
+    const { activeStepIndex } = e;
 
     const newState = [...steps.value];
     for (let i = activeStepIndex + 1; i < newState.length; i++) {
