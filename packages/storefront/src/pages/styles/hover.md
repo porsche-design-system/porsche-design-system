@@ -14,7 +14,10 @@
 
 ## Usage
 
-tbd.
+The :hover state gives visual feedback on interactive elements. It is only visible when the mouse is over the element to
+indicate the possibility of interaction. By default, the :hover state turns backgrounds into the hover token with the
+frosted glass token applied. Borders switch from the border token to the primary token. The curser icon becomes a
+pointer.
 
 ## Styles
 

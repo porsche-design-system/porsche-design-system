@@ -9,10 +9,9 @@ component in various situations.
 
 ##### Do:
 
-- Use a carousel component to showcase a group of related featured content in a row, such as images or cards.
-- Use a carousel component when you have five or fewer items of the same style to display.
-- Use a carousel component when there is insufficient content space to display all items without overlapping or
-  cluttering.
+- Use to showcase a group of related featured content in a row, such as images or cards.
+- Use when you have five or fewer items of the same style to display.
+- Use when there is insufficient content space to display all items without overlapping or cluttering.
 - Keep the number of slides within the carousel to a minimum, preferably five or fewer.
 - Use specify the number of slides visible at the same time, either static or for each breakpoint individually.
 

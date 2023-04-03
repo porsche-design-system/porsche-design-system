@@ -11,7 +11,6 @@ component in various situations.
 
 - Use Button Pure as a more subtle call to action or to execute an action.
 - Choose the appropriate variant for your use case, such as Icon and Text or Text only.
-- Ensure a minimum height of 40px for the icon-only variant.
 - Use Icon left as the default state and stretch only on small viewports or areas.
 - Keep the label short and include active verbs to indicate the action.
 - Stack Button Pure groups left-aligned to guarantee scannability and legibility.

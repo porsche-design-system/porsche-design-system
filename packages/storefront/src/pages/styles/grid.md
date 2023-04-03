@@ -18,7 +18,7 @@ Window</p-link>
 
 ## Usage
 
-##### Grid Areas
+##### Grid Areas:
 
 **Basic-Grid 12 Columns:** This is the default and should contain all productive content, such as copy, graphics, and
 descriptive imagery (or at least the main focus of the image).
@@ -32,7 +32,7 @@ interactive/productive modules can make use of the full 16 columns.
 **Full-bleed:** For immersive moments, images and background colors can be stretched to the full width of the viewport.
 This does not correspond to the grid.
 
-Note that the Basic-, Extended-, and Wide-Grid all equal 6 columns on mobile viewports.
+**Note:** that the Basic-, Extended-, and Wide-Grid all equal 6 columns on mobile viewports.
 
 ##### Do:
 

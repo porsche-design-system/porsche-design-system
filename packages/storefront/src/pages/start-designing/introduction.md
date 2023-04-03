@@ -11,7 +11,7 @@ access to all of our tools, methods and communication channels:
 
 <p-link target="_blank" variant="secondary" href="https://ux.porsche.com/">Sign Up for the Onboarding</p-link>
 
-## 1. Tooling
+## Tooling
 
 ##### Figma:
 
@@ -35,32 +35,31 @@ of the design process. Sign up for a UXPin account and start building prototypes
 Sign up for a UXPin account and download the desktop app. See this video for the main functionalities See this video on
 how to work with our components.
 
-<p-link-pure target="_blank" href="...">UXPin Download</p-link-pure>
+<p-link-pure target="_blank" href="https://www.uxpin.com/">UXPin Download</p-link-pure>
 
-<p-link-pure target="_blank" href="...">Sign up for a UXPin account</p-link-pure>
+<p-link-pure target="_blank" href="https://www.uxpin.com/docs/getting-started/downloading-and-using-uxpin/">UXPin
+Tutorials</p-link-pure>
 
-<p-link-pure target="_blank" href="..">UXPin Tutorials</p-link-pure>
-
-## 2. Get inspired
+## Get inspired
 
 You are welcome to have a look into other digital Porsche projects within our Porsche Figma/UXpin Organisation and use
 them as a starting point. The styles and components of the Porsche Design System are provided in one Figma and UX Pin
 library that can be easily linked with your file.
 
-<p-link-pure target="_blank" href="https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip)">Design
+<p-link-pure target="_blank" href="https://www.figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?node-id=105%3A146&t=U501JwGtSL3KHyJk-1">Design
 System v3 (Figma)</p-link-pure>
 
-<p-link-pure target="_blank" href="https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip)">Overview
+<p-link-pure target="_blank" href="https://www.figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1">Overview
 & Key Screens (Figma)</p-link-pure>
 
-## 3. Ressouces
+## Ressouces
 
 ### Porsche Next font
 
 In order to design Porsche web applications and to use the Porsche Design System libraries properly, you have to
 download and install the Porsche Next font.
 
-<p-link-pure target="_blank" href="https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip)">Porsche
+<p-link-pure target="_blank" href="https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip">Porsche
 Next font download</p-link-pure>
 
 ### Images & Videos

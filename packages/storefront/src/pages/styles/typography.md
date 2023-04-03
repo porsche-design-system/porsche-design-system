@@ -30,7 +30,7 @@ to the viewport.
 
 ##### Don’t:
 
-- Don't use static font styles (only used in components).
+- Don't use static font styles.
 - Don't use thin, bold, or any italic style of the Porsche Next.
 
 ## Styles
