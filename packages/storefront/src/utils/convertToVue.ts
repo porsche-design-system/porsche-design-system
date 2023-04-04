@@ -18,7 +18,7 @@ export const transformClassAttribute = (markup: string): string =>
 
 export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
-  markup.replace(/\son([a-z]+?)="(.*?)"/g, (m, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
+  markup.replace(/\son([a-z]+?)="(.*?)"/g, (m, $key, $value) => ` @on${pascalCase($key)}={() => { ${$value} }}`);
 
 export const transformBooleanDigitAndUndefinedValues = (markup: string): string =>
   markup.replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}').replace(/{(911|718)}/g, '"$1"'); // TODO replace temporary 911|718 work around with more generic approach
