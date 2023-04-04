@@ -62,6 +62,7 @@ exports[`should match snapshot 1`] = `
     "allowedPropValues": {
       "description": "string",
       "heading": "string",
+      "open": "boolean",
       "persistent": "boolean",
       "state": [
         "info",
@@ -109,11 +110,15 @@ exports[`should match snapshot 1`] = `
     "props": {
       "description": null,
       "heading": null,
+      "open": false,
       "persistent": false,
       "state": "info",
       "theme": "light",
       "width": "extended",
     },
+    "requiredProps": [
+      "open",
+    ],
     "styling": "jss",
   },
   "p-button": {
