@@ -1,4 +1,4 @@
-import { camelCase, pascalCase, paramCase } from 'change-case';
+import { camelCase, pascalCase } from 'change-case';
 
 export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
