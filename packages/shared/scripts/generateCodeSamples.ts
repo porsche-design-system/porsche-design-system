@@ -183,6 +183,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/text-field-wrapper-example-imask.html',
           componentsAngularPath + '/text-field-wrapper-example-imask.component.ts',
           componentsReactPath + '/TextFieldWrapperExampleIMask.tsx',
+          componentsVuePath + '/TextFieldWrapperExampleIMask.vue',
         ],
         [
           componentsJsPath + '/text-field-wrapper-example-search.html',
