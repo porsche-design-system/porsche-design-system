@@ -12,6 +12,7 @@ import {
   TableExampleAdvanced,
   TableExampleBasic,
   TableExampleSorting,
+  TabsBarExampleAccessibility,
 } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
@@ -69,6 +70,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/table-example-sorting',
     name: 'Table Example Sorting',
     component: TableExampleSorting,
+  },
+  {
+    path: '/tabs-bar-example-accessibility',
+    name: 'Tabs Bar Example Accessibility',
+    component: TabsBarExampleAccessibility,
   },
 ];
 
