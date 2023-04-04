@@ -11,16 +11,10 @@ const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 export const ANIMATION_DURATION = 600;
 
-export const getAnimationIn = (keyframesName: string, durationVar?: string): JssStyle => {
-  const duration = durationVar ? `var(${durationVar},${ANIMATION_DURATION}ms)` : `${ANIMATION_DURATION}ms`;
-  return {
-    animation: `${duration} $${keyframesName} ${easeInQuad} forwards`,
-  };
-};
-
-export const getAnimationOut = (keyframesName: string): JssStyle => ({
-  animation: addImportantToRule(`${ANIMATION_DURATION}ms $${keyframesName} ${easeOutQuad} forwards`),
-});
+const duration =
+  ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test'
+    ? `var(--p-animation-duration,${ANIMATION_DURATION}ms)`
+    : `${ANIMATION_DURATION}ms`;
 
 export type KeyframesDirection = 'in' | 'out';
 export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
@@ -68,10 +62,11 @@ export const getComponentCss = (): string => {
       '@keyframes in': getKeyframesMobile('in', cssVariablePositionBottomInternal),
       '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },
-    hydrated: getAnimationIn(
-      'in',
-      ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test' && '--p-animation-duration'
-    ),
-    [toastCloseClassName]: getAnimationOut('out'),
+    hydrated: {
+      animation: `${duration} $in ${easeInQuad} forwards`,
+    },
+    [toastCloseClassName]: {
+      animation: addImportantToRule(`${ANIMATION_DURATION}ms $out ${easeOutQuad} forwards`),
+    },
   });
 };
