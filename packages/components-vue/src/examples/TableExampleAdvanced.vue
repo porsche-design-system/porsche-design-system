@@ -14,7 +14,6 @@
   } from '@porsche-design-system/components-vue';
   import type { DataAdvanced } from '@porsche-design-system/shared';
   import { ref } from 'vue';
-
   import type { TableChangeEvent } from '@porsche-design-system/components-vue';
 
   const head = ref(headAdvanced);

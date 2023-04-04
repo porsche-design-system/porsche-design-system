@@ -11,6 +11,7 @@ import {
   StepperHorizontalExample,
   TableExampleAdvanced,
   TableExampleBasic,
+  TableExampleSorting,
 } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
@@ -63,6 +64,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/table-example-basic',
     name: 'Table Example Basic',
     component: TableExampleBasic,
+  },
+  {
+    path: '/table-example-sorting',
+    name: 'Table Example Sorting',
+    component: TableExampleSorting,
   },
 ];
 

@@ -6,3 +6,4 @@ export { default as SegmentedControlExample } from './SegmentedControlExample.vu
 export { default as StepperHorizontalExample } from './StepperHorizontalExample.vue';
 export { default as TableExampleAdvanced } from './TableExampleAdvanced.vue';
 export { default as TableExampleBasic } from './TableExampleBasic.vue';
+export { default as TableExampleSorting } from './TableExampleSorting.vue';
