@@ -166,6 +166,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/tabs-bar-example-basic.html',
           componentsAngularPath + '/tabs-bar-example-basic.component.ts',
           componentsReactPath + '/TabsBarExampleBasic.tsx',
+          componentsVuePath + '/TabsBarExampleBasic.vue',
         ],
         [
           componentsJsPath + '/tabs-bar-example-accessibility.html',

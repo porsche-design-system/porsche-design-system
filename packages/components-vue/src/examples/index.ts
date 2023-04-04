@@ -8,3 +8,5 @@ export { default as TableExampleAdvanced } from './TableExampleAdvanced.vue';
 export { default as TableExampleBasic } from './TableExampleBasic.vue';
 export { default as TableExampleSorting } from './TableExampleSorting.vue';
 export { default as TabsBarExampleAccessibility } from './TabsBarExampleAccessibility.vue';
+export { default as TabsBarExampleBasic } from './TabsBarExampleBasic.vue';
+export { default as TextFieldWrapperIMask } from './TextFieldWrapperIMask.vue';

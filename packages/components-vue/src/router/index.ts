@@ -13,6 +13,8 @@ import {
   TableExampleBasic,
   TableExampleSorting,
   TabsBarExampleAccessibility,
+  TabsBarExampleBasic,
+  TextFieldWrapperIMask,
 } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
@@ -75,6 +77,16 @@ export const routes: RouteRecordRaw[] = [
     path: '/tabs-bar-example-accessibility',
     name: 'Tabs Bar Example Accessibility',
     component: TabsBarExampleAccessibility,
+  },
+  {
+    path: '/tabs-bar-example-basic',
+    name: 'Tabs Bar Example Basic',
+    component: TabsBarExampleBasic,
+  },
+  {
+    path: '/text-field-wrapper-example-imask',
+    name: 'Text Field Wrapper Example IMask',
+    component: TextFieldWrapperIMask,
   },
 ];
 
