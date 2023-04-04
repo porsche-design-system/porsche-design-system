@@ -104,7 +104,7 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: `visibility 0s linear .2s`,
+                transition: 'visibility 0s linear .2s',
               }),
           ...hostHiddenStyles,
           // workaround via pseudo element to fix stacking (black) background in safari
