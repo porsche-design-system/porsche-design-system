@@ -119,7 +119,6 @@ export class Banner {
         persistent={this.persistent}
         theme={this.theme}
         onDismiss={this.removeBanner}
-        class="banner-fade-out"
         aria-hidden={!this.open ? 'true' : 'false'}
       >
         {hasNamedSlot(this.host, 'heading') ? (
