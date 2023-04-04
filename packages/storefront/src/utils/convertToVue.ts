@@ -4,15 +4,6 @@ export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
   markup.replace(/\s(\S+)="({.*?})"/g, (m, $key, $value) => ` ${camelCase($key)}={${$value}}`);
 
-export const transformStandardAttributes = (markup: string): string =>
-  // transform all standard attributes to camel case
-  markup
-    .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => ` ${camelCase($key)}="${$value}"`)
-    .replace(/(<(?:input|textarea|select).*?)\sreadonly/g, '$1 readOnly')
-    .replace(/(<(?:input|textarea).*?)\smaxlength=/g, '$1 maxLength=')
-    .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, paramCase($attr)))
-    .replace(/(<(?:img|source).*?)srcset=(".*")/g, '$1srcSet={$2}');
-
 export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
   markup.replace(/\son([a-z]+?)="(.*?)"/g, (m, $key, $value) => ` @on${pascalCase($key)}={() => { ${$value} }}`);
@@ -46,7 +37,6 @@ export const transformStyleAttribute = (markup: string): string =>
 export const convertToVue = (markup: string): string =>
   [
     transformObjectValues,
-    transformStandardAttributes,
     transformEvents,
     transformBooleanDigitAndUndefinedValues,
     transformCustomElementTagName,
