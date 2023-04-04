@@ -39,7 +39,6 @@
         </PTableHeadCell>
       </PTableHeadRow>
     </PTableHead>
-
     <PTableBody>
       <PTableRow v-for="(item, index) in data" :key="index">
         <PTableCell>
