@@ -40,11 +40,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should show banner with heading and description on light background"
       style="background: transparent"
     >
-      <p-banner [heading]="'Heading'" [description]="'Description'"></p-banner>
+      <p-banner [open]="true" [heading]="'Heading'" [description]="'Description'"></p-banner>
     </div>
 
     <div class="playground light" title="should show banner with slotted heading and description on light background">
-      <p-banner>
+      <p-banner [open]="true">
         <span slot="heading">Slotted heading</span>
         <span slot="description">
           <span>
@@ -56,7 +56,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show banner on light background">
-      <p-banner>
+      <p-banner [open]="true">
         <span slot="title">Slotted title</span>
         <span slot="description">
           <span>
@@ -68,7 +68,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show banner with state neutral on light background">
-      <p-banner [state]="'neutral'">
+      <p-banner [open]="true" [state]="'neutral'">
         <span slot="title">Slotted Title (state=neutral)</span>
         <span slot="description">
           <span>
@@ -80,7 +80,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should show banner on dark background">
-      <p-banner [theme]="'dark'">
+      <p-banner [open]="true" [theme]="'dark'">
         <span slot="title">Slotted Title</span>
         <span slot="description">
           <span>
@@ -92,7 +92,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should show banner with state neutral on dark background">
-      <p-banner [state]="'neutral'" [theme]="'dark'">
+      <p-banner [open]="true" [state]="'neutral'" [theme]="'dark'">
         <span slot="title">Slotted Title (state=neutral)</span>
         <span slot="description">
           <span>
@@ -104,7 +104,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show banner warning on light background">
-      <p-banner [state]="'warning'">
+      <p-banner [open]="true" [state]="'warning'">
         <span slot="title">Slotted Title (state=warning)</span>
         <span slot="description">
           <span>
@@ -116,7 +116,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should show banner warning on dark background">
-      <p-banner [state]="'warning'" [theme]="'dark'">
+      <p-banner [open]="true" [state]="'warning'" [theme]="'dark'">
         <span slot="title">Slotted Title (state=warning)</span>
         <span slot="description">
           <span>
@@ -128,7 +128,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show banner error on light background">
-      <p-banner [state]="'error'">
+      <p-banner [open]="true" [state]="'error'">
         <span slot="title">Slotted Title (state=error)</span>
         <span slot="description">
           <span>
@@ -140,7 +140,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should show banner error on dark background">
-      <p-banner [state]="'error'" [theme]="'dark'">
+      <p-banner [open]="true" [state]="'error'" [theme]="'dark'">
         <span slot="title">Slotted Title (state=error)</span>
         <span slot="description">
           <span>
@@ -152,7 +152,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show banner in persistent mode">
-      <p-banner [persistent]="true">
+      <p-banner [open]="true" [persistent]="true">
         <span slot="title">Slotted Title (persistent=true)</span>
         <span slot="description">Slotted description</span>
       </p-banner>

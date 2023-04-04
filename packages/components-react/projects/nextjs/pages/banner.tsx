@@ -42,11 +42,11 @@ const BannerPage: NextPage = (): JSX.Element => {
         title="should show banner with heading and description on light background"
         style={{ background: 'transparent' }}
       >
-        <PBanner heading="Heading" description="Description" />
+        <PBanner open={true} heading="Heading" description="Description" />
       </div>
 
       <div className="playground light" title="should show banner with slotted heading and description on light background">
-        <PBanner>
+        <PBanner open={true}>
           <span slot="heading">Slotted heading</span>
           <span slot="description">
             <span>
@@ -58,7 +58,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show banner on light background">
-        <PBanner>
+        <PBanner open={true}>
           <span slot="title">Slotted title</span>
           <span slot="description">
             <span>
@@ -70,7 +70,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show banner with state neutral on light background">
-        <PBanner state="neutral">
+        <PBanner open={true} state="neutral">
           <span slot="title">Slotted Title (state=neutral)</span>
           <span slot="description">
             <span>
@@ -82,7 +82,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show banner on dark background">
-        <PBanner theme="dark">
+        <PBanner open={true} theme="dark">
           <span slot="title">Slotted Title</span>
           <span slot="description">
             <span>
@@ -94,7 +94,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show banner with state neutral on dark background">
-        <PBanner state="neutral" theme="dark">
+        <PBanner open={true} state="neutral" theme="dark">
           <span slot="title">Slotted Title (state=neutral)</span>
           <span slot="description">
             <span>
@@ -106,7 +106,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show banner warning on light background">
-        <PBanner state="warning">
+        <PBanner open={true} state="warning">
           <span slot="title">Slotted Title (state=warning)</span>
           <span slot="description">
             <span>
@@ -118,7 +118,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show banner warning on dark background">
-        <PBanner state="warning" theme="dark">
+        <PBanner open={true} state="warning" theme="dark">
           <span slot="title">Slotted Title (state=warning)</span>
           <span slot="description">
             <span>
@@ -130,7 +130,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show banner error on light background">
-        <PBanner state="error">
+        <PBanner open={true} state="error">
           <span slot="title">Slotted Title (state=error)</span>
           <span slot="description">
             <span>
@@ -142,7 +142,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show banner error on dark background">
-        <PBanner state="error" theme="dark">
+        <PBanner open={true} state="error" theme="dark">
           <span slot="title">Slotted Title (state=error)</span>
           <span slot="description">
             <span>
@@ -154,7 +154,7 @@ const BannerPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show banner in persistent mode">
-        <PBanner persistent={true}>
+        <PBanner open={true} persistent={true}>
           <span slot="title">Slotted Title (persistent=true)</span>
           <span slot="description">Slotted description</span>
         </PBanner>
