@@ -1,25 +1,4 @@
-import {
-  getAnimationIn,
-  getAnimationOut,
-  getComponentCss,
-  getKeyframesMobile,
-  KeyframesDirection,
-} from './toast-styles';
-
-describe('getAnimationIn()', () => {
-  it.each<string[]>([
-    ['mobileIn', '--p-duration'],
-    ['mobileIn', null],
-  ])('should return correct JssStyle for keyframesName: %s and durationVar: %s', (keyframesName, durationVar) => {
-    expect(getAnimationIn(keyframesName, durationVar)).toMatchSnapshot();
-  });
-});
-
-describe('getAnimationOut()', () => {
-  it('should return correct JssStyle', () => {
-    expect(getAnimationOut('mobileOut')).toMatchSnapshot();
-  });
-});
+import { getComponentCss, getKeyframesMobile, KeyframesDirection } from './toast-styles';
 
 describe('getKeyframesMobile()', () => {
   it.each<[KeyframesDirection, string]>([
