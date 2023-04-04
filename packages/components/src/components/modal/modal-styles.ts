@@ -62,7 +62,6 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
 
 const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissButton: boolean): JssStyle => {
   const marginPx = `${-marginValue}px`;
-  const marginRem = pxToRemWithUnit(-marginValue);
   return {
     [`&(.${stretchToFullModalWidthClassName})`]: {
       width: `calc(100% + ${marginValue * 2}px)`,
@@ -70,7 +69,7 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissB
     },
     ...(!hasHeader && {
       [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-        marginTop: hasDismissButton ? marginRem : marginPx,
+        marginTop: hasDismissButton ? pxToRemWithUnit(-marginValue) : marginPx,
       },
     }),
     [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
@@ -80,12 +79,13 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissB
 };
 
 export const getComponentCss = (
-  open: boolean,
-  fullscreen: BreakpointCustomizable<boolean>,
+  isOpen: boolean,
+  isFullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
   hasHeader: boolean
 ): string => {
-  const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
+  const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
+  const duration = isOpen ? '.6s' : '.2s';
 
   return getCss({
     '@global': {
@@ -98,14 +98,13 @@ export const getComponentCss = (
           alignItems: 'center',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          ...(open
+          ...(isOpen
             ? {
-                opacity: 1,
                 visibility: 'inherit',
               }
             : {
-                opacity: 0,
                 visibility: 'hidden',
+                transition: `visibility 0s linear .2s`,
               }),
           ...hostHiddenStyles,
           // workaround via pseudo element to fix stacking (black) background in safari
@@ -114,8 +113,18 @@ export const getComponentCss = (
             position: 'fixed',
             ...getInsetJssStyle(),
             background: themeDarkBackgroundShading,
-            ...frostedGlassStyle,
             pointerEvents: 'none', // enable scrolling in safari by dragging the scrollbar track
+            ...(isOpen
+              ? {
+                  opacity: 1,
+                  ...frostedGlassStyle,
+                }
+              : {
+                  opacity: 0,
+                  backdropFilter: 'blur(0px)',
+                  WebkitBackdropFilter: 'blur(0px)',
+                }),
+            transition: `opacity ${duration} ${transitionTimingFunction}, backdrop-filter ${duration} ${transitionTimingFunction},--webkit-backdrop-filter ${duration} ${transitionTimingFunction}`,
           },
         }),
         overflowY: 'auto', // overrideable
@@ -123,7 +132,7 @@ export const getComponentCss = (
       '::slotted': addImportantToEachRule({
         ...mergeDeep(
           getSlottedJssStyle(32, hasHeader, hasDismissButton),
-          buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+          buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
             [`&(.${stretchToFullModalWidthClassName}`]: {
               '&:first-child)': {
                 borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
@@ -145,8 +154,9 @@ export const getComponentCss = (
       {
         position: 'relative',
         boxSizing: 'border-box',
-        transition: `transform .6s ${transitionTimingFunction}`,
-        transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
+        transform: isOpen ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
+        opacity: isOpen ? 1 : 0,
+        transition: `opacity ${duration} ${transitionTimingFunction},transform ${duration} ${transitionTimingFunction}`,
         padding: hasDismissButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
         background: backgroundColor,
         outline: 0,
@@ -155,7 +165,7 @@ export const getComponentCss = (
           position: 'fixed',
           border: `${borderWidthBase} solid`,
           pointerEvents: 'none', // fix text selection in focus state
-          ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+          ...buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
             borderColor: fullscreenValue ? lightThemePrimaryColor : darkThemePrimaryColor,
             ...getInsetJssStyle(fullscreenValue ? 0 : -4),
@@ -168,7 +178,7 @@ export const getComponentCss = (
           margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
         },
       },
-      buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any
+      buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any
     ),
     ...(hasHeader && {
       header: {
