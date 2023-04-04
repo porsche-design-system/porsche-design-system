@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
 import type { BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
 import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
@@ -17,6 +17,7 @@ import { getComponentCss } from './banner-styles';
 import { getDeprecatedPropWarningMessage } from '../../utils/log/helper';
 
 const propTypes: PropTypes<typeof Banner> = {
+  open: AllowedTypes.boolean,
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
@@ -32,6 +33,9 @@ const propTypes: PropTypes<typeof Banner> = {
 export class Banner {
   @Element() public host!: HTMLElement;
 
+  /** If true, the banner is open. */
+  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+
   /** Heading of the banner. */
   @Prop() public heading?: string = '';
 
@@ -43,7 +47,6 @@ export class Banner {
 
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
-
   /**
    * Has no effect anymore
    * @deprecated since v3.0.0, will be removed with next major release
@@ -57,6 +60,14 @@ export class Banner {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private inlineNotificationElement: HTMLPInlineNotificationElement;
+  private closeBtn: HTMLElement;
+
+  @Watch('open')
+  public openChangeHandler(isOpen: boolean): void {
+    if (isOpen && !this.persistent) {
+      this.closeBtn?.focus();
+    }
+  }
 
   public connectedCallback(): void {
     if (!this.persistent) {
@@ -67,7 +78,8 @@ export class Banner {
   public componentDidLoad(): void {
     if (!this.persistent) {
       // messy… optional chaining is needed in case child component is unmounted too early
-      getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close')?.focus();
+      this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
+      this.closeBtn?.focus();
     }
   }
 
@@ -94,7 +106,7 @@ export class Banner {
         'Please use the "heading" prop or slot="heading" instead.'
       );
     }
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.open);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -107,6 +119,8 @@ export class Banner {
         persistent={this.persistent}
         theme={this.theme}
         onDismiss={this.removeBanner}
+        class="banner-fade-out"
+        aria-hidden={!this.open ? 'true' : 'false'}
       >
         {hasNamedSlot(this.host, 'heading') ? (
           <slot name="heading" slot="heading" />
@@ -127,9 +141,5 @@ export class Banner {
   private removeBanner = (e?: CustomEvent): void => {
     e?.stopPropagation(); // prevent double event emission because of identical name
     this.dismiss.emit();
-    this.host.classList.add('banner--close');
-    setTimeout(() => {
-      this.host.remove();
-    }, 600); // duration of animation
   };
 }

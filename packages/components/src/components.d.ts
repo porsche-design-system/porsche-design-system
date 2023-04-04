@@ -99,6 +99,10 @@ export namespace Components {
          */
         "heading"?: string;
         /**
+          * If true, the banner is open.
+         */
+        "open": boolean;
+        /**
           * Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
@@ -2071,6 +2075,10 @@ declare namespace LocalJSX {
           * Emitted when the close button is clicked.
          */
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
+        /**
+          * If true, the banner is open.
+         */
+        "open"?: boolean;
         /**
           * Defines if the banner can be closed/removed by the user.
          */
