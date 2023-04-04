@@ -13,9 +13,6 @@ export const transformStandardAttributes = (markup: string): string =>
     .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, paramCase($attr)))
     .replace(/(<(?:img|source).*?)srcset=(".*")/g, '$1srcSet={$2}');
 
-export const transformClassAttribute = (markup: string): string =>
-  markup.replace(/\sclass="(.*?)"/g, ' className="$1"');
-
 export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
   markup.replace(/\son([a-z]+?)="(.*?)"/g, (m, $key, $value) => ` @on${pascalCase($key)}={() => { ${$value} }}`);
@@ -50,7 +47,6 @@ export const convertToVue = (markup: string): string =>
   [
     transformObjectValues,
     transformStandardAttributes,
-    transformClassAttribute,
     transformEvents,
     transformBooleanDigitAndUndefinedValues,
     transformCustomElementTagName,
