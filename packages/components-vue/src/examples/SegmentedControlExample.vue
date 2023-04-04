@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import type { SegmentedControlChangeEvent } from '@porsche-design-system/components-vue';
   import {
     PSegmentedControl,
     PSegmentedControlItem,
@@ -6,10 +7,9 @@
     PStepperHorizontal,
   } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
-  import type { SegmentedControlChangeEvent } from '@porsche-design-system/components-vue';
 
   const currentValue = ref(1);
-  const onChange = (e: CustomEvent<SegmentedControlChangeEvent>) => {
+  const onChange = (e: CustomEvent<SegmentedControlChangeEvent>): void => {
     currentValue.value = e.value as number;
   };
 </script>

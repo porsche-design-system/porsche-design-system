@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import type { DataSorting } from '@porsche-design-system/shared';
+  import type { TableChangeEvent } from '@porsche-design-system/components-vue';
   import {
     PTable,
     PTableBody,
@@ -9,8 +11,6 @@
     PTableRow,
   } from '@porsche-design-system/components-vue';
   import { dataSorting, headSorting } from '@porsche-design-system/shared';
-  import type { DataSorting } from '@porsche-design-system/shared';
-  import type { TableChangeEvent } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const head = ref(headSorting);

@@ -1,13 +1,13 @@
 <script setup lang="ts">
+  import type { ScrollerScrollToPosition } from '@porsche-design-system/components-vue';
   import { PScroller, PTagDismissible } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
-  import type { ScrollerScrollToPosition } from '@porsche-design-system/components-vue';
 
   const scrollToPosition = ref<ScrollerScrollToPosition>({
     scrollPosition: 220,
     isSmooth: false,
   });
-  const onClick = (scrollPosition: number) =>
+  const onClick = (scrollPosition: number): ScrollerScrollToPosition =>
     (scrollToPosition.value = { scrollPosition: scrollPosition, isSmooth: true });
 </script>
 

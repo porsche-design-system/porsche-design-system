@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import type { StepperHorizontalItemState, StepperHorizontalChangeEvent } from '@porsche-design-system/components-vue';
   import {
     PButton,
     PButtonGroup,
@@ -6,7 +7,6 @@
     PStepperHorizontalItem,
     PText,
   } from '@porsche-design-system/components-vue';
-  import type { StepperHorizontalItemState, StepperHorizontalChangeEvent } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   type StepperHorizontalItemProps = {

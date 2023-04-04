@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import type { DataAdvanced } from '@porsche-design-system/shared';
+  import type { TableChangeEvent } from '@porsche-design-system/components-vue';
   import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
   import {
     PButtonPure,
@@ -12,9 +14,7 @@
     PTableRow,
     PText,
   } from '@porsche-design-system/components-vue';
-  import type { DataAdvanced } from '@porsche-design-system/shared';
   import { ref } from 'vue';
-  import type { TableChangeEvent } from '@porsche-design-system/components-vue';
 
   const head = ref(headAdvanced);
   const data = ref(dataAdvanced);
@@ -30,7 +30,9 @@
 
 <template>
   <PTable @change="onChange">
+    <!-- eslint-disable vue/no-deprecated-slot-attribute -->
     <PHeading :slot="'caption'" :size="'large'"> Some visual caption </PHeading>
+    <!-- eslint-enable -->
     <PTableHead>
       <PTableHeadRow>
         <PTableHeadCell v-for="(item, index) in head" :key="index" :sort="item" :hideLabel="item.hideLabel">
