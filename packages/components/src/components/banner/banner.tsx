@@ -64,13 +64,18 @@ export class Banner {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    if (isOpen && !this.persistent) {
-      this.closeBtn?.focus();
+    if (!this.persistent) {
+      if (isOpen) {
+        this.closeBtn?.focus();
+        document.addEventListener('keydown', this.onKeyboardEvent);
+      } else {
+        document.removeEventListener('keydown', this.onKeyboardEvent);
+      }
     }
   }
 
   public connectedCallback(): void {
-    if (!this.persistent) {
+    if (this.open && !this.persistent) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
   }
