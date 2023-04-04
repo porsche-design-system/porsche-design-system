@@ -135,9 +135,9 @@ npm install vite-plugin-html
 </${this.location}>
 
 <!-- vite.config.ts -->
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { createHtmlPlugin } from 'vite-plugin-html'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { createHtmlPlugin } from 'vite-plugin-html';
 
 export default defineConfig({
   plugins: [

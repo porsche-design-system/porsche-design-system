@@ -51,8 +51,8 @@ Extend `App.vue` by the necessary `PorscheDesignSystemProvider`:
 // pages/App.vue
 
 <script setup lang="ts">
-  import AppComponent from "./components/AppComponent.vue";
-  import { PorscheDesignSystemProvider } from "@porsche-design-system/components-vue";
+  import AppComponent from './components/AppComponent.vue';
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
