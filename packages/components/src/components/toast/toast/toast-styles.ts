@@ -1,11 +1,47 @@
+import type { JssStyle } from 'jss';
 import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, addImportantToRule, hostHiddenStyles } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
-import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles-shared';
 
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
+
+const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
+const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
+export const ANIMATION_DURATION = 600;
+
+export const getAnimationIn = (keyframesName: string, durationVar?: string): JssStyle => {
+  const duration = durationVar ? `var(${durationVar},${ANIMATION_DURATION}ms)` : `${ANIMATION_DURATION}ms`;
+  return {
+    animation: `${duration} $${keyframesName} ${easeInQuad} forwards`,
+  };
+};
+
+export const getAnimationOut = (keyframesName: string): JssStyle => ({
+  animation: addImportantToRule(`${ANIMATION_DURATION}ms $${keyframesName} ${easeOutQuad} forwards`),
+});
+
+export type KeyframesDirection = 'in' | 'out';
+export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
+  const insideStyle: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+  return direction === 'in'
+    ? {
+        from: outsideStyle,
+        to: insideStyle,
+      }
+    : {
+        from: insideStyle,
+        to: outsideStyle,
+      };
+};
+
+export const getKeyframesMobile = (direction: KeyframesDirection, bottomVar: string): JssStyle =>
+  getKeyframes(direction, {
+    opacity: 0,
+    transform: `translate3d(0,calc(var(${bottomVar}) + 100%),0)`, // space before and after "+" is crucial
+  });
+
 export const toastCloseClassName = 'close';
 
 export const getComponentCss = (): string => {
