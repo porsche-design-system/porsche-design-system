@@ -27,6 +27,10 @@ export const cleanBooleanAndUndefinedValues = (markup: string): string =>
   // remove single quotes from boolean values
   markup.replace(/\s(\[[A-Za-z]+\])="'(true|false|undefined)'"/g, ' $1="$2"');
 
+export const unbindNativeAttributes = (markup: string): string =>
+  // remove brackets from "id", "class", "style, "slot" and "title" attributes
+  markup.replace(/\s:(id|class|style|slot|title)="'(.*?)'"/g, ' $1="$2"');
+
 export const convertToVue = (markup: string): string =>
   [
     transformEventsToViewSyntax,
@@ -36,4 +40,5 @@ export const convertToVue = (markup: string): string =>
     cleanBooleanAndUndefinedValues,
     transformCustomElementTagName,
     transformToSelfClosingTags,
+    unbindNativeAttributes,
   ].reduce((previousResult, fn) => fn(previousResult), markup);
