@@ -10,3 +10,4 @@ export { default as TableExampleSorting } from './TableExampleSorting.vue';
 export { default as TabsBarExampleAccessibility } from './TabsBarExampleAccessibility.vue';
 export { default as TabsBarExampleBasic } from './TabsBarExampleBasic.vue';
 export { default as TextFieldWrapperExampleIMask } from './TextFieldWrapperExampleIMask.vue';
+export { default as TextFieldWrapperExampleSearch } from './TextFieldWrapperExampleSearch.vue';

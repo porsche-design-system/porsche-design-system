@@ -189,6 +189,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/text-field-wrapper-example-search.html',
           componentsAngularPath + '/text-field-wrapper-example-search.component.ts',
           componentsReactPath + '/TextFieldWrapperExampleSearch.tsx',
+          componentsVuePath + '/TextFieldWrapperExampleSearch.vue',
         ],
       ],
     },

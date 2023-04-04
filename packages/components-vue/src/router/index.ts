@@ -15,6 +15,7 @@ import {
   TabsBarExampleAccessibility,
   TabsBarExampleBasic,
   TextFieldWrapperExampleIMask,
+  TextFieldWrapperExampleSearch,
 } from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
@@ -87,6 +88,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/text-field-wrapper-example-imask',
     name: 'Text Field Wrapper Example IMask',
     component: TextFieldWrapperExampleIMask,
+  },
+  {
+    path: '/text-field-wrapper-example-search',
+    name: 'Text Field Wrapper Example Search',
+    component: TextFieldWrapperExampleSearch,
   },
 ];
 
