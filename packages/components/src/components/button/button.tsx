@@ -119,13 +119,7 @@ export class Button {
             size="inherit"
             name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
-            color={
-              this.disabled && this.variant === 'primary'
-                ? 'contrast-high'
-                : this.disabled && this.variant !== 'primary'
-                ? 'state-disabled'
-                : 'primary'
-            }
+            color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
             theme={!this.disabled ? getLinkButtonThemeForIcon(this.variant, this.theme) : this.theme}
             aria-hidden="true"
           />
