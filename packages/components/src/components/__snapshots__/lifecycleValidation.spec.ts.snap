@@ -15,6 +15,7 @@ exports[`should call validateProps() with correct parameters via render for p-ba
 {
   "description": "string",
   "heading": "string",
+  "open": "boolean",
   "persistent": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
