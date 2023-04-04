@@ -77,10 +77,6 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   In case, e.g. <b>weight="semibold"</b> is used it will automatically be mapped to font weight regular.
 </p-inline-notification>
 
-<Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
-</Playground>
-
 ---
 
 ## Active state
@@ -156,7 +152,6 @@ By setting the `tabindex` attribute to `-1` you can remove the **Button Pure** f
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { TEXT_SIZES } from '../text/text-size';
-import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from '../text/text-weight';
 import { ALIGN_LABELS } from '../../utils'; 
 
 @Component
@@ -196,12 +191,6 @@ export default class Code extends Vue {
     
   markupResponsive = 
 `<p-button-pure size="{ base: 'small', l: 'medium' }">Some label</p-button-pure>`;
-
-  weight = 'thin';
-  weights = TEXT_WEIGHTS.map(item => TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
-  get weightMarkup() {
-    return `<p-button-pure weight="${this.weight}">Some label</p-button-pure>`;
-  }
 
   markupActive =
 `<p-button-pure active="true">Some label</p-button-pure>`;
