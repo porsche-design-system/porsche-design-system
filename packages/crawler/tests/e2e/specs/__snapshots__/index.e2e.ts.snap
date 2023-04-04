@@ -129,6 +129,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "properties": {
             "description": "",
             "heading": "",
+            "open": false,
             "persistent": false,
             "state": "info",
             "theme": "dark",
