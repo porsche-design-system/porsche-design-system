@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import * as path from 'path';
-import { createHtmlPlugin } from 'vite-plugin-html';
 
 const rootDir = '../..';
 const projectDir = 'projects/vue-wrapper';
@@ -17,14 +16,6 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    createHtmlPlugin({
-      inject: {
-        data: {
-          getFontLinks: require('@porsche-design-system/components-js/partials').getFontLinks(),
-          getInitialStyles: require('@porsche-design-system/components-js/partials').getInitialStyles(),
-        },
-      },
-    }),
     viteStaticCopy({
       targets: [
         `${rootDir}/LICENSE`,
