@@ -15,7 +15,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import { constantCase } from 'change-case';
+  import { camelCase, constantCase } from 'change-case';
   import type { Framework, FrameworkMarkup } from '@/models';
 
   type Param = {
@@ -131,7 +131,7 @@ npm install vite-plugin-html
 
 <!-- index.html -->
 <${this.location}>
-  <%- ${this.name} %>
+  <%- ${camelCase(this.name.replace('get', ''))} %>
 </${this.location}>
 
 <!-- vite.config.ts -->
@@ -147,7 +147,10 @@ export default defineConfig({
         data: {\n  ` +
         this.params
           .map(({ value, comment }) =>
-            [comment && `        // Alternative: ${comment}`, `        ${this.name}: ${partialRequirePath}(${value}),`]
+            [
+              comment && `        // Alternative: ${comment}`,
+              `        ${camelCase(this.name.replace('get', ''))}: ${partialRequirePath}(${value}),`,
+            ]
               .filter((x) => x)
               .join(glue)
           )

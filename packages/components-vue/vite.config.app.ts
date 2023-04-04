@@ -12,8 +12,8 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         data: {
-          getFontLinks: require('@porsche-design-system/components-js/partials').getFontLinks(),
-          getInitialStyles: require('@porsche-design-system/components-js/partials').getInitialStyles(),
+          fontLinks: require('@porsche-design-system/components-js/partials').getFontLinks(),
+          initialStyles: require('@porsche-design-system/components-js/partials').getInitialStyles(),
         },
       },
     }),
