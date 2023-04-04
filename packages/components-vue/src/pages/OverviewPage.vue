@@ -74,7 +74,7 @@
 
       <!-- eslint-disable vue/no-deprecated-slot-attribute -->
       <div class="playground light playground--banner" title="should render default banner">
-        <PBanner>
+        <PBanner :open="true">
           <span slot="title">Default banner component</span>
           <span slot="description">Some slotted banner description</span>
         </PBanner>
