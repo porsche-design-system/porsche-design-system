@@ -1,10 +1,7 @@
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import { breakpoints } from '@porsche-design-system/utilities-v2';
 
-export const BREAKPOINTS = breakpoints;
-export type BreakpointKey = Breakpoint;
 export type BreakpointValues<T> = {
-  [key in BreakpointKey]?: T;
+  [key in Breakpoint]?: T;
 } & {
   base: T;
 };
