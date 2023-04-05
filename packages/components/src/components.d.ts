@@ -95,6 +95,10 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * If false, the banner will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the banner.
          */
         "heading"?: string;
@@ -103,7 +107,7 @@ export namespace Components {
          */
         "open": boolean;
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -654,11 +658,15 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * If false, the inline-notification will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the inline-notification.
          */
         "heading"?: string;
         /**
-          * Defines if the inline-notification can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -2068,6 +2076,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * If false, the banner will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the banner.
          */
         "heading"?: string;
@@ -2080,7 +2092,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -2639,6 +2651,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * If false, the inline-notification will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the inline-notification.
          */
         "heading"?: string;
@@ -2651,7 +2667,7 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
-          * Defines if the inline-notification can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**

@@ -21,6 +21,7 @@ const propTypes: PropTypes<typeof Banner> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
+  dismissButton: AllowedTypes.boolean,
   persistent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<BannerWidth>(BANNER_WIDTHS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -45,8 +46,14 @@ export class Banner {
   /** State of the banner. */
   @Prop() public state?: BannerState = 'info';
 
-  /** Defines if the banner can be closed/removed by the user. */
-  @Prop() public persistent?: boolean = false;
+  /** If false, the banner will not have a dismiss button. */
+  @Prop() public dismissButton?: boolean = true;
+
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
+   * Defines if the banner can be closed/removed by the user. */
+  @Prop() public persistent?: boolean;
+
   /**
    * Has no effect anymore
    * @deprecated since v3.0.0, will be removed with next major release
@@ -62,9 +69,13 @@ export class Banner {
   private inlineNotificationElement: HTMLPInlineNotificationElement;
   private closeBtn: HTMLElement;
 
+  private get hasDismissButton(): boolean {
+    return this.persistent ? false : this.dismissButton;
+  }
+
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    if (!this.persistent) {
+    if (this.hasDismissButton) {
       if (isOpen) {
         this.closeBtn?.focus();
         document.addEventListener('keydown', this.onKeyboardEvent);
@@ -75,13 +86,13 @@ export class Banner {
   }
 
   public connectedCallback(): void {
-    if (this.open && !this.persistent) {
+    if (this.open && this.hasDismissButton) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
   public componentDidLoad(): void {
-    if (!this.persistent) {
+    if (this.hasDismissButton) {
       // messy… optional chaining is needed in case child component is unmounted too early
       this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
       this.closeBtn?.focus();
@@ -89,7 +100,7 @@ export class Banner {
   }
 
   public disconnectedCallback(): void {
-    if (!this.persistent) {
+    if (this.hasDismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
@@ -99,6 +110,7 @@ export class Banner {
     warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerStateDeprecated, BannerState>(this, 'state', {
       neutral: 'info',
     });
+    warnIfDeprecatedPropIsUsed<typeof Banner>(this, 'persistent', 'Please use dismissButton prop instead.');
     warnIfDeprecatedPropIsUsed<typeof Banner>(
       this,
       'width',
@@ -121,7 +133,7 @@ export class Banner {
         heading={this.heading}
         description={this.description}
         state={this.state}
-        persistent={this.persistent}
+        dismissButton={this.hasDismissButton}
         theme={this.theme}
         onDismiss={this.removeBanner}
         aria-hidden={!this.open ? 'true' : 'false'}
@@ -143,7 +155,9 @@ export class Banner {
   };
 
   private removeBanner = (e?: CustomEvent): void => {
-    e?.stopPropagation(); // prevent double event emission because of identical name
-    this.dismiss.emit();
+    if (this.hasDismissButton) {
+      e?.stopPropagation(); // prevent double event emission because of identical name
+      this.dismiss.emit();
+    }
   };
 }
