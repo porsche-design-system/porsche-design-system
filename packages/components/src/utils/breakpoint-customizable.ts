@@ -5,6 +5,8 @@ export const BREAKPOINTS = breakpoints;
 export type BreakpointKey = Breakpoint;
 export type BreakpointValues<T> = {
   [key in BreakpointKey]?: T;
+} & {
+  base: T;
 };
 
 // string is needed in order to pass and parse objects via prop decorator
