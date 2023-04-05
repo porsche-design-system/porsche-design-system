@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 4983,
-    "gzipSize": 2118
+    "size": 5333,
+    "gzipSize": 2181
   },
   {
     "chunkShortName": "button",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "inline-notification",
-    "size": 4987,
-    "gzipSize": 2074
+    "size": 5315,
+    "gzipSize": 2160
   },
   {
     "chunkShortName": "link",
@@ -126,8 +126,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 68630,
-    "gzipSize": 23051
+    "size": 68700,
+    "gzipSize": 23058
   },
   {
     "chunkShortName": "marque",
@@ -236,8 +236,8 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 6844,
-    "gzipSize": 2915
+    "size": 6766,
+    "gzipSize": 2873
   },
   {
     "chunkShortName": "wordmark",
