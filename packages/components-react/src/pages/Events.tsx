@@ -10,6 +10,7 @@ import type {
 } from '@porsche-design-system/components-react';
 import {
   PAccordion,
+  PBanner,
   PCarousel,
   PModal,
   PPagination,
@@ -31,6 +32,8 @@ export const EventsPage = (): JSX.Element => {
   const [tabsChangeEventCounter, setTabsChangeEventCounter] = useState(0);
   const [textFieldSearchValue, setTextFieldSearchValue] = useState('');
   const [switchChangeEventCounter, setSwitchChangeEventCounter] = useState(0);
+  const [bannerDismissEventCounter, setBannerDismissEventCounter] = useState(0);
+  const [isBannerOpen, setIsBannerOpen] = useState(false);
   const [modalDismissEventCounter, setModalDismissEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableChangeEventCounter, setTableChangeEventCounter] = useState(0);
@@ -63,6 +66,10 @@ export const EventsPage = (): JSX.Element => {
     (e: CustomEvent<SwitchChangeEvent>) => setSwitchChangeEventCounter((prev) => prev + 1),
     []
   );
+  const onBannerClose = useCallback(() => {
+    setBannerDismissEventCounter((prev) => prev + 1);
+    setIsBannerOpen(false);
+  }, []);
   const onModalClose = useCallback(() => {
     setModalDismissEventCounter((prev) => prev + 1);
     setIsModalOpen(false);
@@ -116,6 +123,12 @@ export const EventsPage = (): JSX.Element => {
       <div className="playground light">
         <PSwitch onSwitchChange={onSwitchChange}>Switch</PSwitch>
         <p>{switchChangeEventCounter}</p>
+      </div>
+
+      <div className="playground light">
+        <PBanner open={isBannerOpen} onDismiss={onBannerClose} heading="Banner"></PBanner>
+        <p>{bannerDismissEventCounter}</p>
+        <button onClick={() => setIsBannerOpen(true)}>Open Banner</button>
       </div>
 
       <div className="playground light">
