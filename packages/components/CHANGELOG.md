@@ -9,24 +9,55 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `Banner` is a controlled component now and its visibility has to be controlled via the `open` prop
+  ([#2447](https://github.com/porsche-design-system/porsche-design-system/pull/2447/))
+
+```diff
+- <p-banner></p-banner>
++ <p-banner open="true"></p-banner>
+```
+
+#### 🤖 Property deprecations 🤖
+
+##### Banner:
+
+- Prop `persistent` is deprecated, use `dismissButton` instead.
+
+```diff
+- <p-banner persistent="true"></p-banner>
++ <p-banner dismiss-button="false"></p-banner>
+```
+
+##### Inline Notification:
+
+- Prop `persistent` is deprecated, use `dismissButton` instead.
+
+```diff
+- <p-inline-notification persistent="true"></p-inline-notification>
++ <p-inline-notification dismiss-button="false"></p-inline-notification>
+```
+
 ### [3.0.0-alpha.5] - 2023-03-30
 
 #### Added
 
-- `Wordmark` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
-- `Crest` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2437)
+- `Wordmark` ([#2418](https://github.com/porsche-design-system/porsche-design-system/pull/2418))
+- `Crest` ([#2437](https://github.com/porsche-design-system/porsche-design-system/pull/2437))
 - Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
-  of `Styles` subpackage [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2436)
+  of `Styles` subpackage ([#2436](https://github.com/porsche-design-system/porsche-design-system/pull/2436))
 
 ### [3.0.0-alpha.4] - 2023-03-28
 
 #### Changed
 
-- `Table` matches new design language [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+- `Table` matches new design language
+  ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
 
 #### Added
 
-- Styles: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+- Styles: ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
   - `gridWide`
   - `gridWideColumnStart` and `pds-grid-wide-column-start`
   - `gridWideColumnEnd` and `pds-grid-wide-column-end`
@@ -39,14 +70,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `gridWideOffset`, `gridWideOffsetBase`, `gridWideOffsetS`, `gridWideOffsetXXL` and `$pds-grid-wide-offset-base`,
     `$pds-grid-wide-offset-s`, `$pds-grid-wide-offset-xxl`
   - `gridFullOffset` and `$pds-grid-full-offset`
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381)
-- `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
-- `Link Tile Model Signature` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2388)
-- Prop `activeSlideIndex` to `Carousel` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
+- `Button Tile` ([#2381](https://github.com/porsche-design-system/porsche-design-system/pull/2381))
+- `Fieldset` ([#2404](https://github.com/porsche-design-system/porsche-design-system/pull/2404))
+- `Link Tile Model Signature` ([#2388](https://github.com/porsche-design-system/porsche-design-system/pull/2388))
+- Prop `activeSlideIndex` to `Carousel`
+  ([#2421](https://github.com/porsche-design-system/porsche-design-system/pull/2421))
 - Prop `slidesPerPage` supports value `auto` of `Carousel`
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2421)
-- Prop `scrollbar` for `Scroller` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
-- Prop `theme` for `Table` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)
+  ([#2421](https://github.com/porsche-design-system/porsche-design-system/pull/2421))
+- Prop `scrollbar` for `Scroller` ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
+- Prop `theme` for `Table` ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
 
 #### Fixed
 
@@ -55,37 +87,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 - Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
   `@porsche-design-system/components-js/styles/scss`
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 
 #### Removed
 
 - `Banner`: CSS variable `--p-banner-position-type`
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 - `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 - `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 
 #### 🤖 Property deprecations 🤖
 
 ##### Banner:
 
 - Prop `width` has no effect anymore, instead the component is aligned with Porsche Grid "extended" by default.
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2422)
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 
 #### 🤡 Component deprecations 🤡
 
-##### Marque [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2418)
+##### Marque: ([#2418](https://github.com/porsche-design-system/porsche-design-system/pull/2418))
 
 ```diff
 - <p-marque></p-marque>
 + <p-wordmark></p-wordmark>
 ```
 
-##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+##### Fieldset Wrapper: ([#2404](https://github.com/porsche-design-system/porsche-design-system/pull/2404))
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
