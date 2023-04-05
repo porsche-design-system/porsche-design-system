@@ -159,6 +159,13 @@ const BannerPage: NextPage = (): JSX.Element => {
           <span slot="description">Slotted description</span>
         </PBanner>
       </div>
+
+      <div className="playground light" title="should show banner without dismiss button">
+        <PBanner open={true} dismissButton={false}>
+          <span slot="title">Slotted Title (dismissButton=false)</span>
+          <span slot="description">Slotted description</span>
+        </PBanner>
+      </div>
     </>
   );
 };

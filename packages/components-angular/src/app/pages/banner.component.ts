@@ -157,6 +157,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <span slot="description">Slotted description</span>
       </p-banner>
     </div>
+
+    <div class="playground light" title="should show banner without dismiss button">
+      <p-banner [open]="true" [dismissButton]="false">
+        <span slot="title">Slotted Title (dismissButton=false)</span>
+        <span slot="description">Slotted description</span>
+      </p-banner>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
