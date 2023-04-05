@@ -4,6 +4,7 @@ import * as fromPages from '../pages';
 import { paramCase } from 'change-case';
 import {
   AccordionExample,
+  CarouselExampleDynamicSlides,
   InlineNotificationExampleActionButton,
   InlineNotificationExampleEvents,
   ModalExampleAccessibility,
@@ -35,6 +36,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/accordion-example',
     name: 'Accordion Example',
     component: AccordionExample,
+  },
+  {
+    path: '/carousel-example-dynamic-slides',
+    name: 'Carousel Example Dynamic Slides',
+    component: CarouselExampleDynamicSlides,
   },
   {
     path: '/inline-notification-example-action-button',

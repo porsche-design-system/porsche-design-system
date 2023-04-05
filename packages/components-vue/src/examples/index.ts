@@ -13,3 +13,4 @@ export { default as TextFieldWrapperExampleIMask } from './TextFieldWrapperExamp
 export { default as TextFieldWrapperExampleSearch } from './TextFieldWrapperExampleSearch.vue';
 export { default as ToastExample } from './ToastExample.vue';
 export { default as AccordionExample } from './AccordionExample.vue';
+export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';

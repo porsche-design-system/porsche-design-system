@@ -14,25 +14,25 @@
 <template>
   <PTabsBar :activeTabIndex="tabIndex" @change="onChange">
     <button
-      v-for="(tabPanel, index) in tabPanels"
-      :key="index"
+      v-for="(tabPanel, i) in tabPanels"
+      :key="i"
       :type="'button'"
-      :id="`tab-item-${index}`"
-      :aria-controls="`tab-panel-${index}`"
+      :id="`tab-item-${i}`"
+      :aria-controls="`tab-panel-${i}`"
     >
       Tab {{ tabPanel }}
     </button>
   </PTabsBar>
   <div
-    v-for="(content, index) in tabPanels"
-    :key="index"
+    v-for="(content, i) in tabPanels"
+    :key="i"
     :role="'tabpanel'"
-    :id="`tab-panel-${index}`"
-    :hidden="tabIndex !== index"
-    :tabIndex="tabIndex === index ? 0 : -1"
-    :aria-labelledby="`tab-item-${index}`"
+    :id="`tab-panel-${i}`"
+    :hidden="tabIndex !== i"
+    :tabIndex="tabIndex === i ? 0 : -1"
+    :aria-labelledby="`tab-item-${i}`"
   >
-    <PText>Your content of Tab {{ index + 1 }}</PText>
+    <PText>Your content of Tab {{ i + 1 }}</PText>
   </div>
 </template>
 

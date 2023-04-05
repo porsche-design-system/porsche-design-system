@@ -35,13 +35,13 @@
     <!-- eslint-enable -->
     <PTableHead>
       <PTableHeadRow>
-        <PTableHeadCell v-for="(item, index) in head" :key="index" :sort="item" :hideLabel="item.hideLabel">
+        <PTableHeadCell v-for="(item, i) in head" :key="i" :sort="item" :hideLabel="item.hideLabel">
           {{ item.name }}
         </PTableHeadCell>
       </PTableHeadRow>
     </PTableHead>
     <PTableBody>
-      <PTableRow v-for="(item, index) in data" :key="index">
+      <PTableRow v-for="(item, i) in data" :key="i">
         <PTableCell>
           <div :style="{ display: 'flex' }">
             <img :src="item.imageUrl" :width="80" :height="45" :style="{ marginRight: '.5rem' }" alt="" />

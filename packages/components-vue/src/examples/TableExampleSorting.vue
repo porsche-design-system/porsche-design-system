@@ -29,11 +29,11 @@
   <PTable :caption="'Some caption'" @change="onChange">
     <PTableHead>
       <PTableHeadRow>
-        <PTableHeadCell v-for="(item, index) in head" :key="index" :sort="item">{{ item.name }}</PTableHeadCell>
+        <PTableHeadCell v-for="(item, i) in head" :key="i" :sort="item">{{ item.name }}</PTableHeadCell>
       </PTableHeadRow>
     </PTableHead>
     <PTableBody>
-      <PTableRow v-for="(item, index) in data" :key="index">
+      <PTableRow v-for="(item, i) in data" :key="i">
         <PTableCell>{{ item.col1 }}</PTableCell>
         <PTableCell>{{ item.col2 }}</PTableCell>
         <PTableCell>{{ item.col3 }}</PTableCell>

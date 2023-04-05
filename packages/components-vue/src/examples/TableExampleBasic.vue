@@ -15,11 +15,11 @@
   <PTable :caption="'Some caption'">
     <PTableHead>
       <PTableHeadRow>
-        <PTableHeadCell v-for="(item, index) in headBasic" :key="index">{{ item }}</PTableHeadCell>
+        <PTableHeadCell v-for="(item, i) in headBasic" :key="i">{{ item }}</PTableHeadCell>
       </PTableHeadRow>
     </PTableHead>
     <PTableBody>
-      <PTableRow v-for="(item, index) in dataBasic" :key="index">
+      <PTableRow v-for="(item, i) in dataBasic" :key="i">
         <PTableCell>{{ item.model }}</PTableCell>
         <PTableCell>{{ item.date }}</PTableCell>
         <PTableCell>{{ item.interest }}</PTableCell>
