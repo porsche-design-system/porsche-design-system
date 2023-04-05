@@ -1,4 +1,4 @@
-import type { Breakpoint } from './breakpoint';
+import type { Breakpoint } from './breakpointShared';
 import { getMediaQueryMin } from './getMediaQueryMin';
 import { getMediaQueryMax } from './getMediaQueryMax';
 import { getMediaQueryMinMax } from './getMediaQueryMinMax';
