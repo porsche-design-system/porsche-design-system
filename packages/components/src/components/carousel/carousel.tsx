@@ -116,12 +116,12 @@ export class Carousel {
   @Prop() public activeSlideIndex?: number = 0;
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when carousel's content slides. */
   @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselChangeEvent>;
 
   /** Emitted when carousel's content slides. */
-  @Event({ bubbles: false }) public change: EventEmitter<CarouselChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<CarouselChangeEvent>;
 
   @State() private amountOfPages: number;
 
@@ -288,7 +288,7 @@ export class Carousel {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updateSlidesInert(splide);
       updatePagination(this.paginationEl, activeIndex);
-      this.change.emit({ activeIndex, previousIndex });
+      this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
 

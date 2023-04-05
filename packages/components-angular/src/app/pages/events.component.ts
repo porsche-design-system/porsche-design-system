@@ -13,7 +13,7 @@ import type {
   selector: 'page-events',
   template: `
     <div class="playground light">
-      <p-accordion [heading]="'Some heading'" (change)="onAccordionChange($event)">
+      <p-accordion [heading]="'Some heading'" (update)="onAccordionUpdate($event)">
         Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
         labore et dolore magna aliquyam erat, sed diam voluptua.
       </p-accordion>
@@ -25,13 +25,13 @@ import type {
         [totalItemsCount]="500"
         [itemsPerPage]="25"
         [activePage]="1"
-        (change)="onPaginationChange($event)"
+        (update)="onPaginationUpdate($event)"
       ></p-pagination>
       <p>{{ paginationChangeEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-tabs-bar [activeTabIndex]="0" (change)="onTabsBarChange($event)">
+      <p-tabs-bar [activeTabIndex]="0" (update)="onTabsBarUpdate($event)">
         <button>Tab 1</button>
         <button>Tab 2</button>
         <button>Tab 3</button>
@@ -40,7 +40,7 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-tabs [activeTabIndex]="0" (change)="onTabsChange($event)">
+      <p-tabs [activeTabIndex]="0" (update)="onTabsUpdate($event)">
         <p-tabs-item label="Tab 1">Content 1</p-tabs-item>
         <p-tabs-item label="Tab 2">Content 2</p-tabs-item>
         <p-tabs-item label="Tab 3">Content 3</p-tabs-item>
@@ -56,7 +56,7 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-switch (change)="onSwitchChange($event)">Switch</p-switch>
+      <p-switch (update)="onSwitchUpdate($event)">Switch</p-switch>
       <p>{{ switchChangeEventCounter }}</p>
     </div>
 
@@ -67,7 +67,7 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-table (change)="onTableChange($event)">
+      <p-table (update)="onTableUpdate($event)">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell [sort]="{ id: 'col1', active: true, direction: 'asc' }">Col 1</p-table-head-cell>
@@ -78,7 +78,7 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-carousel (change)="onCarouselChange($event)">
+      <p-carousel (update)="onCarouselUpdate($event)">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
@@ -103,19 +103,19 @@ export class EventsComponent {
   // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported package root
-  public onAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
+  public onAccordionUpdate(e: CustomEvent<AccordionChangeEvent>) {
     this.accordionChangeEventCounter++;
   }
 
-  public onPaginationChange(e: CustomEvent<PaginationChangeEvent>) {
+  public onPaginationUpdate(e: CustomEvent<PaginationChangeEvent>) {
     this.paginationChangeEventCounter++;
   }
 
-  public onTabsBarChange(e: CustomEvent<TabsBarChangeEvent>) {
+  public onTabsBarUpdate(e: CustomEvent<TabsBarChangeEvent>) {
     this.tabsBarChangeEventCounter++;
   }
 
-  public onTabsChange(e: CustomEvent<TabsChangeEvent>) {
+  public onTabsUpdate(e: CustomEvent<TabsChangeEvent>) {
     this.tabsChangeEventCounter++;
   }
 
@@ -123,7 +123,7 @@ export class EventsComponent {
     this.textFieldSearchValue = (e.target as HTMLInputElement).value;
   }
 
-  public onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
+  public onSwitchUpdate(e: CustomEvent<SwitchChangeEvent>) {
     this.switchChangeEventCounter++;
   }
 
@@ -136,11 +136,11 @@ export class EventsComponent {
     this.isModalOpen = false;
   }
 
-  public onTableChange(e: CustomEvent<TableChangeEvent>) {
+  public onTableUpdate(e: CustomEvent<TableChangeEvent>) {
     this.tableChangeEventCounter++;
   }
 
-  public onCarouselChange(e: CustomEvent<CarouselChangeEvent>) {
+  public onCarouselUpdate(e: CustomEvent<CarouselChangeEvent>) {
     this.carouselChangeEventCounter++;
   }
 }

@@ -6,10 +6,10 @@ export const AccordionExamplePage = (): JSX.Element => {
   const [isOpen1, setIsOpen1] = useState<boolean>(false);
   const [isOpen2, setIsOpen2] = useState<boolean>(false);
 
-  const onChange1 = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onUpdate1 = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
     setIsOpen1(e.detail.open);
   }, []);
-  const onChange2 = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onUpdate2 = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
     setIsOpen2(e.detail.open);
   }, []);
 
@@ -19,10 +19,10 @@ export const AccordionExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <PAccordion heading="Some Heading" tag="h3" open={isOpen1} onChange={onChange1}>
+      <PAccordion heading="Some Heading" tag="h3" open={isOpen1} onUpdate={onUpdate1}>
         <PText>{content}</PText>
       </PAccordion>
-      <PAccordion heading="Some Heading" tag="h3" open={isOpen2} onChange={onChange2}>
+      <PAccordion heading="Some Heading" tag="h3" open={isOpen2} onUpdate={onUpdate2}>
         <PText>{content}</PText>
       </PAccordion>
     </>

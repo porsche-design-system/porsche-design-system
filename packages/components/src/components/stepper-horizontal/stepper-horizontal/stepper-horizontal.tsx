@@ -44,12 +44,12 @@ export class StepperHorizontal {
   @Prop() public theme?: Theme = 'light';
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when active step is changed. */
   @Event({ bubbles: false }) public stepChange: EventEmitter<StepperHorizontalChangeEvent>;
 
   /** Emitted when active step is changed. */
-  @Event({ bubbles: false }) public change: EventEmitter<StepperHorizontalChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<StepperHorizontalChangeEvent>;
 
   private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
   private scrollerElement: HTMLPScrollerElement;
@@ -135,7 +135,7 @@ export class StepperHorizontal {
       if (target) {
         const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
 
-        this.change.emit({ activeStepIndex: clickedStepIndex });
+        this.update.emit({ activeStepIndex: clickedStepIndex });
         this.stepChange.emit({ activeStepIndex: clickedStepIndex });
       }
     });

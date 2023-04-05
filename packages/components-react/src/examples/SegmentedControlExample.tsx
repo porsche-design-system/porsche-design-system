@@ -5,13 +5,13 @@ import { PSegmentedControl, PSegmentedControlItem, PText } from '@porsche-design
 export const SegmentedControlExamplePage = (): JSX.Element => {
   const [currentValue, setCurrentValue] = useState(1);
 
-  const onChange = useCallback((e: CustomEvent<SegmentedControlChangeEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<SegmentedControlChangeEvent>) => {
     setCurrentValue(e.detail.value as number);
   }, []);
 
   return (
     <>
-      <PSegmentedControl value={currentValue} onChange={onChange}>
+      <PSegmentedControl value={currentValue} onUpdate={onUpdate}>
         <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
         <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
         <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>

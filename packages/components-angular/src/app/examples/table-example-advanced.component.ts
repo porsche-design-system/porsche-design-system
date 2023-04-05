@@ -5,7 +5,7 @@ import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system
 @Component({
   selector: 'page-table-example-advanced',
   template: `
-    <p-table (change)="onChange($event)">
+    <p-table (update)="onUpdate($event)">
       <p-heading slot="caption" size="large">Some visual caption</p-heading>
       <p-table-head>
         <p-table-head-row>
@@ -47,7 +47,7 @@ export class TableExampleAdvancedComponent {
   public head = headAdvanced;
   public data = dataAdvanced;
 
-  onChange(e: CustomEvent<TableChangeEvent>): void {
+  onUpdate(e: CustomEvent<TableChangeEvent>): void {
     const { id, direction } = e.detail as TableChangeEvent & { id: keyof DataAdvanced };
     this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>

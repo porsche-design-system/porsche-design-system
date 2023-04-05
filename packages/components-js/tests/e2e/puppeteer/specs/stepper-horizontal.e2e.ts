@@ -28,7 +28,7 @@ afterEach(async () => await page.close());
 const clickHandlerScript = `
 <script>
   const stepper = document.querySelector('p-stepper-horizontal');
-  stepper.addEventListener('change', (e) => {
+  stepper.addEventListener('update', (e) => {
     const { activeStepIndex } = e.detail;
     const stepElements = Array.from(e.target.children);
 
@@ -340,19 +340,19 @@ describe('events', () => {
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
   });
 
-  it('should emit both stepChange and change event', async () => {
+  it('should emit both stepChange and update event', async () => {
     await initStepperHorizontal({ currentStep: 2 });
     const host = await getHost();
 
     await addEventListener(host, 'stepChange');
-    await addEventListener(host, 'change');
+    await addEventListener(host, 'update');
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     const [item1] = await getStepItems();
     await item1.click();
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 

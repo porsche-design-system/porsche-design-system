@@ -55,12 +55,12 @@ export class Switch {
   @Prop() public theme?: Theme = 'light';
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
 
   /** Emitted when checked status is changed. */
-  @Event({ bubbles: false }) public change: EventEmitter<SwitchChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<SwitchChangeEvent>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -122,7 +122,7 @@ export class Switch {
   }
 
   private onSwitchClick = (): void => {
-    this.change.emit({ checked: !this.checked });
+    this.update.emit({ checked: !this.checked });
     this.switchChange.emit({ checked: !this.checked });
   };
 }

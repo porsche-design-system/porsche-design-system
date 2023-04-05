@@ -76,12 +76,12 @@ export class TabsBar {
   @Prop({ mutable: true }) public activeTabIndex?: number | undefined;
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabsBarChangeEvent>;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public change: EventEmitter<TabsBarChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<TabsBarChangeEvent>;
 
   @State() private tabElements: HTMLElement[] = [];
 
@@ -217,7 +217,7 @@ export class TabsBar {
   };
 
   private onTabClick = (newTabIndex: number): void => {
-    this.change.emit({ activeTabIndex: newTabIndex });
+    this.update.emit({ activeTabIndex: newTabIndex });
     this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 

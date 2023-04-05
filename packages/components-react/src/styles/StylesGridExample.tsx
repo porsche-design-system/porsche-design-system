@@ -325,10 +325,10 @@ export const StylesGridExample = (): JSX.Element => {
   const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 
-  const onAccordion1Change = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onAccordion1Update = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
     setIsAccordion1Open(e.detail.open);
   }, []);
-  const onAccordion2Change = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onAccordion2Update = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
     setIsAccordion2Open(e.detail.open);
   }, []);
 
@@ -492,13 +492,13 @@ export const StylesGridExample = (): JSX.Element => {
           <Info style={{ marginLeft: spacingStaticSmall, marginTop: spacingStaticSmall }}>
             <b>Narrow</b> for small Components and Content
           </Info>
-          <PAccordion heading="Some Heading" tag="h3" open={isAccordion1Open} onChange={onAccordion1Change}>
+          <PAccordion heading="Some Heading" tag="h3" open={isAccordion1Open} onUpdate={onAccordion1Update}>
             <Text>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
               felis, ultricies nec, pellentesque eu. Aenean massa.
             </Text>
           </PAccordion>
-          <PAccordion heading="Some Heading" tag="h3" open={isAccordion2Open} onChange={onAccordion2Change}>
+          <PAccordion heading="Some Heading" tag="h3" open={isAccordion2Open} onUpdate={onAccordion2Update}>
             <Text>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
               felis, ultricies nec, pellentesque eu. Aenean massa.

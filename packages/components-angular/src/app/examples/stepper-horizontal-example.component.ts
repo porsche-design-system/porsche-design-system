@@ -7,7 +7,7 @@ import type {
 @Component({
   selector: 'page-stepper-horizontal-example',
   template: `
-    <p-stepper-horizontal (change)="onChange($event)">
+    <p-stepper-horizontal (update)="onUpdate($event)">
       <ng-container *ngFor="let step of steps">
         <p-stepper-horizontal-item [state]="step.state">
           {{ step.name }}
@@ -79,7 +79,7 @@ export class StepperHorizontalExampleComponent {
     this.steps = newState;
   }
 
-  onChange(e: CustomEvent<StepperHorizontalChangeEvent>): void {
+  onUpdate(e: CustomEvent<StepperHorizontalChangeEvent>): void {
     const { activeStepIndex } = e.detail;
 
     const newState = [...this.steps];

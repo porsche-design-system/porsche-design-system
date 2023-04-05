@@ -18,7 +18,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onChange = useCallback((e: CustomEvent<TableChangeEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<TableChangeEvent>) => {
     const { id, direction } = e.detail as TableChangeEvent & { id: keyof DataAdvanced };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
@@ -29,7 +29,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   }, []);
 
   return (
-    <PTable onChange={onChange}>
+    <PTable onUpdate={onUpdate}>
       <PHeading slot="caption" size="large">
         Some visual caption
       </PHeading>

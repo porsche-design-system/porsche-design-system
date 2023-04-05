@@ -48,12 +48,12 @@ export class SegmentedControl {
   @Prop() public value?: string | number;
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when selected element changes. */
   @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlChangeEvent>;
 
   /** Emitted when selected element changes. */
-  @Event({ bubbles: false }) public change: EventEmitter<SegmentedControlChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlChangeEvent>;
 
   public connectedCallback(): void {
     throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
@@ -93,7 +93,7 @@ export class SegmentedControl {
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
     if (item) {
       this.value = item.value; // causes rerender
-      this.change.emit({ value: this.value });
+      this.update.emit({ value: this.value });
       this.segmentedControlChange.emit({ value: this.value });
       item.focus();
     }

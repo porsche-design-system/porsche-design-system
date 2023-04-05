@@ -97,12 +97,12 @@ export class Pagination {
   @Prop() public theme?: Theme = 'light';
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when the page changes. */
   @Event({ bubbles: false }) public pageChange: EventEmitter<PaginationChangeEvent>;
 
   /** Emitted when the page changes. */
-  @Event({ bubbles: false }) public change: EventEmitter<PaginationChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<PaginationChangeEvent>;
 
   @State() private breakpointMaxNumberOfPageLinks: PaginationMaxNumberOfPageLinks = 7;
 
@@ -238,7 +238,7 @@ export class Pagination {
 
   private onClick(page: number): void {
     if (page !== this.activePage) {
-      this.change.emit({ page, previousPage: this.activePage });
+      this.update.emit({ page, previousPage: this.activePage });
       this.pageChange.emit({ page, previousPage: this.activePage });
       this.activePage = page; // TODO: should become a controlled component
     }

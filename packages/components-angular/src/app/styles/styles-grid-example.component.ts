@@ -409,12 +409,12 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
     <div class="narrow-content-grid">
       <div class="narrow-content">
         <span class="info"><b>Narrow</b> for small Components and Content</span
-        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (change)="onAccordion1Change($event)"
+        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (update)="onAccordion1Update($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
           </p></p-accordion
-        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (change)="onAccordion2Change($event)"
+        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (update)="onAccordion2Update($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
@@ -449,10 +449,10 @@ export class StylesGridExampleComponent {
   isAccordion1Open = false;
   isAccordion2Open = false;
 
-  onAccordion1Change(e: CustomEvent<AccordionChangeEvent>) {
+  onAccordion1Update(e: CustomEvent<AccordionChangeEvent>) {
     this.isAccordion1Open = e.detail.open;
   }
-  onAccordion2Change(e: CustomEvent<AccordionChangeEvent>) {
+  onAccordion2Update(e: CustomEvent<AccordionChangeEvent>) {
     this.isAccordion2Open = e.detail.open;
   }
 }

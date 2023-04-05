@@ -15,7 +15,7 @@ export const TableExampleSortingPage = (): JSX.Element => {
   const [head, setHead] = useState(headSorting);
   const [data, setData] = useState(dataSorting);
 
-  const onChange = useCallback((e: CustomEvent<TableChangeEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<TableChangeEvent>) => {
     const { id, direction } = e.detail as TableChangeEvent & { id: keyof DataSorting };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
@@ -26,7 +26,7 @@ export const TableExampleSortingPage = (): JSX.Element => {
   }, []);
 
   return (
-    <PTable caption="Some caption" onChange={onChange}>
+    <PTable caption="Some caption" onUpdate={onUpdate}>
       <PTableHead>
         <PTableHeadRow>
           {head.map((item, i) => (
