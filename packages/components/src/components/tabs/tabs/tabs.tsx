@@ -113,7 +113,7 @@ export class Tabs {
           gradientColorScheme={this.gradientColorScheme}
           gradientColor={this.gradientColor}
           activeTabIndex={this.activeTabIndex}
-          onChange={this.onTabsBarUpdate}
+          onUpdate={this.onTabsBarUpdate}
           onTabChange={(e) => e.stopPropagation()}
         >
           {this.tabsItemElements.map((tab, index) => (
