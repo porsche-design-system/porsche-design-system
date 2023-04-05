@@ -1,4 +1,5 @@
 export type { Breakpoint } from './breakpoint';
+export { breakpoints } from './breakpoint';
 export { breakpoint } from './breakpoint';
 export { breakpointBase } from './breakpointBase';
 export { breakpointXS } from './breakpointXS';
