@@ -1,9 +1,9 @@
 # Button
 
 The `p-button` component is essential for performing form or **interaction** events. For an optimal user guidance and
-dedicated pursuit of business or sales goals, different types of Buttons (**Primary** and **Secondary**) are
-available for usage. A Button can be used with or without a label but it's recommended to keep the **label visible** for
-better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a
+dedicated pursuit of business or sales goals, different types of Buttons (**Primary** and **Secondary**) are available
+for usage. A Button can be used with or without a label but it's recommended to keep the **label visible** for better
+**usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a
 descriptive label text for screen readers. Whenever you want to provide navigational elements, stick to the
 [Link](components/link) component instead.
 
@@ -25,7 +25,7 @@ Button with label only (default) and with icon only (default: "arrow-right") in 
 
 ### Tertiary (deprecated)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   The variant `tertiary` is deprecated and will be removed with next major release.
   In case, e.g. <b>variant="tertiary"</b> is used it will automatically be mapped to variant <b>"secondary"</b>.
 </p-inline-notification>
@@ -58,9 +58,9 @@ component.
 
 ## Button with specific icon
 
-If an icon needs to be implemented, just set another predefined icon. Per default, all
-icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
-link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+If an icon needs to be implemented, just set another predefined icon. Per default, all icons are fetched from the
+Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted
+somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="config"></Playground>
 

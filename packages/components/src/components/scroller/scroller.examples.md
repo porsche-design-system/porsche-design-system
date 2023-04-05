@@ -29,7 +29,7 @@ consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
 
 The size of the scroll indicator arrows depends on the `font-size` set onto the `p-scroller` component.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>scrollIndicatorPosition</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>alignScrollIndicator</code> property instead.
 </p-inline-notification>
@@ -40,7 +40,7 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 
 The background and gradient has to align with your chosen background.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>gradientColor</code> property instead.
 </p-inline-notification>

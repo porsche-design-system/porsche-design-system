@@ -15,7 +15,7 @@ component is best for a particular scenario.
 The `p-banner` component is positioned fixed above the page content by default. For personal adjustments, go to " Custom
 styling" section.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   Following state has been deprecated and will be removed with the next major release: "neutral".
 </p-inline-notification>
 
@@ -27,7 +27,7 @@ styling" section.
 
 Rich content for `heading` and `description` can be provided via named slots.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The named <code>slot="title"</code> has been deprecated and will be removed with the next major release.<br>
   Please use <code>slot="heading"</code> or the <code>heading</code> property instead.
 </p-inline-notification>
@@ -42,7 +42,7 @@ If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 
 ## Width
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
 This property is deprecated and has no effect anymore. Instead, the component is aligned with Porsche Grid "extended" by default.
 </p-inline-notification>
 
@@ -94,7 +94,7 @@ export default class Code extends Vue {
 </p-banner>`;
     
   persistent =
-`<p-banner persistent="true">
+`<p-banner dismiss-button="false">
   <span slot="heading">Some heading</span>
   <span slot="description">Some description.</span>
 </p-banner>`;
