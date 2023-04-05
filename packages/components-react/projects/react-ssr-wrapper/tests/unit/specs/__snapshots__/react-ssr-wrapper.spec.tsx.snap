@@ -1117,7 +1117,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
           </style>
           <img
             alt=""
@@ -4657,7 +4657,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -4716,7 +4716,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);

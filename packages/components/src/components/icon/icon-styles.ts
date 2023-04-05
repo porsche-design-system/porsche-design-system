@@ -16,6 +16,7 @@ import {
   filterDarkContrastHigh,
   filterDarkContrastLow,
   filterDarkContrastMedium,
+  filterDarkDisabled,
   filterDarkNotificationError,
   filterDarkNotificationInfo,
   filterDarkNotificationSuccess,
@@ -24,6 +25,7 @@ import {
   filterLightContrastHigh,
   filterLightContrastLow,
   filterLightContrastMedium,
+  filterLightDisabled,
   filterLightNotificationError,
   filterLightNotificationInfo,
   filterLightNotificationSuccess,
@@ -43,7 +45,7 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
 const filter: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string>> = {
   light: {
     primary: filterLightPrimary,
-    'state-disabled': filterLightContrastMedium,
+    'state-disabled': filterLightDisabled,
     'contrast-low': filterLightContrastLow,
     'contrast-medium': filterLightContrastMedium,
     'contrast-high': filterLightContrastHigh,
@@ -54,7 +56,7 @@ const filter: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inh
   },
   dark: {
     primary: filterDarkPrimary,
-    'state-disabled': filterDarkContrastMedium,
+    'state-disabled': filterDarkDisabled,
     'contrast-low': filterDarkContrastLow,
     'contrast-medium': filterDarkContrastMedium,
     'contrast-high': filterDarkContrastHigh,
