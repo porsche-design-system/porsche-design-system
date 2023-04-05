@@ -1,3 +1,6 @@
+export { default as AccordionExample } from './AccordionExample.vue';
+export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';
+export { default as CarouselExampleEvents } from './CarouselExampleEvents.vue';
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as ModalExampleAccessibility } from './ModalExampleAccessibility.vue';
@@ -12,5 +15,3 @@ export { default as TabsBarExampleBasic } from './TabsBarExampleBasic.vue';
 export { default as TextFieldWrapperExampleIMask } from './TextFieldWrapperExampleIMask.vue';
 export { default as TextFieldWrapperExampleSearch } from './TextFieldWrapperExampleSearch.vue';
 export { default as ToastExample } from './ToastExample.vue';
-export { default as AccordionExample } from './AccordionExample.vue';
-export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';

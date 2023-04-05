@@ -60,6 +60,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/carousel-example-events.html',
           componentsAngularPath + '/carousel-example-events.component.ts',
           componentsReactPath + '/CarouselExampleEvents.tsx',
+          componentsVuePath + '/CarouselExampleEvents.vue',
         ],
         [
           componentsJsPath + '/carousel-example-dynamic-slides.html',
