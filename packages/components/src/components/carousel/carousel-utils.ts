@@ -1,5 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
-import type { BreakpointCustomizable, BreakpointKey } from '../../types';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import type { BreakpointCustomizable } from '../../types';
 import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
@@ -26,7 +27,7 @@ export const getSplideBreakpoints = (
 ): SplideBreakpoints => {
   return typeof perPage === 'object'
     ? Object.entries(perPage).reduce(
-        (result, [key, val]: [BreakpointKey, number]) => ({
+        (result, [key, val]: [Breakpoint, number]) => ({
           ...result,
           [breakpoint[key]]: {
             // round to sanitize floating numbers

@@ -663,7 +663,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(66%) sepia(3%) saturate(333%) hue-rotate(187deg) brightness(82%) contrast(86%);
+  filter: invert(52%) sepia(6%) saturate(135%) hue-rotate(187deg) brightness(94%) contrast(89%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -691,7 +691,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);

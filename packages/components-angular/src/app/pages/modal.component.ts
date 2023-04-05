@@ -50,7 +50,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show modal (fullscreen=responsive)">
-      <p-modal [heading]="'Heading'" [open]="true" [fullscreen]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
+      <p-modal
+        [heading]="'Heading'"
+        [open]="true"
+        [fullscreen]="{ base: true, xs: false, s: true, m: false, l: true, xl: false, xxl: true }"
+      >
         Some Content: should show modal (fullscreen=responsive)
       </p-modal>
     </div>
