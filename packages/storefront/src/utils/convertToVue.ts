@@ -38,7 +38,7 @@ export const convertToVue = (markup: string): string =>
     transformAttributesWithNotDigitValue,
     transformAttributesWithDigitValue,
     cleanBooleanAndUndefinedValues,
+    unbindNativeAttributes,
     transformCustomElementTagName,
     transformToSelfClosingTags,
-    unbindNativeAttributes,
   ].reduce((previousResult, fn) => fn(previousResult), markup);
