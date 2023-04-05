@@ -6,13 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
+import { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -38,21 +38,21 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { PaginationChangeEvent, PaginationInternationalization, PaginationMaxNumberOfPageLinks } from "./components/pagination/pagination-utils";
+import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
-import { StepperHorizontalChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+import { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchAlignLabel } from "./components/switch/switch-utils";
-import { SwitchChangeEvent } from "./components/switch/switch";
-import { TableChangeEvent, TableHeadCellSort } from "./components/table/table/table-utils";
-import { TabsChangeEvent, TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-import { TabsBarChangeEvent, TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { SwitchUpdateEvent } from "./components/switch/switch";
+import { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
+import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor, TagIcon } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextTag } from "./components/text/text-utils";
@@ -2034,13 +2034,13 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when accordion state is changed.
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when accordion state is changed.
          */
-        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
+        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
         /**
           * Emitted when accordion state is changed.
          */
-        "onChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
+        "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -2272,13 +2272,13 @@ declare namespace LocalJSX {
          */
         "intl"?: CarouselInternationalization;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when carousel's content slides.
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel's content slides.
          */
-        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
         /**
           * Emitted when carousel's content slides.
          */
-        "onChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
          */
@@ -2986,13 +2986,13 @@ declare namespace LocalJSX {
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when the page changes.
+         */
+        "onPageChange"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
+        /**
           * Emitted when the page changes.
          */
-        "onChange"?: (event: PPaginationCustomEvent<PaginationChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when the page changes.
-         */
-        "onPageChange"?: (event: PPaginationCustomEvent<PaginationChangeEvent>) => void;
+        "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -3078,13 +3078,13 @@ declare namespace LocalJSX {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
+         */
+        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
+        /**
           * Emitted when selected element changes.
          */
-        "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
-         */
-        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
+        "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -3184,13 +3184,13 @@ declare namespace LocalJSX {
     }
     interface PStepperHorizontal {
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active step is changed.
+         */
+        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
+        /**
           * Emitted when active step is changed.
          */
-        "onChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active step is changed.
-         */
-        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalChangeEvent>) => void;
+        "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
         /**
           * The text size.
          */
@@ -3232,13 +3232,13 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when checked status is changed.
+         */
+        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
+        /**
           * Emitted when checked status is changed.
          */
-        "onChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when checked status is changed.
-         */
-        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
+        "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
         /**
           * Stretches the contents to max available space.
          */
@@ -3254,13 +3254,13 @@ declare namespace LocalJSX {
          */
         "caption"?: string;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when sorting is changed.
+         */
+        "onSortingChange"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
+        /**
           * Emitted when sorting is changed.
          */
-        "onChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when sorting is changed.
-         */
-        "onSortingChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
+        "onUpdate"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -3308,13 +3308,13 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: TabsGradientColorScheme;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
+        /**
           * Emitted when active tab is changed.
          */
-        "onChange"?: (event: PTabsCustomEvent<TabsChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
-         */
-        "onTabChange"?: (event: PTabsCustomEvent<TabsChangeEvent>) => void;
+        "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
         /**
           * The text size.
          */
@@ -3342,13 +3342,13 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
+        /**
           * Emitted when active tab is changed.
          */
-        "onChange"?: (event: PTabsBarCustomEvent<TabsBarChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
-         */
-        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarChangeEvent>) => void;
+        "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
         /**
           * The text size.
          */

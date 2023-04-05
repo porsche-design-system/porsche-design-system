@@ -14,7 +14,7 @@ import { getComponentCss } from './switch-styles';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
 import type { SwitchAlignLabel } from './switch-utils';
 
-export type SwitchChangeEvent = { checked: boolean };
+export type SwitchUpdateEvent = { checked: boolean };
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -57,10 +57,10 @@ export class Switch {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when checked status is changed. */
-  @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
+  @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchUpdateEvent>;
 
   /** Emitted when checked status is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<SwitchChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEvent>;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {

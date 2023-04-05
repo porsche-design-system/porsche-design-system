@@ -16,7 +16,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepperHorizontalChangeEvent, StepperHorizontalSize } from './stepper-horizontal-utils';
+import type { StepperHorizontalUpdateEvent, StepperHorizontalSize } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
@@ -46,10 +46,10 @@ export class StepperHorizontal {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when active step is changed. */
-  @Event({ bubbles: false }) public stepChange: EventEmitter<StepperHorizontalChangeEvent>;
+  @Event({ bubbles: false }) public stepChange: EventEmitter<StepperHorizontalUpdateEvent>;
 
   /** Emitted when active step is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<StepperHorizontalChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<StepperHorizontalUpdateEvent>;
 
   private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
   private scrollerElement: HTMLPScrollerElement;

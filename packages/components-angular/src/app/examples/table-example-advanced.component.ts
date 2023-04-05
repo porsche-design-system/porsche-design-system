@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { TableChangeEvent } from '@porsche-design-system/components-angular';
+import type { TableUpdateEvent } from '@porsche-design-system/components-angular';
 import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
 @Component({
@@ -47,8 +47,8 @@ export class TableExampleAdvancedComponent {
   public head = headAdvanced;
   public data = dataAdvanced;
 
-  onUpdate(e: CustomEvent<TableChangeEvent>): void {
-    const { id, direction } = e.detail as TableChangeEvent & { id: keyof DataAdvanced };
+  onUpdate(e: CustomEvent<TableUpdateEvent>): void {
+    const { id, direction } = e.detail as TableUpdateEvent & { id: keyof DataAdvanced };
     this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
     this.data = [...this.data].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])

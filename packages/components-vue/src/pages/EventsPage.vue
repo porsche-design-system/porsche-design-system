@@ -16,13 +16,13 @@
     PTextFieldWrapper,
   } from '@porsche-design-system/components-vue';
   import type {
-    AccordionChangeEvent,
-    CarouselChangeEvent,
-    PaginationChangeEvent,
-    TableChangeEvent,
-    SwitchChangeEvent,
-    TabsBarChangeEvent,
-    TabsChangeEvent,
+    AccordionUpdateEvent,
+    CarouselUpdateEvent,
+    PaginationUpdateEvent,
+    TableUpdateEvent,
+    SwitchUpdateEvent,
+    TabsBarUpdateEvent,
+    TabsUpdateEvent,
   } from '@porsche-design-system/components-vue';
 
   const accordionUpdateEventCounter = ref(0);
@@ -40,18 +40,18 @@
 
   // unused event parameters are used to verify that types can be imported from package root
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  const onAccordionChange = (detail: AccordionChangeEvent) => accordionUpdateEventCounter.value++;
-  const onPaginationChange = (detail: PaginationChangeEvent) => paginationUpdateEventCounter.value++;
-  const onTabsBarChange = (detail: TabsBarChangeEvent) => tabsBarUpdateEventCounter.value++;
-  const onTabsChange = (detail: TabsChangeEvent) => tabsUpdateEventCounter.value++;
+  const onAccordionChange = (detail: AccordionUpdateEvent) => accordionUpdateEventCounter.value++;
+  const onPaginationChange = (detail: PaginationUpdateEvent) => paginationUpdateEventCounter.value++;
+  const onTabsBarChange = (detail: TabsBarUpdateEvent) => tabsBarUpdateEventCounter.value++;
+  const onTabsChange = (detail: TabsUpdateEvent) => tabsUpdateEventCounter.value++;
   const onTextFieldSearchChange = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
-  const onSwitchChange = (detail: SwitchChangeEvent) => switchUpdateEventCounter.value++;
+  const onSwitchChange = (detail: SwitchUpdateEvent) => switchUpdateEventCounter.value++;
   const onModalDismiss = () => {
     modalDismissEventCounter.value++;
     isModalOpen.value = false;
   };
-  const onTableChange = (detail: TableChangeEvent) => tableUpdateEventCounter.value++;
-  const onCarouselChange = (detail: CarouselChangeEvent) => carouselUpdateEventCounter.value++;
+  const onTableChange = (detail: TableUpdateEvent) => tableUpdateEventCounter.value++;
+  const onCarouselChange = (detail: CarouselUpdateEvent) => carouselUpdateEventCounter.value++;
   /* eslint-enable @typescript-eslint/no-unused-vars */
 </script>
 

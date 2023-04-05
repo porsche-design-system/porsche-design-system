@@ -1,12 +1,12 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import type {
-  AccordionChangeEvent,
-  CarouselChangeEvent,
-  PaginationChangeEvent,
-  TableChangeEvent,
-  SwitchChangeEvent,
-  TabsBarChangeEvent,
-  TabsChangeEvent,
+  AccordionUpdateEvent,
+  CarouselUpdateEvent,
+  PaginationUpdateEvent,
+  TableUpdateEvent,
+  SwitchUpdateEvent,
+  TabsBarUpdateEvent,
+  TabsUpdateEvent,
 } from '@porsche-design-system/components-react';
 import {
   PAccordion,
@@ -40,19 +40,19 @@ export const EventsPage = (): JSX.Element => {
 
   // unused event parameters are used to verify that types can be imported from package root
   const onAccordionUpdate = useCallback(
-    (e: CustomEvent<AccordionChangeEvent>) => setAccordionUpdateEventCounter((prev) => prev + 1),
+    (e: CustomEvent<AccordionUpdateEvent>) => setAccordionUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onPaginationUpdate = useCallback(
-    (e: CustomEvent<PaginationChangeEvent>) => setPaginationUpdateEventCounter((prev) => prev + 1),
+    (e: CustomEvent<PaginationUpdateEvent>) => setPaginationUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTabsBarUpdate = useCallback(
-    (e: CustomEvent<TabsBarChangeEvent>) => setTabsBarUpdateEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TabsBarUpdateEvent>) => setTabsBarUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTabsUpdate = useCallback(
-    (e: CustomEvent<TabsChangeEvent>) => setTabsUpdateEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TabsUpdateEvent>) => setTabsUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTextFieldSearchChange = useCallback(
@@ -60,7 +60,7 @@ export const EventsPage = (): JSX.Element => {
     []
   );
   const onSwitchUpdate = useCallback(
-    (e: CustomEvent<SwitchChangeEvent>) => setSwitchUpdateEventCounter((prev) => prev + 1),
+    (e: CustomEvent<SwitchUpdateEvent>) => setSwitchUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onModalClose = useCallback(() => {
@@ -68,11 +68,11 @@ export const EventsPage = (): JSX.Element => {
     setIsModalOpen(false);
   }, []);
   const onTableUpdate = useCallback(
-    (e: CustomEvent<TableChangeEvent>) => setTableUpdateEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TableUpdateEvent>) => setTableUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onCarouselUpdate = useCallback(
-    (e: CustomEvent<CarouselChangeEvent>) => setCarouselUpdateEventCounter((prev) => prev + 1),
+    (e: CustomEvent<CarouselUpdateEvent>) => setCarouselUpdateEventCounter((prev) => prev + 1),
     []
   );
 

@@ -1,11 +1,11 @@
 import type { MouseEvent } from 'react';
 import { useCallback, useState } from 'react';
 import { PCarousel } from '@porsche-design-system/components-react';
-import type { CarouselChangeEvent } from '@porsche-design-system/components-react';
+import type { CarouselUpdateEvent } from '@porsche-design-system/components-react';
 
 export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(1);
-  const onUpdate = useCallback((e: CustomEvent<CarouselChangeEvent>) => setActiveSlideIndex(e.detail.activeIndex), []);
+  const onUpdate = useCallback((e: CustomEvent<CarouselUpdateEvent>) => setActiveSlideIndex(e.detail.activeIndex), []);
   const onButtonClick = useCallback(
     (e: MouseEvent<HTMLButtonElement> & { target: HTMLButtonElement }) =>
       setActiveSlideIndex(parseInt(e.target.innerText) - 1),

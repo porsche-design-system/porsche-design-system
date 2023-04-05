@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type {
-  AccordionChangeEvent,
-  CarouselChangeEvent,
-  PaginationChangeEvent,
-  TableChangeEvent,
-  SwitchChangeEvent,
-  TabsBarChangeEvent,
-  TabsChangeEvent,
+  AccordionUpdateEvent,
+  CarouselUpdateEvent,
+  PaginationUpdateEvent,
+  TableUpdateEvent,
+  SwitchUpdateEvent,
+  TabsBarUpdateEvent,
+  TabsUpdateEvent,
 } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -103,19 +103,19 @@ export class EventsComponent {
   // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported package root
-  public onAccordionUpdate(e: CustomEvent<AccordionChangeEvent>) {
+  public onAccordionUpdate(e: CustomEvent<AccordionUpdateEvent>) {
     this.accordionUpdateEventCounter++;
   }
 
-  public onPaginationUpdate(e: CustomEvent<PaginationChangeEvent>) {
+  public onPaginationUpdate(e: CustomEvent<PaginationUpdateEvent>) {
     this.paginationUpdateEventCounter++;
   }
 
-  public onTabsBarUpdate(e: CustomEvent<TabsBarChangeEvent>) {
+  public onTabsBarUpdate(e: CustomEvent<TabsBarUpdateEvent>) {
     this.tabsBarUpdateEventCounter++;
   }
 
-  public onTabsUpdate(e: CustomEvent<TabsChangeEvent>) {
+  public onTabsUpdate(e: CustomEvent<TabsUpdateEvent>) {
     this.tabsUpdateEventCounter++;
   }
 
@@ -123,7 +123,7 @@ export class EventsComponent {
     this.textFieldSearchValue = (e.target as HTMLInputElement).value;
   }
 
-  public onSwitchUpdate(e: CustomEvent<SwitchChangeEvent>) {
+  public onSwitchUpdate(e: CustomEvent<SwitchUpdateEvent>) {
     this.switchUpdateEventCounter++;
   }
 
@@ -136,11 +136,11 @@ export class EventsComponent {
     this.isModalOpen = false;
   }
 
-  public onTableUpdate(e: CustomEvent<TableChangeEvent>) {
+  public onTableUpdate(e: CustomEvent<TableUpdateEvent>) {
     this.tableUpdateEventCounter++;
   }
 
-  public onCarouselUpdate(e: CustomEvent<CarouselChangeEvent>) {
+  public onCarouselUpdate(e: CustomEvent<CarouselUpdateEvent>) {
     this.carouselUpdateEventCounter++;
   }
 }

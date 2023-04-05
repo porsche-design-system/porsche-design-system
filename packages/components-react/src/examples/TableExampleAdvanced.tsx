@@ -1,4 +1,4 @@
-import type { TableChangeEvent } from '@porsche-design-system/components-react';
+import type { TableUpdateEvent } from '@porsche-design-system/components-react';
 import {
   PButtonPure,
   PHeading,
@@ -18,8 +18,8 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onUpdate = useCallback((e: CustomEvent<TableChangeEvent>) => {
-    const { id, direction } = e.detail as TableChangeEvent & { id: keyof DataAdvanced };
+  const onUpdate = useCallback((e: CustomEvent<TableUpdateEvent>) => {
+    const { id, direction } = e.detail as TableUpdateEvent & { id: keyof DataAdvanced };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {

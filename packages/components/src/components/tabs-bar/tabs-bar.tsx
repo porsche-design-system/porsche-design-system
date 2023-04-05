@@ -20,7 +20,7 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
-  TabsBarChangeEvent,
+  TabsBarUpdateEvent,
   TabsBarGradientColor,
   TabsBarGradientColorScheme,
   TabsBarSize,
@@ -78,10 +78,10 @@ export class TabsBar {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsBarChangeEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsBarUpdateEvent>;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<TabsBarChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<TabsBarUpdateEvent>;
 
   @State() private tabElements: HTMLElement[] = [];
 

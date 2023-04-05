@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { AccordionChangeEvent } from '@porsche-design-system/components-angular';
+import type { AccordionUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-styles-grid-example',
@@ -449,10 +449,10 @@ export class StylesGridExampleComponent {
   isAccordion1Open = false;
   isAccordion2Open = false;
 
-  onAccordion1Update(e: CustomEvent<AccordionChangeEvent>) {
+  onAccordion1Update(e: CustomEvent<AccordionUpdateEvent>) {
     this.isAccordion1Open = e.detail.open;
   }
-  onAccordion2Update(e: CustomEvent<AccordionChangeEvent>) {
+  onAccordion2Update(e: CustomEvent<AccordionUpdateEvent>) {
     this.isAccordion2Open = e.detail.open;
   }
 }

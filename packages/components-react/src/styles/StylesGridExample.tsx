@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import type { AccordionChangeEvent } from '@porsche-design-system/components-react';
+import type { AccordionUpdateEvent } from '@porsche-design-system/components-react';
 import { PAccordion, PButton } from '@porsche-design-system/components-react';
 import styled from 'styled-components';
 import {
@@ -325,10 +325,10 @@ export const StylesGridExample = (): JSX.Element => {
   const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 
-  const onAccordion1Update = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onAccordion1Update = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
     setIsAccordion1Open(e.detail.open);
   }, []);
-  const onAccordion2Update = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onAccordion2Update = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
     setIsAccordion2Open(e.detail.open);
   }, []);
 

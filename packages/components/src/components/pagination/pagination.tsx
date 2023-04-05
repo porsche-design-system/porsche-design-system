@@ -11,7 +11,7 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
   PaginationMaxNumberOfPageLinks,
-  PaginationChangeEvent,
+  PaginationUpdateEvent,
   PaginationInternationalization,
 } from './pagination-utils';
 import {
@@ -99,10 +99,10 @@ export class Pagination {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when the page changes. */
-  @Event({ bubbles: false }) public pageChange: EventEmitter<PaginationChangeEvent>;
+  @Event({ bubbles: false }) public pageChange: EventEmitter<PaginationUpdateEvent>;
 
   /** Emitted when the page changes. */
-  @Event({ bubbles: false }) public update: EventEmitter<PaginationChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEvent>;
 
   @State() private breakpointMaxNumberOfPageLinks: PaginationMaxNumberOfPageLinks = 7;
 

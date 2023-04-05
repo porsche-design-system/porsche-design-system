@@ -23,7 +23,7 @@
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
-  import type { SwitchChangeEvent } from '../../../components/dist/types/bundle';
+  import type { SwitchUpdateEvent } from '@porsche-design-system/components/src/components/switch/switch';
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 
@@ -140,7 +140,7 @@
     }
 
     isToggled = false;
-    toggleProps({ detail: { checked } }: CustomEvent<SwitchChangeEvent>) {
+    toggleProps({ detail: { checked } }: CustomEvent<SwitchUpdateEvent>) {
       this.isToggled = checked;
       (this.$refs.body as HTMLElement).querySelectorAll('.prop + div').forEach((el) => {
         (el as HTMLElement).style.display = checked ? 'block' : 'none';

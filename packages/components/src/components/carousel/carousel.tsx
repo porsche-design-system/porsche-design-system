@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from
 import type { ButtonPure } from '../button-pure/button-pure';
 import type {
   CarouselAlignHeader,
-  CarouselChangeEvent,
+  CarouselUpdateEvent,
   CarouselInternationalization,
   CarouselWidth,
 } from './carousel-utils';
@@ -118,10 +118,10 @@ export class Carousel {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when carousel's content slides. */
-  @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselChangeEvent>;
+  @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselUpdateEvent>;
 
   /** Emitted when carousel's content slides. */
-  @Event({ bubbles: false }) public update: EventEmitter<CarouselChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEvent>;
 
   @State() private amountOfPages: number;
 

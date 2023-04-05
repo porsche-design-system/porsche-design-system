@@ -2,7 +2,7 @@ import type { Theme } from '../../../types';
 import type { TabsItem } from '../tabs-item/tabs-item';
 import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
 import type {
-  TabsBarChangeEvent,
+  TabsBarUpdateEvent,
   TabsBarGradientColor,
   TabsBarGradientColorScheme,
   TabsBarSize,
@@ -15,7 +15,7 @@ export type TabsWeight = TabsBarWeight;
 /** @deprecated */
 export type TabsGradientColorScheme = TabsBarGradientColorScheme;
 export type TabsGradientColor = TabsBarGradientColor;
-export type TabsChangeEvent = TabsBarChangeEvent;
+export type TabsUpdateEvent = TabsBarUpdateEvent;
 
 export const syncTabsItemsProps = (host: HTMLElement, theme: Theme): void => {
   Array.from(host.children).forEach((item: HTMLElement & TabsItem & TabsItemInternalHTMLProps) => {

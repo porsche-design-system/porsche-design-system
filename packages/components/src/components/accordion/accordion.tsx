@@ -8,7 +8,7 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
+import type { AccordionUpdateEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
   AccordionTag,
@@ -59,10 +59,10 @@ export class Accordion {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when accordion state is changed. */
-  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
+  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionUpdateEvent>;
 
   /** Emitted when accordion state is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<AccordionChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEvent>;
 
   private collapsibleElement: HTMLDivElement;
   private content: HTMLDivElement;

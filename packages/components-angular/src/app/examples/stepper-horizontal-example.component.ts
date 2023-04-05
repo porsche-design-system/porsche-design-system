@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type {
-  StepperHorizontalChangeEvent,
+  StepperHorizontalUpdateEvent,
   StepperHorizontalItemState,
 } from '@porsche-design-system/components-angular';
 
@@ -79,7 +79,7 @@ export class StepperHorizontalExampleComponent {
     this.steps = newState;
   }
 
-  onUpdate(e: CustomEvent<StepperHorizontalChangeEvent>): void {
+  onUpdate(e: CustomEvent<StepperHorizontalUpdateEvent>): void {
     const { activeStepIndex } = e.detail;
 
     const newState = [...this.steps];
