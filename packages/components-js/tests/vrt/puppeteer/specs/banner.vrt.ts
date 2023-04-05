@@ -36,7 +36,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-banner state="neutral" theme="${theme}">
+        <p-banner open="true" state="neutral" theme="${theme}">
           <span slot="title">
             Slotted title
             <span>
