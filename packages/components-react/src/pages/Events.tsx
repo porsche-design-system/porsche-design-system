@@ -27,14 +27,14 @@ import {
 export const EventsPage = (): JSX.Element => {
   const [accordionUpdateEventCounter, setAccordionUpdateEventCounter] = useState(0);
   const [paginationUpdateEventCounter, setPaginationUpdateEventCounter] = useState(0);
-  const [tabsBarChangeEventCounter, setTabsBarChangeEventCounter] = useState(0);
-  const [tabsChangeEventCounter, setTabsChangeEventCounter] = useState(0);
+  const [tabsBarUpdateEventCounter, setTabsBarUpdateEventCounter] = useState(0);
+  const [tabsUpdateEventCounter, setTabsUpdateEventCounter] = useState(0);
   const [textFieldSearchValue, setTextFieldSearchValue] = useState('');
-  const [switchChangeEventCounter, setSwitchChangeEventCounter] = useState(0);
+  const [switchUpdateEventCounter, setSwitchUpdateEventCounter] = useState(0);
   const [modalDismissEventCounter, setModalDismissEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tableChangeEventCounter, setTableChangeEventCounter] = useState(0);
-  const [carouselChangeEventCounter, setCarouselChangeEventCounter] = useState(0);
+  const [tableUpdateEventCounter, setTableUpdateEventCounter] = useState(0);
+  const [carouselUpdateEventCounter, setCarouselUpdateEventCounter] = useState(0);
 
   // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
@@ -48,19 +48,19 @@ export const EventsPage = (): JSX.Element => {
     []
   );
   const onTabsBarUpdate = useCallback(
-    (e: CustomEvent<TabsBarChangeEvent>) => setTabsBarChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TabsBarChangeEvent>) => setTabsBarUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTabsUpdate = useCallback(
-    (e: CustomEvent<TabsChangeEvent>) => setTabsChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TabsChangeEvent>) => setTabsUpdateEventCounter((prev) => prev + 1),
     []
   );
-  const onTextFieldSearchUpdate = useCallback(
+  const onTextFieldSearchChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setTextFieldSearchValue(e.target.value),
     []
   );
   const onSwitchUpdate = useCallback(
-    (e: CustomEvent<SwitchChangeEvent>) => setSwitchChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<SwitchChangeEvent>) => setSwitchUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onModalClose = useCallback(() => {
@@ -68,11 +68,11 @@ export const EventsPage = (): JSX.Element => {
     setIsModalOpen(false);
   }, []);
   const onTableUpdate = useCallback(
-    (e: CustomEvent<TableChangeEvent>) => setTableChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<TableChangeEvent>) => setTableUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onCarouselUpdate = useCallback(
-    (e: CustomEvent<CarouselChangeEvent>) => setCarouselChangeEventCounter((prev) => prev + 1),
+    (e: CustomEvent<CarouselChangeEvent>) => setCarouselUpdateEventCounter((prev) => prev + 1),
     []
   );
 
@@ -94,7 +94,7 @@ export const EventsPage = (): JSX.Element => {
           <button>Tab 2</button>
           <button>Tab 3</button>
         </PTabsBar>
-        <p>{tabsBarChangeEventCounter}</p>
+        <p>{tabsBarUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
@@ -103,19 +103,19 @@ export const EventsPage = (): JSX.Element => {
           <PTabsItem label="Tab 2">Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Content 3</PTabsItem>
         </PTabs>
-        <p>{tabsChangeEventCounter}</p>
+        <p>{tabsUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
         <PTextFieldWrapper>
-          <input type="search" value={textFieldSearchValue} onUpdate={onTextFieldSearchUpdate} />
+          <input type="search" value={textFieldSearchValue} onChange={onTextFieldSearchChange} />
         </PTextFieldWrapper>
         <p>Value: {textFieldSearchValue}</p>
       </div>
 
       <div className="playground light">
         <PSwitch onUpdate={onSwitchUpdate}>Switch</PSwitch>
-        <p>{switchChangeEventCounter}</p>
+        <p>{switchUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
@@ -134,7 +134,7 @@ export const EventsPage = (): JSX.Element => {
             </PTableHeadRow>
           </PTableHead>
         </PTable>
-        <p>{tableChangeEventCounter}</p>
+        <p>{tableUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
@@ -143,7 +143,7 @@ export const EventsPage = (): JSX.Element => {
           <div children="Slide 2" />
           <div children="Slide 3" />
         </PCarousel>
-        <p>{carouselChangeEventCounter}</p>
+        <p>{carouselUpdateEventCounter}</p>
       </div>
     </>
   );

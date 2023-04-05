@@ -17,7 +17,7 @@ import type {
         Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
         labore et dolore magna aliquyam erat, sed diam voluptua.
       </p-accordion>
-      <p>{{ accordionChangeEventCounter }}</p>
+      <p>{{ accordionUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -27,7 +27,7 @@ import type {
         [activePage]="1"
         (update)="onPaginationUpdate($event)"
       ></p-pagination>
-      <p>{{ paginationChangeEventCounter }}</p>
+      <p>{{ paginationUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -36,7 +36,7 @@ import type {
         <button>Tab 2</button>
         <button>Tab 3</button>
       </p-tabs-bar>
-      <p>{{ tabsBarChangeEventCounter }}</p>
+      <p>{{ tabsBarUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -45,7 +45,7 @@ import type {
         <p-tabs-item label="Tab 2">Content 2</p-tabs-item>
         <p-tabs-item label="Tab 3">Content 3</p-tabs-item>
       </p-tabs>
-      <p>{{ tabsChangeEventCounter }}</p>
+      <p>{{ tabsUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -57,7 +57,7 @@ import type {
 
     <div class="playground light">
       <p-switch (update)="onSwitchUpdate($event)">Switch</p-switch>
-      <p>{{ switchChangeEventCounter }}</p>
+      <p>{{ switchUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -74,7 +74,7 @@ import type {
           </p-table-head-row>
         </p-table-head>
       </p-table>
-      <p>{{ tableChangeEventCounter }}</p>
+      <p>{{ tableUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -83,40 +83,40 @@ import type {
         <div>Slide 2</div>
         <div>Slide 3</div>
       </p-carousel>
-      <p>{{ carouselChangeEventCounter }}</p>
+      <p>{{ carouselUpdateEventCounter }}</p>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsComponent {
-  public accordionChangeEventCounter = 0;
-  public paginationChangeEventCounter = 0;
-  public tabsBarChangeEventCounter = 0;
-  public tabsChangeEventCounter = 0;
+  public accordionUpdateEventCounter = 0;
+  public paginationUpdateEventCounter = 0;
+  public tabsBarUpdateEventCounter = 0;
+  public tabsUpdateEventCounter = 0;
   public textFieldSearchValue = '';
-  public switchChangeEventCounter = 0;
+  public switchUpdateEventCounter = 0;
   public modalDismissEventCounter = 0;
   public isModalOpen = false;
-  public tableChangeEventCounter = 0;
-  public carouselChangeEventCounter = 0;
+  public tableUpdateEventCounter = 0;
+  public carouselUpdateEventCounter = 0;
 
   // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported package root
   public onAccordionUpdate(e: CustomEvent<AccordionChangeEvent>) {
-    this.accordionChangeEventCounter++;
+    this.accordionUpdateEventCounter++;
   }
 
   public onPaginationUpdate(e: CustomEvent<PaginationChangeEvent>) {
-    this.paginationChangeEventCounter++;
+    this.paginationUpdateEventCounter++;
   }
 
   public onTabsBarUpdate(e: CustomEvent<TabsBarChangeEvent>) {
-    this.tabsBarChangeEventCounter++;
+    this.tabsBarUpdateEventCounter++;
   }
 
   public onTabsUpdate(e: CustomEvent<TabsChangeEvent>) {
-    this.tabsChangeEventCounter++;
+    this.tabsUpdateEventCounter++;
   }
 
   public onTextFieldSearchInput(e: Event) {
@@ -124,7 +124,7 @@ export class EventsComponent {
   }
 
   public onSwitchUpdate(e: CustomEvent<SwitchChangeEvent>) {
-    this.switchChangeEventCounter++;
+    this.switchUpdateEventCounter++;
   }
 
   public openModal() {
@@ -137,10 +137,10 @@ export class EventsComponent {
   }
 
   public onTableUpdate(e: CustomEvent<TableChangeEvent>) {
-    this.tableChangeEventCounter++;
+    this.tableUpdateEventCounter++;
   }
 
   public onCarouselUpdate(e: CustomEvent<CarouselChangeEvent>) {
-    this.carouselChangeEventCounter++;
+    this.carouselUpdateEventCounter++;
   }
 }
