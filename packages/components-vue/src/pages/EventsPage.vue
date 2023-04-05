@@ -40,18 +40,18 @@
 
   // unused event parameters are used to verify that types can be imported from package root
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  const onAccordionChange = (detail: AccordionUpdateEvent) => accordionUpdateEventCounter.value++;
-  const onPaginationChange = (detail: PaginationUpdateEvent) => paginationUpdateEventCounter.value++;
-  const onTabsBarChange = (detail: TabsBarUpdateEvent) => tabsBarUpdateEventCounter.value++;
-  const onTabsChange = (detail: TabsUpdateEvent) => tabsUpdateEventCounter.value++;
-  const onTextFieldSearchChange = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
-  const onSwitchChange = (detail: SwitchUpdateEvent) => switchUpdateEventCounter.value++;
+  const onAccordionUpdate = (detail: AccordionUpdateEvent) => accordionUpdateEventCounter.value++;
+  const onPaginationUpdate = (detail: PaginationUpdateEvent) => paginationUpdateEventCounter.value++;
+  const onTabsBarUpdate = (detail: TabsBarUpdateEvent) => tabsBarUpdateEventCounter.value++;
+  const onTabsUpdate = (detail: TabsUpdateEvent) => tabsUpdateEventCounter.value++;
+  const onTextFieldSearchUpdate = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
+  const onSwitchUpdate = (detail: SwitchUpdateEvent) => switchUpdateEventCounter.value++;
   const onModalDismiss = () => {
     modalDismissEventCounter.value++;
     isModalOpen.value = false;
   };
-  const onTableChange = (detail: TableUpdateEvent) => tableUpdateEventCounter.value++;
-  const onCarouselChange = (detail: CarouselUpdateEvent) => carouselUpdateEventCounter.value++;
+  const onTableUpdate = (detail: TableUpdateEvent) => tableUpdateEventCounter.value++;
+  const onCarouselUpdate = (detail: CarouselUpdateEvent) => carouselUpdateEventCounter.value++;
   /* eslint-enable @typescript-eslint/no-unused-vars */
 </script>
 
