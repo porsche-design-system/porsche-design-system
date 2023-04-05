@@ -72,6 +72,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/carousel-example-jump-to-slide.html',
           componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
           componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
+          componentsVuePath + '/CarouselExampleJumpToSlide.vue',
         ],
       ],
     },

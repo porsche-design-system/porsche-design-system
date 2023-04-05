@@ -1,6 +1,7 @@
 export { default as AccordionExample } from './AccordionExample.vue';
 export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';
 export { default as CarouselExampleEvents } from './CarouselExampleEvents.vue';
+export { default as CarouselExampleJumpToSlide } from './CarouselExampleJumpToSlide.vue';
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as ModalExampleAccessibility } from './ModalExampleAccessibility.vue';

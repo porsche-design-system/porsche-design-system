@@ -6,6 +6,7 @@ import {
   AccordionExample,
   CarouselExampleDynamicSlides,
   CarouselExampleEvents,
+  CarouselExampleJumpToSlide,
   InlineNotificationExampleActionButton,
   InlineNotificationExampleEvents,
   ModalExampleAccessibility,
@@ -47,6 +48,11 @@ export const routes: RouteRecordRaw[] = [
     path: '/carousel-example-events',
     name: 'Carousel Example Events',
     component: CarouselExampleEvents,
+  },
+  {
+    path: '/carousel-example-jump-to-slide',
+    name: 'Carousel Example Jump to Slide',
+    component: CarouselExampleJumpToSlide,
   },
   {
     path: '/inline-notification-example-action-button',
