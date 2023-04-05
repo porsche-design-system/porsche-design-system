@@ -8,5 +8,6 @@ exports[`should match mediaQueries snapshot 1`] = `
   "(min-width:1000px)",
   "(min-width:1300px)",
   "(min-width:1760px)",
+  "(min-width:1920px)",
 ]
 `;

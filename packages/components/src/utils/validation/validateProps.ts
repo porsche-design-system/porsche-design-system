@@ -1,6 +1,8 @@
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { Class, FunctionPropertyNames } from '../../types/index';
-import type { BreakpointKey, BreakpointValues } from '../breakpoint-customizable';
-import { BREAKPOINTS, parseJSON } from '../breakpoint-customizable';
+import type { BreakpointValues } from '../breakpoint-customizable';
+import { parseJSON } from '../breakpoint-customizable';
+import { breakpoints } from '@porsche-design-system/utilities-v2';
 import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
 import { getTagName } from '..';
@@ -70,7 +72,7 @@ export const validateValueOfType = (propName: string, propValue: any, propType: 
 const breakpointCustomizableTemplate =
   'value, ' +
   formatObjectOutput(
-    BREAKPOINTS.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
+    breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
   ).replace(/"/g, '');
 
 export const getBreakpointCustomizableStructure = <T>(
@@ -165,7 +167,7 @@ export const AllowedTypes: {
         if (
           // check structure keys: base, xs, s, m, l, xl
           // TODO: check for base key
-          Object.keys(value).some((key) => !BREAKPOINTS.includes(key as BreakpointKey)) ||
+          Object.keys(value).some((key) => !breakpoints.includes(key as Breakpoint)) ||
           // check actual values of keys, e.g. true, false, 'small' or 5
           Object.values(value).some((val) => isBreakpointCustomizableValueInvalid(val, allowedValues))
         ) {

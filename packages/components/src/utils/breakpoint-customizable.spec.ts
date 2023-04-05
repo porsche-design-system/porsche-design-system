@@ -18,8 +18,8 @@ describe('parseJSON()', () => {
     ['{base: "https://www.porsche.com"}', { base: 'https://www.porsche.com' }],
     ['{base: 36, xs: 6, s: 4, m: 16, l: 2}', { base: 36, xs: 6, s: 4, m: 16, l: 2 }],
     [
-      '{base: "1:1", s: "3:4", m: "4:3", l: "9:16", xl: "16:9"}',
-      { base: '1:1', s: '3:4', m: '4:3', l: '9:16', xl: '16:9' },
+      '{base: "1:1", s: "3:4", m: "4:3", l: "9:16", xl: "16:9", xxl: "3:4"}',
+      { base: '1:1', s: '3:4', m: '4:3', l: '9:16', xl: '16:9', xxl: '3:4' },
     ],
     [false, false],
     [1, 1],
