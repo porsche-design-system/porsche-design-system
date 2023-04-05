@@ -49,6 +49,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/accordion-example.html',
           componentsAngularPath + '/accordion-example.component.ts',
           componentsReactPath + '/AccordionExample.tsx',
+          componentsVuePath + '/AccordionExample.vue',
         ],
       ],
     },

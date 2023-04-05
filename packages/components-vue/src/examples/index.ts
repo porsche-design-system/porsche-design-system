@@ -12,3 +12,4 @@ export { default as TabsBarExampleBasic } from './TabsBarExampleBasic.vue';
 export { default as TextFieldWrapperExampleIMask } from './TextFieldWrapperExampleIMask.vue';
 export { default as TextFieldWrapperExampleSearch } from './TextFieldWrapperExampleSearch.vue';
 export { default as ToastExample } from './ToastExample.vue';
+export { default as AccordionExample } from './AccordionExample.vue';

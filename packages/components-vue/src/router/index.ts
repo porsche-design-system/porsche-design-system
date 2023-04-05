@@ -3,6 +3,7 @@ import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import * as fromPages from '../pages';
 import { paramCase } from 'change-case';
 import {
+  AccordionExample,
   InlineNotificationExampleActionButton,
   InlineNotificationExampleEvents,
   ModalExampleAccessibility,
@@ -30,6 +31,11 @@ const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecord
 
 export const routes: RouteRecordRaw[] = [
   ...generatedRoutes,
+  {
+    path: '/accordion-example',
+    name: 'Accordion Example',
+    component: AccordionExample,
+  },
   {
     path: '/inline-notification-example-action-button',
     name: 'Inline Notification Example Action Button',
@@ -97,7 +103,7 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/toast-example',
-    name: 'Toast Example ',
+    name: 'Toast Example',
     component: ToastExample,
   },
 ];
