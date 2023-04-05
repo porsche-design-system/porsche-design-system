@@ -1,5 +1,4 @@
-import { camelCase } from 'change-case';
-import { transformCustomElementTagName, transformToSelfClosingTags } from '@/utils/convertToReact';
+import { camelCase, pascalCase } from 'change-case';
 
 export const transformEventsToVueSyntax = (markup: string): string =>
   markup.replace(/\son([a-z]+?)="(.*?)"/g, ' @$1="$2"');
@@ -31,6 +30,14 @@ export const unbindNativeAttributes = (markup: string): string =>
   // remove brackets from "id", "class", "style, "slot" and "title" attributes
   markup.replace(/\s:(id|class|style|slot|title)="'(.*?)'"/g, ' $1="$2"');
 
+export const transformCustomElementTagName = (markup: string): string =>
+  markup.replace(/<(\/?)(p-[\w-]+)/g, (m, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
+
+export const transformInputs = (markup: string): string => markup.replace(/(<input(?:.[^/]*?))>/g, '$1 />');
+
+export const transformToSelfClosingTags = (markup: string): string =>
+  markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
+
 export const convertToVue = (markup: string): string =>
   [
     transformEventsToVueSyntax,
@@ -40,5 +47,6 @@ export const convertToVue = (markup: string): string =>
     cleanBooleanAndUndefinedValues,
     unbindNativeAttributes,
     transformCustomElementTagName,
+    transformInputs,
     transformToSelfClosingTags,
   ].reduce((previousResult, fn) => fn(previousResult), markup);
