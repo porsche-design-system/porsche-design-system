@@ -9,7 +9,7 @@
 
 <template>
   <PButton :type="'button'" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen"> Open Modal </PButton>
-  <PModal :open="isModalOpen" @dismiss="onDismiss">
+  <PModal :open="isModalOpen" @dismiss="onDismiss" :aria="{ 'aria-label': 'Some Heading' }">
     <PText>Some Content</PText>
     <PButtonGroup :className="'footer'">
       <PButton>Save</PButton>
