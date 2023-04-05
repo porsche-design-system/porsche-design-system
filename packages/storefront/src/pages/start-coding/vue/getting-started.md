@@ -79,6 +79,20 @@ Change your AppComponent to use at least one Porsche Design System component, fo
 
 Run `yarn vite` or `npm start` and check if the components are displayed correctly.
 
+## Plugin
+
+You can also use the `PorscheDesignSystemPlugin` to extend your vue setup.
+
+```ts
+// main.ts
+import { createApp } from 'vue';
+import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
+
+const app = createApp(App);
+app.use(createPorscheDesignSystem({ prefix: 'my-prefix' }));
+app.mount('#app');
+```
+
 ## When are Porsche Design System components initialized?
 
 See [componentsReady()](helpers/components-ready) for further information.
