@@ -26,6 +26,7 @@ describe('getCurrentBreakpointKey()', () => {
     ['1000px', 'm'],
     ['1300px', 'l'],
     ['1760px', 'xl'],
+    ['1920px', 'xxl'],
   ])('should for breakpoint: %s return: %s', (breakpoint, breakpointKey) => {
     const matchingIndex = mediaQueryLists.findIndex((item) => item.media.includes(breakpoint));
     overrideMediaQueryLists(mediaQueryLists.map((item, i) => (i <= matchingIndex ? { ...item, matches: true } : item)));
@@ -42,18 +43,28 @@ describe('getCurrentMatchingBreakpointValue()', () => {
     { base: 'base', xs: 'xs', s: 's', m: 'm' },
     { base: 'base', xs: 'xs', s: 's', m: 'm', l: 'l' },
     { base: 'base', xs: 'xs', s: 's', m: 'm', l: 'l', xl: 'xl' },
+    { base: 'base', xs: 'xs', s: 's', m: 'm', l: 'l', xl: 'xl', xxl: 'xxl' },
     { base: 'base', s: 's', l: 'l' },
   ];
 
   // results for values from above for every breakpoint from [base, ...to... , xl]
-  const results: [BreakpointKey, BreakpointKey, BreakpointKey, BreakpointKey, BreakpointKey, BreakpointKey][] = [
-    ['base', 'base', 'base', 'base', 'base', 'base'],
-    ['base', 'xs', 'xs', 'xs', 'xs', 'xs'],
-    ['base', 'xs', 's', 's', 's', 's'],
-    ['base', 'xs', 's', 'm', 'm', 'm'],
-    ['base', 'xs', 's', 'm', 'l', 'l'],
-    ['base', 'xs', 's', 'm', 'l', 'xl'],
-    ['base', 'base', 's', 's', 'l', 'l'],
+  const results: [
+    BreakpointKey,
+    BreakpointKey,
+    BreakpointKey,
+    BreakpointKey,
+    BreakpointKey,
+    BreakpointKey,
+    BreakpointKey
+  ][] = [
+    ['base', 'base', 'base', 'base', 'base', 'base', 'base'],
+    ['base', 'xs', 'xs', 'xs', 'xs', 'xs', 'xs'],
+    ['base', 'xs', 's', 's', 's', 's', 's'],
+    ['base', 'xs', 's', 'm', 'm', 'm', 'm'],
+    ['base', 'xs', 's', 'm', 'l', 'l', 'l'],
+    ['base', 'xs', 's', 'm', 'l', 'xl', 'xl'],
+    ['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'],
+    ['base', 'base', 's', 's', 'l', 'l', 'l'],
   ];
 
   // merge it together so that we got a test case for each value on every breakpoint
@@ -76,7 +87,7 @@ describe('getCurrentMatchingBreakpointValue()', () => {
   );
 
   it('should return correct breakpoint value for BreakpointCustomizable<boolean>', () => {
-    const value: BreakpointCustomizable<boolean> = { base: true, m: false, xl: true };
+    const value: BreakpointCustomizable<boolean> = { base: true, m: false, xl: true, xxl: false };
     const spy = jest.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey');
 
     spy.mockReturnValue('base');
@@ -91,10 +102,12 @@ describe('getCurrentMatchingBreakpointValue()', () => {
     expect(getCurrentMatchingBreakpointValue(value)).toBe(false);
     spy.mockReturnValue('xl');
     expect(getCurrentMatchingBreakpointValue(value)).toBe(true);
+    spy.mockReturnValue('xxl');
+    expect(getCurrentMatchingBreakpointValue(value)).toBe(false);
   });
 
   it('should return correct breakpoint value for BreakpointCustomizable<number>', () => {
-    const value: BreakpointCustomizable<number> = { base: 3, s: 2, m: 1, xl: 5 };
+    const value: BreakpointCustomizable<number> = { base: 3, s: 2, m: 1, xl: 5, xxl: 6 };
     const spy = jest.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey');
 
     spy.mockReturnValue('base');
@@ -109,5 +122,7 @@ describe('getCurrentMatchingBreakpointValue()', () => {
     expect(getCurrentMatchingBreakpointValue(value)).toBe(1);
     spy.mockReturnValue('xl');
     expect(getCurrentMatchingBreakpointValue(value)).toBe(5);
+    spy.mockReturnValue('xxl');
+    expect(getCurrentMatchingBreakpointValue(value)).toBe(6);
   });
 });
