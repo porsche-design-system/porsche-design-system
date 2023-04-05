@@ -34,11 +34,16 @@ Rich content for `heading` and `description` can be provided via named slots.
 
 <Playground :markup="slottedHeadingDescription" :config="config"></Playground>
 
-## Persistent
+## Without Close/Dismiss Button
 
-If the **Banner** shouldn't be removable by the user, add `persistent` prop.
+If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
 
-<Playground :markup="persistent" :config="config"></Playground>
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>persistent</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>dismissButton</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="dismissButton" :config="config"></Playground>
 
 ## Width
 
@@ -48,7 +53,9 @@ This property is deprecated and has no effect anymore. Instead, the component is
 
 ## Example with user interaction
 
-<p-button type="button" v-on:click="openBanner($event)">Open Banner</p-button>
+<p-button type="button" v-on:click="isBannerOpen = true">Open Banner</p-button> <p-banner :open="isBannerOpen"
+@dismiss="isBannerOpen = false"> <span slot="heading">Some heading</span> <span slot="description">Some
+description.</span> </p-banner>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -85,39 +92,28 @@ export default class Code extends Vue {
   state = 'info';
   states = BANNER_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get stateMarkup() {
-    return `<p-banner state="${this.state}" heading="Some heading" description="Some description"></p-banner>`;
+    return `<p-banner open="true" state="${this.state}" heading="Some heading" description="Some description"></p-banner>`;
   }
 
-  slottedHeadingDescription = `<p-banner state="${this.state}">
+  slottedHeadingDescription = `<p-banner open="true" state="${this.state}">
   <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span>
   <span slot="description">Some description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
 </p-banner>`;
     
-  persistent =
-`<p-banner dismiss-button="false">
+  dismissButton =
+`<p-banner open="true" dismiss-button="false">
   <span slot="heading">Some heading</span>
   <span slot="description">Some description.</span>
 </p-banner>`;
 
   get widthMarkup() {
-    return `<p-banner width="${this.width}">
+    return `<p-banner open="true" width="${this.width}">
   <span slot="heading">Some heading</span>
   <span slot="description">Some description.</span>
 </p-banner>`;
   }
 
-  openBanner = (event) => {
-    const el = document.createElement('p-banner');
-    const currentTarget = event.currentTarget;
-    el.innerHTML = `
-      <span slot="heading">Some heading</span>
-      <span slot="description">Some description.</span>
-    `;
-    document.getElementById('app').append(el);
-    el.addEventListener('dismiss', () => {
-      currentTarget.focus();
-    });
-  };
+  isBannerOpen = false;
 
   mounted(): void {
     const banners = document.querySelectorAll('p-banner');
