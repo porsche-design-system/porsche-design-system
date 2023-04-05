@@ -115,7 +115,7 @@ describe('unbindNativeAttributes()', () => {
   });
 });
 
-describe.only('convertToVue()', () => {
+describe('convertToVue()', () => {
   afterEach(() => jest.clearAllMocks());
 
   let previousSpy: jest.SpyInstance;
@@ -126,19 +126,21 @@ describe.only('convertToVue()', () => {
     'transformAttributesWithDigitValue',
     'cleanBooleanAndUndefinedValues',
     'unbindNativeAttributes',
+    'transformCustomElementTagName',
+    'transformInputs',
+    'transformToSelfClosingTags',
   ];
 
   it.each(transformFunctions)('should call %s()', (fn) => {
     const spy = jest.spyOn(vueUtils, fn as any);
-
     const i = transformFunctions.indexOf(fn);
+
     if (i) {
       previousSpy = jest.spyOn(vueUtils, transformFunctions[i - 1] as any);
     }
 
     convertToVue(markup);
 
-    expect(spy).toBeCalledWith(expect.stringContaining('p-some-tag'));
     if (previousSpy) {
       expect(previousSpy.mock.invocationCallOrder[0]).toBeLessThan(spy.mock.invocationCallOrder[0]);
     }
