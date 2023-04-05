@@ -1,7 +1,7 @@
 import { camelCase } from 'change-case';
 import { transformCustomElementTagName, transformToSelfClosingTags } from '@/utils/convertToReact';
 
-export const transformEventsToViewSyntax = (markup: string): string =>
+export const transformEventsToVueSyntax = (markup: string): string =>
   markup.replace(/\son([a-z]+?)="(.*?)"/g, ' @$1="$2"');
 
 export const transformAttributesWithObjectValues = (markup: string): string =>
@@ -33,7 +33,7 @@ export const unbindNativeAttributes = (markup: string): string =>
 
 export const convertToVue = (markup: string): string =>
   [
-    transformEventsToViewSyntax,
+    transformEventsToVueSyntax,
     transformAttributesWithObjectValues,
     transformAttributesWithNotDigitValue,
     transformAttributesWithDigitValue,
