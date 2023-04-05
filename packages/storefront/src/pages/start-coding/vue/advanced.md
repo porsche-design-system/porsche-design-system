@@ -15,9 +15,9 @@ prefix to the `prefix` property of `PorscheDesignSystemProvider`.
 ```tsx
 // pages/App.vue
 
-<script setup lang="ts">
-  import AppComponent from "./components/AppComponent.vue";
-  import { PorscheDesignSystemProvider } from "@porsche-design-system/components-vue";
+<script setup lang='ts'>
+  import AppComponent from './components/AppComponent.vue';
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -33,8 +33,8 @@ In the following example the `PHeading` component will render as `<sample-prefix
 // AppComponent.vue
 
 <script setup lang="ts">
-  import { ref } from "vue";
-  import { PHeading } from "@porsche-design-system/components-vue";
+  import { ref } from 'vue';
+  import { PHeading } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
