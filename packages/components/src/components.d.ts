@@ -48,8 +48,7 @@ import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
-import { SwitchAlignLabel } from "./components/switch/switch-utils";
-import { SwitchUpdateEvent } from "./components/switch/switch";
+import { SwitchAlignLabel, SwitchUpdateEvent } from "./components/switch/switch-utils";
 import { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
 import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";

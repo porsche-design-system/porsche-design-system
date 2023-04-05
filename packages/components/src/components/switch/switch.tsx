@@ -12,9 +12,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
-import type { SwitchAlignLabel } from './switch-utils';
-
-export type SwitchUpdateEvent = { checked: boolean };
+import type { SwitchAlignLabel, SwitchUpdateEvent } from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
