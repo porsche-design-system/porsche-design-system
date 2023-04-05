@@ -4,7 +4,7 @@ import type { IconName } from '@porsche-design-system/icons';
 
 export type { ButtonAriaAttribute } from './utils';
 export type { PropTypes, ValidatorFunction } from './utils/validation/validateProps';
-export type { BreakpointCustomizable, BreakpointKey } from './utils/breakpoint-customizable';
+export type { BreakpointCustomizable } from './utils/breakpoint-customizable';
 export type { Theme } from './utils/theme';
 
 export type { TextSize } from './components/text/text-size';
