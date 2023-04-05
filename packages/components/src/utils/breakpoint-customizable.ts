@@ -1,10 +1,10 @@
-// TODO: resolve overlap with Breakpoint type from utilities package
-export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
-export type BreakpointKey = typeof BREAKPOINTS[number];
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpoints } from '@porsche-design-system/utilities-v2';
+
+export const BREAKPOINTS = breakpoints;
+export type BreakpointKey = Breakpoint;
 export type BreakpointValues<T> = {
   [key in BreakpointKey]?: T;
-} & {
-  base: T;
 };
 
 // string is needed in order to pass and parse objects via prop decorator
