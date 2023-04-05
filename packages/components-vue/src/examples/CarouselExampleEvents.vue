@@ -4,7 +4,7 @@
   import { ref } from 'vue';
 
   const lastEventDetail = ref('none');
-  const onChange = (e: CustomEvent<CarouselChangeEvent>): string => (lastEventDetail.value = JSON.stringify(e));
+  const onChange = (e: CarouselChangeEvent): string => (lastEventDetail.value = JSON.stringify(e));
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { DataSorting } from '@porsche-design-system/shared';
+  import type { DataSorting } from '@porsche-design-system/shared/data/table-data-sorting';
   import type { TableChangeEvent } from '@porsche-design-system/components-vue';
   import {
     PTable,
@@ -10,13 +10,13 @@
     PTableHeadRow,
     PTableRow,
   } from '@porsche-design-system/components-vue';
-  import { dataSorting, headSorting } from '@porsche-design-system/shared';
+  import { dataSorting, headSorting } from '@porsche-design-system/shared/data/table-data-sorting';
   import { ref } from 'vue';
 
   const head = ref(headSorting);
   const data = ref(dataSorting);
 
-  const onChange = (e: CustomEvent<TableChangeEvent>): void => {
+  const onChange = (e: TableChangeEvent): void => {
     const { id, direction } = e as TableChangeEvent & { id: keyof DataSorting };
     head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
     data.value = [...data.value].sort((a, b) =>

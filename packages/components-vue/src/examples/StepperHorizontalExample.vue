@@ -51,7 +51,7 @@
     steps.value = newState;
   };
 
-  const onChange = (e: CustomEvent<StepperHorizontalChangeEvent>): void => {
+  const onChange = (e: StepperHorizontalChangeEvent): void => {
     const { activeStepIndex } = e;
 
     const newState = [...steps.value];

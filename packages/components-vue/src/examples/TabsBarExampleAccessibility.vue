@@ -6,7 +6,7 @@
   const tabIndex = ref(0);
   const tabPanels: string[] = ['One', 'Two', 'Three'];
 
-  const onChange = (e: CustomEvent<TabsBarChangeEvent>): void => {
+  const onChange = (e: TabsBarChangeEvent): void => {
     tabIndex.value = e.activeTabIndex;
   };
 </script>

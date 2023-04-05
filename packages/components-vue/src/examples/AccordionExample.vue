@@ -6,10 +6,10 @@
   const isOpen1 = ref(false);
   const isOpen2 = ref(false);
 
-  const onChange1 = (e: CustomEvent<AccordionChangeEvent>): void => {
+  const onChange1 = (e: AccordionChangeEvent): void => {
     isOpen1.value = e.open;
   };
-  const onChange2 = (e: CustomEvent<AccordionChangeEvent>): void => {
+  const onChange2 = (e: AccordionChangeEvent): void => {
     isOpen2.value = e.open;
   };
 

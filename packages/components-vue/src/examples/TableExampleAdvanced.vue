@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import type { DataAdvanced } from '@porsche-design-system/shared';
+  import type { DataAdvanced } from '@porsche-design-system/shared/data/table-data-advanced';
   import type { TableChangeEvent } from '@porsche-design-system/components-vue';
-  import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
+  import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared/data/table-data-advanced';
   import {
     PButtonPure,
     PHeading,
@@ -19,7 +19,7 @@
   const head = ref(headAdvanced);
   const data = ref(dataAdvanced);
 
-  const onChange = (e: CustomEvent<TableChangeEvent>): void => {
+  const onChange = (e: TableChangeEvent): void => {
     const { id, direction } = e as TableChangeEvent & { id: keyof DataAdvanced };
     head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
     data.value = [...data.value].sort((a, b) =>

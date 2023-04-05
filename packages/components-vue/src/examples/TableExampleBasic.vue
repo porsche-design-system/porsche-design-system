@@ -8,7 +8,7 @@
     PTableHeadRow,
     PTableRow,
   } from '@porsche-design-system/components-vue';
-  import { headBasic, dataBasic } from '@porsche-design-system/shared';
+  import { dataBasic, headBasic } from '@porsche-design-system/shared/data/table-data-basic';
 </script>
 
 <template>

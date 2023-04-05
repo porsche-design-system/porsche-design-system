@@ -15,8 +15,8 @@
     }, 3000);
   };
 
-  const onInput = (e: Event): void => {
-    value.value = e.target.value;
+  const onInput = (e: Event) => {
+    value.value = (e.target as HTMLInputElement).value;
     if (isLoading.value) {
       isLoading.value = false;
     }

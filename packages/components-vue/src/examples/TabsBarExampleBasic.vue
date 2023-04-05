@@ -4,7 +4,7 @@
   import { ref } from 'vue';
 
   const tabIndex = ref<number>();
-  const onChange = (e: CustomEvent<TabsBarChangeEvent>): void => (tabIndex.value = e.activeTabIndex);
+  const onChange = (e: TabsBarChangeEvent): number => (tabIndex.value = e.activeTabIndex);
 </script>
 
 <template>
