@@ -13,6 +13,7 @@ import {
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
 import type { BannerState } from '@porsche-design-system/components/dist/types/bundle';
+import { expect } from '@playwright/test';
 
 const CSS_FADE_IN_DURATION = 600;
 const CSS_FADE_OUT_DURATION = 600;
@@ -22,14 +23,15 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 type InitOptions = {
-  state?: BannerState;
   open: boolean;
+  state?: BannerState;
+  dismissButton?: boolean;
 };
 
 const initBanner = (opts: InitOptions): Promise<void> => {
-  const { state, open = false } = opts || {};
+  const { open = false, state, dismissButton = true } = opts || {};
 
-  const attrs = [state ? `state="${state}"` : '', `open="${open}"`].join(' ');
+  const attrs = [`open="${open}"`, state ? `state="${state}"` : '', `dismiss-button="${dismissButton}"`].join(' ');
 
   return setContentWithDesignSystem(
     page,
@@ -49,7 +51,7 @@ it('should forward props correctly to p-inline-notification', async () => {
   await setContentWithDesignSystem(
     page,
     `
-    <p-banner state="error" persistent="true" theme="dark">
+    <p-banner state="error" dismiss-button="false" theme="dark">
       <span slot="title">Some notification title</span>
       <span slot="description">Some notification description.</span>
     </p-banner>`
@@ -57,7 +59,7 @@ it('should forward props correctly to p-inline-notification', async () => {
 
   const inlineNotification = await getInlineNotification();
   expect(await getProperty(inlineNotification, 'state')).toBe('error');
-  expect(await getProperty(inlineNotification, 'persistent')).toBe(true);
+  expect(await getProperty(inlineNotification, 'dismissButton')).toBe(false);
   expect(await getProperty(inlineNotification, 'theme')).toBe('dark');
 });
 
@@ -100,6 +102,12 @@ describe('close', () => {
     });
   };
 
+  it('should not show dismiss button when dismissButton prop is set false', async () => {
+    await initBanner({ open: true, dismissButton: false });
+    const banner = await getHost();
+    expect(await getCloseButton()).toBeNull();
+  });
+
   it('should emit dismiss event by pressing ESC key', async () => {
     await initBanner({ open: true });
     const host = await getHost();
@@ -108,8 +116,16 @@ describe('close', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
-  it('should not emit dismiss event by pressing ESC key', async () => {
+  it('should not emit dismiss event by pressing ESC key when banner is not open', async () => {
     await initBanner({ open: false });
+    const host = await getHost();
+    await addEventListener(host, 'dismiss');
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
+  it('should not emit dismiss event by pressing ESC key when dismissButton is set false', async () => {
+    await initBanner({ open: true, dismissButton: false });
     const host = await getHost();
     await addEventListener(host, 'dismiss');
     await page.keyboard.press('Escape');
