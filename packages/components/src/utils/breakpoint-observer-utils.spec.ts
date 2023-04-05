@@ -28,11 +28,11 @@ describe('getCurrentBreakpointKey()', () => {
     ['1300px', 'l'],
     ['1760px', 'xl'],
     ['1920px', 'xxl'],
-  ])('should for breakpoint: %s return: %s', (breakpoint, Breakpoint) => {
+  ])('should for breakpoint: %s return: %s', (breakpoint, breakpointKey) => {
     const matchingIndex = mediaQueryLists.findIndex((item) => item.media.includes(breakpoint));
     overrideMediaQueryLists(mediaQueryLists.map((item, i) => (i <= matchingIndex ? { ...item, matches: true } : item)));
 
-    expect(getCurrentBreakpointKey()).toBe(Breakpoint);
+    expect(getCurrentBreakpointKey()).toBe(breakpointKey);
   });
 });
 
