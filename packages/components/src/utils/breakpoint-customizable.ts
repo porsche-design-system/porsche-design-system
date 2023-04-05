@@ -1,8 +1,7 @@
-// TODO: resolve overlap with Breakpoint type from utilities package
-export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
-export type BreakpointKey = typeof BREAKPOINTS[number];
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+
 export type BreakpointValues<T> = {
-  [key in BreakpointKey]?: T;
+  [key in Breakpoint]?: T;
 } & {
   base: T;
 };
