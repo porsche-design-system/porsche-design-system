@@ -24,7 +24,7 @@ describe('observeBreakpointChange()', () => {
 
     observeBreakpointChange(node, callback);
 
-    expect(spies.length).toBe(6);
+    expect(spies.length).toBe(7);
     spies.forEach((spy) => expect(spy).toBeCalledWith('change', handleBreakpointChange));
   });
 

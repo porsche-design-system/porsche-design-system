@@ -1,10 +1,12 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import { BREAKPOINTS, buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep, parseJSON } from '../../utils';
-import type { BreakpointCustomizable, BreakpointKey } from '../../types';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep, parseJSON } from '../../utils';
+import type { BreakpointCustomizable } from '../../types';
 import {
   borderRadiusMedium,
   borderWidthBase,
+  breakpoints,
   frostedGlassStyle,
   getMediaQueryMin,
   gridExtendedOffsetBase,
@@ -52,11 +54,11 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   if (typeof fullscreenParsed === 'boolean') {
     return fullscreenParsed;
   } else {
-    const entries = Object.entries(fullscreenParsed) as [BreakpointKey, boolean][];
+    const entries = Object.entries(fullscreenParsed) as [Breakpoint, boolean][];
     const [lastTrueBreakpoint] = entries.filter(([, val]) => val).pop() || [];
     const [lastFalseBreakpoint] = entries.filter(([, val]) => !val).pop() || [];
 
-    return BREAKPOINTS.indexOf(lastTrueBreakpoint) > BREAKPOINTS.indexOf(lastFalseBreakpoint);
+    return breakpoints.indexOf(lastTrueBreakpoint) > breakpoints.indexOf(lastFalseBreakpoint);
   }
 };
 
