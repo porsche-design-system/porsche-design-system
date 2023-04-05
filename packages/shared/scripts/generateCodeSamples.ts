@@ -200,6 +200,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/toast-example.html',
           componentsAngularPath + '/toast-example.component.ts',
           componentsReactPath + '/ToastExample.tsx',
+          componentsVuePath + '/ToastExample.vue',
         ],
       ],
     },
