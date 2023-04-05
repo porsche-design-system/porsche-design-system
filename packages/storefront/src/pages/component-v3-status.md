@@ -86,8 +86,6 @@
 #### ✅ Button
 
 - Usage Docs missing
-- Coloring of icon when button is disabled is not correct yet, because icon component isn't refactored providing correct
-  coloring created by css filters
 
 #### ✅ Button Group
 
@@ -153,8 +151,6 @@
 #### ✅ Link
 
 - Usage Docs missing
-- Coloring of icon when link is disabled is not correct yet, because icon component isn't refactored providing correct
-  coloring created by css filters
 
 #### ✅ Link Pure
 
