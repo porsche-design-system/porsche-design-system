@@ -3,6 +3,7 @@ import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
+import { BannerExampleComponent } from './examples/banner-example.component';
 
 export type ExtendedRoute = Route & {
   name?: string;
@@ -79,6 +80,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Accordion Example',
     path: 'accordion-example',
     component: fromExamples.AccordionExampleComponent,
+  },
+  {
+    name: 'Banner Example',
+    path: 'banner-example',
+    component: fromExamples.BannerExampleComponent,
   },
   {
     name: 'Carousel Example Dynamic Slides',
