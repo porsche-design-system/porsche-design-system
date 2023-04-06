@@ -10,6 +10,10 @@ informational and/or critical notification like some site related topics.
 Review the [notification decision tree](components/notifications/decision-tree) to determine which notification
 component is best for a particular scenario.
 
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+  Before v3.0.0 the <strong>p-banner</strong> handled its open state internally. This is no longer the case, since v3.0.0 it is a <strong>controlled</strong> component and has to be opened with the <strong>open property</strong>.
+</p-inline-notification>
+
 ## Basic implementation
 
 The `p-banner` component is positioned fixed above the page content by default. For personal adjustments, go to " Custom
@@ -25,7 +29,12 @@ styling" section.
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExample" :markup="widthMarkup"></Playground>
+<Playground :frameworkMarkup="codeExample" class="auto-height">
+  <p-button type="button" @click="isBannerOpen = true">Open Banner</p-button>
+</Playground>
+
+<p-banner :open="isBannerOpen" heading="Some Heading" description="Some Description" @dismiss="isBannerOpen =
+false"></p-banner>
 
 ## Slotted heading and description
 
@@ -48,18 +57,6 @@ If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
 </p-inline-notification>
 
 <Playground :markup="dismissButton" :config="config"></Playground>
-
-## Width
-
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-This property is deprecated and has no effect anymore. Instead, the component is aligned with Porsche Grid "extended" by default.
-</p-inline-notification>
-
-## Example with user interaction
-
-<p-button type="button" v-on:click="isBannerOpen = true">Open Banner</p-button> <p-banner :open="isBannerOpen"
-@dismiss="isBannerOpen = false"> <span slot="heading">Some heading</span> <span slot="description">Some
-description.</span> </p-banner>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -137,5 +134,9 @@ export default class Code extends Vue {
   :deep(.demo) {
     transform: translate3d(0, 0, 0);
     height: 10rem;
+  }
+
+  .auto-height :deep(.demo) {
+    height: auto;
   }
 </style>
