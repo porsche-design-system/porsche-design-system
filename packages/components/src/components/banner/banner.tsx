@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
 import type { BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
-import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
+import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -16,14 +16,13 @@ import {
 import { getComponentCss } from './banner-styles';
 import { getDeprecatedPropWarningMessage } from '../../utils/log/helper';
 
-const propTypes: PropTypes<typeof Banner> = {
+const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   dismissButton: AllowedTypes.boolean,
   persistent: AllowedTypes.boolean,
-  width: AllowedTypes.oneOf<BannerWidth>(BANNER_WIDTHS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
