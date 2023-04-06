@@ -85,7 +85,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { componentsReady } from '@porsche-design-system/components-js';
 import { BANNER_STATES, BANNER_STATES_DEPRECATED } from './banner-utils'; 
-import {getBannerCodeSamples} from "shared/src"; 
+import { getBannerCodeSamples } from '@porsche-design-system/shared'; 
 
 @Component
 export default class Code extends Vue {
