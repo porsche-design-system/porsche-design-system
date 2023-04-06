@@ -109,13 +109,6 @@ export default class Code extends Vue {
   <span slot="description">Some description.</span>
 </p-banner>`;
 
-  get widthMarkup() {
-    return `<p-banner open="true" width="${this.width}">
-  <span slot="heading">Some heading</span>
-  <span slot="description">Some description.</span>
-</p-banner>`;
-  }
-
   isBannerOpen = false;
 
   mounted(): void {
