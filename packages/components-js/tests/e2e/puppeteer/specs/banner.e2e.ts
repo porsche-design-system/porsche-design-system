@@ -13,7 +13,6 @@ import {
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
 import type { BannerState } from '@porsche-design-system/components/dist/types/bundle';
-import { expect } from '@playwright/test';
 
 const CSS_FADE_IN_DURATION = 600;
 const CSS_FADE_OUT_DURATION = 600;
