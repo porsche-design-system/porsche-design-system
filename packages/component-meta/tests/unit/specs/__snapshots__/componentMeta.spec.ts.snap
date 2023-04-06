@@ -75,11 +75,6 @@ exports[`should match snapshot 1`] = `
         "light",
         "dark",
       ],
-      "width": [
-        "extended",
-        "basic",
-        "fluid",
-      ],
     },
     "deprecatedPropValues": {
       "state": [
@@ -117,7 +112,7 @@ exports[`should match snapshot 1`] = `
       "persistent": null,
       "state": "info",
       "theme": "light",
-      "width": "extended",
+      "width": null,
     },
     "requiredProps": [
       "open",
