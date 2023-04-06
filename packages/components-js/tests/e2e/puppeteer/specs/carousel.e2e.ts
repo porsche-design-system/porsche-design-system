@@ -520,19 +520,19 @@ describe('events', () => {
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
   });
 
-  it('should emit both carouselChange and change event', async () => {
+  it('should emit both carouselChange and update event', async () => {
     await initCarousel();
     const host = await getHost();
 
     await addEventListener(host, 'carouselChange');
-    await addEventListener(host, 'change');
+    await addEventListener(host, 'update');
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     const nextButton = await getButtonNext();
     await nextButton.click();
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 
@@ -592,15 +592,15 @@ describe('activeSlideIndex', () => {
     expect(finalStatus.componentDidLoad.all, 'final componentDidLoad: all').toBe(5);
   });
 
-  it('should emit change event', async () => {
+  it('should emit update event', async () => {
     await initCarousel();
     const host = await getHost();
 
-    await addEventListener(host, 'change');
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     await setProperty(host, 'activeSlideIndex', 1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 

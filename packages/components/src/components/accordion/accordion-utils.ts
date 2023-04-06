@@ -2,8 +2,8 @@ import type { HeadingTag } from '../heading/heading-tag';
 import { hasWindow, observeChildren, unobserveChildren } from '../../utils';
 
 export const ACCORDION_SIZES = ['small', 'medium'] as const;
-export type AccordionSize = typeof ACCORDION_SIZES[number];
-export type AccordionChangeEvent = { open: boolean };
+export type AccordionSize = (typeof ACCORDION_SIZES)[number];
+export type AccordionUpdateEvent = { open: boolean };
 
 export type AccordionTag = HeadingTag;
 

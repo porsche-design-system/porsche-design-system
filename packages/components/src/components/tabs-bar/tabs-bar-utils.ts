@@ -2,16 +2,16 @@ import type { ScrollerDirection, ScrollerGradientColor, ScrollerGradientColorSch
 import { setAttribute } from '../../utils';
 
 export const TABS_BAR_SIZES = ['small', 'medium'] as const;
-export type TabsBarSize = typeof TABS_BAR_SIZES[number];
+export type TabsBarSize = (typeof TABS_BAR_SIZES)[number];
 
 /** @deprecated */
 export const TABS_BAR_WEIGHTS_DEPRECATED = ['semibold'] as const;
 /** @deprecated */
-export type TabsBarWeightDeprecated = typeof TABS_BAR_WEIGHTS_DEPRECATED[number];
+export type TabsBarWeightDeprecated = (typeof TABS_BAR_WEIGHTS_DEPRECATED)[number];
 export const TABS_BAR_WEIGHTS = ['regular', 'semi-bold', ...TABS_BAR_WEIGHTS_DEPRECATED] as const;
-export type TabsBarWeight = typeof TABS_BAR_WEIGHTS[number];
+export type TabsBarWeight = (typeof TABS_BAR_WEIGHTS)[number];
 
-export type TabsBarChangeEvent = { activeTabIndex: number };
+export type TabsBarUpdateEvent = { activeTabIndex: number };
 
 /** @deprecated */
 export type TabsBarGradientColorScheme = ScrollerGradientColorScheme;

@@ -280,7 +280,7 @@ describe('registerSplideHandlers()', () => {
     const carouselChangeEmitSpy = jest.fn();
     const component = new Carousel();
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
-    component['change'] = { emit: changeEmitSpy };
+    component['update'] = { emit: changeEmitSpy };
     component['carouselChange'] = { emit: carouselChangeEmitSpy };
     component['registerSplideHandlers'](component['splide']);
 

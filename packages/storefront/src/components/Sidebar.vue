@@ -7,7 +7,7 @@
         :key="index"
         :heading="category"
         v-bind:open="accordion[category]"
-        v-on:change="toggleActive(category)"
+        v-on:update="toggleActive(category)"
         compact="true"
       >
         <ul>

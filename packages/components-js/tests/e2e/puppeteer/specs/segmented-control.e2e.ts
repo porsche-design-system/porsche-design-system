@@ -182,19 +182,19 @@ describe('events', () => {
     expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
   });
 
-  it('should emit both segmentedControlChange and change event', async () => {
+  it('should emit both segmentedControlChange and update event', async () => {
     await initSegmentedControl();
     const host = await getHost();
 
     await addEventListener(host, 'segmentedControlChange');
-    await addEventListener(host, 'change');
+    await addEventListener(host, 'update');
     expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     const firstItemHost = await getFirstItemHost();
     await firstItemHost.click();
     expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 

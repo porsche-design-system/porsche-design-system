@@ -18,7 +18,7 @@ export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
-export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
+export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };
 
 export type SplideBreakpoints = Options['breakpoints'];
 
