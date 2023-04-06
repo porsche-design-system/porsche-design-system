@@ -3,7 +3,7 @@
     type="button"
     :theme="theme"
     :icon-source="stackBlitzIcon"
-    :disabled="framework === 'shared'"
+    :disabled="framework === 'shared' || framework === 'vue'"
     :loading="isLoading"
     @click="onButtonClick()"
     >{{ buttonLabel }}
