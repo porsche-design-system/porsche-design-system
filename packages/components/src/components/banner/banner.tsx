@@ -58,7 +58,7 @@ export class Banner {
    * Has no effect anymore
    * @deprecated since v3.0.0, will be removed with next major release
    */
-  @Prop() public width?: BannerWidth = 'extended';
+  @Prop() public width?: BannerWidth;
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
