@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { TabsBarChangeEvent } from '@porsche-design-system/components-angular';
+import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-tabs-bar-example-basic',
   template: `
-    <p-tabs-bar [activeTabIndex]="tabIndex" (change)="onChange($event)">
+    <p-tabs-bar [activeTabIndex]="tabIndex" (update)="onUpdate($event)">
       <button type="button">Tab One</button>
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
@@ -15,7 +15,7 @@ import type { TabsBarChangeEvent } from '@porsche-design-system/components-angul
 export class TabsBarExampleBasicComponent {
   tabIndex: number;
 
-  onChange(e: CustomEvent<TabsBarChangeEvent>) {
+  onUpdate(e: CustomEvent<TabsBarUpdateEvent>) {
     this.tabIndex = e.detail.activeTabIndex;
   }
 }

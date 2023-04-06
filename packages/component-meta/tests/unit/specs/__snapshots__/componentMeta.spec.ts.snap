@@ -32,7 +32,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "accordionChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -416,7 +416,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "carouselChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1894,7 +1894,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "pageChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2094,7 +2094,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "segmentedControlChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2302,7 +2302,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "stepChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2384,7 +2384,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "switchChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2421,7 +2421,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "sortingChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2606,7 +2606,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "tabChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2671,7 +2671,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "tabChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,

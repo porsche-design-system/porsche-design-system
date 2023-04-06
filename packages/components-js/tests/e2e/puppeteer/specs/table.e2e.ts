@@ -113,19 +113,19 @@ describe('events', () => {
     expect(firstTableHeadCellPButtonPure).toBeNull();
   });
 
-  it('should emit both sortingChange and change event', async () => {
+  it('should emit both sortingChange and update event', async () => {
     await initTable({ isSortable: true });
     const host = await getHost();
 
     await addEventListener(host, 'sortingChange');
-    await addEventListener(host, 'change');
+    await addEventListener(host, 'update');
     expect((await getEventSummary(host, 'sortingChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     const firstTableHeadCellButton = await getFirstTableHeadCellButton();
     await firstTableHeadCellButton.click();
     expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 
