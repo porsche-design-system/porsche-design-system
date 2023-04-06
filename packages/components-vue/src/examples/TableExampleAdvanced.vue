@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import type { DataAdvanced } from '@porsche-design-system/shared/data/table-data-advanced';
+  import type { DataAdvanced } from '@porsche-design-system/shared';
   import type { TableChangeEvent } from '@porsche-design-system/components-vue';
-  import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared/data/table-data-advanced';
+  import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
   import {
     PButtonPure,
     PHeading,
