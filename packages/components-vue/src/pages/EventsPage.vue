@@ -3,6 +3,7 @@
   import {
     PAccordion,
     PCarousel,
+    PBanner,
     PModal,
     PPagination,
     PSwitch,
@@ -31,6 +32,8 @@
   const tabsUpdateEventCounter = ref(0);
   const textFieldSearchValue = ref('');
   const switchUpdateEventCounter = ref(0);
+  const bannerDismissEventCounter = ref(0);
+  const isBannerOpen = ref(false);
   const modalDismissEventCounter = ref(0);
   const isModalOpen = ref(false);
   const tableUpdateEventCounter = ref(0);
@@ -46,6 +49,10 @@
   const onTabsUpdate = (detail: TabsUpdateEvent) => tabsUpdateEventCounter.value++;
   const onTextFieldSearchChange = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
   const onSwitchUpdate = (detail: SwitchUpdateEvent) => switchUpdateEventCounter.value++;
+  const onBannerDismiss = () => {
+    bannerDismissEventCounter.value++;
+    isBannerOpen.value = false;
+  };
   const onModalDismiss = () => {
     modalDismissEventCounter.value++;
     isModalOpen.value = false;
@@ -94,6 +101,12 @@
   <div class="playground light">
     <PSwitch @update="onSwitchUpdate">Switch</PSwitch>
     <p>{{ switchUpdateEventCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PBanner :open="isBannerOpen" @dismiss="onBannerDismiss" heading="Banner"></PBanner>
+    <p>{{ bannerDismissEventCounter }}</p>
+    <button @click="isBannerOpen = true">Open Banner</button>
   </div>
 
   <div class="playground light">

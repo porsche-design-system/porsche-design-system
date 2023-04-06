@@ -4,7 +4,7 @@
 
 ## Media Query
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>p-media-query()</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Look into <a href="styles/media-query">media query</a> for a replacement.
 </p-inline-notification>
@@ -60,7 +60,7 @@ div {
 
 ## Typography
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>typography</code> styles are <strong>deprecated</strong> and will be removed with next major release.<br>
   Use the styles provided at <a href="styles/typography">typography</a> instead.
 </p-inline-notification>
@@ -162,7 +162,7 @@ h1 {
 
 ### Focus
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   The <code>p-focus()</code> style is <strong>deprecated</strong> and will be removed with next major release.<br>
   Use <code>pds-focus()</code> style provided at <a href="styles/focus">focus</a> instead.
 </p-inline-notification>

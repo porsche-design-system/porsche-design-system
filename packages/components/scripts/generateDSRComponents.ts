@@ -226,7 +226,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n");
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
-        newFileContent = newFileContent.replace(/.+console\.warn\([\s\S]+?\);\n/g, '');
+        newFileContent = newFileContent
+          .replace(/.+console\.warn\([\s\S]+?\);\n/g, '')
+          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+      } else if (tagName === 'p-inline-notification') {
+        newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
         // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
         newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');

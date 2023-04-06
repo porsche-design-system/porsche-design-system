@@ -137,6 +137,35 @@ describe('switch', () => {
   });
 });
 
+describe('banner', () => {
+  it('should emit events once', async () => {
+    await goto(page, 'events');
+
+    const banner = await selectNode(page, 'p-banner');
+    const bannerOpenBtn = await selectNode(page, 'p-banner ~ button');
+    const bannerCloseBtn = await selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
+    const bannerDismissEventCounter = await selectNode(page, 'p-banner + p');
+
+    await bannerOpenBtn.click();
+    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await bannerCloseBtn.click();
+    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    expect(await getCounterValue(bannerDismissEventCounter)).toBe('1');
+
+    await bannerOpenBtn.click();
+    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await bannerCloseBtn.click();
+    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    expect(await getCounterValue(bannerDismissEventCounter)).toBe('2');
+
+    await bannerOpenBtn.click();
+    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await bannerCloseBtn.click();
+    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    expect(await getCounterValue(bannerDismissEventCounter)).toBe('3');
+  });
+});
+
 describe('modal', () => {
   it('should emit events once', async () => {
     await goto(page, 'events');

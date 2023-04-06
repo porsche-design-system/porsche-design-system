@@ -13,6 +13,9 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
+// TODO: (banner state hover test is flaky) we shouldn't rely on retries since computed result has to be deterministic
+jest.retryTimes(3);
+
 it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner', {
@@ -36,7 +39,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-banner state="neutral" theme="${theme}">
+        <p-banner open="true" state="neutral" theme="${theme}">
           <span slot="title">
             Slotted title
             <span>

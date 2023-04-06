@@ -14,11 +14,12 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 exports[`should call validateProps() with correct parameters via render for p-banner: propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
+  "dismissButton": "boolean",
   "heading": "string",
+  "open": "boolean",
   "persistent": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
-  "width": "oneOf",
 }
 `;
 
@@ -240,6 +241,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "actionLabel": "string",
   "actionLoading": "boolean",
   "description": "string",
+  "dismissButton": "boolean",
   "heading": "string",
   "persistent": "boolean",
   "state": "oneOf",
