@@ -56,7 +56,7 @@ If the amount of steps exceeds the viewport, the component renders arrow buttons
 Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
-  <p-stepper-horizontal :theme="theme" @change="onChange">    
+  <p-stepper-horizontal :theme="theme" @update="onChange">    
     <p-stepper-horizontal-item v-for="({ state, text }, i) in steps" :key="i" :state="state">{{ text }}</p-stepper-horizontal-item>
   </p-stepper-horizontal>
   <p-text :theme="theme" class="mock-content">{{ stepContent[getActiveStepIndex(steps)] }}</p-text>

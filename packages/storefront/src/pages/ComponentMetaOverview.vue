@@ -2,7 +2,7 @@
   <div>
     <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
       <div>🚫 = deprecated<br />🛠 = breakpointCustomizable</div>
-      <p-switch @change="toggleProps" :checked="isToggled">Show all prop values</p-switch>
+      <p-switch @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
     </div>
 
     <p-table>
