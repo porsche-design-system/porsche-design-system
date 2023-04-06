@@ -133,7 +133,6 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
             "open": false,
             "state": "info",
             "theme": "dark",
-            "width": "extended",
           },
         },
       },
