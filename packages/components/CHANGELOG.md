@@ -12,13 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `xxl` breakpoint for all breakpoint customizable component values
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2454)
+  ([#2454](https://github.com/porsche-design-system/porsche-design-system/pull/2454))
 
 #### Fixed
 
-- Disabled color of `Icon` component [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2446)
+- Disabled color of `Icon` component ([#2446](https://github.com/porsche-design-system/porsche-design-system/pull/2446))
 - Support of `Radio Button Wrapper` for name value with non-alphanumeric characters
-  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2443)
+  ([#2443](https://github.com/porsche-design-system/porsche-design-system/pull/2443))
 
 #### Changed
 
