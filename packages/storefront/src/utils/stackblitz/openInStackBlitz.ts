@@ -35,7 +35,7 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
   };
 
   const getProjectAndOpenOptionsMap: Record<
-    Exclude<Framework, 'shared' | 'vue'>,
+    Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
     GetStackBlitzProjectAndOpenOptions
   > = {
     'vanilla-js': getVanillaJsProjectAndOpenOptions,
