@@ -14,6 +14,6 @@
     <div v-for="(_, i) in Array.from(Array(amountOfSlides))" :key="i">Slide {{ i + 1 }}</div>
   </PCarousel>
 
-  <button type="'button'" @update="onAddClick">Add slide</button>
-  <button type="'button'" @update="onRemoveClick">Remove last slide</button>
+  <button type="button" @update="onAddClick">Add slide</button>
+  <button type="button" @update="onRemoveClick">Remove last slide</button>
 </template>
