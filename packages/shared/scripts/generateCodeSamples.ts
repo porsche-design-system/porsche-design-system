@@ -21,7 +21,7 @@ type CodeSample = {
   samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
-type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js' | 'vue';
+type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js' | 'shared';
 
 const componentsJsPath = '../components-js/src/examples';
 const componentsAngularPath = '../components-angular/src/app/examples';
@@ -312,7 +312,7 @@ const generateCodeSamples = (): void => {
   const packagesFolder = path.resolve(__dirname, '../../');
 
   const types = [
-    `type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js' | 'vue';`,
+    `type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js' |'shared';`,
     `type FrameworkMarkup = { [key in Framework]?: string };`,
   ].join('\n');
 
