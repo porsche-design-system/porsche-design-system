@@ -35,13 +35,13 @@ import type { TabsBarUpdateEvent } from '@porsche-design-system/components-react
 
 export const SingleComponent = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState(0);
-  const onChange = useCallback((e: CustomEvent<TabsBarUpdateEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<TabsBarUpdateEvent>) => {
     setActiveTab(e.detail.activeTabIndex);
   }, []);
 
   return (
     <>
-      <PTabsBar activeTabIndex={activeTab} onChange={onChange} data-testid="host">
+      <PTabsBar activeTabIndex={activeTab} onUpdate={onUpdate} data-testid="host">
         <button data-testid="button1">Some label</button>
         <button data-testid="button2">Some label</button>
         <button data-testid="button3">Some label</button>

@@ -210,17 +210,17 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-    tabsBars.forEach(tabsBar => tabsBar.addEventListener('update', this.onTabsBarChange));
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('update', this.onTabsBarUpdate));
 
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
     tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('update', (e: CustomEvent<TabsBarUpdateEvent>)=> {
-      this.onTabsBarChange(e);
+      this.onTabsBarUpdate(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
 
-  onTabsBarChange = (e: CustomEvent<TabsBarUpdateEvent>) => {
+  onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }

@@ -44,7 +44,7 @@
   const onPaginationUpdate = (detail: PaginationUpdateEvent) => paginationUpdateEventCounter.value++;
   const onTabsBarUpdate = (detail: TabsBarUpdateEvent) => tabsBarUpdateEventCounter.value++;
   const onTabsUpdate = (detail: TabsUpdateEvent) => tabsUpdateEventCounter.value++;
-  const onTextFieldSearchUpdate = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
+  const onTextFieldSearchChange = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
   const onSwitchUpdate = (detail: SwitchUpdateEvent) => switchUpdateEventCounter.value++;
   const onModalDismiss = () => {
     modalDismissEventCounter.value++;
@@ -86,7 +86,7 @@
 
   <div class="playground light">
     <PTextFieldWrapper>
-      <input type="search" :value="textFieldSearchValue" @input="onTextFieldSearchUpdate" />
+      <input type="search" :value="textFieldSearchValue" @input="onTextFieldSearchChange" />
     </PTextFieldWrapper>
     <p>Value: {{ textFieldSearchValue }}</p>
   </div>
