@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PButton, PBanner } from '@porsche-design-system/components-react';
 
-export const BannerExamplePage = () => {
+export const BannerExamplePage = (): JSX.Element => {
   const [isBannerOpen, setIsBannerOpen] = useState(false);
 
   const handleDismiss = () => {
