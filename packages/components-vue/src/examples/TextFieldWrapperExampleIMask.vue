@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { PTextFieldWrapper } from '@porsche-design-system/components-vue';
-  import { IMask, useIMask } from 'vue-imask';
+  import type { IMask, useIMask } from 'vue-imask';
 
   const isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
   const dateFormat = isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';

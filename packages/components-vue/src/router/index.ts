@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import type { RouteComponent, RouteRecordRaw, RouteRecordName } from 'vue-router';
+import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import * as fromPages from '../pages';
 import { paramCase } from 'change-case';
 import * as fromExamples from '../examples';
