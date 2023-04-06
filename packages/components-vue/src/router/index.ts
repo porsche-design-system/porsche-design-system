@@ -1,10 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import type { RouteComponent, RouteRecordRaw } from 'vue-router';
+import type { RouteComponent, RouteRecordRaw, RouteRecordName } from 'vue-router';
 import * as fromPages from '../pages';
 import { paramCase } from 'change-case';
 import * as fromExamples from '../examples';
 
-const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
+export type RouteType = RouteRecordRaw & {
+  isDisabled?: boolean;
+};
+
+const generatedRoutes: RouteType[] = Object.keys(fromPages).map<RouteType>((page) => {
   const name = page.replace(/Page$/, '');
   return {
     path: '/' + paramCase(name),
@@ -13,8 +17,14 @@ const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecord
   };
 });
 
-export const routes: RouteRecordRaw[] = [
+export const routes: RouteType[] = [
   ...generatedRoutes,
+  {
+    path: '/---',
+    name: '---',
+    isDisabled: true,
+    children: [],
+  },
   {
     path: '/accordion-example',
     name: 'Accordion Example',

@@ -1,4 +1,4 @@
-import { RouteProps } from 'react-router-dom';
+import type { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
