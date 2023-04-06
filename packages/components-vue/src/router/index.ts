@@ -2,26 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import * as fromPages from '../pages';
 import { paramCase } from 'change-case';
-import {
-  AccordionExample,
-  CarouselExampleDynamicSlides,
-  CarouselExampleEvents,
-  CarouselExampleJumpToSlide,
-  InlineNotificationExampleActionButton,
-  InlineNotificationExampleEvents,
-  ModalExampleAccessibility,
-  ScrollerExample,
-  SegmentedControlExample,
-  StepperHorizontalExample,
-  TableExampleAdvanced,
-  TableExampleBasic,
-  TableExampleSorting,
-  TabsBarExampleAccessibility,
-  TabsBarExampleBasic,
-  TextFieldWrapperExampleIMask,
-  TextFieldWrapperExampleSearch,
-  ToastExample,
-} from '../examples';
+import * as fromExamples from '../examples';
 
 const generatedRoutes: RouteRecordRaw[] = Object.keys(fromPages).map<RouteRecordRaw>((page) => {
   const name = page.replace(/Page$/, '');
@@ -37,92 +18,92 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/accordion-example',
     name: 'Accordion Example',
-    component: AccordionExample,
+    component: fromExamples.AccordionExample,
   },
   {
     path: '/carousel-example-dynamic-slides',
     name: 'Carousel Example Dynamic Slides',
-    component: CarouselExampleDynamicSlides,
+    component: fromExamples.CarouselExampleDynamicSlides,
   },
   {
     path: '/carousel-example-events',
     name: 'Carousel Example Events',
-    component: CarouselExampleEvents,
+    component: fromExamples.CarouselExampleEvents,
   },
   {
     path: '/carousel-example-jump-to-slide',
     name: 'Carousel Example Jump to Slide',
-    component: CarouselExampleJumpToSlide,
+    component: fromExamples.CarouselExampleJumpToSlide,
   },
   {
     path: '/inline-notification-example-action-button',
     name: 'Inline Notification Example Action Button',
-    component: InlineNotificationExampleActionButton,
+    component: fromExamples.InlineNotificationExampleActionButton,
   },
   {
     path: '/inline-notification-example-events',
     name: 'Inline Notification Example Events',
-    component: InlineNotificationExampleEvents,
+    component: fromExamples.InlineNotificationExampleEvents,
   },
   {
     path: '/modal-example-accessibility',
     name: 'Modal Example Accessibility',
-    component: ModalExampleAccessibility,
+    component: fromExamples.ModalExampleAccessibility,
   },
   {
     path: '/scroller-example',
     name: 'Scroller Example',
-    component: ScrollerExample,
+    component: fromExamples.ScrollerExample,
   },
   {
     path: '/segmented-control-example',
     name: 'Segmented Control Example',
-    component: SegmentedControlExample,
+    component: fromExamples.SegmentedControlExample,
   },
   {
     path: '/stepper-horizontal-example',
     name: 'Stepper Horizontal Example',
-    component: StepperHorizontalExample,
+    component: fromExamples.StepperHorizontalExample,
   },
   {
     path: '/table-example-advanced',
     name: 'Table Example Advanced',
-    component: TableExampleAdvanced,
+    component: fromExamples.TableExampleAdvanced,
   },
   {
     path: '/table-example-basic',
     name: 'Table Example Basic',
-    component: TableExampleBasic,
+    component: fromExamples.TableExampleBasic,
   },
   {
     path: '/table-example-sorting',
     name: 'Table Example Sorting',
-    component: TableExampleSorting,
+    component: fromExamples.TableExampleSorting,
   },
   {
     path: '/tabs-bar-example-accessibility',
     name: 'Tabs Bar Example Accessibility',
-    component: TabsBarExampleAccessibility,
+    component: fromExamples.TabsBarExampleAccessibility,
   },
   {
     path: '/tabs-bar-example-basic',
     name: 'Tabs Bar Example Basic',
-    component: TabsBarExampleBasic,
+    component: fromExamples.TabsBarExampleBasic,
   },
   {
     path: '/text-field-wrapper-example-imask',
     name: 'Text Field Wrapper Example IMask',
-    component: TextFieldWrapperExampleIMask,
+    component: fromExamples.TextFieldWrapperExampleIMask,
   },
   {
     path: '/text-field-wrapper-example-search',
     name: 'Text Field Wrapper Example Search',
-    component: TextFieldWrapperExampleSearch,
+    component: fromExamples.TextFieldWrapperExampleSearch,
   },
   {
     path: '/toast-example',
     name: 'Toast Example',
-    component: ToastExample,
+    component: fromExamples.ToastExample,
   },
 ];
 
