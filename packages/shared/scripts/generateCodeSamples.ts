@@ -52,6 +52,16 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-banner',
+      samples: [
+        [
+          componentsJsPath + '/banner-example.html',
+          componentsAngularPath + '/banner-example.component.ts',
+          componentsReactPath + '/BannerExample.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-carousel',
       samples: [
         [
