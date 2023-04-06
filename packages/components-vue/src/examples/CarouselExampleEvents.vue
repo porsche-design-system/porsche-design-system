@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import type { CarouselChangeEvent } from '@porsche-design-system/components-vue';
+  import type { CarouselUpdateEvent } from '@porsche-design-system/components-vue';
   import { PCarousel, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const lastEventDetail = ref('none');
-  const onChange = (e: CarouselChangeEvent): string => (lastEventDetail.value = JSON.stringify(e));
+  const onUpdate = (e: CarouselUpdateEvent): string => (lastEventDetail.value = JSON.stringify(e));
 </script>
 
 <template>
-  <PCarousel :heading="'Some Heading'" @change="onChange">
+  <PCarousel :heading="'Some Heading'" @update="onUpdate">
     <div>Slide 1</div>
     <div>Slide 2</div>
     <div>Slide 3</div>

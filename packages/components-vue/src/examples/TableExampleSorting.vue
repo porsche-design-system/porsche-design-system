@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import type { DataSorting } from '@porsche-design-system/shared';
-  import type { TableChangeEvent } from '@porsche-design-system/components-vue';
+  import type { TableUpdateEvent } from '@porsche-design-system/components-vue';
   import {
     PTable,
     PTableBody,
@@ -16,8 +16,8 @@
   const head = ref(headSorting);
   const data = ref(dataSorting);
 
-  const onChange = (e: TableChangeEvent): void => {
-    const { id, direction } = e as TableChangeEvent & { id: keyof DataSorting };
+  const onUpdate = (e: TableUpdateEvent): void => {
+    const { id, direction } = e as TableUpdateEvent & { id: keyof DataSorting };
     head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
     data.value = [...data.value].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
@@ -26,7 +26,7 @@
 </script>
 
 <template>
-  <PTable :caption="'Some caption'" @change="onChange">
+  <PTable :caption="'Some caption'" @update="onUpdate">
     <PTableHead>
       <PTableHeadRow>
         <PTableHeadCell v-for="(item, i) in head" :key="i" :sort="item">{{ item.name }}</PTableHeadCell>

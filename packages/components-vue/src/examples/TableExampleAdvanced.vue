@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import type { DataAdvanced } from '@porsche-design-system/shared';
-  import type { TableChangeEvent } from '@porsche-design-system/components-vue';
+  import type { TableUpdateEvent } from '@porsche-design-system/components-vue';
   import { dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
   import {
     PButtonPure,
@@ -19,8 +19,8 @@
   const head = ref(headAdvanced);
   const data = ref(dataAdvanced);
 
-  const onChange = (e: TableChangeEvent): void => {
-    const { id, direction } = e as TableChangeEvent & { id: keyof DataAdvanced };
+  const onUpdate = (e: TableUpdateEvent): void => {
+    const { id, direction } = e as TableUpdateEvent & { id: keyof DataAdvanced };
     head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
     data.value = [...data.value].sort((a, b) =>
       direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
@@ -29,7 +29,7 @@
 </script>
 
 <template>
-  <PTable @change="onChange">
+  <PTable @update="onUpdate">
     <!-- eslint-disable vue/no-deprecated-slot-attribute -->
     <PHeading :slot="'caption'" :size="'large'"> Some visual caption </PHeading>
     <!-- eslint-enable -->

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import type { TabsBarChangeEvent } from '@porsche-design-system/components-vue';
+  import type { TabsBarUpdateEvent } from '@porsche-design-system/components-vue';
   import { PTabsBar } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const tabIndex = ref<number>();
-  const onChange = (e: TabsBarChangeEvent): number => (tabIndex.value = e.activeTabIndex);
+  const onUpdate = (e: TabsBarUpdateEvent): number => (tabIndex.value = e.activeTabIndex);
 </script>
 
 <template>
-  <PTabsBar :activeTabIndex="tabIndex" @change="onChange">
+  <PTabsBar :activeTabIndex="tabIndex" @update="onUpdate">
     <button :type="'button'">Tab One</button>
     <button :type="'button'">Tab Two</button>
     <button :type="'button'">Tab Three</button>

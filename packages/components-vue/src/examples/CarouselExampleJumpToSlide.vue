@@ -1,18 +1,18 @@
 <script setup lang="ts">
-  import type { CarouselChangeEvent } from '@porsche-design-system/components-vue';
+  import type { CarouselUpdateEvent } from '@porsche-design-system/components-vue';
   import { PCarousel } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const activeSlideIndex = ref(1);
 
-  const onChange = (e: CarouselChangeEvent): number => (activeSlideIndex.value = e.activeIndex);
+  const onUpdate = (e: CarouselUpdateEvent): number => (activeSlideIndex.value = e.activeIndex);
   const onButtonClick = (e: MouseEvent) => {
     activeSlideIndex.value = parseInt((e.target as HTMLButtonElement).innerText) - 1;
   };
 </script>
 
 <template>
-  <PCarousel :heading="'Some Heading'" :activeSlideIndex="activeSlideIndex" @change="onChange">
+  <PCarousel :heading="'Some Heading'" :activeSlideIndex="activeSlideIndex" @update="onUpdate">
     <div>Slide 1</div>
     <div>Slide 2</div>
     <div>Slide 3</div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { StepperHorizontalItemState, StepperHorizontalChangeEvent } from '@porsche-design-system/components-vue';
+  import type { StepperHorizontalItemState, StepperHorizontalUpdateEvent } from '@porsche-design-system/components-vue';
   import {
     PButton,
     PButtonGroup,
@@ -51,7 +51,7 @@
     steps.value = newState;
   };
 
-  const onChange = (e: StepperHorizontalChangeEvent): void => {
+  const onUpdate = (e: StepperHorizontalUpdateEvent): void => {
     const { activeStepIndex } = e;
 
     const newState = [...steps.value];
@@ -65,7 +65,7 @@
 </script>
 
 <template>
-  <PStepperHorizontal @change="onChange">
+  <PStepperHorizontal @update="onUpdate">
     <PStepperHorizontalItem v-for="step in steps" :key="step.name" :state="step.state">
       {{ step.name }}
     </PStepperHorizontalItem>

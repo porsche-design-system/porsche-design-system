@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { SegmentedControlChangeEvent } from '@porsche-design-system/components-vue';
+  import type { SegmentedControlUpdateEvent } from '@porsche-design-system/components-vue';
   import {
     PSegmentedControl,
     PSegmentedControlItem,
@@ -9,13 +9,13 @@
   import { ref } from 'vue';
 
   const currentValue = ref(1);
-  const onChange = (e: SegmentedControlChangeEvent): void => {
+  const onUpdate = (e: SegmentedControlUpdateEvent): void => {
     currentValue.value = e.value as number;
   };
 </script>
 
 <template>
-  <PSegmentedControl :value="currentValue" @change="onChange">
+  <PSegmentedControl :value="currentValue" @update="onUpdate">
     <PSegmentedControlItem :value="1">Option 1</PSegmentedControlItem>
     <PSegmentedControlItem :value="2">Option 2</PSegmentedControlItem>
     <PSegmentedControlItem :value="3">Option 3</PSegmentedControlItem>

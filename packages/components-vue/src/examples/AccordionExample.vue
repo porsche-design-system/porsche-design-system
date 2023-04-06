@@ -1,15 +1,15 @@
 <script setup lang="ts">
-  import type { AccordionChangeEvent } from '@porsche-design-system/components-vue';
+  import type { AccordionUpdateEvent } from '@porsche-design-system/components-vue';
   import { PAccordion, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const isOpen1 = ref(false);
   const isOpen2 = ref(false);
 
-  const onChange1 = (e: AccordionChangeEvent): void => {
+  const onUpdate1 = (e: AccordionUpdateEvent): void => {
     isOpen1.value = e.open;
   };
-  const onChange2 = (e: AccordionChangeEvent): void => {
+  const onUpdate2 = (e: AccordionUpdateEvent): void => {
     isOpen2.value = e.open;
   };
 
@@ -19,10 +19,10 @@
 </script>
 
 <template>
-  <PAccordion :heading="'Some Heading'" :tag="'h3'" :open="isOpen1" @change="onChange1">
+  <PAccordion :heading="'Some Heading'" :tag="'h3'" :open="isOpen1" @update="onUpdate1">
     <PText>{{ content }}</PText>
   </PAccordion>
-  <PAccordion :heading="'Some Heading'" :tag="'h3'" :open="isOpen2" @change="onChange2">
+  <PAccordion :heading="'Some Heading'" :tag="'h3'" :open="isOpen2" @update="onUpdate2">
     <PText>{{ content }}</PText>
   </PAccordion>
 </template>
