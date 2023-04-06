@@ -61,6 +61,12 @@ import type {
     </div>
 
     <div class="playground light">
+      <p-banner [open]="isBannerOpen" (dismiss)="onBannerDismiss()" [heading]="'Banner'"></p-banner>
+      <p>{{ bannerDismissEventCounter }}</p>
+      <button (click)="openBanner()">Open Banner</button>
+    </div>
+
+    <div class="playground light">
       <p-modal [open]="isModalOpen" (dismiss)="onModalDismiss()">Modal</p-modal>
       <p>{{ modalDismissEventCounter }}</p>
       <button (click)="openModal()">Open Modal</button>
@@ -95,6 +101,8 @@ export class EventsComponent {
   public tabsChangeEventCounter = 0;
   public textFieldSearchValue = '';
   public switchChangeEventCounter = 0;
+  public bannerDismissEventCounter = 0;
+  public isBannerOpen = false;
   public modalDismissEventCounter = 0;
   public isModalOpen = false;
   public tableChangeEventCounter = 0;
@@ -125,6 +133,15 @@ export class EventsComponent {
 
   public onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
     this.switchChangeEventCounter++;
+  }
+
+  public openBanner() {
+    this.isBannerOpen = true;
+  }
+
+  public onBannerDismiss() {
+    this.bannerDismissEventCounter++;
+    this.isBannerOpen = false;
   }
 
   public openModal() {

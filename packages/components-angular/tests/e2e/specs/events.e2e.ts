@@ -130,6 +130,40 @@ describe('switch', () => {
   });
 });
 
+describe('banner', () => {
+  it('should emit events once', async () => {
+    await goto(page, 'events');
+
+    const bannerOpenBtn = await selectNode(page, 'p-banner ~ button');
+    const bannerCloseBtn = await selectNode(page, 'p-banner >>> p-button-pure >>> button');
+    const bannerDismissEventCounter = await selectNode(page, 'p-banner + p');
+
+    await bannerOpenBtn.click();
+    await waitForComponentsReady(page);
+    await new Promise((resolve) => setTimeout(resolve, 600)); // fade-in transition
+    await bannerCloseBtn.click();
+    await waitForComponentsReady(page);
+    await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
+    expect(await getCounterValue(bannerDismissEventCounter)).toBe('1');
+
+    await bannerOpenBtn.click();
+    await waitForComponentsReady(page);
+    await new Promise((resolve) => setTimeout(resolve, 600)); // fade-in transition
+    await bannerCloseBtn.click();
+    await waitForComponentsReady(page);
+    await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
+    expect(await getCounterValue(bannerDismissEventCounter)).toBe('2');
+
+    await bannerOpenBtn.click();
+    await waitForComponentsReady(page);
+    await new Promise((resolve) => setTimeout(resolve, 600)); // fade-in transition
+    await bannerCloseBtn.click();
+    await waitForComponentsReady(page);
+    await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
+    expect(await getCounterValue(bannerDismissEventCounter)).toBe('3');
+  });
+});
+
 describe('modal', () => {
   it('should emit events once', async () => {
     await goto(page, 'events');
