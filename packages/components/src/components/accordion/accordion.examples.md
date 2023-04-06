@@ -127,7 +127,7 @@ export default class Code extends Vue {
   
     /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('change', () => {
+    themeTabs.forEach(tab => tab.addEventListener('update', () => {
       this.registerEvents();
     }));
   }
@@ -138,7 +138,7 @@ export default class Code extends Vue {
   
   registerEvents() {
     const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
-    accordions.forEach(accordionEl => accordionEl.addEventListener('change', (e) => (e.target.open = e.detail.open)));
+    accordions.forEach(accordionEl => accordionEl.addEventListener('update', (e) => (e.target.open = e.detail.open)));
   }
 }
 </script>

@@ -1,5 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
-import type { BreakpointCustomizable, BreakpointKey } from '../../types';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import type { BreakpointCustomizable } from '../../types';
 import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
@@ -17,7 +18,7 @@ export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
-export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
+export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };
 
 export type SplideBreakpoints = Options['breakpoints'];
 
@@ -26,7 +27,7 @@ export const getSplideBreakpoints = (
 ): SplideBreakpoints => {
   return typeof perPage === 'object'
     ? Object.entries(perPage).reduce(
-        (result, [key, val]: [BreakpointKey, number]) => ({
+        (result, [key, val]: [Breakpoint, number]) => ({
           ...result,
           [breakpoint[key]]: {
             // round to sanitize floating numbers

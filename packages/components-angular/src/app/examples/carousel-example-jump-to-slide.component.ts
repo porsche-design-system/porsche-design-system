@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { CarouselChangeEvent } from '@porsche-design-system/components-angular';
+import type { CarouselUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-carousel-example-jump-to-slide',
   template: `
-    <p-carousel [heading]="'Some Heading'" [activeSlideIndex]="activeSlideIndex" (change)="onChange($event)">
+    <p-carousel [heading]="'Some Heading'" [activeSlideIndex]="activeSlideIndex" (update)="onUpdate($event)">
       <div>Slide 1</div>
       <div>Slide 2</div>
       <div>Slide 3</div>
@@ -24,7 +24,7 @@ import type { CarouselChangeEvent } from '@porsche-design-system/components-angu
 export class CarouselExampleJumpToSlideComponent {
   activeSlideIndex = 1;
 
-  onChange(e: CustomEvent<CarouselChangeEvent>) {
+  onUpdate(e: CustomEvent<CarouselUpdateEvent>) {
     this.activeSlideIndex = e.detail.activeIndex;
   }
   onButtonClick(e: MouseEvent) {

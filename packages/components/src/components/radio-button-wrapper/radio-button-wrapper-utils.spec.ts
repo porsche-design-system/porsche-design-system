@@ -37,7 +37,7 @@ describe('changeHandler()', () => {
 
     changeHandler({ target: { name: 'some-name' } } as unknown as Event);
 
-    expect(spyQuerySelectorAll).toBeCalledWith('input[type=radio][name=some-name]');
+    expect(spyQuerySelectorAll).toBeCalledWith('input[type=radio][name="some-name"]');
     expect(radio1.style.display).toBe('');
     expect(radio2.style.display).toBe('');
     expect(radio3.style.display).toBe('none');

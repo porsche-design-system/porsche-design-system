@@ -111,7 +111,7 @@ For browsers that don't support the `inert` attribute, yet, the component adds a
 To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
 
 <Playground :frameworkMarkup="jumpToSlideExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" :active-slide-index="activeSlideIndex" v-html="getSlides(3)" @change="(e) => activeSlideIndex = e.detail.activeIndex" style="margin: 0 0 1rem">
+  <p-carousel :theme="theme" :heading="basicHeading" :active-slide-index="activeSlideIndex" v-html="getSlides(3)" @update="(e) => activeSlideIndex = e.detail.activeIndex" style="margin: 0 0 1rem">
   </p-carousel>
   <button v-for="(_, index) in Array(3)" :key="index" type="button" @click="activeSlideIndex = index" :disabled="activeSlideIndex === index">{{index + 1}}</button>
 </Playground>
@@ -126,7 +126,7 @@ Whenever the `p-carousel` slides, the `change` is emitted containing both, the `
 </p-inline-notification>
 
 <Playground :frameworkMarkup="eventHandlingExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @change="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
+  <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @update="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
   </p-carousel>
   <p-text :theme="theme">Last event detail: {{lastEventDetail}}</p-text>
 </Playground>

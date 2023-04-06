@@ -9,17 +9,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `xxl` breakpoint for all breakpoint customizable component values
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2454)
+
+#### Fixed
+
+- Disabled color of `Icon` component [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2446)
+- Support of `Radio Button Wrapper` for name value with non-alphanumeric characters
+  [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2443)
+
 #### Changed
 
 - `Banner` is a controlled component now and its visibility has to be controlled via the `open` prop
-  ([#2447](https://github.com/porsche-design-system/porsche-design-system/pull/2447/))
+  ([#2447](https://github.com/porsche-design-system/porsche-design-system/pull/2447))
 
 ```diff
 - <p-banner></p-banner>
 + <p-banner open="true"></p-banner>
 ```
 
+- Renamed all custom `change` events to `update` because of bad event emissions with native `change` events, e.g. with
+  nested `select` or `input` elements
+
 #### 🤖 Property deprecations 🤖
+
+##### Accordion:
+
+- Event `accordionChange` is deprecated, use `update` event instead.
+
+```diff
+- <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
++ <PAccordion onUpdate={(e: CustomEvent<AccordionUPdateEvent>) => {}} />
+```
 
 ##### Banner:
 
@@ -30,6 +53,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-banner dismiss-button="false"></p-banner>
 ```
 
+##### Carousel:
+
+- Event `carouselChange` is deprecated, use `update` event instead.
+
+```diff
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
++ <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEvent>) => {}} />
+```
+
 ##### Inline Notification:
 
 - Prop `persistent` is deprecated, use `dismissButton` instead.
@@ -37,6 +69,69 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ```diff
 - <p-inline-notification persistent="true"></p-inline-notification>
 + <p-inline-notification dismiss-button="false"></p-inline-notification>
+```
+
+##### Pagination:
+
+- Event `pageChange` is deprecated, use `update` event instead.
+
+```diff
+- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
++ <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEvent>) => {}} />
+```
+
+#### Segmented Control:
+
+- Event `segmentedControlChange` is deprecated, use `update` event instead.
+
+```diff
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
++ <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEvent>) => {}} />
+```
+
+#### Stepper Horizontal:
+
+- Event `stepChange` is deprecated, use `update` event instead.
+
+```diff
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
++ <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEvent>) => {}} />
+```
+
+#### Switch:
+
+- Event `switchChange` is deprecated, use `update` event instead.
+
+```diff
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
++ <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEvent>) => {}} />
+```
+
+#### Table:
+
+- Event `sortingChange` is deprecated, use `update` event instead.
+
+```diff
+- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
++ <PTable onUpdate={(e: CustomEvent<TableUpdateEvent>) => {}} />
+```
+
+##### Tabs:
+
+- Event `tabChange` is deprecated, use `update` event instead.
+
+```diff
+- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabs onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
+```
+
+##### Tabs Bar:
+
+- Event `tabChange` is deprecated, use `update` event instead.
+
+```diff
+- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
 ```
 
 ### [3.0.0-alpha.5] - 2023-03-30

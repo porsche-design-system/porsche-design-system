@@ -26,17 +26,17 @@ describe('pagination', () => {
     await goto(page, 'events');
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
-    const paginationChangeEventCounter = await selectNode(page, 'p-pagination + p');
+    const paginationUpdateEventCounter = await selectNode(page, 'p-pagination + p');
     const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span')).slice(1, -1); // without prev and next;
 
     await secondBtn.click();
-    expect(await getCounterValue(paginationChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(paginationUpdateEventCounter)).toBe('1');
 
     await thirdBtn.click();
-    expect(await getCounterValue(paginationChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(paginationUpdateEventCounter)).toBe('2');
 
     await fourthBtn.click();
-    expect(await getCounterValue(paginationChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(paginationUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -45,17 +45,17 @@ describe('tabs-bar', () => {
     await goto(page, 'events');
 
     const tabsBar = await selectNode(page, 'p-tabs-bar');
-    const tabsBarChangeEventCounter = await selectNode(page, 'p-tabs-bar + p');
+    const tabsBarUpdateEventCounter = await selectNode(page, 'p-tabs-bar + p');
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
 
     await secondBtn.click();
-    expect(await getCounterValue(tabsBarChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('1');
 
     await thirdBtn.click();
-    expect(await getCounterValue(tabsBarChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('2');
 
     await firstBtn.click();
-    expect(await getCounterValue(tabsBarChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('3');
   });
 
   it('should not throw error when used with router', async () => {
@@ -79,17 +79,17 @@ describe('tabs', () => {
     await goto(page, 'events');
 
     const tabsBar = await selectNode(page, 'p-tabs >>> p-tabs-bar');
-    const tabsChangeEventCounter = await selectNode(page, 'p-tabs + p');
+    const tabsUpdateEventCounter = await selectNode(page, 'p-tabs + p');
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
 
     await secondBtn.click();
-    expect(await getCounterValue(tabsChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(tabsUpdateEventCounter)).toBe('1');
 
     await thirdBtn.click();
-    expect(await getCounterValue(tabsChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(tabsUpdateEventCounter)).toBe('2');
 
     await firstBtn.click();
-    expect(await getCounterValue(tabsChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(tabsUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -117,16 +117,16 @@ describe('switch', () => {
     await goto(page, 'events');
 
     const switchBtn = await selectNode(page, 'p-switch >>> button');
-    const switchChangeEventCounter = await selectNode(page, 'p-switch + p');
+    const switchUpdateEventCounter = await selectNode(page, 'p-switch + p');
 
     await switchBtn.click();
-    expect(await getCounterValue(switchChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(switchUpdateEventCounter)).toBe('1');
 
     await switchBtn.click();
-    expect(await getCounterValue(switchChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(switchUpdateEventCounter)).toBe('2');
 
     await switchBtn.click();
-    expect(await getCounterValue(switchChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(switchUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -198,16 +198,16 @@ describe('table', () => {
     await goto(page, 'events');
 
     const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> button');
-    const tableChangeEventCounter = await selectNode(page, 'p-table + p');
+    const tableUpdateEventCounter = await selectNode(page, 'p-table + p');
 
     await tableHeadBtn.click();
-    expect(await getCounterValue(tableChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(tableUpdateEventCounter)).toBe('1');
 
     await tableHeadBtn.click();
-    expect(await getCounterValue(tableChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(tableUpdateEventCounter)).toBe('2');
 
     await tableHeadBtn.click();
-    expect(await getCounterValue(tableChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(tableUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -216,16 +216,16 @@ describe('accordion', () => {
     await goto(page, 'events');
 
     const accordionButton = await selectNode(page, 'p-accordion >>> button');
-    const accordionChangeEventCounter = await selectNode(page, 'p-accordion + p');
+    const accordionUpdateEventCounter = await selectNode(page, 'p-accordion + p');
 
     await accordionButton.click();
-    expect(await getCounterValue(accordionChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(accordionUpdateEventCounter)).toBe('1');
 
     await accordionButton.click();
-    expect(await getCounterValue(accordionChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(accordionUpdateEventCounter)).toBe('2');
 
     await accordionButton.click();
-    expect(await getCounterValue(accordionChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(accordionUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -234,15 +234,15 @@ describe('carousel', () => {
     await goto(page, 'events');
 
     const prevButton = await selectNode(page, 'p-carousel >>> p-button-pure');
-    const carouselChangeEventCounter = await selectNode(page, 'p-carousel + p');
+    const carouselUpdateEventCounter = await selectNode(page, 'p-carousel + p');
 
     await prevButton.click();
-    expect(await getCounterValue(carouselChangeEventCounter)).toBe('1');
+    expect(await getCounterValue(carouselUpdateEventCounter)).toBe('1');
 
     await prevButton.click();
-    expect(await getCounterValue(carouselChangeEventCounter)).toBe('2');
+    expect(await getCounterValue(carouselUpdateEventCounter)).toBe('2');
 
     await prevButton.click();
-    expect(await getCounterValue(carouselChangeEventCounter)).toBe('3');
+    expect(await getCounterValue(carouselUpdateEventCounter)).toBe('3');
   });
 });

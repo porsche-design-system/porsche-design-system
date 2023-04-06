@@ -212,14 +212,14 @@ export default class Code extends Vue {
   }
 
   registerEvents(): void {
-    this.$refs.tableAdvanced.addEventListener('change', (e) => {
+    this.$refs.tableAdvanced.addEventListener('update', (e) => {
       const { id, direction } = e.detail;
       this.headAdvanced = this.headAdvanced.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
       this.dataAdvanced = [...this.dataAdvanced].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
       this.syncHeadCellProperties();
     });
 
-    this.$refs.tableSorting.addEventListener('change', (e) => {
+    this.$refs.tableSorting.addEventListener('update', (e) => {
       const { id, direction } = e.detail;
       this.headSorting = this.headSorting.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
       this.dataSorting = [...this.dataSorting].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));

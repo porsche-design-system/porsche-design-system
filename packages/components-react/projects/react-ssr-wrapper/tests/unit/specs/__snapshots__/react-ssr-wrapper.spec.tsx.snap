@@ -1117,7 +1117,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
           </style>
           <img
             alt=""
@@ -4256,8 +4256,8 @@ exports[`should render dsr component for PModal 1`] = `
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  opacity: 0 !important;
   visibility: hidden !important;
+  transition: visibility 0s linear .2s !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -4271,9 +4271,11 @@ exports[`should render dsr component for PModal 1`] = `
   right: 0 !important;
   bottom: 0 !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
   pointer-events: none !important;
+  opacity: 0 !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1),--webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -4299,8 +4301,9 @@ h2 {
 .root {
   position: relative;
   box-sizing: border-box;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
+  opacity: 0;
+  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
@@ -4608,7 +4611,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -4667,7 +4670,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);

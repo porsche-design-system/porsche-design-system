@@ -82,8 +82,8 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    const playground = this.$el.querySelector('.playground-pagination p-pagination');
-    playground.addEventListener('pageChange', (e) => {
+    const el = this.$el.querySelector('.playground-pagination p-pagination');
+    el.addEventListener('update', (e) => {
       this.activePage = e.detail.page;
     });
   }
