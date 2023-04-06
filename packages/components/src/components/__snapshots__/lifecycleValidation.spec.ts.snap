@@ -20,7 +20,6 @@ exports[`should call validateProps() with correct parameters via render for p-ba
   "persistent": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
-  "width": "oneOf",
 }
 `;
 
