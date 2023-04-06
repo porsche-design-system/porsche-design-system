@@ -23,6 +23,10 @@ styling" section.
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
+### Framework Implementations
+
+<Playground :frameworkMarkup="codeExample" :markup="widthMarkup"></Playground>
+
 ## Slotted heading and description
 
 Rich content for `heading` and `description` can be provided via named slots.
@@ -84,10 +88,12 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { componentsReady } from '@porsche-design-system/components-js';
 import { BANNER_STATES, BANNER_STATES_DEPRECATED } from './banner-utils'; 
+import {getBannerCodeSamples} from "shared/src"; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+  codeExample = getBannerCodeSamples();
   
   state = 'info';
   states = BANNER_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
