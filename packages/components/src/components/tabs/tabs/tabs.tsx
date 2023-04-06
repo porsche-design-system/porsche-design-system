@@ -14,12 +14,12 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { TabsBarChangeEvent } from '../../tabs-bar/tabs-bar-utils';
+import type { TabsBarUpdateEvent } from '../../tabs-bar/tabs-bar-utils';
 import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
 import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../../scroller/scroller-utils';
 import { syncTabsItemsProps } from './tabs-utils';
-import type { TabsChangeEvent, TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsWeight } from './tabs-utils';
+import type { TabsUpdateEvent, TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsWeight } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),
@@ -58,19 +58,19 @@ export class Tabs {
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    *  Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsChangeEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsUpdateEvent>;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public change: EventEmitter<TabsChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<TabsUpdateEvent>;
 
   @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
     this.setAccessibilityAttributes();
-    this.change.emit({ activeTabIndex: newValue });
+    this.update.emit({ activeTabIndex: newValue });
     this.tabChange.emit({ activeTabIndex: newValue });
   }
 
@@ -113,7 +113,7 @@ export class Tabs {
           gradientColorScheme={this.gradientColorScheme}
           gradientColor={this.gradientColor}
           activeTabIndex={this.activeTabIndex}
-          onChange={this.onTabsBarChange}
+          onUpdate={this.onTabsBarUpdate}
           onTabChange={(e) => e.stopPropagation()}
         >
           {this.tabsItemElements.map((tab, index) => (
@@ -157,7 +157,7 @@ export class Tabs {
     this.tabsItemElements.forEach((el) => observeProperties(el, ['label'], () => forceUpdate(this.host)));
   };
 
-  private onTabsBarChange = (e: CustomEvent<TabsBarChangeEvent>): void => {
+  private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>): void => {
     e.stopPropagation(); // prevent double event emission because of identical name
     this.activeTabIndex = e.detail.activeTabIndex;
   };
