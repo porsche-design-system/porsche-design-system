@@ -77,7 +77,7 @@
     <PButton
       :icon="'arrow-head-left'"
       :variant="'tertiary'"
-      @click="() => onNextPrevStep('prev')"
+      @click="onNextPrevStep('prev')"
       :disabled="getActiveStepIndex(steps) === 0"
     >
       Previous Step

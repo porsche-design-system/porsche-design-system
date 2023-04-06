@@ -16,7 +16,7 @@
     <button
       v-for="(tabPanel, i) in tabPanels"
       :key="i"
-      :type="'button'"
+      type="button"
       :id="`tab-item-${i}`"
       :aria-controls="`tab-panel-${i}`"
     >

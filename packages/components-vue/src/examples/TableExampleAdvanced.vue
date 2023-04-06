@@ -31,7 +31,7 @@
 <template>
   <PTable @update="onUpdate">
     <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-    <PHeading :slot="'caption'" :size="'large'"> Some visual caption </PHeading>
+    <PHeading :slot="'caption'" :size="'large'">Some visual caption</PHeading>
     <!-- eslint-enable -->
     <PTableHead>
       <PTableHeadRow>
@@ -62,8 +62,8 @@
         </PTableCell>
         <PTableCell>{{ item.leadId }}</PTableCell>
         <PTableCell>
-          <PButtonPure :icon="'edit'" :style="{ padding: '.5rem' }"> Edit </PButtonPure>
-          <PButtonPure :icon="'delete'" :style="{ padding: '.5rem' }"> Delete </PButtonPure>
+          <PButtonPure :icon="'edit'" :style="{ padding: '.5rem' }">Edit</PButtonPure>
+          <PButtonPure :icon="'delete'" :style="{ padding: '.5rem' }">Delete</PButtonPure>
         </PTableCell>
       </PTableRow>
     </PTableBody>

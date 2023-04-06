@@ -31,7 +31,7 @@
     :actionLoading="isLoading"
     @action="onAction"
   >
-    <input :type="'search'" :value="value" :placeholder="isLoading ? 'Locating...' : ''" @input="onInput" />
+    <input type="search" :value="value" :placeholder="isLoading ? 'Locating...' : ''" @input="onInput" />
   </PTextFieldWrapper>
   <PText>Value: {{ value }}</PText>
 </template>

@@ -21,7 +21,7 @@
   <button
     v-for="(_, i) in Array.from(Array(3))"
     :key="i"
-    :type="'button'"
+    type="button"
     @click="onButtonClick"
     :disabled="activeSlideIndex === i"
   >

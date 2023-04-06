@@ -12,9 +12,9 @@
 </script>
 
 <template v-html="style">
-  <button :type="'button'" @click="onClick(0)">Scroll to start</button>
-  <button :type="'button'" @click="onClick(220)">Scroll to middle</button>
-  <button :type="'button'" @click="onClick(720)">Scroll to end</button>
+  <button type="button" @click="onClick(0)">Scroll to start</button>
+  <button type="button" @click="onClick(220)">Scroll to middle</button>
+  <button type="button" @click="onClick(720)">Scroll to end</button>
 
   <div :style="{ maxWidth: '400px', whiteSpace: 'nowrap' }">
     <PScroller :scrollToPosition="scrollToPosition">

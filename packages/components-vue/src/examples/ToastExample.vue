@@ -12,6 +12,6 @@
 </script>
 
 <template>
-  <button :type="'button'" @click="onButtonClick">Queue Toast</button>
+  <button type="button" @click="onButtonClick">Queue Toast</button>
   <PToast />
 </template>

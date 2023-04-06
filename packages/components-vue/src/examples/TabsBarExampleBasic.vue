@@ -9,8 +9,8 @@
 
 <template>
   <PTabsBar :activeTabIndex="tabIndex" @update="onUpdate">
-    <button :type="'button'">Tab One</button>
-    <button :type="'button'">Tab Two</button>
-    <button :type="'button'">Tab Three</button>
+    <button type="button">Tab One</button>
+    <button type="button">Tab Two</button>
+    <button type="button">Tab Three</button>
   </PTabsBar>
 </template>
