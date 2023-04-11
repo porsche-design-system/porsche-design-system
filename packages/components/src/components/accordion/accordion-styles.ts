@@ -96,6 +96,7 @@ export const getComponentCss = (
     heading: {
       margin: 0,
       padding: 0,
+      overflow: 'hidden', // while this makes no sense, this fixes jumping nested accordions caused by overflow animation
     },
     icon: {
       width: fontLineHeight,
