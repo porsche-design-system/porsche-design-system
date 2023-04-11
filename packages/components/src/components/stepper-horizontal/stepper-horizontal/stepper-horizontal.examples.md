@@ -30,7 +30,7 @@ steps which cannot yet be processed at the time.
 By clicking on a previous step, the `p-stepper-horizontal` emits the `change` event, which contains the index of the
 clicked step.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>stepChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>

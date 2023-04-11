@@ -50,7 +50,7 @@ changes while this process is performed.
 If the `maxlength` attribute is present on the `input` element, a counter will be displayed in the corner.  
 To hide it you can set `showCounter` to `false`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>showCharacterCount</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>showCounter</code> property instead.
 </p-inline-notification>
@@ -148,7 +148,7 @@ If you want to use localized input masks to improve the user experience we recom
 /-correction, styling to distinguish between masked input, placeholder and input value, error handling etc.) to avoid
 user frustration.
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
   Be aware that if you provide masked input you will lose all benefits which you might have using type "date" (e.g. native date-picker) since masked inputs always require input type "text". Same applies to other types with native handling.<br>
   Once the last character is inserted the input will be converted to a Date object and gets verified (read more <a href="https://imask.js.org/guide.html#masked-date" target="_blank">here</a>).<br>
   Keep in mind that the definition of the "locale" in the examples below is a very simple use case. You will probably have to distinguish between more than two scenarios.

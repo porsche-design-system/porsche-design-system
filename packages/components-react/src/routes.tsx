@@ -77,6 +77,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
+    name: 'Banner Example',
+    path: '/banner-example',
+    element: <fromExamples.BannerExamplePage />,
+  },
+  {
     name: 'Carousel Example Dynamic Slides',
     path: '/carousel-example-dynamic-slides',
     element: <fromExamples.CarouselExampleDynamicSlidesPage />,

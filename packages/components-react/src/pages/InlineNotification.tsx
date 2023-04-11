@@ -237,6 +237,23 @@ export const InlineNotificationPage = (): JSX.Element => {
          />
       </div>
 
+      <div className="playground light" title="should show inline-notification without dismiss button on light background">
+        <PInlineNotification
+          heading="Heading with dismissButton=false"
+          description="Some description"
+          dismissButton={false}
+         />
+      </div>
+
+      <div className="playground dark" title="should show inline-notification without dismiss button on dark background">
+        <PInlineNotification
+          heading="Heading with dismissButton=false"
+          description="Some description"
+          dismissButton={false}
+          theme="dark"
+         />
+      </div>
+
       <div
         className="playground light"
         title="should show inline-notification in persistent mode with action button on light background"

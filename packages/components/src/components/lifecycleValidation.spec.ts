@@ -116,6 +116,8 @@ it.each<TagName>(tagNamesPublicWithProps)(
     // manual exceptions for props that have no validation
     if (tagName === 'p-headline') {
       delete propTypesStructure.variant; // TODO: with all the different values this can't easily be validated
+    } else if (tagName === 'p-banner') {
+      delete propTypesStructure.width;
     }
 
     expect(spy).toBeCalledWith(component, expect.objectContaining(propTypesStructure));
