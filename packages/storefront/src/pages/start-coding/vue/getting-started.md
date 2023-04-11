@@ -81,27 +81,7 @@ Run `yarn vite` or `npm start` and check if the components are displayed correct
 
 ## Plugin
 
-You can also use the `PorscheDesignSystemPlugin` to extend your vue setup.
-
-```ts
-// main.ts
-import { createApp } from 'vue';
-import { createPorscheDesignSystem } from '@porsche-design-system/components-vue';
-
-const app = createApp(App);
-app.use(createPorscheDesignSystem({ prefix: 'my-prefix' }));
-app.mount('#app');
-```
-
-### Composable
-
-The `usePorscheDesignSystemPlugin` composable provides access to the `PorscheDesignSystemPlugin` context.
-
-```ts
-import { usePorscheDesignSystemPlugin } from '@porsche-design-system/components-vue';
-
-const { isPorscheDesignSystemLoaded, componentsReady } = usePorscheDesignSystemPlugin();
-```
+Currently, the plugin approach is in development.
 
 ## When are Porsche Design System components initialized?
 
