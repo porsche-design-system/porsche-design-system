@@ -16,6 +16,23 @@ The recommended way to learn Porsche Design System 3 is by reading the
 
 ## Notable New Features
 
+- New design language
+- `xxl` breakpoint for all breakpoint customizable component values
+  ([#2454](https://github.com/porsche-design-system/porsche-design-system/pull/2454))
+- New Components: `Crest` ([#2437](https://github.com/porsche-design-system/porsche-design-system/pull/2437)),
+  `Button Tile` ([#2381](https://github.com/porsche-design-system/porsche-design-system/pull/2381)), `Fieldset`
+  ([#2404](https://github.com/porsche-design-system/porsche-design-system/pull/2404)), `Link Tile Model Signature`
+  ([#2388](https://github.com/porsche-design-system/porsche-design-system/pull/2388)), `Display` and `Heading`
+- `Carousel`: new Props `activeSlideIndex`
+  ([#2421](https://github.com/porsche-design-system/porsche-design-system/pull/2421)), `alignHeader` and `width`, Prop
+  `slidesPerPage` supports value `auto`
+- Prop `theme` for `Table` ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/)),
+  `Checkbox Wrapper`, `Radio Button Wrapper`, `Popover`, `Tag Dismissible`, `Textarea Wrapper`, `Text Field Wrapper` and
+  `Fieldset Wrapper`
+- Vue: plugin functions `createPorscheDesignSystem` and `usePorscheDesignSystemPlugin`
+- Porsche Next font supports Vietnamese charset
+- React: `patchRemixRunProcessBrowserGlobalIdentifier` binary to support SSR components with Remix
+
 ## 👹 Breaking Changes 👹
 
 ### Banner:
