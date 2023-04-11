@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   div[role='tabpanel'] {
     outline: 1px solid transparent;
     outline-offset: 2px;

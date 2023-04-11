@@ -86,7 +86,7 @@
     <PButton
       :variant="'primary'"
       :disabled="getActiveStepIndex(steps) === steps.length - 1"
-      @click="() => onNextPrevStep('next')"
+      @click="onNextPrevStep('next')"
     >
       Next Step
     </PButton>

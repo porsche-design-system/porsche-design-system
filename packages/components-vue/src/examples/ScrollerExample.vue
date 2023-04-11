@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   p-scroller > *:not(:last-child) {
     margin-right: 1rem;
   }

@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-modal [open]="isModalOpen" (dismiss)="onDismiss()" [aria]="{ 'aria-label': 'Some Heading' }">
       <p-text>Some Content</p-text>
       <p-button-group class="footer">
-        <p-button>Save</p-button>
+        <p-button type="button">Save</p-button>
         <p-button type="button" [variant]="'tertiary'" [icon]="'close'">Close</p-button>
       </p-button-group>
     </p-modal>
