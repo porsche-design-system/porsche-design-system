@@ -1,5 +1,11 @@
 # Porsche Design System V3 Migration Guide
 
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+  Porsche Design System 2 support will end on June 30th, 2023.<br>
+  Porsche Design System 2 is not under development anymore, only bug fixing takes place.<br>
+  Please make sure that upgrading to Porsche Design System 3 is feasible before the EOL date.
+</p-inline-notification>
+
 With the new **Porsche Design Language** comes a lot of changes regarding layout and design principles. To keep
 refactoring efforts as low as possible when upgrading from `v2` to `v3`, **breaking changes** were avoided as far as
 possible. Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
