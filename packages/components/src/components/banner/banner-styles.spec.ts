@@ -1,7 +1,10 @@
 import { getComponentCss } from './banner-styles';
 
 describe('getComponentCss()', () => {
-  it('should return correct css', () => {
-    expect(getComponentCss()).toMatchSnapshot();
-  });
+  it.each<Parameters<typeof getComponentCss>>([[true], [false]])(
+    'should return correct css for open: %s',
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
+    }
+  );
 });

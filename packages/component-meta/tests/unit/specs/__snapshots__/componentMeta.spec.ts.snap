@@ -61,7 +61,9 @@ exports[`should match snapshot 1`] = `
   "p-banner": {
     "allowedPropValues": {
       "description": "string",
+      "dismissButton": "boolean",
       "heading": "string",
+      "open": "boolean",
       "persistent": "boolean",
       "state": [
         "info",
@@ -73,11 +75,6 @@ exports[`should match snapshot 1`] = `
         "light",
         "dark",
       ],
-      "width": [
-        "extended",
-        "basic",
-        "fluid",
-      ],
     },
     "deprecatedPropValues": {
       "state": [
@@ -85,6 +82,7 @@ exports[`should match snapshot 1`] = `
       ],
     },
     "deprecatedProps": [
+      "persistent",
       "width",
     ],
     "eventNames": [
@@ -108,12 +106,17 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "description": null,
+      "dismissButton": true,
       "heading": null,
-      "persistent": false,
+      "open": false,
+      "persistent": null,
       "state": "info",
       "theme": "light",
-      "width": "extended",
+      "width": null,
     },
+    "requiredProps": [
+      "open",
+    ],
     "styling": "jss",
   },
   "p-button": {
@@ -1335,6 +1338,7 @@ exports[`should match snapshot 1`] = `
       "actionLabel": "string",
       "actionLoading": "boolean",
       "description": "string",
+      "dismissButton": "boolean",
       "heading": "string",
       "persistent": "boolean",
       "state": [
@@ -1349,6 +1353,9 @@ exports[`should match snapshot 1`] = `
         "dark",
       ],
     },
+    "deprecatedProps": [
+      "persistent",
+    ],
     "eventNames": [
       "dismiss",
       "action",
@@ -1373,8 +1380,9 @@ exports[`should match snapshot 1`] = `
       "actionLabel": null,
       "actionLoading": false,
       "description": null,
+      "dismissButton": true,
       "heading": null,
-      "persistent": false,
+      "persistent": null,
       "state": "info",
       "theme": "light",
     },

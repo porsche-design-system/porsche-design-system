@@ -1,11 +1,41 @@
+import type { JssStyle } from 'jss';
 import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, addImportantToRule, hostHiddenStyles } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
-import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles-shared';
 
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
+
+const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
+const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
+export const ANIMATION_DURATION = 600;
+
+const duration =
+  ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test'
+    ? `var(--p-animation-duration,${ANIMATION_DURATION}ms)`
+    : `${ANIMATION_DURATION}ms`;
+
+export type KeyframesDirection = 'in' | 'out';
+export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
+  const insideStyle: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
+  return direction === 'in'
+    ? {
+        from: outsideStyle,
+        to: insideStyle,
+      }
+    : {
+        from: insideStyle,
+        to: outsideStyle,
+      };
+};
+
+export const getKeyframesMobile = (direction: KeyframesDirection, bottomVar: string): JssStyle =>
+  getKeyframes(direction, {
+    opacity: 0,
+    transform: `translate3d(0,calc(var(${bottomVar}) + 100%),0)`, // space before and after "+" is crucial
+  });
+
 export const toastCloseClassName = 'close';
 
 export const getComponentCss = (): string => {
@@ -32,10 +62,11 @@ export const getComponentCss = (): string => {
       '@keyframes in': getKeyframesMobile('in', cssVariablePositionBottomInternal),
       '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },
-    hydrated: getAnimationIn(
-      'in',
-      ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test' && '--p-animation-duration'
-    ),
-    [toastCloseClassName]: getAnimationOut('out'),
+    hydrated: {
+      animation: `${duration} $in ${easeInQuad} forwards`,
+    },
+    [toastCloseClassName]: {
+      animation: addImportantToRule(`${ANIMATION_DURATION}ms $out ${easeOutQuad} forwards`),
+    },
   });
 };

@@ -93,7 +93,7 @@ export default class Code extends Vue {
   };
 
   openBanner() {
-    const el = document.createElement('p-banner');
+    const el = document.createElement('p-banner'); 
     el.innerHTML = `
       <span slot="title">Some banner title</span>
       <span slot="description">Some banner description.</span>
@@ -101,8 +101,11 @@ export default class Code extends Vue {
     document.getElementById('app').append(el);
 
     this.isBannerOpen = true;
+    el.open = true;
+
     el.addEventListener('dismiss', () => {
       this.isBannerOpen = false;
+      el.open = false;
     });
   };
 }

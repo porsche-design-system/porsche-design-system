@@ -4,7 +4,7 @@ The `p-fieldset-wrapper` is a grouping component for wrapping contextual associa
 an HTML _legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some
 usage examples on our [form patterns section](patterns/forms/resources).
 
-<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
   This component is deprecated and will be removed with the next major release.
 Please use <a href="components/fieldset">p-fieldset</a> instead.
 </p-inline-notification>

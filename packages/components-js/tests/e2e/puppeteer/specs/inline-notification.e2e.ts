@@ -4,6 +4,7 @@ import {
   getAttribute,
   getEventSummary,
   getLifecycleStatus,
+  getProperty,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
@@ -21,14 +22,16 @@ afterEach(async () => await page.close());
 const initInlineNotification = (opts?: {
   state?: InlineNotificationState;
   persistent?: boolean;
+  dismissButton?: boolean;
   actionLabel?: string;
 }): Promise<void> => {
-  const { state, persistent, actionLabel } = opts || {};
+  const { state, persistent, dismissButton = true, actionLabel } = opts || {};
   const attributes = [
     'heading="Some inline-notification heading."',
     'description="Some inline-notification description."',
     state && `state="${state}"`,
     persistent && 'persistent',
+    `dismiss-button="${dismissButton}"`,
     actionLabel && `action-label="${actionLabel}"`,
   ]
     .filter((x) => x)
@@ -53,8 +56,15 @@ it('should render close button with type of "button"', async () => {
   expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 });
 
-it('should render without button', async () => {
+it('should render without button when persistent prop true', async () => {
   await initInlineNotification({ persistent: true });
+  const el = await getCloseButton();
+  expect(el).toBeNull();
+});
+
+it('should render without button when dismissButton prop false', async () => {
+  await initInlineNotification({ dismissButton: false });
+  console.log(await getProperty(await getHost(), 'dismissButton'));
   const el = await getCloseButton();
   expect(el).toBeNull();
 });
