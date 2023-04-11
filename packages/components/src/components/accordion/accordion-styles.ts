@@ -10,8 +10,9 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import {
-  fontWeight,
-  fontSizeText,
+  fontWeightSemiBold,
+  fontSizeTextSmall,
+  fontSizeTextMedium,
   spacingStaticSmall,
   textSmallStyle,
   fontLineHeight,
@@ -31,16 +32,15 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
-        ...hostHiddenStyles,
         ...(!compact && {
           borderBottom: `1px solid ${contrastLowColor}`,
         }),
+        ...hostHiddenStyles,
       }),
       button: {
         display: 'flex',
         position: 'relative',
         justifyContent: 'space-between',
-        margin: '2px 0',
         width: '100%',
         textDecoration: 'none',
         border: 0,
@@ -51,10 +51,10 @@ export const getComponentCss = (
         textAlign: 'left',
         color: primaryColor,
         ...textSmallStyle,
-        fontWeight: fontWeight.semiBold,
+        fontWeight: fontWeightSemiBold,
         ...buildResponsiveStyles(size, (s: AccordionSize) => ({
-          fontSize: fontSizeText[s],
-          padding: compact ? '4px 0' : `${s === 'medium' ? '20px' : '12px'} 0`,
+          fontSize: s === 'medium' ? fontSizeTextMedium : fontSizeTextSmall,
+          padding: `${compact ? '4px' : s === 'medium' ? '20px' : '12px'} 0`,
         })),
         // mergeDeep needed because of hoverMediaQuery in certain modes not wrapping keys and therefore overriding "&::before" key
         ...mergeDeep(
@@ -96,7 +96,6 @@ export const getComponentCss = (
     heading: {
       margin: 0,
       padding: 0,
-      overflow: 'hidden', // while this makes no sense, this fixes jumping nested accordions caused by overflow animation
     },
     icon: {
       width: fontLineHeight,
@@ -113,7 +112,7 @@ export const getComponentCss = (
             paddingBottom: compact ? spacingStaticSmall : '24px',
             visibility: 'visible',
             transition: getTransition('height') + ',' + getTransition('padding-bottom'),
-            animation: `$open 0s ${transitionDuration} forwards`, // delay overflow change
+            animation: `$open 0s ${transitionDuration} forwards`, // delay overflow change and have `overflow: visible` after transition
           }
         : {
             height: 0,

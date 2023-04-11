@@ -1244,7 +1244,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -1274,7 +1273,6 @@ button::before {
 .heading {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 .icon {
   width: calc(6px + 2.125ex);
