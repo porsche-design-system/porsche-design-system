@@ -15,7 +15,7 @@ import type { PorscheDesignSystemBundle } from '@/utils/stackblitz/types';
 export type OpenInStackBlitzOpts = {
   porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
-  framework: Exclude<Framework, 'shared'>;
+  framework: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
   theme: Theme;
   backgroundColor: BackgroundColor;
   externalDependencies: ExternalDependency[];
@@ -34,7 +34,10 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
   };
 
-  const getProjectAndOpenOptionsMap: Record<Exclude<Framework, 'shared'>, GetStackBlitzProjectAndOpenOptions> = {
+  const getProjectAndOpenOptionsMap: Record<
+    Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
+    GetStackBlitzProjectAndOpenOptions
+  > = {
     'vanilla-js': getVanillaJsProjectAndOpenOptions,
     angular: getAngularProjectAndOpenOptions,
     react: getReactProjectAndOpenOptions,

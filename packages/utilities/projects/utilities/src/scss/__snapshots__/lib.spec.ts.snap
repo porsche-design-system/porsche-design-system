@@ -3,7 +3,7 @@
 exports[`should contain correct content for auto generated file ./src/scss/lib/_border.scss 1`] = `
 "$pds-border-radius-small: 4px;
 $pds-border-radius-medium: 8px;
-$pds-border-radius-large: 16px;
+$pds-border-radius-large: 12px;
 $pds-border-width-base: 2px;
 $pds-border-width-thin: 1px;
 "

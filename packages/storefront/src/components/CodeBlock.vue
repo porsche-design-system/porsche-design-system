@@ -27,7 +27,7 @@
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: false }) public convertMarkup!: boolean;
-    @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
+    @Prop({ default: () => ['vanilla-js', 'angular', 'react', 'vue'] }) public frameworks!: Framework[];
 
     frameworkBeforeShared = this.framework;
 
