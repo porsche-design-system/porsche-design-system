@@ -65,7 +65,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light playground--banner" title="should render default banner">
-          <p-banner>
+          <p-banner [open]="true">
             <span slot="title">Default banner component</span>
             <span slot="description">Some slotted banner description</span>
           </p-banner>
@@ -313,7 +313,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light playground--banner" title="should render default banner with custom prefix">
-          <my-prefix-p-banner p-banner>
+          <my-prefix-p-banner p-banner [open]="true">
             <span slot="title">Prefixed banner component</span>
             <span slot="description">Some slotted banner description</span>
           </my-prefix-p-banner>

@@ -3,7 +3,7 @@
     type="button"
     :theme="theme"
     :icon-source="stackBlitzIcon"
-    :disabled="framework === 'shared'"
+    :disabled="framework === 'shared' || framework === 'vue'"
     :loading="isLoading"
     @click="onButtonClick()"
     >{{ buttonLabel }}
@@ -26,7 +26,7 @@
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'vue' | 'shared'>;
+    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
@@ -52,7 +52,7 @@
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'vue' | 'shared'>,
+      framework: Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
       const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);

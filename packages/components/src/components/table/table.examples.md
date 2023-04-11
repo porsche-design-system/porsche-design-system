@@ -70,7 +70,7 @@ type TableHeadCellSort = {
 
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `change` event that you should subscribe to.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>
@@ -212,14 +212,14 @@ export default class Code extends Vue {
   }
 
   registerEvents(): void {
-    this.$refs.tableAdvanced.addEventListener('change', (e) => {
+    this.$refs.tableAdvanced.addEventListener('update', (e) => {
       const { id, direction } = e.detail;
       this.headAdvanced = this.headAdvanced.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
       this.dataAdvanced = [...this.dataAdvanced].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));
       this.syncHeadCellProperties();
     });
 
-    this.$refs.tableSorting.addEventListener('change', (e) => {
+    this.$refs.tableSorting.addEventListener('update', (e) => {
       const { id, direction } = e.detail;
       this.headSorting = this.headSorting.map((x) => ({ ...x, active: false, ...(x.id === id && e.detail) }));
       this.dataSorting = [...this.dataSorting].sort((a, b) => (direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])));

@@ -1,10 +1,6 @@
-import type { JssStyle } from 'jss';
-import type { KeyframesDirection } from './banner-styles-shared';
-import { getAnimationIn, getAnimationOut, getKeyframes, getKeyframesMobile } from './banner-styles-shared';
 import {
   dropShadowHighStyle,
   getMediaQueryMin,
-  getMediaQueryMinMax,
   gridExtendedOffsetBase,
   gridExtendedOffsetS,
   gridExtendedOffsetXXL,
@@ -18,60 +14,59 @@ const cssVariableBottom = '--p-banner-position-bottom';
 const cssVariableAnimationDuration = '--p-animation-duration';
 const cssVariableZIndex = '--p-internal-banner-z-index';
 
-const mediaQueryBaseToS = getMediaQueryMinMax('base', 's');
-const mediaQueryS = getMediaQueryMin('s');
-const mediaQueryXXL = getMediaQueryMin('xxl');
+export const ANIMATION_DURATION = 600;
 
-const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
-  getKeyframes(direction, {
-    opacity: 0,
-    transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
-  });
+const duration = `var(${cssVariableAnimationDuration},${ANIMATION_DURATION}ms)`;
 
-export const getComponentCss = (): string => {
+const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
+const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
+
+export const getComponentCss = (isOpen: boolean): string => {
   return getCss({
     '@global': {
-      ':host': {
-        opacity: 0,
-        ...addImportantToEachRule({
-          [cssVariableTop]: '56px',
-          [cssVariableBottom]: '56px',
-          position: 'fixed',
-          top: 'auto',
-          bottom: `var(${cssVariableBottom})`,
-          left: gridExtendedOffsetBase,
-          right: gridExtendedOffsetBase,
-          margin: 0,
-          padding: 0,
-          width: 'auto',
-          zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
-          willChange: 'opacity,transform',
-          ...dropShadowHighStyle,
-          [mediaQueryS]: {
-            top: `var(${cssVariableTop})`,
-            bottom: 'auto',
-            left: gridExtendedOffsetS,
-            right: gridExtendedOffsetS,
-          },
-          [mediaQueryXXL]: {
-            left: gridExtendedOffsetXXL,
-            right: gridExtendedOffsetXXL,
-          },
-          ...hostHiddenStyles,
-        }),
-        '&(.hydrated),&(.ssr)': {
-          [mediaQueryBaseToS]: getAnimationIn('mobileIn', cssVariableAnimationDuration),
-          [mediaQueryS]: getAnimationIn('desktopIn', cssVariableAnimationDuration),
+      ':host': addImportantToEachRule({
+        [cssVariableTop]: '56px',
+        [cssVariableBottom]: '56px',
+        position: 'fixed',
+        top: 'auto',
+        bottom: `var(${cssVariableBottom})`,
+        left: gridExtendedOffsetBase,
+        right: gridExtendedOffsetBase,
+        margin: 0,
+        padding: 0,
+        width: 'auto',
+        maxWidth: '100%', // If component is wrapped in container with maxWidth
+        zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
+        ...dropShadowHighStyle,
+        ...(isOpen
+          ? {
+              opacity: 1,
+              visibility: 'inherit',
+              transform: 'translate3d(0,0,0)',
+              transition: `opacity ${duration} ${easeInQuad}, transform ${duration} ${easeInQuad}`,
+            }
+          : {
+              opacity: 0,
+              visibility: 'hidden',
+              transform: `translate3d(0,calc(var(${cssVariableBottom}) + 100%),0)`,
+              '&(.hydrated),&(.ssr)': {
+                transition: `visibility 0s linear ${duration}, opacity ${duration} ${easeOutQuad}, transform ${duration} ${easeOutQuad}`,
+              },
+            }),
+        [getMediaQueryMin('s')]: {
+          top: `var(${cssVariableTop})`,
+          bottom: 'auto',
+          left: gridExtendedOffsetS,
+          right: gridExtendedOffsetS,
+          // space before and after "-" is crucial)
+          ...(!isOpen && { transform: `translate3d(0,calc(-100% - var(${cssVariableTop})),0)` }),
         },
-        '&(.banner--close)': {
-          [mediaQueryBaseToS]: getAnimationOut('mobileOut'),
-          [mediaQueryS]: getAnimationOut('desktopOut'),
+        [getMediaQueryMin('xxl')]: {
+          left: gridExtendedOffsetXXL,
+          right: gridExtendedOffsetXXL,
         },
-      },
-      '@keyframes mobileIn': getKeyframesMobile('in', cssVariableBottom),
-      '@keyframes mobileOut': getKeyframesMobile('out', cssVariableBottom),
-      '@keyframes desktopIn': getKeyframesDesktop('in', cssVariableTop),
-      '@keyframes desktopOut': getKeyframesDesktop('out', cssVariableTop),
+        ...hostHiddenStyles,
+      }),
     },
   });
 };

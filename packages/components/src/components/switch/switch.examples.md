@@ -21,7 +21,7 @@ interaction. When used with hidden label, it's best practice to provide a descri
 
 ## Framework Implementations
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>switchChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>
@@ -78,34 +78,34 @@ export default class Code extends Vue {
   configInline = { ...this.config, spacing: 'inline' };
 
   frameworks = {
-    'vanilla-js': `switchElement.addEventListener('change', (e) => {
+    'vanilla-js': `switchElement.addEventListener('update', (e) => {
   e.target.checked = e.detail.checked;
 });`,
     angular: `import { Component } from '@angular/core';
-import type { SwitchChangeEvent } from '@porsche-design-system/components-angular';
+import type { SwitchUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'some-switch-page',
-  template: \`<p-switch [checked]="checked" (change)="onChange($event)">Some label</p-switch>\`,
+  template: \`<p-switch [checked]="checked" (update)="onUpdate($event)">Some label</p-switch>\`,
 })
 export class SomeSwitchPage {
   checked: boolean;
 
-  onChange(e: CustomEvent<SwitchChangeEvent>) {
+  onUpdate(e: CustomEvent<SwitchUpdateEvent>) {
     this.checked = e.detail.checked;
   }
 }`,
     react: `import { useCallback, useState } from 'react';
 import { PSwitch } from '@porsche-design-system/components-react';
-import type { SwitchChangeEvent } from '@porsche-design-system/components-react';
+import type { SwitchUpdateEvent } from '@porsche-design-system/components-react';
 
 const SomeSwitchPage = (): JSX.Element => {
   const [checked, setChecked] = useState<boolean>();
-  const onChange = useCallback((e: CustomEvent<SwitchChangeEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<SwitchUpdateEvent>) => {
     setChecked(e.detail.checked);
   }, []);
 
-  return <PSwitch checked={checked} onChange={onChange}>Some label</PSwitch>
+  return <PSwitch checked={checked} onUpdate={onUpdate}>Some label</PSwitch>
 }`,
   };
 
@@ -148,7 +148,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
     /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('change', () => {
+    themeTabs.forEach(tab => tab.addEventListener('update', () => {
       this.registerEvents();
     }));
   }
@@ -159,7 +159,7 @@ const SomeSwitchPage = (): JSX.Element => {
 
   registerEvents() {
     const switches = this.$el.querySelectorAll('.playground .demo p-switch');
-    switches.forEach(switchEl => switchEl.addEventListener('change', (e) => (e.target.checked = e.detail.checked)));
+    switches.forEach(switchEl => switchEl.addEventListener('update', (e) => (e.target.checked = e.detail.checked)));
   }
 }
 </script>

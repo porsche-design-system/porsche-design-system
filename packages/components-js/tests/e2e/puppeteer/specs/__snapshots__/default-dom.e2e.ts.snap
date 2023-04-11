@@ -20,7 +20,7 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-banner 1`] = `
-"<p-inline-notification class="hydrated">
+"<p-inline-notification aria-hidden="true" class="hydrated">
 </p-inline-notification>"
 `;
 

@@ -1,10 +1,10 @@
 import { PTabsBar, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import type { TabsBarChangeEvent } from '@porsche-design-system/components-react';
+import type { TabsBarUpdateEvent } from '@porsche-design-system/components-react';
 
 export const TabsBarExampleAccessibilityPage = (): JSX.Element => {
   const [tabIndex, setTabIndex] = useState<number>(0);
-  const onChange = useCallback((e: CustomEvent<TabsBarChangeEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<TabsBarUpdateEvent>) => {
     setTabIndex(e.detail.activeTabIndex);
   }, []);
 
@@ -25,7 +25,7 @@ export const TabsBarExampleAccessibilityPage = (): JSX.Element => {
           outline-color: transparent;
         }
       `}</style>
-      <PTabsBar activeTabIndex={tabIndex} onChange={onChange}>
+      <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
         {tabPanels.map((tabPanel, i) => (
           <button key={i} type="button" id={`tab-item-${i}`} aria-controls={`tab-panel-${i}`}>
             Tab {tabPanel}

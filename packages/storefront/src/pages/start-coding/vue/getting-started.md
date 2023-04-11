@@ -93,6 +93,16 @@ app.use(createPorscheDesignSystem({ prefix: 'my-prefix' }));
 app.mount('#app');
 ```
 
+### Composable
+
+The `usePorscheDesignSystemPlugin` composable provides access to the `PorscheDesignSystemPlugin` context.
+
+```ts
+import { usePorscheDesignSystemPlugin } from '@porsche-design-system/components-vue';
+
+const { isPorscheDesignSystemLoaded, componentsReady } = usePorscheDesignSystemPlugin();
+```
+
 ## When are Porsche Design System components initialized?
 
 See [componentsReady()](helpers/components-ready) for further information.

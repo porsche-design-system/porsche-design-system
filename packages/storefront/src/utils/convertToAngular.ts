@@ -28,7 +28,7 @@ export const cleanBooleanAndUndefinedValues = (markup: string): string =>
 
 export const unbindNativeAttributes = (markup: string): string =>
   // remove brackets from "id", "class", "style, "slot" and "title" attributes
-  markup.replace(/\s\[(id|class|style|slot|title)]="'(.*?)'"/g, ' $1="$2"');
+  markup.replace(/\s\[(id|class|style|slot|title)\]="'(.*?)'"/g, ' $1="$2"');
 
 export const convertToAngular = (markup: string): string =>
   [

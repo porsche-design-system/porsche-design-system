@@ -4,7 +4,7 @@
 
 ## generateFontDefinition(fontSize, fontWeight)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>generateFontDefinition()</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Please use the <code>fontFamily</code>, <code>fontWeight</code>, <code>fontLineHeight</code> and one of the provided font sizes from the <a href="styles/typography">typography</a> styles.
 </p-inline-notification>
@@ -42,7 +42,7 @@ p {
 
 ## generateTypeScale(fontSize)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>generateTypeScale()</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Please use <code>fontLineHeight</code> and one of the provided font sizes from the <a href="styles/typography">typography</a> styles.
 </p-inline-notification>
@@ -73,7 +73,7 @@ p {
 
 ## calculateLineHeight(fontSize)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>calculateLineHeight()</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Please use the <code>fontLineHeight</code> style provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
@@ -103,7 +103,7 @@ p {
 
 ## pxToRem(px)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>pxToRem()</code> is <strong>deprecated</strong> without any replacement and will be removed with next major release.
 </p-inline-notification>
 
@@ -132,7 +132,7 @@ div {
 
 ## remToPx(rem)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>remToPx()</code> is <strong>deprecated</strong> without any replacement and will be removed with next major release.
 </p-inline-notification>
 

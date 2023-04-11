@@ -1,6 +1,7 @@
 import {
   addEventListener,
   getCssClasses,
+  getElementStyle,
   getEventSummary,
   getLifecycleStatus,
   getProperty,
@@ -20,15 +21,21 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const initBanner = (state?: BannerState): Promise<void> => {
-  const attributes = state ? `state="${state}"` : '';
+type InitOptions = {
+  open: boolean;
+  state?: BannerState;
+  dismissButton?: boolean;
+};
+
+const initBanner = (opts: InitOptions): Promise<void> => {
+  const { open = false, state, dismissButton = true } = opts || {};
+
+  const attrs = [`open="${open}"`, state ? `state="${state}"` : '', `dismiss-button="${dismissButton}"`].join(' ');
 
   return setContentWithDesignSystem(
     page,
     `
-    <p-banner ${attributes}>
-      <span slot="title">Some notification title</span>
-      <span slot="description">Some notification description.</span>
+    <p-banner ${attrs} heading="Some notification title" decription="Some notification description.">
     </p-banner>`
   );
 };
@@ -37,11 +44,13 @@ const getHost = () => selectNode(page, 'p-banner');
 const getInlineNotification = () => selectNode(page, 'p-banner >>> p-inline-notification');
 const getCloseButton = () => selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
 
+const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button-pure'));
+
 it('should forward props correctly to p-inline-notification', async () => {
   await setContentWithDesignSystem(
     page,
     `
-    <p-banner state="error" persistent="true" theme="dark">
+    <p-banner state="error" dismiss-button="false" theme="dark">
       <span slot="title">Some notification title</span>
       <span slot="description">Some notification description.</span>
     </p-banner>`
@@ -49,8 +58,40 @@ it('should forward props correctly to p-inline-notification', async () => {
 
   const inlineNotification = await getInlineNotification();
   expect(await getProperty(inlineNotification, 'state')).toBe('error');
-  expect(await getProperty(inlineNotification, 'persistent')).toBe(true);
+  expect(await getProperty(inlineNotification, 'dismissButton')).toBe(false);
   expect(await getProperty(inlineNotification, 'theme')).toBe('dark');
+});
+
+it('should not show banner by default', async () => {
+  await initBanner({ open: false });
+  const banner = await getHost();
+  expect(await getElementStyle(banner, 'opacity')).toBe('0');
+  expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
+});
+
+it('should show banner when prop open is true', async () => {
+  await initBanner({ open: true });
+  const banner = await getHost();
+  expect(await getElementStyle(banner, 'opacity')).toBe('1');
+  expect(await getElementStyle(banner, 'visibility')).toBe('visible');
+});
+
+it('should show banner when setting open prop true ', async () => {
+  await initBanner({ open: false });
+  const banner = await getHost();
+  await setProperty(banner, 'open', true);
+  await waitForStencilLifecycle(page);
+  expect(await getElementStyle(banner, 'opacity')).toBe('1');
+  expect(await getElementStyle(banner, 'visibility')).toBe('visible');
+});
+
+it('should not show banner by setting open prop false', async () => {
+  await initBanner({ open: true });
+  const banner = await getHost();
+  await setProperty(banner, 'open', false);
+  await waitForStencilLifecycle(page);
+  expect(await getElementStyle(banner, 'opacity')).toBe('0');
+  expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
 });
 
 describe('close', () => {
@@ -60,50 +101,52 @@ describe('close', () => {
     });
   };
 
-  it('should remove banner from DOM by click on close button', async () => {
-    await initBanner();
-    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
-    const closeButton = await getCloseButton();
-    await closeButton.click();
-
-    // we have to wait for the animation to end before the dom is cleared
-    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
-    expect(await getHost()).toBeNull();
+  it('should not show dismiss button when dismissButton prop is set false', async () => {
+    await initBanner({ open: true, dismissButton: false });
+    const banner = await getHost();
+    expect(await getCloseButton()).toBeNull();
   });
 
-  it('should remove banner from DOM by trigger ESC key', async () => {
-    await initBanner();
-    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
-    await page.keyboard.press('Escape');
-
-    // we have to wait for the animation to end before the dom is cleared
-    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_OUT_DURATION));
-    expect(await getHost()).toBeNull();
-  });
-
-  it('should emit custom event by click on close button', async () => {
-    await initBanner();
+  it('should emit dismiss event by pressing ESC key', async () => {
+    await initBanner({ open: true });
     const host = await getHost();
-    const closeButton = await getCloseButton();
     await addEventListener(host, 'dismiss');
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+  });
 
-    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
+  it('should not emit dismiss event by pressing ESC key when banner is not open', async () => {
+    await initBanner({ open: false });
+    const host = await getHost();
+    await addEventListener(host, 'dismiss');
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
+  it('should not emit dismiss event by pressing ESC key when dismissButton is set false', async () => {
+    await initBanner({ open: true, dismissButton: false });
+    const host = await getHost();
+    await addEventListener(host, 'dismiss');
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
+  it('should emit dismiss by click on close button', async () => {
+    await initBanner({ open: true });
+    const host = await getHost();
+    await addEventListener(host, 'dismiss');
+    const closeButton = await getCloseButton();
     await closeButton.click();
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
-  it('should remove and re-attach event', async () => {
-    await initBanner();
+  it('should remove and re-attach keydown event listener', async () => {
+    await initBanner({ open: true });
     const host = await getHost();
-    const closeButton = await getCloseButton();
     await addEventListener(host, 'dismiss');
-
-    // Remove and re-attach component to check if events are duplicated / fire at all
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
     await reattachElementHandle(host);
-
-    await new Promise((resolve) => setTimeout(resolve, CSS_FADE_IN_DURATION));
-    await closeButton.click();
-
+    await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
@@ -111,11 +154,11 @@ describe('close', () => {
     await setContentWithDesignSystem(
       page,
       `
-      <p-banner id="banner1" style="--p-banner-position-type: static">
+      <p-banner open id="banner1" style="--p-banner-position-type: static">
         <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
         <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
       </p-banner>
-      <p-banner id="banner2" style="--p-banner-position-type: static">
+      <p-banner open id="banner2" style="--p-banner-position-type: static">
         <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
         <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
       </p-banner>`
@@ -145,7 +188,7 @@ describe('close', () => {
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
-    await initBanner('error');
+    await initBanner({ state: 'error', open: true });
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
@@ -158,7 +201,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips after state change', async () => {
-    await initBanner('error');
+    await initBanner({ state: 'error', open: true });
     const host = await getHost();
 
     await setProperty(host, 'state', 'warning');
