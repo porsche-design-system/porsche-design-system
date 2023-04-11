@@ -7,6 +7,7 @@ import { IMaskModule } from 'angular-imask';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
+import { RouterLinkDirectiveDelegate } from './examples';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import * as fromStyles from './styles';
     ...fromPages.generatedPages,
     ...fromExamples.examples,
     ...fromStyles.examples,
+    RouterLinkDirectiveDelegate,
   ],
   imports: [
     BrowserModule,

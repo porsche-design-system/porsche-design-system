@@ -485,10 +485,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Pagination` emits `change` and deprecated `pageChange` event
   - `Segmented Control` emits `change` and deprecated `segmentedControlChange` event
   - `Stepper Horizontal` emits `change` and deprecated `stepChange` event
-  - `Switch` emits `change`and deprecated `switchChange` event
-  - `Table` emits `change`and deprecated `sortingChange` event
-  - `Tabs` emits `change`and deprecated `tabChange` event
-  - `Tabs Bar` emits `change`and deprecated `tabChange` event
+  - `Switch` emits `change` and deprecated `switchChange` event
+  - `Table` emits `change` and deprecated `sortingChange` event
+  - `Tabs` emits `change` and deprecated `tabChange` event
+  - `Tabs Bar` emits `change` and deprecated `tabChange` event
 - Props have consistent names across components and deprecated old props
   - `Carousel` got `pagination` prop and deprecated `disablePagination` prop
   - `Divider` got `direction` prop and deprecated `orientation` prop

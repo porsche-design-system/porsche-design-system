@@ -5,6 +5,7 @@ import { CarouselExampleEventsComponent } from './carousel-example-events.compon
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { LinkExampleComponent } from './link-example.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
@@ -26,6 +27,7 @@ export const examples = [
   CarouselExampleJumpToSlideComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  LinkExampleComponent,
   ModalExampleAccessibilityComponent,
   ScrollerExampleComponent,
   SegmentedControlExampleComponent,
@@ -47,6 +49,7 @@ export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './link-example.component';
 export * from './modal-example-accessibility.component';
 export * from './scroller-example.component';
 export * from './segmented-control-example.component';

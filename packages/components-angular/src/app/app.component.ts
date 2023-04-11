@@ -11,7 +11,7 @@ import { routes } from './app-routing.module';
         <option [value]="route.path" [disabled]="route.isDisabled">{{ route.name }}</option>
       </ng-container>
     </select>
-    <div id="app">
+    <div id="app" (click)="onContentClick($event)">
       <router-outlet></router-outlet>
     </div>
   `,
@@ -23,5 +23,14 @@ export class AppComponent {
 
   public async changeRoute(path: string): Promise<void> {
     await this.router.navigateByUrl(`/${path}`);
+  }
+
+  // global click handler for custom elements with href property
+  async onContentClick(ev: UIEvent): Promise<void> {
+    const { href } = ev.target as any;
+    if (href?.startsWith('/')) {
+      ev.preventDefault();
+      await this.router.navigateByUrl(href);
+    }
   }
 }

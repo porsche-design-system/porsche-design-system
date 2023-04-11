@@ -3,6 +3,7 @@ import { generatedRoutes } from './pages';
 export const sitemap = {
   home: { path: '/', name: 'Home' },
   table: { path: '/table', name: 'Table' },
+  'link-example': { path: './link-example', name: 'Link Example' },
   ...generatedRoutes,
 };
 
