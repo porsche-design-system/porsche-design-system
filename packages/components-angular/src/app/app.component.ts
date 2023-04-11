@@ -25,6 +25,7 @@ export class AppComponent {
     await this.router.navigateByUrl(`/${path}`);
   }
 
+  // global click handler for custom elements with href property
   async onContentClick(ev: UIEvent): Promise<void> {
     const { href } = ev.target as any;
     if (href?.startsWith('/')) {

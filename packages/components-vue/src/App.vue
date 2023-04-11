@@ -12,6 +12,15 @@
     selected.value = value;
     router.push(value);
   };
+
+  // global click handler for custom elements with href property
+  const onContentClick = (e: MouseEvent) => {
+    const { href } = e.target as any;
+    if (href?.startsWith('/')) {
+      e.preventDefault();
+      router.push(href);
+    }
+  };
 </script>
 
 <template>
@@ -23,7 +32,7 @@
       </option>
     </select>
 
-    <div id="app">
+    <div id="app" @click="onContentClick">
       <RouterView />
     </div>
   </PorscheDesignSystemProvider>
