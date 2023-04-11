@@ -52,7 +52,7 @@
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared' | 'vue'>,
+      framework: Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
       const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
