@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Color Contrast issues and rendering in Windows High Contrast Mode
   ([PR](https://github.com/porsche-design-system/porsche-design-system/pull/2420))
 
+### [3.0.0-rc.0] - 2023-04-11
+
+### Fixed
+
+- Styles: `borderRadiusLarge` and `pds-border-radius-large` are exposing correct value
+  ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2461))
+
 ### [3.0.0-alpha.6] - 2023-04-06
 
 #### Added
