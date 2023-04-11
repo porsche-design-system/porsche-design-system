@@ -1235,6 +1235,7 @@ exports[`should render dsr component for PAccordion 1`] = `
     <style>
       :host {
   display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1270,62 +1271,52 @@ button::before {
   bottom: 6px;
 }
 
-.root {
-  border-bottom: 1px solid #D8D8DB;
-}
 .heading {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }
     </style>
-    <div
-      class="root"
+    <h2
+      class="heading"
     >
-      <h2
-        class="heading"
+      <button
+        aria-controls="accordion-panel"
+        aria-expanded="false"
+        id="accordion-control"
+        type="button"
       >
-        <button
-          aria-controls="accordion-panel"
-          aria-expanded="false"
-          id="accordion-control"
-          type="button"
+        <slot
+          name="heading"
+        />
+        <p-icon
+          aria-hidden="true"
+          class="icon ssr"
         >
-          <slot
-            name="heading"
-          />
-          <p-icon
-            aria-hidden="true"
-            class="icon ssr"
+          <template
+            shadowroot="open"
+            shadowrootmode="open"
           >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
+            <style>
+              :host {
   display: inline-block;
   vertical-align: top;
 }
@@ -1349,24 +1340,23 @@ img {
     transform: rotateZ(0);
   }
 }
-              </style>
-              <img
-                alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
-              />
-            </template>
-          </p-icon>
-        </button>
-      </h2>
-      <div
-        aria-labelledby="accordion-control"
-        class="collapsible"
-        id="accordion-panel"
-        role="region"
-      >
-        <div>
-          <slot />
-        </div>
+            </style>
+            <img
+              alt=""
+              src="https://cdn.ui.porsche.com/porsche-design-system/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
+            />
+          </template>
+        </p-icon>
+      </button>
+    </h2>
+    <div
+      aria-labelledby="accordion-control"
+      class="collapsible"
+      id="accordion-panel"
+      role="region"
+    >
+      <div>
+        <slot />
       </div>
     </div>
   </template>
