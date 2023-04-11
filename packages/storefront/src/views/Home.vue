@@ -46,8 +46,13 @@
               </p-link>
             </p-flex-item>
             <p-flex-item>
-              <p-link variant="primary" class="router-link spacing-mt-16">
+              <p-link variant="primary" class="router-link spacing-mt-16 spacing-mr-32">
                 <router-link to="/start-coding/introduction">Start Coding</router-link>
+              </p-link>
+            </p-flex-item>
+            <p-flex-item>
+              <p-link variant="primary" class="router-link spacing-mt-16">
+                <router-link to="/news/migration">Start Migrating from V2 to V3</router-link>
               </p-link>
             </p-flex-item>
           </p-flex>
