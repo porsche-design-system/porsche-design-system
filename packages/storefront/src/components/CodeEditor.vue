@@ -52,7 +52,7 @@
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared'>,
+      framework: Exclude<Framework, 'shared' | 'vue'>,
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
       const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
@@ -70,8 +70,6 @@
             ...jsBundle,
             ...(await CodeEditor.fetchPorscheDesignSystemBundle('react', pdsVersion)),
           };
-        case 'vue':
-          return jsBundle;
       }
     }
 
