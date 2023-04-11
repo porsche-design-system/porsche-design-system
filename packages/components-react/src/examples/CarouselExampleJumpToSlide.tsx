@@ -20,9 +20,9 @@ export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
         <div>Slide 3</div>
       </PCarousel>
 
-      {Array.from(Array(3)).map((_, index) => (
-        <button key={index} type="button" onClick={onButtonClick} disabled={activeSlideIndex === index}>
-          {index + 1}
+      {Array.from(Array(3)).map((_, i) => (
+        <button key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
+          {i + 1}
         </button>
       ))}
     </>

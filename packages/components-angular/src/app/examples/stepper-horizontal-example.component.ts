@@ -21,6 +21,7 @@ import type {
 
     <p-button-group>
       <p-button
+        type="button"
         [icon]="'arrow-head-left'"
         [variant]="'tertiary'"
         [disabled]="getActiveStepIndex(steps) === 0"
@@ -30,6 +31,7 @@ import type {
       </p-button>
 
       <p-button
+        type="button"
         [variant]="'primary'"
         [disabled]="getActiveStepIndex(steps) === steps.length - 1"
         (click)="onNextPrevStep('next')"
