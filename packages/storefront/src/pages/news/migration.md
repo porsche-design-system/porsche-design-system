@@ -1,10 +1,10 @@
-# PDS V3 Migration Guide
+# Porsche Design System V3 Migration Guide
 
 With the new **Porsche Design Language** comes a lot of changes regarding layout and design principles. To keep
 refactoring efforts as low as possible when upgrading from `v2` to `v3`, **breaking changes** were avoided as far as
 possible. Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
 
-The recommended way to learn PDS 3 is by reading the
+The recommended way to learn Porsche Design System 3 is by reading the
 [components info table](https://designsystem.porsche.com/latest/component-meta) and
 [changelog](https://designsystem.porsche.com/latest/news/changelog).
 
