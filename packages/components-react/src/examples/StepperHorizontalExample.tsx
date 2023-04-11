@@ -77,6 +77,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
 
       <PButtonGroup>
         <PButton
+          type="button"
           icon="arrow-head-left"
           variant="tertiary"
           onClick={() => onNextPrevStep('prev')}

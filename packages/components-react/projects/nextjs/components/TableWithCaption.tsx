@@ -24,7 +24,7 @@ export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
               sort={item}
               hideLabel={item.hideLabel}
               multiline={item.multiline}
-              style={item.style}
+              style={item.style as React.CSSProperties}
             >
               <span dangerouslySetInnerHTML={{ __html: item.name }} />
             </PTableHeadCell>

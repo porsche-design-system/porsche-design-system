@@ -5,13 +5,13 @@ export type HeadVrt = {
   active?: boolean;
   multiline?: boolean;
   direction?: 'asc' | 'desc';
-  style?: React.CSSProperties;
+  style?: Partial<CSSStyleDeclaration>;
 };
 
 export const headVrt: HeadVrt[] = [
   { name: 'Slotted Styles', id: 'some-id', active: false, direction: 'asc' },
   { name: 'Multiline text', id: 'some-id', active: true, direction: 'desc' },
-  { name: 'Min width cell', style: { minWidth: 250 } } as HeadVrt,
+  { name: 'Min width cell', style: { minWidth: '250px' } } as HeadVrt,
   { name: 'Forced Multiline<br/> header<br/> cell', id: 'some-id', active: true, direction: 'asc' },
   { name: 'Natural multiline header cell', id: 'some-id', active: true, direction: 'asc', multiline: true },
   { name: 'Hide header cell', hideLabel: true } as HeadVrt,
