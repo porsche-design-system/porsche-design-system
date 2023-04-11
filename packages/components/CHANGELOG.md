@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Accordion` layout shift with nested accordions
+  ([#2465](https://github.com/porsche-design-system/porsche-design-system/pull/2465))
+
 ### [3.0.0-alpha.6] - 2023-04-06
 
 #### Added
