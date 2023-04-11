@@ -6,7 +6,7 @@ Accordions are flexible in the context and can include other components of the P
 It is a controlled component. This means it does not contain any internal state, and you got full control over its
 behavior.
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
   This component uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver" target="_blank">ResizeObserver</a> API internally which isn't available in all browsers.<br>
   If your browser does not support the ResizeObserver, a fallback is used, which might be not as performant.<br>
   See <a href="https://caniuse.com/resizeobserver" target="_blank">caniuse.com</a> for more details on browser support.  
@@ -16,7 +16,7 @@ behavior.
 
 ## Basic example
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>accordionChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>
@@ -127,7 +127,7 @@ export default class Code extends Vue {
   
     /* theme switch needs to register event listeners again */
     const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('change', () => {
+    themeTabs.forEach(tab => tab.addEventListener('update', () => {
       this.registerEvents();
     }));
   }
@@ -138,7 +138,7 @@ export default class Code extends Vue {
   
   registerEvents() {
     const accordions = this.$el.querySelectorAll('.playground .demo p-accordion');
-    accordions.forEach(accordionEl => accordionEl.addEventListener('change', (e) => (e.target.open = e.detail.open)));
+    accordions.forEach(accordionEl => accordionEl.addEventListener('update', (e) => (e.target.open = e.detail.open)));
   }
 }
 </script>

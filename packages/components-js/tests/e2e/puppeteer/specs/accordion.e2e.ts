@@ -216,19 +216,19 @@ describe('events', () => {
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
   });
 
-  it('should emit both accordionChange and change event', async () => {
+  it('should emit both accordionChange and update event', async () => {
     await initAccordion();
     const host = await getHost();
 
     await addEventListener(host, 'accordionChange');
-    await addEventListener(host, 'change');
+    await addEventListener(host, 'update');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     const button = await getButton();
     await button.click();
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 

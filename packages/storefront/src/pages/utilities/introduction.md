@@ -4,7 +4,7 @@
 
 ## Porsche Design System - Utilities
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   The <code>Porsche Design System - Utilities</code> package is <strong>deprecated</strong> and will no longer be maintained.<br>
   All Porsche Design System utilities are now provided via the @porsche-design-system/components-{js|angular|react|vue}/styles sub-package.<br>
   To make the migration easier have a look at the <a href="news/changelog/utilities">changelog</a> which contains a migration path.

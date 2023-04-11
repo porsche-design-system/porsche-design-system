@@ -38,7 +38,7 @@ An icon can be added via the `icon` or `iconSource` property.
 
 ## Background Color (deprecated)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   The background-color prop is deprecated and will be removed with next major release.
 </p-inline-notification>
 
@@ -54,7 +54,7 @@ property.
 Whenever the selected item changes, a `change` event gets emitted by the `p-segmented-control`.  
 Each event instance contains the newly selected value at `event.detail.value`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>segmentedControlChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>

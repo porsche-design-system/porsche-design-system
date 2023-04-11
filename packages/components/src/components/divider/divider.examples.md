@@ -14,7 +14,7 @@ Slotted content between the component tags won't be displayed.
 **Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
 height on the component itself.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>orientation</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>direction</code> property instead.
 </p-inline-notification>
@@ -29,7 +29,7 @@ You can change the divider's direction by using different major breakpoints `xs`
 
 ## Colors
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
  Following colors have been deprecated and will be removed with the next major release:
  "neutral-contrast-high", "neutral-contrast-medium" and "neutral-contrast-low".
 </p-inline-notification>

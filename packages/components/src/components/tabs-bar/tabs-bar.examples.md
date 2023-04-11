@@ -30,7 +30,7 @@ change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate
 In order to get notified when the active tabs change, you need to register an event listener for the `change` event
 which is emitted by `p-tabs-bar`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>
@@ -78,7 +78,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 
 ## Weight
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
 </p-inline-notification>
@@ -92,7 +92,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>gradientColor</code> property instead.
 </p-inline-notification>
@@ -194,7 +194,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     
     /* theme switch needs to register event listeners again */
     const themeTabsBar = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabsBar.forEach(tab => tab.addEventListener('change', () => {
+    themeTabsBar.forEach(tab => tab.addEventListener('update', () => {
       this.updateAndRegister(); 
     }));    
   }
@@ -210,17 +210,17 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-    tabsBars.forEach(tabsBar => tabsBar.addEventListener('change', this.onTabsBarChange));
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('update', this.onTabsBarUpdate));
 
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('change', (e: CustomEvent<TabsBarChangeEvent>)=> {
-      this.onTabsBarChange(e);
+    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('update', (e: CustomEvent<TabsBarUpdateEvent>)=> {
+      this.onTabsBarUpdate(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
 
-  onTabsBarChange = (e: CustomEvent<TabsBarChangeEvent>) => {
+  onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }
