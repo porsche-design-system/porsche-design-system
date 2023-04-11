@@ -23,6 +23,7 @@ export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Ma
 
 const resizeObserver =
   hasWindow &&
+  'ResizeObserver' in window && // for jsdom and ssr
   new ResizeObserver((entries) => {
     entries.forEach((entry) => resizeMap.get(entry.target)?.(entry));
   });
