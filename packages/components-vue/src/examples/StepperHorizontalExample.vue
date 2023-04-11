@@ -75,6 +75,7 @@
 
   <PButtonGroup>
     <PButton
+      type="button"
       :icon="'arrow-head-left'"
       :variant="'tertiary'"
       @click="onNextPrevStep('prev')"
@@ -84,6 +85,7 @@
     </PButton>
 
     <PButton
+      type="button"
       :variant="'primary'"
       :disabled="getActiveStepIndex(steps) === steps.length - 1"
       @click="onNextPrevStep('next')"
