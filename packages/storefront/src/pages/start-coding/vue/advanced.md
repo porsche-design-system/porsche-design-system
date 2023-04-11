@@ -15,7 +15,7 @@ prefix to the `prefix` property of `PorscheDesignSystemProvider`.
 ```tsx
 // pages/App.vue
 
-<script setup lang='ts'>
+<script setup lang="ts">
   import AppComponent from './components/AppComponent.vue';
   import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
