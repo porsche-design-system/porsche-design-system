@@ -3,7 +3,7 @@
 exports[`should contain correct values for border 1`] = `
 {
   "radius": {
-    "large": "16px",
+    "large": "12px",
     "medium": "8px",
     "small": "4px",
   },
@@ -16,13 +16,13 @@ exports[`should contain correct values for border 1`] = `
 
 exports[`should contain correct values for borderRadius 1`] = `
 {
-  "large": "16px",
+  "large": "12px",
   "medium": "8px",
   "small": "4px",
 }
 `;
 
-exports[`should contain correct values for borderRadiusLarge 1`] = `"16px"`;
+exports[`should contain correct values for borderRadiusLarge 1`] = `"12px"`;
 
 exports[`should contain correct values for borderRadiusMedium 1`] = `"8px"`;
 
