@@ -1,7 +1,7 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { BannerState, BannerStateDeprecated, BannerWidth, BannerWidthDeprecated } from './banner-utils';
-import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
+import type { BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
+import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,17 +10,19 @@ import {
   hasNamedSlot,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
 import { getDeprecatedPropWarningMessage } from '../../utils/log/helper';
 
-const propTypes: PropTypes<typeof Banner> = {
+const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
+  open: AllowedTypes.boolean,
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
+  dismissButton: AllowedTypes.boolean,
   persistent: AllowedTypes.boolean,
-  width: AllowedTypes.oneOf<BannerWidth>(BANNER_WIDTHS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -31,6 +33,9 @@ const propTypes: PropTypes<typeof Banner> = {
 export class Banner {
   @Element() public host!: HTMLElement;
 
+  /** If true, the banner is open. */
+  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+
   /** Heading of the banner. */
   @Prop() public heading?: string = '';
 
@@ -40,11 +45,19 @@ export class Banner {
   /** State of the banner. */
   @Prop() public state?: BannerState = 'info';
 
-  /** Defines if the banner can be closed/removed by the user. */
-  @Prop() public persistent?: boolean = false;
+  /** If false, the banner will not have a dismiss button. */
+  @Prop() public dismissButton?: boolean = true;
 
-  /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
-  @Prop() public width?: BannerWidth = 'extended';
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
+   * Defines if the banner can be closed/removed by the user. */
+  @Prop() public persistent?: boolean;
+
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
+  @Prop() public width?: BannerWidth;
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -53,22 +66,40 @@ export class Banner {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private inlineNotificationElement: HTMLPInlineNotificationElement;
+  private closeBtn: HTMLElement;
+
+  private get hasDismissButton(): boolean {
+    return this.persistent ? false : this.dismissButton;
+  }
+
+  @Watch('open')
+  public openChangeHandler(isOpen: boolean): void {
+    if (this.hasDismissButton) {
+      if (isOpen) {
+        this.closeBtn?.focus();
+        document.addEventListener('keydown', this.onKeyboardEvent);
+      } else {
+        document.removeEventListener('keydown', this.onKeyboardEvent);
+      }
+    }
+  }
 
   public connectedCallback(): void {
-    if (!this.persistent) {
+    if (this.open && this.hasDismissButton) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
   public componentDidLoad(): void {
-    if (!this.persistent) {
+    if (this.hasDismissButton) {
       // messy… optional chaining is needed in case child component is unmounted too early
-      getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close')?.focus();
+      this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
+      this.closeBtn?.focus();
     }
   }
 
   public disconnectedCallback(): void {
-    if (!this.persistent) {
+    if (this.hasDismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
@@ -78,9 +109,12 @@ export class Banner {
     warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerStateDeprecated, BannerState>(this, 'state', {
       neutral: 'info',
     });
-    warnIfDeprecatedPropValueIsUsed<typeof Banner, BannerWidthDeprecated, BannerWidth>(this, 'width', {
-      fluid: 'extended',
-    });
+    warnIfDeprecatedPropIsUsed<typeof Banner>(this, 'persistent', 'Please use dismissButton prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Banner>(
+      this,
+      'width',
+      'The component is aligned with Porsche Grid "extended" by default.'
+    );
     const hasTitleSlot = hasNamedSlot(this.host, 'title');
     if (hasTitleSlot) {
       console.warn(
@@ -88,20 +122,20 @@ export class Banner {
         'Please use the "heading" prop or slot="heading" instead.'
       );
     }
-    attachComponentCss(this.host, getComponentCss, this.width);
+    attachComponentCss(this.host, getComponentCss, this.open);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <PrefixedTagNames.pInlineNotification
         ref={(el) => (this.inlineNotificationElement = el)}
-        class="root"
         heading={this.heading}
         description={this.description}
         state={this.state}
-        persistent={this.persistent}
+        dismissButton={this.hasDismissButton}
         theme={this.theme}
         onDismiss={this.removeBanner}
+        aria-hidden={!this.open ? 'true' : 'false'}
       >
         {hasNamedSlot(this.host, 'heading') ? (
           <slot name="heading" slot="heading" />
@@ -120,11 +154,9 @@ export class Banner {
   };
 
   private removeBanner = (e?: CustomEvent): void => {
-    e?.stopPropagation(); // prevent double event emission because of identical name
-    this.dismiss.emit();
-    this.host.classList.add('banner--close');
-    setTimeout(() => {
-      this.host.remove();
-    }, 600); // duration of animation
+    if (this.hasDismissButton) {
+      e?.stopPropagation(); // prevent double event emission because of identical name
+      this.dismiss.emit();
+    }
   };
 }

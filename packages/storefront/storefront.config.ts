@@ -175,6 +175,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/content-wrapper/content-wrapper.props.md')],
     },
+    Crest: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/crest/crest.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/crest/crest.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/crest/crest.props.md')],
+    },
     Divider: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/divider/divider.examples.md')],
@@ -262,6 +270,17 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/link-tile/link-tile.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/link-tile/link-tile.props.md')],
+    },
+    'Link Tile Model Signature': {
+      Examples: [
+        () =>
+          // @ts-ignore
+          import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md'),
+      ],
     },
     Marque: {
       // @ts-ignore
@@ -504,6 +523,14 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/text/text.props.md'),
       ],
+    },
+    Wordmark: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/wordmark/wordmark.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/wordmark/wordmark.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/wordmark/wordmark.props.md')],
     },
   },
   Partials: {

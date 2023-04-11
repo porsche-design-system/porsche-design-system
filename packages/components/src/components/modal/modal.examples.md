@@ -10,7 +10,7 @@ Modals are flexible in the context and can include other components of the Porsc
 It is a controlled component. This grants you flexible control over the modal's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
   This component activates a focus trap to keep the focus within while being open.<br>
   This is achieved by detecting the first and last focusable child element after the modal is opened.<br>
   Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal. 
@@ -29,7 +29,7 @@ The most important property of `p-modal` is its `open` attribute. When it is pre
 In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
 key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>close</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismiss</code> event instead.
 </p-inline-notification>
@@ -86,7 +86,7 @@ At the same time this also deactivates dismissing the modal by pressing `Escape`
 If you want to prevent dismissing the modal by clicking the backdrop, you can set the `disable-backdrop-click`
 attribute.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>disableCloseButton</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismissButton</code> property instead.
 </p-inline-notification>
@@ -240,7 +240,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   :deep(.footer) {  
     padding: 2rem 0 0;

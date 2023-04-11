@@ -153,7 +153,7 @@ describe('hover state', () => {
     const select = await getSelect();
     const labelText = await getLabelText();
     const initialStyle = await getElementStyle(select, 'borderColor');
-    expect(initialStyle).toBe('rgb(148, 149, 152)');
+    expect(initialStyle).toBe('rgb(107, 109, 112)');
 
     await labelText.hover();
     const hoverColor = await getElementStyle(select, 'borderColor');

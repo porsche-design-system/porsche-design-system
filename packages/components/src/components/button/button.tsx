@@ -119,8 +119,8 @@ export class Button {
             size="inherit"
             name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
-            color={isDisabledOrLoading(this.disabled, this.loading) ? 'state-disabled' : 'primary'}
-            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
+            color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
+            theme={!this.disabled ? getLinkButtonThemeForIcon(this.variant, this.theme) : this.theme}
             aria-hidden="true"
           />
         )}

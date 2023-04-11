@@ -11,6 +11,7 @@ export * from './Utilities';
 /* eslint-disable import/first */
 export * from './CoreInitializer';
 export * from './Overview';
+export * from './OverviewFlaky';
 export * from './OverviewNotifications';
 import { AccordionPage } from './Accordion';
 import { BannerPage } from './Banner';
@@ -21,6 +22,7 @@ import { ButtonTilePage } from './ButtonTile';
 import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { ContentWrapperPage } from './ContentWrapper';
+import { CrestPage } from './Crest';
 import { DisplayPage } from './Display';
 import { DividerPage } from './Divider';
 import { FieldsetPage } from './Fieldset';
@@ -35,6 +37,7 @@ import { LinkPage } from './Link';
 import { LinkPurePage } from './LinkPure';
 import { LinkSocialPage } from './LinkSocial';
 import { LinkTilePage } from './LinkTile';
+import { LinkTileModelSignaturePage } from './LinkTileModelSignature';
 import { MarquePage } from './Marque';
 import { ModalPage } from './Modal';
 import { ModelSignaturePage } from './ModelSignature';
@@ -65,6 +68,7 @@ import { TypographyCyrilPage } from './TypographyCyril';
 import { TypographyFallbackStrategyPage } from './TypographyFallbackStrategy';
 import { TypographyGreekAndCopticPage } from './TypographyGreekAndCoptic';
 import { TypographyLatinPage } from './TypographyLatin';
+import { WordmarkPage } from './Wordmark';
 
 export const generatedRoutes: RouteType[] = [
   {
@@ -111,6 +115,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Content Wrapper',
     path: '/content-wrapper',
     element: <ContentWrapperPage />,
+  },
+  {
+    name: 'Crest',
+    path: '/crest',
+    element: <CrestPage />,
   },
   {
     name: 'Display',
@@ -181,6 +190,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Link Tile',
     path: '/link-tile',
     element: <LinkTilePage />,
+  },
+  {
+    name: 'Link Tile Model Signature',
+    path: '/link-tile-model-signature',
+    element: <LinkTileModelSignaturePage />,
   },
   {
     name: 'Marque',
@@ -331,5 +345,10 @@ export const generatedRoutes: RouteType[] = [
     name: 'Typography Latin',
     path: '/typography-latin',
     element: <TypographyLatinPage />,
+  },
+  {
+    name: 'Wordmark',
+    path: '/wordmark',
+    element: <WordmarkPage />,
   },
 ];

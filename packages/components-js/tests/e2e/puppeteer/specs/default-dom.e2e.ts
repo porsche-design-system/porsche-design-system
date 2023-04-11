@@ -3,12 +3,10 @@ import {
   expectShadowDomToMatchSnapshot,
   goto,
   selectNode,
-  setProperty,
   waitForComponentsReady,
-  waitForStencilLifecycle,
 } from '../helpers';
 import type { Page } from 'puppeteer';
-import { getComponentMeta, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -24,7 +22,6 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
       document.getElementById('app').innerHTML = markup;
     }, markup);
     await waitForComponentsReady(page);
-
     if (tagName === 'p-icon') {
       // some buffer for the svg to load
       await new Promise((resolve) => setTimeout(resolve, 50));

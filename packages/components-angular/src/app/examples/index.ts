@@ -1,6 +1,8 @@
 import { AccordionExampleComponent } from './accordion-example.component';
+import { BannerExampleComponent } from './banner-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
+import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { LinkExampleComponent } from './link-example.component';
@@ -19,8 +21,10 @@ import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
   AccordionExampleComponent,
+  BannerExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleEventsComponent,
+  CarouselExampleJumpToSlideComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   LinkExampleComponent,
@@ -39,8 +43,10 @@ export const examples = [
 ];
 
 export * from './accordion-example.component';
+export * from './banner-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
+export * from './carousel-example-jump-to-slide.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './link-example.component';

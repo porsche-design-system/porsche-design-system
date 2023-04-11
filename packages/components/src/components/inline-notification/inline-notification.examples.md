@@ -16,7 +16,7 @@ component is best for a particular scenario.
 
 ## State
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
 Following state has been deprecated and will be removed with the next major release: "neutral".
 </p-inline-notification>
 
@@ -24,11 +24,16 @@ Following state has been deprecated and will be removed with the next major rele
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
-## Persistent
+## Without Close/Dismiss Button
 
-To make the `p-inline-notification` non-closable by the user, use the `persistent` property.
+To make the `p-inline-notification` non-closable by the user, use the `dismissButton` property.
 
-<Playground :markup="persistent" :config="config"></Playground>
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>persistent</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>dismissButton</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="dismissButton" :config="config"></Playground>
 
 ## Event Handling
 
@@ -103,8 +108,8 @@ export default class Code extends Vue {
 </p-inline-notification>`;
   }
 
-  persistent =
-`<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" persistent="true">
+  dismissButton =
+`<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" dismiss-button="false">
 </p-inline-notification>`;
 
   slottedContent =

@@ -16,7 +16,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #7E7F82;
+  stroke: #88898C;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -86,7 +86,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #949598;
+  stroke: #6B6D70;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -156,7 +156,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #7E7F82;
+  stroke: #88898C;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -226,7 +226,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #949598;
+  stroke: #6B6D70;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -296,7 +296,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #7E7F82;
+  stroke: #88898C;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -366,7 +366,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #949598;
+  stroke: #6B6D70;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -436,7 +436,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #7E7F82;
+  stroke: #88898C;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -506,7 +506,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #949598;
+  stroke: #6B6D70;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -576,7 +576,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #7E7F82;
+  stroke: #88898C;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -681,7 +681,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #949598;
+  stroke: #6B6D70;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {

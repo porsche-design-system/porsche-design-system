@@ -22,7 +22,7 @@ fieldset {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #CB3333;
+  color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
@@ -49,7 +49,7 @@ fieldset {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #E7323B;
+  color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
@@ -256,7 +256,7 @@ fieldset {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #00C77E;
+  color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;
@@ -283,7 +283,7 @@ fieldset {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #32B85B;
+  color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
 }"
 `;

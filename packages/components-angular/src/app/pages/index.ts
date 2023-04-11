@@ -21,6 +21,7 @@ export * from './utilities.component';
 
 /* Auto Generated Below */
 export * from './core-initializer.component';
+export * from './overview-flaky.component';
 export * from './overview-notifications.component';
 export * from './overview.component';
 import { AccordionComponent } from './accordion.component';
@@ -33,6 +34,7 @@ import { CarouselComponent } from './carousel.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
 import { CoreInitializerComponent } from './core-initializer.component';
+import { CrestComponent } from './crest.component';
 import { DisplayComponent } from './display.component';
 import { DividerComponent } from './divider.component';
 import { FieldsetComponent } from './fieldset.component';
@@ -47,10 +49,12 @@ import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
 import { LinkTileComponent } from './link-tile.component';
+import { LinkTileModelSignatureComponent } from './link-tile-model-signature.component';
 import { MarqueComponent } from './marque.component';
 import { ModalComponent } from './modal.component';
 import { ModelSignatureComponent } from './model-signature.component';
 import { OverviewComponent } from './overview.component';
+import { OverviewFlakyComponent } from './overview-flaky.component';
 import { OverviewNotificationsComponent } from './overview-notifications.component';
 import { PaginationComponent } from './pagination.component';
 import { PopoverComponent } from './popover.component';
@@ -79,6 +83,7 @@ import { TypographyCyrilComponent } from './typography-cyril.component';
 import { TypographyFallbackStrategyComponent } from './typography-fallback-strategy.component';
 import { TypographyGreekAndCopticComponent } from './typography-greek-and-coptic.component';
 import { TypographyLatinComponent } from './typography-latin.component';
+import { WordmarkComponent } from './wordmark.component';
 
 export const generatedPages = [
   AccordionComponent,
@@ -91,6 +96,7 @@ export const generatedPages = [
   CheckboxWrapperComponent,
   ContentWrapperComponent,
   CoreInitializerComponent,
+  CrestComponent,
   DisplayComponent,
   DividerComponent,
   FieldsetComponent,
@@ -105,10 +111,12 @@ export const generatedPages = [
   LinkPureComponent,
   LinkSocialComponent,
   LinkTileComponent,
+  LinkTileModelSignatureComponent,
   MarqueComponent,
   ModalComponent,
   ModelSignatureComponent,
   OverviewComponent,
+  OverviewFlakyComponent,
   OverviewNotificationsComponent,
   PaginationComponent,
   PopoverComponent,
@@ -137,6 +145,7 @@ export const generatedPages = [
   TypographyFallbackStrategyComponent,
   TypographyGreekAndCopticComponent,
   TypographyLatinComponent,
+  WordmarkComponent,
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [
@@ -184,6 +193,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Content Wrapper',
     path: 'content-wrapper',
     component: ContentWrapperComponent,
+  },
+  {
+    name: 'Crest',
+    path: 'crest',
+    component: CrestComponent,
   },
   {
     name: 'Display',
@@ -254,6 +268,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Link Tile',
     path: 'link-tile',
     component: LinkTileComponent,
+  },
+  {
+    name: 'Link Tile Model Signature',
+    path: 'link-tile-model-signature',
+    component: LinkTileModelSignatureComponent,
   },
   {
     name: 'Marque',
@@ -404,5 +423,10 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Typography Latin',
     path: 'typography-latin',
     component: TypographyLatinComponent,
+  },
+  {
+    name: 'Wordmark',
+    path: 'wordmark',
+    component: WordmarkComponent,
   },
 ];

@@ -1,7 +1,10 @@
 import { getComponentCss } from './table-styles';
 
 describe('getComponentCss()', () => {
-  it('should return correct css', () => {
-    expect(getComponentCss()).toMatchSnapshot();
-  });
+  it.each<Parameters<typeof getComponentCss>>([['dark'], ['light']])(
+    'should return correct css for theme: %s',
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
+    }
+  );
 });

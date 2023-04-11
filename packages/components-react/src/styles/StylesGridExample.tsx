@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import type { AccordionChangeEvent } from '@porsche-design-system/components-react';
+import type { AccordionUpdateEvent } from '@porsche-design-system/components-react';
 import { PAccordion, PButton } from '@porsche-design-system/components-react';
 import styled from 'styled-components';
 import {
@@ -23,6 +23,8 @@ import {
   gridNarrowColumnStart,
   gridNarrowSpanOneHalf,
   gridStyle,
+  gridWideColumnEnd,
+  gridWideColumnStart,
   headingLargeStyle,
   headingXLargeStyle,
   spacingFluidLarge,
@@ -48,7 +50,13 @@ const VisualizeGrid = styled.div({
 
 const VisualizeGridColumns = styled.span({
   background: 'rgba(0, 0, 255, 0.1)',
+  '&:first-child,&:last-child': {
+    background: 'rgba(125, 0, 255, 0.1)',
+  },
   [getMediaQueryMax('s')]: {
+    '&:nth-child(8)': {
+      background: 'rgba(125, 0, 255, 0.1)',
+    },
     '&:nth-child(n+9)': {
       display: 'none',
     },
@@ -56,7 +64,7 @@ const VisualizeGridColumns = styled.span({
 });
 
 // Tile
-type Color = 'blue' | 'green' | 'purple' | 'yellow';
+type Color = 'blue' | 'green' | 'purple' | 'yellow' | 'orange';
 const getTileStyle = (color: Color, padding: 'medium' | 'small' | false = 'medium', borderRadius: boolean = true) => {
   const opacity = 0.25;
   const colorMap: { [key in Color]: string } = {
@@ -64,6 +72,7 @@ const getTileStyle = (color: Color, padding: 'medium' | 'small' | false = 'mediu
     green: `rgba(0, 255, 0, ${opacity})`,
     purple: `rgba(255, 0, 255, ${opacity})`,
     yellow: `rgba(255, 255, 0, ${opacity})`,
+    orange: `rgba(255, 125, 0, ${opacity})`,
   };
   return {
     padding: padding === 'medium' ? spacingFluidMedium : padding === 'small' ? spacingFluidSmall : 0,
@@ -129,12 +138,34 @@ const HeroMedia = styled.div({
 
 const HeroHeader = styled.div({
   ...getTileStyle('green', false, false),
-  gridColumn: `${gridExtendedColumnStart} / ${gridExtendedColumnEnd}`,
+  gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
   gridRow: 1,
   paddingBottom: spacingFluidMedium,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',
+});
+
+// Wide Content
+const WideGrid = styled.div({
+  ...gridStyle,
+  marginTop: spacingFluidLarge,
+});
+
+const WideSidebar = styled.div({
+  ...getTileStyle('orange'),
+  gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
+  [getMediaQueryMin('s')]: {
+    gridColumn: `${gridWideColumnStart} / span 5`,
+  },
+});
+
+const WideContent = styled.div({
+  ...getTileStyle('orange'),
+  gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
+  [getMediaQueryMin('s')]: {
+    gridColumn: `span 11 / ${gridWideColumnEnd}`,
+  },
 });
 
 // Extended Content
@@ -294,17 +325,17 @@ export const StylesGridExample = (): JSX.Element => {
   const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 
-  const onAccordion1Change = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onAccordion1Update = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
     setIsAccordion1Open(e.detail.open);
   }, []);
-  const onAccordion2Change = useCallback((e: CustomEvent<AccordionChangeEvent>) => {
+  const onAccordion2Update = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
     setIsAccordion2Open(e.detail.open);
   }, []);
 
   return (
     <>
       <VisualizeGrid>
-        {[...Array(16)].map((_, i) => (
+        {[...Array(18)].map((_, i) => (
           <VisualizeGridColumns key={i} />
         ))}
       </VisualizeGrid>
@@ -316,9 +347,24 @@ export const StylesGridExample = (): JSX.Element => {
         </HeroMedia>
         <HeroHeader>
           <Display>Hero Heading</Display>
-          <TextLarge>Subline for the Hero Header in Extended Grid</TextLarge>
+          <TextLarge>Subline for the Hero Header in Wide Grid</TextLarge>
         </HeroHeader>
       </HeroGrid>
+      <WideGrid>
+        <WideSidebar>
+          <Info>
+            <b>Wide Sidebar</b>
+          </Info>
+          <PAccordion heading="Some Heading" tag="h3" />
+          <PAccordion heading="Some Heading" tag="h3" />
+          <PAccordion heading="Some Heading" tag="h3" />
+        </WideSidebar>
+        <WideContent>
+          <Info>
+            <b>Wide Content</b>
+          </Info>
+        </WideContent>
+      </WideGrid>
       <ExtendedContentGrid>
         <ExtendedContentHalfLeft>
           <Info>
@@ -446,13 +492,13 @@ export const StylesGridExample = (): JSX.Element => {
           <Info style={{ marginLeft: spacingStaticSmall, marginTop: spacingStaticSmall }}>
             <b>Narrow</b> for small Components and Content
           </Info>
-          <PAccordion heading="Some Heading" tag="h3" open={isAccordion1Open} onChange={onAccordion1Change}>
+          <PAccordion heading="Some Heading" tag="h3" open={isAccordion1Open} onUpdate={onAccordion1Update}>
             <Text>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
               felis, ultricies nec, pellentesque eu. Aenean massa.
             </Text>
           </PAccordion>
-          <PAccordion heading="Some Heading" tag="h3" open={isAccordion2Open} onChange={onAccordion2Change}>
+          <PAccordion heading="Some Heading" tag="h3" open={isAccordion2Open} onUpdate={onAccordion2Update}>
             <Text>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
               felis, ultricies nec, pellentesque eu. Aenean massa.

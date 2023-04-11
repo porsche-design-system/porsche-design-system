@@ -1,5 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
-import type { BreakpointCustomizable, BreakpointKey } from '../../types';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import type { BreakpointCustomizable } from '../../types';
 import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
@@ -7,24 +8,26 @@ import { ButtonPure } from '../button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
-export type CarouselWidth = typeof CAROUSEL_WIDTHS[number];
+export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
 export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
-export type CarouselAlignHeader = typeof CAROUSEL_ALIGN_HEADERS[number];
+export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
 // https://splidejs.com/guides/i18n/#default-texts
 // extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types
 export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
-export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
+export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };
 
 export type SplideBreakpoints = Options['breakpoints'];
 
-export const getSplideBreakpoints = (perPage: Exclude<BreakpointCustomizable<number>, string>): SplideBreakpoints => {
+export const getSplideBreakpoints = (
+  perPage: Exclude<BreakpointCustomizable<number>, string> | 'auto'
+): SplideBreakpoints => {
   return typeof perPage === 'object'
     ? Object.entries(perPage).reduce(
-        (result, [key, val]: [BreakpointKey, number]) => ({
+        (result, [key, val]: [Breakpoint, number]) => ({
           ...result,
           [breakpoint[key]]: {
             // round to sanitize floating numbers
@@ -36,7 +39,7 @@ export const getSplideBreakpoints = (perPage: Exclude<BreakpointCustomizable<num
     : {
         0: {
           // round to sanitize floating numbers
-          perPage: Math.round(perPage as unknown as number),
+          perPage: perPage === 'auto' ? 1 : Math.round(perPage as unknown as number),
         },
       };
 };

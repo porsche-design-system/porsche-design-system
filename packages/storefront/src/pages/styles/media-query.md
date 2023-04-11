@@ -21,6 +21,7 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
+- `breakpoints`
 - `breakpoint`
 - `breakpointBase`
 - `breakpointXS`
@@ -37,9 +38,9 @@ JavaScript styles can be imported by
 
 #### SCSS
 
-SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`
+SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles' as *;`
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
  At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
 </p-inline-notification>
 

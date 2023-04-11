@@ -52,6 +52,16 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-banner',
+      samples: [
+        [
+          componentsJsPath + '/banner-example.html',
+          componentsAngularPath + '/banner-example.component.ts',
+          componentsReactPath + '/BannerExample.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-carousel',
       samples: [
         [
@@ -63,6 +73,11 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/carousel-example-dynamic-slides.html',
           componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
           componentsReactPath + '/CarouselExampleDynamicSlides.tsx',
+        ],
+        [
+          componentsJsPath + '/carousel-example-jump-to-slide.html',
+          componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
+          componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
         ],
       ],
     },

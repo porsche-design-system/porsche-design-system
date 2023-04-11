@@ -32,7 +32,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "accordionChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -61,7 +61,9 @@ exports[`should match snapshot 1`] = `
   "p-banner": {
     "allowedPropValues": {
       "description": "string",
+      "dismissButton": "boolean",
       "heading": "string",
+      "open": "boolean",
       "persistent": "boolean",
       "state": [
         "info",
@@ -73,12 +75,16 @@ exports[`should match snapshot 1`] = `
         "light",
         "dark",
       ],
-      "width": [
-        "extended",
-        "basic",
-        "fluid",
+    },
+    "deprecatedPropValues": {
+      "state": [
+        "neutral",
       ],
     },
+    "deprecatedProps": [
+      "persistent",
+      "width",
+    ],
     "eventNames": [
       "dismiss",
     ],
@@ -100,19 +106,27 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "description": null,
+      "dismissButton": true,
       "heading": null,
-      "persistent": false,
+      "open": false,
+      "persistent": null,
       "state": "info",
       "theme": "light",
-      "width": "extended",
+      "width": null,
     },
+    "requiredProps": [
+      "open",
+    ],
     "styling": "jss",
   },
   "p-button": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-expanded": "string",
+        "aria-haspopup": "string",
+        "aria-label": "string",
+        "aria-pressed": "string",
+      },
       "disabled": "boolean",
       "hideLabel": "boolean",
       "icon": "string",
@@ -194,9 +208,12 @@ exports[`should match snapshot 1`] = `
         "left",
         "right",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-expanded": "string",
+        "aria-haspopup": "string",
+        "aria-label": "string",
+        "aria-pressed": "string",
+      },
       "disabled": "boolean",
       "hideLabel": "boolean",
       "icon": "string",
@@ -235,6 +252,12 @@ exports[`should match snapshot 1`] = `
       "alignLabel",
       "stretch",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "thin",
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "weight",
     ],
@@ -273,9 +296,12 @@ exports[`should match snapshot 1`] = `
         "top",
         "bottom",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-expanded": "string",
+        "aria-haspopup": "string",
+        "aria-label": "string",
+        "aria-pressed": "string",
+      },
       "aspectRatio": [
         "1:1",
         "4:3",
@@ -347,6 +373,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-carousel": {
     "allowedPropValues": {
+      "activeSlideIndex": "number",
       "alignHeader": [
         "left",
         "center",
@@ -354,12 +381,20 @@ exports[`should match snapshot 1`] = `
       "description": "string",
       "disablePagination": "boolean",
       "heading": "string",
-      "intl": [
-        "// TODO",
-      ],
+      "intl": {
+        "first": "string",
+        "last": "string",
+        "next": "string",
+        "prev": "string",
+        "slide": "string",
+        "slideLabel": "string",
+      },
       "pagination": "boolean",
       "rewind": "boolean",
-      "slidesPerPage": "number",
+      "slidesPerPage": [
+        "number",
+        "auto",
+      ],
       "theme": [
         "light",
         "dark",
@@ -384,7 +419,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "carouselChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -402,11 +437,12 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
+      "activeSlideIndex": 0,
       "alignHeader": "left",
       "description": null,
       "disablePagination": null,
       "heading": null,
-      "intl": "{}",
+      "intl": null,
       "pagination": true,
       "rewind": true,
       "slidesPerPage": 1,
@@ -500,6 +536,29 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-crest": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "href": "string",
+      "target": "string",
+    },
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "props": {
+      "aria": null,
+      "href": null,
+      "target": "_self",
+    },
+    "styling": "jss",
+  },
   "p-display": {
     "allowedPropValues": {
       "align": [
@@ -581,6 +640,13 @@ exports[`should match snapshot 1`] = `
       "orientation",
       "direction",
     ],
+    "deprecatedPropValues": {
+      "color": [
+        "neutral-contrast-high",
+        "neutral-contrast-medium",
+        "neutral-contrast-low",
+      ],
+    },
     "deprecatedProps": [
       "orientation",
     ],
@@ -1025,9 +1091,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-icon": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "color": [
         "primary",
         "contrast-low",
@@ -1272,6 +1338,7 @@ exports[`should match snapshot 1`] = `
       "actionLabel": "string",
       "actionLoading": "boolean",
       "description": "string",
+      "dismissButton": "boolean",
       "heading": "string",
       "persistent": "boolean",
       "state": [
@@ -1286,6 +1353,9 @@ exports[`should match snapshot 1`] = `
         "dark",
       ],
     },
+    "deprecatedProps": [
+      "persistent",
+    ],
     "eventNames": [
       "dismiss",
       "action",
@@ -1310,8 +1380,9 @@ exports[`should match snapshot 1`] = `
       "actionLabel": null,
       "actionLoading": false,
       "description": null,
+      "dismissButton": true,
       "heading": null,
-      "persistent": false,
+      "persistent": null,
       "state": "info",
       "theme": "light",
     },
@@ -1319,9 +1390,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-link": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "download": "string",
       "hideLabel": "boolean",
       "href": "string",
@@ -1377,9 +1448,9 @@ exports[`should match snapshot 1`] = `
         "left",
         "right",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "download": "string",
       "hideLabel": "boolean",
       "href": "string",
@@ -1416,6 +1487,12 @@ exports[`should match snapshot 1`] = `
       "size",
       "hideLabel",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "thin",
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "weight",
     ],
@@ -1501,9 +1578,9 @@ exports[`should match snapshot 1`] = `
         "top",
         "bottom",
       ],
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "aspectRatio": [
         "1:1",
         "4:3",
@@ -1569,11 +1646,97 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-link-tile-model-signature": {
+    "allowedPropValues": {
+      "aspectRatio": [
+        "1:1",
+        "4:3",
+        "3:4",
+        "16:9",
+        "9:16",
+      ],
+      "description": "string",
+      "heading": "string",
+      "headingTag": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+      ],
+      "linkDirection": [
+        "row",
+        "column",
+      ],
+      "model": [
+        "718",
+        "911",
+        "boxster",
+        "cayenne",
+        "cayman",
+        "macan",
+        "panamera",
+        "taycan",
+        "turbo-s",
+        "turbo",
+      ],
+      "weight": [
+        "regular",
+        "semi-bold",
+      ],
+    },
+    "breakpointCustomizableProps": [
+      "weight",
+      "aspectRatio",
+      "linkDirection",
+    ],
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "namedSlots": [
+      "primary",
+      "secondary",
+    ],
+    "nestedComponents": [
+      "p-model-signature",
+    ],
+    "props": {
+      "aspectRatio": "3:4",
+      "description": null,
+      "heading": null,
+      "headingTag": "h2",
+      "linkDirection": {
+        "base": "column",
+        "xs": "row",
+      },
+      "model": 911,
+      "weight": "semi-bold",
+    },
+    "requiredNamedSlots": [
+      {
+        "slotName": "primary",
+        "tagName": "p-link",
+      },
+      {
+        "slotName": "secondary",
+        "tagName": "p-link",
+      },
+    ],
+    "requiredProps": [
+      "heading",
+    ],
+    "styling": "jss",
+  },
   "p-marque": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "href": "string",
       "size": [
         "responsive",
@@ -1583,12 +1746,14 @@ exports[`should match snapshot 1`] = `
       "target": "string",
       "trademark": "boolean",
     },
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.",
     "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
     "isDelegatingFocus": true,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "props": {
@@ -1602,9 +1767,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-modal": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "disableBackdropClick": "boolean",
       "disableCloseButton": "boolean",
       "dismissButton": "boolean",
@@ -1706,9 +1871,12 @@ exports[`should match snapshot 1`] = `
       "allyLabelNext": "string",
       "allyLabelPage": "string",
       "allyLabelPrev": "string",
-      "intl": [
-        "// TODO",
-      ],
+      "intl": {
+        "next": "string",
+        "page": "string",
+        "prev": "string",
+        "root": "string",
+      },
       "itemsPerPage": "number",
       "maxNumberOfPageLinks": [
         5,
@@ -1734,7 +1902,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "pageChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1775,9 +1943,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-popover": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "description": "string",
       "direction": [
         "top",
@@ -1874,9 +2042,11 @@ exports[`should match snapshot 1`] = `
         "top",
         "center",
       ],
-      "scrollToPosition": [
-        "// TODO",
-      ],
+      "scrollToPosition": {
+        "isSmooth": "boolean",
+        "scrollPosition": "number",
+      },
+      "scrollbar": "boolean",
       "theme": [
         "light",
         "dark",
@@ -1903,6 +2073,7 @@ exports[`should match snapshot 1`] = `
       "gradientColorScheme": null,
       "scrollIndicatorPosition": null,
       "scrollToPosition": null,
+      "scrollbar": false,
       "theme": "light",
     },
     "styling": "jss",
@@ -1919,7 +2090,8 @@ exports[`should match snapshot 1`] = `
         "dark",
       ],
       "value": [
-        "// TODO",
+        "string",
+        "number",
       ],
     },
     "deprecatedEventNames": [
@@ -1930,7 +2102,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "segmentedControlChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1957,7 +2129,8 @@ exports[`should match snapshot 1`] = `
       "iconSource": "string",
       "label": "string",
       "value": [
-        "// TODO",
+        "string",
+        "number",
       ],
     },
     "hasAriaProp": false,
@@ -2086,9 +2259,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-spinner": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "size": [
         "small",
         "medium",
@@ -2137,7 +2310,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "stepChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2219,7 +2392,7 @@ exports[`should match snapshot 1`] = `
     ],
     "eventNames": [
       "switchChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2246,13 +2419,17 @@ exports[`should match snapshot 1`] = `
   "p-table": {
     "allowedPropValues": {
       "caption": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
     },
     "deprecatedEventNames": [
       "sortingChange",
     ],
     "eventNames": [
       "sortingChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2261,15 +2438,16 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "caption",
     ],
     "nestedComponents": [
-      "p-button-pure",
+      "p-scroller",
     ],
     "props": {
       "caption": null,
+      "theme": "light",
     },
     "styling": "jss",
   },
@@ -2328,9 +2506,15 @@ exports[`should match snapshot 1`] = `
     "allowedPropValues": {
       "hideLabel": "boolean",
       "multiline": "boolean",
-      "sort": [
-        "// TODO",
-      ],
+      "sort": {
+        "active": "boolean",
+        "direction": [
+          null,
+          "asc",
+          "desc",
+        ],
+        "id": "string",
+      },
     },
     "breakpointCustomizableProps": [
       "hideLabel",
@@ -2420,12 +2604,17 @@ exports[`should match snapshot 1`] = `
     "deprecatedEventNames": [
       "tabChange",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "gradientColorScheme",
     ],
     "eventNames": [
       "tabChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2480,12 +2669,17 @@ exports[`should match snapshot 1`] = `
     "deprecatedEventNames": [
       "tabChange",
     ],
+    "deprecatedPropValues": {
+      "weight": [
+        "semibold",
+      ],
+    },
     "deprecatedProps": [
       "gradientColorScheme",
     ],
     "eventNames": [
       "tabChange",
-      "change",
+      "update",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -2556,6 +2750,15 @@ exports[`should match snapshot 1`] = `
         "dark",
       ],
     },
+    "deprecatedPropValues": {
+      "color": [
+        "neutral-contrast-high",
+        "notification-neutral",
+        "notification-warning",
+        "notification-success",
+        "notification-error",
+      ],
+    },
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -2577,9 +2780,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-tag-dismissible": {
     "allowedPropValues": {
-      "aria": [
-        "// TODO",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "color": [
         "background-base",
         "background-surface",
@@ -2589,6 +2792,11 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+      ],
+    },
+    "deprecatedPropValues": {
+      "color": [
+        "background-default",
       ],
     },
     "hasAriaProp": true,
@@ -2670,6 +2878,20 @@ exports[`should match snapshot 1`] = `
     "breakpointCustomizableProps": [
       "size",
     ],
+    "deprecatedPropValues": {
+      "color": [
+        "brand",
+        "default",
+        "neutral-contrast-low",
+        "neutral-contrast-medium",
+        "neutral-contrast-high",
+        "notification-neutral",
+      ],
+      "weight": [
+        "thin",
+        "semibold",
+      ],
+    },
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -2926,6 +3148,39 @@ exports[`should match snapshot 1`] = `
     "requiredRootNode": [
       "p-toast",
     ],
+    "styling": "jss",
+  },
+  "p-wordmark": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "href": "string",
+      "size": [
+        "small",
+        "inherit",
+      ],
+      "target": "string",
+      "theme": [
+        "light",
+        "dark",
+      ],
+    },
+    "hasAriaProp": true,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": {
+      "aria": null,
+      "href": null,
+      "size": "small",
+      "target": "_self",
+      "theme": "light",
+    },
     "styling": "jss",
   },
 }

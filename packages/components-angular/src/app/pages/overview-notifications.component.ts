@@ -21,7 +21,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
 
       <p-modal [heading]="'The quick brown fox jumps over the lazy dog'" [open]="true">Some Content</p-modal>
 
-      <p-banner>
+      <p-banner [open]="true">
         <span slot="title">Default banner component</span>
         <span slot="description">Some slotted banner description</span>
       </p-banner>

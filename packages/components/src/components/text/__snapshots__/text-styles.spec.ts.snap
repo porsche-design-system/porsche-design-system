@@ -30,7 +30,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #1E5BEB;
+  color: #2762EC;
   text-align: left;
   letter-spacing: normal;
   list-style-type: none;
@@ -156,7 +156,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #CB3333;
+  color: #FC4040;
   text-align: center;
   letter-spacing: normal;
   list-style-type: none;

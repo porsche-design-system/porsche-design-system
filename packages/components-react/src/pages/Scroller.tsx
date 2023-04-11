@@ -253,6 +253,33 @@ export const ScrollerPage = (): JSX.Element => {
           </PScroller>
         </div>
       </div>
+
+      <div className="playground light" title="should render scroller with scrollbar on light background">
+        <PScroller scrollbar={true}>
+          <ul>
+            <li>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea rebum.
+              <ul>
+                <li>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                  dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+                  rebum.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                  dolore magna aliquyam erat, sed diam voluptua. <br />At vero eos et accusam et justo duo dolores et ea
+                  rebum.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </PScroller>
+      </div>
     </>
   );
 };

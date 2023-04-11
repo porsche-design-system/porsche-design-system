@@ -1,4 +1,4 @@
-import type { StepperHorizontalChangeEvent, StepperHorizontalItemState } from '@porsche-design-system/components-react';
+import type { StepperHorizontalUpdateEvent, StepperHorizontalItemState } from '@porsche-design-system/components-react';
 import {
   PButton,
   PButtonGroup,
@@ -51,7 +51,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
     setSteps(newState);
   };
 
-  const onChange = (e: CustomEvent<StepperHorizontalChangeEvent>): void => {
+  const onUpdate = (e: CustomEvent<StepperHorizontalUpdateEvent>): void => {
     const { activeStepIndex } = e.detail;
 
     const newState = [...steps];
@@ -65,7 +65,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
 
   return (
     <>
-      <PStepperHorizontal onChange={onChange}>
+      <PStepperHorizontal onUpdate={onUpdate}>
         {steps.map(({ state, name }) => (
           <PStepperHorizontalItem key={name} state={state}>
             {name}

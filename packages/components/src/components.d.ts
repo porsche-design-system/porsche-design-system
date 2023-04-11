@@ -6,16 +6,16 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionChangeEvent, AccordionSize, AccordionTag } from "./components/accordion/accordion-utils";
+import { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
-import { ButtonTileAlign, ButtonTileAspectRatio, ButtonTileSize, ButtonTileWeight, LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./utils";
-import { ButtonTileAriaAttribute, ButtonTileIcon, ButtonTileType } from "./components/button-tile/button-tile-utils";
-import { CarouselAlignHeader, CarouselChangeEvent, CarouselInternationalization, CarouselWidth } from "./components/carousel/carousel-utils";
+import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+import { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
+import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
@@ -32,26 +32,26 @@ import { InlineNotificationActionIcon, InlineNotificationState } from "./compone
 import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
-import { LinkTileAriaAttribute, LinkTileTarget } from "./components/link-tile/link-tile-utils";
+import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { PaginationChangeEvent, PaginationInternationalization, PaginationMaxNumberOfPageLinks } from "./components/pagination/pagination-utils";
+import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
-import { StepperHorizontalChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+import { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
-import { SwitchAlignLabel } from "./components/switch/switch-utils";
-import { SwitchChangeEvent } from "./components/switch/switch";
-import { TableChangeEvent, TableHeadCellSort } from "./components/table/table/table-utils";
-import { TabsChangeEvent, TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-import { TabsBarChangeEvent, TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { SwitchAlignLabel, SwitchUpdateEvent } from "./components/switch/switch-utils";
+import { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
+import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor, TagIcon } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextTag } from "./components/text/text-utils";
@@ -60,6 +60,7 @@ import { TextListListType, TextListOrderType, TextListType } from "./components/
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
+import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -93,11 +94,19 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * If false, the banner will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the banner.
          */
         "heading"?: string;
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * If true, the banner is open.
+         */
+        "open": boolean;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -109,7 +118,8 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }
@@ -272,6 +282,10 @@ export namespace Components {
     }
     interface PCarousel {
         /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
@@ -300,9 +314,9 @@ export namespace Components {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
@@ -354,6 +368,20 @@ export namespace Components {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
@@ -629,11 +657,15 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * If false, the inline-notification will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the inline-notification.
          */
         "heading"?: string;
         /**
-          * Defines if the inline-notification can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -834,6 +866,36 @@ export namespace Components {
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
+    interface PLinkTileModelSignature {
+        /**
+          * Aspect ratio of the link-tile-model-signature.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Heading text.
+         */
+        "heading": string;
+        /**
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
+         */
+        "headingTag"?: LinkTileModelSignatureHeadingTag;
+        /**
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+         */
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: LinkTileModelSignatureModel;
+        /**
+          * Adapts the font weight of the heading.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -1008,6 +1070,10 @@ export namespace Components {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
@@ -1169,6 +1235,10 @@ export namespace Components {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -1447,6 +1517,28 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
 }
 export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1559,6 +1651,12 @@ declare global {
         prototype: HTMLPContentWrapperElement;
         new (): HTMLPContentWrapperElement;
     };
+    interface HTMLPCrestElement extends Components.PCrest, HTMLStencilElement {
+    }
+    var HTMLPCrestElement: {
+        prototype: HTMLPCrestElement;
+        new (): HTMLPCrestElement;
+    };
     interface HTMLPDisplayElement extends Components.PDisplay, HTMLStencilElement {
     }
     var HTMLPDisplayElement: {
@@ -1654,6 +1752,12 @@ declare global {
     var HTMLPLinkTileElement: {
         prototype: HTMLPLinkTileElement;
         new (): HTMLPLinkTileElement;
+    };
+    interface HTMLPLinkTileModelSignatureElement extends Components.PLinkTileModelSignature, HTMLStencilElement {
+    }
+    var HTMLPLinkTileModelSignatureElement: {
+        prototype: HTMLPLinkTileModelSignatureElement;
+        new (): HTMLPLinkTileModelSignatureElement;
     };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
@@ -1859,6 +1963,12 @@ declare global {
         prototype: HTMLPToastItemElement;
         new (): HTMLPToastItemElement;
     };
+    interface HTMLPWordmarkElement extends Components.PWordmark, HTMLStencilElement {
+    }
+    var HTMLPWordmarkElement: {
+        prototype: HTMLPWordmarkElement;
+        new (): HTMLPWordmarkElement;
+    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
@@ -1869,6 +1979,7 @@ declare global {
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
+        "p-crest": HTMLPCrestElement;
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
         "p-fieldset": HTMLPFieldsetElement;
@@ -1885,6 +1996,7 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
+        "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -1919,6 +2031,7 @@ declare global {
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
+        "p-wordmark": HTMLPWordmarkElement;
     }
 }
 declare namespace LocalJSX {
@@ -1932,13 +2045,13 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when accordion state is changed.
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when accordion state is changed.
          */
-        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
+        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
         /**
           * Emitted when accordion state is changed.
          */
-        "onChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
+        "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -1962,6 +2075,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * If false, the banner will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the banner.
          */
         "heading"?: string;
@@ -1970,7 +2087,11 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * If true, the banner is open.
+         */
+        "open"?: boolean;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -1982,7 +2103,8 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }
@@ -2145,6 +2267,10 @@ declare namespace LocalJSX {
     }
     interface PCarousel {
         /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
           * Alignment of heading and description
          */
         "alignHeader"?: CarouselAlignHeader;
@@ -2165,13 +2291,13 @@ declare namespace LocalJSX {
          */
         "intl"?: CarouselInternationalization;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when carousel's content slides.
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel's content slides.
          */
-        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
         /**
           * Emitted when carousel's content slides.
          */
-        "onChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
          */
@@ -2181,9 +2307,9 @@ declare namespace LocalJSX {
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
@@ -2235,6 +2361,20 @@ declare namespace LocalJSX {
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: ContentWrapperWidth;
+    }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
@@ -2510,6 +2650,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * If false, the inline-notification will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the inline-notification.
          */
         "heading"?: string;
@@ -2522,7 +2666,7 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
-          * Defines if the inline-notification can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -2723,6 +2867,36 @@ declare namespace LocalJSX {
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
+    interface PLinkTileModelSignature {
+        /**
+          * Aspect ratio of the link-tile-model-signature.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Heading text.
+         */
+        "heading"?: string;
+        /**
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
+         */
+        "headingTag"?: LinkTileModelSignatureHeadingTag;
+        /**
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+         */
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: LinkTileModelSignatureModel;
+        /**
+          * Adapts the font weight of the heading.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -2835,13 +3009,13 @@ declare namespace LocalJSX {
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when the page changes.
+         */
+        "onPageChange"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
+        /**
           * Emitted when the page changes.
          */
-        "onChange"?: (event: PPaginationCustomEvent<PaginationChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when the page changes.
-         */
-        "onPageChange"?: (event: PPaginationCustomEvent<PaginationChangeEvent>) => void;
+        "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2913,6 +3087,10 @@ declare namespace LocalJSX {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
+          * Specifies if scrollbar should be shown
+         */
+        "scrollbar"?: boolean;
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
@@ -2923,13 +3101,13 @@ declare namespace LocalJSX {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
+         */
+        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
+        /**
           * Emitted when selected element changes.
          */
-        "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
-         */
-        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
+        "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -3029,13 +3207,13 @@ declare namespace LocalJSX {
     }
     interface PStepperHorizontal {
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active step is changed.
+         */
+        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
+        /**
           * Emitted when active step is changed.
          */
-        "onChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active step is changed.
-         */
-        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalChangeEvent>) => void;
+        "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
         /**
           * The text size.
          */
@@ -3077,13 +3255,13 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when checked status is changed.
+         */
+        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
+        /**
           * Emitted when checked status is changed.
          */
-        "onChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when checked status is changed.
-         */
-        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
+        "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
         /**
           * Stretches the contents to max available space.
          */
@@ -3099,13 +3277,17 @@ declare namespace LocalJSX {
          */
         "caption"?: string;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when sorting is changed.
+         */
+        "onSortingChange"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
+        /**
           * Emitted when sorting is changed.
          */
-        "onChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
+        "onUpdate"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when sorting is changed.
+          * Adapts the color when used on dark background.
          */
-        "onSortingChange"?: (event: PTableCustomEvent<TableChangeEvent>) => void;
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -3149,13 +3331,13 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: TabsGradientColorScheme;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
+        /**
           * Emitted when active tab is changed.
          */
-        "onChange"?: (event: PTabsCustomEvent<TabsChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
-         */
-        "onTabChange"?: (event: PTabsCustomEvent<TabsChangeEvent>) => void;
+        "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
         /**
           * The text size.
          */
@@ -3183,13 +3365,13 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
+        /**
           * Emitted when active tab is changed.
          */
-        "onChange"?: (event: PTabsBarCustomEvent<TabsBarChangeEvent>) => void;
-        /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead. Emitted when active tab is changed.
-         */
-        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarChangeEvent>) => void;
+        "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
         /**
           * The text size.
          */
@@ -3407,6 +3589,28 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
@@ -3417,6 +3621,7 @@ declare namespace LocalJSX {
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
+        "p-crest": PCrest;
         "p-display": PDisplay;
         "p-divider": PDivider;
         "p-fieldset": PFieldset;
@@ -3433,6 +3638,7 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
+        "p-link-tile-model-signature": PLinkTileModelSignature;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -3467,6 +3673,7 @@ declare namespace LocalJSX {
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
         "p-toast-item": PToastItem;
+        "p-wordmark": PWordmark;
     }
 }
 export { LocalJSX as JSX };
@@ -3482,6 +3689,7 @@ declare module "@stencil/core" {
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
+            "p-crest": LocalJSX.PCrest & JSXBase.HTMLAttributes<HTMLPCrestElement>;
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
@@ -3498,6 +3706,7 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
+            "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
@@ -3532,6 +3741,7 @@ declare module "@stencil/core" {
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
+            "p-wordmark": LocalJSX.PWordmark & JSXBase.HTMLAttributes<HTMLPWordmarkElement>;
         }
     }
 }

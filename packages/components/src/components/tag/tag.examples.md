@@ -8,7 +8,7 @@
 
 ## Color
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   Following colors have been deprecated and will be removed with the next major release: <span v-html="colorsDeprecated"></span>.
 </p-inline-notification>
 

@@ -10,7 +10,7 @@
 
     <PModal :heading="'The quick brown fox jumps over the lazy dog'" :open="true">Some Content</PModal>
 
-    <PBanner>
+    <PBanner :open="true">
       <span slot="title">Default banner component</span>
       <span slot="description">Some slotted banner description</span>
     </PBanner>

@@ -4,7 +4,7 @@
 
 ## Example
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
  Safari < 16.4 isn't able to visualize a rounded focus outline, instead it will be edgy. 
 We implemented the focus style with a standard CSS outline anyway because of too many disadvantages caused by alternative integrations, e.g. with pseudo-elements. 
 <br>
@@ -34,9 +34,9 @@ JavaScript styles can be imported by
 
 #### SCSS
 
-SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles/scss' as *;`
+SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles' as *;`
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
  At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
 </p-inline-notification>
 

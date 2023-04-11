@@ -3,6 +3,7 @@ import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
+import { BannerExampleComponent } from './examples/banner-example.component';
 
 export type ExtendedRoute = Route & {
   name?: string;
@@ -33,6 +34,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Overview',
     path: 'overview',
     component: fromPages.OverviewComponent,
+  },
+  {
+    name: 'Overview Flaky',
+    path: 'overview-flaky',
+    component: fromPages.OverviewFlakyComponent,
   },
   {
     name: 'Overview Notifications',
@@ -76,14 +82,24 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
-    name: 'Carousel Example Events',
-    path: 'carousel-example-events',
-    component: fromExamples.CarouselExampleEventsComponent,
+    name: 'Banner Example',
+    path: 'banner-example',
+    component: fromExamples.BannerExampleComponent,
   },
   {
     name: 'Carousel Example Dynamic Slides',
     path: 'carousel-example-dynamic-slides',
     component: fromExamples.CarouselExampleDynamicSlidesComponent,
+  },
+  {
+    name: 'Carousel Example Events',
+    path: 'carousel-example-events',
+    component: fromExamples.CarouselExampleEventsComponent,
+  },
+  {
+    name: 'Carousel Example Jump to Slide',
+    path: 'carousel-example-jump-to-slide',
+    component: fromExamples.CarouselExampleJumpToSlideComponent,
   },
   {
     name: 'Inline Notification Example Action Button',

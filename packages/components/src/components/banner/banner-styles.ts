@@ -1,84 +1,72 @@
-import type { JssStyle } from 'jss';
-import type { BannerWidth } from './banner-utils';
-import type { KeyframesDirection } from './banner-styles-shared';
-import { getMediaQueryMin, getMediaQueryMinMax } from '@porsche-design-system/utilities-v2';
-import { getCss, mergeDeep } from '../../utils';
-import { BANNER_Z_INDEX } from '../../constants';
-import { getContentWrapperStyle } from '../content-wrapper/content-wrapper-styles-shared';
 import {
-  getAnimationIn,
-  getAnimationOut,
-  getBoxShadow,
-  getKeyframes,
-  getKeyframesMobile,
-} from './banner-styles-shared';
+  dropShadowHighStyle,
+  getMediaQueryMin,
+  gridExtendedOffsetBase,
+  gridExtendedOffsetS,
+  gridExtendedOffsetXXL,
+} from '@porsche-design-system/utilities-v2';
+import { getCss } from '../../utils';
+import { BANNER_Z_INDEX } from '../../constants';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 
-const bannerPositionTypeVar = '--p-banner-position-type';
-const bannerPositionTopVar = '--p-banner-position-top';
-const bannerPositionBottomVar = '--p-banner-position-bottom';
-const bannerZIndexVar = '--p-internal-banner-z-index';
-const bannerAnimationDurationVar = '--p-animation-duration';
+const cssVariableTop = '--p-banner-position-top';
+const cssVariableBottom = '--p-banner-position-bottom';
+const cssVariableAnimationDuration = '--p-animation-duration';
+const cssVariableZIndex = '--p-internal-banner-z-index';
 
-const bannerOffset = '56px';
+export const ANIMATION_DURATION = 600;
 
-const mediaQueryBase = getMediaQueryMinMax('base', 's');
-const mediaQueryS = getMediaQueryMin('s');
+const duration = `var(${cssVariableAnimationDuration},${ANIMATION_DURATION}ms)`;
 
-const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
-  getKeyframes(direction, {
-    opacity: 0,
-    transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
-  });
+const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
+const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 
-const widthMap: Record<BannerWidth, BannerWidth> = {
-  fluid: 'extended',
-  extended: 'extended',
-  basic: 'basic',
-};
-
-export const getComponentCss = (width: BannerWidth): string => {
+export const getComponentCss = (isOpen: boolean): string => {
   return getCss({
     '@global': {
-      ':host': {
-        // TODO: Why is nothing set as important here?
-        [bannerPositionTopVar]: bannerOffset,
-        [bannerPositionBottomVar]: bannerOffset,
-        position: `var(${bannerPositionTypeVar},fixed)`,
-        zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
-        opacity: 0,
-        left: 0,
-        right: 0,
-        willChange: 'opacity,transform',
-        // mergeDeep needed to get media queries coming from getContentWrapperStyle() together
-        ...mergeDeep(
-          addImportantToEachRule({
-            ...getContentWrapperStyle(widthMap[width]),
-            ...hostHiddenStyles,
-          }),
-          {
-            [mediaQueryBase]: {
-              bottom: `var(${bannerPositionBottomVar})`,
-            },
-            [mediaQueryS]: {
-              top: `var(${bannerPositionTopVar})`,
-            },
-          }
-        ),
-        '&(.hydrated),&(.ssr)': {
-          [mediaQueryBase]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
-          [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
+      ':host': addImportantToEachRule({
+        [cssVariableTop]: '56px',
+        [cssVariableBottom]: '56px',
+        position: 'fixed',
+        top: 'auto',
+        bottom: `var(${cssVariableBottom})`,
+        left: gridExtendedOffsetBase,
+        right: gridExtendedOffsetBase,
+        margin: 0,
+        padding: 0,
+        width: 'auto',
+        maxWidth: '100%', // If component is wrapped in container with maxWidth
+        zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
+        ...dropShadowHighStyle,
+        ...(isOpen
+          ? {
+              opacity: 1,
+              visibility: 'inherit',
+              transform: 'translate3d(0,0,0)',
+              transition: `opacity ${duration} ${easeInQuad}, transform ${duration} ${easeInQuad}`,
+            }
+          : {
+              opacity: 0,
+              visibility: 'hidden',
+              transform: `translate3d(0,calc(var(${cssVariableBottom}) + 100%),0)`,
+              '&(.hydrated),&(.ssr)': {
+                transition: `visibility 0s linear ${duration}, opacity ${duration} ${easeOutQuad}, transform ${duration} ${easeOutQuad}`,
+              },
+            }),
+        [getMediaQueryMin('s')]: {
+          top: `var(${cssVariableTop})`,
+          bottom: 'auto',
+          left: gridExtendedOffsetS,
+          right: gridExtendedOffsetS,
+          // space before and after "-" is crucial)
+          ...(!isOpen && { transform: `translate3d(0,calc(-100% - var(${cssVariableTop})),0)` }),
         },
-        '&(.banner--close)': {
-          [mediaQueryBase]: getAnimationOut('mobileOut'),
-          [mediaQueryS]: getAnimationOut('desktopOut'),
+        [getMediaQueryMin('xxl')]: {
+          left: gridExtendedOffsetXXL,
+          right: gridExtendedOffsetXXL,
         },
-      },
-      '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),
-      '@keyframes mobileOut': getKeyframesMobile('out', bannerPositionBottomVar),
-      '@keyframes desktopIn': getKeyframesDesktop('in', bannerPositionTopVar),
-      '@keyframes desktopOut': getKeyframesDesktop('out', bannerPositionTopVar),
+        ...hostHiddenStyles,
+      }),
     },
-    root: getBoxShadow(),
   });
 };

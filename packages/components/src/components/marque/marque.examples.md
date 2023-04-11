@@ -3,6 +3,11 @@
 The `p-marque` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
 and represents the quality of the product.
 
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+  This component is deprecated and will be removed with the next major release.
+Please use <a href="components/wordmark">p-wordmark</a> instead.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Variants

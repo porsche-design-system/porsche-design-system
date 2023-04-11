@@ -429,7 +429,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #290A0A;
+  background: #3A0F0F;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -471,7 +471,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #331F1F;
+    background: #3F2828;
   }
 }
 
@@ -495,7 +495,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FCE8E9;
+  background: #FFE2E4;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -537,7 +537,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #EED7D9;
+    background: #F4CED1;
   }
 }
 
@@ -561,7 +561,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #001A33;
+  background: #04294E;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -603,7 +603,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #0F2943;
+    background: #1A3856;
   }
 }
 
@@ -627,7 +627,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #E8EEFD;
+  background: #D3E1FF;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -669,7 +669,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #D6DEF0;
+    background: #C2D1F1;
   }
 }
 
@@ -759,7 +759,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #EBFAF0;
+  background: #E4FFEC;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -801,7 +801,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #DDEAE1;
+    background: #D0F4DB;
   }
 }
 
@@ -825,7 +825,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #2B2208;
+  background: #362B0A;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -867,7 +867,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #362F1C;
+    background: #3E3720;
   }
 }
 
@@ -891,7 +891,7 @@ span {
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FFF9E6;
+  background: #FFF4D2;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   white-space: nowrap;
@@ -933,7 +933,7 @@ span {
     transition: background-color var(--p-transition-duration, .24s) ease;
   }
   span:hover {
-    background: #F5ECD2;
+    background: #F1E5C1;
   }
 }
 

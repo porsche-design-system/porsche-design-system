@@ -52,7 +52,11 @@ const ModalPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show modal (fullscreen=responsive)">
-        <PModal heading="Heading" open={true} fullscreen={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
+        <PModal
+          heading="Heading"
+          open={true}
+          fullscreen={{ base: true, xs: false, s: true, m: false, l: true, xl: false, xxl: true }}
+        >
           Some Content: should show modal (fullscreen=responsive)
         </PModal>
       </div>
@@ -136,6 +140,8 @@ const ModalPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="visualize-grid">
+        <span />
+        <span />
         <span />
         <span />
         <span />

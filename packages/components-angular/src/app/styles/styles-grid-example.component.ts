@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { AccordionChangeEvent } from '@porsche-design-system/components-angular';
+import type { AccordionUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-styles-grid-example',
   styles: [
     `
-      @import '@porsche-design-system/components-js/styles/scss';
+      @use '@porsche-design-system/components-js/styles' as *;
 
       // Visualize Grid
       .visualize-grid {
@@ -16,8 +16,15 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
 
         > span {
           background: rgba(0, 0, 255, 0.1);
+          &:first-child,
+          &:last-child {
+            background: rgba(125, 0, 255, 0.1);
+          }
 
           @include pds-media-query-max('s') {
+            &:nth-child(8) {
+              background: rgba(125, 0, 255, 0.1);
+            }
             &:nth-child(n + 9) {
               display: none;
             }
@@ -32,6 +39,7 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
           'green': rgba(0, 255, 0, 0.25),
           'purple': rgba(255, 0, 255, 0.25),
           'yellow': rgba(255, 255, 0, 0.25),
+          'orange': rgba(255, 125, 0, 0.25),
         );
         @if $padding == 'medium' {
           padding: $pds-spacing-fluid-medium;
@@ -114,12 +122,36 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
 
       .hero-header {
         @include tile('green', false, false);
-        grid-column: $pds-grid-extended-column-start / $pds-grid-extended-column-end;
+        grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
         grid-row: 1;
         padding-bottom: $pds-spacing-fluid-medium;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+      }
+
+      // Wide Content
+      .wide-grid {
+        @include pds-grid;
+        margin-top: $pds-spacing-fluid-large;
+      }
+
+      .wide-sidebar {
+        @include tile('orange');
+        grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
+
+        @include pds-media-query-min('s') {
+          grid-column: $pds-grid-wide-column-start / span 5;
+        }
+      }
+
+      .wide-content {
+        @include tile('orange');
+        grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
+
+        @include pds-media-query-min('s') {
+          grid-column: span 11 / $pds-grid-wide-column-end;
+        }
       }
 
       // Extended Content
@@ -278,7 +310,7 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
   ],
   template: `
     <div class="visualize-grid">
-      <span *ngFor="let n of counter(16)" class="visualize-grid-columns"></span>
+      <span *ngFor="let n of counter(18)" class="visualize-grid-columns"></span>
     </div>
     <div class="hero-grid">
       <div class="hero-media">
@@ -286,7 +318,18 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
       </div>
       <div class="hero-header">
         <h1 class="display">Hero Heading</h1>
-        <p class="text-large">Subline for the Hero Header in Extended Grid</p>
+        <p class="text-large">Subline for the Hero Header in Wide Grid</p>
+      </div>
+    </div>
+    <div class="wide-grid">
+      <div class="wide-sidebar">
+        <span class="info"><b>Wide Sidebar</b></span>
+        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
+        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
+        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
+      </div>
+      <div class="wide-content">
+        <span class="info"><b>Wide Content</b></span>
       </div>
     </div>
     <div class="extended-content-grid">
@@ -366,12 +409,12 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
     <div class="narrow-content-grid">
       <div class="narrow-content">
         <span class="info"><b>Narrow</b> for small Components and Content</span
-        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (change)="onAccordion1Change($event)"
+        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (update)="onAccordion1Update($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
           </p></p-accordion
-        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (change)="onAccordion2Change($event)"
+        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (update)="onAccordion2Update($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
@@ -406,10 +449,10 @@ export class StylesGridExampleComponent {
   isAccordion1Open = false;
   isAccordion2Open = false;
 
-  onAccordion1Change(e: CustomEvent<AccordionChangeEvent>) {
+  onAccordion1Update(e: CustomEvent<AccordionUpdateEvent>) {
     this.isAccordion1Open = e.detail.open;
   }
-  onAccordion2Change(e: CustomEvent<AccordionChangeEvent>) {
+  onAccordion2Update(e: CustomEvent<AccordionUpdateEvent>) {
     this.isAccordion2Open = e.detail.open;
   }
 }

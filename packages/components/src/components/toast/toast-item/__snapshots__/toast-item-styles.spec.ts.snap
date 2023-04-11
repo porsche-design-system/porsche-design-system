@@ -7,9 +7,9 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #001A33;
+  background: #04294E;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -50,9 +50,9 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #E8EEFD;
+  background: #D3E1FF;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -93,9 +93,9 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #001A33;
+  background: #04294E;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -136,9 +136,9 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #E8EEFD;
+  background: #D3E1FF;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -181,7 +181,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   padding: 16px;
   background: #003320;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -222,9 +222,9 @@ exports[`getComponentCss() should return correct css for state: success and them
   gap: 16px;
   place-items: start;
   padding: 16px;
-  background: #EBFAF0;
+  background: #E4FFEC;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16));
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

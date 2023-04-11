@@ -400,11 +400,11 @@
   integrity sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==
 
 "@axe-core/puppeteer@^4.6.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.6.0.tgz#fe49def8f4ef6c19485f6569f1bc7a83a281daba"
-  integrity sha512-imLNUPKUtlD3O098GcgttHQWIcG6IlPVYOLCB+TT6vE/QC9HdVoDXiiZl0HybxkEvVnIWgrGSgBLSInsGWuHyw==
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.6.1.tgz#7f1ed892d34498e8af3d0b2f6a9d78d571bfe7b9"
+  integrity sha512-l440F67m/XlDgaWA4jbSXYxmwC0Di6MqVU6ns+HROWS8/+RuevppvyBveRmh+oC+OMgNF+mcF/ayzCEjc24pcQ==
   dependencies:
-    axe-core "^4.6.1"
+    axe-core "^4.6.3"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.0", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.18.6", "@babel/code-frame@^7.8.3":
   version "7.18.6"
@@ -3153,10 +3153,10 @@
   resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
   integrity sha512-IhoHGmsPoO4VBoCebNGejBNHJFdAldV3m8kAoO458MJeaQJODM2b1UFzvGeTXGOMIFH4pkshcjZcF36vQvsn9w==
 
-"@porsche-design-system/visual-regression-tester@^4.3.0":
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.3.2.tgz#0b82d45f31f55b493eef2646340419f9eb43c23e"
-  integrity sha512-R5XKSiLshU4dcug4dmb4x1lNDHAOZVkbNqrYIqOg39JDNJuP//R83NzhDT9ceaWdKtJpdrWbMTsU5Br+PXLGwg==
+"@porsche-design-system/visual-regression-tester@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.5.0.tgz#50ccba4bb67029936be2ca1d6f576487014ffa92"
+  integrity sha512-Q4c3CCXCwsyuLeLETNj2rEsRi37dVchaK4cWaiVtlNEbbN/9MbVikRNAMX9yO6dvyXaysDPtKABIyN7UXnLBYg==
   dependencies:
     pixelmatch "^5.3.0"
     sharp "^0.30.5"
@@ -5570,10 +5570,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@webcomponents/template-shadowroot@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@webcomponents/template-shadowroot/-/template-shadowroot-0.1.0.tgz#adb3438d0d9a18e8fced08abc253f56b7eadab00"
-  integrity sha512-ry84Vft6xtRBbd4M/ptRodbOLodV5AD15TYhyRghCRgIcJJKmYmJ2v2BaaWxygENwh6Uq3zTfGPmlckKT/GXsQ==
+"@webcomponents/template-shadowroot@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@webcomponents/template-shadowroot/-/template-shadowroot-0.2.1.tgz#b20182f25f3af9baa9b7cbecce8dd6a7ab7fc39f"
+  integrity sha512-fXL/vIUakyZL62hyvUh+EMwbVoTc0hksublmRz6ai6et8znHkJa6gtqMUZo1oc7dIz46exHSIImml9QTdknMHg==
 
 "@webpack-cli/configtest@^2.0.1":
   version "2.0.1"
@@ -6349,7 +6349,7 @@ axe-core@^4.4.3:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.1.tgz#79cccdee3e3ab61a8f42c458d4123a6768e6fbce"
   integrity sha512-lCZN5XRuOnpG4bpMq8v0khrWtUOn+i8lZSb6wHZH56ZfbIEv6XwJV84AAueh9/zi7qPVJ/E4yz6fmsiyOmXR4w==
 
-axe-core@^4.6.1, axe-core@^4.6.2:
+axe-core@^4.6.2, axe-core@^4.6.3:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.3.tgz#fc0db6fdb65cc7a80ccf85286d91d64ababa3ece"
   integrity sha512-/BQzOX780JhsxDnPpH4ZiyrJAzcd8AfzFPkv+89veFSr1rcMjuq2JDCwypKaPeB6ljHp9KjXhPpjgCvQlWYuqg==

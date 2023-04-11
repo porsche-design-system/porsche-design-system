@@ -24,7 +24,7 @@
 
 <style lang="scss" scoped>
   // TODO: we should import from vue, but we need to prepare CI first
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   // Wrapper
   .wrapper {

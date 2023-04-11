@@ -9,25 +9,220 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-alpha.6] - 2023-04-06
+
 #### Added
 
-- `Button Tile` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2381).
-- `Fieldset` [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+- `xxl` breakpoint for all breakpoint customizable component values
+  ([#2454](https://github.com/porsche-design-system/porsche-design-system/pull/2454))
+
+#### Fixed
+
+- Disabled color of `Icon` component ([#2446](https://github.com/porsche-design-system/porsche-design-system/pull/2446))
+- Support of `Radio Button Wrapper` for name value with non-alphanumeric characters
+  ([#2443](https://github.com/porsche-design-system/porsche-design-system/pull/2443))
+
+#### Changed
+
+- `Banner` is a controlled component now and its visibility has to be controlled via the `open` prop
+  ([#2447](https://github.com/porsche-design-system/porsche-design-system/pull/2447))
+
+```diff
+- <p-banner></p-banner>
++ <p-banner open="true"></p-banner>
+```
+
+- Renamed all custom `change` events to `update` because of bad event emissions with native `change` events, e.g. with
+  nested `select` or `input` elements
+
+#### 🤖 Property deprecations 🤖
+
+##### Accordion:
+
+- Event `accordionChange` is deprecated, use `update` event instead.
+
+```diff
+- <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
++ <PAccordion onUpdate={(e: CustomEvent<AccordionUPdateEvent>) => {}} />
+```
+
+##### Banner:
+
+- Prop `persistent` is deprecated, use `dismissButton` instead.
+
+```diff
+- <p-banner persistent="true"></p-banner>
++ <p-banner dismiss-button="false"></p-banner>
+```
+
+##### Carousel:
+
+- Event `carouselChange` is deprecated, use `update` event instead.
+
+```diff
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
++ <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEvent>) => {}} />
+```
+
+##### Inline Notification:
+
+- Prop `persistent` is deprecated, use `dismissButton` instead.
+
+```diff
+- <p-inline-notification persistent="true"></p-inline-notification>
++ <p-inline-notification dismiss-button="false"></p-inline-notification>
+```
+
+##### Pagination:
+
+- Event `pageChange` is deprecated, use `update` event instead.
+
+```diff
+- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
++ <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEvent>) => {}} />
+```
+
+#### Segmented Control:
+
+- Event `segmentedControlChange` is deprecated, use `update` event instead.
+
+```diff
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
++ <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEvent>) => {}} />
+```
+
+#### Stepper Horizontal:
+
+- Event `stepChange` is deprecated, use `update` event instead.
+
+```diff
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
++ <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEvent>) => {}} />
+```
+
+#### Switch:
+
+- Event `switchChange` is deprecated, use `update` event instead.
+
+```diff
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
++ <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEvent>) => {}} />
+```
+
+#### Table:
+
+- Event `sortingChange` is deprecated, use `update` event instead.
+
+```diff
+- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
++ <PTable onUpdate={(e: CustomEvent<TableUpdateEvent>) => {}} />
+```
+
+##### Tabs:
+
+- Event `tabChange` is deprecated, use `update` event instead.
+
+```diff
+- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabs onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
+```
+
+##### Tabs Bar:
+
+- Event `tabChange` is deprecated, use `update` event instead.
+
+```diff
+- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
+```
+
+### [3.0.0-alpha.5] - 2023-03-30
+
+#### Added
+
+- `Wordmark` ([#2418](https://github.com/porsche-design-system/porsche-design-system/pull/2418))
+- `Crest` ([#2437](https://github.com/porsche-design-system/porsche-design-system/pull/2437))
+- Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
+  of `Styles` subpackage ([#2436](https://github.com/porsche-design-system/porsche-design-system/pull/2436))
+
+### [3.0.0-alpha.4] - 2023-03-28
+
+#### Changed
+
+- `Table` matches new design language
+  ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
+
+#### Added
+
+- Styles: ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
+  - `gridWide`
+  - `gridWideColumnStart` and `pds-grid-wide-column-start`
+  - `gridWideColumnEnd` and `pds-grid-wide-column-end`
+  - `gridNarrowOffset`, `gridNarrowOffsetBase`, `gridNarrowOffsetS`, `gridNarrowOffsetXXL` and
+    `$pds-grid-narrow-offset-base`, `$pds-grid-narrow-offset-s`, `$pds-grid-narrow-offset-xxl`
+  - `gridBasicOffset`, `gridBasicOffsetBase`, `gridBasicOffsetS`, `gridBasicOffsetXXL` and
+    `$pds-grid-basic-offset-base`, `$pds-grid-basic-offset-s`, `$pds-grid-basic-offset-xxl`
+  - `gridExtendedOffset`, `gridExtendedOffsetBase`, `gridExtendedOffsetS`, `gridExtendedOffsetXXL` and
+    `$pds-grid-extended-offset-base`, `$pds-grid-extended-offset-s`, `$pds-grid-extended-offset-xxl`
+  - `gridWideOffset`, `gridWideOffsetBase`, `gridWideOffsetS`, `gridWideOffsetXXL` and `$pds-grid-wide-offset-base`,
+    `$pds-grid-wide-offset-s`, `$pds-grid-wide-offset-xxl`
+  - `gridFullOffset` and `$pds-grid-full-offset`
+- `Button Tile` ([#2381](https://github.com/porsche-design-system/porsche-design-system/pull/2381))
+- `Fieldset` ([#2404](https://github.com/porsche-design-system/porsche-design-system/pull/2404))
+- `Link Tile Model Signature` ([#2388](https://github.com/porsche-design-system/porsche-design-system/pull/2388))
+- Prop `activeSlideIndex` to `Carousel`
+  ([#2421](https://github.com/porsche-design-system/porsche-design-system/pull/2421))
+- Prop `slidesPerPage` supports value `auto` of `Carousel`
+  ([#2421](https://github.com/porsche-design-system/porsche-design-system/pull/2421))
+- Prop `scrollbar` for `Scroller` ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
+- Prop `theme` for `Table` ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
+
+#### Fixed
+
+- React: missing animation of `Carousel` in certain scenarios
+
+#### Changed
+
+- Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
+- Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
+  `@porsche-design-system/components-js/styles/scss`
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
+
+#### Removed
+
+- `Banner`: CSS variable `--p-banner-position-type`
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
+- `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
+- `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
+
+#### 🤖 Property deprecations 🤖
+
+##### Banner:
+
+- Prop `width` has no effect anymore, instead the component is aligned with Porsche Grid "extended" by default.
+  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 
 #### 🤡 Component deprecations 🤡
 
-##### Fieldset Wrapper: [PR](https://github.com/porsche-design-system/porsche-design-system/pull/2404)
+##### Marque: ([#2418](https://github.com/porsche-design-system/porsche-design-system/pull/2418))
+
+```diff
+- <p-marque></p-marque>
++ <p-wordmark></p-wordmark>
+```
+
+##### Fieldset Wrapper: ([#2404](https://github.com/porsche-design-system/porsche-design-system/pull/2404))
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
--   <p-text-field-wrapper label="Some label">
--     <input type="text" name="some-name" />
--   </p-text-field-wrapper>
-- </p-fieldset-wrapper>
 + <p-fieldset label="Some legend label">
-+   <p-text-field-wrapper label="Some label">
-+     <input type="text" name="some-name" />
-+   </p-text-field-wrapper>
+  <p-text-field-wrapper label="Some label">
+    <input type="text" name="some-name" />
+  </p-text-field-wrapper>
+- </p-fieldset-wrapper>
 + </p-fieldset>
 ```
 
@@ -484,6 +679,17 @@ possible. Nevertheless, there are a few breaking changes and some more deprecati
   Some label
 -   <p slot="subline">Some Subline</p>
 </p-link-pure>
+```
+
+##### Marque:
+
+- Removed `variant` property.
+
+```diff
+- <p-marque variant="75-years"></p-marque>
++ <p-marque></p-marque>
+// or even better, replace component by wordmark
++ <p-wordmark></p-wordmark>
 ```
 
 ##### Switch:

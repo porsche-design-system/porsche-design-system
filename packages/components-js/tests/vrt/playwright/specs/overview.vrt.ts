@@ -9,3 +9,12 @@ test.describe('should have no visual regression', async () => {
     },
   });
 });
+
+test.describe('should have no visual regression', async () => {
+  await executeVisualRegressionTest('overview-flaky', {
+    scenario: async (page) => {
+      await openPopovers(page);
+      await page.mouse.click(0, 0); // Click top left corner of the page to remove focus on banner
+    },
+  });
+});

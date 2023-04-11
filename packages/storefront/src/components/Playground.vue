@@ -101,11 +101,15 @@
     getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
 
     public mounted(): void {
-      this.syncThemeIntoDemoComponents();
+      if (this.config.themeable) {
+        this.syncThemeIntoDemoComponents();
+      }
     }
 
     public updated(): void {
-      this.syncThemeIntoDemoComponents();
+      if (this.config.themeable) {
+        this.syncThemeIntoDemoComponents();
+      }
     }
 
     public switchTheme(theme: Theme): void {
@@ -181,7 +185,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
   .example {

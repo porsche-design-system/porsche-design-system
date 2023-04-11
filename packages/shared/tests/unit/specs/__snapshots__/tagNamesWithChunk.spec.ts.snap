@@ -11,6 +11,7 @@ exports[`should match snapshot 1`] = `
   "p-carousel",
   "p-checkbox-wrapper",
   "p-content-wrapper",
+  "p-crest",
   "p-display",
   "p-divider",
   "p-fieldset",
@@ -25,6 +26,7 @@ exports[`should match snapshot 1`] = `
   "p-link-pure",
   "p-link-social",
   "p-link-tile",
+  "p-link-tile-model-signature",
   "p-marque",
   "p-modal",
   "p-model-signature",
@@ -47,5 +49,6 @@ exports[`should match snapshot 1`] = `
   "p-text-list",
   "p-textarea-wrapper",
   "p-toast",
+  "p-wordmark",
 ]
 `;

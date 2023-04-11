@@ -4,7 +4,7 @@ The Porsche Design System flex layout system is based on standard CSS Flexbox br
 the properties of the `p-flex` container and `p-flex-item`. It can be used to quickly layout standard content blocks or
 components.
 
-<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
 This component is deprecated and will be removed with the next major release. 
 In general, please use native <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more standardized layout technique.
 </p-inline-notification>
@@ -492,7 +492,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   $color-blue-1: lightskyblue;
   $color-blue-2: deepskyblue;

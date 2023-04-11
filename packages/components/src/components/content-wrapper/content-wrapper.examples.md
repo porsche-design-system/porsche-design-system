@@ -3,7 +3,7 @@
 The `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well
 as centering its content and setting a max-width.
 
-<p-inline-notification heading="Deprecation hint" state="error" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
 This component is deprecated and will be removed with the next major release. 
 In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
 Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
@@ -19,7 +19,7 @@ Additionally, we provide a <b>Porsche Grid</b> utility instead based on CSS Grid
 
 ## Background color
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
 Background color is deprecated and has no effect anymore. Instead, it's possible to define a custom color on the host.
 </p-inline-notification>
 
@@ -55,7 +55,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/styles/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   :deep(.playground-content-wrapper-background-color .demo){
     background-color: deeppink;

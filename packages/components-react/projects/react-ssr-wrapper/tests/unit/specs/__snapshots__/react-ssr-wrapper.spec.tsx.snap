@@ -6,20 +6,23 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 1
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}
+      :host{display:flex !important;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
   <p-grid-item
     class="ssr"
+    gutter="16"
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        :host{box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important;padding-left:0.5rem !important;padding-right:0.5rem !important}
+        :host{padding-left:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;padding-right:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -27,12 +30,14 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 1
   </p-grid-item>
   <p-grid-item
     class="ssr"
+    gutter="16"
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        :host{box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important;padding-left:0.5rem !important;padding-right:0.5rem !important}
+        :host{padding-left:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;padding-right:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -47,20 +52,23 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 2
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.75rem !important;margin-right:-0.75rem !important}
+      :host{display:flex !important;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
   <p-grid-item
     class="ssr"
+    gutter="24"
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        :host{box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important;padding-left:0.75rem !important;padding-right:0.75rem !important}
+        :host{padding-left:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;padding-right:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -68,18 +76,511 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 2
   </p-grid-item>
   <p-grid-item
     class="ssr"
+    gutter="24"
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        :host{box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important;padding-left:0.75rem !important;padding-right:0.75rem !important}
+        :host{padding-left:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;padding-right:calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;box-sizing:border-box !important;width:8.333333% !important;min-width:8.333333% !important;margin-left:0% !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
     Item 2
   </p-grid-item>
 </p-grid>
+`;
+
+exports[`manual test cases should pass internal props correctly to p-link-tile-model-signature 1`] = `
+<p-link-tile-model-signature
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <p-model-signature
+        class="model ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+          </style>
+          <img
+            alt="911"
+            height="36"
+            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+          />
+        </template>
+      </p-model-signature>
+      <div
+        class="content"
+      >
+        <a
+          aria-hidden="true"
+          class="link-overlay"
+          href="#primary"
+          tabindex="-1"
+        />
+        <h2
+          class="heading"
+        >
+          Some heading
+        </h2>
+        <div
+          class="link-group"
+          role="group"
+        >
+          <slot
+            name="primary"
+          />
+          <slot
+            name="secondary"
+          />
+        </div>
+      </div>
+    </div>
+  </template>
+  <p-link
+    class="ssr"
+    slot="primary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <a
+        class="root"
+        href="#primary"
+        target="_self"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </a>
+    </template>
+    Primary
+  </p-link>
+  <p-link
+    class="ssr"
+    slot="secondary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <a
+        class="root"
+        href="#secondary"
+        target="_self"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </a>
+    </template>
+    Secondary
+  </p-link>
+</p-link-tile-model-signature>
+`;
+
+exports[`manual test cases should pass internal props correctly to p-link-tile-model-signature 2`] = `
+<p-link-tile-model-signature
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <p-model-signature
+        class="model ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+          </style>
+          <img
+            alt="911"
+            height="36"
+            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+          />
+        </template>
+      </p-model-signature>
+      <div
+        class="content"
+      >
+        <a
+          aria-hidden="true"
+          class="link-overlay"
+          href="#primary-slotted"
+          tabindex="-1"
+        />
+        <h2
+          class="heading"
+        >
+          Some heading
+        </h2>
+        <div
+          class="link-group"
+          role="group"
+        >
+          <slot
+            name="primary"
+          />
+          <slot
+            name="secondary"
+          />
+        </div>
+      </div>
+    </div>
+  </template>
+  <p-link
+    class="ssr"
+    slot="primary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <span
+        class="root"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </span>
+    </template>
+    <a
+      href="#primary-slotted"
+    >
+      Primary slotted
+    </a>
+  </p-link>
+  <p-link
+    class="ssr"
+    slot="secondary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <span
+        class="root"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </span>
+    </template>
+    <a
+      href="#secondary-slotted"
+    >
+      Secondary slotted
+    </a>
+  </p-link>
+</p-link-tile-model-signature>
+`;
+
+exports[`manual test cases should pass internal props correctly to p-link-tile-model-signature 3`] = `
+<p-link-tile-model-signature
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <p-model-signature
+        class="model ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+          </style>
+          <img
+            alt="911"
+            height="36"
+            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+          />
+        </template>
+      </p-model-signature>
+      <div
+        class="content"
+      >
+        <a
+          aria-hidden="true"
+          class="link-overlay"
+          href="#primary-framework"
+          tabindex="-1"
+        />
+        <h2
+          class="heading"
+        >
+          Some heading
+        </h2>
+        <div
+          class="link-group"
+          role="group"
+        >
+          <slot
+            name="primary"
+          />
+          <slot
+            name="secondary"
+          />
+        </div>
+      </div>
+    </div>
+  </template>
+  <p-link
+    class="ssr"
+    slot="primary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <span
+        class="root"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </span>
+    </template>
+    <a
+      href="#primary-framework"
+    >
+      Primary Framework
+    </a>
+  </p-link>
+  <p-link
+    class="ssr"
+    slot="secondary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <span
+        class="root"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </span>
+    </template>
+    <a
+      href="#secondary-framework"
+    >
+      Secondary Framework
+    </a>
+  </p-link>
+</p-link-tile-model-signature>
+`;
+
+exports[`manual test cases should pass internal props correctly to p-link-tile-model-signature 4`] = `
+<p-link-tile-model-signature
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <p-model-signature
+        class="model ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+          </style>
+          <img
+            alt="911"
+            height="36"
+            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+          />
+        </template>
+      </p-model-signature>
+      <div
+        class="content"
+      >
+        <a
+          aria-hidden="true"
+          class="link-overlay"
+          href="#primary-slotted"
+          tabindex="-1"
+        />
+        <h2
+          class="heading"
+        >
+          Some heading
+        </h2>
+        <div
+          class="link-group"
+          role="group"
+        >
+          <slot
+            name="primary"
+          />
+          <slot
+            name="secondary"
+          />
+        </div>
+      </div>
+    </div>
+  </template>
+  <p-link
+    class="ssr"
+    slot="primary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <span
+        class="root"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </span>
+    </template>
+    <a
+      href="#primary-slotted"
+    >
+      Primary slotted with span
+    </a>
+    <span>
+      Something else
+    </span>
+  </p-link>
+  <p-link
+    class="ssr"
+    slot="secondary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+      </style>
+      <span
+        class="root"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </span>
+    </template>
+    <a
+      href="#secondary-slotted"
+    >
+      Secondary slotted
+    </a>
+  </p-link>
+</p-link-tile-model-signature>
 `;
 
 exports[`manual test cases should pass internal props correctly to p-segmented-control-item 1`] = `
@@ -89,21 +590,24 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:grid !important;grid-auto-rows:1fr !important;grid-template-columns:repeat(auto-fit, 100px) !important;grid-gap:4px !important}
+      :host{display:grid !important;grid-auto-rows:1fr !important;grid-template-columns:repeat(auto-fit, 100px) !important;gap:6px !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
   <p-segmented-control-item
+    backgroundcolor="background-surface"
     class="ssr"
   >
     <template
       shadowroot="open"
       shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}button{display:block;height:100%;width:100%;padding:0.75rem 1rem;margin:0;border:0;background:#e3e4e5;color:#000;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;outline:1px solid transparent;outline-offset:2px;cursor:pointer}button::-moz-focus-inner{border:0}span{display:block;font:normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;color:#626669}.icon{height:1.5rem;width:1.5rem;margin-right:0.25rem}
+        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #FBFCFF;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;position:relative;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}.icon{height:1.5rem;width:1.5rem;margin-right:0.25rem}
       </style>
       <button
         aria-pressed="true"
@@ -115,14 +619,16 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
     Item 1
   </p-segmented-control-item>
   <p-segmented-control-item
+    backgroundcolor="background-surface"
     class="ssr"
   >
     <template
       shadowroot="open"
       shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}button{display:block;height:100%;width:100%;padding:0.75rem 1rem;margin:0;border:0;background:#0e1418;color:#fff;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;outline:1px solid transparent;outline-offset:2px;cursor:pointer}button::-moz-focus-inner{border:0}span{display:block;font:normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;color:#b0b1b2}.icon{height:1.5rem;width:1.5rem;margin-right:0.25rem}
+        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;position:relative;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}.icon{height:1.5rem;width:1.5rem;margin-right:0.25rem}
       </style>
       <button
         aria-pressed="false"
@@ -143,18 +649,20 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:block}.scroller{display:flex;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-size:1rem;line-height:calc(6px + 2.125ex)}
+      :host{display:block}:host([hidden]){display:none !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-size:1rem}
     </style>
     <p-scroller
       class="scroller ssr"
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
-          :host{display:block;height:inherit !important}.root{display:grid;grid-template-columns:2em minmax(0, 1fr) 2em;margin:0 -0.25rem;height:inherit}.scroll-area{min-height:1.5rem;grid-area:1 / 1 / 1 / -1;padding:0.25rem;overflow:scroll hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{outline:transparent solid 1px;outline-offset:2px;position:relative;display:inline-flex;min-width:100%;vertical-align:top}.scroll-wrapper::-moz-focus-inner{border:0}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:0.25rem 0;pointer-events:none;display:flex;align-items:center;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(90deg, #0e1418 50%, #0e141800 100%);visibility:hidden}.action-prev .button::before{left:0}.action-next{position:relative;padding:0.25rem 0;pointer-events:none;display:flex;align-items:center;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(90deg, #0e141800 0%, #0e1418 50%);visibility:hidden}.action-next .button::before{right:0}.button{pointer-events:auto;position:static}.button::before{content:"";position:absolute;top:0;bottom:0;width:max(2rem, 80%)}
+          :host{display:block !important;height:inherit !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:center;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:center;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}
         </style>
         <div
           class="root"
@@ -177,112 +685,56 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
           <div
             class="action-prev"
           >
-            <p-button-pure
+            <button
               aria-hidden="true"
-              class="button ssr"
+              aria-label="prev"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
+              <p-icon
+                class="icon ssr"
               >
-                <style>
-                  :host{position:relative;outline:0 !important;display:inline-block;vertical-align:top}::slotted(p){margin:0}.root{display:flex;align-items:flex-start;width:100%;margin:0;padding:0;box-sizing:border-box;outline:0;appearance:none;cursor:pointer;text-decoration:none;text-align:left;border:none;background:transparent;color:#fff;transition:color var(--p-transition-duration, .24s) ease;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-weight:400;justify-content:flex-start;font-size:inherit}.root::-moz-focus-inner{border:0}.root::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:1px}.root:active{color:#ff0223}.icon{flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}.label{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.25rem;order:0}
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                    >
-                      <style>
-                        :host{display:inline-flex;vertical-align:top}img{filter:invert(100%)}svg{fill:currentColor}@media(forced-colors:active){svg{fill:canvasText}}.root{display:flex;flex-shrink:0;margin:0;padding:0;box-sizing:border-box;width:inherit;height:inherit;color:currentColor}
-                      </style>
-                      <i
-                        class="root"
-                      >
-                        <svg
-                          height="100%"
-                          viewBox="0 0 24 24"
-                          width="100%"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
-                          />
-                        </svg>
-                      </i>
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-              </template>
-              prev
-            </p-button-pure>
+                  <style>
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  </style>
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
           <div
             class="action-next"
           >
-            <p-button-pure
+            <button
               aria-hidden="true"
-              class="button ssr"
+              aria-label="next"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
+              <p-icon
+                class="icon ssr"
               >
-                <style>
-                  :host{position:relative;outline:0 !important;display:inline-block;vertical-align:top}::slotted(p){margin:0}.root{display:flex;align-items:flex-start;width:100%;margin:0;padding:0;box-sizing:border-box;outline:0;appearance:none;cursor:pointer;text-decoration:none;text-align:left;border:none;background:transparent;color:#fff;transition:color var(--p-transition-duration, .24s) ease;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-weight:400;justify-content:flex-start;font-size:inherit}.root::-moz-focus-inner{border:0}.root::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:1px}.root:active{color:#ff0223}.icon{flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}.label{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.25rem;order:0}
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                    >
-                      <style>
-                        :host{display:inline-flex;vertical-align:top}img{filter:invert(100%)}svg{fill:currentColor}@media(forced-colors:active){svg{fill:canvasText}}.root{display:flex;flex-shrink:0;margin:0;padding:0;box-sizing:border-box;width:inherit;height:inherit;color:currentColor}
-                      </style>
-                      <i
-                        class="root"
-                      >
-                        <svg
-                          height="100%"
-                          viewBox="0 0 24 24"
-                          width="100%"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
-                          />
-                        </svg>
-                      </i>
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-              </template>
-              next
-            </p-button-pure>
+                  <style>
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  </style>
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
         </div>
       </template>
@@ -296,9 +748,10 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
     <template
       shadowroot="open"
       shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
     >
       <style>
-        :host{font-size:inherit !important}:host(:nth-of-type(1)) button::after{background-position-x:0em}:host(:nth-of-type(2)) button::after{background-position-x:-0.625em}:host(:nth-of-type(3)) button::after{background-position-x:-1.25em}:host(:nth-of-type(4)) button::after{background-position-x:-1.875em}:host(:nth-of-type(5)) button::after{background-position-x:-2.5em}:host(:nth-of-type(6)) button::after{background-position-x:-3.125em}:host(:nth-of-type(7)) button::after{background-position-x:-3.75em}:host(:nth-of-type(8)) button::after{background-position-x:-4.375em}:host(:nth-of-type(9)) button::after{background-position-x:-5em}:host(:not(:last-of-type)){margin-right:1em !important}button{position:relative;color:#7c7f81;transition:color var(--p-transition-duration, .24s) ease;margin:0;padding:0 0 0 calc(calc(6px + 2.125ex) + 0.25rem);background:0;border:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-size:inherit;white-space:nowrap;outline:1px solid transparent;outline-offset:2px;cursor:not-allowed}button::-moz-focus-inner{border:0}button::before{content:"";position:absolute;top:50%;transform:translateY(-50%);left:0.171875em;height:calc(calc(6px + 2.125ex) - 0.171875em * 2);width:calc(calc(6px + 2.125ex) - 0.171875em * 2);border-radius:50%;box-sizing:border-box;border:1px solid #7c7f81}button::after{content:"";position:absolute;top:50%;transform:translateY(-50%);left:calc((calc(6px + 2.125ex) - 0.625em) / 2);width:0.625em;height:0.625em;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22%237c7f81%22%20width%3D%2290%22%20height%3D%2210%22%20viewBox%3D%220%200%2090%2010%22%3E%3Cpath%20d%3D%22M5.524%209h.996V.456h-.828L3.16%201.464v.912l2.364-.888zm7.006%200h5.017v-.792H13.49v-.156c0-.804.396-1.224%201.476-1.956l.924-.612c.84-.552%201.74-1.236%201.74-2.724%200-1.548-.84-2.448-2.652-2.448-1.908%200-2.604%201.056-2.664%202.832h.936c.096-1.452.624-1.92%201.728-1.92%201.056%200%201.656.444%201.656%201.536%200%201.164-.768%201.68-1.524%202.184l-.924.612c-.948.636-1.656%201.332-1.656%202.652zm9.689-2.592c.084%201.86.9%202.736%202.808%202.736%201.788%200%202.736-.924%202.736-2.424%200-1.236-.504-1.86-1.32-2.136.756-.348%201.128-1.08%201.128-1.848%200-1.524-.852-2.424-2.664-2.424-1.872%200-2.592%201.092-2.688%202.832h.948c.096-1.44.672-1.92%201.74-1.92%201.056%200%201.68.456%201.68%201.512%200%20.948-.528%201.488-1.62%201.488h-.804V5.1h.864c1.26%200%201.752.564%201.752%201.62%200%201.152-.588%201.632-1.752%201.632-1.26%200-1.776-.552-1.872-1.944zm9.736.624h3.876V9h.96V7.032h1.212v-.84H36.79V.456h-1.392l-3.444%205.832zm1.044-.84%202.832-4.848v4.848zm9.411-.648h.889c.204-.732.66-1.14%201.704-1.14%201.332%200%201.8.636%201.8%201.944%200%201.344-.444%202.004-1.8%202.004-1.236%200-1.728-.552-1.788-1.656h-.948c.072%201.632.984%202.448%202.736%202.448%201.776%200%202.784-.828%202.784-2.832%200-1.86-.876-2.736-2.688-2.736-.768%200-1.368.24-1.74.66l.252-2.868h3.792V.456h-4.584L42.41%205.16zm9.809.768c0%202.004.984%202.832%202.796%202.832%201.776%200%202.784-.828%202.784-2.832%200-1.86-.9-2.736-2.688-2.736-.396%200-.744.072-1.068.228L56.25.456h-1.068l-2.16%203.312c-.516.792-.804%201.488-.804%202.544zm.996.048c0-1.332.468-1.956%201.8-1.956s1.788.624%201.788%201.956-.444%201.992-1.788%201.992c-1.356%200-1.8-.66-1.8-1.992zm9.075-4.992h4.369L63.215%209h1.02l3.48-7.824v-.72H62.29zm9.929%205.352c0%201.68.96%202.424%202.784%202.424s2.784-.744%202.784-2.424c0-1.008-.408-1.716-1.308-2.052.66-.324%201.116-.9%201.116-1.956%200-1.488-.804-2.4-2.592-2.4-1.764%200-2.592.912-2.592%202.4%200%201.056.468%201.632%201.104%201.956-.9.336-1.296%201.044-1.296%202.052zm.984-.012c0-1.068.564-1.572%201.8-1.572s1.8.504%201.8%201.572c0%201.152-.564%201.644-1.8%201.644s-1.8-.492-1.8-1.644zm1.8-2.4c-1.164%200-1.608-.588-1.608-1.56%200-1.068.54-1.524%201.608-1.524s1.608.456%201.608%201.524c0%20.972-.444%201.56-1.608%201.56zm9.904%201.608c.348%200%20.684-.06.984-.192L83.767%209h1.068l2.124-3.348c.504-.792.792-1.488.792-2.568%200-1.98-.996-2.772-2.748-2.772-1.764%200-2.76.804-2.76%202.784%200%201.86.888%202.82%202.664%202.82zm.096-.828c-1.284%200-1.764-.66-1.764-1.992%200-1.2.444-1.872%201.764-1.872%201.308%200%201.764.672%201.764%201.872%200%201.332-.48%201.992-1.764%201.992z%22%2F%3E%3C%2Fsvg%3E") 0 50% / 5.625em 0.625em no-repeat}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
+        :host{font-size:inherit !important}:host(:nth-of-type(1)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m12.33 8.67-2.43.91v-.94l2.6-1.03h.85v8.78h-1.02z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(2)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.46 15.58c0-1.35.73-2.07 1.7-2.72l.95-.63c.78-.52 1.57-1.05 1.57-2.24 0-1.12-.62-1.58-1.7-1.58s-1.68.48-1.78 1.97h-.96c.06-1.82.78-2.91 2.74-2.91s2.72.92 2.72 2.52-.92 2.23-1.79 2.8l-.95.63c-1.11.75-1.52 1.18-1.52 2.01v.16h4.17v.81h-5.15v-.81z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(3)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m10.1 13.73c.1 1.43.63 2 1.92 2 1.2 0 1.8-.49 1.8-1.68 0-1.08-.51-1.66-1.8-1.66h-.89v-.9h.83c1.12 0 1.66-.56 1.66-1.53 0-1.08-.64-1.55-1.73-1.55s-1.69.49-1.79 1.97h-.97c.1-1.79.84-2.91 2.76-2.91s2.74.92 2.74 2.49c0 .79-.38 1.54-1.16 1.9.84.28 1.36.92 1.36 2.19 0 1.54-.97 2.49-2.81 2.49-1.96 0-2.8-.9-2.88-2.81z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(4)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m8.87 13.6 3.54-5.99h1.43v5.89h1.25v.86h-1.25v2.02h-.99v-2.02h-3.98zm3.98-.1v-4.98l-2.91 4.98z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(5)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.34 12.45.42-4.83h4.71v.94h-3.9l-.26 2.95c.38-.43 1-.68 1.79-.68 1.86 0 2.76.9 2.76 2.81 0 2.06-1.03 2.91-2.86 2.91s-2.74-.84-2.81-2.51h.97c.06 1.13.57 1.7 1.84 1.7 1.39 0 1.85-.68 1.85-2.06s-.48-2-1.85-2c-1.07 0-1.54.42-1.75 1.17h-.91v-.39z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(6)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.97 11.02 2.22-3.4h1.1l-2.27 3.44c.33-.16.69-.23 1.1-.23 1.84 0 2.76.9 2.76 2.81 0 2.06-1.04 2.91-2.86 2.91s-2.87-.85-2.87-2.91c0-1.08.3-1.8.83-2.61zm2.05 4.71c1.38 0 1.84-.68 1.84-2.05s-.47-2.01-1.84-2.01-1.85.64-1.85 2.01.46 2.05 1.85 2.05z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(7)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.21 7.61h5.57v.74l-3.58 8.04h-1.05l3.54-7.84h-4.49v-.94z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(8)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m10.47 11.94c-.65-.33-1.13-.92-1.13-2.01 0-1.53.85-2.47 2.66-2.47s2.66.94 2.66 2.47c0 1.08-.47 1.68-1.15 2.01.92.35 1.34 1.07 1.34 2.11 0 1.73-.99 2.49-2.86 2.49s-2.86-.76-2.86-2.49c0-1.04.41-1.76 1.33-2.11zm1.53 3.78c1.27 0 1.85-.51 1.85-1.69 0-1.1-.58-1.61-1.85-1.61s-1.85.52-1.85 1.61c0 1.18.58 1.69 1.85 1.69zm1.65-5.76c0-1.1-.56-1.56-1.65-1.56s-1.65.47-1.65 1.56c0 1 .46 1.6 1.65 1.6s1.65-.6 1.65-1.6z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(9)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.16 10.33c0-2.03 1.02-2.86 2.83-2.86s2.82.81 2.82 2.85c0 1.11-.3 1.82-.81 2.64l-2.18 3.44h-1.1l2.18-3.37c-.31.14-.65.2-1.01.2-1.82 0-2.74-.99-2.74-2.9zm4.65 0c0-1.23-.47-1.92-1.81-1.92s-1.81.69-1.81 1.92c0 1.37.49 2.05 1.81 2.05s1.81-.68 1.81-2.05z"/&gt;&lt;/svg&gt;')}:host([hidden]){display:none !important}:host(:not(:last-of-type)){margin:0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important}button{display:flex;position:relative;gap:3px;color:#7E7F82;padding:4px 10px 4px 6px;background:0;border:0;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-size:inherit;width:max-content;cursor:not-allowed;border-radius:4px}button::before{content:"";height:calc(6px + 2.125ex);width:calc(6px + 2.125ex)}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
       </style>
       <button
         aria-disabled="true"
@@ -316,9 +769,10 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
     <template
       shadowroot="open"
       shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
     >
       <style>
-        :host{font-size:inherit !important}:host(:nth-of-type(1)) button::after{background-position-x:0em}:host(:nth-of-type(2)) button::after{background-position-x:-0.625em}:host(:nth-of-type(3)) button::after{background-position-x:-1.25em}:host(:nth-of-type(4)) button::after{background-position-x:-1.875em}:host(:nth-of-type(5)) button::after{background-position-x:-2.5em}:host(:nth-of-type(6)) button::after{background-position-x:-3.125em}:host(:nth-of-type(7)) button::after{background-position-x:-3.75em}:host(:nth-of-type(8)) button::after{background-position-x:-4.375em}:host(:nth-of-type(9)) button::after{background-position-x:-5em}:host(:not(:last-of-type)){margin-right:1em !important}button{position:relative;color:#7c7f81;transition:color var(--p-transition-duration, .24s) ease;margin:0;padding:0 0 0 calc(calc(6px + 2.125ex) + 0.25rem);background:0;border:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-size:inherit;white-space:nowrap;outline:1px solid transparent;outline-offset:2px;cursor:not-allowed}button::-moz-focus-inner{border:0}button::before{content:"";position:absolute;top:50%;transform:translateY(-50%);left:0.171875em;height:calc(calc(6px + 2.125ex) - 0.171875em * 2);width:calc(calc(6px + 2.125ex) - 0.171875em * 2);border-radius:50%;box-sizing:border-box;border:1px solid #7c7f81}button::after{content:"";position:absolute;top:50%;transform:translateY(-50%);left:calc((calc(6px + 2.125ex) - 0.625em) / 2);width:0.625em;height:0.625em;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22%237c7f81%22%20width%3D%2290%22%20height%3D%2210%22%20viewBox%3D%220%200%2090%2010%22%3E%3Cpath%20d%3D%22M5.524%209h.996V.456h-.828L3.16%201.464v.912l2.364-.888zm7.006%200h5.017v-.792H13.49v-.156c0-.804.396-1.224%201.476-1.956l.924-.612c.84-.552%201.74-1.236%201.74-2.724%200-1.548-.84-2.448-2.652-2.448-1.908%200-2.604%201.056-2.664%202.832h.936c.096-1.452.624-1.92%201.728-1.92%201.056%200%201.656.444%201.656%201.536%200%201.164-.768%201.68-1.524%202.184l-.924.612c-.948.636-1.656%201.332-1.656%202.652zm9.689-2.592c.084%201.86.9%202.736%202.808%202.736%201.788%200%202.736-.924%202.736-2.424%200-1.236-.504-1.86-1.32-2.136.756-.348%201.128-1.08%201.128-1.848%200-1.524-.852-2.424-2.664-2.424-1.872%200-2.592%201.092-2.688%202.832h.948c.096-1.44.672-1.92%201.74-1.92%201.056%200%201.68.456%201.68%201.512%200%20.948-.528%201.488-1.62%201.488h-.804V5.1h.864c1.26%200%201.752.564%201.752%201.62%200%201.152-.588%201.632-1.752%201.632-1.26%200-1.776-.552-1.872-1.944zm9.736.624h3.876V9h.96V7.032h1.212v-.84H36.79V.456h-1.392l-3.444%205.832zm1.044-.84%202.832-4.848v4.848zm9.411-.648h.889c.204-.732.66-1.14%201.704-1.14%201.332%200%201.8.636%201.8%201.944%200%201.344-.444%202.004-1.8%202.004-1.236%200-1.728-.552-1.788-1.656h-.948c.072%201.632.984%202.448%202.736%202.448%201.776%200%202.784-.828%202.784-2.832%200-1.86-.876-2.736-2.688-2.736-.768%200-1.368.24-1.74.66l.252-2.868h3.792V.456h-4.584L42.41%205.16zm9.809.768c0%202.004.984%202.832%202.796%202.832%201.776%200%202.784-.828%202.784-2.832%200-1.86-.9-2.736-2.688-2.736-.396%200-.744.072-1.068.228L56.25.456h-1.068l-2.16%203.312c-.516.792-.804%201.488-.804%202.544zm.996.048c0-1.332.468-1.956%201.8-1.956s1.788.624%201.788%201.956-.444%201.992-1.788%201.992c-1.356%200-1.8-.66-1.8-1.992zm9.075-4.992h4.369L63.215%209h1.02l3.48-7.824v-.72H62.29zm9.929%205.352c0%201.68.96%202.424%202.784%202.424s2.784-.744%202.784-2.424c0-1.008-.408-1.716-1.308-2.052.66-.324%201.116-.9%201.116-1.956%200-1.488-.804-2.4-2.592-2.4-1.764%200-2.592.912-2.592%202.4%200%201.056.468%201.632%201.104%201.956-.9.336-1.296%201.044-1.296%202.052zm.984-.012c0-1.068.564-1.572%201.8-1.572s1.8.504%201.8%201.572c0%201.152-.564%201.644-1.8%201.644s-1.8-.492-1.8-1.644zm1.8-2.4c-1.164%200-1.608-.588-1.608-1.56%200-1.068.54-1.524%201.608-1.524s1.608.456%201.608%201.524c0%20.972-.444%201.56-1.608%201.56zm9.904%201.608c.348%200%20.684-.06.984-.192L83.767%209h1.068l2.124-3.348c.504-.792.792-1.488.792-2.568%200-1.98-.996-2.772-2.748-2.772-1.764%200-2.76.804-2.76%202.784%200%201.86.888%202.82%202.664%202.82zm.096-.828c-1.284%200-1.764-.66-1.764-1.992%200-1.2.444-1.872%201.764-1.872%201.308%200%201.764.672%201.764%201.872%200%201.332-.48%201.992-1.764%201.992z%22%2F%3E%3C%2Fsvg%3E") 0 50% / 5.625em 0.625em no-repeat}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
+        :host{font-size:inherit !important}:host(:nth-of-type(1)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m12.33 8.67-2.43.91v-.94l2.6-1.03h.85v8.78h-1.02z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(2)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.46 15.58c0-1.35.73-2.07 1.7-2.72l.95-.63c.78-.52 1.57-1.05 1.57-2.24 0-1.12-.62-1.58-1.7-1.58s-1.68.48-1.78 1.97h-.96c.06-1.82.78-2.91 2.74-2.91s2.72.92 2.72 2.52-.92 2.23-1.79 2.8l-.95.63c-1.11.75-1.52 1.18-1.52 2.01v.16h4.17v.81h-5.15v-.81z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(3)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m10.1 13.73c.1 1.43.63 2 1.92 2 1.2 0 1.8-.49 1.8-1.68 0-1.08-.51-1.66-1.8-1.66h-.89v-.9h.83c1.12 0 1.66-.56 1.66-1.53 0-1.08-.64-1.55-1.73-1.55s-1.69.49-1.79 1.97h-.97c.1-1.79.84-2.91 2.76-2.91s2.74.92 2.74 2.49c0 .79-.38 1.54-1.16 1.9.84.28 1.36.92 1.36 2.19 0 1.54-.97 2.49-2.81 2.49-1.96 0-2.8-.9-2.88-2.81z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(4)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m8.87 13.6 3.54-5.99h1.43v5.89h1.25v.86h-1.25v2.02h-.99v-2.02h-3.98zm3.98-.1v-4.98l-2.91 4.98z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(5)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.34 12.45.42-4.83h4.71v.94h-3.9l-.26 2.95c.38-.43 1-.68 1.79-.68 1.86 0 2.76.9 2.76 2.81 0 2.06-1.03 2.91-2.86 2.91s-2.74-.84-2.81-2.51h.97c.06 1.13.57 1.7 1.84 1.7 1.39 0 1.85-.68 1.85-2.06s-.48-2-1.85-2c-1.07 0-1.54.42-1.75 1.17h-.91v-.39z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(6)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.97 11.02 2.22-3.4h1.1l-2.27 3.44c.33-.16.69-.23 1.1-.23 1.84 0 2.76.9 2.76 2.81 0 2.06-1.04 2.91-2.86 2.91s-2.87-.85-2.87-2.91c0-1.08.3-1.8.83-2.61zm2.05 4.71c1.38 0 1.84-.68 1.84-2.05s-.47-2.01-1.84-2.01-1.85.64-1.85 2.01.46 2.05 1.85 2.05z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(7)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.21 7.61h5.57v.74l-3.58 8.04h-1.05l3.54-7.84h-4.49v-.94z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(8)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m10.47 11.94c-.65-.33-1.13-.92-1.13-2.01 0-1.53.85-2.47 2.66-2.47s2.66.94 2.66 2.47c0 1.08-.47 1.68-1.15 2.01.92.35 1.34 1.07 1.34 2.11 0 1.73-.99 2.49-2.86 2.49s-2.86-.76-2.86-2.49c0-1.04.41-1.76 1.33-2.11zm1.53 3.78c1.27 0 1.85-.51 1.85-1.69 0-1.1-.58-1.61-1.85-1.61s-1.85.52-1.85 1.61c0 1.18.58 1.69 1.85 1.69zm1.65-5.76c0-1.1-.56-1.56-1.65-1.56s-1.65.47-1.65 1.56c0 1 .46 1.6 1.65 1.6s1.65-.6 1.65-1.6z"/&gt;&lt;/svg&gt;')}:host(:nth-of-type(9)) button::before{background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="none" stroke="%237E7F82" stroke-width="1px" cx="12" cy="12" r="9"/&gt;&lt;path fill="%237E7F82" d="m9.16 10.33c0-2.03 1.02-2.86 2.83-2.86s2.82.81 2.82 2.85c0 1.11-.3 1.82-.81 2.64l-2.18 3.44h-1.1l2.18-3.37c-.31.14-.65.2-1.01.2-1.82 0-2.74-.99-2.74-2.9zm4.65 0c0-1.23-.47-1.92-1.81-1.92s-1.81.69-1.81 1.92c0 1.37.49 2.05 1.81 2.05s1.81-.68 1.81-2.05z"/&gt;&lt;/svg&gt;')}:host([hidden]){display:none !important}:host(:not(:last-of-type)){margin:0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important}button{display:flex;position:relative;gap:3px;color:#7E7F82;padding:4px 10px 4px 6px;background:0;border:0;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-size:inherit;width:max-content;cursor:not-allowed;border-radius:4px}button::before{content:"";height:calc(6px + 2.125ex);width:calc(6px + 2.125ex)}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
       </style>
       <button
         aria-disabled="true"
@@ -338,18 +792,20 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:block}.root{margin-bottom:0.5rem}
+      :host{display:block}:host([hidden]){display:none !important}.root{margin-bottom:8px}
     </style>
     <p-tabs-bar
       class="root ssr"
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
-          :host{display:block;position:relative !important}::slotted(a),::slotted(button){display:inline-block !important;margin:0 0 calc(.5em - 0.25rem) 0 !important;padding:0 !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline:1px solid transparent !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;background:transparent !important;color:#fff !important;cursor:pointer !important;transition:color var(--p-transition-duration, .24s) ease !important}::slotted(a:active),::slotted(a[aria-selected="true"]),::slotted(button:active),::slotted(button[aria-selected="true"]){color:#ff0223 !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:1em !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.bar{display:block;position:absolute;width:0;height:.09375em;left:0;bottom:-0.25rem;background:#ff0223}.bar--enable-transition{will-change:width;transition:transform .4s,width .4s}
+          :host{display:block;position:relative !important;transform:translate3d(0,0,0) !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#FBFCFF !important;cursor:pointer !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;top:-2px !important;bottom:-2px !important;left:-4px !important;right:-4px !important;border-radius:4px !important;z-index:-1 !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.bar{display:block;position:absolute;width:0;height:1.5px;left:0;bottom:-4px;background:#FBFCFF}.bar--enable-transition{will-change:width;transition:transform .4s,width .4s}
         </style>
         <p-scroller
           class="scroller ssr"
@@ -357,9 +813,10 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
         >
           <template
             shadowroot="open"
+            shadowrootmode="open"
           >
             <style>
-              :host{display:block;height:inherit !important}.root{display:grid;grid-template-columns:2em minmax(0, 1fr) 2em;margin:0 -0.25rem;height:inherit}.scroll-area{min-height:1.5rem;grid-area:1 / 1 / 1 / -1;padding:0.25rem;overflow:scroll hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{outline:transparent solid 1px;outline-offset:2px;position:relative;display:inline-flex;min-width:100%;vertical-align:top}.scroll-wrapper::-moz-focus-inner{border:0}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:0.25rem 0;pointer-events:none;display:flex;align-items:flex-start;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(90deg, #0e1418 50%, #0e141800 100%);visibility:hidden}.action-prev .button::before{left:0}.action-next{position:relative;padding:0.25rem 0;pointer-events:none;display:flex;align-items:flex-start;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(90deg, #0e141800 0%, #0e1418 50%);visibility:hidden}.action-next .button::before{right:0}.button{pointer-events:auto;position:static}.button::before{content:"";position:absolute;top:0;bottom:0;width:max(2rem, 80%)}
+              :host{display:block !important;height:inherit !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}
             </style>
             <div
               class="root"
@@ -382,112 +839,56 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
               <div
                 class="action-prev"
               >
-                <p-button-pure
+                <button
                   aria-hidden="true"
-                  class="button ssr"
+                  aria-label="prev"
                   tabindex="-1"
+                  type="button"
                 >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
+                  <p-icon
+                    class="icon ssr"
                   >
-                    <style>
-                      :host{position:relative;outline:0 !important;display:inline-block;vertical-align:top}::slotted(p){margin:0}.root{display:flex;align-items:flex-start;width:100%;margin:0;padding:0;box-sizing:border-box;outline:0;appearance:none;cursor:pointer;text-decoration:none;text-align:left;border:none;background:transparent;color:#fff;transition:color var(--p-transition-duration, .24s) ease;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-weight:400;justify-content:flex-start;font-size:inherit}.root::-moz-focus-inner{border:0}.root::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:1px}.root:active{color:#ff0223}.icon{flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}.label{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.25rem;order:0}
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
                     >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon ssr"
-                      >
-                        <template
-                          shadowroot="open"
-                        >
-                          <style>
-                            :host{display:inline-flex;vertical-align:top}img{filter:invert(100%)}svg{fill:currentColor}@media(forced-colors:active){svg{fill:canvasText}}.root{display:flex;flex-shrink:0;margin:0;padding:0;box-sizing:border-box;width:inherit;height:inherit;color:currentColor}
-                          </style>
-                          <i
-                            class="root"
-                          >
-                            <svg
-                              height="100%"
-                              viewBox="0 0 24 24"
-                              width="100%"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M15.25 4h-1.26L8 12l5.99 8h1.26l-6-8 6-8z"
-                              />
-                            </svg>
-                          </i>
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                  </template>
-                  prev
-                </p-button-pure>
+                      <style>
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                      </style>
+                      <img
+                        alt=""
+                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                      />
+                    </template>
+                  </p-icon>
+                </button>
               </div>
               <div
                 class="action-next"
               >
-                <p-button-pure
+                <button
                   aria-hidden="true"
-                  class="button ssr"
+                  aria-label="next"
                   tabindex="-1"
+                  type="button"
                 >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
+                  <p-icon
+                    class="icon ssr"
                   >
-                    <style>
-                      :host{position:relative;outline:0 !important;display:inline-block;vertical-align:top}::slotted(p){margin:0}.root{display:flex;align-items:flex-start;width:100%;margin:0;padding:0;box-sizing:border-box;outline:0;appearance:none;cursor:pointer;text-decoration:none;text-align:left;border:none;background:transparent;color:#fff;transition:color var(--p-transition-duration, .24s) ease;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;font-weight:400;justify-content:flex-start;font-size:inherit}.root::-moz-focus-inner{border:0}.root::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:1px}.root:active{color:#ff0223}.icon{flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}.label{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.25rem;order:0}
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
                     >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon ssr"
-                      >
-                        <template
-                          shadowroot="open"
-                        >
-                          <style>
-                            :host{display:inline-flex;vertical-align:top}img{filter:invert(100%)}svg{fill:currentColor}@media(forced-colors:active){svg{fill:canvasText}}.root{display:flex;flex-shrink:0;margin:0;padding:0;box-sizing:border-box;width:inherit;height:inherit;color:currentColor}
-                          </style>
-                          <i
-                            class="root"
-                          >
-                            <svg
-                              height="100%"
-                              viewBox="0 0 24 24"
-                              width="100%"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z"
-                              />
-                            </svg>
-                          </i>
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                  </template>
-                  next
-                </p-button-pure>
+                      <style>
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                      </style>
+                      <img
+                        alt=""
+                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                      />
+                    </template>
+                  </p-icon>
+                </button>
               </div>
             </div>
           </template>
@@ -515,9 +916,10 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:1px solid transparent !important;outline-offset:2px !important}:host([hidden]){display:none !important}:host(::-moz-focus-inner){border:0 !important}
+        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}:host::before{content:"" !important;position:absolute !important;top:-4px !important;left:-4px !important;right:-4px !important;bottom:-4px !important}
       </style>
       <slot />
     </template>
@@ -528,9 +930,10 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:1px solid transparent !important;outline-offset:2px !important}:host([hidden]){display:none !important}:host(::-moz-focus-inner){border:0 !important}
+        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}:host::before{content:"" !important;position:absolute !important;top:-4px !important;left:-4px !important;right:-4px !important;bottom:-4px !important}
       </style>
       <slot />
     </template>
@@ -544,9 +947,10 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:block}::slotted(input){display:block !important;position:relative !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;height:3rem !important;margin:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:1px solid #626669 !important;border-radius:0 !important;background-color:#fff !important;opacity:1 !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;text-indent:0 !important;color:#000 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:0.6875rem !important}::slotted(input:disabled){cursor:not-allowed !important;color:#96989a !important;border-color:#96989a !important;-webkit-text-fill-color:#96989a !important}::slotted(input[readonly]){border-color:#ebebeb !important;background-color:#ebebeb !important}::slotted(input[readonly]:not(:disabled)){color:#626669 !important}.root{display:block;position:relative}.label{display:block;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;color:#000;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text--description{margin-top:-0.25rem;padding-bottom:0.5rem;font:normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto}.label__text--description{color:#626669}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
+      :host{display:block;--p-internal-text-field-input-padding-left:16px !important;--p-internal-text-field-input-padding-right:16px !important}:host([hidden]){display:none !important}::slotted(input){display:block !important;width:100% !important;height:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;margin:0 !important;outline:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:2px solid #6B6D70 !important;border-radius:4px !important;background:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-indent:0 !important;color:#010205 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important}::slotted(input:disabled){cursor:not-allowed !important;color:#949598 !important;border-color:#949598 !important;-webkit-text-fill-color:#949598 !important}::slotted(input[readonly]){border-color:#D8D8DB !important;background:#D8D8DB !important}.root{display:block;position:relative}.label{display:flex;flex-direction:column;gap:4px;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#010205;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#535457}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
     </style>
     <div
       class="root"
@@ -577,9 +981,10 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:block}::slotted(input){display:block !important;position:relative !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;height:3rem !important;margin:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:1px solid #626669 !important;border-radius:0 !important;background-color:#fff !important;opacity:1 !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;text-indent:0 !important;color:#000 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:0.6875rem !important}::slotted(input:disabled){cursor:not-allowed !important;color:#96989a !important;border-color:#96989a !important;-webkit-text-fill-color:#96989a !important}::slotted(input[readonly]){border-color:#ebebeb !important;background-color:#ebebeb !important}::slotted(input[readonly]:not(:disabled)){color:#626669 !important}.root{display:block;position:relative}.label{display:block;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;color:#000;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text--description{margin-top:-0.25rem;padding-bottom:0.5rem;font:normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto}.label__text--description{color:#626669}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
+      :host{display:block;--p-internal-text-field-input-padding-left:16px !important;--p-internal-text-field-input-padding-right:16px !important}:host([hidden]){display:none !important}::slotted(input){display:block !important;width:100% !important;height:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;margin:0 !important;outline:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:2px solid #6B6D70 !important;border-radius:4px !important;background:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-indent:0 !important;color:#010205 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important}::slotted(input:disabled){cursor:not-allowed !important;color:#949598 !important;border-color:#949598 !important;-webkit-text-fill-color:#949598 !important}::slotted(input[readonly]){border-color:#D8D8DB !important;background:#D8D8DB !important}.root{display:block;position:relative}.label{display:flex;flex-direction:column;gap:4px;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#010205;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#535457}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
     </style>
     <div
       class="root"
@@ -610,9 +1015,10 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:block}::slotted(input){display:block !important;position:relative !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;height:3rem !important;margin:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:1px solid #626669 !important;border-radius:0 !important;background-color:#fff !important;opacity:1 !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;text-indent:0 !important;color:#000 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:0.6875rem !important;padding-right:3rem !important}::slotted(input:disabled){cursor:not-allowed !important;color:#96989a !important;border-color:#96989a !important;-webkit-text-fill-color:#96989a !important}::slotted(input[readonly]){border-color:#ebebeb !important;background-color:#ebebeb !important}::slotted(input[readonly]:not(:disabled)){color:#626669 !important}button{position:absolute;bottom:0;right:0;margin:0;width:3rem;height:3rem;padding:0.75rem;box-sizing:border-box;outline:1px solid transparent;appearance:none;border:none;text-decoration:none;background:transparent;cursor:pointer;color:#000;transition:color var(--p-transition-duration, .24s) ease;outline-offset:-4px}button::-moz-focus-inner{border:0}button:active{color:#d5001c}button:disabled{color:#96989a;cursor:not-allowed}.root{display:block;position:relative}.label{display:block;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;color:#000;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text--description{margin-top:-0.25rem;padding-bottom:0.5rem;font:normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto}.label__text--description{color:#626669}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
+      :host{display:block;--p-internal-text-field-input-padding-left:16px !important;--p-internal-text-field-input-padding-right:calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important}:host([hidden]){display:none !important}::slotted(input){display:block !important;width:100% !important;height:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;margin:0 !important;outline:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:2px solid #6B6D70 !important;border-radius:4px !important;background:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-indent:0 !important;color:#010205 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important}::slotted(input:disabled){cursor:not-allowed !important;color:#949598 !important;border-color:#949598 !important;-webkit-text-fill-color:#949598 !important}::slotted(input[readonly]){border-color:#D8D8DB !important;background:#D8D8DB !important}.button{position:absolute;bottom:11px;padding:4px;font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;right:calc(9px + 2px)}.button:not([hidden]) ~ .button{right:calc(9px + 2px + calc(calc(6px + 2.125ex) + 4px * 2) * 1)}.root{display:block;position:relative}.label{display:flex;flex-direction:column;gap:4px;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#010205;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#535457}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
     </style>
     <div
       class="root"
@@ -627,58 +1033,48 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
         </span>
         <slot />
       </label>
-      <button
-        aria-pressed="false"
-        type="button"
+      <p-button-pure
+        class="button ssr"
       >
-        <span
-          class="sr-only"
+        <template
+          shadowroot="open"
+          shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
         >
-          Toggle password visibility
-        </span>
-        <p-icon
-          aria-hidden="true"
-          class="ssr"
-        >
-          <template
-            shadowroot="open"
+          <style>
+            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
+          </style>
+          <button
+            aria-pressed="false"
+            class="root"
+            type="button"
           >
-            <style>
-              :host{display:inline-flex;vertical-align:top}img{filter:none}svg{fill:currentColor}@media(forced-colors:active){svg{fill:canvasText}}.root{display:flex;flex-shrink:0;margin:0;padding:0;box-sizing:border-box;width:1.5rem;height:1.5rem;color:currentColor}
-            </style>
-            <i
-              class="root"
+            <p-icon
+              aria-hidden="true"
+              class="icon ssr"
             >
-              <svg
-                height="100%"
-                viewBox="0 0 24 24"
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
+              <template
+                shadowroot="open"
+                shadowrootmode="open"
               >
-                <defs>
-                  <clippath
-                    id="a"
-                  >
-                    <path
-                      d="M12 18a11.49 11.49 0 0 1-9.74-5.5L2 12l.27-.5A11.49 11.49 0 0 1 12 6a11.5 11.5 0 0 1 9.75 5.5l.25.5-.27.5A11.69 11.69 0 0 1 12 18Zm-8.87-6A10.64 10.64 0 0 0 12 17a10.62 10.62 0 0 0 8.86-5A10.63 10.63 0 0 0 12 7a10.63 10.63 0 0 0-8.85 5Z"
-                    />
-                  </clippath>
-                </defs>
-                <path
-                  d="M12 18a11.49 11.49 0 0 1-9.74-5.5L2 12l.27-.5A11.49 11.49 0 0 1 12 6a11.5 11.5 0 0 1 9.75 5.5l.25.5-.27.5A11.69 11.69 0 0 1 12 18Zm-8.87-6A10.64 10.64 0 0 0 12 17a10.62 10.62 0 0 0 8.86-5A10.63 10.63 0 0 0 12 7a10.63 10.63 0 0 0-8.85 5Z"
+                <style>
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light 1ms;width:inherit;height:inherit}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                </style>
+                <img
+                  alt=""
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/view.min.cd78cae7309f44d941e9264047e3efa0.svg"
                 />
-                <path
-                  clip-path="url(#a)"
-                  d="M27.22 23.73H-3.22V.27h30.44Zm-29.44-1h28.44V1.27H-2.22Zm28.41-.07H-2.19V1.34h28.38Zm-27.38-1h26.38V2.34H-1.19Z"
-                />
-                <path
-                  d="M12 10a2 2 0 1 1-2 2 2 2 0 0 1 2-2m0-1a3 3 0 1 0 3 3 3 3 0 0 0-3-3Z"
-                />
-              </svg>
-            </i>
-          </template>
-        </p-icon>
-      </button>
+              </template>
+            </p-icon>
+            <span
+              class="label"
+            >
+              <slot />
+            </span>
+          </button>
+        </template>
+        Toggle password visibility
+      </p-button-pure>
     </div>
   </template>
   <input
@@ -694,9 +1090,10 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:block}::slotted(input){display:block !important;position:relative !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;width:100% !important;height:3rem !important;margin:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:1px solid #626669 !important;border-radius:0 !important;background-color:#fff !important;opacity:1 !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;text-indent:0 !important;color:#000 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:0.6875rem !important;padding-right:3rem !important;padding-left:3rem !important}::slotted(input:disabled){cursor:not-allowed !important;color:#96989a !important;border-color:#96989a !important;-webkit-text-fill-color:#96989a !important}::slotted(input[readonly]){border-color:#ebebeb !important;background-color:#ebebeb !important}::slotted(input[readonly]:not(:disabled)){color:#626669 !important}button{position:absolute;bottom:0;right:0;margin:0;width:3rem;height:3rem;padding:0.75rem;box-sizing:border-box;outline:1px solid transparent;appearance:none;border:none;text-decoration:none;background:transparent;cursor:pointer;color:#000;transition:color var(--p-transition-duration, .24s) ease;outline-offset:-4px}button::-moz-focus-inner{border:0}button:active{color:#d5001c}button:disabled{color:#96989a;cursor:not-allowed}.root{display:block;position:relative}.label{display:block;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;color:#000;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text--description{margin-top:-0.25rem;padding-bottom:0.5rem;font:normal normal 400 0.75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto}.label__text--description{color:#626669}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}.icon{position:absolute;left:0;bottom:0;color:#626669;padding:0.75rem;pointer-events:none}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
+      :host{display:block;--p-internal-text-field-input-padding-left:calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;--p-internal-text-field-input-padding-right:calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important}:host([hidden]){display:none !important}::slotted(input){display:block !important;width:100% !important;height:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;margin:0 !important;outline:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;border:2px solid #6B6D70 !important;border-radius:4px !important;background:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-indent:0 !important;color:#010205 !important;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;padding:8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important}::slotted(input:disabled){cursor:not-allowed !important;color:#949598 !important;border-color:#949598 !important;-webkit-text-fill-color:#949598 !important}::slotted(input[readonly]){border-color:#D8D8DB !important;background:#D8D8DB !important}.button{position:absolute;bottom:11px;padding:4px;font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;right:calc(9px + 2px)}.button:not([hidden]) ~ .button{right:calc(9px + 2px + calc(calc(6px + 2.125ex) + 4px * 2) * 1)}.icon{position:absolute;bottom:11px;padding:4px;font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;left:calc(9px + 2px);pointer-events:none}.root{display:block;position:relative}.label{display:flex;flex-direction:column;gap:4px;position:relative}.label__text{display:block;position:static;width:fit-content;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#010205;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#535457}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0}
     </style>
     <div
       class="root"
@@ -711,64 +1108,66 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
         </span>
         <slot />
       </label>
-      <button
-        hidden=""
-        tabindex="-1"
-        type="button"
-      >
-        <p-icon
-          aria-hidden="true"
-          class="ssr"
-        >
-          <template
-            shadowroot="open"
-          >
-            <style>
-              :host{display:inline-flex;vertical-align:top}img{filter:none}svg{fill:currentColor}@media(forced-colors:active){svg{fill:canvasText}}.root{display:flex;flex-shrink:0;margin:0;padding:0;box-sizing:border-box;width:1.5rem;height:1.5rem;color:currentColor}
-            </style>
-            <i
-              class="root"
-            >
-              <svg
-                height="100%"
-                viewBox="0 0 24 24"
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4.91 19h1.5L12 12.83 17.59 19h1.5l-6.34-7 6.34-7h-1.5L12 11.17 6.41 5h-1.5l6.34 7-6.34 7z"
-                />
-              </svg>
-            </i>
-          </template>
-        </p-icon>
-      </button>
       <p-icon
         aria-hidden="true"
         class="icon ssr"
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
-            :host{display:inline-flex;vertical-align:top}img{filter:none}svg{fill:currentColor}@media(forced-colors:active){svg{fill:canvasText}}.root{display:flex;flex-shrink:0;margin:0;padding:0;box-sizing:border-box;width:1.5rem;height:1.5rem;color:currentColor}
+            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
           </style>
-          <i
-            class="root"
-          >
-            <svg
-              height="100%"
-              viewBox="0 0 24 24"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.6 14.06 3 19.64 4.35 21 10 15.41a6.49 6.49 0 0 1-1.4-1.35ZM15 3a6 6 0 1 0 6 6 6 6 0 0 0-6-6Zm0 11a5 5 0 1 1 5-5 5 5 0 0 1-5 5Z"
-              />
-            </svg>
-          </i>
+          <img
+            alt=""
+            src="https://cdn.ui.porsche.com/porsche-design-system/icons/search.min.f2755d61c24b6ad037f51d65588be308.svg"
+          />
         </template>
       </p-icon>
+      <p-button-pure
+        aria-hidden="true"
+        class="button ssr"
+        hidden="true"
+        tabindex="-1"
+      >
+        <template
+          shadowroot="open"
+          shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
+        >
+          <style>
+            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
+          </style>
+          <button
+            class="root"
+            type="button"
+          >
+            <p-icon
+              aria-hidden="true"
+              class="icon ssr"
+            >
+              <template
+                shadowroot="open"
+                shadowrootmode="open"
+              >
+                <style>
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light 1ms;width:inherit;height:inherit}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                </style>
+                <img
+                  alt=""
+                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                />
+              </template>
+            </p-icon>
+            <span
+              class="label"
+            >
+              <slot />
+            </span>
+          </button>
+        </template>
+      </p-button-pure>
     </div>
   </template>
   <input
@@ -783,13 +1182,12 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
-      :host{display:block;counter-reset:section !important}[role]{display:block;padding:0;margin:0;color:#000;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-size-adjust:none;-webkit-text-size-adjust:none;overflow-wrap:break-word;hyphens:auto}
+      :host{display:block;counter-reset:p-text-list-counter !important}:host([hidden]){display:none !important}ol,ul{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#010205;margin:0;padding:var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);list-style-type:none}::slotted(*){--p-internal-text-list-padding-top:4px !important;--p-internal-text-list-padding-bottom:16px !important;--p-internal-text-list-ordered-padding-left:2rem !important;--p-internal-text-list-unordered-padding-left:.625rem !important;--p-internal-text-list-list-style-type:"–" !important}::slotted(*)::before{content:counters(p-text-list-counter,'.',lower-latin) var(--p-internal-text-list-pseudo-suffix,'.') !important;counter-increment:p-text-list-counter !important;position:absolute !important;top:0 !important;left:0 !important;transform:translate(-100%,0) !important}
     </style>
-    <ol
-      role="list"
-    >
+    <ol>
       <slot />
     </ol>
   </template>
@@ -799,9 +1197,10 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        ::slotted(*){--pds-text-list-item-ordered-suffix:"";--pds-text-list-item-unordered-width:0.5rem;--pds-text-list-item-unordered-height:1px;--pds-text-list-item-unordered-top:calc(1.5em / 2)}:host{position:relative !important;display:list-item !important;color:inherit !important;list-style-type:none !important;padding-left:2.5rem !important}:host:before{position:absolute !important;left:0 !important;content:counters(section,".",lower-latin) var(--pds-text-list-item-ordered-suffix,".") !important;top:0 !important;width:1.5rem !important;height:auto !important;counter-increment:section !important;text-align:right !important;background-color:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;overflow-wrap:break-word !important;hyphens:auto !important}
+        :host{display:list-item !important;position:relative !important;font:inherit !important;color:inherit !important;list-style-type:inherit !important;padding-left:16px !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-pseudo-suffix:"" !important}
       </style>
       <slot />
     </template>
@@ -813,9 +1212,10 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
   >
     <template
       shadowroot="open"
+      shadowrootmode="open"
     >
       <style>
-        ::slotted(*){--pds-text-list-item-ordered-suffix:"";--pds-text-list-item-unordered-width:0.5rem;--pds-text-list-item-unordered-height:1px;--pds-text-list-item-unordered-top:calc(1.5em / 2)}:host{position:relative !important;display:list-item !important;color:inherit !important;list-style-type:none !important;padding-left:2.5rem !important}:host:before{position:absolute !important;left:0 !important;content:counters(section,".",lower-latin) var(--pds-text-list-item-ordered-suffix,".") !important;top:0 !important;width:1.5rem !important;height:auto !important;counter-increment:section !important;text-align:right !important;background-color:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;text-size-adjust:none !important;-webkit-text-size-adjust:none !important;overflow-wrap:break-word !important;hyphens:auto !important}
+        :host{display:list-item !important;position:relative !important;font:inherit !important;color:inherit !important;list-style-type:inherit !important;padding-left:16px !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-pseudo-suffix:"" !important}
       </style>
       <slot />
     </template>
@@ -830,6 +1230,7 @@ exports[`should render dsr component for PAccordion 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -921,6 +1322,7 @@ button::before {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -978,106 +1380,58 @@ exports[`should render dsr component for PBanner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
-  --p-banner-position-top: 56px;
-  --p-banner-position-bottom: 56px;
-  position: var(--p-banner-position-type,fixed);
-  z-index: var(--p-internal-banner-z-index,99);
-  opacity: 0;
-  left: 0;
-  right: 0;
-  will-change: opacity,transform;
-  display: block !important;
+  --p-banner-position-top: 56px !important;
+  --p-banner-position-bottom: 56px !important;
+  position: fixed !important;
+  top: auto !important;
+  bottom: var(--p-banner-position-bottom) !important;
+  left: max(22px, 10.625vw - 12px) !important;
+  right: max(22px, 10.625vw - 12px) !important;
   margin: 0 !important;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 !important;
   width: auto !important;
-  min-width: 0 !important;
-  max-width: 2560px !important;
+  max-width: 100% !important;
+  z-index: var(--p-internal-banner-z-index,99) !important;
+  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16)) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0) !important;
+}
+:host(.hydrated), :host(.ssr) {
+  transition: visibility 0s linear var(--p-animation-duration,600ms), opacity var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1), transform var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-@keyframes mobileIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes mobileOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-}
-@keyframes desktopIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes desktopOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-}
-@media(min-width:0px) and (max-width:759px) {
-    :host {
-      bottom: var(--p-banner-position-bottom);
-    }
-    :host(.banner--close) {
-      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
-}
-
 @media(min-width:760px) {
-    :host {
-      top: var(--p-banner-position-top);
-    }
-    :host(.banner--close) {
-      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
+  :host {
+    top: var(--p-banner-position-top) !important;
+    bottom: auto !important;
+    left: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    right: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0) !important;
+  }
 }
 
 @media(min-width:1920px) {
-    :host {
-      padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px)) !important;
-    }
+  :host {
+    left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+  }
 }
 
-  .root {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05),0 15px 20px 0 rgba(0,0,0,0.2);
-  }
     </style>
     <p-inline-notification
-      class="root ssr"
+      aria-hidden="true"
+      class="ssr"
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -1086,7 +1440,7 @@ exports[`should render dsr component for PBanner 1`] = `
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -1134,6 +1488,7 @@ h5,p {
         >
           <template
             shadowroot="open"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1147,7 +1502,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -1189,6 +1544,7 @@ img {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1259,6 +1615,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -1315,6 +1672,7 @@ exports[`should render dsr component for PButton 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1382,6 +1740,7 @@ exports[`should render dsr component for PButtonGroup 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1421,6 +1780,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -1491,6 +1851,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -1542,19 +1903,14 @@ exports[`should render dsr component for PButtonTile 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: block;
-  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
-}
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
 }
 ::slotted(picture) {
   position: absolute !important;
@@ -1569,7 +1925,6 @@ exports[`should render dsr component for PButtonTile 1`] = `
   object-fit: cover !important;
 }
 p {
-  color: #FBFCFF;
   max-width: 34.375rem;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1579,15 +1934,18 @@ p {
   font-weight: 600;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 75%;
+  cursor: pointer;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -1595,14 +1953,14 @@ p {
 }
 .content {
   position: absolute;
-  bottom: 0;
   left: 0;
   right: 0;
   display: grid;
   justify-items: start;
-  border-radius: 8px;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   gap: 16px;
+  border-radius: 8px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
   grid-template-rows: auto auto;
   grid-template-columns: auto;
@@ -1640,6 +1998,7 @@ p {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1711,15 +2070,13 @@ exports[`should render dsr component for PCarousel 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
-  max-width: 2560px !important;
-  padding-left: calc(50% - 2560px / 2) !important;
-  padding-right: calc(50% - 2560px / 2) !important;
   box-sizing: content-box !important;
 }
 :host([hidden]) {
@@ -1748,7 +2105,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 
 .header {
   display: grid;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
+  padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
   display: none;
@@ -1761,7 +2118,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__track {
   cursor: grab;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px) !important;
+  padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
   display: flex;
@@ -1799,7 +2156,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .bullet {
   border-radius: 4px;
-  background: #949598;
+  background: #6B6D70;
   transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
@@ -1810,11 +2167,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   .header {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
     display: flex;
@@ -1823,22 +2180,22 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     align-items: end;
   }
   .splide__track {
-    padding: 0 calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px) + calc((100% - clamp(22px, 10.625vw - 12px, 192px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .splide__track {
-    padding: 0 calc(clamp(192px, 50vw - 768px, 512px) + clamp(16px, 1.25vw + 12px, 36px) + calc((min(100%, 2560px) - clamp(192px, 50vw - 768px, 512px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 13) / 14)) !important;
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
 
 @media(max-width:479px) {
   .splide__track {
-    padding-right: calc(clamp(22px, 10.625vw - 12px, 192px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 
@@ -1858,6 +2215,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -1928,6 +2286,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -1975,6 +2334,7 @@ img {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -2045,6 +2405,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -2124,6 +2485,7 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2148,7 +2510,7 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  border: 2px solid #949598 !important;
+  border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
@@ -2214,6 +2576,7 @@ exports[`should render dsr component for PContentWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2223,16 +2586,18 @@ exports[`should render dsr component for PContentWrapper 1`] = `
   display: none !important;
 }
 .root {
-  display: block;
-  margin: 0;
-  padding: 0 clamp(22px, 10.625vw - 12px, 192px);
-  width: auto;
   min-width: 0;
-  max-width: 2560px;
+  padding: 0 max(22px, 10.625vw - 12px);
 }
+@media(min-width:760px) {
+  .root {
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+  }
+}
+
 @media(min-width:1920px) {
   .root {
-    padding: 0 calc(max(0px, (100% - 2560px) / 2) + clamp(192px, 50vw - 768px, 512px));
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
 }
 
@@ -2247,12 +2612,66 @@ exports[`should render dsr component for PContentWrapper 1`] = `
 </p-content-wrapper>
 `;
 
+exports[`should render dsr component for PCrest 1`] = `
+<p-crest
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+a {
+  display: block;
+  text-decoration: none;
+  outline: 0;
+}
+picture {
+  display: block;
+  width: 30px;
+  height: 40px;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+    </style>
+    <picture>
+      <source
+        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x"
+        type="image/webp"
+      />
+      <source
+        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x"
+        type="image/png"
+      />
+      <img
+        alt="Porsche"
+        src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png"
+      />
+    </picture>
+  </template>
+</p-crest>
+`;
+
 exports[`should render dsr component for PDisplay 1`] = `
 <p-display
   class="ssr"
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2306,6 +2725,7 @@ exports[`should render dsr component for PDivider 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2335,6 +2755,7 @@ exports[`should render dsr component for PFieldset 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2375,6 +2796,7 @@ exports[`should render dsr component for PFieldsetWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2415,6 +2837,7 @@ exports[`should render dsr component for PFlex 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2441,6 +2864,7 @@ exports[`should render dsr component for PFlexItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2467,6 +2891,7 @@ exports[`should render dsr component for PGrid 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2494,6 +2919,7 @@ exports[`should render dsr component for PGridItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2520,6 +2946,7 @@ exports[`should render dsr component for PHeading 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2573,6 +3000,7 @@ exports[`should render dsr component for PHeadline 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2626,6 +3054,7 @@ exports[`should render dsr component for PIcon 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2668,6 +3097,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2676,7 +3106,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
   gap: 16px !important;
   place-items: start !important;
   padding: 16px !important;
-  background: #E8EEFD !important;
+  background: #D3E1FF !important;
   border-radius: 4px !important;
 }
 :host([hidden]) {
@@ -2724,6 +3154,7 @@ h5,p {
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -2737,7 +3168,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(31%) sepia(32%) saturate(5493%) hue-rotate(216deg) brightness(90%) contrast(107%);
+  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -2779,6 +3210,7 @@ img {
       <template
         shadowroot="open"
         shadowrootdelegatesfocus="true"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -2849,6 +3281,7 @@ img {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -2903,6 +3336,7 @@ exports[`should render dsr component for PLink 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -2987,6 +3421,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3071,6 +3506,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -3122,6 +3558,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3198,6 +3635,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -3211,7 +3649,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(97%) sepia(55%) saturate(2840%) hue-rotate(180deg) brightness(114%) contrast(103%);
+  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   -webkit-animation: rerender-dark 1ms;
   width: inherit;
   height: inherit;
@@ -3249,19 +3687,14 @@ exports[`should render dsr component for PLinkTile 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: block;
-  cursor: pointer;
 }
 :host([hidden]) {
   display: none !important;
-}
-::slotted(picture),::slotted(img) {
-  transition: transform var(--p-transition-duration, .24s) ease !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
 }
 ::slotted(picture) {
   position: absolute !important;
@@ -3276,7 +3709,6 @@ exports[`should render dsr component for PLinkTile 1`] = `
   object-fit: cover !important;
 }
 p {
-  color: #FBFCFF;
   max-width: 34.375rem;
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3286,15 +3718,17 @@ p {
   font-weight: 600;
 }
 .root {
-  height: 0;
   position: relative;
+  height: 0;
+  overflow: hidden;
   transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
   padding-top: 75%;
 }
 .image-container {
   position: absolute;
-  overflow: hidden;
-  border-radius: 8px;
+  transition: transform var(--p-transition-duration, .24s) ease;
   top: 0;
   left: 0;
   right: 0;
@@ -3302,14 +3736,14 @@ p {
 }
 .content {
   position: absolute;
-  bottom: 0;
   left: 0;
   right: 0;
   display: grid;
   justify-items: start;
-  border-radius: 8px;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   gap: 16px;
+  border-radius: 8px;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
   grid-template-rows: auto auto;
   grid-template-columns: auto;
@@ -3327,7 +3761,6 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -3361,6 +3794,7 @@ p {
           <template
             shadowroot="open"
             shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -3442,6 +3876,297 @@ p {
 </p-link-tile>
 `;
 
+exports[`should render dsr component for PLinkTileModelSignature 1`] = `
+<p-link-tile-model-signature
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(picture) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+::slotted(img) {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+h2,h3,h4,h5,h6 {
+  margin: 0 !important;
+}
+.root {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transform: translate3d(0,0,0);
+  border-radius: 8px;
+  color: #FBFCFF;
+  padding-top: 133.33%;
+}
+.image-container {
+  position: absolute;
+  transition: transform var(--p-transition-duration, .24s) ease;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-items: start;
+  gap: 16px;
+  border-radius: 8px;
+  flex-direction: column;
+  bottom: 0;
+  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+}
+.model {
+  position: absolute;
+  top: clamp(16px, 1.25vw + 12px, 36px);
+  left: clamp(16px, 1.25vw + 12px, 36px);
+}
+.heading {
+  margin: 0;
+  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+}
+.link-group {
+  display: flex;
+  width: 100%;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+.link-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media(min-width:480px) {
+  .link-group {
+    flex-flow: row wrap;
+    align-items: center;
+  }
+}
+
+@media (forced-colors: active) {
+  .content {
+    background: rgba(0,0,0,0.7);
+  }
+}
+
+
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <p-model-signature
+        class="model ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  pointer-events: none;
+  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+}
+          </style>
+          <img
+            alt="911"
+            height="36"
+            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+          />
+        </template>
+      </p-model-signature>
+      <div
+        class="content"
+      >
+        <a
+          aria-hidden="true"
+          class="link-overlay"
+          href="#"
+          tabindex="-1"
+        />
+        <h2
+          class="heading"
+        />
+        <div
+          class="link-group"
+          role="group"
+        >
+          <slot
+            name="primary"
+          />
+          <slot
+            name="secondary"
+          />
+        </div>
+      </div>
+    </div>
+  </template>
+  <p-link
+    class="ssr"
+    slot="primary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 54px;
+  min-height: 54px;
+  box-sizing: border-box;
+  outline: 0;
+  text-align: left;
+  appearance: none;
+  text-decoration: none;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: #FBFCFF;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  padding: 13px 26px;
+  gap: 8px;
+}
+.label {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+}
+
+      </style>
+      <a
+        class="root"
+        href="#"
+        target="_self"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </a>
+    </template>
+    Some label
+  </p-link>
+  <p-link
+    class="ssr"
+    slot="secondary"
+  >
+    <template
+      shadowroot="open"
+      shadowrootdelegatesfocus="true"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 54px;
+  min-height: 54px;
+  box-sizing: border-box;
+  outline: 0;
+  text-align: left;
+  appearance: none;
+  text-decoration: none;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: transparent;
+  color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  padding: 13px 26px;
+  gap: 8px;
+}
+.label {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+}
+
+      </style>
+      <a
+        class="root"
+        href="#"
+        target="_self"
+      >
+        <span
+          class="label"
+        >
+          <slot />
+        </span>
+      </a>
+    </template>
+    Some label
+  </p-link>
+</p-link-tile-model-signature>
+`;
+
 exports[`should render dsr component for PMarque 1`] = `
 <p-marque
   class="ssr"
@@ -3449,6 +4174,7 @@ exports[`should render dsr component for PMarque 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3464,19 +4190,6 @@ a {
   display: block;
   text-decoration: none;
   outline: 0;
-}
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
 }
 picture {
   display: block;
@@ -3530,6 +4243,7 @@ exports[`should render dsr component for PModal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3543,8 +4257,8 @@ exports[`should render dsr component for PModal 1`] = `
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  opacity: 0 !important;
   visibility: hidden !important;
+  transition: visibility 0s linear .2s !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -3558,9 +4272,11 @@ exports[`should render dsr component for PModal 1`] = `
   right: 0 !important;
   bottom: 0 !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
   pointer-events: none !important;
+  opacity: 0 !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1),--webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -3586,15 +4302,16 @@ h2 {
 .root {
   position: relative;
   box-sizing: border-box;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
+  opacity: 0;
+  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
-  min-width: 17.2rem;
-  max-width: 96rem;
+  min-width: 276px;
+  max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) clamp(22px, 10.625vw - 12px, 192px);
+  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
 .dismiss {
@@ -3607,7 +4324,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) clamp(22px, 10.625vw - 12px, 192px);
+    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
 
@@ -3626,6 +4343,7 @@ h2 {
         <template
           shadowroot="open"
           shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -3696,6 +4414,7 @@ h2 {
             >
               <template
                 shadowroot="open"
+                shadowrootmode="open"
               >
                 <style>
                   :host {
@@ -3751,6 +4470,7 @@ exports[`should render dsr component for PModelSignature 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3781,6 +4501,7 @@ exports[`should render dsr component for PPagination 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -3877,6 +4598,7 @@ span[aria-disabled] {
             >
               <template
                 shadowroot="open"
+                shadowrootmode="open"
               >
                 <style>
                   :host {
@@ -3890,7 +4612,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -3935,6 +4657,7 @@ img {
             >
               <template
                 shadowroot="open"
+                shadowrootmode="open"
               >
                 <style>
                   :host {
@@ -3948,7 +4671,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(65%) sepia(6%) saturate(119%) hue-rotate(187deg) brightness(90%) contrast(92%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -3984,6 +4707,7 @@ exports[`should render dsr component for PPopover 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4109,6 +4833,7 @@ button::before {
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -4160,6 +4885,7 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4184,7 +4910,7 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  border: 2px solid #949598 !important;
+  border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 50% !important;
@@ -4247,6 +4973,7 @@ exports[`should render dsr component for PScroller 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4286,7 +5013,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -4389,6 +5116,7 @@ button {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -4439,6 +5167,7 @@ img {
           >
             <template
               shadowroot="open"
+              shadowrootmode="open"
             >
               <style>
                 :host {
@@ -4488,6 +5217,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4513,6 +5243,7 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4554,7 +5285,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
   hyphens: auto;
-  color: #949598;
+  color: #6B6D70;
 }
 
 .icon {
@@ -4579,6 +5310,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4596,7 +5328,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #949598 !important;
+  border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -4683,6 +5415,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -4731,6 +5464,7 @@ exports[`should render dsr component for PSpinner 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4748,7 +5482,7 @@ svg {
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
-  stroke: #949598;
+  stroke: #6B6D70;
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
@@ -4837,6 +5571,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -4857,6 +5592,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -4896,7 +5632,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -4999,6 +5735,7 @@ button {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -5049,6 +5786,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -5102,6 +5840,7 @@ exports[`should render dsr component for PStepperHorizontalItem 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5192,6 +5931,7 @@ exports[`should render dsr component for PSwitch 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5223,7 +5963,7 @@ exports[`should render dsr component for PSwitch 1`] = `
   height: 28px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 2px solid #949598;
+  border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
@@ -5291,95 +6031,275 @@ exports[`should render dsr component for PTable 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: block !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  color: #010205 !important;
+  text-align: left !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
+  --p-internal-table-border-color: #D8D8DB !important;
+  --p-internal-table-head-cell-icon-filter: none !important;
+}
 .caption {
-  margin-bottom: 8px;
-}
-.root {
-  position: relative;
-}
-.scroll-area {
-  overflow: auto visible;
-  outline: 1px solid transparent;
-  outline-offset: -1px;
-}
-.scroll-area::-moz-focus-inner {
-  border: 0;
+  margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
 }
 .table {
-  position: relative;
-  width: 100%;
   display: table;
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+}
+    </style>
+    <p-scroller
+      class="ssr"
+    >
+      <template
+        shadowroot="open"
+        shadowrootmode="open"
+      >
+        <style>
+          :host {
+  display: block !important;
+  height: inherit !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  text-align: left;
-  color: #010205;
-  white-space: nowrap;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
 }
-.scroll-trigger {
+
+.root {
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 4px;
+  overflow: auto hidden;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-flex;
+  min-height: 28px;
+  min-width: 100%;
+  vertical-align: top;
+  outline: 0;
+}
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.trigger {
   position: absolute;
   top: 0;
-  right: 1px;
+  bottom: 0;
   width: 1px;
-  height: 1px;
   visibility: hidden;
 }
-.scroll-indicator {
-  position: absolute;
-  top: 0;
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
   right: 0;
-  bottom: 0;
-  padding-left: 32px;
+}
+.action-prev {
+  position: relative;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+  margin-left: -1px;
+  grid-area: 1 / 1 / 1 / 1;
+  justify-content: flex-start;
+  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
+  visibility: hidden;
 }
-.scroll-indicator::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 3rem;
-  pointer-events: auto;
+.action-prev button {
+  margin-left: 8px;
 }
-.scroll-button {
-  padding: 0.75rem;
-  pointer-events: auto;
+.action-next {
+  position: relative;
+  padding: 4px 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  margin-right: -1px;
+  grid-area: 1 / 3 / 1 / 3;
+  justify-content: flex-end;
+  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
+  visibility: hidden;
 }
-@media(min-width:1000px) {
-  .caption {
-    margin-bottom: 16px;
-  }
+.action-next button {
+  margin-right: 8px;
 }
 
-    </style>
-    <div
-      class="root"
-    >
-      <div
-        class="scroll-area"
-      >
+        </style>
         <div
-          class="table"
-          role="table"
+          class="root"
         >
-          <slot />
-          <span
-            class="scroll-trigger"
-          />
+          <div
+            class="scroll-area"
+          >
+            <div
+              class="scroll-wrapper"
+            >
+              <slot />
+              <div
+                class="trigger"
+              />
+              <div
+                class="trigger"
+              />
+            </div>
+          </div>
+          <div
+            class="action-prev"
+          >
+            <button
+              aria-hidden="true"
+              aria-label="prev"
+              tabindex="-1"
+              type="button"
+            >
+              <p-icon
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                  />
+                </template>
+              </p-icon>
+            </button>
+          </div>
+          <div
+            class="action-next"
+          >
+            <button
+              aria-hidden="true"
+              aria-label="next"
+              tabindex="-1"
+              type="button"
+            >
+              <p-icon
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                  />
+                </template>
+              </p-icon>
+            </button>
+          </div>
         </div>
+      </template>
+      <div
+        class="table"
+        role="table"
+      >
+        <slot />
       </div>
-    </div>
+    </p-scroller>
   </template>
   Some child
 </p-table>
@@ -5392,6 +6312,7 @@ exports[`should render dsr component for PTableBody 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5414,13 +6335,13 @@ exports[`should render dsr component for PTableCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: table-cell !important;
-  padding: 0.75rem !important;
+  padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
-  border-bottom: 1px solid #D8D8DB !important;
   white-space: nowrap !important;
   vertical-align: middle;
 }
@@ -5441,10 +6362,14 @@ exports[`should render dsr component for PTableHead 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: table-header-group !important;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) !important;
+  line-height: calc(6px + 2.125ex) !important;
+  font-weight: 600 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5464,14 +6389,13 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: table-cell !important;
-  padding: 0.125rem 0.75rem 0.5rem !important;
-  border-bottom: 1px solid #949598 !important;
+  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
-  font-weight: 600 !important;
   white-space: nowrap !important;
 }
 :host([hidden]) {
@@ -5493,6 +6417,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5515,10 +6440,14 @@ exports[`should render dsr component for PTableRow 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
   display: table-row !important;
+  border-top: 1px solid var(--p-internal-table-border-color) !important;
+  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5537,6 +6466,7 @@ exports[`should render dsr component for PTabs 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5554,6 +6484,7 @@ exports[`should render dsr component for PTabs 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -5631,6 +6562,7 @@ exports[`should render dsr component for PTabs 1`] = `
         >
           <template
             shadowroot="open"
+            shadowrootmode="open"
           >
             <style>
               :host {
@@ -5670,7 +6602,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -5773,6 +6705,7 @@ button {
                   >
                     <template
                       shadowroot="open"
+                      shadowrootmode="open"
                     >
                       <style>
                         :host {
@@ -5823,6 +6756,7 @@ img {
                   >
                     <template
                       shadowroot="open"
+                      shadowrootmode="open"
                     >
                       <style>
                         :host {
@@ -5888,6 +6822,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -5965,6 +6900,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
     >
       <template
         shadowroot="open"
+        shadowrootmode="open"
       >
         <style>
           :host {
@@ -6004,7 +6940,7 @@ button {
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -6107,6 +7043,7 @@ button {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -6157,6 +7094,7 @@ img {
               >
                 <template
                   shadowroot="open"
+                  shadowrootmode="open"
                 >
                   <style>
                     :host {
@@ -6211,6 +7149,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6243,6 +7182,7 @@ exports[`should render dsr component for PTag 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6306,6 +7246,7 @@ exports[`should render dsr component for PTagDismissible 1`] = `
   <template
     shadowroot="open"
     shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6370,6 +7311,7 @@ button {
       >
         <template
           shadowroot="open"
+          shadowrootmode="open"
         >
           <style>
             :host {
@@ -6416,6 +7358,7 @@ exports[`should render dsr component for PText 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6472,6 +7415,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6491,7 +7435,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #949598 !important;
+  border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -6590,6 +7534,7 @@ exports[`should render dsr component for PTextList 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6631,6 +7576,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6660,6 +7606,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
@@ -6677,7 +7624,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border: 2px solid #949598 !important;
+  border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -6756,12 +7703,13 @@ exports[`should render dsr component for PToast 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootmode="open"
   >
     <style>
       :host {
   position: fixed !important;
-  left: clamp(22px, 10.625vw - 12px, 192px) !important;
-  right: clamp(22px, 10.625vw - 12px, 192px) !important;
+  left: max(22px, 10.625vw - 12px) !important;
+  right: max(22px, 10.625vw - 12px) !important;
   --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
   bottom: var(--p-internal-toast-position-bottom) !important;
   max-width: 42rem !important;
@@ -6770,4 +7718,52 @@ exports[`should render dsr component for PToast 1`] = `
     </style>
   </template>
 </p-toast>
+`;
+
+exports[`should render dsr component for PWordmark 1`] = `
+<p-wordmark
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  outline: 0 !important;
+  box-sizing: content-box !important;
+  height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+a {
+  display: block;
+  text-decoration: none;
+  height: inherit;
+  outline: 0;
+}
+svg {
+  display: block;
+  height: inherit;
+  fill: #010205;
+}
+    </style>
+    <svg
+      viewBox="0 0 4383 300"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>
+        Porsche
+      </title>
+      <path
+        d="M492 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h424zm6-143v65c0 7.8-4.2 12-12 12H68V66h418c7.8 0 12 4.2 12 12zm220 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h407c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H718zm401-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H724c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h395zm657-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-351v79h-68V0h492c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-418v89h418zm155-81c0-48.1 25.9-74 74-74h482v56h-476c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h412c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-482v-56h476c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-412c-48.1 0-74-25.9-74-74V74zm643 0c0-48.1 25.9-74 74-74h470v66h-464c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h464v66h-470c-48.1 0-74-25.9-74-74V74zM3718 0v300h-68V183h-397v117h-68V0h68v117h397V0h68zm148 56v66h517v56h-517v66h517v56h-585V0h585v56h-517z"
+      />
+    </svg>
+  </template>
+</p-wordmark>
 `;

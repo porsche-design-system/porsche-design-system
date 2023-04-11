@@ -253,6 +253,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-checkbox-wrapper':
       case 'p-fieldset':
       case 'p-link-tile':
+      case 'p-link-tile-model-signature':
       case 'p-modal':
       case 'p-radio-button-wrapper':
       case 'p-segmented-control':
@@ -308,6 +309,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-link-tile': {
         props: { label: 'Some label', description: 'Some description' },
         children: '<DummyImg uxpId="dummy-img" />',
+      },
+      'p-link-tile-model-signature': {
+        props: { heading: 'Some heading' },
+        children: [
+          '<DummyImg uxpId="dummy-img" />',
+          '<Link slot="primary" variant="primary" theme="dark" href="#" uxpId="link-primary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
+          '<Link slot="secondary" variant="secondary" theme="dark" href="#" uxpId="link-secondary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
+        ].join(glue),
       },
       'p-modal': {
         props: { heading: 'Heading', open: true },

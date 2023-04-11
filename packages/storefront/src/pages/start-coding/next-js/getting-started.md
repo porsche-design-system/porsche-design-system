@@ -41,7 +41,7 @@ You are ready to start building your own application.
 
 ## Integration
 
-<p-inline-notification heading="Attention" state="warning" persistent="true">
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
 The following examples use the <strong>ssr</strong> sub-package of <strong>@porsche-design-system/components-react/ssr</strong>.<br>
 This sub-package is a special build of the Porsche Design System Components that renders different markup on the server than in the browser. While this breaks the rule of SSR/SSG where browser markup should always be identical to server markup, this is the only way to achieve SSR/SSG with web components and Shadow DOM.<br>
 The two environments are detected by the <strong>process.browser</strong> flag which is replaced with a boolean value at build time. In the browser the components are essentially the "regular" React components of <strong>@porsche-design-system/components-react</strong>.<br>
@@ -125,7 +125,7 @@ export default function Document() {
 }
 ```
 
-<p-inline-notification heading="Important" state="warning" persistent="true">
+<p-inline-notification heading="Important" state="warning" dismiss-button="false">
 Applying the <a href="partials/dsr-ponyfill">getDSRPonyfill()</a> partial is <strong>crucial</strong> for the server build to work in browsers that don't <a href="https://caniuse.com/declarative-shadow-dom" target="_blank">support Declarative Shadow DOM</a>, yet. 
 </p-inline-notification>
 

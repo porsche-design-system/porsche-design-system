@@ -16,10 +16,13 @@ const components: Component[] = [
   'carousel',
   'checkbox-wrapper',
   'content-wrapper',
+  'crest',
   'display',
   'divider',
   'fieldset',
   'fieldset-wrapper',
+  'flex',
+  'grid',
   'heading',
   'headline',
   'icon',
@@ -28,8 +31,10 @@ const components: Component[] = [
   'link-pure',
   'link-social',
   'link-tile',
+  'link-tile-model-signature',
+  'marque',
   'modal',
-  // 'overview',
+  'model-signature',
   'pagination',
   'popover',
   'radio-button-wrapper',
@@ -39,21 +44,24 @@ const components: Component[] = [
   'spinner',
   'stepper-horizontal',
   'switch',
+  'table',
   'tabs',
   'tabs-bar',
   'tag',
   'tag-dismissible',
+  'text',
   'text-field-wrapper',
   'text-list',
   'textarea-wrapper',
   'toast-basic',
+  'wordmark',
 ];
 
 const scenarioPopover = async (page: Page) => {
   await openPopoversAndHighlightSpacer(page);
 };
 
-const scenarioModal = async (page: Page) => {
+const scenarioModalOrBanner = async (page: Page) => {
   await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
 };
 
@@ -65,7 +73,7 @@ it.each(components)('should have no visual regression for component in high-cont
       `/#${component}`,
       {
         ...(component === 'popover' && { scenario: scenarioPopover }),
-        ...(component === 'modal' && { scenario: scenarioModal }),
+        ...(['modal', 'banner'].includes(component) && { scenario: scenarioModalOrBanner }),
         forcedColorsEnabled: true,
         prefersColorScheme: 'light',
       }
@@ -81,7 +89,7 @@ it.each(components)('should have no visual regression for component in high-cont
       `/#${component}`,
       {
         ...(component === 'popover' && { scenario: scenarioPopover }),
-        ...(component === 'modal' && { scenario: scenarioModal }),
+        ...(['modal', 'banner'].includes(component) && { scenario: scenarioModalOrBanner }),
         forcedColorsEnabled: true,
         prefersColorScheme: 'dark',
       }

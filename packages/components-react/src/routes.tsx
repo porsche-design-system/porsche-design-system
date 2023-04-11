@@ -28,6 +28,11 @@ export const routes: RouteType[] = [
     element: <fromPages.OverviewPage />,
   },
   {
+    name: 'Overview Flaky',
+    path: '/overview-flaky',
+    element: <fromPages.OverviewFlakyPage />,
+  },
+  {
     name: 'Overview Notifications',
     path: '/overview-notifications',
     element: <fromPages.OverviewNotificationsPage />,
@@ -72,14 +77,24 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
-    name: 'Carousel Example Events',
-    path: '/carousel-example-events',
-    element: <fromExamples.CarouselExampleEventsPage />,
+    name: 'Banner Example',
+    path: '/banner-example',
+    element: <fromExamples.BannerExamplePage />,
   },
   {
     name: 'Carousel Example Dynamic Slides',
     path: '/carousel-example-dynamic-slides',
     element: <fromExamples.CarouselExampleDynamicSlidesPage />,
+  },
+  {
+    name: 'Carousel Example Events',
+    path: '/carousel-example-events',
+    element: <fromExamples.CarouselExampleEventsPage />,
+  },
+  {
+    name: 'Carousel Example Jump to Slide',
+    path: '/carousel-example-jump-to-slide',
+    element: <fromExamples.CarouselExampleJumpToSlidePage />,
   },
   {
     name: 'Inline Notification Example Action Button',
