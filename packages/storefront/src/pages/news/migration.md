@@ -1,4 +1,4 @@
-# Porsche Design System V3 Migration Guide
+# Porsche Design System 3 Migration Guide
 
 <p-inline-notification heading="Important note" state="warning" dismiss-button="false">
   Porsche Design System 2 support will end on June 30th, 2023.<br>
