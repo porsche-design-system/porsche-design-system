@@ -4,7 +4,9 @@
   import { ref } from 'vue';
 
   const tabIndex = ref<number>();
-  const onUpdate = (e: TabsBarUpdateEvent): number => (tabIndex.value = e.activeTabIndex);
+  const onUpdate = (e: TabsBarUpdateEvent): void => {
+    tabIndex.value = e.activeTabIndex;
+  };
 </script>
 
 <template>

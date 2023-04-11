@@ -3,8 +3,12 @@
   import { ref } from 'vue';
 
   const isActive = ref(false);
-  const onShow = (): boolean => (isActive.value = true);
-  const onDismiss = (): boolean => (isActive.value = false);
+  const onShow = (): void => {
+    isActive.value = true;
+  };
+  const onDismiss = (): void => {
+    isActive.value = false;
+  };
 </script>
 
 <template>

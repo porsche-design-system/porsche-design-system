@@ -5,8 +5,10 @@
 
   const activeSlideIndex = ref(1);
 
-  const onUpdate = (e: CarouselUpdateEvent): number => (activeSlideIndex.value = e.activeIndex);
-  const onButtonClick = (e: MouseEvent) => {
+  const onUpdate = (e: CarouselUpdateEvent): void => {
+    activeSlideIndex.value = e.activeIndex;
+  };
+  const onButtonClick = (e: MouseEvent): void => {
     activeSlideIndex.value = parseInt((e.target as HTMLButtonElement).innerText) - 1;
   };
 </script>

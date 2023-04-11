@@ -4,9 +4,12 @@
 
   const amountOfSlides = ref(3);
 
-  const onAddClick = (): number => (amountOfSlides.value = amountOfSlides.value + 1);
-  const onRemoveClick = (): number =>
-    (amountOfSlides.value = amountOfSlides.value === 0 ? 0 : amountOfSlides.value - 1);
+  const onAddClick = (): void => {
+    amountOfSlides.value = amountOfSlides.value + 1;
+  };
+  const onRemoveClick = (): void => {
+    amountOfSlides.value = amountOfSlides.value === 0 ? 0 : amountOfSlides.value - 1;
+  };
 </script>
 
 <template>

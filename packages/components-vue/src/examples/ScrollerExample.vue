@@ -7,8 +7,9 @@
     scrollPosition: 220,
     isSmooth: false,
   });
-  const onClick = (scrollPosition: number): ScrollerScrollToPosition =>
-    (scrollToPosition.value = { scrollPosition: scrollPosition, isSmooth: true });
+  const onClick = (scrollPosition: number): void => {
+    scrollToPosition.value = { scrollPosition: scrollPosition, isSmooth: true };
+  };
 </script>
 
 <template v-html="style">

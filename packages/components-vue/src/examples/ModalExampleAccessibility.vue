@@ -3,8 +3,12 @@
   import { ref } from 'vue';
 
   const isModalOpen = ref(false);
-  const onOpen = (): boolean => (isModalOpen.value = true);
-  const onDismiss = (): boolean => (isModalOpen.value = false);
+  const onOpen = (): void => {
+    isModalOpen.value = true;
+  };
+  const onDismiss = (): void => {
+    isModalOpen.value = false;
+  };
 </script>
 
 <template>
