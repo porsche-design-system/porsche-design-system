@@ -120,11 +120,11 @@ const Component1 = styled.div({
 - import { font } from '@porsche-design-system/utilities';
 + import { fontFamily, fontWeight, fontSizeText, fontLineHeight } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 
-const Component1 = styled.div({
+const Component1 = styled.p({
 - fontFamily: font.family,
 + fontFamily: fontFamily,
 
-- fontWeight: font.weight.{thin|regular|semibold|bold},
+- fontWeight: font.weight.{thin|regular|semibold|bold}, // "thin" removed entirely
 + fontWeight: fontWeight.{regular|semiBold|bold}, // or `fontWeight{Regular|SemiBold|Bold}` as single import
 
 - ...font.size.{xSmall|small|medium|large|xLarge},
@@ -247,4 +247,235 @@ const Component2 = styled.a({
 
 ## 👹 Breaking Changes (SCSS)
 
-tbd.
+### Variables
+
+#### Colors
+
+With the new Porsche design language, the color theme got reworked completely to achieve a monochrome look. For further
+information, have a look at [theme styles](styles/theme).
+
+```diff
+- @import '@porsche-design-system/utilities/scss';
++ @use '@porsche-design-system/components-js/styles' as *;
+
+div {
+- background: $p-color-brand;
+- background: $p-color-theme-light-brand;
+- background: $p-color-default;
+- background: $p-color-theme-light-default;
++ background: $pds-theme-light-primary;
+
+- background: $p-color-background-default;
+- background: $p-color-theme-light-background-default;
++ background: $pds-theme-light-background-base;
+- background: $p-color-background-surface;
+- background: $p-color-theme-light-background-surface;
++ background: $pds-theme-light-background-surface;
+- background: $p-color-background-shading;
+- background: $p-color-theme-light-background-shading;
++ background: $pds-theme-light-background-shading;
+
+- background: $p-color-neutral-contrast-low;
+- background: $p-color-theme-light-neutral-contrast-low;
++ background: $pds-theme-light-contrast-low;
+- background: $p-color-neutral-contrast-medium;
+- background: $p-color-theme-light-neutral-contrast-medium;
++ background: $pds-theme-light-contrast-medium;
+- background: $p-color-neutral-contrast-high;
+- background: $p-color-theme-light-neutral-contrast-high;
++ background: $pds-theme-light-contrast-high;
+
+- background: $p-color-notification-success;
+- background: $p-color-theme-light-notification-success;
++ background: $pds-theme-light-notification-success;
+- background: $p-color-notification-success-soft;
+- background: $p-color-theme-light-notification-success-soft;
++ background: $pds-theme-light-notification-success-soft;
+- background: $p-color-notification-warning;
+- background: $p-color-theme-light-notification-warning;
++ background: $pds-theme-light-notification-warning;
+- background: $p-color-notification-warning-soft;
+- background: $p-color-theme-light-notification-warning-soft;
++ background: $pds-theme-light-notification-warning-soft;
+- background: $p-color-notification-error;
+- background: $p-color-theme-light-notification-error;
++ background: $pds-theme-light-notification-error;
+- background: $p-color-notification-error-soft;
+- background: $p-color-theme-light-notification-error-soft;
++ background: $pds-theme-light-notification-error-soft;
+- background: $p-color-notification-neutral;
+- background: $p-color-theme-light-notification-neutral;
++ background: $pds-theme-light-notification-info;
+- background: $p-color-notification-neutral-soft;
+- background: $p-color-theme-light-notification-neutral-soft;
++ background: $pds-theme-light-notification-info-soft;
+
+- background: $p-color-state-hover;
+- background: $p-color-theme-light-state-hover;
++ background: $pds-theme-light-state-hover;
+- background: $p-color-state-active;
+- background: $p-color-theme-light-state-active;
++ background: $pds-theme-light-state-active;
+- background: $p-color-state-focus;
+- background: $p-color-theme-light-state-focus;
++ background: $pds-theme-light-state-focus;
+- background: $p-color-state-disabled;
+- background: $p-color-theme-light-state-disabled;
++ background: $pds-theme-light-state-disabled;
+
+- background: $p-color-external-{facebook|google|instagram|…}; // removed entirely
+}
+```
+
+#### Spacings
+
+With the new Porsche design language, fluid spacings in addition to static ones are introduced. For further information,
+have a look at [spacing styles](styles/spacing).
+
+```diff
+- @import '@porsche-design-system/utilities/scss';
++ @use '@porsche-design-system/components-js/styles' as *;
+
+div {
+- margin: $p-layout-x-small;
++ margin: $pds-spacing-static-x-small;
+
+- margin: $p-layout-small;
++ margin: $pds-spacing-static-small;
+
+- margin: $p-layout-medium;
++ margin: $pds-spacing-static-medium;
+
+- margin: $p-layout-large;
++ margin: $pds-spacing-static-large;
+
+- margin: $p-layout-x-large;
++ margin: $pds-spacing-static-x-large;
+
+- margin: $p-layout-xx-large;
++ margin: $pds-spacing-static-xx-large;
+
+- margin: $p-spacing-24; // removed entirely
+- margin: $p-spacing-40; // removed entirely
+- margin: $p-spacing-56; // removed entirely
+- margin: $p-spacing-64; // removed entirely
+- margin: $p-spacing-72; // removed entirely
+}
+```
+
+#### Font
+
+```diff
+- @import '@porsche-design-system/utilities/scss';
++ @use '@porsche-design-system/components-js/styles' as *;
+
+p {
+- font-family: $p-font-family;
++ font-family: $pds-font-family;
+
+- font-weight: $p-font-weight-{thin|regular|semibold|bold}; // "thin" removed entirely
++ font-weight: $pds-font-weight-{regular|semi-bold|bold};
+
+- font-size: $p-font-size-{x-small|small|medium|large|x-large};
++ font-size: $pds-font-size-{x-small|small|medium|large|x-large};
++ line-height: $pds-font-line-height;
+}
+```
+
+### Functions
+
+#### Media Query / Breakpoints
+
+`p-media-query()` was replaced by `pds-media-query-min()`, `pds-media-query-max()` and `pds-media-query-min-max()`.
+Furthermore, the functions accept only the predefined breakpoints from `base` to `xxl` and no custom breakpoints
+anymore. For further information, have a look at [media query styles](styles/media-query).
+
+```diff
+- @import '@porsche-design-system/utilities/scss';
++ @use '@porsche-design-system/components-js/styles' as *;
+
+div {
+  color: 'royalblue',
+
+  // up to predefined breakpoint xs apply color black
+  @include pds-media-query-max('xs') {
+    color: 'black'
+  }
+
+  // from predefined breakpoint xs to m apply color aqua
+-  @include p-media-query('xs', 'm') {
++  @include pds-media-query-min-max('xs', 'm') {
+    color: 'aqua'
+  },
+
+  // from predefined breakpoint m apply color deeppink
+-  @include p-media-query('m') {
++  @include pds-media-query-min('m') {
+    color: 'deeppink'
+  }
+}`;
+```
+
+`$p-breakpoint` map key `xxs` is now `base`. For further information, have a look at
+[media query styles](styles/media-query).
+
+```diff
+- @import '@porsche-design-system/utilities/scss';
++ @use '@porsche-design-system/components-js/styles' as *;
+
+div {
+- min-width: map-get($p-breakpoint, 'xxs');
++ min-width: map-get($pds-breakpoints, 'base');
+}
+```
+
+#### Typography
+
+With the new Porsche design language, fluid typography was introduced. For further information, have a look at
+[typography styles](styles/typography).
+
+```diff
+- @import '@porsche-design-system/utilities/scss';
++ @use '@porsche-design-system/components-js/styles' as *;
+
+h1 {
+- @include p-title-large;
++ @include pds-display-large;
+}
+
+h2 {
+- @include p-headline-{1|2|3|4|5};
++ @include pds-heading-{xx-large|x-large|large|medium|small};
+}
+
+p {
+- @include p-text-{x-small|small|medium|large|x-large};
++ @include pds-text-{x-small|small|medium|large|x-large};
+}
+```
+
+#### State
+
+With the new Porsche design language, the focus outline got blue with rounded corners. For further information, have a
+look at [focus styles](styles/focus).
+
+```diff
+- @import '@porsche-design-system/utilities/scss';
++ @use '@porsche-design-system/components-js/styles' as *;
+
+a {
+- @include p-focus;
++ @include pds-focus;
+}
+
+// pseudo and color option is not supported anymore
+a {
+- @include p-focus($p-color-state-focus, 1px, '::before');
++ @include pds-focus(1px);
+}
+```
+
+### Helper
+
+`p-generate-font-definition()`, `p-generate-type-scale()`, `p-calculate-line-height()`, `p-px-to-rem()` and
+`p-rem-to-px()` were removed.
