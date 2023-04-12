@@ -1,7 +1,7 @@
 <template>
   <header>
     <router-link to="/" v-slot="{ href, navigate }">
-      <p-marque :href="href" @click="navigate"></p-marque>
+      <p-wordmark :href="href" @click="navigate"></p-wordmark>
     </router-link>
 
     <p-heading class="spacing-mt-8" size="medium" tag="h1" align="center"> Design System </p-heading>
