@@ -124,7 +124,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -243,7 +243,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -366,7 +366,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -489,7 +489,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -703,7 +703,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -730,7 +730,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -857,7 +857,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                       />
                     </template>
                   </p-icon>
@@ -884,7 +884,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                       />
                     </template>
                   </p-icon>
@@ -1062,7 +1062,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/view.min.cd78cae7309f44d941e9264047e3efa0.svg"
+                  src="http://localhost:3001/icons/view.min.cd78cae7309f44d941e9264047e3efa0.svg"
                 />
               </template>
             </p-icon>
@@ -1121,7 +1121,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/search.min.f2755d61c24b6ad037f51d65588be308.svg"
+            src="http://localhost:3001/icons/search.min.f2755d61c24b6ad037f51d65588be308.svg"
           />
         </template>
       </p-icon>
@@ -1156,7 +1156,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                  src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
                 />
               </template>
             </p-icon>
@@ -1352,7 +1352,7 @@ img {
               </style>
               <img
                 alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
+                src="http://localhost:3001/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
               />
             </template>
           </p-icon>
@@ -1519,7 +1519,7 @@ img {
             </style>
             <img
               alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+              src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
             />
           </template>
         </p-icon>
@@ -1645,7 +1645,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
                   />
                 </template>
               </p-icon>
@@ -1881,7 +1881,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
           />
         </template>
       </p-icon>
@@ -2316,7 +2316,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
+                    src="http://localhost:3001/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
                   />
                 </template>
               </p-icon>
@@ -2435,7 +2435,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+                    src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
                   />
                 </template>
               </p-icon>
@@ -2649,16 +2649,16 @@ img {
     </style>
     <picture>
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
-        src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png"
+        src="http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png"
       />
     </picture>
   </template>
@@ -3085,7 +3085,7 @@ img {
     </style>
     <img
       alt=""
-      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+      src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
     />
   </template>
 </p-icon>
@@ -3185,7 +3185,7 @@ img {
         </style>
         <img
           alt=""
-          src="https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+          src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
         />
       </template>
     </p-icon>
@@ -3311,7 +3311,7 @@ img {
               </style>
               <img
                 alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
               />
             </template>
           </p-icon>
@@ -3536,7 +3536,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
           />
         </template>
       </p-icon>
@@ -3665,7 +3665,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
           />
         </template>
       </p-icon>
@@ -4008,7 +4008,7 @@ img {
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -4212,25 +4212,25 @@ img {
     <picture>
       <source
         media="(min-width: 1300px)"
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x"
         type="image/webp"
       />
       <source
         media="(min-width: 1300px)"
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x"
         type="image/png"
       />
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.783639706bead66b2d56e3b8b64bd61f@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.760a57efa93d4e7e16e26128ec7ead46@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.1726036a7829347e1e24d1eb54fc0d64@3x.webp 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.783639706bead66b2d56e3b8b64bd61f@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.760a57efa93d4e7e16e26128ec7ead46@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.1726036a7829347e1e24d1eb54fc0d64@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.020244b41a29323e2a7932a264514cdf@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.fd545cea4298f5d797246d5805711646@3x.png 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.020244b41a29323e2a7932a264514cdf@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.fd545cea4298f5d797246d5805711646@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
-        src="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png"
+        src="http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png"
       />
     </picture>
   </template>
@@ -4444,7 +4444,7 @@ img {
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                  src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
                 />
               </template>
             </p-icon>
@@ -4488,7 +4488,7 @@ img {
     <img
       alt="911"
       height="36"
-      src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+      src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
     />
   </template>
 </p-model-signature>
@@ -4629,7 +4629,7 @@ img {
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
+                  src="http://localhost:3001/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
                 />
               </template>
             </p-icon>
@@ -4688,7 +4688,7 @@ img {
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+                  src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
                 />
               </template>
             </p-icon>
@@ -4864,7 +4864,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
+            src="http://localhost:3001/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
           />
         </template>
       </p-icon>
@@ -5147,7 +5147,7 @@ img {
               </style>
               <img
                 alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
               />
             </template>
           </p-icon>
@@ -5198,7 +5198,7 @@ img {
               </style>
               <img
                 alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
               />
             </template>
           </p-icon>
@@ -5446,7 +5446,7 @@ img {
             </style>
             <img
               alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
             />
           </template>
         </p-icon>
@@ -5766,7 +5766,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -5817,7 +5817,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -6234,7 +6234,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -6285,7 +6285,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -6736,7 +6736,7 @@ img {
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                       />
                     </template>
                   </p-icon>
@@ -6787,7 +6787,7 @@ img {
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                       />
                     </template>
                   </p-icon>
@@ -7074,7 +7074,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -7125,7 +7125,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -7342,7 +7342,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+            src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
           />
         </template>
       </p-icon>
