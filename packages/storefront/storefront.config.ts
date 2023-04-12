@@ -70,7 +70,7 @@ export const config: StorefrontConfig = {
   },
   News: {
     // @ts-ignore
-    Migration: [() => import('@/pages/news/migration.md')],
+    'Migration Guide': [() => import('@/pages/news/migration-guide.md')],
     Changelog: {
       // @ts-ignore
       Components: [() => import('@/../../components/CHANGELOG.md')],
