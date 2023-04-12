@@ -30,4 +30,4 @@ component in various situations.
 ### Related components
 
 - [Button](components/button)
-- [Links-Pure](components/link-pure)
+- [Link Pure](components/link-pure)
