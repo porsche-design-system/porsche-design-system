@@ -4,12 +4,13 @@ import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { addImportantToEachRule, getThemedColors } from '../../styles';
-import { borderRadiusMedium, borderRadiusSmall } from '@porsche-design-system/utilities-v2';
+import { borderRadiusMedium, borderRadiusSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
+  loading: boolean,
   theme: Theme
 ): string => {
   const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
@@ -39,6 +40,17 @@ export const getComponentCss = (
           }),
         }),
       },
+      ...(loading && {
+        spinner: {
+          width: fontLineHeight,
+          height: fontLineHeight,
+          pointerEvents: 'none',
+          position: 'absolute',
+          top: '50%',
+          left: `calc(${fontLineHeight}/2 + 3px)`,
+          transform: 'translate(-50%, -50%)',
+        },
+      }),
     })
   );
 };

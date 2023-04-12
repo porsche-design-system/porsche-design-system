@@ -6,6 +6,7 @@ import {
   attachComponentCss,
   getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
+  getPrefixedTagNames,
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
@@ -25,6 +26,7 @@ const propTypes: PropTypes<typeof CheckboxWrapper> = {
   state: AllowedTypes.oneOf<CheckboxWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  loading: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -46,6 +48,9 @@ export class CheckboxWrapper {
 
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Disables the checkbox and shows a loading indicator. */
+  @Prop() public loading?: boolean = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -80,7 +85,17 @@ export class CheckboxWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.input.disabled,
+      this.loading,
+      this.theme
+    );
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -92,6 +107,14 @@ export class CheckboxWrapper {
             </span>
           )}
           <slot />
+          {this.loading && (
+            <PrefixedTagNames.pSpinner
+              class="spinner"
+              size="inherit"
+              theme={this.theme}
+              aria={{ 'aria-label': 'Loading state:' }}
+            />
+          )}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
