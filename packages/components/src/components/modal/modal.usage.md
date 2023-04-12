@@ -22,6 +22,6 @@ component in various situations.
 
 ##### Don’t:
 
-- Don’t use fullscreen modals on desktop.
+- Don’t use fullscreen Modals on desktop.
 - Don’t use the Modal with more than three buttons.
 - Don’t launch a Modal within a Modal.
