@@ -13,7 +13,7 @@ component in various situations.
 - Use a [Button](components/button) instead of a Link if you want to change a state (e.g. send form)
 - Use a Primary Link filled for one or two high-priority actions within a page.
 - Use a Secondary Link for all other stand-alone Links that aren't high priority.
-- Use a [Link-Pure](components/link-pure) as a subordinated link version in combination with a filled link (primary or
+- Use a [Link Pure](components/link-pure) as a subordinated link version in combination with a filled link (primary or
   secondary) or stand-alone when the priority of the action is lower compared to all other link actions within the page.
 - Use an Icon and text variant only when appropriate (e.g. external link).
 - Use an Icon-only variant only in cases where the user is fully aware of the link function.
