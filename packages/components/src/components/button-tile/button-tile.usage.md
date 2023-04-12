@@ -11,7 +11,7 @@ component in various situations.
 
 - Use Button Tile for **on-page interactivity**.
 - Use [Link Tile](components/link-tile) instead if you want to **navigate** to another page.
-- Use Button-Tile with appropriate aspect ratios and short descriptions (80 characters or fewer).
+- Use Button Tile with appropriate aspect ratios and short descriptions (80 characters or fewer).
 - Use basic Button Tile for better perception tests and compact Button Tile for improved spacing (especially on mobile).
 - Use gradient Button Tile when image contrast is insufficient and select images with natural contrast.
 - Use font size for visual hierarchy and customize image type and font size for responsiveness.
