@@ -28,5 +28,5 @@ component in various situations.
 
 - Don’t use select boxes for data that is highly familiar such as the day month or year.
 - Don't set the default to 'please select' if there's an empty field.
-- -Don’t use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
+- Don’t use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
   maximum of 7 elements in the field of view without having to scroll.
