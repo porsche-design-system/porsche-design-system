@@ -3,6 +3,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { convertToAngular } from './convertToAngular';
 import { convertToReact } from './convertToReact';
+import { convertToVue } from './convertToVue';
 import type { Framework, Theme } from '../models';
 
 export * from './convertToAngular';
@@ -41,6 +42,8 @@ export const convertMarkup = (markup: string, framework: Framework): string => {
       return convertToAngular(cleanedMarkup);
     case 'react':
       return convertToReact(cleanedMarkup);
+    case 'vue':
+      return convertToVue(cleanedMarkup);
     default:
       return cleanedMarkup;
   }
