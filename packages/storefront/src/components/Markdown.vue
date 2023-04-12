@@ -122,7 +122,7 @@
         h5,
         h6 {
           @include pds-heading-small;
-          margin-top: $pds-spacing-fluid-small;
+          margin-top: $pds-spacing-fluid-medium;
         }
 
         p {
@@ -187,6 +187,17 @@
 
         ol {
           list-style-type: decimal;
+        }
+
+        h3 + ul,
+        h3 + ol,
+        h4 + ul,
+        h4 + ol,
+        h5 + ul,
+        h5 + ol,
+        h6 + ul,
+        h6 + ol {
+          margin-top: $pds-spacing-fluid-x-small;
         }
 
         // Code
