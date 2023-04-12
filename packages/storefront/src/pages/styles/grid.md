@@ -34,13 +34,13 @@ This does not correspond to the grid.
 
 **Note:** that the Basic-, Extended-, and Wide-Grid all equal 6 columns on mobile viewports.
 
-##### Do:
+#### Do:
 
 - Use the grid for a consistent appearance over all touchpoints.
 - Align all left-aligned-headlines on one vertical line (left border of basic-grid).
 - Set at least the image focus for larger imagery within the basic grid.
 
-##### Don’t:
+#### Don’t:
 
 - Scale elements within the grid bigger than the maximum specification for 1920px.
 

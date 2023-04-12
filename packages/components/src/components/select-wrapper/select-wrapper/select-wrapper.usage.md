@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Keep the label visible for better accessibility whenever possible.
 - Provide a descriptive label text for screen readers when using the component without a label.
@@ -24,7 +24,7 @@ component in various situations.
 - Use preselection (optional field) to make it possible to go back to an empty default.
 - Use common sort order for menu items (frequency of use, alpha or numeric).
 
-##### Don’t:
+### Don’t:
 
 - Don’t use select boxes for data that is highly familiar such as the day month or year.
 - Don't set the default to 'please select' if there's an empty field.

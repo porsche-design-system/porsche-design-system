@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use buttons for actions that have clear consequences, such as submitting a form or initiating a purchase.
 - Use buttons to indicate the next step in a process, such as "Continue" or "Next".
@@ -18,7 +18,7 @@ component in various situations.
 - Use disabled buttons to indicate actions that are currently unavailable or incomplete, and provide context for why the
   button is disabled.
 
-##### Don’t:
+### Don’t:
 
 - Don't use buttons for non-actionable elements, such as decorative graphics or text.
 - Don't use ambiguous or unclear labels for buttons, as it can lead to confusion for users.

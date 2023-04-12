@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use to display progress through a sequence of logical and numbered steps.
 - Use when the content of one step depends on an earlier step.
@@ -17,7 +17,7 @@ component in various situations.
   content to be rendered beneath.
 - Consider how you can simplify the component and use between 3-5 steps for the best user experience.
 
-##### Don’t:
+### Don’t:
 
 - Don’t use long step names as it can make the component difficult to use.
 - Don’t use more than 9 steps (component has a maximum of 9)

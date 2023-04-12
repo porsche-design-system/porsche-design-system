@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use to enable a user to select one value from a predefined list. Use as soon as two options are mutually exclusive.
   Use
@@ -19,14 +19,14 @@ component in various situations.
   assumptions.
 - Align radio buttons with more than 2 items vertically left-aligned.
 
-##### Don't:
+### Don't:
 
 - Don’t use a radio Button for a large number of items (≥ 7), use the [Select](components/select) or
   [Segmented Control](components/segmented-control) component instead.
 
 ---
 
-### Related Components
+## Related Components
 
 - [Checkbox](components/checkbox)
 - [Segmented Control](components/segmented-control)

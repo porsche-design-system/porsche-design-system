@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use for a list of options when you want the user to select one, none, or multiple options.
 - Use when an explicit action is required to apply to settings.
@@ -18,7 +18,7 @@ component in various situations.
 - Provide validation messages for each checkbox option if needed.
 - Set vertically left-aligned for better scannability.
 
-##### Don't:
+### Don't:
 
 - Avoid using when you have more than 8 options to choose from or consider using a [Select](components/select).
 - Don’t mix [Radio Button](components/radio-button) buttons with checkboxes.

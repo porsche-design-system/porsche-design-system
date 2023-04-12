@@ -1,17 +1,17 @@
 # Link Tile Model Signature
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use this component when displaying the vehicle series.
 - Select the desired aspect ratio, please check with other use cases to create an aligned appearance among all products.
 - Within a group of Link Tiles keep a consistent logic for each primary and secondary button target.
 
-##### Don't:
+### Don't:
 
 - Don’t use this component to present other content than the vehicle types.
 - Don’t manipulate the background images, the component takes care of the contrast.

@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use to group related fields together to make them more organized and easier to understand for users.
 - Use descriptive and clear labels for the field sets to help users quickly understand what information is being
@@ -21,7 +21,7 @@ component in various situations.
   or additional information.
 - Test your field sets with users to ensure they are effective in improving the usability of your forms or page layouts.
 
-##### Don't:
+### Don't:
 
 - Don't use too many field sets on a single form or page layout.
 - Don't use to hide important information or fields that users need to complete a form.
@@ -33,5 +33,4 @@ component in various situations.
 
 ##### Sections including form elements
 
-We recommend for each fieldset the headline 4 (for the visible part _legend_) of the respective viewport. Please find
-more information in the [Form pattern guideline](patterns/forms).
+[Form pattern guideline](patterns/forms).

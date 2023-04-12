@@ -10,7 +10,7 @@
 
 ## Usage
 
-##### Do:
+#### Do:
 
 - Reduce the use of shadows within the panels. Rather use a combination of different background colors like base and
   surface to create a visual hierarchy.

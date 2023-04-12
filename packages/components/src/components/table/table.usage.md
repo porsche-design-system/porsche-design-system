@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use to display and compare structured data in rows and columns.
 - Use as a tool to query consume and navigate to specific data.
@@ -19,7 +19,7 @@ component in various situations.
 - Include a table caption describing the contents of the table for accessibility
 - Use the built-in scroller for horizontal scrolling on mobile viewports.
 
-##### Don’t:
+### Don’t:
 
 - Don’t use for non-structured data or data that can be presented in a simpler format.
 - Don’t overuse or clutter cell data with unnecessary content.
