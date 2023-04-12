@@ -16,7 +16,7 @@ component in various situations.
   better comprehensibility and accessibility.
 - Use the Text only variant when the use of icons causes interference (e.g. in-text placement, no matching icon, complex
   lists or tables, alignment to elements, navigation).
-- Use the text-only variant with an underline to ensure intuit "clickability”.
+- Use the Text only variant with an underline to ensure intuit "clickability”.
 - Use the Icon only variant only when it's enough to indicate an action with an icon only and the user is fully aware of
   the function due to an expressive and internationally comprehensible icon.
 - Use the stretch variant only on small viewports or areas (e.g. mobile views or sidebars).
