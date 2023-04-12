@@ -1,4 +1,4 @@
-# Migration Guide - Utilities
+# Migration Guide
 
 <TableOfContents></TableOfContents>
 
