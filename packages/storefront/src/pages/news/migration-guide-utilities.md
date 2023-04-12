@@ -19,7 +19,7 @@ to <code>@porsche-design-system/components-{js|angular|react|vue}/styles</code> 
 #### Colors
 
 With the new Porsche design language, the color theme got reworked completely to achieve a monochrome look. For further
-information, have a look at [theme styles](https://designsystem.porsche.com/latest/styles/theme).
+information, have a look at [theme styles](styles/theme).
 
 ```diff
 - import { color } from '@porsche-design-system/utilities';
@@ -79,7 +79,7 @@ const Component1 = styled.div({
 #### Spacings
 
 With the new Porsche design language, fluid spacings in addition to static ones are introduced. For further information,
-have a look at [spacing styles](https://designsystem.porsche.com/latest/styles/spacing).
+have a look at [spacing styles](styles/spacing).
 
 ```diff
 - import { layout } from '@porsche-design-system/utilities';
@@ -138,7 +138,7 @@ const Component1 = styled.div({
 
 `mediaQuery()` was replaced by `getMediaQueryMin()`, `getMediaQueryMax()` and `getMediaQueryMinMax()`. Furthermore, the
 functions accept only the predefined breakpoints from `base` to `xxl` and no custom breakpoints anymore. For further
-information, have a look at [media query styles](https://designsystem.porsche.com/latest/styles/media-query).
+information, have a look at [media query styles](styles/media-query).
 
 ```diff
 - import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
@@ -168,7 +168,7 @@ const Component1 = styled.div({
 ```
 
 `breakpoint` object key `xxs` is now `base`. For further information, have a look at
-[media query styles](https://designsystem.porsche.com/latest/styles/media-query).
+[media query styles](styles/media-query).
 
 ```diff
 - import { breakpoint } from '@porsche-design-system/utilities';
@@ -183,23 +183,23 @@ const Component1 = styled.div({
 #### Typography
 
 With the new Porsche design language, fluid typography was introduced. For further information, have a look at
-[typography styles](https://designsystem.porsche.com/latest/styles/typography).
+[typography styles](styles/typography).
 
 ```diff
 - import { title, headline, text } from '@porsche-design-system/utilities';
 + import {
-  displayLargeStyle,
-  headingXXLargeStyle,
-  headingXLargeStyle,
-  headingLargeStyle,
-  headingMediumStyle,
-  headingSmallStyle,
-  textXSmallStyle,
-  textSmallStyle,
-  textMediumStyle,
-  textLargeStyle,
-  textXLargeStyle,
-} from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++   displayLargeStyle,
++   headingXXLargeStyle,
++   headingXLargeStyle,
++   headingLargeStyle,
++   headingMediumStyle,
++   headingSmallStyle,
++   textXSmallStyle,
++   textSmallStyle,
++   textMediumStyle,
++   textLargeStyle,
++   textXLargeStyle,
++ } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
 import styled from 'styled-components';
 
 const Component1 = styled.h1({
@@ -221,7 +221,7 @@ const Component3 = styled.p({
 #### State
 
 With the new Porsche design language, the focus outline got blue with rounded corners. For further information, have a
-look at [focus styles](https://designsystem.porsche.com/latest/styles/focus).
+look at [focus styles](styles/focus).
 
 ```diff
 - import { focus } from '@porsche-design-system/utilities';
