@@ -1,4 +1,4 @@
-# Migration Guide - Porsche Design System
+# Migration Guide
 
 <TableOfContents></TableOfContents>
 

@@ -71,7 +71,7 @@ export const config: StorefrontConfig = {
   News: {
     'Migration Guide': {
       // @ts-ignore
-      'Porsche Design System': [() => import('@/pages/news/migration-guide-components.md')],
+      'Porsche Design System': [() => import('@/pages/news/migration-guide.md')],
       // @ts-ignore
       Utilities: [() => import('@/pages/news/migration-guide-utilities.md')],
     },
