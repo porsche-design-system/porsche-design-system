@@ -4,15 +4,16 @@
 
 ## Migrate from Utilities to Styles
 
-With the new **Porsche Design System v3** a sub package called `Styles` is provided matching the new design language.
-Further documentation can be found [here](https://designsystem.porsche.com/latest/styles/introduction).
+With the new **Porsche Design System v3** a sub package called `Styles` is provided, including the fundamental styles
+matching the new design language. It's available as JavaScript and SCSS version. Further documentation can be found
+[here](https://designsystem.porsche.com/latest/styles/introduction).
 
 <p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
   The npm package <code>@porsche-design-system/utilities</code> is deprecated and will no longer be maintained. A migration 
 to <code>@porsche-design-system/components-{js|angular|react|vue}/styles</code> should take place as fast as possible.
 </p-inline-notification>
 
-## JS
+## 👹 Breaking Changes (JS)
 
 ### Variables
 
@@ -244,6 +245,6 @@ const Component2 = styled.a({
 
 `generateFontDefinition()`, `generateTypeScale()`, `calculateLineHeight()`, `pxToRem()` and `remToPx()` were removed.
 
-## SCSS
+## 👹 Breaking Changes (SCSS)
 
 tbd.
