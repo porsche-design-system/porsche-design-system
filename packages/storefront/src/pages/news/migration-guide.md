@@ -29,6 +29,22 @@ including deprecated components/props/values.
 
 ## 👹 Breaking Changes
 
+### Banner:
+
+- It's a controlled component now and its visibility has to be controlled via the `open` prop (similar like
+  **[Modal](components/modal)**).
+
+```diff
+- <p-banner></p-banner>
++ <p-banner open="true"></p-banner>
+```
+
+- Removed global CSS variable.
+
+```diff
+- --p-banner-position-type
+```
+
 ### Button:
 
 - Removed deprecated prop `tabbable`.
@@ -138,6 +154,10 @@ including deprecated components/props/values.
 + --p-animation-duration
 ```
 
+### Partials:
+
+- Removed deprecated `withoutTags` option for all partials, please use `format: jsx` instead.
+
 ## 🤡 Component deprecations
 
 All deprecated components are refactored to match the new design language, therefor it's technically not breaking, but
@@ -149,6 +169,21 @@ major version.
 - Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](styles/grid)**
   instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
   layout needs for a harmonic appearance across all digital Porsche touch-points.
+
+### Fieldset Wrapper:
+
+- Component is deprecated and will be removed with the next major release. Please use the
+  **[Fieldset](components/fieldset)** component instead.
+
+```diff
+- <p-fieldset-wrapper label="Some legend label">
++ <p-fieldset label="Some legend label">
+    <p-text-field-wrapper label="Some label">
+      <input type="text" name="some-name" />
+    </p-text-field-wrapper>
+- </p-fieldset-wrapper>
++ </p-fieldset>
+```
 
 ### Flex:
 
@@ -197,13 +232,40 @@ major version.
 All deprecated properties are still present without any effect, therefor it's technically not breaking, but we highly
 recommend to migrate and remove the deprecated props since those ones will be removed with next major version.
 
+### Accordion:
+
+- Event `accordionChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
++ <PAccordion onUpdate={(e: CustomEvent<AccordionUPdateEvent>) => {}} />
+```
+
 ### Banner:
 
-- Prop `width` is deprecated.
+- Prop `width` is deprecated, instead the component is aligned with the **[Porsche Grid](styles/grid)** "extended" by
+  default.
 
 ```diff
 - <p-banner width="fluid"></p-banner>
 + <p-banner></p-banner>
+```
+
+- Named `slot="title"` is deprecated.
+
+```diff
+<p-banner>
+- <span slot="title">Some heading</span>
++ <span slot="heading">Some heading</span>
+  <span slot="description">Some notification description.</span>
+</p-banner>
+
+- <p-banner>
++ <p-banner heading="Some heading" description="Some notification description.">
+-   <span slot="title">Some heading</span>
+-   <span slot="description">Some notification description.</span>
+</p-banner>
 ```
 
 ### Button Pure:
@@ -218,6 +280,31 @@ recommend to migrate and remove the deprecated props since those ones will be re
 + <p-button-pure>Some label</p-button-pure>
 ```
 
+### Carousel:
+
+- Prop `wrap-content` is deprecated. The component is always aligned with the **[Porsche Grid](styles/grid)** now,
+  adjustable by prop `width`.
+
+```diff
+- <p-carousel wrap-content="true"></p-carousel>
++ <p-carousel></p-carousel>
+```
+
+- Prop `disablePagination` is deprecated.
+
+```diff
+- <p-carousel disable-pagination="true"></p-carousel>
++ <p-carousel pagination="false"></p-carousel>
+```
+
+- Event `carouselChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEvent>) => {}} />
++ <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEvent>) => {}} />
+```
+
 ### Content Wrapper (deprecated):
 
 - Prop `theme` and `background-color` are deprecated.
@@ -225,6 +312,15 @@ recommend to migrate and remove the deprecated props since those ones will be re
 ```diff
 - <p-content-wrapper theme="dark" background-color="default">Some content</p-content-wrapper>
 + <p-content-wrapper>Some content</p-content-wrapper>
+```
+
+### Divider:
+
+- Prop `orientation` is deprecated.
+
+```diff
+- <p-divider orientation="horizontal"></p-divider>
++ <p-divider direction="horizontal"></p-divider>
 ```
 
 ### Grid (deprecated):
@@ -248,6 +344,15 @@ recommend to migrate and remove the deprecated props since those ones will be re
 + <p-icon></p-icon>
 ```
 
+### Inline Notification:
+
+- Prop `persistent` is deprecated.
+
+```diff
+- <p-inline-notification persistent="true"></p-inline-notification>
++ <p-inline-notification dismiss-button="false"></p-inline-notification>
+```
+
 ### Link Pure:
 
 - Prop `weight` is deprecated, only regular font weight will be applied.
@@ -258,6 +363,56 @@ recommend to migrate and remove the deprecated props since those ones will be re
 - <p-link-pure href="#" weight="semibold">Some label</p-link-pure>
 - <p-link-pure href="#" weight="bold">Some label</p-link-pure>
 + <p-link-pure href="#">Some label</p-link-pure>
+```
+
+### Modal:
+
+- Prop `disableCloseButton` is deprecated.
+
+```diff
+- <p-modal disable-close-button="true"></p-modal>
++ <p-modal dismiss-button="false"></p-modal>
+```
+
+- Event `close` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PModal onClose={(e: CustomEvent<void>) => {}} />
++ <PModal onDismiss={(e: CustomEvent<void>) => {}} />
+```
+
+### Pagination:
+
+- Props `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` are deprecated.
+
+```diff
+- <p-pagination ally-label="Paginierung" ally-label-prev="Vorherige Seite" ally-label-next="Nächste Seite" ally-label-page="Seite"></p-pagination>
++ <p-pagination intl="{root: 'Paginierung', prev: 'Vorherige Seite', next: 'Nächste Seite', page: 'Seite'}"></p-pagination>
+```
+
+- Event `pageChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
++ <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEvent>) => {}} />
+```
+
+### Scroller:
+
+- Prop `gradientColorScheme` is deprecated.
+
+```diff
+- <p-scroller gradient-color-scheme="surface"></p-scroller>
++ <p-scroller gradient-color="background-surface"></p-scroller>
+```
+
+- Prop `scrollIndicatorPosition` is deprecated.
+
+```diff
+- <p-scroller scroll-indicator-position="top"></p-scroller>
++ <p-scroller align-scroll-indicator="top"></p-scroller>
 ```
 
 ### Segmented Control:
@@ -273,6 +428,115 @@ recommend to migrate and remove the deprecated props since those ones will be re
    <p-segmented-control-item value="xs">XS</p-segmented-control-item>
    <p-segmented-control-item value="s">S</p-segmented-control-item>
  </p-segmented-control>
+```
+
+- Event `segmentedControlChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
++ <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEvent>) => {}} />
+```
+
+### Stepper Horizontal:
+
+- Event `stepChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
++ <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEvent>) => {}} />
+```
+
+### Switch:
+
+- Event `switchChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
++ <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEvent>) => {}} />
+```
+
+### Table:
+
+- Event `sortingChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
++ <PTable onUpdate={(e: CustomEvent<TableUpdateEvent>) => {}} />
+```
+
+### Tabs:
+
+- Prop `gradientColorScheme` is deprecated.
+
+```diff
+- <p-tabs gradient-color-scheme="surface"></p-tabs>
++ <p-tabs gradient-color="background-surface"></p-tabs>
+```
+
+- Event `tabChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabs onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
+```
+
+### Tabs Bar:
+
+- Prop `gradientColorScheme` is deprecated.
+
+```diff
+- <p-tabs-bar gradient-color-scheme="surface"></p-tabs-bar>
++ <p-tabs-bar gradient-color="background-surface"></p-tabs-bar>
+```
+
+- Event `tabChange` is deprecated.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
++ <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
+```
+
+### Text Field Wrapper:
+
+- Prop `showCharacterCount` is deprecated.
+
+```diff
+- <p-text-field-wrapper show-character-count="false">
++ <p-text-field-wrapper show-counter="false">
+    <input type="text" maxlength="20" />
+</p-text-field-wrapper>
+```
+
+### Textarea Wrapper:
+
+- Prop `showCharacterCount` is deprecated.
+
+```diff
+- <p-textarea-wrapper show-character-count="false">
++ <p-textarea-wrapper show-counter="false">
+    <textarea maxlength="80"></textarea>
+</p-textarea-wrapper>
+```
+
+### Text List
+
+- Props `listType` and `orderType` are deprecated.
+
+```diff
+- <p-text-list list-type="unordered"></p-text-list>
++ <p-text-list type="unordered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="numbered"></p-text-list>
++ <p-text-list type="numbered"></p-text-list>
+
+- <p-text-list list-type="ordered" order-type="alphabetically"></p-text-list>
++ <p-text-list type="alphabetically"></p-text-list>
 ```
 
 ## 👾 Property value deprecations
@@ -302,6 +566,21 @@ to the new values since those ones will be removed with next major version.
 ```diff
 - <p-content-wrapper width="fluid">Some content</p-content-wrapper>
 + <p-content-wrapper>Some content</p-content-wrapper>
+```
+
+### Divider:
+
+- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated.
+
+```diff
+- <p-divider color="neutral-contrast-low"></p-divider>
++ <p-divider color="contrast-low"></p-divider>
+
+- <p-divider color="neutral-contrast-medium"></p-divider>
++ <p-divider color="contrast-medium"></p-divider>
+
+- <p-divider color="neutral-contrast-high"></p-divider>
++ <p-divider color="contrast-high"></p-divider>
 ```
 
 ### Icon:
@@ -339,13 +618,51 @@ to the new values since those ones will be removed with next major version.
 + <p-inline-notification state="info"></p-inline-notification>
 ```
 
+### Link Tile:
+
+- Prop value `semibold` of `weight` prop is deprecated.
+
+```diff
+- <p-link-tile weight="semibold"></p-link-tile>
++ <p-link-tile weight="semi-bold"></p-link-tile>
+```
+
+### Tabs:
+
+- Prop value `semibold` of `weight` prop is deprecated.
+
+```diff
+- <p-tabs weight="semibold"></p-tabs>
++ <p-tabs weight="semi-bold"></p-tabs>
+```
+
+### Tabs Bar:
+
+- Prop value `semibold` of `weight` prop is deprecated.
+
+```diff
+- <p-tabs-bar weight="semibold"></p-tabs>
++ <p-tabs-bar weight="semi-bold"></p-tabs>
+```
+
 ### Tag:
 
-- Prop value `notification-neutral | neutral-contrast-high | background-default` of `color` prop is deprecated.
+- Prop value
+  `notification-neutral | background-error | background-success | background-warning | neutral-contrast-high | background-default`
+  of `color` prop is deprecated.
 
 ```diff
 - <p-tag color="notification-neutral">Color label</p-tag>
-+ <p-tag color="notification-info">Color label</p-tag>
++ <p-tag color="notification-info-soft">Color label</p-tag>
+
+- <p-tag color="notification-error">Color label</p-tag>
++ <p-tag color="notification-error-soft">Color label</p-tag>
+
+- <p-tag color="notification-success">Color label</p-tag>
++ <p-tag color="notification-success-soft">Color label</p-tag>
+
+- <p-tag color="notification-warning">Color label</p-tag>
++ <p-tag color="notification-warning-soft">Color label</p-tag>
 
 - <p-tag color="neutral-contrast-high">Color label</p-tag>
 + <p-tag color="primary">Color label</p-tag>
