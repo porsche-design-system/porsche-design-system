@@ -65,6 +65,8 @@ export const config: StorefrontConfig = {
     },
   },
   News: {
+    // @ts-ignore
+    'Migration Guide': [() => import('@/pages/news/migration-guide.md')],
     Changelog: {
       // @ts-ignore
       Components: [() => import('@/../../components/CHANGELOG.md')],
