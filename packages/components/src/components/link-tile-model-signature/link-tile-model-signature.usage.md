@@ -9,7 +9,7 @@ component in various situations.
 
 - Use this component when displaying the vehicle series.
 - Select the desired aspect ratio, please check with other use cases to create an aligned appearance among all products.
-- Within a group of Link-Tiles keep a consistent logic for each primary and secondary button target.
+- Within a group of Link Tiles keep a consistent logic for each primary and secondary button target.
 
 ##### Don't:
 
