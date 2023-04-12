@@ -15,7 +15,7 @@ component in various situations.
 - Use basic Button Tile for better perception tests and compact Button Tile for improved spacing (especially on mobile).
 - Use gradient Button-Tile when image contrast is insufficient and select images with natural contrast.
 - Use font size for visual hierarchy and customize image type and font size for responsiveness.
-- Use engaging verbs and product names in compact Button-tile.
+- Use engaging verbs and product names in compact Button Tile.
 - Create assets upfront for image processing.
 
 ##### Don’t:
