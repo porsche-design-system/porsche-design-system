@@ -1126,7 +1126,6 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
         </template>
       </p-icon>
       <p-button-pure
-        aria-hidden="true"
         class="button ssr"
         hidden="true"
         tabindex="-1"
@@ -1167,6 +1166,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
             </span>
           </button>
         </template>
+        Clear field
       </p-button-pure>
     </div>
   </template>
