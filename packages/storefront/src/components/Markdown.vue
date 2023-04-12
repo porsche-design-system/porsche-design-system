@@ -13,8 +13,9 @@
   @Component
   export default class Markdown extends Vue {
     updated() {
-      const diffs = this.$el.querySelectorAll('pre[class*="diff"], code[class*="diff"]');
-      diffs.forEach((diff) => Prism.highlightElement(diff));
+      this.$el
+        .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
+        .forEach((diff) => Prism.highlightElement(diff));
     }
     // handling for raw anchor links to prevent full reload and respect base tag
     onContentClick(event: MouseEvent): void {
@@ -35,13 +36,22 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
-  @import '~prismjs/themes/prism.css';
   @import '../styles/internal.variables';
 
   /* More information about :deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
 * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
 */
   .markdown :deep(> .vmark) {
+    .language-diff {
+      & > {
+        .inserted {
+          color: #418340;
+        }
+        .deleted {
+          color: #d91e18;
+        }
+      }
+    }
     &:first-child > {
       :first-child {
         margin-top: 0 !important;
