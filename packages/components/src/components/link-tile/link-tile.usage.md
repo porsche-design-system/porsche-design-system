@@ -9,7 +9,7 @@
 - Use basic Link Tile for better perception tests and compact Link Tile for improved spacing (especially on mobile).
 - Use gradient Link Tile when image contrast is insufficient and select images with natural contrast.
 - Use font size for visual hierarchy and customize image type and font size for responsiveness.
-- Use engaging verbs and product names in compact Link-Tile. Create assets upfront for image processing.
+- Use engaging verbs and product names in compact Link Tile. Create assets upfront for image processing.
 
 ##### Don’t:
 
