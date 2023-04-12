@@ -22,7 +22,7 @@ component in various situations.
 ##### Don’t:
 
 - Don’t use a Primary Link for all links on a page.
-- Don’t use a Multiline Link as it's recommended to keep the text label short and avoid multiline links.
+- Don’t use a multiline Link as it's recommended to keep the text label short and avoid multiline Links.
 - Don’t use a width that's too wide and makes the link difficult to read.
 
 ---
