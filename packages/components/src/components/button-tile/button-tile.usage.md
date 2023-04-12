@@ -9,7 +9,7 @@ component in various situations.
 
 ##### Do:
 
-- Use Button-Tile for **on-page interactivity**.
+- Use Button Tile for **on-page interactivity**.
 - Use [Link-Tile](components/link-tile) instead if you want to **navigate** to another page.
 - Use Button-Tile with appropriate aspect ratios and short descriptions (80 characters or fewer).
 - Use basic Button-Tile for better perception tests and compact Button-tile for improved spacing (especially on mobile).
