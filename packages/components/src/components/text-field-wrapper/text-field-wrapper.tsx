@@ -299,8 +299,9 @@ export class TextFieldWrapper {
                 hidden={!this.isClearable}
                 disabled={disabledOrReadOnly}
                 onClick={this.onClear}
-                aria-label="Clear field"
-              />,
+              >
+                Clear field
+              </PrefixedTagNames.pButtonPure>,
               this.hasAction && (
                 <PrefixedTagNames.pButtonPure
                   {...buttonProps}
