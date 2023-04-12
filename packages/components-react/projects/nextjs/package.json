@@ -27,9 +27,9 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.34",
+    "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.0.1",
     "eslint": "^8.38.0",
     "eslint-config-next": "^13.3.0",
     "ts-node": "^10.9.1",

@@ -62,7 +62,7 @@
     "@vue/cli-service": "^4.5.19",
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "1.2.2",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.0.1",
     "eslint": "^8.38.0",
     "eslint-plugin-vue": "^9.10.0",
     "globby": "^11.0.4",
