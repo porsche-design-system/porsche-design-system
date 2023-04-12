@@ -10,7 +10,7 @@
 
 ## Usage
 
-##### Do:
+#### Do:
 
 - Use breakpoints as building blocks of responsive design to control layout adaptation at specific viewport or device
   sizes.

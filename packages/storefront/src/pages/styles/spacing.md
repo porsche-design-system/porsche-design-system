@@ -13,7 +13,7 @@
 Fluid spacing scale up or down based on the size of the viewing device or browser window in a predefined range. This is
 in contrast to using static spacing, which is set using a specific pixel value and does not scale.
 
-**Do:**
+#### Do:
 
 - Use the fluid spacers to ensure a smooth and proportional scaling of space between elements, groups, and sections that
   are aligned with the fluid typography and grid.
@@ -22,7 +22,7 @@ in contrast to using static spacing, which is set using a specific pixel value a
   spacing and grouping of form fields.
 - Use values from "l" to "xxl" for spacing between sections on a page.
 
-**Don't:**
+#### Don't:
 
 - Only use the static spacers when needed (e.g. within custom components).
 - Don't use values outside of the recommended range for specific types of spacing.
