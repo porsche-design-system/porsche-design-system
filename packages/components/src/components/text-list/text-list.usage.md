@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-Do:
+### Do:
 
 - Use to display short pieces of information in the form of an unordered or ordered list.
 - Use an Unordered List to display content with equal value and an Ordered List for sequenced content.
@@ -16,7 +16,7 @@ Do:
 - Stick to a homogeneous writing structure and style within one list.
 - Use sentence-style capitalization for each list item capitalizing only the first letter.
 
-Don’t:
+### Don’t:
 
 - Don’t exceed two hierarchy levels in Text Lists.
 - Don’t mix active with passive voice or declarative with imperative sentences within one list.

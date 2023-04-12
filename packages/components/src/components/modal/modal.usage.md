@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use Modals to display additional information or required steps without losing context.
 - Use Modals for confirmation before performing lengthy or dangerous actions.
@@ -20,7 +20,7 @@ component in various situations.
 - Follow button order and positioning guidelines.
 - Use feedback banner for any feedback related to the request.
 
-##### Don’t:
+### Don’t:
 
 - Don’t use fullscreen modals on desktop.
 - Don’t use the Modal with more than three buttons.

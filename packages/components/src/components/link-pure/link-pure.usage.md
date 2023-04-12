@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use a Link Pure as a more subtle call to action compared to the normal Link.
 - Use a [Button Pure](components/button-pure) instead of a Link Pure if you want to change a state (e.g. send form)
@@ -23,7 +23,7 @@ component in various situations.
 - Use the default arrow-right-icon in most cases but replace it with another symbol if it is more appropriate.
 - Use short and descriptive text labels within a link.
 
-##### Don't:
+### Don't:
 
 - Don’t use Link Pure as the main call to action if you need to draw more attention to the link.
 - Don’t use Link Pure on images unless it is necessary e.g. when using it as an additional link on image sliders or
@@ -32,6 +32,6 @@ component in various situations.
 
 ---
 
-### Related components
+## Related components
 
 - [Button Pure](components/button-pure)

@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use when an item or a group of items do not fit into the viewport width and horizontal scrolling is needed.
 - Use with elements of the same type appearance and function all horizontally aligned.
@@ -15,7 +15,7 @@ component in various situations.
 - Use it with one or more focusable elements.
 - Use in components such as Tabs, Table, and Stepper.
 
-##### Don’t:
+### Don’t:
 
 - Don’t place important actions or information for customer flow within the scroller.
 - Don’t use text that should not have line breaks in the scroller.
@@ -23,7 +23,7 @@ component in various situations.
 
 ---
 
-### Components that feature the scroller
+## Related Components
 
 - [Tabs](components/tabs)
 - [Table](components/table)

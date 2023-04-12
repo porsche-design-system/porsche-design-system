@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use a Link to navigate to another page.
 - Use a [Button](components/button) instead of a Link if you want to change a state (e.g. send form)
@@ -19,7 +19,7 @@ component in various situations.
 - Use an Icon-only variant only in cases where the user is fully aware of the link function.
 - Ensure that the link remains legible even in a multiline state by using max. 100 characters per line.
 
-##### Don’t:
+### Don’t:
 
 - Don’t use a Primary Link for all links on a page.
 - Don’t use a Multiline Link as it's recommended to keep the text label short and avoid multiline links.
@@ -27,7 +27,7 @@ component in various situations.
 
 ---
 
-### Related components
+## Related components
 
 - [Button](components/button)
 - [Links-Pure](components/link-pure)

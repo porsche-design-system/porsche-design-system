@@ -4,12 +4,12 @@
 
 Use tags to label, categorize, or organize items using keywords that describe them.
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use to indicate or highlight a certain attribute of an item.
 - Use to show that content is mapped to one or multiple categories.
@@ -22,7 +22,7 @@ component in various situations.
 - Add a link for further explanation about the tag for better understandability (With modal).
 - Add a link for additional information that is not necessary for the task completion (With modal).
 
-##### Don’t:
+### Don’t:
 
 - Don’t use more than two words (only if necessary).
 - Don’t implement something else than a link or button.
@@ -34,17 +34,17 @@ component in various situations.
 
 Allows users to quickly refine the result of data they want to be presented on the page.
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use to show that a certain filter is active.
 - Use this component with a label if additional information is needed (e.g. category an attribute/filter refers to).
 
-##### Don’t:
+### Don’t:
 
 - Don’t use it for other interactions than dismissing a selection.
 - Don’t have long content that causes multiline.

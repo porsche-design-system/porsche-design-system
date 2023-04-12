@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use Button-Tile for **on-page interactivity**.
 - Use [Link-Tile](components/link-tile) instead if you want to **navigate** to another page.
@@ -18,7 +18,7 @@ component in various situations.
 - Use engaging verbs and product names in compact Button-tile.
 - Create assets upfront for image processing.
 
-##### Don’t:
+### Don’t:
 
 - Don’t manipulate images, keep them natural and contrasted.
 - Don’t write long descriptions that overflow content (especially on mobile).

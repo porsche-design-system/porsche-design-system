@@ -84,7 +84,7 @@ Below you can find the explanations of the used class names.
         </p-fieldset>
         <p-button-group class="form-section-spacing form-bottom-spacing">
           <p-button type="submit">Send</p-button>
-          <p-button variant="tertiary" icon="none" type="reset">Cancel</p-button>
+          <p-button variant="secondary" type="reset">Cancel</p-button>
         </p-button-group>       
       </form>
     </p-grid-item>

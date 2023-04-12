@@ -2,12 +2,12 @@
 
 <TableOfContents></TableOfContents>
 
-### Usage
+## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
 
-##### Do:
+### Do:
 
 - Use a Button Group to consistently align two or more buttons at once.
 - Use Primary Button in combination with Button pure.
@@ -16,7 +16,7 @@ component in various situations.
   user experience.
 - If no primary action is set, consider emphasizing up to two secondary actions to give them slightly higher priority.
 
-##### Don't:
+### Don't:
 
 - Don't use button groups with too many options, as this can overwhelm users and make it difficult for them to make a
   choice.
