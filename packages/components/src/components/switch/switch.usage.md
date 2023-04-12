@@ -9,7 +9,7 @@ component in various situations.
 
 ##### Do:
 
-- Use If an instant response of applied settings is required without explicit action.
+- Use if an instant response of applied settings is required without explicit action.
 - Use to enable or disable a mode, feature, or function.
 - Use when the user is toggling independent features or behaviors.
 - Use the label to describe the affected property.
