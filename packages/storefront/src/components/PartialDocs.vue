@@ -15,7 +15,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import { constantCase } from 'change-case';
+  import { camelCase, constantCase } from 'change-case';
   import type { Framework, FrameworkMarkup } from '@/models';
 
   type Param = {
@@ -121,10 +121,51 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
   ${jsPartials}
 }`;
 
+      const exampleVue =
+        `<!-- prerequisite -->
+<!-- install with yarn -->
+yarn add vite-plugin-html
+
+<!-- install with npm -->
+npm install vite-plugin-html
+
+<!-- index.html -->
+<${this.location}>
+  <%- ${camelCase(this.name.replace('get', ''))} %>
+</${this.location}>
+
+<!-- vite.config.ts -->
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { createHtmlPlugin } from 'vite-plugin-html';
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data: {\n  ` +
+        this.params
+          .map(({ value, comment }) =>
+            [
+              comment && `        // Alternative: ${comment}`,
+              `        ${camelCase(this.name.replace('get', ''))}: ${partialRequirePath}(${value}),`,
+            ]
+              .filter((x) => x)
+              .join(glue)
+          )
+          .join('\n\n  ') +
+        `\n        },
+      },
+    }),
+  ],
+})`;
+
       return {
         'vanilla-js': exampleJs,
         angular: exampleAngular,
         react: exampleReact,
+        vue: exampleVue,
       };
     }
   }

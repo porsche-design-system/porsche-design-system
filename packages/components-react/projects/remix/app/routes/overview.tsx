@@ -66,7 +66,7 @@ const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light playground--banner" title="should render default banner">
-            <PBanner>
+            <PBanner open={true}>
               <span slot="title">Default banner component</span>
               <span slot="description">Some slotted banner description</span>
             </PBanner>
@@ -315,7 +315,7 @@ const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light playground--banner" title="should render default banner with custom prefix">
-              <PBanner>
+              <PBanner open={true}>
                 <span slot="title">Prefixed banner component</span>
                 <span slot="description">Some slotted banner description</span>
               </PBanner>

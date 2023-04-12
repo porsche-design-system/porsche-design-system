@@ -13,9 +13,9 @@ import { forceUpdate } from '@stencil/core';
 import { hasDocument } from '../../../utils';
 
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const; // 'background-color' prop is deprecated
-export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number]; // 'background-color' prop is deprecated
+export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROUND_COLORS)[number]; // 'background-color' prop is deprecated
 
-export type SegmentedControlChangeEvent = { value: string | number };
+export type SegmentedControlUpdateEvent = { value: string | number };
 
 // wide font for safety buffer, Porsche Next might not be available or not used and cause wrong calculation
 const tempFont = 'sans-serif';

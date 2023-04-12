@@ -4,7 +4,7 @@
 
 ## Color
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>color</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Please use <code>theme</code> styles provided at <a href="styles/theme">theme</a>.
 </p-inline-notification>
@@ -79,7 +79,7 @@ A light (default) and dark theme is available depending on which background it's
 
 ### External brand colors
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>External brand colors</code> are <strong>deprecated</strong> without any replacement and will be removed with next major release.<br>
   Please use <code>theme</code> styles provided at <a href="styles/theme">theme</a>.
 </p-inline-notification>
@@ -105,7 +105,7 @@ A light (default) and dark theme is available depending on which background it's
 
 ## Spacing
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>spacing</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Please use the <code>spacing</code> styles provided at <a href="styles/spacing">spacing</a>.
 </p-inline-notification>
@@ -146,7 +146,7 @@ For font styling it's recommended to use the
 
 ### Family
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>font.family</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Please use the <code>fontFamily</code> style provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
@@ -161,7 +161,7 @@ font.family
 
 ### Weight
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>font.weight</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   Please use the <code>fontWeight</code> style provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>
@@ -180,7 +180,7 @@ font.weight[v]
 
 ### Size
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   <code>font.size</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
   To recreate the result, use the <code>fontLineHeight</code> and one of the font sizes provided at <a href="styles/typography">typography</a>.
 </p-inline-notification>

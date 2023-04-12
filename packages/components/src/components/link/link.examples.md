@@ -1,11 +1,11 @@
 # Link
 
 The `p-link` component is essential to perform changes in **page routes**. For an optimal user guidance and dedicated
-pursuit of business or sales goals, different types of Links (**Primary** and **Secondary**) are available
-for usage. A Link can be used with or without a label, but it's recommended to keep the **label visible** for better
-**usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a
-descriptive label text for screen readers. In case you want the user to execute an action, you should select the
-[Button](components/button) component instead.
+pursuit of business or sales goals, different types of Links (**Primary** and **Secondary**) are available for usage. A
+Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability**
+whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text
+for screen readers. In case you want the user to execute an action, you should select the [Button](components/button)
+component instead.
 
 <TableOfContents></TableOfContents>
 
@@ -25,7 +25,7 @@ Link with label only (default) and with icon only (default: "arrow-right").
 
 ### Tertiary (deprecated)
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   The variant `tertiary` is deprecated and will be removed with next major release.
   In case, e.g. <b>variant="tertiary"</b> is used it will automatically be mapped to variant <b>"secondary"</b>.
 </p-inline-notification>
@@ -68,9 +68,9 @@ component.
 
 ## Link with specific icon
 
-If an icon needs to be implemented, just set another predefined icon. Per default, all
-icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
-link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+If an icon needs to be implemented, just set another predefined icon. Per default, all icons are fetched from the
+Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted
+somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="config"></Playground>
 

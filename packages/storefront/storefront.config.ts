@@ -57,6 +57,12 @@ export const config: StorefrontConfig = {
         () => import('@/pages/start-coding/ssr-support-table.md'),
       ],
     },
+    Vue: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/vue/getting-started.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/start-coding/vue/advanced.md')],
+    },
   },
   News: {
     Changelog: {

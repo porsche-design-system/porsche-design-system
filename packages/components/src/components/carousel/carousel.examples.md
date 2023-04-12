@@ -7,7 +7,7 @@ visible at the same time.
 Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.  
 The amount of slides visible can be specified on a per-breakpoint basis.
 
-<p-inline-notification heading="Layout hint" state="warning" persistent="true">
+<p-inline-notification heading="Layout hint" state="warning" dismiss-button="false">
  The component can only be used with the full viewport width. The alignment of its content can be controlled 
 by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.
 </p-inline-notification>
@@ -33,7 +33,7 @@ The value can either be a static number, or a breakpoint customizable object.
 
 In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
 
-<p-inline-notification heading="Attention" state="warning" persistent="true">
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
  It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
 </p-inline-notification>
 
@@ -70,7 +70,7 @@ Defines horizontal spacing which is aligned with the [Porsche Grid](styles/grid)
 
 ## Wrap Content (deprecated)
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
   This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
 </p-inline-notification>
 
@@ -87,7 +87,7 @@ first/last slide.
 
 The pagination indicators underneath the slides can be removed via `pagination="false"`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>disablePagination</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>pagination</code> property instead.
 </p-inline-notification>
@@ -111,7 +111,7 @@ For browsers that don't support the `inert` attribute, yet, the component adds a
 To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
 
 <Playground :frameworkMarkup="jumpToSlideExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" :active-slide-index="activeSlideIndex" v-html="getSlides(3)" @change="(e) => activeSlideIndex = e.detail.activeIndex" style="margin: 0 0 1rem">
+  <p-carousel :theme="theme" :heading="basicHeading" :active-slide-index="activeSlideIndex" v-html="getSlides(3)" @update="(e) => activeSlideIndex = e.detail.activeIndex" style="margin: 0 0 1rem">
   </p-carousel>
   <button v-for="(_, index) in Array(3)" :key="index" type="button" @click="activeSlideIndex = index" :disabled="activeSlideIndex === index">{{index + 1}}</button>
 </Playground>
@@ -120,13 +120,13 @@ To control the `p-carousel` from the outside you can specify its `activeSlideInd
 
 Whenever the `p-carousel` slides, the `change` is emitted containing both, the `activeIndex` and `previousIndex`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>carouselChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>
 
 <Playground :frameworkMarkup="eventHandlingExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @change="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
+  <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @update="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
   </p-carousel>
   <p-text :theme="theme">Last event detail: {{lastEventDetail}}</p-text>
 </Playground>

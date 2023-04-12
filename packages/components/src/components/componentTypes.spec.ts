@@ -53,7 +53,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
         if (type === 'void') {
           expect(true).toBe(true);
         } else {
-          expect(type).toMatch(new RegExp(`^${pascalCase(`${componentName}ChangeEvent`)}$`));
+          expect(type).toMatch(new RegExp(`^${pascalCase(`${componentName}UpdateEvent`)}$`));
         }
       });
     });

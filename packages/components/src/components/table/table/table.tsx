@@ -9,7 +9,7 @@ import {
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
-import type { TableChangeEvent } from './table-utils';
+import type { TableUpdateEvent } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
 
 const propTypes: PropTypes<typeof Table> = {
@@ -32,18 +32,18 @@ export class Table {
   @Prop() public theme?: Theme = 'light';
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `change` event instead.
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableChangeEvent>;
+  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableUpdateEvent>;
 
   /** Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public change: EventEmitter<TableChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEvent>;
 
   public componentWillLoad(): void {
     warnIfCaptionIsUndefined(this.host, this.caption);
-    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableChangeEvent>) => {
+    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEvent>) => {
       e.stopPropagation();
-      this.change.emit(e.detail);
+      this.update.emit(e.detail);
       this.sortingChange.emit(e.detail);
     });
   }

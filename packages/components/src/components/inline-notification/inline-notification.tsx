@@ -9,6 +9,7 @@ import {
   hasHeading,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
@@ -23,6 +24,7 @@ const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<InlineNotificationState>(INLINE_NOTIFICATION_STATES),
+  dismissButton: AllowedTypes.boolean,
   persistent: AllowedTypes.boolean,
   actionLabel: AllowedTypes.string,
   actionLoading: AllowedTypes.boolean,
@@ -46,8 +48,13 @@ export class InlineNotification {
   /** State of the inline-notification. */
   @Prop() public state?: InlineNotificationState = 'info';
 
-  /** Defines if the inline-notification can be closed/removed by the user. */
-  @Prop() public persistent?: boolean = false;
+  /** If false, the inline-notification will not have a dismiss button. */
+  @Prop() public dismissButton?: boolean = true;
+
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
+   * Defines if the inline-notification can be closed/removed by the user. */
+  @Prop() public persistent?: boolean;
 
   /** Action label of the inline-notification. */
   @Prop() public actionLabel?: string;
@@ -67,6 +74,10 @@ export class InlineNotification {
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
+  private get hasDismissButton(): boolean {
+    return this.persistent ? false : this.dismissButton;
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropValueIsUsed<
@@ -76,7 +87,8 @@ export class InlineNotification {
     >(this, 'state', {
       neutral: 'info',
     });
-    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
+    warnIfDeprecatedPropIsUsed<typeof InlineNotification>(this, 'persistent', 'Please use dismissButton prop instead.');
+    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.hasDismissButton, this.theme);
 
     const bannerId = 'banner';
     const labelId = 'label';
@@ -107,7 +119,7 @@ export class InlineNotification {
             {this.actionLabel}
           </PrefixedTagNames.pButtonPure>
         )}
-        {!this.persistent && (
+        {this.hasDismissButton && (
           <PrefixedTagNames.pButtonPure
             class="close"
             type="button"

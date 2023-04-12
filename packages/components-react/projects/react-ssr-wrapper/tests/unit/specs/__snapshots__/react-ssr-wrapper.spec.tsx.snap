@@ -1117,7 +1117,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
           </style>
           <img
             alt=""
@@ -1384,7 +1384,6 @@ exports[`should render dsr component for PBanner 1`] = `
   >
     <style>
       :host {
-  opacity: 0;
   --p-banner-position-top: 56px !important;
   --p-banner-position-bottom: 56px !important;
   position: fixed !important;
@@ -1395,86 +1394,39 @@ exports[`should render dsr component for PBanner 1`] = `
   margin: 0 !important;
   padding: 0 !important;
   width: auto !important;
+  max-width: 100% !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
-  will-change: opacity,transform !important;
   filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16)) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0) !important;
+}
+:host(.hydrated), :host(.ssr) {
+  transition: visibility 0s linear var(--p-animation-duration,600ms), opacity var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1), transform var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-@keyframes mobileIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes mobileOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
-  }
-}
-@keyframes desktopIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes desktopOut {
-  from {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
-  }
-}
-@media(min-width:0px) and (max-width:759px) {
-    :host(.banner--close) {
-      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
-}
-
 @media(min-width:760px) {
-    :host {
-      top: var(--p-banner-position-top) !important;
-      bottom: auto !important;
-      left: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-      right: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-    }
-    :host(.banner--close) {
-      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
-    }
-    :host(.hydrated), :host(.ssr) {
-      animation: var(--p-animation-duration,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
-    }
+  :host {
+    top: var(--p-banner-position-top) !important;
+    bottom: auto !important;
+    left: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    right: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0) !important;
+  }
 }
 
 @media(min-width:1920px) {
-    :host {
-      left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-      right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-    }
+  :host {
+    left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+  }
 }
 
     </style>
     <p-inline-notification
+      aria-hidden="true"
       class="ssr"
     >
       <template
@@ -4305,8 +4257,8 @@ exports[`should render dsr component for PModal 1`] = `
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-  opacity: 0 !important;
   visibility: hidden !important;
+  transition: visibility 0s linear .2s !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -4320,9 +4272,11 @@ exports[`should render dsr component for PModal 1`] = `
   right: 0 !important;
   bottom: 0 !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
   pointer-events: none !important;
+  opacity: 0 !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1),--webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -4348,8 +4302,9 @@ h2 {
 .root {
   position: relative;
   box-sizing: border-box;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
   transform: scale3d(.9,.9,1);
+  opacity: 0;
+  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
   padding: 2rem 32px 32px 32px;
   background: #FFF;
   outline: 0;
@@ -4657,7 +4612,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -4716,7 +4671,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
+  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);

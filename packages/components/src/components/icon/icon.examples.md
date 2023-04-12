@@ -13,7 +13,7 @@ For more information and a complete overview of all available Porsche icons, hea
 ([Porsche Icons](https://icons.porsche.com)).  
 To reference an icon just use the `name` property with a predefined icon id.
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
   With the previous major version v2 it was possible to accidentally define an icon name with camel case syntax. 
 This isn't possible anymore, typings have been adapted properly. Please use param case syntax instead.
 </p-inline-notification>
@@ -51,12 +51,12 @@ specific size is needed, the size can be set to `inherit` in order to specify th
 Predefined colors associated with its theme are available. Furthermore, inherit mode can be used to define a custom
 color.
 
-<p-inline-notification heading="Important note" state="success" persistent="true">
+<p-inline-notification heading="Important note" state="success" dismiss-button="false">
   The inherit mode works slightly different in v3 compared to the previous major release. A CSS filter (use some Online Calculator "hex to css filter") is required to
 apply custom coloring to take advantage of using an SVG embedded in an image tag for better loading performance.
 </p-inline-notification>
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   Following colors have been deprecated and will be removed with the next major release:
 "brand", "default", "neutral-contrast-high", "neutral-contrast-medium", "neutral-contrast-low" and "notification-neutral".
 </p-inline-notification>
@@ -80,7 +80,7 @@ sure that the custom icon serves the specific needs like size and viewbox which 
 
 ## Lazy loaded icon
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
 </p-inline-notification>
 

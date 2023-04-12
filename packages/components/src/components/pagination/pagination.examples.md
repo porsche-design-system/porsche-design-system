@@ -2,7 +2,7 @@
 
 <TableOfContents></TableOfContents>
 
-<p-inline-notification heading="Deprecation hint" state="warning" persistent="true">
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>pageChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>change</code> event instead.
 </p-inline-notification>
@@ -82,8 +82,8 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    const playground = this.$el.querySelector('.playground-pagination p-pagination');
-    playground.addEventListener('pageChange', (e) => {
+    const el = this.$el.querySelector('.playground-pagination p-pagination');
+    el.addEventListener('update', (e) => {
       this.activePage = e.detail.page;
     });
   }

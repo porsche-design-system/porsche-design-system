@@ -15,8 +15,10 @@
 </div>
 
 <p-button-group>
-  <p-button id="prev-button" icon="arrow-head-left" variant="tertiary" disabled="true">Previous Step</p-button>
-  <p-button id="next-button" variant="primary">Next Step</p-button>
+  <p-button type="button" id="prev-button" icon="arrow-head-left" variant="tertiary" disabled="true"
+    >Previous Step</p-button
+  >
+  <p-button type="button" id="next-button" variant="primary">Next Step</p-button>
 </p-button-group>
 
 <script>
@@ -69,7 +71,7 @@
   prevButton.addEventListener('click', () => onNextPrevStep('prev'));
   nextButton.addEventListener('click', () => onNextPrevStep('next'));
 
-  stepper.addEventListener('change', (e) => {
+  stepper.addEventListener('update', (e) => {
     const { activeStepIndex } = e.detail;
 
     for (let i = activeStepIndex + 1; i < stepElements.length; i++) {

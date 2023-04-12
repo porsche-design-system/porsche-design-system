@@ -6,7 +6,7 @@
 
 `p-heading` is used to highlight and specify heading styling and hierarchy in documents.
 
-<p-inline-notification heading="Recommendation" state="success" persistent="true">
+<p-inline-notification heading="Recommendation" state="success" dismiss-button="false">
   Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
 the "@porsche-design-system/components-{js|angular|react|vue}/styles" sub-package for best performance since way 
 less DOM nodes are required to render. Further information can be found <a href="styles/typography">here</a>.

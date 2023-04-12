@@ -1,4 +1,4 @@
-import { RouteProps } from 'react-router-dom';
+import type { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
@@ -75,6 +75,11 @@ export const routes: RouteType[] = [
     name: 'Accordion Example',
     path: '/accordion-example',
     element: <fromExamples.AccordionExamplePage />,
+  },
+  {
+    name: 'Banner Example',
+    path: '/banner-example',
+    element: <fromExamples.BannerExamplePage />,
   },
   {
     name: 'Carousel Example Dynamic Slides',

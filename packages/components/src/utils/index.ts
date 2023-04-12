@@ -1,6 +1,6 @@
 export * from './a11y';
 export * from './attribute-observer';
-export { BREAKPOINTS, parseJSON } from './breakpoint-customizable';
+export { parseJSON } from './breakpoint-customizable';
 export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
 export { getCurrentMatchingBreakpointValue } from './breakpoint-observer-utils';
 export * from './button-handling';

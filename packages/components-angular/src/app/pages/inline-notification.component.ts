@@ -237,6 +237,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       ></p-inline-notification>
     </div>
 
+    <div class="playground light" title="should show inline-notification without dismiss button on light background">
+      <p-inline-notification
+        [heading]="'Heading with dismissButton=false'"
+        [description]="'Some description'"
+        [dismissButton]="false"
+      ></p-inline-notification>
+    </div>
+
+    <div class="playground dark" title="should show inline-notification without dismiss button on dark background">
+      <p-inline-notification
+        [heading]="'Heading with dismissButton=false'"
+        [description]="'Some description'"
+        [dismissButton]="false"
+        [theme]="'dark'"
+      ></p-inline-notification>
+    </div>
+
     <div
       class="playground light"
       title="should show inline-notification in persistent mode with action button on light background"

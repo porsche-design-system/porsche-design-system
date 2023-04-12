@@ -4,7 +4,7 @@
 
 ## Example
 
-<p-inline-notification heading="Important note" state="error" persistent="true">
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
  The <code>getHoverStyle() / pds-hover()</code> style is still experimental, interface might change.
 </p-inline-notification>
 
@@ -36,7 +36,7 @@ JavaScript styles can be imported by
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles' as *;`
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
  At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
 </p-inline-notification>
 
