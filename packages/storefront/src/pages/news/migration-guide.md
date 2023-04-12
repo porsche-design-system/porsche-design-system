@@ -1,28 +1,28 @@
 # Migration Guide
 
-<p-inline-notification heading="Porsche Design System v2" state="error" dismiss-button="false">
-  Support will end on <b>June 30th, 2023</b>.<br>
-  In addition, it's not under active development anymore. Only critical bug fixing takes place.<br>
-  Please make sure that upgrading to <b>Porsche Design System v3</b> is feasible before the EOL date.
-</p-inline-notification>
-
 <TableOfContents></TableOfContents>
 
-## How to migrate from Porsche Design System v2 to v3
+## Migrate from Porsche Design System v2 to v3
 
 With the new **Porsche Design Language** comes a lot of changes regarding layout and design principles. To keep
 refactoring efforts as low as possible when upgrading from `v2` to `v3`, **breaking changes** were avoided as far as
 possible. Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
 
-To help making migration easier, we offer a
+Please follow the migration guide on this page. In addition, we offer a
 [components overview](https://designsystem.porsche.com/latest/component-meta) which shows all component information
 including deprecated components/props/values.
+
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+  Porsche Design System <b>v2</b> support will end on <b>June 30th, 2023</b> (until EOL date only critical bug fixing takes place).<br>
+  <br>
+  <b>Please make sure that upgrading to Porsche Design System v3 is feasible before the EOL date</b>.
+</p-inline-notification>
 
 ## Notable New Features
 
 - New design language for all components
-- New Components: `Crest`, `Wordmark`, `Model Signature`, `Link Tile Model Signature`, `Button Tile` and `Display`
 - All components are supporting `theme` light and dark
+- New Components: `Crest`, `Wordmark`, `Model Signature`, `Link Tile Model Signature`, `Button Tile` and `Display`
 - Vue JS documentation for all components
 - Porsche Next font supports Vietnamese charset
 - SSR Support for Remix
@@ -144,7 +144,7 @@ including deprecated components/props/values.
 + require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right'] })
 ```
 
-### CSS global scope:
+### CSS Variables:
 
 - Changed naming of global CSS variables.
 
@@ -234,7 +234,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Accordion:
 
-- Event `accordionChange` is deprecated.
+- Event `accordionChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -252,7 +252,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 + <p-banner></p-banner>
 ```
 
-- Named `slot="title"` is deprecated.
+- Named `slot="title"` is deprecated, use new slot or prop `heading`.
 
 ```diff
 <p-banner>
@@ -290,14 +290,14 @@ recommend to migrate and remove the deprecated props since those ones will be re
 + <p-carousel></p-carousel>
 ```
 
-- Prop `disablePagination` is deprecated.
+- Prop `disablePagination` is deprecated, use new prop `pagination`.
 
 ```diff
 - <p-carousel disable-pagination="true"></p-carousel>
 + <p-carousel pagination="false"></p-carousel>
 ```
 
-- Event `carouselChange` is deprecated.
+- Event `carouselChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -307,7 +307,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Content Wrapper (deprecated):
 
-- Prop `theme` and `background-color` are deprecated.
+- Prop `theme` and `background-color` are deprecated, has no effect anymore.
 
 ```diff
 - <p-content-wrapper theme="dark" background-color="default">Some content</p-content-wrapper>
@@ -316,7 +316,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Divider:
 
-- Prop `orientation` is deprecated.
+- Prop `orientation` is deprecated, use new prop `direction`.
 
 ```diff
 - <p-divider orientation="horizontal"></p-divider>
@@ -337,7 +337,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Icon:
 
-- Prop `lazy` is deprecated.
+- Prop `lazy` is deprecated, has no effect anymore.
 
 ```diff
 - <p-icon lazy="true"></p-icon>
@@ -346,7 +346,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Inline Notification:
 
-- Prop `persistent` is deprecated.
+- Prop `persistent` is deprecated, use new prop `dismissButton`.
 
 ```diff
 - <p-inline-notification persistent="true"></p-inline-notification>
@@ -367,14 +367,14 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Modal:
 
-- Prop `disableCloseButton` is deprecated.
+- Prop `disableCloseButton` is deprecated, use new prop `dismissButton`.
 
 ```diff
 - <p-modal disable-close-button="true"></p-modal>
 + <p-modal dismiss-button="false"></p-modal>
 ```
 
-- Event `close` is deprecated.
+- Event `close` is deprecated, use new event `dismiss`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -384,14 +384,14 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Pagination:
 
-- Props `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` are deprecated.
+- Props `allyLabelNext`, `allyLabelPage`, `allyLabelPrev` and `allyLabel` are deprecated, use new prop `intl`.
 
 ```diff
 - <p-pagination ally-label="Paginierung" ally-label-prev="Vorherige Seite" ally-label-next="Nächste Seite" ally-label-page="Seite"></p-pagination>
 + <p-pagination intl="{root: 'Paginierung', prev: 'Vorherige Seite', next: 'Nächste Seite', page: 'Seite'}"></p-pagination>
 ```
 
-- Event `pageChange` is deprecated.
+- Event `pageChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -401,14 +401,14 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Scroller:
 
-- Prop `gradientColorScheme` is deprecated.
+- Prop `gradientColorScheme` is deprecated, use new prop `gradientColor`.
 
 ```diff
 - <p-scroller gradient-color-scheme="surface"></p-scroller>
 + <p-scroller gradient-color="background-surface"></p-scroller>
 ```
 
-- Prop `scrollIndicatorPosition` is deprecated.
+- Prop `scrollIndicatorPosition` is deprecated, use new prop `alignScrollIndicator`.
 
 ```diff
 - <p-scroller scroll-indicator-position="top"></p-scroller>
@@ -417,7 +417,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Segmented Control:
 
-- Prop `background-color` is deprecated.
+- Prop `background-color` is deprecated, has no effect anymore.
 
 ```diff
 - <p-segmented-control background-color="background-surface">
@@ -430,7 +430,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
  </p-segmented-control>
 ```
 
-- Event `segmentedControlChange` is deprecated.
+- Event `segmentedControlChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -440,7 +440,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Stepper Horizontal:
 
-- Event `stepChange` is deprecated.
+- Event `stepChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -450,7 +450,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Switch:
 
-- Event `switchChange` is deprecated.
+- Event `switchChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -460,7 +460,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Table:
 
-- Event `sortingChange` is deprecated.
+- Event `sortingChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -470,14 +470,14 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Tabs:
 
-- Prop `gradientColorScheme` is deprecated.
+- Prop `gradientColorScheme` is deprecated, use new prop `gradientColor`.
 
 ```diff
 - <p-tabs gradient-color-scheme="surface"></p-tabs>
 + <p-tabs gradient-color="background-surface"></p-tabs>
 ```
 
-- Event `tabChange` is deprecated.
+- Event `tabChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -487,14 +487,14 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Tabs Bar:
 
-- Prop `gradientColorScheme` is deprecated.
+- Prop `gradientColorScheme` is deprecated, use new prop `gradientColor`.
 
 ```diff
 - <p-tabs-bar gradient-color-scheme="surface"></p-tabs-bar>
 + <p-tabs-bar gradient-color="background-surface"></p-tabs-bar>
 ```
 
-- Event `tabChange` is deprecated.
+- Event `tabChange` is deprecated, use new event `update`.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
@@ -504,7 +504,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Text Field Wrapper:
 
-- Prop `showCharacterCount` is deprecated.
+- Prop `showCharacterCount` is deprecated, use new prop `showCounter`.
 
 ```diff
 - <p-text-field-wrapper show-character-count="false">
@@ -515,7 +515,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Textarea Wrapper:
 
-- Prop `showCharacterCount` is deprecated.
+- Prop `showCharacterCount` is deprecated, use new prop `showCounter`.
 
 ```diff
 - <p-textarea-wrapper show-character-count="false">
@@ -526,7 +526,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Text List
 
-- Props `listType` and `orderType` are deprecated.
+- Props `listType` and `orderType` are deprecated, use new prop `type`.
 
 ```diff
 - <p-text-list list-type="unordered"></p-text-list>
@@ -546,7 +546,7 @@ to the new values since those ones will be removed with next major version.
 
 ### Banner:
 
-- Prop value `neutral` of `state` prop is deprecated.
+- Prop value `neutral` of `state` prop is deprecated, use new value `info`.
 
 ```diff
 - <p-banner state="neutral">
@@ -561,16 +561,17 @@ to the new values since those ones will be removed with next major version.
 
 ### Content Wrapper (deprecated):
 
-- Prop value `fluid` of `width` prop is deprecated.
+- Prop value `fluid` of `width` prop is deprecated, use new value `full`.
 
 ```diff
 - <p-content-wrapper width="fluid">Some content</p-content-wrapper>
-+ <p-content-wrapper>Some content</p-content-wrapper>
++ <p-content-wrapper width="full">Some content</p-content-wrapper>
 ```
 
 ### Divider:
 
-- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated.
+- Prop values `neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high` of `color` prop are deprecated,
+  use new values `contrast-low | contrast-medium | contrast-high`.
 
 ```diff
 - <p-divider color="neutral-contrast-low"></p-divider>
@@ -587,7 +588,8 @@ to the new values since those ones will be removed with next major version.
 
 - Prop values
   `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-  `color` prop are deprecated.
+  `color` prop are deprecated, use new values
+  `primary | contrast-low | contrast-medium | contrast-high | notification-info`.
 
 ```diff
 - <p-icon color="brand"></p-icon>
@@ -605,13 +607,13 @@ to the new values since those ones will be removed with next major version.
 - <p-icon color="neutral-contrast-high"></p-icon>
 + <p-icon color="contrast-high"></p-icon>
 
-- <p-icon color="neutral-contrast-neutral"></p-icon>
-+ <p-icon color="contrast-info"></p-icon>
+- <p-icon color="notification-neutral"></p-icon>
++ <p-icon color="notification-info"></p-icon>
 ```
 
 ### Inline Notification:
 
-- Prop value `neutral` of `state` prop is deprecated.
+- Prop value `neutral` of `state` prop is deprecated, use new value `info`.
 
 ```diff
 - <p-inline-notification state="neutral"></p-inline-notification>
@@ -620,7 +622,7 @@ to the new values since those ones will be removed with next major version.
 
 ### Link Tile:
 
-- Prop value `semibold` of `weight` prop is deprecated.
+- Prop value `semibold` of `weight` prop is deprecated, use new value `semi-bold`.
 
 ```diff
 - <p-link-tile weight="semibold"></p-link-tile>
@@ -629,7 +631,7 @@ to the new values since those ones will be removed with next major version.
 
 ### Tabs:
 
-- Prop value `semibold` of `weight` prop is deprecated.
+- Prop value `semibold` of `weight` prop is deprecated, use new value `semi-bold`.
 
 ```diff
 - <p-tabs weight="semibold"></p-tabs>
@@ -638,7 +640,7 @@ to the new values since those ones will be removed with next major version.
 
 ### Tabs Bar:
 
-- Prop value `semibold` of `weight` prop is deprecated.
+- Prop value `semibold` of `weight` prop is deprecated, use new value `semi-bold`.
 
 ```diff
 - <p-tabs-bar weight="semibold"></p-tabs>
@@ -649,7 +651,8 @@ to the new values since those ones will be removed with next major version.
 
 - Prop value
   `notification-neutral | background-error | background-success | background-warning | neutral-contrast-high | background-default`
-  of `color` prop is deprecated.
+  of `color` prop is deprecated, use new value
+  `notification-info-soft | notification-error-soft | notification-success-soft | notification-warning-soft | primary | background-base`.
 
 ```diff
 - <p-tag color="notification-neutral">Color label</p-tag>
@@ -673,7 +676,7 @@ to the new values since those ones will be removed with next major version.
 
 ### Tag Dismissible:
 
-- Prop value `background-default` of `color` prop is deprecated.
+- Prop value `background-default` of `color` prop is deprecated, use new value `background-base`.
 
 ```diff
 - <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
@@ -682,7 +685,7 @@ to the new values since those ones will be removed with next major version.
 
 ### Text:
 
-- Prop value `thin | semibold` of `weight` prop is deprecated.
+- Prop value `thin | semibold` of `weight` prop is deprecated (`thin` is mapped to `regular` by default).
 
 ```diff
 - <p-text weight="thin">Some text</p-text>
@@ -694,7 +697,8 @@ to the new values since those ones will be removed with next major version.
 
 - Prop value
   `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-  `color` prop is deprecated.
+  `color` prop is deprecated, use new value
+  `primary | contrast-low | contrast-medium | contrast-high | notification-info`.
 
 ```diff
 - <p-text color="brand">Some text</p-text>
@@ -718,7 +722,7 @@ to the new values since those ones will be removed with next major version.
 
 ### ToastManager:
 
-- Prop value `neutral` of `state` parameter is deprecated.
+- Prop value `neutral` of `state` parameter is deprecated, use new value `info`.
 
 ```diff
 - …addMessage({ text: `Some message`, state: 'neutral' })
