@@ -13,10 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-| Type      | Web Library     |
-| --------- | --------------- |
+| Type      | Web Library        |
+| --------- | ------------------ |
 | Component | Stepper Horizontal |
-| Component | Segmented Control |
+| Component | Segmented Control  |
 
 ### [2.4.0] - 2022-04-26
 
@@ -152,8 +152,8 @@ your development team to discuss how this new metrics might affect your team’s
 ## Get help
 
 If you run into trouble and need support, the Porsche Design System Team is here to help. Simply go to our contribution
-board and [open an issue](https://github.com/porsche-design-system/porsche-design-system-contribution) to get in touch with us.
-We'll always do our best to answer your questions and connect you with the right people quickly.
+board and [open an issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose) to get in
+touch with us. We'll always do our best to answer your questions and connect you with the right people quickly.
 
 #### Added
 
