@@ -27,7 +27,6 @@ will use your account registration for sending mails. If you are not yet registe
 ## Issue and contribution management at GitHub
 
 Feature requests can be forwarded to the Porsche Design System team by creating issues in the
-[public Porsche Design System GitHub repository](https://github.com/porsche-design-system/porsche-design-system-contribution).
+[public Porsche Design System Issue Board](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose).
 If you want to contribute solutions or fixes, you can create pull requests in the
-[private Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system) after you
-have been granted access.
+[public Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system).
