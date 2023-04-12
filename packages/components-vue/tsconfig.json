@@ -7,11 +7,11 @@
     "projects/vue-wrapper/src/testing/index.ts",
     "projects/vue-wrapper/src/jsdom-polyfill/index.ts"
   ],
-  // importsNotUsedAsValues & preserveValueImports are deprecated in favor of verbatimModuleSyntax. To fix the deprecation warning we have to set the default values.
-  // TODO: remove importsNotUsedAsValues & preserveValueImports on Typescript v5.5.
   "compilerOptions": {
     "outDir": "dist/vue-wrapper",
     "declaration": true,
+    // importsNotUsedAsValues & preserveValueImports are deprecated in favor of verbatimModuleSyntax. To fix the deprecation warning we have to set the default values.
+    // TODO: remove importsNotUsedAsValues & preserveValueImports on Typescript v5.5.
     "importsNotUsedAsValues": "remove",
     "preserveValueImports": false,
     "baseUrl": ".",
