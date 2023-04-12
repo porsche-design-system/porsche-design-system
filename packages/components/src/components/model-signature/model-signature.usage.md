@@ -5,7 +5,7 @@
 ##### Do:
 
 - Use signatures for emotional introduction and communication of model series.
-- Consider using model signatures only occasionally, for example, within the Link Tiles component for a specific model
+- Consider using model signatures only occasionally, for example, within the Link Tile component for a specific model
   line.
 - Use model signatures as a subtle, larger background watermark, paired with appropriate visualization of vehicle detail
   pages.
