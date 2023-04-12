@@ -45,10 +45,10 @@
     .language-diff {
       & > {
         .inserted {
-          color: #418340;
+          color: $pds-theme-light-notification-success;
         }
         .deleted {
-          color: #d91e18;
+          color: $pds-theme-light-notification-error;
         }
       }
     }
