@@ -19,8 +19,8 @@ component in various situations.
 - Include a table caption describing the contents of the table for accessibility
 - Use the built-in scroller for horizontal scrolling on mobile viewports.
 
-### Don’t:
+### Don't:
 
-- Don’t use for non-structured data or data that can be presented in a simpler format.
-- Don’t overuse or clutter cell data with unnecessary content.
-- Don’t neglect to include a table caption for accessibility purposes.
+- Don't use for non-structured data or data that can be presented in a simpler format.
+- Don't overuse or clutter cell data with unnecessary content.
+- Don't neglect to include a table caption for accessibility purposes.

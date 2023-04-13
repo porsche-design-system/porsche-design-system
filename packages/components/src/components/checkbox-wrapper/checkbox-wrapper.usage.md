@@ -21,8 +21,8 @@ component in various situations.
 ### Don't:
 
 - Avoid using when you have more than 8 options to choose from or consider using a [Select](components/select).
-- Don’t mix [Radio Button](components/radio-button) buttons with checkboxes.
-- Don’t change the selection of another checkbox when a nested one is clicked. The only exception is when a checkbox is
+- Don't mix [Radio Button](components/radio-button) buttons with checkboxes.
+- Don't change the selection of another checkbox when a nested one is clicked. The only exception is when a checkbox is
   used to make a bulk selection of multiple items.
 
 ---

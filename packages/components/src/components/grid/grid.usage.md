@@ -99,7 +99,7 @@ user and the specific use context in mind.
 
 ![Porsche Design System grid behaviour](./assets/grid-behaviour.png)
 
-### Don’t be afraid to think outside of the box
+### Don't be afraid to think outside of the box
 
 It is possible to place elements end-to-end, spanning from left to the right edge of the screen. This can be done by
 using the "fluid" content width variant of the [Content Wrapper](components/content-wrapper) component. An example would

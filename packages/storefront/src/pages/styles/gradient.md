@@ -14,11 +14,13 @@
 
 - Use only when placing text on images (e.g. a Link Tile) to provide a subtle contrast, making it easier to read.
 
-Note: The gradient consists of various points to create a smooth gradient.
+##### Don't:
 
-##### Don’t:
+- Don't build the gradient yourself.
 
-- Build the gradient yourself.
+##### Hint
+
+- The gradient consists of various points to create a smooth gradient.
 
 ## Styles
 

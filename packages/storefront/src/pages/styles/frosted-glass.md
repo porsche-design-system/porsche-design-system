@@ -18,13 +18,10 @@
 - Only pair with neutral colors.
 - Use it rarely.
 
-#### Don’t:
+#### Hint:
 
-- Be aware of may appear low contrast due to the background
-- Don’t use it on low contrast or plane background because of new visual effect
-- Be aware of performance issues
-
-**Note:** Some browsers have issues with rendering the effect
+- Be aware of contrast issues depending on the background
+- Some browsers have issues with rendering the effect
 
 ## Styles
 
@@ -43,7 +40,7 @@ JavaScript styles can be imported by
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles' as *;`
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
  At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
 </p-inline-notification>
 

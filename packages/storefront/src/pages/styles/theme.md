@@ -18,10 +18,10 @@
 - Play with darker/lighter grey shades to make an element stand out from the background or to set emphasis on it.
 - Mix color themes within the application on rarely. Ensure a sufficient contrast ratio.
 
-#### Don’t:
+#### Don't:
 
-- Don’t use neutral contrast low for displaying crucial information.
-- Mix colors of different themes (e.g. primary-light with base-dark).
+- Don't use neutral contrast low for displaying crucial information.
+- Don't mix colors of different themes (e.g. primary-light with base-dark).
 - Avoid adding new colors to the color palette.
 
 ## Styles

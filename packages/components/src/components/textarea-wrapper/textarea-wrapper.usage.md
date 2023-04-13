@@ -17,7 +17,7 @@ component in various situations.
 - Mark required fields with a red asterisk to improve the usability of forms.
 - Use the Pure variant (without label) only if the context clearly describes the purpose.
 
-### Don’t:
+### Don't:
 
-- Don’t use when text entry is expected to be short. Use an input instead to avoid confusing users.
-- Don’t overwhelm users with too many Textareas on a single page. Stick to no more than two Textareas.
+- Don't use when text entry is expected to be short. Use an input instead to avoid confusing users.
+- Don't overwhelm users with too many Textareas on a single page. Stick to no more than two Textareas.

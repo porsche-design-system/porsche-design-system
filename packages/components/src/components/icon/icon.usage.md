@@ -12,6 +12,6 @@ component in various situations.
 - Use the available icons from [Porsche Icons](https://icons.porsche.com).
 - Use icons as an additional element for faster recognition.
 
-### Don’t:
+### Don't:
 
-- Don’t use icons without label.
+- Don't use icons without label.

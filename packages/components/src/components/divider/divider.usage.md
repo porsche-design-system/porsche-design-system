@@ -15,6 +15,6 @@ component in various situations.
 
 ### Don't:
 
-- Don’t use dividers to structure content, rather work with more space for clustering
-- Don’t use it for decorative purposes unless it's necessary.
+- Don't use dividers to structure content, rather work with more space for clustering
+- Don't use it for decorative purposes unless it's necessary.
 - Avoid full-bleed dividers to separate page sections.

@@ -21,7 +21,7 @@ component in various situations.
 
 ### Don't:
 
-- Don’t use a radio Button for a large number of items (≥ 7), use the [Select](components/select) or
+- Don't use a radio Button for a large number of items (≥ 7), use the [Select](components/select) or
   [Segmented Control](components/segmented-control) component instead.
 
 ---

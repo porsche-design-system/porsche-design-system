@@ -19,11 +19,11 @@ component in various situations.
 - Use an Icon-only variant only in cases where the user is fully aware of the link function.
 - Ensure that the link remains legible even in a multiline state by using max. 100 characters per line.
 
-### Don’t:
+### Don't:
 
-- Don’t use a Primary Link for all links on a page.
-- Don’t use a multiline Link as it's recommended to keep the text label short and avoid multiline Links.
-- Don’t use a width that's too wide and makes the link difficult to read.
+- Don't use a Primary Link for all links on a page.
+- Don't use a multiline Link as it's recommended to keep the text label short and avoid multiline Links.
+- Don't use a width that's too wide and makes the link difficult to read.
 
 ---
 

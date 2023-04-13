@@ -22,11 +22,11 @@ component in various situations.
 - Add a link for further explanation about the tag for better understandability (With modal).
 - Add a link for additional information that is not necessary for the task completion (With modal).
 
-### Don’t:
+### Don't:
 
-- Don’t use more than two words (only if necessary).
-- Don’t implement something else than a link or button.
-- Don’t use Tags for navigation.
+- Don't use more than two words (only if necessary).
+- Don't implement something else than a link or button.
+- Don't use Tags for navigation.
 
 ---
 
@@ -44,7 +44,7 @@ component in various situations.
 - Use to show that a certain filter is active.
 - Use this component with a label if additional information is needed (e.g. category an attribute/filter refers to).
 
-### Don’t:
+### Don't:
 
-- Don’t use it for other interactions than dismissing a selection.
-- Don’t have long content that causes multiline.
+- Don't use it for other interactions than dismissing a selection.
+- Don't have long content that causes multiline.

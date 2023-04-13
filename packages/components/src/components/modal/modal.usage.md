@@ -20,8 +20,8 @@ component in various situations.
 - Follow button order and positioning guidelines.
 - Use feedback banner for any feedback related to the request.
 
-### Don’t:
+### Don't:
 
-- Don’t use fullscreen Modals on desktop.
-- Don’t use the Modal with more than three buttons.
-- Don’t launch a Modal within a Modal.
+- Don't use fullscreen Modals on desktop.
+- Don't use the Modal with more than three buttons.
+- Don't launch a Modal within a Modal.

@@ -18,7 +18,7 @@ component in various situations.
 - Use disabled buttons to indicate actions that are currently unavailable or incomplete, and provide context for why the
   button is disabled.
 
-### Don’t:
+### Don't:
 
 - Don't use buttons for non-actionable elements, such as decorative graphics or text.
 - Don't use ambiguous or unclear labels for buttons, as it can lead to confusion for users.

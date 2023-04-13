@@ -16,10 +16,10 @@ component in various situations.
 - Use font size for visual hierarchy and customize image type and font size for responsiveness.
 - Use engaging verbs and product names in compact Link Tile. Create assets upfront for image processing.
 
-### Don’t:
+### Don't:
 
-- Don’t manipulate images, keep them natural and contrasted.
-- Don’t write long descriptions that overflow content (especially on mobile).
+- Don't manipulate images, keep them natural and contrasted.
+- Don't write long descriptions that overflow content (especially on mobile).
 
 ---
 

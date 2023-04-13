@@ -16,9 +16,9 @@ component in various situations.
   available space automatically.
 - Use it consistently throughout your site.
 
-### Don’t:
+### Don't:
 
-- Don’t use for content that can be displayed directly.
+- Don't use for content that can be displayed directly.
 
 ---
 

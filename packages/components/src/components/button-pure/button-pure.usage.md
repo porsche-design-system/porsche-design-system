@@ -19,4 +19,4 @@ component in various situations.
 
 - Don't use Button Pure as the primary or only call to action.
 - Don't use long labels that do not give a clear indication of the action.
-- Don’t use buttons to link/navigate to other pages. Use regular [Link](components/link) instead.
+- Don't use buttons to link/navigate to other pages. Use regular [Link](components/link) instead.

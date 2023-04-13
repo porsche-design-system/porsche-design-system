@@ -25,8 +25,8 @@ component in various situations.
 
 ### Don't:
 
-- Don’t use Link Pure as the main call to action if you need to draw more attention to the link.
-- Don’t use Link Pure on images unless it is necessary e.g. when using it as an additional link on image sliders or
+- Don't use Link Pure as the main call to action if you need to draw more attention to the link.
+- Don't use Link Pure on images unless it is necessary e.g. when using it as an additional link on image sliders or
   teaser images that are clickable themselves.
 - Don't group more than two Links Pure in a row to ensure scannability and legibility.
 

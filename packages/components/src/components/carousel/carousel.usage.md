@@ -17,5 +17,5 @@ component in various situations.
 
 ### Don't:
 
-- Don’t vary the size of the items in its height.
-- Don’t maintain the same layout or at least the same content structure with every item.
+- Don't vary the size of the items in its height.
+- Don't maintain the same layout or at least the same content structure with every item.

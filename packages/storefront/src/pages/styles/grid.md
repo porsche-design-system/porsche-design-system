@@ -40,9 +40,9 @@ This does not correspond to the grid.
 - Align all left-aligned-headlines on one vertical line (left border of basic-grid).
 - Set at least the image focus for larger imagery within the basic grid.
 
-#### Don’t:
+#### Don't:
 
-- Scale elements within the grid bigger than the maximum specification for 1920px.
+- Don't scale elements within the grid bigger than the maximum specification for 1920px.
 
 ## Styles
 

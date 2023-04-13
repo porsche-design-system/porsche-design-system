@@ -24,9 +24,9 @@ component in various situations.
 - Use preselection (optional field) to make it possible to go back to an empty default.
 - Use common sort order for menu items (frequency of use, alpha or numeric).
 
-### Don’t:
+### Don't:
 
-- Don’t use select boxes for data that is highly familiar such as the day month or year.
+- Don't use select boxes for data that is highly familiar such as the day month or year.
 - Don't set the default to 'please select' if there's an empty field.
-- Don’t use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
+- Don't use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
   maximum of 7 elements in the field of view without having to scroll.

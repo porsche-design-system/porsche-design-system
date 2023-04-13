@@ -28,10 +28,10 @@ to the viewport.
 - Pair a headline style with a text style one or two steps below (e.g. headline-large with text-medium).
 - Use text-xx-small only for disclaimers/consumption.
 
-##### Don’t:
+##### Don't:
 
 - Don't use static font styles.
-- Don't use thin, bold, or any italic style of the Porsche Next.
+- Don't use thin or any italic style of the Porsche Next.
 
 ## Styles
 

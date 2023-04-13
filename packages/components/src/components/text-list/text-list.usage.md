@@ -16,7 +16,7 @@ component in various situations.
 - Stick to a homogeneous writing structure and style within one list.
 - Use sentence-style capitalization for each list item capitalizing only the first letter.
 
-### Don’t:
+### Don't:
 
-- Don’t exceed two hierarchy levels in Text Lists.
-- Don’t mix active with passive voice or declarative with imperative sentences within one list.
+- Don't exceed two hierarchy levels in Text Lists.
+- Don't mix active with passive voice or declarative with imperative sentences within one list.

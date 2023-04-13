@@ -16,7 +16,7 @@ component in various situations.
   pages.
 - Use as a headline-like element on model series overview pages.
 
-### Don’t:
+### Don't:
 
 - Avoid including signatures for specific derivatives such as a Panamera 4 Sport Turismo
 - Platinum Edition or a 911 Targa 4S or in line with the text.

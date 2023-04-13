@@ -15,11 +15,11 @@ component in various situations.
 - Use it with one or more focusable elements.
 - Use in components such as Tabs, Table, and Stepper.
 
-### Don’t:
+### Don't:
 
-- Don’t place important actions or information for customer flow within the scroller.
-- Don’t use text that should not have line breaks in the scroller.
-- Don’t assume that elements within a scroller are affected by breakpoints and viewport size as they are not.
+- Don't place important actions or information for customer flow within the scroller.
+- Don't use text that should not have line breaks in the scroller.
+- Don't assume that elements within a scroller are affected by breakpoints and viewport size as they are not.
 
 ---
 
