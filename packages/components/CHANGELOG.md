@@ -11,14 +11,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Wordmark` respects parent width/height
+- `Wordmark`, `Model Signature` respects parent width/height
+  ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
 
 ### [3.0.0-rc.0] - 2023-04-11
 
 #### Fixed
 
 - Styles: `borderRadiusLarge` and `pds-border-radius-large` are exposing correct value
-  ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2461))
+  ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2463))
 
 ### [3.0.0-alpha.6] - 2023-04-06
 
