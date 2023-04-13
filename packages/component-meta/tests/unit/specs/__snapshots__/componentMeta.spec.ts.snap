@@ -456,6 +456,7 @@ exports[`should match snapshot 1`] = `
     "allowedPropValues": {
       "hideLabel": "boolean",
       "label": "string",
+      "loading": "boolean",
       "message": "string",
       "state": [
         "none",
@@ -469,6 +470,7 @@ exports[`should match snapshot 1`] = `
     },
     "breakpointCustomizableProps": [
       "hideLabel",
+      "loading",
     ],
     "hasAriaProp": false,
     "hasEvent": false,
@@ -482,13 +484,18 @@ exports[`should match snapshot 1`] = `
       "label",
       "message",
     ],
+    "nestedComponents": [
+      "p-spinner",
+    ],
     "observedAttributes": [
       "disabled",
       "required",
+      "checked",
     ],
     "props": {
       "hideLabel": false,
       "label": null,
+      "loading": false,
       "message": null,
       "state": "none",
       "theme": "light",
