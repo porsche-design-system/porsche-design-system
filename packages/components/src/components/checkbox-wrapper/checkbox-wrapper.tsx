@@ -108,14 +108,13 @@ export class CheckboxWrapper {
             </span>
           )}
           <slot />
-          {this.loading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={this.theme}
-              aria={{ 'aria-label': 'Loading state:' }}
-            />
-          )}
+
+          <PrefixedTagNames.pSpinner
+            class="spinner"
+            size="inherit"
+            theme={this.theme}
+            aria={{ 'aria-label': 'Loading state:' }}
+          />
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />

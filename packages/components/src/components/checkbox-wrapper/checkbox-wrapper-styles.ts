@@ -25,9 +25,14 @@ export const getComponentCss = (
         '::slotted': addImportantToEachRule({
           '&(input)': {
             borderRadius: borderRadiusSmall,
-            ...(isLoading && {
-              visibility: 'hidden',
-            }),
+            transition: getTransition('opacity'),
+            ...(isLoading
+              ? {
+                  opacity: 0,
+                }
+              : {
+                  opacity: 1,
+                }),
           },
           '&(input:checked)': {
             backgroundImage: getInlineSVGBackgroundImage(
@@ -47,25 +52,31 @@ export const getComponentCss = (
             }),
         }),
       },
-      ...(isLoading && {
-        spinner: {
-          width: fontLineHeight,
-          height: fontLineHeight,
-          pointerEvents: 'none',
-          position: 'absolute',
-          fontFamily, // needed for correct width and height definition and for correct positioning
-          fontSize: '1rem', // needed for correct width and height definition and for correct positioning
-          top: '50%',
-          left: `calc(${fontLineHeight}/2 + 2px)`,
-          transform: 'translate(-50%, -50%)',
-          border: `2px solid ${disabledColor}`,
-          borderRadius: borderRadiusSmall,
-          ...(isChecked && {
-            backgroundColor: disabledColor,
-          }),
-          transition: ['border-color', 'background-color'].map(getTransition).join(),
-        },
-      }),
+
+      spinner: {
+        width: fontLineHeight,
+        height: fontLineHeight,
+        pointerEvents: 'none',
+        position: 'absolute',
+        fontFamily, // needed for correct width and height definition and for correct positioning
+        fontSize: '1rem', // needed for correct width and height definition and for correct positioning
+        top: '50%',
+        left: `calc(${fontLineHeight}/2 + 2px)`,
+        transform: 'translate(-50%, -50%)',
+        border: `2px solid ${disabledColor}`,
+        borderRadius: borderRadiusSmall,
+        ...(isChecked && {
+          backgroundColor: disabledColor,
+        }),
+        ...(isLoading
+          ? {
+              opacity: 1,
+            }
+          : {
+              opacity: 0,
+            }),
+        transition: ['border-color', 'background-color', 'opacity'].map(getTransition).join(),
+      },
     })
   );
 };
