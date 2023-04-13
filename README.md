@@ -129,7 +129,8 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-e2e` (e2e tests for the entire application)
-- `./docker.sh run-test-e2e --components-js` (e2e tests for the native web components)
+- `./docker.sh run-test-e2e-puppeteer --components-js` (e2e tests for the native web components for Chromium)
+- `./docker.sh run-test-e2e-playwright --components-js` (e2e tests for the native web components for Webkit)
 - `./docker.sh run-test-e2e --storefront` (e2e tests for the storefront)
 
 ### Visual Regression Tests
