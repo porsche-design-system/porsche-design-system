@@ -3,7 +3,7 @@ import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getThemedColors, getTransition } from '../../styles';
 import { borderRadiusMedium, borderRadiusSmall, fontFamily, fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -58,11 +58,12 @@ export const getComponentCss = (
           top: '50%',
           left: `calc(${fontLineHeight}/2 + 2px)`,
           transform: 'translate(-50%, -50%)',
-          borderRadius: borderRadiusSmall,
           border: `2px solid ${disabledColor}`,
+          borderRadius: borderRadiusSmall,
           ...(isChecked && {
             backgroundColor: disabledColor,
           }),
+          transition: ['border-color', 'background-color'].map(getTransition).join(),
         },
       }),
     })
