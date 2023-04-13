@@ -22,12 +22,32 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
 
+    <div class="playground" title="should not exceed max-width of crest itself, although parent provides more width">
+      <div style="width: 80px; background: lightsalmon">
+        <p-crest></p-crest>
+      </div>
+      <br />
+      <div style="width: 80px; background: lightsalmon">
+        <p-crest [href]="'#'"></p-crest>
+      </div>
+    </div>
+
     <div class="playground" title="should not exceed parents height">
       <div style="height: 20px; background: lightsalmon">
         <p-crest></p-crest>
       </div>
       <br />
       <div style="height: 20px; background: lightsalmon">
+        <p-crest [href]="'#'"></p-crest>
+      </div>
+    </div>
+
+    <div class="playground" title="should not exceed max-height of crest itself, although parent provides more height">
+      <div style="height: 80px; background: lightsalmon">
+        <p-crest></p-crest>
+      </div>
+      <br />
+      <div style="height: 80px; background: lightsalmon">
         <p-crest [href]="'#'"></p-crest>
       </div>
     </div>
