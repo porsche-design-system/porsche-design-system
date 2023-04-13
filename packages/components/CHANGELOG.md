@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- Styles: `Button Tile`, `Link Tile` and `Link Tile Model Signature` are using correct border radius of
+  `pds-border-radius-large` ([#2464](https://github.com/porsche-design-system/porsche-design-system/pull/2473))
 - Styles: `borderRadiusLarge` and `pds-border-radius-large` are exposing correct value
   ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2461))
 
