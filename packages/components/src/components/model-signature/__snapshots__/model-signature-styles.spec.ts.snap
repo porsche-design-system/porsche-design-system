@@ -83,7 +83,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -104,7 +104,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -125,7 +125,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -146,7 +146,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -167,7 +167,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -188,7 +188,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -209,7 +209,7 @@ exports[`getComponentCss() should return correct css for size: small, color: inh
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -229,7 +229,7 @@ exports[`getComponentCss() should return correct css for size: small, color: inh
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -249,7 +249,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
@@ -270,7 +270,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
   display: inline-block;
   vertical-align: top;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
 }
