@@ -39,7 +39,7 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
     "puppeteer": "~19.4.1",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.1.0"
   },
   "devDependencies": {
     "@octokit/core": "^4.1.0",

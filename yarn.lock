@@ -9574,10 +9574,10 @@ devtools-protocol@0.0.1068969:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1068969.tgz#8b9a4bc48aed1453bed08d62b07481f9abf4d6d8"
   integrity sha512-ATFTrPbY1dKYhPPvpjtwWKSK2mIwGmRwX54UASn9THEuIZCe2n9k3vVuMmt6jWeL+e5QaaguEv/pMyR+JQB7VQ==
 
-devtools-protocol@^0.0.1112051:
-  version "0.0.1112051"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1112051.tgz#a84b5d2bcf7910911f5c48fccfb084000da4f93c"
-  integrity sha512-EuDky3ThVPKkotR6IkDRUr9LlBvrSiHB6+632X7rQltYGtvEW+kOHgf5FuwAfPh+yBaDCFlHByLRRVG3pzeUbg==
+devtools-protocol@^0.0.1129676:
+  version "0.0.1129676"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1129676.tgz#90ddee4cacf02db3913d654b0290273e66be5135"
+  integrity sha512-jnC1pmxdsCVtPzcTR5JmIfjdStzDus96scRZR5Tvi8ab5efMOy6KB4JbzNM6Qi0nGTYFO1kETRM6TBBZ/DTR9A==
 
 di@^0.0.1:
   version "0.0.1"
@@ -23233,7 +23233,7 @@ ts-graphviz@^1.5.0:
   resolved "https://registry.yarnpkg.com/ts-graphviz/-/ts-graphviz-1.5.5.tgz#b5e9079c18289fb36b6b53f3d81da96445c37514"
   integrity sha512-abon0Tlcgvxcqr8x+p8QH1fTbR2R4cEXKGZfT4OJONZWah2YfqkmERb6hrr82omAc1IHwk5PlF8g4BS/ECYvwQ==
 
-"ts-jest@>=29 <30", ts-jest@^24.2.0, ts-jest@^29.0.3, ts-jest@^29.0.5:
+"ts-jest@>=29 <30", ts-jest@^24.2.0:
   version "29.0.5"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.0.5.tgz#c5557dcec8fe434fcb8b70c3e21c6b143bfce066"
   integrity sha512-PL3UciSgIpQ7f6XjVOmbi96vmDHUqAyqDr8YxzopDqX3kfgYtX1cuNeBjP+L9sFXi6nzsGGA6R3fP3DDDJyrxA==
@@ -23256,6 +23256,20 @@ ts-jest@^28.0.0:
     fast-json-stable-stringify "2.x"
     jest-util "^28.0.0"
     json5 "^2.2.1"
+    lodash.memoize "4.x"
+    make-error "1.x"
+    semver "7.x"
+    yargs-parser "^21.0.1"
+
+ts-jest@^29.1.0:
+  version "29.1.0"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.1.0.tgz#4a9db4104a49b76d2b368ea775b6c9535c603891"
+  integrity sha512-ZhNr7Z4PcYa+JjMl62ir+zPiNJfXJN6E8hSLnaUKhOgqcn8vb3e537cpkd0FuAfRK3sR1LSqM1MOhliXNgOFPA==
+  dependencies:
+    bs-logger "0.x"
+    fast-json-stable-stringify "2.x"
+    jest-util "^29.0.0"
+    json5 "^2.2.3"
     lodash.memoize "4.x"
     make-error "1.x"
     semver "7.x"
