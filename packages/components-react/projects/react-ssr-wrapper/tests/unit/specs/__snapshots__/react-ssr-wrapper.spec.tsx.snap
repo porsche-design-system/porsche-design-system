@@ -7735,21 +7735,25 @@ exports[`should render dsr component for PWordmark 1`] = `
   display: inline-block;
   vertical-align: top;
   outline: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   box-sizing: content-box !important;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-a {
+a, svg {
   display: block;
-  text-decoration: none;
+  max-width: 100%;
+  max-height: 100%;
   height: inherit;
+}
+a {
+  text-decoration: none;
   outline: 0;
 }
 svg {
-  display: block;
-  height: inherit;
   fill: #010205;
 }
     </style>
