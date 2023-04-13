@@ -24,7 +24,6 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 8px;
@@ -116,7 +115,6 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 8px;
@@ -214,7 +212,6 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 8px;
@@ -312,7 +309,6 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 8px;
@@ -404,7 +400,6 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 8px;
@@ -502,7 +497,6 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 8px;
