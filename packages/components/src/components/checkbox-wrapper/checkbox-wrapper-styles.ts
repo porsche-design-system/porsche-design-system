@@ -4,7 +4,7 @@ import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { addImportantToEachRule, getThemedColors } from '../../styles';
-import { borderRadiusMedium, borderRadiusSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
+import { borderRadiusMedium, borderRadiusSmall, fontFamily, fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -46,8 +46,10 @@ export const getComponentCss = (
           height: fontLineHeight,
           pointerEvents: 'none',
           position: 'absolute',
+          fontFamily, // needed for correct width and height definition and for correct positioning
+          fontSize: '1rem', // needed for correct width and height definition and for correct positioning
           top: '50%',
-          left: `calc(${fontLineHeight}/2 + 3px)`,
+          left: `calc(${fontLineHeight}/2 + 2px)`,
           transform: 'translate(-50%, -50%)',
         },
       }),
