@@ -52,6 +52,12 @@ changes while this process is performed.
 
 ---
 
+## Loading
+
+<Playground :markup="loading" :config="config"></Playground>
+
+---
+
 ## Validation states
 
 The `p-checkbox-wrapper` component supports the visualisation of inline validation. The `message` and `checkbox` is
@@ -126,6 +132,14 @@ export default class Code extends Vue {
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" disabled checked />
+</p-checkbox-wrapper>`;
+
+  loading =
+`<p-checkbox-wrapper label="Some label" loading="true">
+  <input type="checkbox" name="some-name" />
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="Some label" loading="true">
+  <input type="checkbox" name="some-name" checked />
 </p-checkbox-wrapper>`;
 
   state = 'error';
