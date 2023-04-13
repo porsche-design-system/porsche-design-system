@@ -40,7 +40,6 @@ export const getTileBaseStyles = (
     },
     root: {
       position: 'relative',
-      height: 0,
       overflow: 'hidden',
       transform: 'translate3d(0,0,0)', // change stacking context for position fixed
       borderRadius: borderRadiusMedium,
