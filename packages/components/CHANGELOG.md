@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Text Field Wrapper` adds clear field button label for improved accessibility
+  ([#2168](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
+
 ### [3.0.0-rc.0] - 2023-04-11
 
 #### Fixed
