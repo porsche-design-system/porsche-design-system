@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Wordmark` respects parent width/height
+
 ### [3.0.0-rc.0] - 2023-04-11
 
 #### Fixed
