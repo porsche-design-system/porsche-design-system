@@ -35,11 +35,22 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        display: 'inline-block',
+        verticalAlign: 'top',
+        ...addImportantToEachRule({
+          maxWidth: '100%',
+          maxHeight: '100%',
+          ...(!isSizeInherit && {
+            width: 'inherit',
+            height: 'inherit',
+          }),
+          ...hostHiddenStyles,
+        }),
       },
       img: {
         display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
         pointerEvents: 'none', // prevents image drag
         ...(!isColorInherit && { filter: colorToFilterMap[theme][color] }),
         ...(isSizeInherit && { height: size }),
