@@ -137,6 +137,26 @@ const ModelSignaturePage: NextPage = (): JSX.Element => {
       <div className="playground dark" title="should render for size inherit on dark background">
         <PModelSignature model="911" size="inherit" style={{ height: '100px' }} theme="dark" />
       </div>
+
+      <div className="playground light" title="should not exceed parents width">
+        <div style={{ width: '180px', background: 'lightsalmon' }}>
+          <PModelSignature model="panamera" />
+        </div>
+        <br />
+        <div style={{ width: '180px', background: 'lightsalmon' }}>
+          <PModelSignature model="panamera" size="inherit" style={{ height: '80px' }} />
+        </div>
+      </div>
+
+      <div className="playground light" title="should not exceed parents height">
+        <div style={{ height: '10px', background: 'lightsalmon' }}>
+          <PModelSignature model="panamera" />
+        </div>
+        <br />
+        <div style={{ height: '10px', background: 'lightsalmon' }}>
+          <PModelSignature model="panamera" size="inherit" style={{ height: '80px' }} />
+        </div>
+      </div>
     </>
   );
 };

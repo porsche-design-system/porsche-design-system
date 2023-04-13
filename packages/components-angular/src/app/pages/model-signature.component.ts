@@ -135,6 +135,26 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground dark" title="should render for size inherit on dark background">
       <p-model-signature [model]="'911'" [size]="'inherit'" style="height: 100px" [theme]="'dark'"></p-model-signature>
     </div>
+
+    <div class="playground light" title="should not exceed parents width">
+      <div style="width: 180px; background: lightsalmon">
+        <p-model-signature [model]="'panamera'"></p-model-signature>
+      </div>
+      <br />
+      <div style="width: 180px; background: lightsalmon">
+        <p-model-signature [model]="'panamera'" [size]="'inherit'" style="height: 80px"></p-model-signature>
+      </div>
+    </div>
+
+    <div class="playground light" title="should not exceed parents height">
+      <div style="height: 10px; background: lightsalmon">
+        <p-model-signature [model]="'panamera'"></p-model-signature>
+      </div>
+      <br />
+      <div style="height: 10px; background: lightsalmon">
+        <p-model-signature [model]="'panamera'" [size]="'inherit'" style="height: 80px"></p-model-signature>
+      </div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
