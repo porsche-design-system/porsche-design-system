@@ -2097,7 +2097,7 @@ label {
   transform: translate(-50%, -50%);
   border: 2px solid #7E7F82;
   border-radius: 4px;
-  background-color: #7E7F82;
+  background: #7E7F82;
   opacity: 1;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
@@ -2188,7 +2188,7 @@ label {
   transform: translate(-50%, -50%);
   border: 2px solid #949598;
   border-radius: 4px;
-  background-color: #949598;
+  background: #949598;
   opacity: 1;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
