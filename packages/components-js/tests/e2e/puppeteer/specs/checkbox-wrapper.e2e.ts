@@ -297,7 +297,7 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -311,7 +311,7 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-checkbox-wrapper'], 'componentDidUpdate: p-checkbox-wrapper').toBe(0);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 });
