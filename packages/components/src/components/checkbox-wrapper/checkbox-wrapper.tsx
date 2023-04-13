@@ -92,6 +92,7 @@ export class CheckboxWrapper {
       this.state,
       this.input.disabled,
       this.loading,
+      this.input.checked,
       this.theme
     );
 
@@ -136,6 +137,6 @@ export class CheckboxWrapper {
   };
 
   private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
+    observeAttributes(this.input, ['disabled', 'required', 'checked'], () => forceUpdate(this.host));
   };
 }

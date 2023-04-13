@@ -11,10 +11,13 @@ export const getComponentCss = (
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
+  isChecked: boolean,
   theme: Theme
 ): string => {
+  const themedColors = getThemedColors(theme);
   const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
-  const indeterminateIconColor = getThemedColors(theme).primaryColor.replace(/#/g, '%23');
+  const indeterminateIconColor = themedColors.primaryColor.replace(/#/g, '%23');
+  const { disabledColor } = themedColors;
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled || isLoading, theme), {
@@ -22,6 +25,9 @@ export const getComponentCss = (
         '::slotted': addImportantToEachRule({
           '&(input)': {
             borderRadius: borderRadiusSmall,
+            ...(isLoading && {
+              visibility: 'hidden',
+            }),
           },
           '&(input:checked)': {
             backgroundImage: getInlineSVGBackgroundImage(
@@ -52,6 +58,11 @@ export const getComponentCss = (
           top: '50%',
           left: `calc(${fontLineHeight}/2 + 2px)`,
           transform: 'translate(-50%, -50%)',
+          borderRadius: borderRadiusSmall,
+          border: `2px solid ${disabledColor}`,
+          ...(isChecked && {
+            backgroundColor: disabledColor,
+          }),
         },
       }),
     })
