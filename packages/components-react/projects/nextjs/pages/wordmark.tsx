@@ -47,10 +47,27 @@ const WordmarkPage: NextPage = (): JSX.Element => {
         </div>
         <br />
         <div style={{ width: '180px', background: 'lightsalmon' }}>
-          <PWordmark size="inherit" style={{ height: '20px' }} />
+          <PWordmark size="inherit" style={{ height: '17px' }} />
         </div>
         <br />
         <div style={{ width: '180px', background: 'lightsalmon' }}>
+          <PWordmark href="#" />
+        </div>
+      </div>
+
+      <div
+        className="playground light"
+        title="should not exceed max-width of wordmark itself, although parent provides more width"
+      >
+        <div style={{ width: '272px', background: 'lightsalmon' }}>
+          <PWordmark />
+        </div>
+        <br />
+        <div style={{ width: '272px', background: 'lightsalmon' }}>
+          <PWordmark size="inherit" style={{ height: '17px' }} />
+        </div>
+        <br />
+        <div style={{ width: '272px', background: 'lightsalmon' }}>
           <PWordmark href="#" />
         </div>
       </div>
@@ -61,10 +78,27 @@ const WordmarkPage: NextPage = (): JSX.Element => {
         </div>
         <br />
         <div style={{ height: '5px', background: 'lightsalmon' }}>
-          <PWordmark size="inherit" style={{ height: '20px' }} />
+          <PWordmark size="inherit" style={{ height: '17px' }} />
         </div>
         <br />
         <div style={{ height: '5px', background: 'lightsalmon' }}>
+          <PWordmark href="#" />
+        </div>
+      </div>
+
+      <div
+        className="playground light"
+        title="should not exceed max-height of wordmark itself, although parent provides more height"
+      >
+        <div style={{ height: '80px', background: 'lightsalmon' }}>
+          <PWordmark />
+        </div>
+        <br />
+        <div style={{ height: '80px', background: 'lightsalmon' }}>
+          <PWordmark size="inherit" style={{ height: '17px' }} />
+        </div>
+        <br />
+        <div style={{ height: '80px', background: 'lightsalmon' }}>
           <PWordmark href="#" />
         </div>
       </div>
