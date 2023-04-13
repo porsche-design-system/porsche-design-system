@@ -1,5 +1,14 @@
 import { getCss } from '../../utils';
+import { crestSize } from './crest-utils';
 import { addImportantToEachRule, focusPseudoJssStyle, hostHiddenStyles } from '../../styles';
+
+const { width, height } = crestSize;
+const getDimensionStyle = {
+  maxWidth: `${width}px`,
+  maxHeight: `${height}px`,
+  width: 'inherit',
+  height: 'inherit',
+} as const;
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -10,20 +19,21 @@ export const getComponentCss = (): string => {
         verticalAlign: 'top',
         ...addImportantToEachRule({
           outline: 0,
-          height: 'inherit', // width: 'inherit'; is not needed since host is an inline-block element
+          boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
+          ...getDimensionStyle,
           ...hostHiddenStyles,
         }),
       },
       a: {
         display: 'block',
-        height: 'inherit', // width: 'inherit'; is not needed since host is an inline-block element
         textDecoration: 'none',
+        ...getDimensionStyle,
         ...focusPseudoJssStyle,
       },
       picture: {
         display: 'block',
-        width: 'min(30px, 100%)',
-        height: 'min(40px, 100%)',
+        width: `min(${width}px, 100%)`,
+        height: `min(${height}px, 100%)`,
       },
       img: {
         display: 'block',
