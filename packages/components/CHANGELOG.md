@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Wordmark`, `Model Signature` respects parent width/height
+- `Wordmark`, `Crest`, `Model Signature` respects parent width/height
   ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
 
 ### [3.0.0-rc.0] - 2023-04-11
