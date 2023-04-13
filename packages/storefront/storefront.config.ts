@@ -65,8 +65,12 @@ export const config: StorefrontConfig = {
     },
   },
   News: {
-    // @ts-ignore
-    'Migration Guide': [() => import('@/pages/news/migration-guide.md')],
+    'Migration Guide': {
+      // @ts-ignore
+      'Porsche Design System': [() => import('@/pages/news/migration-guide.md')],
+      // @ts-ignore
+      Utilities: [() => import('@/pages/news/migration-guide-utilities.md')],
+    },
     Changelog: {
       // @ts-ignore
       Components: [() => import('@/../../components/CHANGELOG.md')],
