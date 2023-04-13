@@ -18,7 +18,31 @@ Window</p-link>
 
 ## Usage
 
-tbd.
+##### Grid Areas:
+
+**Basic-Grid 12 Columns:** This is the default and should contain all productive content, such as copy, graphics, and
+descriptive imagery (or at least the main focus of the image).
+
+**Extended-Grid 14 Columns:** Containers and images can be stretched to the extended grid to cluster content better or
+create a more immersive moment.
+
+**Wide-Grid 16 Columns:** Productive applications with, for example, a sidebar, can make use of the wide grid. Further
+interactive/productive modules can make use of the full 16 columns.
+
+**Full-bleed:** For immersive moments, images and background colors can be stretched to the full width of the viewport.
+This does not correspond to the grid.
+
+**Note:** that the Basic-, Extended-, and Wide-Grid all equal 6 columns on mobile viewports.
+
+#### Do:
+
+- Use the grid for a consistent appearance over all touchpoints.
+- Align all left-aligned-headlines on one vertical line (left border of basic-grid).
+- Set at least the image focus for larger imagery within the basic grid.
+
+#### Don't:
+
+- Don't scale elements within the grid bigger than the maximum specification for 1920px.
 
 ## Styles
 

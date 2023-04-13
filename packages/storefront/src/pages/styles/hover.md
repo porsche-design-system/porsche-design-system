@@ -14,7 +14,8 @@
 
 ## Usage
 
-tbd.
+The :hover state gives visual feedback on interactive elements. It is only visible when the mouse is over the element to
+indicate the possibility of interaction.
 
 ## Styles
 

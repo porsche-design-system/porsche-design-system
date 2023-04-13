@@ -26,7 +26,7 @@ h2,h3,h4,h5,h6 {
   position: relative;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 100%;
 }
@@ -45,7 +45,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -117,7 +117,7 @@ h2,h3,h4,h5,h6 {
   position: relative;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 133.33%;
 }
@@ -136,7 +136,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -214,7 +214,7 @@ h2,h3,h4,h5,h6 {
   position: relative;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 75%;
 }
@@ -233,7 +233,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -311,7 +311,7 @@ h2,h3,h4,h5,h6 {
   position: relative;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 177.75%;
 }
@@ -330,7 +330,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -402,7 +402,7 @@ h2,h3,h4,h5,h6 {
   position: relative;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 56.25%;
 }
@@ -421,7 +421,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -499,7 +499,7 @@ h2,h3,h4,h5,h6 {
   position: relative;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 100%;
 }
@@ -518,7 +518,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);

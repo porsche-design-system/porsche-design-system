@@ -3,7 +3,7 @@ import type { BreakpointCustomizable } from '../../types';
 import type { TileAspectRatio } from '../../utils';
 import { buildResponsiveStyles } from '../../utils';
 import { addImportantToEachRule, getInsetJssStyle, getTransition, hostHiddenStyles, hoverMediaQuery } from '../';
-import { borderRadiusMedium, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { borderRadiusLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { getThemedTypographyColor } from '../text-icon-styles';
 
 const aspectRatioPaddingMap: Record<TileAspectRatio, string> = {
@@ -42,7 +42,7 @@ export const getTileBaseStyles = (
       position: 'relative',
       overflow: 'hidden',
       transform: 'translate3d(0,0,0)', // change stacking context for position fixed
-      borderRadius: borderRadiusMedium,
+      borderRadius: borderRadiusLarge,
       color: getThemedTypographyColor('dark', 'primary'),
       ...buildResponsiveStyles(aspectRatio, (ratio: TileAspectRatio) => ({
         paddingTop: aspectRatioPaddingMap[ratio],
@@ -66,7 +66,7 @@ export const getTileBaseStyles = (
       display: 'flex',
       justifyItems: 'start',
       gap: spacingStaticMedium,
-      borderRadius: borderRadiusMedium, // for gradient
+      borderRadius: borderRadiusLarge, // for gradient
       '@media (forced-colors: active)': {
         background: 'rgba(0,0,0,0.7)',
       },

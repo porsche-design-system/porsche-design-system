@@ -10,7 +10,17 @@
 
 ## Usage
 
-tbd.
+##### Do:
+
+- Use only when placing text on images (e.g. a Link Tile) to provide a subtle contrast, making it easier to read.
+
+##### Don't:
+
+- Don't build the gradient yourself.
+
+##### Hint
+
+- The gradient consists of various points to create a smooth gradient.
 
 ## Styles
 
