@@ -49,6 +49,6 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
-    "csstype": "^3.1.1"
+    "csstype": "^3.1.2"
   }
 }
