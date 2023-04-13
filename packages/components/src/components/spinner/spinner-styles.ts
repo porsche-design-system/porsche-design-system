@@ -45,7 +45,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
           animation: `$dash ${animationDuration} ease-in-out infinite`,
           stroke: primaryColor,
           strokeDasharray:
-            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV !== 'test'
+            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray
               : strokeDasharrayVar,
           strokeLinecap: 'round',
