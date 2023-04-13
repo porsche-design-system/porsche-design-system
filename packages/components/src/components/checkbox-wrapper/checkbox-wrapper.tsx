@@ -128,8 +128,10 @@ export class CheckboxWrapper {
      * we only want to simulate the input click by label click
      * also we don't want to click to the input, if a link is clicked.
      */
-    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
-      this.input.click();
+    if (!this.loading) {
+      if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
+        this.input.click();
+      }
     }
   };
 
