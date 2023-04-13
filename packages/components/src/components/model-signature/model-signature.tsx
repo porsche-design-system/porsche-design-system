@@ -8,6 +8,7 @@ import {
   MODEL_SIGNATURE_COLORS,
   MODEL_SIGNATURE_MODELS,
   MODEL_SIGNATURE_SIZES,
+  modelSignatureHeight,
 } from './model-signature-utils';
 
 const propTypes: PropTypes<typeof ModelSignature> = {
@@ -40,6 +41,6 @@ export class ModelSignature {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.color, this.theme);
 
-    return <img src={getSvgUrl(this.model)} height={36} alt={this.model} />;
+    return <img src={getSvgUrl(this.model)} height={modelSignatureHeight} alt={this.model} />;
   }
 }
