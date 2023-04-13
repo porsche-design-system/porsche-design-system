@@ -43,15 +43,15 @@ const WordmarkPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should not exceed parents width">
         <div style={{ width: '180px', background: 'lightsalmon' }}>
-          <PWordmark />
+          <PWordmark style={{ background: 'lightblue' }} />
         </div>
         <br />
         <div style={{ width: '180px', background: 'lightsalmon' }}>
-          <PWordmark size="inherit" style={{ height: '17px' }} />
+          <PWordmark size="inherit" style={{ background: 'lightblue', height: '17px' }} />
         </div>
         <br />
         <div style={{ width: '180px', background: 'lightsalmon' }}>
-          <PWordmark href="#" />
+          <PWordmark href="#" style={{ background: 'lightblue' }} />
         </div>
       </div>
 
@@ -60,29 +60,29 @@ const WordmarkPage: NextPage = (): JSX.Element => {
         title="should not exceed max-width of wordmark itself, although parent provides more width"
       >
         <div style={{ width: '272px', background: 'lightsalmon' }}>
-          <PWordmark />
+          <PWordmark style={{ background: 'lightblue' }} />
         </div>
         <br />
         <div style={{ width: '272px', background: 'lightsalmon' }}>
-          <PWordmark size="inherit" style={{ height: '17px' }} />
+          <PWordmark size="inherit" style={{ background: 'lightblue', height: '17px' }} />
         </div>
         <br />
         <div style={{ width: '272px', background: 'lightsalmon' }}>
-          <PWordmark href="#" />
+          <PWordmark href="#" style={{ background: 'lightblue' }} />
         </div>
       </div>
 
       <div className="playground light" title="should not exceed parents height">
         <div style={{ height: '5px', background: 'lightsalmon' }}>
-          <PWordmark />
+          <PWordmark style={{ background: 'lightblue' }} />
         </div>
         <br />
         <div style={{ height: '5px', background: 'lightsalmon' }}>
-          <PWordmark size="inherit" style={{ height: '17px' }} />
+          <PWordmark size="inherit" style={{ background: 'lightblue', height: '17px' }} />
         </div>
         <br />
         <div style={{ height: '5px', background: 'lightsalmon' }}>
-          <PWordmark href="#" />
+          <PWordmark href="#" style={{ background: 'lightblue' }} />
         </div>
       </div>
 
@@ -91,15 +91,15 @@ const WordmarkPage: NextPage = (): JSX.Element => {
         title="should not exceed max-height of wordmark itself, although parent provides more height"
       >
         <div style={{ height: '80px', background: 'lightsalmon' }}>
-          <PWordmark />
+          <PWordmark style={{ background: 'lightblue' }} />
         </div>
         <br />
         <div style={{ height: '80px', background: 'lightsalmon' }}>
-          <PWordmark size="inherit" style={{ height: '17px' }} />
+          <PWordmark size="inherit" style={{ background: 'lightblue', height: '17px' }} />
         </div>
         <br />
         <div style={{ height: '80px', background: 'lightsalmon' }}>
-          <PWordmark href="#" />
+          <PWordmark href="#" style={{ background: 'lightblue' }} />
         </div>
       </div>
     </>

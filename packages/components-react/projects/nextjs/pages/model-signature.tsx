@@ -140,21 +140,47 @@ const ModelSignaturePage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should not exceed parents width">
         <div style={{ width: '180px', background: 'lightsalmon' }}>
-          <PModelSignature model="panamera" />
+          <PModelSignature model="cayenne" style={{ background: 'lightblue' }} />
         </div>
         <br />
         <div style={{ width: '180px', background: 'lightsalmon' }}>
-          <PModelSignature model="panamera" size="inherit" style={{ height: '80px' }} />
+          <PModelSignature model="cayenne" size="inherit" style={{ background: 'lightblue', height: '40px' }} />
+        </div>
+      </div>
+
+      <div
+        className="playground light"
+        title="should not exceed max-width of model-signature itself, although parent provides more width"
+      >
+        <div style={{ width: '272px', background: 'lightsalmon' }}>
+          <PModelSignature model="cayenne" style={{ background: 'lightblue' }} />
+        </div>
+        <br />
+        <div style={{ width: '272px', background: 'lightsalmon' }}>
+          <PModelSignature model="cayenne" size="inherit" style={{ background: 'lightblue', height: '40px' }} />
         </div>
       </div>
 
       <div className="playground light" title="should not exceed parents height">
         <div style={{ height: '10px', background: 'lightsalmon' }}>
-          <PModelSignature model="panamera" />
+          <PModelSignature model="cayenne" style={{ background: 'lightblue' }} />
         </div>
         <br />
         <div style={{ height: '10px', background: 'lightsalmon' }}>
-          <PModelSignature model="panamera" size="inherit" style={{ height: '80px' }} />
+          <PModelSignature model="cayenne" size="inherit" style={{ background: 'lightblue', height: '40px' }} />
+        </div>
+      </div>
+
+      <div
+        className="playground light"
+        title="should not exceed max-height of model-signature itself, although parent provides more height"
+      >
+        <div style={{ height: '100px', background: 'lightsalmon' }}>
+          <PModelSignature model="cayenne" style={{ background: 'lightblue' }} />
+        </div>
+        <br />
+        <div style={{ height: '100px', background: 'lightsalmon' }}>
+          <PModelSignature model="cayenne" size="inherit" style={{ background: 'lightblue', height: '40px' }} />
         </div>
       </div>
     </>
