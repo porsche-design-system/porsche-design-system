@@ -17,7 +17,8 @@ In addition, the way the focus style is integrated it will only be visible with 
 
 ## Usage
 
-tbd.
+The `:focus` state helps you to navigate through all interactive elements via tab on keyboard. It is only visible when
+using the keyboard but not with the mouse.
 
 ## Styles
 

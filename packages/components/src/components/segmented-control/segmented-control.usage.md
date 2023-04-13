@@ -2,49 +2,34 @@
 
 <TableOfContents></TableOfContents>
 
-## When to use
-
-A segmented control presents a set of selectable options at once. The users can make a single selection from 2-5 short
-and consistent options. For other use cases, consider using Radio Button, Checkbox, or Select.
-
-- Use them over other selection controls to reduce cognitive load.
-- Do not use them to filter or navigate content (use Tabs instead).
-- For more than 5 options use the [Select](components/select) component.
-- For inconsistent option values use the [Radio Button](components/radio-button) component.
-
----
-
-## Types
-
-To ensure a seamless UX in all Porsche web applications it is recommended to use the `p-segmented-control` as follows
-
-| Variants        | Usage                                                                                                                      |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Default         | For short and consistent text only values.                                                                                 |
-| Icon + value    | To improve visual recognition the option value can be paired with an icon.                                                 |
-| Icon only       | Options can only be used with icons when the icon and context are really clear. We recommend always using additional text. |
-| Label + value   | To add more clarity to the shown options a label can be added.                                                             |
-| Preselection    | If the selection of a value is necessary by default.                                                                       |
-| No preselection | If the user needs to select a value to see a relevant result.                                                              |
-
 ## Usage
 
-### Values
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
-Use short and consistent values for each option for visual rhythm and easy scanning. When the maximum width is exceeded,
-the component will be multiline, but this should be avoided!
+### Do:
 
-### Units
+- Use to present a set of selectable options at once.
+- Use for selection from 2-5 short and consistent options.
+- Use them over other selection controls to reduce cognitive load.
+- Pair the option with an icon to improve visual recognition use.
+- Use icons only when the context meaning is really clear.
+- Use preselection when the result is visible by default.
+- Use with no selection when a selection by the user is necessary to show the result.
+- Use it with a short indication for the unit (such as km, €, %, or $) when possible.
+- Use for horizontal and/or vertical display of options.
 
-When consistent add a short indication for the unity (such as km, €, %, or $) to each option to improve readability.
+### Don't:
 
-### Layout
+- Don't use it to filter or navigate content (use [Tabs](components/tabs) instead).
+- Don't use it for more than 5 options (use the [Select](components/select) component).
+- Don't use it with mixed values (use [Radio Button](components/radio-button) or [Select](components/select) instead).
+- Don't exceed maximum width so the values turn multiline.
 
-The items will be laid out horizontally in a row by default, using the available space. On smaller view-ports options
-will wrap onto the next row. Every item has the same width, which is defined by the item with the longest content upon
-to a maximum width.
+---
 
 ## Related components
 
 - [Select](components/select)
 - [Radio Button](components/radio-button)
+- [Tabs](components/tabs)
