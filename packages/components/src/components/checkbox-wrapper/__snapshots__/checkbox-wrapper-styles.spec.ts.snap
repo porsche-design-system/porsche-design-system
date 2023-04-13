@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -22,11 +22,12 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -71,6 +72,21 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }
 @media(min-width:480px) {
   .text {
@@ -146,7 +162,7 @@ label {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -168,11 +184,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #FC4040 !important;
@@ -240,10 +257,25 @@ label {
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -265,11 +297,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #CC1922 !important;
@@ -337,10 +370,25 @@ label {
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -362,11 +410,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -411,10 +460,25 @@ label {
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -436,11 +500,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -485,10 +550,25 @@ label {
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -510,11 +590,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #88898C !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #FBFCFF !important;
@@ -581,10 +662,25 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -606,11 +702,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #010205 !important;
@@ -677,10 +774,25 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -702,11 +814,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -750,10 +863,25 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -775,11 +903,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -823,10 +952,25 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -848,11 +992,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #09D087 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #09D087 !important;
@@ -920,10 +1065,25 @@ label {
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -945,11 +1105,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #197E10 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #197E10 !important;
@@ -1017,10 +1178,25 @@ label {
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1042,11 +1218,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -1091,10 +1268,25 @@ label {
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1116,11 +1308,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -1165,10 +1358,25 @@ label {
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1190,11 +1398,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #FC4040 !important;
@@ -1263,10 +1472,25 @@ label {
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1288,11 +1512,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #CC1922 !important;
@@ -1361,10 +1586,25 @@ label {
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1386,11 +1626,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -1436,10 +1677,25 @@ label {
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1461,11 +1717,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -1511,10 +1768,25 @@ label {
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1536,11 +1808,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #88898C !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #FBFCFF !important;
@@ -1608,10 +1881,25 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1633,11 +1921,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #010205 !important;
@@ -1705,10 +1994,25 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true, isChecked: true and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1730,11 +2034,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 0 !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -1779,10 +2084,26 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  background-color: #7E7F82;
+  opacity: 1;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true, isChecked: true and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1804,11 +2125,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 0 !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -1853,10 +2175,26 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  background-color: #949598;
+  opacity: 1;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1878,11 +2216,372 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false, isChecked: false and theme light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #949598 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
+}
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true, isChecked: false and theme dark 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+  opacity: 0 !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 1;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true, isChecked: false and theme light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #949598 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+  opacity: 0 !important;
+}
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 1;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false, isChecked: false and theme dark 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background-size: calc(6px + 2.125ex) !important;
+  background-color: transparent !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #09D087 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #09D087 !important;
@@ -1951,10 +2650,25 @@ label {
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1976,11 +2690,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #197E10 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #197E10 !important;
@@ -2049,10 +2764,25 @@ label {
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false, isChecked: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -2074,11 +2804,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
@@ -2124,10 +2855,25 @@ label {
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #7E7F82;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false, isChecked: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -2149,11 +2895,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: opacity var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
+  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
@@ -2199,5 +2946,20 @@ label {
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  pointer-events: none;
+  position: absolute;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  top: 50%;
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  border: 2px solid #949598;
+  border-radius: 4px;
+  opacity: 0;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
