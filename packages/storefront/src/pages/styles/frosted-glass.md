@@ -10,7 +10,18 @@
 
 ## Usage
 
-tbd.
+#### Do:
+
+- Add frosted-glass effect to a container to create an emersive moment.
+- Use the effect as an overlay on contrast-rich backgrounds.
+- Use it for hover states.
+- Only pair with neutral colors.
+- Use it rarely.
+
+#### Hint:
+
+- Be aware of contrast issues depending on the background
+- Some browsers have issues with rendering the effect
 
 ## Styles
 
