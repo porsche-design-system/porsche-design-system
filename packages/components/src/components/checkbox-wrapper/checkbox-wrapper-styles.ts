@@ -66,7 +66,7 @@ export const getComponentCss = (
         border: `2px solid ${disabledColor}`,
         borderRadius: borderRadiusSmall,
         ...(isChecked && {
-          backgroundColor: disabledColor,
+          background: disabledColor,
         }),
         ...(isLoading
           ? {
