@@ -32,11 +32,39 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render default with custom click area on light background">
-      <p-wordmark style="padding: 1.5rem"></p-wordmark>
+      <p-wordmark [href]="'#'" style="padding: 1.5rem"></p-wordmark>
     </div>
 
     <div class="playground dark" title="should render default with custom clickarea on dark background">
-      <p-wordmark [theme]="'dark'" style="padding: 1.5rem"></p-wordmark>
+      <p-wordmark [href]="'#'" [theme]="'dark'" style="padding: 1.5rem"></p-wordmark>
+    </div>
+
+    <div class="playground light" title="should not exceed parents width">
+      <div style="width: 180px; background: lightsalmon">
+        <p-wordmark></p-wordmark>
+      </div>
+      <br />
+      <div style="width: 180px; background: lightsalmon">
+        <p-wordmark [size]="'inherit'" style="height: 20px"></p-wordmark>
+      </div>
+      <br />
+      <div style="width: 180px; background: lightsalmon">
+        <p-wordmark [href]="'#'"></p-wordmark>
+      </div>
+    </div>
+
+    <div class="playground light" title="should not exceed parents height">
+      <div style="height: 5px; background: lightsalmon">
+        <p-wordmark></p-wordmark>
+      </div>
+      <br />
+      <div style="height: 5px; background: lightsalmon">
+        <p-wordmark [size]="'inherit'" style="height: 20px"></p-wordmark>
+      </div>
+      <br />
+      <div style="height: 5px; background: lightsalmon">
+        <p-wordmark [href]="'#'"></p-wordmark>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

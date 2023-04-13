@@ -33,11 +33,39 @@ export const WordmarkPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render default with custom click area on light background">
-        <PWordmark style={{ padding: '1.5rem' }} />
+        <PWordmark href="#" style={{ padding: '1.5rem' }} />
       </div>
 
       <div className="playground dark" title="should render default with custom clickarea on dark background">
-        <PWordmark theme="dark" style={{ padding: '1.5rem' }} />
+        <PWordmark href="#" theme="dark" style={{ padding: '1.5rem' }} />
+      </div>
+
+      <div className="playground light" title="should not exceed parents width">
+        <div style={{ width: '180px', background: 'lightsalmon' }}>
+          <PWordmark />
+        </div>
+        <br />
+        <div style={{ width: '180px', background: 'lightsalmon' }}>
+          <PWordmark size="inherit" style={{ height: '20px' }} />
+        </div>
+        <br />
+        <div style={{ width: '180px', background: 'lightsalmon' }}>
+          <PWordmark href="#" />
+        </div>
+      </div>
+
+      <div className="playground light" title="should not exceed parents height">
+        <div style={{ height: '5px', background: 'lightsalmon' }}>
+          <PWordmark />
+        </div>
+        <br />
+        <div style={{ height: '5px', background: 'lightsalmon' }}>
+          <PWordmark size="inherit" style={{ height: '20px' }} />
+        </div>
+        <br />
+        <div style={{ height: '5px', background: 'lightsalmon' }}>
+          <PWordmark href="#" />
+        </div>
       </div>
     </>
   );
