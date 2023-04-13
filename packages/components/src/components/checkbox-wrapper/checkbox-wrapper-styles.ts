@@ -10,14 +10,14 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
-  loading: boolean,
+  isLoading: boolean,
   theme: Theme
 ): string => {
   const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
   const indeterminateIconColor = getThemedColors(theme).primaryColor.replace(/#/g, '%23');
 
   return getCss(
-    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, theme), {
+    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled || isLoading, theme), {
       '@global': {
         '::slotted': addImportantToEachRule({
           '&(input)': {
@@ -33,14 +33,15 @@ export const getComponentCss = (
               `<path fill="${indeterminateIconColor}" d="m20,11v2H4v-2h16Z"/>`
             ),
           },
-          ...(!isDisabled && {
-            '&(input:focus)::before': {
-              borderRadius: borderRadiusMedium,
-            },
-          }),
+          ...(!isDisabled &&
+            !isLoading && {
+              '&(input:focus)::before': {
+                borderRadius: borderRadiusMedium,
+              },
+            }),
         }),
       },
-      ...(loading && {
+      ...(isLoading && {
         spinner: {
           width: fontLineHeight,
           height: fontLineHeight,
