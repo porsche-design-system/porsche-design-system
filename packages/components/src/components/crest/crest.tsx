@@ -35,7 +35,7 @@ export class Crest {
       <picture>
         <source key="webp" srcSet={buildCrestSrcSet('webp')} type="image/webp" />
         <source key="png" srcSet={buildCrestSrcSet('png')} type="image/png" />
-        <img src={`${crestCdnBaseUrl}/${crestInnerManifest['2x'].png}`} alt="Porsche" />
+        <img src={`${crestCdnBaseUrl}/${crestInnerManifest['2x'].png}`} width="30" height="40" alt="Porsche" />
       </picture>
     );
 

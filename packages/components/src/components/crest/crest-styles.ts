@@ -10,22 +10,26 @@ export const getComponentCss = (): string => {
         verticalAlign: 'top',
         ...addImportantToEachRule({
           outline: 0,
+          height: 'inherit', // width: 'inherit'; is not needed since host is an inline-block element
           ...hostHiddenStyles,
         }),
       },
       a: {
         display: 'block',
+        height: 'inherit', // width: 'inherit'; is not needed since host is an inline-block element
         textDecoration: 'none',
         ...focusPseudoJssStyle,
       },
       picture: {
         display: 'block',
-        width: '30px',
-        height: '40px',
+        width: 'min(30px, 100%)',
+        height: 'min(40px, 100%)',
       },
       img: {
         display: 'block',
-        width: '100%',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        width: 'auto',
         height: 'auto',
       },
     },
