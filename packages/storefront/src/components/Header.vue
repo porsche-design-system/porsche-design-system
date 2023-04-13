@@ -29,7 +29,7 @@ import Component from 'vue-class-component';
   export default class Header extends Vue {
     public version: string = version;
 
-    public versionOptions: string[] = ['v1', 'v2', 'latest'];
+    public versionOptions: string[] = ['v1', 'v2', 'v3', 'latest'];
     public onVersionChange = (event: Event) => {
       window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}/`;
     };
