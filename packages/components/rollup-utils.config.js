@@ -36,7 +36,7 @@ const sharedPlugins = [
   replace({
     preventAssignment: true,
     ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
-    'process.env.NODE_ENV': process.env.NODE_ENV,
+    'process.env.NODE_ENV': '"production"',
   }),
   commonjs(),
   nodeResolve(),
