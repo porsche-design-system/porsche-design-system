@@ -117,6 +117,13 @@ exports[`accessibility should expose correct accessibility tree when password vi
 }
 `;
 
+exports[`accessibility should expose correct accessibility tree with clear field button visible: Of clear button 1`] = `
+{
+  "name": "Clear field",
+  "role": "button",
+}
+`;
+
 exports[`accessibility should expose correct accessibility tree with description text 1`] = `
 {
   "name": "Some label. Some description",

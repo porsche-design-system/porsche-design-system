@@ -582,4 +582,15 @@ describe('accessibility', () => {
 
     await expectA11yToMatchSnapshot(page, button, { message: 'Pressed again' });
   });
+
+  it('should expose correct accessibility tree with clear field button visible', async () => {
+    await initTextField({ type: 'search' });
+    const input = await getInput();
+
+    await setProperty(input, 'value', 'value');
+    await waitForStencilLifecycle(page);
+
+    const button = await getToggleOrClearButton();
+    await expectA11yToMatchSnapshot(page, button, { message: 'Of clear button' });
+  });
 });
