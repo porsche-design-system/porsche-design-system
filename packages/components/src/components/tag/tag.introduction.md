@@ -4,7 +4,7 @@
 
 Use tags to label, categorize, or organize items using keywords that describe them.
 
-## Usage
+## Usage Tags
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
@@ -34,7 +34,7 @@ component in various situations.
 
 Allows users to quickly refine the result of data they want to be presented on the page.
 
-## Usage
+## Usage Tag Dismissible
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
