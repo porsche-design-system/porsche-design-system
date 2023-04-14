@@ -26,13 +26,7 @@ export const getComponentCss = (
           '&(input)': {
             borderRadius: borderRadiusSmall,
             transition: getTransition('opacity'),
-            ...(isLoading
-              ? {
-                  opacity: 0,
-                }
-              : {
-                  opacity: 1,
-                }),
+            opacity: isLoading ? 0 : 1,
           },
           '&(input:checked)': {
             backgroundImage: getInlineSVGBackgroundImage(
@@ -68,13 +62,7 @@ export const getComponentCss = (
         ...(isChecked && {
           background: disabledColor,
         }),
-        ...(isLoading
-          ? {
-              opacity: 1,
-            }
-          : {
-              opacity: 0,
-            }),
+        opacity: isLoading ? 1 : 0,
         transition: ['border-color', 'background-color', 'opacity'].map(getTransition).join(),
       },
     })
