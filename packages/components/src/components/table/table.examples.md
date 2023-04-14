@@ -72,7 +72,7 @@ Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `cha
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.<br>
-  Please use the <code>change</code> event instead.
+  Please use the <code>update</code> event instead.
 </p-inline-notification>
 
 <Playground :frameworkMarkup="sorting" :config="config">
