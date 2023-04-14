@@ -4,12 +4,12 @@ import * as fs from 'fs';
 
 describe('package content', () => {
   const componentsReactFilePath = require.resolve('@porsche-design-system/components-react');
-  const componentsReactPackageDir = path.resolve(componentsReactFilePath, '..');
+  const componentsReactPackageDir = path.resolve(componentsReactFilePath, '../ssr');
   const componentsReactFilePaths = globby.sync(`${componentsReactPackageDir}/**/*.js`);
 
   it.each(
     componentsReactFilePaths.map((filePath) => [
-      filePath.replace(componentsReactPackageDir, 'dist/react-wrapper'),
+      filePath.replace(componentsReactPackageDir, 'dist/react-wrapper/ssr'),
       filePath,
     ])
   )('should not contain localhost in bundled react-wrapper file: %s', (_, filePath) => {
