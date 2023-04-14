@@ -81,6 +81,32 @@ it.each<{ input: string; result: string }>([
   cursor: not-allowed !important;
 }`,
   },
+  {
+    input: `
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button:hover::before {
+  background: rgba(148, 149, 152, .18);
+}`,
+    result: `
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+}`,
+  },
 ])('should correctly remove :hover and :focus styles: %j', ({ input, result }) => {
   expect(stripFocusAndHoverStyles(input)).toEqual(result);
 });
