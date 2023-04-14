@@ -64,6 +64,90 @@ exports[`accessibility should add/remove accessibility tree properties if state 
 }
 `;
 
+exports[`accessibility should expose correct accessibility tree for input type=search with value 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "value",
+                          "role": "StaticText",
+                        },
+                      ],
+                      "name": "",
+                      "role": "generic",
+                    },
+                  ],
+                  "name": "",
+                  "role": "searchbox",
+                  "value": "value",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "name": "",
+          "role": "LabelText",
+        },
+        {
+          "children": [
+            {
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "Clear field",
+                          "role": "StaticText",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "name": "Clear field",
+              "role": "button",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "role": "none",
+}
+`;
+
 exports[`accessibility should expose correct accessibility tree properties in error state: Of Input 1`] = `
 {
   "invalid": "true",

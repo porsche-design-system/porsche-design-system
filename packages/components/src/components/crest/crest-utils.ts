@@ -18,3 +18,8 @@ export const buildCrestSrcSet = (format: 'png' | 'webp'): string => {
     .map(([resolution, fileName]) => `${crestCdnBaseUrl}/${fileName[format]} ${resolution}`)
     .join();
 };
+
+export const crestSize: { width: number; height: number } = {
+  width: 30,
+  height: 40,
+};

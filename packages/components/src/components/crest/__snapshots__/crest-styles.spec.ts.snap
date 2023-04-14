@@ -6,6 +6,11 @@ exports[`getComponentCss() should return correct css 1`] = `
   display: inline-block;
   vertical-align: top;
   outline: 0 !important;
+  box-sizing: content-box !important;
+  max-width: 30px !important;
+  max-height: 40px !important;
+  width: inherit !important;
+  height: inherit !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -13,6 +18,10 @@ exports[`getComponentCss() should return correct css 1`] = `
 a {
   display: block;
   text-decoration: none;
+  max-width: 30px;
+  max-height: 40px;
+  width: inherit;
+  height: inherit;
   outline: 0;
 }
 a:focus::before {
@@ -31,12 +40,14 @@ a:focus:not(:focus-visible)::before {
 }
 picture {
   display: block;
-  width: 30px;
-  height: 40px;
+  width: min(30px, 100%);
+  height: min(40px, 100%);
 }
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }"
 `;

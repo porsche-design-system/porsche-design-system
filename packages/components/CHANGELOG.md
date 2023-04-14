@@ -9,12 +9,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Wordmark`, `Crest`, `Model Signature` respects parent width/height
+  ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
+- `Button Tile`, `Link Tile` and `Link Tile Model Signature` are using correct border radius of
+  `pds-border-radius-large` ([#2473](https://github.com/porsche-design-system/porsche-design-system/pull/2473))
+- `Text Field Wrapper` with `input type="search"` adds clear field button label for improved accessibility
+  ([#2476](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
+
 ### [3.0.0-rc.0] - 2023-04-11
 
 #### Fixed
 
 - Styles: `borderRadiusLarge` and `pds-border-radius-large` are exposing correct value
-  ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2461))
+  ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2463))
 
 ### [3.0.0-alpha.6] - 2023-04-06
 

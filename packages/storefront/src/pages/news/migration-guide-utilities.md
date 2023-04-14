@@ -190,6 +190,8 @@ With the new Porsche design language, fluid typography was introduced. For furth
 - import { title, headline, text } from '@porsche-design-system/utilities';
 + import {
 +   displayLargeStyle,
++   displayMediumStyle,
++   displaySmallStyle,
 +   headingXXLargeStyle,
 +   headingXLargeStyle,
 +   headingLargeStyle,
@@ -205,7 +207,7 @@ import styled from 'styled-components';
 
 const Component1 = styled.h1({
 - ...title.large,
-+ ...displayLargeStyle,
++ ...display{Large|Medium|Small}Style,
 });
 
 const Component2 = styled.h2({
@@ -260,68 +262,68 @@ information, have a look at [theme styles](styles/theme).
 
 div {
 - background: $p-color-brand;
-- background: $p-color-theme-light-brand;
+- background: $p-color-theme-{light|dark}-brand;
 - background: $p-color-default;
-- background: $p-color-theme-light-default;
-+ background: $pds-theme-light-primary;
+- background: $p-color-theme-{light|dark}-default;
++ background: $pds-theme-{light|dark}-primary;
 
 - background: $p-color-background-default;
-- background: $p-color-theme-light-background-default;
-+ background: $pds-theme-light-background-base;
+- background: $p-color-theme-{light|dark}-background-default;
++ background: $pds-theme-{light|dark}-background-base;
 - background: $p-color-background-surface;
-- background: $p-color-theme-light-background-surface;
-+ background: $pds-theme-light-background-surface;
+- background: $p-color-theme-{light|dark}-background-surface;
++ background: $pds-theme-{light|dark}-background-surface;
 - background: $p-color-background-shading;
-- background: $p-color-theme-light-background-shading;
-+ background: $pds-theme-light-background-shading;
+- background: $p-color-theme-{light|dark}-background-shading;
++ background: $pds-theme-{light|dark}-background-shading;
 
 - background: $p-color-neutral-contrast-low;
-- background: $p-color-theme-light-neutral-contrast-low;
-+ background: $pds-theme-light-contrast-low;
+- background: $p-color-theme-{light|dark}-neutral-contrast-low;
++ background: $pds-theme-{light|dark}-contrast-low;
 - background: $p-color-neutral-contrast-medium;
-- background: $p-color-theme-light-neutral-contrast-medium;
-+ background: $pds-theme-light-contrast-medium;
+- background: $p-color-theme-{light|dark}-neutral-contrast-medium;
++ background: $pds-theme-{light|dark}-contrast-medium;
 - background: $p-color-neutral-contrast-high;
-- background: $p-color-theme-light-neutral-contrast-high;
-+ background: $pds-theme-light-contrast-high;
+- background: $p-color-theme-{light|dark}-neutral-contrast-high;
++ background: $pds-theme-{light|dark}-contrast-high;
 
 - background: $p-color-notification-success;
-- background: $p-color-theme-light-notification-success;
-+ background: $pds-theme-light-notification-success;
+- background: $p-color-theme-{light|dark}-notification-success;
++ background: $pds-theme-{light|dark}-notification-success;
 - background: $p-color-notification-success-soft;
-- background: $p-color-theme-light-notification-success-soft;
-+ background: $pds-theme-light-notification-success-soft;
+- background: $p-color-theme-{light|dark}-notification-success-soft;
++ background: $pds-theme-{light|dark}-notification-success-soft;
 - background: $p-color-notification-warning;
-- background: $p-color-theme-light-notification-warning;
-+ background: $pds-theme-light-notification-warning;
+- background: $p-color-theme-{light|dark}-notification-warning;
++ background: $pds-theme-{light|dark}-notification-warning;
 - background: $p-color-notification-warning-soft;
-- background: $p-color-theme-light-notification-warning-soft;
-+ background: $pds-theme-light-notification-warning-soft;
+- background: $p-color-theme-{light|dark}-notification-warning-soft;
++ background: $pds-theme-{light|dark}-notification-warning-soft;
 - background: $p-color-notification-error;
-- background: $p-color-theme-light-notification-error;
-+ background: $pds-theme-light-notification-error;
+- background: $p-color-theme-{light|dark}-notification-error;
++ background: $pds-theme-{light|dark}-notification-error;
 - background: $p-color-notification-error-soft;
-- background: $p-color-theme-light-notification-error-soft;
-+ background: $pds-theme-light-notification-error-soft;
+- background: $p-color-theme-{light|dark}-notification-error-soft;
++ background: $pds-theme-{light|dark}-notification-error-soft;
 - background: $p-color-notification-neutral;
-- background: $p-color-theme-light-notification-neutral;
-+ background: $pds-theme-light-notification-info;
+- background: $p-color-theme-{light|dark}-notification-neutral;
++ background: $pds-theme-{light|dark}-notification-info;
 - background: $p-color-notification-neutral-soft;
-- background: $p-color-theme-light-notification-neutral-soft;
-+ background: $pds-theme-light-notification-info-soft;
+- background: $p-color-theme-{light|dark}-notification-neutral-soft;
++ background: $pds-theme-{light|dark}-notification-info-soft;
 
 - background: $p-color-state-hover;
-- background: $p-color-theme-light-state-hover;
-+ background: $pds-theme-light-state-hover;
+- background: $p-color-theme-{light|dark}-state-hover;
++ background: $pds-theme-{light|dark}-state-hover;
 - background: $p-color-state-active;
-- background: $p-color-theme-light-state-active;
-+ background: $pds-theme-light-state-active;
+- background: $p-color-theme-{light|dark}-state-active;
++ background: $pds-theme-{light|dark}-state-active;
 - background: $p-color-state-focus;
-- background: $p-color-theme-light-state-focus;
-+ background: $pds-theme-light-state-focus;
+- background: $p-color-theme-{light|dark}-state-focus;
++ background: $pds-theme-{light|dark}-state-focus;
 - background: $p-color-state-disabled;
-- background: $p-color-theme-light-state-disabled;
-+ background: $pds-theme-light-state-disabled;
+- background: $p-color-theme-{light|dark}-state-disabled;
++ background: $pds-theme-{light|dark}-state-disabled;
 
 - background: $p-color-external-{facebook|google|instagram|…}; // removed entirely
 }
@@ -424,8 +426,8 @@ div {
 + @use '@porsche-design-system/components-js/styles' as *;
 
 div {
-- min-width: map-get($p-breakpoint, 'xxs');
-+ min-width: map-get($pds-breakpoints, 'base');
+- min-width: #{map-get($p-breakpoint, 'xxs')}px;
++ min-width: #{map-get($pds-breakpoints, 'base')}px;
 }
 ```
 
@@ -440,7 +442,7 @@ With the new Porsche design language, fluid typography was introduced. For furth
 
 h1 {
 - @include p-title-large;
-+ @include pds-display-large;
++ @include pds-display-{large|medium|small};
 }
 
 h2 {
