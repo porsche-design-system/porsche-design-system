@@ -26,7 +26,7 @@ const propTypes: PropTypes<typeof CheckboxWrapper> = {
   state: AllowedTypes.oneOf<CheckboxWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  loading: AllowedTypes.breakpoint('boolean'),
+  loading: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
