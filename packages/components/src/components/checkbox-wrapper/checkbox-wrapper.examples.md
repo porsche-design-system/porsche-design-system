@@ -134,13 +134,16 @@ export default class Code extends Vue {
   <input type="checkbox" name="some-name" disabled checked />
 </p-checkbox-wrapper>`;
 
-  loading =
-`<p-checkbox-wrapper label="Some label" loading="true">
+  isLoading = true;
+  get loading() {
+    return `<p-checkbox-wrapper label="Some label" loading="${this.isLoading}">
   <input type="checkbox" name="some-name" />
 </p-checkbox-wrapper>
-<p-checkbox-wrapper label="Some label" loading="true">
+<p-checkbox-wrapper label="Some label" loading="${this.isLoading}">
   <input type="checkbox" name="some-name" checked />
 </p-checkbox-wrapper>`;
+  }
+
 
   state = 'error';
   states = FORM_STATES;
