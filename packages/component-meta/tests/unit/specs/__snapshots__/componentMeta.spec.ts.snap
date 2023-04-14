@@ -1250,6 +1250,8 @@ exports[`should match snapshot 1`] = `
         "preheating",
         "printer",
         "purchase",
+        "push-pin",
+        "push-pin-undo",
         "qr",
         "question",
         "racing-flag",
