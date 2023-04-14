@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- **[EXPERIMENTAL]** Prop `loading` for `Checkbox`
+- **[EXPERIMENTAL]** Prop `loading` for `Checkbox Wrapper`
   ([#2483](https://github.com/porsche-design-system/porsche-design-system/pull/2483))
 
 ### [3.0.0-rc.0] - 2023-04-11
