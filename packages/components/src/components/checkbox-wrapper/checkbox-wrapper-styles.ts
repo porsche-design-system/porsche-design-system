@@ -11,11 +11,10 @@ export const getComponentCss = (
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
-  isChecked: boolean,
   theme: Theme
 ): string => {
   const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
-  const { disabledColor, primaryColor } = getThemedColors(theme);
+  const { primaryColor } = getThemedColors(theme);
   const indeterminateIconColor = primaryColor.replace(/#/g, '%23');
 
   return getCss(
@@ -27,7 +26,9 @@ export const getComponentCss = (
           },
           '&(input:checked)': {
             backgroundImage: getInlineSVGBackgroundImage(
-              `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
+              !isLoading
+                ? `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
+                : 'none'
             ),
           },
           '&(input:indeterminate)': {
@@ -56,13 +57,8 @@ export const getComponentCss = (
         top: '50%',
         left: `calc(${fontLineHeight}/2 + 2px)`,
         transform: 'translate(-50%, -50%)',
-        border: `2px solid ${disabledColor}`,
-        borderRadius: borderRadiusSmall,
-        ...(isChecked && {
-          background: disabledColor,
-        }),
         opacity: isLoading ? 1 : 0,
-        transition: ['border-color', 'background-color', 'opacity'].map(getTransition).join(),
+        transition: getTransition('opacity'),
       },
     })
   );
