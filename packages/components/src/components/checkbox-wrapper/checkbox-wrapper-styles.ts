@@ -24,7 +24,6 @@ export const getComponentCss = (
         '::slotted': addImportantToEachRule({
           '&(input)': {
             borderRadius: borderRadiusSmall,
-            transition: getTransition('opacity'),
           },
           '&(input:checked)': {
             backgroundImage: getInlineSVGBackgroundImage(
