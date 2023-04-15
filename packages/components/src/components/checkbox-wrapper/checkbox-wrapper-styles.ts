@@ -14,8 +14,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
-  const { primaryColor } = getThemedColors(theme);
-  const indeterminateIconColor = primaryColor.replace(/#/g, '%23');
+  const indeterminateIconColor = getThemedColors(theme).primaryColor.replace(/#/g, '%23');
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled || isLoading, theme), {
