@@ -25,7 +25,6 @@ export const getComponentCss = (
           '&(input)': {
             borderRadius: borderRadiusSmall,
             transition: getTransition('opacity'),
-            opacity: isLoading ? 0 : 1,
           },
           '&(input:checked)': {
             backgroundImage: getInlineSVGBackgroundImage(
@@ -49,7 +48,9 @@ export const getComponentCss = (
       spinner: {
         width: fontLineHeight,
         height: fontLineHeight,
-        pointerEvents: 'none',
+        ...(!isLoading && {
+          pointerEvents: 'none', // enable clicking on checkbox
+        }),
         position: 'absolute',
         fontFamily, // needed for correct width and height definition and for correct positioning
         fontSize: '1rem', // needed for correct width and height definition and for correct positioning
