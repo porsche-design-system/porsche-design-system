@@ -470,7 +470,6 @@ exports[`should match snapshot 1`] = `
     },
     "breakpointCustomizableProps": [
       "hideLabel",
-      "loading",
     ],
     "hasAriaProp": false,
     "hasEvent": false,
@@ -490,7 +489,6 @@ exports[`should match snapshot 1`] = `
     "observedAttributes": [
       "disabled",
       "required",
-      "checked",
     ],
     "props": {
       "hideLabel": false,
