@@ -2508,12 +2508,11 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   box-sizing: content-box !important;
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
-  transition: opacity var(--p-transition-duration, .24s) ease !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
   border-radius: 4px !important;
-  opacity: 1 !important;
 }
 ::slotted(input:checked) {
   border-color: #010205 !important;
@@ -2569,10 +2568,8 @@ label {
   top: 50%;
   left: calc(calc(6px + 2.125ex)/2 + 2px);
   transform: translate(-50%, -50%);
-  border: 2px solid #949598;
-  border-radius: 4px;
   opacity: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease,opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, .24s) ease;
 }
     </style>
     <label>
