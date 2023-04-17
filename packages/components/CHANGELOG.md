@@ -61,7 +61,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ```diff
 - <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
-+ <PAccordion onUpdate={(e: CustomEvent<AccordionUPdateEvent>) => {}} />
++ <PAccordion onUpdate={(e: CustomEvent<AccordionUpdateEvent>) => {}} />
 ```
 
 ##### Banner:
