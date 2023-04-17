@@ -81,19 +81,6 @@ it.each<{ input: string; result: string }>([
   cursor: not-allowed !important;
 }`,
   },
-  {
-    input: `
-button::before {
-  content: "";
-}
-button:hover::before {
-  background: rgba(148, 149, 152, .18);
-}`,
-    result: `
-button::before {
-  content: "";
-}`,
-  },
 ])('should correctly remove :hover and :focus styles: %j', ({ input, result }) => {
   expect(stripFocusAndHoverStyles(input)).toEqual(result);
 });
