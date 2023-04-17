@@ -3,7 +3,7 @@ import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { addImportantToEachRule, getThemedColors, getTransition } from '../../styles';
+import { addImportantToEachRule, getThemedColors } from '../../styles';
 import { borderRadiusMedium, borderRadiusSmall, fontFamily, fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -17,7 +17,7 @@ export const getComponentCss = (
   const indeterminateIconColor = getThemedColors(theme).primaryColor.replace(/#/g, '%23');
 
   return getCss(
-    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled || isLoading, theme), {
+    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, isLoading, theme), {
       '@global': {
         '::slotted': addImportantToEachRule({
           '&(input)': {
@@ -35,30 +35,26 @@ export const getComponentCss = (
               `<path fill="${indeterminateIconColor}" d="m20,11v2H4v-2h16Z"/>`
             ),
           },
-          ...(!isDisabled &&
-            !isLoading && {
-              '&(input:focus)::before': {
-                borderRadius: borderRadiusMedium,
-              },
-            }),
+          ...(!isDisabled && {
+            '&(input:focus)::before': {
+              borderRadius: borderRadiusMedium,
+            },
+          }),
         }),
       },
-
-      spinner: {
-        width: fontLineHeight,
-        height: fontLineHeight,
-        ...(!isLoading && {
-          pointerEvents: 'none', // enable clicking on checkbox
-        }),
-        position: 'absolute',
-        fontFamily, // needed for correct width and height definition and for correct positioning
-        fontSize: '1rem', // needed for correct width and height definition and for correct positioning
-        top: '50%',
-        left: `calc(${fontLineHeight}/2 + 2px)`,
-        transform: 'translate(-50%, -50%)',
-        opacity: isLoading ? 1 : 0,
-        transition: getTransition('opacity'),
-      },
+      ...(isLoading && {
+        spinner: {
+          cursor: 'not-allowed',
+          width: fontLineHeight,
+          height: fontLineHeight,
+          position: 'absolute',
+          fontFamily, // needed for correct width and height definition and for correct positioning
+          fontSize: '1rem', // needed for correct width and height definition and for correct positioning
+          top: '50%',
+          left: `calc(${fontLineHeight}/2 + 2px)`,
+          transform: 'translate(-50%, -50%)',
+        },
+      }),
     })
   );
 };

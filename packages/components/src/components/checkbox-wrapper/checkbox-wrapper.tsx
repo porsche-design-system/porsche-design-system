@@ -1,6 +1,5 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { FORM_STATES } from '../../utils/form/form-state';
-import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -15,6 +14,8 @@ import {
   THEMES,
   unobserveAttributes,
   validateProps,
+  FORM_STATES,
+  isDisabledOrLoading,
 } from '../../utils';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
@@ -56,6 +57,20 @@ export class CheckboxWrapper {
   @Prop() public theme?: Theme = 'light';
 
   private input: HTMLInputElement;
+
+  @Listen('click', { capture: true })
+  public onClick(e: MouseEvent): void {
+    if (isDisabledOrLoading(this.input.disabled, this.loading)) {
+      e.preventDefault();
+    }
+  }
+
+  @Listen('keydown')
+  public handleKeyDown(e: KeyboardEvent): void {
+    if (e.key === ('Spacebar' || ' ') && isDisabledOrLoading(this.input.disabled, this.loading)) {
+      e.preventDefault();
+    }
+  }
 
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
@@ -99,7 +114,7 @@ export class CheckboxWrapper {
 
     return (
       <Host>
-        <label>
+        <label aria-disabled={this.loading ? 'true' : null}>
           {hasLabel(this.host, this.label) && (
             <span class="text" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
@@ -107,13 +122,14 @@ export class CheckboxWrapper {
             </span>
           )}
           <slot />
-
-          <PrefixedTagNames.pSpinner
-            class="spinner"
-            size="inherit"
-            theme={this.theme}
-            aria={{ 'aria-label': 'Loading state:' }}
-          />
+          {this.loading && (
+            <PrefixedTagNames.pSpinner
+              class="spinner"
+              size="inherit"
+              theme={this.theme}
+              aria={{ 'aria-label': `Loading state of ${this.label}` }}
+            />
+          )}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />

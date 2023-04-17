@@ -14,7 +14,7 @@ export const getComponentCss = (
   const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
 
   return getCss(
-    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, theme), {
+    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, false, theme), {
       '@global': {
         '::slotted': addImportantToEachRule({
           '&(input)': {

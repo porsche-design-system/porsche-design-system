@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../types';
 import type { Styles } from 'jss';
-import { buildResponsiveStyles } from '../utils';
+import { buildResponsiveStyles, isDisabledOrLoading } from '../utils';
 import {
   addImportantToEachRule,
   getFormCheckboxRadioHiddenJssStyle,
@@ -20,10 +20,12 @@ export const getCheckboxRadioJssStyle = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
+  isLoading: boolean,
   theme: Theme
 ): Styles => {
   const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   const uncheckedColor = isDisabled ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
@@ -55,13 +57,13 @@ export const getCheckboxRadioJssStyle = (
           transition: ['border-color', 'background-color'].map(getTransition).join(),
           border: `2px solid ${uncheckedColor}`,
           outline: 0,
-          cursor: isDisabled ? 'not-allowed' : 'pointer',
+          cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         },
         '&(input:checked)': {
           borderColor: checkedColor,
           backgroundColor: checkedColor,
         },
-        ...(!isDisabled && {
+        ...(!disabledOrLoading && {
           ...hoverMediaQuery({
             '&(input:hover), .text:hover ~ &(input)': {
               borderColor: uncheckedHoverColor,
@@ -71,6 +73,8 @@ export const getCheckboxRadioJssStyle = (
               backgroundColor: checkedHoverColor,
             },
           }),
+        }),
+        ...(!isDisabled && {
           '&(input:focus)::before': {
             content: '""',
             position: 'absolute',
@@ -90,9 +94,9 @@ export const getCheckboxRadioJssStyle = (
     },
     text: {
       order: 1,
-      cursor: isDisabled ? 'default' : 'pointer',
+      cursor: disabledOrLoading ? 'default' : 'pointer',
       ...textSmallStyle,
-      color: isDisabled ? disabledColor : primaryColor,
+      color: disabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transition between different states
       ...buildResponsiveStyles(hideLabel, getFormCheckboxRadioHiddenJssStyle),
     },
