@@ -1411,10 +1411,10 @@ jobs:
           entrypoint: run-test-smoke
           args: --components-js
       - name: 'Smoke Test Components React'
-          uses: ./.github/actions/docker-run-playwright
-          with:
-            entrypoint: run-test-smoke
-            args: --components-react
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-smoke
+          args: --components-react
   release-components-uxpin:
     name: 'Release Components UXPin'
     needs:
