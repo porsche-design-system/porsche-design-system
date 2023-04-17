@@ -89,6 +89,9 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       padding: `0 ${spacingMap[width].base}`,
+      ...(isHeaderAlignCenter && {
+        textAlign: 'center',
+      }),
       [mediaQueryS]: {
         fontFamily, // relevant for button group width calculation, which is based on ex unit
         fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
