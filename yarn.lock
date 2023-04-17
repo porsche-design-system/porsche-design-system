@@ -5953,13 +5953,13 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha512-0FcBfdcmaumGPQ0qPn7Q5qTgz/ooXgIyp1rf8ik5bGX8mpE2YHjC0P/eyQvxu1GURYQgq9ozf2mteQ5ZD9YiyQ==
 
-angular-imask@6.4.2:
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/angular-imask/-/angular-imask-6.4.2.tgz#5c36a7dd8643c0504cf801e10fa88cc4e1896425"
-  integrity sha512-v3/4rzPRfPQBxtOb2GPHdPE2IspoIfuAynZwmqrPXylS5bQ5lTw2BnCKov0wDhB1bHh0Ja7xpUseV3nTlK9h3A==
+angular-imask@6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/angular-imask/-/angular-imask-6.6.0.tgz#c73778cf686f909c5dc4d00faf12893b7166452c"
+  integrity sha512-xV+ixjaWy9r6xB+4r4ae2iN83GtpTMElvwTriQSTfFsBhg5TTqNNHNzVFoKoTr6OTVr6zqQhLENwnQ6aN7za3Q==
   dependencies:
-    imask "^6.4.2"
-    tslib "^2.3.1"
+    imask "^6.6.0"
+    tslib "^2.5.0"
 
 ansi-colors@4.1.1:
   version "4.1.1"
@@ -13074,15 +13074,15 @@ image-size@~0.5.0:
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   integrity sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==
 
-imask@^6.4.2, imask@^6.4.3:
+imask@^6.4.3:
   version "6.4.3"
   resolved "https://registry.yarnpkg.com/imask/-/imask-6.4.3.tgz#b81b247043807995e048f559e98930c2fec8004a"
   integrity sha512-aH2GHemGkr3cbRBfhogHMIx05eUxdHrZNlKTTLmz8VxpSopuHHJ8+85FsDlBVQqxPlDLhZuwj4lpHHWbLOdBSw==
 
-imask@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/imask/-/imask-6.5.0.tgz#825c4640450a6a3b0b7700abf0361c0cb1b5a489"
-  integrity sha512-CqZTJ7FBdpTN20TAICrbKwQzl/4SOfopBzjSoEEKmMhGdiSDY/yNRMX8Z+epEWLja0W8kqFTZnayGBheYrOnEg==
+imask@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/imask/-/imask-6.6.0.tgz#e2abd3f60bb8cbaff4ac7bcef0c0c8a3bee15868"
+  integrity sha512-A/tOo6DEXvOLUCijka/DPtAK8rumZTNOa++DMsmz9ZkChODrAP+fEWy20INOmuxWR1YBkt12LFw6nSAnxFG82Q==
 
 immer@^9.0.7:
   version "9.0.17"
@@ -24236,12 +24236,12 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
-vue-imask@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/vue-imask/-/vue-imask-6.5.0.tgz#dc1fd738fc8e1bbe2dcdea0f086a7a9bf39dc0a0"
-  integrity sha512-xYryJS7SNogCL2qwS7pLJv4mb/3at9ISSr9RqI9Pck8Y1H9LfT6bgA+c6K28owGA1qYIdyFmg5GQcqToVMWCAQ==
+vue-imask@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/vue-imask/-/vue-imask-6.6.0.tgz#2740a5bfdcbbc497c2bab67f96c0ced64006331f"
+  integrity sha512-jcM7jNYDGexXT4ZNDtqykNfIWtIgVqpM9Atqz8ShWDEYSwq7d/LVCl52REOI1MfL92DF5PbuJvFhi24EnG+Ktg==
   dependencies:
-    imask "^6.5.0"
+    imask "^6.6.0"
     vue-demi "^0.13.11"
 
 vue-instantsearch@^4.8.5:
