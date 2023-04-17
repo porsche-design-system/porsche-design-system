@@ -35,6 +35,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -263,6 +264,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -394,6 +396,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -783,6 +786,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -1097,6 +1101,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -1325,6 +1330,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
