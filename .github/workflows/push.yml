@@ -1385,11 +1385,16 @@ jobs:
         with:
           name: assets-build
           path: ./packages/assets/dist
-      - name: 'Restore Build Artifact'
+      - name: 'Restore Components JS Build Artifact'
         uses: actions/download-artifact@v3
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
+      - name: 'Restore Components React Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-react-prod-build
+          path: ./packages/components-react/dist/react-wrapper
       - name: 'Restore Chunks Manifest Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1400,11 +1405,16 @@ jobs:
         with:
           name: shared-build
           path: ./packages/shared/dist
-      - name: 'Smoke Test'
+      - name: 'Smoke Test Components JS'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-smoke
           args: --components-js
+      - name: 'Smoke Test Components React'
+          uses: ./.github/actions/docker-run-playwright
+          with:
+          entrypoint: run-test-smoke
+          args: --components-react
   release-components-uxpin:
     name: 'Release Components UXPin'
     needs:
