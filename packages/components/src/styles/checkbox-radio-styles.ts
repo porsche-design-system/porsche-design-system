@@ -27,9 +27,9 @@ export const getCheckboxRadioJssStyle = (
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
-  const uncheckedColor = isDisabled ? disabledColor : formStateColor || contrastMediumColor;
+  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const checkedColor = isDisabled ? disabledColor : formStateColor || primaryColor;
+  const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   return {
