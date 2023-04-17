@@ -9,7 +9,7 @@ describe('getThemedColors()', () => {
     }
   );
   it.each<Parameters<typeof getThemedColors>>([['light'], ['dark']])(
-    'should return correct partial high contrast mode scheme colors for theme: %s',
+    'should return correct high contrast mode scheme colors for theme: %s',
     (theme) => {
       Object.defineProperty(a11yUtils, 'isHighContrastMode', { value: true });
       expect(getThemedColors(theme)).toMatchSnapshot();
