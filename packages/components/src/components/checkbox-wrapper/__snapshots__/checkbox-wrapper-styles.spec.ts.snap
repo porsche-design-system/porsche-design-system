@@ -1731,14 +1731,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  border: 2px solid #88898C !important;
+  border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
-  border-color: #FBFCFF !important;
-  background-color: #FBFCFF !important;
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">none</svg>') !important;
 }
 ::slotted(input:focus)::before {
@@ -1829,14 +1829,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-size: calc(6px + 2.125ex) !important;
   background-color: transparent !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  border: 2px solid #6B6D70 !important;
+  border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
-  border-color: #010205 !important;
-  background-color: #010205 !important;
+  border-color: #949598 !important;
+  background-color: #949598 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">none</svg>') !important;
 }
 ::slotted(input:focus)::before {
