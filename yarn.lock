@@ -5953,13 +5953,13 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha512-0FcBfdcmaumGPQ0qPn7Q5qTgz/ooXgIyp1rf8ik5bGX8mpE2YHjC0P/eyQvxu1GURYQgq9ozf2mteQ5ZD9YiyQ==
 
-angular-imask@6.6.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/angular-imask/-/angular-imask-6.6.0.tgz#c73778cf686f909c5dc4d00faf12893b7166452c"
-  integrity sha512-xV+ixjaWy9r6xB+4r4ae2iN83GtpTMElvwTriQSTfFsBhg5TTqNNHNzVFoKoTr6OTVr6zqQhLENwnQ6aN7za3Q==
+angular-imask@6.4.2:
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/angular-imask/-/angular-imask-6.4.2.tgz#5c36a7dd8643c0504cf801e10fa88cc4e1896425"
+  integrity sha512-v3/4rzPRfPQBxtOb2GPHdPE2IspoIfuAynZwmqrPXylS5bQ5lTw2BnCKov0wDhB1bHh0Ja7xpUseV3nTlK9h3A==
   dependencies:
-    imask "^6.6.0"
-    tslib "^2.5.0"
+    imask "^6.4.2"
+    tslib "^2.3.1"
 
 ansi-colors@4.1.1:
   version "4.1.1"
@@ -9579,10 +9579,10 @@ devtools-protocol@0.0.1068969:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1068969.tgz#8b9a4bc48aed1453bed08d62b07481f9abf4d6d8"
   integrity sha512-ATFTrPbY1dKYhPPvpjtwWKSK2mIwGmRwX54UASn9THEuIZCe2n9k3vVuMmt6jWeL+e5QaaguEv/pMyR+JQB7VQ==
 
-devtools-protocol@^0.0.1129676:
-  version "0.0.1129676"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1129676.tgz#90ddee4cacf02db3913d654b0290273e66be5135"
-  integrity sha512-jnC1pmxdsCVtPzcTR5JmIfjdStzDus96scRZR5Tvi8ab5efMOy6KB4JbzNM6Qi0nGTYFO1kETRM6TBBZ/DTR9A==
+devtools-protocol@^0.0.1130274:
+  version "0.0.1130274"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1130274.tgz#1cd0c472a84fc9a09becaaed35a247a6eab9310c"
+  integrity sha512-kIozBWajgsi1g0W8yzALI4ZdCp6KG1yWaq8NN1ehQM3zX6JRegLSzfexz7XT5eFjmq1RkpMYgeKmfi3GsHrCLw==
 
 di@^0.0.1:
   version "0.0.1"
@@ -12397,10 +12397,10 @@ handle-thing@^2.0.0:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
   integrity sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==
 
-happy-dom@^9.7.1:
-  version "9.7.1"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.7.1.tgz#f9ef22ffb09ef6c1531e606d11724fe1fef960d7"
-  integrity sha512-C5KQXt5JA3Og1qNf32Zqg65Oj5DKe/IeeGo8269DKE4VFK8NZpOEBY1R6ofJLCqsaPppu1t73okYuh7CPJUB6A==
+happy-dom@^9.8.0:
+  version "9.8.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.8.0.tgz#d43cd4fdb116885a36198dfb8b4f0d9f7694bad7"
+  integrity sha512-N7nplhhMBN7cJCH96C9O/kdEg755XZmHwh3JvB+6Nq+ehyGsYewLuMHPmBcOWagpJdn8cMOB+X3tmtJJaZvTBg==
   dependencies:
     css.escape "^1.5.1"
     he "^1.2.0"
@@ -13074,15 +13074,15 @@ image-size@~0.5.0:
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   integrity sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==
 
+imask@^6.4.2, imask@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/imask/-/imask-6.6.0.tgz#e2abd3f60bb8cbaff4ac7bcef0c0c8a3bee15868"
+  integrity sha512-A/tOo6DEXvOLUCijka/DPtAK8rumZTNOa++DMsmz9ZkChODrAP+fEWy20INOmuxWR1YBkt12LFw6nSAnxFG82Q==
+
 imask@^6.4.3:
   version "6.4.3"
   resolved "https://registry.yarnpkg.com/imask/-/imask-6.4.3.tgz#b81b247043807995e048f559e98930c2fec8004a"
   integrity sha512-aH2GHemGkr3cbRBfhogHMIx05eUxdHrZNlKTTLmz8VxpSopuHHJ8+85FsDlBVQqxPlDLhZuwj4lpHHWbLOdBSw==
-
-imask@^6.6.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/imask/-/imask-6.6.0.tgz#e2abd3f60bb8cbaff4ac7bcef0c0c8a3bee15868"
-  integrity sha512-A/tOo6DEXvOLUCijka/DPtAK8rumZTNOa++DMsmz9ZkChODrAP+fEWy20INOmuxWR1YBkt12LFw6nSAnxFG82Q==
 
 immer@^9.0.7:
   version "9.0.17"
@@ -24831,7 +24831,7 @@ webpack@^4.0.0, webpack@^4.8.1:
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
 
-webpack@^5.64.4, webpack@^5.75.0:
+webpack@^5.64.4:
   version "5.75.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.75.0.tgz#1e440468647b2505860e94c9ff3e44d5b582c152"
   integrity sha512-piaIaoVJlqMsPtX/+3KTTO6jfvrSYgauFVdt8cr9LTHKmcq/AMd4mhzsiP7ZF/PGRNPGA8336jldh9l2Kt2ogQ==
