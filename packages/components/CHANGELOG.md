@@ -11,15 +11,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Wordmark`, `Crest`, `Model Signature` respects parent width/height
+  ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
+- `Button Tile`, `Link Tile` and `Link Tile Model Signature` are using correct border radius of
+  `pds-border-radius-large` ([#2473](https://github.com/porsche-design-system/porsche-design-system/pull/2473))
+- `Text Field Wrapper` with `input type="search"` adds clear field button label for improved accessibility
+  ([#2476](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
 - `Accordion` layout shift with nested accordions
   ([#2465](https://github.com/porsche-design-system/porsche-design-system/pull/2465))
 
 ### [3.0.0-rc.0] - 2023-04-11
 
-### Fixed
+#### Fixed
 
 - Styles: `borderRadiusLarge` and `pds-border-radius-large` are exposing correct value
-  ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2461))
+  ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2463))
 
 ### [3.0.0-alpha.6] - 2023-04-06
 
@@ -94,7 +100,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEvent>) => {}} />
 ```
 
-#### Segmented Control:
+##### Segmented Control:
 
 - Event `segmentedControlChange` is deprecated, use `update` event instead.
 
@@ -103,7 +109,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEvent>) => {}} />
 ```
 
-#### Stepper Horizontal:
+##### Stepper Horizontal:
 
 - Event `stepChange` is deprecated, use `update` event instead.
 
@@ -112,7 +118,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEvent>) => {}} />
 ```
 
-#### Switch:
+##### Switch:
 
 - Event `switchChange` is deprecated, use `update` event instead.
 
@@ -121,7 +127,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEvent>) => {}} />
 ```
 
-#### Table:
+##### Table:
 
 - Event `sortingChange` is deprecated, use `update` event instead.
 
@@ -205,9 +211,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Banner`: CSS variable `--p-banner-position-type`
   ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
-- `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
+- Styles: `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
   ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
-- `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
+- Styles: `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
   ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 
 #### 🤖 Property deprecations 🤖
@@ -251,7 +257,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PAccordion onChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
 ```
 
-#### Banner:
+##### Banner:
 
 - Named `slot="title"` is deprecated, use `heading` prop or `slot="heading"` instead.
 
@@ -309,7 +315,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-link-tile weight="semi-bold"></p-link-tile>
 ```
 
-#### Modal:
+##### Modal:
 
 - Prop `disableCloseButton` is deprecated, use `dismissButton` instead.
 - Event `close` is deprecated, use `dismiss` event instead.
@@ -348,7 +354,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-scroller align-scroll-indicator="top"></p-scroller>
 ```
 
-#### Segmented Control:
+##### Segmented Control:
 
 - Event `segmentedControlChange` is deprecated, use `change` event instead.
 
@@ -357,7 +363,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
 ```
 
-#### Stepper Horizontal:
+##### Stepper Horizontal:
 
 - Event `stepChange` is deprecated, use `change` event instead.
 
@@ -366,7 +372,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PStepperHorizontal onChange={(e: CustomEvent<StepperHorizontalChangeEvent>) => {}} />
 ```
 
-#### Switch:
+##### Switch:
 
 - Event `switchChange` is deprecated, use `change` event instead.
 
@@ -375,7 +381,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <PSwitch onChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
 ```
 
-#### Table:
+##### Table:
 
 - Event `sortingChange` is deprecated, use `change` event instead.
 
@@ -439,9 +445,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `showCharacterCount` is deprecated, use `showCounter` instead.
 
 ```diff
--<p-text-field-wrapper show-character-count="false">
-+<p-text-field-wrapper show-counter="false">
-  <input type="text" maxlength="20" />
+- <p-text-field-wrapper show-character-count="false">
++ <p-text-field-wrapper show-counter="false">
+    <input type="text" maxlength="20" />
 </p-text-field-wrapper>
 ```
 
@@ -450,9 +456,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `showCharacterCount` is deprecated, use `showCounter` instead.
 
 ```diff
--<p-textarea-wrapper show-character-count="false">
-+<p-textarea-wrapper show-counter="false">
-  <textarea maxlength="80"></textarea>
+- <p-textarea-wrapper show-character-count="false">
++ <p-textarea-wrapper show-counter="false">
+    <textarea maxlength="80"></textarea>
 </p-textarea-wrapper>
 ```
 

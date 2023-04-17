@@ -7,9 +7,16 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-diff';
 
   @Component
   export default class Markdown extends Vue {
+    updated() {
+      this.$el
+        .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
+        .forEach((diff) => Prism.highlightElement(diff));
+    }
     // handling for raw anchor links to prevent full reload and respect base tag
     onContentClick(event: MouseEvent): void {
       const { altKey, ctrlKey, metaKey, shiftKey, target } = event;
@@ -35,6 +42,16 @@
 * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
 */
   .markdown :deep(> .vmark) {
+    .language-diff {
+      & > {
+        .inserted {
+          color: $pds-theme-light-notification-success;
+        }
+        .deleted {
+          color: $pds-theme-light-notification-error;
+        }
+      }
+    }
     &:first-child > {
       :first-child {
         margin-top: 0 !important;
@@ -122,7 +139,7 @@
         h5,
         h6 {
           @include pds-heading-small;
-          margin-top: $pds-spacing-fluid-small;
+          margin-top: $pds-spacing-fluid-medium;
         }
 
         p {
@@ -187,6 +204,17 @@
 
         ol {
           list-style-type: decimal;
+        }
+
+        h3 + ul,
+        h3 + ol,
+        h4 + ul,
+        h4 + ol,
+        h5 + ul,
+        h5 + ol,
+        h6 + ul,
+        h6 + ol {
+          margin-top: $pds-spacing-fluid-x-small;
         }
 
         // Code

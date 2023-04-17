@@ -101,7 +101,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -119,7 +119,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
@@ -220,7 +220,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -238,7 +238,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
@@ -343,7 +343,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -361,7 +361,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
@@ -466,7 +466,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -484,7 +484,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
@@ -1126,7 +1126,6 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
         </template>
       </p-icon>
       <p-button-pure
-        aria-hidden="true"
         class="button ssr"
         hidden="true"
         tabindex="-1"
@@ -1167,6 +1166,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
             </span>
           </button>
         </template>
+        Clear field
       </p-button-pure>
     </div>
   </template>
@@ -1923,10 +1923,9 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 75%;
   cursor: pointer;
@@ -1946,7 +1945,7 @@ p {
   display: grid;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
@@ -2615,6 +2614,11 @@ exports[`should render dsr component for PCrest 1`] = `
   display: inline-block;
   vertical-align: top;
   outline: 0 !important;
+  box-sizing: content-box !important;
+  max-width: 30px !important;
+  max-height: 40px !important;
+  width: inherit !important;
+  height: inherit !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2622,16 +2626,22 @@ exports[`should render dsr component for PCrest 1`] = `
 a {
   display: block;
   text-decoration: none;
+  max-width: 30px;
+  max-height: 40px;
+  width: inherit;
+  height: inherit;
   outline: 0;
 }
 picture {
   display: block;
-  width: 30px;
-  height: 40px;
+  width: min(30px, 100%);
+  height: min(40px, 100%);
 }
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
     </style>
@@ -2646,7 +2656,9 @@ img {
       />
       <img
         alt="Porsche"
+        height="40"
         src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png"
+        width="30"
       />
     </picture>
   </template>
@@ -3707,10 +3719,9 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 75%;
 }
@@ -3729,7 +3740,7 @@ p {
   display: grid;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
@@ -3896,10 +3907,9 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 133.33%;
 }
@@ -3918,7 +3928,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -3982,13 +3992,20 @@ h2,h3,h4,h5,h6 {
         >
           <style>
             :host {
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100% !important;
+  max-height: 36px !important;
+  width: inherit !important;
+  height: inherit !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
   display: block;
+  max-width: 100%;
+  max-height: 100%;
   pointer-events: none;
   filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
 }
@@ -4462,13 +4479,20 @@ exports[`should render dsr component for PModelSignature 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100% !important;
+  max-height: 36px !important;
+  width: inherit !important;
+  height: inherit !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
   display: block;
+  max-width: 100%;
+  max-height: 100%;
   pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
 }
@@ -7723,21 +7747,25 @@ exports[`should render dsr component for PWordmark 1`] = `
   display: inline-block;
   vertical-align: top;
   outline: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   box-sizing: content-box !important;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-a {
+a, svg {
   display: block;
-  text-decoration: none;
+  max-width: 100%;
+  max-height: 100%;
   height: inherit;
+}
+a {
+  text-decoration: none;
   outline: 0;
 }
 svg {
-  display: block;
-  height: inherit;
   fill: #010205;
 }
     </style>

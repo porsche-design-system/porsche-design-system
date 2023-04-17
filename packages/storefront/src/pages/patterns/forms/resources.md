@@ -1,16 +1,8 @@
 # Forms
 
-To help you better understand how to use our form guidelines we provide you with basic form patterns as pre-designed
-Sketch templates as well as the corresponding coded examples:
+To help you better understand how to use our form guidelines we provide some corresponding coded examples:
 
 <TableOfContents></TableOfContents>
-
-## Sketch form templates
-
-<p-link-pure href="https://designsystem.porsche.com/sketch/porsche-design-system-form-templates.sketch" icon="download" download>Download
-Sketch form templates</p-link-pure>
-
----
 
 ## Form pattern example pages
 
@@ -54,7 +46,7 @@ Below you can find the explanations of the used class names.
   <p-grid class="form-section-spacing">
     <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
       <form novalidate>
-        <p-fieldsetlabel="Form legend text">
+        <p-fieldset label="Form legend text">
           <p-flex direction="{base: 'column', m: 'row'}" class="form-grid-item-container">
             <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-quarter'}">
               <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
@@ -92,7 +84,7 @@ Below you can find the explanations of the used class names.
         </p-fieldset>
         <p-button-group class="form-section-spacing form-bottom-spacing">
           <p-button type="submit">Send</p-button>
-          <p-button variant="tertiary" icon="close"type="reset">Cancel</p-button>
+          <p-button variant="secondary" type="reset">Cancel</p-button>
         </p-button-group>       
       </form>
     </p-grid-item>
