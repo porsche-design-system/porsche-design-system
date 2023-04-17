@@ -30,7 +30,6 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 12px;
@@ -117,7 +116,6 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 12px;
@@ -204,7 +202,6 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 12px;
@@ -291,7 +288,6 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 12px;
@@ -377,7 +373,6 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 12px;
@@ -499,7 +494,6 @@ p {
 
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
   border-radius: 12px;

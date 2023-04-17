@@ -2,61 +2,32 @@
 
 <TableOfContents></TableOfContents>
 
-## When to use
+## Usage
 
-- Use a Radio Button to enable a user to select one value from a predefined list.
-- Use a Radio Button as soon as two options are mutually exclusive.
-- Use a Radio Button when the user should see all available options.
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
----
+### Do:
 
-## Behavior
+- Use to enable a user to select one value from a predefined list. Use as soon as two options are mutually exclusive.
+  Use
+- [Checkbox](components/checkbox) instead if there is only one option.
+- Use when the user should see all available options.
+- Consider using the [Segmented Control](components/segmented-control) for 5 options or fewer.
+- Keep the label text short and descriptive (one or two words).
+- Select one option by default in a group of radio buttons, except for cases where a pre-selection can lead to wrong
+  assumptions.
+- Align radio buttons with more than 2 items vertically left-aligned.
 
-### Label
+### Don't:
 
-The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the
-label short and descriptive (one word or two).
-
-### Validation and error
-
-For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a
-Radio Button behaves differently from the other form elements where the validation is set for each individual component.
-Please find more information in the [Form pattern guideline](patterns/forms).
-
-### Items
-
-We recommend using a Radio Button for a selection of 3-6 items. For a larger number of items (≥ 7) it is recommended to
-use a Select component instead. "If possible, use radio buttons rather than Selects. Radio buttons have lower cognitive
-load because they make all options permanently visible so that users can easily compare (…)." (Jakob Nielsen, 2004)
-
-### Group
-
-In a group of Radio Buttons one option should be selected by default, except for cases where a pre-selection can lead to
-wrong assumptions, i.e. "Male" or "Female". In this case no option should be selected by default.
-
-<div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-heading size="large" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
-    <img src="./assets/radio-button-examples.png" alt="Examples for radio button usage" />
-</div>
-
-## Do's & Don'ts
-
-### Alignment
-
-Always align Radio Buttons with more than 2 items vertically left-aligned, as a horizontal alignment is more difficult
-to scan for the user and more difficult to see which label belongs to which radio.
-
-![Example for alignment](./assets/radio-button-dont-alignment.png)
-
-### Single choice
-
-Never use a Radio Button alone. In this case you should you the Checkbox instead.
-
-![Example for single choice](./assets/radio-button-dont-single-choice.png)
+- Don't use a radio Button for a large number of items (≥ 7), use the [Select](components/select) or
+  [Segmented Control](components/segmented-control) component instead.
 
 ---
 
 ## Related Components
 
 - [Checkbox](components/checkbox)
+- [Segmented Control](components/segmented-control)
 - [Select](components/select)
