@@ -12,6 +12,7 @@ import {
   filterLightContrastMedium,
   filterLightPrimary,
 } from '../../styles/color-filters';
+import { modelSignatureHeight } from './model-signature-utils';
 
 const colorToFilterMap: Record<Theme, Record<Exclude<ModelSignatureColor, 'inherit'>, string>> = {
   light: {
@@ -35,11 +36,24 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        display: 'inline-block',
+        verticalAlign: 'top',
+        ...addImportantToEachRule({
+          maxWidth: '100%',
+          maxHeight: '100%',
+          ...(!isSizeInherit && {
+            width: 'inherit',
+            height: 'inherit',
+            // TODO: we need a width map of all signatures to ensure same fluid behavior like implemented fro crest + wordmark
+            maxHeight: `${modelSignatureHeight}px`,
+          }),
+          ...hostHiddenStyles,
+        }),
       },
       img: {
         display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
         pointerEvents: 'none', // prevents image drag
         ...(!isColorInherit && { filter: colorToFilterMap[theme][color] }),
         ...(isSizeInherit && { height: size }),
