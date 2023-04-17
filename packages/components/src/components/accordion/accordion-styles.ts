@@ -95,7 +95,7 @@ export const getComponentCss = (
     },
     heading: {
       margin: 0,
-      padding: 0,
+      padding: '0 0 2px',
     },
     icon: {
       width: fontLineHeight,

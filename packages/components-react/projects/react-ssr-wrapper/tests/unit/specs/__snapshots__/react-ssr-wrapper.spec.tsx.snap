@@ -1272,7 +1272,7 @@ button::before {
 
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
