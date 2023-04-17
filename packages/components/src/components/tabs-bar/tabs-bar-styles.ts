@@ -30,7 +30,6 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
-  const { canvasTextColor } = getHighContrastColors();
 
   return getCss({
     '@global': {
@@ -117,7 +116,7 @@ export const getComponentCss = (
       height: isHighContrastMode ? '4px' : weight === 'semi-bold' ? '2px' : '1.5px',
       left: 0,
       bottom: isHighContrastMode ? '-1px' : '-4px',
-      background: isHighContrastMode ? canvasTextColor : primaryColor,
+      background: isHighContrastMode ? getHighContrastColors().canvasTextColor : primaryColor,
       '&--enable-transition': {
         willChange: 'width',
         transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,

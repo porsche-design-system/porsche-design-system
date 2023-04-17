@@ -64,15 +64,16 @@ export const getCheckboxRadioJssStyle = (
           backgroundColor: isHighContrastMode ? canvasTextColor : checkedColor,
         },
         ...(!isDisabled && {
-          ...hoverMediaQuery({
-            '&(input:hover), .text:hover ~ &(input)': {
-              borderColor: !isHighContrastMode && uncheckedHoverColor,
-            },
-            '&(input:checked:hover), .text:hover ~ &(input:checked)': {
-              borderColor: !isHighContrastMode && checkedHoverColor,
-              backgroundColor: !isHighContrastMode && checkedHoverColor,
-            },
-          }),
+          ...(!isHighContrastMode &&
+            hoverMediaQuery({
+              '&(input:hover), .text:hover ~ &(input)': {
+                borderColor: !isHighContrastMode && uncheckedHoverColor,
+              },
+              '&(input:checked:hover), .text:hover ~ &(input:checked)': {
+                borderColor: !isHighContrastMode && checkedHoverColor,
+                backgroundColor: !isHighContrastMode && checkedHoverColor,
+              },
+            })),
           '&(input:focus)::before': {
             content: '""',
             position: 'absolute',
