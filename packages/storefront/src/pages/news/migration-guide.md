@@ -239,7 +239,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
 - <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
-+ <PAccordion onUpdate={(e: CustomEvent<AccordionUPdateEvent>) => {}} />
++ <PAccordion onUpdate={(e: CustomEvent<AccordionUpdateEvent>) => {}} />
 ```
 
 ### Banner:
