@@ -32,6 +32,9 @@ exports[`getComponentCss() should return correct css for size: "inherit", align:
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -67,6 +70,9 @@ exports[`getComponentCss() should return correct css for size: "large", align: c
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -102,6 +108,9 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -137,6 +146,9 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -175,6 +187,9 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -213,6 +228,9 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -251,6 +269,9 @@ exports[`getComponentCss() should return correct css for size: "large", align: r
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -286,6 +307,9 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -324,6 +348,9 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -392,5 +419,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
     font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) !important;
   }
 }
-"
+
+.root {
+  margin: 0;
+}"
 `;

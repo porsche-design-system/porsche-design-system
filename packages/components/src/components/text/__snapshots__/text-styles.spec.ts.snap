@@ -38,6 +38,9 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -79,6 +82,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -117,6 +123,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }"
 `;
 
@@ -193,5 +202,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
     font-weight: 700 !important;
   }
 }
-"
+
+.root {
+  margin: 0;
+}"
 `;

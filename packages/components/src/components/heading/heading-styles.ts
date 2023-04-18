@@ -49,5 +49,8 @@ export const getComponentCss = (
         [HEADING_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
+    root: {
+      margin: 0,
+    },
   });
 };

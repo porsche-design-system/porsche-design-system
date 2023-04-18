@@ -2741,6 +2741,9 @@ exports[`should render dsr component for PDisplay 1`] = `
   white-space: inherit !important;
   letter-spacing: inherit !important;
 }
+.root {
+  margin: 0;
+}
     </style>
     <h1
       class="root"
@@ -3014,6 +3017,9 @@ exports[`should render dsr component for PHeading 1`] = `
   white-space: inherit !important;
   letter-spacing: inherit !important;
 }
+.root {
+  margin: 0;
+}
     </style>
     <h2
       class="root"
@@ -3065,6 +3071,9 @@ exports[`should render dsr component for PHeadline 1`] = `
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }
     </style>
     <h1
@@ -7540,6 +7549,9 @@ exports[`should render dsr component for PText 1`] = `
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
 }
     </style>
     <p
