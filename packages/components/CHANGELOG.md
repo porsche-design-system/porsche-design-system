@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- New `Icons` for global nav use cases
+  ([#2444](https://github.com/porsche-design-system/porsche-design-system/pull/2471)).
+
 #### Fixed
 
 - `Wordmark`, `Crest`, `Model Signature` respects parent width/height
