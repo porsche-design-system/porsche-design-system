@@ -2,20 +2,35 @@
 
 <TableOfContents></TableOfContents>
 
-## When to use
+## Usage
 
-- When you need a container for visually-grouped form elements, e.g. form fields.
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to group related fields together to make them more organized and easier to understand for users.
+- Use descriptive and clear labels for the field sets to help users quickly understand what information is being
+  requested.
+- Use for grouping several form controls as well as labels within a form.
+- Use it for grouping several checkboxes.
+- Use it for creating a date picker.
+- Use consistent formatting and styling for field sets to maintain visual consistency and improve the overall user
+  experience.
+- Use field sets to control the visibility of groups of fields that are not always necessary, such as advanced options
+  or additional information.
+- Test your field sets with users to ensure they are effective in improving the usability of your forms or page layouts.
+
+### Don't:
+
+- Don't use too many field sets on a single form or page layout.
+- Don't use to hide important information or fields that users need to complete a form.
+- Don't rely solely on field sets to improve the usability of your forms or page layouts.
 
 ---
 
 ## Behavior
 
-### Sections including form elements
+##### Sections including form elements
 
-We recommend for each fieldset the headline 4 (for the visible part _legend_) of the respective viewport. Please find
-more information in the [Form pattern guideline](patterns/forms).
-
-<div style="background:#EEEFF2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-heading size="large" tag="h3" style="margin-bottom: 24px;">Examples</p-heading>
-    <img src="./../fieldset/assets/fieldset-examples.png" alt="Examples for fieldset" />
-</div>
+[Form pattern guideline](patterns/forms).

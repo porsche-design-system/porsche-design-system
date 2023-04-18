@@ -6,19 +6,13 @@ Accordions are flexible in the context and can include other components of the P
 It is a controlled component. This means it does not contain any internal state, and you got full control over its
 behavior.
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
-  This component uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver" target="_blank">ResizeObserver</a> API internally which isn't available in all browsers.<br>
-  If your browser does not support the ResizeObserver, a fallback is used, which might be not as performant.<br>
-  See <a href="https://caniuse.com/resizeobserver" target="_blank">caniuse.com</a> for more details on browser support.  
-</p-inline-notification>
-
 <TableOfContents></TableOfContents>
 
 ## Basic example
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>accordionChange</code> event has been deprecated and will be removed with the next major release.<br>
-  Please use the <code>change</code> event instead.
+  Please use the <code>update</code> event instead.
 </p-inline-notification>
 
 <Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>

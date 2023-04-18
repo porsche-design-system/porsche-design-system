@@ -2,7 +2,10 @@
 
 <TableOfContents></TableOfContents>
 
-## Do's & Don'ts
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
 
 ### Do
 
