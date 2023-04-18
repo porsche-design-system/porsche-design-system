@@ -38,21 +38,23 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule(
+          getTypographyRootJssStyle(
+            textSmallStyle,
+            buildResponsiveStyles(size, (sizeValue: TextSize) => ({
+              fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+              fontWeight: getFontWeight(weight),
+            })),
+            align,
+            color,
+            ellipsis,
+            theme
+          )
+        ),
       },
       '::slotted': {
         [TEXT_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: getTypographyRootJssStyle(
-      textSmallStyle,
-      buildResponsiveStyles(size, (sizeValue: TextSize) => ({
-        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-        fontWeight: getFontWeight(weight),
-      })),
-      align,
-      color,
-      ellipsis,
-      theme
-    ),
   });
 };

@@ -29,20 +29,22 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule(
+          getTypographyRootJssStyle(
+            displayLargeStyle,
+            buildResponsiveStyles(size, (sizeValue: DisplaySize) => ({
+              fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+            })),
+            align,
+            color,
+            ellipsis,
+            theme
+          )
+        ),
       },
       '::slotted': {
         [DISPLAY_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: getTypographyRootJssStyle(
-      displayLargeStyle,
-      buildResponsiveStyles(size, (sizeValue: DisplaySize) => ({
-        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-      })),
-      align,
-      color,
-      ellipsis,
-      theme
-    ),
   });
 };

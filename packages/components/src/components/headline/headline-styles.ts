@@ -66,20 +66,22 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule(
+          getTypographyRootJssStyle(
+            headingXXLargeStyle,
+            isValidVariantType(variant)
+              ? getHeadlineVariantJssStyle(variant as HeadlineVariantType)
+              : buildResponsiveStyles(variant, getTextSizeJssStyle),
+            align,
+            color,
+            ellipsis,
+            theme
+          )
+        ),
       },
       '::slotted': {
         [HEADLINE_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: getTypographyRootJssStyle(
-      headingXXLargeStyle,
-      isValidVariantType(variant)
-        ? getHeadlineVariantJssStyle(variant as HeadlineVariantType)
-        : buildResponsiveStyles(variant, getTextSizeJssStyle),
-      align,
-      color,
-      ellipsis,
-      theme
-    ),
   });
 };

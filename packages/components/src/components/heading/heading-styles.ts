@@ -32,20 +32,22 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule(
+          getTypographyRootJssStyle(
+            headingXXLargeStyle,
+            buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
+              fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+            })),
+            align,
+            color,
+            ellipsis,
+            theme
+          )
+        ),
       },
       '::slotted': {
         [HEADING_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: getTypographyRootJssStyle(
-      headingXXLargeStyle,
-      buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
-        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-      })),
-      align,
-      color,
-      ellipsis,
-      theme
-    ),
   });
 };

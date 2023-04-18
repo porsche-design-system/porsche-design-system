@@ -2711,6 +2711,15 @@ exports[`should render dsr component for PDisplay 1`] = `
     <style>
       :host {
   display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  color: #010205 !important;
+  text-align: left !important;
+  letter-spacing: normal !important;
+  list-style-type: none !important;
+  white-space: inherit !important;
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2731,17 +2740,6 @@ exports[`should render dsr component for PDisplay 1`] = `
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
 }
     </style>
     <h1
@@ -2986,6 +2984,15 @@ exports[`should render dsr component for PHeading 1`] = `
     <style>
       :host {
   display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  color: #010205 !important;
+  text-align: left !important;
+  letter-spacing: normal !important;
+  list-style-type: none !important;
+  white-space: inherit !important;
+  font-size: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3006,17 +3013,6 @@ exports[`should render dsr component for PHeading 1`] = `
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
 }
     </style>
     <h2
@@ -3040,6 +3036,15 @@ exports[`should render dsr component for PHeadline 1`] = `
     <style>
       :host {
   display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  color: #010205 !important;
+  text-align: left !important;
+  letter-spacing: normal !important;
+  list-style-type: none !important;
+  white-space: inherit !important;
+  font-size: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3060,17 +3065,6 @@ exports[`should render dsr component for PHeadline 1`] = `
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
 }
     </style>
     <h1
@@ -7514,6 +7508,18 @@ exports[`should render dsr component for PText 1`] = `
     <style>
       :host {
   display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  color: #010205 !important;
+  text-align: left !important;
+  letter-spacing: normal !important;
+  list-style-type: none !important;
+  white-space: inherit !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -7534,20 +7540,6 @@ exports[`should render dsr component for PText 1`] = `
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: 1rem;
-  font-weight: 400;
 }
     </style>
     <p
