@@ -379,7 +379,7 @@ p {
 + font-weight: $pds-font-weight-{regular|semi-bold|bold};
 
 - font-size: $p-font-size-{x-small|small|medium|large|x-large};
-+ font-size: $pds-font-size-{x-small|small|medium|large|x-large};
++ font-size: $pds-font-size-text-{x-small|small|medium|large|x-large};
 + line-height: $pds-font-line-height;
 }
 ```
