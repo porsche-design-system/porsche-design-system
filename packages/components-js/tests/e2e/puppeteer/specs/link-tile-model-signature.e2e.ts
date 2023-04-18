@@ -2,6 +2,7 @@ import {
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagName,
+  getAttribute,
   getLifecycleStatus,
   getProperty,
   selectNode,
@@ -101,6 +102,31 @@ describe('lifecycle', () => {
     ).toBe(1);
     expect(status.componentDidUpdate['p-model-signature'], 'componentDidUpdate: p-model-signature').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+  });
+
+  // If the component has no target='_self' fallback the target can be null if the link request is delayed (flaky snapshot test)
+  it('should fallback to target self', async () => {
+    const linkReqMatcher = 'porsche-design-system.link.';
+    await page.setRequestInterception(true);
+
+    // Delay link request
+    page.on('request', (req) => {
+      if (req.isInterceptResolutionHandled()) return;
+      req.url().includes(linkReqMatcher) ? setTimeout(() => req.continue(), 1000) : req.continue();
+    });
+
+    const resUrls = [];
+    page.on('response', (res) => {
+      if (res.url().endsWith('js') && res.status() === 200) {
+        resUrls.push(res.url());
+      }
+    });
+
+    await initLinkTileModelSignature();
+    const overlayAnchor = await getOverlayAnchor();
+
+    expect(await getAttribute(overlayAnchor, 'target')).toEqual('_self');
+    expect(resUrls.at(-1)).toContain(linkReqMatcher);
   });
 });
 
