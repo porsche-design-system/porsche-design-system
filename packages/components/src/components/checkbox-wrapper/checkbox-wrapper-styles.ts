@@ -24,11 +24,11 @@ export const getComponentCss = (
             borderRadius: borderRadiusSmall,
           },
           '&(input:checked)': {
-            backgroundImage: getInlineSVGBackgroundImage(
-              !isLoading
-                ? `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
-                : 'none'
-            ),
+            backgroundImage: !isLoading
+              ? getInlineSVGBackgroundImage(
+                  `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
+                )
+              : 'none',
           },
           '&(input:indeterminate)': {
             backgroundImage: getInlineSVGBackgroundImage(
