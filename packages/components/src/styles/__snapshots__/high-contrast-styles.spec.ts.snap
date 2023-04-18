@@ -1,17 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should have only high contrast styles for p-button 1`] = `
-[
-  {
-    "border-color": "Highlight",
-  },
-]
-`;
-
 exports[`should have only high contrast styles for p-carousel 1`] = `
 [
   {
-    "background": "CanvasText",
+    ".bullet": {
+      "background": "CanvasText",
+    },
   },
 ]
 `;
@@ -19,23 +13,9 @@ exports[`should have only high contrast styles for p-carousel 1`] = `
 exports[`should have only high contrast styles for p-divider 1`] = `
 [
   {
-    "background": "CanvasText",
-  },
-]
-`;
-
-exports[`should have only high contrast styles for p-link 1`] = `
-[
-  {
-    "border-color": "Highlight",
-  },
-]
-`;
-
-exports[`should have only high contrast styles for p-link-social 1`] = `
-[
-  {
-    "border-color": "Highlight",
+    "hr": {
+      "background": "CanvasText",
+    },
   },
 ]
 `;
@@ -43,7 +23,9 @@ exports[`should have only high contrast styles for p-link-social 1`] = `
 exports[`should have only high contrast styles for p-popover 1`] = `
 [
   {
-    "border-color": "Highlight",
+    "button:focus::before": {
+      "border-color": "Highlight",
+    },
   },
 ]
 `;
@@ -51,7 +33,9 @@ exports[`should have only high contrast styles for p-popover 1`] = `
 exports[`should have only high contrast styles for p-scroller 1`] = `
 [
   {
-    "border-color": "Highlight",
+    ".scroll-wrapper:focus::before": {
+      "border-color": "Highlight",
+    },
   },
 ]
 `;
@@ -59,7 +43,9 @@ exports[`should have only high contrast styles for p-scroller 1`] = `
 exports[`should have only high contrast styles for p-segmented-control-item 1`] = `
 [
   {
-    "border-color": "Highlight",
+    "button:focus::before": {
+      "border-color": "Highlight",
+    },
   },
 ]
 `;
@@ -67,10 +53,14 @@ exports[`should have only high contrast styles for p-segmented-control-item 1`] 
 exports[`should have only high contrast styles for p-spinner 1`] = `
 [
   {
-    "stroke": "Canvas",
+    "circle:last-child": {
+      "stroke": "Canvas",
+    },
   },
   {
-    "stroke": "CanvasText",
+    "circle:first-child": {
+      "stroke": "CanvasText",
+    },
   },
 ]
 `;
@@ -78,7 +68,9 @@ exports[`should have only high contrast styles for p-spinner 1`] = `
 exports[`should have only high contrast styles for p-switch 1`] = `
 [
   {
-    "background-color": "CanvasText",
+    ".toggle": {
+      "background-color": "CanvasText",
+    },
   },
 ]
 `;
@@ -86,7 +78,9 @@ exports[`should have only high contrast styles for p-switch 1`] = `
 exports[`should have only high contrast styles for p-tabs-bar 1`] = `
 [
   {
-    "background": "CanvasText",
+    ".bar": {
+      "background": "CanvasText",
+    },
   },
 ]
 `;
@@ -94,7 +88,9 @@ exports[`should have only high contrast styles for p-tabs-bar 1`] = `
 exports[`should have only high contrast styles for p-wordmark 1`] = `
 [
   {
-    "fill": "CanvasText",
+    "svg": {
+      "fill": "CanvasText",
+    },
   },
 ]
 `;

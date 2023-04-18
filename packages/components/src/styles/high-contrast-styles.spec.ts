@@ -34,14 +34,15 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
   const cssObject = getComponentCssObject(spy);
   const filteredCSS = [];
 
-  const findKey = (obj, val) => {
+  const findKey = (obj: Record<string, any>, val: string): Record<string, any> | null => {
     if (typeof obj === 'object') {
-      for (const key in obj) {
-        if (obj[key] === val) {
-          return { [key]: val };
-        } else {
-          const result = findKey(obj[key], val);
-          if (result !== null) return result;
+      for (const [parentKey, value] of Object.entries(obj)) {
+        if (typeof value === 'object') {
+          const match = Object.entries(value).find(([, childValue]) => childValue === val);
+          if (match) {
+            const [childKey, childValue] = match;
+            return { [parentKey]: { [childKey]: childValue } };
+          }
         }
       }
     }
@@ -55,6 +56,5 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
     }
     return null;
   });
-
   filteredCSS.length && expect(filteredCSS).toMatchSnapshot();
 });
