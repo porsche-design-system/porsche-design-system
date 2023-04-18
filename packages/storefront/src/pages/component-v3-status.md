@@ -118,8 +118,6 @@
 #### ✅ Display
 
 - Usage Docs missing
-- Styling could be on :host instead of .root
-- Reuse style across typography components
 
 #### ✅ Divider
 
@@ -132,8 +130,6 @@
 #### ✅ Heading
 
 - Usage Docs missing
-- Styling could be on :host instead of .root
-- Reuse style across typography components
 
 #### ✅ Icon
 
@@ -262,8 +258,6 @@
 #### ✅ Text
 
 - Usage Docs missing
-- Styling could be on :host instead of .root
-- Reuse style across typography components
 
 #### ✅ Text Field Wrapper
 
