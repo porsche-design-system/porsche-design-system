@@ -7526,6 +7526,18 @@ exports[`should render dsr component for PText 1`] = `
     <style>
       :host {
   display: block;
+  margin: 0;
+  padding: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  text-align: left;
+  letter-spacing: normal;
+  list-style-type: none;
+  white-space: inherit;
+  font-size: 1rem;
+  font-weight: 400;
 }
 :host([hidden]) {
   display: none !important;
@@ -7546,20 +7558,6 @@ exports[`should render dsr component for PText 1`] = `
   hyphens: inherit !important;
   white-space: inherit !important;
   letter-spacing: inherit !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: 1rem;
-  font-weight: 400;
 }
     </style>
     <p
