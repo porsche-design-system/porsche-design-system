@@ -66,7 +66,7 @@ export class CheckboxWrapper {
   }
 
   @Listen('keydown')
-  public handleKeyDown(e: KeyboardEvent): void {
+  public onKeydown(e: KeyboardEvent): void {
     if ((e.key === 'Spacebar' || e.key.trim() === '') && isDisabledOrLoading(this.input.disabled, this.loading)) {
       e.preventDefault();
     }
