@@ -63,8 +63,8 @@ export const getCheckboxRadioJssStyle = (
           borderColor: checkedColor,
           backgroundColor: checkedColor,
         },
-        ...(!disabledOrLoading && {
-          ...hoverMediaQuery({
+        ...(!disabledOrLoading &&
+          hoverMediaQuery({
             '&(input:hover), .text:hover ~ &(input)': {
               borderColor: uncheckedHoverColor,
             },
@@ -72,8 +72,7 @@ export const getCheckboxRadioJssStyle = (
               borderColor: checkedHoverColor,
               backgroundColor: checkedHoverColor,
             },
-          }),
-        }),
+          })),
         ...(!isDisabled && {
           '&(input:focus)::before': {
             content: '""',
