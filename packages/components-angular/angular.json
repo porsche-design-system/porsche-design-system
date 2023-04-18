@@ -113,7 +113,6 @@
       }
     }
   },
-  "defaultProject": "components-angular",
   "cli": {
     "packageManager": "yarn"
   }
