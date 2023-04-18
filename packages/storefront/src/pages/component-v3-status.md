@@ -75,7 +75,6 @@
 - Usage Docs missing
 - Optimize icon (size) for compact mode
 - Optimize hover state for default mode
-- Remove resize-observer fallback
 
 #### ✅ Banner
 
