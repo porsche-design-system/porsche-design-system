@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: false and theme: light 1`] = `
 ":host {
   display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -11,7 +12,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -52,33 +52,25 @@ button:not(:focus-visible)::before {
   }
 }
 
-.root {
-  border-bottom: 1px solid #D8D8DB;
-}
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -87,6 +79,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `
 ":host {
   display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -95,7 +88,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -136,35 +128,27 @@ button:not(:focus-visible)::before {
   }
 }
 
-.root {
-  border-bottom: 1px solid #D8D8DB;
-}
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: auto;
   padding-bottom: 24px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -181,7 +165,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -224,28 +207,23 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #FBFCFF;
-  padding: 0;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -262,7 +240,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -305,28 +282,23 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -343,7 +315,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -386,30 +357,25 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: auto;
   padding-bottom: 8px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -418,6 +384,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false and theme: light 1`] = `
 ":host {
   display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -426,7 +393,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -467,33 +433,25 @@ button:not(:focus-visible)::before {
   }
 }
 
-.root {
-  border-bottom: 1px solid #D8D8DB;
-}
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -502,6 +460,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: dark 1`] = `
 ":host {
   display: block !important;
+  border-bottom: 1px solid #404044 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -510,7 +469,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -551,35 +509,27 @@ button:not(:focus-visible)::before {
   }
 }
 
-.root {
-  border-bottom: 1px solid #404044;
-}
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #FBFCFF;
-  padding: 0;
   overflow: hidden;
   height: auto;
   padding-bottom: 24px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -588,6 +538,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: light 1`] = `
 ":host {
   display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -596,7 +547,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -637,35 +587,27 @@ button:not(:focus-visible)::before {
   }
 }
 
-.root {
-  border-bottom: 1px solid #D8D8DB;
-}
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: auto;
   padding-bottom: 24px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -682,7 +624,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -725,28 +666,23 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -763,7 +699,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -806,30 +741,25 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: auto;
   padding-bottom: 8px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -838,6 +768,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and theme: dark 1`] = `
 ":host {
   display: block !important;
+  border-bottom: 1px solid #404044 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -846,7 +777,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -922,35 +852,27 @@ button:not(:focus-visible)::before {
   }
 }
 
-.root {
-  border-bottom: 1px solid #404044;
-}
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #FBFCFF;
-  padding: 0;
   overflow: hidden;
   height: auto;
   padding-bottom: 24px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
