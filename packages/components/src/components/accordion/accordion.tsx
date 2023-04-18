@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -14,11 +14,8 @@ import {
   AccordionTag,
   getContentHeight,
   observeResize,
-  removeResizeObserverFallback,
-  resizeObserverFallback,
   setCollapsibleElementHeight,
   unobserveResize,
-  useResizeObserverFallback,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
@@ -74,36 +71,17 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    if (useResizeObserverFallback) {
-      resizeObserverFallback(this.host, this.setContentHeight, true);
+    if (this.content) {
+      this.observeResize(); // for reconnect
     }
   }
 
   public componentDidLoad(): void {
-    if (!useResizeObserverFallback) {
-      observeResize(
-        this.content,
-        ({ contentRect }) => {
-          this.contentHeight = getContentHeight(contentRect);
-          this.setCollapsibleElementHeight();
-        },
-        { box: 'border-box' }
-      );
-    }
-  }
-
-  public componentDidRender(): void {
-    if (useResizeObserverFallback) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
-    }
+    this.observeResize(); // for first init
   }
 
   public disconnectedCallback(): void {
-    if (useResizeObserverFallback) {
-      removeResizeObserverFallback(this.host, true);
-    } else {
-      unobserveResize(this.content);
-    }
+    unobserveResize(this.content);
   }
 
   public render(): JSX.Element {
@@ -116,9 +94,8 @@ export class Accordion {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const Heading = this.tag;
 
-    // TODO: why .root div for a condition border-bottom style? could be applied on :host directly
     return (
-      <div class="root">
+      <Host>
         <Heading class="heading">
           <button
             id={buttonId}
@@ -148,7 +125,7 @@ export class Accordion {
             <slot />
           </div>
         </div>
-      </div>
+      </Host>
     );
   }
 
@@ -157,14 +134,18 @@ export class Accordion {
     this.accordionChange.emit({ open: !this.open });
   };
 
+  private observeResize(): void {
+    observeResize(
+      this.content,
+      ({ contentRect }) => {
+        this.contentHeight = getContentHeight(contentRect);
+        this.setCollapsibleElementHeight();
+      },
+      { box: 'border-box' }
+    );
+  }
+
   private setCollapsibleElementHeight(): void {
     setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
   }
-
-  private setContentHeight = (): void => {
-    if (this.content) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
-      this.setCollapsibleElementHeight();
-    }
-  };
 }
