@@ -1,7 +1,9 @@
 import {
+  addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementTagName,
   getElementStyle,
+  getEventSummary,
   getLifecycleStatus,
   getProperty,
   selectNode,
@@ -134,6 +136,34 @@ it('should toggle checkbox when input is clicked', async () => {
   // ensure that checked and indeterminate use different images
   await setIndeterminate(input, true);
   expect(checkedImage).not.toBe(await getBackgroundImage(input));
+});
+
+it.only('should not toggle checkbox when checkbox wrapper is clicked in loading state', async () => {
+  await setContentWithDesignSystem(
+    page,
+    `
+    <p-checkbox-wrapper label="Some label" loading="true">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
+  );
+
+  const input = await getInput();
+  const host = await getHost();
+  await addEventListener(host, 'click');
+
+  await input.click();
+  await host.click();
+
+  const coords = await host.boundingBox();
+  await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
+  await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
+  await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner
+  await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height - 1); // click the bottom right corner
+  await page.mouse.click(coords.x + 1, coords.y + coords.height / 2); // click the left center
+  await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
+  await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
+
+  expect((await getEventSummary(host, 'click')).counter).toBe(0);
 });
 
 it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
