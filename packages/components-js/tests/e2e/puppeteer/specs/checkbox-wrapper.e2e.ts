@@ -1,6 +1,7 @@
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
+  getActiveElementId,
   getActiveElementTagName,
   getElementStyle,
   getEventSummary,
@@ -138,7 +139,7 @@ it('should toggle checkbox when input is clicked', async () => {
   expect(checkedImage).not.toBe(await getBackgroundImage(input));
 });
 
-it.only('should not toggle checkbox when checkbox wrapper is clicked in loading state', async () => {
+it('should not toggle checkbox when checkbox wrapper is clicked in loading state', async () => {
   await setContentWithDesignSystem(
     page,
     `
@@ -164,6 +165,23 @@ it.only('should not toggle checkbox when checkbox wrapper is clicked in loading 
   await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
 
   expect((await getEventSummary(host, 'click')).counter).toBe(0);
+});
+
+it('should not toggle checkbox when pressed space in focus in loading state', async () => {
+  await setContentWithDesignSystem(
+    page,
+    `
+    <p-checkbox-wrapper label="Some label" loading="true">
+      <input type="checkbox" id="test" name="some-name"/>
+    </p-checkbox-wrapper>`
+  );
+
+  const input = await getInput();
+  await addEventListener(input, 'change');
+  await input.focus();
+  expect(await getActiveElementId(page)).toBe('test');
+  await page.keyboard.press('Space');
+  expect((await getEventSummary(input, 'change')).counter).toBe(0);
 });
 
 it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
