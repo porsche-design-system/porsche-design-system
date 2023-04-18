@@ -7,6 +7,7 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
+  hasFocus,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -182,6 +183,33 @@ it('should not toggle checkbox when pressed space in focus in loading state', as
   expect(await getActiveElementId(page)).toBe('test');
   await page.keyboard.press('Space');
   expect((await getEventSummary(input, 'change')).counter).toBe(0);
+});
+
+it('should keep focus if state switches to loading', async () => {
+  await setContentWithDesignSystem(
+    page,
+    `
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name"/>
+    </p-checkbox-wrapper>`
+  );
+
+  const input = await getInput();
+  const host = await getHost();
+
+  expect(await hasFocus(input)).toBe(false);
+  await page.keyboard.press('Tab');
+  expect(await hasFocus(input), 'after Tab').toBe(true);
+
+  await setProperty(host, 'loading', true);
+  await waitForStencilLifecycle(page);
+
+  expect(await hasFocus(input), 'focus style on loading').toBe(true);
+
+  await setProperty(host, 'loading', false);
+  await waitForStencilLifecycle(page);
+
+  expect(await hasFocus(input), 'final focus style').toBe(true);
 });
 
 it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
