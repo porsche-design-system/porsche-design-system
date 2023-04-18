@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - New `Icons` for global nav use cases
   ([#2444](https://github.com/porsche-design-system/porsche-design-system/pull/2471)).
 
+#### Changed
+
+- Reuse style across typography components.
+
 #### Fixed
 
 - `Wordmark`, `Crest`, `Model Signature` respects parent width/height
