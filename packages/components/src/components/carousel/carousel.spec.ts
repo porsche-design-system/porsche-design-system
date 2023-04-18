@@ -15,6 +15,27 @@ const splideMock = {
   mount: () => {},
 } as Splide;
 
+let originalMatchMedia: typeof window.matchMedia;
+beforeAll(() => {
+  originalMatchMedia = window.matchMedia;
+  // global window matchMedia mock does not work here
+  // @ts-ignore
+  window.matchMedia = function (query) {
+    return {
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    };
+  };
+});
+
+afterAll(() => {
+  window.matchMedia = originalMatchMedia;
+});
+
 describe('connectedCallback', () => {
   it('should call this.observeBreakpointChange()', () => {
     const component = new Carousel();
@@ -263,6 +284,7 @@ describe('registerSplideHandlers()', () => {
     const updateSlidesInertSpy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
+    console.log(window.matchMedia('(prefers-reduced-motion: reduce)'), 'match media');
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
 
