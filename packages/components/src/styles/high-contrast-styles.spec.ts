@@ -34,7 +34,7 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
   const cssObject = getComponentCssObject(spy);
   const filteredCSS = [];
 
-  const findKey = (obj: Record<string, any>, val: string): Record<string, any> | null => {
+  const findKey = (obj: object, val: string): object | null => {
     if (typeof obj === 'object') {
       for (const [parentKey, value] of Object.entries(obj)) {
         if (typeof value === 'object') {
