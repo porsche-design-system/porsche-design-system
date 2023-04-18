@@ -61,14 +61,14 @@ export class CheckboxWrapper {
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.input.disabled, this.loading)) {
-      e.preventDefault();
+      e.stopPropagation();
     }
   }
 
   @Listen('keydown')
   public handleKeyDown(e: KeyboardEvent): void {
     if (e.key === ('Spacebar' || ' ') && isDisabledOrLoading(this.input.disabled, this.loading)) {
-      e.preventDefault();
+      e.stopPropagation();
     }
   }
 
