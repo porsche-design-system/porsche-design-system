@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -20,8 +20,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -146,7 +145,7 @@ label {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -166,8 +165,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
@@ -243,7 +241,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -263,8 +261,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
@@ -340,7 +337,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -360,8 +357,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -414,7 +410,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -434,8 +430,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -488,7 +483,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -508,8 +503,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #88898C !important;
   outline: 0 !important;
@@ -584,7 +578,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -604,8 +598,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
@@ -680,7 +673,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -700,8 +693,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -753,7 +745,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -773,8 +765,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -826,7 +817,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -846,8 +837,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #09D087 !important;
   outline: 0 !important;
@@ -923,7 +913,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -943,8 +933,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #197E10 !important;
   outline: 0 !important;
@@ -1020,7 +1009,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1040,8 +1029,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -1094,7 +1082,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1114,8 +1102,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -1168,7 +1155,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1188,8 +1175,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
@@ -1266,7 +1252,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1286,8 +1272,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
@@ -1364,7 +1349,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1384,8 +1369,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -1439,7 +1423,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1459,8 +1443,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -1514,7 +1497,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1534,8 +1517,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #88898C !important;
   outline: 0 !important;
@@ -1611,7 +1593,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1631,8 +1613,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
@@ -1708,7 +1689,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1728,8 +1709,179 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  border-radius: 8px !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  position: absolute;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #949598 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+}
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  border-radius: 8px !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  position: absolute;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -1782,7 +1934,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1802,8 +1954,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -1856,7 +2007,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -1876,8 +2027,173 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+}
+::slotted(input:checked) {
+  border-color: #7E7F82 !important;
+  background-color: #7E7F82 !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  position: absolute;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  border: 2px solid #949598 !important;
+  outline: 0 !important;
+  cursor: not-allowed !important;
+  border-radius: 4px !important;
+}
+::slotted(input:checked) {
+  border-color: #949598 !important;
+  background-color: #949598 !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.text {
+  order: 1;
+  cursor: default;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 2px 0 0 8px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.spinner {
+  position: absolute;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
+  left: calc(calc(6px + 2.125ex)/2 + 2px);
+  transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  position: relative !important;
+  width: calc(6px + 2.125ex) !important;
+  height: calc(6px + 2.125ex) !important;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-size: 1rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: content-box !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #09D087 !important;
   outline: 0 !important;
@@ -1954,7 +2270,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -1974,8 +2290,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #197E10 !important;
   outline: 0 !important;
@@ -2052,7 +2367,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true and theme dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block !important;
 }
@@ -2072,8 +2387,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -2127,7 +2441,7 @@ label {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true and theme light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block !important;
 }
@@ -2147,8 +2461,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;

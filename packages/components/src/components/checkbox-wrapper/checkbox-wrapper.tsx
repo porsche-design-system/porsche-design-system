@@ -1,11 +1,11 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { FORM_STATES } from '../../utils/form/form-state';
-import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
+  getPrefixedTagNames,
   hasLabel,
   hasMessage,
   isRequiredAndParentNotRequired,
@@ -14,6 +14,8 @@ import {
   THEMES,
   unobserveAttributes,
   validateProps,
+  FORM_STATES,
+  isDisabledOrLoading,
 } from '../../utils';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
@@ -25,6 +27,7 @@ const propTypes: PropTypes<typeof CheckboxWrapper> = {
   state: AllowedTypes.oneOf<CheckboxWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  loading: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -47,10 +50,27 @@ export class CheckboxWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Disables the checkbox and shows a loading indicator. */
+  @Prop() public loading?: boolean = false;
+
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   private input: HTMLInputElement;
+
+  @Listen('click', { capture: true })
+  public onClick(e: MouseEvent): void {
+    if (isDisabledOrLoading(this.input.disabled, this.loading)) {
+      e.stopPropagation();
+    }
+  }
+
+  @Listen('keydown')
+  public onKeydown(e: KeyboardEvent): void {
+    if ((e.key === 'Spacebar' || e.key.trim() === '') && isDisabledOrLoading(this.input.disabled, this.loading)) {
+      e.preventDefault();
+    }
+  }
 
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
@@ -80,11 +100,21 @@ export class CheckboxWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.input.disabled,
+      this.loading,
+      this.theme
+    );
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <label>
+        <label aria-disabled={this.loading ? 'true' : null}>
           {hasLabel(this.host, this.label) && (
             <span class="text" onClick={this.onLabelClick}>
               {this.label || <slot name="label" />}
@@ -92,6 +122,14 @@ export class CheckboxWrapper {
             </span>
           )}
           <slot />
+          {this.loading && (
+            <PrefixedTagNames.pSpinner
+              class="spinner"
+              size="inherit"
+              theme={this.theme}
+              aria={{ 'aria-label': `Loading state of ${this.label}` }}
+            />
+          )}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -105,7 +143,7 @@ export class CheckboxWrapper {
      * we only want to simulate the input click by label click
      * also we don't want to click to the input, if a link is clicked.
      */
-    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
+    if (!this.loading && getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.click();
     }
   };
