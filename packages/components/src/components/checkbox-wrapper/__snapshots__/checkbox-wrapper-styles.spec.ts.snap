@@ -20,8 +20,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -166,8 +165,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
@@ -263,8 +261,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
@@ -360,8 +357,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -434,8 +430,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -508,8 +503,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #88898C !important;
   outline: 0 !important;
@@ -604,8 +598,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
@@ -700,8 +693,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -773,8 +765,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -846,8 +837,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #09D087 !important;
   outline: 0 !important;
@@ -943,8 +933,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #197E10 !important;
   outline: 0 !important;
@@ -1040,8 +1029,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -1114,8 +1102,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -1188,8 +1175,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
@@ -1286,8 +1272,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
@@ -1384,8 +1369,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -1459,8 +1443,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -1534,8 +1517,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #88898C !important;
   outline: 0 !important;
@@ -1631,8 +1613,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
@@ -1728,8 +1709,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -1739,7 +1719,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
-  background-image: none !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -1826,8 +1805,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -1837,7 +1815,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:checked) {
   border-color: #949598 !important;
   background-color: #949598 !important;
-  background-image: none !important;
 }
 ::slotted(input:focus)::before {
   content: "" !important;
@@ -1924,8 +1901,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -1998,8 +1974,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -2072,8 +2047,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -2083,7 +2057,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
-  background-image: none !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2157,8 +2130,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
@@ -2168,7 +2140,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:checked) {
   border-color: #949598 !important;
   background-color: #949598 !important;
-  background-image: none !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2242,8 +2213,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #09D087 !important;
   outline: 0 !important;
@@ -2340,8 +2310,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #197E10 !important;
   outline: 0 !important;
@@ -2438,8 +2407,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
@@ -2513,8 +2481,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;

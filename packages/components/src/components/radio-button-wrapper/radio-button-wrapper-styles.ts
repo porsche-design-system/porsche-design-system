@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { addImportantToEachRule, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getInvertedThemedColors } from '../../styles';
 import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import { getCss, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -11,7 +11,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   theme: Theme
 ): string => {
-  const checkedIconColor = getThemedColors(theme === 'light' ? 'dark' : 'light').primaryColor.replace(/#/g, '%23');
+  const checkedIconColor = getInvertedThemedColors(theme).primaryColor.replace(/#/g, '%23');
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, false, theme), {

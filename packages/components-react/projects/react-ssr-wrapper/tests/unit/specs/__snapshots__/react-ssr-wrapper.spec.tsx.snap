@@ -2523,8 +2523,7 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
@@ -5001,8 +5000,7 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;

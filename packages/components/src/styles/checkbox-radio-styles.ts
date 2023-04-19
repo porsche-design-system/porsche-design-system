@@ -52,8 +52,7 @@ export const getCheckboxRadioJssStyle = (
           WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           boxSizing: 'content-box',
-          backgroundSize: fontLineHeight,
-          backgroundColor: 'transparent',
+          background: `transparent 0% 0% / ${fontLineHeight}`,
           transition: ['border-color', 'background-color'].map(getTransition).join(),
           border: `2px solid ${uncheckedColor}`,
           outline: 0,
@@ -61,7 +60,7 @@ export const getCheckboxRadioJssStyle = (
         },
         '&(input:checked)': {
           borderColor: checkedColor,
-          backgroundColor: checkedColor,
+          backgroundColor: checkedColor, // background-image is merged in later
         },
         ...(!disabledOrLoading &&
           hoverMediaQuery({
