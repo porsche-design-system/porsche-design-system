@@ -136,6 +136,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           class="link-overlay"
           href="#primary"
           tabindex="-1"
+          target="_self"
         />
         <h2
           class="heading"
@@ -255,6 +256,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           class="link-overlay"
           href="#primary-slotted"
           tabindex="-1"
+          target="_self"
         />
         <h2
           class="heading"
@@ -378,6 +380,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           class="link-overlay"
           href="#primary-framework"
           tabindex="-1"
+          target="_self"
         />
         <h2
           class="heading"
@@ -501,6 +504,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           class="link-overlay"
           href="#primary-slotted"
           tabindex="-1"
+          target="_self"
         />
         <h2
           class="heading"
@@ -4083,6 +4087,7 @@ img {
           class="link-overlay"
           href="#"
           tabindex="-1"
+          target="_self"
         />
         <h2
           class="heading"
