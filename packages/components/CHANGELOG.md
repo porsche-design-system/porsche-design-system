@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-rc.1] - 2023-04-19
+
 #### Added
 
 - Prop `name` for `Icon` supports `push-pin`, `push-pin-off`, `qr`, `pin-filled`, `shopping-cart-filled`,
