@@ -1,5 +1,5 @@
-name: 'Checkout and Setup'
-description: 'Checkout repository, restore cached node_modules, login into docker registry, pull docker image and install dependencies'
+name: 'Setup and install'
+description: 'Restore cached node_modules, login into docker registry, pull docker image and install dependencies'
 inputs:
   install: # id of input
     description: 'weather to install dependencies or not'
@@ -8,8 +8,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: 'Checkout'
-      uses: actions/checkout@v3
     - name: 'Cache node_modules'
       if: inputs.install == 'true'
       uses: actions/cache@v3
