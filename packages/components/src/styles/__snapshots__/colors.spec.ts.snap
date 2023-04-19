@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getHighContrastColors() should return correct high contrast mode scheme colors 1`] = `
+{
+  "canvasColor": "Canvas",
+  "canvasTextColor": "CanvasText",
+  "highlightColor": "Highlight",
+  "linkColor": "LinkText",
+}
+`;
+
 exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 {
   "activeColor": "rgba(126, 127, 130, 0.20)",
@@ -82,7 +91,7 @@ exports[`getThemedColors() should return correct colors for theme: light 1`] = `
 }
 `;
 
-exports[`getThemedColors() should return correct partial high contrast mode scheme colors for theme: dark 1`] = `
+exports[`getThemedColors() should return correct merged high contrast mode scheme colors for theme: dark 1`] = `
 {
   "activeColor": "rgba(126, 127, 130, 0.20)",
   "backgroundColor": "#0E0E12",
@@ -123,7 +132,7 @@ exports[`getThemedColors() should return correct partial high contrast mode sche
 }
 `;
 
-exports[`getThemedColors() should return correct partial high contrast mode scheme colors for theme: light 1`] = `
+exports[`getThemedColors() should return correct merged high contrast mode scheme colors for theme: light 1`] = `
 {
   "activeColor": "rgba(148, 149, 152, 0.20)",
   "backgroundColor": "#FFF",
