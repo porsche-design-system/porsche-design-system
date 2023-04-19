@@ -1,5 +1,5 @@
 import { RadioButtonWrapper } from './radio-button-wrapper';
-import * as radioButtonWrapperUtils from '../../utils/checkbox-radio-button-wrapper/checkbox-radio-button-wrapper-utils';
+import * as radioButtonWrapperUtils from '../../utils/checkbox-radio-button-wrapper-utils';
 
 describe('componentWillLoad', () => {
   it('should call addChangeListener() with correct parameters', () => {
