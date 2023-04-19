@@ -19,51 +19,28 @@
 
 #### ✅ Border
 
-- Usage Docs missing
-
 #### ✅ Drop Shadow
-
-- Usage Docs missing
 
 #### ✅ Focus
 
-- Usage Docs missing
-
 #### ✅ Font
-
-- Usage Docs missing
 
 #### ✅ Frosted Glass
 
-- Usage Docs missing
-
 #### ✅ Gradient
-
-- Usage Docs missing
 
 #### ✅ Grid
 
-- Usage Docs missing
-
 #### ✅ Hover
-
-- Usage Docs missing
 
 #### ✅ Media Query
 
-- Usage Docs missing
-
 #### ✅ Spacing
-
-- Usage Docs missing
 
 #### ✅ Theme
 
-- Usage Docs missing
-
 #### ✅ Typography
 
-- Usage Docs missing
 - Add letter-spacing: normal; as fontLetterSpacing and reuse in typography styles
 
 ---
@@ -72,7 +49,6 @@
 
 #### ✅ Accordion
 
-- Usage Docs missing
 - Optimize icon (size) for compact mode
 - Optimize hover state for default mode
 
@@ -84,20 +60,13 @@
 
 #### ✅ Button
 
-- Usage Docs missing
-
 #### ✅ Button Group
-
-- Usage Docs missing
 
 #### ✅ Button Pure
 
-- Usage Docs missing
 - active offset is not optimal in case icon is set to the right
 
 #### ✅ Button Tile
-
-- Usage Docs missing
 
 #### ✅ Carousel
 
@@ -105,15 +74,12 @@
 
 #### ✅ Checkbox Wrapper
 
-- Usage Docs missing
 - Hovering label text results in sticked hover styles some times. Using `:host(:hover) &(input:checked)` would solve the
   issue but to hover is applied to the whole host element.
 - Safari: Keyboard check/uncheck is not rendered immediately.
 - Firefox: Intermediate example: Only the first checkbox is shown as intermediate.
 
 #### ✅ Crest
-
-- Usage Docs missing
 
 #### ✅ Display
 
@@ -123,11 +89,7 @@
 
 #### ✅ Divider
 
-- Usage Docs missing
-
 #### ✅ Fieldset
-
-- Usage Docs missing
 
 #### ✅ Heading
 
@@ -137,7 +99,6 @@
 
 #### ✅ Icon
 
-- Usage Docs missing
 - New icon assets are missing
 - Variant 'x-small' for icon in Safari isn't in sync with line-height of text, because of rounding errors caused by
   browser. Maybe it's fixable by experimental feature https://developer.mozilla.org/en-US/docs/Web/CSS/round
@@ -149,16 +110,11 @@
 
 #### ✅ Link
 
-- Usage Docs missing
-
 #### ✅ Link Pure
 
-- Usage Docs missing
 - active offset is not optimal in case icon is set to the right
 
 #### ✅ Link Tile
-
-- Usage Docs missing
 
 #### ✅ Link Tile Model Signature
 
@@ -166,7 +122,6 @@
 
 #### ✅ Modal
 
-- Usage Docs missing
 - Animation of background had to be disabled because `frostedGlass` could not be animated. Maybe we can think about
   other solutions which also support `frostedGlass` during animation.
 - If "close" button is placed above image the contrast in `:hover` state can be to low (especially on dark images). This
@@ -175,12 +130,10 @@
 
 #### ✅ Model Signature
 
-- Usage Docs missing
 - Safari: Signature color on programmatically theme change
 
 #### ✅ Pagination
 
-- Usage Docs missing
 - Text scale 200% is almost perfect because of the negative calc and max px clamp definition of fluid button size
 - Add a test with new grid util ensuring pagination works on 320px viewport width
 - Get rid of counterReset
@@ -189,17 +142,13 @@
 
 #### ✅ Popover
 
-- Usage Docs missing
-
 #### ✅ Radio Button Wrapper
 
-- Usage Docs missing
 - Same hover issue, like with checkbox. Seems to be related to transition somehow
 - focus is getting lost in some circumstances (#2206)
 
 #### ✅ Scroller
 
-- Usage Docs missing
 - Uses custom button which should be shared / aligned
 - Button size needs different dimensions to fit every usecas (e.g. Tag)
 - Click area is to small and should be enhanced
@@ -210,54 +159,39 @@
 
 #### ✅ Segmented Control
 
-- Usage Docs missing
-
 #### ✅ Select Wrapper
 
-- Usage Docs missing
 - Tiny border radius is visible when dropdown is open
 - Storefront required example: Required attribute won't be removed if set to false again after selecting true.
 
 #### ✅ Spinner
 
-- Usage Docs missing
-
 #### ✅ Stepper Horizontal
 
-- Usage Docs missing
 - Check contrast of current / hover on dark
 
 #### ✅ Switch
 
-- Usage Docs missing
-
 #### ✅ Table
-
-- Usage Docs missing
 
 #### ✅ Tabs
 
-- Usage Docs missing
 - rethink position of scroll next/prev icon in size small variant
 
 #### ✅ Tabs Bar
 
-- Usage Docs missing
 - Rethink position of scroll next/prev icon in size small variant
 - Status bar has `1.5px` height in regular, which only works on retina displays
 - The focus of the content is still in the old design (a11y example)
 
 #### ✅ Tag
 
-- Usage Docs missing
 - Shouldn't we use 'none', '' or undefined as default icon to be in sync with e.g. button, link, button-pure and
   link-pure?
 - Coloring needs to be improved for dark theme
 - We could save one dom node by using host for style definition
 
 #### ✅ Tag Dismissible
-
-- Usage Docs missing
 
 #### ✅ Text
 
@@ -267,19 +201,14 @@
 
 #### ✅ Text Field Wrapper
 
-- Usage Docs missing
 - custom slotted styles shall be transferred to normalize styles (getInitialStyles partial)
 - calculated width by JS for counter or unit isn't correct in Safari when text-zoom is set to 200%
 - SSR support for input type search is not given 100% since clear button is not rendered and unit/counter is not shown
 
 #### ✅ Text List
 
-- Usage Docs missing
--
-
 #### ✅ Textarea Wrapper
 
-- Usage Docs missing
 - Textarea resize handle is not working in Safari except for max-width: 15rem example
 - check min-height for 200% scaling and bottom padding with counter
 
@@ -291,19 +220,13 @@
 
 #### ✅ Wordmark
 
-- Usage Docs missing
-
 ---
 
 ### Components (deprecated)
 
 #### ✅ Content Wrapper (deprecated)
 
-- Usage Docs missing
-
 #### ✅ Fieldset Wrapper (deprecated)
-
-- Usage Docs missing
 
 #### ✅ Flex (deprecated)
 
@@ -311,16 +234,10 @@
 
 #### ✅ Grid (deprecated)
 
-- Usage Docs missing
-
 #### ✅ Headline (deprecated)
 
 - Usage Docs missing
 
 #### ✅ Link Social (deprecated)
 
-- Usage Docs missing
-
 #### ✅ Marque (deprecated)
-
-- Usage Docs missing
