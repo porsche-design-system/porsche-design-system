@@ -20,14 +20,14 @@ it('should focus correct element', async () => {
   };
 
   const expectDialogToBeFocused = async (failMessage?: string) => {
-    const dialog = await selectNode(page, 'p-modal >>> DIV.root');
+    const dialog = await selectNode(page, 'p-modal >>> div.root');
     const focused = await waitForFocus(dialog);
     expect(await getProperty(focused, 'tagName'), failMessage).toBe('DIV');
     expect(await getProperty(focused, 'className'), failMessage).toBe('root');
   };
 
   const expectDismissButtonToBeFocused = async (failMessage?: string) => {
-    const dismissHandle = await selectNode(page, 'p-modal >>> P-BUTTON-PURE.dismiss');
+    const dismissHandle = await selectNode(page, 'p-modal >>> p-button-pure.dismiss');
     const focused = await waitForFocus(dismissHandle);
     expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON-PURE');
     expect(await getProperty(focused, 'className'), failMessage).toContain('dismiss');
