@@ -1,5 +1,5 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
-import { isThemeDark } from '../utils';
+import { isThemeDark, isHighContrastMode } from '../utils';
 
 type ThemedColor =
   | 'primaryColor'
@@ -126,8 +126,28 @@ const themes = {
 };
 /* Auto Generated End */
 
+const schemeHighContrastMerged: Partial<ThemedColors> = {
+  disabledColor: 'GrayText',
+  focusColor: 'Highlight',
+};
+
+type HighContrastColor = 'canvasColor' | 'canvasTextColor' | 'highlightColor' | 'linkColor';
+
+export type HighContrastColors = { [key in HighContrastColor]: string };
+
+const schemeHighContrast: HighContrastColors = {
+  canvasColor: 'Canvas',
+  canvasTextColor: 'CanvasText',
+  highlightColor: 'Highlight',
+  linkColor: 'LinkText',
+};
+
 export const getThemedColors = (theme: Theme): ThemedColors => {
-  return themes[theme];
+  return isHighContrastMode ? { ...themes[theme], ...schemeHighContrastMerged } : themes[theme];
+};
+
+export const getHighContrastColors = (): HighContrastColors => {
+  return schemeHighContrast;
 };
 
 export const getInvertedThemedColors = (theme: Theme): ThemedColors => {
