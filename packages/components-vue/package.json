@@ -55,7 +55,7 @@
     "typescript": "~5.0.4",
     "vite": "^4.2.2",
     "vite-plugin-html": "^3.2.0",
-    "vite-plugin-static-copy": "^0.13.1",
+    "vite-plugin-static-copy": "^0.14.0",
     "vue-tsc": "^1.2.0"
   }
 }
