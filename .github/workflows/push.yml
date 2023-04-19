@@ -17,8 +17,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Checkout and setup'
-        uses: ./.github/actions/setup–and-install
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
