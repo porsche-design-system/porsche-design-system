@@ -44,15 +44,15 @@ export const getComponentCss = (
       },
       ...(isLoading && {
         spinner: {
-          cursor: 'not-allowed',
-          width: fontLineHeight,
-          height: fontLineHeight,
           position: 'absolute',
-          fontFamily, // needed for correct width and height definition and for correct positioning
-          fontSize: '1rem', // needed for correct width and height definition and for correct positioning
-          top: '50%',
+          top: `calc(${fontLineHeight}/2 + 2px)`,
           left: `calc(${fontLineHeight}/2 + 2px)`,
           transform: 'translate(-50%, -50%)',
+          height: fontLineHeight,
+          width: fontLineHeight,
+          fontFamily, // needed for correct width and height definition and for correct positioning
+          fontSize: '1rem', // needed for correct width and height definition and for correct positioning
+          cursor: 'not-allowed',
         },
       }),
     })

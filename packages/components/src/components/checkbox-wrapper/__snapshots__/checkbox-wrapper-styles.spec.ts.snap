@@ -1773,15 +1773,15 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  cursor: not-allowed;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
   position: absolute;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  top: 50%;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
   left: calc(calc(6px + 2.125ex)/2 + 2px);
   transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
 }"
 `;
 
@@ -1869,15 +1869,15 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  cursor: not-allowed;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
   position: absolute;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  top: 50%;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
   left: calc(calc(6px + 2.125ex)/2 + 2px);
   transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
 }"
 `;
 
@@ -2098,15 +2098,15 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  cursor: not-allowed;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
   position: absolute;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  top: 50%;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
   left: calc(calc(6px + 2.125ex)/2 + 2px);
   transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
 }"
 `;
 
@@ -2181,15 +2181,15 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  cursor: not-allowed;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
   position: absolute;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  top: 50%;
+  top: calc(calc(6px + 2.125ex)/2 + 2px);
   left: calc(calc(6px + 2.125ex)/2 + 2px);
   transform: translate(-50%, -50%);
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  cursor: not-allowed;
 }"
 `;
 
