@@ -15,6 +15,7 @@ const tagNamesWithJss = TAG_NAMES.filter((tagName) => {
   return !meta.isInternal && meta.styling === 'jss';
 });
 
+// This test just covers high-contrast-styles for the default variant of components, so this is not a 100% test coverage.
 it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s', (tagName) => {
   // mock to get the result from getComponentCss() directly
   const spy = getComponentCssSpy();

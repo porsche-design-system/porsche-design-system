@@ -18,6 +18,9 @@ exports[`should have only high contrast styles for p-carousel 1`] = `
     ".bullet": {
       "background": "CanvasText",
     },
+    ".bullet--active": {
+      "background": "CanvasText",
+    },
   },
 ]
 `;
@@ -106,6 +109,11 @@ exports[`should have only high contrast styles for p-switch 1`] = `
   {
     ".toggle": {
       "background-color": "CanvasText",
+    },
+    "@media(hover:hover)": {
+      ".root:hover .switch .toggle": {
+        "background-color": "CanvasText",
+      },
     },
   },
 ]
