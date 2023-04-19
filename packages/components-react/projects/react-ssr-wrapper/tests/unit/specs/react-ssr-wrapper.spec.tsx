@@ -65,6 +65,18 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
 
 describe('manual test cases', () => {
   const testCases: Partial<Record<TagName, (() => JSX.Element)[]>> = {
+    'p-checkbox-wrapper': [
+      () => (
+        <fromComponents.PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" />
+        </fromComponents.PCheckboxWrapper>
+      ),
+      () => (
+        <fromComponents.PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" defaultChecked={true} />
+        </fromComponents.PCheckboxWrapper>
+      ),
+    ],
     'p-grid-item': [
       () => (
         <fromComponents.PGrid gutter={16}>
