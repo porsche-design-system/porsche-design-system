@@ -118,11 +118,17 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
         <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required disabled />
         </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" required />
+        </PCheckboxWrapper>
         <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required defaultChecked />
         </PCheckboxWrapper>
         <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required defaultChecked disabled />
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" required defaultChecked />
         </PCheckboxWrapper>
       </div>
 
@@ -136,11 +142,17 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
         <PCheckboxWrapper theme="dark" label="Some label">
           <input type="checkbox" name="some-name" required disabled />
         </PCheckboxWrapper>
+        <PCheckboxWrapper theme="dark" label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" required />
+        </PCheckboxWrapper>
         <PCheckboxWrapper theme="dark" label="Some label">
           <input type="checkbox" name="some-name" required defaultChecked />
         </PCheckboxWrapper>
         <PCheckboxWrapper theme="dark" label="Some label">
           <input type="checkbox" name="some-name" required defaultChecked disabled />
+        </PCheckboxWrapper>
+        <PCheckboxWrapper theme="dark" label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" required defaultChecked />
         </PCheckboxWrapper>
       </div>
 
@@ -159,6 +171,24 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
         </PCheckboxWrapper>
         <PCheckboxWrapper theme="dark" label="Some label">
           <input type="checkbox" name="some-name" defaultChecked disabled />
+        </PCheckboxWrapper>
+      </div>
+
+      <div className="playground light" title="should render in loading state">
+        <PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" />
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" defaultChecked />
+        </PCheckboxWrapper>
+      </div>
+
+      <div className="playground dark" title="should render in loading state">
+        <PCheckboxWrapper theme="dark" label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" />
+        </PCheckboxWrapper>
+        <PCheckboxWrapper theme="dark" label="Some label" loading={true}>
+          <input type="checkbox" name="some-name" defaultChecked />
         </PCheckboxWrapper>
       </div>
 
