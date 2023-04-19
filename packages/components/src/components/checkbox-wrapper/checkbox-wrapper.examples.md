@@ -16,8 +16,6 @@ text for screen readers.
   <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
----
-
 ## Indeterminate
 
 Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.  
@@ -31,13 +29,9 @@ hidden from the user, but the checkbox still keeps it's `checked` state. You can
 
 <Playground :markup="indeterminate" :config="config"></Playground>
 
----
-
 ## Required
 
 <Playground :markup="required" :config="config"></Playground>
-
----
 
 ## Disabled
 
@@ -50,13 +44,9 @@ anymore and can be missed by screen reader users. They can be confusing for sigh
 why these elements are disabled. A good practice when to use the disabled state is during **form submission** to prevent
 changes while this process is performed.
 
----
-
 ## Loading
 
 <Playground :markup="loading" :config="config"></Playground>
-
----
 
 ## Validation states
 
@@ -66,8 +56,6 @@ colored and visible/hidden depending on the defined `state`.
 <Playground :markup="stateMarkup" :config="config">
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
-
----
 
 ## Slots
 
