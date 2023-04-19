@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2476](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
 - `Accordion` layout shift with nested accordions
   ([#2465](https://github.com/porsche-design-system/porsche-design-system/pull/2465))
+- `Modal` fix hover state of dismiss button
+  ([#2510](https://github.com/porsche-design-system/porsche-design-system/pull/2510))
 
 ### [3.0.0-rc.0] - 2023-04-11
 
