@@ -23,6 +23,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-checkbox-wrapper');
 const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
+const getLabel = () => selectNode(page, 'p-checkbox-wrapper >>> label');
 const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .text');
 const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
 
@@ -38,13 +39,21 @@ const getBackgroundImage = (input: ElementHandle) => getElementStyle(input, 'bac
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {
+  label?: string;
   useSlottedLabel?: boolean;
   useSlottedMessage?: boolean;
   state?: FormState;
+  loading?: boolean;
 };
 
 const initCheckbox = (opts?: InitOptions): Promise<void> => {
-  const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts || {};
+  const {
+    label = 'Some Label',
+    useSlottedLabel = false,
+    useSlottedMessage = false,
+    state = 'none',
+    loading = false,
+  } = opts || {};
 
   const slottedLabel = useSlottedLabel
     ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
@@ -53,7 +62,9 @@ const initCheckbox = (opts?: InitOptions): Promise<void> => {
     ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
     : '';
 
-  const attrs = [`state="${state}"`, !useSlottedLabel ? 'label="Some Label"' : ''].join(' ');
+  const attrs = [!useSlottedLabel && `label="${label}"`, `state="${state}"`, loading && 'loading="true"']
+    .filter(Boolean)
+    .join(' ');
 
   return setContentWithDesignSystem(
     page,
@@ -84,14 +95,7 @@ it('should not render label if label prop is not defined but should render if ch
 });
 
 it('should add/remove message text with message if state changes programmatically', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
+  await initCheckbox();
   const host = await getHost();
   expect(await getMessage(), 'initially').toBeNull();
 
@@ -115,14 +119,7 @@ it('should add/remove message text with message if state changes programmaticall
 });
 
 it('should toggle checkbox when input is clicked', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
+  await initCheckbox();
   const input = await getInput();
 
   expect(await getBackgroundImage(input)).toBe('none');
@@ -141,21 +138,12 @@ it('should toggle checkbox when input is clicked', async () => {
 });
 
 it('should not toggle checkbox when checkbox wrapper is clicked in loading state', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper label="Some label" loading="true">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
+  await initCheckbox({ loading: true });
   const input = await getInput();
   const host = await getHost();
   await addEventListener(host, 'click');
 
   await input.click();
-  await host.click();
-
   const coords = await host.boundingBox();
   await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
   await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
@@ -166,34 +154,35 @@ it('should not toggle checkbox when checkbox wrapper is clicked in loading state
   await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
 
   expect((await getEventSummary(host, 'click')).counter).toBe(0);
+
+  await setProperty(host, 'loading', false);
+  await waitForStencilLifecycle(page);
+
+  await input.click();
+  expect((await getEventSummary(host, 'click')).counter).toBe(1);
 });
 
 it('should not toggle checkbox when pressed space in focus in loading state', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper label="Some label" loading="true">
-      <input type="checkbox" id="test" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
+  await initCheckbox({ loading: true });
+  const host = await getHost();
   const input = await getInput();
   await addEventListener(input, 'change');
+
   await input.focus();
-  expect(await getActiveElementId(page)).toBe('test');
+  expect(await getActiveElementTagName(page)).toBe('INPUT');
+
   await page.keyboard.press('Space');
   expect((await getEventSummary(input, 'change')).counter).toBe(0);
+
+  await setProperty(host, 'loading', false);
+  await waitForStencilLifecycle(page);
+
+  await page.keyboard.press('Space');
+  expect((await getEventSummary(input, 'change')).counter).toBe(1);
 });
 
 it('should keep focus if state switches to loading', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
+  await initCheckbox();
   const input = await getInput();
   const host = await getHost();
 
@@ -214,7 +203,6 @@ it('should keep focus if state switches to loading', async () => {
 
 it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
   await initCheckbox();
-
   const label = await getLabelText();
   const input = await getInput();
   const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
@@ -236,14 +224,7 @@ it('should toggle checkbox when label text is clicked and not set input as activ
 });
 
 it('should check/uncheck checkbox when checkbox attribute is changed programmatically', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
+  await initCheckbox();
   const input = await getInput();
 
   expect(await getBackgroundImage(input)).toBe('none');
@@ -256,14 +237,7 @@ it('should check/uncheck checkbox when checkbox attribute is changed programmati
 });
 
 it('should check/uncheck checkbox when checkbox property is changed programmatically', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
+  await initCheckbox();
   const input = await getInput();
 
   expect(await getBackgroundImage(input)).toBe('none');
@@ -277,7 +251,6 @@ it('should check/uncheck checkbox when checkbox property is changed programmatic
 
 it('should disable checkbox when disabled property is set programmatically', async () => {
   await initCheckbox();
-
   const input = await getInput();
   const getCursor = () => getElementStyle(input, 'cursor');
 
@@ -296,14 +269,7 @@ it('should disable checkbox when disabled property is set programmatically', asy
 
 describe('indeterminate state', () => {
   it('should show indeterminate state when checkbox is set to indeterminate', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
-    );
-
+    await initCheckbox();
     const input = await getInput();
 
     expect(await getBackgroundImage(input)).toBe('none');
@@ -316,14 +282,7 @@ describe('indeterminate state', () => {
   });
 
   it('should remove indeterminate state when checkbox value is changed by the user', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
-    );
-
+    await initCheckbox();
     const input = await getInput();
 
     await setIndeterminate(input, true);
@@ -344,14 +303,7 @@ describe('indeterminate state', () => {
   });
 
   it('should keep indeterminate state when checkbox value is changed programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
-    );
-
+    await initCheckbox();
     const input = await getInput();
 
     await setIndeterminate(input, true);
@@ -405,7 +357,7 @@ describe('accessibility', () => {
       page,
       `
       <p-checkbox-wrapper label="Some label" message="Some error message." state="error">
-        <input type="checkbox" name="some-name"/>
+        <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>`
     );
     const input = await getInput();
@@ -420,7 +372,7 @@ describe('accessibility', () => {
       page,
       `
       <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
+        <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>`
     );
 
@@ -454,5 +406,12 @@ describe('accessibility', () => {
     await waitForStencilLifecycle(page);
 
     await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
+  });
+
+  it('should expose correct accessibility tree when loading=true', async () => {
+    await initCheckbox({ loading: true });
+    const label = await getLabel();
+
+    await expectA11yToMatchSnapshot(page, label, { interestingOnly: false });
   });
 });
