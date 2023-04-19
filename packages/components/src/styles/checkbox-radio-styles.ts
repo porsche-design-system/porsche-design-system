@@ -1,9 +1,10 @@
 import type { BreakpointCustomizable, Theme } from '../types';
 import type { Styles } from 'jss';
-import { buildResponsiveStyles } from '../utils';
+import { buildResponsiveStyles, isHighContrastMode } from '../utils';
 import {
   addImportantToEachRule,
   getFormCheckboxRadioHiddenJssStyle,
+  getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -24,6 +25,7 @@ export const getCheckboxRadioJssStyle = (
 ): Styles => {
   const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { canvasTextColor } = getHighContrastColors();
 
   const uncheckedColor = isDisabled ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
@@ -58,19 +60,20 @@ export const getCheckboxRadioJssStyle = (
           cursor: isDisabled ? 'not-allowed' : 'pointer',
         },
         '&(input:checked)': {
-          borderColor: checkedColor,
-          backgroundColor: checkedColor,
+          borderColor: isHighContrastMode ? canvasTextColor : checkedColor,
+          backgroundColor: isHighContrastMode ? canvasTextColor : checkedColor,
         },
         ...(!isDisabled && {
-          ...hoverMediaQuery({
-            '&(input:hover), .text:hover ~ &(input)': {
-              borderColor: uncheckedHoverColor,
-            },
-            '&(input:checked:hover), .text:hover ~ &(input:checked)': {
-              borderColor: checkedHoverColor,
-              backgroundColor: checkedHoverColor,
-            },
-          }),
+          ...(!isHighContrastMode &&
+            hoverMediaQuery({
+              '&(input:hover), .text:hover ~ &(input)': {
+                borderColor: !isHighContrastMode && uncheckedHoverColor,
+              },
+              '&(input:checked:hover), .text:hover ~ &(input:checked)': {
+                borderColor: !isHighContrastMode && checkedHoverColor,
+                backgroundColor: !isHighContrastMode && checkedHoverColor,
+              },
+            })),
           '&(input:focus)::before': {
             content: '""',
             position: 'absolute',

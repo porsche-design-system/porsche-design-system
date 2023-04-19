@@ -2,6 +2,7 @@ import { removeAttribute, setAttribute } from '../dom';
 import type { AriaAttributes } from '../../types';
 import { parseJSONAttribute } from '../json';
 import type { FormState } from '../form/form-state';
+import { hasWindow } from '../has-window';
 
 export type SetAriaAttributesOptions = {
   label?: string;
@@ -37,3 +38,5 @@ export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string
     return attributes;
   }
 };
+
+export const isHighContrastMode = hasWindow && window.matchMedia && matchMedia('(forced-colors: active)').matches;
