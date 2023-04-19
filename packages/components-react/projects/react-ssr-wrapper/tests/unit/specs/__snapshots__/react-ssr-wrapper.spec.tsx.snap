@@ -101,7 +101,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.root:hover .image-container{transform:scale3d(1.05,1.05,1.05)}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -119,12 +119,12 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -166,7 +166,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:#AFB0B3;border-color:#AFB0B3}.label{width:auto;height:auto;text-indent:0}
       </style>
       <a
         class="root"
@@ -192,7 +192,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:rgba(148, 149, 152, .18);border-color:#88898C;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px)}.label{width:auto;height:auto;text-indent:0}
       </style>
       <a
         class="root"
@@ -220,7 +220,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.root:hover .image-container{transform:scale3d(1.05,1.05,1.05)}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -238,12 +238,12 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -285,7 +285,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:#AFB0B3;border-color:#AFB0B3}.label{width:auto;height:auto;text-indent:0}
       </style>
       <span
         class="root"
@@ -313,7 +313,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:rgba(148, 149, 152, .18);border-color:#88898C;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px)}.label{width:auto;height:auto;text-indent:0}
       </style>
       <span
         class="root"
@@ -343,7 +343,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.root:hover .image-container{transform:scale3d(1.05,1.05,1.05)}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -361,12 +361,12 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -408,7 +408,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:#AFB0B3;border-color:#AFB0B3}.label{width:auto;height:auto;text-indent:0}
       </style>
       <span
         class="root"
@@ -436,7 +436,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:rgba(148, 149, 152, .18);border-color:#88898C;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px)}.label{width:auto;height:auto;text-indent:0}
       </style>
       <span
         class="root"
@@ -466,7 +466,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
     shadowrootmode="open"
   >
     <style>
-      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;height:0;overflow:hidden;transform:translate3d(0,0,0);border-radius:8px;color:#FBFCFF;padding-top:133.33%}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:8px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
+      :host{display:block}:host([hidden]){display:none !important}::slotted(picture){position:absolute !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important}::slotted(img){height:100% !important;width:100% !important;object-fit:cover !important}h2,h3,h4,h5,h6{margin:0 !important}.root{position:relative;overflow:hidden;transform:translate3d(0,0,0);border-radius:12px;color:#FBFCFF;padding-top:133.33%}.root:hover .image-container{transform:scale3d(1.05,1.05,1.05)}.image-container{position:absolute;transition:transform var(--p-transition-duration, .24s) ease;top:0;left:0;right:0;bottom:0}.content{position:absolute;left:0;right:0;display:flex;justify-items:start;gap:16px;border-radius:12px;flex-direction:column;bottom:0;padding:clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);background:linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);}.model{position:absolute;top:clamp(16px, 1.25vw + 12px, 36px);left:clamp(16px, 1.25vw + 12px, 36px)}.heading{margin:0;font:normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:600}.link-group{display:flex;width:100%;gap:clamp(8px, 0.5vw + 6px, 16px);flex-flow:column nowrap;align-items:stretch}.link-overlay{position:fixed;top:0;left:0;right:0;bottom:0}@media(min-width:480px){.link-group{flex-flow:row wrap;align-items:center}}@media(forced-colors:active){.content{background:rgba(0,0,0,0.7)}}
     </style>
     <div
       class="root"
@@ -484,12 +484,12 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
           shadowrootmode="open"
         >
           <style>
-            :host{display:block}:host([hidden]){display:none !important}img{display:block;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
+            :host{display:inline-block;vertical-align:top;max-width:100% !important;max-height:36px !important;width:inherit !important;height:inherit !important}:host([hidden]){display:none !important}img{display:block;max-width:100%;max-height:100%;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)}
           </style>
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -531,7 +531,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:#FBFCFF;color:#010205;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:#AFB0B3;border-color:#AFB0B3}.label{width:auto;height:auto;text-indent:0}
       </style>
       <span
         class="root"
@@ -562,7 +562,7 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
       shadowrootmode="open"
     >
       <style>
-        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.label{width:auto;height:auto;text-indent:0}
+        :host{display:inline-block;vertical-align:top !important;outline:0 !important}:host([hidden]){display:none !important}::slotted(a){margin:0 !important;padding:0 !important;outline:0 !important;border-radius:0 !important;background:transparent !important;text-decoration:none !important;font:inherit !important;color:inherit !important}::slotted(a)::before{content:"" !important;position:fixed !important;border-radius:8px !important;top:-6px !important;left:-6px !important;right:-6px !important;bottom:-6px !important}::slotted(a::-moz-focus-inner){border:0 !important}.root{display:flex;align-items:flex-start;justify-content:center;width:100%;min-width:54px;min-height:54px;box-sizing:border-box;outline:0;text-align:left;appearance:none;text-decoration:none;border:2px solid #FBFCFF;border-radius:4px;transform:translate3d(0,0,0);background-color:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;padding:13px 26px;gap:8px}.root:hover{background-color:rgba(148, 149, 152, .18);border-color:#88898C;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px)}.label{width:auto;height:auto;text-indent:0}
       </style>
       <span
         class="root"
@@ -628,7 +628,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;position:relative;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}.icon{height:1.5rem;width:1.5rem;margin-right:0.25rem}
+        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;position:relative;cursor:pointer;transition:border-color var(--p-transition-duration, .24s) ease}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}button:hover{border-color:#FBFCFF}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}.icon{height:1.5rem;width:1.5rem;margin-right:0.25rem}
       </style>
       <button
         aria-pressed="false"
@@ -662,7 +662,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
         shadowrootmode="open"
       >
         <style>
-          :host{display:block !important;height:inherit !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:center;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:center;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}
+          :host{display:block !important;height:inherit !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden;transition:background-color var(--p-transition-duration, .24s) ease}button:hover{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background:rgba(148, 149, 152, .18)}.root{display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:center;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px;visibility:hidden}.action-next{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:center;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px;visibility:hidden}
         </style>
         <div
           class="root"
@@ -703,7 +703,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -730,7 +730,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -805,7 +805,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
         shadowrootmode="open"
       >
         <style>
-          :host{display:block;position:relative !important;transform:translate3d(0,0,0) !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#FBFCFF !important;cursor:pointer !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;top:-2px !important;bottom:-2px !important;left:-4px !important;right:-4px !important;border-radius:4px !important;z-index:-1 !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.bar{display:block;position:absolute;width:0;height:1.5px;left:0;bottom:-4px;background:#FBFCFF}.bar--enable-transition{will-change:width;transition:transform .4s,width .4s}
+          :host{display:block;position:relative !important;transform:translate3d(0,0,0) !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#FBFCFF !important;cursor:pointer !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;top:-2px !important;bottom:-2px !important;left:-4px !important;right:-4px !important;border-radius:4px !important;z-index:-1 !important;transition:background var(--p-transition-duration, .24s) ease !important}::slotted(a:hover)::before,::slotted(button:hover)::before{-webkit-backdrop-filter:blur(32px) !important;backdrop-filter:blur(32px) !important;background:rgba(148, 149, 152, .18) !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.bar{display:block;position:absolute;width:0;height:1.5px;left:0;bottom:-4px;background:#FBFCFF}.bar--enable-transition{will-change:width;transition:transform .4s,width .4s}
         </style>
         <p-scroller
           class="scroller ssr"
@@ -816,7 +816,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
             shadowrootmode="open"
           >
             <style>
-              :host{display:block !important;height:inherit !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}
+              :host{display:block !important;height:inherit !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden;transition:background-color var(--p-transition-duration, .24s) ease}button:hover{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background:rgba(148, 149, 152, .18)}.root{display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px;visibility:hidden}.action-next{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px;visibility:hidden}
             </style>
             <div
               class="root"
@@ -857,7 +857,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                       />
                     </template>
                   </p-icon>
@@ -884,7 +884,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                       />
                     </template>
                   </p-icon>
@@ -1042,7 +1042,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
+            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
           </style>
           <button
             aria-pressed="false"
@@ -1062,7 +1062,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/view.min.cd78cae7309f44d941e9264047e3efa0.svg"
+                  src="http://localhost:3001/icons/view.min.cd78cae7309f44d941e9264047e3efa0.svg"
                 />
               </template>
             </p-icon>
@@ -1121,7 +1121,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/search.min.f2755d61c24b6ad037f51d65588be308.svg"
+            src="http://localhost:3001/icons/search.min.f2755d61c24b6ad037f51d65588be308.svg"
           />
         </template>
       </p-icon>
@@ -1136,7 +1136,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
+            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
           </style>
           <button
             class="root"
@@ -1155,7 +1155,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                  src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
                 />
               </template>
             </p-icon>
@@ -1235,6 +1235,7 @@ exports[`should render dsr component for PAccordion 1`] = `
     <style>
       :host {
   display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1243,7 +1244,6 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
-  margin: 2px 0;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -1268,64 +1268,56 @@ button::before {
   right: -4px;
   top: 6px;
   bottom: 6px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-
-.root {
-  border-bottom: 1px solid #D8D8DB;
+button:hover::before {
+  background: rgba(148, 149, 152, .18);
 }
 .heading {
   margin: 0;
-  padding: 0;
+  padding: 0 0 2px;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  transform-origin: 50% 50%;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
   color: #010205;
-  padding: 0;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }
     </style>
-    <div
-      class="root"
+    <h2
+      class="heading"
     >
-      <h2
-        class="heading"
+      <button
+        aria-controls="accordion-panel"
+        aria-expanded="false"
+        id="accordion-control"
+        type="button"
       >
-        <button
-          aria-controls="accordion-panel"
-          aria-expanded="false"
-          id="accordion-control"
-          type="button"
+        <slot
+          name="heading"
+        />
+        <p-icon
+          aria-hidden="true"
+          class="icon ssr"
         >
-          <slot
-            name="heading"
-          />
-          <p-icon
-            aria-hidden="true"
-            class="icon ssr"
+          <template
+            shadowroot="open"
+            shadowrootmode="open"
           >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
+            <style>
+              :host {
   display: inline-block;
   vertical-align: top;
 }
@@ -1349,24 +1341,23 @@ img {
     transform: rotateZ(0);
   }
 }
-              </style>
-              <img
-                alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
-              />
-            </template>
-          </p-icon>
-        </button>
-      </h2>
-      <div
-        aria-labelledby="accordion-control"
-        class="collapsible"
-        id="accordion-panel"
-        role="region"
-      >
-        <div>
-          <slot />
-        </div>
+            </style>
+            <img
+              alt=""
+              src="http://localhost:3001/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
+            />
+          </template>
+        </p-icon>
+      </button>
+    </h2>
+    <div
+      aria-labelledby="accordion-control"
+      class="collapsible"
+      id="accordion-panel"
+      role="region"
+    >
+      <div>
+        <slot />
       </div>
     </div>
   </template>
@@ -1519,7 +1510,7 @@ img {
             </style>
             <img
               alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+              src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
             />
           </template>
         </p-icon>
@@ -1587,6 +1578,11 @@ img {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 .label {
   position: absolute;
   top: 0;
@@ -1603,7 +1599,6 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
             </style>
             <button
               class="root"
@@ -1645,7 +1640,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
                   />
                 </template>
               </p-icon>
@@ -1708,6 +1703,10 @@ exports[`should render dsr component for PButton 1`] = `
   gap: 8px;
   cursor: pointer;
 }
+.root:hover {
+  background-color: #535457;
+  border-color: #535457;
+}
 .label {
   width: auto;
   height: auto;
@@ -1717,7 +1716,6 @@ exports[`should render dsr component for PButton 1`] = `
 .icon {
   transition: opacity var(--p-transition-duration, .24s) ease;
 }
-
     </style>
     <button
       class="root"
@@ -1823,6 +1821,11 @@ exports[`should render dsr component for PButtonPure 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 .label {
   position: relative;
   top: auto;
@@ -1839,7 +1842,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
     </style>
     <button
       class="root"
@@ -1881,7 +1883,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
           />
         </template>
       </p-icon>
@@ -1935,13 +1937,15 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 75%;
   cursor: pointer;
+}
+.root:hover .image-container {
+  transform: scale3d(1.05,1.05,1.05);
 }
 .image-container {
   position: absolute;
@@ -1958,7 +1962,7 @@ p {
   display: grid;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
@@ -1977,7 +1981,6 @@ p {
     background: rgba(0,0,0,0.7);
   }
 }
-
 
     </style>
     <div
@@ -2034,6 +2037,12 @@ p {
   gap: 8px;
   cursor: pointer;
 }
+.root:hover {
+  background-color: rgba(148, 149, 152, .18);
+  border-color: #88898C;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+}
 .label {
   width: auto;
   height: auto;
@@ -2043,7 +2052,6 @@ p {
 .icon {
   transition: opacity var(--p-transition-duration, .24s) ease;
 }
-
             </style>
             <button
               class="root"
@@ -2258,6 +2266,11 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 .label {
   position: absolute;
   top: 0;
@@ -2274,7 +2287,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
             </style>
             <button
               class="root"
@@ -2316,7 +2328,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
+                    src="http://localhost:3001/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
                   />
                 </template>
               </p-icon>
@@ -2377,6 +2389,11 @@ img {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 .label {
   position: absolute;
   top: 0;
@@ -2393,7 +2410,6 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
             </style>
             <button
               class="root"
@@ -2435,7 +2451,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+                    src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
                   />
                 </template>
               </p-icon>
@@ -2520,6 +2536,13 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') !important;
 }
+::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  border-color: #010205 !important;
+}
+::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  border-color: #535457 !important;
+  background-color: #535457 !important;
+}
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23010205" d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') !important;
 }
@@ -2528,7 +2551,6 @@ label {
   display: flex;
   align-items: flex-start;
 }
-
 .text {
   order: 1;
   cursor: pointer;
@@ -2627,6 +2649,11 @@ exports[`should render dsr component for PCrest 1`] = `
   display: inline-block;
   vertical-align: top;
   outline: 0 !important;
+  box-sizing: content-box !important;
+  max-width: 30px !important;
+  max-height: 40px !important;
+  width: inherit !important;
+  height: inherit !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2634,31 +2661,39 @@ exports[`should render dsr component for PCrest 1`] = `
 a {
   display: block;
   text-decoration: none;
+  max-width: 30px;
+  max-height: 40px;
+  width: inherit;
+  height: inherit;
   outline: 0;
 }
 picture {
   display: block;
-  width: 30px;
-  height: 40px;
+  width: min(30px, 100%);
+  height: min(40px, 100%);
 }
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
     </style>
     <picture>
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
-        src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png"
+        height="40"
+        src="http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png"
+        width="30"
       />
     </picture>
   </template>
@@ -3085,7 +3120,7 @@ img {
     </style>
     <img
       alt=""
-      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+      src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
     />
   </template>
 </p-icon>
@@ -3185,7 +3220,7 @@ img {
         </style>
         <img
           alt=""
-          src="https://cdn.ui.porsche.com/porsche-design-system/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+          src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
         />
       </template>
     </p-icon>
@@ -3253,6 +3288,11 @@ img {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 .label {
   position: absolute;
   top: 0;
@@ -3269,7 +3309,6 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
         </style>
         <button
           class="root"
@@ -3311,7 +3350,7 @@ img {
               </style>
               <img
                 alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
               />
             </template>
           </p-icon>
@@ -3393,12 +3432,15 @@ exports[`should render dsr component for PLink 1`] = `
   padding: 13px 26px;
   gap: 8px;
 }
+.root:hover {
+  background-color: #535457;
+  border-color: #535457;
+}
 .label {
   width: auto;
   height: auto;
   text-indent: 0;
 }
-
     </style>
     <span
       class="root"
@@ -3479,6 +3521,11 @@ exports[`should render dsr component for PLinkPure 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 .label {
   position: relative;
   top: auto;
@@ -3495,7 +3542,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
     </style>
     <span
       class="root"
@@ -3536,7 +3582,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
           />
         </template>
       </p-icon>
@@ -3615,6 +3661,10 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   padding: 13px 26px 13px 18px;
   gap: 8px;
 }
+.root:hover {
+  background-color: #535457;
+  border-color: #535457;
+}
 .label {
   width: auto;
   height: auto;
@@ -3624,7 +3674,6 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
     </style>
     <span
       class="root"
@@ -3665,7 +3714,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
           />
         </template>
       </p-icon>
@@ -3719,12 +3768,14 @@ p {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 75%;
+}
+.root:hover .image-container {
+  transform: scale3d(1.05,1.05,1.05);
 }
 .image-container {
   position: absolute;
@@ -3741,7 +3792,7 @@ p {
   display: grid;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
@@ -3767,7 +3818,6 @@ p {
     background: rgba(0,0,0,0.7);
   }
 }
-
 
     </style>
     <div
@@ -3851,12 +3901,17 @@ p {
   padding: 13px 26px;
   gap: 8px;
 }
+.root:hover {
+  background-color: rgba(148, 149, 152, .18);
+  border-color: #88898C;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+}
 .label {
   width: auto;
   height: auto;
   text-indent: 0;
 }
-
             </style>
             <span
               class="root"
@@ -3908,12 +3963,14 @@ h2,h3,h4,h5,h6 {
 }
 .root {
   position: relative;
-  height: 0;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  border-radius: 8px;
+  border-radius: 12px;
   color: #FBFCFF;
   padding-top: 133.33%;
+}
+.root:hover .image-container {
+  transform: scale3d(1.05,1.05,1.05);
 }
 .image-container {
   position: absolute;
@@ -3930,7 +3987,7 @@ h2,h3,h4,h5,h6 {
   display: flex;
   justify-items: start;
   gap: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   flex-direction: column;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
@@ -3975,7 +4032,6 @@ h2,h3,h4,h5,h6 {
   }
 }
 
-
     </style>
     <div
       class="root"
@@ -3994,13 +4050,20 @@ h2,h3,h4,h5,h6 {
         >
           <style>
             :host {
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100% !important;
+  max-height: 36px !important;
+  width: inherit !important;
+  height: inherit !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
   display: block;
+  max-width: 100%;
+  max-height: 100%;
   pointer-events: none;
   filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
 }
@@ -4008,7 +4071,7 @@ img {
           <img
             alt="911"
             height="36"
-            src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+            src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
           />
         </template>
       </p-model-signature>
@@ -4080,12 +4143,15 @@ img {
   padding: 13px 26px;
   gap: 8px;
 }
+.root:hover {
+  background-color: #AFB0B3;
+  border-color: #AFB0B3;
+}
 .label {
   width: auto;
   height: auto;
   text-indent: 0;
 }
-
       </style>
       <a
         class="root"
@@ -4143,12 +4209,17 @@ img {
   padding: 13px 26px;
   gap: 8px;
 }
+.root:hover {
+  background-color: rgba(148, 149, 152, .18);
+  border-color: #88898C;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+}
 .label {
   width: auto;
   height: auto;
   text-indent: 0;
 }
-
       </style>
       <a
         class="root"
@@ -4212,25 +4283,25 @@ img {
     <picture>
       <source
         media="(min-width: 1300px)"
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x"
         type="image/webp"
       />
       <source
         media="(min-width: 1300px)"
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x"
         type="image/png"
       />
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.783639706bead66b2d56e3b8b64bd61f@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.760a57efa93d4e7e16e26128ec7ead46@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.1726036a7829347e1e24d1eb54fc0d64@3x.webp 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.783639706bead66b2d56e3b8b64bd61f@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.760a57efa93d4e7e16e26128ec7ead46@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.1726036a7829347e1e24d1eb54fc0d64@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.020244b41a29323e2a7932a264514cdf@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.small.min.fd545cea4298f5d797246d5805711646@3x.png 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.020244b41a29323e2a7932a264514cdf@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.fd545cea4298f5d797246d5805711646@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
-        src="https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png"
+        src="http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png"
       />
     </picture>
   </template>
@@ -4322,12 +4393,15 @@ h2 {
   border-radius: 4px;
   background: #FFF;
 }
+.dismiss:hover {
+  background: transparent;
+  border-color: transparent;
+}
 @media(min-width:1760px) {
   .root {
     margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
   }
 }
-
 
     </style>
     <div
@@ -4386,6 +4460,11 @@ h2 {
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 .label {
   position: absolute;
   top: 0;
@@ -4402,7 +4481,6 @@ h2 {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
-
           </style>
           <button
             class="root"
@@ -4444,7 +4522,7 @@ img {
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                  src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
                 />
               </template>
             </p-icon>
@@ -4474,13 +4552,20 @@ exports[`should render dsr component for PModelSignature 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100% !important;
+  max-height: 36px !important;
+  width: inherit !important;
+  height: inherit !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
   display: block;
+  max-width: 100%;
+  max-height: 100%;
   pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
 }
@@ -4488,7 +4573,7 @@ img {
     <img
       alt="911"
       height="36"
-      src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+      src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
     />
   </template>
 </p-model-signature>
@@ -4543,6 +4628,11 @@ span {
   border-radius: 4px;
   border-color: transparent;
 }
+span:not([aria-disabled]):not(.ellipsis):hover {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
 span[aria-current] {
   disabled-cursor-style: [object Object];
   color: #010205;
@@ -4571,7 +4661,6 @@ span[aria-disabled] {
     margin-left: 8px;
   }
 }
-
 
 .ellipsis {
   cursor: default;
@@ -4629,7 +4718,7 @@ img {
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
+                  src="http://localhost:3001/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
                 />
               </template>
             </p-icon>
@@ -4688,7 +4777,7 @@ img {
                 </style>
                 <img
                   alt=""
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+                  src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
                 />
               </template>
             </p-icon>
@@ -4739,6 +4828,12 @@ button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button:hover {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
 }
 button::before {
   content: "";
@@ -4750,7 +4845,6 @@ button::before {
   border: 2px solid transparent;
   border-radius: 50%;
 }
-
 .label {
   position: absolute;
   height: 1px;
@@ -4776,7 +4870,7 @@ button::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: var(--p-animation-duration, 240ms) keyframes-fadeIn ease forwards;
 }
 .spacer::before {
   content: "";
@@ -4864,7 +4958,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
+            src="http://localhost:3001/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
           />
         </template>
       </p-icon>
@@ -4920,12 +5014,18 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="%23FBFCFF" cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') !important;
 }
+::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  border-color: #010205 !important;
+}
+::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  border-color: #535457 !important;
+  background-color: #535457 !important;
+}
 label {
   position: relative;
   display: flex;
   align-items: flex-start;
 }
-
 .text {
   order: 1;
   cursor: pointer;
@@ -5002,8 +5102,13 @@ button {
   backdrop-filter: blur(32px);
   visibility: hidden;
   filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-
+button:hover {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: rgba(148, 149, 152, .18);
+}
 .root {
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
@@ -5066,6 +5171,7 @@ button {
 }
 .action-prev button {
   margin-left: 8px;
+  visibility: hidden;
 }
 .action-next {
   position: relative;
@@ -5081,8 +5187,8 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+  visibility: hidden;
 }
-
     </style>
     <div
       class="root"
@@ -5147,7 +5253,7 @@ img {
               </style>
               <img
                 alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
               />
             </template>
           </p-icon>
@@ -5198,7 +5304,7 @@ img {
               </style>
               <img
                 alt=""
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
               />
             </template>
           </p-icon>
@@ -5269,6 +5375,7 @@ button {
   hyphens: auto;
   position: relative;
   cursor: pointer;
+  transition: border-color var(--p-transition-duration, .24s) ease;
 }
 button::before {
   content: "";
@@ -5280,6 +5387,9 @@ button::before {
   border: 2px solid transparent;
   border-radius: 7px;
 }
+button:hover {
+  border-color: #010205;
+}
 span {
   display: block;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -5287,7 +5397,6 @@ span {
   hyphens: auto;
   color: #6B6D70;
 }
-
 .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -5346,7 +5455,6 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
 }
-
 .root {
   display: block;
   position: relative;
@@ -5401,7 +5509,6 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-
     </style>
     <div
       class="root"
@@ -5446,7 +5553,7 @@ img {
             </style>
             <img
               alt=""
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
             />
           </template>
         </p-icon>
@@ -5489,7 +5596,7 @@ circle:last-child {
   transform-origin: 0 0;
   animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #010205;
-  stroke-dasharray: 57;
+  stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 57);
   stroke-linecap: round;
 }
 @keyframes rotate {
@@ -5621,8 +5728,13 @@ button {
   backdrop-filter: blur(32px);
   visibility: hidden;
   filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-
+button:hover {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: rgba(148, 149, 152, .18);
+}
 .root {
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
@@ -5685,6 +5797,7 @@ button {
 }
 .action-prev button {
   margin-left: 8px;
+  visibility: hidden;
 }
 .action-next {
   position: relative;
@@ -5700,8 +5813,8 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+  visibility: hidden;
 }
-
         </style>
         <div
           class="root"
@@ -5766,7 +5879,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -5817,7 +5930,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -5957,6 +6070,13 @@ exports[`should render dsr component for PSwitch 1`] = `
   cursor: pointer;
   justify-content: flex-start;
 }
+.root:hover .switch {
+  border-color: #010205;
+  background-color: transparent;
+}
+.root:hover .switch .toggle {
+  background-color: #010205;
+}
 .switch {
   position: relative;
   width: 48px;
@@ -5999,7 +6119,6 @@ exports[`should render dsr component for PSwitch 1`] = `
   clip-path: none;
   white-space: normal;
 }
-
     </style>
     <button
       aria-checked="false"
@@ -6094,8 +6213,13 @@ button {
   backdrop-filter: blur(32px);
   visibility: hidden;
   filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-
+button:hover {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: rgba(148, 149, 152, .18);
+}
 .root {
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
@@ -6153,6 +6277,7 @@ button {
 }
 .action-prev button {
   margin-left: 8px;
+  visibility: hidden;
 }
 .action-next {
   position: relative;
@@ -6168,8 +6293,8 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+  visibility: hidden;
 }
-
         </style>
         <div
           class="root"
@@ -6234,7 +6359,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -6285,7 +6410,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -6452,7 +6577,9 @@ exports[`should render dsr component for PTableRow 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-
+:host(:hover) {
+  background: var(--p-internal-table-hover-color) !important;
+}
     </style>
     <slot />
   </template>
@@ -6530,11 +6657,16 @@ exports[`should render dsr component for PTabs 1`] = `
   right: -4px !important;
   border-radius: 4px !important;
   z-index: -1 !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover)::before,::slotted(button:hover)::before {
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
 }
-
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -6591,8 +6723,13 @@ button {
   backdrop-filter: blur(32px);
   visibility: hidden;
   filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-
+button:hover {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: rgba(148, 149, 152, .18);
+}
 .root {
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
@@ -6655,6 +6792,7 @@ button {
 }
 .action-prev button {
   margin-left: 8px;
+  visibility: hidden;
 }
 .action-next {
   position: relative;
@@ -6670,8 +6808,8 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+  visibility: hidden;
 }
-
             </style>
             <div
               class="root"
@@ -6736,7 +6874,7 @@ img {
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                       />
                     </template>
                   </p-icon>
@@ -6787,7 +6925,7 @@ img {
                       </style>
                       <img
                         alt=""
-                        src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                       />
                     </template>
                   </p-icon>
@@ -6868,11 +7006,16 @@ exports[`should render dsr component for PTabsBar 1`] = `
   right: -4px !important;
   border-radius: 4px !important;
   z-index: -1 !important;
+  transition: background var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover)::before,::slotted(button:hover)::before {
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
 }
-
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -6929,8 +7072,13 @@ button {
   backdrop-filter: blur(32px);
   visibility: hidden;
   filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  transition: background-color var(--p-transition-duration, .24s) ease;
 }
-
+button:hover {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background: rgba(148, 149, 152, .18);
+}
 .root {
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
@@ -6993,6 +7141,7 @@ button {
 }
 .action-prev button {
   margin-left: 8px;
+  visibility: hidden;
 }
 .action-next {
   position: relative;
@@ -7008,8 +7157,8 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+  visibility: hidden;
 }
-
         </style>
         <div
           class="root"
@@ -7074,7 +7223,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
                   />
                 </template>
               </p-icon>
@@ -7125,7 +7274,7 @@ img {
                   </style>
                   <img
                     alt=""
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
                   />
                 </template>
               </p-icon>
@@ -7275,7 +7424,9 @@ button {
   hyphens: auto;
   outline: 0;
 }
-
+button:hover &gt; .icon {
+  background-color: rgba(148, 149, 152, .18);
+}
 .icon {
   padding: 4px;
   margin-right: 10px;
@@ -7342,7 +7493,7 @@ img {
           </style>
           <img
             alt=""
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+            src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
           />
         </template>
       </p-icon>
@@ -7454,7 +7605,6 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
-
 .root {
   display: block;
   position: relative;
@@ -7510,7 +7660,6 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   white-space: nowrap;
   padding: 0;
 }
-
     </style>
     <div
       class="root"
@@ -7645,7 +7794,6 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
-
 .label {
   display: flex;
   flex-direction: column;
@@ -7685,7 +7833,6 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-
     </style>
     <label
       class="label"
@@ -7735,21 +7882,25 @@ exports[`should render dsr component for PWordmark 1`] = `
   display: inline-block;
   vertical-align: top;
   outline: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   box-sizing: content-box !important;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-a {
+a, svg {
   display: block;
-  text-decoration: none;
+  max-width: 100%;
+  max-height: 100%;
   height: inherit;
+}
+a {
+  text-decoration: none;
   outline: 0;
 }
 svg {
-  display: block;
-  height: inherit;
   fill: #010205;
 }
     </style>

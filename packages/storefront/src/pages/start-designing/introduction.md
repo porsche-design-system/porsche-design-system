@@ -11,49 +11,59 @@ access to all of our tools, methods and communication channels:
 
 <p-link target="_blank" variant="secondary" href="https://ux.porsche.com/">Sign Up for the Onboarding</p-link>
 
-## 1. Tooling
+## Tooling
 
-To improve output efficiency and reduce maintenance costs, at Porsche we decided to set the tools
-[Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/) as standard for designing. Please install
-the latest [Abstract desktop app](https://app.goabstract.com/).
+##### Figma:
 
-You can find a [detailed guideline on how to use Abstract here](start-designing/design-workflow)
+Figma is a collaborative design tool that allows you to work on projects with your team in real time. It's easy to use
+and has a variety of features that make it the perfect tool for designing digital products. Sign up for a Figma account
+and download the desktop app. See this video for the main functionalities See this video on how to work with our
+components.
 
-## 2. Get inspired
+<p-link-pure target="_blank" href="https://www.figma.com/">Figma Download</p-link-pure>
 
-After you received your Abstract invitation you can get a smooth and easy onboarding experience. You are welcome to have
-a look into other digital Porsche projects within our
-[Porsche Abstract Organisation](https://app.abstract.com/organizations/bc37bb03-3469-4b15-99a2-60dbec187bce/projects)
-and use them as a starting point.
+<p-link-pure target="_blank" href="https://www.youtube.com/watch?v=Cx2dkpBxst8&list=PLXDU_eVOJTx7QHLShNqIXL1Cgbxj7HlN4">Figma
+Tutorials</p-link-pure>
 
-## 3. Layout setup
+##### UXPin:
 
-There's no need to design from scratch anymore! Instead, you can use our pre-built Sketch layout templates. They contain
-artboards in all relevant responsive screen sizes enriched by the right layout and grid presets (which can be turned
-visible via: View → Canvas → Show Layout).  
-[Download Sketch Layout Template](https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch)
+UXPin is the tool of choice we support with our for easily creating interactive prototypes based on static Figma
+explorations. With UXPin, you can design using the same, real-code components that our developers use to build products.
+This means you can create high-fidelity prototypes that accurately reflect the final product, right from the beginning
+of the design process. Sign up for a UXPin account and start building prototypes today!
 
-## 4. Sketch libraries and resources
+Sign up for a UXPin account and download the desktop app. See this video for the main functionalities See this video on
+how to work with our components.
 
-The components of the Porsche Design System are provided in two Sketch libraries that can be easily linked with Sketch
-by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates.
+<p-link-pure target="_blank" href="https://www.uxpin.com/">UXPin Download</p-link-pure>
 
-### Basic Library
+<p-link-pure target="_blank" href="https://www.uxpin.com/docs/getting-started/downloading-and-using-uxpin/">UXPin
+Tutorials</p-link-pure>
 
-The basic library contains the design fundamentals such as typography, colours and icons.  
-[Download Porsche Design System Basic](sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-basic.sketch.xml)
+## Get inspired
 
-### Web Library
+You are welcome to have a look into other digital Porsche projects within our Porsche Figma/UXpin Organisation and use
+them as a starting point. The styles and components of the Porsche Design System are provided in one Figma and UX Pin
+library that can be easily linked with your file.
 
-The web library provides components like buttons, form elements and many more that can be used within web
-applications.  
-[Download Porsche Design System Web](sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml)
+<p-link-pure target="_blank" href="https://www.figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?node-id=105%3A146&t=U501JwGtSL3KHyJk-1">Design
+System v3 (Figma)</p-link-pure>
 
-Please be aware of the used library version (Sketch: Preferences → Libraries) and coordinate with your developer
-counterpart to be aligned on the version you're using.
+<p-link-pure target="_blank" href="https://www.figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1">Overview
+& Key Screens (Figma)</p-link-pure>
+
+## Ressouces
 
 ### Porsche Next font
 
 In order to design Porsche web applications and to use the Porsche Design System libraries properly, you have to
-download and install the
-[Porsche Next font](https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).
+download and install the Porsche Next font.
+
+<p-link-pure target="_blank" href="https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip">Porsche
+Next font download</p-link-pure>
+
+### Images & Videos
+
+If you want to use media you can register and search for appropriate images and videos in the VM Media Database.
+
+<p-link-pure target="_blank" variant="secondary" href="https://vmmedia.porsche.de/">VM Media Database</p-link-pure>
