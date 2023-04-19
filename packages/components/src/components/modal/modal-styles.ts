@@ -25,7 +25,7 @@ import { MODAL_Z_INDEX } from '../../constants';
 
 const mediaQueryXl = getMediaQueryMin('xl');
 const { backgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
-const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
+const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
@@ -197,8 +197,8 @@ export const getComponentCss = (
         background: backgroundColor,
         ...hoverMediaQuery({
           '&:hover': {
-            background: 'transparent',
-            borderColor: 'transparent',
+            background: darkThemeContrastHighColor,
+            borderColor: darkThemeContrastHighColor,
           },
         }),
       },
