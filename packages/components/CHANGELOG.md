@@ -9,14 +9,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-rc.1] - 2023-04-19
+
+#### Added
+
+- Prop `name` for `Icon` supports `push-pin`, `push-pin-off`, `qr`, `pin-filled`, `shopping-cart-filled`,
+  `shopping-bag-filled`, `logo-apple-podcast`, `logo-spotify` and `user-filled`
+  ([#2471](https://github.com/porsche-design-system/porsche-design-system/pull/2471)).
+- **[EXPERIMENTAL]** Prop `loading` for `Checkbox Wrapper`
+  ([#2483](https://github.com/porsche-design-system/porsche-design-system/pull/2483))
+
 #### Fixed
 
-- `Wordmark`, `Crest`, `Model Signature` respects parent width/height
+- `Wordmark`, `Crest` and `Model Signature` respect parent width/height
   ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
 - `Button Tile`, `Link Tile` and `Link Tile Model Signature` are using correct border radius of
   `pds-border-radius-large` ([#2473](https://github.com/porsche-design-system/porsche-design-system/pull/2473))
-- `Text Field Wrapper` with `input type="search"` adds clear field button label for improved accessibility
+- `Text Field Wrapper` with `input type="search"` has better accessibility for clear button
   ([#2476](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
+- `Accordion` layout shift with nested accordions
+  ([#2465](https://github.com/porsche-design-system/porsche-design-system/pull/2465))
+- Color Contrast issues and rendering in Windows High Contrast Mode
+  ([#2420](https://github.com/porsche-design-system/porsche-design-system/pull/2420))
 
 ### [3.0.0-rc.0] - 2023-04-11
 
@@ -59,7 +73,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ```diff
 - <PAccordion onAccordionChange={(e: CustomEvent<AccordionChangeEvent>) => {}} />
-+ <PAccordion onUpdate={(e: CustomEvent<AccordionUPdateEvent>) => {}} />
++ <PAccordion onUpdate={(e: CustomEvent<AccordionUpdateEvent>) => {}} />
 ```
 
 ##### Banner:
@@ -158,6 +172,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Wordmark` ([#2418](https://github.com/porsche-design-system/porsche-design-system/pull/2418))
 - `Crest` ([#2437](https://github.com/porsche-design-system/porsche-design-system/pull/2437))
+
+#### Changed
+
 - Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
   of `Styles` subpackage ([#2436](https://github.com/porsche-design-system/porsche-design-system/pull/2436))
 
@@ -494,10 +511,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `Pagination` emits `change` and deprecated `pageChange` event
   - `Segmented Control` emits `change` and deprecated `segmentedControlChange` event
   - `Stepper Horizontal` emits `change` and deprecated `stepChange` event
-  - `Switch` emits `change`and deprecated `switchChange` event
-  - `Table` emits `change`and deprecated `sortingChange` event
-  - `Tabs` emits `change`and deprecated `tabChange` event
-  - `Tabs Bar` emits `change`and deprecated `tabChange` event
+  - `Switch` emits `change` and deprecated `switchChange` event
+  - `Table` emits `change` and deprecated `sortingChange` event
+  - `Tabs` emits `change` and deprecated `tabChange` event
+  - `Tabs Bar` emits `change` and deprecated `tabChange` event
 - Props have consistent names across components and deprecated old props
   - `Carousel` got `pagination` prop and deprecated `disablePagination` prop
   - `Divider` got `direction` prop and deprecated `orientation` prop

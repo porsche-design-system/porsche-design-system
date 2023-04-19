@@ -1,20 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should have no basic DOM regression for p-accordion 1`] = `
-"<div class="root">
-  <h2 class="heading">
-    <button id="accordion-control" type="button" aria-expanded="false" aria-controls="accordion-panel">
-      <slot name="heading">
-      </slot>
-      <p-icon class="icon hydrated" aria-hidden="true">
-      </p-icon>
-    </button>
-  </h2>
-  <div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control" style="height: 0px;">
-    <div>
-      <slot>
-      </slot>
-    </div>
+"<h2 class="heading">
+  <button id="accordion-control" type="button" aria-expanded="false" aria-controls="accordion-panel">
+    <slot name="heading">
+    </slot>
+    <p-icon class="icon hydrated" aria-hidden="true">
+    </p-icon>
+  </button>
+</h2>
+<div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control" style="height: 0px;">
+  <div>
+    <slot>
+    </slot>
   </div>
 </div>"
 `;

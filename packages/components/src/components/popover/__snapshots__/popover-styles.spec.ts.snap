@@ -121,16 +121,7 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvas canvastext;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: bottom and theme: light 1`] = `
@@ -254,16 +245,7 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvas canvastext;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: left and theme: dark 1`] = `
@@ -387,16 +369,7 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvas canvas canvastext;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: left and theme: light 1`] = `
@@ -520,16 +493,7 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvas canvas canvastext;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: right and theme: dark 1`] = `
@@ -653,16 +617,7 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvastext canvas canvas;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: right and theme: light 1`] = `
@@ -786,16 +741,7 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvastext canvas canvas;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: top and theme: dark 1`] = `
@@ -919,16 +865,7 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvastext canvas canvas;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: top and theme: light 1`] = `
@@ -1052,14 +989,5 @@ button:focus:not(:focus-visible)::before {
   to {
     opacity: 1;
   }
-}
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvastext canvas canvas;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-"
+}"
 `;
