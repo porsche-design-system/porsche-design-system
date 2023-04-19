@@ -1,5 +1,5 @@
 import type { TextSize, Theme } from '../../types';
-import { getCss, isThemeDark } from '../../utils';
+import { getCss, isThemeDark, isHighContrastMode } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -10,7 +10,7 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles, getSchemedHighContrastMediaQuery } from '../../styles';
 import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {
   filterDarkContrastHigh,
@@ -100,6 +100,15 @@ export const getComponentCss = (
         padding: 0,
         ...(!isColorInherit && {
           filter: filter[theme][color],
+          ...(isHighContrastMode &&
+            getSchemedHighContrastMediaQuery(
+              {
+                filter: filter.light[color],
+              },
+              {
+                filter: filter.dark[color],
+              }
+            )),
           WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit

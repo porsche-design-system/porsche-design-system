@@ -1720,21 +1720,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  border-radius: 8px !important;
 }
 label {
   position: relative;
@@ -1816,21 +1806,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
-}
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
-}
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+}
+::slotted(input:focus)::before {
+  border-radius: 8px !important;
 }
 label {
   position: relative;

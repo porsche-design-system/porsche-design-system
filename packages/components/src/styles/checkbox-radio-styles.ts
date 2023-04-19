@@ -1,9 +1,10 @@
 import type { BreakpointCustomizable, Theme } from '../types';
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, isDisabledOrLoading } from '../utils';
+import { buildResponsiveStyles, isDisabledOrLoading, isHighContrastMode } from '../utils';
 import {
   addImportantToEachRule,
   getFormCheckboxRadioHiddenJssStyle,
+  getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -11,7 +12,7 @@ import {
   hoverMediaQuery,
 } from '.';
 import { borderWidthBase, fontFamily, fontLineHeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { FormState } from '../utils/form/form-state';
+import type { FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { getFunctionalComponentRequiredStyles } from '../components/common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../components/common/state-message/state-message-styles';
@@ -25,11 +26,16 @@ export const getCheckboxRadioJssStyle = (
 ): Styles => {
   const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { canvasTextColor } = getHighContrastColors();
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
+  const checkedColor = isHighContrastMode
+    ? canvasTextColor
+    : disabledOrLoading
+    ? disabledColor
+    : formStateColor || primaryColor;
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   return {
@@ -59,29 +65,32 @@ export const getCheckboxRadioJssStyle = (
           cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         },
         '&(input:checked)': {
+          // background-image is merged in later
           borderColor: checkedColor,
-          backgroundColor: checkedColor, // background-image is merged in later
+          backgroundColor: checkedColor,
         },
-        ...(!disabledOrLoading &&
-          hoverMediaQuery({
-            '&(input:hover), .text:hover ~ &(input)': {
-              borderColor: uncheckedHoverColor,
+        ...(!disabledOrLoading && {
+          ...(!isHighContrastMode &&
+            hoverMediaQuery({
+              '&(input:hover), .text:hover ~ &(input)': {
+                borderColor: uncheckedHoverColor,
+              },
+              '&(input:checked:hover), .text:hover ~ &(input:checked)': {
+                borderColor: checkedHoverColor,
+                backgroundColor: checkedHoverColor,
+              },
+            })),
+          ...(!isDisabled && {
+            '&(input:focus)::before': {
+              content: '""',
+              position: 'absolute',
+              ...getInsetJssStyle(-6),
+              border: `${borderWidthBase} solid ${focusColor}`,
             },
-            '&(input:checked:hover), .text:hover ~ &(input:checked)': {
-              borderColor: checkedHoverColor,
-              backgroundColor: checkedHoverColor,
+            '&(input:focus:not(:focus-visible))::before': {
+              borderColor: 'transparent',
             },
-          })),
-        ...(!isDisabled && {
-          '&(input:focus)::before': {
-            content: '""',
-            position: 'absolute',
-            ...getInsetJssStyle(-6),
-            border: `${borderWidthBase} solid ${focusColor}`,
-          },
-          '&(input:focus:not(:focus-visible))::before': {
-            borderColor: 'transparent',
-          },
+          }),
         }),
       }),
       label: {

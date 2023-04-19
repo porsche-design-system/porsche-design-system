@@ -1,9 +1,9 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import type { FormState } from '../../utils/form/form-state';
-import { getCss, mergeDeep } from '../../utils';
+import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { addImportantToEachRule, getInvertedThemedColors, getThemedColors } from '../../styles';
+import { addImportantToEachRule, getHighContrastColors, getInvertedThemedColors, getThemedColors } from '../../styles';
 import { borderRadiusMedium, borderRadiusSmall, fontFamily, fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -13,8 +13,13 @@ export const getComponentCss = (
   isLoading: boolean,
   theme: Theme
 ): string => {
-  const checkedIconColor = getInvertedThemedColors(theme).primaryColor.replace(/#/g, '%23');
-  const indeterminateIconColor = getThemedColors(theme).primaryColor.replace(/#/g, '%23');
+  const { canvasColor } = getHighContrastColors();
+  const checkedIconColor = isHighContrastMode
+    ? canvasColor
+    : getInvertedThemedColors(theme).primaryColor.replace(/#/g, '%23');
+  const indeterminateIconColor = isHighContrastMode
+    ? canvasColor
+    : getThemedColors(theme).primaryColor.replace(/#/g, '%23');
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, isLoading, theme), {

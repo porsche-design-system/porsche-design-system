@@ -1,9 +1,10 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  getHighContrastColors,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
   hostHiddenStyles,
@@ -53,6 +54,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
   return getCss({
@@ -169,14 +171,14 @@ export const getComponentCss = (
       },
       bullet: {
         borderRadius: borderRadiusSmall,
-        background: contrastMediumColor,
+        background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
         // set transition to have the same speed as switching slides in splide
         transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
         width: '8px',
         height: '8px',
       },
       [bulletActiveClass]: {
-        background: primaryColor,
+        background: isHighContrastMode ? canvasTextColor : primaryColor,
         width: '20px',
       },
     }),
