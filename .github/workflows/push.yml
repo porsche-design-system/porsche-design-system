@@ -233,17 +233,31 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
+      - name: 'Cache Builds'
+        uses: actions/cache@v3
+        id: cache-builds
+        with:
+          path: |
+            ./packages/assets/bin
+            ./packages/assets/cdn
+            ./packages/assets/dist
+            ./packages/components-js/dist
+            ./packages/shared/dist
+          key: ${{ runner.os }}-${{ github.sha }}
       - name: 'Build Core Dependencies'
+        if: steps.cache-builds.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
       - name: 'Build Components'
+        if: steps.cache-builds.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components
       - name: 'Build Components JS'
+        if: steps.cache-builds.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
