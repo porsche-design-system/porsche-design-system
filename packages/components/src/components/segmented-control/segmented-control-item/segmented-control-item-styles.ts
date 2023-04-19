@@ -1,6 +1,7 @@
-import { getCss } from '../../../utils';
+import { getCss, isHighContrastMode } from '../../../utils';
 import {
   addImportantToEachRule,
+  getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -33,11 +34,12 @@ export const getColors = (
   hoverBorderColor: string;
 } => {
   const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
+  const { highlightColor } = getHighContrastColors();
 
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
-    borderColor: isSelected ? primaryColor : contrastLowColor,
+    borderColor: isSelected ? (isHighContrastMode ? highlightColor : primaryColor) : contrastLowColor,
     hoverBorderColor: primaryColor,
   };
 };
