@@ -1,7 +1,7 @@
 import { addChangeListener, changeHandler } from './checkbox-radio-button-wrapper-utils';
 
 describe('changeHandler()', () => {
-  it('should use correct selector and set display = none and immediately set it back to default value', () => {
+  it('should use correct selector for radio-button-wrapper and set display = none and immediately set it back to default value', () => {
     const spyQuerySelectorAll = jest.spyOn(document, 'querySelectorAll');
 
     const radio1 = document.createElement('input');
@@ -35,6 +35,19 @@ describe('changeHandler()', () => {
     document.body.appendChild(radio3);
     document.body.appendChild(textRadio);
 
+    changeHandler({
+      target: { name: 'some-radio', type: 'radio' },
+    } as unknown as Event & { target: HTMLInputElement });
+
+    expect(spyQuerySelectorAll).toBeCalledWith('input[type=radio][name=some-radio]');
+    expect(radio1.style.display).toBe('');
+    expect(radio2.style.display).toBe('');
+    expect(radio3.style.display).toBe('none');
+    expect(textRadio.style.display).toBe('none');
+  });
+  it('should use correct selector for checkbox-wrapper and set display = none and immediately set it back to default value', () => {
+    const spyQuerySelectorAll = jest.spyOn(document, 'querySelectorAll');
+
     const checkbox1 = document.createElement('input');
     checkbox1.type = 'checkbox';
     checkbox1.name = 'some-checkbox';
@@ -66,15 +79,9 @@ describe('changeHandler()', () => {
     document.body.appendChild(checkbox3);
     document.body.appendChild(textCheckbox);
 
-    changeHandler({ target: { name: 'some-radio', type: 'radio' } } as unknown as Event);
-
-    expect(spyQuerySelectorAll).toBeCalledWith('input[type=radio][name=some-radio]');
-    expect(radio1.style.display).toBe('');
-    expect(radio2.style.display).toBe('');
-    expect(radio3.style.display).toBe('none');
-    expect(textRadio.style.display).toBe('none');
-
-    changeHandler({ target: { name: 'some-checkbox', type: 'checkbox' } } as unknown as Event);
+    changeHandler({ target: { name: 'some-checkbox', type: 'checkbox' } } as unknown as Event & {
+      target: HTMLInputElement;
+    });
 
     expect(spyQuerySelectorAll).toBeCalledWith('input[type=checkbox][name=some-checkbox]');
     expect(checkbox1.style.display).toBe('');
