@@ -5,6 +5,9 @@ inputs:
     description: 'weather to install dependencies or not'
     required: false
     default: 'true'
+  github-token:
+    description: 'github token for container registry'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -20,7 +23,7 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ input.github-token }}
     - name: 'Pull Docker Image'
       run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       shell: bash
