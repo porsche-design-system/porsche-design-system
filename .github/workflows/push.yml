@@ -225,6 +225,7 @@ jobs:
             ./packages/assets/bin
             ./packages/assets/cdn
             ./packages/assets/dist
+            ./packages/components-meta/dist
             ./packages/components-js/dist
             ./packages/shared/dist
           key: ${{ runner.os }}-${{ github.sha }}
