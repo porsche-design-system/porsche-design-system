@@ -16,19 +16,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Checkbox Wrapper` keyboard arrow navigation
   [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
 
+### [3.0.0-rc.1] - 2023-04-19
+
 #### Added
 
 - Prop `name` for `Icon` supports `push-pin`, `push-pin-off`, `qr`, `pin-filled`, `shopping-cart-filled`,
   `shopping-bag-filled`, `logo-apple-podcast`, `logo-spotify` and `user-filled`
   ([#2471](https://github.com/porsche-design-system/porsche-design-system/pull/2471)).
+- **[EXPERIMENTAL]** Prop `loading` for `Checkbox Wrapper`
+  ([#2483](https://github.com/porsche-design-system/porsche-design-system/pull/2483))
 
 #### Fixed
 
-- `Wordmark`, `Crest`, `Model Signature` respects parent width/height
+- `Wordmark`, `Crest` and `Model Signature` respect parent width/height
   ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
 - `Button Tile`, `Link Tile` and `Link Tile Model Signature` are using correct border radius of
   `pds-border-radius-large` ([#2473](https://github.com/porsche-design-system/porsche-design-system/pull/2473))
-- `Text Field Wrapper` with `input type="search"` adds clear field button label for improved accessibility
+- `Text Field Wrapper` with `input type="search"` has better accessibility for clear button
   ([#2476](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
 - `Accordion` layout shift with nested accordions
   ([#2465](https://github.com/porsche-design-system/porsche-design-system/pull/2465))

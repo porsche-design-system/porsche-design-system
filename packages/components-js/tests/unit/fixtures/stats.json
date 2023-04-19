@@ -36,8 +36,8 @@
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 7044,
-    "gzipSize": 2944
+    "size": 7590,
+    "gzipSize": 3143
   },
   {
     "chunkShortName": "content-wrapper",
@@ -126,8 +126,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 69331,
-    "gzipSize": 23302
+    "size": 69393,
+    "gzipSize": 23322
   },
   {
     "chunkShortName": "marque",
@@ -156,8 +156,8 @@
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 6736,
-    "gzipSize": 2826
+    "size": 6731,
+    "gzipSize": 2843
   },
   {
     "chunkShortName": "scroller",
