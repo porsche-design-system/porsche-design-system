@@ -34,24 +34,30 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
   const cssObject = getComponentCssObject(spy);
   const filteredCSS = [];
 
-  const findKey = (obj: object, val: string): object | null => {
-    if (typeof obj === 'object') {
-      for (const [parentKey, value] of Object.entries(obj)) {
-        if (typeof value === 'object') {
-          const match = Object.entries(value).find(([, childValue]) => childValue === val);
-          if (match) {
-            const [childKey, childValue] = match;
-            return { [parentKey]: { [childKey]: childValue } };
-          }
+  function findAllMatchingChildValues(obj: object, val: string): object {
+    const matchingValues: object = {};
+    for (const [parentKey, value] of Object.entries(obj)) {
+      if (typeof value === 'object') {
+        const matches = Object.entries(value).filter(([, childValue]) => childValue === val);
+        if (matches.length > 0) {
+          matchingValues[parentKey] = {};
+          matches.forEach(([childKey, childValue]) => {
+            matchingValues[parentKey][childKey] = childValue;
+          });
+        }
+        const nestedMatchingValues = findAllMatchingChildValues(value, val);
+        if (Object.keys(nestedMatchingValues).length > 0) {
+          matchingValues[parentKey] = { ...matchingValues[parentKey], ...nestedMatchingValues };
         }
       }
     }
-    return null;
-  };
+    return matchingValues;
+  }
 
   Object.values(highContrastColors).forEach((value) => {
-    const res = findKey(cssObject, value);
-    if (res !== null) {
+    const res = findAllMatchingChildValues(cssObject, value);
+    if (Object.keys(res).length !== 0) {
+      console.log(res);
       filteredCSS.push(res);
     }
     return null;

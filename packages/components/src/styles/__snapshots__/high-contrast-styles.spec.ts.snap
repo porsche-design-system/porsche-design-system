@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should have only high contrast styles for p-button 1`] = `
+[
+  {
+    "@media(hover:hover)": {
+      ".root:hover": {
+        "border-color": "Highlight",
+      },
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-carousel 1`] = `
 [
   {
@@ -15,6 +27,30 @@ exports[`should have only high contrast styles for p-divider 1`] = `
   {
     "hr": {
       "background": "CanvasText",
+    },
+  },
+]
+`;
+
+exports[`should have only high contrast styles for p-link 1`] = `
+[
+  {
+    "@media(hover:hover)": {
+      ".root:hover": {
+        "border-color": "Highlight",
+      },
+    },
+  },
+]
+`;
+
+exports[`should have only high contrast styles for p-link-social 1`] = `
+[
+  {
+    "@media(hover:hover)": {
+      ".root:hover": {
+        "border-color": "Highlight",
+      },
     },
   },
 ]
