@@ -18,20 +18,12 @@ afterEach(async () => await page.close());
 it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
   'should have no basic DOM regression for %s',
   async (tagName) => {
-    await page.setContent(
-      `<!DOCTYPE html>
-    <html>
-      <head>
-        <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-        <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-      </head>
-      <body>
-        <script type="text/javascript">porscheDesignSystem.load();</script>
-        ${buildDefaultComponentMarkup(tagName)}
-      </body>
-    </html>`,
-      { waitUntil: 'networkidle0' }
-    );
+    await goto(page, ''); // start page
+
+    const markup = buildDefaultComponentMarkup(tagName);
+    await page.evaluate((markup: string) => {
+      document.getElementById('app').innerHTML = markup;
+    }, markup);
 
     await waitForComponentsReady(page);
     if (tagName === 'p-icon') {
