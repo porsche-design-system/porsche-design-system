@@ -1,7 +1,12 @@
 import type { Theme } from '../../../types';
 import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
-import { getCss, isThemeDark } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles, doGetThemedColors } from '../../../styles';
+import { getCss, isThemeDark, isHighContrastMode } from '../../../utils';
+import {
+  addImportantToEachRule,
+  hostHiddenStyles,
+  doGetThemedColors,
+  getSchemedHighContrastMediaQuery,
+} from '../../../styles';
 
 export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
 export const cssVariableTableBorderColor = '--p-internal-table-border-color';
@@ -23,6 +28,15 @@ export const getComponentCss = (theme: Theme): string => {
         [cssVariableTableHoverColor]: hoverColor,
         [cssVariableTableBorderColor]: contrastLowColor,
         [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
+        ...(isHighContrastMode &&
+          getSchemedHighContrastMediaQuery(
+            {
+              [cssVariableTableHeadCellIconFilter]: 'none',
+            },
+            {
+              [cssVariableTableHeadCellIconFilter]: 'invert(100%)',
+            }
+          )),
       }),
     },
     caption: {

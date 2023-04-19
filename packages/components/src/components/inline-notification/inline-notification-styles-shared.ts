@@ -10,6 +10,7 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from '../../styles';
+import { isHighContrastMode } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
@@ -41,6 +42,9 @@ export const getNotificationRootJssStyle = (
     padding: spacingStaticMedium,
     background: getBackgroundColor(state, theme),
     borderRadius: borderRadiusSmall,
+    ...(isHighContrastMode && {
+      outline: '1px solid transparent',
+    }),
     [mediaQueryMinS]: {
       // 4 columns are for icon, content, optional action button and optional close button
       gridTemplateColumns: `auto minmax(auto, 1fr)${hasAction ? ' auto' : ''}${hasClose ? ' auto' : ''}`,

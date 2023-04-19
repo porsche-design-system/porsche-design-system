@@ -1,8 +1,9 @@
-import { getCss, mergeDeep } from '../../utils';
+import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
 import {
   addImportantToEachRule,
+  getHighContrastColors,
   getInsetJssStyle,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -18,10 +19,16 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { focusColor } = getThemedColors(theme);
+  const { linkColor } = getHighContrastColors();
 
   return getCss(
     mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme), {
       ...(hasSlottedAnchor && {
+        ...(isHighContrastMode && {
+          root: {
+            borderColor: linkColor,
+          },
+        }),
         '@global': addImportantToEachRule({
           '::slotted': {
             '&(a)': {
