@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Prop `name` for `Icon` supports `push-pin`, `push-pin-off`, `qr`, `pin-filled`, `shopping-cart-filled`,
   `shopping-bag-filled`, `logo-apple-podcast`, `logo-spotify` and `user-filled`
   ([#2471](https://github.com/porsche-design-system/porsche-design-system/pull/2471)).
+- **[EXPERIMENTAL]** Prop `loading` for `Checkbox Wrapper`
+  ([#2483](https://github.com/porsche-design-system/porsche-design-system/pull/2483))
 
 #### Fixed
 
@@ -25,11 +27,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2476](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
 - `Accordion` layout shift with nested accordions
   ([#2465](https://github.com/porsche-design-system/porsche-design-system/pull/2465))
-
-#### Added
-
-- **[EXPERIMENTAL]** Prop `loading` for `Checkbox Wrapper`
-  ([#2483](https://github.com/porsche-design-system/porsche-design-system/pull/2483))
 
 ### [3.0.0-rc.0] - 2023-04-11
 
