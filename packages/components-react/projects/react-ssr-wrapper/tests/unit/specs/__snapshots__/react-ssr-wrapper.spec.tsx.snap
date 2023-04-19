@@ -1821,7 +1821,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -3521,7 +3521,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
