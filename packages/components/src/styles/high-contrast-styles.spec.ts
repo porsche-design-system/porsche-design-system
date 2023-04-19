@@ -57,7 +57,6 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
   Object.values(highContrastColors).forEach((value) => {
     const res = findAllMatchingChildValues(cssObject, value);
     if (Object.keys(res).length !== 0) {
-      console.log(res);
       filteredCSS.push(res);
     }
     return null;
