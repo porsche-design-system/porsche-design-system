@@ -1,10 +1,6 @@
 import type { ElementHandle, Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
-import {
-  enableBrowserLogging,
-  getProperty,
-  initConsoleObserver,
-} from '../../../../components-js/tests/e2e/puppeteer/helpers';
+import { getProperty } from '../../../../components-js/tests/e2e/puppeteer/helpers';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
