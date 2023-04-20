@@ -3629,7 +3629,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   bottom: -2px !important;
   border-radius: 4px !important;
   right: -4px !important;
-  left: -2px !important;
+  left: -4px !important;
 }
 .root {
   display: flex;
