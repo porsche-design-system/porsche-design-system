@@ -2,11 +2,10 @@
 
 REGISTRY=ghcr.io/porsche-design-system/porsche-design-system
 IMAGE=playwright
-TAG=v1.27.0-focal-v3-alpha-8
+TAG=v1.27.0-focal-v3-universal
 
 docker pull $REGISTRY/$IMAGE:latest
 
-docker build -f Dockerfile-playwright -t $REGISTRY/$IMAGE:$TAG -t $REGISTRY/$IMAGE:latest .
+# https://dev.to/docker/choosing-the-right-docker-image-for-your-apple-m1-pro-440l
+docker buildx build -f Dockerfile-playwright --platform linux/amd64,linux/arm64 --push -t $REGISTRY/$IMAGE:$TAG -t $REGISTRY/$IMAGE:latest .
 
-docker push $REGISTRY/$IMAGE:$TAG
-docker push $REGISTRY/$IMAGE:latest
