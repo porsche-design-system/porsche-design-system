@@ -7,7 +7,7 @@ runs:
       uses: actions/cache/restore@v3
       id: cache-builds-restore
       with:
-        # TODO: icons wouldn't be needed if icon-utils would use assets package
+        # TODO: icons and utilities/styles wouldn't be needed if icon-utils and injectGlobalStyle would use treeshakable assets package
         path: |
           ./packages/assets/bin
           ./packages/assets/cdn
@@ -25,6 +25,7 @@ runs:
           ./packages/components-vue/projects/vue-wrapper/src/lib
           ./packages/icons/dist
           ./packages/shared/dist
+          ./packages/utilities/projects/styles/dist
           ./packages/utilities/projects/utilities/dist
         key: ${{ runner.os }}-${{ github.sha }} # cache is only used for current commit
     - name: 'Build Core Dependencies'
@@ -67,5 +68,6 @@ runs:
           ./packages/components-vue/projects/vue-wrapper/src/lib
           ./packages/icons/dist
           ./packages/shared/dist
+          ./packages/utilities/projects/styles/dist
           ./packages/utilities/projects/utilities/dist
         key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }} # linked to restore key

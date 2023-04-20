@@ -1,4 +1,5 @@
-import { FONT_FACE_CDN_URL } from '@porsche-design-system/assets';
+// TODO: import from assets once it is treeshakable
+import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
 
 export const injectGlobalStyle = (): void => {
   if (typeof document === 'undefined') {
