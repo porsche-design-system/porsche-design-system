@@ -39,7 +39,7 @@ describe('changeHandler()', () => {
       target: { name: 'some-radio', type: 'radio' },
     } as unknown as Event & { target: HTMLInputElement });
 
-    expect(spyQuerySelectorAll).toBeCalledWith('input[type=radio][name=some-radio]');
+    expect(spyQuerySelectorAll).toBeCalledWith('input[type=radio][name="some-radio"]');
     expect(radio1.style.display).toBe('');
     expect(radio2.style.display).toBe('');
     expect(radio3.style.display).toBe('none');
@@ -83,7 +83,7 @@ describe('changeHandler()', () => {
       target: HTMLInputElement;
     });
 
-    expect(spyQuerySelectorAll).toBeCalledWith('input[type=checkbox][name=some-checkbox]');
+    expect(spyQuerySelectorAll).toBeCalledWith('input[type=checkbox][name="some-checkbox"]');
     expect(checkbox1.style.display).toBe('');
     expect(checkbox2.style.display).toBe('');
     expect(checkbox3.style.display).toBe('none');
