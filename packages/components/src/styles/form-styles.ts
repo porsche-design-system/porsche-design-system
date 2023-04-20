@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles } from '../utils';
-import { addImportantToRule, getFormTextHiddenJssStyle, getThemedColors, getTransition, hoverMediaQuery } from './';
+import { addImportantToRule, getHiddenTextStyles, getThemedColors, getTransition, hoverMediaQuery } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -95,7 +95,9 @@ export const getLabelStyles = (
       position: 'relative', // for unit and counter
       '&__text': {
         display: 'block',
-        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
+        ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+          getHiddenTextStyles(isHidden, { width: 'fit-content' })
+        ),
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'), // for smooth transitions between e.g. disabled states

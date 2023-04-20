@@ -2,13 +2,13 @@ import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
-  getTextHiddenJssStyle,
   getTransition,
   getThemedColors,
   getInsetJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
   getHighContrastColors,
+  getHiddenTextStyles,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
@@ -167,7 +167,7 @@ export const getComponentCss = (
         buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
           order: alignLabelValue === 'left' ? -1 : 0,
         })),
-        buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
+        buildResponsiveStyles(hideLabel, getHiddenTextStyles)
       ),
     },
   });

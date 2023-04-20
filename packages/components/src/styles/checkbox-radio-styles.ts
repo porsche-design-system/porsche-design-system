@@ -3,7 +3,7 @@ import type { Styles } from 'jss';
 import { buildResponsiveStyles, isDisabledOrLoading, isHighContrastMode } from '../utils';
 import {
   addImportantToEachRule,
-  getFormCheckboxRadioHiddenJssStyle,
+  getHiddenTextStyles,
   getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
@@ -11,7 +11,13 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
 } from '.';
-import { borderWidthBase, fontFamily, fontLineHeight, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  spacingStaticSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import type { FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { getFunctionalComponentRequiredStyles } from '../components/common/required/required-styles';
@@ -105,7 +111,9 @@ export const getCheckboxRadioJssStyle = (
       ...textSmallStyle,
       color: disabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transition between different states
-      ...buildResponsiveStyles(hideLabel, getFormCheckboxRadioHiddenJssStyle),
+      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
+        ...getHiddenTextStyles(isHidden, { width: 'auto', padding: `2px 0 0 ${spacingStaticSmall}` }),
+      })),
     },
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
