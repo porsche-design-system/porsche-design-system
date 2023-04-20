@@ -11,10 +11,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: 'Cache node_modules'
+    - name: 'Restore cached node_modules'
       if: inputs.install == 'true'
-      uses: actions/cache@v3
-      id: cache-node_modules
+      uses: actions/cache/restore@v3
+      id: cache-node_modules-restore
       with:
         path: '**/node_modules'
         key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -28,7 +28,14 @@ runs:
       run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
       shell: bash
     - name: 'Install'
-      if: inputs.install == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
+      if: inputs.install == 'true' && steps.cache-node_modules-restore.outputs.cache-hit != 'true'
       uses: ./.github/actions/docker-run-playwright
       with:
         entrypoint: run-install
+    - name: 'Cache node_modules'
+      if: inputs.install == 'true' && steps.cache-node_modules-restore.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v3
+      id: cache-node_modules-save
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
