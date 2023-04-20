@@ -1,5 +1,5 @@
 name: 'Build components-js'
-description: 'Restore cached builds of assets, component-meta, components-js and shared and build them'
+description: 'Build and restore cached builds of assets, component-meta, components-js, shared and utilities'
 runs:
   using: "composite"
   steps:
@@ -20,6 +20,7 @@ runs:
           ./packages/components-react/projects/uxpin-wrapper/src/lib
           ./packages/components-vue/projects/vue-wrapper/src/lib
           ./packages/shared/dist
+          ./packages/utilities/projects/utilities/dist
         key: ${{ runner.os }}-${{ github.sha }} # cache is only used for current commit
     - name: 'Build Core Dependencies'
       if: steps.cache-builds-restore.outputs.cache-hit != 'true'
@@ -57,4 +58,5 @@ runs:
           ./packages/components-react/projects/uxpin-wrapper/src/lib
           ./packages/components-vue/projects/vue-wrapper/src/lib
           ./packages/shared/dist
+          ./packages/utilities/projects/utilities/dist
         key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }} # linked to restore key

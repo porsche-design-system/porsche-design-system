@@ -97,7 +97,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
@@ -114,7 +114,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
@@ -131,7 +131,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'VRT Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
@@ -154,7 +154,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'VRT Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
@@ -177,7 +177,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
@@ -220,7 +220,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
@@ -263,7 +263,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
@@ -291,7 +291,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
@@ -390,7 +390,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
@@ -478,7 +478,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
@@ -510,7 +510,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
@@ -543,7 +543,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
@@ -576,7 +576,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build assets, components-js, shared and generate wrappers'
+      - name: 'Build assets, component-meta, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
