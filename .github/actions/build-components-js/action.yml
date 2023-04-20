@@ -13,7 +13,9 @@ runs:
           ./packages/assets/dist
           ./packages/component-meta/dist
           ./packages/components/dist
+          ./packages/components/src/components/**/*.props.md
           ./packages/components-js/dist
+          ./packages/components-js/projects/components-wrapper/lib
           ./packages/components-js/www
           ./packages/components-angular/projects/angular-wrapper/src/lib
           ./packages/components-react/projects/react-wrapper/src/lib
@@ -52,7 +54,9 @@ runs:
           ./packages/assets/dist
           ./packages/component-meta/dist
           ./packages/components/dist
+          ./packages/components/src/components/**/*.props.md
           ./packages/components-js/dist
+          ./packages/components-js/projects/components-wrapper/lib
           ./packages/components-js/www
           ./packages/components-angular/projects/angular-wrapper/src/lib
           ./packages/components-react/projects/react-wrapper/src/lib
