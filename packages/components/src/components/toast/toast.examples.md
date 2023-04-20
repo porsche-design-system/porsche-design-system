@@ -37,7 +37,7 @@ Following state has been deprecated and will be removed with the next major rele
     <input type="text" v-model="toastText">
   </label>
   <br><br>
-  <button type="button" v-on:click="queueToast()">Queue Toast</button>
+  <p-button type="button" :theme="theme" @click="queueToast()">Queue Toast</p-button>
 </Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
@@ -58,7 +58,7 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
     <input type="number" min="0" max="200" step="5" v-model="positionBottom">
   </label>
   <br><br>
-  <button type="button" v-on:click="queueToast()">Queue Toast</button>
+  <p-button type="button" :theme="theme" @click="queueToast()">Queue Toast</p-button>
 </Playground>
 
 <!-- shared across playgrounds -->
@@ -75,6 +75,9 @@ import { TOAST_STATES, TOAST_STATES_DEPRECATED } from './toast/toast-utils';
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+  get theme(): Theme {
+    return this.$store.getters.theme;
+  }
 
   toastText = 'Some message';
   toastCounter = 1;
@@ -98,10 +101,6 @@ export default class Code extends Vue {
   queueToast(): void {
     this.$refs.toast.addMessage({ text: `${this.toastText} ${this.toastCounter}`, state: this.state });
     this.toastCounter++;
-  }
-
-  get theme(): Theme {
-    return this.$store.getters.theme;
   }
 }
 </script>
