@@ -36,8 +36,8 @@
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 7797,
-    "gzipSize": 3235
+    "size": 7799,
+    "gzipSize": 3231
   },
   {
     "chunkShortName": "content-wrapper",
@@ -121,13 +121,13 @@
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 8204,
-    "gzipSize": 3680
+    "size": 7330,
+    "gzipSize": 3187
   },
   {
     "chunkShortName": "main",
     "size": 69393,
-    "gzipSize": 23326
+    "gzipSize": 23323
   },
   {
     "chunkShortName": "marque",
@@ -141,8 +141,8 @@
   },
   {
     "chunkShortName": "model-signature",
-    "size": 3025,
-    "gzipSize": 1532
+    "size": 2916,
+    "gzipSize": 1484
   },
   {
     "chunkShortName": "pagination",
@@ -156,8 +156,8 @@
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 6759,
-    "gzipSize": 2858
+    "size": 6761,
+    "gzipSize": 2857
   },
   {
     "chunkShortName": "scroller",
