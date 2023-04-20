@@ -15,8 +15,7 @@ UX-Pin is not ready for the major babel loader upgrade jet.
 ## Shared
 
 - upgrading `octokit` causes a memory leak.
-- upgrading `puppeteer` leads to issues with the high contrast mode vrt. It seems parallel running tests overwrite
-  `cdp.send`.
+- upgrading `puppeteer` to the latest version leads to issues with our vrt tester when javascript is disabled.
 
 ### Affected dependencies:
 
