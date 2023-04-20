@@ -1,6 +1,6 @@
 import type { Page, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from '../../../e2e/puppeteer/helpers';
-import { getInitialStyles } from '@porsche-design-system/partials';
+import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 
 type Options = WaitForOptions & {
   enableLogging?: boolean;
