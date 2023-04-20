@@ -157,49 +157,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Cached Builds'
-        uses: actions/cache/restore@v3
-        id: cache-builds-restore
-        with:
-          path: |
-            ./packages/assets/bin
-            ./packages/assets/cdn
-            ./packages/assets/dist
-            ./packages/component-meta/dist
-            ./packages/components-js/dist
-            ./packages/shared/dist
-          key: ${{ runner.os }}-${{ github.sha }}
-      - name: 'Build Core Dependencies'
-        if: steps.cache-builds-restore.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        if: steps.cache-builds-restore.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        if: steps.cache-builds-restore.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
-      - name: 'Cache Builds'
-        if: steps.cache-builds-restore.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v3
-        id: cache-builds-save
-        with:
-          path: |
-            ./packages/assets/bin
-            ./packages/assets/cdn
-            ./packages/assets/dist
-            ./packages/component-meta/dist
-            ./packages/components-js/dist
-            ./packages/shared/dist
-          key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }}
+      - name: 'Build components-js'
+        uses: ./.github/actions/build-components-js
       - name: 'VRT Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:

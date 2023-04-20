@@ -1,0 +1,58 @@
+name: 'Build components-js'
+description: 'Restore cached builds of assets, component-meta, components-js and shared and build them'
+runs:
+  using: "composite"
+  steps:
+    - name: 'Restore Cached Builds'
+      uses: actions/cache/restore@v3
+      id: cache-builds-restore
+      with:
+        path: |
+          ./packages/assets/bin
+          ./packages/assets/cdn
+          ./packages/assets/dist
+          ./packages/component-meta/dist
+          ./packages/components-js/dist
+          ./packages/components-angular/projects/angular-wrapper/src/lib
+          ./packages/components-react/projects/react-wrapper/src/lib
+          ./packages/components-react/projects/react-ssr-wrapper/src/lib
+          ./packages/components-react/projects/uxpin-wrapper/src/lib
+          ./packages/components-vue/projects/vue-wrapper/src/lib
+          ./packages/shared/dist
+        key: ${{ runner.os }}-${{ github.sha }}
+    - name: 'Build Core Dependencies'
+      if: steps.cache-builds-restore.outputs.cache-hit != 'true'
+      uses: ./.github/actions/docker-run-playwright
+      with:
+        entrypoint: run-build
+        args: --core-dependencies
+    - name: 'Build Components'
+      if: steps.cache-builds-restore.outputs.cache-hit != 'true'
+      uses: ./.github/actions/docker-run-playwright
+      with:
+        entrypoint: run-build
+        args: --components
+    - name: 'Build Components JS'
+      if: steps.cache-builds-restore.outputs.cache-hit != 'true'
+      uses: ./.github/actions/docker-run-playwright
+      with:
+        entrypoint: run-build
+        args: --components-js
+    - name: 'Cache Builds'
+      if: steps.cache-builds-restore.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v3
+      id: cache-builds-save
+      with:
+        path: |
+          ./packages/assets/bin
+          ./packages/assets/cdn
+          ./packages/assets/dist
+          ./packages/component-meta/dist
+          ./packages/components-js/dist
+          ./packages/components-angular/projects/angular-wrapper/src/lib
+          ./packages/components-react/projects/react-wrapper/src/lib
+          ./packages/components-react/projects/react-ssr-wrapper/src/lib
+          ./packages/components-react/projects/uxpin-wrapper/src/lib
+          ./packages/components-vue/projects/vue-wrapper/src/lib
+          ./packages/shared/dist
+        key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }}
