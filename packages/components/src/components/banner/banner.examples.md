@@ -14,27 +14,23 @@ component is best for a particular scenario.
   Before v3.0.0 the <strong>p-banner</strong> handled its open state internally. This is no longer the case, since v3.0.0 it is a <strong>controlled</strong> component and has to be opened with the <strong>open property</strong>.
 </p-inline-notification>
 
-## Basic implementation
+## Basic
 
-The `p-banner` component is positioned fixed above the page content by default. For personal adjustments, go to " Custom
+The `p-banner` component is positioned fixed above the page content by default. For personal adjustments, go to "Custom
 styling" section.
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   Following state has been deprecated and will be removed with the next major release: "neutral".
 </p-inline-notification>
 
-<Playground :markup="stateMarkup" :config="config">
+<Playground :frameworkMarkup="stateMarkup" class="auto-height" :config="config">
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <br><br>
+  <p-button type="button" :theme="theme" @click="isBannerStateOpen = true">Open Banner</p-button>
 </Playground>
 
-### Framework Implementations
-
-<Playground :frameworkMarkup="codeExample" class="auto-height">
-  <p-button type="button" @click="isBannerOpen = true">Open Banner</p-button>
-</Playground>
-
-<p-banner :open="isBannerOpen" heading="Some Heading" description="Some Description" @dismiss="isBannerOpen =
-false"></p-banner>
+<p-banner :theme="theme" :open="isBannerStateOpen" heading="Some Heading" description="Some Description" :state="state"
+@dismiss="isBannerStateOpen = false"></p-banner>
 
 ## Slotted heading and description
 
@@ -45,7 +41,14 @@ Rich content for `heading` and `description` can be provided via named slots.
   Please use <code>slot="heading"</code> or the <code>heading</code> property instead.
 </p-inline-notification>
 
-<Playground :markup="slottedHeadingDescription" :config="config"></Playground>
+<Playground :markup="slottedHeadingDescriptionMarkup" class="auto-height" :config="config">
+  <p-button type="button" :theme="theme" @click="isBannerSlottedOpen = true">Open Banner</p-button>
+</Playground>
+
+<p-banner :theme="theme" :open="isBannerSlottedOpen" :state="state" @dismiss="isBannerSlottedOpen = false">
+<span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span> <span slot="description">Some
+description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
+</p-banner>
 
 ## Without Close/Dismiss Button
 
@@ -56,7 +59,12 @@ If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
   Please use the <code>dismissButton</code> property instead.
 </p-inline-notification>
 
-<Playground :markup="dismissButton" :config="config"></Playground>
+<Playground :markup="dismissButtonMarkup" class="auto-height" :config="config">
+  <p-button type="button" :theme="theme" @click="isBannerDismissBtnOpen = true">Open Banner</p-button>
+</Playground>
+
+<p-banner :theme="theme" :open="isBannerDismissBtnOpen" heading="Some Heading" description="Some Description"
+:state="state" @dismiss="isBannerDismissBtnOpen = false" dismiss-button="false"></p-banner>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -83,33 +91,43 @@ p-banner {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { componentsReady } from '@porsche-design-system/components-js';
+import type { Theme } from '@/models';
 import { BANNER_STATES, BANNER_STATES_DEPRECATED } from './banner-utils'; 
 import { getBannerCodeSamples } from '@porsche-design-system/shared'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
-  codeExample = getBannerCodeSamples();
-  
-  state = 'info';
-  states = BANNER_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
-  get stateMarkup() {
-    return `<p-banner open="true" state="${this.state}" heading="Some heading" description="Some description"></p-banner>`;
+  get theme(): Theme {
+    return this.$store.getters.theme;
   }
 
-  slottedHeadingDescription = `<p-banner open="true" state="${this.state}">
+  codeExample = getBannerCodeSamples();
+
+  isBannerStateOpen = false;
+  isBannerSlottedOpen = false;
+  isBannerDismissBtnOpen = false;
+
+  state = 'info';
+  states = BANNER_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  
+  get stateMarkup() { 
+    return Object.entries(getBannerCodeSamples()).reduce((result, [key, markup]) => ({
+      ...result,
+      [key]: markup
+        .replace(/(state:) 'success'/, `$1 '${this.state}'`)
+    }), {});
+  }
+
+  get slottedHeadingDescriptionMarkup() {
+    return `<p-banner open="false" state="${this.state}">
   <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span>
   <span slot="description">Some description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-</p-banner>`;
+</p-banner>`
+};
     
-  dismissButton =
-`<p-banner open="true" dismiss-button="false">
-  <span slot="heading">Some heading</span>
-  <span slot="description">Some description.</span>
-</p-banner>`;
-
-  isBannerOpen = false;
+  get dismissButtonMarkup() {
+    return `<p-banner open="false" heading="Some Heading" description="Some Description" state="${this.state}" dismiss-button="false"></p-banner>`};
 
   mounted(): void {
     const banners = document.querySelectorAll('p-banner');
@@ -124,11 +142,6 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  :deep(.demo) {
-    transform: translate3d(0, 0, 0);
-    height: 10rem;
-  }
-
   .auto-height :deep(.demo) {
     height: auto;
   }
