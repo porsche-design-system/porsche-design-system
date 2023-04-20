@@ -1,7 +1,7 @@
 import { addChangeListener, changeHandler } from './checkbox-radio-button-wrapper-utils';
 
 describe('changeHandler()', () => {
-  it('should use correct selector for input type="radio and set display = none and immediately set it back to default value', () => {
+  it('should use correct selector for input type="radio" and set display = none and immediately set it back to default value', () => {
     const spyQuerySelectorAll = jest.spyOn(document, 'querySelectorAll');
 
     const radio1 = document.createElement('input');
