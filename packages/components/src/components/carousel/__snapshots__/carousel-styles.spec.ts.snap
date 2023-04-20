@@ -28,7 +28,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
@@ -257,7 +256,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
@@ -389,7 +387,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
@@ -779,7 +776,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
@@ -1094,7 +1090,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
@@ -1323,7 +1318,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
