@@ -108,7 +108,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .root::before {
     right: -4px;
-    left: -2px;
+    left: -4px;
   }
   .label {
     position: relative;
@@ -152,7 +152,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .root::before {
     right: -4px;
-    left: -2px;
+    left: -4px;
   }
   .label {
     position: relative;
@@ -196,7 +196,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .root::before {
     right: -4px;
-    left: -2px;
+    left: -4px;
   }
   .label {
     position: relative;
@@ -286,7 +286,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 @media(min-width:480px) {
   .root::before {
     right: -4px;
-    left: -2px;
+    left: -4px;
   }
   .label {
     position: relative;
@@ -318,7 +318,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 @media(min-width:1000px) {
   .root::before {
     right: -4px;
-    left: -2px;
+    left: -4px;
   }
   .label {
     position: relative;
@@ -350,7 +350,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 @media(min-width:1760px) {
   .root::before {
     right: -4px;
-    left: -2px;
+    left: -4px;
   }
   .label {
     position: relative;
@@ -410,7 +410,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -483,7 +483,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -702,7 +702,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -767,7 +767,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -831,7 +831,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   -webkit-backdrop-filter: blur(32px);
@@ -906,7 +906,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   -webkit-backdrop-filter: blur(32px);
@@ -982,7 +982,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
   -webkit-backdrop-filter: blur(32px);

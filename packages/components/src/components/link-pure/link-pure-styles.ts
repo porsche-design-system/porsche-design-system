@@ -1,5 +1,5 @@
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, hasVisibleIcon, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import { addImportantToEachRule, getThemedColors, getResetInitialStylesForSlottedAnchor } from '../../styles';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
@@ -17,7 +17,6 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { focusColor } = getThemedColors(theme);
-  const hasIcon = hasVisibleIcon(icon, iconSource);
 
   return getCss(
     mergeDeep(
@@ -55,7 +54,7 @@ export const getComponentCss = (
                 borderRadius: borderRadiusSmall,
                 ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                   right: hideLabelValue ? offsetVertical : offsetHorizontal,
-                  left: hideLabelValue || hasIcon ? offsetVertical : offsetHorizontal,
+                  left: hideLabelValue ? offsetVertical : offsetHorizontal,
                 })),
               },
               '&(a:focus)::before': {
