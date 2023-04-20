@@ -7,7 +7,7 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import {
-  extendedViewports,
+  furtherExtendedViewports,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
@@ -16,7 +16,7 @@ import {
 // TODO: (banner state hover test is flaky) we shouldn't rely on retries since computed result has to be deterministic
 jest.retryTimes(3);
 
-it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner', {
       scenario: async (page) => {
