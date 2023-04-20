@@ -81,7 +81,6 @@ export const getComponentCss = (
         [mediaQueryS]: isHeaderAlignCenter
           ? {
               gridColumn: 2,
-              textAlign: 'center', // relevant when text becomes multiline
             }
           : {
               gridColumn: '1 / 3',
