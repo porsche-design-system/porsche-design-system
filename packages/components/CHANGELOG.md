@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Checkbox Wrapper` Safari visual state change while hovering
+  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
+- `Checkbox Wrapper` keyboard arrow navigation
+  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
+
 ### [3.0.0-rc.1] - 2023-04-19
 
 #### Added
