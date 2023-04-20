@@ -4531,8 +4531,8 @@ h2 {
   background: #FFF;
 }
 .dismiss:hover {
-  background: transparent;
-  border-color: transparent;
+  background: #AFB0B3;
+  border-color: #AFB0B3;
 }
 @media(min-width:1760px) {
   .root {

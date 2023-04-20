@@ -192,8 +192,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -299,8 +299,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -590,8 +590,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -697,8 +697,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -932,8 +932,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -1129,8 +1129,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -1235,8 +1235,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -1523,8 +1523,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
@@ -1629,8 +1629,8 @@ h2 {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background: transparent;
-    border-color: transparent;
+    background: #AFB0B3;
+    border-color: #AFB0B3;
   }
 }
 "
