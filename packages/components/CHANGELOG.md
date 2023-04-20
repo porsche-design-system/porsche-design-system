@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Checkbox Wrapper` Safari visual state change while hovering
+  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
+- `Checkbox Wrapper` keyboard arrow navigation
+  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
 - `Link Pure`, `Button Pure`: adjust offset of `:hover` and `active` styles
   ([#2511](https://github.com/porsche-design-system/porsche-design-system/pull/2511))
 

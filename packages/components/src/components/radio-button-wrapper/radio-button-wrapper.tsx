@@ -18,8 +18,8 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { addChangeListener } from './radio-button-wrapper-utils';
 import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
+import { addChangeListener } from '../../utils/checkbox-radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,

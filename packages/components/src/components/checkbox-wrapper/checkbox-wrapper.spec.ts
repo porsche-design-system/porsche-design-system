@@ -1,16 +1,16 @@
-import { RadioButtonWrapper } from './radio-button-wrapper';
-import * as radioButtonWrapperUtils from '../../utils/checkbox-radio-button-wrapper-utils';
+import { CheckboxWrapper } from './checkbox-wrapper';
+import * as checkboxButtonWrapperUtils from '../../utils/checkbox-radio-button-wrapper-utils';
 
 describe('componentWillLoad', () => {
   it('should call addChangeListener() with correct parameters', () => {
-    const spy = jest.spyOn(radioButtonWrapperUtils, 'addChangeListener');
+    const spy = jest.spyOn(checkboxButtonWrapperUtils, 'addChangeListener');
 
-    const component = new RadioButtonWrapper();
-    component.host = document.createElement('p-radio-button-wrapper');
+    const component = new CheckboxWrapper();
+    component.host = document.createElement('p-checkbox-wrapper');
     component.host.attachShadow({ mode: 'open' });
     // needs to be mocked for component lifecycle flow to work
     const input = document.createElement('input');
-    input.type = 'radio';
+    input.type = 'checkbox';
     component.host.appendChild(input);
 
     component.componentWillLoad();
