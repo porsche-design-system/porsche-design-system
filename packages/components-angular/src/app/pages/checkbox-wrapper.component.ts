@@ -109,11 +109,17 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
       <p-checkbox-wrapper [label]="'Some label'">
         <input [type]="'checkbox'" [name]="'some-name'" required disabled />
       </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" required />
+      </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'">
         <input [type]="'checkbox'" [name]="'some-name'" required checked />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'">
         <input [type]="'checkbox'" [name]="'some-name'" required checked disabled />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" required checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -127,11 +133,17 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
       <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'">
         <input [type]="'checkbox'" [name]="'some-name'" required disabled />
       </p-checkbox-wrapper>
+      <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" required />
+      </p-checkbox-wrapper>
       <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'">
         <input [type]="'checkbox'" [name]="'some-name'" required checked />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'">
         <input [type]="'checkbox'" [name]="'some-name'" required checked disabled />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" required checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -150,6 +162,24 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'">
         <input [type]="'checkbox'" [name]="'some-name'" checked disabled />
+      </p-checkbox-wrapper>
+    </div>
+
+    <div class="playground light" title="should render in loading state">
+      <p-checkbox-wrapper [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" checked />
+      </p-checkbox-wrapper>
+    </div>
+
+    <div class="playground dark" title="should render in loading state">
+      <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [theme]="'dark'" [label]="'Some label'" [loading]="true">
+        <input [type]="'checkbox'" [name]="'some-name'" checked />
       </p-checkbox-wrapper>
     </div>
 

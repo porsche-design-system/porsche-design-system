@@ -1,9 +1,10 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  getHighContrastColors,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
   hostHiddenStyles,
@@ -53,6 +54,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
   return getCss({
@@ -79,7 +81,6 @@ export const getComponentCss = (
         [mediaQueryS]: isHeaderAlignCenter
           ? {
               gridColumn: 2,
-              textAlign: 'center', // relevant when text becomes multiline
             }
           : {
               gridColumn: '1 / 3',
@@ -89,6 +90,9 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       padding: `0 ${spacingMap[width].base}`,
+      ...(isHeaderAlignCenter && {
+        textAlign: 'center',
+      }),
       [mediaQueryS]: {
         fontFamily, // relevant for button group width calculation, which is based on ex unit
         fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
@@ -169,14 +173,14 @@ export const getComponentCss = (
       },
       bullet: {
         borderRadius: borderRadiusSmall,
-        background: contrastMediumColor,
+        background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
         // set transition to have the same speed as switching slides in splide
         transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
         width: '8px',
         height: '8px',
       },
       [bulletActiveClass]: {
-        background: primaryColor,
+        background: isHighContrastMode ? canvasTextColor : primaryColor,
         width: '20px',
       },
     }),

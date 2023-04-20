@@ -1,5 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`manual test cases should pass internal props correctly to p-checkbox-wrapper 1`] = `
+<p-checkbox-wrapper
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block !important}:host([hidden]){display:none !important}::slotted(input){position:relative !important;width:calc(6px + 2.125ex) !important;height:calc(6px + 2.125ex) !important;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;font-size:1rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:content-box !important;background:transparent 0% 0% / calc(6px + 2.125ex) !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;border:2px solid #949598 !important;outline:0 !important;cursor:not-allowed !important;border-radius:4px !important}::slotted(input:checked){border-color:#949598 !important;background-color:#949598 !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23010205" d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') !important}label{position:relative;display:flex;align-items:flex-start}.text{order:1;cursor:default;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#949598;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:2px 0 0 8px}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.spinner{position:absolute;top:calc(calc(6px + 2.125ex)/2 + 2px);left:calc(calc(6px + 2.125ex)/2 + 2px);transform:translate(-50%, -50%);height:calc(6px + 2.125ex);width:calc(6px + 2.125ex);font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;cursor:not-allowed}
+    </style>
+    <label
+      aria-disabled="true"
+    >
+      <span
+        class="text"
+      >
+        Some label
+      </span>
+      <slot />
+      <p-spinner
+        class="spinner ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host{display:inline-flex !important;vertical-align:top !important}:host([hidden]){display:none !important}svg{display:block;position:relative;fill:none;transform:translate3d(0,0,0);animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:last-child{transform-origin:0 0;animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;margin:0;padding:0;box-sizing:border-box;stroke-width:1.5}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
+          </style>
+          <span
+            aria-label="Loading state of Some label"
+            aria-live="assertive"
+            class="root"
+            role="alert"
+          >
+            <span
+              class="sr-only"
+            >
+               
+            </span>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              height="100%"
+              viewBox="-16 -16 32 32"
+              width="100%"
+            >
+              <circle
+                r="9"
+              />
+              <circle
+                r="9"
+              />
+            </svg>
+          </span>
+        </template>
+      </p-spinner>
+    </label>
+  </template>
+  <input
+    type="checkbox"
+  />
+</p-checkbox-wrapper>
+`;
+
+exports[`manual test cases should pass internal props correctly to p-checkbox-wrapper 2`] = `
+<p-checkbox-wrapper
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block !important}:host([hidden]){display:none !important}::slotted(input){position:relative !important;width:calc(6px + 2.125ex) !important;height:calc(6px + 2.125ex) !important;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;font-size:1rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:content-box !important;background:transparent 0% 0% / calc(6px + 2.125ex) !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;border:2px solid #949598 !important;outline:0 !important;cursor:not-allowed !important;border-radius:4px !important}::slotted(input:checked){border-color:#949598 !important;background-color:#949598 !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23010205" d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') !important}label{position:relative;display:flex;align-items:flex-start}.text{order:1;cursor:default;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#949598;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:2px 0 0 8px}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.spinner{position:absolute;top:calc(calc(6px + 2.125ex)/2 + 2px);left:calc(calc(6px + 2.125ex)/2 + 2px);transform:translate(-50%, -50%);height:calc(6px + 2.125ex);width:calc(6px + 2.125ex);font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;cursor:not-allowed}
+    </style>
+    <label
+      aria-disabled="true"
+    >
+      <span
+        class="text"
+      >
+        Some label
+      </span>
+      <slot />
+      <p-spinner
+        class="spinner ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host{display:inline-flex !important;vertical-align:top !important}:host([hidden]){display:none !important}svg{display:block;position:relative;fill:none;transform:translate3d(0,0,0);animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:last-child{transform-origin:0 0;animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;margin:0;padding:0;box-sizing:border-box;stroke-width:1.5}.sr-only{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
+          </style>
+          <span
+            aria-label="Loading state of Some label"
+            aria-live="assertive"
+            class="root"
+            role="alert"
+          >
+            <span
+              class="sr-only"
+            >
+               
+            </span>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              height="100%"
+              viewBox="-16 -16 32 32"
+              width="100%"
+            >
+              <circle
+                r="9"
+              />
+              <circle
+                r="9"
+              />
+            </svg>
+          </span>
+        </template>
+      </p-spinner>
+    </label>
+  </template>
+  <input
+    checked=""
+    type="checkbox"
+  />
+</p-checkbox-wrapper>
+`;
+
 exports[`manual test cases should pass internal props correctly to p-grid-item 1`] = `
 <p-grid
   class="ssr"
@@ -2527,8 +2660,7 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
@@ -4399,8 +4531,8 @@ h2 {
   background: #FFF;
 }
 .dismiss:hover {
-  background: transparent;
-  border-color: transparent;
+  background: #AFB0B3;
+  border-color: #AFB0B3;
 }
 @media(min-width:1760px) {
   .root {
@@ -4914,15 +5046,6 @@ button::before {
     opacity: 1;
   }
 }
-@media (forced-colors: active) {
-    .spacer::before {
-      border-color: canvas canvas canvastext;
-    }
-    .popover {
-      outline: 1px solid canvastext;
-    }
-}
-
     </style>
     <button
       type="button"
@@ -5006,8 +5129,7 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
-  background-size: calc(6px + 2.125ex) !important;
-  background-color: transparent !important;
+  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;

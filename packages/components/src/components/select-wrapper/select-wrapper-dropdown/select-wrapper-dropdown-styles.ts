@@ -1,7 +1,7 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { Theme } from '../../../types';
 import type { JssStyle, Styles } from 'jss';
-import { getCss, mergeDeep } from '../../../utils';
+import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
 import {
   getInsetJssStyle,
   getTextHiddenJssStyle,
@@ -10,6 +10,7 @@ import {
   getThemedColors,
   addImportantToRule,
   hoverMediaQuery,
+  getHighContrastColors,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -145,6 +146,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
     backgroundSurfaceColor,
     disabledColor,
   } = getThemedColors(theme);
+  const { highlightColor } = getHighContrastColors();
 
   return {
     '@global': {
@@ -205,12 +207,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       '&__sr': getTextHiddenJssStyle(true),
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not([role=status]):hover': {
-          color: primaryColor,
+          color: isHighContrastMode ? highlightColor : primaryColor,
           background: backgroundSurfaceColor,
         },
       }),
       '&--highlighted, &--selected': {
-        color: primaryColor,
+        color: isHighContrastMode ? highlightColor : primaryColor,
         background: backgroundSurfaceColor,
       },
       '&--selected': {
@@ -268,6 +270,7 @@ export const getComponentCss = (
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
             ...(!disabled &&
+              !isHighContrastMode &&
               hoverMediaQuery({
                 '&(:hover)': {
                   color: formStateHoverColor || primaryColor,

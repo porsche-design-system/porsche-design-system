@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import { buildResponsiveStyles, getCss, mergeDeep, parseJSON } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep, parseJSON } from '../../utils';
 import type { BreakpointCustomizable } from '../../types';
 import {
   borderRadiusMedium,
@@ -25,7 +25,7 @@ import { MODAL_Z_INDEX } from '../../constants';
 
 const mediaQueryXl = getMediaQueryMin('xl');
 const { backgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
-const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
+const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
@@ -161,7 +161,7 @@ export const getComponentCss = (
         transition: `opacity ${duration} ${transitionTimingFunction},transform ${duration} ${transitionTimingFunction}`,
         padding: hasDismissButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
         background: backgroundColor,
-        outline: 0,
+        outline: isHighContrastMode ? '1px solid transparent' : 0,
         '&:focus::before': {
           content: '""',
           position: 'fixed',
@@ -197,8 +197,8 @@ export const getComponentCss = (
         background: backgroundColor,
         ...hoverMediaQuery({
           '&:hover': {
-            background: 'transparent',
-            borderColor: 'transparent',
+            background: darkThemeContrastHighColor,
+            borderColor: darkThemeContrastHighColor,
           },
         }),
       },
