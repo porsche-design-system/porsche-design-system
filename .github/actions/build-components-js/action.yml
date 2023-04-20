@@ -20,7 +20,7 @@ runs:
           ./packages/components-react/projects/uxpin-wrapper/src/lib
           ./packages/components-vue/projects/vue-wrapper/src/lib
           ./packages/shared/dist
-        key: ${{ runner.os }}-${{ github.sha }}
+        key: ${{ runner.os }}-${{ github.sha }} # cache is only used for current commit
     - name: 'Build Core Dependencies'
       if: steps.cache-builds-restore.outputs.cache-hit != 'true'
       uses: ./.github/actions/docker-run-playwright
@@ -57,4 +57,4 @@ runs:
           ./packages/components-react/projects/uxpin-wrapper/src/lib
           ./packages/components-vue/projects/vue-wrapper/src/lib
           ./packages/shared/dist
-        key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }}
+        key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }} # linked to restore key

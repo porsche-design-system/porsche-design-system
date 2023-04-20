@@ -56,12 +56,12 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components'
+      - name: 'Build Components Prod'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-prod
-      - name: 'Build Components JS'
+      - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
@@ -97,21 +97,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -127,21 +114,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -157,7 +131,7 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build components-js'
+      - name: 'Build assets, components-js, shared and generate wrappers'
         uses: ./.github/actions/build-components-js
       - name: 'VRT Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
@@ -180,21 +154,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'VRT Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -216,21 +177,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -272,21 +220,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -328,21 +263,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -369,21 +291,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -481,21 +390,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -582,21 +478,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -627,21 +510,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -673,21 +543,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -719,21 +576,8 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+      - name: 'Build assets, components-js, shared and generate wrappers'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
