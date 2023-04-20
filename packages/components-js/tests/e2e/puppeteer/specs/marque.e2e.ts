@@ -325,12 +325,12 @@ describe('without trademark', () => {
       expect(requestedImagePath, 'initial request resolution').toContain(resolution3x);
 
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await page.waitForRequest((request) => request.url().includes(fileNameSmall));
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await page.waitForRequest((request) => request.url().includes(fileNameMedium));
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution3x);
     });

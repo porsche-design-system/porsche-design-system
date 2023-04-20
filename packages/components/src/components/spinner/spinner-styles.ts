@@ -1,8 +1,14 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize } from './spinner-utils';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import {
+  addImportantToEachRule,
+  getHighContrastColors,
+  getScreenReaderOnlyJssStyle,
+  getThemedColors,
+  hostHiddenStyles,
+} from '../../styles';
 
 const sizeSmall = '48px';
 const sizeMedium = '72px';
@@ -20,6 +26,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
   const animationDuration = 'var(--p-animation-duration, 2s)';
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { canvasColor, canvasTextColor } = getHighContrastColors();
 
   return getCss({
     '@global': {
@@ -37,13 +44,13 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       circle: {
         '&:first-child': {
-          stroke: contrastMediumColor,
+          stroke: isHighContrastMode ? canvasTextColor : contrastMediumColor,
           animation: `$rotate ${animationDuration} linear infinite`, // needs to rotate to eliminate stutter in safari
         },
         '&:last-child': {
           transformOrigin: '0 0',
           animation: `$dash ${animationDuration} ease-in-out infinite`,
-          stroke: primaryColor,
+          stroke: isHighContrastMode ? canvasColor : primaryColor,
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray

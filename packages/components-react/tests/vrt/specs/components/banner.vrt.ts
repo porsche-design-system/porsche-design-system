@@ -1,6 +1,6 @@
-import { extendedViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { furtherExtendedViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
 
-it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'banner', '/banner', {
       scenario: async (page) => {
