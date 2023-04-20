@@ -13,6 +13,7 @@ runs:
           ./packages/assets/dist
           ./packages/component-meta/dist
           ./packages/components-js/dist
+          ./packages/components-js/www
           ./packages/components-angular/projects/angular-wrapper/src/lib
           ./packages/components-react/projects/react-wrapper/src/lib
           ./packages/components-react/projects/react-ssr-wrapper/src/lib
@@ -49,6 +50,7 @@ runs:
           ./packages/assets/dist
           ./packages/component-meta/dist
           ./packages/components-js/dist
+          ./packages/components-js/www
           ./packages/components-angular/projects/angular-wrapper/src/lib
           ./packages/components-react/projects/react-wrapper/src/lib
           ./packages/components-react/projects/react-ssr-wrapper/src/lib
