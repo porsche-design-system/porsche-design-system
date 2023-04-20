@@ -49,15 +49,9 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -73,14 +67,7 @@ label {
 }
 @media(min-width:480px) {
   .text {
-    position: static;
     width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
     padding: 2px 0 0 8px;
   }
 }
@@ -88,28 +75,15 @@ label {
 @media(min-width:760px) {
   .text {
     position: absolute;
+    width: 0;
     height: 1px;
-    width: auto;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    padding: 2px 0 0 8px;
+    text-indent: -999999px;
   }
 }
 
 @media(min-width:1000px) {
   .text {
-    position: static;
     width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
     padding: 2px 0 0 8px;
   }
 }
@@ -117,28 +91,15 @@ label {
 @media(min-width:1300px) {
   .text {
     position: absolute;
+    width: 0;
     height: 1px;
-    width: auto;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    padding: 2px 0 0 8px;
+    text-indent: -999999px;
   }
 }
 
 @media(min-width:1760px) {
   .text {
-    position: static;
     width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
     padding: 2px 0 0 8px;
   }
 }
@@ -216,14 +177,7 @@ label {
   hyphens: auto;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -312,14 +266,7 @@ label {
   hyphens: auto;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -385,14 +332,7 @@ label {
   hyphens: auto;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -458,14 +398,7 @@ label {
   hyphens: auto;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -554,14 +487,7 @@ label {
   hyphens: auto;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -649,14 +575,7 @@ label {
   hyphens: auto;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -721,14 +640,7 @@ label {
   hyphens: auto;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -793,14 +705,7 @@ label {
   hyphens: auto;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -888,14 +793,7 @@ label {
   hyphens: auto;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -984,14 +882,7 @@ label {
   hyphens: auto;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -1057,14 +948,7 @@ label {
   hyphens: auto;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -1130,14 +1014,7 @@ label {
   hyphens: auto;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
-  position: static;
   width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -1227,15 +1104,9 @@ label {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1324,15 +1195,9 @@ label {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1398,15 +1263,9 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1472,15 +1331,9 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1569,15 +1422,9 @@ label {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1665,15 +1512,9 @@ label {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1740,15 +1581,9 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1826,15 +1661,9 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1910,15 +1739,9 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -1983,15 +1806,9 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -2055,15 +1872,9 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -2138,15 +1949,9 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -2245,15 +2050,9 @@ label {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -2342,15 +2141,9 @@ label {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -2416,15 +2209,9 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;
@@ -2490,15 +2277,9 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: auto;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 2px 0 0 8px;
+  text-indent: -999999px;
 }
 .required {
   user-select: none;

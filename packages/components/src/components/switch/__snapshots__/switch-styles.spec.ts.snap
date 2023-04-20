@@ -71,14 +71,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   color: #010205;
   order: -1;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -162,14 +157,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #010205;
   order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -253,14 +240,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #949598;
   order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
 }"
 `;
 
@@ -333,14 +312,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #010205;
   order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -430,14 +401,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #949598;
   order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
 }"
 `;
 
@@ -517,14 +480,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #7E7F82;
   order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
 }"
 `;
 
@@ -604,14 +559,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #949598;
   order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
 }"
 `;
 
@@ -684,14 +631,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #010205;
   order: 0;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -813,14 +752,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   color: #010205;
   order: -1;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 @media(min-width:480px) {
   .root {
@@ -828,14 +762,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   }
   .label {
     order: 0;
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
   }
 }
 
@@ -846,14 +772,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   .label {
     order: -1;
     position: absolute;
+    width: 0;
     height: 1px;
-    width: 1px;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
+    text-indent: -999999px;
   }
 }
 
@@ -863,14 +784,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   }
   .label {
     order: 0;
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
   }
 }
 
@@ -881,14 +794,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   .label {
     order: -1;
     position: absolute;
+    width: 0;
     height: 1px;
-    width: 1px;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
+    text-indent: -999999px;
   }
 }
 
@@ -898,14 +806,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   }
   .label {
     order: 0;
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
   }
 }
 
