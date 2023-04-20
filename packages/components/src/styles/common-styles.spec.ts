@@ -84,15 +84,14 @@ describe('focusPseudoJssStyle', () => {
   });
 });
 
-describe('getTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
-    expect(getHiddenTextStyles(isHidden)).toMatchSnapshot();
-  });
-});
-
-describe('getFormTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
-    expect(getHiddenTextStyles(isHidden)).toMatchSnapshot();
+describe('getHiddenTextStyles()', () => {
+  it.each<[boolean, JssStyle]>([
+    [true, undefined],
+    [false, undefined],
+    [true, { width: 'fit-content' }],
+    [false, { width: 'fit-content' }],
+  ])('should return correct JssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
+    expect(getHiddenTextStyles(isHidden, shownStyles)).toMatchSnapshot();
   });
 });
 
