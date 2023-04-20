@@ -329,26 +329,8 @@ jobs:
       uses: ./.github/actions/setup-and-install
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: 'Install'
-      if: steps.cache-node_modules.outputs.cache-hit != 'true'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-install
-    - name: 'Build Core Dependencies'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-build
-        args: --core-dependencies
-    - name: 'Build Components'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-build
-        args: --components
-    - name: 'Build Components JS'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-build
-        args: --components-js
+    - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+      uses: ./.github/actions/build-components-js
     - name: 'Lint'
       uses: ./.github/actions/docker-run-playwright
       with:
@@ -830,13 +812,7 @@ jobs:
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
-          install: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Install' # needed for algolia
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v3
         with:
