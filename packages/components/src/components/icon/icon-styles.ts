@@ -99,7 +99,6 @@ export const getComponentCss = (
         margin: 0,
         padding: 0,
         ...(!isColorInherit && {
-          transform: 'translate3d(0, 0, 0)', // Safari: Programmatic icon color change (relevant for notifications and pagination)
           filter: filter[theme][color],
           ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery(
@@ -110,7 +109,7 @@ export const getComponentCss = (
                 filter: filter.dark[color],
               }
             )),
-          WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
+          WebkitAnimation: `${isDark ? `${keyFramesDark}-${color}` : `${keyFramesLight}-${color}`} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
           ? {
@@ -124,7 +123,8 @@ export const getComponentCss = (
             }),
       },
       ...(!isColorInherit && {
-        [`@keyframes ${isDark ? keyFramesDark : keyFramesLight}`]: forceRerenderAnimationStyle,
+        [`@keyframes ${isDark ? `${keyFramesDark}-${color}` : `${keyFramesLight}-${color}`}`]:
+          forceRerenderAnimationStyle,
       }),
     },
   });
