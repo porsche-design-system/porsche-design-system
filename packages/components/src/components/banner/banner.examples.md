@@ -64,7 +64,7 @@ If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
 </Playground>
 
 <p-banner :theme="theme" :open="isBannerDismissBtnOpen" heading="Some Heading" description="Some Description"
-:state="state" @dismiss="isBannerDismissBtnOpen = false" dismiss-button="false"></p-banner>
+:state="state" dismiss-button="false"></p-banner>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
