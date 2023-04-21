@@ -99,6 +99,7 @@ export const getComponentCss = (
         margin: 0,
         padding: 0,
         ...(!isColorInherit && {
+          transform: 'translateZ(0)', // Safari: Programmatic icon color change (relevant for notifications and pagination)
           filter: filter[theme][color],
           ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery(
