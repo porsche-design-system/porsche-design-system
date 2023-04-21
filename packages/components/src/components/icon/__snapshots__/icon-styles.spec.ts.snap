@@ -12,7 +12,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(68%) sepia(6%) saturate(108%) hue-rotate(187deg) brightness(104%) contrast(88%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -41,7 +41,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(40%) sepia(2%) saturate(686%) hue-rotate(187deg) brightness(80%) contrast(94%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -70,7 +70,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(20%) sepia(7%) saturate(421%) hue-rotate(202deg) brightness(97%) contrast(82%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -99,7 +99,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(93%) sepia(11%) saturate(36%) hue-rotate(201deg) brightness(89%) contrast(102%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -128,7 +128,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(66%) sepia(3%) saturate(333%) hue-rotate(187deg) brightness(82%) contrast(86%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -157,7 +157,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(45%) sepia(6%) saturate(235%) hue-rotate(177deg) brightness(91%) contrast(85%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -222,7 +222,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(64%) sepia(91%) saturate(5857%) hue-rotate(336deg) brightness(98%) contrast(102%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -251,7 +251,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(14%) sepia(75%) saturate(4140%) hue-rotate(347deg) brightness(100%) contrast(97%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -280,7 +280,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(56%) sepia(77%) saturate(4175%) hue-rotate(198deg) brightness(104%) contrast(98%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -309,7 +309,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -338,7 +338,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(60%) sepia(71%) saturate(512%) hue-rotate(106deg) brightness(91%) contrast(97%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -367,7 +367,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(28%) sepia(89%) saturate(572%) hue-rotate(71deg) brightness(111%) contrast(98%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -396,7 +396,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(75%) sepia(39%) saturate(759%) hue-rotate(350deg) brightness(109%) contrast(94%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -425,7 +425,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(58%) sepia(53%) saturate(820%) hue-rotate(12deg) brightness(112%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -454,7 +454,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: inherit;
@@ -482,7 +482,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -511,7 +511,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -540,7 +540,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -569,7 +569,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -598,7 +598,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -627,7 +627,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -656,7 +656,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
@@ -685,7 +685,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(52%) sepia(6%) saturate(135%) hue-rotate(187deg) brightness(94%) contrast(89%);
   -webkit-animation: rerender-dark 1ms;
   width: calc(6px + 2.125ex);
@@ -714,7 +714,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light 1ms;
   width: calc(6px + 2.125ex);
