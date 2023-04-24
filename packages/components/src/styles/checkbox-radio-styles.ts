@@ -112,7 +112,7 @@ export const getCheckboxRadioJssStyle = (
       color: disabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transition between different states
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
-        ...getHiddenTextStyles(isHidden, { width: 'auto', padding: `2px 0 0 ${spacingStaticSmall}` }),
+        ...getHiddenTextStyles(isHidden, { padding: `2px 0 0 ${spacingStaticSmall}` }),
       })),
     },
     ...getFunctionalComponentRequiredStyles(),
