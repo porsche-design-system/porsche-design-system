@@ -89,6 +89,7 @@ export const getHiddenTextStyles = (isHidden = true, isShownStyles?: JssStyle): 
       }
     : {
         position: 'static',
+        width: 'auto',
         height: 'auto',
         textIndent: 0,
         ...isShownStyles,
