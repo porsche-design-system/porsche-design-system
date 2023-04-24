@@ -44,11 +44,21 @@ exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
 
 exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
 {
+  "height": "auto",
+  "position": "static",
+  "textIndent": 0,
   "width": "fit-content",
 }
 `;
 
-exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: undefined 1`] = `{}`;
+exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: undefined 1`] = `
+{
+  "height": "auto",
+  "position": "static",
+  "textIndent": 0,
+  "width": "auto",
+}
+`;
 
 exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: true and shownStyles: { width: 'fit-content' } 1`] = `
 {

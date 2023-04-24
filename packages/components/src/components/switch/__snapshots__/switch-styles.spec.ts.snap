@@ -157,6 +157,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #010205;
   order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -240,6 +244,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #949598;
   order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  text-indent: 0;
 }"
 `;
 
@@ -312,6 +320,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #010205;
   order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -401,6 +413,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #949598;
   order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  text-indent: 0;
 }"
 `;
 
@@ -480,6 +496,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #7E7F82;
   order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  text-indent: 0;
 }"
 `;
 
@@ -559,6 +579,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #949598;
   order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  text-indent: 0;
 }"
 `;
 
@@ -631,6 +655,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   min-height: 0;
   color: #010205;
   order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -762,6 +790,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   }
   .label {
     order: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    text-indent: 0;
   }
 }
 
@@ -784,6 +816,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   }
   .label {
     order: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    text-indent: 0;
   }
 }
 
@@ -806,6 +842,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   }
   .label {
     order: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    text-indent: 0;
   }
 }
 

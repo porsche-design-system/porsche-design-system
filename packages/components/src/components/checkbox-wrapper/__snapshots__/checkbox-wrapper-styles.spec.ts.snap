@@ -67,7 +67,10 @@ label {
 }
 @media(min-width:480px) {
   .text {
+    position: static;
     width: auto;
+    height: auto;
+    text-indent: 0;
     padding: 2px 0 0 8px;
   }
 }
@@ -83,7 +86,10 @@ label {
 
 @media(min-width:1000px) {
   .text {
+    position: static;
     width: auto;
+    height: auto;
+    text-indent: 0;
     padding: 2px 0 0 8px;
   }
 }
@@ -99,7 +105,10 @@ label {
 
 @media(min-width:1760px) {
   .text {
+    position: static;
     width: auto;
+    height: auto;
+    text-indent: 0;
     padding: 2px 0 0 8px;
   }
 }
@@ -177,7 +186,10 @@ label {
   hyphens: auto;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -266,7 +278,10 @@ label {
   hyphens: auto;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -332,7 +347,10 @@ label {
   hyphens: auto;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -398,7 +416,10 @@ label {
   hyphens: auto;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -487,7 +508,10 @@ label {
   hyphens: auto;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -575,7 +599,10 @@ label {
   hyphens: auto;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -640,7 +667,10 @@ label {
   hyphens: auto;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -705,7 +735,10 @@ label {
   hyphens: auto;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -793,7 +826,10 @@ label {
   hyphens: auto;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -882,7 +918,10 @@ label {
   hyphens: auto;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -948,7 +987,10 @@ label {
   hyphens: auto;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
@@ -1014,7 +1056,10 @@ label {
   hyphens: auto;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
   width: auto;
+  height: auto;
+  text-indent: 0;
   padding: 2px 0 0 8px;
 }
 .required {
