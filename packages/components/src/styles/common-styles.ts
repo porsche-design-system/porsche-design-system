@@ -87,7 +87,12 @@ export const getHiddenTextStyles = (isHidden = true, isShownStyles?: JssStyle): 
         height: '1px',
         textIndent: '-999999px',
       }
-    : { ...isShownStyles };
+    : {
+        position: 'static',
+        height: 'auto',
+        textIndent: 0,
+        ...isShownStyles,
+      };
 
 export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
   backfaceVisibility: 'hidden',
