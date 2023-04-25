@@ -55,7 +55,6 @@ with Vue **2** and **3**.
 - `sass-loader`
 - `vmark`
 - `vmark-loader`
-- `vite`
 
 ---
 
