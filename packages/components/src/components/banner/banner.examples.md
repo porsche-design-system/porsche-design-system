@@ -23,7 +23,7 @@ styling" section.
   Following state has been deprecated and will be removed with the next major release: "neutral".
 </p-inline-notification>
 
-<Playground :frameworkMarkup="stateMarkup" class="auto-height" :config="config">
+<Playground :frameworkMarkup="stateMarkup" :config="config">
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
   <br><br>
   <p-button type="button" :theme="theme" @click="isBannerStateOpen = true">Open Banner</p-button>
@@ -41,7 +41,7 @@ Rich content for `heading` and `description` can be provided via named slots.
   Please use <code>slot="heading"</code> or the <code>heading</code> property instead.
 </p-inline-notification>
 
-<Playground :markup="slottedHeadingDescriptionMarkup" class="auto-height" :config="config">
+<Playground :markup="slottedHeadingDescriptionMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerSlottedOpen = true">Open Banner</p-button>
 </Playground>
 
@@ -59,7 +59,7 @@ If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
   Please use the <code>dismissButton</code> property instead.
 </p-inline-notification>
 
-<Playground :markup="dismissButtonMarkup" class="auto-height" :config="config">
+<Playground :markup="dismissButtonMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerDismissBtnOpen = true">Open Banner</p-button>
 </Playground>
 
@@ -140,9 +140,3 @@ export default class Code extends Vue {
   }
 }
 </script>
-
-<style scoped lang="scss">
-  .auto-height :deep(.demo) {
-    height: auto;
-  }
-</style>
