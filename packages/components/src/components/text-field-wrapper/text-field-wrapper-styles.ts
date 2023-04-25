@@ -4,7 +4,7 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, getHiddenTextJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -132,7 +132,7 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(theme, state),
     // TODO: could be made conditional if we had hasUnit
     'sr-only': {
-      ...getScreenReaderOnlyJssStyle(),
+      ...getHiddenTextJssStyle(),
       padding: 0,
     },
   });
