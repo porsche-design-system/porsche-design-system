@@ -6,7 +6,7 @@ UX-Pin is not ready for the major babel loader upgrade jet.
 
 ### Affected dependencies:
 
-- ` babel-loader`
+- `babel-loader`
 
 ### Affected dependencies:
 
