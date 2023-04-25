@@ -3,6 +3,7 @@ import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../ut
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
+  getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
@@ -129,21 +130,7 @@ export const getLinkButtonStyles = (
           },
         })),
     },
-    label: {
-      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) =>
-        hideLabelValue
-          ? {
-              width: 0,
-              height: '1px',
-              textIndent: '-999999px',
-            }
-          : {
-              width: 'auto',
-              height: 'auto',
-              textIndent: 0,
-            }
-      ),
-    },
+    label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
         width: fontLineHeight,

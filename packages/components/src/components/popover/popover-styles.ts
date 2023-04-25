@@ -10,9 +10,9 @@ import {
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
-  getTextHiddenJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -144,7 +144,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         },
       },
     },
-    label: getTextHiddenJssStyle(true),
+    label: getHiddenTextJssStyle(),
     icon: {
       display: 'inline-block', // TODO: should be changed in icon!
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari

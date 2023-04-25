@@ -49,6 +49,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
@@ -65,6 +66,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     gap: 8px;
   }
   .label {
+    position: static;
     width: auto;
     height: auto;
     text-indent: 0;
@@ -77,6 +79,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     gap: 0;
   }
   .label {
+    position: absolute;
     width: 0;
     height: 1px;
     text-indent: -999999px;
@@ -89,6 +92,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     gap: 8px;
   }
   .label {
+    position: static;
     width: auto;
     height: auto;
     text-indent: 0;
@@ -101,6 +105,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     gap: 0;
   }
   .label {
+    position: absolute;
     width: 0;
     height: 1px;
     text-indent: -999999px;
@@ -113,6 +118,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     gap: 8px;
   }
   .label {
+    position: static;
     width: auto;
     height: auto;
     text-indent: 0;
@@ -169,6 +175,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -236,6 +243,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -303,6 +311,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -371,6 +380,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -443,6 +453,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -503,6 +514,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -572,6 +584,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -641,6 +654,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -710,6 +724,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
@@ -780,6 +795,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   border: 0;
 }
 .label {
+  position: static;
   width: auto;
   height: auto;
   text-indent: 0;
