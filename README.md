@@ -131,6 +131,10 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 - `./docker.sh run-test-e2e` (e2e tests for the entire application)
 - `./docker.sh run-test-e2e-puppeteer --components-js` (e2e tests for the native web components for Chromium)
 - `./docker.sh run-test-e2e-playwright --components-js` (e2e tests for the native web components for Webkit)
+- `./docker.sh run-test-e2e --components-angular` (e2e tests for angular components)
+- `./docker.sh run-test-e2e --components-react` (e2e tests for react components)
+- `./docker.sh run-test-e2e --components-vue` (e2e tests for vue components)
+- `./docker.sh run-test-e2e --crawler` (e2e tests for crawler package)
 - `./docker.sh run-test-e2e --storefront` (e2e tests for the storefront)
 
 ### Visual Regression Tests
@@ -142,8 +146,12 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 - `./docker.sh run-test-vrt-playwright --components-js` (vrt tests for the native web components for Webkit)
 - `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
 - `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
+- `./docker.sh run-test-vrt --components-react/nextjs` (vrt tests for react ssr components in nextjs setup)
+- `./docker.sh run-test-vrt --components-react/remix` (vrt tests for react ssr components in remix setup)
+- `./docker.sh run-test-vrt --components-vue` (vrt tests for vue components)
 - `./docker.sh run-test-vrt --storefront` (vrt tests for the storefront)
 - `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
+- `./docker.sh run-test-vrt --fallbacks` (vrt tests for the fallbacks)
 
 #### What to do when VRT Puppeteer tests are failing
 
