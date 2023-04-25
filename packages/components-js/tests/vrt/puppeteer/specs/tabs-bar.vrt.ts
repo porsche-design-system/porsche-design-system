@@ -29,10 +29,19 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-tabs-bar theme="${theme}" active-tab-index="1">
-          <button type="button">Button Tab One</button>
-          <button type="button">Button Tab Two</button>
-          <button type="button">Button Tab Three</button>
+          <button type="button" id="tab-item-0" aria-controls="tab-panel-0">Button Tab One</button>
+          <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Button Tab Two</button>
+          <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Button Tab Three</button>
         </p-tabs-bar>
+        <div id="tab-panel-0" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-0">
+          <p-text>Your content of Tab 1</p-text>
+        </div>
+        <div id="tab-panel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-item-1">
+          <p-text>Your content of Tab 2</p-text>
+        </div>
+        <div id="tab-panel-2" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-2">
+          <p-text>Your content of Tab 3</p-text>
+        </div>
         <p-tabs-bar theme="${theme}" active-tab-index="1">
           <a href="#">Anchor Tab One</a>
           <a href="#">Anchor Tab Two</a>
@@ -44,6 +53,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await forceHoverState(page, '.hover p-tabs-bar button');
       await forceHoverState(page, '.hover p-tabs-bar a');
       await forceFocusState(page, '.focus p-tabs-bar button');
+      await forceFocusState(page, '.focus p-tabs-bar ~ [tabindex="0"][role="tabpanel"]');
       await forceFocusState(page, '.focus p-tabs-bar a');
       await forceFocusHoverState(page, '.focus-hover p-tabs-bar button');
       await forceFocusHoverState(page, '.focus-hover p-tabs-bar a');
