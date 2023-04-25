@@ -836,7 +836,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -863,7 +863,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -990,7 +990,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1017,7 +1017,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1195,7 +1195,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 shadowrootmode="open"
               >
                 <style>
-                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light 1ms;width:inherit;height:inherit}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                 </style>
                 <img
                   alt=""
@@ -1254,7 +1254,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light-state-disabled 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-state-disabled{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
           </style>
           <img
             alt=""
@@ -1288,7 +1288,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 shadowrootmode="open"
               >
                 <style>
-                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light 1ms;width:inherit;height:inherit}@keyframes rerender-light{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                 </style>
                 <img
                   alt=""
@@ -1466,11 +1466,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -1631,12 +1631,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-notification-info {
   0% {
     transform: rotateZ(0);
   }
@@ -1762,11 +1762,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -1955,7 +1955,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -2006,11 +2006,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -2447,11 +2447,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -2570,11 +2570,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -3233,12 +3233,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -3333,12 +3333,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-notification-info {
   0% {
     transform: rotateZ(0);
   }
@@ -3464,11 +3464,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -3623,7 +3623,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   bottom: -2px !important;
   border-radius: 4px !important;
   right: -4px !important;
-  left: -2px !important;
+  left: -4px !important;
 }
 .root {
   display: flex;
@@ -3647,7 +3647,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   top: -2px;
   bottom: -2px;
   right: -4px;
-  left: -2px;
+  left: -4px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
@@ -3697,11 +3697,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -3830,11 +3830,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
-  -webkit-animation: rerender-dark 1ms;
+  -webkit-animation: rerender-dark-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-dark {
+@keyframes rerender-dark-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -4529,8 +4529,8 @@ h2 {
   background: #FFF;
 }
 .dismiss:hover {
-  background: transparent;
-  border-color: transparent;
+  background: #AFB0B3;
+  border-color: #AFB0B3;
 }
 @media(min-width:1760px) {
   .root {
@@ -4642,11 +4642,11 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -4837,12 +4837,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-state-disabled {
   0% {
     transform: rotateZ(0);
   }
@@ -4896,12 +4896,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-state-disabled {
   0% {
     transform: rotateZ(0);
   }
@@ -5063,12 +5063,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -5353,12 +5353,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -5404,12 +5404,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -5649,12 +5649,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -5970,12 +5970,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -6021,12 +6021,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -6441,12 +6441,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -6492,12 +6492,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -6956,12 +6956,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -7007,12 +7007,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -7305,12 +7305,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -7356,12 +7356,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }
@@ -7570,12 +7570,12 @@ img {
   margin: 0;
   padding: 0;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light 1ms;
+  -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-@keyframes rerender-light {
+@keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
   }

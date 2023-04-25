@@ -21,6 +21,7 @@ import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
+import { addChangeListener } from '../../utils/checkbox-radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
@@ -78,6 +79,7 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
+    addChangeListener(this.input);
     this.observeAttributes(); // once initially
   }
 

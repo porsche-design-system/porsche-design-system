@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 8204,
-    "gzipSize": 3680
+    "size": 7330,
+    "gzipSize": 3187
   },
   {
     "chunkShortName": "main",
@@ -141,8 +141,8 @@
   },
   {
     "chunkShortName": "model-signature",
-    "size": 3025,
-    "gzipSize": 1532
+    "size": 2916,
+    "gzipSize": 1484
   },
   {
     "chunkShortName": "pagination",

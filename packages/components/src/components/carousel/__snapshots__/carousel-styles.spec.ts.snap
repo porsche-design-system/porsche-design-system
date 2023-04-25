@@ -28,13 +28,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -246,13 +246,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -372,13 +372,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -746,13 +746,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -1050,13 +1050,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -1268,13 +1268,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
