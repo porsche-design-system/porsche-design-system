@@ -183,6 +183,7 @@
     "**/react-scripts/jest-circus": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
+    "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.7",
     "**/@types/jest-environment-puppeteer/@jest/types": ">=29 <30",
     "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0",
