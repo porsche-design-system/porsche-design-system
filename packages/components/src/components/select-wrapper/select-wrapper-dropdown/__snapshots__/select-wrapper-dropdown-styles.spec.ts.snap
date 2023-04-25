@@ -440,14 +440,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -615,14 +610,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -751,14 +741,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -923,14 +908,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1058,14 +1038,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1229,14 +1204,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1361,14 +1331,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1529,14 +1494,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1668,14 +1628,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1843,14 +1798,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1979,14 +1929,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -2151,14 +2096,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -2286,14 +2226,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -2457,14 +2392,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -2589,14 +2519,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -2757,14 +2682,9 @@ ul {
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -4417,14 +4337,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #FBFCFF;
@@ -4517,14 +4432,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -4613,14 +4523,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #FBFCFF;
@@ -4709,14 +4614,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -4809,14 +4709,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #FBFCFF;
@@ -4909,14 +4804,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -5005,14 +4895,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #FBFCFF;
@@ -5101,14 +4986,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
 }
 .option__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .option--highlighted, .option--selected {
   color: #010205;
