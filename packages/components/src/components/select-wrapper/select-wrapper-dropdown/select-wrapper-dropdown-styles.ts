@@ -57,6 +57,10 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
           cursor: 'not-allowed',
           borderColor: disabledColor,
         },
+        '&[aria-expanded="true"]': {
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        },
       },
     },
   };
