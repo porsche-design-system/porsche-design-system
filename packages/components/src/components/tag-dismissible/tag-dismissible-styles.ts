@@ -1,6 +1,6 @@
 import {
   addImportantToEachRule,
-  getHiddenTextStyles,
+  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -66,6 +66,6 @@ export const getComponentCss = (
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,
     },
-    'sr-only': getHiddenTextStyles(),
+    'sr-only': getHiddenTextJssStyle(),
   });
 };

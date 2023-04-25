@@ -4,7 +4,7 @@ import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
-  getHiddenTextStyles,
+  getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
@@ -152,7 +152,7 @@ export const getComponentCss = (
         ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
-      '&__sr': getHiddenTextStyles(), // appears in the DOM when sliding
+      '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },
     // .splide.is-initialized,
     // .splide.is-rendered {

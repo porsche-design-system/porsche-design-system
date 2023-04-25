@@ -1,6 +1,6 @@
 import {
   addImportantToEachRule,
-  getHiddenTextStyles,
+  getHiddenTextJssStyle,
   getInsetJssStyle,
   getInvertedThemedColors,
   getThemedColors,
@@ -152,6 +152,6 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         width: fontLineHeight,
       },
     }),
-    'sr-only': getHiddenTextStyles(),
+    'sr-only': getHiddenTextJssStyle(),
   });
 };

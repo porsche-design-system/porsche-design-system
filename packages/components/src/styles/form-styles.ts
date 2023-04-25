@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles } from '../utils';
-import { addImportantToRule, getHiddenTextStyles, getThemedColors, getTransition, hoverMediaQuery } from './';
+import { addImportantToRule, getHiddenTextJssStyle, getThemedColors, getTransition, hoverMediaQuery } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -96,7 +96,7 @@ export const getLabelStyles = (
       '&__text': {
         display: 'block',
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextStyles(isHidden, { width: 'fit-content' })
+          getHiddenTextJssStyle(isHidden, { width: 'fit-content' })
         ),
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,

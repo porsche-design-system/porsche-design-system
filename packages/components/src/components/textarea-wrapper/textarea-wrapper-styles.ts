@@ -1,7 +1,7 @@
 import type { Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, getThemedColors, hostHiddenStyles, getHiddenTextStyles } from '../../styles';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles, getHiddenTextJssStyle } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -60,7 +60,7 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(theme, state),
     ...(hasCounter && {
       'sr-only': {
-        ...getHiddenTextStyles(),
+        ...getHiddenTextJssStyle(),
         padding: 0,
       },
     }),

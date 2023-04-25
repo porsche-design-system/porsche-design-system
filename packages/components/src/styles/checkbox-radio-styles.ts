@@ -3,7 +3,7 @@ import type { Styles } from 'jss';
 import { buildResponsiveStyles, isDisabledOrLoading, isHighContrastMode } from '../utils';
 import {
   addImportantToEachRule,
-  getHiddenTextStyles,
+  getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
@@ -112,7 +112,7 @@ export const getCheckboxRadioJssStyle = (
       color: disabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transition between different states
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
-        ...getHiddenTextStyles(isHidden, { padding: `2px 0 0 ${spacingStaticSmall}` }),
+        ...getHiddenTextJssStyle(isHidden, { padding: `2px 0 0 ${spacingStaticSmall}` }),
       })),
     },
     ...getFunctionalComponentRequiredStyles(),

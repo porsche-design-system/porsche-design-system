@@ -5,7 +5,7 @@ import {
   addImportantToRule,
   focusPseudoJssStyle,
   getBackfaceVisibilityJssStyle,
-  getHiddenTextStyles,
+  getHiddenTextJssStyle,
   getInsetJssStyle,
   getTransition,
   pxToRemWithUnit,
@@ -91,7 +91,7 @@ describe('getHiddenTextStyles()', () => {
     [true, { width: 'fit-content' }],
     [false, { width: 'fit-content' }],
   ])('should return correct JssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
-    expect(getHiddenTextStyles(isHidden, shownStyles)).toMatchSnapshot();
+    expect(getHiddenTextJssStyle(isHidden, shownStyles)).toMatchSnapshot();
   });
 });
 

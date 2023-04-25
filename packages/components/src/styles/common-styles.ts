@@ -76,10 +76,10 @@ export const focusPseudoJssStyle: JssStyle = {
 /**
  * Returns a JSS style object that can be used to visually hide text in the browser, while still allowing it to be accessed by screen readers.
  * @param {boolean} isHidden - A boolean value indicating whether the text should be hidden or not. Defaults to true.
- * @param {JssStyle} isShownStyles - Additional styles applied when isHidden = false
- * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownStyles.
+ * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
+ * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
  */
-export const getHiddenTextStyles = (isHidden = true, isShownStyles?: JssStyle): JssStyle =>
+export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle =>
   isHidden
     ? {
         position: 'absolute',
@@ -92,7 +92,7 @@ export const getHiddenTextStyles = (isHidden = true, isShownStyles?: JssStyle): 
         width: 'auto',
         height: 'auto',
         textIndent: 0,
-        ...isShownStyles,
+        ...isShownJssStyle,
       };
 
 export const getBackfaceVisibilityJssStyle = (): JssStyle => ({

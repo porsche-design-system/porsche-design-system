@@ -10,7 +10,7 @@ import {
   addImportantToRule,
   hoverMediaQuery,
   getHighContrastColors,
-  getHiddenTextStyles,
+  getHiddenTextJssStyle,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -204,7 +204,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       '&[role=status]': {
         cursor: 'not-allowed',
       },
-      '&__sr': getHiddenTextStyles(),
+      '&__sr': getHiddenTextJssStyle(),
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not([role=status]):hover': {
           color: isHighContrastMode ? highlightColor : primaryColor,
