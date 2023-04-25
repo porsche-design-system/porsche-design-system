@@ -30,7 +30,7 @@ pages. See <https://github.com/microsoft/playwright/releases>.
 ### Affected dependencies:
 
 - `@playwright/test`
-- `mcr.microsoft.com/playwright:v1.32.3-focal` (Docker base image)
+- `mcr.microsoft.com/playwright:v1.27.0-focal` (Docker base image)
 
 ## Vue
 
