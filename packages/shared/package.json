@@ -45,7 +45,7 @@
     "@octokit/core": "^4.1.0",
     "@rollup/plugin-typescript": "^11.1.0",
     "@types/madge": "^5.0.0",
-    "@types/node": "^18.15.11",
+    "@types/node": "^18.16.0",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^6.0.0",
