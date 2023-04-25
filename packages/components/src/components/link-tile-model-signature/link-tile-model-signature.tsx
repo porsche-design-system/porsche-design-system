@@ -1,5 +1,4 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils';
 import type { AriaAttributes, BreakpointCustomizable, PropTypes } from '../../types';
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 import {
@@ -23,12 +22,13 @@ import type {
 import {
   getLinkOrSlottedAnchorElement,
   LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
+  LINK_TILE_MODEL_SIGNATURE_MODELS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
 import { JSXBase } from '@stencil/core/internal';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
-  model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(MODEL_SIGNATURE_MODELS),
+  model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(LINK_TILE_MODEL_SIGNATURE_MODELS),
   weight: AllowedTypes.breakpoint<LinkTileModelSignatureWeight>(TILE_WEIGHTS),
   aspectRatio: AllowedTypes.breakpoint<LinkTileModelSignatureAspectRatio>(TILE_ASPECT_RATIOS),
   heading: AllowedTypes.string,
