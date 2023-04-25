@@ -77,9 +77,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: block;
   position: absolute;
   width: 0;
-  height: 1.5px;
+  height: 2px;
   left: 0;
-  bottom: -4px;
+  bottom: -2px;
   background: #FBFCFF;
 }
 .bar--enable-transition {
@@ -165,9 +165,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: block;
   position: absolute;
   width: 0;
-  height: 1.5px;
+  height: 2px;
   left: 0;
-  bottom: -4px;
+  bottom: -2px;
   background: #010205;
 }
 .bar--enable-transition {
@@ -253,9 +253,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: absolute;
   width: 0;
-  height: 1.5px;
+  height: 2px;
   left: 0;
-  bottom: -4px;
+  bottom: -2px;
   background: #FBFCFF;
 }
 .bar--enable-transition {
@@ -341,9 +341,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: absolute;
   width: 0;
-  height: 1.5px;
+  height: 2px;
   left: 0;
-  bottom: -4px;
+  bottom: -2px;
   background: #010205;
 }
 .bar--enable-transition {
@@ -431,7 +431,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   height: 2px;
   left: 0;
-  bottom: -4px;
+  bottom: -2px;
   background: #010205;
 }
 .bar--enable-transition {
@@ -517,9 +517,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   display: block;
   position: absolute;
   width: 0;
-  height: 1.5px;
+  height: 2px;
   left: 0;
-  bottom: -4px;
+  bottom: -2px;
   background: #010205;
 }
 .bar--enable-transition {
