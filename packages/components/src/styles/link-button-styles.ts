@@ -130,7 +130,7 @@ export const getLinkButtonStyles = (
           },
         })),
     },
-    label: buildResponsiveStyles(hideLabel, (isHidden: boolean) => getHiddenTextJssStyle(isHidden)),
+    label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
         width: fontLineHeight,
