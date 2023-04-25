@@ -95,7 +95,7 @@ export const getLinkButtonPureStyles = (
         bottom: offsetVertical,
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
-          left: hideLabelValue || hasIcon ? offsetVertical : offsetHorizontal,
+          left: hideLabelValue ? offsetVertical : offsetHorizontal,
         })),
         borderRadius: borderRadiusSmall,
         transition: getTransition('background-color'),
