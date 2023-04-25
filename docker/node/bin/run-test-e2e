@@ -10,5 +10,5 @@ if
   [[ "--crawler" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]]
 then
-  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1028/chrome-linux/chrome yarn test:e2e:${1:2} --ci
+  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1055/chrome-linux/chrome yarn test:e2e:${1:2} --ci
 fi

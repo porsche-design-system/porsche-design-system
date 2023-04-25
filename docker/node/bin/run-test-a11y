@@ -6,5 +6,5 @@ set -o pipefail
 if
   [[ "--storefront" == "${1}" ]]
 then
-  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1028/chrome-linux/chrome yarn test:a11y:${1:2} --ci
+  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1055/chrome-linux/chrome yarn test:a11y:${1:2} --ci
 fi

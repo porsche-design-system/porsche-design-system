@@ -7,7 +7,7 @@ if
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]]
 then
-  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1028/chrome-linux/chrome yarn test:smoke:${1:2} --ci
+  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1055/chrome-linux/chrome yarn test:smoke:${1:2} --ci
 else
-  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1028/chrome-linux/chrome yarn test:smoke --ci
+  PUPPETEER_EXECUTABLE_PATH=/ms-playwright/chromium-1055/chrome-linux/chrome yarn test:smoke --ci
 fi
