@@ -45,7 +45,7 @@
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.6.5",
     "vuex": "^3.6.2",
-    "yup": "^0.32.11"
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.6.0",
