@@ -57,14 +57,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -125,14 +120,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -182,14 +172,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -239,14 +224,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -337,14 +317,9 @@ button:focus:not(:focus-visible)::after {
 
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -435,14 +410,9 @@ button:focus:not(:focus-visible)::after {
 
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -522,14 +492,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -609,14 +574,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -694,14 +654,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -779,14 +734,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -864,14 +814,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -949,14 +894,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -1017,14 +957,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -1085,14 +1020,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -1142,14 +1072,9 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;
 
@@ -1199,13 +1124,8 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }"
 `;

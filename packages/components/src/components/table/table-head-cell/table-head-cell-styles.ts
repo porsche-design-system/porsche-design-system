@@ -2,7 +2,7 @@ import type { Direction } from '../table/table-utils';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  getTextHiddenJssStyle,
+  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -91,7 +91,7 @@ export const getComponentCss = (
           }
         : hideLabel && {
             span: {
-              ...getTextHiddenJssStyle(true),
+              ...getHiddenTextJssStyle(),
               display: 'block',
               border: 0,
             },

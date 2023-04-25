@@ -29,6 +29,7 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
       // page.$x("//button[text() = 'Vanilla JS']"),
       page.$x("//button[text() = 'Angular']"),
       page.$x("//button[text() = 'React']"),
+      // TODO: vue is missing
     ])
   )
     .map(([handle]) => handle)
@@ -81,7 +82,8 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
     await page.evaluate(() => (window as any).componentsReady());
 
     await a11yAnalyze(page, 'light'); // page in default/initial state
-    await cycleFrameworkTabs('light');
+    // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
+    // await cycleFrameworkTabs('light');
 
     const [darkThemeButton] = await page.$x("//button[text() = 'Dark theme']");
 
@@ -92,13 +94,14 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
       expect(playgroundClassName).toContain('example--dark');
 
       // reset framework to vanilla js if available
-      const [vanillaJsButton] = await page.$x("//button[text() = 'Vanilla JS']");
-      if (vanillaJsButton) {
-        await vanillaJsButton.click();
-      }
+      // const [vanillaJsButton] = await page.$x("//button[text() = 'Vanilla JS']");
+      // if (vanillaJsButton) {
+      //   await vanillaJsButton.click();
+      // }
 
       await a11yAnalyze(page, 'dark');
-      await cycleFrameworkTabs('dark');
+      // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
+      // await cycleFrameworkTabs('dark');
     }
   }
 );
