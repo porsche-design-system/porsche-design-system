@@ -2,7 +2,7 @@
 
 REGISTRY=ghcr.io/porsche-design-system/porsche-design-system
 IMAGE=playwright
-TAG=v1.27.0-focal-v3-alpha-8
+TAG=v1.32.3-focal-v3-alpha-8
 
 docker pull $REGISTRY/$IMAGE:latest
 
