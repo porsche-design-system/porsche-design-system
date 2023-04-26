@@ -65,7 +65,7 @@ export const getButtonStyles = (
         },
         ...(isOpen && {
           [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
-          [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopLeftRadius']: 0,
+          [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
         }),
       },
     },
@@ -144,7 +144,7 @@ export const getFilterStyles = (
           borderRadius: borderRadiusSmall,
           ...(isOpen && {
             [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
-            [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopLeftRadius']: 0,
+            [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
           }),
         },
       },
