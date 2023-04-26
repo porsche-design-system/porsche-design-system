@@ -487,7 +487,7 @@ describe('hover state', () => {
 
     const dropdownCombobox = await getDropdownCombobox();
     const initialStyle = await getElementStyle(dropdownCombobox, 'borderColor');
-    expect(initialStyle).toBe('rgba(0, 0, 0, 0)');
+    expect(initialStyle).toBe('rgb(107, 109, 112)');
 
     await dropdownCombobox.hover();
     const hoverStyle = await getElementStyle(dropdownCombobox, 'borderColor');
