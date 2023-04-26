@@ -3199,16 +3199,16 @@
   dependencies:
     "@octokit/types" "^8.0.0"
 
-"@octokit/core@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-4.1.0.tgz#b6b03a478f1716de92b3f4ec4fd64d05ba5a9251"
-  integrity sha512-Czz/59VefU+kKDy+ZfDwtOIYIkFjExOKf+HA92aiTZJ6EfWpFzYQWw0l54ji8bVmyhc+mGaLUbSUmXazG7z5OQ==
+"@octokit/core@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-4.2.0.tgz#8c253ba9605aca605bc46187c34fcccae6a96648"
+  integrity sha512-AgvDRUg3COpR82P7PBdGZF/NNqGmtMq2NiPqeSsDIeCfYFOZ9gddqWNQHnFdEUf+YwOj4aZYmJnlPp7OXmDIDg==
   dependencies:
     "@octokit/auth-token" "^3.0.0"
     "@octokit/graphql" "^5.0.0"
     "@octokit/request" "^6.0.0"
     "@octokit/request-error" "^3.0.0"
-    "@octokit/types" "^8.0.0"
+    "@octokit/types" "^9.0.0"
     before-after-hook "^2.2.0"
     universal-user-agent "^6.0.0"
 
@@ -3234,6 +3234,11 @@
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-14.0.0.tgz#949c5019028c93f189abbc2fb42f333290f7134a"
   integrity sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==
+
+"@octokit/openapi-types@^17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-17.0.0.tgz#7356d287f48b20e9a1f497ef8dfaabdff9cf8622"
+  integrity sha512-V8BVJGN0ZmMlURF55VFHFd/L92XQQ43KvFjNmY1IYbCN3V/h/uUFV6iQi19WEHM395Nn+1qhUbViCAD/1czzog==
 
 "@octokit/request-error@^3.0.0":
   version "3.0.2"
@@ -3262,6 +3267,13 @@
   integrity sha512-65/TPpOJP1i3K4lBJMnWqPUJ6zuOtzhtagDvydAWbEXpbFYA0oMKKyLb95NFZZP0lSh/4b6K+DQlzvYQJQQePg==
   dependencies:
     "@octokit/openapi-types" "^14.0.0"
+
+"@octokit/types@^9.0.0":
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-9.1.2.tgz#1a8d35b1f4a3d2ad386e223f249dd5f7506979c1"
+  integrity sha512-LPbJIuu1WNoRHbN4UMysEdlissRFpTCWyoKT7kHPufI8T+XX33/qilfMWJo3mCOjNIKu0+43oSQPf+HJa0+TTQ==
+  dependencies:
+    "@octokit/openapi-types" "^17.0.0"
 
 "@open-draft/until@^1.0.3":
   version "1.0.3"
