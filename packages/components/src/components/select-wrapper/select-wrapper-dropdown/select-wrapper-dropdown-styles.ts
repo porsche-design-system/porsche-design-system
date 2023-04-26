@@ -15,6 +15,7 @@ import {
 import {
   borderRadiusSmall,
   borderWidthBase,
+  fontLineHeight,
   fontWeightSemiBold,
   spacingStaticMedium,
   spacingStaticSmall,
@@ -22,7 +23,6 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { ICON_SPACE, OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import { INPUT_HEIGHT } from '../../../styles/form-styles';
 import type { FormState } from '../../../utils/form/form-state';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
@@ -42,8 +42,9 @@ export const getButtonStyles = (
       button: {
         position: 'absolute',
         top: 0,
-        height: pxToRemWithUnit(INPUT_HEIGHT),
+        height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px
         width: '100%',
+        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         padding: 0,
         background: 'transparent',
         border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for label:hover selector
@@ -88,18 +89,17 @@ export const getFilterStyles = (
     color: disabled ? disabledColor : primaryColor,
   };
 
-  const inputHeightRem = pxToRemWithUnit(INPUT_HEIGHT - 4);
-
   return {
     '@global': {
       input: {
         display: 'block',
         position: 'absolute',
         zIndex: 1,
-        bottom: '2px', // input is inset to not overlap with 2px border of state
+        bottom: '2px',
         left: '2px',
         width: `calc(100% - ${ICON_SPACE})`,
-        height: inputHeightRem,
+        height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
+        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
         padding: `13px ${spacingStaticMedium}`,
         outline: '0',
         appearance: 'none',
@@ -205,6 +205,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
     option: {
       display: 'flex',
       justifyContent: 'space-between',
+      alignItems: 'center',
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
       minHeight: pxToRemWithUnit(OPTION_HEIGHT),
@@ -278,8 +279,9 @@ export const getComponentCss = (
             [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
             display: 'block',
             position: `var(${dropdownPositionVar})`, // for vrt tests
-            marginTop: pxToRemWithUnit(-INPUT_HEIGHT),
-            paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
+            font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+            marginTop: `calc(-1 * (${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`, // we need 10px additionally so input height becomes 54px,
+            paddingTop: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px,
             left: 0,
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,

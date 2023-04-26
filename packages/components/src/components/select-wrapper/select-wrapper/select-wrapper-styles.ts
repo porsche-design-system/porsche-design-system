@@ -28,7 +28,7 @@ export const getComponentCss = (
         zIndex: 0, // TODO: overrides global style.css in e2e and vrts
         cursor: 'pointer',
         padding: `8px ${ICON_SPACE} 8px ${spacingStaticMedium}`,
-        ...(!native && { borderColor: 'transparent' }),
+        ...(!native && !isDisabled && { borderColor: 'transparent' }),
       }),
     }),
     root: {
