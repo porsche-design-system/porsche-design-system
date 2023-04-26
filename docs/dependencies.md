@@ -51,6 +51,7 @@ with Vue **2** and **3**.
 - `sass-loader`
 - `vmark`
 - `vmark-loader`
+- `@stackblitz/sdk` uses optional chaining internally which can't be handled by webpack 4
 
 ---
 

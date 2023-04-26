@@ -187,8 +187,8 @@
     "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0",
     "**/eslint-config-react-app/eslint-plugin-jest": "^26.9.0",
-    "**/vite/rollup": "^3.10.0",
-    "**/ng-packagr/rollup": "^3.10.0",
-    "**/workbox-build/rollup": "^3.10.0"
+    "**/vite/rollup": "^3.21.0",
+    "**/ng-packagr/rollup": "^3.21.0",
+    "**/workbox-build/rollup": "^3.21.0"
   }
 }
