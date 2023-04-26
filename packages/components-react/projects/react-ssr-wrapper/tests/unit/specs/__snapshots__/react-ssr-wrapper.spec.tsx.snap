@@ -1179,7 +1179,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
+            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}@supports (width:round(down, 1px, 1px)){.icon{width:round(down, calc(6px + 2.125ex), 1px);height:round(down, calc(6px + 2.125ex), 1px)}}
           </style>
           <button
             aria-pressed="false"
@@ -1273,7 +1273,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}
+            :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#010205;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}@supports (width:round(down, 1px, 1px)){.icon{width:round(down, calc(6px + 2.125ex), 1px);height:round(down, calc(6px + 2.125ex), 1px)}}
           </style>
           <button
             class="root"
@@ -1736,6 +1736,13 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
             </style>
             <button
               class="root"
@@ -1980,6 +1987,13 @@ exports[`should render dsr component for PButtonPure 1`] = `
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
     </style>
     <button
       class="root"
@@ -2421,6 +2435,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
             </style>
             <button
               class="root"
@@ -2544,6 +2565,13 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
             </style>
             <button
               class="root"
@@ -3438,6 +3466,13 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
         </style>
         <button
           class="root"
@@ -3672,6 +3707,13 @@ exports[`should render dsr component for PLinkPure 1`] = `
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
     </style>
     <span
       class="root"
@@ -4616,6 +4658,13 @@ h2 {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
           </style>
           <button
             class="root"

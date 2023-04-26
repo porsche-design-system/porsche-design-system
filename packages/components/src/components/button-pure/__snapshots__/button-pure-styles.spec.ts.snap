@@ -100,6 +100,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(min-width:480px) {
   .root {
     justify-content: flex-start;
@@ -283,6 +290,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(min-width:480px) {
   .root::before {
     right: -4px;
@@ -436,6 +450,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -509,6 +530,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -582,6 +610,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -655,6 +690,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -727,7 +769,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}"
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","theme":"light"} 2`] = `
@@ -792,7 +841,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}"
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","theme":"dark"} 1`] = `
@@ -860,6 +916,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -935,6 +998,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 @media(hover:hover) {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
@@ -1010,7 +1080,14 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}"
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"right","theme":"light"} 1`] = `
