@@ -28,10 +28,6 @@ export const getComponentCss = (
         cursor: 'pointer',
         padding: `8px ${ICON_SPACE} 8px ${spacingStaticMedium}`,
       }),
-      ['::slotted(select.expanded)']: {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-      },
     }),
     root: {
       display: 'block',

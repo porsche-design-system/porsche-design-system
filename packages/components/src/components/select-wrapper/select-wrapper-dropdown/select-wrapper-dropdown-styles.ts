@@ -57,10 +57,6 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
           cursor: 'not-allowed',
           borderColor: disabledColor,
         },
-        '&[aria-expanded="true"]': {
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
-        },
       },
     },
   };
@@ -166,7 +162,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         zIndex: 10,
         left: 0,
         right: 0,
-        [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 2px)', // 2px border + 2px safety for rounded corners
+        [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 4px)', // 2px border + 2px safety for rounded corners
         ...(!isOpen && {
           opacity: 0,
           overflow: 'hidden',
@@ -179,9 +175,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
         border: `2px solid ${isOpen ? primaryColor : contrastMediumColor}`,
-        // causes diagonal edge between different border colors
-        [isDirectionDown ? 'borderTop' : 'borderBottom']: addImportantToRule(`1px solid ${contrastMediumColor}`),
-        // boxShadow: `0 -2px 0 ${backgroundColor}`, // TODO: rounded corners on select or button are visible
         ...(isDirectionDown
           ? ['borderBottomLeftRadius', 'borderBottomRightRadius']
           : ['borderTopLeftRadius', 'borderTopRightRadius']
@@ -190,6 +183,18 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         scrollbarColor: 'auto', // firefox
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+        // Overlay in order to remove visible rounded corners of button/input when dropdown is open
+        [isDirectionDown ? 'paddingTop' : 'paddingBottom']: '9px',
+        [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          [isDirectionDown ? 'top' : 'bottom']: '2px',
+          left: '0',
+          height: '1px',
+          width: '100%',
+          background: contrastMediumColor,
+        },
       },
     },
     option: {
