@@ -157,7 +157,6 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "hostPdsComponent": "p-inline-notification",
           "properties": {
             "color": "notification-info",
-            "lazy": false,
             "name": "information-filled",
             "size": "small",
             "theme": "dark",
@@ -189,7 +188,6 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "hostPdsComponent": "p-button-pure",
           "properties": {
             "color": "primary",
-            "lazy": false,
             "name": "close",
             "size": "inherit",
             "theme": "dark",
