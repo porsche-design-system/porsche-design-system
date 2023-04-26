@@ -1,21 +1,11 @@
 # Dependencies 03.03.2023
 
-## UX-Pin Wrappers
-
-UX-Pin is not ready for the major babel loader upgrade jet.
-
-### Affected dependencies:
-
-- `babel-loader`
-
 ## Shared
 
-- upgrading `octokit` causes a memory leak also only used in `scripts/clearGitHubActionLogs.ts` which is never called 🤷
 - upgrading `puppeteer` to the latest version leads to issues with our vrt tester when javascript is disabled
 
 ### Affected dependencies:
 
-- `@octokit/core`
 - `puppeteer`
 
 ## Playwright
