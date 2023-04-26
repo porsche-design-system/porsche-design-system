@@ -10,8 +10,8 @@ UX-Pin is not ready for the major babel loader upgrade jet.
 
 ## Shared
 
-- upgrading `octokit` causes a memory leak.
-- upgrading `puppeteer` to the latest version leads to issues with our vrt tester when javascript is disabled.
+- upgrading `octokit` causes a memory leak also only used in `scripts/clearGitHubActionLogs.ts` which is never called 🤷
+- upgrading `puppeteer` to the latest version leads to issues with our vrt tester when javascript is disabled
 
 ### Affected dependencies:
 
