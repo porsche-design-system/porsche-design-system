@@ -151,7 +151,7 @@ export class SelectWrapper {
             />
             <slot />
           </label>
-          {this.hasCustomDropdown && (
+          {this.hasCustomDropdown && !disabled && (
             <PrefixedTagNames.pSelectWrapperDropdown
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
