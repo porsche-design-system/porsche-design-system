@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Tabs Bar`, `Tabs` ([#2521](https://github.com/porsche-design-system/porsche-design-system/pull/2521)):
   - `focus` state of tabpanel
   - Indicator bar height
+- Optimize icon/text alignment of `Link Pure` and `Button Pure` in Safari
 
 #### Added
 
