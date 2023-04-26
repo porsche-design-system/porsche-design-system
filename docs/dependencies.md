@@ -8,10 +8,6 @@ UX-Pin is not ready for the major babel loader upgrade jet.
 
 - `babel-loader`
 
-### Affected dependencies:
-
-- `@webcomponents/template-shadowroot`
-
 ## Shared
 
 - upgrading `octokit` causes a memory leak.
