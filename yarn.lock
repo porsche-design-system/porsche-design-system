@@ -3044,16 +3044,16 @@
   dependencies:
     "@octokit/types" "^9.0.0"
 
-"@octokit/core@4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-4.1.0.tgz#b6b03a478f1716de92b3f4ec4fd64d05ba5a9251"
-  integrity sha512-Czz/59VefU+kKDy+ZfDwtOIYIkFjExOKf+HA92aiTZJ6EfWpFzYQWw0l54ji8bVmyhc+mGaLUbSUmXazG7z5OQ==
+"@octokit/core@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-4.2.0.tgz#8c253ba9605aca605bc46187c34fcccae6a96648"
+  integrity sha512-AgvDRUg3COpR82P7PBdGZF/NNqGmtMq2NiPqeSsDIeCfYFOZ9gddqWNQHnFdEUf+YwOj4aZYmJnlPp7OXmDIDg==
   dependencies:
     "@octokit/auth-token" "^3.0.0"
     "@octokit/graphql" "^5.0.0"
     "@octokit/request" "^6.0.0"
     "@octokit/request-error" "^3.0.0"
-    "@octokit/types" "^8.0.0"
+    "@octokit/types" "^9.0.0"
     before-after-hook "^2.2.0"
     universal-user-agent "^6.0.0"
 
@@ -3074,11 +3074,6 @@
     "@octokit/request" "^6.0.0"
     "@octokit/types" "^9.0.0"
     universal-user-agent "^6.0.0"
-
-"@octokit/openapi-types@^14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-14.0.0.tgz#949c5019028c93f189abbc2fb42f333290f7134a"
-  integrity sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==
 
 "@octokit/openapi-types@^17.0.0":
   version "17.0.0"
@@ -3105,13 +3100,6 @@
     is-plain-object "^5.0.0"
     node-fetch "^2.6.7"
     universal-user-agent "^6.0.0"
-
-"@octokit/types@^8.0.0":
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-8.2.1.tgz#a6de091ae68b5541f8d4fcf9a12e32836d4648aa"
-  integrity sha512-8oWMUji8be66q2B9PmEIUyQm00VPDPun07umUWSaCwxmeaquFBro4Hcc3ruVoDo3zkQyZBlRvhIMEYS3pBhanw==
-  dependencies:
-    "@octokit/openapi-types" "^14.0.0"
 
 "@octokit/types@^9.0.0":
   version "9.1.2"
