@@ -23,6 +23,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `focus` state of tabpanel
   - Indicator bar height
 
+#### Added
+
+- Deprecation warning to `Icon` component if `lazy` prop is used
+  ([#2521](https://github.com/porsche-design-system/porsche-design-system/pull/2521))
+
 ### [3.0.0-rc.1] - 2023-04-19
 
 #### Added
