@@ -27,9 +27,15 @@ import type { FormState } from '../../../utils/form/form-state';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
-export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
+export const getButtonStyles = (
+  direction: DropdownDirectionInternal,
+  isOpen: boolean,
+  state: FormState,
+  theme: Theme
+): Styles => {
+  const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { formStateHoverColor, formStateColor } = getThemedFormStateColors(theme, state);
+  const isDirectionDown = direction === 'down';
 
   return {
     '@global': {
@@ -40,7 +46,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         width: '100%',
         padding: 0,
         background: 'transparent',
-        border: `${borderWidthBase} solid ${isOpen ? primaryColor : 'transparent'}`, // using border of styled select below for label:hover selector
+        border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for label:hover selector
         borderRadius: borderRadiusSmall,
         outline: '0',
         cursor: 'pointer',
@@ -57,19 +63,25 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
           cursor: 'not-allowed',
           borderColor: disabledColor,
         },
+        ...(isOpen && {
+          [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
+          [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopLeftRadius']: 0,
+        }),
       },
     },
   };
 };
 
 export const getFilterStyles = (
+  direction: DropdownDirectionInternal,
   isOpen: boolean,
   state: FormState,
   disabled: boolean,
   theme: Theme
 ): Styles<'@global'> => {
-  const { primaryColor, backgroundColor, disabledColor } = getThemedColors(theme);
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { primaryColor, backgroundColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { formStateHoverColor, formStateColor } = getThemedFormStateColors(theme, state);
+  const isDirectionDown = direction === 'down';
 
   const placeHolderJssStyle: JssStyle = {
     opacity: 1,
@@ -128,8 +140,12 @@ export const getFilterStyles = (
           transition: getTransition('border-color'),
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',
-          border: `${borderWidthBase} solid ${isOpen ? primaryColor : 'transparent'}`, // using border of styled select below for label:hover selector
+          border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
           borderRadius: borderRadiusSmall,
+          ...(isOpen && {
+            [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
+            [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopLeftRadius']: 0,
+          }),
         },
       },
     },
@@ -162,7 +178,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         zIndex: 10,
         left: 0,
         right: 0,
-        [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 4px)', // 2px border + 2px safety for rounded corners
+        [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 2px)', // 2px border + 2px safety for rounded corners
         ...(!isOpen && {
           opacity: 0,
           overflow: 'hidden',
@@ -175,6 +191,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
         border: `2px solid ${isOpen ? primaryColor : contrastMediumColor}`,
+        [isDirectionDown ? 'borderTop' : 'borderBottom']: addImportantToRule(`1px solid ${contrastMediumColor}`),
         ...(isDirectionDown
           ? ['borderBottomLeftRadius', 'borderBottomRightRadius']
           : ['borderTopLeftRadius', 'borderTopRightRadius']
@@ -183,18 +200,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         scrollbarColor: 'auto', // firefox
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
-        // Overlay in order to remove visible rounded corners of button/input when dropdown is open
-        [isDirectionDown ? 'paddingTop' : 'paddingBottom']: '9px',
-        [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          [isDirectionDown ? 'top' : 'bottom']: '2px',
-          left: '0',
-          height: '1px',
-          width: '100%',
-          background: contrastMediumColor,
-        },
       },
     },
     option: {
@@ -288,7 +293,9 @@ export const getComponentCss = (
           },
         },
       },
-      filter ? getFilterStyles(isOpen, state, disabled, theme) : getButtonStyles(isOpen, state, theme),
+      filter
+        ? getFilterStyles(direction, isOpen, state, disabled, theme)
+        : getButtonStyles(direction, isOpen, state, theme),
       getListStyles(direction, isOpen, theme)
     )
   );
