@@ -1,12 +1,8 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
     "baseUrl": ".",
-    // importsNotUsedAsValues & preserveValueImports are deprecated in favor of verbatimModuleSyntax. To fix the deprecation warning we have to set the default values.
-    // TODO: remove importsNotUsedAsValues & preserveValueImports on Typescript v5.5.
-    "importsNotUsedAsValues": "remove",
-    "preserveValueImports": false,
     "paths": {
       "@/*": ["./src/*"]
     },

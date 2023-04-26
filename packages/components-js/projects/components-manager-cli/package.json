@@ -16,11 +16,10 @@
   },
   "dependencies": {
     "@porsche-design-system/components-manager-core": "0.0.0",
-    "glob": "^8.1.0",
-    "webpack": "^5.79.0"
+    "globby": "^11.0.4",
+    "webpack": "^5.80.0"
   },
   "devDependencies": {
-    "@types/glob": "^8.1.0",
     "typescript": "~5.0.4"
   }
 }
