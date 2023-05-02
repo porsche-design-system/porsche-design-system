@@ -130,9 +130,11 @@ export const vrtTest = (
     snapshotId,
     async () => {
       const page = vrt.getPage();
-      await page.setJavaScriptEnabled(javaScriptEnabled);
 
       const cdpSession = await page.target().createCDPSession();
+      await cdpSession.send('Emulation.setScriptExecutionDisabled', {
+        value: !javaScriptEnabled,
+      });
 
       if (scalePageFontSize) {
         await cdpSession.send('Page.enable');
