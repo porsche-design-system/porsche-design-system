@@ -5,7 +5,12 @@ import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles'
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { FormState } from '../../../utils/form/form-state';
-import { spacingStaticMedium } from '../../../../../utilities/projects/utilities';
+import {
+  borderWidthBase,
+  fontLineHeight,
+  spacingStaticMedium,
+  spacingStaticSmall,
+} from '../../../../../utilities/projects/utilities';
 
 export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
 export const ICON_SPACE = `${24 + 13 * 2 + 2}px`; // 24px = icon width, 13px * 2 = padding, 2px = border
@@ -27,7 +32,7 @@ export const getComponentCss = (
         position: 'static',
         zIndex: 0, // TODO: overrides global style.css in e2e and vrts
         cursor: 'pointer',
-        padding: `8px ${ICON_SPACE} 8px ${spacingStaticMedium}`,
+        padding: `8px calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2) 8px ${spacingStaticMedium}`,
         ...(!native && !isDisabled && { borderColor: 'transparent' }),
       }),
     }),

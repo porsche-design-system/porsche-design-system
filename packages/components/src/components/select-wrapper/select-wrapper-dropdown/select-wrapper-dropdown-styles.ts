@@ -97,7 +97,7 @@ export const getFilterStyles = (
         zIndex: 1,
         bottom: '2px',
         left: '2px',
-        width: `calc(100% - ${ICON_SPACE})`,
+        width: `calc(100% - (${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`,
         height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
         padding: `13px ${spacingStaticMedium}`,
@@ -205,10 +205,9 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
     option: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center',
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
-      flex: `1 0 ${pxToRemWithUnit(OPTION_HEIGHT)}`,
+      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       color: contrastHighColor,
       cursor: 'pointer',
       textAlign: 'left',
