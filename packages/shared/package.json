@@ -42,7 +42,7 @@
     "ts-jest": "^29.1.0"
   },
   "devDependencies": {
-    "@octokit/core": "4.1.0",
+    "@octokit/core": "^4.2.0",
     "@rollup/plugin-typescript": "^11.1.0",
     "@types/madge": "^5.0.0",
     "@types/node": "^18.16.1",
