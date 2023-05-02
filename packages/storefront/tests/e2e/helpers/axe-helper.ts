@@ -54,14 +54,5 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
   });
   amountOfViolations = result.violations.length;
 
-  // https://github.com/dequelabs/axe-core/issues/3448
-  // TODO: temporary workaround until axe supports inert attribute which will be released in axe-core 4.7
-  if (pageUrl.includes('components/carousel/examples')) {
-    const { length: amountOfFilteredViolations } = result.violations.filter(
-      (violation) => violation.id !== 'aria-hidden-focus'
-    );
-    expect(amountOfFilteredViolations).toBe(0);
-  } else {
-    expect(amountOfViolations).toBe(0);
-  }
+  expect(amountOfViolations).toBe(0);
 };
