@@ -42,7 +42,7 @@ export const getButtonStyles = (
       button: {
         position: 'absolute',
         top: 0,
-        height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px
+        height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so button height becomes 54px
         width: '100%',
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         padding: 0,
@@ -208,7 +208,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       alignItems: 'center',
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
-      minHeight: pxToRemWithUnit(OPTION_HEIGHT),
+      flex: `1 0 ${pxToRemWithUnit(OPTION_HEIGHT)}`,
       color: contrastHighColor,
       cursor: 'pointer',
       textAlign: 'left',
