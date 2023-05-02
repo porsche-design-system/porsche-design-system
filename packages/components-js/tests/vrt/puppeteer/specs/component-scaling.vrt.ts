@@ -69,8 +69,7 @@ it.each(components)('should have no visual regression for scaled component %s', 
           } else if (['modal', 'banner'].includes(component)) {
             await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
           } else if (component === 'select-wrapper') {
-            await page.$$eval('select.select-open-options', (elHandles) => elHandles.forEach((el) => el.click()));
-            await page.evaluate(() => (window as any).componentsReady());
+            await page.click('#open-options');
           }
         },
         scalePageFontSize: true,
