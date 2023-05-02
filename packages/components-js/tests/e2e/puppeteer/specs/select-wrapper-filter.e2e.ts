@@ -543,19 +543,12 @@ describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
     });
 
-    it('should have not-allowed cursor on overlay', async () => {
-      const filterInputOverlay = await getFilterInputOverlay();
-      expect(await getElementStyle(filterInputOverlay, 'cursor')).toBe('not-allowed');
+    it('should have not-allowed cursor', async () => {
+      expect(await getElementStyle(await getSelect(), 'cursor')).toBe('not-allowed');
     });
 
-    it('should not open dropdown via overlay click', async () => {
-      expect(await getDropdownOpacity()).toBe('0');
-
-      const coords = await (await getFilterInputOverlay()).boundingBox();
-      await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
-      await waitForStencilLifecycle(page);
-
-      expect(await getDropdownOpacity()).toBe('0');
+    it('should not render dropdown', async () => {
+      expect(await getDropdown()).toBeNull();
     });
   });
 });
