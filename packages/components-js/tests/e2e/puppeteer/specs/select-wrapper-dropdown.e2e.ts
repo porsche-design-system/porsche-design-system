@@ -201,24 +201,39 @@ it('should not render if native prop is set to true', async () => {
   expect(dropdown).toBeNull();
 });
 
-it('should disable combobox when select is disabled programmatically', async () => {
+it('should disable select when disabled programmatically', async () => {
   await initSelect();
   const select = await getSelect();
-  const dropdownCombobox = await getDropdownCombobox();
+  const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
 
-  const getComboboxCursorStyle = () => getElementStyle(dropdownCombobox, 'cursor');
-
-  expect(await getComboboxCursorStyle(), 'initially').toBe('pointer');
+  expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
 
   await setProperty(select, 'disabled', true);
   await waitForStencilLifecycle(page);
 
-  expect(await getComboboxCursorStyle(), 'when disabled = true').toBe('not-allowed');
+  expect(await getSelectCursorStyle(), 'when disabled = true').toBe('not-allowed');
 
   await setProperty(select, 'disabled', false);
   await waitForStencilLifecycle(page);
 
-  expect(await getComboboxCursorStyle(), 'when disabled = false').toBe('pointer');
+  expect(await getSelectCursorStyle(), 'when disabled = false').toBe('pointer');
+});
+
+it('should not render dropdown when select is disabled programmatically', async () => {
+  await initSelect();
+  const select = await getSelect();
+
+  expect(await getDropdown(), 'initially').toEqual({});
+
+  await setProperty(select, 'disabled', true);
+  await waitForStencilLifecycle(page);
+
+  expect(await getDropdown(), 'when disabled = true').toBeNull();
+
+  await setProperty(select, 'disabled', false);
+  await waitForStencilLifecycle(page);
+
+  expect(await getDropdown(), 'when disabled = false').toEqual({});
 });
 
 it('should be visible if select is clicked and hidden again when clicked outside', async () => {
