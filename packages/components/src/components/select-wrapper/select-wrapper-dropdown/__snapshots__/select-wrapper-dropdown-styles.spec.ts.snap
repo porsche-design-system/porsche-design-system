@@ -4,8 +4,9 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #CC1922;
@@ -33,8 +34,9 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #6B6D70;
@@ -62,8 +64,9 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #197E10;
@@ -91,8 +94,9 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #010205;
@@ -122,8 +126,9 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #010205;
@@ -153,8 +158,9 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #010205;
@@ -184,8 +190,9 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #FC4040;
@@ -213,8 +220,9 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #88898C;
@@ -242,8 +250,9 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #09D087;
@@ -271,8 +280,9 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #FBFCFF;
@@ -302,8 +312,9 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #FBFCFF;
@@ -333,8 +344,9 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
 "button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #FBFCFF;
@@ -365,8 +377,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -374,8 +387,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #6B6D70;
@@ -438,7 +452,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -504,8 +518,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -516,8 +531,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -525,7 +541,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -613,7 +628,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -679,8 +694,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -688,8 +704,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #6B6D70;
@@ -749,7 +766,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -815,8 +832,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -827,8 +845,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -836,7 +855,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -921,7 +939,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -987,8 +1005,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -996,8 +1015,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #010205;
@@ -1058,7 +1078,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -1124,8 +1144,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -1136,8 +1157,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -1145,7 +1167,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -1231,7 +1252,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -1297,8 +1318,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -1306,8 +1328,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #010205;
@@ -1365,7 +1388,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -1431,8 +1454,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -1443,8 +1467,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -1452,7 +1477,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -1535,7 +1559,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -1601,8 +1625,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -1610,8 +1635,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #6B6D70;
@@ -1674,7 +1700,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -1740,8 +1766,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -1752,8 +1779,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -1761,7 +1789,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -1849,7 +1876,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -1915,8 +1942,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -1924,8 +1952,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #6B6D70;
@@ -1985,7 +2014,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -2051,8 +2080,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -2063,8 +2093,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -2072,7 +2103,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -2157,7 +2187,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -2223,8 +2253,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -2232,8 +2263,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #010205;
@@ -2294,7 +2326,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -2360,8 +2392,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #6B6D70;
@@ -2372,8 +2405,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -2381,7 +2415,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -2467,7 +2500,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -2533,8 +2566,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -2542,8 +2576,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 button {
   position: absolute;
   top: 0;
-  height: 3.375rem;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   width: 100%;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 0;
   background: transparent;
   border: 2px solid #010205;
@@ -2601,7 +2636,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -2667,8 +2702,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   --p-internal-dropdown-position: absolute;
   display: block;
   position: var(--p-internal-dropdown-position);
-  margin-top: -3.375rem;
-  padding-top: 3.375rem;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin-top: calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));
+  padding-top: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   left: 0;
   right: 0;
   color: #949598;
@@ -2679,8 +2715,9 @@ input {
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -2688,7 +2725,6 @@ input {
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -2771,7 +2807,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -2839,8 +2875,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -2848,7 +2885,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -2904,8 +2940,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -2913,7 +2950,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -2969,8 +3005,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -2978,7 +3015,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3034,8 +3070,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3043,7 +3080,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3099,8 +3135,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3108,7 +3145,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3164,8 +3200,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3173,7 +3210,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3229,8 +3265,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3238,7 +3275,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3296,8 +3332,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3305,7 +3342,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3363,8 +3399,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3372,7 +3409,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3430,8 +3466,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3439,7 +3476,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3497,8 +3533,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3506,7 +3543,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3564,8 +3600,9 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3573,7 +3610,6 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3631,8 +3667,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3640,7 +3677,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3696,8 +3732,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3705,7 +3742,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3761,8 +3797,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3770,7 +3807,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3826,8 +3862,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3835,7 +3872,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3891,8 +3927,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3900,7 +3937,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -3956,8 +3992,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -3965,7 +4002,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -4021,8 +4057,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -4030,7 +4067,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -4088,8 +4124,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -4097,7 +4134,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -4155,8 +4191,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -4164,7 +4201,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -4222,8 +4258,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -4231,7 +4268,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -4289,8 +4325,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -4298,7 +4335,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -4356,8 +4392,9 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   z-index: 1;
   bottom: 2px;
   left: 2px;
-  width: calc(100% - 52px);
-  height: 3.125rem;
+  width: calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 13px 16px;
   outline: 0;
   appearance: none;
@@ -4365,7 +4402,6 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   border: 0;
   border-radius: 4px;
   opacity: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   text-indent: 0;
@@ -4455,7 +4491,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #AFB0B3;
   cursor: pointer;
   text-align: left;
@@ -4555,7 +4591,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -4651,7 +4687,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #AFB0B3;
   cursor: pointer;
   text-align: left;
@@ -4747,7 +4783,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -4847,7 +4883,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #AFB0B3;
   cursor: pointer;
   text-align: left;
@@ -4947,7 +4983,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
@@ -5043,7 +5079,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #AFB0B3;
   cursor: pointer;
   text-align: left;
@@ -5139,7 +5175,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
-  min-height: 2.5rem;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
   text-align: left;
