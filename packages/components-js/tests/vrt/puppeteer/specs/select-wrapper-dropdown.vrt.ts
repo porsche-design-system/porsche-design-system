@@ -3,6 +3,13 @@ import { waitForComponentsReady } from '../../../e2e/puppeteer/helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
 import type { Theme } from '@porsche-design-system/components/dist/types/types';
 
+const blindText = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+            fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
+            justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper
+            nisi. Aenean vulputate eleifend tellus.`;
+
 it('should have no visual regression for :hover', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
@@ -80,6 +87,15 @@ it('should have no visual regression for :hover', async () => {
           (dropdownFilter as any).filter = true;
           (dropdownFilter as any).selectRef = document.createElement('select'); // without options
 
+          const dropdownMultiline = getDropdown('multiline', theme);
+          (dropdownMultiline as any).selectRef.append(
+            ...Array.from(Array(4)).map((_, idx) => {
+              const option = document.createElement('option');
+              option.textContent = `Option scrollable ${idx + 1} ${blindText}`;
+              return option;
+            })
+          );
+
           return [
             dropdownDefault,
             dropdownDisabled,
@@ -87,6 +103,7 @@ it('should have no visual regression for :hover', async () => {
             dropdownScrollable,
             dropdownDirectionUp,
             dropdownFilter,
+            dropdownMultiline,
           ];
         };
 
