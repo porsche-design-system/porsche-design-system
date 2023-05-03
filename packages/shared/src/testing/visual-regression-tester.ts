@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { Browser, ClickOptions, ElementHandle, Page, PuppeteerLifeCycleEvent } from 'puppeteer';
+import type { Browser, ClickOptions, ElementHandle, Page, PuppeteerLifeCycleEvent, ScreenshotClip } from 'puppeteer';
 import sharp from 'sharp';
 import pixelmatch from 'pixelmatch';
 
@@ -203,16 +203,30 @@ export class VisualRegressionTester {
   }
 
   private async createSnapshot(elementSelector: string, maskSelectors: string[]): Promise<sharp.Sharp> {
-    const buffer = await (elementSelector
-      ? ((
-          await this.page.$(elementSelector)
-        ).screenshot({
-          captureBeyondViewport: false,
-        }) as unknown as Promise<string>)
-      : (this.page.screenshot({
-          fullPage: true,
-          captureBeyondViewport: false,
-        }) as unknown as Promise<string>));
+    let clip: ScreenshotClip = null;
+
+    // elementHandle.screenshot() isn't working with disabled javascript which we use for SSR tests
+    // since puppeteer 19.11.1 most likely because of internal IntersectionObserver which is used to scroll the element into vide
+    // as a workaround we use the clipping feature of page.screenshot()
+    if (elementSelector) {
+      // inspired by https://github.com/puppeteer/puppeteer/blob/8124a7d5bfc1cfa8cb579271f78ce586efc62b8e/packages/puppeteer-core/src/common/ElementHandle.ts#L734
+      const elementHandle = await this.page.$(elementSelector);
+      const boundingBox = await elementHandle.boundingBox();
+
+      const cdpSession = await this.page.target().createCDPSession();
+      const layoutMetrics = await cdpSession.send('Page.getLayoutMetrics');
+      // Fallback to `layoutViewport` in case of using Firefox.
+      const { pageX, pageY } = layoutMetrics.cssVisualViewport || layoutMetrics.layoutViewport;
+
+      clip = Object.assign({}, boundingBox);
+      clip.x += pageX;
+      clip.y += pageY;
+    }
+
+    const buffer = await this.page.screenshot({
+      captureBeyondViewport: false,
+      ...(clip ? { clip } : { fullPage: true }),
+    });
 
     const rawImage = sharp(buffer);
 
