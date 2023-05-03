@@ -1,11 +1,8 @@
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import type { TestOptions, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
+import { VisualRegressionTester } from './visual-regression-tester';
+import type { TestOptions, VisualRegressionTestOptions } from './visual-regression-tester';
 import type { Page } from 'puppeteer';
 
-export type {
-  VisualRegressionTester,
-  VisualRegressionTestOptions,
-} from '@porsche-design-system/visual-regression-tester';
+export type { VisualRegressionTester, VisualRegressionTestOptions } from './visual-regression-tester';
 
 export const defaultViewports = [320, 480, 760, 1000, 1300, 1760] as const;
 export const extendedViewports = [...defaultViewports, 1920, 2560] as const;
