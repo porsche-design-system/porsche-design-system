@@ -5,22 +5,22 @@ export const ScssFocus = (): JSX.Element => (
     <h2>Focus</h2>
     <div className="playground">
       <button id="focusable-element-regular" className="focusable-element-regular">
-        Some label
+        Default
       </button>
     </div>
     <div className="playground">
       <button id="focusable-element-custom" className="focusable-element-custom">
-        Some label
+        Custom
       </button>
     </div>
     <div className="playground">
       <div className="focusable-element-pseudo">
-        <button id="focusable-element-pseudo">Some label</button>
+        <button id="focusable-element-pseudo">Pseudo</button>
       </div>
     </div>
     <div className="playground">
       <button id="focusable-element-custom-pseudo" className="focusable-element-custom-pseudo">
-        Some label
+        Custom Pseudo
       </button>
     </div>
   </>
