@@ -47,11 +47,6 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
     console.log(output);
   }
 
-  // with `axe-core` version 4.5.0 (2022-10-17) the rule `aria-required-children` was changed to fail for children which are not listed as required
-  // TODO: we skip this for now until https://github.com/porsche-design-system/porsche-design-system/issues/2193 is done
-  result.violations = result.violations.filter((violation) => {
-    return violation.id !== 'aria-required-children';
-  });
   amountOfViolations = result.violations.length;
 
   expect(amountOfViolations).toBe(0);
