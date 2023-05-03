@@ -81,15 +81,15 @@ it('should have no visual regression for :hover', async () => {
           (dropdownFilter as any).selectRef = document.createElement('select'); // without options
 
           const dropdownMultiline = getDropdown('multiline', theme);
-          (dropdownMultiline as any).selectRef.append(
-            ...Array.from(Array(2)).map((_, idx) => {
-              const option = document.createElement('option');
-              option.textContent = `Option multiline ${
-                idx + 1
-              } Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the top.`;
-              return option;
-            })
-          );
+          (dropdownMultiline as any).selectRef.innerHTML = Array.from(Array(2))
+            .map(
+              (_, idx) =>
+                `<option>Option multiline ${
+                  idx + 1
+                } Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the top.
+                </option>`
+            )
+            .join('');
 
           return [
             dropdownDefault,
