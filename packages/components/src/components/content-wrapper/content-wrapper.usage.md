@@ -6,6 +6,12 @@
 - … center the content area within the screen.
 - … set a maximum width for the content area.
 
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+This component is deprecated and will be removed with the next major release. 
+In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
+Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Types

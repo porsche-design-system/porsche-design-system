@@ -113,9 +113,9 @@ export const getComponentCss = (
       display: 'block',
       position: 'absolute',
       width: 0,
-      height: isHighContrastMode ? '4px' : weight === 'semi-bold' ? '2px' : '1.5px',
+      height: '2px',
       left: 0,
-      bottom: isHighContrastMode ? '-1px' : '-4px',
+      bottom: isHighContrastMode ? '0' : '-2px',
       background: isHighContrastMode ? getHighContrastColors().canvasTextColor : primaryColor,
       '&--enable-transition': {
         willChange: 'width',

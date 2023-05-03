@@ -129,6 +129,12 @@ export const getLinkButtonPureStyles = (
         flexShrink: '0',
         width: fontLineHeight,
         height: fontLineHeight,
+        // workaround for Safari to optimize vertical alignment of icons
+        // TODO: check if this is still needed after optimized icons are included
+        '@supports (width: round(down, 1px, 1px))': {
+          width: `round(down, ${fontLineHeight}, 1px)`,
+          height: `round(down, ${fontLineHeight}, 1px)`,
+        },
       },
       label: mergeDeep(
         buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
