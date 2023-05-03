@@ -13,7 +13,9 @@ const prepareAriaTypes = (): void => {
     .replace(/}/g, '  role?: AriaRole; }')
     .replace(/ {8}/g, '  ')
     .replace(/ {4}/g, '')};`;
-  const ariaRoleTypes = `export ${ariaRoleRawTypes.replace(/ {8}/g, '  ')};`;
+  const ariaRoleTypes = `export ${ariaRoleRawTypes
+    .replace(/ {8}/g, '  ')
+    .replace(/\n[ ]{2,}\| \(string & \{}\)/g, '')};`;
   const content = [
     '/* Auto Generated Below */',
     "type Booleanish = boolean | 'true' | 'false';",

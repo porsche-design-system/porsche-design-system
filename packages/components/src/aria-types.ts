@@ -258,5 +258,4 @@ export type AriaRole =
   | 'tooltip'
   | 'tree'
   | 'treegrid'
-  | 'treeitem'
-  | (string & {});
+  | 'treeitem';
