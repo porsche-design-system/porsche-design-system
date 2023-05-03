@@ -27,7 +27,6 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@axe-core/puppeteer": "^4.7.0",
     "@porsche-design-system/browser-notification": "4.1.4",
     "@porsche-design-system/components-js": "3.0.0-rc.1",
     "@porsche-design-system/shared": "0.0.0",
@@ -49,7 +48,7 @@
     "yup": "^1.1.1"
   },
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.6.0",
+    "@axe-core/puppeteer": "^4.7.0",
     "@porsche-design-system/assets": "5.0.2",
     "@types/node": "^18.16.1",
     "@types/prismjs": "^1.26.0",
