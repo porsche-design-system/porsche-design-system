@@ -322,7 +322,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           // Add PSelectWrapperDropdown component import
-          .replace(/(import\s+\{\s*PIcon)/, '$1, PSelectWrapperDropdown')
+          .replace(
+            /(import\s*{\s*PIcon\s*}\s*from\s*'\.\.\/components';\s*)/,
+            "$1import { PSelectWrapperDropdown } from '../components/select-wrapper-dropdown.wrapper';\r"
+          )
           // Remove hasCustomDropdown attribute
           .replace(/^\s*private\s+hasCustomDropdown\s*:\s*any\s*;\s*$/gm, '')
           // Add hasCustomDropdown fn
