@@ -5,7 +5,6 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 import type { Component } from '../helpers';
-import { Theme } from '@porsche-design-system/utilities';
 
 const components: Component[] = [
   'accordion',
@@ -70,7 +69,7 @@ const scenarioSelectWrapper = async (page: Page) => {
   await page.click('#open-options');
 };
 
-const highContrastTest = async (component: Component, theme: Theme) => {
+const highContrastTest = async (component: Component, theme: 'light' | 'dark') => {
   await vrtTest(
     getVisualRegressionStatesTester(),
     `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-high-contrast-${theme}`,
