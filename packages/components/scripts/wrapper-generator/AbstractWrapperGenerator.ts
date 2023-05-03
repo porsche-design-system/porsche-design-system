@@ -25,7 +25,7 @@ export abstract class AbstractWrapperGenerator {
   private dataStructureBuilder = DataStructureBuilder.Instance;
   protected intrinsicElements = this.inputParser.getIntrinsicElements();
   protected relevantComponentTagNames: TagName[] = [];
-  protected unexposedComponentTagNames: TagName[] = [];
+  protected unexposedComponentTagNames: TagName[] = INTERNAL_TAG_NAMES;
 
   public generate(): void {
     console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
@@ -75,7 +75,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFile = path.resolve(this.componentsDir, this.barrelFileName);
 
     const componentExports = this.relevantComponentTagNames
-      .filter((tagName) => !this.unexposedComponentTagNames.includes(tagName))
+      .filter((tagName) => this.unexposedComponentTagNames.includes(tagName))
       .map((component) => {
         const componentSubDir = this.getComponentSubDir(component);
         const componentFileNameWithoutExtension = this.stripFileExtension(component);
