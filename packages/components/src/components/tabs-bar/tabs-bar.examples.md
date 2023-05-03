@@ -230,20 +230,6 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
   @use '@porsche-design-system/components-js/styles' as *;
 
   :deep(div[role=tabpanel]) {
-    outline: 1px solid transparent;
-    outline-offset: 2px;
     margin-top: $pds-spacing-static-small;
-  }
-
-  :deep(.example--light div[role=tabpanel]:focus) {
-    outline-color: #000;
-  }
-
-  :deep(.example--dark div[role=tabpanel]:focus) {
-    outline-color: #FFF;
-  }
-
-  :deep(div[role=tabpanel]:focus:not(:focus-visible)) {
-    outline-color: transparent;
   }
 </style>

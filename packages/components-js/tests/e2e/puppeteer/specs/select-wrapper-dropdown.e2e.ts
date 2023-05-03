@@ -1040,15 +1040,15 @@ describe('accessibility', () => {
 
     await host.click();
     await waitForStencilLifecycle(page);
-    await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A' });
-    await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
+    await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A', interestingOnly: false });
+    await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B', interestingOnly: false });
 
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
     await host.click();
     await waitForStencilLifecycle(page);
-    await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Option A after click' });
-    await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Option B after click' });
+    await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Option A after click', interestingOnly: false });
+    await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Option B after click', interestingOnly: false });
   });
 
   it('should expose correct accessibility tree if description is set', async () => {

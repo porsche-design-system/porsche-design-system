@@ -36,7 +36,12 @@ const tagNamesWithSlottedAnchor = joinArrayElementsToString([
 ] as TagName[]);
 const tagNamesWithSlottedInputIndicator = joinArrayElementsToString(['p-text-field-wrapper'] as TagName[]);
 const tagNamesWithSlottedImage = joinArrayElementsToString(['p-table'] as TagName[]);
-const tagNamesWithSlottedPictureImage = joinArrayElementsToString(['p-button-tile', 'p-link-tile', 'p-link-tile-model-signature'] as TagName[]);
+const tagNamesWithSlottedPictureImage = joinArrayElementsToString([
+  'p-button-tile',
+  'p-link-tile',
+  'p-link-tile-model-signature',
+] as TagName[]);
+const tagNamesWithSiblingTabindex = joinArrayElementsToString(['p-tabs-bar'] as TagName[]);
 
 const normalizeStyles: Styles = {
   '@global': {
@@ -102,6 +107,17 @@ const slottedStyles: Styles = {
   },
 };
 
+const siblingStyles: Styles = {
+  '@global': {
+    '%%tagNamesWithSiblingTabindex%%': {
+      '& ~ [tabindex="0"][role="tabpanel"]': addImportantToEachRule({
+        ...getFocusStyle({ offset: 'small' }),
+        borderRadius: '1px', // needs to be overwritten due to scaled border-radius if offset is set
+      }),
+    },
+  },
+};
+
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
   prefix?: string | string[];
@@ -122,12 +138,14 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const tagNamesWithSlottedInputIndicator = [${tagNamesWithSlottedInputIndicator}];
   const tagNamesWithSlottedImage = [${tagNamesWithSlottedImage}];
   const tagNamesWithSlottedPictureImage = [${tagNamesWithSlottedPictureImage}];
+  const tagNamesWithSiblingTabindex = [${tagNamesWithSiblingTabindex}];
 
   const prefixedTagNames = getPrefixedTagNames(tagNames, prefix);
   const prefixedTagNamesWithSlottedAnchor = getPrefixedTagNames(tagNamesWithSlottedAnchor, prefix);
   const prefixedTagNamesWithSlottedInputIndicator = getPrefixedTagNames(tagNamesWithSlottedInputIndicator, prefix);
   const prefixedTagNamesWithSlottedImage = getPrefixedTagNames(tagNamesWithSlottedImage, prefix);
   const prefixedTagNamesWithSlottedPictureImage = getPrefixedTagNames(tagNamesWithSlottedPictureImage, prefix);
+  const prefixedTagNamesWithSiblingTabindex = getPrefixedTagNames(tagNamesWithSiblingTabindex, prefix);
 
   throwIfRunInBrowser('getInitialStyles');
 
@@ -141,8 +159,11 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
     .replace(/%%tagNamesWithSlottedInputIndicator%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedInputIndicator.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedImage.map(tagName => tagName +' $1').join() +'$2')
     .replace(/%%tagNamesWithSlottedPictureImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedPictureImage.map(tagName => tagName +' $1').join() +'$2');
+  const siblingStyles = \`${getMinifiedCss(siblingStyles)}\`
+    .replace(/%%tagNamesWithSiblingTabindex%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSiblingTabindex.map(tagName => tagName +' $1').join() +'$2');
 
-  const styles = normalizeStyles.concat(hydrationStyles, slottedStyles);
+
+  const styles = normalizeStyles.concat(hydrationStyles, slottedStyles, siblingStyles);
 
   return format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`

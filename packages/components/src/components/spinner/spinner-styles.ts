@@ -4,8 +4,8 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  getHiddenTextJssStyle,
   getHighContrastColors,
-  getScreenReaderOnlyJssStyle,
   getThemedColors,
   hostHiddenStyles,
 } from '../../styles';
@@ -90,6 +90,6 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       boxSizing: 'border-box',
       strokeWidth: 1.5,
     },
-    'sr-only': getScreenReaderOnlyJssStyle(),
+    'sr-only': getHiddenTextJssStyle(),
   });
 };

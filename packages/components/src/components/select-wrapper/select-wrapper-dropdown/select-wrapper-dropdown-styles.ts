@@ -4,12 +4,12 @@ import type { JssStyle, Styles } from 'jss';
 import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
 import {
   getInsetJssStyle,
-  getTextHiddenJssStyle,
   getTransition,
   getThemedColors,
   addImportantToRule,
   hoverMediaQuery,
   getHighContrastColors,
+  getHiddenTextJssStyle,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -217,7 +217,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       '&[role=status]': {
         cursor: 'not-allowed',
       },
-      '&__sr': getTextHiddenJssStyle(true),
+      '&__sr': getHiddenTextJssStyle(),
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not([role=status]):hover': {
           color: isHighContrastMode ? highlightColor : primaryColor,

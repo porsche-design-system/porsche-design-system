@@ -2,7 +2,7 @@ import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import type { ThemedColors } from './';
-import { spacingStaticSmall, borderWidthBase, themeLightStateFocus } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, themeLightStateFocus } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -73,47 +73,27 @@ export const focusPseudoJssStyle: JssStyle = {
   },
 };
 
-export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
+/**
+ * Returns a JSS style object that can be used to visually hide text in the browser, while still allowing it to be accessed by screen readers.
+ * @param {boolean} isHidden - A boolean value indicating whether the text should be hidden or not. Defaults to true.
+ * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
+ * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
+ */
+export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle =>
   isHidden
-    ? getScreenReaderOnlyJssStyle()
+    ? {
+        position: 'absolute',
+        width: 0,
+        height: '1px',
+        textIndent: '-999999px',
+      }
     : {
         position: 'static',
         width: 'auto',
         height: 'auto',
-        margin: 0,
-        overflow: 'visible',
-        clip: 'auto',
-        clipPath: 'none',
-        whiteSpace: 'normal',
+        textIndent: 0,
+        ...isShownJssStyle,
       };
-
-export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
-  ...getTextHiddenJssStyle(isHidden),
-  width: 'fit-content',
-});
-
-export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
-  ...getTextHiddenJssStyle(isHidden),
-  width: 'auto',
-  padding: `2px 0 0 ${spacingStaticSmall}`,
-});
-
-/**
- * Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
- */
-export const getScreenReaderOnlyJssStyle = (): JssStyle => {
-  return {
-    position: 'absolute',
-    height: '1px',
-    width: '1px',
-    border: '0',
-    margin: '-1px',
-    overflow: 'hidden',
-    clip: 'rect(1px,1px,1px,1px)',
-    clipPath: 'inset(50%)',
-    whiteSpace: 'nowrap',
-  };
-};
 
 export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
   backfaceVisibility: 'hidden',

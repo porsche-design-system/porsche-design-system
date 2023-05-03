@@ -21,11 +21,12 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.21.0",
+    "@babel/preset-typescript": "^7.21.4",
     "@porsche-design-system/assets": "5.0.2",
-    "@types/react": "^18.0.28",
-    "@uxpin/merge-cli": "2.10.0",
-    "babel-loader": "^8.3.0",
-    "typescript": "~4.9.5"
+    "@types/react": "^18.2.0",
+    "@uxpin/merge-cli": "3.0.1",
+    "babel-loader": "^9.1.2",
+    "webpack": "^5.80.0",
+    "typescript": "~5.0.4"
   }
 }

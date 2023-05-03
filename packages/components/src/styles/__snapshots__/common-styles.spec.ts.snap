@@ -42,30 +42,39 @@ exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
 }
 `;
 
-exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
+exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
 {
-  "clip": "auto",
-  "clipPath": "none",
   "height": "auto",
-  "margin": 0,
-  "overflow": "visible",
   "position": "static",
-  "whiteSpace": "normal",
+  "textIndent": 0,
   "width": "fit-content",
 }
 `;
 
-exports[`getFormTextHiddenJssStyle() should return correct JssStyle for isHidden: true 1`] = `
+exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: undefined 1`] = `
 {
-  "border": "0",
-  "clip": "rect(1px,1px,1px,1px)",
-  "clipPath": "inset(50%)",
+  "height": "auto",
+  "position": "static",
+  "textIndent": 0,
+  "width": "auto",
+}
+`;
+
+exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: true and shownStyles: { width: 'fit-content' } 1`] = `
+{
   "height": "1px",
-  "margin": "-1px",
-  "overflow": "hidden",
   "position": "absolute",
-  "whiteSpace": "nowrap",
-  "width": "fit-content",
+  "textIndent": "-999999px",
+  "width": 0,
+}
+`;
+
+exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: true and shownStyles: undefined 1`] = `
+{
+  "height": "1px",
+  "position": "absolute",
+  "textIndent": "-999999px",
+  "width": 0,
 }
 `;
 
@@ -102,32 +111,5 @@ exports[`getInsetJssStyle() should return correct JssStyle for parameter: undefi
   "left": 0,
   "right": 0,
   "top": 0,
-}
-`;
-
-exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: false 1`] = `
-{
-  "clip": "auto",
-  "clipPath": "none",
-  "height": "auto",
-  "margin": 0,
-  "overflow": "visible",
-  "position": "static",
-  "whiteSpace": "normal",
-  "width": "auto",
-}
-`;
-
-exports[`getTextHiddenJssStyle() should return correct JssStyle for isHidden: true 1`] = `
-{
-  "border": "0",
-  "clip": "rect(1px,1px,1px,1px)",
-  "clipPath": "inset(50%)",
-  "height": "1px",
-  "margin": "-1px",
-  "overflow": "hidden",
-  "position": "absolute",
-  "whiteSpace": "nowrap",
-  "width": "1px",
 }
 `;
