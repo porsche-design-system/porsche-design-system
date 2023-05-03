@@ -1338,7 +1338,7 @@ exports[`should match snapshot 1`] = `
     "props": {
       "aria": null,
       "color": "primary",
-      "lazy": false,
+      "lazy": null,
       "name": "arrow-right",
       "size": "small",
       "source": null,
