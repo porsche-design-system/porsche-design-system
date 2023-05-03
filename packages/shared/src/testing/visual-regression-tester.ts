@@ -211,9 +211,28 @@ export class VisualRegressionTester {
     if (elementSelector) {
       // inspired by https://github.com/puppeteer/puppeteer/blob/8124a7d5bfc1cfa8cb579271f78ce586efc62b8e/packages/puppeteer-core/src/common/ElementHandle.ts#L734
       const elementHandle = await this.page.$(elementSelector);
-      const boundingBox = await elementHandle.boundingBox();
-
       const cdpSession = await this.page.target().createCDPSession();
+
+      // taken from https://github.com/puppeteer/puppeteer/blob/8124a7d5bfc1cfa8cb579271f78ce586efc62b8e/packages/puppeteer-core/src/common/ElementHandle.ts#L267
+      try {
+        await cdpSession.send('DOM.scrollIntoViewIfNeeded', {
+          objectId: elementHandle.remoteObject().objectId,
+        });
+      } catch (error) {
+        // Fallback to Element.scrollIntoView if DOM.scrollIntoViewIfNeeded is not supported
+        await elementHandle.evaluate(async (element): Promise<void> => {
+          element.scrollIntoView({
+            block: 'center',
+            inline: 'center',
+            // @ts-expect-error Chrome still supports behavior: instant but
+            // it's not in the spec so TS shouts We don't want to make this
+            // breaking change in Puppeteer yet so we'll ignore the line.
+            behavior: 'instant',
+          });
+        });
+      }
+
+      const boundingBox = await elementHandle.boundingBox();
       const layoutMetrics = await cdpSession.send('Page.getLayoutMetrics');
       // Fallback to `layoutViewport` in case of using Firefox.
       const { pageX, pageY } = layoutMetrics.cssVisualViewport || layoutMetrics.layoutViewport;
