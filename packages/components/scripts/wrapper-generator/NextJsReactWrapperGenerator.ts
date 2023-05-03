@@ -7,10 +7,10 @@ import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';
-  // TODO: Dont expose p-select-wrapper-dropdown component in barrel file
   protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES.filter(
     (tagName) => tagName !== 'p-select-wrapper-dropdown'
   );
+  protected unexposedComponentTagNames: TagName[] = ['p-select-wrapper-dropdown'];
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes);
