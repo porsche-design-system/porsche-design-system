@@ -75,7 +75,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFile = path.resolve(this.componentsDir, this.barrelFileName);
 
     const componentExports = this.relevantComponentTagNames
-      .filter((tagName) => this.unexposedComponentTagNames.includes(tagName))
+      .filter((tagName) => !this.unexposedComponentTagNames.includes(tagName))
       .map((component) => {
         const componentSubDir = this.getComponentSubDir(component);
         const componentFileNameWithoutExtension = this.stripFileExtension(component);
