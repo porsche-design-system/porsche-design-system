@@ -145,7 +145,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
       newFileContent = newFileContent
         .replace(/PrefixedTagNames.p([A-Za-z]+)/g, 'P$1') // reference imported components
-        .replace(/<(?:PSelectWrapperDropdown|PToastItem)[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
+        .replace(/<PToastItem[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
 
       // rewire default slot
       if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
@@ -313,6 +313,25 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-select-wrapper-dropdown') {
+        // Remove markup after button
+        newFileContent = newFileContent
+          .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
+          // Replace props in isOpen, optionMaps, searchString
+          .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1');
+      } else if (tagName === 'p-select-wrapper') {
+        newFileContent = newFileContent
+          .replace(/(import\s+\{\s*PIcon)/, '$1, PSelectWrapperDropdown')
+          .replace(/^\s*private\s+hasCustomDropdown\s*:\s*any\s*;\s*$/gm, '')
+          .replace(
+            /(public\s+render\(\): JSX\.Element\s*{)/,
+            '$1\nconst hasCustomDropdown = isCustomDropdown(this.props.filter, this.props.native);'
+          )
+          .replace(/this\.props\.hasCustomDropdown/, 'hasCustomDropdown');
+        // add const hasCustomDropdown = isCustomDropdown(this.props.filter, this.props.native);
+        // add import for hasCustomDropdown
+        // replace props.hasCustomDropdown with hasCustomDropdown
+        // <PSelectWrapperDropdown
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
