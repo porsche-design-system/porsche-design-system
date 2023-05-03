@@ -409,9 +409,10 @@ describe('lifecycle', () => {
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree of stepper-horizontal', async () => {
     await initStepperHorizontal({ amount: 3 });
+    const host = await getHost();
     const [button1, button2] = await getButtons();
 
-    await expectA11yToMatchSnapshot(page, button1, { message: 'Of Button' });
+    await expectA11yToMatchSnapshot(page, host, { interestingOnly: false });
     expect(await getAttribute(button1, 'aria-current')).toBe('step');
     expect(await getAttribute(button2, 'aria-current')).toBe(null);
   });
