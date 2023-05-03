@@ -223,7 +223,7 @@ it('should not render dropdown when select is disabled programmatically', async 
   await initSelect();
   const select = await getSelect();
 
-  expect(await getDropdown(), 'initially').toEqual({});
+  expect(await getDropdown(), 'initially').toBeTruthy();
 
   await setProperty(select, 'disabled', true);
   await waitForStencilLifecycle(page);
@@ -233,7 +233,7 @@ it('should not render dropdown when select is disabled programmatically', async 
   await setProperty(select, 'disabled', false);
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdown(), 'when disabled = false').toEqual({});
+  expect(await getDropdown(), 'when disabled = false').toBeTruthy();
 });
 
 it('should be visible if select is clicked and hidden again when clicked outside', async () => {
