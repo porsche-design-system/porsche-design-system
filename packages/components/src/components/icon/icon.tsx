@@ -8,6 +8,7 @@ import {
   TEXT_SIZES,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
@@ -47,7 +48,7 @@ export class Icon {
    * Has no effect anymore
    * @deprecated since v3.0.0, will be removed with next major release
    */
-  @Prop() public lazy?: boolean = false;
+  @Prop() public lazy?: boolean;
 
   /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
@@ -57,6 +58,7 @@ export class Icon {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Icon>(this, 'lazy');
     const deprecationMap: Record<IconColorDeprecated, Exclude<IconColor, IconColorDeprecated>> = {
       brand: 'primary',
       default: 'primary',
