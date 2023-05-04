@@ -14,7 +14,6 @@ import {
 } from '../helpers';
 import type { Page } from 'puppeteer';
 import { devices } from 'puppeteer';
-import { waitFor } from '@testing-library/dom';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
