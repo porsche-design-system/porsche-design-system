@@ -23,8 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `focus` state of tabpanel
   - Indicator bar height
 - Optimize icon/text alignment of `Link Pure` and `Button Pure` in Safari
-- `Select Wrapper` Multiline option adjusted and input/button scaling height
-  [#2524](https://github.com/porsche-design-system/porsche-design-system/pull/2524)
+- `Select Wrapper` multiline option height and scaling behavior
+  ([#2524](https://github.com/porsche-design-system/porsche-design-system/pull/2524))
 
 #### Added
 

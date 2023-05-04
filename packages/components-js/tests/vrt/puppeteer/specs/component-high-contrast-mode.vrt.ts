@@ -69,7 +69,7 @@ const scenarioSelectWrapper = async (page: Page) => {
   await page.click('#open-options');
 };
 
-const highContrastTest = async (component: Component, theme: 'light' | 'dark') => {
+const highContrastTest = async (component: Component, scheme: 'light' | 'dark') => {
   await vrtTest(
     getVisualRegressionStatesTester(),
     `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-high-contrast-${theme}`,
@@ -79,7 +79,7 @@ const highContrastTest = async (component: Component, theme: 'light' | 'dark') =
       ...(component === 'select-wrapper' && { scenario: scenarioSelectWrapper }),
       ...(['modal', 'banner'].includes(component) && { scenario: scenarioModalOrBanner }),
       forcedColorsEnabled: true,
-      prefersColorScheme: theme,
+      prefersColorScheme: scheme,
     }
   );
 };
