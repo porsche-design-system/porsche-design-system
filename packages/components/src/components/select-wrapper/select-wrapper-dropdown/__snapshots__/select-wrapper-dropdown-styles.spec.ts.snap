@@ -405,39 +405,6 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
@@ -447,65 +414,9 @@ ul {
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: false, filter: true and theme: light 1`] = `
@@ -573,39 +484,6 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
@@ -618,65 +496,9 @@ ul {
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: false and theme: light 1`] = `
@@ -712,104 +534,15 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
     border-color: #010205;
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: true and theme: light 1`] = `
@@ -877,39 +610,6 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
     border-color: #010205;
@@ -919,65 +619,9 @@ ul {
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: false and theme: light 1`] = `
@@ -1053,6 +697,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -1101,9 +748,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -1222,6 +866,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -1270,9 +917,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -1353,6 +997,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -1401,9 +1048,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -1519,6 +1163,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -1567,9 +1214,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -1613,39 +1257,6 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
@@ -1655,65 +1266,9 @@ ul {
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: false, filter: true and theme: light 1`] = `
@@ -1781,39 +1336,6 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   :host(:hover) {
     color: #010205;
@@ -1826,65 +1348,9 @@ ul {
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: false and theme: light 1`] = `
@@ -1920,104 +1386,15 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   button:not(:disabled):not(:focus):hover {
     border-color: #010205;
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: true and theme: light 1`] = `
@@ -2085,39 +1462,6 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
 @media(hover:hover) {
   input:not(:disabled)+span:hover {
     border-color: #010205;
@@ -2127,65 +1471,9 @@ ul {
   }
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .sr-text {
   display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: false and theme: light 1`] = `
@@ -2261,6 +1549,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -2309,9 +1600,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -2430,6 +1718,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -2478,9 +1769,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -2561,6 +1849,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -2609,9 +1900,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -2727,6 +2015,9 @@ ul {
   }
 }
 
+.sr-text {
+  display: none;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -2775,9 +2066,6 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.sr-text {
-  display: none;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -4372,197 +3660,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: dark 1`] = `
-"ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #88898C;
-  border-top: 1px solid #88898C !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #AFB0B3;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #FBFCFF;
-  background: #212225;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #7E7F82;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
-.sr-text {
-  display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #FBFCFF;
-    background: #212225;
-  }
-}
-"
-`;
-
-exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: light 1`] = `
-"ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
-.sr-text {
-  display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #010205;
-    background: #EEEFF2;
-  }
-}
-"
-`;
-
-exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: dark 1`] = `
+exports[`getListStyles() should return correct css for direction: down, isOpen: dark and theme: %s 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4641,8 +3739,93 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .optgroup~.option {
   padding-left: 24px;
 }
-.sr-text {
+@media(hover:hover) {
+  .option:not([aria-disabled]):not([role=status]):hover {
+    color: #FBFCFF;
+    background: #212225;
+  }
+}
+"
+`;
+
+exports[`getListStyles() should return correct css for direction: down, isOpen: dark and theme: %s 2`] = `
+"ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: var(--p-internal-dropdown-position);
+  padding: 6px;
+  margin: 0;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: calc(100% - 2px);
+  box-sizing: border-box;
+  max-height: 416px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  border: 2px solid #FBFCFF;
+  border-top: 1px solid #88898C !important;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #AFB0B3;
+  cursor: pointer;
+  text-align: left;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
+  background: #212225;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.option--hidden {
   display: none;
+}
+.optgroup {
+  display: block;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
+}
+.optgroup~.option {
+  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -4653,7 +3836,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: light 1`] = `
+exports[`getListStyles() should return correct css for direction: down, isOpen: light and theme: %s 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4732,9 +3915,6 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .optgroup~.option {
   padding-left: 24px;
 }
-.sr-text {
-  display: none;
-}
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
@@ -4744,102 +3924,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: dark 1`] = `
-"ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position);
-  padding: 6px;
-  margin: 0;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #88898C;
-  border-bottom: 1px solid #88898C !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #AFB0B3;
-  cursor: pointer;
-  text-align: left;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.option--highlighted, .option--selected {
-  color: #FBFCFF;
-  background: #212225;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #7E7F82;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
-.sr-text {
-  display: none;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
-    color: #FBFCFF;
-    background: #212225;
-  }
-}
-"
-`;
-
-exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: light 1`] = `
+exports[`getListStyles() should return correct css for direction: down, isOpen: light and theme: %s 2`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4854,20 +3939,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: calc(100% - 2px);
-  opacity: 0;
-  overflow: hidden;
-  height: 1px;
-  pointer-events: none;
+  top: calc(100% - 2px);
   box-sizing: border-box;
   max-height: 416px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: 2px solid #6B6D70;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border: 2px solid #010205;
+  border-top: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
   transition: border-color var(--p-transition-duration, .24s) ease;
@@ -4922,9 +4003,6 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
 .optgroup~.option {
   padding-left: 24px;
 }
-.sr-text {
-  display: none;
-}
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
@@ -4934,7 +4012,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: dark 1`] = `
+exports[`getListStyles() should return correct css for direction: up, isOpen: dark and theme: %s 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -5013,8 +4091,93 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
 .optgroup~.option {
   padding-left: 24px;
 }
-.sr-text {
+@media(hover:hover) {
+  .option:not([aria-disabled]):not([role=status]):hover {
+    color: #FBFCFF;
+    background: #212225;
+  }
+}
+"
+`;
+
+exports[`getListStyles() should return correct css for direction: up, isOpen: dark and theme: %s 2`] = `
+"ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: var(--p-internal-dropdown-position);
+  padding: 6px;
+  margin: 0;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 2px);
+  box-sizing: border-box;
+  max-height: 416px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  border: 2px solid #FBFCFF;
+  border-bottom: 1px solid #88898C !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #AFB0B3;
+  cursor: pointer;
+  text-align: left;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
+  background: #212225;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.option--hidden {
   display: none;
+}
+.optgroup {
+  display: block;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
+}
+.optgroup~.option {
+  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
@@ -5025,7 +4188,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: light 1`] = `
+exports[`getListStyles() should return correct css for direction: up, isOpen: light and theme: %s 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -5104,8 +4267,93 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
 .optgroup~.option {
   padding-left: 24px;
 }
-.sr-text {
+@media(hover:hover) {
+  .option:not([aria-disabled]):not([role=status]):hover {
+    color: #010205;
+    background: #EEEFF2;
+  }
+}
+"
+`;
+
+exports[`getListStyles() should return correct css for direction: up, isOpen: light and theme: %s 2`] = `
+"ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: var(--p-internal-dropdown-position);
+  padding: 6px;
+  margin: 0;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 2px);
+  box-sizing: border-box;
+  max-height: 416px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  border: 2px solid #010205;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #535457;
+  cursor: pointer;
+  text-align: left;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+  background: #EEEFF2;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
   display: none;
+}
+.optgroup {
+  display: block;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
+}
+.optgroup~.option {
+  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
