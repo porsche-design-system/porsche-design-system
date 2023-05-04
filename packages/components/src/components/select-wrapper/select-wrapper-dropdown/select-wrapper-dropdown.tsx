@@ -170,54 +170,56 @@ export class SelectWrapperDropdown {
               {this.description}
             </div>
           ),
-          <ul
-            id={dropdownId}
-            role="listbox"
-            tabIndex={-1}
-            {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
-            ref={(el) => (this.listElement = el)}
-          >
-            {this.filter && !hasFilterResults(this.optionMaps) ? (
-              <li class="option" aria-live="polite" role="status">
-                <span aria-hidden="true">---</span>
-                <span class="option__sr">No results found</span>
-              </li>
-            ) : (
-              this.optionMaps.map((option, index) => {
-                const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
-                return [
-                  title && (
-                    <span class="optgroup" role="presentation">
-                      {title}
-                    </span>
-                  ),
-                  <li
-                    id={`option-${index}`}
-                    role="option"
-                    class={{
-                      ['option']: true,
-                      ['option--selected']: selected,
-                      ['option--highlighted']: highlighted,
-                      ['option--disabled']: disabled,
-                      ['option--hidden']: hidden || initiallyHidden,
-                    }}
-                    onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                    {...getOptionAriaAttributes(option)}
-                  >
-                    {value}
-                    {selected && !disabled && (
-                      <PrefixedTagNames.pIcon
-                        aria-hidden="true"
-                        name="check"
-                        color={disabled ? 'state-disabled' : 'primary'}
-                        theme={this.theme}
-                      />
-                    )}
-                  </li>,
-                ];
-              })
-            )}
-          </ul>,
+          this.isOpen && (
+            <ul
+              id={dropdownId}
+              role="listbox"
+              tabIndex={-1}
+              {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
+              ref={(el) => (this.listElement = el)}
+            >
+              {this.filter && !hasFilterResults(this.optionMaps) ? (
+                <li class="option" aria-live="polite" role="status">
+                  <span aria-hidden="true">---</span>
+                  <span class="option__sr">No results found</span>
+                </li>
+              ) : (
+                this.optionMaps.map((option, index) => {
+                  const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
+                  return [
+                    title && (
+                      <span class="optgroup" role="presentation">
+                        {title}
+                      </span>
+                    ),
+                    <li
+                      id={`option-${index}`}
+                      role="option"
+                      class={{
+                        ['option']: true,
+                        ['option--selected']: selected,
+                        ['option--highlighted']: highlighted,
+                        ['option--disabled']: disabled,
+                        ['option--hidden']: hidden || initiallyHidden,
+                      }}
+                      onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
+                      {...getOptionAriaAttributes(option)}
+                    >
+                      {value}
+                      {selected && !disabled && (
+                        <PrefixedTagNames.pIcon
+                          aria-hidden="true"
+                          name="check"
+                          color={disabled ? 'state-disabled' : 'primary'}
+                          theme={this.theme}
+                        />
+                      )}
+                    </li>,
+                  ];
+                })
+              )}
+            </ul>
+          ),
         ]}
       </Host>
     );

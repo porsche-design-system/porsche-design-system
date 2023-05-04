@@ -151,7 +151,7 @@ export const getFilterStyles = (
   };
 };
 
-export const getListStyles = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): Styles => {
+export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
   const {
     primaryColor,
@@ -178,18 +178,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         left: 0,
         right: 0,
         [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 2px)', // 2px border + 2px safety for rounded corners
-        ...(!isOpen && {
-          opacity: 0,
-          overflow: 'hidden',
-          height: '1px',
-          pointerEvents: 'none',
-        }),
         boxSizing: 'border-box',
         maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
-        border: `2px solid ${isOpen ? primaryColor : contrastMediumColor}`,
+        border: `2px solid ${primaryColor}`,
         [isDirectionDown ? 'borderTop' : 'borderBottom']: addImportantToRule(`1px solid ${contrastMediumColor}`),
         ...(isDirectionDown
           ? ['borderBottomLeftRadius', 'borderBottomRightRadius']
@@ -251,9 +245,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         paddingLeft: '24px',
       },
     },
-    'sr-text': {
-      display: 'none',
-    },
   };
 };
 
@@ -292,11 +283,14 @@ export const getComponentCss = (
               })),
           },
         },
+        'sr-text': {
+          display: 'none',
+        },
       },
       filter
         ? getFilterStyles(direction, isOpen, state, disabled, theme)
         : getButtonStyles(direction, isOpen, state, theme),
-      getListStyles(direction, isOpen, theme)
+      isOpen && getListStyles(direction, theme)
     )
   );
 };
