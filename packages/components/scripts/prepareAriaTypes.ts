@@ -10,7 +10,10 @@ const prepareAriaTypes = (): void => {
   const [, ariaRawTypes] = /interface AriaAttributes ({[\s\S]*?})/.exec(reactTypes) || [];
   const [, ariaRoleRawTypes] = /(type AriaRole [\s\S]*?\))/.exec(reactTypes) || [];
   const ariaTypes = `export type AriaAttributes = ${ariaRawTypes
-    .replace(/}/g, '  role?: AriaRole; }')
+    .replace(
+      /}/g,
+      '  /** All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions */\n  role?: AriaRole;\n}'
+    )
     .replace(/ {8}/g, '  ')
     .replace(/ {4}/g, '')};`;
   const ariaRoleTypes = `export ${ariaRoleRawTypes

@@ -187,7 +187,9 @@ export type AriaAttributes = {
   'aria-valuenow'?: number | undefined;
   /** Defines the human readable text alternative of aria-valuenow for a range widget. */
   'aria-valuetext'?: string | undefined;
-  role?: AriaRole; };
+  /** All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions */
+  role?: AriaRole;
+};
 
 export type AriaRole =
   | 'alert'
