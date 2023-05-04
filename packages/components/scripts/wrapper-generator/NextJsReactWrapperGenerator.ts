@@ -10,9 +10,6 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES.filter(
     (tagName) => tagName !== 'p-select-wrapper-dropdown'
   );
-  protected unexposedComponentTagNames: TagName[] = INTERNAL_TAG_NAMES.filter(
-    (tagName) => tagName !== 'p-select-wrapper-dropdown'
-  );
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes);
