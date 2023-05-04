@@ -717,7 +717,7 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
 

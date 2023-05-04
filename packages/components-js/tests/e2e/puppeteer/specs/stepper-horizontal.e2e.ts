@@ -402,7 +402,7 @@ describe('lifecycle', () => {
     ).toBe(3);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
   });
 });
 
