@@ -115,8 +115,13 @@ export class StepperHorizontal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host role="list">
-        <PrefixedTagNames.pScroller class="scroller" theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
+      <Host>
+        <PrefixedTagNames.pScroller
+          class="scroller"
+          aria={{ role: 'list' }}
+          theme={this.theme}
+          ref={(el) => (this.scrollerElement = el)}
+        >
           <slot />
         </PrefixedTagNames.pScroller>
       </Host>

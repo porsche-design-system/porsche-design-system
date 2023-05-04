@@ -966,7 +966,6 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
 exports[`manual test cases should pass internal props correctly to p-stepper-horizontal-item 1`] = `
 <p-stepper-horizontal
   class="ssr"
-  role="list"
 >
   <template
     shadowroot="open"
@@ -993,6 +992,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
           >
             <div
               class="scroll-wrapper"
+              role="list"
             >
               <slot />
               <div
@@ -1130,7 +1130,6 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
         </style>
         <p-scroller
           class="scroller ssr"
-          role="tablist"
         >
           <template
             shadowroot="open"
@@ -1147,6 +1146,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
               >
                 <div
                   class="scroll-wrapper"
+                  role="tablist"
                 >
                   <slot />
                   <div
@@ -6070,7 +6070,6 @@ circle:last-child {
 exports[`should render dsr component for PStepperHorizontal 1`] = `
 <p-stepper-horizontal
   class="ssr"
-  role="list"
 >
   <template
     shadowroot="open"
@@ -6220,6 +6219,7 @@ button:hover {
           >
             <div
               class="scroll-wrapper"
+              role="list"
             >
               <slot />
               <div
@@ -7077,7 +7077,6 @@ exports[`should render dsr component for PTabs 1`] = `
         </style>
         <p-scroller
           class="scroller ssr"
-          role="tablist"
         >
           <template
             shadowroot="open"
@@ -7206,6 +7205,7 @@ button:hover {
               >
                 <div
                   class="scroll-wrapper"
+                  role="tablist"
                 >
                   <slot />
                   <div
@@ -7426,7 +7426,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
     </style>
     <p-scroller
       class="scroller ssr"
-      role="tablist"
     >
       <template
         shadowroot="open"
@@ -7555,6 +7554,7 @@ button:hover {
           >
             <div
               class="scroll-wrapper"
+              role="tablist"
             >
               <slot />
               <div

@@ -715,9 +715,10 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
+    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
 
