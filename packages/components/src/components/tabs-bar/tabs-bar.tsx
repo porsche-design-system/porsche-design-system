@@ -171,7 +171,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
-        role="tablist"
+        aria={{ role: 'tablist' }}
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}

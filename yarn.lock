@@ -419,12 +419,12 @@
   resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.10.1.tgz#70e45678f06c72fa2e350e8553ec4a4d72b92e06"
   integrity sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==
 
-"@axe-core/puppeteer@^4.6.0":
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.6.1.tgz#7f1ed892d34498e8af3d0b2f6a9d78d571bfe7b9"
-  integrity sha512-l440F67m/XlDgaWA4jbSXYxmwC0Di6MqVU6ns+HROWS8/+RuevppvyBveRmh+oC+OMgNF+mcF/ayzCEjc24pcQ==
+"@axe-core/puppeteer@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.7.0.tgz#ff4782b2726f9e3b73be8a7f5148a16d32a79694"
+  integrity sha512-f4n4OKQ7ZVxv3K3xizvwWlk+C6mNrxqDv/sFz10uHzbDGxSky5VZHGpttibt3uq0AAuNofN3vs/DSxfQ1Kf28w==
   dependencies:
-    axe-core "^4.6.3"
+    axe-core "^4.7.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.0", "@babel/code-frame@^7.18.6", "@babel/code-frame@^7.21.4", "@babel/code-frame@^7.8.3":
   version "7.21.4"
@@ -6446,7 +6446,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.12.0.tgz#ce1c9d143389679e253b314241ea9aa5cec980d3"
   integrity sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==
 
-axe-core@^4.6.2, axe-core@^4.6.3:
+axe-core@^4.6.2, axe-core@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.7.0.tgz#34ba5a48a8b564f67e103f0aa5768d76e15bbbbf"
   integrity sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==

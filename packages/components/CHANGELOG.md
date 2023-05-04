@@ -23,11 +23,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `focus` state of tabpanel
   - Indicator bar height
 - Optimize icon/text alignment of `Link Pure` and `Button Pure` in Safari
+- Fixed accessibility issues of `Tabs`, `Tabs Bar` and `Stepper Horizontal` to comply with v.4.7.0 of `axe-core`
+  ([#2530](https://github.com/porsche-design-system/porsche-design-system/pull/2530))
 
 #### Added
 
 - Deprecation warning to `Icon` component if `lazy` prop is used
   ([#2521](https://github.com/porsche-design-system/porsche-design-system/pull/2521))
+- `aria` prop to `Scroller` component
+  ([#2530](https://github.com/porsche-design-system/porsche-design-system/pull/2530))
 
 ### [3.0.0-rc.1] - 2023-04-19
 

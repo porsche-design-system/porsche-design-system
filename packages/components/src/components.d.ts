@@ -41,7 +41,7 @@ import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
-import { ScrollerAlignScrollIndicator, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -97,7 +97,7 @@ export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
-export { ScrollerAlignScrollIndicator, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -1137,9 +1137,13 @@ export namespace Components {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator
+          * Sets the vertical position of scroll indicator.
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
+          * Add ARIA role.
+         */
+        "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -1153,11 +1157,11 @@ export namespace Components {
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately
+          * Scrolls the scroll area to the left either smooth or immediately.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
-          * Specifies if scrollbar should be shown
+          * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
         /**
@@ -3212,9 +3216,13 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator
+          * Sets the vertical position of scroll indicator.
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
+          * Add ARIA role.
+         */
+        "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -3228,11 +3236,11 @@ declare namespace LocalJSX {
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately
+          * Scrolls the scroll area to the left either smooth or immediately.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
-          * Specifies if scrollbar should be shown
+          * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
         /**

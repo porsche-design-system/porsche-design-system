@@ -47,21 +47,7 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
     console.log(output);
   }
 
-  // with `axe-core` version 4.5.0 (2022-10-17) the rule `aria-required-children` was changed to fail for children which are not listed as required
-  // TODO: we skip this for now until https://github.com/porsche-design-system/porsche-design-system/issues/2193 is done
-  result.violations = result.violations.filter((violation) => {
-    return violation.id !== 'aria-required-children';
-  });
   amountOfViolations = result.violations.length;
 
-  // https://github.com/dequelabs/axe-core/issues/3448
-  // TODO: temporary workaround until axe supports inert attribute which will be released in axe-core 4.7
-  if (pageUrl.includes('components/carousel/examples')) {
-    const { length: amountOfFilteredViolations } = result.violations.filter(
-      (violation) => violation.id !== 'aria-hidden-focus'
-    );
-    expect(amountOfFilteredViolations).toBe(0);
-  } else {
-    expect(amountOfViolations).toBe(0);
-  }
+  expect(amountOfViolations).toBe(0);
 };

@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
+  parseAndGetAriaAttributes,
   parseJSONAttribute,
   scrollElementTo,
   THEMES,
@@ -12,7 +13,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
-import type { PropTypes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type {
   ScrollerAlignScrollIndicator,
   ScrollerDirection,
@@ -20,6 +21,7 @@ import type {
   ScrollerGradientColorScheme,
   ScrollerScrollIndicatorPosition,
   ScrollerScrollToPosition,
+  ScrollerAriaAttribute,
 } from './scroller-utils';
 import {
   getScrollPositionAfterPrevNextClick,
@@ -27,6 +29,7 @@ import {
   GRADIENT_COLOR_SCHEMES,
   isScrollable,
   SCROLL_INDICATOR_POSITIONS,
+  SCROLLER_ARIA_ATTRIBUTES,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
@@ -43,6 +46,7 @@ const propTypes: PropTypes<typeof Scroller> = {
   alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLL_INDICATOR_POSITIONS),
   scrollbar: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -60,7 +64,7 @@ export class Scroller {
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColor?: ScrollerGradientColor = 'background-base';
 
-  /** Scrolls the scroll area to the left either smooth or immediately */
+  /** Scrolls the scroll area to the left either smooth or immediately. */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
 
   /**
@@ -68,14 +72,17 @@ export class Scroller {
    * Sets the vertical position of scroll indicator */
   @Prop() public scrollIndicatorPosition?: ScrollerScrollIndicatorPosition;
 
-  /** Sets the vertical position of scroll indicator */
+  /** Sets the vertical position of scroll indicator. */
   @Prop() public alignScrollIndicator?: ScrollerAlignScrollIndicator = 'center';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Specifies if scrollbar should be shown */
+  /** Specifies if scrollbar should be shown. */
   @Prop() public scrollbar?: boolean = false;
+
+  /** Add ARIA role. */
+  @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
@@ -169,7 +176,11 @@ export class Scroller {
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-          <div class="scroll-wrapper" tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}>
+          <div
+            class="scroll-wrapper"
+            role={parseAndGetAriaAttributes(this.aria)?.role || null}
+            tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}
+          >
             <slot />
             <div class="trigger" />
             <div class="trigger" />
