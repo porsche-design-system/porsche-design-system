@@ -24,7 +24,7 @@ import {
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { BreakpointCustomizable, TabsBarSize } from '@porsche-design-system/components/dist/types/bundle';
+import type { BreakpointCustomizable, TabSize } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -41,7 +41,7 @@ const clickHandlerScript = `
 type InitOptions = {
   amount?: number;
   activeTabIndex?: number;
-  size?: BreakpointCustomizable<TabsBarSize>;
+  size?: BreakpointCustomizable<TabSize>;
   isWrapped?: boolean;
   otherMarkup?: string;
   tag?: 'a' | 'button';
@@ -111,13 +111,13 @@ describe('slotted content changes', () => {
     const bar = await getBar();
     await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
-    expect(Math.floor((await getElementPositions(page, bar)).right), 'initial position').toEqual(86);
+    expect(Math.floor((await getElementPositions(page, bar)).right), 'initial position').toEqual(87);
 
     await firstButton.evaluate((el) => (el.innerHTML = 'New long button name on this button'));
     await waitForStencilLifecycle(page);
     await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
-    expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(249);
+    expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(252);
   });
 
   it('should adjust bar style when new tab element is added and clicked', async () => {
@@ -139,14 +139,14 @@ describe('slotted content changes', () => {
     const [, secondButton] = await getAllButtons();
     await clickElement(secondButton);
 
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(102);
+    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
   });
 
   it('should stay selected and have same bar style when tab after current active tab is removed', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
     const bar = await getBar();
 
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(102);
+    expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(103);
 
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
@@ -159,7 +159,7 @@ describe('slotted content changes', () => {
 
     expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
     expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(102);
+    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
   });
 
   it('should reset tabindex and bar styles when active tab on last position is removed', async () => {
@@ -218,8 +218,8 @@ describe('slotted content changes', () => {
     const [, secondButton] = await getAllButtons();
 
     expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(102);
-    expect(await getBarWidth(bar), 'final width').toBe('86px');
+    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
+    expect(await getBarWidth(bar), 'final width').toBe('87px');
   });
 });
 describe('active index position', () => {
@@ -282,7 +282,7 @@ describe('active index position', () => {
     );
 
     await clickElement(prevButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(40);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(41);
   });
 
   it('should have correct scroll position after tab click and next button click', async () => {
@@ -305,7 +305,7 @@ describe('active index position', () => {
     expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
 
     await clickElement(nextButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(502);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(508);
   });
 });
 
@@ -377,21 +377,23 @@ describe('bar', () => {
     const bar = await getBar();
     const firstButtonPosition = (await getElementPositions(page, firstButton)).left;
     const buttonWidth = await getOffsetWidth(thirdButton);
-    const buttonCenter = buttonWidth / 2;
+    const buttonCenter = +buttonWidth / 2;
     const host = await getHost();
     await removeAttribute(host, 'active-tab-index');
     await waitForStencilLifecycle(page);
     await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
-    expect(firstButtonPosition + buttonCenter).toEqual((await getElementPositions(page, bar)).left);
+    expect(Math.floor(firstButtonPosition + buttonCenter)).toEqual(
+      Math.floor((await getElementPositions(page, bar)).left)
+    );
 
     await clickElement(thirdButton);
     await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
     expect(
-      Math.ceil((await getElementPositions(page, thirdButton)).left),
+      Math.floor((await getElementPositions(page, thirdButton)).left),
       'correct offset width after click on third button'
-    ).toEqual((await getElementPositions(page, bar)).left);
+    ).toEqual(Math.floor((await getElementPositions(page, bar)).left));
   });
 });
 

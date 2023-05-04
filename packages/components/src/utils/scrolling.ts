@@ -28,7 +28,7 @@ export const scrollElementTo = (el: HTMLElement, amount: number): void => {
   if (supportsScrollBehavior) {
     el.scrollTo({
       left: amount,
-      behavior: 'smooth', // TODO: make conditional so we don't need to wait in e2e or vrt tests
+      behavior: 'smooth',
     });
   } else {
     // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
@@ -43,7 +43,7 @@ export const scrollElementTo = (el: HTMLElement, amount: number): void => {
 
 export const scrollElementBy = (el: HTMLElement, amount: number): void => {
   if (supportsScrollBehavior) {
-    el.scrollBy({ left: amount, top: 0, behavior: 'smooth' }); // TODO: make conditional so we don't need to wait in e2e or vrt tests
+    el.scrollBy({ left: amount, top: 0, behavior: 'smooth' });
   } else {
     // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
     // https://caniuse.com/?search=scroll-behavior
