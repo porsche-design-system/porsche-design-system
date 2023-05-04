@@ -79,7 +79,7 @@ const highContrastTest = async (component: Component, scheme: 'light' | 'dark') 
       ...(component === 'select-wrapper' && { scenario: scenarioSelectWrapper }),
       ...(['modal', 'banner'].includes(component) && { scenario: scenarioModalOrBanner }),
       forcedColorsEnabled: true,
-      prefersColorScheme: theme,
+      prefersColorScheme: scheme,
     }
   );
 };
