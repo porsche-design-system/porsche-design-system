@@ -72,7 +72,7 @@ const scenarioSelectWrapper = async (page: Page) => {
 const highContrastTest = async (component: Component, scheme: 'light' | 'dark') => {
   await vrtTest(
     getVisualRegressionStatesTester(),
-    `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-high-contrast-${theme}`,
+    `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-high-contrast-${scheme}`,
     `/#${component}`,
     {
       ...(component === 'popover' && { scenario: scenarioPopover }),
