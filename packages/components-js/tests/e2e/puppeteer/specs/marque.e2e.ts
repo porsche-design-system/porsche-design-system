@@ -2,7 +2,6 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
-  getAttribute,
   getEventSummary,
   getLifecycleStatus,
   getProperty,
