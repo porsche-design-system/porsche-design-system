@@ -18,6 +18,7 @@ import {
   fontLineHeight,
   borderRadiusSmall,
   borderWidthBase,
+  fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -54,7 +55,7 @@ export const getComponentCss = (
         fontWeight: fontWeightSemiBold,
         ...buildResponsiveStyles(size, (s: AccordionSize) => ({
           fontSize: s === 'medium' ? fontSizeTextMedium : fontSizeTextSmall,
-          padding: `${compact ? '4px' : s === 'medium' ? '20px' : '12px'} 0`,
+          padding: `${compact ? '4px' : s === 'medium' ? '20px' : '15px'} 0`,
         })),
         // mergeDeep needed because of hoverMediaQuery in certain modes not wrapping keys and therefore overriding "&::before" key
         ...mergeDeep(
@@ -95,11 +96,17 @@ export const getComponentCss = (
     },
     heading: {
       margin: 0,
-      padding: '0 0 2px',
+      // padding: '0 0 2px',
+    },
+    'icon-container': {
+      height: fontLineHeight,
+      display: 'flex',
+      alignItems: 'center',
     },
     icon: {
       width: fontLineHeight,
       height: fontLineHeight,
+      fontSize: fontSizeTextXXSmall,
       transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
       transition: getTransition('transform'),
     },
