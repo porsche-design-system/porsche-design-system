@@ -93,16 +93,12 @@
 
 #### ✅ Heading
 
-- Usage Docs missing
 - Styling could be on :host instead of .root
 - Reuse style across typography components
 
 #### ✅ Icon
 
 - New icon assets are missing
-- Variant 'x-small' for icon in Safari isn't in sync with line-height of text, because of rounding errors caused by
-  browser. Maybe it's fixable by experimental feature https://developer.mozilla.org/en-US/docs/Web/CSS/round
-- Add deprecation warnings for specific prop values
 
 #### ✅ Inline Notification
 
@@ -168,34 +164,24 @@
 
 #### ✅ Stepper Horizontal
 
-- Check contrast of current / hover on dark
-
 #### ✅ Switch
 
 #### ✅ Table
 
 #### ✅ Tabs
 
-- rethink position of scroll next/prev icon in size small variant
-
 #### ✅ Tabs Bar
-
-- Rethink position of scroll next/prev icon in size small variant
-- Status bar has `1.5px` height in regular, which only works on retina displays
-- The focus of the content is still in the old design (a11y example)
 
 #### ✅ Tag
 
 - Shouldn't we use 'none', '' or undefined as default icon to be in sync with e.g. button, link, button-pure and
   link-pure?
-- Coloring needs to be improved for dark theme
 - We could save one dom node by using host for style definition
 
 #### ✅ Tag Dismissible
 
 #### ✅ Text
 
-- Usage Docs missing
 - Styling could be on :host instead of .root
 - Reuse style across typography components
 
@@ -230,13 +216,9 @@
 
 #### ✅ Flex (deprecated)
 
-- Usage Docs missing
-
 #### ✅ Grid (deprecated)
 
 #### ✅ Headline (deprecated)
-
-- Usage Docs missing
 
 #### ✅ Link Social (deprecated)
 

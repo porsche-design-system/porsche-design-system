@@ -395,6 +395,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
 exports[`should call validateProps() with correct parameters via render for p-scroller: propTypes with ValidatorFunctions 1`] = `
 {
   "alignScrollIndicator": "oneOf",
+  "aria": "aria",
   "gradientColor": "oneOf",
   "gradientColorScheme": "oneOf",
   "scrollIndicatorPosition": "oneOf",

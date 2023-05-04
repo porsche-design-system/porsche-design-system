@@ -41,7 +41,7 @@ import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
-import { ScrollerAlignScrollIndicator, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -61,6 +61,62 @@ import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wra
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+export { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
+export { BannerState, BannerWidth } from "./components/banner/banner-utils";
+export { ButtonIcon } from "./components/button/button-utils";
+export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
+export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
+export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+export { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
+export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
+export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
+export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
+export { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
+export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
+export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
+export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
+export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
+export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
+export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
+export { HeadingTag } from "./components/heading/heading-tag";
+export { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/heading-utils";
+export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
+export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
+export { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
+export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
+export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
+export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+export { MarqueSize } from "./components/marque/marque-size";
+export { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
+export { ModalAriaAttribute } from "./components/modal/modal-utils";
+export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
+export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
+export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
+export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
+export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
+export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
+export { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
+export { SwitchAlignLabel, SwitchUpdateEvent } from "./components/switch/switch-utils";
+export { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
+export { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+export { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+export { TagColor, TagIcon } from "./components/tag/tag-utils";
+export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
+export { TextTag } from "./components/text/text-utils";
+export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
+export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
+export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
+export { ToastMessage } from "./components/toast/toast/toast-manager";
+export { ToastState } from "./components/toast/toast/toast-utils";
+export { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -357,6 +413,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PContentWrapper {
         /**
           * Has no effect anymore
@@ -457,6 +516,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     */
     interface PFieldsetWrapper {
         /**
           * The label text.
@@ -483,6 +545,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -509,6 +574,9 @@ export namespace Components {
          */
         "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
@@ -535,6 +603,9 @@ export namespace Components {
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
@@ -550,6 +621,9 @@ export namespace Components {
          */
         "wrap"?: BreakpointCustomizable<GridWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
@@ -586,6 +660,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+     */
     interface PHeadline {
         /**
           * Text alignment of the component.
@@ -786,6 +863,9 @@ export namespace Components {
          */
         "weight"?: LinkPureWeight;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+     */
     interface PLinkSocial {
         /**
           * Show or hide label.
@@ -900,6 +980,9 @@ export namespace Components {
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+     */
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -1054,9 +1137,13 @@ export namespace Components {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator
+          * Sets the vertical position of scroll indicator.
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
+          * Add ARIA role.
+         */
+        "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -1070,11 +1157,11 @@ export namespace Components {
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately
+          * Scrolls the scroll area to the left either smooth or immediately.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
-          * Specifies if scrollbar should be shown
+          * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
         /**
@@ -1649,6 +1736,9 @@ declare global {
         prototype: HTMLPCheckboxWrapperElement;
         new (): HTMLPCheckboxWrapperElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface HTMLPContentWrapperElement extends Components.PContentWrapper, HTMLStencilElement {
     }
     var HTMLPContentWrapperElement: {
@@ -1679,30 +1769,45 @@ declare global {
         prototype: HTMLPFieldsetElement;
         new (): HTMLPFieldsetElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     */
     interface HTMLPFieldsetWrapperElement extends Components.PFieldsetWrapper, HTMLStencilElement {
     }
     var HTMLPFieldsetWrapperElement: {
         prototype: HTMLPFieldsetWrapperElement;
         new (): HTMLPFieldsetWrapperElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {
     }
     var HTMLPFlexElement: {
         prototype: HTMLPFlexElement;
         new (): HTMLPFlexElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface HTMLPFlexItemElement extends Components.PFlexItem, HTMLStencilElement {
     }
     var HTMLPFlexItemElement: {
         prototype: HTMLPFlexItemElement;
         new (): HTMLPFlexItemElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface HTMLPGridElement extends Components.PGrid, HTMLStencilElement {
     }
     var HTMLPGridElement: {
         prototype: HTMLPGridElement;
         new (): HTMLPGridElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface HTMLPGridItemElement extends Components.PGridItem, HTMLStencilElement {
     }
     var HTMLPGridItemElement: {
@@ -1715,6 +1820,9 @@ declare global {
         prototype: HTMLPHeadingElement;
         new (): HTMLPHeadingElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+     */
     interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {
     }
     var HTMLPHeadlineElement: {
@@ -1745,6 +1853,9 @@ declare global {
         prototype: HTMLPLinkPureElement;
         new (): HTMLPLinkPureElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+     */
     interface HTMLPLinkSocialElement extends Components.PLinkSocial, HTMLStencilElement {
     }
     var HTMLPLinkSocialElement: {
@@ -1763,6 +1874,9 @@ declare global {
         prototype: HTMLPLinkTileModelSignatureElement;
         new (): HTMLPLinkTileModelSignatureElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+     */
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
     var HTMLPMarqueElement: {
@@ -2354,6 +2468,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PContentWrapper {
         /**
           * Has no effect anymore
@@ -2454,6 +2571,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     */
     interface PFieldsetWrapper {
         /**
           * The label text.
@@ -2480,6 +2600,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -2506,6 +2629,9 @@ declare namespace LocalJSX {
          */
         "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
@@ -2532,6 +2658,9 @@ declare namespace LocalJSX {
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
@@ -2547,6 +2676,9 @@ declare namespace LocalJSX {
          */
         "wrap"?: BreakpointCustomizable<GridWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
@@ -2583,6 +2715,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+     */
     interface PHeadline {
         /**
           * Text alignment of the component.
@@ -2791,6 +2926,9 @@ declare namespace LocalJSX {
          */
         "weight"?: LinkPureWeight;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+     */
     interface PLinkSocial {
         /**
           * Show or hide label.
@@ -2905,6 +3043,9 @@ declare namespace LocalJSX {
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+     */
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -3075,9 +3216,13 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
-          * Sets the vertical position of scroll indicator
+          * Sets the vertical position of scroll indicator.
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
+          * Add ARIA role.
+         */
+        "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -3091,11 +3236,11 @@ declare namespace LocalJSX {
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately
+          * Scrolls the scroll area to the left either smooth or immediately.
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
-          * Specifies if scrollbar should be shown
+          * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
         /**
@@ -3696,25 +3841,52 @@ declare module "@stencil/core" {
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+             */
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-crest": LocalJSX.PCrest & JSXBase.HTMLAttributes<HTMLPCrestElement>;
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+             */
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+             */
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+             */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+             */
             "p-grid": LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+             */
             "p-grid-item": LocalJSX.PGridItem & JSXBase.HTMLAttributes<HTMLPGridItemElement>;
             "p-heading": LocalJSX.PHeading & JSXBase.HTMLAttributes<HTMLPHeadingElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+             */
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+             */
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+             */
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;

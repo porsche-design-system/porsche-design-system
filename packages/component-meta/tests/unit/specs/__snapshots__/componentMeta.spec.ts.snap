@@ -2042,6 +2042,9 @@ exports[`should match snapshot 1`] = `
         "top",
         "center",
       ],
+      "aria": {
+        "role": "string",
+      },
       "gradientColor": [
         "background-base",
         "background-surface",
@@ -2070,7 +2073,7 @@ exports[`should match snapshot 1`] = `
       "gradientColorScheme",
       "scrollIndicatorPosition",
     ],
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2083,6 +2086,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "alignScrollIndicator": "center",
+      "aria": null,
       "gradientColor": "background-base",
       "gradientColorScheme": null,
       "scrollIndicatorPosition": null,
@@ -2331,9 +2335,6 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
-    "hostAttributes": {
-      "role": "list",
-    },
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,

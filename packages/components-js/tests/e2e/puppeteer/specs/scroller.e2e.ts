@@ -304,47 +304,14 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
-  const getElementList = () => selectNode(page, 'p-scroller >>> [role="tablist"]');
-  it('should expose correct initial accessibility tree of tablist', async () => {
+  it('should expose correct initial accessibility tree if aria prop is set', async () => {
     await initScroller({ amount: 3 });
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), { interestingOnly: false });
-  });
-
-  it('should render correct accessibility tree on scrollArea click', async () => {
-    await initScroller({ amount: 4 });
-    const scrollArea = await getScrollArea();
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'Before click',
-      interestingOnly: false,
+    const host = await getHost();
+    await setProperty(host, 'aria', {
+      role: 'tablist',
     });
 
-    await clickElement(scrollArea);
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'After click',
-      interestingOnly: false,
-    });
-  });
-
-  it('should render correct accessibility tree on focus change and enter press', async () => {
-    await initScroller({ amount: 3 });
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'Before change',
-      interestingOnly: false,
-    });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'After change',
-      interestingOnly: false,
-    });
+    await expectA11yToMatchSnapshot(page, host, { interestingOnly: false });
   });
 
   it('should have correct tabindex on scroll-wrapper if scroller is scrollable and has no focusable elements', async () => {
