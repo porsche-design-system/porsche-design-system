@@ -98,6 +98,7 @@ export const getComponentCss = (
         display: 'block', // without display, img tag gets some extra spacing
         margin: 0,
         padding: 0,
+        pointerEvents: 'none', // disable dragging/ghosting of images
         ...(!isColorInherit && {
           filter: filter[theme][color],
           ...(isHighContrastMode &&
