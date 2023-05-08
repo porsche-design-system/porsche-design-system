@@ -37,7 +37,7 @@ describe('disconnectedCallback', () => {
 });
 
 describe('componentDidRender', () => {
-  it('should call handleScroll() with correct parameters', () => {
+  it('should call handleScroll() when dropdown isOpen = true', () => {
     const component = initComponent();
     component['isOpen'] = true;
 
