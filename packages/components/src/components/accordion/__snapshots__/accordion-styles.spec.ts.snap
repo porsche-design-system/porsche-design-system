@@ -54,11 +54,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -130,11 +135,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -207,11 +217,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -282,11 +297,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -357,11 +377,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -407,7 +432,7 @@ button {
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  padding: 12px 0;
+  padding: 15px 0;
 }
 button::before {
   content: "";
@@ -435,11 +460,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -483,7 +513,7 @@ button {
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  padding: 12px 0;
+  padding: 15px 0;
 }
 button::before {
   content: "";
@@ -511,11 +541,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -561,7 +596,7 @@ button {
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  padding: 12px 0;
+  padding: 15px 0;
 }
 button::before {
   content: "";
@@ -589,11 +624,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -666,11 +706,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -741,11 +786,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -791,7 +841,7 @@ button {
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  padding: 12px 0;
+  padding: 15px 0;
 }
 button::before {
   content: "";
@@ -818,7 +868,7 @@ button:not(:focus-visible)::before {
 @media(min-width:760px) {
   button {
     font-size: 1rem;
-    padding: 12px 0;
+    padding: 15px 0;
   }
 }
 
@@ -832,7 +882,7 @@ button:not(:focus-visible)::before {
 @media(min-width:1300px) {
   button {
     font-size: 1rem;
-    padding: 12px 0;
+    padding: 15px 0;
   }
 }
 
@@ -854,11 +904,16 @@ button:not(:focus-visible)::before {
 
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
