@@ -37,8 +37,9 @@ describe('disconnectedCallback', () => {
 });
 
 describe('componentDidRender', () => {
-  it('should call handleScroll() with correct parameters', () => {
+  it('should call handleScroll() when dropdown isOpen = true', () => {
     const component = initComponent();
+    component['isOpen'] = true;
 
     const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
     try {
@@ -46,6 +47,16 @@ describe('componentDidRender', () => {
     } catch (e) {}
 
     expect(spy).toBeCalledWith(undefined, -1);
+  });
+  it('should not call handleScroll() when dropdown isOpen = false', () => {
+    const component = initComponent();
+
+    const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
+    try {
+      component.componentDidRender();
+    } catch (e) {}
+
+    expect(spy).not.toBeCalled();
   });
 });
 

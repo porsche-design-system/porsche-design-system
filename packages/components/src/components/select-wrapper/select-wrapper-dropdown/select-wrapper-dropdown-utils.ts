@@ -76,22 +76,21 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
 
-export const handleScroll = (host: HTMLElement, highlightedIndex: number): void => {
-  const hostElementHeightThreshold = 276; // TODO: probably wrong value, based on 10 * OPTION_HEIGHT with some buffer
-  const { scrollHeight, scrollTop } = host;
+/**
+ * Handles scrolling within the list to ensure that the highlighted item is always visible.
+ * @param {HTMLElement} ul - The HTML element to be scrolled.
+ * @param {number} highlightedIndex - The index of the currently highlighted item within the element.
+ * @returns {void}
+ */
+export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void => {
+  const { maxHeight, padding } = getComputedStyle(ul);
+  const hostElementHeight = parseInt(maxHeight, 10);
 
-  if (scrollHeight > hostElementHeightThreshold) {
-    const highlightedNode = getHTMLElements(host, 'li')[highlightedIndex];
+  if (ul.scrollHeight > hostElementHeight) {
+    const highlightedNode = getHTMLElements(ul, 'li')[highlightedIndex];
 
     if (highlightedNode) {
-      const { offsetTop, offsetHeight } = highlightedNode; // offsetHeight is usually 32px but can be more if multiline
-      const scrollBottom = hostElementHeightThreshold + scrollTop;
-      const elementBottom = offsetTop + offsetHeight;
-      if (elementBottom > scrollBottom) {
-        host.scrollTop = elementBottom - hostElementHeightThreshold;
-      } else if (offsetTop - OPTION_HEIGHT < scrollTop) {
-        host.scrollTop = offsetTop - OPTION_HEIGHT;
-      }
+      ul.scrollTo({ top: highlightedNode.offsetTop - parseInt(padding, 10), behavior: 'instant' as ScrollBehavior });
     }
   }
 };
