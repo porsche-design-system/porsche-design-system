@@ -35,6 +35,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `aria` prop to `Scroller` component
   ([#2530](https://github.com/porsche-design-system/porsche-design-system/pull/2530))
 
+#### Changed
+
+- Model signature asset of 718 model ([#2532](https://github.com/porsche-design-system/porsche-design-system/pull/2532))
+
 ### [3.0.0-rc.1] - 2023-04-19
 
 #### Added
