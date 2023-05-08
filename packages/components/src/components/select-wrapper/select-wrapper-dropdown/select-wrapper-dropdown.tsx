@@ -86,7 +86,9 @@ export class SelectWrapperDropdown {
   }
 
   public componentDidRender(): void {
-    handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
+    if (this.isOpen) {
+      handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
+    }
   }
 
   public componentWillLoad(): void {
