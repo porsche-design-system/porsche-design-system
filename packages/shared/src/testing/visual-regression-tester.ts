@@ -97,7 +97,7 @@ export class VisualRegressionTester {
       elementSelector: '',
       maskSelectors: [],
       regressionSuffix: '',
-      initialViewportHeight: 1,
+      initialViewportHeight: 10000, // previously set to 1 leads to wrong document.body.clientHeight at least in styles-grid vrt
       ...options,
     };
 
