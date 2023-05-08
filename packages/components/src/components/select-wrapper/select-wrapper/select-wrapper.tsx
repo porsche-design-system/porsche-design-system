@@ -112,7 +112,7 @@ export class SelectWrapper {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { disabled } = this.select;
-    attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, disabled, this.native, this.hideLabel, this.state, this.theme);
 
     const labelProps = disabled
       ? {}
@@ -151,7 +151,7 @@ export class SelectWrapper {
             />
             <slot />
           </label>
-          {this.hasCustomDropdown && (
+          {this.hasCustomDropdown && !disabled && (
             <PrefixedTagNames.pSelectWrapperDropdown
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}

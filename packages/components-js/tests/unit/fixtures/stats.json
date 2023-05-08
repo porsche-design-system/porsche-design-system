@@ -1,8 +1,8 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 5005,
-    "gzipSize": 2186
+    "size": 4843,
+    "gzipSize": 2135
   },
   {
     "chunkShortName": "banner",
@@ -91,8 +91,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 17291,
-    "gzipSize": 8177
+    "size": 17270,
+    "gzipSize": 8166
   },
   {
     "chunkShortName": "inline-notification",
@@ -127,7 +127,7 @@
   {
     "chunkShortName": "main",
     "size": 69039,
-    "gzipSize": 23192
+    "gzipSize": 23195
   },
   {
     "chunkShortName": "marque",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 21116,
-    "gzipSize": 7018
+    "size": 21792,
+    "gzipSize": 7090
   },
   {
     "chunkShortName": "spinner",

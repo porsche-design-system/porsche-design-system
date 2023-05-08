@@ -162,7 +162,6 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await forceHoverState(page, '.hover .native p-select-wrapper select');
       await forceHoverState(page, '.hover p-select-wrapper span a');
       await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
-      await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
       await forceFocusState(page, '.focus .native p-select-wrapper select');
       await forceFocusState(page, '.focus p-select-wrapper span a');
       await forceFocusState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
