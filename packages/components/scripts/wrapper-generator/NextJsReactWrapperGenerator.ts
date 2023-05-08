@@ -3,9 +3,13 @@ import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { pascalCase, paramCase } from 'change-case';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';
+  protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES.filter(
+    (tagName) => tagName !== 'p-select-wrapper-dropdown'
+  );
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes);

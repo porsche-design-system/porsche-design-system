@@ -3,6 +3,8 @@
 exports[`accessibility should expose correct accessibility tree if description is set 1`] = `
 {
   "description": "Some description",
+  "expanded": true,
+  "focused": true,
   "haspopup": "listbox",
   "name": "Option A, Some label",
   "role": "combobox",
@@ -117,6 +119,8 @@ exports[`accessibility should expose correct accessibility tree if rendered with
 
 exports[`accessibility should expose correct accessibility tree in error state 1`] = `
 {
+  "expanded": true,
+  "focused": true,
   "haspopup": "listbox",
   "name": "Option A, Some label. Some error message",
   "role": "combobox",
