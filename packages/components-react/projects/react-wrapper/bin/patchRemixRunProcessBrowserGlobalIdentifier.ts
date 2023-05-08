@@ -12,10 +12,9 @@ export const patchRemixRunProcessBrowserGlobalIdentifier = (): void => {
   const filePaths = compilerDirPaths
     .map((compilerDirPath) => fs.readdirSync(compilerDirPath).map((fileName) => `${compilerDirPath}/${fileName}`))
     .flat()
-    // file is currently called compileBrowser.js, but the other part is compilerServer.js
-    // that's why we also consider compilerBrowser.js to be on the safe side
+    // file is currently called compileBrowser.js
     // since 1.16.0 the file is called compiler.js
-    .filter((fileName) => fileName.match(/(?:compileBrowser|compiler)\.js$/));
+    .filter((fileName) => fileName.match(/\/(?:compileBrowser|compiler)\.js$/));
 
   filePaths.forEach((filePath) => {
     const filePathBackup = filePath.replace(/\.js$/, '-original$&');
