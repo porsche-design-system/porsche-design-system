@@ -36,6 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - Model signature asset of 718 model ([#2532](https://github.com/porsche-design-system/porsche-design-system/pull/2532))
+- Size of icon and height of `Accordion`
+  ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
 
 ### [3.0.0-rc.1] - 2023-04-19
 
