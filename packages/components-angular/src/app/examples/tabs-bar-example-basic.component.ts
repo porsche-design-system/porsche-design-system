@@ -13,7 +13,7 @@ import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angul
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsBarExampleBasicComponent {
-  tabIndex: number;
+  tabIndex: number = 0;
 
   onUpdate(e: CustomEvent<TabsBarUpdateEvent>) {
     this.tabIndex = e.detail.activeTabIndex;

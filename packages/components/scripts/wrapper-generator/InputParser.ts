@@ -132,6 +132,11 @@ export class InputParser {
     return parsedInterface;
   }
 
+  public isPropOptional(component: TagName, propName: string): boolean {
+    const rawInterface = this.getRawComponentInterface(component);
+    return !!rawInterface.match(new RegExp(`\n  ${propName}\\?:`));
+  }
+
   public isPropDeprecated(component: TagName, propName: string): boolean {
     const rawInterface = this.getRawComponentInterface(component);
     const [, jsdoc] = rawInterface.match(new RegExp(`(  \\/\\*\\*\\n(?:.*\\n){0,3})?  ${propName}\\??: `)) || [];

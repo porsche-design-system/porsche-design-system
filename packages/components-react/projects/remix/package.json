@@ -17,15 +17,16 @@
     "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./build && rm -rf ./public/build"
+    "clean:build": "rm -rf ./build && rm -rf ./public/build",
+    "patchRemixRunProcessBrowserGlobalIdentifier": "ts-node --project ../../tsconfig.node.json ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-react": "3.0.0-rc.1",
-    "@remix-run/node": "^1.15.0",
-    "@remix-run/react": "^1.15.0",
-    "@remix-run/serve": "^1.15.0",
-    "@remix-run/server-runtime": "^1.15.0",
+    "@porsche-design-system/components-react": "3.0.0-rc.2",
+    "@remix-run/node": "^1.16.0",
+    "@remix-run/react": "^1.16.0",
+    "@remix-run/serve": "^1.16.0",
+    "@remix-run/server-runtime": "^1.16.0",
     "bcryptjs": "^2.4.3",
     "isbot": "^3.6.10",
     "react": "^18.2.0",
@@ -34,8 +35,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^1.15.0",
-    "@remix-run/eslint-config": "^1.15.0",
+    "@remix-run/dev": "^1.16.0",
+    "@remix-run/eslint-config": "^1.16.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/eslint": "^8.37.0",
     "@types/node": "^18.16.1",

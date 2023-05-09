@@ -3,19 +3,13 @@ import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
-import { BannerExampleComponent } from './examples/banner-example.component';
 
 export type ExtendedRoute = Route & {
-  name?: string;
+  name: string;
   isDisabled?: boolean;
 };
 
 export const routes: ExtendedRoute[] = [
-  {
-    path: '',
-    children: [],
-    pathMatch: 'full',
-  },
   ...[
     {
       name: 'Table',
@@ -64,6 +58,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Form Wrapper Binding',
     path: 'form-wrapper-binding',
     component: fromPages.FormWrapperBindingComponent,
+  },
+  {
+    name: 'Optional Properties',
+    path: 'optional-properties',
+    component: fromPages.OptionalPropertiesComponent,
   },
   {
     name: 'Utilities',

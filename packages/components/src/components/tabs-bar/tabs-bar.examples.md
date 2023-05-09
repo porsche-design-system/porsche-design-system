@@ -37,7 +37,7 @@ which is emitted by `p-tabs-bar`.
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExampleBasic" :markup="basicButton"></Playground>
+<Playground :frameworkMarkup="codeExampleBasic" :markup="basicButton.replace('<p-tabs-bar', '$& active-tab-index=0')"></Playground>
 
 ### Buttons
 
