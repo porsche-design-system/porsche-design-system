@@ -577,7 +577,7 @@ describe('keyboard', () => {
   it('should render correct focused Element on arrow-key press and tab navigation', async () => {
     await initTabsBar({
       amount: 3,
-      otherMarkup: '<p-text id="content">Hallo href="#">Link</a></p-text>',
+      otherMarkup: '<button id="focusableElement" type="button">Button</button>',
       activeTabIndex: 0,
     });
     expect(await getActiveElementId(page)).toBe('');
@@ -586,7 +586,8 @@ describe('keyboard', () => {
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Tab');
 
-    expect(await getActiveElementId(page)).toBe('content');
+    expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
+    expect(await getActiveElementId(page)).toBe('focusableElement');
   });
 });
 
