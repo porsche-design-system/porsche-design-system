@@ -244,10 +244,6 @@ export class TabsBar {
         upcomingFocusedTabIndex = this.tabElements.length - 1;
         break;
 
-      case 'Enter':
-        this.onTabClick(focusedTabIndex);
-        return;
-
       default:
         return;
     }
