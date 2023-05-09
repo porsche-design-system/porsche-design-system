@@ -4,7 +4,7 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import pkg from './package.json';
 
 const input = 'src/index.ts';
-const external = Object.keys(pkg.dependencies);
+const external = [...Object.keys(pkg.dependencies), 'fs', 'path'];
 
 export default [
   {
