@@ -49,7 +49,7 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   async (url, index) => {
     console.log(`dead-link-checker url ${index + 1}/${internalUrls.length}: ${url}`);
 
-    const response = await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
+    const response = await page.goto(baseURL + url);
 
     // match static files in public/assets directory
     if (url.match(/^\/assets\/.*\.\w{3,4}$/)) {
