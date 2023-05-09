@@ -40,6 +40,7 @@ const generateCodeSamples = (): void => {
         ],
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testbed.spec.ts'],
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testing-library.spec.ts'],
+        // TODO: vue is missing
       ],
     },
     {
@@ -60,6 +61,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/banner-example.html',
           componentsAngularPath + '/banner-example.component.ts',
           componentsReactPath + '/BannerExample.tsx',
+          // TODO: vue is missing
         ],
       ],
     },
