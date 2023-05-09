@@ -27,7 +27,6 @@
   "dependencies": {
     "@alex_neo/jest-expect-message": "^1.0.5",
     "@porsche-design-system/component-meta": "0.0.0",
-    "@porsche-design-system/visual-regression-tester": "^4.5.0",
     "@signed/jest-alphabetical-sequencer": "^0.1.1",
     "@types/jest": "^29.5.1",
     "@types/jest-environment-puppeteer": "^5.0.3",
@@ -38,7 +37,9 @@
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
-    "puppeteer": "~19.8.5",
+    "pixelmatch": "^5.3.0",
+    "puppeteer": "~20.1.2",
+    "sharp": "^0.30.5",
     "ts-jest": "^29.1.0"
   },
   "devDependencies": {
@@ -46,6 +47,8 @@
     "@rollup/plugin-typescript": "^11.1.0",
     "@types/madge": "^5.0.0",
     "@types/node": "^18.16.1",
+    "@types/pixelmatch": "^5.2.4",
+    "@types/sharp": "^0.30.2",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^6.0.0",

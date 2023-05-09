@@ -1,12 +1,4 @@
-# Dependencies 03.03.2023
-
-## Shared
-
-- upgrading `puppeteer` to the latest version leads to issues with our vrt tester when javascript is disabled
-
-### Affected dependencies:
-
-- `puppeteer`
+# Dependencies 04.05.2023
 
 ## Vue
 
@@ -31,7 +23,8 @@ with Vue **2** and **3**.
 - `sass-loader`
 - `vmark`
 - `vmark-loader`
-- `@stackblitz/sdk` uses optional chaining internally which can't be handled by webpack 4
+- `@stackblitz/sdk` uses optional chaining internally which can't be handled by webpack 4 without additional babel
+  plugins
 
 ---
 
