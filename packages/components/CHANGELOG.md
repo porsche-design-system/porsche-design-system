@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-rc.2] - 2023-05-09
+
 #### Fixed
 
 - `Checkbox Wrapper` Safari visual state change while hovering
@@ -27,6 +29,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2524](https://github.com/porsche-design-system/porsche-design-system/pull/2524))
 - Fixed accessibility issues of `Tabs`, `Tabs Bar` and `Stepper Horizontal` to comply with v.4.7.0 of `axe-core`
   ([#2530](https://github.com/porsche-design-system/porsche-design-system/pull/2530))
+- React: `patchRemixRunProcessBrowserGlobalIdentifier` binary now supports Remix 1.16.0
+  ([#2537](https://github.com/porsche-design-system/porsche-design-system/pull/2537))
+- Angular: added optional modifier to optional properties for better type checking in strict mode
+  ([#2544](https://github.com/porsche-design-system/porsche-design-system/pull/2544))
 
 #### Added
 
