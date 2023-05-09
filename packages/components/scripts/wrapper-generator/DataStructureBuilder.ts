@@ -11,6 +11,7 @@ export type ExtendedProp = {
   defaultValue: string;
   isDefaultValueComplex: boolean;
   isDeprecated: boolean;
+  isOptional: boolean;
 };
 
 export class DataStructureBuilder {
@@ -136,6 +137,7 @@ export class DataStructureBuilder {
       defaultValue: !isEvent ? defaultValueForProp : '',
       isDefaultValueComplex: defaultValueForProp ? this.valueCanBeObject(defaultValueForProp, sharedTypes) : false,
       isDeprecated: this.inputParser.isPropDeprecated(component, propKey),
+      isOptional: this.inputParser.isPropOptional(component, propKey),
     };
 
     return extendedProp;

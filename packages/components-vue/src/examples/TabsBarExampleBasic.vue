@@ -3,7 +3,7 @@
   import { PTabsBar } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const tabIndex = ref<number>();
+  const tabIndex = ref<number>(0);
   const onUpdate = (e: TabsBarUpdateEvent): void => {
     tabIndex.value = e.activeTabIndex;
   };
