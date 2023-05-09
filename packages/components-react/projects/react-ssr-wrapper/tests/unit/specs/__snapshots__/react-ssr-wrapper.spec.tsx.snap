@@ -1708,7 +1708,7 @@ exports[`should render dsr component for PBanner 1`] = `
   width: auto !important;
   max-width: 100% !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
-  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16)) !important;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16) !important;
   opacity: 0 !important;
   visibility: hidden !important;
   transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0) !important;
@@ -5450,7 +5450,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -6122,7 +6122,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -6599,7 +6599,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -7108,7 +7108,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -7457,7 +7457,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
