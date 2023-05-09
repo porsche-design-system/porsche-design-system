@@ -9,7 +9,8 @@ import {
   isShadowRootParentOfKind,
   observeBreakpointChange,
   observeChildren,
-  parseJSON, removeAttribute, setAttribute,
+  parseJSON,
+  setAttribute,
   THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
@@ -188,15 +189,14 @@ export class TabsBar {
       const tabIndex = this.activeTabIndex || 0;
       const isFocusable = tabIndex === +index;
       const isSelected = this.activeTabIndex === +index;
-      setAttribute(tab, 'role', 'tab');
-      setAttribute(tab, 'aria-selected', isSelected ? 'true' : 'false');
-
-      if (isFocusable) {
-        removeAttribute(tab, 'hidden');
-        setAttribute(tab, 'tabindex', '0');
-      } else {
-        setAttribute(tab, 'hidden');
-        removeAttribute(tab, 'tabindex');
+      const attrs = {
+        role: 'tab',
+        tabindex: isFocusable ? '0' : '-1',
+        'aria-selected': isSelected ? 'true' : 'false',
+      };
+      /* eslint-disable-next-line guard-for-in */
+      for (const key in attrs) {
+        setAttribute(tab, key, attrs[key] as string);
       }
     });
   };
