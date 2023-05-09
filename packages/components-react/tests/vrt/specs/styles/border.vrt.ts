@@ -1,6 +1,6 @@
-import { extendedViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { getVisualRegressionStatesTester, vrtTest } from '@porsche-design-system/shared/testing';
 
 const id = 'styles-border';
-it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), id, `/${id}`)).toBeFalsy();
+it('should have no visual regression', async () => {
+  expect(await vrtTest(getVisualRegressionStatesTester(), id, `/${id}`)).toBeFalsy();
 });
