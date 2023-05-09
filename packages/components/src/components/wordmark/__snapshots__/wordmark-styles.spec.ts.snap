@@ -124,7 +124,13 @@ a:focus:not(:focus-visible)::before {
 }
 svg {
   fill: #FBFCFF;
-}"
+}
+@supports (height: round(down, 1px, 1px)) {
+  :host {
+    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for size: small and theme: light 1`] = `
@@ -167,5 +173,11 @@ a:focus:not(:focus-visible)::before {
 }
 svg {
   fill: #010205;
-}"
+}
+@supports (height: round(down, 1px, 1px)) {
+  :host {
+    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}
+"
 `;
