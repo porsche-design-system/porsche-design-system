@@ -97,7 +97,7 @@ export class VisualRegressionTester {
       elementSelector: '',
       maskSelectors: [],
       regressionSuffix: '',
-      initialViewportHeight: 10000, // previously set to 1 leads to wrong document.body.clientHeight at least in styles-grid vrt
+      initialViewportHeight: 1,
       ...options,
     };
 
@@ -120,10 +120,16 @@ export class VisualRegressionTester {
 
       await scenario();
 
-      const height = await this.page.evaluate(() => document.body.clientHeight);
       await this.page.setViewport({
         width: viewport,
-        height: height,
+        height: await this.page.evaluate(() => document.body.clientHeight),
+        deviceScaleFactor: this.options.deviceScaleFactor,
+      });
+
+      // not sure why but reading document.body.clientHeight after the viewport was set is different in some scenarios
+      await this.page.setViewport({
+        width: viewport,
+        height: await this.page.evaluate(() => document.body.clientHeight),
         deviceScaleFactor: this.options.deviceScaleFactor,
       });
 
