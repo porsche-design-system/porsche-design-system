@@ -246,7 +246,6 @@ export class VisualRegressionTester {
       clip = Object.assign({}, boundingBox);
       clip.x += pageX;
       clip.y += pageY;
-      clip.height = Math.ceil(clip.height);
     }
 
     const buffer = await this.page.screenshot({
