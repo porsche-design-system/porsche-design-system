@@ -4,6 +4,7 @@ import {
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   FOCUS_PADDING,
+  getActiveElementId,
   getAttribute,
   getConsoleErrorsAmount,
   getElementPositions,
@@ -571,6 +572,21 @@ describe('keyboard', () => {
     const button4width = await getOffsetWidth(allButtons[3]);
     const scrollDistanceLeft = +button4offset + +button4width + +gradientWidth - +scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+  });
+
+  it('should render correct focused Element on arrow-key press and tab navigation', async () => {
+    await initTabsBar({
+      amount: 3,
+      otherMarkup: '<p-text id="content">Hallo href="#">Link</a></p-text>',
+      activeTabIndex: 0,
+    });
+    expect(await getActiveElementId(page)).toBe('');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('Tab');
+
+    expect(await getActiveElementId(page)).toBe('content');
   });
 });
 
