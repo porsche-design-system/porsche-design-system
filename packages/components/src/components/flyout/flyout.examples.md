@@ -43,6 +43,7 @@ export default class Code extends Vue {
     <p-heading tag="h5" size="large">Sticky Heading</p-heading>
     <p-text size="small">Sticky header text</p-text>
   </div>
+  Some content
   <div slot="footer">
     <p-button>Footer Button</p-button>
   </div>
