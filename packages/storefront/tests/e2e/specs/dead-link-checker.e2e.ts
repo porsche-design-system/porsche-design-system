@@ -4,8 +4,8 @@ import { baseURL, getExternalUrls, getInternalUrls } from '../helpers';
 const console = require('console'); // workaround for nicer logs
 
 let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+beforeAll(async () => (page = await browser.newPage()));
+afterAll(async () => await page.close());
 
 const validateMarkdownLinks = async (): Promise<void> => {
   const markdownLinks = await page.$$('.markdown [href]');
