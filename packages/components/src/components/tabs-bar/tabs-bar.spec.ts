@@ -48,15 +48,6 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(undefined, 0);
   });
 
-  it('should call this.addEventListeners()', () => {
-    const component = new TabsBar();
-    component.host = document.createElement('p-tabs-bar');
-    component['scrollerElement'] = document.createElement('p-scroller');
-    const spy = jest.spyOn(component, 'addEventListeners' as any);
-
-    component.componentDidLoad();
-    expect(spy).toBeCalledWith();
-  });
   it('should call this.observeBreakpointChange()', () => {
     const component = new TabsBar();
     component.host = document.createElement('p-tabs-bar');

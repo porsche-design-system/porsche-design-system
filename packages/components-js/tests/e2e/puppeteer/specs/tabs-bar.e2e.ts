@@ -4,6 +4,7 @@ import {
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   FOCUS_PADDING,
+  getActiveElementId,
   getAttribute,
   getConsoleErrorsAmount,
   getElementPositions,
@@ -571,6 +572,22 @@ describe('keyboard', () => {
     const button4width = await getOffsetWidth(allButtons[3]);
     const scrollDistanceLeft = +button4offset + +button4width + +gradientWidth - +scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+  });
+
+  it('should focus correct element on arrow and tab key press', async () => {
+    await initTabsBar({
+      amount: 3,
+      otherMarkup: '<button id="focusableElement" type="button">Button</button>',
+      activeTabIndex: 0,
+    });
+    expect(await getActiveElementId(page)).toBe('');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('Tab');
+
+    expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
+    expect(await getActiveElementId(page)).toBe('focusableElement');
   });
 });
 
