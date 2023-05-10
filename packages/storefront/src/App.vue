@@ -16,6 +16,12 @@
       <p-spinner v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
     </main>
     <Menu class="menu"></Menu>
+    <p-banner state="warning">
+      <span slot="title">This version of the Porsche Design System is outdated.</span>
+      <span slot="description">
+         <a href="https://designsystem.porsche.com">Switch to the latest Porsche Design System documentation.</a>
+      </span>
+    </p-banner>
   </div>
 </template>
 
