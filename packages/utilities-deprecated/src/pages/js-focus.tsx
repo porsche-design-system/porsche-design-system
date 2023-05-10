@@ -17,7 +17,6 @@ const StyledDiv = styled.div`
 `;
 const FocusButtonCustomPseudo = styled.button`
   position: relative;
-
   ${focus({ color: 'deeppink', offset: '6px', pseudo: '::after' })}
 `;
 
@@ -26,18 +25,18 @@ export const JsFocus = (): JSX.Element => {
     <>
       <h2>Focus</h2>
       <div className="playground">
-        <FocusButtonRegular id="focusable-element-regular">Some label</FocusButtonRegular>
+        <FocusButtonRegular id="focusable-element-regular">Default</FocusButtonRegular>
       </div>
       <div className="playground">
-        <FocusButtonCustom id="focusable-element-custom">Some label</FocusButtonCustom>
+        <FocusButtonCustom id="focusable-element-custom">Custom</FocusButtonCustom>
       </div>
       <div className="playground">
         <StyledDiv>
-          <button id="focusable-element-pseudo">Some label</button>
+          <button id="focusable-element-pseudo">Pseudo</button>
         </StyledDiv>
       </div>
       <div className="playground">
-        <FocusButtonCustomPseudo id="focusable-element-custom-pseudo">Some label</FocusButtonCustomPseudo>
+        <FocusButtonCustomPseudo id="focusable-element-custom-pseudo">Custom Pseudo</FocusButtonCustomPseudo>
       </div>
     </>
   );
