@@ -12,14 +12,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 - Rendering of `Wordmark` in Safari ([#2542](https://github.com/porsche-design-system/porsche-design-system/pull/2542))
 
+#### Changed
+
+- Styles: `dropShadow{Low|Medium|High}Style`s use `box-shadow` instead of `filter: drop-shadow()` to fix glitches
+  together with `frostedGlassStyle` in Firefox
+  ([#2545](https://github.com/porsche-design-system/porsche-design-system/pull/2545))
+
 ### [3.0.0-rc.2] - 2023-05-09
 
 #### Fixed
 
 - `Checkbox Wrapper` Safari visual state change while hovering
-  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
+  ([#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508))
 - `Checkbox Wrapper` keyboard arrow navigation
-  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
+  ([#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508))
 - `Modal` fix hover state of dismiss button
   ([#2510](https://github.com/porsche-design-system/porsche-design-system/pull/2510))
 - `Link Pure`, `Button Pure`: adjust offset of `:hover` and `active` styles
