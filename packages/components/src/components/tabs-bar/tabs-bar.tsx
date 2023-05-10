@@ -177,7 +177,7 @@ export class TabsBar {
         alignScrollIndicator="top"
         ref={(el) => (this.scrollerElement = el)}
         onClick={this.onClick}
-        onKeydown={this.onKeydown}
+        onKeyDown={this.onKeydown}
       >
         <slot />
         <span class="bar" ref={(el) => (this.barElement = el)} />
