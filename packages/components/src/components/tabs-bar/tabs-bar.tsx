@@ -128,7 +128,6 @@ export class TabsBar {
       this.scrollActiveTabIntoView(false);
     }
 
-    this.addEventListeners();
     this.observeBreakpointChange();
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
@@ -177,6 +176,8 @@ export class TabsBar {
         gradientColor={this.gradientColor}
         alignScrollIndicator="top"
         ref={(el) => (this.scrollerElement = el)}
+        onClick={this.onClick}
+        onKeydown={this.onKeydown}
       >
         <slot />
         <span class="bar" ref={(el) => (this.barElement = el)} />
@@ -205,15 +206,11 @@ export class TabsBar {
     this.tabElements = getHTMLElements(this.host, 'a,button');
   };
 
-  private addEventListeners = (): void => {
-    this.scrollerElement.addEventListener('click', (e) => {
-      const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
-
-      if (newTabIndex >= 0) {
-        this.onTabClick(newTabIndex);
-      }
-    });
-    this.scrollerElement.addEventListener('keydown', this.onKeydown);
+  private onClick = (e: MouseEvent): void => {
+    const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
+    if (newTabIndex >= 0) {
+      this.onTabClick(newTabIndex);
+    }
   };
 
   private onTabClick = (newTabIndex: number): void => {
