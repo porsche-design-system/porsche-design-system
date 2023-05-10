@@ -524,7 +524,11 @@ export const SelectWrapperPage = (): JSX.Element => {
       >
         <PSelectWrapper label="Some label" id="last-select-on-page">
           <select id="open-options">
-            <option value="a">Option A</option>
+            <option value="a">
+              Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+              displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the
+              top.
+            </option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
             <option value="d">Option D</option>

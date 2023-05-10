@@ -4,8 +4,8 @@ import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
+  getHiddenTextJssStyle,
   getHighContrastColors,
-  getScreenReaderOnlyJssStyle,
   getThemedColors,
   hostHiddenStyles,
 } from '../../styles';
@@ -81,7 +81,6 @@ export const getComponentCss = (
         [mediaQueryS]: isHeaderAlignCenter
           ? {
               gridColumn: 2,
-              textAlign: 'center', // relevant when text becomes multiline
             }
           : {
               gridColumn: '1 / 3',
@@ -91,6 +90,9 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       padding: `0 ${spacingMap[width].base}`,
+      ...(isHeaderAlignCenter && {
+        textAlign: 'center',
+      }),
       [mediaQueryS]: {
         fontFamily, // relevant for button group width calculation, which is based on ex unit
         fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
@@ -152,7 +154,7 @@ export const getComponentCss = (
         ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
-      '&__sr': getScreenReaderOnlyJssStyle(), // appears in the DOM when sliding
+      '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },
     // .splide.is-initialized,
     // .splide.is-rendered {

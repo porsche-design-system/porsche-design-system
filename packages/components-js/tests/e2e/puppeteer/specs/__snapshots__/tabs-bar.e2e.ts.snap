@@ -10,97 +10,120 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [
                         {
                           "children": [
                             {
-                              "name": "Tab Button 1",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 1",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 1",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 2",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 2",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 3",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 3",
+                                          "role": "tab",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "orientation": "horizontal",
+                              "role": "tablist",
                             },
                           ],
-                          "name": "Tab Button 1",
-                          "role": "tab",
+                          "name": "",
+                          "role": "generic",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 2",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 2",
-                          "role": "tab",
+                          "role": "none",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 3",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 3",
-                          "role": "tab",
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "role": "none",
-                    },
                   ],
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "name": "",
               "role": "generic",
-            },
-          ],
-          "name": "",
-          "role": "generic",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
             },
           ],
           "role": "none",
@@ -110,8 +133,7 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -125,97 +147,120 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [
                         {
                           "children": [
                             {
-                              "name": "Tab Button 1",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 1",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 1",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 2",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 2",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 3",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 3",
+                                          "role": "tab",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "orientation": "horizontal",
+                              "role": "tablist",
                             },
                           ],
-                          "name": "Tab Button 1",
-                          "role": "tab",
+                          "name": "",
+                          "role": "generic",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 2",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 2",
-                          "role": "tab",
+                          "role": "none",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 3",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 3",
-                          "role": "tab",
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "role": "none",
-                    },
                   ],
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "name": "",
               "role": "generic",
-            },
-          ],
-          "name": "",
-          "role": "generic",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
             },
           ],
           "role": "none",
@@ -225,8 +270,7 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -240,98 +284,121 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [
                         {
                           "children": [
                             {
-                              "name": "Tab Button 1",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 1",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 1",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 2",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 2",
+                                          "role": "tab",
+                                          "selected": true,
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 3",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 3",
+                                          "role": "tab",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "orientation": "horizontal",
+                              "role": "tablist",
                             },
                           ],
-                          "name": "Tab Button 1",
-                          "role": "tab",
+                          "name": "",
+                          "role": "generic",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 2",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 2",
-                          "role": "tab",
-                          "selected": true,
+                          "role": "none",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 3",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 3",
-                          "role": "tab",
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "role": "none",
-                    },
                   ],
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "name": "",
               "role": "generic",
-            },
-          ],
-          "name": "",
-          "role": "generic",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
             },
           ],
           "role": "none",
@@ -341,8 +408,7 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -356,99 +422,122 @@ exports[`accessibility should render correct accessibility tree on focus change 
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [
                         {
                           "children": [
                             {
-                              "name": "Tab Button 1",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 1",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 1",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 2",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "focused": true,
+                                          "name": "Tab Button 2",
+                                          "role": "tab",
+                                          "selected": true,
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 3",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 3",
+                                          "role": "tab",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "orientation": "horizontal",
+                              "role": "tablist",
                             },
                           ],
-                          "name": "Tab Button 1",
-                          "role": "tab",
+                          "name": "",
+                          "role": "generic",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 2",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "focused": true,
-                          "name": "Tab Button 2",
-                          "role": "tab",
-                          "selected": true,
+                          "role": "none",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 3",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 3",
-                          "role": "tab",
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "role": "none",
-                    },
                   ],
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "name": "",
               "role": "generic",
-            },
-          ],
-          "name": "",
-          "role": "generic",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
             },
           ],
           "role": "none",
@@ -458,8 +547,7 @@ exports[`accessibility should render correct accessibility tree on focus change 
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -473,98 +561,121 @@ exports[`accessibility should render correct accessibility tree on focus change 
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [
                         {
                           "children": [
                             {
-                              "name": "Tab Button 1",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 1",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 1",
+                                          "role": "tab",
+                                          "selected": true,
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 2",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 2",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 3",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 3",
+                                          "role": "tab",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "orientation": "horizontal",
+                              "role": "tablist",
                             },
                           ],
-                          "name": "Tab Button 1",
-                          "role": "tab",
-                          "selected": true,
+                          "name": "",
+                          "role": "generic",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 2",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 2",
-                          "role": "tab",
+                          "role": "none",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 3",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 3",
-                          "role": "tab",
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "role": "none",
-                    },
                   ],
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "name": "",
               "role": "generic",
-            },
-          ],
-          "name": "",
-          "role": "generic",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
             },
           ],
           "role": "none",
@@ -574,8 +685,7 @@ exports[`accessibility should render correct accessibility tree on focus change 
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -589,108 +699,131 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [
                         {
                           "children": [
                             {
-                              "name": "Tab Button 1",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 1",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 1",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 2",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 2",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 3",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 3",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 4",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 4",
+                                          "role": "tab",
+                                          "selected": true,
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "orientation": "horizontal",
+                              "role": "tablist",
                             },
                           ],
-                          "name": "Tab Button 1",
-                          "role": "tab",
+                          "name": "",
+                          "role": "generic",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 2",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 2",
-                          "role": "tab",
+                          "role": "none",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 3",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 3",
-                          "role": "tab",
-                        },
-                        {
-                          "children": [
-                            {
-                              "name": "Tab Button 4",
-                              "role": "StaticText",
-                            },
-                          ],
-                          "name": "Tab Button 4",
-                          "role": "tab",
-                          "selected": true,
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "role": "none",
-                    },
                   ],
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "name": "",
               "role": "generic",
-            },
-          ],
-          "name": "",
-          "role": "generic",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
             },
           ],
           "role": "none",
@@ -700,8 +833,7 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -715,108 +847,131 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [
                         {
                           "children": [
                             {
-                              "name": "Tab Button 1",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 1",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 1",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 2",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 2",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 3",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 3",
+                                          "role": "tab",
+                                        },
+                                        {
+                                          "children": [
+                                            {
+                                              "name": "Tab Button 4",
+                                              "role": "StaticText",
+                                            },
+                                          ],
+                                          "name": "Tab Button 4",
+                                          "role": "tab",
+                                          "selected": true,
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "name": "",
+                              "orientation": "horizontal",
+                              "role": "tablist",
                             },
                           ],
-                          "name": "Tab Button 1",
-                          "role": "tab",
+                          "name": "",
+                          "role": "generic",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 2",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 2",
-                          "role": "tab",
+                          "role": "none",
                         },
                         {
                           "children": [
                             {
-                              "name": "Tab Button 3",
-                              "role": "StaticText",
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                           ],
-                          "name": "Tab Button 3",
-                          "role": "tab",
-                        },
-                        {
-                          "children": [
-                            {
-                              "name": "Tab Button 4",
-                              "role": "StaticText",
-                            },
-                          ],
-                          "name": "Tab Button 4",
-                          "role": "tab",
-                          "selected": true,
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "role": "none",
-                    },
                   ],
-                  "role": "none",
-                },
-                {
-                  "role": "none",
-                },
-                {
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "name": "",
               "role": "generic",
-            },
-          ],
-          "name": "",
-          "role": "generic",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
             },
           ],
           "role": "none",
@@ -826,7 +981,6 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;

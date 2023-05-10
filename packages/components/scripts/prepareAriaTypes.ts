@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import { AriaRole } from '../src/aria-types';
 
 const prepareAriaTypes = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -7,10 +8,23 @@ const prepareAriaTypes = (): void => {
   const reactTypes = fs.readFileSync(reactTypesFile, 'utf8');
 
   const [, ariaRawTypes] = /interface AriaAttributes ({[\s\S]*?})/.exec(reactTypes) || [];
-  const ariaTypes = `export type AriaAttributes = ${ariaRawTypes.replace(/ {8}/g, '  ').replace(/ {4}/g, '')};`;
-  const content = ['/* Auto Generated Below */', "type Booleanish = boolean | 'true' | 'false';", ariaTypes].join(
-    '\n\n'
-  );
+  const [, ariaRoleRawTypes] = /(type AriaRole [\s\S]*?\))/.exec(reactTypes) || [];
+  const ariaTypes = `export type AriaAttributes = ${ariaRawTypes
+    .replace(
+      /}/g,
+      '  /** All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions */\n  role?: AriaRole;\n}'
+    )
+    .replace(/ {8}/g, '  ')
+    .replace(/ {4}/g, '')};`;
+  const ariaRoleTypes = `export ${ariaRoleRawTypes
+    .replace(/ {8}/g, '  ')
+    .replace(/\n[ ]{2,}\| \(string & \{}\)/g, '')};`;
+  const content = [
+    '/* Auto Generated Below */',
+    "type Booleanish = boolean | 'true' | 'false';",
+    ariaTypes,
+    ariaRoleTypes,
+  ].join('\n\n');
 
   const fileName = 'src/aria-types.ts';
   const filePath = path.resolve(rootDirectory, fileName);

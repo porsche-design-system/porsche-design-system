@@ -9,6 +9,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.0.0-rc.2] - 2023-05-09
+
+#### Fixed
+
+- `Checkbox Wrapper` Safari visual state change while hovering
+  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
+- `Checkbox Wrapper` keyboard arrow navigation
+  [#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508)
+- `Modal` fix hover state of dismiss button
+  ([#2510](https://github.com/porsche-design-system/porsche-design-system/pull/2510))
+- `Link Pure`, `Button Pure`: adjust offset of `:hover` and `active` styles
+  ([#2511](https://github.com/porsche-design-system/porsche-design-system/pull/2511))
+- `Tabs Bar`, `Tabs` ([#2521](https://github.com/porsche-design-system/porsche-design-system/pull/2521)):
+  - `focus` state of tabpanel
+  - Indicator bar height
+- Optimize icon/text alignment of `Link Pure` and `Button Pure` in Safari
+- `Select Wrapper` multiline option height and scaling behavior
+  ([#2524](https://github.com/porsche-design-system/porsche-design-system/pull/2524))
+- Fixed accessibility issues of `Tabs`, `Tabs Bar` and `Stepper Horizontal` to comply with v.4.7.0 of `axe-core`
+  ([#2530](https://github.com/porsche-design-system/porsche-design-system/pull/2530))
+- React: `patchRemixRunProcessBrowserGlobalIdentifier` binary now supports Remix 1.16.0
+  ([#2537](https://github.com/porsche-design-system/porsche-design-system/pull/2537))
+- Angular: added optional modifier to optional properties for better type checking in strict mode
+  ([#2544](https://github.com/porsche-design-system/porsche-design-system/pull/2544))
+
+#### Added
+
+- Deprecation warning to `Icon` component if `lazy` prop is used
+  ([#2521](https://github.com/porsche-design-system/porsche-design-system/pull/2521))
+- `aria` prop to `Scroller` component
+  ([#2530](https://github.com/porsche-design-system/porsche-design-system/pull/2530))
+
+#### Changed
+
+- Model signature asset of 718 model ([#2532](https://github.com/porsche-design-system/porsche-design-system/pull/2532))
+
 ### [3.0.0-rc.1] - 2023-04-19
 
 #### Added

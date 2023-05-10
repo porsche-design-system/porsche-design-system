@@ -5,9 +5,8 @@ import {
   addImportantToRule,
   focusPseudoJssStyle,
   getBackfaceVisibilityJssStyle,
-  getFormTextHiddenJssStyle,
+  getHiddenTextJssStyle,
   getInsetJssStyle,
-  getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
 } from './common-styles';
@@ -85,15 +84,14 @@ describe('focusPseudoJssStyle', () => {
   });
 });
 
-describe('getTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
-    expect(getTextHiddenJssStyle(isHidden)).toMatchSnapshot();
-  });
-});
-
-describe('getFormTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
-    expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
+describe('getHiddenTextStyles()', () => {
+  it.each<[boolean, JssStyle]>([
+    [true, undefined],
+    [false, undefined],
+    [true, { width: 'fit-content' }],
+    [false, { width: 'fit-content' }],
+  ])('should return correct JssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
+    expect(getHiddenTextJssStyle(isHidden, shownStyles)).toMatchSnapshot();
   });
 });
 

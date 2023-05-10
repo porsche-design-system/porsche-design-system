@@ -41,8 +41,6 @@ const getFilterInputOverlay = () => selectNode(page, `${filterInputSelector} + s
 const getFilterPlaceholder = async () => getAttribute(await getFilterInput(), 'placeholder');
 const getFilterAriaActiveDescendant = async () => getAttribute(await getFilterInput(), 'aria-activedescendant');
 const getSelectedDropdownOptionId = async () => getAttribute(await getSelectedDropdownOption(), 'id');
-
-const getDropdownOpacity = async () => getElementStyle(await getDropdownList(), 'opacity');
 const getSelectedDropdownOptionIndex = async () => getElementIndex(await getDropdownList(), `.${selectedClass}`);
 const getHighlightedDropdownOptionIndex = async () => getElementIndex(await getDropdownList(), `.${highlightedClass}`);
 const getAriaSelectedTrueDropdownOptionIndex = async () =>
@@ -91,16 +89,12 @@ it('should render', async () => {
   await initSelect();
 
   const filterInput = await getFilterInput();
-  const selectedDescendantId = await getSelectedDropdownOptionId();
-  const filterPlaceholder = await getFilterPlaceholder();
-
-  expect(await getSelectedOptionText()).toEqual(filterPlaceholder);
-  expect(await getDropdown()).not.toBeNull();
   expect(filterInput).not.toBeNull();
 
   await filterInput.click(); // open dropdown to retrieve aria-active-descendant
   await waitForStencilLifecycle(page);
 
+  const selectedDescendantId = await getSelectedDropdownOptionId();
   expect(await getFilterAriaActiveDescendant()).toEqual(selectedDescendantId);
 });
 
@@ -141,7 +135,7 @@ describe('hover state', () => {
 
     const filterInputOverlay = await getFilterInputOverlay();
     const initialStyle = await getElementStyle(filterInputOverlay, 'borderColor');
-    expect(initialStyle).toBe('rgba(0, 0, 0, 0)');
+    expect(initialStyle).toBe('rgb(107, 109, 112)');
 
     await filterInputOverlay.hover();
     const hoverColor = await getElementStyle(filterInputOverlay, 'borderColor');
@@ -149,33 +143,33 @@ describe('hover state', () => {
   });
 });
 
-it('should make dropdown visible if filter input is clicked and hidden via outside click', async () => {
+it('should render dropdown list if filter input is clicked and remove via outside click', async () => {
   await initSelect({ markupBefore: '<p-text>Some text</p-text>' });
 
   const filterInput = await getFilterInput();
   const text = await selectNode(page, 'p-text');
 
-  expect(await getDropdownOpacity(), 'initially').toBe('0');
+  expect(await getDropdownList(), 'initially').toBeNull();
 
   await filterInput.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdownOpacity(), 'after 1st input click').toBe('1');
+  expect(await getDropdownList(), 'after 1st input click').toBeTruthy();
 
   await text.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdownOpacity(), 'after 1st text click').toBe('0');
+  expect(await getDropdownList(), 'after 1st text click').toBeNull();
 
   await filterInput.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdownOpacity(), 'after 2nd input click').toBe('1');
+  expect(await getDropdownList(), 'after 2nd input click').toBeTruthy();
 
   await filterInput.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdownOpacity(), 'after 3rd input click').toBe('1'); // dropdown should stay open
+  expect(await getDropdownList(), 'after 3rd input click').toBeTruthy(); // dropdown should stay open
 });
 
 it('should focus filter when tab key is pressed', async () => {
@@ -197,7 +191,7 @@ it('should open dropdown, filter results to "B" if "b" is entered and select it 
   await filterInput.type('b');
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdownOpacity(), 'opacity').toBe('1');
+  expect(await getDropdownList(), 'opacity').toBeTruthy();
   expect(await getAmountOfHiddenDropdownOptions(), 'amount of hidden options').toBe(2);
 
   await page.keyboard.press('ArrowDown');
@@ -233,6 +227,9 @@ it('should clear input value and reset dropdown on click outside', async () => {
   const filterInput = await getFilterInput();
   const text = await selectNode(page, 'p-text');
 
+  await filterInput.click();
+  await waitForStencilLifecycle(page);
+
   expect(await getAmountOfDropdownOptions()).toBe(3);
 
   await filterInput.type('x');
@@ -245,6 +242,10 @@ it('should clear input value and reset dropdown on click outside', async () => {
   await waitForStencilLifecycle(page);
 
   expect(await getFilterInputValue()).toBe('');
+
+  await filterInput.click();
+  await waitForStencilLifecycle(page);
+
   expect(await getAmountOfDropdownOptions()).toBe(3);
 });
 
@@ -272,11 +273,12 @@ it('should add valid selection as placeholder on click', async () => {
   await initSelect();
 
   const filterInput = await getFilterInput();
-  const dropdownOption2 = await getDropdownOption2();
-
   await filterInput.click();
   await waitForStencilLifecycle(page);
+
+  const dropdownOption2 = await getDropdownOption2();
   await dropdownOption2.click();
+
   await waitForStencilLifecycle(page);
 
   const filterPlaceholder = await getFilterPlaceholder();
@@ -302,24 +304,20 @@ describe('keyboard and click events', () => {
 
     await addEventListener(select, 'change');
 
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option initially').toBe(0);
-    expect(await getSelectedDropdownOptionIndex(), 'for selected option initially').toBe(0);
+    expect(await getDropdownList(), 'initially').toBeNull();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity after arrow down').toBe('1');
+    expect(await getDropdownList(), 'for dropdown list after arrow down').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option after arrow down').toBe(1);
     expect(await getSelectedIndex(), 'for selected index').toBe(0);
 
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity after enter').toBe('0');
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option after enter').toBe(1);
-    expect(await getSelectedDropdownOptionIndex(), 'for selected option after enter').toBe(1);
-    expect(await getAriaSelectedTrueDropdownOptionIndex(), 'for aria selected index after enter').toBe(1);
+    expect(await getDropdownList(), 'initially').toBeNull();
     expect(await getSelectedIndex(), 'for selected index after enter').toBe(1);
 
     await page.keyboard.press('Space'); // open dropdown to retrieve aria-active-descendant
@@ -375,12 +373,12 @@ describe('keyboard and click events', () => {
 
     await page.keyboard.press('Tab');
 
-    expect(await getDropdownOpacity(), 'initially').toBe('0');
+    expect(await getDropdownList(), 'initially').toBeNull();
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'after space').toBe('1');
+    expect(await getDropdownList(), 'after space').toBeTruthy();
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(0);
   });
 
@@ -396,7 +394,7 @@ describe('keyboard and click events', () => {
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+    expect(await getDropdownList(), 'after space').toBeTruthy();
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(0);
   });
 
@@ -407,8 +405,7 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('PageDown');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected option').toBe(0);
+      expect(await getDropdownList(), 'for dropdown list').toBeNull();
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
     });
 
@@ -418,8 +415,7 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('PageUp');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected option').toBe(0);
+      expect(await getDropdownList(), 'for dropdown list').toBeNull();
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
     });
   });
@@ -436,10 +432,8 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected option').toBe(0);
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
-      expect(await getDropdownOpacity(), 'for opacity').toBe('0');
+      expect(await getDropdownList(), 'for opacity').toBeNull();
     });
 
     it('should highlight and select last option on PageDown', async () => {
@@ -457,9 +451,8 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(2);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected option').toBe(2);
       expect(await getSelectedIndex(), 'for selected index').toBe(2);
+      expect(await getDropdownList(), 'for opacity').toBeNull();
     });
 
     it('should highlight and select first option on PageUp', async () => {
@@ -477,9 +470,8 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected option').toBe(0);
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
+      expect(await getDropdownList(), 'for opacity').toBeNull();
     });
   });
 
@@ -490,29 +482,28 @@ describe('keyboard and click events', () => {
     await filterInput.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+    expect(await getDropdownList(), 'after click').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(0);
 
     await filterInput.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+    expect(await getDropdownList(), 'after second click').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(0);
   });
 
   it('should select second option on mouseclick', async () => {
     await initSelect();
     const filterInput = await getFilterInput();
-    const dropdownOption2 = await getDropdownOption2();
 
     await filterInput.click();
     await waitForStencilLifecycle(page);
+
+    const dropdownOption2 = await getDropdownOption2();
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('0');
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted option').toBe(1);
-    expect(await getSelectedDropdownOptionIndex(), 'for selected option').toBe(1);
+    expect(await getDropdownList(), 'for opacity').toBeNull();
     expect(await getSelectedIndex(), 'for selected index').toBe(1);
   });
 
@@ -526,12 +517,12 @@ describe('keyboard and click events', () => {
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+    expect(await getDropdownList(), 'for dropdown list').toBeTruthy();
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('0');
+    expect(await getDropdownList(), 'for dropdown list').toBeNull();
     expect((await getEventSummary(filterInput, 'blur')).counter, 'for calls').toBe(1);
   });
 
@@ -543,19 +534,12 @@ describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
     });
 
-    it('should have not-allowed cursor on overlay', async () => {
-      const filterInputOverlay = await getFilterInputOverlay();
-      expect(await getElementStyle(filterInputOverlay, 'cursor')).toBe('not-allowed');
+    it('should have not-allowed cursor', async () => {
+      expect(await getElementStyle(await getSelect(), 'cursor')).toBe('not-allowed');
     });
 
-    it('should not open dropdown via overlay click', async () => {
-      expect(await getDropdownOpacity()).toBe('0');
-
-      const coords = await (await getFilterInputOverlay()).boundingBox();
-      await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
-      await waitForStencilLifecycle(page);
-
-      expect(await getDropdownOpacity()).toBe('0');
+    it('should not render dropdown', async () => {
+      expect(await getDropdown()).toBeNull();
     });
   });
 });
@@ -563,14 +547,26 @@ describe('keyboard and click events', () => {
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initSelect();
-    const status = await getLifecycleStatus(page);
+    const filterInput = await getFilterInput();
+    const status1 = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-select-wrapper-dropdown'], 'componentDidLoad: p-select-wrapper-dropdown').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
+    expect(status1.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
+    expect(status1.componentDidLoad['p-select-wrapper-dropdown'], 'componentDidLoad: p-select-wrapper-dropdown').toBe(
+      1
+    );
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await filterInput.click();
+    await waitForStencilLifecycle(page);
+    const status2 = await getLifecycleStatus(page);
+
+    expect(status2.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
+
+    expect(status2.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
   it('should work without unnecessary round trips on filter input change', async () => {

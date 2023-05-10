@@ -12,15 +12,19 @@ module.exports = {
   testMatch: ['**/tests/unit/specs/**/*.spec.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   collectCoverageFrom: ['!<rootDir>/node_modules/', 'projects/angular-wrapper/src/!(lib)**'],
-  globals: {
-    'ts-jest': {
-      tsconfig: {
-        moduleResolution: 'node',
-        target: 'es2019',
-        lib: ['es2019', 'dom'],
-        esModuleInterop: true,
+  transform: {
+    '^.+\\.(ts|js|html)?$': [
+      'jest-preset-angular',
+      {
+        // override tsconfig.json in package root
+        tsconfig: {
+          moduleResolution: 'node',
+          target: 'es2019',
+          lib: ['es2019', 'dom'],
+          esModuleInterop: true,
+        },
       },
-    },
+    ],
   },
   clearMocks: true,
   restoreMocks: true,

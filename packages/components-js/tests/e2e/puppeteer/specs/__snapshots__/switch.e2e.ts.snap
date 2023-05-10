@@ -35,6 +35,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                       "role": "none",
                     },
                   ],
+                  "disabled": true,
                   "name": "Some Label",
                   "role": "switch",
                 },

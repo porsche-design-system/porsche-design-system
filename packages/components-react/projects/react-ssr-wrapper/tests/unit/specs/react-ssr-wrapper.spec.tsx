@@ -166,6 +166,32 @@ describe('manual test cases', () => {
         </fromComponents.PSegmentedControl>
       ),
     ],
+    'p-select-wrapper': [
+      () => (
+        <fromComponents.PSelectWrapper filter={true} label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+            <option value="d">Option D</option>
+            <option value="e">Option E</option>
+            <option value="f">Option F</option>
+          </select>
+        </fromComponents.PSelectWrapper>
+      ),
+      () => (
+        <fromComponents.PSelectWrapper native={true} label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+            <option value="d">Option D</option>
+            <option value="e">Option E</option>
+            <option value="f">Option F</option>
+          </select>
+        </fromComponents.PSelectWrapper>
+      ),
+    ],
     'p-text-field-wrapper': [
       () => (
         <fromComponents.PTextFieldWrapper label="Counter">

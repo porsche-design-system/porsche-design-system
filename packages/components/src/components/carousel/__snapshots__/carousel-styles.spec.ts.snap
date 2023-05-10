@@ -28,13 +28,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -64,14 +64,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -178,14 +173,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -256,13 +246,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -292,14 +282,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -387,13 +372,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -423,14 +408,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -553,14 +533,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -682,14 +657,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -776,13 +746,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -812,14 +782,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -969,14 +934,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1090,13 +1050,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -1126,14 +1086,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1240,14 +1195,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1318,13 +1268,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     grid-column: 2 !important;
-    text-align: center !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -1354,14 +1304,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1484,14 +1429,9 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
 }
 .splide__track--draggable {
   user-select: none;

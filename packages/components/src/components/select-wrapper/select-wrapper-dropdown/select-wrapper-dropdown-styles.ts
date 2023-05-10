@@ -4,43 +4,49 @@ import type { JssStyle, Styles } from 'jss';
 import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
 import {
   getInsetJssStyle,
-  getTextHiddenJssStyle,
   getTransition,
-  pxToRemWithUnit,
   getThemedColors,
   addImportantToRule,
   hoverMediaQuery,
   getHighContrastColors,
+  getHiddenTextJssStyle,
 } from '../../../styles';
 import {
   borderRadiusSmall,
   borderWidthBase,
+  fontLineHeight,
   fontWeightSemiBold,
   spacingStaticMedium,
   spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { ICON_SPACE, OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
+import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import { INPUT_HEIGHT } from '../../../styles/form-styles';
 import type { FormState } from '../../../utils/form/form-state';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
-export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
+export const getButtonStyles = (
+  direction: DropdownDirectionInternal,
+  isOpen: boolean,
+  state: FormState,
+  theme: Theme
+): Styles => {
+  const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { formStateHoverColor, formStateColor } = getThemedFormStateColors(theme, state);
+  const isDirectionDown = direction === 'down';
 
   return {
     '@global': {
       button: {
         position: 'absolute',
         top: 0,
-        height: pxToRemWithUnit(INPUT_HEIGHT),
+        height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so button height becomes 54px
         width: '100%',
+        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         padding: 0,
         background: 'transparent',
-        border: `${borderWidthBase} solid ${isOpen ? primaryColor : 'transparent'}`, // using border of styled select below for label:hover selector
+        border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for label:hover selector
         borderRadius: borderRadiusSmall,
         outline: '0',
         cursor: 'pointer',
@@ -57,26 +63,30 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
           cursor: 'not-allowed',
           borderColor: disabledColor,
         },
+        ...(isOpen && {
+          [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
+          [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
+        }),
       },
     },
   };
 };
 
 export const getFilterStyles = (
+  direction: DropdownDirectionInternal,
   isOpen: boolean,
   state: FormState,
   disabled: boolean,
   theme: Theme
 ): Styles<'@global'> => {
-  const { primaryColor, backgroundColor, disabledColor } = getThemedColors(theme);
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { primaryColor, backgroundColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { formStateHoverColor, formStateColor } = getThemedFormStateColors(theme, state);
+  const isDirectionDown = direction === 'down';
 
   const placeHolderJssStyle: JssStyle = {
     opacity: 1,
     color: disabled ? disabledColor : primaryColor,
   };
-
-  const inputHeightRem = pxToRemWithUnit(INPUT_HEIGHT - 4);
 
   return {
     '@global': {
@@ -84,10 +94,11 @@ export const getFilterStyles = (
         display: 'block',
         position: 'absolute',
         zIndex: 1,
-        bottom: '2px', // input is inset to not overlap with 2px border of state
+        bottom: '2px',
         left: '2px',
-        width: `calc(100% - ${ICON_SPACE})`,
-        height: inputHeightRem,
+        width: `calc(100% - (${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`,
+        height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
+        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
         padding: `13px ${spacingStaticMedium}`,
         outline: '0',
         appearance: 'none',
@@ -128,15 +139,19 @@ export const getFilterStyles = (
           transition: getTransition('border-color'),
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',
-          border: `${borderWidthBase} solid ${isOpen ? primaryColor : 'transparent'}`, // using border of styled select below for label:hover selector
+          border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
           borderRadius: borderRadiusSmall,
+          ...(isOpen && {
+            [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
+            [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
+          }),
         },
       },
     },
   };
 };
 
-export const getListStyles = (direction: DropdownDirectionInternal, isOpen: boolean, theme: Theme): Styles => {
+export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
   const {
     primaryColor,
@@ -163,21 +178,13 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         left: 0,
         right: 0,
         [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 2px)', // 2px border + 2px safety for rounded corners
-        ...(!isOpen && {
-          opacity: 0,
-          overflow: 'hidden',
-          height: '1px',
-          pointerEvents: 'none',
-        }),
         boxSizing: 'border-box',
         maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         scrollBehavior: 'smooth',
-        border: `2px solid ${isOpen ? primaryColor : contrastMediumColor}`,
-        // causes diagonal edge between different border colors
+        border: `2px solid ${primaryColor}`,
         [isDirectionDown ? 'borderTop' : 'borderBottom']: addImportantToRule(`1px solid ${contrastMediumColor}`),
-        // boxShadow: `0 -2px 0 ${backgroundColor}`, // TODO: rounded corners on select or button are visible
         ...(isDirectionDown
           ? ['borderBottomLeftRadius', 'borderBottomRightRadius']
           : ['borderTopLeftRadius', 'borderTopRightRadius']
@@ -193,7 +200,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       justifyContent: 'space-between',
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
-      minHeight: pxToRemWithUnit(OPTION_HEIGHT),
+      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       color: contrastHighColor,
       cursor: 'pointer',
       textAlign: 'left',
@@ -204,7 +211,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
       '&[role=status]': {
         cursor: 'not-allowed',
       },
-      '&__sr': getTextHiddenJssStyle(true),
+      '&__sr': getHiddenTextJssStyle(),
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not([role=status]):hover': {
           color: isHighContrastMode ? highlightColor : primaryColor,
@@ -238,9 +245,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         paddingLeft: '24px',
       },
     },
-    'sr-text': {
-      display: 'none',
-    },
   };
 };
 
@@ -264,8 +268,9 @@ export const getComponentCss = (
             [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
             display: 'block',
             position: `var(${dropdownPositionVar})`, // for vrt tests
-            marginTop: pxToRemWithUnit(-INPUT_HEIGHT),
-            paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
+            font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+            marginTop: `calc(-1 * (${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`, // we need 10px additionally so input height becomes 54px,
+            paddingTop: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px,
             left: 0,
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
@@ -278,9 +283,14 @@ export const getComponentCss = (
               })),
           },
         },
+        'sr-text': {
+          display: 'none',
+        },
       },
-      filter ? getFilterStyles(isOpen, state, disabled, theme) : getButtonStyles(isOpen, state, theme),
-      getListStyles(direction, isOpen, theme)
+      filter
+        ? getFilterStyles(direction, isOpen, state, disabled, theme)
+        : getButtonStyles(direction, isOpen, state, theme),
+      isOpen && getListStyles(direction, theme)
     )
   );
 };

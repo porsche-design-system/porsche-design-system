@@ -62,14 +62,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .label__text {
   display: block;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -95,14 +90,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(min-width:480px) {
@@ -110,25 +100,16 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     position: static;
     width: fit-content;
     height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
+    text-indent: 0;
   }
 }
 
 @media(min-width:760px) {
   .label__text {
     position: absolute;
+    width: 0;
     height: 1px;
-    width: fit-content;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
+    text-indent: -999999px;
   }
 }
 
@@ -137,25 +118,16 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     position: static;
     width: fit-content;
     height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
+    text-indent: 0;
   }
 }
 
 @media(min-width:1300px) {
   .label__text {
     position: absolute;
+    width: 0;
     height: 1px;
-    width: fit-content;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
+    text-indent: -999999px;
   }
 }
 
@@ -164,11 +136,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     position: static;
     width: fit-content;
     height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
+    text-indent: 0;
   }
 }
 
@@ -254,11 +222,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -285,14 +249,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -367,11 +326,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -398,14 +353,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -480,11 +430,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -521,14 +467,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -603,11 +544,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -644,14 +581,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -726,11 +658,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -767,14 +695,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -859,11 +782,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -889,14 +808,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -989,11 +903,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1019,14 +929,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1111,11 +1016,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1141,14 +1042,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1223,11 +1119,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1253,14 +1145,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1336,11 +1223,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1376,14 +1259,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1458,11 +1336,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1498,14 +1372,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1580,11 +1449,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1620,14 +1485,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1702,11 +1562,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1742,14 +1598,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1834,11 +1685,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1865,14 +1712,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -1947,11 +1789,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1978,14 +1816,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2060,11 +1893,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2101,14 +1930,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2183,11 +2007,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2224,14 +2044,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2306,11 +2121,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2347,14 +2158,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2439,11 +2245,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2469,14 +2271,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2551,11 +2348,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2581,14 +2374,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2663,11 +2451,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2704,14 +2488,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2796,11 +2575,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2825,14 +2600,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -2907,11 +2677,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2936,14 +2702,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -3018,11 +2779,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3058,14 +2815,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -3150,11 +2902,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3180,14 +2928,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -3262,11 +3005,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3292,14 +3031,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -3374,11 +3108,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   position: static;
   width: fit-content;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  text-indent: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3415,14 +3145,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {
@@ -3505,14 +3230,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 .label__text {
   display: block;
   position: absolute;
+  width: 0;
   height: 1px;
-  width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3538,14 +3258,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 .sr-only {
   position: absolute;
+  width: 0;
   height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  text-indent: -999999px;
   padding: 0;
 }
 @media(hover:hover) {

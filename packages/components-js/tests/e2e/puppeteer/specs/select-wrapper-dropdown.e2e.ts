@@ -68,6 +68,12 @@ const getAmountOfOptgroups = async () => (await getSelect()).evaluate((el) => el
 const getAmountOfDropdownOptgroups = async () =>
   (await getDropdownList()).evaluate((el) => el.querySelectorAll('.optgroup').length);
 
+const openSelect = async () => {
+  const host = await getHost();
+  await host.click();
+  await waitForStencilLifecycle(page);
+};
+
 type InitOptions = {
   amount?: 3 | 5;
   isNative?: boolean;
@@ -123,6 +129,8 @@ const initSelect = (opts?: InitOptions): Promise<void> => {
 it('should render', async () => {
   await initSelect({ disabledIndex: 1 });
 
+  await openSelect();
+
   const disabledDropdownOption = await getDisabledDropdownOption();
 
   expect(disabledDropdownOption).not.toBeNull();
@@ -148,6 +156,8 @@ it('should render with optgroups', async () => {
     </p-select-wrapper>`
   );
 
+  await openSelect();
+
   const dropdownList = await getDropdownList();
   const dropdownOptgroup = await getDropdownOptgroup();
 
@@ -171,6 +181,8 @@ it('should render with a mix of options and optgroup', async () => {
       </select>
     </p-select-wrapper>`
   );
+
+  await openSelect();
 
   const dropdownOptgroup = await getDropdownOptgroup();
 
@@ -201,54 +213,70 @@ it('should not render if native prop is set to true', async () => {
   expect(dropdown).toBeNull();
 });
 
-it('should disable combobox when select is disabled programmatically', async () => {
+it('should disable select when disabled programmatically', async () => {
   await initSelect();
   const select = await getSelect();
-  const dropdownCombobox = await getDropdownCombobox();
+  const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
 
-  const getComboboxCursorStyle = () => getElementStyle(dropdownCombobox, 'cursor');
-
-  expect(await getComboboxCursorStyle(), 'initially').toBe('pointer');
+  expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
 
   await setProperty(select, 'disabled', true);
   await waitForStencilLifecycle(page);
 
-  expect(await getComboboxCursorStyle(), 'when disabled = true').toBe('not-allowed');
+  expect(await getSelectCursorStyle(), 'when disabled = true').toBe('not-allowed');
 
   await setProperty(select, 'disabled', false);
   await waitForStencilLifecycle(page);
 
-  expect(await getComboboxCursorStyle(), 'when disabled = false').toBe('pointer');
+  expect(await getSelectCursorStyle(), 'when disabled = false').toBe('pointer');
+});
+
+it('should not render dropdown when select is disabled programmatically', async () => {
+  await initSelect();
+  const select = await getSelect();
+
+  expect(await getDropdown(), 'initially').toBeTruthy();
+
+  await setProperty(select, 'disabled', true);
+  await waitForStencilLifecycle(page);
+
+  expect(await getDropdown(), 'when disabled = true').toBeNull();
+
+  await setProperty(select, 'disabled', false);
+  await waitForStencilLifecycle(page);
+
+  expect(await getDropdown(), 'when disabled = false').toBeTruthy();
 });
 
 it('should be visible if select is clicked and hidden again when clicked outside', async () => {
   await initSelect({ markupBefore: '<p-text>Some text</p-text>' });
 
-  const dropdownCombobox = await getDropdownCombobox();
+  const host = await getHost();
   const text = await selectNode(page, 'p-text');
 
-  expect(await getDropdownOpacity()).toBe('0');
+  expect(await getDropdownList()).toBeNull();
 
-  await dropdownCombobox.click();
+  await host.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownOpacity()).toBe('1');
+  expect(await getDropdownList()).toBeTruthy();
 
   await text.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownOpacity()).toBe('0');
+  expect(await getDropdownList()).toBeNull();
 
-  await dropdownCombobox.click();
+  await host.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownOpacity()).toBe('1');
+  expect(await getDropdownList()).toBeTruthy();
 
-  await dropdownCombobox.click();
+  await host.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownOpacity()).toBe('0');
+  expect(await getDropdownList()).toBeNull();
 });
 
 it('should add custom option if added to native select programmatically', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
 
   expect(await getAmountOfDropdownOptions()).toEqual(await getAmountOfOptions());
 
@@ -267,6 +295,7 @@ it('should add custom option if added to native select programmatically', async 
 it('should observe selected property changes of native option if added programmatically', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
 
   await select.evaluate((el: HTMLSelectElement) => {
     const option = document.createElement('option');
@@ -285,6 +314,7 @@ it('should observe selected property changes of native option if added programma
 it('should add/remove disabled state to custom option item if added/removed property to native select programmatically', async () => {
   await initSelect({ disabledIndex: 1 });
   const select = await getSelect();
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   const dropdownOption2 = await getDropdownOption2();
 
@@ -304,6 +334,7 @@ it('should add/remove disabled state to custom option item if added/removed prop
 it('should add/remove disabled state to custom option item if added/removed attribute to native select programmatically', async () => {
   await initSelect({ disabledIndex: 1 });
   const select = await getSelect();
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   const dropdownOption2 = await getDropdownOption2();
 
@@ -323,6 +354,7 @@ it('should add/remove disabled state to custom option item if added/removed attr
 it('should synchronize custom option and native select if selected property is set programmatically', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   const dropdownOption2 = await getDropdownOption2();
 
@@ -341,6 +373,7 @@ it('should synchronize custom option and native select if selected property is s
 it('should synchronize custom option and native select if selected attribute is set programmatically', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   const dropdownOption2 = await getDropdownOption2();
 
@@ -359,6 +392,7 @@ it('should synchronize custom option and native select if selected attribute is 
 it('should synchronize custom option and native select if selected value property is changed programmatically', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   const dropdownOption2 = await getDropdownOption2();
 
@@ -376,6 +410,7 @@ it('should synchronize custom option and native select if selected value propert
 it('should synchronize custom option and native select if selectedIndex property is changed programmatically', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   const dropdownOption2 = await getDropdownOption2();
 
@@ -393,6 +428,7 @@ it('should synchronize custom option and native select if selectedIndex property
 it('should add selected state to custom option item if selected property of option is set', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   const dropdownOption2 = await getDropdownOption2();
 
@@ -410,6 +446,7 @@ it('should add selected state to custom option item if selected property of opti
 it('should hide/show custom option item if hidden attribute is added/removed to native select programmatically', async () => {
   await initSelect();
   const select = await getSelect();
+  await openSelect();
   const dropdownOption2 = await getDropdownOption2();
 
   await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = true));
@@ -426,7 +463,7 @@ it('should hide/show custom option item if hidden attribute is added/removed to 
 
 it('should not render initial hidden option fields', async () => {
   await initSelect({ hiddenIndex: 0 });
-
+  await openSelect();
   const dropdownOption1 = await getDropdownOption1();
   expect(await getCssClasses(dropdownOption1)).toContain(hiddenClass);
 });
@@ -487,7 +524,7 @@ describe('hover state', () => {
 
     const dropdownCombobox = await getDropdownCombobox();
     const initialStyle = await getElementStyle(dropdownCombobox, 'borderColor');
-    expect(initialStyle).toBe('rgba(0, 0, 0, 0)');
+    expect(initialStyle).toBe('rgb(107, 109, 112)');
 
     await dropdownCombobox.hover();
     const hoverStyle = await getElementStyle(dropdownCombobox, 'borderColor');
@@ -544,24 +581,20 @@ describe('keyboard and click events', () => {
 
     await addEventListener(select, 'change');
 
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
-    expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+    expect(await getDropdownList(), 'initially').toBeNull();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+    expect(await getDropdownList(), 'after ArrowDown').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
     expect(await getSelectedIndex(), 'for selected custom option').toBe(0);
 
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('0');
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
-    expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(1);
-    expect(await getAriaSelectedTrueDropdownOptionIndex(), 'for aria selected index').toBe(1);
+    expect(await getDropdownList(), 'after Enter').toBeNull();
     expect(await getSelectedIndex(), 'for selected index').toBe(1);
 
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(1);
@@ -618,11 +651,11 @@ describe('keyboard and click events', () => {
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
-    expect(await getDropdownOpacity(), 'for opacity after tab').toBe('0');
+    expect(await getDropdownList(), 'for dropdown list after tab').toBeNull();
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
-    expect(await getDropdownOpacity(), 'for opacity after space').toBe('1');
+    expect(await getDropdownList(), 'for dropdown list after space').toBeTruthy();
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(0);
   });
 
@@ -633,11 +666,11 @@ describe('keyboard and click events', () => {
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
-    expect(await getDropdownOpacity(), 'for opacity after tab').toBe('0');
+    expect(await getDropdownList(), 'for dropdown list after tab').toBeNull();
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
-    expect(await getDropdownOpacity(), 'for opacity afer space').toBe('1');
+    expect(await getDropdownList(), 'for dropdown list after space').toBeTruthy();
 
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
@@ -657,8 +690,7 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('PageDown');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+      expect(await getDropdownList(), 'for dropdown list after page down').toBeNull();
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
     });
 
@@ -669,8 +701,7 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('PageUp');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+      expect(await getDropdownList(), 'for dropdown list after page up').toBeNull();
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
     });
   });
@@ -692,8 +723,7 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(2);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(2);
+      expect(await getDropdownList(), 'for dropdown list after space').toBeNull();
       expect(await getSelectedIndex(), 'for selected index').toBe(2);
     });
 
@@ -713,8 +743,7 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
+      expect(await getDropdownList(), 'for dropdown list after space').toBeNull();
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
     });
 
@@ -730,10 +759,8 @@ describe('keyboard and click events', () => {
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
-      expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(0);
       expect(await getSelectedIndex(), 'for selected index').toBe(0);
-      expect(await getDropdownOpacity(), 'for opacity').toBe('0');
+      expect(await getDropdownList(), 'for dropdown list').toBeNull();
     });
 
     it('should highlight first matching option via keyboard search', async () => {
@@ -755,18 +782,17 @@ describe('keyboard and click events', () => {
   it('should open/close select on mouseclick', async () => {
     await initSelect();
 
-    const dropdownCombobox = await getDropdownCombobox();
-    await dropdownCombobox.click();
+    const host = await getHost();
+    await host.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity after 1st click').toBe('1');
+    expect(await getDropdownList(), 'after 1st click').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option  after 1st click').toBe(0);
 
-    await dropdownCombobox.click();
+    await host.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity after 2nd click').toBe('0');
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option after 2nd click').toBe(0);
+    expect(await getDropdownList(), 'after 2nd click').toBeNull();
   });
 
   it('should open/close select on icon click', async () => {
@@ -782,28 +808,28 @@ describe('keyboard and click events', () => {
 
     await clickIcon();
 
-    expect(await getDropdownOpacity(), 'for opacity after 1st click').toBe('1');
+    expect(await getDropdownList(), 'after 1st click').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option after 1st click').toBe(0);
 
     await clickIcon();
 
-    expect(await getDropdownOpacity(), 'for opacity after 2nd click').toBe('0');
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option after 2nd click').toBe(0);
+    expect(await getDropdownList(), 'after 2nd click').toBeNull();
   });
 
   it('should select second option on mouseclick', async () => {
     await initSelect();
-    const dropdownCombobox = await getDropdownCombobox();
+    const host = await getHost();
+
+    await host.click();
+    await waitForStencilLifecycle(page);
+    expect(await getDropdownList(), 'after open').toBeTruthy();
+
     const dropdownOption2 = await getDropdownOption2();
 
-    await dropdownCombobox.click();
-    await waitForStencilLifecycle(page);
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('0');
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
-    expect(await getSelectedDropdownOptionIndex(), 'for selected custom option').toBe(1);
+    expect(await getDropdownList(), 'after option click').toBeNull();
     expect(await getSelectedIndex(), 'for selected index').toBe(1);
   });
 
@@ -835,6 +861,11 @@ describe('keyboard and click events', () => {
         ${initCustomElement}
         <${customElementName}></${customElementName}>`
     );
+
+    const host = await selectNode(page, `${customElementName} >>> p-select-wrapper`);
+    await host.click();
+    await waitForStencilLifecycle(page);
+
     const dropdownCombobox = await selectNode(
       page,
       `${customElementName} >>> p-select-wrapper >>> p-select-wrapper-dropdown >>> [role="combobox"]`
@@ -849,12 +880,14 @@ describe('keyboard and click events', () => {
 
     expect(await getSelectedOptionInCustomElement(), 'initially').toBe(0);
 
-    await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
     await page.mouse.click(dropdownOption2BoundingBox.x + 2, dropdownOption2BoundingBox.y + 2);
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectedOptionInCustomElement(), 'after click').toBe(1);
+    expect(
+      await getProperty(await selectNode(page, `${customElementName} >>> p-select-wrapper select`), 'selectedIndex'),
+      'after click'
+    ).toBe(1);
   });
 
   it('should close select on tab', async () => {
@@ -864,12 +897,12 @@ describe('keyboard and click events', () => {
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+    expect(await getDropdownList(), 'after space').toBeTruthy();
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownOpacity(), 'for opacity').toBe('0');
+    expect(await getDropdownList(), 'after tab').toBeNull();
     expect(await selectHasFocus()).toBe(false);
   });
 
@@ -877,6 +910,8 @@ describe('keyboard and click events', () => {
     await initSelect();
 
     const host = await getHost();
+    await host.click();
+    await waitForStencilLifecycle(page);
     const dropdownCombobox = await getDropdownCombobox();
     const dropdownList = await getDropdownList();
 
@@ -914,18 +949,25 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
     expect(status.componentDidLoad['p-select-wrapper-dropdown'], 'componentDidLoad: p-select-wrapper-dropdown').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await openSelect();
+
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
   it('should work without unnecessary round trips if second option is clicked', async () => {
     await initSelect();
+    await openSelect();
+
     const dropdownCombobox = await getDropdownCombobox();
     const dropdownOption2 = await getDropdownOption2();
 
-    await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
     const status1 = await getLifecycleStatus(page);
 
@@ -942,13 +984,13 @@ describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status2 = await getLifecycleStatus(page);
 
-    expect(status2.componentDidLoad['p-icon'], '2nd componentDidLoad: p-icon').toBe(3); // new icon on selected option
+    expect(status2.componentDidLoad['p-icon'], '2nd componentDidLoad: p-icon').toBe(2);
     expect(
       status2.componentDidUpdate['p-select-wrapper-dropdown'],
       '2nd componentDidUpdate: p-select-wrapper-dropdown'
     ).toBe(2);
 
-    expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(5);
+    expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(4);
     expect(status2.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
   });
 });
@@ -1020,26 +1062,34 @@ describe('accessibility', () => {
     await initSelect();
 
     const host = await getHost();
-    const dropdownOption1 = await getDropdownOption1();
-    const dropdownOption2 = await getDropdownOption2();
-
     await host.click();
     await waitForStencilLifecycle(page);
-    await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A' });
-    await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
+
+    const dropdownOption1 = await getDropdownOption1();
+    const dropdownOption2 = await getDropdownOption2();
+    await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A', interestingOnly: false });
+    await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B', interestingOnly: false });
 
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
     await host.click();
     await waitForStencilLifecycle(page);
-    await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Option A after click' });
-    await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Option B after click' });
+
+    await expectA11yToMatchSnapshot(page, await getDropdownOption1(), {
+      message: 'Option A after click',
+      interestingOnly: false,
+    });
+    await expectA11yToMatchSnapshot(page, await getDropdownOption2(), {
+      message: 'Option B after click',
+      interestingOnly: false,
+    });
   });
 
   it('should expose correct accessibility tree if description is set', async () => {
     await initSelect();
     const host = await getHost();
     await setProperty(host, 'description', 'Some description');
+    await host.click();
     await waitForStencilLifecycle(page);
     const dropdownCombobox = await getDropdownCombobox();
 
@@ -1051,6 +1101,7 @@ describe('accessibility', () => {
     const host = await getHost();
     await setProperty(host, 'state', 'error');
     await setProperty(host, 'message', 'Some error message');
+    await host.click();
     await waitForStencilLifecycle(page);
     const dropdownCombobox = await getDropdownCombobox();
 
