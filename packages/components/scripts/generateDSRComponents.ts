@@ -176,7 +176,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|footer)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -243,7 +243,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           );
       } else if (tagName === 'p-flyout') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasHeader|hasFooter)/g, 'this.$1');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeader|hasFooter)/g, '$1')
+          .replace(/(?:hasHeader|hasFooter) =/g, 'const $&');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
