@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vite'",
+    "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vite -c vite.config.app.ts'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 5173 -d ./dist/demo-app'",
     "build": "yarn clean:build && yarn build:vue-wrapper && yarn build:subPackages",
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
-    "build:vue-wrapper:lib": "vite build",
+    "build:vue-wrapper:lib": "vite build -c vite.config.package.ts",
     "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && ts-node --project tsconfig.node.json scripts/addDeprecatedAnnotations.ts",
     "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:typings:testing && yarn build:subPackages:typings",
     "build:subPackages:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
