@@ -159,7 +159,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 @media(hover:hover) {
   button {
@@ -293,7 +293,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 @media(hover:hover) {
   button {
@@ -550,7 +550,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 @media(hover:hover) {
   button {
@@ -679,7 +679,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 @media(hover:hover) {
   button {
@@ -941,7 +941,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 @media(hover:hover) {
   button {
