@@ -124,7 +124,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   // Return the `HTMLAttribute` type to be used in the intersection of the component type,
   // omitting HTML attributes that are overridden by the component
   protected generateHTMLAttributesType(): string {
-    const overriddenPropNames = ['color', 'onChange'];
+    const overriddenPropNames = ['color'];
     const omitted = overriddenPropNames.map((propName) => `'${propName}'`).join(' | ');
     return `Omit<HTMLAttributes<{}>, ${omitted}>`;
   }

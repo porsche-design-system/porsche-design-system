@@ -127,16 +127,16 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add uxpinbind annotations
     if (component === 'p-accordion') {
-      props = addUxPinBindAnnotation(props, 'open', 'onChange', 'open');
+      props = addUxPinBindAnnotation(props, 'open', 'onUpdate', 'open');
       props = addUxPinBindAnnotation(props, 'open', 'onAccordionChange', 'open');
     } else if (component === 'p-switch') {
-      props = addUxPinBindAnnotation(props, 'checked', 'onChange', 'checked');
+      props = addUxPinBindAnnotation(props, 'checked', 'onUpdate', 'checked');
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
     } else if (component === 'p-segmented-control') {
-      props = addUxPinBindAnnotation(props, 'value', 'onChange', 'value');
+      props = addUxPinBindAnnotation(props, 'value', 'onUpdate', 'value');
       props = addUxPinBindAnnotation(props, 'value', 'onSegmentedControlChange', 'value');
     } else if (component === 'p-tabs-bar') {
-      props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onChange', 'activeTabIndex');
+      props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onUpdate', 'activeTabIndex');
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
     }
 

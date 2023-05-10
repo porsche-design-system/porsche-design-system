@@ -21,7 +21,7 @@ afterEach(async () => await page.close());
 const clickHandlerScript = `
 <script>
   const accordion = document.querySelector('p-accordion');
-  accordion.addEventListener('accordionChange', (e) => {
+  accordion.addEventListener('update', (e) => {
     e.target.open = e.detail.open;
   });
 </script>`;
