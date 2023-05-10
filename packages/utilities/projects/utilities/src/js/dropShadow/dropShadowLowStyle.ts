@@ -1,5 +1,5 @@
 import { _dropShadowBackgroundColor } from './dropShadowShared';
 
 export const dropShadowLowStyle = {
-  filter: `drop-shadow(0px 3px 8px ${_dropShadowBackgroundColor})`,
+  boxShadow: `0px 3px 8px ${_dropShadowBackgroundColor}`, // filter: drop-shadow() causes visual glitches in Firefox in combination with frostedGlassStyle
 } as const;

@@ -318,7 +318,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // Remove markup after button
           .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
           // Change isOpen, optionMaps, searchString to not be a prop
-          .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1');
+          .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
+          // fix warning about read-only field
+          .replace(/value={/, 'defaultValue={');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           // Add PSelectWrapperDropdown component import
