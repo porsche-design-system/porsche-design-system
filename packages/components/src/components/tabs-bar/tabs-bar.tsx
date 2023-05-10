@@ -240,6 +240,16 @@ export class TabsBar {
       case 'End':
         upcomingFocusedTabIndex = this.tabElements.length - 1;
         break;
+      // tabindex elements within the ShadowDOM are improperly sorted into document's tabbing sequence.
+      // if an element with tabindex = -1 is focused within the shadowDOM, the focus first jumps to the element with tabindex >= 0, therefor the 'Tab' case needs to be handled.
+      case 'Tab':
+        const { target } = e as KeyboardEvent & { target: EventTarget & HTMLElement };
+        const { tabIndex } = target;
+        target.tabIndex = null;
+        setTimeout(() => {
+          target.tabIndex = tabIndex;
+        });
+        return;
 
       default:
         return;

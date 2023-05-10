@@ -574,7 +574,7 @@ describe('keyboard', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  it('should render correct focused Element on arrow-key press and tab navigation', async () => {
+  it('should render correct active element on arrow-key press and keyboard "tab"', async () => {
     await initTabsBar({
       amount: 3,
       otherMarkup: '<button id="focusableElement" type="button">Button</button>',
