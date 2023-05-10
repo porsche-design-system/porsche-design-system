@@ -17,7 +17,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
-  el.addEventListener('accordionChange', () => {
+  el.addEventListener('update', () => {
     debugEl.querySelector('span').innerHTML = '1';
   });
 

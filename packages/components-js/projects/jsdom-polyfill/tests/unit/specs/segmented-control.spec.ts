@@ -21,7 +21,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
-  el.addEventListener('segmentedControlChange', (e: CustomEvent) => {
+  el.addEventListener('update', (e: CustomEvent) => {
     debugEl.querySelector('span').innerHTML = e.detail.value;
     debugEl.querySelector('span:last-child').innerHTML = '1';
   });
