@@ -9,13 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
-#### Changed
-
-- Styles: `dropShadow{Low|Medium|High}Style`s use `box-shadow` instead of `filter: drop-shadow()` to fix glitches
-  together with `frostedGlassStyle` in Firefox
-  ([#2545](https://github.com/porsche-design-system/porsche-design-system/pull/2545))
-- Size of icon and height of `Accordion`
-  ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
+### [3.0.0-rc.3] - 2023-05-10
 
 #### Fixed
 
@@ -23,6 +17,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2546](https://github.com/porsche-design-system/porsche-design-system/pull/2546))
 - Rendering of `Wordmark` in Safari ([#2542](https://github.com/porsche-design-system/porsche-design-system/pull/2542))
 - Disabled dragging/ghosting of icons
+  ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
+
+#### Changed
+
+- Styles: `dropShadow{Low|Medium|High}Style`s use `box-shadow` instead of `filter: drop-shadow()` to fix glitches
+  together with `frostedGlassStyle` in Firefox
+  ([#2545](https://github.com/porsche-design-system/porsche-design-system/pull/2545))
+- Size of icon and height of `Accordion`
   ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
 
 ### [3.0.0-rc.2] - 2023-05-09
