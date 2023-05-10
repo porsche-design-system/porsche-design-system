@@ -242,6 +242,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const hasHeader = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           );
+      } else if (tagName === 'p-flyout') {
+        newFileContent = newFileContent.replace(/this\.props\.(hasHeader|hasFooter)/g, 'this.$1');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
