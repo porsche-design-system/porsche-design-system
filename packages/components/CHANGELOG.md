@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Disabled dragging/ghosting of icons
   ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
 
+#### Fixed
+
+`Tabs Bar` focus behavior via keyboard navigation
+([#2546](https://github.com/porsche-design-system/porsche-design-system/pull/2546))
+
 ### [3.0.0-rc.2] - 2023-05-09
 
 #### Fixed
