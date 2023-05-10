@@ -1,10 +1,16 @@
 # Flyout
 
+<TableOfContents></TableOfContents>
+
 ## Basic
 
 <Playground :markup="positionMarkup">
   <SelectOptions v-model="position" :values="positions" name="position"></SelectOptions>
 </Playground>
+
+## Slotted header/footer
+
+<Playground :markup="slottedMarkup"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -36,18 +42,22 @@ export default class Code extends Vue {
 
   position = 'right';
   positions = ['left', 'right'];
-  get positionMarkup() {
-    return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+  positionMarkup = `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
 <p-flyout open="false" position="${this.position}">
+  <p-text>Some Content</p-text>
+</p-flyout>`;
+
+  slottedMarkup = `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+<p-flyout open="false">
   <div slot="header">
     <p-heading tag="h5" size="large">Sticky Heading</p-heading>
     <p-text size="small">Sticky header text</p-text>
   </div>
-  Some content
+  <p-text>Some Content</p-text>
   <div slot="footer">
     <p-button>Footer Button</p-button>
   </div>
-</p-flyout>`;}
+</p-flyout>`;
 
   openFlyout(index: number): void {
     this.flyouts[index].open = true;
