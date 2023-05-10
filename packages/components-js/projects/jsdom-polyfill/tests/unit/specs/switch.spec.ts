@@ -18,7 +18,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
-  el.addEventListener('switchChange', (e: CustomEvent) => {
+  el.addEventListener('update', (e: CustomEvent) => {
     (el as any).checked = e.detail.checked;
     debugEl.querySelector('span').innerHTML = e.detail.checked;
     debugEl.querySelector('span:last-child').innerHTML = `${
