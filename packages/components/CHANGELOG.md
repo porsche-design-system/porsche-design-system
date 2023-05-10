@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Styles: `dropShadow{Low|Medium|High}Style`s use `box-shadow` instead of `filter: drop-shadow()` to fix glitches
   together with `frostedGlassStyle` in Firefox
   ([#2545](https://github.com/porsche-design-system/porsche-design-system/pull/2545))
+- Size of icon and height of `Accordion`
+  ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
+
+#### Fixed
+- Disabled dragging/ghosting of icons
+  ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
 
 #### Fixed
 
