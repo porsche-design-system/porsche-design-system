@@ -574,7 +574,7 @@ describe('keyboard', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  it('should focus correct element on arrow and tab key press, async () => {
+  it('should focus correct element on arrow and tab key press', async () => {
     await initTabsBar({
       amount: 3,
       otherMarkup: '<button id="focusableElement" type="button">Button</button>',
