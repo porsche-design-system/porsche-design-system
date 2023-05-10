@@ -33,7 +33,7 @@ afterEach(async () => await page.close());
 const clickHandlerScript = `
 <script>
   const tabsBar = document.querySelector('p-tabs-bar');
-  tabsBar.addEventListener('tabChange', (e) => {
+  tabsBar.addEventListener('update', (e) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   });
 </script>`;
