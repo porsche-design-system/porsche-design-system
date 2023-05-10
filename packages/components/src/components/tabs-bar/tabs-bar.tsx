@@ -240,8 +240,7 @@ export class TabsBar {
       case 'End':
         upcomingFocusedTabIndex = this.tabElements.length - 1;
         break;
-      // Tabindex elements within the ShadowDOM are improperly sorted into document's tabbing sequence, therefor the 'Tab' case needs to be handled.
-      // if an element with "tabindex = -1" is focused within the shadowDOM, the focus first jumps to the element with "tabindex = 0".
+      // the slotted buttons have a a different tabbing sequence in chrome and safari and it appears that on hitting tab the first slotted one with tabindex=0 becomes focused instead of the one after, therefor the 'Tab' case needs to be handled.
       case 'Tab':
         const { target } = e as KeyboardEvent & { target: EventTarget & HTMLElement };
         const { tabIndex } = target;
