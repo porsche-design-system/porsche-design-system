@@ -3,7 +3,7 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, Watch } fr
 import { FLYOUT_ARIA_ATTRIBUTES, FLYOUT_POSITIONS, FlyoutAriaAttribute, FlyoutPosition } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
 
-import { attachComponentCss, getPrefixedTagNames, parseAndGetAriaAttributes, THEMES } from '../../utils';
+import { attachComponentCss, getPrefixedTagNames, hasNamedSlot, parseAndGetAriaAttributes, THEMES } from '../../utils';
 import { AllowedTypes, PropTypes, validateProps } from '../../utils/validation/validateProps';
 import { SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
@@ -41,6 +41,8 @@ export class Flyout {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   private dialog: HTMLElement;
+  private hasHeader: boolean;
+  private hasFooter: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -62,9 +64,20 @@ export class Flyout {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open, this.position, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.open,
+      this.position,
+      this.hasHeader,
+      this.hasFooter,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+
+    this.hasHeader = hasNamedSlot(this.host, 'header');
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
 
     return (
       <Host onMouseDown={this.onMouseDown}>
@@ -82,11 +95,15 @@ export class Flyout {
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
         >
-          <slot name="header" />
+          {this.hasHeader && (
+            <div class="header">
+              <slot name="header" />
+            </div>
+          )}
           <div class="content">
             <slot />
           </div>
-          <slot name="footer" />
+          {this.hasFooter && <slot name="footer" />}
         </div>
       </Host>
     );

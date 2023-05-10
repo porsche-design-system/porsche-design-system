@@ -1,10 +1,18 @@
 import { getCss, Theme } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  getInsetJssStyle,
+  getThemedColors,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import { JssStyle } from 'jss';
 import { FLYOUT_Z_INDEX } from '../../constants';
 import {
+  fontLineHeight,
   frostedGlassStyle,
   spacingFluidMedium,
+  spacingStaticMedium,
   themeDarkBackgroundShading,
 } from '../../../../utilities/projects/utilities';
 import { FlyoutPosition } from './flyout-utils';
@@ -13,50 +21,68 @@ const flyoutTransitionDuration = '0.5s';
 const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
 
 const cssVariableMaxWidth = '--p-flyout-max-width';
+const maxWidthDefault = '1180px';
 
-const selectorHeader = '::slotted([slot=header])';
-const selectorFooter = '::slotted([slot=footer])';
-
-export const getComponentCss = (isOpen: boolean, position: FlyoutPosition, theme: Theme): string => {
-  const { backgroundColor } = getThemedColors(theme);
+export const getComponentCss = (
+  isOpen: boolean,
+  position: FlyoutPosition,
+  hasHeader: boolean,
+  hasFooter: boolean,
+  theme: Theme
+): string => {
+  const { backgroundColor, contrastHighColor } = getThemedColors(theme);
   const boxShadowColor = 'rgba(204, 204, 204, 0.35)';
   const translatePosition = position === 'left' ? '-100%' : '100%';
 
   return getCss({
-    '@global': {
+    '@global': addImportantToEachRule({
       ':host': {
-        [cssVariableMaxWidth]: '1180px',
-        ...addImportantToEachRule({
-          position: 'fixed',
-          zIndex: FLYOUT_Z_INDEX,
-          ...getInsetJssStyle(),
-          ...getVisibilityJssStyles(isOpen),
-          ...getFrostedGlassBackgroundJssStyles(isOpen),
-          ...hostHiddenStyles,
+        position: 'fixed',
+        zIndex: FLYOUT_Z_INDEX,
+        ...getInsetJssStyle(),
+        ...getVisibilityJssStyles(isOpen),
+        ...getFrostedGlassBackgroundJssStyles(isOpen),
+        ...hostHiddenStyles,
+      },
+      '::slotted': {
+        ...(hasHeader && {
+          '&([slot=header])': {
+            padding: `${spacingStaticMedium} ${spacingFluidMedium}`,
+            [position === 'left' ? 'marginLeft' : 'marginRight']: `calc(${spacingStaticMedium} + ${fontLineHeight})`,
+          },
+        }),
+        ...(hasFooter && {
+          '&([slot=footer])': {
+            background: backgroundColor,
+            padding: `${spacingStaticMedium} ${spacingFluidMedium}`,
+            position: 'sticky',
+            bottom: 0,
+            boxShadow: `${boxShadowColor} 0px -5px 10px`,
+          },
         }),
       },
-      [selectorHeader]: {
+    }),
+    dismiss: {
+      position: 'absolute',
+      top: spacingStaticMedium,
+      [position]: spacingStaticMedium,
+      zIndex: 1,
+      opacity: isOpen ? 1 : 0,
+      ...hoverMediaQuery({
+        '&:hover': {
+          background: contrastHighColor,
+          borderColor: contrastHighColor,
+        },
+      }),
+    },
+    ...(hasHeader && {
+      header: {
         background: backgroundColor,
-        padding: `16px ${spacingFluidMedium}`,
         position: 'sticky',
         top: 0,
         boxShadow: `${boxShadowColor} 0px 5px 10px`,
       },
-      [selectorFooter]: {
-        background: backgroundColor,
-        padding: `16px ${spacingFluidMedium}`,
-        position: 'sticky',
-        bottom: 0,
-        boxShadow: `${boxShadowColor} 0px -5px 10px`,
-      },
-    },
-    dismiss: {
-      position: 'absolute',
-      top: spacingFluidMedium,
-      [position]: spacingFluidMedium,
-      zIndex: 1,
-      opacity: isOpen ? 1 : 0,
-    },
+    }),
     root: {
       position: 'absolute',
       [position]: 0,
@@ -64,7 +90,7 @@ export const getComponentCss = (isOpen: boolean, position: FlyoutPosition, theme
       height: '100%',
       overflowY: 'auto',
       minWidth: '320px',
-      maxWidth: `var(${cssVariableMaxWidth})`,
+      maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
       transform: isOpen ? 'translateX(0)' : `translateX(${translatePosition})`,
@@ -110,9 +136,7 @@ const getFrostedGlassBackgroundJssStyles = (isOpen: boolean): JssStyle => {
             backdropFilter: 'blur(0px)',
             WebkitBackdropFilter: 'blur(0px)',
           }),
-      transition: `opacity ${duration} ${transitionTimingFunction} ${delay},
-        backdrop-filter ${duration} ${transitionTimingFunction} ${delay},
-        --webkit-backdrop-filter ${duration} ${transitionTimingFunction} ${delay}`,
+      transition: `opacity ${duration} ${transitionTimingFunction} ${delay}, backdrop-filter ${duration} ${transitionTimingFunction} ${delay}, --webkit-backdrop-filter ${duration} ${transitionTimingFunction} ${delay}`,
     },
   };
 };
