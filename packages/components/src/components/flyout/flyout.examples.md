@@ -38,15 +38,15 @@ export default class Code extends Vue {
   positions = ['left', 'right'];
   get positionMarkup() {
     return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
-            <p-flyout open="false">
-              <div slot="header">
-                <p-heading tag="h5" size="large">Sticky Heading</p-heading>
-                <p-text size="small">Sticky header text</p-text>
-              </div>
-              <div slot="footer">
-                <p-button>Footer Button</p-button>
-              </div>
-            </p-flyout>`;}
+<p-flyout open="false" position="${this.position}">
+  <div slot="header">
+    <p-heading tag="h5" size="large">Sticky Heading</p-heading>
+    <p-text size="small">Sticky header text</p-text>
+  </div>
+  <div slot="footer">
+    <p-button>Footer Button</p-button>
+  </div>
+</p-flyout>`;}
 
   openFlyout(index: number): void {
     this.flyouts[index].open = true;
