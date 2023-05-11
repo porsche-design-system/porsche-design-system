@@ -17,7 +17,6 @@ import {
   slidePrev,
   updatePagination,
   updatePrevNextButtons,
-  updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
@@ -185,7 +184,6 @@ export class Carousel {
     // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
-    updateSlidesInert(this.splide);
   }
 
   public disconnectedCallback(): void {
@@ -259,7 +257,14 @@ export class Carousel {
           aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
           ref={(ref) => (this.container = ref)}
         >
-          <div class="splide__track">
+          <div
+            class="splide__track"
+            onFocusin={(e: FocusEvent & { target: HTMLElement }) => {
+              this.container.scrollLeft = 0; // revert default scroll to focused element
+              const indexOfFocusedElement = this.slides.findIndex((slide) => slide.contains(e.target));
+              this.splide.go(indexOfFocusedElement);
+            }}
+          >
             <div class="splide__list">
               {this.slides.map((_, i) => (
                 <div key={i} class="splide__slide">
@@ -280,13 +285,11 @@ export class Carousel {
   private registerSplideHandlers(splide: Splide): void {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updateSlidesInert(splide);
       renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updateSlidesInert(splide);
       updatePagination(this.paginationEl, activeIndex);
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
@@ -313,6 +316,5 @@ export class Carousel {
       this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
     renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
-    updateSlidesInert(this.splide);
   };
 }

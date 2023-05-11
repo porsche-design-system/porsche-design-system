@@ -36,7 +36,31 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <style>
+        p-carousel div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #00b0f4;
+          height: 100px;
+        }
+        .playground {
+          padding: 1rem 0;
+        }
+      </style>
+
+      <p-carousel heading="Heading">
+        <div>Slide 1<br /><a href="#">Link</a></div>
+        <div>Slide 2<br /><a href="#">Link</a></div>
+        <div>Slide 3<br /><a href="#">Link</a></div>
+        <div>Slide 4<br /><a href="#">Link</a></div>
+        <div>Slide 5<br /><a href="#">Link</a></div>
+        <div>Slide 6<br /><a href="#">Link</a></div>
+      </p-carousel>
+
+      <button>After</button>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
