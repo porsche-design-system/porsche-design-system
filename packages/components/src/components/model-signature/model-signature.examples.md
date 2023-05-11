@@ -38,9 +38,7 @@ bring the best results). Depending on the use case it may be important to use it
 important to mention, that the `p-model-signature` has to be used together with `contrast-{high|medium}` color to have
 proper blend mode results.
 
-<Playground :markup="blendModeMarkup" :config="config">
-  <SelectOptions v-model="blendMode" :values="blendModes" name="css-blend-mode"></SelectOptions>
-</Playground>
+<Playground :markup="blendModeMarkup" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -75,7 +73,6 @@ export default class Code extends Vue {
   }
 
   blendMode = 'overlay';
-  blendModes = ['normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'];
   get blendModeMarkup() {
     return `<div style="isolation: isolate; background: #00aa3680; display: inline-block; padding: 32px;">
   <p-model-signature color="contrast-medium" style="mix-blend-mode: ${this.blendMode}"></p-model-signature>
