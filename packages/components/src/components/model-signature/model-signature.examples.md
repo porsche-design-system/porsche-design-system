@@ -32,11 +32,11 @@ The `size` prop's default is `{{ meta.props.size }}`, which can be changed to th
 ## Blend Mode
 
 In case, `p-model-signature` shall be blended with its background, the CSS property
-[mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`hard-light` will bring
-the best results). Depending on the use case it may be important to use it together with the CSS property
+[mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will
+bring the best results). Depending on the use case it may be important to use it together with the CSS property
 [isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It's also
-important to mention, that the `p-model-signature` has to be used together with `contrast-{high|medium|low}` color to
-have proper blend mode results.
+important to mention, that the `p-model-signature` has to be used together with `contrast-{high|medium}` color to have
+proper blend mode results.
 
 <Playground :markup="blendModeMarkup" :config="config">
   <SelectOptions v-model="blendMode" :values="blendModes" name="css-blend-mode"></SelectOptions>
@@ -74,7 +74,7 @@ export default class Code extends Vue {
     return `<p-model-signature color="${this.color}"${style}></p-model-signature>`;
   }
 
-  blendMode = 'hard-light';
+  blendMode = 'overlay';
   blendModes = ['normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'];
   get blendModeMarkup() {
     return `<div style="isolation: isolate; background: #00aa3680; display: inline-block; padding: 32px;">
