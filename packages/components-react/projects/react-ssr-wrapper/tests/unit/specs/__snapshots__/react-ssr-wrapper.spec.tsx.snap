@@ -810,7 +810,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -914,7 +914,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1020,7 +1020,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1047,7 +1047,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1174,7 +1174,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1201,7 +1201,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1379,7 +1379,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 shadowrootmode="open"
               >
                 <style>
-                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                 </style>
                 <img
                   alt=""
@@ -1438,7 +1438,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light-state-disabled 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-state-disabled{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+            :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light-state-disabled 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-state-disabled{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
           </style>
           <img
             alt=""
@@ -1472,7 +1472,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 shadowrootmode="open"
               >
                 <style>
-                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                 </style>
                 <img
                   alt=""
@@ -1579,7 +1579,7 @@ button {
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  padding: 12px 0;
+  padding: 15px 0;
 }
 button::before {
   content: "";
@@ -1596,11 +1596,16 @@ button:hover::before {
 }
 .heading {
   margin: 0;
-  padding: 0 0 2px;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
@@ -1629,16 +1634,19 @@ button:hover::before {
         <slot
           name="heading"
         />
-        <p-icon
-          aria-hidden="true"
-          class="icon ssr"
+        <span
+          class="icon-container"
         >
-          <template
-            shadowroot="open"
-            shadowrootmode="open"
+          <p-icon
+            aria-hidden="true"
+            class="icon ssr"
           >
-            <style>
-              :host {
+            <template
+              shadowroot="open"
+              shadowrootmode="open"
+            >
+              <style>
+                :host {
   display: inline-block;
   vertical-align: top;
 }
@@ -1649,10 +1657,12 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: .75rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 @keyframes rerender-light-primary {
   0% {
@@ -1662,13 +1672,14 @@ img {
     transform: rotateZ(0);
   }
 }
-            </style>
-            <img
-              alt=""
-              src="http://localhost:3001/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
-            />
-          </template>
-        </p-icon>
+              </style>
+              <img
+                alt=""
+                src="http://localhost:3001/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
+              />
+            </template>
+          </p-icon>
+        </span>
       </button>
     </h2>
     <div
@@ -1696,11 +1707,8 @@ exports[`should render dsr component for PBanner 1`] = `
   >
     <style>
       :host {
-  --p-banner-position-top: 56px !important;
-  --p-banner-position-bottom: 56px !important;
   position: fixed !important;
-  top: auto !important;
-  bottom: var(--p-banner-position-bottom) !important;
+  bottom: var(--p-banner-position-bottom,56px) !important;
   left: max(22px, 10.625vw - 12px) !important;
   right: max(22px, 10.625vw - 12px) !important;
   margin: 0 !important;
@@ -1708,24 +1716,25 @@ exports[`should render dsr component for PBanner 1`] = `
   width: auto !important;
   max-width: 100% !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
-  filter: drop-shadow(0px 8px 40px rgba(0, 0, 0, 0.16)) !important;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16) !important;
+  border-radius: 4px !important;
   opacity: 0 !important;
   visibility: hidden !important;
-  transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0) !important;
+  transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
 }
 :host(.hydrated), :host(.ssr) {
-  transition: visibility 0s linear var(--p-animation-duration,600ms), opacity var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1), transform var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1) !important;
+  transition: visibility 0s linear var(--p-animation-duration,600ms),opacity var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1),transform var(--p-animation-duration,600ms) cubic-bezier(0.5,1,0.89,1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 @media(min-width:760px) {
   :host {
-    top: var(--p-banner-position-top) !important;
+    top: var(--p-banner-position-top,56px) !important;
     bottom: auto !important;
     left: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
     right: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0) !important;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top,56px)),0) !important;
   }
 }
 
@@ -1814,6 +1823,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
   -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
@@ -1952,6 +1962,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -2203,6 +2214,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -2651,6 +2663,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -2781,6 +2794,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -3444,6 +3458,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -3544,6 +3559,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
   -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
@@ -3682,6 +3698,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -3922,6 +3939,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -4055,6 +4073,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
   -webkit-animation: rerender-dark-primary 1ms;
   width: inherit;
@@ -4874,6 +4893,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -5069,6 +5089,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
@@ -5128,6 +5149,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
   -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
@@ -5295,6 +5317,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -5450,7 +5473,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -5585,6 +5608,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -5636,6 +5660,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -5882,6 +5907,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -6122,7 +6148,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -6258,6 +6284,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -6309,6 +6336,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -6599,7 +6627,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -6729,6 +6757,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -6780,6 +6809,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -7108,7 +7138,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -7244,6 +7274,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -7295,6 +7326,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -7457,7 +7489,7 @@ button {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   visibility: hidden;
-  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.16));
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
   transition: background-color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
@@ -7593,6 +7625,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -7644,6 +7677,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -7858,6 +7892,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
@@ -8272,16 +8307,22 @@ a {
 svg {
   fill: #010205;
 }
+@supports (height: round(down, 1px, 1px)) {
+  :host {
+    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}
+
     </style>
     <svg
-      viewBox="0 0 4383 300"
+      viewBox="0 0 4500 300"
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>
         Porsche
       </title>
       <path
-        d="M492 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h424zm6-143v65c0 7.8-4.2 12-12 12H68V66h418c7.8 0 12 4.2 12 12zm220 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h407c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H718zm401-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H724c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h395zm657-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-351v79h-68V0h492c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-418v89h418zm155-81c0-48.1 25.9-74 74-74h482v56h-476c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h412c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-482v-56h476c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-412c-48.1 0-74-25.9-74-74V74zm643 0c0-48.1 25.9-74 74-74h470v66h-464c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h464v66h-470c-48.1 0-74-25.9-74-74V74zM3718 0v300h-68V183h-397v117h-68V0h68v117h397V0h68zm148 56v66h517v56h-517v66h517v56h-585V0h585v56h-517z"
+        d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z"
       />
     </svg>
   </template>
