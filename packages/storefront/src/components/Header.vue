@@ -76,12 +76,18 @@
     padding: 0 $pds-spacing-static-medium 0 $pds-spacing-static-medium;
     justify-content: space-between;
     align-items: center;
+    @include pds-media-query-min-max('base', 's') {
+      flex-direction: column;
+    }
   }
 
   .marque {
     width: 65%;
     display: flex;
     justify-content: center;
+    @include pds-media-query-min-max('base', 's') {
+      width: 100%;
+    }
   }
 
   .versionSelect {
@@ -90,5 +96,8 @@
 
   .search {
     width: 25%;
+    @include pds-media-query-min-max('base', 's') {
+      width: 100%;
+    }
   }
 </style>
