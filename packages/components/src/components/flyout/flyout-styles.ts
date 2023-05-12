@@ -9,8 +9,8 @@ import {
 import { JssStyle } from 'jss';
 import { FLYOUT_Z_INDEX } from '../../constants';
 import {
-  fontLineHeight,
   frostedGlassStyle,
+  spacingFluidLarge,
   spacingFluidMedium,
   spacingStaticMedium,
   themeDarkBackgroundShading,
@@ -28,11 +28,15 @@ export const getComponentCss = (
   position: FlyoutPosition,
   hasHeader: boolean,
   hasFooter: boolean,
+  hasSecondaryContent: boolean,
   theme: Theme
 ): string => {
   const { backgroundColor, contrastHighColor } = getThemedColors(theme);
-  const boxShadowColor = 'rgba(204, 204, 204, 0.35)';
   const translatePosition = position === 'left' ? '-100%' : '100%';
+  const contentPadding =
+    position === 'left'
+      ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidMedium}`
+      : `${spacingStaticMedium} ${spacingFluidMedium} ${spacingStaticMedium} ${spacingFluidLarge}`;
 
   return getCss({
     '@global': addImportantToEachRule({
@@ -44,30 +48,36 @@ export const getComponentCss = (
         ...getFrostedGlassBackgroundJssStyles(isOpen),
         ...hostHiddenStyles,
       },
-      '::slotted': {
-        ...(hasHeader && {
-          '&([slot=header])': {
-            padding: `${spacingStaticMedium} ${spacingFluidMedium}`,
-            [position === 'left' ? 'marginLeft' : 'marginRight']: `calc(${spacingStaticMedium} + ${fontLineHeight})`,
-          },
-        }),
-        ...(hasFooter && {
-          '&([slot=footer])': {
-            background: backgroundColor,
-            padding: `${spacingStaticMedium} ${spacingFluidMedium}`,
-            position: 'sticky',
-            bottom: 0,
-            boxShadow: `${boxShadowColor} 0px -5px 10px`,
-          },
-        }),
+    }),
+    ...(hasHeader && {
+      header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        background: backgroundColor,
+        position: 'sticky',
+        top: 0,
+      },
+      'header-content': {
+        flex: 'auto',
+        padding:
+          position === 'left'
+            ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} 0`
+            : `${spacingStaticMedium} 0 ${spacingStaticMedium} ${spacingFluidLarge}`,
       },
     }),
     dismiss: {
-      position: 'absolute',
-      top: spacingStaticMedium,
-      [position]: spacingStaticMedium,
-      zIndex: 1,
-      opacity: isOpen ? 1 : 0,
+      ...(!hasHeader
+        ? {
+            position: 'sticky',
+            top: spacingStaticMedium,
+            [position]: spacingStaticMedium,
+            margin: `${spacingStaticMedium} 0`,
+            alignSelf: 'flex-end',
+          }
+        : {
+            margin: spacingStaticMedium,
+          }),
+      height: 'fit-content',
       ...hoverMediaQuery({
         '&:hover': {
           background: contrastHighColor,
@@ -75,20 +85,14 @@ export const getComponentCss = (
         },
       }),
     },
-    ...(hasHeader && {
-      header: {
-        background: backgroundColor,
-        position: 'sticky',
-        top: 0,
-        boxShadow: `${boxShadowColor} 0px 5px 10px`,
-      },
-    }),
     root: {
+      display: 'flex',
+      flexDirection: 'column',
       position: 'absolute',
       [position]: 0,
       boxSizing: 'border-box',
-      height: '100%',
       overflowY: 'auto',
+      height: '100%',
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
       background: backgroundColor,
@@ -99,8 +103,21 @@ export const getComponentCss = (
       }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
     },
     content: {
-      padding: spacingFluidMedium,
+      padding: contentPadding,
     },
+    ...(hasFooter && {
+      footer: {
+        background: backgroundColor,
+        padding: contentPadding,
+        position: 'sticky',
+        bottom: 0,
+      },
+    }),
+    ...(hasSecondaryContent && {
+      ['secondary-content']: {
+        padding: contentPadding,
+      },
+    }),
   });
 };
 

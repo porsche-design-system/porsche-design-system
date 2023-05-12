@@ -6,7 +6,7 @@ import { getComponentCss } from './flyout-styles';
 import { attachComponentCss, getPrefixedTagNames, hasNamedSlot, parseAndGetAriaAttributes, THEMES } from '../../utils';
 import { AllowedTypes, PropTypes, validateProps } from '../../utils/validation/validateProps';
 import { SelectedAriaAttributes, Theme } from '../../types';
-import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
+import { clickStartedInScrollbarTrack, setScrollLock } from '../modal/modal-utils';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -25,6 +25,7 @@ export class Flyout {
   /** If true, the flyout is open. */
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
+  // TODO: Naming: align or position?
   /** The position of the flyout */
   @Prop() public position?: FlyoutPosition = 'right';
 
@@ -38,11 +39,13 @@ export class Flyout {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   private dialog: HTMLElement;
+  private dismissBtn: HTMLElement;
+  private header: HTMLElement;
+  private footer: HTMLElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
+  private hasSecondaryContent: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -62,8 +65,24 @@ export class Flyout {
     }
   }
 
+  public componentDidRender(): void {
+    if (this.open) {
+      this.dialog.focus();
+      this.onScroll();
+    }
+  }
+
+  public disconnectedCallback(): void {
+    setScrollLock(this.host, false);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
+
+    this.hasHeader = hasNamedSlot(this.host, 'header');
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
+    this.hasSecondaryContent = hasNamedSlot(this.host, 'secondary-content');
+
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -71,19 +90,28 @@ export class Flyout {
       this.position,
       this.hasHeader,
       this.hasFooter,
+      this.hasSecondaryContent,
       this.theme
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    this.hasHeader = hasNamedSlot(this.host, 'header');
-    this.hasFooter = hasNamedSlot(this.host, 'footer');
+    const dismissBtn = (
+      <PrefixedTagNames.pButtonPure
+        class="dismiss"
+        type="button"
+        hideLabel
+        icon="close"
+        theme={this.theme}
+        onClick={this.dismissFlyout}
+        ref={(el) => (this.dismissBtn = el)}
+      >
+        Dismiss flyout
+      </PrefixedTagNames.pButtonPure>
+    );
 
     return (
       <Host onMouseDown={this.onMouseDown}>
-        <PrefixedTagNames.pButtonPure class="dismiss" type="button" hideLabel icon="close" onClick={this.dismissFlyout}>
-          Dismiss flyout
-        </PrefixedTagNames.pButtonPure>
         <div
           class="root"
           role="dialog"
@@ -94,16 +122,31 @@ export class Flyout {
           })}
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
+          {...((this.hasHeader || this.hasFooter) && { onScroll: this.onScroll })}
         >
-          {this.hasHeader && (
-            <div class="header">
-              <slot name="header" />
-            </div>
+          {this.hasHeader ? (
+            <header class="header" ref={(el) => (this.header = el)}>
+              <div class="header-content">
+                <slot name="header" />
+              </div>
+              {dismissBtn}
+            </header>
+          ) : (
+            dismissBtn
           )}
           <div class="content">
             <slot />
           </div>
-          {this.hasFooter && <slot name="footer" />}
+          {this.hasFooter && (
+            <footer class="footer" ref={(el) => (this.footer = el)}>
+              <slot name="footer" />
+            </footer>
+          )}
+          {this.hasSecondaryContent && (
+            <div class="secondary-content">
+              <slot name="secondary-content" />
+            </div>
+          )}
         </div>
       </Host>
     );
@@ -115,8 +158,26 @@ export class Flyout {
     }
   };
 
-  private updateScrollLock = (isOpen: boolean) => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+  private updateScrollLock = (isOpen: boolean): void => {
+    setScrollLock(this.host, isOpen, this.dismissBtn, this.dismissFlyout);
+  };
+
+  private onScroll = (): void => {
+    if (this.hasHeader) {
+      this.updateHeaderShadow();
+    }
+    if (this.hasFooter) {
+      this.updateFooterShadow();
+    }
+  };
+
+  private updateHeaderShadow = (): void => {
+    this.header.style.boxShadow = this.dialog.scrollTop > 10 ? 'rgba(204, 204, 204, 0.35) 0px 5px 10px' : 'none';
+  };
+
+  private updateFooterShadow = (): void => {
+    const footerBottom = this.footer ? window.innerHeight - this.footer.getBoundingClientRect().bottom : 0;
+    this.footer.style.boxShadow = footerBottom < 10 ? 'rgba(204, 204, 204, 0.35) 0px -5px 10px' : 'none';
   };
 
   private dismissFlyout = (): void => {
