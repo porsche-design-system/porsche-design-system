@@ -30,15 +30,10 @@
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
-  import Search from '@/components/Search.vue';
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
 
-  @Component({
-    components: {
-      Search,
-    },
-  })
+  @Component
   export default class Sidebar extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public accordion: { [id: string]: boolean } = {};

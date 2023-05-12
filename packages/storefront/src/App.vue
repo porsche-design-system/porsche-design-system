@@ -4,9 +4,8 @@
   </main>
   <!-- id="app" is for vrt test -->
   <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
+    <Header />
     <div class="sidebar">
-      <Header />
-      <p-divider class="divider-spacing-small"></p-divider>
       <Sidebar />
       <p-divider class="divider-spacing-small"></p-divider>
       <Footer />
@@ -292,7 +291,8 @@
     left: 0;
     bottom: 0;
     width: 17.5rem;
-    padding: 1.5rem $pds-spacing-static-large 2.5rem;
+    padding: 0 $pds-spacing-static-large 2.5rem;
+    margin-top: 10rem;
     border-right: 1px solid $pds-theme-light-contrast-low;
     background: $pds-theme-light-background-base;
     overflow-x: hidden;
@@ -308,6 +308,7 @@
 
   .main {
     background: $pds-theme-light-background-base;
+    margin-top: 10rem;
 
     @include pds-media-query-min-max('base', 's') {
       &--animate {

@@ -130,10 +130,6 @@
     left: 0;
   }
 
-  .search {
-    margin-bottom: 1.5rem;
-  }
-
   .category {
     padding-bottom: $pds-spacing-static-small;
   }
