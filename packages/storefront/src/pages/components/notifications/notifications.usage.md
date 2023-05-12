@@ -29,11 +29,13 @@ In order to find the right notification type for your use case, we have defined 
 
 ## z-index in descending order
 
-| Component | z-index             |
-| --------- | ------------------- |
-| Toast     | {{zIndexes.toast}}  |
-| Modal     | {{zIndexes.modal}}  |
-| Banner    | {{zIndexes.banner}} |
+| Component | z-index              |
+| --------- | -------------------- |
+| Toast     | {{zIndexes.toast}}   |
+| Modal     | {{zIndexes.modal}}   |
+| Flyout    | {{zIndexes.flyout}}  |
+| Popover   | {{zIndexes.popover}} |
+| Banner    | {{zIndexes.banner}}  |
 
 <p-button v-on:click="startDemo()">Start Live Demo</p-button>
 
@@ -65,7 +67,13 @@ In order to find the right notification type for your use case, we have defined 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { BANNER_Z_INDEX, MODAL_Z_INDEX, TOAST_Z_INDEX } from '@porsche-design-system/components/src/constants';
+import {
+  BANNER_Z_INDEX,
+  FLYOUT_Z_INDEX,
+  MODAL_Z_INDEX, 
+  POPOVER_Z_INDEX,
+  TOAST_Z_INDEX
+} from '@porsche-design-system/components/src/constants';
 
 @Component
 export default class Code extends Vue {
@@ -76,6 +84,8 @@ export default class Code extends Vue {
   zIndexes = {
     toast: TOAST_Z_INDEX,
     modal: MODAL_Z_INDEX,
+    flyout: FLYOUT_Z_INDEX,
+    popover: POPOVER_Z_INDEX,
     banner: BANNER_Z_INDEX,
   };
 
@@ -83,6 +93,7 @@ export default class Code extends Vue {
     this.$refs.modal.addEventListener('close', () => this.isModalOpen = false);
   }
 
+  /** TODO: Add popover and flyout */ 
   startDemo() {
     this.$refs.toast.addMessage({ text: `Some message ${this.toastCounter}`});
     this.toastCounter++;
