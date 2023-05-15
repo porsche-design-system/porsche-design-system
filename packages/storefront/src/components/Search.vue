@@ -89,7 +89,11 @@
     getAlgoliaIndexName(): string {
       const baseHref = document.querySelector('base')!.getAttribute('href')!;
       // on localhost baseHref is '/'
-      return baseHref.length > 1 ? baseHref.slice(1, -1).replace('/', '_') : 'latest';
+      return baseHref.includes('/issue/')
+        ? 'latest'
+        : baseHref.length > 1
+        ? baseHref.slice(1, -1).replace('/', '_')
+        : 'latest';
     }
 
     transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
