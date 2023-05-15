@@ -3286,7 +3286,7 @@ exports[`should render dsr component for PFlyout 1`] = `
     <style>
       :host {
   position: fixed !important;
-  z-index: 999 !important;
+  z-index: 99998 !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
@@ -3312,22 +3312,25 @@ exports[`should render dsr component for PFlyout 1`] = `
   display: none !important;
 }
 .dismiss {
-  position: absolute;
+  position: sticky;
   top: 16px;
   right: 16px;
-  z-index: 1;
-  opacity: 0;
+  margin: 16px 0;
+  align-self: flex-end;
+  height: fit-content;
 }
 .dismiss:hover {
   background: #535457;
   border-color: #535457;
 }
 .root {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   right: 0;
   box-sizing: border-box;
-  height: 100%;
   overflow-y: auto;
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   background: #FFF;
@@ -3336,19 +3339,26 @@ exports[`should render dsr component for PFlyout 1`] = `
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 .content {
-  padding: clamp(16px, 1.25vw + 12px, 36px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
 }
     </style>
-    <p-button-pure
-      class="dismiss ssr"
+    <div
+      aria-hidden="true"
+      aria-modal="true"
+      class="root"
+      role="dialog"
+      tabindex="-1"
     >
-      <template
-        shadowroot="open"
-        shadowrootdelegatesfocus="true"
-        shadowrootmode="open"
+      <p-button-pure
+        class="dismiss ssr"
       >
-        <style>
-          :host {
+        <template
+          shadowroot="open"
+          shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
+        >
+          <style>
+            :host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   display: inline-block;
@@ -3387,6 +3397,9 @@ exports[`should render dsr component for PFlyout 1`] = `
   left: -2px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, .24s) ease;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
 }
 .root:hover::before {
   -webkit-backdrop-filter: blur(32px);
@@ -3416,21 +3429,21 @@ exports[`should render dsr component for PFlyout 1`] = `
   }
 }
 
-        </style>
-        <button
-          class="root"
-          type="button"
-        >
-          <p-icon
-            aria-hidden="true"
-            class="icon ssr"
+          </style>
+          <button
+            class="root"
+            type="button"
           >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
+            <p-icon
+              aria-hidden="true"
+              class="icon ssr"
             >
-              <style>
-                :host {
+              <template
+                shadowroot="open"
+                shadowrootmode="open"
+              >
+                <style>
+                  :host {
   display: inline-block;
   vertical-align: top;
 }
@@ -3441,6 +3454,7 @@ img {
   display: block;
   margin: 0;
   padding: 0;
+  pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
@@ -3454,29 +3468,22 @@ img {
     transform: rotateZ(0);
   }
 }
-              </style>
-              <img
-                alt=""
-                src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-              />
-            </template>
-          </p-icon>
-          <span
-            class="label"
-          >
-            <slot />
-          </span>
-        </button>
-      </template>
-      Dismiss flyout
-    </p-button-pure>
-    <div
-      aria-hidden="true"
-      aria-modal="true"
-      class="root"
-      role="dialog"
-      tabindex="-1"
-    >
+                </style>
+                <img
+                  alt=""
+                  src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                />
+              </template>
+            </p-icon>
+            <span
+              class="label"
+            >
+              <slot />
+            </span>
+          </button>
+        </template>
+        Dismiss flyout
+      </p-button-pure>
       <div
         class="content"
       >
