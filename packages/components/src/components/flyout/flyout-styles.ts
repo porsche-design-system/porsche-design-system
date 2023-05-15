@@ -11,7 +11,6 @@ import { FLYOUT_Z_INDEX } from '../../constants';
 import {
   frostedGlassStyle,
   spacingFluidLarge,
-  spacingFluidMedium,
   spacingStaticMedium,
   themeDarkBackgroundShading,
 } from '../../../../utilities/projects/utilities';
@@ -34,9 +33,7 @@ export const getComponentCss = (
   const { backgroundColor, contrastHighColor } = getThemedColors(theme);
   const isPositionLeft = position === 'left';
   const translatePosition = isPositionLeft ? '-100%' : '100%';
-  const contentPadding = isPositionLeft
-    ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidMedium}`
-    : `${spacingStaticMedium} ${spacingFluidMedium} ${spacingStaticMedium} ${spacingFluidLarge}`;
+  const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
 
   return getCss({
     '@global': addImportantToEachRule({
