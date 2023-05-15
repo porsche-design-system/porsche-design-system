@@ -20,7 +20,7 @@
           </optgroup>
         </select>
       </label>
-      <Search class="search" :hideNavigation="this.hideNavigation" v-on:onSearchActiveChange="shouldHideNavigation" />
+      <Search class="search" />
     </nav>
   </header>
 </template>
@@ -54,16 +54,20 @@
     height: 10rem;
     position: fixed;
     top: 0;
-    display: flex;
     z-index: 1;
+    display: flex;
     align-items: center;
     background: #fff;
   }
 
   .header-sidebar {
-    width: 17.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     flex-shrink: 0;
-
+    width: 17.5rem; // => width of sidebar
+    height: 100%;
+    border-right: 1px solid #d8d8db;
     @include pds-media-query-min-max('base', 's') {
       display: none;
     }
@@ -73,31 +77,41 @@
     display: flex;
     flex-grow: 1;
     gap: $pds-spacing-static-medium;
-    padding: 0 $pds-spacing-static-medium 0 $pds-spacing-static-medium;
     justify-content: space-between;
     align-items: center;
+    padding: 0 $pds-spacing-static-medium;
     @include pds-media-query-min-max('base', 's') {
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 
   .marque {
-    width: 65%;
-    display: flex;
-    justify-content: center;
+    flex: 1 0 auto;
+    text-align: center;
     @include pds-media-query-min-max('base', 's') {
-      width: 100%;
+      flex: 1 0 100%;
+    }
+  }
+
+  p-wordmark {
+    vertical-align: middle;
+    @include pds-media-query-min-max('base', 's') {
+      vertical-align: top;
     }
   }
 
   .versionSelect {
     border: 0px;
+    background: transparent;
+    -webkit-appearance: none;
   }
 
   .search {
-    width: 25%;
+    position: relative;
+    flex: 0 1 auto;
     @include pds-media-query-min-max('base', 's') {
-      width: 100%;
+      flex: 1 1 100%;
     }
   }
 </style>
