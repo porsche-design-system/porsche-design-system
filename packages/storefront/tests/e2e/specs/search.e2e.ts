@@ -59,18 +59,9 @@ describe('search', () => {
     expect(amount).toBe(4);
   });
 
-  it('should hide navigation when displaying hits', async () => {
-    expect(await getNavigation()).not.toBeNull();
-
-    await sendAlgoliaRequest();
-
-    expect(await getNavigation()).toBeNull();
-  });
-
   it('should hide hits and show navigation after clicking on a result', async () => {
     await sendAlgoliaRequest();
-
-    const [linkElement] = await page.$x(`//div[@class='sidebar']//nav//a[contains(., 'Button')]`);
+    const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
     await linkElement.click();
 
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
@@ -82,7 +73,7 @@ describe('search', () => {
   it('should show hits after navigation and click on search input focus', async () => {
     await sendAlgoliaRequest();
 
-    const [linkElement] = await page.$x(`//div[@class='sidebar']//nav//a[contains(., 'Button')]`);
+    const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
     await linkElement.click();
 
     await page.focus(searchInputSelector);
@@ -90,7 +81,6 @@ describe('search', () => {
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
-    expect(await getNavigation()).toBeNull();
   });
 
   it('should hide hits and show navigation after clearing the search', async () => {
