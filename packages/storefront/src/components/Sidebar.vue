@@ -1,7 +1,6 @@
 <template>
   <nav>
-    <Search :hideNavigation="this.hideNavigation" v-on:onSearchActiveChange="shouldHideNavigation" />
-    <template v-if="!this.hideNavigation">
+    <template>
       <p-accordion
         v-for="(pages, category, index) in config"
         :key="index"
@@ -37,7 +36,6 @@
   export default class Sidebar extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public accordion: { [id: string]: boolean } = {};
-    public hideNavigation = false;
 
     public getRoute(category: string, page: string): string {
       return `/${paramCase(category)}/${paramCase(page)}`;
@@ -70,10 +68,6 @@
 
     toggleActive(category: string): void {
       this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
-    }
-
-    shouldHideNavigation(hideNavigation: boolean): void {
-      this.hideNavigation = hideNavigation;
     }
 
     getDeprecated(category: string, page: string): string {

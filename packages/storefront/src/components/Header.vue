@@ -104,7 +104,6 @@
   .versionSelect {
     border: 0px;
     background: transparent;
-    -webkit-appearance: none;
   }
 
   .search {
