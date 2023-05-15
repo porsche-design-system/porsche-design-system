@@ -3,7 +3,7 @@
     <ais-search-box :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
-
+    <div v-show="displayHits" class="spacer"></div>
     <ais-state-results>
       <template v-slot="{ results: { hits } }">
         {{ onHitsChange(hits) }}
@@ -15,7 +15,7 @@
             'ais-Hits-item': 'hits__item',
           }"
         >
-          <template v-slot:item="{ item }">
+          <template v-slot:item="{ item }" style="list-style: none !important">
             <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
             <ul>
               <li v-for="(hit, index) in item.hits" :key="index">
@@ -89,7 +89,7 @@
     getAlgoliaIndexName(): string {
       const baseHref = document.querySelector('base')!.getAttribute('href')!;
       // on localhost baseHref is '/'
-      return baseHref.length > 1 ? baseHref.slice(1, -1).replace('/', '_') : 'localhost';
+      return baseHref.length > 1 ? baseHref.slice(1, -1).replace('/', '_') : 'latest';
     }
 
     transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
@@ -110,8 +110,31 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  ul,
-  li {
+  .spacer {
+    position: absolute;
+    right: $pds-spacing-static-small;
+    bottom: -$pds-spacing-static-medium;
+    z-index: 1;
+    padding: 1rem;
+    filter: drop-shadow(0 -24px 16px rgba(0, 0, 0, 0.3));
+  }
+
+  .spacer::before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 12px 12px;
+    border-color: transparent transparent $pds-theme-light-background-base;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .ais-hits-list {
     list-style: none;
   }
 
@@ -124,10 +147,16 @@
 
   .hits {
     position: absolute;
-    width: 17.5rem;
+    width: 27rem;
+    right: 0;
+    top: 70px; // height of search 54px + pre element 16px
+    border-radius: $pds-border-radius-small;
     background: $pds-theme-light-background-base;
-    z-index: 1;
-    left: 0;
+    filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
+    overflow: auto;
+    @include pds-media-query-min-max('base', 's') {
+      width: 100%;
+    }
   }
 
   .category {
@@ -135,6 +164,7 @@
   }
 
   :deep(.hits__item) {
+    list-style: none;
     padding: $pds-spacing-static-small $pds-spacing-static-large $pds-spacing-static-small;
   }
 </style>
