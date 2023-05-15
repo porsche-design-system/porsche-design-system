@@ -32,11 +32,11 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { backgroundColor, contrastHighColor } = getThemedColors(theme);
-  const translatePosition = position === 'left' ? '-100%' : '100%';
-  const contentPadding =
-    position === 'left'
-      ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidMedium}`
-      : `${spacingStaticMedium} ${spacingFluidMedium} ${spacingStaticMedium} ${spacingFluidLarge}`;
+  const isPositionLeft = position === 'left';
+  const translatePosition = isPositionLeft ? '-100%' : '100%';
+  const contentPadding = isPositionLeft
+    ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidMedium}`
+    : `${spacingStaticMedium} ${spacingFluidMedium} ${spacingStaticMedium} ${spacingFluidLarge}`;
 
   return getCss({
     '@global': addImportantToEachRule({
@@ -59,10 +59,10 @@ export const getComponentCss = (
       },
       'header-content': {
         flex: 'auto',
-        padding:
-          position === 'left'
-            ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} 0`
-            : `${spacingStaticMedium} 0 ${spacingStaticMedium} ${spacingFluidLarge}`,
+        padding: isPositionLeft
+          ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} 0`
+          : `${spacingStaticMedium} 0 ${spacingStaticMedium} ${spacingFluidLarge}`,
+        ...(isPositionLeft && { order: 1 }),
       },
     }),
     dismiss: {
@@ -72,7 +72,7 @@ export const getComponentCss = (
             top: spacingStaticMedium,
             [position]: spacingStaticMedium,
             margin: `${spacingStaticMedium} 0`,
-            alignSelf: 'flex-end',
+            alignSelf: isPositionLeft ? 'flex-start' : 'flex-end',
           }
         : {
             margin: spacingStaticMedium,
