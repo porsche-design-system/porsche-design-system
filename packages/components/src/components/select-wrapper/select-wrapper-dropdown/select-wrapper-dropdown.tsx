@@ -124,6 +124,7 @@ export class SelectWrapperDropdown {
         {this.filter ? (
           [
             <input
+              key="input"
               type="text"
               role="combobox"
               disabled={this.disabled}
@@ -143,7 +144,7 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputElement = el)}
             />,
-            <span onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
+            <span key="span" onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
           ]
         ) : (
           <button

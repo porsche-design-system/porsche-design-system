@@ -24,7 +24,7 @@ const getLabel = () => selectNode(page, 'p-switch >>> .label');
 const clickHandlerScript = `
 <script>
   const switchComponent = document.querySelector('p-switch');
-  switchComponent.addEventListener('switchChange', (e) => {
+  switchComponent.addEventListener('update', (e) => {
     e.target.checked = e.detail.checked;
   });
 </script>`;

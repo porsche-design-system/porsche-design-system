@@ -105,13 +105,15 @@ export class Accordion {
             onClick={this.onButtonClick}
           >
             {this.heading || <slot name="heading" />}
-            <PrefixedTagNames.pIcon
-              class="icon"
-              name={this.open ? 'minus' : 'plus'}
-              theme={this.theme}
-              size="inherit"
-              aria-hidden="true"
-            />
+            <span class="icon-container">
+              <PrefixedTagNames.pIcon
+                class="icon"
+                name={this.open ? 'minus' : 'plus'}
+                theme={this.theme}
+                size="xx-small"
+                aria-hidden="true"
+              />
+            </span>
           </button>
         </Heading>
         <div

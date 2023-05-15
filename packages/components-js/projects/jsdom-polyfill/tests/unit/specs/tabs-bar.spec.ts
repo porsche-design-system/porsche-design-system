@@ -17,7 +17,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.body.firstElementChild;
-  el.addEventListener('tabChange', (e: CustomEvent) => {
+  el.addEventListener('update', (e: CustomEvent) => {
     debugEl.querySelector('span').innerHTML = e.detail.activeTabIndex;
     debugEl.querySelector('span:last-child').innerHTML = `${
       parseInt(debugEl.querySelector('span:last-child').innerHTML) + 1
