@@ -143,9 +143,9 @@ exports[`should have no basic DOM regression for p-flex-item 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-flyout 1`] = `
-"<p-button-pure class="dismiss hydrated">
-  Dismiss flyout</p-button-pure>
-<div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+"<div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+  <p-button-pure class="dismiss hydrated">
+    Dismiss flyout</p-button-pure>
   <div class="content">
     <slot>
     </slot>
