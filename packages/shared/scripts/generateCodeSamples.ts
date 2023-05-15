@@ -89,6 +89,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-flyout',
+      samples: [
+        [
+          componentsJsPath + '/flyout-example.html',
+          componentsAngularPath + '/flyout-example.component.ts',
+          componentsReactPath + '/FlyoutExample.tsx',
+          componentsVuePath + '/FlyoutExample.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-inline-notification',
       samples: [
         [
