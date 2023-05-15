@@ -29,6 +29,17 @@ The `size` prop's default is `{{ meta.props.size }}`, which can be changed to th
   <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
+## Blend Mode
+
+In case, `p-model-signature` shall be blended with its background, the CSS property
+[mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will
+bring the best results). Depending on the use case it may be important to use it together with the CSS property
+[isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It's also
+important to mention, that the `p-model-signature` has to be used together with `contrast-{high|medium}` color to have
+proper blend mode results.
+
+<Playground :markup="blendModeMarkup" :config="config"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -37,7 +48,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, spacing: 'inline' };
 
   meta = getComponentMeta('p-model-signature');
 
@@ -59,6 +70,28 @@ export default class Code extends Vue {
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"' : '';
     return `<p-model-signature color="${this.color}"${style}></p-model-signature>`;
+  }
+
+  blendMode = 'overlay';
+  get blendModeMarkup() {
+    return `<div style="isolation: isolate; background: #00aa3680; display: inline-block; padding: 32px;">
+  <p-model-signature color="contrast-medium" style="mix-blend-mode: ${this.blendMode}"></p-model-signature>
+</div>
+<div style="isolation: isolate; background: #f2f2f280; display: inline-block; padding: 32px;">
+  <p-model-signature color="contrast-medium" style="mix-blend-mode: ${this.blendMode}"></p-model-signature>
+</div>
+<div style="isolation: isolate; background: #1f1f1f80; display: inline-block; padding: 32px;">
+  <p-model-signature color="contrast-medium" style="mix-blend-mode: ${this.blendMode}"></p-model-signature>
+</div>
+<div style="isolation: isolate; background: #c5004280; display: inline-block; padding: 32px;">
+  <p-model-signature color="contrast-medium" style="mix-blend-mode: ${this.blendMode}"></p-model-signature>
+</div>
+<div style="isolation: isolate; background: #e1d4a480; display: inline-block; padding: 32px;">
+  <p-model-signature color="contrast-medium" style="mix-blend-mode: ${this.blendMode}"></p-model-signature>
+</div>
+<div style="isolation: isolate; background: #0099e080; display: inline-block; padding: 32px;">
+  <p-model-signature color="contrast-medium" style="mix-blend-mode: ${this.blendMode}"></p-model-signature>
+</div>`;
   }
 }
 </script>
