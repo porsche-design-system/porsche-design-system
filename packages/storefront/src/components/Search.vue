@@ -15,7 +15,7 @@
             'ais-Hits-item': 'hits__item',
           }"
         >
-          <template v-slot:item="{ item }" style="list-style: none !important">
+          <template v-slot:item="{ item }">
             <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
             <ul>
               <li v-for="(hit, index) in item.hits" :key="index">
