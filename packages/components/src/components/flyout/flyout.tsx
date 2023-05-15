@@ -105,6 +105,7 @@ export class Flyout {
         theme={this.theme}
         onClick={this.dismissFlyout}
         ref={(el) => (this.dismissBtn = el)}
+        {...(!this.hasHeader && { active: true })}
       >
         Dismiss flyout
       </PrefixedTagNames.pButtonPure>
@@ -125,12 +126,12 @@ export class Flyout {
           {...((this.hasHeader || this.hasFooter) && { onScroll: this.onScroll })}
         >
           {this.hasHeader ? (
-            <header class="header" ref={(el) => (this.header = el)}>
+            <div class="header" ref={(el) => (this.header = el)}>
               <div class="header-content">
                 <slot name="header" />
               </div>
               {dismissBtn}
-            </header>
+            </div>
           ) : (
             dismissBtn
           )}
@@ -138,9 +139,9 @@ export class Flyout {
             <slot />
           </div>
           {this.hasFooter && (
-            <footer class="footer" ref={(el) => (this.footer = el)}>
+            <div class="footer" ref={(el) => (this.footer = el)}>
               <slot name="footer" />
-            </footer>
+            </div>
           )}
           {this.hasSecondaryContent && (
             <div class="secondary-content">
