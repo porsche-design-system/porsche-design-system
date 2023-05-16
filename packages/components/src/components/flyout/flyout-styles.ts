@@ -56,10 +56,7 @@ export const getComponentCss = (
       },
       'header-content': {
         flex: 'auto',
-        padding: isPositionLeft
-          ? `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} 0`
-          : `${spacingStaticMedium} 0 ${spacingStaticMedium} ${spacingFluidLarge}`,
-        ...(isPositionLeft && { order: 1 }),
+        padding: `${spacingStaticMedium} 0 ${spacingStaticMedium} ${spacingFluidLarge}`,
       },
     }),
     dismiss: {
@@ -69,12 +66,13 @@ export const getComponentCss = (
             top: spacingStaticMedium,
             [position]: spacingStaticMedium,
             margin: `${spacingStaticMedium} 0`,
-            alignSelf: isPositionLeft ? 'flex-start' : 'flex-end',
+            alignSelf: 'flex-end',
           }
         : {
             margin: spacingStaticMedium,
           }),
       height: 'fit-content',
+      zIndex: 1,
       ...hoverMediaQuery({
         '&:hover': {
           background: contrastHighColor,
@@ -89,15 +87,18 @@ export const getComponentCss = (
       [position]: 0,
       boxSizing: 'border-box',
       overflowY: 'auto',
+      overflowX: 'hidden',
       height: '100%',
+      width: '100%',
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
-      transform: isOpen ? 'translateX(0)' : `translateX(${translatePosition})`,
+      transform: isOpen ? 'translate3d(0)' : `translate3d(${translatePosition}, 0, 0)`,
       transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
         isOpen ? '0s' : flyoutTransitionDuration
       }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
+      boxShadow: `${isPositionLeft ? '3px' : '-3px'} 0px 10px rgba(0, 0, 0, 0.35)`,
     },
     content: {
       padding: contentPadding,
@@ -130,9 +131,6 @@ const getVisibilityJssStyles = (isOpen: boolean): JssStyle =>
 
 const getFrostedGlassBackgroundJssStyles = (isOpen: boolean): JssStyle => {
   const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
-  const durationFadeOut = '0.25s';
-  const duration = isOpen ? flyoutTransitionDuration : durationFadeOut;
-  const delay = isOpen ? '0s' : durationFadeOut;
   return {
     '&::before': {
       content: '""',
@@ -150,7 +148,7 @@ const getFrostedGlassBackgroundJssStyles = (isOpen: boolean): JssStyle => {
             backdropFilter: 'blur(0px)',
             WebkitBackdropFilter: 'blur(0px)',
           }),
-      transition: `opacity ${duration} ${transitionTimingFunction} ${delay}, backdrop-filter ${duration} ${transitionTimingFunction} ${delay}, --webkit-backdrop-filter ${duration} ${transitionTimingFunction} ${delay}`,
+      transition: `opacity ${flyoutTransitionDuration} ${transitionTimingFunction}, backdrop-filter ${flyoutTransitionDuration} ${transitionTimingFunction}, --webkit-backdrop-filter ${flyoutTransitionDuration} ${transitionTimingFunction}`,
     },
   };
 };
