@@ -21,6 +21,7 @@ const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
 
 const cssVariableMaxWidth = '--p-flyout-max-width';
 const maxWidthDefault = '1180px';
+const minWidthDefault = '320px';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -38,6 +39,7 @@ export const getComponentCss = (
   return getCss({
     '@global': addImportantToEachRule({
       ':host': {
+        display: 'flex',
         position: 'fixed',
         zIndex: FLYOUT_Z_INDEX,
         ...getInsetJssStyle(),
@@ -75,14 +77,12 @@ export const getComponentCss = (
     root: {
       display: 'flex',
       flexDirection: 'column',
-      position: 'absolute',
-      [position]: 0,
+      position: 'relative',
+      [isPositionLeft ? 'marginRight' : 'marginLeft']: 'auto',
       boxSizing: 'border-box',
       overflowY: 'auto',
-      overflowX: 'hidden',
       height: '100%',
-      width: '100%',
-      minWidth: '320px',
+      minWidth: minWidthDefault,
       maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
