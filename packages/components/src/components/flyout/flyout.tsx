@@ -71,7 +71,6 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
-      this.dismissBtn.focus();
       this.onScroll();
     }
   }
@@ -110,7 +109,6 @@ export class Flyout {
         theme={this.theme}
         onClick={this.dismissFlyout}
         ref={(el) => (this.dismissBtn = el)}
-        {...(!this.hasHeader && { active: true })}
       >
         Dismiss flyout
       </PrefixedTagNames.pButtonPure>
@@ -127,18 +125,16 @@ export class Flyout {
           })}
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
-          {...((this.hasHeader || this.hasFooter) && { onScroll: this.onScroll })}
+          onScroll={this.onScroll}
         >
-          {this.hasHeader ? (
-            <div class="header" ref={(el) => (this.header = el)}>
+          <div class="header" ref={(el) => (this.header = el)}>
+            {this.hasHeader && (
               <div class="header-content">
                 <slot name="header" />
               </div>
-              {dismissBtn}
-            </div>
-          ) : (
-            dismissBtn
-          )}
+            )}
+            {dismissBtn}
+          </div>
           <div class="content">
             <slot />
           </div>
@@ -168,9 +164,7 @@ export class Flyout {
   };
 
   private onScroll = (): void => {
-    if (this.hasHeader) {
-      this.updateHeaderShadow();
-    }
+    this.updateHeaderShadow();
     if (this.hasFooter) {
       this.updateFooterShadow();
     }

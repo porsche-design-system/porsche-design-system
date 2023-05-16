@@ -46,33 +46,25 @@ export const getComponentCss = (
         ...hostHiddenStyles,
       },
     }),
+    header: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      background: backgroundColor,
+      position: 'sticky',
+      top: 0,
+    },
     ...(hasHeader && {
-      header: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        background: backgroundColor,
-        position: 'sticky',
-        top: 0,
-      },
       'header-content': {
         flex: 'auto',
         padding: `${spacingStaticMedium} 0 ${spacingStaticMedium} ${spacingFluidLarge}`,
       },
     }),
     dismiss: {
-      ...(!hasHeader
-        ? {
-            position: 'sticky',
-            top: spacingStaticMedium,
-            [position]: spacingStaticMedium,
-            margin: `${spacingStaticMedium} 0`,
-            alignSelf: 'flex-end',
-          }
-        : {
-            margin: spacingStaticMedium,
-          }),
+      margin: spacingStaticMedium,
       height: 'fit-content',
-      zIndex: 1,
+      border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
+      borderRadius: '4px',
+      background: backgroundColor,
       ...hoverMediaQuery({
         '&:hover': {
           background: contrastHighColor,
