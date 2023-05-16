@@ -10,8 +10,8 @@ stay open after user interaction like submission of a form.
 
 <p-inline-notification heading="Important note" state="warning" dismiss-button="false">
   This component activates a focus trap to keep the focus within while being open.<br>
-  This is achieved by detecting the first and last focusable child element after the modal is opened.<br>
-  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal. 
+  This is achieved by detecting the first and last focusable child element after the flyout is opened.<br>
+  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the flyout. 
 </p-inline-notification>
 
 <TableOfContents></TableOfContents>
@@ -24,8 +24,8 @@ Otherwise, the flyout might get clipped or overlapped by other elements.
 
 The most important property of `p-flyout` is its `open` attribute. When it is present the flyout will be visible.
 
-In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
-key you need to register an event listener for the `dismiss` event which is emitted by `p-flyout`.
+In order to get notified when the flyout gets closed by clicking the `x` button, the backdrop or by pressing the
+`Escape` key you need to register an event listener for the `dismiss` event which is emitted by `p-flyout`.
 
 The size of `p-flyout` adjusts itself to the content with a predefined min/max width.
 
