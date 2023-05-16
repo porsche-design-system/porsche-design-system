@@ -12,6 +12,7 @@ import {
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
+  removeAriaHidden,
   renderPagination,
   slideNext,
   slidePrev,
@@ -247,6 +248,7 @@ export class Carousel {
               icon="arrow-right"
               ref={(ref) => (this.btnNext = ref)}
               onClick={() => slideNext(this.splide, this.amountOfPages)}
+              onKeyDown={(e: KeyboardEvent) => this.setFocusOnActiveSlide(e)}
             />
           </div>
         </div>
@@ -259,15 +261,13 @@ export class Carousel {
         >
           <div
             class="splide__track"
-            onFocusin={(e: FocusEvent & { target: HTMLElement }) => {
-              this.container.scrollLeft = 0; // revert default scroll to focused element
-              const indexOfFocusedElement = this.slides.findIndex((slide) => slide.contains(e.target));
-              this.splide.go(indexOfFocusedElement);
+            onFocusin={(e: FocusEvent & { target: HTMLElement }): void => {
+              this.handleScrollingOnFocusIn(e);
             }}
           >
             <div class="splide__list">
               {this.slides.map((_, i) => (
-                <div key={i} class="splide__slide">
+                <div key={i} class="splide__slide" tabIndex={0}>
                   <slot name={`slide-${i}`} />
                 </div>
               ))}
@@ -286,6 +286,10 @@ export class Carousel {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
+    });
+
+    splide.on('ready moved resized refresh updated', () => {
+      removeAriaHidden(splide);
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
@@ -316,5 +320,35 @@ export class Carousel {
       this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
     renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
+  };
+
+  private setFocusOnActiveSlide = (e: KeyboardEvent): void => {
+    if (e.key === 'Tab' && !e.shiftKey) {
+      const activeSlideIndex = this.splide.index;
+      const activeSlide = this.splide.Components.Elements.slides.at(activeSlideIndex);
+      activeSlide.focus();
+      e.preventDefault();
+    }
+  };
+
+  private handleScrollingOnFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
+    const { index, Components } = this.splide;
+    const { Elements, Slides } = Components;
+
+    const slottedSlideFocusIndex = (): number => this.slides.findIndex((slide) => slide.contains(e.target));
+    const slideIsVisible =
+      e.target.classList.contains('is-visible') ||
+      Elements.slides.at(slottedSlideFocusIndex()).classList.contains('is-visible');
+    const slideIndexOfFocusedElement = Elements.slides.includes(e.target)
+      ? Slides.get().findIndex((el) => el.slide === e.target)
+      : slottedSlideFocusIndex();
+
+    if (!slideIsVisible) {
+      if (slideIndexOfFocusedElement > index) {
+        slideNext(this.splide, this.amountOfPages);
+      } else if (slideIndexOfFocusedElement < index) {
+        slidePrev(this.splide, this.amountOfPages);
+      }
+    }
   };
 }

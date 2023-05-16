@@ -11,6 +11,7 @@ import {
 } from '../../styles';
 import {
   borderRadiusSmall,
+  borderWidthBase,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -27,6 +28,7 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
+  themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
 
 export const carouselTransitionDuration = 400;
@@ -153,6 +155,11 @@ export const getComponentCss = (
         flexShrink: 0,
         ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
+        '&:focus-visible': {
+          borderRadius: '4px',
+          outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+          outlineOffset: '-2px',
+        },
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },

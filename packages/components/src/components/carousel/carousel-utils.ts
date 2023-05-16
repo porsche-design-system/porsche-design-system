@@ -106,3 +106,13 @@ export const updatePagination = (paginationEl: HTMLElement, newIndex: number): v
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
   }
 };
+
+export const removeAriaHidden = (splide: Splide): void => {
+  const slideElements = splide.Components.Elements.slides;
+  // need some timeout because Splide is setting attributes internally and listening to Splide events like "moved" is not working correctly
+  setTimeout(() => {
+    slideElements.forEach((el) => {
+      el.removeAttribute('aria-hidden');
+    });
+  }, 500);
+};
