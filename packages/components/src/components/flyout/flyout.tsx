@@ -6,7 +6,9 @@ import { getComponentCss } from './flyout-styles';
 import { attachComponentCss, getPrefixedTagNames, hasNamedSlot, parseAndGetAriaAttributes, THEMES } from '../../utils';
 import { AllowedTypes, PropTypes, validateProps } from '../../utils/validation/validateProps';
 import { SelectedAriaAttributes, Theme } from '../../types';
-import { clickStartedInScrollbarTrack, setScrollLock } from '../modal/modal-utils';
+import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
+import { setFocusTrap } from '../../utils/focusTrap';
+import { setScrollLock } from '../../utils/scrollLock';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -49,7 +51,8 @@ export class Flyout {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    this.updateScrollLock(isOpen);
+    setScrollLock(isOpen);
+    this.updateFocusTrap(isOpen);
 
     if (isOpen) {
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -61,19 +64,21 @@ export class Flyout {
   public componentDidLoad(): void {
     // in case flyout is rendered with open prop
     if (this.open) {
-      this.updateScrollLock(true);
+      setScrollLock(true);
+      this.updateFocusTrap(true);
     }
   }
 
   public componentDidRender(): void {
     if (this.open) {
-      this.dialog.focus();
+      this.dismissBtn.focus();
       this.onScroll();
     }
   }
 
   public disconnectedCallback(): void {
-    setScrollLock(this.host, false);
+    setFocusTrap(this.host, false);
+    setScrollLock(false);
   }
 
   public render(): JSX.Element {
@@ -110,7 +115,6 @@ export class Flyout {
         Dismiss flyout
       </PrefixedTagNames.pButtonPure>
     );
-
     return (
       <Host onMouseDown={this.onMouseDown}>
         <div
@@ -159,8 +163,8 @@ export class Flyout {
     }
   };
 
-  private updateScrollLock = (isOpen: boolean): void => {
-    setScrollLock(this.host, isOpen, this.dismissBtn, this.dismissFlyout);
+  private updateFocusTrap = (isOpen: boolean): void => {
+    setFocusTrap(this.host, isOpen, this.dismissBtn, this.dismissFlyout);
   };
 
   private onScroll = (): void => {

@@ -1,7 +1,9 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
+import * as focusTrapUtils from '../../utils/focusTrap';
+import * as scrollLock from '../../utils/scrollLock';
 import * as domUtils from '../../utils/dom';
-import type { FirstAndLastFocusableElement } from './modal-utils';
+import { FirstAndLastFocusableElement } from '../../utils/focusTrap';
 
 jest.mock('../../utils/dom');
 
@@ -22,20 +24,28 @@ describe('modal', () => {
     ];
 
     beforeEach(() => {
-      jest.spyOn(modalUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
+      jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
       jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
     });
 
-    it('should call setScrollLock() with correct parameters if modal is open', () => {
-      const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
+    it('should call setFocusTrap() with correct parameters if modal is open', () => {
+      const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
       component.open = true;
       component.componentDidLoad();
 
       expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissModal']);
     });
 
+    it('should call setScrollLock() with correct parameters if modal is open', () => {
+      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+      component.open = true;
+      component.componentDidLoad();
+
+      expect(utilsSpy).toBeCalledWith(true);
+    });
+
     it('should not call setScrollLock() if modal is not open', () => {
-      const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
+      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
       component.componentDidLoad();
 
       expect(utilsSpy).not.toBeCalled();
@@ -87,11 +97,18 @@ describe('modal', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call setScrollLock() with correct parameters', () => {
-      const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
+    it('should call setFocusTrap() with correct parameters', () => {
+      const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
       component.disconnectedCallback();
 
       expect(utilsSpy).toBeCalledWith(component.host, false);
+    });
+
+    it('should call setScrollLock() with correct parameters', () => {
+      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+      component.disconnectedCallback();
+
+      expect(utilsSpy).toBeCalledWith(false);
     });
   });
 });
