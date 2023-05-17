@@ -31,9 +31,19 @@ const getAmountOfAlgoliaHits = (): Promise<number> =>
   page.evaluate(() => document.querySelectorAll('.ais-Hits-item').length);
 const waitForResultsToBeGone = () => page.waitForFunction(() => !document.querySelector('.ais-Hits-item'));
 
-const getNavigation = () => selectNode(page, 'p-accordion');
 const searchInputSelector = 'input[type="search"]';
 const searchTerm = 'button';
+
+const getSearch = () => selectNode(page, '.header p-text-field-wrapper[label="Search"]');
+const waitForSearchInputToBeDisplayed = () =>
+  page.waitForFunction(() => !document.querySelector('searchInputSelector'));
+
+const openSearchOnButtonClick = async () => {
+  const searchButton = await page.$('.header p-button[type="button"]');
+
+  await searchButton.click();
+  await waitForSearchInputToBeDisplayed();
+};
 
 const sendAlgoliaRequest = async () =>
   Promise.all([
@@ -51,6 +61,7 @@ describe('search', () => {
   });
 
   it('should display 4 hits after typing "button"', async () => {
+    await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
     const amount = await getAmountOfAlgoliaHits();
@@ -59,7 +70,8 @@ describe('search', () => {
     expect(amount).toBe(4);
   });
 
-  it('should hide hits and show navigation after clicking on a result', async () => {
+  it('should hide hits after clicking on a result', async () => {
+    await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
     await linkElement.click();
@@ -67,10 +79,10 @@ describe('search', () => {
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
-    expect(await getNavigation()).not.toBeNull();
   });
 
   it('should show hits after navigation and click on search input focus', async () => {
+    await openSearchOnButtonClick();
     await sendAlgoliaRequest();
 
     const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
@@ -83,7 +95,8 @@ describe('search', () => {
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
   });
 
-  it('should hide hits and show navigation after clearing the search', async () => {
+  it('should hide hits after clearing the search', async () => {
+    await openSearchOnButtonClick();
     await sendAlgoliaRequest();
 
     await page.focus(searchInputSelector);
@@ -97,10 +110,10 @@ describe('search', () => {
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
-    expect(await getNavigation()).not.toBeNull();
   });
 
   it('should hide hits after pressing ESC', async () => {
+    await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     await page.focus(searchInputSelector);
     await page.keyboard.press('Escape');
@@ -111,10 +124,10 @@ describe('search', () => {
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
-    expect(await getNavigation()).not.toBeNull();
   });
 
   it('should keep hits hidden after clearing input and focusing search', async () => {
+    await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     await page.focus(searchInputSelector);
     await page.keyboard.press('Escape');
@@ -127,6 +140,19 @@ describe('search', () => {
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
-    expect(await getNavigation()).not.toBeNull();
+  });
+
+  it('should hide input type=search after clearing the search and move focus from search field', async () => {
+    await openSearchOnButtonClick();
+    await sendAlgoliaRequest();
+    const search = await getSearch();
+
+    await page.focus(searchInputSelector);
+    await page.keyboard.press('Escape');
+    await waitForResultsToBeGone();
+
+    await page.$eval(searchInputSelector, (e: HTMLInputElement) => e.blur());
+
+    expect(await getElementStyle(search, 'display')).toBe('none');
   });
 });
