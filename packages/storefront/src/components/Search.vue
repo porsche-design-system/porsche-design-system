@@ -3,31 +3,32 @@
     <ais-search-box :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
-    <div v-show="displayHits" class="spacer"></div>
-    <ais-state-results>
-      <template v-slot="{ results: { hits } }">
-        {{ onHitsChange(hits) }}
-        <ais-hits
-          v-show="displayHits"
-          :transform-items="transformItems"
-          :class-names="{
-            'ais-Hits': 'hits',
-            'ais-Hits-item': 'hits__item',
-          }"
-        >
-          <template v-slot:item="{ item }">
-            <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
-            <ul>
-              <li v-for="(hit, index) in item.hits" :key="index">
-                <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">
-                  <router-link :to="hit.url">{{ hit.page }} {{ hit.tab ? ' - ' + hit.tab : '' }}</router-link>
-                </p-link-pure>
-              </li>
-            </ul>
-          </template>
-        </ais-hits>
-      </template>
-    </ais-state-results>
+    <div v-show="displayHits" class="spacer">
+      <ais-state-results>
+        <template v-slot="{ results: { hits } }">
+          {{ onHitsChange(hits) }}
+          <ais-hits
+            v-show="displayHits"
+            :transform-items="transformItems"
+            :class-names="{
+              'ais-Hits': 'hits',
+              'ais-Hits-item': 'hits__item',
+            }"
+          >
+            <template v-slot:item="{ item }">
+              <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
+              <ul>
+                <li v-for="(hit, index) in item.hits" :key="index">
+                  <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">
+                    <router-link :to="hit.url">{{ hit.page }} {{ hit.tab ? ' - ' + hit.tab : '' }}</router-link>
+                  </p-link-pure>
+                </li>
+              </ul>
+            </template>
+          </ais-hits>
+        </template>
+      </ais-state-results>
+    </div>
   </ais-instant-search>
 </template>
 
@@ -117,10 +118,15 @@
   .spacer {
     position: absolute;
     right: $pds-spacing-static-small;
-    bottom: -$pds-spacing-static-medium;
+    padding: 1.5rem;
+    bottom: -24px;
     z-index: 1;
-    padding: 1rem;
-    filter: drop-shadow(0 -24px 16px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
+    @include pds-media-query-min-max('base', 's') {
+      right: initial;
+      width: 100%;
+      filter: none;
+    }
   }
 
   .spacer::before {
@@ -132,6 +138,10 @@
     transform: translateX(-50%);
     border-width: 0 12px 12px;
     border-color: transparent transparent $pds-theme-light-background-base;
+    @include pds-media-query-min-max('base', 's') {
+      top: 36px;
+      bottom: initial;
+    }
   }
 
   ul {
@@ -151,13 +161,15 @@
 
   .hits {
     position: absolute;
-    width: 27rem;
+    width: 17.5rem;
+    max-height: 90vh;
     right: 0;
-    top: 70px; // height of search 54px + pre element 16px
+    top: $pds-spacing-static-x-large;
+    padding: $pds-spacing-static-medium 0;
     border-radius: $pds-border-radius-small;
     background: $pds-theme-light-background-base;
-    filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
     overflow: auto;
+    z-index: 1;
     @include pds-media-query-min-max('base', 's') {
       width: 100%;
     }
@@ -169,6 +181,8 @@
 
   :deep(.hits__item) {
     list-style: none;
-    padding: $pds-spacing-static-small $pds-spacing-static-large $pds-spacing-static-small;
+    @include pds-media-query-min('s') {
+      padding: $pds-spacing-static-small $pds-spacing-static-large $pds-spacing-static-small;
+    }
   }
 </style>
