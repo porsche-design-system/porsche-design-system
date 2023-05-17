@@ -50,7 +50,7 @@
   "devDependencies": {
     "@axe-core/puppeteer": "^4.7.1",
     "@porsche-design-system/assets": "5.0.2",
-    "@types/node": "^18.16.1",
+    "@types/node": "^20.1.7",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",

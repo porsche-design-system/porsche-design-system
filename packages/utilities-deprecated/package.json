@@ -24,9 +24,9 @@
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@types/node": "^18.16.1",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
+    "@types/node": "^20.1.7",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "concurrently": "^8.0.1",
     "react-scripts": "^5.0.1",
     "sass": "^1.62.1",
