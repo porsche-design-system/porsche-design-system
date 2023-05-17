@@ -114,5 +114,5 @@ export const removeAriaHidden = (splide: Splide): void => {
     slideElements.forEach((el) => {
       el.removeAttribute('aria-hidden');
     });
-  }, 500);
+  }, 10);
 };
