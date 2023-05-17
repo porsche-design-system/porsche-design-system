@@ -162,7 +162,7 @@
   .hits {
     position: absolute;
     width: 17.5rem;
-    max-height: 90vh;
+    max-height: 70vh;
     right: 0;
     top: $pds-spacing-static-x-large;
     padding: $pds-spacing-static-medium 0;
