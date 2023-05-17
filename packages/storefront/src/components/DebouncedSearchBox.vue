@@ -1,14 +1,46 @@
 <template>
-  <p-text-field-wrapper hide-label="true" label="Search">
-    <input
-      type="search"
-      name="search"
-      placeholder="Search"
-      v-model="query"
-      autocomplete="off"
-      @focus="onFocus(localQuery)"
-    />
-  </p-text-field-wrapper>
+  <div>
+    <p-button
+      v-show="!isSearchOpen"
+      type="button"
+      variant="secondary"
+      icon="search"
+      hide-label="true"
+      @click="onSearchButtonClick()"
+      >Search</p-button
+    >
+    <form onsubmit="event.preventDefault()">
+      <p-text-field-wrapper
+        v-show="isSearchOpen"
+        hide-label="true"
+        label="Search"
+        @blur="
+          () => {
+            this.isSearchOpen = false;
+            onFocus('');
+          }
+        "
+      >
+        <input
+          ref="search"
+          type="search"
+          name="search"
+          placeholder="Search"
+          v-model="query"
+          autocomplete="off"
+          @focus="onFocus(localQuery)"
+          @blur="
+            () => {
+              if (!localQuery) {
+                this.isSearchOpen = false;
+                onFocus('');
+              }
+            }
+          "
+        />
+      </p-text-field-wrapper>
+    </form>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,6 +61,13 @@
 
     public localQuery = '';
     public timerId!: ReturnType<typeof setTimeout>;
+
+    private isSearchOpen = false;
+
+    onSearchButtonClick() {
+      this.isSearchOpen = true;
+      this.$nextTick(() => (this.$refs.search as HTMLElement).focus());
+    }
 
     data() {
       return {
@@ -62,3 +101,18 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+
+  p-button {
+    @include pds-media-query-min-max('base', 's') {
+      display: none !important;
+    }
+  }
+  p-text-field-wrapper {
+    @include pds-media-query-min-max('base', 's') {
+      display: block !important;
+    }
+  }
+</style>
