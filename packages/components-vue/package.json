@@ -40,7 +40,7 @@
     "@testing-library/vue": "^7.0.0",
     "@tsconfig/node18": "^2.0.1",
     "@types/node": "^20.1.7",
-    "@vitejs/plugin-vue": "^4.2.1",
+    "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
