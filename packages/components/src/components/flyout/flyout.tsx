@@ -72,6 +72,8 @@ export class Flyout {
   public componentDidRender(): void {
     if (this.open) {
       this.onScroll();
+      // Necessary to select button to make :focus-visible work
+      this.dismissBtn.shadowRoot.querySelector('button').focus();
     }
   }
 
