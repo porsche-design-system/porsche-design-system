@@ -1,7 +1,6 @@
 <template>
   <nav>
-    <VersionSelect class="versionSelect" />
-    <Search class="search" :hideNavigation="this.hideNavigation" v-on:onSearchActiveChange="shouldHideNavigation" />
+    <!--<Search class="search" :hideNavigation="this.hideNavigation" v-on:onSearchActiveChange="shouldHideNavigation" />-->
     <template v-if="!this.hideNavigation">
       <p-accordion
         v-for="(pages, category, index) in config"
