@@ -88,9 +88,12 @@
 
     getAlgoliaIndexName(): string {
       const baseHref = document.querySelector('base')!.getAttribute('href')!;
-      // on branch deployment baseHref contains /issue/
       // on localhost baseHref is '/'
-      return baseHref.includes('/issue/') || baseHref.length < 1 ? 'latest' : baseHref.slice(1, -1).replace('/', '_');
+      return baseHref.includes('/issue/')
+        ? 'latest'
+        : baseHref.length > 1
+        ? baseHref.slice(1, -1).replace('/', '_')
+        : 'latest';
     }
 
     transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
@@ -142,7 +145,6 @@
       }
     }
   }
-
 
   .ais-hits-list,
   ul {

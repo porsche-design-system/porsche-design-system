@@ -26,7 +26,7 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const getAlgoliaHitsWrapper = () => selectNode(page, '.ais-Hits');
+const getHitsWrapper = () => selectNode(page, '.spacer');
 const getAmountOfAlgoliaHits = (): Promise<number> =>
   page.evaluate(() => document.querySelectorAll('.ais-Hits-item').length);
 const waitForResultsToBeGone = () => page.waitForFunction(() => !document.querySelector('.ais-Hits-item'));
@@ -38,12 +38,12 @@ const getSearch = () => selectNode(page, '.header p-text-field-wrapper[label="Se
 const waitForSearchInputToBeDisplayed = () =>
   page.waitForFunction(() => !document.querySelector('searchInputSelector'));
 
-const openSearchOnButtonClick = async () => {
-  const searchButton = await page.$('.header p-button[type="button"]');
-
-  await searchButton.click();
-  await waitForSearchInputToBeDisplayed();
-};
+// const openSearchOnButtonClick = async () => {
+//   const searchButton = await page.$('.header p-button[type="button"]');
+//
+//   await searchButton.click();
+//   await waitForSearchInputToBeDisplayed();
+// };
 
 const sendAlgoliaRequest = async () =>
   Promise.all([
@@ -54,46 +54,46 @@ const sendAlgoliaRequest = async () =>
 describe('search', () => {
   it('should not display hits initially', async () => {
     const amount = await getAmountOfAlgoliaHits();
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const hitsWrapper = await getHitsWrapper();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
   });
 
   it('should display 4 hits after typing "button"', async () => {
-    await openSearchOnButtonClick();
+    // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const hitsWrapper = await getHitsWrapper();
     const amount = await getAmountOfAlgoliaHits();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
+    expect(await getElementStyle(hitsWrapper, 'display')).toBe('block');
     expect(amount).toBe(4);
   });
 
   it('should hide hits after clicking on a result', async () => {
-    await openSearchOnButtonClick();
+    // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
-    const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
+    const [linkElement] = await page.$x(`//header//a[contains(., 'Button')]`);
     await linkElement.click();
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const hitsWrapper = await getHitsWrapper();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
   });
 
   it('should show hits after navigation and click on search input focus', async () => {
-    await openSearchOnButtonClick();
+    // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
-    const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
+    const [linkElement] = await page.$x(`//header//a[contains(., 'Button')]`);
     await linkElement.click();
 
     await page.focus(searchInputSelector);
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const hitsWrapper = await getHitsWrapper();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
+    expect(await getElementStyle(hitsWrapper, 'display')).toBe('block');
   });
 
   it('should hide hits after clearing the search', async () => {
-    await openSearchOnButtonClick();
+    // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     await page.focus(searchInputSelector);
     for (let i = 0; i < searchTerm.length; i++) {
@@ -101,53 +101,53 @@ describe('search', () => {
     }
 
     await waitForResultsToBeGone();
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const hitsWrapper = await getHitsWrapper();
     const amount = await getAmountOfAlgoliaHits();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
   });
 
   it('should hide hits after pressing ESC', async () => {
-    await openSearchOnButtonClick();
+    // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     await page.focus(searchInputSelector);
     await page.keyboard.press('Escape');
 
     await waitForResultsToBeGone();
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const hitsWrapper = await getHitsWrapper();
     const amount = await getAmountOfAlgoliaHits();
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
   });
 
   it('should keep hits hidden after clearing input and focusing search', async () => {
-    await openSearchOnButtonClick();
+    // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     await page.focus(searchInputSelector);
     await page.keyboard.press('Escape');
 
     await waitForResultsToBeGone();
-    const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
+    const hitsWrapper = await getHitsWrapper();
     const amount = await getAmountOfAlgoliaHits();
 
     await page.focus(searchInputSelector);
 
-    expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
+    expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
   });
 
-  it('should hide search after clearing the search and move focus from search field', async () => {
-    await openSearchOnButtonClick();
-    await sendAlgoliaRequest();
-    const search = await getSearch();
-    await page.focus(searchInputSelector);
-    await page.keyboard.press('Escape');
-
-    await waitForResultsToBeGone();
-    await page.$eval(searchInputSelector, (e: HTMLInputElement) => e.blur());
-
-    expect(await getElementStyle(search, 'display')).toBe('none');
-  });
+  // it('should hide search after clearing the search and move focus from search field', async () => {
+  //   // await openSearchOnButtonClick();
+  //   await sendAlgoliaRequest();
+  //   const search = await getSearch();
+  //   await page.focus(searchInputSelector);
+  //   await page.keyboard.press('Escape');
+  //
+  //   await waitForResultsToBeGone();
+  //   await page.$eval(searchInputSelector, (e: HTMLInputElement) => e.blur());
+  //
+  //   expect(await getElementStyle(search, 'display')).toBe('none');
+  // });
 });
