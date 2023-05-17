@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@octokit/core": "^4.2.0",
-    "@rollup/plugin-typescript": "^11.1.0",
+    "@rollup/plugin-typescript": "^11.1.1",
     "@types/madge": "^5.0.0",
     "@types/node": "^18.16.1",
     "@types/pixelmatch": "^5.2.4",
