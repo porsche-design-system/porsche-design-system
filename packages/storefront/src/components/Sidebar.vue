@@ -6,6 +6,7 @@
         v-for="(pages, category, index) in config"
         :key="index"
         :heading="category"
+        :class="['Styles', 'Must Know'].includes(category) && 'space'"
         v-bind:open="accordion[category]"
         v-on:update="toggleActive(category)"
         compact="true"
@@ -103,6 +104,10 @@
 
   nav {
     position: relative;
+  }
+
+  .space {
+    margin-top: $pds-spacing-fluid-small;
   }
 
   .versionSelect,

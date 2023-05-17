@@ -1,6 +1,7 @@
 <template>
-  <footer class="footer">
-    <p-text size="x-small" align="center">
+  <footer>
+    <p-link-pure href="https://brand.porsche.com" target="_blank" icon="external" align-label="left">brand.porsche.com</p-link-pure>
+    <p-text size="xx-small" color="contrast-high">
       <span>© {{ year }} Dr. Ing. h.c. F. Porsche AG.</span>
       <br />
       <a href="https://ux.porsche.com/privacy-policy">Privacy Policy</a>
@@ -21,3 +22,13 @@
     year = new Date().getFullYear();
   }
 </script>
+
+<style scoped lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: $pds-spacing-fluid-medium;
+  }
+</style>

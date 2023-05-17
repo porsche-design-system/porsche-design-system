@@ -4,15 +4,11 @@ export const ALGOLIA_APP_ID = '1NH68HJ92C';
 export const ALGOLIA_SEARCH_ONLY_KEY = '690605ee1f61d0e13c571484ecb74125';
 
 export const config: StorefrontConfig = {
-  About: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/about/introduction.md')],
-  },
-  'Start Designing': {
+  'Designing': {
     // @ts-ignore
     Introduction: [() => import('@/pages/start-designing/introduction.md')],
   },
-  'Start Coding': {
+  'Developing': {
     // @ts-ignore
     Introduction: [() => import('@/pages/start-coding/introduction.md')],
     Angular: {
@@ -63,8 +59,12 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Advanced: [() => import('@/pages/start-coding/vue/advanced.md')],
     },
+    // @ts-ignore
+    'Components Ready': [() => import('@/pages/general/components-ready.md')],
+    // @ts-ignore
+    Testing: [() => import('@/pages/general/testing.md')],
   },
-  News: {
+  Updates: {
     'Migration Guide': {
       // @ts-ignore
       'Porsche Design System': [() => import('@/pages/news/migration-guide.md')],
@@ -81,8 +81,6 @@ export const config: StorefrontConfig = {
     },
     // @ts-ignore
     Versioning: [() => import('@/pages/news/versioning.md')],
-    // @ts-ignore
-    Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
   Styles: {
     // @ts-ignore
@@ -559,6 +557,28 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
   },
+  Patterns: {
+    Forms: {
+      // @ts-ignore
+      Guidelines: [() => import('@/pages/patterns/forms/guidelines.md')],
+      // @ts-ignore
+      Resources: [() => import('@/pages/patterns/forms/resources.md')],
+      // @ts-ignore
+      Legal: [() => import('@/pages/patterns/forms/legal.md')],
+    },
+  },
+  'Must Know': {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/accessibility/introduction.md')],
+    // @ts-ignore
+    'Accessibility Statement': [() => import('@/pages/accessibility/statement.md')],
+    // @ts-ignore
+    Security: [() => import('@/pages/security/cve.md')],
+    // @ts-ignore
+    Cdn: [() => import('@/pages/performance/cdn.md')],
+    // @ts-ignore
+    'Loading Behaviour': [() => import('@/pages/performance/loading-behaviour.md')],
+  },
   Help: {
     // @ts-ignore
     Support: [() => import('@/pages/help/support.md')],
@@ -570,69 +590,5 @@ export const config: StorefrontConfig = {
     'Browser Compatibility': [() => import('@/pages/basics/browser-compatibility.md')],
     // @ts-ignore
     'Bug Report': [() => import('@/pages/help/bug-report.md')],
-  },
-  Accessibility: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/accessibility/introduction.md')],
-    // @ts-ignore
-    'Accessibility Statement': [() => import('@/pages/accessibility/statement.md')],
-  },
-  Patterns: {
-    Forms: {
-      // @ts-ignore
-      Guidelines: [() => import('@/pages/patterns/forms/guidelines.md')],
-      // @ts-ignore
-      Resources: [() => import('@/pages/patterns/forms/resources.md')],
-      // @ts-ignore
-      Legal: [() => import('@/pages/patterns/forms/legal.md')],
-    },
-  },
-  Assets: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/assets/introduction.md')],
-    // @ts-ignore
-    Icons: [() => import('@/pages/assets/icons.md')],
-    // @ts-ignore
-    'Meta Icons': [() => import('@/pages/assets/meta-icons.md')],
-    // @ts-ignore
-    Marque: [() => import('@/pages/assets/marque.md')],
-    // @ts-ignore
-    Fonts: [() => import('@/pages/assets/fonts.md')],
-  },
-  'Utilities Deprecated': {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/utilities/introduction.md')],
-    Scss: {
-      // @ts-ignore
-      Variables: [() => import('@/pages/utilities/scss/variables.md')],
-      // @ts-ignore
-      Functions: [() => import('@/pages/utilities/scss/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/scss/helper.md')],
-    },
-    Js: {
-      // @ts-ignore
-      Variables: [() => import('@/pages/utilities/js/variables.md')],
-      // @ts-ignore
-      Functions: [() => import('@/pages/utilities/js/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/js/helper.md')],
-    },
-  },
-  Performance: {
-    // @ts-ignore
-    Cdn: [() => import('@/pages/performance/cdn.md')],
-    // @ts-ignore
-    'Loading Behaviour': [() => import('@/pages/performance/loading-behaviour.md')],
-  },
-  Security: {
-    // @ts-ignore
-    Cve: [() => import('@/pages/security/cve.md')],
-  },
-  Helpers: {
-    // @ts-ignore
-    'Components Ready': [() => import('@/pages/general/components-ready.md')],
-    // @ts-ignore
-    Testing: [() => import('@/pages/general/testing.md')],
   },
 };

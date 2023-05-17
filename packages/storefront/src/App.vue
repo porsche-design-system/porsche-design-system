@@ -23,8 +23,7 @@
     </header>-->
     <div class="sidebar">
       <Sidebar />
-      <p-divider class="divider-spacing-small"></p-divider>
-      <Footer />
+      <Footer class="footer" />
     </div>
     <main class="main" :class="{ 'main--animate': isAnimated }">
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
@@ -333,6 +332,10 @@
 <style scoped lang="scss">
   @use 'sass:math';
   @use '@porsche-design-system/components-js/styles' as *;
+
+  .footer {
+    margin-top: $pds-spacing-fluid-small;
+  }
 
   .content {
     position: relative;
