@@ -24017,12 +24017,12 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
-vue-imask@^6.6.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/vue-imask/-/vue-imask-6.6.0.tgz#2740a5bfdcbbc497c2bab67f96c0ced64006331f"
-  integrity sha512-jcM7jNYDGexXT4ZNDtqykNfIWtIgVqpM9Atqz8ShWDEYSwq7d/LVCl52REOI1MfL92DF5PbuJvFhi24EnG+Ktg==
+vue-imask@^6.6.1:
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/vue-imask/-/vue-imask-6.6.1.tgz#f933256eb67a7ed9d5f65ab0da6d91b978362511"
+  integrity sha512-yGt2yHZqNmksJ3CqXYuKGfPDNgroPJFX1hZO1k1G+37BpnBFk6HHbpOV3xCU7/XCpdA2APBM6FUVjnNTx1rNPg==
   dependencies:
-    imask "^6.6.0"
+    imask "^6.6.1"
     vue-demi "^0.13.11"
 
 vue-instantsearch@^4.8.10:
