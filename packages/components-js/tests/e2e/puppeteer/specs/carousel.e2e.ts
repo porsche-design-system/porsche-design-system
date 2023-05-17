@@ -369,7 +369,7 @@ describe('viewport change', () => {
 
 describe('focus behavior', () => {
   it('should have correct focus cycle for slidesPerPage=1', async () => {
-    await initCarousel({ slidesPerPage: 1, withFocusableElements: true });
+    await initCarousel({ amountOfSlides: 2, slidesPerPage: 1, withFocusableElements: true });
     const host = await getHost();
 
     await page.keyboard.press('Tab');
@@ -382,7 +382,16 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE');
 
     await page.keyboard.press('Tab');
+    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
+
+    await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-1');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-next');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('link-2');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-after');
@@ -402,10 +411,22 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE');
 
     await page.keyboard.press('Tab');
+    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
+
+    await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-1');
 
     await page.keyboard.press('Tab');
+    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-visible is-next');
+
+    await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-2');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('link-3');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-after');
