@@ -48,16 +48,20 @@ exports[`accessibility should expose correct initial accessibility tree and aria
                 {
                   "children": [
                     {
-                      "role": "none",
+                      "name": "Slide 2",
+                      "role": "StaticText",
                     },
                   ],
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "role": "none",
             },
           ],
-          "role": "none",
+          "name": "2 of 3",
+          "role": "group",
+          "roledescription": "slide",
         },
         {
           "children": [
@@ -66,16 +70,20 @@ exports[`accessibility should expose correct initial accessibility tree and aria
                 {
                   "children": [
                     {
-                      "role": "none",
+                      "name": "Slide 3",
+                      "role": "StaticText",
                     },
                   ],
-                  "role": "none",
+                  "name": "",
+                  "role": "generic",
                 },
               ],
               "role": "none",
             },
           ],
-          "role": "none",
+          "name": "3 of 3",
+          "role": "group",
+          "roledescription": "slide",
         },
       ],
       "name": "",

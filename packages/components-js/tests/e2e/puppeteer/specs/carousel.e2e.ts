@@ -2,6 +2,7 @@ import type { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
+  getActiveElementClassNameInShadowRoot,
   getActiveElementId,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
@@ -410,60 +411,18 @@ describe('focus behavior', () => {
     expect(await getActiveElementId(page)).toBe('link-after');
   });
 
-  it('should set inert attribute on invisible slides initially for slidesPerPage=1', async () => {
-    await initCarousel({ slidesPerPage: 1 });
+  it('should have correct focus cycle if next button is clicked and then tabbed', async () => {
+    await initCarousel({ slidesPerPage: 1, withFocusableElements: false });
+    const host = await getHost();
     const [slide1, slide2, slide3] = await getSlides();
+    const btnNext = await getButtonNext();
 
-    expect(await getAttribute(slide1, 'inert')).toBeNull();
-    expect(await getAttribute(slide2, 'inert')).toBeDefined();
-    expect(await getAttribute(slide3, 'inert')).toBeDefined();
-  });
+    await btnNext.focus();
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
 
-  it('should set inert attribute on invisible slides initially for slidesPerPage=2', async () => {
-    await initCarousel({ slidesPerPage: 2 });
-    const [slide1, slide2, slide3] = await getSlides();
-
-    expect(await getAttribute(slide1, 'inert')).toBeNull();
-    expect(await getAttribute(slide2, 'inert')).toBeNull();
-    expect(await getAttribute(slide3, 'inert')).toBeDefined();
-  });
-
-  it('should set inert attribute on invisible slides after sliding for slidesPerPage=1', async () => {
-    await initCarousel({ slidesPerPage: 1 });
-    const buttonNext = await getButtonNext();
-    const buttonPrev = await getButtonPrev();
-    const [slide1, slide2, slide3] = await getSlides();
-
-    await buttonNext.click();
-    await waitForStencilLifecycle(page);
-    expect(await getAttribute(slide1, 'inert')).toBeDefined();
-    expect(await getAttribute(slide2, 'inert')).toBeNull();
-    expect(await getAttribute(slide3, 'inert')).toBeDefined();
-
-    await buttonPrev.click();
-    await waitForStencilLifecycle(page);
-    expect(await getAttribute(slide1, 'inert')).toBeNull();
-    expect(await getAttribute(slide2, 'inert')).toBeDefined();
-    expect(await getAttribute(slide3, 'inert')).toBeDefined();
-  });
-
-  it('should set inert attribute on invisible slides after sliding for slidesPerPage=2', async () => {
-    await initCarousel({ slidesPerPage: 2 });
-    const buttonNext = await getButtonNext();
-    const buttonPrev = await getButtonPrev();
-    const [slide1, slide2, slide3] = await getSlides();
-
-    await buttonNext.click();
-    await waitForStencilLifecycle(page);
-    expect(await getAttribute(slide1, 'inert')).toBeDefined();
-    expect(await getAttribute(slide2, 'inert')).toBeDefined();
-    expect(await getAttribute(slide3, 'inert')).toBeNull();
-
-    await buttonPrev.click();
-    await waitForStencilLifecycle(page);
-    expect(await getAttribute(slide1, 'inert')).toBeNull();
-    expect(await getAttribute(slide2, 'inert')).toBeNull();
-    expect(await getAttribute(slide3, 'inert')).toBeDefined();
+    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
   });
 });
 
@@ -602,6 +561,143 @@ describe('activeSlideIndex', () => {
     await setProperty(host, 'activeSlideIndex', 1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
+
+  it('should slide correctly if slides without focusable elements are tabbed for slidesPerPage=1', async () => {
+    await initCarousel({ slidesPerPage: 1, withFocusableElements: false });
+    const [slide1, slide2, slide3] = await getSlides();
+
+    await slide1.focus();
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+  });
+
+  it('should slide correctly if slides without focusable elements are tabbed for slidesPerPage=2', async () => {
+    await initCarousel({ amountOfSlides: 6, slidesPerPage: 2, withFocusableElements: false });
+    const [slide1, slide2, slide3] = await getSlides();
+
+    await slide1.focus();
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+  });
+
+  it('should slide correctly if slides with focusable elements are tabbed', async () => {
+    await initCarousel({ slidesPerPage: 1, withFocusableElements: true });
+    const [slide1, slide2, slide3] = await getSlides();
+
+    await slide1.focus();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+  });
+
+  it('should slide correctly if slides with focusable elements are tabbed for slidesPerPage=2', async () => {
+    await initCarousel({ amountOfSlides: 6, slidesPerPage: 2, withFocusableElements: true });
+    const [slide1, slide2, slide3] = await getSlides();
+
+    await slide1.focus();
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+  });
 });
 
 describe('lifecycle', () => {
@@ -655,6 +751,35 @@ describe('accessibility', () => {
     await waitForStencilLifecycle(page);
     expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Previous slide');
     expect(await getAttribute(buttonNext, 'aria-label')).toBe('Go to first slide');
+  });
+
+  it('should remove aria-hidden of slides on slide change', async () => {
+    await initCarousel();
+    const [slide1, slide2, slide3] = await getSlides();
+    const buttonNext = await getButtonNext();
+
+    expect(await getAttribute(slide1, 'aria-hidden')).toBe(null);
+    expect(await getAttribute(slide2, 'aria-hidden')).toBe(null);
+    expect(await getAttribute(slide3, 'aria-hidden')).toBe(null);
+
+    await buttonNext.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(slide1, 'aria-hidden')).toBe(null);
+    expect(await getAttribute(slide2, 'aria-hidden')).toBe(null);
+    expect(await getAttribute(slide3, 'aria-hidden')).toBe(null);
+  });
+
+  it('should remove aria-hidden of slides on resize', async () => {
+    await initCarousel();
+    const [slide1, slide2, slide3] = await getSlides();
+
+    await page.setViewport({ width: 800, height: 600 });
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(slide1, 'aria-hidden')).toBe(null);
+    expect(await getAttribute(slide2, 'aria-hidden')).toBe(null);
+    expect(await getAttribute(slide3, 'aria-hidden')).toBe(null);
   });
 
   it('should expose correct initial accessibility tree and aria properties', async () => {
