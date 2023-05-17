@@ -295,9 +295,6 @@
           pointer-events: none;
           opacity: 0;
         }
-        .header-sidebar {
-          display: none;
-        }
         .sidebar {
           opacity: 1;
           width: 100%;
