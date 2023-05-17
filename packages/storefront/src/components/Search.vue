@@ -88,9 +88,12 @@
 
     getAlgoliaIndexName(): string {
       const baseHref = document.querySelector('base')!.getAttribute('href')!;
-      // on branch deployment baseHref contains /issue/
       // on localhost baseHref is '/'
-      return baseHref.includes('/issue/') || baseHref.length < 1 ? 'latest' : baseHref.slice(1, -1).replace('/', '_');
+      return baseHref.includes('/issue/')
+        ? 'latest'
+        : baseHref.length > 1
+        ? baseHref.slice(1, -1).replace('/', '_')
+        : 'latest';
     }
 
     transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
@@ -113,8 +116,8 @@
 
   .spacer {
     position: absolute;
-    padding: 1.5rem;
     right: $pds-spacing-static-small;
+    padding: 1.5rem;
     bottom: -24px;
     z-index: 1;
     filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
