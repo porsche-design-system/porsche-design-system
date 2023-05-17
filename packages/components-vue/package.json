@@ -50,7 +50,7 @@
     "eslint": "^8.40.0",
     "eslint-plugin-vue": "^9.13.0",
     "local-web-server": "^5.3.0",
-    "rollup": "^3.21.0",
+    "rollup": "^3.22.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "~5.0.4",

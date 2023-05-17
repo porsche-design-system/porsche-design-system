@@ -64,7 +64,7 @@
     "karma-jasmine-html-reporter": "^2.0.0",
     "local-web-server": "^5.3.0",
     "ng-packagr": "^15.2.2",
-    "rollup": "^3.21.0",
+    "rollup": "^3.22.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "ts-node": "^10.9.1",
