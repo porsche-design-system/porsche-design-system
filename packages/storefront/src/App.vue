@@ -4,7 +4,10 @@
   </main>
   <!-- id="app" is for vrt test -->
   <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
-    <Header />
+    <header class="nav-header">
+      <Brand :class="{ 'brand--menu-active': isMenuActive }" />
+      <Header class="header" />
+    </header>
     <div class="sidebar">
       <Sidebar />
       <p-divider class="divider-spacing-small"></p-divider>
@@ -22,6 +25,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import Disclaimer from '@/components/Disclaimer.vue';
+  import Brand from '@/components/Brand.vue';
   import Header from '@/components/Header.vue';
   import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
@@ -33,6 +37,7 @@
   @Component({
     components: {
       Disclaimer,
+      Brand,
       Header,
       Sidebar,
       Footer,
@@ -77,6 +82,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  .brand {
+    @include pds-media-query-min-max('base', 's') {
+      &:not(.brand--menu-active) {
+        display: none !important;
+      }
+    }
+  }
+
+  .nav-header {
+    display: flex;
+    width: 100%;
+    height: 10rem;
+    position: fixed;
+    z-index: 1;
+    align-items: center;
+    background: #fff;
   }
 
   main {
