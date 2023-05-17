@@ -198,7 +198,6 @@ describe('render', () => {
 describe('componentDidUpdate', () => {
   it('should call this.splide.refresh()', () => {
     jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
-    jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const refreshSpy: () => Splide = jest.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;
@@ -208,24 +207,12 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call updatePrevNextButtons() with correct parameters', () => {
-    jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = { refresh: () => {} } as Splide;
 
     component.componentDidUpdate();
     expect(spy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-  });
-
-  it('should call updateSlidesInert() with correct parameters', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
-    const spy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
-    const component = new Carousel();
-    component['splide'] = { refresh: () => {} } as Splide;
-
-    component.componentDidUpdate();
-
-    expect(spy).toBeCalledWith(component['splide']);
   });
 });
 
@@ -274,14 +261,14 @@ describe('registerSplideHandlers()', () => {
     const splide = { ...splideMock, on: onSpy } as Splide;
 
     component['registerSplideHandlers'](splide);
-    expect(onSpy).toBeCalledTimes(2);
+    expect(onSpy).toBeCalledTimes(3);
     expect(onSpy).toHaveBeenNthCalledWith(1, 'mounted', expect.any(Function));
-    expect(onSpy).toHaveBeenNthCalledWith(2, 'move', expect.any(Function));
+    expect(onSpy).toHaveBeenNthCalledWith(2, 'ready moved resized refresh updated', expect.any(Function));
+    expect(onSpy).toHaveBeenNthCalledWith(3, 'move', expect.any(Function));
   });
 
   it('should call updatePrevNextButtons(), updateSlidesInert() and renderPagination() with correct parameters on mounted event', () => {
     const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
-    const updateSlidesInertSpy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     console.log(window.matchMedia('(prefers-reduced-motion: reduce)'), 'match media');
@@ -290,13 +277,11 @@ describe('registerSplideHandlers()', () => {
 
     component['splide'].emit('mounted');
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
     expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
   });
 
   it('should call updatePrevNextButtons(), updateSlidesInert(), updatePagination(), this.change.emit() and this.carouselChange.emit() with correct parameters on move event', () => {
     const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
-    const updateSlidesInertSpy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     const updatePaginationSpy = jest.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
     const changeEmitSpy = jest.fn();
     const carouselChangeEmitSpy = jest.fn();
@@ -308,7 +293,6 @@ describe('registerSplideHandlers()', () => {
 
     component['splide'].emit('move', 1, 0);
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
     expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], 1);
     expect(changeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
     expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
@@ -411,7 +395,6 @@ describe('updateAmountOfPages()', () => {
   });
 
   it('should call renderPagination() with correct parameters', () => {
-    jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
     jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const spy = jest.spyOn(carouselUtils, 'renderPagination');
     const component = new Carousel();
@@ -420,14 +403,5 @@ describe('updateAmountOfPages()', () => {
 
     component['updateAmountOfPages']();
     expect(spy).toBeCalledWith(component['paginationEl'], 5, 1);
-  });
-
-  it('should call updateSlidesInert() with correct parameters', () => {
-    const spy = jest.spyOn(carouselUtils, 'updateSlidesInert').mockImplementation(() => {});
-    const component = new Carousel();
-    component['slides'] = [];
-
-    component['updateAmountOfPages']();
-    expect(spy).toBeCalledWith(component['splide']);
   });
 });
