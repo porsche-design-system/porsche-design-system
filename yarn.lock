@@ -5450,10 +5450,10 @@
   resolved "https://registry.yarnpkg.com/@vue/tsconfig/-/tsconfig-0.3.2.tgz#612ba0b6aefde5ac1a513545eee7d4ed01c407f5"
   integrity sha512-jWzZbGyrZAEbHYGn0kPzJ+MMtIkIxb0+hL5+RghBowyOxMRs9jMdp5XvpXz3wgCzjRZiUucy29042HBe9cxoYA==
 
-"@vue/vue3-jest@29.2.3":
-  version "29.2.3"
-  resolved "https://registry.yarnpkg.com/@vue/vue3-jest/-/vue3-jest-29.2.3.tgz#79caa80e6faff1f26be90c9da92447e7e03de9a0"
-  integrity sha512-wbit0rGgy9ARUBtc5dZ6PGCrxazCPs5pZ6ycB0qYMoEPmkRj8lIVUfJmTz03ryIAeVQOcTKnEWdcqgrTErl3vg==
+"@vue/vue3-jest@29.2.4":
+  version "29.2.4"
+  resolved "https://registry.yarnpkg.com/@vue/vue3-jest/-/vue3-jest-29.2.4.tgz#6f25d7e03f4ee0c41a6d2b3a2a5995a8be645fde"
+  integrity sha512-mS3sJR4p/qTZKsNdws9DBDJHm7NQDco0tWal89WhA41oosO2VvnrJvDJ1gZaEz5A/OXDj1ouDpEczkSQP4o8eQ==
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.2.0"
     chalk "^2.1.0"
