@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p-button
+    <!--<p-button
       v-show="!isSearchOpen"
       type="button"
       variant="secondary"
@@ -8,10 +8,9 @@
       hide-label="true"
       @click="onSearchButtonClick()"
       >Search</p-button
-    >
+    >-->
     <form onsubmit="event.preventDefault()">
       <p-text-field-wrapper
-        v-show="isSearchOpen"
         hide-label="true"
         label="Search"
         @blur="

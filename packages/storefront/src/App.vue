@@ -4,10 +4,23 @@
   </main>
   <!-- id="app" is for vrt test -->
   <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
-    <header class="nav-header">
+    <header class="test-header">
+      <div class="test-brand">
+        <h1>Porsche Design System</h1>
+        <VersionSelect class="versionSelect" />
+      </div>
+      <router-link to="/" v-slot="{ href, navigate }">
+        <p-wordmark :href="href" @click="navigate"></p-wordmark>
+      </router-link>
+      <div class="test-tools">
+        <Search class="search" />
+        <p-link-pure :icon-source="require('@/assets/github.svg')" href="https://github.com/porsche-design-system/porsche-design-system" target="_blank" hide-label="true" style="padding: 13px;">Navigate to GitHub space of Porsche Design System</p-link-pure>
+      </div>
+    </header>
+    <!--<header class="nav-header">
       <Brand :class="{ 'brand--menu-active': isMenuActive }" />
       <Header class="header" />
-    </header>
+    </header>-->
     <div class="sidebar">
       <Sidebar />
       <p-divider class="divider-spacing-small"></p-divider>
@@ -31,6 +44,8 @@
   import Footer from '@/components/Footer.vue';
   import Menu from '@/components/Menu.vue';
   import { Watch } from 'vue-property-decorator';
+  import VersionSelect from '@/components/VersionSelect.vue';
+  import Search from '@/components/Search.vue';
 
   const TRANSITION_DURATION = 300;
 
@@ -42,6 +57,8 @@
       Sidebar,
       Footer,
       Menu,
+      VersionSelect,
+      Search,
     },
   })
   export default class App extends Vue {
@@ -77,6 +94,38 @@
 
 <style lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
+
+  .test-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 98;
+    padding: $pds-spacing-fluid-small $pds-spacing-fluid-medium;
+    display: grid;
+    gap: $pds-spacing-fluid-medium;
+    border-bottom: 1px solid $pds-theme-light-contrast-low;
+    grid-template-columns: minmax(0px, 1fr) auto minmax(0px, 1fr);
+    align-items: center;
+    background: $pds-theme-light-background-base;
+  }
+
+  .test-brand {
+    display: flex;
+    align-items: center;
+    gap: $pds-spacing-fluid-x-small;
+
+    h1 {
+      @include pds-text-small;
+    }
+  }
+
+  .test-tools {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $pds-spacing-static-small;
+  }
 
   * {
     margin: 0;
@@ -318,8 +367,8 @@
     left: 0;
     bottom: 0;
     width: 17.5rem;
-    padding: 0 $pds-spacing-static-large 2.5rem;
-    margin-top: 10rem;
+    padding: 2.5rem $pds-spacing-static-large;
+    margin-top: 5rem;
     background: $pds-theme-light-background-base;
     overflow-x: hidden;
     overflow-y: auto;

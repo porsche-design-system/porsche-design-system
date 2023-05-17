@@ -114,11 +114,14 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
+  .search {
+    position: relative;
+  }
+
   .spacer {
     position: absolute;
-    right: $pds-spacing-static-small;
-    padding: 1.5rem;
-    bottom: -24px;
+    bottom: -20px;
+    left: 50%;
     z-index: 1;
     filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
     @include pds-media-query-min-max('base', 's') {
@@ -126,20 +129,20 @@
       width: 100%;
       filter: none;
     }
-  }
 
-  .spacer::before {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 12px 12px;
-    border-color: transparent transparent $pds-theme-light-background-base;
-    @include pds-media-query-min-max('base', 's') {
-      top: 36px;
-      bottom: initial;
+    &::before {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 0 12px 12px;
+      border-color: transparent transparent $pds-theme-light-background-base;
+      @include pds-media-query-min-max('base', 's') {
+        top: 36px;
+        bottom: initial;
+      }
     }
   }
 
@@ -157,10 +160,11 @@
 
   .hits {
     position: absolute;
-    width: 17.5rem;
+    width: 263px;
     max-height: 70vh;
     right: 0;
-    top: $pds-spacing-static-x-large;
+    top: 0;
+    transform: translate(50%, 0);
     padding: $pds-spacing-static-medium 0;
     border-radius: $pds-border-radius-small;
     background: $pds-theme-light-background-base;
