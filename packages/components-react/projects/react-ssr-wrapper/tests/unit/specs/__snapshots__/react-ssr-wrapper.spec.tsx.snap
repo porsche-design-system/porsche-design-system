@@ -2837,6 +2837,7 @@ img {
         >
           <div
             class="splide__slide"
+            tabindex="0"
           >
             <slot
               name="slide-0"
