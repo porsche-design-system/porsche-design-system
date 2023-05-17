@@ -8,7 +8,6 @@
         <template v-slot="{ results: { hits } }">
           {{ onHitsChange(hits) }}
           <ais-hits
-            v-show="displayHits"
             :transform-items="transformItems"
             :class-names="{
               'ais-Hits': 'hits',
@@ -89,12 +88,9 @@
 
     getAlgoliaIndexName(): string {
       const baseHref = document.querySelector('base')!.getAttribute('href')!;
+      // on branch deployment baseHref contains /issue/
       // on localhost baseHref is '/'
-      return baseHref.includes('/issue/')
-        ? 'latest'
-        : baseHref.length > 1
-        ? baseHref.slice(1, -1).replace('/', '_')
-        : 'latest';
+      return baseHref.includes('/issue/') || baseHref.length < 1 ? 'latest' : baseHref.slice(1, -1).replace('/', '_');
     }
 
     transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
@@ -117,8 +113,8 @@
 
   .spacer {
     position: absolute;
-    right: $pds-spacing-static-small;
     padding: 1.5rem;
+    right: $pds-spacing-static-small;
     bottom: -24px;
     z-index: 1;
     filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
@@ -144,11 +140,8 @@
     }
   }
 
+  .ais-hits-list,
   ul {
-    list-style: none;
-  }
-
-  .ais-hits-list {
     list-style: none;
   }
 
