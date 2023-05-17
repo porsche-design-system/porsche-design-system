@@ -38,7 +38,7 @@
   select {
     @include pds-focus;
     @include pds-text-x-small;
-    width: 2rem;
+    min-width: 2rem;
     border: 0;
     padding: 2px $pds-spacing-static-small;
     box-sizing: content-box;

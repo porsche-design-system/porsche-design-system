@@ -44,7 +44,7 @@
     gap: $pds-spacing-static-medium;
     align-items: center;
     padding: 0 $pds-spacing-static-medium;
-    background: #fff;
+    // background: #fff;
   }
 
   .wordmark {

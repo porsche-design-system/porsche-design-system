@@ -30,7 +30,7 @@
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
       <p-spinner v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
     </main>
-    <Menu class="menu"></Menu>
+    <!--<Menu class="menu"></Menu>-->
   </div>
 </template>
 
@@ -148,7 +148,7 @@
     position: fixed;
     z-index: 1;
     align-items: center;
-    background: #fff;
+    // background: #fff;
   }
 
   main {
@@ -369,7 +369,7 @@
     width: 17.5rem;
     padding: 2.5rem $pds-spacing-static-large;
     margin-top: 5rem;
-    background: $pds-theme-light-background-base;
+    // background: $pds-theme-light-background-base;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
