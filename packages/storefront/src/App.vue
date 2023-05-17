@@ -353,7 +353,7 @@
 
   .router-view {
     position: relative;
-    padding: $pds-spacing-static-large;
+    padding: 0 $pds-spacing-static-large $pds-spacing-static-large;
     background: $pds-theme-light-background-base;
 
     @include pds-media-query-min-max('base', 's') {
@@ -362,7 +362,7 @@
     }
 
     @include pds-media-query-min('s') {
-      padding: 4rem;
+      padding: 0 4rem 4rem;
     }
 
     &--loading {
