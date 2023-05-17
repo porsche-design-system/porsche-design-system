@@ -1,6 +1,8 @@
 <template>
   <nav>
-    <template>
+    <VersionSelect class="versionSelect" />
+    <Search class="search" :hideNavigation="this.hideNavigation" v-on:onSearchActiveChange="shouldHideNavigation" />
+    <template v-if="!this.hideNavigation">
       <p-accordion
         v-for="(pages, category, index) in config"
         :key="index"
@@ -28,14 +30,22 @@
   import { StorefrontConfig } from '@/models';
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
+  import Search from '@/components/Search.vue';
   import { config as storefrontConfig } from '@/../storefront.config';
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
+  import VersionSelect from '@/components/VersionSelect.vue';
 
-  @Component
+  @Component({
+    components: {
+      VersionSelect,
+      Search,
+    },
+  })
   export default class Sidebar extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public accordion: { [id: string]: boolean } = {};
+    public hideNavigation = false;
 
     public getRoute(category: string, page: string): string {
       return `/${paramCase(category)}/${paramCase(page)}`;
@@ -70,6 +80,10 @@
       this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
     }
 
+    shouldHideNavigation(hideNavigation: boolean): void {
+      this.hideNavigation = hideNavigation;
+    }
+
     getDeprecated(category: string, page: string): string {
       if (category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.isDeprecated) {
         return ' (deprecated)';
@@ -87,6 +101,18 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
+
+  nav {
+    position: relative;
+  }
+
+  .versionSelect,
+  .search {
+    margin: $pds-spacing-static-large 0;
+    @include pds-media-query-min('s') {
+      display: none;
+    }
+  }
 
   ul,
   li {
