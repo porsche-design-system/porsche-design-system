@@ -30,7 +30,7 @@
     "@porsche-design-system/components-react": "3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-imask": "^6.6.0",
+    "react-imask": "^6.6.1",
     "react-router-dom": "^6.10.0",
     "styled-components": "^5.3.10"
   },
