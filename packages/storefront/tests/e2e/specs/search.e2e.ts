@@ -75,7 +75,6 @@ describe('search', () => {
     await sendAlgoliaRequest();
     const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
     await linkElement.click();
-
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
@@ -84,12 +83,10 @@ describe('search', () => {
   it('should show hits after navigation and click on search input focus', async () => {
     await openSearchOnButtonClick();
     await sendAlgoliaRequest();
-
     const [linkElement] = await page.$x(`//header//nav//a[contains(., 'Button')]`);
     await linkElement.click();
 
     await page.focus(searchInputSelector);
-
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
@@ -98,7 +95,6 @@ describe('search', () => {
   it('should hide hits after clearing the search', async () => {
     await openSearchOnButtonClick();
     await sendAlgoliaRequest();
-
     await page.focus(searchInputSelector);
     for (let i = 0; i < searchTerm.length; i++) {
       await page.keyboard.press('Backspace');
@@ -142,15 +138,14 @@ describe('search', () => {
     expect(amount).toBe(0);
   });
 
-  it('should hide input type=search after clearing the search and move focus from search field', async () => {
+  it('should hide search after clearing the search and move focus from search field', async () => {
     await openSearchOnButtonClick();
     await sendAlgoliaRequest();
     const search = await getSearch();
-
     await page.focus(searchInputSelector);
     await page.keyboard.press('Escape');
-    await waitForResultsToBeGone();
 
+    await waitForResultsToBeGone();
     await page.$eval(searchInputSelector, (e: HTMLInputElement) => e.blur());
 
     expect(await getElementStyle(search, 'display')).toBe('none');
