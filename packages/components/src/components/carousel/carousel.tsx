@@ -261,8 +261,15 @@ export class Carousel {
         >
           <div
             class="splide__track"
-            onFocusin={(e: FocusEvent & { target: HTMLElement }): void => {
-              this.handleScrollingOnFocusIn(e);
+            /* This works fine but gets not compiled in React Wrapper */
+            // onFocusin={(e: FocusEvent & { target: HTMLElement }): void => {
+            //   this.handleScrollingOnFocusIn(e);
+            // }}
+            ref={(ref) => {
+              /* This works also fine and get compiled in React Wrappern */
+              ref.addEventListener('focusin', (e: FocusEvent & { target: HTMLElement }) =>
+                this.handleScrollingOnFocusIn(e)
+              );
             }}
           >
             <div class="splide__list">
