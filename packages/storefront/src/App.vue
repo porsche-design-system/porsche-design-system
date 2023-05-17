@@ -291,15 +291,22 @@
 
     &--menu-active {
       @include pds-media-query-min-max('base', 's') {
+        .header {
+          pointer-events: none;
+          opacity: 0;
+        }
+        .header-sidebar {
+          display: none;
+        }
         .sidebar {
           opacity: 1;
+          width: 100%;
+          z-index: 1;
           transform: translate3d(0, 0, 0);
         }
-
         .main {
           transform: translate3d(17.5rem, 0, 0);
         }
-
         .router-view {
           opacity: 0.05;
           pointer-events: none;
@@ -316,7 +323,6 @@
     width: 17.5rem;
     padding: 0 $pds-spacing-static-large 2.5rem;
     margin-top: 10rem;
-    border-right: 1px solid $pds-theme-light-contrast-low;
     background: $pds-theme-light-background-base;
     overflow-x: hidden;
     overflow-y: auto;
