@@ -23715,10 +23715,10 @@ vite-plugin-html@^3.2.0:
     node-html-parser "^5.3.3"
     pathe "^0.2.0"
 
-vite-plugin-static-copy@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-static-copy/-/vite-plugin-static-copy-0.14.0.tgz#5f41dbb3fa034045d174b49414d4b6e5bc77fffa"
-  integrity sha512-RMFmb4czomcrsbQBiUZs9HcDGN3kxGvF+OrtkfTVocp12CuoUCuJQhcY26RK35A6KS4WasGzEwcYZqHMjkAvVw==
+vite-plugin-static-copy@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-static-copy/-/vite-plugin-static-copy-0.15.0.tgz#803b7e049e00e11ce9201fc3d2b183558f08cf7c"
+  integrity sha512-Ww+/Ug9guV45oIfIi/lA2z8v3K+lLHV9zCJqTVO4FTdqrJoZBj68VgGBSH1fi0N4q/EHW32RsL3ympi4Wlsq5w==
   dependencies:
     chokidar "^3.5.3"
     fast-glob "^3.2.11"
