@@ -82,7 +82,7 @@
     "js-beautify": "^1.14.7",
     "jsdom": "^21.1.1",
     "local-web-server": "^5.3.0",
-    "terser-webpack-plugin": "^5.3.7",
+    "terser-webpack-plugin": "^5.3.9",
     "ts-node": "^10.9.1",
     "typescript": "~5.0.4",
     "webpack": "^5.80.0",

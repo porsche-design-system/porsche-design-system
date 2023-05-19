@@ -22472,16 +22472,16 @@ terser-webpack-plugin@^1.4.3, terser-webpack-plugin@^1.4.4:
     webpack-sources "^1.4.0"
     worker-farm "^1.7.0"
 
-terser-webpack-plugin@^5.1.3, terser-webpack-plugin@^5.2.5, terser-webpack-plugin@^5.3.7:
-  version "5.3.7"
-  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.7.tgz#ef760632d24991760f339fe9290deb936ad1ffc7"
-  integrity sha512-AfKwIktyP7Cu50xNjXF/6Qb5lBNzYaWpU6YfoX3uZicTx0zTy0stDDCsvjDapKsSDvOeWo5MEq4TmdBy2cNoHw==
+terser-webpack-plugin@^5.1.3, terser-webpack-plugin@^5.2.5, terser-webpack-plugin@^5.3.7, terser-webpack-plugin@^5.3.9:
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.9.tgz#832536999c51b46d468067f9e37662a3b96adfe1"
+  integrity sha512-ZuXsqE07EcggTWQjXUj+Aot/OMcD0bMKGgF63f7UxYcu5/AJF53aIpK1YoP5xR9l6s/Hy2b+t1AM0bLNPRuhwA==
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.17"
     jest-worker "^27.4.5"
     schema-utils "^3.1.1"
     serialize-javascript "^6.0.1"
-    terser "^5.16.5"
+    terser "^5.16.8"
 
 terser@5.16.3:
   version "5.16.3"
@@ -22502,10 +22502,10 @@ terser@^4.1.2:
     source-map "~0.6.1"
     source-map-support "~0.5.12"
 
-terser@^5.0.0, terser@^5.10.0, terser@^5.16.5:
-  version "5.17.1"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.1.tgz#948f10830454761e2eeedc6debe45c532c83fd69"
-  integrity sha512-hVl35zClmpisy6oaoKALOpS0rDYLxRFLHhRuDlEGTKey9qHjS1w9GMORjuwIMt70Wan4lwsLYyWDVnWgF+KUEw==
+terser@^5.0.0, terser@^5.10.0, terser@^5.16.8:
+  version "5.17.4"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.4.tgz#b0c2d94897dfeba43213ed5f90ed117270a2c696"
+  integrity sha512-jcEKZw6UPrgugz/0Tuk/PVyLAPfMBJf5clnGueo45wTweoV8yh7Q7PEkhkJ5uuUbC7zAxEcG3tqNr1bstkQ8nw==
   dependencies:
     "@jridgewell/source-map" "^0.3.2"
     acorn "^8.5.0"
