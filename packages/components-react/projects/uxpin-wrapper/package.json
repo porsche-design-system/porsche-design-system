@@ -27,6 +27,6 @@
     "@uxpin/merge-cli": "3.0.2",
     "babel-loader": "^9.1.2",
     "typescript": "~5.0.4",
-    "webpack": "^5.80.0"
+    "webpack": "^5.83.1"
   }
 }
