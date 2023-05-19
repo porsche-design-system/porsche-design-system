@@ -17153,10 +17153,10 @@ next@^13.3.1:
     "@next/swc-win32-ia32-msvc" "13.3.1"
     "@next/swc-win32-x64-msvc" "13.3.1"
 
-ng-packagr@^16.0.1:
-  version "16.0.1"
-  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-16.0.1.tgz#7f1f33b676911208f4f8907462dba060ca5bd4d6"
-  integrity sha512-MiJvSR+8olzCViwkQ6ihHLFWVNLdsfUNPCxrZqR7u1nOC/dXlWPf//l2IG0KLdVhHNCiM64mNdwaTpgDEBMD3w==
+ng-packagr@^15.2.2:
+  version "15.2.2"
+  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-15.2.2.tgz#2ae63e8e63a7b0fd9202c1bf77f144bf86a06b29"
+  integrity sha512-+042GBD35ztxbHywGJloAiDM/s3Ja3TZtQh361TWqd/xza3K5DMUu6VRGLTgMwG7CW1YsqYHWgMZslP1c+ng7A==
   dependencies:
     "@rollup/plugin-json" "^6.0.0"
     "@rollup/plugin-node-resolve" "^15.0.0"
@@ -17170,8 +17170,8 @@ ng-packagr@^16.0.1:
     convert-source-map "^2.0.0"
     dependency-graph "^0.11.0"
     esbuild-wasm "^0.17.0"
-    fast-glob "^3.2.12"
     find-cache-dir "^3.3.2"
+    glob "^8.0.3"
     injection-js "^2.4.0"
     jsonc-parser "^3.2.0"
     less "^4.1.3"
