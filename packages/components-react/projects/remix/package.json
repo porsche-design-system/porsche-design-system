@@ -35,8 +35,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^1.16.0",
-    "@remix-run/eslint-config": "^1.16.0",
+    "@remix-run/dev": "^1.16.1",
+    "@remix-run/eslint-config": "^1.16.1",
     "@types/bcryptjs": "^2.4.2",
     "@types/eslint": "^8.37.0",
     "@types/node": "^18.16.1",
