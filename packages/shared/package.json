@@ -39,7 +39,7 @@
     "jss-preset-default": "^10.10.0",
     "pixelmatch": "^5.3.0",
     "puppeteer": "~20.2.1",
-    "sharp": "^0.30.5",
+    "sharp": "^0.32.1",
     "ts-jest": "^29.1.0"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "@types/madge": "^5.0.0",
     "@types/node": "^20.2.1",
     "@types/pixelmatch": "^5.2.4",
-    "@types/sharp": "^0.30.2",
+    "@types/sharp": "^0.32.0",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^6.0.0",
