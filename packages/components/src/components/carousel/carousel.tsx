@@ -333,16 +333,20 @@ export class Carousel {
   private handleScrollingOnFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
     const { index, Components } = this.splide;
     const { Elements, Slides } = Components;
+    const target = e.target;
 
-    const slottedSlideFocusIndex = (): number => this.slides.findIndex((slide) => slide.contains(e.target));
-    const slideIsVisible =
-      e.target.classList.contains('is-visible') ||
-      Elements.slides.at(slottedSlideFocusIndex()).classList.contains('is-visible');
-    const slideIndexOfFocusedElement = Elements.slides.includes(e.target)
-      ? Slides.get().findIndex((el) => el.slide === e.target)
+    const slottedSlideFocusIndex = (): number => this.slides.findIndex((slide) => slide.contains(target));
+    const slideIsVisible = (): boolean => {
+      const slottedSlideIndex = slottedSlideFocusIndex();
+      return (
+        target.classList.contains('is-visible') ||
+        (slottedSlideIndex !== -1 && Elements.slides.at(slottedSlideIndex).classList.contains('is-visible'))
+      );
+    };
+    const slideIndexOfFocusedElement = Elements.slides.includes(target)
+      ? Slides.get().findIndex((el) => el.slide === target)
       : slottedSlideFocusIndex();
-
-    if (!slideIsVisible) {
+    if (!slideIsVisible()) {
       if (slideIndexOfFocusedElement > index) {
         slideNext(this.splide, this.amountOfPages);
       } else if (slideIndexOfFocusedElement < index) {
