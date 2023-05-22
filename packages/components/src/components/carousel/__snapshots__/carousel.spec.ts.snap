@@ -2,7 +2,17 @@
 
 exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide 1`] = `
 [
-  undefined,
+  <div
+    class="splide"
+  >
+    <div
+      class="splide__track"
+    >
+      <div
+        class="splide__list"
+      />
+    </div>
+  </div>,
   {
     "arrows": false,
     "autoWidth": false,
@@ -26,7 +36,17 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
 
 exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto 1`] = `
 [
-  undefined,
+  <div
+    class="splide"
+  >
+    <div
+      class="splide__track"
+    >
+      <div
+        class="splide__list"
+      />
+    </div>
+  </div>,
   {
     "arrows": false,
     "autoWidth": true,

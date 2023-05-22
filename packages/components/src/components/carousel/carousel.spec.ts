@@ -15,6 +15,22 @@ const splideMock = {
   mount: () => {},
 } as Splide;
 
+const getContainerEl = (): HTMLElement => {
+  const container = document.createElement('div');
+  container.className = 'splide';
+
+  const track = document.createElement('div');
+  track.className = 'splide__track';
+
+  const list = document.createElement('div');
+  list.className = 'splide__list';
+
+  track.append(list);
+  container.append(track);
+
+  return container;
+};
+
 let originalMatchMedia: typeof window.matchMedia;
 beforeAll(() => {
   originalMatchMedia = window.matchMedia;
@@ -104,6 +120,7 @@ describe('componentDidLoad', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const spy = jest.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
+    component['container'] = getContainerEl(); // ref to actual container element
     component.slidesPerPage = 3;
 
     component.componentDidLoad();
@@ -114,6 +131,7 @@ describe('componentDidLoad', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
     const component = new Carousel();
+    component['container'] = getContainerEl(); // ref to actual container element
     component.intl = { first: 'first' };
 
     component.componentDidLoad();
@@ -124,6 +142,7 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
+    component['container'] = getContainerEl(); // ref to actual container element
     expect(component['splide']).toBeUndefined();
 
     component.componentDidLoad();
@@ -136,6 +155,7 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
+    component['container'] = getContainerEl(); // ref to actual container element
     component.slidesPerPage = 'auto';
     expect(component['splide']).toBeUndefined();
 
@@ -148,6 +168,7 @@ describe('componentDidLoad', () => {
   it('should call this.registerSplideHandlers() with correct parameters', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const component = new Carousel();
+    component['container'] = getContainerEl(); // ref to actual container element
     const spy = jest.spyOn(component, 'registerSplideHandlers' as any);
 
     component.componentDidLoad();
@@ -239,22 +260,6 @@ describe('disconnectedCallback', () => {
 });
 
 describe('registerSplideHandlers()', () => {
-  const getContainerEl = (): HTMLElement => {
-    const container = document.createElement('div');
-    container.className = 'splide';
-
-    const track = document.createElement('div');
-    track.className = 'splide__track';
-
-    const list = document.createElement('div');
-    list.className = 'splide__list';
-
-    track.append(list);
-    container.append(track);
-
-    return container;
-  };
-
   it('should call this.splide.on() twice with correct parameters', () => {
     const onSpy: (_, __) => Splide = jest.fn();
     const component = new Carousel();
