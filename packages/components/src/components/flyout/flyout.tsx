@@ -1,9 +1,22 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, Watch } from '@stencil/core';
 
-import { FLYOUT_ARIA_ATTRIBUTES, FLYOUT_POSITIONS, FlyoutAriaAttribute, FlyoutPosition } from './flyout-utils';
-import { getComponentCss } from './flyout-styles';
+import {
+  FLYOUT_ARIA_ATTRIBUTES,
+  FLYOUT_POSITIONS,
+  FLYOUT_SCROLL_SHADOW_THRESHOLD,
+  FlyoutAriaAttribute,
+  FlyoutPosition,
+} from './flyout-utils';
+import { flyoutBoxShadowColor, getComponentCss } from './flyout-styles';
 
-import { attachComponentCss, getPrefixedTagNames, hasNamedSlot, parseAndGetAriaAttributes, THEMES } from '../../utils';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasNamedSlot,
+  parseAndGetAriaAttributes,
+  THEMES,
+} from '../../utils';
 import { AllowedTypes, PropTypes, validateProps } from '../../utils/validation/validateProps';
 import { SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
@@ -27,7 +40,6 @@ export class Flyout {
   /** If true, the flyout is open. */
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
-  // TODO: Naming: align or position?
   /** The position of the flyout */
   @Prop() public position?: FlyoutPosition = 'right';
 
@@ -67,6 +79,16 @@ export class Flyout {
       setScrollLock(true);
       this.updateFocusTrap(true);
     }
+
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
+      if (this.open) {
+        // 1 tick delay is needed so that web components can be bootstrapped
+        setTimeout(() => {
+          this.updateFocusTrap(true);
+          this.dismissBtn.shadowRoot.querySelector('button').focus(); // set initial focus
+        });
+      }
+    });
   }
 
   public componentDidRender(): void {
@@ -162,7 +184,7 @@ export class Flyout {
   };
 
   private updateFocusTrap = (isOpen: boolean): void => {
-    setFocusTrap(this.host, isOpen, this.dismissBtn, this.dismissFlyout);
+    setFocusTrap(this.host, isOpen, null, this.dismissFlyout);
   };
 
   private onScroll = (): void => {
@@ -173,12 +195,14 @@ export class Flyout {
   };
 
   private updateHeaderShadow = (): void => {
-    this.header.style.boxShadow = this.dialog.scrollTop > 10 ? 'rgba(204, 204, 204, 0.35) 0px 5px 10px' : 'none';
+    this.header.style.boxShadow =
+      this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD ? `${flyoutBoxShadowColor} 0px 5px 10px` : 'none';
   };
 
   private updateFooterShadow = (): void => {
     const footerBottom = this.footer ? window.innerHeight - this.footer.getBoundingClientRect().bottom : 0;
-    this.footer.style.boxShadow = footerBottom < 10 ? 'rgba(204, 204, 204, 0.35) 0px -5px 10px' : 'none';
+    this.footer.style.boxShadow =
+      footerBottom < FLYOUT_SCROLL_SHADOW_THRESHOLD ? `${flyoutBoxShadowColor} 0px -5px 10px` : 'none';
   };
 
   private dismissFlyout = (): void => {
