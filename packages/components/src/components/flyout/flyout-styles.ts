@@ -16,6 +16,8 @@ import {
 } from '../../../../utilities/projects/utilities';
 import { FlyoutPosition } from './flyout-utils';
 
+export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
+
 const flyoutTransitionDuration = '0.5s';
 const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
 
@@ -86,7 +88,7 @@ export const getComponentCss = (
       maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
-      transform: isOpen ? 'translate3d(0)' : `translate3d(${translatePosition}, 0, 0)`,
+      transform: isOpen ? 'initial' : `translate3d(${translatePosition}, 0, 0)`,
       transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
         isOpen ? '0s' : flyoutTransitionDuration
       }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
