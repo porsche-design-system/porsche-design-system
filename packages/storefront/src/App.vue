@@ -14,7 +14,15 @@
       </router-link>
       <div class="test-tools">
         <Search class="search" />
-        <p-link-pure :icon-source="require('@/assets/github.svg')" href="https://github.com/porsche-design-system/porsche-design-system" target="_blank" hide-label="true" style="padding: 13px;">Navigate to GitHub space of Porsche Design System</p-link-pure>
+        <p-link-pure
+          :icon-source="require('@/assets/github.svg')"
+          href="https://github.com/porsche-design-system/porsche-design-system"
+          target="_blank"
+          hide-label="true"
+          style="padding: 13px"
+          >Navigate to GitHub space of Porsche Design System</p-link-pure
+        >
+        <Menu class="menu"></Menu>
       </div>
     </header>
     <!--<header class="nav-header">
@@ -437,10 +445,6 @@
 
     @include pds-media-query-min-max('base', 's') {
       display: block;
-      position: fixed;
-      z-index: 2;
-      top: 0;
-      right: 0;
     }
   }
 </style>
