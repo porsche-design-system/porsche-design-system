@@ -174,6 +174,10 @@ export class Carousel {
     });
 
     this.registerSplideHandlers(this.splide);
+
+    this.container.addEventListener('focusin', (e: FocusEvent & { target: HTMLElement }) =>
+      this.handleScrollingOnFocusIn(e)
+    );
   }
 
   // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
@@ -259,19 +263,7 @@ export class Carousel {
           aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
           ref={(ref) => (this.container = ref)}
         >
-          <div
-            class="splide__track"
-            /* This works fine but gets not compiled in React Wrapper */
-            // onFocusin={(e: FocusEvent & { target: HTMLElement }): void => {
-            //   this.handleScrollingOnFocusIn(e);
-            // }}
-            ref={(ref) => {
-              /* This works also fine and get compiled in React Wrappern */
-              ref.addEventListener('focusin', (e: FocusEvent & { target: HTMLElement }) =>
-                this.handleScrollingOnFocusIn(e)
-              );
-            }}
-          >
+          <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (
                 <div key={i} class="splide__slide" tabIndex={0}>
