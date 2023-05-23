@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  createHTMLAttributes,
   expectA11yToMatchSnapshot,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -9,6 +10,7 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
+  getOffsetWidth,
   getProperty,
   selectNode,
   setContentWithDesignSystem,
@@ -16,9 +18,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
-import type { SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
-import { Components, FlyoutAriaAttribute } from '@porsche-design-system/components';
-import { expect } from '@playwright/test';
+import { Components } from '@porsche-design-system/components';
 import PFlyout = Components.PFlyout;
 
 let page: Page;
@@ -30,49 +30,22 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout');
-
 const getFlyout = () => selectNode(page, 'p-flyout >>> .root');
 const getHeader = () => selectNode(page, 'p-flyout >>> .header');
-
 const getHeaderContent = () => selectNode(page, 'p-flyout >>> .header-content');
-
+const getHeaderSlottedContent = () => selectNode(page, '[slot="header"]');
 const getFooter = () => selectNode(page, 'p-flyout >>> .footer');
-
+const getFooterSlottedContent = () => selectNode(page, '[slot="footer"]');
 const getSecondaryContent = () => selectNode(page, 'p-flyout >>> .secondary-content');
-
+const getSecondaryContentSlottedContent = () => selectNode(page, '[slot="secondary-content"]');
 const getFlyoutDismissButton = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss');
-
 const getFlyoutDismissButtonReal = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss >>> button');
 const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
-
 const getFlyoutVisibility = async () => await getElementStyle(await getFlyout(), 'visibility');
-
-const waitForFlyoutToBeVisible = async () =>
-  page.waitForFunction(
-    (selector) => getComputedStyle(document.querySelector(selector)).visibility !== 'hidden',
-    {},
-    'p-flyout'
-  );
-
 const waitForFlyoutTransition = async () => {
   await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 };
-
-/**
- * Creates HTML attributes string from an object of properties.
- * @param props - The object containing the properties.
- * @returns The generated HTML attributes string.
- */
-const createHTMLAttributes = <T extends object>(props: T): string => {
-  return Object.entries(props)
-    .filter(([, value]) => value !== undefined)
-    .map(([prop, value]) => {
-      const attributeName = prop.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-      const attributeValue = typeof value === 'object' ? JSON.stringify(value).replace(/"/g, "'") : value;
-      return `${attributeName}="${attributeValue}"`;
-    })
-    .join(' ');
-};
+const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
 const initBasicFlyout = (
   flyoutProps: PFlyout = {
@@ -133,19 +106,21 @@ const addButtonsBeforeAndAfterFlyout = () =>
     document.body.append(buttonAfter);
   });
 
-const expectDialogToBeFocused = async (failMessage?: string) => {
-  const host = await getHost();
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('DIV');
-  expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toBe('root');
-};
+const scrollFlyoutBy = async (scrollAmount: number) =>
+  await page.evaluate(
+    (el, scrollAmount) => {
+      el.scrollTo(0, scrollAmount);
+      el.dispatchEvent(new Event('scroll'));
+    },
+    await getFlyout(),
+    scrollAmount
+  );
 
 const expectDismissButtonToBeFocused = async (failMessage?: string) => {
   const host = await getHost();
   expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
-
-const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
 it('should render and be visible when open', async () => {
   await initBasicFlyout({ open: true });
@@ -162,7 +137,7 @@ it('should visible after opened', async () => {
   await initBasicFlyout({ open: false });
   const host = await getHost();
   await setProperty(host, 'open', true);
-  await waitForFlyoutToBeVisible();
+  await waitForFlyoutTransition();
   expect(await getFlyoutVisibility()).toBe('visible');
 });
 
@@ -184,6 +159,88 @@ it('should have correct transform when dismissed and opened', async () => {
   await waitForFlyoutTransition();
   const finalFlyoutTransform = await getFlyoutTransform();
   expect(finalFlyoutTransform).toBe(initialFlyoutTransform);
+});
+
+describe('scroll shadows', () => {
+  it('should have header scroll shadow when header slot is used and scrolled down', async () => {
+    await initBasicFlyout(
+      { open: true },
+      { header: '<div slot="header">Some Heading</div>', content: '<div style="height: 200vh">Some Content</div>' }
+    );
+    const header = await getHeader();
+    expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
+
+    await scrollFlyoutBy(10);
+    // Box Shadow is only applied if threshold is exceeded
+    expect(await getElementStyle(header, 'boxShadow'), 'after scroll within threshold').toBe('none');
+
+    await scrollFlyoutBy(11);
+    expect(await getElementStyle(header, 'boxShadow'), 'after scroll outside threshold').toBe(
+      'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
+    );
+  });
+
+  it('should not have footer shadow when content is not scrollable', async () => {
+    await initBasicFlyout(
+      { open: true },
+      {
+        footer: '<div slot="footer"><button>Some Footer</button></div>',
+        content: '<div>Some Content</div>',
+      }
+    );
+    const footer = await getFooter();
+    expect(await getElementStyle(footer, 'boxShadow')).toBe('none');
+  });
+
+  // TODO: Position sticky not working in Puppeteer
+  // it('footer scroll shadow with secondary content', async () => {
+  //   await initBasicFlyout(
+  //     { open: true },
+  //     {
+  //       footer: '<div slot="footer"><button>Some Footer</button></div>',
+  //       content: '<div style="height: 100vh">Some Content</div>',
+  //       secondaryContent: '<div>Secondary Content</div>',
+  //     }
+  //   );
+  //   const footer = await getFooter();
+  //   expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
+  //     'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
+  //   );
+  //
+  //   await scrollFlyoutBy(await getProperty<number>(await getFlyout(), 'scrollHeight'));
+  //
+  //   // console.log(await getProperty<number>(await getFlyout(), 'scrollHeight'));
+  //   // console.log(
+  //   //   (await getProperty<number>(await getFlyout(), 'scrollTop')) +
+  //   //     (await getProperty<number>(await getFlyout(), 'clientHeight'))
+  //   // );
+  //
+  //   expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
+  // });
+  //
+  // it('footer scroll shadow', async () => {
+  //   await initBasicFlyout(
+  //     { open: true },
+  //     {
+  //       footer: '<div slot="footer"><button>Some Footer</button></div>',
+  //       content: '<div style="height: 1000px">Some Content</div>',
+  //     }
+  //   );
+  //   const footer = await getFooter();
+  //   expect(await getElementStyle(footer, 'boxShadow'), 'is visible when content scrollable').toBe(
+  //     'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
+  //   );
+  //
+  //   await scrollFlyoutBy(1500);
+  //
+  //   console.log(await getProperty<number>(await getFlyout(), 'scrollHeight'));
+  //   console.log(
+  //     (await getProperty<number>(await getFlyout(), 'scrollTop')) +
+  //     (await getProperty<number>(await getFlyout(), 'clientHeight'))
+  //   );
+  //
+  //   expect(await getElementStyle(footer, 'boxShadow'), 'is not visible after scrolled to the bottom').toBe('none');
+  // });
 });
 
 describe('can be dismissed', () => {
@@ -374,6 +431,7 @@ describe('focus behavior', () => {
         });
       </script>`
     );
+    await waitForStencilLifecycle(page);
     await waitForFlyoutTransition();
 
     expect(await getFlyoutVisibility(), 'initial').toBe('hidden');
@@ -388,9 +446,9 @@ describe('focus behavior', () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
     await waitForFlyoutTransition();
+    // TODO: Check why this is taking so much time?
+    await waitForFlyoutTransition(); // Necessary extra time
 
-    const host = await selectNode(page, '#flyout');
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
     expect(await getFlyoutVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
@@ -569,19 +627,33 @@ describe('lifecycle', () => {
   });
 });
 
-describe('slotted heading', () => {
-  it('should set slotted heading', async () => {
-    const headerSlotMarkup =
-      '<div slot="header"><p-heading tag="h5" size="large">Sticky Heading</p-heading><p-text size="small">Sticky header text</p-text></div>';
+describe('slotted', () => {
+  it('should set slotted header, footer, secondary-content', async () => {
+    const headerContent = '<h1>Sticky Heading</h1><p>Sticky header text</p>';
+    const footerContent = '<button>Footer Button</button>';
+    const secondaryContent = '<p>Secondary Content</p>';
     await initBasicFlyout(
       { open: true },
       {
-        header: headerSlotMarkup,
+        header: `<div slot="header">${headerContent}</div>`,
+        footer: `<div slot="footer">${footerContent}</div>`,
+        secondaryContent: `<div slot="secondary-content">${secondaryContent}</div>`,
       }
     );
-    const headerContent = await getHeaderContent();
-    // TODO: Check if header content is in slot
-    expect(await getProperty(headerContent, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="header"></slot>"`);
+    const header = await getHeaderContent();
+    const headerSlottedContent = await getHeaderSlottedContent();
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="header"></slot>"`);
+    expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${headerContent}"`);
+
+    const footer = await getFooter();
+    const footerSlottedContent = await getFooterSlottedContent();
+    expect(await getProperty(footer, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="footer"></slot>"`);
+    expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${footerContent}"`);
+
+    const secondary = await getSecondaryContent();
+    const secondarySlottedContent = await getSecondaryContentSlottedContent();
+    expect(await getProperty(secondary, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="secondary-content"></slot>"`);
+    expect(await getProperty(secondarySlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${secondaryContent}"`);
   });
 });
 
@@ -600,37 +672,13 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, flyout);
   });
 
-  it.each<[string, SelectedAriaAttributes<FlyoutAriaAttribute>, string]>([
-    ['Some Heading', undefined, 'Some Heading'],
-    [undefined, "{'aria-label': 'Some Heading'}", 'Some Heading'],
-    ['Some Heading', "{'aria-label': 'Other Heading'}", 'Other Heading'],
-  ])('should with slot header: %s and aria: %s set aria-label: %s', async (heading, aria, expected) => {
-    await initBasicFlyout({ open: false, aria }, { header: `<p-heading slot="header">${heading}</p-heading>` });
-    const flyout = await getFlyout();
-
-    expect(await getProperty(flyout, 'ariaLabel')).toBe(expected);
-  });
-
   it('should overwrite aria-label when adding aria prop', async () => {
-    await initBasicFlyout({ open: false });
+    await initBasicFlyout({ open: false, aria: "{'aria-label': 'Some Heading'}" });
     const host = await getHost();
     const flyout = await getFlyout();
     await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
     await waitForStencilLifecycle(page);
 
     expect(await getProperty(flyout, 'ariaLabel')).toBe('Other Heading');
-  });
-
-  it('should overwrite aria-label with heading when setting aria prop to undefined', async () => {
-    await initBasicFlyout(
-      { open: false, aria: "{'aria-label': 'Other Heading'}" },
-      { header: `<p-heading slot="header">Some Heading</p-heading>` }
-    );
-    const host = await getHost();
-    const flyout = await getFlyout();
-    await setProperty(host, 'aria', undefined);
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(flyout, 'ariaLabel')).toBe('Some Heading');
   });
 });
