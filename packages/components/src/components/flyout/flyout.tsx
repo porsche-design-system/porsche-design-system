@@ -200,9 +200,16 @@ export class Flyout {
   };
 
   private updateFooterShadow = (): void => {
-    const footerBottom = this.footer ? window.innerHeight - this.footer.getBoundingClientRect().bottom : 0;
-    this.footer.style.boxShadow =
-      footerBottom < FLYOUT_SCROLL_SHADOW_THRESHOLD ? `${flyoutBoxShadowColor} 0px -5px 10px` : 'none';
+    if (!this.hasSecondaryContent) {
+      this.footer.style.boxShadow =
+        this.dialog.scrollHeight - FLYOUT_SCROLL_SHADOW_THRESHOLD > this.dialog.scrollTop + this.dialog.clientHeight
+          ? `${flyoutBoxShadowColor} 0px -5px 10px`
+          : 'none';
+    } else {
+      const footerBottom = this.footer ? window.innerHeight - this.footer.getBoundingClientRect().bottom : 0;
+      this.footer.style.boxShadow =
+        footerBottom < FLYOUT_SCROLL_SHADOW_THRESHOLD ? `${flyoutBoxShadowColor} 0px -5px 10px` : 'none';
+    }
   };
 
   private dismissFlyout = (): void => {
