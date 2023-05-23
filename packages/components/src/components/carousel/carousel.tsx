@@ -14,6 +14,7 @@ import {
   getSplideBreakpoints,
   removeAriaHidden,
   renderPagination,
+  setCustomTabIndex,
   slideNext,
   slidePrev,
   updatePagination,
@@ -287,8 +288,12 @@ export class Carousel {
       renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
     });
 
-    splide.on('ready moved resized refresh updated', () => {
+    splide.on('ready moved resized updated', () => {
       removeAriaHidden(splide);
+    });
+
+    splide.on('refresh', () => {
+      setCustomTabIndex(splide);
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {

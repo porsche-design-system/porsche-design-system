@@ -116,3 +116,13 @@ export const removeAriaHidden = (splide: Splide): void => {
     });
   }, 10);
 };
+
+export const setCustomTabIndex = (splide: Splide): void => {
+  const slideElements = splide.Components.Elements.slides;
+  // need some timeout because Splide is setting attributes internally and listening to Splide events like "refresh" is not working correctly
+  setTimeout(() => {
+    slideElements.forEach((el) => {
+      el.setAttribute('tabindex', '0');
+    });
+  }, 10);
+};
