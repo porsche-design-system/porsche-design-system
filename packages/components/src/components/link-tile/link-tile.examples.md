@@ -27,6 +27,13 @@ still can occur issues with color contrast ratios, especially if different aspec
 used. So, always **check readability** and play around with the `size` and `weight` properties to achieve the best
 results.
 
+## ARIA attributes and states
+
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the
+component.
+
+<Playground :markup="accessibility" :config="config"></Playground>
+
 ## Aspect Ratio
 
 The component takes its height from the width provided and places the image via CSS `object-fit: cover`. Therefore, you
@@ -113,6 +120,15 @@ export default class Code extends Vue {
     <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
     <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
   </picture>
+</p-link-tile>`;
+
+  accessibility = `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  aria="{ 'aria-label': 'Some more descriptive label' }"
+  description="Some Description"
+>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`;
 
   aspectRatio = '4:3';
