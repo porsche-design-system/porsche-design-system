@@ -286,9 +286,11 @@ describe('registerSplideHandlers()', () => {
     expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
   });
 
-  it('should call updatePrevNextButtons(), updatePagination(), this.change.emit() and this.carouselChange.emit() with correct parameters on move event', () => {
+  it('should call updatePrevNextButtons(), updatePagination(), this.change.emit(), this.carouselChange.emit(), removeAriaHidden() and setCustomTabIndex() with correct parameters on splide events', () => {
     const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const updatePaginationSpy = jest.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
+    const setCustomTabIndexSpy = jest.spyOn(carouselUtils, 'setCustomTabIndex').mockImplementation(() => {});
+    const removeAriaHiddenSpy = jest.spyOn(carouselUtils, 'removeAriaHidden').mockImplementation(() => {});
     const changeEmitSpy = jest.fn();
     const carouselChangeEmitSpy = jest.fn();
     const component = new Carousel();
@@ -302,27 +304,33 @@ describe('registerSplideHandlers()', () => {
     expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], 1);
     expect(changeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
     expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
-  });
 
-  it('should call removeAriaHidden() on ready / moved / resized event', () => {
-    const removeAriaHiddenSpy = jest.spyOn(carouselUtils, 'removeAriaHidden').mockImplementation(() => {});
-    const component = new Carousel();
-    component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
-    component['registerSplideHandlers'](component['splide']);
+    component['splide'].emit('refresh');
+    expect(setCustomTabIndexSpy).toBeCalledWith(component['splide']);
 
     component['splide'].emit('ready moved resized');
     expect(removeAriaHiddenSpy).toBeCalledWith(component['splide']);
   });
 
-  it('should call setCustomTabIndex() on refresh event', () => {
-    const setCustomTabIndexSpy = jest.spyOn(carouselUtils, 'setCustomTabIndex').mockImplementation(() => {});
-    const component = new Carousel();
-    component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
-    component['registerSplideHandlers'](component['splide']);
+  // it('should call removeAriaHidden() on ready / moved / resized event', () => {
+  //   const removeAriaHiddenSpy = jest.spyOn(carouselUtils, 'removeAriaHidden').mockImplementation(() => {});
+  //   const component = new Carousel();
+  //   component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
+  //   component['registerSplideHandlers'](component['splide']);
+  //
+  //   component['splide'].emit('ready moved resized');
+  //   expect(removeAriaHiddenSpy).toBeCalledWith(component['splide']);
+  // });
 
-    component['splide'].emit('refresh');
-    expect(setCustomTabIndexSpy).toBeCalledWith(component['splide']);
-  });
+  // it('should call setCustomTabIndex() on refresh event', () => {
+  //   const setCustomTabIndexSpy = jest.spyOn(carouselUtils, 'setCustomTabIndex').mockImplementation(() => {});
+  //   const component = new Carousel();
+  //   component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
+  //   component['registerSplideHandlers'](component['splide']);
+  //
+  //   component['splide'].emit('refresh');
+  //   expect(setCustomTabIndexSpy).toBeCalledWith(component['splide']);
+  // });
 
   it('should call this.splide.mount()', () => {
     const mountSpy: (_, __) => Splide = jest.fn();
