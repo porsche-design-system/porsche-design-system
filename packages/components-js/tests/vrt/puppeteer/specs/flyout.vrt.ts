@@ -14,7 +14,13 @@ import {
 } from '../helpers';
 
 it.each(furtherExtendedViewports)('should have no visual regression for flyout for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'flyout', '/#flyout')).toBeFalsy();
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'flyout', '/#flyout', {
+      scenario: async (page) => {
+        await page.mouse.click(0, 0); // click top left corner of the page to remove focus on flyout
+      },
+    })
+  ).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
