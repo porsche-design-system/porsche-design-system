@@ -263,6 +263,32 @@ describe('adding/removing slides', () => {
     });
   };
 
+  it('should update tabindex attribute of slide', async () => {
+    await initCarousel({ amountOfSlides: 2 });
+    const host = await getHost();
+    const [slide1, slide2] = await getSlides();
+
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(slide1, 'tabindex')).toBe('0');
+    expect(await getAttribute(slide2, 'tabindex')).toBe('0');
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+    const [slide1Added, slide2Added, slide3Added] = await getSlides();
+
+    expect(await getAttribute(slide1Added, 'tabindex')).toBe('0');
+    expect(await getAttribute(slide2Added, 'tabindex')).toBe('0');
+    expect(await getAttribute(slide3Added, 'tabindex')).toBe('0');
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+    const [slide1Removed, slide2Removed] = await getSlides();
+
+    expect(await getAttribute(slide1Removed, 'tabindex')).toBe('0');
+    expect(await getAttribute(slide2Removed, 'tabindex')).toBe('0');
+  });
+
   it('should update pagination', async () => {
     await initCarousel({ amountOfSlides: 2 });
     const host = await getHost();
@@ -595,12 +621,19 @@ describe('activeSlideIndex', () => {
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide3);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide1);
+    await waitForSlideToBeActive(slide2);
 
-    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
-    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
   });
 
@@ -774,7 +807,7 @@ describe('accessibility', () => {
     expect(await getAttribute(buttonNext, 'aria-label')).toBe('Go to first slide');
   });
 
-  it('should remove aria-hidden of slides on slide change', async () => {
+  it('should remove aria-hidden of slides on ready and after slide moved', async () => {
     await initCarousel();
     const [slide1, slide2, slide3] = await getSlides();
     const buttonNext = await getButtonNext();
@@ -791,7 +824,7 @@ describe('accessibility', () => {
     expect(await getAttribute(slide3, 'aria-hidden')).toBe(null);
   });
 
-  it('should remove aria-hidden of slides on resize', async () => {
+  it('should remove aria-hidden of slides on resized', async () => {
     await initCarousel();
     const [slide1, slide2, slide3] = await getSlides();
 
