@@ -90,6 +90,11 @@ export class Modal {
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
     if (this.open) {
+      // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => (this.host.scrollTop = 0), i * 5);
+      }
+
       this.updateScrollLock(true);
     }
 
@@ -106,10 +111,6 @@ export class Modal {
 
   public componentDidRender(): void {
     if (this.open) {
-      // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => (this.host.scrollTop = 0), i * 5);
-      }
       this.dialog.focus(); // needs to happen after render
     }
   }
