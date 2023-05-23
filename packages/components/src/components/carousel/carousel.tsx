@@ -288,7 +288,7 @@ export class Carousel {
       renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
     });
 
-    splide.on('ready moved resized updated', () => {
+    splide.on('ready moved resized', () => {
       removeAriaHidden(splide);
     });
 
