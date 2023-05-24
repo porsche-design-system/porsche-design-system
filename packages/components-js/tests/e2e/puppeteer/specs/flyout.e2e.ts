@@ -171,10 +171,16 @@ describe('scroll shadows', () => {
     expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
 
     await scrollFlyoutBy(10);
+    await page.waitForFunction((el) => getComputedStyle(el).boxShadow === 'none', {}, await getHeader());
     // Box Shadow is only applied if threshold is exceeded
     expect(await getElementStyle(header, 'boxShadow'), 'after scroll within threshold').toBe('none');
 
     await scrollFlyoutBy(11);
+    await page.waitForFunction(
+      (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
+      {},
+      await getHeader()
+    );
     expect(await getElementStyle(header, 'boxShadow'), 'after scroll outside threshold').toBe(
       'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
     );
