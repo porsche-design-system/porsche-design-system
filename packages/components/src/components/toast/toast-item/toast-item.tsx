@@ -1,6 +1,8 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
-import type { ToastState } from '../toast/toast-utils';
+import type { ToastState, ToastStateDeprecated } from '../toast/toast-utils';
 import { TOAST_STATES } from '../toast/toast-utils';
+import type { IconColor } from '../../icon/icon-utils';
+import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,8 +10,8 @@ import {
   THEMES,
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './toast-item-styles';
 import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
 
@@ -30,13 +32,13 @@ export class ToastItem {
   @Prop() public text?: string = '';
 
   /** State of the toast-item. */
-  @Prop() public state?: ToastState = 'neutral';
+  @Prop() public state?: ToastState = 'info';
 
   /** Adapts the toast-item color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */
-  @Event() public dismiss?: EventEmitter<void>;
+  @Event() public dismiss?: EventEmitter<void>; // TODO: this is the only event without { bubbles: false }
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOneOfKind(this.host, ['p-toast']);
@@ -44,6 +46,9 @@ export class ToastItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropValueIsUsed<typeof ToastItem, ToastStateDeprecated, ToastState>(this, 'state', {
+      neutral: 'info',
+    });
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
 
     const toastId = 'toast';
@@ -54,13 +59,15 @@ export class ToastItem {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(this.state)}
-          color="inherit"
+          color={`notification-${this.state}` as IconColor}
+          theme={this.theme}
           aria-hidden="true"
         />
         <p id={toastId} class="content" role="status" aria-live="polite">
           {this.text}
         </p>
         <PrefixedTagNames.pButtonPure
+          theme={this.theme}
           class="close"
           type="button"
           icon="close"

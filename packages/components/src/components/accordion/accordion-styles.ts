@@ -1,98 +1,134 @@
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
-import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../styles';
-import { fontWeight, fontSize, spacing, textSmall, fontLineHeight } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import {
+  getTransition,
+  transitionDuration,
+  getThemedColors,
+  addImportantToEachRule,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
+import {
+  fontWeightSemiBold,
+  fontSizeTextSmall,
+  fontSizeTextMedium,
+  spacingStaticSmall,
+  textSmallStyle,
+  fontLineHeight,
+  borderRadiusSmall,
+  borderWidthBase,
+  fontSizeTextXXSmall,
+} from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
   open: boolean,
-  theme: ThemeExtendedElectric
+  theme: Theme
 ): string => {
-  const { baseColor, hoverColor, focusColor, contrastLowColor } = getThemedColors(theme);
-  const border = `1px solid ${contrastLowColor}`;
+  const { primaryColor, hoverColor, focusColor, contrastLowColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         display: 'block',
         ...(!compact && {
-          '&(:first-of-type) .root': {
-            borderTop: border,
-          },
+          borderBottom: `1px solid ${contrastLowColor}`,
         }),
-      },
+        ...hostHiddenStyles,
+      }),
       button: {
         display: 'flex',
+        position: 'relative',
         justifyContent: 'space-between',
-        margin: `${pxToRemWithUnit(4)} 0`,
         width: '100%',
         textDecoration: 'none',
         border: 0,
+        outline: 0,
+        gap: '24px',
         background: 'transparent',
         cursor: 'pointer',
-        transition: getTransition('color'),
-        overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
-        color: baseColor,
-        ...textSmall,
-        fontWeight: fontWeight.semiBold,
-        ...(compact
-          ? { padding: `${pxToRemWithUnit(4)} 0` }
-          : buildResponsiveStyles(size, (s: AccordionSize) => ({
-              ...fontSize[s],
-              padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
-            }))),
-        ...getFocusJssStyle({ color: focusColor }),
-        ...hoverMediaQuery({
-          '&:hover': {
-            color: hoverColor,
+        color: primaryColor,
+        ...textSmallStyle,
+        fontWeight: fontWeightSemiBold,
+        ...buildResponsiveStyles(size, (s: AccordionSize) => ({
+          fontSize: s === 'medium' ? fontSizeTextMedium : fontSizeTextSmall,
+          padding: `${compact ? '4px' : s === 'medium' ? '20px' : '15px'} 0`,
+        })),
+        // mergeDeep needed because of hoverMediaQuery in certain modes not wrapping keys and therefore overriding "&::before" key
+        ...mergeDeep(
+          {
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              borderRadius: borderRadiusSmall,
+              left: '-4px',
+              right: '-4px',
+              ...(compact
+                ? {
+                    top: '2px',
+                    bottom: '2px',
+                  }
+                : {
+                    top: '6px',
+                    bottom: '6px',
+                  }),
+            },
           },
-        }),
+          hoverMediaQuery({
+            '&::before': {
+              transition: getTransition('background-color'),
+            },
+            '&:hover::before': {
+              background: hoverColor,
+            },
+          })
+        ),
+        '&:focus::before': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+        },
+        '&:not(:focus-visible)::before': {
+          border: 0,
+        },
       },
     },
-    ...(!compact && {
-      root: {
-        borderBottom: border,
-      },
-    }),
     heading: {
       margin: 0,
-      padding: 0,
+    },
+    'icon-container': {
+      height: fontLineHeight,
+      display: 'flex',
+      alignItems: 'center',
     },
     icon: {
       width: fontLineHeight,
       height: fontLineHeight,
-      marginLeft: '1.5rem',
-      transformOrigin: '50% 50%',
-      transform: open ? 'rotate3d(0,0,1,180deg)' : 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
+      fontSize: fontSizeTextXXSmall,
+      transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
       transition: getTransition('transform'),
     },
     collapsible: {
-      padding: 0,
+      color: primaryColor, // enables color inheritance for slotted content
       overflow: 'hidden',
       ...(open
         ? {
             height: 'auto',
-            paddingBottom: compact ? spacing.small : '2.5rem',
+            paddingBottom: compact ? spacingStaticSmall : '24px',
             visibility: 'visible',
-            transition: getTransition('height') + `,visibility ${transitionDuration}`,
-            animation: `$open ${transitionDuration} ease forwards`,
+            transition: getTransition('height') + ',' + getTransition('padding-bottom'),
+            animation: `$open 0s ${transitionDuration} forwards`, // delay overflow change and have `overflow: visible` after transition
           }
         : {
             height: 0,
             visibility: 'hidden',
-            transition: getTransition('height') + `,visibility ${transitionDuration} linear ${transitionDuration}`,
+            transition: getTransition('height') + `,visibility 0s linear ${transitionDuration}`,
           }),
     },
     // TODO: this doesn't get shortened and results in `keyframes-open` for some unknown reason
     '@keyframes open': {
-      '0%,99%': {
-        overflow: 'hidden',
-      },
-      '100%': {
+      to: {
         overflow: 'visible',
       },
     },

@@ -11,6 +11,7 @@ import {
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
+  setProperty,
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -24,10 +25,17 @@ type InitOptions = {
   amountOfSlides?: number;
   withFocusableElements?: boolean;
   rewind?: boolean;
+  activeSlideIndex?: number;
 };
 
 const initCarousel = (opts?: InitOptions) => {
-  const { slidesPerPage = 1, amountOfSlides = 3, withFocusableElements = false, rewind = true } = opts || {};
+  const {
+    slidesPerPage = 1,
+    amountOfSlides = 3,
+    withFocusableElements = false,
+    rewind = true,
+    activeSlideIndex,
+  } = opts || {};
 
   const slides = Array.from(Array(amountOfSlides))
     .map((_, i) => {
@@ -41,6 +49,7 @@ const initCarousel = (opts?: InitOptions) => {
   const attrs = [
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
     rewind === false ? 'rewind="false"' : '',
+    activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
   ].join(' ');
 
   const content = `${focusableElementBefore}<p-carousel heading="Heading" ${attrs}>
@@ -509,6 +518,89 @@ describe('events', () => {
 
     await prevButton.click();
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
+  });
+
+  it('should emit both carouselChange and update event', async () => {
+    await initCarousel();
+    const host = await getHost();
+
+    await addEventListener(host, 'carouselChange');
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+    const nextButton = await getButtonNext();
+    await nextButton.click();
+    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
+  });
+});
+
+describe('activeSlideIndex', () => {
+  it('should set active slide correctly on initialization', async () => {
+    await initCarousel({ activeSlideIndex: 2 });
+    const [slide1, slide2, slide3] = await getSlides();
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+  });
+
+  it('should slide correctly when changed', async () => {
+    await initCarousel();
+    const host = await getHost();
+    const [slide1, slide2, slide3] = await getSlides();
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await setProperty(host, 'activeSlideIndex', 1);
+    await waitForSlideToBeActive(slide2);
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await setProperty(host, 'activeSlideIndex', 2);
+    await waitForSlideToBeActive(slide3);
+    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+
+    await setProperty(host, 'activeSlideIndex', 0);
+    await waitForSlideToBeActive(slide1);
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+  });
+
+  it('should not cause new lifecycle', async () => {
+    await initCarousel();
+    const host = await getHost();
+
+    const initialStatus = await getLifecycleStatus(page);
+    expect(initialStatus.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(2); // modified after render
+    expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(2);
+    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(5);
+
+    await setProperty(host, 'activeSlideIndex', 1);
+    await waitForStencilLifecycle(page);
+
+    const finalStatus = await getLifecycleStatus(page);
+    expect(finalStatus.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(4); // aria and disabled props where modified
+    expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(4);
+    expect(finalStatus.componentDidLoad.all, 'final componentDidLoad: all').toBe(5);
+  });
+
+  it('should emit update event', async () => {
+    await initCarousel();
+    const host = await getHost();
+
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+    await setProperty(host, 'activeSlideIndex', 1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 

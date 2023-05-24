@@ -2,13 +2,16 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  doNothing,
+  getLinkButtonThemeForIcon,
   getPrefixedTagNames,
   THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
+  warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, LinkTarget, PropTypes, Theme } from '../../types';
-import type { SocialIconName } from './link-social-utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { LinkSocialIcon, LinkSocialTarget } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
 
 const propTypes: PropTypes<typeof LinkSocial> = {
@@ -21,6 +24,7 @@ const propTypes: PropTypes<typeof LinkSocial> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
 };
 
+/** @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead. */
 @Component({
   tag: 'p-link-social',
   shadow: { delegatesFocus: true },
@@ -29,7 +33,7 @@ export class LinkSocial {
   @Element() public host!: HTMLElement;
 
   /** The icon shown. */
-  @Prop() public icon?: SocialIconName;
+  @Prop() public icon?: LinkSocialIcon;
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -41,7 +45,7 @@ export class LinkSocial {
   @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: LinkSocialTarget = '_self';
 
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string;
@@ -51,11 +55,22 @@ export class LinkSocial {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
+    warnIfDeprecatedComponentIsUsed(this.host, 'Use "link" component with corresponding social icon instead.');
+    doNothing(); // TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.icon,
+      this.iconSource,
+      'primary',
+      this.hideLabel,
+      !this.href,
+      this.theme
+    );
 
     const TagType = this.href === undefined ? 'span' : 'a';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -74,11 +89,10 @@ export class LinkSocial {
           size="inherit"
           name={this.icon}
           source={this.iconSource}
-          color="inherit"
-          theme={this.theme === 'light' ? 'dark' : 'light'} // relevant for ssr support
+          theme={getLinkButtonThemeForIcon('primary', this.theme)} // relevant for ssr support
           aria-hidden="true"
         />
-        <span>
+        <span class="label">
           <slot />
         </span>
       </TagType>

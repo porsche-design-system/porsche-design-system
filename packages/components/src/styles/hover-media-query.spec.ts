@@ -1,8 +1,13 @@
 import { hoverMediaQuery } from './hover-media-query';
-import * as jssUtils from '../utils/jss';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import { addParentAndSetRequiredProps, componentFactory } from '../test-utils';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import {
+  addParentAndSetRequiredProps,
+  componentFactory,
+  getComponentCssObject,
+  getComponentCssSpy,
+} from '../test-utils';
 
 const originalEnv = process.env;
 const style = {
@@ -52,61 +57,33 @@ it.each<TagName>(tagNamesWithJss)(
   'should wrap ":hover" pseudo selector in "@media (hover: hover)" query for %s',
   (tagName) => {
     // mock to get the result from getComponentCss() directly
-    const spy = jest
-      .spyOn(jssUtils, 'attachComponentCss')
-      .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args));
+    const spy = getComponentCssSpy();
 
     const component = componentFactory(tagName);
 
-    // css will be produced by one of the 2 lifecycles
-    if (component.connectedCallback) {
-      try {
-        component.connectedCallback();
-      } catch {}
-    }
+    // some components like grid-item and text-list-item require a parent to apply styles
+    // some components require a parent and certain props in order to work
+    addParentAndSetRequiredProps(tagName, component);
 
-    if (component.render) {
-      // some components like grid-item and text-list-item require a parent to apply styles
-      // some components require a parent and certain props in order to work
-      addParentAndSetRequiredProps(tagName, component);
-
-      component.render();
-    }
-
-    const [result] = spy.mock.results;
-    const { type, value: cssString } = (result || {}) as jest.MockResultReturn<string>;
-
+    component.render();
     expect(spy).toBeCalledTimes(1);
 
-    if (type === 'return') {
-      // useful for debugging
-      // const mediaQueriesAndSelectors = Array.from(cssString.matchAll(/(.+) {/g)).map(([, selector]) => selector);
-      // console.log(mediaQueriesAndSelectors);
+    const cssObject = getComponentCssObject(spy);
+    Object.entries(cssObject).forEach(([key, value]) => {
+      // potential media query
+      if (typeof value === 'object') {
+        Object.entries(value).forEach(([childKey]) => {
+          // nested selectors inside media query
+          if (childKey.match(/:hover/)) {
+            expect(key).toBe('@media(hover:hover)');
+          }
+        });
+      }
 
-      const jsonCssString = cssString
-        .replace(/"/g, "'") // replace double quotes with single quotes
-        .replace(/(.+) {/g, '"$1": {') // wrap selectors in double quotes
-        .replace(/ ([\w-:]+): /g, '"$1": ') // wrap css properties in double quotes, initial space is to skip media query values
-        .replace(/: (.+);/g, ': "$1",') // wrap css values in double quotes and convert semi colon to colon
-        .replace(/,(\s+})/g, '$1') // remove comma of last value
-        .replace(/}\n([^}])/g, '},\n$1'); // add comma after closing bracket if not nested
-
-      const cssObject = JSON.parse(`{${jsonCssString}}`);
-
-      Object.entries(cssObject).forEach(([key, value]) => {
-        // potential media query
-        if (typeof value === 'object') {
-          Object.entries(value).forEach(([childKey]) => {
-            // nested selectors inside media query
-            if (childKey.match(/:hover[^)]/)) {
-              expect(key).toBe('@media(hover:hover)');
-            }
-          });
-        }
-
-        // top level selectors
-        expect(key).not.toMatch(/:hover[^)]/);
-      });
-    }
+      // top level selectors
+      if (!key.match(/^@media\(hover:hover\)$/)) {
+        expect(key).not.toMatch(/:hover/);
+      }
+    });
   }
 );

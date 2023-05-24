@@ -1,4 +1,15 @@
 import { hasNamedSlot } from './hasNamedSlot';
+import * as getNamedSlotUtils from '../getNamedSlot';
+
+it('should call getNamedSlot() with correct parameters', () => {
+  const spy = jest.spyOn(getNamedSlotUtils, 'getNamedSlot');
+  const host = document.createElement('div');
+  const slotName = 'slot';
+
+  hasNamedSlot(host, slotName);
+
+  expect(spy).toBeCalledWith(host, slotName);
+});
 
 it('should return false if element has no slotted child', () => {
   const el = document.createElement('div');

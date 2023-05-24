@@ -6,12 +6,14 @@ const isComponentsOnly = process.env.COMPONENTS_ONLY === '1';
 const cdnPathPackageMap = {
   components: '@porsche-design-system/components-js',
   ...(!isComponentsOnly && {
+    crest: '@porsche-design-system/crest',
     email: '@porsche-design-system/email',
     fallbacks: '@porsche-design-system/fallbacks',
     fonts: '@porsche-design-system/fonts',
     icons: '@porsche-design-system/icons',
     marque: '@porsche-design-system/marque',
     'meta-icons': '@porsche-design-system/meta-icons',
+    'model-signatures': '@porsche-design-system/model-signatures',
     styles: '@porsche-design-system/styles',
   }),
 };

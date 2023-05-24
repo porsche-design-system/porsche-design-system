@@ -3,6 +3,8 @@
 exports[`accessibility should expose correct accessibility tree if description is set 1`] = `
 {
   "description": "Some description",
+  "expanded": true,
+  "focused": true,
   "haspopup": "listbox",
   "name": "Option A, Some label",
   "role": "combobox",
@@ -60,16 +62,6 @@ exports[`accessibility should expose correct accessibility tree if rendered with
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],
@@ -127,6 +119,8 @@ exports[`accessibility should expose correct accessibility tree if rendered with
 
 exports[`accessibility should expose correct accessibility tree in error state 1`] = `
 {
+  "expanded": true,
+  "focused": true,
   "haspopup": "listbox",
   "name": "Option A, Some label. Some error message",
   "role": "combobox",
@@ -135,6 +129,20 @@ exports[`accessibility should expose correct accessibility tree in error state 1
 
 exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Initially option A 1`] = `
 {
+  "children": [
+    {
+      "name": "Option A",
+      "role": "StaticText",
+    },
+    {
+      "children": [
+        {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
   "name": "Option A",
   "role": "option",
   "selected": true,
@@ -143,6 +151,12 @@ exports[`accessibility should expose correct accessibility tree on selected cust
 
 exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Initially option B 1`] = `
 {
+  "children": [
+    {
+      "name": "Option B",
+      "role": "StaticText",
+    },
+  ],
   "name": "Option B",
   "role": "option",
 }
@@ -150,6 +164,12 @@ exports[`accessibility should expose correct accessibility tree on selected cust
 
 exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Option A after click 1`] = `
 {
+  "children": [
+    {
+      "name": "Option A",
+      "role": "StaticText",
+    },
+  ],
   "name": "Option A",
   "role": "option",
 }
@@ -157,6 +177,20 @@ exports[`accessibility should expose correct accessibility tree on selected cust
 
 exports[`accessibility should expose correct accessibility tree on selected custom option on click in open state: Option B after click 1`] = `
 {
+  "children": [
+    {
+      "name": "Option B",
+      "role": "StaticText",
+    },
+    {
+      "children": [
+        {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
   "name": "Option B",
   "role": "option",
   "selected": true,
@@ -212,16 +246,6 @@ exports[`accessibility should expose correct initial accessibility tree in open 
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "children": [
-                        {
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
-                    },
-                  ],
                   "role": "none",
                 },
               ],

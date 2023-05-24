@@ -1,12 +1,13 @@
 import {
   defaultViewports,
+  furtherExtendedViewports,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
 describe('toast-basic', () => {
-  it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
     expect(
       await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/toast-basic', { javaScriptEnabled: false })
     ).toBeFalsy();

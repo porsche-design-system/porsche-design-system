@@ -1,5 +1,12 @@
 # Link Social
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  The <code>link-social</code> component is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Use <a href="components/link/examples#link-with-specific-icon"><code>link</code> component</a> with corresponding social icon instead.
+</p-inline-notification>
+
+---
+
 The `p-link-social` component is a set of pre-defined social icons for various fields of application like linking to
 social media platforms or social sharing dialogs.
 
@@ -113,15 +120,15 @@ export default class Code extends Vue {
   get icon() {
     return `logo-${this.platform.toLowerCase()}`;
   }
-  
+
   get variants() {
     return `<p-link-social href="https://example.com" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>
 <p-link-social href="https://example.com" hide-label="true" icon="${this.icon}" target="_blank" rel="nofollow noopener">${this.platform}</p-link-social>`;
   }
-  
+
   responsive =
 `<p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, l: false }" target="_blank" rel="nofollow noopener">Facebook</p-link-social>`;
-    
+
   routing =
 `<p-link-social icon="logo-facebook">
   <a href="https://www.facebook.com/" target="_blank" rel="nofollow noopener">Facebook</a>
@@ -163,14 +170,14 @@ export default class Code extends Vue {
 >Facebook</p-link-social>`;
 
   taborder =
-`<p-link-social href="https://www.porsche.com">Some label</p-link-social>
-<p-link-social href="https://www.porsche.com" tabindex="-1">Some label</p-link-social>
-<p-link-social href="https://www.porsche.com">Some label</p-link-social>`;
+`<p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com" tabindex="-1" icon="logo-facebook">Some label</p-link-social>
+<p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>`;
 }
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/utilities/scss";
+  @use '@porsche-design-system/components-js/styles' as *;
   
   :deep(.example-link) {
     display: inline-block;
@@ -182,12 +189,12 @@ export default class Code extends Vue {
     &::before {
       content: "";
       display: block;
-      margin-top: -$p-spacing-8;
+      margin-top: -.5rem;
     }
     > * {
-      margin-top: $p-spacing-8;
+      margin-top: .5rem;
       &:not(:last-child) {
-        margin-right: $p-spacing-8;
+        margin-right: .5rem;
       }
     }
   }

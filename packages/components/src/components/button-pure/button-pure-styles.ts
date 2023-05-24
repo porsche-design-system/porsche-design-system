@@ -1,47 +1,57 @@
-import type {
-  AlignLabel,
-  BreakpointCustomizable,
-  LinkButtonPureIconName,
-  TextSize,
-  TextWeight,
-  ThemeExtendedElectricDark,
-} from '../../types';
-import { getCss, mergeDeep } from '../../utils';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
+import { fontLineHeight } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
-  icon: LinkButtonPureIconName,
+  icon: LinkButtonIconName,
+  iconSource: string,
   active: boolean,
+  isLoading: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
-  weight: TextWeight,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
-  hasSubline: boolean,
-  theme: ThemeExtendedElectricDark
+  theme: Theme
 ): string => {
+  const hasIcon = hasVisibleIcon(icon, iconSource);
+
   return getCss(
     mergeDeep(
       getLinkButtonPureStyles(
         icon,
+        iconSource,
         active,
         isDisabledOrLoading,
         stretch,
         size,
-        weight,
         hideLabel,
         alignLabel,
-        hasSubline,
         false,
         theme
       ),
       {
-        '@global': {
-          '::slotted(p)': {
-            margin: 0,
-          },
+        root: {
+          appearance: 'none',
+          background: 'transparent',
+          textAlign: 'left',
+          border: 0,
+          cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         },
+        ...(!hasIcon &&
+          isLoading && {
+            label: {
+              visibility: 'hidden',
+            },
+            icon: {
+              position: 'absolute',
+              top: 0,
+              left: `calc(50% - ${fontLineHeight} / 2)`,
+              width: fontLineHeight,
+              height: fontLineHeight,
+            },
+          }),
       }
     )
   );

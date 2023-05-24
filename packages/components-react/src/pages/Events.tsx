@@ -1,14 +1,16 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import type {
-  AccordionChangeEvent,
-  CarouselChangeEvent,
-  PageChangeEvent,
-  SortingChangeEvent,
-  SwitchChangeEvent,
-  TabChangeEvent,
+  AccordionUpdateEvent,
+  CarouselUpdateEvent,
+  PaginationUpdateEvent,
+  TableUpdateEvent,
+  SwitchUpdateEvent,
+  TabsBarUpdateEvent,
+  TabsUpdateEvent,
 } from '@porsche-design-system/components-react';
 import {
   PAccordion,
+  PBanner,
   PCarousel,
   PModal,
   PPagination,
@@ -24,83 +26,91 @@ import {
 } from '@porsche-design-system/components-react';
 
 export const EventsPage = (): JSX.Element => {
-  const [accordionChangeEventCounter, setAccordionChangeEventCounter] = useState(0);
-  const [pageChangeEventCounter, setPageChangeEventCounter] = useState(0);
-  const [tabsBarChangeEventCounter, setTabsBarChangeEventCounter] = useState(0);
-  const [tabsChangeEventCounter, setTabsChangeEventCounter] = useState(0);
+  const [accordionUpdateEventCounter, setAccordionUpdateEventCounter] = useState(0);
+  const [paginationUpdateEventCounter, setPaginationUpdateEventCounter] = useState(0);
+  const [tabsBarUpdateEventCounter, setTabsBarUpdateEventCounter] = useState(0);
+  const [tabsUpdateEventCounter, setTabsUpdateEventCounter] = useState(0);
   const [textFieldSearchValue, setTextFieldSearchValue] = useState('');
-  const [switchChangeEventCounter, setSwitchChangeEventCounter] = useState(0);
-  const [modalCloseEventCounter, setModalCloseEventCounter] = useState(0);
+  const [switchUpdateEventCounter, setSwitchUpdateEventCounter] = useState(0);
+  const [bannerDismissEventCounter, setBannerDismissEventCounter] = useState(0);
+  const [isBannerOpen, setIsBannerOpen] = useState(false);
+  const [modalDismissEventCounter, setModalDismissEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
-  const [carouselChangeEventCounter, setCarouselChangeEventCounter] = useState(0);
+  const [tableUpdateEventCounter, setTableUpdateEventCounter] = useState(0);
+  const [carouselUpdateEventCounter, setCarouselUpdateEventCounter] = useState(0);
+
+  // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported from package root
-  const onAccordionChange = useCallback(
-    (e: CustomEvent<AccordionChangeEvent>) => setAccordionChangeEventCounter((prev) => prev + 1),
+  const onAccordionUpdate = useCallback(
+    (e: CustomEvent<AccordionUpdateEvent>) => setAccordionUpdateEventCounter((prev) => prev + 1),
     []
   );
-  const onPageChange = useCallback(
-    (e: CustomEvent<PageChangeEvent>) => setPageChangeEventCounter((prev) => prev + 1),
+  const onPaginationUpdate = useCallback(
+    (e: CustomEvent<PaginationUpdateEvent>) => setPaginationUpdateEventCounter((prev) => prev + 1),
     []
   );
-  const onTabsBarChange = useCallback(
-    (e: CustomEvent<TabChangeEvent>) => setTabsBarChangeEventCounter((prev) => prev + 1),
+  const onTabsBarUpdate = useCallback(
+    (e: CustomEvent<TabsBarUpdateEvent>) => setTabsBarUpdateEventCounter((prev) => prev + 1),
     []
   );
-  const onTabsChange = useCallback(
-    (e: CustomEvent<TabChangeEvent>) => setTabsChangeEventCounter((prev) => prev + 1),
+  const onTabsUpdate = useCallback(
+    (e: CustomEvent<TabsUpdateEvent>) => setTabsUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTextFieldSearchChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setTextFieldSearchValue(e.target.value),
     []
   );
-  const onSwitchChange = useCallback(
-    (e: CustomEvent<SwitchChangeEvent>) => setSwitchChangeEventCounter((prev) => prev + 1),
+  const onSwitchUpdate = useCallback(
+    (e: CustomEvent<SwitchUpdateEvent>) => setSwitchUpdateEventCounter((prev) => prev + 1),
     []
   );
+  const onBannerClose = useCallback(() => {
+    setBannerDismissEventCounter((prev) => prev + 1);
+    setIsBannerOpen(false);
+  }, []);
   const onModalClose = useCallback(() => {
-    setModalCloseEventCounter((prev) => prev + 1);
+    setModalDismissEventCounter((prev) => prev + 1);
     setIsModalOpen(false);
   }, []);
-  const onTableSortingChange = useCallback(
-    (e: CustomEvent<SortingChangeEvent>) => setTableSortingChangeEventCounter((prev) => prev + 1),
+  const onTableUpdate = useCallback(
+    (e: CustomEvent<TableUpdateEvent>) => setTableUpdateEventCounter((prev) => prev + 1),
     []
   );
-  const onCarouselChange = useCallback(
-    (e: CustomEvent<CarouselChangeEvent>) => setCarouselChangeEventCounter((prev) => prev + 1),
+  const onCarouselUpdate = useCallback(
+    (e: CustomEvent<CarouselUpdateEvent>) => setCarouselUpdateEventCounter((prev) => prev + 1),
     []
   );
 
   return (
     <>
       <div className="playground light">
-        <PAccordion heading="Some heading" onAccordionChange={onAccordionChange} />
-        <p>{accordionChangeEventCounter}</p>
+        <PAccordion heading="Some heading" onUpdate={onAccordionUpdate} />
+        <p>{accordionUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} onPageChange={onPageChange} />
-        <p>{pageChangeEventCounter}</p>
+        <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} onUpdate={onPaginationUpdate} />
+        <p>{paginationUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PTabsBar activeTabIndex={0} onTabChange={onTabsBarChange}>
+        <PTabsBar activeTabIndex={0} onUpdate={onTabsBarUpdate}>
           <button>Tab 1</button>
           <button>Tab 2</button>
           <button>Tab 3</button>
         </PTabsBar>
-        <p>{tabsBarChangeEventCounter}</p>
+        <p>{tabsBarUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PTabs activeTabIndex={0} onTabChange={onTabsChange}>
+        <PTabs activeTabIndex={0} onUpdate={onTabsUpdate}>
           <PTabsItem label="Tab 1">Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Content 3</PTabsItem>
         </PTabs>
-        <p>{tabsChangeEventCounter}</p>
+        <p>{tabsUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
@@ -111,37 +121,42 @@ export const EventsPage = (): JSX.Element => {
       </div>
 
       <div className="playground light">
-        <PSwitch onSwitchChange={onSwitchChange}>Switch</PSwitch>
-        <p>{switchChangeEventCounter}</p>
+        <PSwitch onUpdate={onSwitchUpdate}>Switch</PSwitch>
+        <p>{switchUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PModal open={isModalOpen} onClose={onModalClose}>
+        <PBanner open={isBannerOpen} onDismiss={onBannerClose} heading="Banner"></PBanner>
+        <p>{bannerDismissEventCounter}</p>
+        <button onClick={() => setIsBannerOpen(true)}>Open Banner</button>
+      </div>
+
+      <div className="playground light">
+        <PModal open={isModalOpen} onDismiss={onModalClose}>
           Modal
         </PModal>
-        <p>
-          {modalCloseEventCounter} <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
-        </p>
+        <p>{modalDismissEventCounter}</p>
+        <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
       </div>
 
       <div className="playground light">
-        <PTable onSortingChange={onTableSortingChange}>
+        <PTable onUpdate={onTableUpdate}>
           <PTableHead>
             <PTableHeadRow>
               <PTableHeadCell sort={{ id: 'col1', active: true, direction: 'asc' }}>Col 1</PTableHeadCell>
             </PTableHeadRow>
           </PTableHead>
         </PTable>
-        <p>{tableSortingChangeEventCounter}</p>
+        <p>{tableUpdateEventCounter}</p>
       </div>
 
       <div className="playground light">
-        <PCarousel onCarouselChange={onCarouselChange}>
+        <PCarousel onUpdate={onCarouselUpdate}>
           <div children="Slide 1" />
           <div children="Slide 2" />
           <div children="Slide 3" />
         </PCarousel>
-        <p>{carouselChangeEventCounter}</p>
+        <p>{carouselUpdateEventCounter}</p>
       </div>
     </>
   );

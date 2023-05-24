@@ -1,23 +1,30 @@
-import type { ThemeExtendedElectric } from '../../../types';
+import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getFocusJssStyle, getThemedColors } from '../../../styles';
-import { getFocusVisibleFallback } from '../../../styles/focus-visible-fallback';
-import type { JssStyle } from 'jss';
+import { addImportantToEachRule, getThemedColors, hostHiddenStyles, getInsetJssStyle } from '../../../styles';
+import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
-export const getComponentCss = (theme: ThemeExtendedElectric): string => {
+export const getComponentCss = (theme: Theme): string => {
+  const { primaryColor, focusColor } = getThemedColors(theme);
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
-        '&([hidden])': {
-          display: 'none',
+        position: 'relative',
+        color: primaryColor, // enables color inheritance for e.g. slotted anchor
+        ...hostHiddenStyles,
+        outline: 0,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-4),
         },
-        ...getFocusVisibleFallback(
-          Object.entries(getFocusJssStyle({ color: getThemedColors(theme).baseColor })).reduce((result, [key, val]) => {
-            result[key.startsWith('&') ? `&(${key.slice(1)})` : key] = val;
-            return result;
-          }, {} as JssStyle)
-        ),
+        '&(:focus)::before': {
+          border: `${borderWidthBase} solid ${focusColor}`,
+          borderRadius: borderRadiusSmall,
+        },
+        '&(:focus:not(:focus-visible))::before': {
+          borderColor: 'transparent',
+        },
       }),
     },
   });

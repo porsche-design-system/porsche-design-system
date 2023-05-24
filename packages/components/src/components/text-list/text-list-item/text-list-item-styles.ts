@@ -1,58 +1,23 @@
-import type { JssStyle } from 'jss';
-import type { ListType, OrderType } from '../text-list/text-list-utils';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, pxToRemWithUnit } from '../../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { cssVariablePseudoSuffix } from '../text-list/text-list-styles';
 
-const cssVariableOrderedSuffix = '--pds-text-list-item-ordered-suffix';
-const cssVariableUnorderedWidth = '--pds-text-list-item-unordered-width';
-const cssVariableUnorderedHeight = '--pds-text-list-item-unordered-height';
-const cssVariableUnorderedTop = '--pds-text-list-item-unordered-top';
-
-export const getComponentCss = (listType: ListType, orderType: OrderType): string => {
-  const isOrdered = listType === 'ordered';
-  const beforeJssStyles: JssStyle = {
-    position: 'absolute',
-    left: 0,
-  };
-
+export const getComponentCss = (): string => {
   return getCss({
-    '@global': {
-      '::slotted(*)': {
-        [cssVariableOrderedSuffix]: '""',
-        [cssVariableUnorderedWidth]: pxToRemWithUnit(8),
-        [cssVariableUnorderedHeight]: '1px',
-        [cssVariableUnorderedTop]: 'calc(1.5em / 2)',
-      },
-      ':host': addImportantToEachRule({
-        position: 'relative',
+    '@global': addImportantToEachRule({
+      ':host': {
         display: 'list-item',
-        color: 'inherit',
-        listStyleType: 'none',
-        paddingLeft: pxToRemWithUnit(isOrdered ? 40 : 24),
-        '&:before': isOrdered
-          ? {
-              ...beforeJssStyles,
-              content: `counters(section,".",${
-                orderType === 'numbered' ? 'decimal' : 'lower-latin'
-              }) var(${cssVariableOrderedSuffix},".")`,
-              top: 0,
-              width: pxToRemWithUnit(24),
-              height: 'auto',
-              counterIncrement: 'section',
-              textAlign: 'right',
-              backgroundColor: 'transparent',
-              ...textSmall,
-            }
-          : {
-              ...beforeJssStyles,
-              content: '""',
-              width: `var(${cssVariableUnorderedWidth},${pxToRemWithUnit(4)})`,
-              height: `var(${cssVariableUnorderedHeight},${pxToRemWithUnit(4)})`,
-              top: `var(${cssVariableUnorderedTop},calc(1.5em / 2 - 0.125em))`,
-              backgroundColor: 'currentColor',
-            },
-      }),
-    },
+        position: 'relative', // needed by before pseudo-element, used for ordered list
+        font: 'inherit', // ensures style can't be overwritten from outside
+        color: 'inherit', // ensures style can't be overwritten from outside
+        listStyleType: 'inherit', // ensures style can't be overwritten from outside
+        paddingLeft: spacingStaticMedium, // space between ::marker/::before and list item
+        ...hostHiddenStyles,
+      },
+      '::slotted(*)': {
+        [cssVariablePseudoSuffix]: '""', // don't show suffix "." for nested ordered list
+      },
+    }),
   });
 };

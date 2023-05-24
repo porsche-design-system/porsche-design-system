@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { TagColor } from './tag-utils';
-import { TAG_COLORS } from './tag-utils';
+import type { TagColor, TagColorDeprecated, TagIcon } from './tag-utils';
+import { getThemeForIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,14 +8,15 @@ import {
   getPrefixedTagNames,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
-import type { IconName, PropTypes, Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Tag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
-  icon: AllowedTypes.string,
+  icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   iconSource: AllowedTypes.string,
 };
 
@@ -33,17 +34,26 @@ export class Tag {
   @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName;
+  @Prop() public icon?: TagIcon; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const deprecationMap: Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>> = {
+      'background-default': 'background-base',
+      'neutral-contrast-high': 'primary',
+      'notification-neutral': 'notification-info-soft',
+      'notification-warning': 'notification-warning-soft',
+      'notification-success': 'notification-success-soft',
+      'notification-error': 'notification-error-soft',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Tag, TagColorDeprecated, TagColor>(this, 'color', deprecationMap);
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.color,
+      (deprecationMap[this.color] || this.color) as Exclude<TagColor, TagColorDeprecated>,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       this.theme
     );
@@ -56,13 +66,14 @@ export class Tag {
             class="icon"
             name={this.icon}
             source={this.iconSource}
-            color="inherit"
-            theme={this.theme}
+            color="primary"
+            size="x-small"
+            theme={getThemeForIcon(this.color, this.theme)}
             aria-hidden="true"
           />
         )}
         {/* to trick leading inline-block / inline-flex space character */}
-        <div>
+        <div class="label">
           <slot />
         </div>
       </span>

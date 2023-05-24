@@ -9,7 +9,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
-import type { Direction, SortingChangeEvent, TableHeadCellSort } from '../table/table-utils';
+import type { Direction, TableUpdateEvent, TableHeadCellSort } from '../table/table-utils';
 import { SORT_EVENT_NAME } from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
 
@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
   sort: AllowedTypes.shape<TableHeadCellSort>({
     id: AllowedTypes.string,
     active: AllowedTypes.boolean,
-    direction: AllowedTypes.oneOf<Direction>(['asc', 'desc', undefined]),
+    direction: AllowedTypes.oneOf<Direction>([undefined, 'asc', 'desc']),
   }),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   multiline: AllowedTypes.boolean,
@@ -56,7 +56,7 @@ export class TableHeadCell {
         {isSortable(active, direction) ? (
           <button type="button" onClick={this.onButtonClick}>
             <slot />
-            <PrefixedTagNames.pIcon class="icon" color="inherit" name="arrow-up" aria-hidden="true" />
+            <PrefixedTagNames.pIcon class="icon" color="inherit" size="x-small" name="arrow-up" aria-hidden="true" />
           </button>
         ) : (
           <span>
@@ -69,7 +69,7 @@ export class TableHeadCell {
 
   private onButtonClick = (): void => {
     this.host.dispatchEvent(
-      new CustomEvent<SortingChangeEvent>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
+      new CustomEvent<TableUpdateEvent>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
     );
   };
 }

@@ -7,6 +7,11 @@ visible at the same time.
 Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.  
 The amount of slides visible can be specified on a per-breakpoint basis.
 
+<p-inline-notification heading="Layout hint" state="warning" dismiss-button="false">
+ The component can only be used with the full viewport width. The alignment of its content can be controlled 
+by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic
@@ -20,20 +25,19 @@ Without any additional configuration, the `p-carousel` displays a single slide s
 The amount of slides visible at the same time can be specified by setting the `slidesPerPage` property.  
 The value can either be a static number, or a breakpoint customizable object.
 
-<Playground :markup="slidesPerPage" :config="config">
-  <label>
-    <p-text :theme="theme">slidesPerPage:</p-text>
-    <select v-model="slidesPerPageModel" aria-label="Select slidesPerPage mode">
-      <option disabled>Select slidesPerPage mode</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="{ base: 1, s: 2, m: 3 }">{ base: 1, m: 2, l: 3 }</option>
-    </select>
-  </label>
+<Playground :markup="slidesPerPageMarkup" :config="config">
+  <SelectOptions v-model="slidesPerPage" :values="slidesPerPages" name="slidesPerPage"></SelectOptions>
 </Playground>
+
+## Slides with flexible widths
+
+In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
+
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+ It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
+</p-inline-notification>
+
+<Playground :markup="slidesPerPageAutoMarkup" :config="config"></Playground>
 
 ## Heading
 
@@ -48,6 +52,28 @@ Right after the `heading`, an additional `description` can be added either via p
 
 <Playground :markup="description" :config="config"></Playground>
 
+## Align Header
+
+The heading and description can be aligned via `alignHeader`.
+
+<Playground :markup="alignHeaderMarkup" :config="config">
+  <SelectOptions v-model="alignHeader" :values="alignHeaders" name="alignHeader"></SelectOptions>
+</Playground>
+
+## Width
+
+Defines horizontal spacing which is aligned with the [Porsche Grid](styles/grid).
+
+<Playground :markup="widthMarkup" :config="config">
+  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
+</Playground>
+
+## Wrap Content (deprecated)
+
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+  This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
+</p-inline-notification>
+
 ## Rewind
 
 By default, the `p-carousel` cycles by rewinding and fast forwarding from the last slide to the first slide and first
@@ -57,37 +83,17 @@ first/last slide.
 
 <Playground :markup="rewind" :config="config"></Playground>
 
-## Wrap Content
+## Remove Pagination
 
-By default, the `p-carousel` takes up the available space which works for all scenarios where its parent has some
-padding, e.g., when used within `p-content-wrapper`.  
-In case its parent either does not provide some padding or the `p-carousel` really should go edge to edge, you cann use
-the `wrapContent` property which internally applies the padding of `p-content-wrapper`.
+The pagination indicators underneath the slides can be removed via `pagination="false"`.
 
-<Playground :markup="wrapContent" :config="config"></Playground>
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>disablePagination</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>pagination</code> property instead.
+</p-inline-notification>
 
-<!--
-## Post Heading
-
-If you want to place any additional elements between heading and slider, you can use the `post-heading` slot.
-
-<Playground :markup="postHeading" :config="config"></Playground>
--->
-
-## Disable Pagination
-
-The pagination indicators underneath the slides can be removed via `disablePagination`. Also, on a per-breakpoint basis.
-
-<Playground :markup="disablePagination" :config="config">
-  <label>
-    <p-text :theme="theme">disablePagination:</p-text>
-    <select v-model="disablePaginationModel" aria-label="Select disablePagination mode">
-      <option disabled>Select disablePagination mode</option>
-      <option value="true">true</option>
-      <option value="false">false</option>
-      <option value="{ base: true, m: false }">{ base: true, m: false }</option>
-    </select>
-  </label>
+<Playground :markup="paginationMarkup" :config="config">
+  <SelectOptions v-model="pagination" :values="paginations" name="pagination"></SelectOptions>
 </Playground>
 
 ## Focus Behavior
@@ -100,13 +106,27 @@ For browsers that don't support the `inert` attribute, yet, the component adds a
 
 <Playground :markup="focusBehavior" :config="config"></Playground>
 
+## Jump to slide (activeSlideIndex)
+
+To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
+
+<Playground :frameworkMarkup="jumpToSlideExamples" :config="{ ...config, withoutDemo: true }">
+  <p-carousel :theme="theme" :heading="basicHeading" :active-slide-index="activeSlideIndex" v-html="getSlides(3)" @update="(e) => activeSlideIndex = e.detail.activeIndex" style="margin: 0 0 1rem">
+  </p-carousel>
+  <button v-for="(_, index) in Array(3)" :key="index" type="button" @click="activeSlideIndex = index" :disabled="activeSlideIndex === index">{{index + 1}}</button>
+</Playground>
+
 ## Event Handling
 
-Whenever the `p-carousel` slides, the `carouselChange` is emitted containing both, the `activeIndex` and
-`previousIndex`.
+Whenever the `p-carousel` slides, the `change` is emitted containing both, the `activeIndex` and `previousIndex`.
+
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>carouselChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>update</code> event instead.
+</p-inline-notification>
 
 <Playground :frameworkMarkup="eventHandlingExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @carouselChange="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
+  <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @update="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
   </p-carousel>
   <p-text :theme="theme">Last event detail: {{lastEventDetail}}</p-text>
 </Playground>
@@ -144,7 +164,9 @@ type CarouselInternationalization = {
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import type { Theme } from '@/models';
+import type { CarouselWidth, CarouselAlignHeader } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
+import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS } from './carousel-utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -162,12 +184,22 @@ export default class Code extends Vue {
   ${this.getSlides(4)}
 </p-carousel>`;
 
-  slidesPerPageModel = 2;
-  get slidesPerPage() {
-    return `<p-carousel slides-per-page="${this.slidesPerPageModel}" heading="${this.basicHeading}">
+  slidesPerPage = 2;
+  slidesPerPages = [1, 2, 3, 4, 5, '{ base: 1, s: 2, m: 3 }'];
+  get slidesPerPageMarkup() {
+    return `<p-carousel slides-per-page="${this.slidesPerPage}" heading="${this.basicHeading}">
   ${this.getSlides()}
 </p-carousel>`;
   }
+
+  slidesPerPageAutoMarkup = `<p-carousel slides-per-page="auto" heading="${this.basicHeading}">
+  <div style="width: 10vw">Slide 1 <p>(10vw)</p></div>
+  <div style="width: 200px">Slide 2 <p>(200px)</p></div>
+  <div style="width: 100px">Slide 3 <p>(100px)</p></div>
+  <div style="width: 40vw">Slide 4 <p>(40vw)</p></div>
+  <div style="width: 150px">Slide 5 <p>(150px)</p></div>
+  <div style="width: 50vw">Slide 6 <p>(50vw)</p></div>
+</p-carousel>`;
 
   heading = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(3)}
@@ -191,18 +223,26 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  wrapContent = `<p-carousel wrap-content="true" heading="${this.basicHeading}" description="${this.basicDescription}">
+  pagination = true;
+  paginations = [false, true, '{ base: false, m: true }'];
+  get paginationMarkup() {
+    return `<p-carousel pagination="${this.pagination}" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
+}
 
-//   postHeading = `<p-carousel heading="${this.basicHeading}">
-//   <p slot="post-heading">Some slotted content between heading and slider</p>
-//   ${this.getSlides(3)}
-// </p-carousel>`;
+  alignHeader: CarouselAlignHeader = 'center';
+  alignHeaders = CAROUSEL_ALIGN_HEADERS;
+  get alignHeaderMarkup() {
+    return `<p-carousel align-header="${this.alignHeader}" heading="${this.basicHeading}" description="${this.basicDescription}">
+  ${this.getSlides(3)}
+</p-carousel>`;
+}
 
-  disablePaginationModel = true;
-  get disablePagination() {
-    return `<p-carousel disable-pagination="${this.disablePaginationModel}" heading="${this.basicHeading}">
+  width: CarouselWidth = 'basic';
+  widths = CAROUSEL_WIDTHS;
+  get widthMarkup() {
+    return `<p-carousel width="${this.width}" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
 </p-carousel>`;
 }
@@ -215,6 +255,9 @@ export default class Code extends Vue {
     .replace(/Slide 4/, '$& with a <button type="button">button</button>')
   }
 </p-carousel>`;
+
+  activeSlideIndex = 1;
+  jumpToSlideExamples = getCarouselCodeSamples('example-jump-to-slide');
 
   lastEventDetail = 'none';
   eventHandlingExamples = getCarouselCodeSamples('example-events');
@@ -230,6 +273,8 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+
   :deep(p-carousel div) {
     display: flex;
     align-items: center;
@@ -237,6 +282,11 @@ export default class Code extends Vue {
     flex-direction: column;
     background: #00b0f4;
     height: 150px;
+    border-radius: $pds-border-radius-small;
+  }
+
+  :deep(p-carousel) {
+    margin-bottom: $pds-spacing-fluid-medium;
   }
 
   button {

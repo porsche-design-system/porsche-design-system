@@ -9,17 +9,16 @@ This can be optimized by prefetching used icons in parallel while the applicatio
 that prefetching is not yet supported on Safari and Safari on iOS, so you will not see a performance benefit there.
 [Current prefetch status on CanIUse](https://caniuse.com/link-rel-prefetch)
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                                                                          | Type                     | Default              |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------- | -------- |
-| `icons`       | All icons listed in the array are loaded from the CDN.                                                                                                                                                               | `({{this.iconNames}})[]` | `['arrowHeadRight']` |
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                                                     | `'auto'                  | 'cn'`                | `'auto'` |
-| `withoutTags` | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns an array of strings with urls to the cdn location of the resources. | `boolean`                | `false`              |
-| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                                                             | `'html'                  | 'jsx'`               | `'html'` |
+| Option   | Description                                                                                                              | Type                     | Default              |
+| -------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------ | -------------------- | -------- |
+| `icons`  | All icons listed in the array are loaded from the CDN.                                                                   | `({{this.iconNames}})[]` | `['arrowHeadRight']` |
+| `cdn`    | Decides from which CDN the resources are loaded.                                                                         | `'auto'                  | 'cn'`                | `'auto'` |
+| `format` | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html'                  | 'jsx'`               | `'html'` |
 
 ## Examples
 

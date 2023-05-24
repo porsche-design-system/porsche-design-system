@@ -3,74 +3,95 @@ import { getCss } from '../../../utils';
 
 describe('getButtonStyles()', () => {
   it.each<Parameters<typeof getButtonStyles>>([
-    [true, 'none', 'light'],
-    [false, 'none', 'dark'],
-    [true, 'success', 'light'],
-    [false, 'success', 'dark'],
-    [true, 'error', 'light'],
-    [false, 'error', 'dark'],
-  ])('should return correct css for isOpen: %o, state: %o and theme: %o', (isOpen, state, theme) => {
-    expect(getCss(getButtonStyles(isOpen, state, theme))).toMatchSnapshot();
-  });
+    ['down', true, 'none', 'light'],
+    ['down', true, 'success', 'light'],
+    ['down', true, 'error', 'light'],
+    ['up', true, 'none', 'dark'],
+    ['up', true, 'success', 'dark'],
+    ['up', true, 'error', 'dark'],
+    ['down', false, 'none', 'light'],
+    ['down', false, 'success', 'light'],
+    ['down', false, 'error', 'light'],
+    ['up', false, 'none', 'dark'],
+    ['up', false, 'success', 'dark'],
+    ['up', false, 'error', 'dark'],
+  ])(
+    'should return correct css for direction: %s, isOpen: %s, state: %s and theme: %s',
+    (direction, isOpen, state, theme) => {
+      expect(getCss(getButtonStyles(direction, isOpen, state, theme))).toMatchSnapshot();
+    }
+  );
 });
 
 describe('getFilterStyles()', () => {
   it.each<Parameters<typeof getFilterStyles>>([
-    [true, false, 'none', 'light'],
-    [false, false, 'none', 'dark'],
-    [true, false, 'success', 'light'],
-    [false, false, 'success', 'dark'],
-    [true, false, 'error', 'light'],
-    [false, false, 'error', 'dark'],
-    [true, true, 'none', 'light'],
-    [false, true, 'none', 'dark'],
-    [true, true, 'success', 'light'],
-    [false, true, 'success', 'dark'],
-    [true, true, 'error', 'light'],
-    [false, true, 'error', 'dark'],
+    ['down', true, 'none', true, 'light'],
+    ['up', true, 'none', true, 'dark'],
+    ['down', true, 'none', false, 'light'],
+    ['up', true, 'none', false, 'dark'],
+    ['down', true, 'success', true, 'light'],
+    ['up', true, 'success', true, 'dark'],
+    ['down', true, 'success', false, 'light'],
+    ['up', true, 'success', false, 'dark'],
+    ['down', true, 'error', true, 'light'],
+    ['up', true, 'error', true, 'dark'],
+    ['down', true, 'error', false, 'light'],
+    ['up', true, 'error', false, 'dark'],
+    ['down', false, 'none', true, 'light'],
+    ['up', false, 'none', true, 'dark'],
+    ['down', false, 'none', false, 'light'],
+    ['up', false, 'none', false, 'dark'],
+    ['down', false, 'success', true, 'light'],
+    ['up', false, 'success', true, 'dark'],
+    ['down', false, 'success', false, 'light'],
+    ['up', false, 'success', false, 'dark'],
+    ['down', false, 'error', true, 'light'],
+    ['up', false, 'error', true, 'dark'],
+    ['down', false, 'error', false, 'light'],
+    ['up', false, 'error', false, 'dark'],
   ])(
-    'should return correct css for isOpen: %o, disabled: %o, state: %o and theme: %o',
-    (isOpen, disabled, state, theme) => {
-      expect(getCss(getFilterStyles(isOpen, disabled, state, theme))).toMatchSnapshot();
+    'should return correct css for direction: %s, isOpen: %s,  state: %s, disabled: %s and theme: %s',
+    (direction, isOpen, state, disabled, theme) => {
+      expect(getCss(getFilterStyles(direction, isOpen, state, disabled, theme))).toMatchSnapshot();
     }
   );
 });
 
 describe('getListStyles()', () => {
   it.each<Parameters<typeof getListStyles>>([
-    ['down', true, 'light'],
-    ['down', false, 'light'],
-    ['down', true, 'dark'],
-    ['down', false, 'dark'],
-    ['up', true, 'light'],
-    ['up', false, 'light'],
-    ['up', true, 'dark'],
-    ['up', false, 'dark'],
-  ])('should return correct css for direction: %s, isOpen: %s and theme: %s', (direction, isOpen, theme) => {
-    expect(getCss(getListStyles(direction, isOpen, theme))).toMatchSnapshot();
+    ['down', 'light'],
+    ['down', 'light'],
+    ['down', 'dark'],
+    ['down', 'dark'],
+    ['up', 'light'],
+    ['up', 'light'],
+    ['up', 'dark'],
+    ['up', 'dark'],
+  ])('should return correct css for direction: %s, isOpen: %s and theme: %s', (direction, theme) => {
+    expect(getCss(getListStyles(direction, theme))).toMatchSnapshot();
   });
 });
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['down', true, false, 'none', false, 'light'],
-    ['down', false, false, 'none', false, 'light'],
-    ['down', true, false, 'none', true, 'light'],
-    ['down', false, false, 'none', true, 'light'],
-    ['up', true, false, 'none', false, 'light'],
-    ['up', false, false, 'none', false, 'light'],
-    ['up', true, false, 'none', true, 'light'],
-    ['up', false, false, 'none', true, 'light'],
-    ['down', true, true, 'none', false, 'light'],
-    ['down', false, true, 'none', false, 'light'],
-    ['down', true, true, 'none', true, 'light'],
-    ['down', false, true, 'none', true, 'light'],
-    ['up', true, true, 'none', false, 'light'],
-    ['up', false, true, 'none', false, 'light'],
-    ['up', true, true, 'none', true, 'light'],
-    ['up', false, true, 'none', true, 'light'],
+    ['down', true, 'none', false, false, 'light'],
+    ['down', false, 'none', false, false, 'light'],
+    ['down', true, 'none', false, true, 'light'],
+    ['down', false, 'none', false, true, 'light'],
+    ['up', true, 'none', false, false, 'light'],
+    ['up', false, 'none', false, false, 'light'],
+    ['up', true, 'none', false, true, 'light'],
+    ['up', false, 'none', false, true, 'light'],
+    ['down', true, 'none', true, false, 'light'],
+    ['down', false, 'none', true, false, 'light'],
+    ['down', true, 'none', true, true, 'light'],
+    ['down', false, 'none', true, true, 'light'],
+    ['up', true, 'none', true, false, 'light'],
+    ['up', false, 'none', true, false, 'light'],
+    ['up', true, 'none', true, true, 'light'],
+    ['up', false, 'none', true, true, 'light'],
   ])(
-    'should return correct css for direction: %s, isOpen: %s, disabled: %s, state: %s, filter: %s and theme: %s',
+    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s and theme: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }

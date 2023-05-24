@@ -1,4 +1,9 @@
-# Fieldset
+# Fieldset Wrapper
+
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+  This component is deprecated and will be removed with the next major release.
+Please use <a href="components/fieldset">p-fieldset</a> instead.
+</p-inline-notification>
 
 <TableOfContents></TableOfContents>
 
@@ -12,10 +17,4 @@
 
 ### Sections including form elements
 
-We recommend for each fieldset the headline 4 (for the visible part _legend_) of the respective viewport. Please find
-more information in the [Form pattern guideline](patterns/forms).
-
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/fieldset-examples.png" alt="Examples for fieldset" />
-</div>
+[Form pattern guideline](patterns/forms).

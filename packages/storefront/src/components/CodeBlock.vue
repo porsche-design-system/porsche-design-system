@@ -1,5 +1,5 @@
 <template>
-  <div class="code-block" :class="`code-block--${theme} code-block--${colorScheme}`">
+  <div class="code-block" :class="`code-block--${theme} code-block--${backgroundColor}`">
     <p-tabs-bar v-if="Object.keys(usedFrameworks).length > 1" :theme="theme" :active-tab-index="activeTabIndex">
       <!-- prettier-ignore -->
       <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
@@ -17,7 +17,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import type { Framework, FrameworkMarkup, Theme } from '@/models';
+  import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '@/models';
   import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
@@ -25,9 +25,9 @@
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
+    @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: false }) public convertMarkup!: boolean;
-    @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
+    @Prop({ default: () => ['vanilla-js', 'angular', 'react', 'vue'] }) public frameworks!: Framework[];
 
     frameworkBeforeShared = this.framework;
 
@@ -72,14 +72,14 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
   .code-block {
     &--light {
       code,
       pre {
-        color: $pds-theme-light-base;
+        color: $pds-theme-light-primary;
       }
 
       pre {
@@ -147,7 +147,7 @@
 
       // the following are all custom based on above values
       // extracted from chrome dev tools contrast utility
-      &.code-block--surface {
+      &.code-block--background-surface {
         pre {
           :deep(code) {
             .token.selector,
@@ -156,13 +156,13 @@
             .token.char,
             .token.builtin,
             .token.inserted {
-              color: #a55a00;
+              color: #7e4603;
             }
 
             .token.atrule,
             .token.attr-value,
             .token.function {
-              color: #3d7b3c;
+              color: #30612f;
             }
           }
         }
@@ -172,7 +172,7 @@
     &--dark {
       code,
       pre {
-        color: $pds-theme-dark-base;
+        color: $pds-theme-dark-primary;
       }
 
       pre {
@@ -258,8 +258,8 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin-top: $pds-spacing-medium;
-    @include pds-focus;
+    margin-top: $pds-spacing-static-medium;
+    @include pds-focus('small', 1px);
 
     :deep(code) {
       .token.important,

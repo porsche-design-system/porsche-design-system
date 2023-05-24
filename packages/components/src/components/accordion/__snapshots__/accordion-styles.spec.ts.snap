@@ -1,81 +1,406 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
-:host(:first-of-type) .root {
-  border-top: 1px solid #e3e4e5;
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  margin: 0.25rem 0;
   width: 100%;
   text-decoration: none;
   border: 0;
+  outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
-  overflow: hidden;
   text-align: left;
-  color: #000;
+  color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
-  font-size: 1.5rem;
-  line-height: calc(6px + 2.125ex);
-  padding: 1.25rem 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  padding: 20px 0;
 }
-button::-moz-focus-inner {
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 @media(hover:hover) {
-  button:hover {
-    color: #d5001c;
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
   }
 }
 
-.root {
-  border-bottom: 1px solid #e3e4e5;
-}
 .heading {
   margin: 0;
-  padding: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 1.5rem;
-  transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,180deg);
+  font-size: .75rem;
+  transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
-  padding: 0;
+  color: #010205;
   overflow: hidden;
-  height: auto;
-  padding-bottom: 2.5rem;
-  visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  height: 0;
+  visibility: hidden;
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
+  to {
+    overflow: visible;
   }
-  100% {
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  gap: 24px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  padding: 20px 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
+  border: 0;
+}
+@media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+.heading {
+  margin: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font-size: .75rem;
+  transform: rotate3d(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  color: #010205;
+  overflow: hidden;
+  height: auto;
+  padding-bottom: 24px;
+  visibility: visible;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+}
+@keyframes keyframes-open {
+  to {
+    overflow: visible;
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  gap: 24px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  padding: 4px 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 2px;
+  bottom: 2px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
+  border: 0;
+}
+@media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+.heading {
+  margin: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font-size: .75rem;
+  transform: rotate3d(0,0,1,90deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  color: #FBFCFF;
+  overflow: hidden;
+  height: 0;
+  visibility: hidden;
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
+}
+@keyframes keyframes-open {
+  to {
+    overflow: visible;
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  gap: 24px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  padding: 4px 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 2px;
+  bottom: 2px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
+  border: 0;
+}
+@media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+.heading {
+  margin: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font-size: .75rem;
+  transform: rotate3d(0,0,1,90deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  color: #010205;
+  overflow: hidden;
+  height: 0;
+  visibility: hidden;
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
+}
+@keyframes keyframes-open {
+  to {
+    overflow: visible;
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: true and theme: light 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  gap: 24px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-weight: 600;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  padding: 4px 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 2px;
+  bottom: 2px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
+  border: 0;
+}
+@media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+.heading {
+  margin: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font-size: .75rem;
+  transform: rotate3d(0);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  color: #010205;
+  overflow: hidden;
+  height: auto;
+  padding-bottom: 8px;
+  visibility: visible;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+}
+@keyframes keyframes-open {
+  to {
     overflow: visible;
   }
 }"
@@ -83,78 +408,80 @@ button:focus:not(:focus-visible) {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
-:host(:first-of-type) .root {
-  border-top: 1px solid #e3e4e5;
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  margin: 0.25rem 0;
   width: 100%;
   text-decoration: none;
   border: 0;
+  outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
-  overflow: hidden;
   text-align: left;
-  color: #000;
+  color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-  padding: 0.75rem 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 15px 0;
 }
-button::-moz-focus-inner {
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 @media(hover:hover) {
-  button:hover {
-    color: #d5001c;
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
   }
 }
 
-.root {
-  border-bottom: 1px solid #e3e4e5;
-}
 .heading {
   margin: 0;
-  padding: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 1.5rem;
-  transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  font-size: .75rem;
+  transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
-  padding: 0;
+  color: #010205;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -162,80 +489,82 @@ button:focus:not(:focus-visible) {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+  border-bottom: 1px solid #404044 !important;
 }
-:host(:first-of-type) .root {
-  border-top: 1px solid #4a4e51;
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  margin: 0.25rem 0;
   width: 100%;
   text-decoration: none;
   border: 0;
+  outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
-  overflow: hidden;
   text-align: left;
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-  padding: 0.75rem 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 15px 0;
 }
-button::-moz-focus-inner {
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 @media(hover:hover) {
-  button:hover {
-    color: #ff0223;
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
   }
 }
 
-.root {
-  border-bottom: 1px solid #4a4e51;
-}
 .heading {
   margin: 0;
-  padding: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 1.5rem;
-  transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,180deg);
+  font-size: .75rem;
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
-  padding: 0;
+  color: #FBFCFF;
   overflow: hidden;
   height: auto;
-  padding-bottom: 2.5rem;
+  padding-bottom: 24px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -243,80 +572,82 @@ button:focus:not(:focus-visible) {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+  border-bottom: 1px solid #D8D8DB !important;
 }
-:host(:first-of-type) .root {
-  border-top: 1px solid #e3e4e5;
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  margin: 0.25rem 0;
   width: 100%;
   text-decoration: none;
   border: 0;
+  outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
-  overflow: hidden;
   text-align: left;
-  color: #000;
+  color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-  padding: 0.75rem 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 15px 0;
 }
-button::-moz-focus-inner {
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 @media(hover:hover) {
-  button:hover {
-    color: #d5001c;
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
   }
 }
 
-.root {
-  border-bottom: 1px solid #e3e4e5;
-}
 .heading {
   margin: 0;
-  padding: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 1.5rem;
-  transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,180deg);
+  font-size: .75rem;
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
-  padding: 0;
+  color: #010205;
   overflow: hidden;
   height: auto;
-  padding-bottom: 2.5rem;
+  padding-bottom: 24px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -324,70 +655,79 @@ button:focus:not(:focus-visible) {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  margin: 0.25rem 0;
   width: 100%;
   text-decoration: none;
   border: 0;
+  outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
-  overflow: hidden;
   text-align: left;
-  color: #000;
+  color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
-  padding: 0.25rem 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  font-size: 1rem;
+  padding: 4px 0;
 }
-button::-moz-focus-inner {
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 2px;
+  bottom: 2px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 @media(hover:hover) {
-  button:hover {
-    color: #d5001c;
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
   }
 }
 
 .heading {
   margin: 0;
-  padding: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 1.5rem;
-  transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,0.0001deg);
+  font-size: .75rem;
+  transform: rotate3d(0,0,1,90deg);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
-  padding: 0;
+  color: #010205;
   overflow: hidden;
   height: 0;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -395,72 +735,81 @@ button:focus:not(:focus-visible) {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  margin: 0.25rem 0;
   width: 100%;
   text-decoration: none;
   border: 0;
+  outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
-  overflow: hidden;
   text-align: left;
-  color: #000;
+  color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
-  padding: 0.25rem 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  font-size: 1rem;
+  padding: 4px 0;
 }
-button::-moz-focus-inner {
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 2px;
+  bottom: 2px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
   border: 0;
 }
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
 @media(hover:hover) {
-  button:hover {
-    color: #d5001c;
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
   }
 }
 
 .heading {
   margin: 0;
-  padding: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 1.5rem;
-  transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,180deg);
+  font-size: .75rem;
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
-  padding: 0;
+  color: #010205;
   overflow: hidden;
   height: auto;
-  padding-bottom: 0.5rem;
+  padding-bottom: 8px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"
@@ -468,120 +817,117 @@ button:focus:not(:focus-visible) {
 
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
+  border-bottom: 1px solid #404044 !important;
 }
-:host(:first-of-type) .root {
-  border-top: 1px solid #4a4e51;
+:host([hidden]) {
+  display: none !important;
 }
 button {
   display: flex;
+  position: relative;
   justify-content: space-between;
-  margin: 0.25rem 0;
   width: 100%;
   text-decoration: none;
   border: 0;
+  outline: 0;
+  gap: 24px;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
-  overflow: hidden;
   text-align: left;
-  color: #fff;
+  color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
   font-size: 1rem;
-  line-height: calc(6px + 2.125ex);
-  padding: 0.75rem 0;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
+  padding: 15px 0;
 }
-button::-moz-focus-inner {
+button::before {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  left: -4px;
+  right: -4px;
+  top: 6px;
+  bottom: 6px;
+}
+button:focus::before {
+  border: 2px solid #1A44EA;
+}
+button:not(:focus-visible)::before {
   border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 @media(min-width:480px) {
   button {
-    font-size: 1.5rem;
-    line-height: calc(6px + 2.125ex);
-    padding: 1.25rem 0;
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    padding: 20px 0;
   }
 }
 
 @media(min-width:760px) {
   button {
     font-size: 1rem;
-    line-height: calc(6px + 2.125ex);
-    padding: 0.75rem 0;
+    padding: 15px 0;
   }
 }
 
 @media(min-width:1000px) {
   button {
-    font-size: 1.5rem;
-    line-height: calc(6px + 2.125ex);
-    padding: 1.25rem 0;
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    padding: 20px 0;
   }
 }
 
 @media(min-width:1300px) {
   button {
     font-size: 1rem;
-    line-height: calc(6px + 2.125ex);
-    padding: 0.75rem 0;
+    padding: 15px 0;
   }
 }
 
 @media(min-width:1760px) {
   button {
-    font-size: 1.5rem;
-    line-height: calc(6px + 2.125ex);
-    padding: 1.25rem 0;
+    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    padding: 20px 0;
   }
 }
 
 @media(hover:hover) {
-  button:hover {
-    color: #ff0223;
+  button::before {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
   }
 }
 
-.root {
-  border-bottom: 1px solid #4a4e51;
-}
 .heading {
   margin: 0;
-  padding: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-left: 1.5rem;
-  transform-origin: 50% 50%;
-  transform: rotate3d(0,0,1,180deg);
+  font-size: .75rem;
+  transform: rotate3d(0);
   transition: transform var(--p-transition-duration, .24s) ease;
 }
 .collapsible {
-  padding: 0;
+  color: #FBFCFF;
   overflow: hidden;
   height: auto;
-  padding-bottom: 2.5rem;
+  padding-bottom: 24px;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
-  animation: keyframes-open var(--p-transition-duration, .24s) ease forwards;
+  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
+  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
 }
 @keyframes keyframes-open {
-  0%,99% {
-    overflow: hidden;
-  }
-  100% {
+  to {
     overflow: visible;
   }
 }"

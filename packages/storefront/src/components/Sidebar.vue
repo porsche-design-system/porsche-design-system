@@ -7,13 +7,13 @@
         :key="index"
         :heading="category"
         v-bind:open="accordion[category]"
-        v-on:accordionChange="toggleActive(category)"
+        v-on:update="toggleActive(category)"
         compact="true"
       >
         <ul>
           <li v-for="(tabs, page, index) in pages" :key="index">
             <p-link-pure class="link" icon="none" :active="isActive(category, page)">
-              <router-link :to="getRoute(category, page)">{{ page }}</router-link>
+              <router-link :to="getRoute(category, page)">{{ page }}{{ getDeprecated(category, page) }}</router-link>
             </p-link-pure>
           </li>
         </ul>
@@ -30,8 +30,9 @@
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
-
   import Search from '@/components/Search.vue';
+  import type { TagName } from '@porsche-design-system/shared';
+  import { getComponentMeta } from '@porsche-design-system/component-meta';
 
   @Component({
     components: {
@@ -80,6 +81,14 @@
       this.hideNavigation = hideNavigation;
     }
 
+    getDeprecated(category: string, page: string): string {
+      if (category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.isDeprecated) {
+        return ' (deprecated)';
+      } else {
+        return '';
+      }
+    }
+
     private static category(route: Route): string {
       const { category } = route.params;
       return category ? capitalCase(category) : '';
@@ -88,7 +97,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   ul,
   li {
@@ -97,7 +106,7 @@
 
   .link {
     width: 100%;
-    margin: $pds-spacing-x-small 0;
+    margin: $pds-spacing-static-x-small 0;
     display: inline-block;
     text-decoration: none;
   }

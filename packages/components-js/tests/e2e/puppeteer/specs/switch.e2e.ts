@@ -19,19 +19,18 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-switch');
 const getButton = () => selectNode(page, 'p-switch >>> button');
-const getLabel = () => selectNode(page, 'p-switch >>> .text');
+const getLabel = () => selectNode(page, 'p-switch >>> .label');
 
 const clickHandlerScript = `
 <script>
   const switchComponent = document.querySelector('p-switch');
-  switchComponent.addEventListener('switchChange', (e) => {
+  switchComponent.addEventListener('update', (e) => {
     e.target.checked = e.detail.checked;
   });
 </script>`;
 
 type InitOptions = {
   isDisabled?: boolean;
-  isTabbable?: boolean;
   isLoading?: boolean;
   otherMarkup?: string;
 };
@@ -218,6 +217,21 @@ describe('events', () => {
       switchElement.blur();
     });
     expect(await hasFocus(host)).toBe(false);
+  });
+
+  it('should emit both switchChange and update event', async () => {
+    await initSwitch();
+    const host = await getHost();
+
+    await addEventListener(host, 'switchChange');
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'switchChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+    const button = await getButton();
+    await button.click();
+    expect((await getEventSummary(host, 'switchChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 

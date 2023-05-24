@@ -16,13 +16,8 @@ give the user visual cues to fill out the form.
 
 ## Basic example
 
-<Playground :markup="basic" :config="config">
-  <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="show">With label</option>
-    <option value="hide">Without label</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="hideLabelMarkup" :config="config">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
 ## With description text
@@ -53,8 +48,13 @@ changes while this process is performed.
 
 ## Counter
 
-If the `maxLength` attribute is present on the `textarea` element, a counter will be displayed in the corner.  
-To hide it you can set `showCharacterCount` to `false`.
+If the `maxlength` attribute is present on the `textarea` element, a counter will be displayed in the corner.  
+To hide it you can set `showCounter` to `false`.
+
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>showCharacterCount</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>showCounter</code> property instead.
+</p-inline-notification>
 
 <Playground :markup="counter" :config="config"></Playground>
 
@@ -62,13 +62,8 @@ To hide it you can set `showCharacterCount` to `false`.
 
 The `p-textarea-wrapper` component supports the visualisation of inline validation.
 
-<Playground :markup="validationStates" :config="config">
-  <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">Error</option>
-    <option value="success">Success</option>
-    <option value="none">None</option>
-  </select>
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ## Slots
@@ -95,20 +90,19 @@ reader users the corresponding information:
 <script lang="ts">
 import Vue from 'vue';  
 import Component from 'vue-class-component';
+import { FORM_STATES } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'block' };
+  config = { themeable: true, spacing: 'block' };
 
-  label = 'show';
-  state = 'error';
-
-  get basic() {
-    const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
-    return `<p-textarea-wrapper label="Some label" ${attr}>
+  hideLabel = false;
+  hideLabels = [false, true, '{ base: true, l: false }'];
+  get hideLabelMarkup() {
+    return `<p-textarea-wrapper label="Some label" hide-label="${this.hideLabel}">
   <textarea name="some-name"></textarea>
 </p-textarea-wrapper>
-<p-textarea-wrapper label="Some label" ${attr}>
+<p-textarea-wrapper label="Some label" hide-label="${this.hideLabel}">
   <textarea name="some-name" placeholder="Some placeholder"></textarea>
 </p-textarea-wrapper>`;
   }
@@ -137,11 +131,13 @@ export default class Code extends Vue {
 `<p-textarea-wrapper label="Some label">
   <textarea name="some-name" maxlength="200">Some value</textarea>
 </p-textarea-wrapper>
-<p-textarea-wrapper label="Some label" show-character-count="false">
+<p-textarea-wrapper label="Some label" show-counter="false">
   <textarea name="some-name" maxlength="200">Some value</textarea>
 </p-textarea-wrapper>`;
 
-  get validationStates() {
+  state = 'error';
+  states = FORM_STATES;
+  get stateMarkup() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
     return `<p-textarea-wrapper label="Some label" state="${this.state}" ${attr}>
   <textarea aria-invalid="${this.state === 'error'}" name="some-name">Some value</textarea>

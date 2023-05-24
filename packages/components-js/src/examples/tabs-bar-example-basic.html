@@ -1,4 +1,4 @@
-<p-tabs-bar>
+<p-tabs-bar active-tab-index="0">
   <button type="button">Tab One</button>
   <button type="button">Tab Two</button>
   <button type="button">Tab Three</button>
@@ -6,7 +6,7 @@
 
 <script>
   const tabsBar = document.querySelector('p-tabs-bar');
-  tabsBar.addEventListener('tabChange', (e) => {
+  tabsBar.addEventListener('update', (e) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   });
 </script>

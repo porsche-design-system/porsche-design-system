@@ -24,17 +24,21 @@ type InitOptions = {
   otherMarkup?: string;
   tag?: 'a' | 'button' | 'span';
   scrollToPosition?: ScrollToPosition;
+  hasScrollbar?: boolean;
 };
 
 const initScroller = (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts || {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition, hasScrollbar } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const attrs = scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '';
+  const attrs = [
+    scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
+    hasScrollbar ? `scrollbar="${hasScrollbar}"` : '',
+  ].join(' ');
 
   const content = `<p-scroller ${attrs}>
   ${elements}
@@ -53,8 +57,8 @@ const getActionContainers = async () => {
   return { actionPrev, actionNext };
 };
 const getPrevNextButton = async () => {
-  const prevButton = await selectNode(page, 'p-scroller >>> .action-prev p-button-pure');
-  const nextButton = await selectNode(page, 'p-scroller >>> .action-next p-button-pure');
+  const prevButton = await selectNode(page, 'p-scroller >>> .action-prev button');
+  const nextButton = await selectNode(page, 'p-scroller >>> .action-next button');
   return { prevButton, nextButton };
 };
 const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
@@ -212,13 +216,13 @@ describe('next/prev buttons', () => {
     expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
   });
 
-  it('should have label of prev/next buttons in dom', async () => {
+  it('should have aria-label in prev/next buttons in dom', async () => {
     await initScroller();
 
     const { nextButton, prevButton } = await getPrevNextButton();
 
-    expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
-    expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
+    expect(await getAttribute(prevButton, 'aria-label')).toBe('prev');
+    expect(await getAttribute(nextButton, 'aria-label')).toBe('next');
   });
 
   describe('gradient next rounding edge case', () => {
@@ -263,10 +267,9 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -277,10 +280,9 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
@@ -294,54 +296,22 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate:  p-icon').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 });
 
 describe('accessibility', () => {
-  const getElementList = () => selectNode(page, 'p-scroller >>> [role="tablist"]');
-  it('should expose correct initial accessibility tree of tablist', async () => {
+  it('should expose correct initial accessibility tree if aria prop is set', async () => {
     await initScroller({ amount: 3 });
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), { interestingOnly: false });
-  });
-
-  it('should render correct accessibility tree on scrollArea click', async () => {
-    await initScroller({ amount: 4 });
-    const scrollArea = await getScrollArea();
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'Before click',
-      interestingOnly: false,
+    const host = await getHost();
+    await setProperty(host, 'aria', {
+      role: 'tablist',
     });
 
-    await clickElement(scrollArea);
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'After click',
-      interestingOnly: false,
-    });
-  });
-
-  it('should render correct accessibility tree on focus change and enter press', async () => {
-    await initScroller({ amount: 3 });
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'Before change',
-      interestingOnly: false,
-    });
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, await getElementList(), {
-      message: 'After change',
-      interestingOnly: false,
-    });
+    await expectA11yToMatchSnapshot(page, host, { interestingOnly: false });
   });
 
   it('should have correct tabindex on scroll-wrapper if scroller is scrollable and has no focusable elements', async () => {

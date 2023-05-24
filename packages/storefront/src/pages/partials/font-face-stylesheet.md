@@ -7,7 +7,7 @@ your application as soon as our core is loaded. Regarding which font-styles you 
 downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. To improve
 rendering we recommend that you load the stylesheet on your own.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 We suggest that `getFontFaceStylesheet()` partial is implemented in every application that uses the Porsche Design
@@ -16,11 +16,10 @@ the performance of the initial connection to our cdn.
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                                                 | Type      | Default |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- | -------- |
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                            | `'auto'   | 'cn'`   | `'auto'` |
-| `withoutTags` | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns a url to the cdn location of the resource. | `boolean` | `false` |
-| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                                    | `'html'   | 'jsx'`  | `'html'` |
+| Option   | Description                                                                                                              | Type    | Default |
+| -------- | ------------------------------------------------------------------------------------------------------------------------ | ------- | ------- | -------- |
+| `cdn`    | Decides from which CDN the resources are loaded.                                                                         | `'auto' | 'cn'`   | `'auto'` |
+| `format` | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html' | 'jsx'`  | `'html'` |
 
 ## Examples
 

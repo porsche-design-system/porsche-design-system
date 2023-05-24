@@ -1,4 +1,5 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
+import type { LinkTarget } from '../../utils/link-button/link-target';
 
 export const MARQUE_VARIANTS = ['75-years', 'default'] as const;
 export type MarqueVariant = (typeof MARQUE_VARIANTS)[number];
@@ -8,6 +9,8 @@ export type MarqueSize = (typeof MARQUE_SIZES)[number];
 type MarqueManifest = typeof MARQUES_MANIFEST;
 export type InnerManifest = MarqueManifest['porscheMarque'];
 export type MarqueFormat = 'png' | 'webp';
+
+export type MarqueTarget = LinkTarget;
 
 export const cdnBaseUrl =
   ROLLUP_REPLACE_IS_STAGING === 'production' ? MARQUES_CDN_BASE_URL : 'http://localhost:3001/marque';

@@ -1,33 +1,29 @@
-import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  HEADLINE_TAGS,
-  THEMES_EXTENDED_ELECTRIC,
+  HEADING_TAGS,
+  THEMES,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../types';
-import type { HeadlineTag } from '../headline/headline-utils';
-import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { AccordionUpdateEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
+  AccordionTag,
   getContentHeight,
   observeResize,
-  removeResizeObserverFallback,
-  resizeObserverFallback,
   setCollapsibleElementHeight,
   unobserveResize,
-  useResizeObserverFallback,
-  warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
-  tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
+  tag: AllowedTypes.oneOf<AccordionTag>(HEADING_TAGS),
   open: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
 };
@@ -43,13 +39,13 @@ export class Accordion {
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
 
   /** Sets a headline tag, so it fits correctly within the outline of the page. */
-  @Prop() public tag?: HeadlineTag = 'h2';
+  @Prop() public tag?: AccordionTag = 'h2';
 
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
@@ -57,8 +53,13 @@ export class Accordion {
   /** Displays the Accordion as compact version with thinner border and smaller paddings. */
   @Prop() public compact?: boolean;
 
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
+   * Emitted when accordion state is changed. */
+  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionUpdateEvent>;
+
   /** Emitted when accordion state is changed. */
-  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionChangeEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEvent>;
 
   private collapsibleElement: HTMLDivElement;
   private content: HTMLDivElement;
@@ -70,40 +71,17 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    if (useResizeObserverFallback) {
-      resizeObserverFallback(this.host, this.setContentHeight, true);
+    if (this.content) {
+      this.observeResize(); // for reconnect
     }
-  }
-
-  public componentWillLoad(): void {
-    warnIfCompactAndSizeIsSet(this.host, this.compact, this.size);
   }
 
   public componentDidLoad(): void {
-    if (!useResizeObserverFallback) {
-      observeResize(
-        this.content,
-        ({ contentRect }) => {
-          this.contentHeight = getContentHeight(contentRect);
-          this.setCollapsibleElementHeight();
-        },
-        { box: 'border-box' }
-      );
-    }
-  }
-
-  public componentDidRender(): void {
-    if (useResizeObserverFallback) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
-    }
+    this.observeResize(); // for first init
   }
 
   public disconnectedCallback(): void {
-    if (useResizeObserverFallback) {
-      removeResizeObserverFallback(this.host, true);
-    } else {
-      unobserveResize(this.content);
-    }
+    unobserveResize(this.content);
   }
 
   public render(): JSX.Element {
@@ -117,7 +95,7 @@ export class Accordion {
     const Heading = this.tag;
 
     return (
-      <div class="root">
+      <Host>
         <Heading class="heading">
           <button
             id={buttonId}
@@ -127,14 +105,15 @@ export class Accordion {
             onClick={this.onButtonClick}
           >
             {this.heading || <slot name="heading" />}
-            <PrefixedTagNames.pIcon
-              class="icon"
-              color="inherit"
-              name="arrow-head-down"
-              theme={this.theme}
-              size="inherit"
-              aria-hidden="true"
-            />
+            <span class="icon-container">
+              <PrefixedTagNames.pIcon
+                class="icon"
+                name={this.open ? 'minus' : 'plus'}
+                theme={this.theme}
+                size="xx-small"
+                aria-hidden="true"
+              />
+            </span>
           </button>
         </Heading>
         <div
@@ -148,22 +127,27 @@ export class Accordion {
             <slot />
           </div>
         </div>
-      </div>
+      </Host>
     );
   }
 
   private onButtonClick = (): void => {
+    this.update.emit({ open: !this.open });
     this.accordionChange.emit({ open: !this.open });
   };
+
+  private observeResize(): void {
+    observeResize(
+      this.content,
+      ({ contentRect }) => {
+        this.contentHeight = getContentHeight(contentRect);
+        this.setCollapsibleElementHeight();
+      },
+      { box: 'border-box' }
+    );
+  }
 
   private setCollapsibleElementHeight(): void {
     setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
   }
-
-  private setContentHeight = (): void => {
-    if (this.content) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect());
-      this.setCollapsibleElementHeight();
-    }
-  };
 }

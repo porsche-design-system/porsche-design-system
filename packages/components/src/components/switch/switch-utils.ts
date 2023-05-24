@@ -1,5 +1,8 @@
-import type { AriaAttributes } from '../../types';
+import type { AlignLabel, AriaAttributes } from '../../types';
 import { getButtonBaseAriaAttributes } from '../../utils';
+
+export type SwitchAlignLabel = AlignLabel;
+export type SwitchUpdateEvent = { checked: boolean };
 
 export const getSwitchButtonAriaAttributes = (
   isDisabled: boolean,
@@ -9,6 +12,5 @@ export const getSwitchButtonAriaAttributes = (
   return {
     ...getButtonBaseAriaAttributes(isDisabled, isLoading),
     'aria-checked': isChecked ? 'true' : 'false',
-    'aria-labelledby': 'label',
   };
 };

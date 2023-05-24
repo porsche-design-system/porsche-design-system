@@ -7,10 +7,10 @@ used thoughtfully and sparingly.
 
 Modals are flexible in the context and can include other components of the Porsche Design System.
 
-It is a controlled component. This grants you flexible control over the Modal's behavior especially whether it should
+It is a controlled component. This grants you flexible control over the modal's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
-<p-inline-notification heading="Important note" state="warning" persistent="true">
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
   This component activates a focus trap to keep the focus within while being open.<br>
   This is achieved by detecting the first and last focusable child element after the modal is opened.<br>
   Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal. 
@@ -24,19 +24,20 @@ It is crucial to note that `p-modal` is displayed within your DOM hierarchy as a
 value. Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place.
 Otherwise, the modal might get clipped or overlapped by other elements.
 
-The most important property of `p-modal` is its `open` attribute. When it is present the Modal will be visible.
+The most important property of `p-modal` is its `open` attribute. When it is present the modal will be visible.
 
-In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
-key you need to register an event listener for the `close` event which is emitted by `p-modal`.
+In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
+key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
+
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>close</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>dismiss</code> event instead.
+</p-inline-notification>
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
-<Playground :markup="basic">
-  <select v-model="width" aria-label="Select modal width">
-    <option disabled>Select modal width</option>
-    <option value="minWidth">min width</option>
-    <option value="maxWidth">max width</option>
-  </select>
+<Playground :markup="widthMarkup">
+  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
 </Playground>
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to
@@ -44,8 +45,8 @@ guidelines for [Buttons](components/button/usage).
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or
-`Enter` key: The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the modal with `ESC` or
+`Enter` key: The trigger element (e.g. a button) which has opened the modal must **receive focus state again** after the
 Modal is closed. This is important to keep focus order consistent. You can test it out by navigation this example with
 the keyboard only.  
 To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a
@@ -53,11 +54,11 @@ meaningful heading through **ARIA** with the `aria` property.
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExampleAccessibility" :markup="basic"></Playground>
+<Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup"></Playground>
 
 ## Basic Scrollable
 
-If the Modal's content does not fit into the current boundaries the content becomes scrollable.
+If the modal's content does not fit into the current boundaries the content becomes scrollable.
 
 <Playground :markup="scrollable"></Playground>
 
@@ -78,13 +79,19 @@ cover up your content.
 
 <Playground :markup="withoutHeading"></Playground>
 
-## Without Close Button
+## Without Close/Dismiss Button
 
-It is possible to not render the close button by setting the `disable-close-button` attribute.  
-At the same time this also deactivates closing the Modal by pressing `Escape`.  
-If you want to disable closing the Modal by clicking the backdrop, you can set the `disable-backdrop-click` attribute.
+It is possible to not render the dismiss button by setting the `dismiss-button="false"` attribute.  
+At the same time this also deactivates dismissing the modal by pressing `Escape`.  
+If you want to prevent dismissing the modal by clicking the backdrop, you can set the `disable-backdrop-click`
+attribute.
 
-<Playground :markup="withoutCloseButton"></Playground>
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>disableCloseButton</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>dismissButton</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="withoutDismissButton"></Playground>
 
 ## Full Width Content
 
@@ -113,8 +120,6 @@ import { getModalCodeSamples } from '@porsche-design-system/shared';
 @Component
 export default class Code extends Vue {
   modals = [];
-  width = 'minWidth';
-
   codeExampleAccessibility = getModalCodeSamples();
 
   mounted() {
@@ -136,14 +141,14 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.modals = Array.from(document.querySelectorAll('p-modal'));
+    this.modals = document.querySelectorAll('p-modal');
     
-    const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
+    const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
     
     this.modals.forEach((modal, index) => {
-      modal.addEventListener('close', () => this.closeModal(index));
-      const buttons = Array.from(modal.querySelectorAll('p-button'));
+      modal.addEventListener('dismiss', () => this.closeModal(index));
+      const buttons = modal.querySelectorAll('p-button');
       buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
     });
   }
@@ -152,7 +157,9 @@ export default class Code extends Vue {
     return stretchToFullModalWidthClassName; 
   }
 
-  get basic() {
+  width = 'minWidth';
+  widths = ['minWidth', 'maxWidth'];
+  get widthMarkup() {
     const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
     
     return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
@@ -160,10 +167,10 @@ export default class Code extends Vue {
   ${content}
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+    <p-button type="button" variant="secondary" icon="close">Close</p-button>
   </p-button-group>
 </p-modal>`;}
-  
+
   scrollable =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
@@ -174,7 +181,7 @@ export default class Code extends Vue {
   <p-text>Even More Content</p-text>
   <p-button-group class="footer">
     <p-button>Save</p-button>
-    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+    <p-button type="button" variant="secondary" icon="close">Close</p-button>
   </p-button-group>
 </p-modal>`;
 
@@ -194,9 +201,9 @@ export default class Code extends Vue {
   <p-text>Some Content</p-text>
 </p-modal>`;
 
-  withoutCloseButton =
+  withoutDismissButton =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" disable-close-button="true" open="false">
+<p-modal heading="Some Heading" dismiss-button="false" open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
@@ -217,7 +224,7 @@ export default class Code extends Vue {
     </p-flex-item>
     <p-button-group class="footer">
       <p-button>Save</p-button>
-      <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+      <p-button type="button" variant="secondary" icon="close">Close</p-button>
     </p-button-group>
   </p-flex>
 </p-modal>`;
@@ -225,7 +232,7 @@ export default class Code extends Vue {
   openModal(index: number): void {
     this.modals[index].open = true;
   }
-  
+
   closeModal(index: number): void {
     this.modals[index].open = false;
   }
@@ -233,10 +240,10 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   :deep(.footer) {  
-    padding: p-px-to-rem(32px) 0 0;
+    padding: 2rem 0 0;
   }
   :deep(.fullscreen-container) {
     flex: 1;

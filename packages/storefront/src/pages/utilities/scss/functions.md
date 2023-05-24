@@ -4,6 +4,11 @@
 
 ## Media Query
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>p-media-query()</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Look into <a href="styles/media-query">media query</a> for a replacement.
+</p-inline-notification>
+
 Predefined breakpoints can easily be used as in the following examples.
 
 Available breakpoints:  
@@ -55,8 +60,13 @@ div {
 
 ## Typography
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>typography</code> styles are <strong>deprecated</strong> and will be removed with next major release.<br>
+  Use the styles provided at <a href="styles/typography">typography</a> instead.
+</p-inline-notification>
+
 **Note:** For font-styling it's recommended to use the
-[`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
+[`<p-heading>`](components/typography/heading)/[`<p-text>`](components/typography/text) components.
 
 ### Text
 
@@ -90,12 +100,12 @@ p {
 }
 ```
 
-### Headline
+### Heading
 
 Given values are:  
-`title-large | headline-1 | headline-2 | headline-3 | headline-4 | headline-5`
+`title-large | xx-large | x-large | large | medium | small`
 
-Possible headline mixin for usage with SCSS (where {v} is the value):
+Possible heading mixin for usage with SCSS (where {v} is the value):
 
 ```
 @include p-{v};
@@ -107,7 +117,7 @@ Possible headline mixin for usage with SCSS (where {v} is the value):
 @import '~@porsche-design-system/utilities/scss';
 
 h1 {
-  @include p-headline-1;
+  @include p-heading-1;
 }
 ```
 
@@ -151,6 +161,11 @@ h1 {
 ## State
 
 ### Focus
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  The <code>p-focus()</code> style is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Use <code>pds-focus()</code> style provided at <a href="styles/focus">focus</a> instead.
+</p-inline-notification>
 
 The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by
 accessibility guidelines and law. The provided SCSS mixin ensures focus is shown by keyboard navigation only.

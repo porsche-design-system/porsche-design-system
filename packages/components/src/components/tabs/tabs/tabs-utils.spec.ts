@@ -1,6 +1,6 @@
 import type { TabsItem } from '../tabs-item/tabs-item';
 import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
-import type { ThemeExtendedElectric } from '../../../types';
+import type { Theme } from '../../../types';
 import { syncTabsItemsProps } from './tabs-utils';
 import * as stencilCore from '@stencil/core';
 
@@ -10,7 +10,7 @@ describe('syncTabsItemsProps()', () => {
   const child2: HTMLElement & TabsItem & TabsItemInternalHTMLProps = document.createElement('div') as any;
   host.append(child1, child2);
 
-  const theme: ThemeExtendedElectric = 'dark';
+  const theme: Theme = 'dark';
 
   it('should set theme property on every item', () => {
     expect(child1.theme).toBeUndefined();

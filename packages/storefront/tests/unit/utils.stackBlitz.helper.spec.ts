@@ -1,5 +1,5 @@
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import type { Theme, ColorScheme } from '../../src/models';
+import type { Theme, BackgroundColor } from '../../src/models';
 import {
   getExternalDependencies,
   getBackgroundColor,
@@ -71,12 +71,12 @@ describe('getExternalDependencies()', () => {
 });
 
 describe('getBackgroundColor()', () => {
-  it.each<[Theme, ColorScheme, string]>([
-    ['light', 'default', themeLight.background.base],
-    ['light', 'surface', themeLight.background.surface],
-    ['dark', 'default', themeDark.background.base],
-    ['dark', 'surface', themeDark.background.surface],
-  ])('should for Theme: %s, colorScheme: %s return %s', (theme, colorScheme, expected) => {
+  it.each<[Theme, BackgroundColor, string]>([
+    ['light', 'background-base', themeLight.background.base],
+    ['light', 'background-surface', themeLight.background.surface],
+    ['dark', 'background-base', themeDark.background.base],
+    ['dark', 'background-surface', themeDark.background.surface],
+  ])('should for Theme: %s, backgroundColor: %s return %s', (theme, colorScheme, expected) => {
     expect(getBackgroundColor(theme, colorScheme)).toBe(expected);
   });
 });
@@ -133,6 +133,7 @@ describe('isStableStorefrontRelease()', () => {
 });
 
 describe('convertImportPaths()', () => {
+  // TODO: global flag isn't covered, stable release check as well
   const markup = `
 'import * from '@porsche-design-system/components-js';
 'import * from '@porsche-design-system/components-angular';
@@ -141,21 +142,21 @@ describe('convertImportPaths()', () => {
   it('should return markup without modification', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(true);
 
-    expect(convertImportPaths(markup, 'js', '1.2.3')).toMatchSnapshot();
+    expect(convertImportPaths(markup, 'vanilla-js', '1.2.3')).toMatchSnapshot();
   });
 
-  it('should return markup without updated import path for js', () => {
+  it('should return markup with updated import path for js', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
 
-    expect(convertImportPaths(markup, 'js', '1.2.3')).toMatchSnapshot();
+    expect(convertImportPaths(markup, 'vanilla-js', '1.2.3')).toMatchSnapshot();
   });
 
-  it('should return markup without updated import path for angular', () => {
+  it('should return markup with updated import path for angular', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
 
     expect(convertImportPaths(markup, 'angular', '1.2.3')).toMatchSnapshot();
   });
-  it('should return markup without updated import path for react', () => {
+  it('should return markup with updated import path for react', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
 
     expect(convertImportPaths(markup, 'react', '1.2.3')).toMatchSnapshot();
@@ -170,7 +171,7 @@ describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
     ],
     ['<img src="img/image.png" alt="Some alt text">', '<img src="http://localhost/img/image.png" alt="Some alt text">'],
   ])(
-    'should for  input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters',
+    'should for input: %s and output: %s correctly transform src / srcset and call document.querySelector() and getAttribute() with correct parameters',
     (input, output) => {
       const div = document.createElement('div');
       const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValueOnce(div);

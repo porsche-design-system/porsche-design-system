@@ -27,12 +27,17 @@ Basic implementation is a tab bar with tabs to switch between the content. Just 
 change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate the window location, inside the
 `<p-tabs-bar>` component and it will handle all styling behaviors.
 
-In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event
+In order to get notified when the active tabs change, you need to register an event listener for the `change` event
 which is emitted by `p-tabs-bar`.
+
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>update</code> event instead.
+</p-inline-notification>
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExampleBasic" :markup="basicButton"></Playground>
+<Playground :frameworkMarkup="codeExampleBasic" :markup="basicButton.replace('<p-tabs-bar', '$& active-tab-index=0')"></Playground>
 
 ### Buttons
 
@@ -68,41 +73,40 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select size">
-    <option disabled>Select size</option>
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
-  </select>
+  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
 </Playground>
 
 ## Weight
 
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>semi-bold</code> value instead.
+</p-inline-notification>
+
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select weight</option>
-    <option value="regular">Regular</option>
-    <option value="semibold">SemiBold</option>
-  </select>
+  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
 </Playground>
 
-## Gradient Color Scheme
+## Gradient color
 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <select v-model="gradientColorScheme" aria-label="Select color scheme">
-    <option disabled>Select gradient-color-scheme</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+  The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>gradientColor</code> property instead.
+</p-inline-notification>
+
+<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS, TABS_BAR_WEIGHTS_DEPRECATED } from './tabs-bar-utils';
+import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
 const buildAnchor = (name: string) => `  <a href="https://porsche.com" target="_blank">Tab ${name}</a>`;
@@ -116,10 +120,6 @@ export default class Code extends Vue {
 
   codeExampleAccessibility = getTabsBarCodeSamples('example-accessibility');
   codeExampleBasic = getTabsBarCodeSamples('example-basic');
-
-  weight = 'semibold';
-  size = 'medium';
-  gradientColorScheme = 'surface';
 
   basicButton =
     `<p-tabs-bar>
@@ -140,20 +140,26 @@ ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
  
     ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
+  size = 'medium';
+  sizes = [...TABS_BAR_SIZES, "{ base: 'small', l: 'medium' }"];
   get sizeMarkup() {
     return `<p-tabs-bar size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
 
+  weight = 'semi-bold';
+  weights = TABS_BAR_WEIGHTS.map(item => TABS_BAR_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get weightMarkup() {
     return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
-    
-  get gradientMarkup() {
-    return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
+
+  gradientColor = 'background-surface';
+  gradientColors = GRADIENT_COLORS;
+  get gradientColorMarkup() {
+    return `<p-tabs-bar gradient-color="${this.gradientColor}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
@@ -187,12 +193,12 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     this.updateAndRegister();
     
     /* theme switch needs to register event listeners again */
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
+    const themeTabsBar = this.$el.querySelectorAll('.playground > p-tabs-bar');
+    themeTabsBar.forEach(tab => tab.addEventListener('update', () => {
       this.updateAndRegister(); 
     }));    
   }
-  
+
   updated() {
     this.registerEvents();
   }
@@ -201,43 +207,29 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));      
     this.registerEvents();
   }
-  
+
   registerEvents() {
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-    tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));
+    tabsBars.forEach(tabsBar => tabsBar.addEventListener('update', this.onTabsBarUpdate));
 
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-      this.onTabChange(e);
+    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('update', (e: CustomEvent<TabsBarUpdateEvent>)=> {
+      this.onTabsBarUpdate(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
 
-  onTabChange = (e: CustomEvent) => {
+  onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
 
   :deep(div[role=tabpanel]) {
-    outline: 1px solid transparent;
-    outline-offset: 2px;
-    margin-top: p-px-to-rem(8px);
-  }
-
-  :deep(.example--light div[role=tabpanel]:focus) {
-    outline-color: #000;
-  }
-
-  :deep(.example--dark div[role=tabpanel]:focus) {
-    outline-color: #FFF;
-  }
-
-  :deep(div[role=tabpanel]:focus:not(:focus-visible)) {
-    outline-color: transparent;
+    margin-top: $pds-spacing-static-small;
   }
 </style>

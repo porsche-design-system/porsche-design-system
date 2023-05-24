@@ -1,5 +1,6 @@
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, pxToRemWithUnit, getThemedColors } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { spacingFluidSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (multiline: boolean): string => {
   return getCss({
@@ -7,10 +8,10 @@ export const getComponentCss = (multiline: boolean): string => {
       ':host': {
         ...addImportantToEachRule({
           display: 'table-cell',
-          padding: pxToRemWithUnit(12),
+          padding: spacingFluidSmall,
           margin: 0,
-          borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
           whiteSpace: multiline ? 'normal' : 'nowrap',
+          ...hostHiddenStyles,
         }),
         verticalAlign: 'middle',
       },

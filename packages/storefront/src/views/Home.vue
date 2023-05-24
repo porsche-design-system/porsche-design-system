@@ -18,7 +18,7 @@
     <article class="intro">
       <p-grid>
         <p-grid-item size="{base: 12, m: 4}">
-          <p-headline variant="headline-3" tag="h1">Porsche Design System</p-headline>
+          <p-heading size="large" tag="h1">Porsche Design System</p-heading>
           <p-text size="{ base:'small', s: 'medium' }">for web applications</p-text>
           <p-text class="spacing-mt-8">
             <router-link to="/about/introduction">Learn more about it</router-link>
@@ -27,15 +27,15 @@
         <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size="{base: 12, m: 8}">
           <p-text size="medium">
             The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic
-            and high-quality web applications, including easy-to-use Sketch libraries, coded Web Components and
-            comprehensive usage guidelines. Everything is built and tested following the Porsche quality standards and
-            corporate design principles.
+            and high-quality web applications, including easy-to-use Figma and UX Pin libraries, coded Web Components
+            and comprehensive usage guidelines. Everything is built and tested following the Porsche quality standards
+            and corporate design principles.
           </p-text>
           <p-text class="spacing-mt-32">
-            We provide releases for <strong>Vanilla JS</strong>, <strong>Angular</strong> and
-            <strong>React</strong> based on Web Components and appreciate any feedback, feature requests or suggestions
-            on our public
-            <a href="https://github.com/porsche-design-system/porsche-design-system-contribution/issues">Contribution Board</a>.
+            We provide releases for <strong>Vanilla JS</strong>, <strong>Angular</strong>,
+            <strong>React (NextJS | Remix)</strong> and <strong>Vue</strong> based on Web Components and appreciate any
+            feedback, feature requests or suggestions on our public
+            <a href="https://github.com/porsche-design-system/porsche-design-system/issues/new/choose">Issue Board</a>.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
@@ -44,8 +44,13 @@
               </p-link>
             </p-flex-item>
             <p-flex-item>
-              <p-link variant="primary" class="router-link spacing-mt-16">
+              <p-link variant="primary" class="router-link spacing-mt-16 spacing-mr-32">
                 <router-link to="/start-coding/introduction">Start Coding</router-link>
+              </p-link>
+            </p-flex-item>
+            <p-flex-item>
+              <p-link variant="primary" class="router-link spacing-mt-16">
+                <router-link to="/news/migration-guide">Start migrating from v2 to v3 (technically)</router-link>
               </p-link>
             </p-flex-item>
           </p-flex>
@@ -55,7 +60,7 @@
     <article class="newsletter">
       <p-grid>
         <p-grid-item size="{base: 12, m: 3}">
-          <p-headline variant="headline-3" tag="h2">Learn more about UX Design at Porsche</p-headline>
+          <p-heading size="large" tag="h2">Learn more about UX Design at Porsche</p-heading>
         </p-grid-item>
         <p-grid-item size="{base: 12, m: 8}" offset="{base: 0, m: 1}">
           <p-text size="medium"
@@ -80,12 +85,12 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
   .teaser {
     &:first-child {
-      margin-top: -$pds-spacing-large;
+      margin-top: -$pds-spacing-static-large;
 
       @include pds-media-query-min('s') {
         margin-top: -4rem;
@@ -93,8 +98,8 @@
     }
 
     margin: {
-      left: -$pds-spacing-large;
-      right: -$pds-spacing-large;
+      left: -$pds-spacing-static-large;
+      right: -$pds-spacing-static-large;
     }
 
     @include pds-media-query-min('s') {
@@ -124,10 +129,10 @@
 
   .intro {
     margin: {
-      left: -$pds-spacing-large;
-      right: -$pds-spacing-large;
+      left: -$pds-spacing-static-large;
+      right: -$pds-spacing-static-large;
     }
-    padding: $pds-spacing-large;
+    padding: $pds-spacing-static-large;
 
     @include pds-media-query-min('s') {
       margin: {
@@ -139,7 +144,7 @@
 
     p a {
       text-decoration: none;
-      color: $pds-theme-light-brand;
+      color: $pds-theme-light-primary;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
@@ -148,13 +153,13 @@
     }
 
     h2 + p a {
-      border-bottom: 1px solid $pds-theme-light-brand;
+      border-bottom: 1px solid $pds-theme-light-primary;
     }
   }
 
   .newsletter {
     &:last-child {
-      margin-bottom: -$pds-spacing-large;
+      margin-bottom: -$pds-spacing-static-large;
 
       @include pds-media-query-min('s') {
         margin-bottom: -4rem;
@@ -162,10 +167,10 @@
     }
 
     margin: {
-      left: -$pds-spacing-large;
-      right: -$pds-spacing-large;
+      left: -$pds-spacing-static-large;
+      right: -$pds-spacing-static-large;
     }
-    padding: $pds-spacing-large;
+    padding: $pds-spacing-static-large;
     background: $pds-theme-light-background-surface;
 
     @include pds-media-query-min('s') {
@@ -177,7 +182,7 @@
     }
 
     a {
-      color: $pds-theme-light-brand;
+      color: $pds-theme-light-primary;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {

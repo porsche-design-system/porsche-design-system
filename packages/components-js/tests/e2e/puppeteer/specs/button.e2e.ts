@@ -309,10 +309,10 @@ it('should submit form via enter key when type is submit', async () => {
   expect((await getEventSummary(form, 'submit')).counter).toBe(3);
 });
 
-it('should change theme of spinner if changed programmatically and variant tertiary', async () => {
+it('should change theme of spinner if theme and/or variant of host is changed programmatically', async () => {
   await setContentWithDesignSystem(page, `<p-button loading="true">Some label</p-button>`);
   const host = await getHost();
-  const spinner = await selectNode(page, 'p-button >>> .icon');
+  const spinner = await selectNode(page, 'p-button >>> .spinner');
 
   expect(await getProperty(spinner, 'theme')).toBe('dark');
 
@@ -321,10 +321,20 @@ it('should change theme of spinner if changed programmatically and variant terti
 
   expect(await getProperty(spinner, 'theme')).toBe('dark');
 
+  await setProperty(host, 'variant', 'secondary');
+  await waitForStencilLifecycle(page);
+
+  expect(await getProperty(spinner, 'theme')).toBe('light');
+
   await setProperty(host, 'variant', 'tertiary');
   await waitForStencilLifecycle(page);
 
   expect(await getProperty(spinner, 'theme')).toBe('light');
+
+  await setProperty(host, 'variant', 'primary');
+  await waitForStencilLifecycle(page);
+
+  expect(await getProperty(spinner, 'theme')).toBe('dark');
 });
 
 describe('focus state', () => {
@@ -356,9 +366,8 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -377,13 +386,14 @@ describe('lifecycle', () => {
     await initButton();
     const host = await getHost();
 
-    await setProperty(host, 'variant', 'tertiary');
+    await setProperty(host, 'icon', 'arrow-right');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-button'], 'componentDidUpdate: p-button').toBe(1);
-    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 });
 

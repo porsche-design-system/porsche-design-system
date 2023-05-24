@@ -1,19 +1,10 @@
 import {
   getContentHeight,
   observeResize,
-  observeWindowResize,
-  onWindowResize,
-  registeredElements,
   resizeMap,
   setCollapsibleElementHeight,
   unobserveResize,
-  unobserveWindowResize,
-  useResizeObserverFallbackOverride,
-  warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
-import { Accordion } from './accordion';
-import * as accordionUtils from './accordion-utils';
-import * as childrenObserverUtils from '../../utils/children-observer';
 
 describe('setCollapsibleElementHeight()', () => {
   it('should set style.height on element to "200px" if isOpen = true', () => {
@@ -42,33 +33,12 @@ describe('setCollapsibleElementHeight()', () => {
 });
 
 describe('getContentHeight()', () => {
-  it('should return height value with extra padding in rem', () => {
-    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('1rem');
+  it('should return height value with extra padding in px', () => {
+    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('16px');
   });
 
-  it('should return height value without extra padding for compact = true in rem', () => {
-    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('1rem');
-  });
-});
-
-describe('warnIfCompactAndSizeIsSet()', () => {
-  it('should print warning when compact and size is defined', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-    const host = document.createElement('p-accordion');
-
-    warnIfCompactAndSizeIsSet(host, true, 'small');
-    warnIfCompactAndSizeIsSet(host, false, 'medium');
-
-    expect(spy).not.toBeCalled();
-
-    warnIfCompactAndSizeIsSet(host, true, 'medium');
-    warnIfCompactAndSizeIsSet(
-      host,
-      true,
-      '{"base":"small","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"}'
-    );
-
-    expect(spy).toBeCalledTimes(2);
+  it('should return height value without extra padding for compact = true in px', () => {
+    expect(getContentHeight({ height: 16 } as DOMRectReadOnly)).toBe('16px');
   });
 });
 
@@ -194,114 +164,5 @@ describe('unobserveResize()', () => {
     expect(resizeMap.get(node1)).toEqual(undefined);
     expect(resizeMap.get(node2)).toEqual(callback2);
     expect(resizeMap.get(node3)).toEqual(undefined);
-  });
-});
-
-describe('onWindowResize()', () => {
-  it('should call setContentHeight() for each accordion', () => {
-    const host1 = document.createElement('p-accordion');
-    const host2 = document.createElement('p-accordion');
-    const component1 = new Accordion();
-    const component2 = new Accordion();
-    component1.host = host1;
-    component2.host = host2;
-    const mockCallback1 = jest.fn(() => {});
-    const mockCallback2 = jest.fn(() => {});
-
-    observeWindowResize(component1.host, mockCallback1);
-    observeWindowResize(component2.host, mockCallback2);
-
-    onWindowResize();
-
-    expect(mockCallback1).toBeCalledTimes(1);
-    expect(mockCallback2).toBeCalledTimes(1);
-  });
-});
-
-describe('observeWindowResize()', () => {
-  beforeEach(() => {
-    registeredElements.clear();
-  });
-
-  it('should push accordion to registeredComponents', () => {
-    const component = new Accordion();
-    const mockCallback = jest.fn(() => {});
-    observeWindowResize(component.host, mockCallback);
-
-    expect(registeredElements.size).toBe(1);
-  });
-
-  it('should not push accordion to registeredComponents if it is a duplicate', () => {
-    const component = new Accordion();
-    const mockCallback = jest.fn(() => {});
-    observeWindowResize(component.host, mockCallback);
-    observeWindowResize(component.host, mockCallback);
-
-    expect(registeredElements.size).toBe(1);
-  });
-
-  it('should add event listener', () => {
-    const windowSpy = jest.spyOn(window, 'addEventListener');
-    observeWindowResize(undefined, undefined);
-
-    expect(windowSpy).toBeCalledWith('resize', expect.any(Function));
-  });
-});
-
-describe('unobserveWindowResize()', () => {
-  beforeEach(() => {
-    registeredElements.clear();
-  });
-
-  it('should remove accordion from registeredComponents', () => {
-    const component = new Accordion();
-    const mockCallback = jest.fn(() => {});
-    observeWindowResize(component.host, mockCallback);
-
-    expect(registeredElements.size).toBe(1);
-
-    unobserveWindowResize(component.host);
-
-    expect(registeredElements.size).toBe(0);
-  });
-
-  it('should remove event listener if no registeredComponents are defined', () => {
-    const windowSpy = jest.spyOn(window, 'removeEventListener');
-    unobserveWindowResize(undefined);
-
-    expect(windowSpy).toBeCalledWith('resize', expect.any(Function));
-  });
-});
-
-describe('resizeObserverFallback', () => {
-  it('should call observeWindowResize() and observeChildren()', () => {
-    const accordionUtilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
-    const observeChildrenSpy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-
-    useResizeObserverFallbackOverride(true);
-
-    const component = new Accordion();
-    component.host = document.createElement('p-accordion');
-
-    component.connectedCallback();
-
-    expect(accordionUtilsSpy).toBeCalledWith(component.host, component['setContentHeight']);
-    expect(observeChildrenSpy).toBeCalledWith(component.host, expect.any(Function));
-  });
-});
-
-describe('removeResizeObserverFallback()', () => {
-  it('should call unobserveWindowResize() and unobserveChildren()', () => {
-    const accordionUtilsSpy = jest.spyOn(accordionUtils, 'unobserveWindowResize');
-    const observeChildrenSpy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
-
-    useResizeObserverFallbackOverride(true);
-
-    const component = new Accordion();
-    component.host = document.createElement('p-accordion');
-    component.disconnectedCallback();
-
-    expect(accordionUtilsSpy).toBeCalledWith(component.host);
-    expect(observeChildrenSpy).toBeCalledWith(component.host);
   });
 });

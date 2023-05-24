@@ -1,31 +1,32 @@
-# Fieldset
+# Fieldset Wrapper
 
 The `p-fieldset-wrapper` is a grouping component for wrapping contextual associated form elements. Its visible part is
 an HTML _legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some
 usage examples on our [form patterns section](patterns/forms/resources).
 
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+  This component is deprecated and will be removed with the next major release.
+Please use <a href="components/fieldset">p-fieldset</a> instead.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic example with label
 
-<Playground :markup="withLabelMarkup"></Playground>
+<Playground :markup="withLabelMarkup" :config="config"></Playground>
 
 ---
 
 ## Slotted label
 
-<Playground :markup="slottedLabelMarkup"></Playground>
+<Playground :markup="slottedLabelMarkup" :config="config"></Playground>
 
 ---
 
 ## Size
 
-<Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size" aria-label="Select label size">
-    <option disabled>Select label size</option>
-    <option value="small">small</option>
-    <option value="medium">medium</option>
-  </select>
+<Playground :markup="labelSizeMarkup" :config="config">
+  <SelectOptions v-model="labelSize" :values="labelSizes" name="labelSize"></SelectOptions>
 </Playground>
 
 ---
@@ -36,18 +37,14 @@ If the `p-fieldset-wrapper` is set to `required="true"`, only the label of the `
 is removed from all wrapped child components, as long as they are Porsche Design System form elements. You should still
 set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
 
-<Playground :markup="requiredMarkup"></Playground>
+<Playground :markup="requiredMarkup" :config="config"></Playground>
 
 ---
 
 ## State
 
 <Playground :markup="stateMarkup" :config="config">
-  <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">error</option>
-    <option value="success">success</option>
-  </select>
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
 ---
@@ -55,24 +52,19 @@ set required on the input of the wrapped form elements to ensure accessibility, 
 ## Slotted message
 
 <Playground :markup="slottedMessageMarkup" :config="config">
-  <select v-model="slottedMessage" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">error</option>
-    <option value="success">success</option>
-  </select>
+  <SelectOptions v-model="slottedMessage" :values="slottedMessages" name="state"></SelectOptions>
 </Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { FIELDSET_LABEL_SIZES } from './../fieldset/fieldset-utils';
+import { FORM_STATES } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'block' }; 
-  size = 'small';
-  state = 'error';
-  slottedMessage = 'error';
-
+  config = { spacing: 'block', themeable: true }; 
+  
   withLabelMarkup =
 `<p-fieldset-wrapper label="Some legend label">
   <p-text-field-wrapper label="Some label">
@@ -88,13 +80,15 @@ export default class Code extends Vue {
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
-  get sizeMarkup() {
-    return `<p-fieldset-wrapper label="Some legend label" label-size=${this.size}>
+  labelSize = 'small';
+  labelSizes = FIELDSET_LABEL_SIZES;
+  get labelSizeMarkup() {
+    return `<p-fieldset-wrapper label="Some legend label" label-size=${this.labelSize}>
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
-   }
+  }
 
   requiredMarkup =
 `<p-fieldset-wrapper label="Some legend label" required="true">
@@ -103,6 +97,8 @@ export default class Code extends Vue {
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
+  state = 'error';
+  states = FORM_STATES;
   get stateMarkup() {
     const message = this.state === 'error' ? 'Some error message' : 'Some success message';
     const attr = `state="${this.state}" message="${message}"`;
@@ -119,6 +115,8 @@ export default class Code extends Vue {
 </p-fieldset-wrapper>`;
   }
 
+  slottedMessage = 'error';
+  slottedMessages = FORM_STATES;
   get slottedMessageMarkup() {
     const content = this.slottedMessage === 'error' ? 'Some error message' : 'Some success message';
     return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMessage}>
@@ -132,7 +130,13 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+
   .state-markup > * {
-    margin-top: .5rem;
+    margin-top: $pds-spacing-static-medium;
+  }
+
+  :deep(p-checkbox-wrapper) {
+    margin-top: $pds-spacing-static-medium;
   }
 </style>

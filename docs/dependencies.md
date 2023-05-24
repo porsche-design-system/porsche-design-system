@@ -1,14 +1,4 @@
-# Dependencies 02.01.2023
-
-## Playwright
-
-We have to stay on `1.27.0` for now since later versions supply WebKit 16.4 which causes flaky behavior in our VRT
-pages. See <https://github.com/microsoft/playwright/releases>.
-
-### Affected dependencies:
-
-- `@playwright/test`
-- `mcr.microsoft.com/playwright:v1.27.0-focal` (Docker base image)
+# Dependencies 04.05.2023
 
 ## Vue
 
@@ -33,6 +23,8 @@ with Vue **2** and **3**.
 - `sass-loader`
 - `vmark`
 - `vmark-loader`
+- `@stackblitz/sdk` uses optional chaining internally which can't be handled by webpack 4 without additional babel
+  plugins
 
 ---
 
@@ -45,10 +37,8 @@ As mentioned here https://angular.io/guide/creating-libraries#ensuring-library-v
 component-libraries, the Angular version used to build an application should always be the same or greater than the
 Angular versions used to build any of its dependent libraries.
 
-This means if we upgrade to `Angular v14`, all of our consumers are forced to use `Angular v14` too, because there were
-breaking changes in `@angular/core` that are not backwards compatible. We have decided to stay on `Angular v13` because
-it is forward compatible and wait for feedback of our consuming teams on when they are ready to upgrade to `Angular v14`
-before we upgrade to it.
+We are now on `Angular v15` after conformation of our consuming teams. Before upgrading to a new version, ensure all
+consuming teams are already on the next major.
 
 ### Affected dependencies:
 
@@ -67,7 +57,6 @@ before we upgrade to it.
 - `@angular/compiler-cli`
 - `@angular/language-service`
 - `ng-packagr`
-- `angular-imask` is not compatible with Angular 13 anymore, see https://github.com/uNmAnNeR/imaskjs/issues/741
 
 ---
 

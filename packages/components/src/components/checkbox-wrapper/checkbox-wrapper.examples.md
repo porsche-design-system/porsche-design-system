@@ -12,16 +12,9 @@ text for screen readers.
 
 ## Basic example
 
-<Playground :markup="basic" :config="config">
-  <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select label mode</option>
-    <option value="show">With label</option>
-    <option value="hide">Without label</option>
-    <option value="responsive">Responsive</option>
-  </select>
+<Playground :markup="hideLabelMarkup" :config="config">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
-
----
 
 ## Indeterminate
 
@@ -36,13 +29,9 @@ hidden from the user, but the checkbox still keeps it's `checked` state. You can
 
 <Playground :markup="indeterminate" :config="config"></Playground>
 
----
-
 ## Required
 
 <Playground :markup="required" :config="config"></Playground>
-
----
 
 ## Disabled
 
@@ -55,23 +44,18 @@ anymore and can be missed by screen reader users. They can be confusing for sigh
 why these elements are disabled. A good practice when to use the disabled state is during **form submission** to prevent
 changes while this process is performed.
 
----
+## Loading
+
+<Playground :markup="loading" :config="config"></Playground>
 
 ## Validation states
 
 The `p-checkbox-wrapper` component supports the visualisation of inline validation. The `message` and `checkbox` is
 colored and visible/hidden depending on the defined `state`.
 
-<Playground :markup="validation" :config="config">
-  <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select validation state</option>
-    <option value="error">Error</option>
-    <option value="success">Success</option>
-    <option value="none">None</option>
-  </select>
+<Playground :markup="stateMarkup" :config="config">
+  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
-
----
 
 ## Slots
 
@@ -97,20 +81,19 @@ reader users the corresponding information:
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { FORM_STATES } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'inline' };
+  config = { themeable: true, spacing: 'block' };
 
-  state = 'error';
-  label = 'show';
-
-  get basic() {
-    const hideLabel = this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false';
-    return `<p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
+  hideLabel = false;
+  hideLabels = [false, true, '{ base: true, l: false }'];
+  get hideLabelMarkup() {
+    return `<p-checkbox-wrapper label="Some label" hide-label="${this.hideLabel}">
   <input type="checkbox" name="some-name" />
 </p-checkbox-wrapper>
-<p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
+<p-checkbox-wrapper label="Some label" hide-label="${this.hideLabel}">
   <input type="checkbox" name="some-name" checked />
 </p-checkbox-wrapper>`;
   }
@@ -139,7 +122,20 @@ export default class Code extends Vue {
   <input type="checkbox" name="some-name" disabled checked />
 </p-checkbox-wrapper>`;
 
-  get validation() {
+  isLoading = true;
+  get loading() {
+    return `<p-checkbox-wrapper label="Some label" loading="${this.isLoading}">
+  <input type="checkbox" name="some-name" />
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="Some label" loading="${this.isLoading}">
+  <input type="checkbox" name="some-name" checked />
+</p-checkbox-wrapper>`;
+  }
+
+
+  state = 'error';
+  states = FORM_STATES;
+  get stateMarkup() {
     const message = this.state !== 'none' ? `Some ${this.state} validation message.` : ''; 
     return `<p-checkbox-wrapper label="Some label" state="${this.state}" message="${message}">
   <input type="checkbox" name="some-name" />

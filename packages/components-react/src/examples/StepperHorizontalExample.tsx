@@ -1,4 +1,4 @@
-import type { StepChangeEvent, StepperState } from '@porsche-design-system/components-react';
+import type { StepperHorizontalUpdateEvent, StepperHorizontalItemState } from '@porsche-design-system/components-react';
 import {
   PButton,
   PButtonGroup,
@@ -9,9 +9,10 @@ import {
 import { useState } from 'react';
 
 type StepperHorizontalItemProps = {
-  state?: StepperState;
+  state?: StepperHorizontalItemState;
   name: string;
 };
+
 export const StepperHorizontalExample = (): JSX.Element => {
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
@@ -50,7 +51,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
     setSteps(newState);
   };
 
-  const handleStepChange = (e: CustomEvent<StepChangeEvent>): void => {
+  const onUpdate = (e: CustomEvent<StepperHorizontalUpdateEvent>): void => {
     const { activeStepIndex } = e.detail;
 
     const newState = [...steps];
@@ -64,7 +65,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
 
   return (
     <>
-      <PStepperHorizontal onStepChange={handleStepChange}>
+      <PStepperHorizontal onUpdate={onUpdate}>
         {steps.map(({ state, name }) => (
           <PStepperHorizontalItem key={name} state={state}>
             {name}
@@ -76,6 +77,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
 
       <PButtonGroup>
         <PButton
+          type="button"
           icon="arrow-head-left"
           variant="tertiary"
           onClick={() => onNextPrevStep('prev')}

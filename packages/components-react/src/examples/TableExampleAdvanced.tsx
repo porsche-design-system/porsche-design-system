@@ -1,8 +1,7 @@
+import type { TableUpdateEvent } from '@porsche-design-system/components-react';
 import {
   PButtonPure,
-  PFlex,
-  PFlexItem,
-  PHeadline,
+  PHeading,
   PTable,
   PTableBody,
   PTableCell,
@@ -12,7 +11,6 @@ import {
   PTableRow,
   PText,
 } from '@porsche-design-system/components-react';
-import type { SortingChangeEvent } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
@@ -20,8 +18,8 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 
-  const onSortingChange = useCallback((e: CustomEvent<SortingChangeEvent>) => {
-    const { id, direction } = e.detail as SortingChangeEvent & { id: keyof DataAdvanced };
+  const onUpdate = useCallback((e: CustomEvent<TableUpdateEvent>) => {
+    const { id, direction } = e.detail as TableUpdateEvent & { id: keyof DataAdvanced };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {
@@ -31,10 +29,10 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
   }, []);
 
   return (
-    <PTable onSortingChange={onSortingChange}>
-      <PHeadline slot="caption" variant="headline-3">
+    <PTable onUpdate={onUpdate}>
+      <PHeading slot="caption" size="large">
         Some visual caption
-      </PHeadline>
+      </PHeading>
       <PTableHead>
         <PTableHeadRow>
           {head.map((item, i) => (
@@ -48,15 +46,13 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
         {data.map((item, i) => (
           <PTableRow key={i}>
             <PTableCell>
-              <PFlex>
-                <PFlexItem>
-                  <img src={item.imageUrl} width={80} height={45} style={{ marginRight: '.5rem' }} alt="" />
-                </PFlexItem>
-                <PFlexItem>
-                  <PText weight="semibold">{item.model}</PText>
+              <div style={{ display: 'flex' }}>
+                <img src={item.imageUrl} width={80} height={45} style={{ marginRight: '.5rem' }} alt="" />
+                <div>
+                  <PText weight="semi-bold">{item.model}</PText>
                   <PText size="x-small">{item.date}</PText>
-                </PFlexItem>
-              </PFlex>
+                </div>
+              </div>
             </PTableCell>
             <PTableCell>{item.interest}</PTableCell>
             <PTableCell>

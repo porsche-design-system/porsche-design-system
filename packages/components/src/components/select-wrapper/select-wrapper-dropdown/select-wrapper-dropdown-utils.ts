@@ -34,15 +34,8 @@ export const getFilterInputAriaAttributes = (
   activeDescendantId: number
 ): AriaAttributes => {
   return {
-    'aria-labelledby': labelId,
-    'aria-describedby': descriptionId || null,
-    'aria-haspopup': 'listbox',
-    'aria-expanded': isOpen ? 'true' : 'false',
+    ...getSelectWrapperDropdownButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId),
     'aria-autocomplete': 'list',
-    'aria-controls': dropdownId,
-    ...(isOpen && {
-      'aria-activedescendant': `option-${activeDescendantId}`,
-    }),
     ...(isRequired && {
       'aria-required': 'true',
     }),
@@ -53,7 +46,7 @@ export const getListAriaAttributes = (
   label: string,
   isRequired: boolean,
   hasFilter: boolean,
-  isOpen: boolean,
+  isOpen: boolean
 ): AriaAttributes => {
   return {
     'aria-label': label,
@@ -62,8 +55,8 @@ export const getListAriaAttributes = (
         'aria-required': 'true',
       }),
     ...(!isOpen && {
-      'aria-hidden': 'true'
-    })
+      'aria-hidden': 'true',
+    }),
   };
 };
 
@@ -78,27 +71,26 @@ export const determineDirection = (host: HTMLElement): DropdownDirectionInternal
   const { length } = getHTMLElements(host.shadowRoot, '.option:not([aria-hidden="true"])');
   const { top } = host.getBoundingClientRect();
 
-  const listHeight = length >= MAX_CHILDREN ? OPTION_HEIGHT * MAX_CHILDREN : OPTION_HEIGHT * length;
+  const listHeight = OPTION_HEIGHT * (length > MAX_CHILDREN ? MAX_CHILDREN : length) + 14; // 26 = 2 x 6px padding + 2px border
   const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };
 
-export const handleScroll = (host: HTMLElement, highlightedIndex: number): void => {
-  const hostElementHeightThreshold = 276; // based on 10 * OPTION_HEIGHT with some buffer
-  const { scrollHeight, scrollTop } = host;
+/**
+ * Handles scrolling within the list to ensure that the highlighted item is always visible.
+ * @param {HTMLElement} ul - The HTML element to be scrolled.
+ * @param {number} highlightedIndex - The index of the currently highlighted item within the element.
+ * @returns {void}
+ */
+export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void => {
+  const { maxHeight, padding } = getComputedStyle(ul);
+  const hostElementHeight = parseInt(maxHeight, 10);
 
-  if (scrollHeight > hostElementHeightThreshold) {
-    const highlightedNode = getHTMLElements(host, 'li')[highlightedIndex];
+  if (ul.scrollHeight > hostElementHeight) {
+    const highlightedNode = getHTMLElements(ul, 'li')[highlightedIndex];
 
     if (highlightedNode) {
-      const { offsetTop, offsetHeight } = highlightedNode; // offsetHeight is usually 32px but can be more if multiline
-      const scrollBottom = hostElementHeightThreshold + scrollTop;
-      const elementBottom = offsetTop + offsetHeight;
-      if (elementBottom > scrollBottom) {
-        host.scrollTop = elementBottom - hostElementHeightThreshold;
-      } else if (offsetTop - OPTION_HEIGHT < scrollTop) {
-        host.scrollTop = offsetTop - OPTION_HEIGHT;
-      }
+      ul.scrollTo({ top: highlightedNode.offsetTop - parseInt(padding, 10), behavior: 'instant' as ScrollBehavior });
     }
   }
 };

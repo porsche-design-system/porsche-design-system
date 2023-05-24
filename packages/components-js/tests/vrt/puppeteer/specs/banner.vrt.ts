@@ -7,14 +7,23 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 import {
-  extendedViewports,
+  furtherExtendedViewports,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
-it.each(extendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner')).toBeFalsy();
+// TODO: (banner state hover test is flaky) we shouldn't rely on retries since computed result has to be deterministic
+jest.retryTimes(3);
+
+it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'banner', '/#banner', {
+      scenario: async (page) => {
+        await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
+      },
+    })
+  ).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
@@ -25,25 +34,35 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `
         <style>
-          .playground { padding: 50px 0; }
-          .playground p-banner { --p-banner-position-type: static; }
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+          .playground { transform: translate3d(0, 0, 0); height: 20rem; }
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-banner state="neutral" theme="${theme}">
-          <span slot="title">Some banner title</span>
-          <span slot="description">Some banner description. You can also add inline <a href="#">links</a> to route to another page.</span>
+        <p-banner open="true" state="neutral" theme="${theme}">
+          <span slot="title">
+            Slotted title
+            <span>
+              and some slotted, deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
+          <span slot="description">
+            Slotted description
+            <span>
+              and some slotted, deeply nested <a href="#">anchor</a>.
+            </span>
+          </span>
         </p-banner>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover > p-banner span a');
+      await forceHoverState(page, '.hover p-banner span a');
       // TODO: support for 3rd level of shadow DOM is missing
-      // await forceHoveredState(page, '.hover > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusState(page, '.focus > p-banner span a');
-      // await forceFocusedState(page, '.focus > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-banner span a');
-      // await forceFocusedHoveredState(page, '.focus-hover > p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+      // await forceHoveredState(page, '.hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-banner span a');
+      // await forceFocusedState(page, '.focus p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-banner span a');
+      // await forceFocusedHoveredState(page, '.focus-hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
 });

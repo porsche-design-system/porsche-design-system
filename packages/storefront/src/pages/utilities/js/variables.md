@@ -4,6 +4,11 @@
 
 ## Color
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>color</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use <code>theme</code> styles provided at <a href="styles/theme">theme</a>.
+</p-inline-notification>
+
 A light (default) and dark theme is available depending on which background it's used.
 
 <br>
@@ -74,6 +79,11 @@ A light (default) and dark theme is available depending on which background it's
 
 ### External brand colors
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>External brand colors</code> are <strong>deprecated</strong> without any replacement and will be removed with next major release.<br>
+  Please use <code>theme</code> styles provided at <a href="styles/theme">theme</a>.
+</p-inline-notification>
+
 |                                          |               |                            |
 | ---------------------------------------- | ------------- | -------------------------- |
 | <ColorBadge color="external-facebook"/>  | **Facebook**  | `color.external.facebook`  |
@@ -94,6 +104,11 @@ A light (default) and dark theme is available depending on which background it's
 ---
 
 ## Spacing
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>spacing</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>spacing</code> styles provided at <a href="styles/spacing">spacing</a>.
+</p-inline-notification>
 
 Given values are:  
 `4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
@@ -127,9 +142,14 @@ layout[v]
 
 For font styling it's recommended to use the
 [`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) component or
-[text/headline js functions](utilities/js/functions).
+[text/headline js functions](utilities-deprecated/js/functions).
 
 ### Family
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>font.family</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>fontFamily</code> style provided at <a href="styles/typography">typography</a>.
+</p-inline-notification>
 
 Contains Porsche Next and predefined fallback fonts:
 
@@ -140,6 +160,11 @@ font.family
 ```
 
 ### Weight
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>font.weight</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>fontWeight</code> style provided at <a href="styles/typography">typography</a>.
+</p-inline-notification>
 
 Given values are:  
 `thin | regular | semibold | bold`
@@ -154,6 +179,11 @@ font.weight[v]
 ```
 
 ### Size
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>font.size</code> is <strong>deprecated</strong> and will be removed with next major release.<br>
+  To recreate the result, use the <code>fontLineHeight</code> and one of the font sizes provided at <a href="styles/typography">typography</a>.
+</p-inline-notification>
 
 #### Font scaling system
 

@@ -1,7 +1,7 @@
 import { forceHoverState, setContentWithDesignSystem } from '../helpers';
 import { waitForComponentsReady } from '../../../e2e/puppeteer/helpers';
 import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
-import { Theme } from '@porsche-design-system/components/dist/types/types';
+import type { Theme } from '@porsche-design-system/components/dist/types/types';
 
 it('should have no visual regression for :hover', async () => {
   const vrt = getVisualRegressionStatesTester();
@@ -10,7 +10,8 @@ it('should have no visual regression for :hover', async () => {
       const page = vrt.getPage();
 
       const head = `<style>
-  p-select-wrapper-dropdown { --p-dropdown-position: 'static'; }
+  body { display: grid; grid-template-columns: repeat(2, 50%); }
+  p-select-wrapper-dropdown { --p-internal-dropdown-position: 'static'; }
   p-select-wrapper-dropdown:not(:last-child) { margin-bottom: 1rem; }
 </style>`;
 
@@ -79,6 +80,17 @@ it('should have no visual regression for :hover', async () => {
           (dropdownFilter as any).filter = true;
           (dropdownFilter as any).selectRef = document.createElement('select'); // without options
 
+          const dropdownMultiline = getDropdown('multiline', theme);
+          (dropdownMultiline as any).selectRef.innerHTML = Array.from(Array(2))
+            .map(
+              (_, idx) =>
+                `<option>Option multiline ${
+                  idx + 1
+                } Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the top.
+                </option>`
+            )
+            .join('');
+
           return [
             dropdownDefault,
             dropdownDisabled,
@@ -86,6 +98,7 @@ it('should have no visual regression for :hover', async () => {
             dropdownScrollable,
             dropdownDirectionUp,
             dropdownFilter,
+            dropdownMultiline,
           ];
         };
 

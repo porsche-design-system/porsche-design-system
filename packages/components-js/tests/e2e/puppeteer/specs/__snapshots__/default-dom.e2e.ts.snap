@@ -1,71 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should have no basic DOM regression for p-accordion 1`] = `
-"<div class="root">
-  <h2 class="heading">
-    <button id="accordion-control" type="button" aria-expanded="false" aria-controls="accordion-panel">
-      <slot name="heading">
-      </slot>
+"<h2 class="heading">
+  <button id="accordion-control" type="button" aria-expanded="false" aria-controls="accordion-panel">
+    <slot name="heading">
+    </slot>
+    <span class="icon-container">
       <p-icon class="icon hydrated" aria-hidden="true">
       </p-icon>
-    </button>
-  </h2>
-  <div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control" style="height: 0px;">
-    <div>
-      <slot>
-      </slot>
-    </div>
+    </span>
+  </button>
+</h2>
+<div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control" style="height: 0px;">
+  <div>
+    <slot>
+    </slot>
   </div>
 </div>"
 `;
 
 exports[`should have no basic DOM regression for p-banner 1`] = `
-"<style>
-  p-inline-notification a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-
-  p-inline-notification b,
-  p-inline-notification strong {
-    font-weight: 700 !important;
-  }
-
-  p-inline-notification em,
-  p-inline-notification i {
-    font-style: normal !important;
-  }
-
-  p-inline-notification a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-inline-notification a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-inline-notification a:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-inline-notification a:hover {
-    color: #d5001c !important;
-  }
-</style>
-<p-content-wrapper class="hydrated">
-  <p-inline-notification class="root hydrated">
-  </p-inline-notification>
-</p-content-wrapper>"
+"<p-inline-notification aria-hidden="true" class="hydrated">
+</p-inline-notification>"
 `;
 
 exports[`should have no basic DOM regression for p-button 1`] = `
 "<button class="root" type="submit">
-  <p-icon class="icon hydrated" aria-hidden="true">
-  </p-icon>
-  <span>
+  <span class="label">
     <slot>
     </slot>
   </span>
@@ -90,6 +51,21 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
 </button>"
 `;
 
+exports[`should have no basic DOM regression for p-button-tile 1`] = `
+"<div class="root">
+  <div class="image-container">
+    <slot>
+    </slot>
+  </div>
+  <div class="content">
+    <p>
+      value</p>
+    <p-button class="link-or-button hydrated">
+      value</p-button>
+  </div>
+</div>"
+`;
+
 exports[`should have no basic DOM regression for p-carousel 1`] = `
 "<div class="header">
   <slot name="heading">
@@ -102,7 +78,7 @@ exports[`should have no basic DOM regression for p-carousel 1`] = `
   </div>
 </div>
 <div id="splide" class="splide splide--slide splide--ltr splide--draggable is-active is-initialized" role="region" aria-roledescription="carousel">
-  <div class="splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide-track" aria-live="polite" aria-atomic="true" style="padding-left: 0px; padding-right: 7%;">
+  <div class="splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide-track" aria-live="polite" aria-atomic="true" style="padding-left: 0px; padding-right: 0px;">
     <div class="splide__list" id="splide-list" role="presentation" style="transform: translateX(0px);">
     </div>
   </div>
@@ -125,7 +101,29 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-crest 1`] = `
+"<picture>
+  <source srcset="http://localhost:3001/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x" type="image/webp">
+  <source srcset="http://localhost:3001/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x" type="image/png">
+  <img src="http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png" width="30" height="40" alt="Porsche">
+</picture>"
+`;
+
+exports[`should have no basic DOM regression for p-display 1`] = `
+"<h1 class="root">
+  <slot>
+  </slot>
+</h1>"
+`;
+
 exports[`should have no basic DOM regression for p-divider 1`] = `"<hr>"`;
+
+exports[`should have no basic DOM regression for p-fieldset 1`] = `
+"<fieldset>
+  <slot>
+  </slot>
+</fieldset>"
+`;
 
 exports[`should have no basic DOM regression for p-fieldset-wrapper 1`] = `
 "<fieldset>
@@ -154,6 +152,13 @@ exports[`should have no basic DOM regression for p-grid-item 1`] = `
 </slot>"
 `;
 
+exports[`should have no basic DOM regression for p-heading 1`] = `
+"<h2 class="root">
+  <slot>
+  </slot>
+</h2>"
+`;
+
 exports[`should have no basic DOM regression for p-headline 1`] = `
 "<h1 class="root">
   <slot>
@@ -161,14 +166,7 @@ exports[`should have no basic DOM regression for p-headline 1`] = `
 </h1>"
 `;
 
-exports[`should have no basic DOM regression for p-icon 1`] = `
-"<i class="root">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
-    <path d="m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z">
-    </path>
-  </svg>
-</i>"
-`;
+exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg" alt="">"`;
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<p-icon class="icon hydrated" aria-hidden="true">
@@ -185,9 +183,7 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 
 exports[`should have no basic DOM regression for p-link 1`] = `
 "<a class="root" href="value" target="_self">
-  <p-icon class="icon hydrated" aria-hidden="true">
-  </p-icon>
-  <span>
+  <span class="label">
     <slot>
     </slot>
   </span>
@@ -209,7 +205,7 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
 "<a class="root" href="value" target="_self">
   <p-icon class="icon hydrated" aria-hidden="true">
   </p-icon>
-  <span>
+  <span class="label">
     <slot>
     </slot>
   </span>
@@ -223,12 +219,35 @@ exports[`should have no basic DOM regression for p-link-tile 1`] = `
     </slot>
   </div>
   <div class="content">
-    <p id="description">
+    <a href="value" target="_self" class="link-overlay" tabindex="-1" aria-hidden="true">
+    </a>
+    <p>
       value</p>
-    <p-link class="link hydrated">
-      <a class="anchor" href="value" target="_self" aria-describedby="description">
-        value</a>
-    </p-link>
+    <p-link class="link-or-button hydrated">
+      value</p-link>
+  </div>
+</div>"
+`;
+
+exports[`should have no basic DOM regression for p-link-tile-model-signature 1`] = `
+"<div class="root">
+  <div class="image-container">
+    <slot>
+    </slot>
+  </div>
+  <p-model-signature class="model hydrated">
+  </p-model-signature>
+  <div class="content">
+    <a class="link-overlay" href="#" target="_self" tabindex="-1" aria-hidden="true">
+    </a>
+    <h2 class="heading">
+      value</h2>
+    <div class="link-group" role="group">
+      <slot name="primary">
+      </slot>
+      <slot name="secondary">
+      </slot>
+    </div>
   </div>
 </div>"
 `;
@@ -245,12 +264,14 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
 "<div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
-  <p-button-pure class="close hydrated">
-    Close modal</p-button-pure>
+  <p-button-pure class="dismiss hydrated">
+    Dismiss modal</p-button-pure>
   <slot>
   </slot>
 </div>"
 `;
+
+exports[`should have no basic DOM regression for p-model-signature 1`] = `"<img src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg" height="36" alt="911">"`;
 
 exports[`should have no basic DOM regression for p-pagination 1`] = `
 "<nav role="navigation" aria-label="Pagination">
@@ -276,8 +297,12 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-popover 1`] = `
-"<p-button-pure class="hydrated">
-  More information</p-button-pure>"
+"<button type="button" aria-expanded="false">
+  <p-icon class="icon hydrated">
+  </p-icon>
+  <span class="label">
+    More information</span>
+</button>"
 `;
 
 exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
@@ -300,12 +325,16 @@ exports[`should have no basic DOM regression for p-scroller 1`] = `
     </div>
   </div>
   <div class="action-prev">
-    <p-button-pure class="button hydrated" tabindex="-1" aria-hidden="true">
-      prev</p-button-pure>
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="prev">
+      <p-icon class="icon hydrated">
+      </p-icon>
+    </button>
   </div>
   <div class="action-next">
-    <p-button-pure class="button hydrated" tabindex="-1" aria-hidden="true">
-      next</p-button-pure>
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="next">
+      <p-icon class="icon hydrated">
+      </p-icon>
+    </button>
   </div>
 </div>"
 `;
@@ -363,29 +392,25 @@ exports[`should have no basic DOM regression for p-stepper-horizontal-item 1`] =
 `;
 
 exports[`should have no basic DOM regression for p-switch 1`] = `
-"<label class="root">
-  <span id="label" class="text">
+"<button aria-checked="false" class="root" type="button" role="switch">
+  <span class="switch">
+    <span class="toggle">
+    </span>
+  </span>
+  <span class="label">
     <slot>
     </slot>
   </span>
-  <button aria-checked="false" aria-labelledby="label" type="button" role="switch">
-    <span class="toggle">
-    </span>
-  </button>
-</label>"
+</button>"
 `;
 
 exports[`should have no basic DOM regression for p-table 1`] = `
-"<div class="root">
-  <div class="scroll-area">
-    <div class="table" role="table">
-      <slot>
-      </slot>
-      <span class="scroll-trigger">
-      </span>
-    </div>
+"<p-scroller class="hydrated">
+  <div class="table" role="table">
+    <slot>
+    </slot>
   </div>
-</div>"
+</p-scroller>"
 `;
 
 exports[`should have no basic DOM regression for p-table-body 1`] = `
@@ -428,10 +453,10 @@ exports[`should have no basic DOM regression for p-tabs 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
-"<p-scroller class="scroller hydrated" role="tablist">
+"<p-scroller class="scroller hydrated">
   <slot>
   </slot>
-  <span class="bar" style="transform: translate3d(0rem,0,0); width: 0;">
+  <span class="bar" style="transform: translate3d(0px,0,0); width: 0;">
   </span>
 </p-scroller>"
 `;
@@ -443,7 +468,7 @@ exports[`should have no basic DOM regression for p-tabs-item 1`] = `
 
 exports[`should have no basic DOM regression for p-tag 1`] = `
 "<span>
-  <div>
+  <div class="label">
     <slot>
     </slot>
   </div>
@@ -454,8 +479,10 @@ exports[`should have no basic DOM regression for p-tag-dismissible 1`] = `
 "<button type="button">
   <span class="sr-only">
     Remove:</span>
-  <slot>
-  </slot>
+  <span>
+    <slot>
+    </slot>
+  </span>
   <p-icon class="icon hydrated" aria-hidden="true">
   </p-icon>
 </button>"
@@ -478,7 +505,7 @@ exports[`should have no basic DOM regression for p-text-field-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-text-list 1`] = `
-"<ul role="list">
+"<ul>
   <slot>
   </slot>
 </ul>"
@@ -497,3 +524,12 @@ exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-toast 1`] = `""`;
+
+exports[`should have no basic DOM regression for p-wordmark 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 300">
+  <title>
+    Porsche</title>
+  <path d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z">
+  </path>
+</svg>"
+`;

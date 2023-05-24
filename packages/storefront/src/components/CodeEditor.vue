@@ -3,7 +3,7 @@
     type="button"
     :theme="theme"
     :icon-source="stackBlitzIcon"
-    :disabled="framework === 'shared'"
+    :disabled="framework === 'shared' || framework === 'vue'"
     :loading="isLoading"
     @click="onButtonClick()"
     >{{ buttonLabel }}
@@ -14,7 +14,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import type { ColorScheme, Framework, Theme } from '@/models';
+  import type { BackgroundColor, Framework, Theme } from '@/models';
   import { openInStackBlitz } from '@/utils';
   import type { ExternalDependency, SharedImportKey } from '@/utils';
   import { isStableStorefrontRelease } from '@/utils/stackblitz/helper';
@@ -26,8 +26,8 @@
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
-    @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
+    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
+    @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
     @Prop({ default: 'Edit in StackBlitz' }) public buttonLabel!: string;
@@ -44,7 +44,7 @@
         framework: this.framework,
         theme: this.theme,
         externalDependencies: this.externalStackBlitzDependencies,
-        backgroundColorScheme: this.colorScheme,
+        backgroundColor: this.backgroundColor,
         sharedImportKeys: this.sharedImportKeys,
         pdsVersion: this.pdsVersion,
       });
@@ -52,20 +52,22 @@
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared'>,
+      framework: Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
+      const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
+
       switch (framework) {
         case 'vanilla-js':
-          return await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
+          return jsBundle;
         case 'angular':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...jsBundle,
             ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular', pdsVersion)),
           };
         case 'react':
           return {
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion)),
+            ...jsBundle,
             ...(await CodeEditor.fetchPorscheDesignSystemBundle('react', pdsVersion)),
           };
       }

@@ -65,6 +65,7 @@ export const config: Config = {
   rollupPlugins: {
     after: [
       replace({
+        preventAssignment: true,
         ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
         ROLLUP_REPLACE_VERSION: `"${version}"`,
       }),

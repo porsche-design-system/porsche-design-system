@@ -1,72 +1,142 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
-  getScreenReaderOnlyJssStyle,
+  getHiddenTextJssStyle,
+  getHighContrastColors,
   getThemedColors,
-  pxToRemWithUnit,
+  hostHiddenStyles,
 } from '../../styles';
 import {
-  gridMaxWidth,
-  gridSafeZone,
-  headingMedium,
-  textSmall,
-  mediaQueryMin,
+  borderRadiusSmall,
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  getMediaQueryMax,
+  getMediaQueryMin,
+  gridBasicOffset,
+  gridBasicOffsetBase,
+  gridExtendedOffset,
+  gridGap,
+  headingXLargeStyle,
+  spacingFluidMedium,
+  spacingFluidXSmall,
+  spacingStaticMedium,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
+export const carouselTransitionDuration = 400;
 export const bulletActiveClass = 'bullet--active';
 
-const mediaQueryS = mediaQueryMin('s');
-const mediaQueryXl = mediaQueryMin('xl');
+const selectorHeading = 'h2,::slotted([slot=heading])';
+const selectorDescription = 'p,::slotted([slot=description])';
+const mediaQueryS = getMediaQueryMin('s');
+const mediaQueryXXL = getMediaQueryMin('xxl');
+
+// we need an explicit grid template, therefor we need to calculate the button group width
+const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
+// + 2px, compensates hover offset of button-pure
+const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
+
+const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: string } } = {
+  basic: gridBasicOffset,
+  extended: gridExtendedOffset,
+};
 
 export const getComponentCss = (
-  wrapContent: boolean,
-  disablePagination: BreakpointCustomizable<boolean>,
+  width: CarouselWidth,
+  hasPagination: BreakpointCustomizable<boolean>,
+  alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
-  const { baseColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { canvasTextColor } = getHighContrastColors();
+  const isHeaderAlignCenter = alignHeader === 'center';
 
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        display: 'grid',
-        maxWidth: gridMaxWidth,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        gap: pxToRemWithUnit(24),
-        gridAutoFlow: 'row',
-        [mediaQueryXl]: {
-          gap: pxToRemWithUnit(32),
-        },
+        display: 'flex',
+        gap: spacingFluidMedium,
+        flexDirection: 'column',
+        boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
+        ...hostHiddenStyles,
       }),
-      'h2,::slotted([slot=heading])': addImportantToEachRule({
-        ...headingMedium,
+      [selectorHeading]: addImportantToEachRule({
+        ...headingXLargeStyle,
+        maxWidth: '56.25rem',
         margin: 0,
-        color: baseColor,
-        maxWidth: pxToRemWithUnit(900),
       }),
-      'p,::slotted([slot=description])': addImportantToEachRule({
-        ...textSmall,
-        margin: 0,
-        color: baseColor,
-        maxWidth: pxToRemWithUnit(550),
-        gridColumn: 1, // to force it into 2nd line
+      [selectorDescription]: addImportantToEachRule({
+        ...textSmallStyle,
+        maxWidth: '34.375rem',
+        margin: `${spacingFluidXSmall} 0 0`,
       }),
+      [`${selectorHeading},${selectorDescription}`]: addImportantToEachRule({
+        color: primaryColor,
+        [mediaQueryS]: isHeaderAlignCenter
+          ? {
+              gridColumn: 2,
+            }
+          : {
+              gridColumn: '1 / 3',
+            },
+      }),
+    },
+    header: {
+      display: 'grid',
+      padding: `0 ${spacingMap[width].base}`,
+      ...(isHeaderAlignCenter && {
+        textAlign: 'center',
+      }),
+      [mediaQueryS]: {
+        fontFamily, // relevant for button group width calculation, which is based on ex unit
+        fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
+        columnGap: spacingStaticMedium,
+        gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
+        ...(isHeaderAlignCenter && {
+          justifyItems: 'center', // relevant when max-width of heading or description is reached
+        }),
+        padding: `0 ${spacingMap[width].s}`,
+      },
+      [mediaQueryXXL]: {
+        padding: `0 ${spacingMap[width].xxl}`,
+      },
+    },
+    nav: {
+      display: 'none',
+      [mediaQueryS]: {
+        display: 'flex',
+        gap: spacingStaticXSmall,
+        gridArea: '1 / 3 / 3 / auto', // needed in case description height is smaller than button group
+        alignItems: 'end',
+      },
+    },
+    btn: {
+      padding: spacingStaticSmall,
     },
     splide: {
       overflow: 'hidden',
       // visibility: 'hidden',
       '&__track': {
         cursor: 'grab',
-        // to override inline styles set by splide library
-        ...(wrapContent &&
-          addImportantToEachRule({
-            padding: `0 calc(${gridSafeZone.base} + 7%) 0 ${gridSafeZone.base}`,
-            [mediaQueryXl]: {
-              padding: `0 calc(${gridSafeZone.xl} + 7%) 0 ${gridSafeZone.xl}`,
-            },
-          })),
+        // !important is necessary to override inline styles set by splide library
+        ...addImportantToEachRule({
+          padding: `0 ${spacingMap[width].base}`,
+          [getMediaQueryMax('xs')]: {
+            paddingRight: `calc(${gridBasicOffsetBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
+          },
+          [mediaQueryS]: {
+            padding: `0 ${spacingMap[width].s}`,
+          },
+          [mediaQueryXXL]: {
+            padding: `0 ${spacingMap[width].xxl}`,
+          },
+        }),
         '&--draggable': {
           userSelect: 'none',
           WebkitUserSelect: 'none',
@@ -84,7 +154,7 @@ export const getComponentCss = (
         ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
-      '&__sr': getScreenReaderOnlyJssStyle(), // appears in the DOM when sliding
+      '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },
     // .splide.is-initialized,
     // .splide.is-rendered {
@@ -93,53 +163,25 @@ export const getComponentCss = (
     // .splide.is-initialized:not(.is-active) .splide__list {
     //     display: block,
     //   }
-    header: {
-      display: 'grid',
-      gap: pxToRemWithUnit(16),
-      padding: wrapContent ? `0 ${gridSafeZone.base}` : null,
-      [mediaQueryS]: {
-        gridTemplateColumns: `minmax(0px, 1fr) ${pxToRemWithUnit(80)}`, // 2nd row has width of nav buttons
-        position: 'relative',
-        minHeight: pxToRemWithUnit(40), // actual height of prev/next buttons
-      },
-      [mediaQueryXl]: {
-        gap: pxToRemWithUnit(24),
-        padding: wrapContent ? `0 ${gridSafeZone.xl}` : null,
-      },
-    },
-    nav: {
-      display: 'none',
-      [mediaQueryS]: {
-        display: 'grid',
-        gridAutoFlow: 'column',
-        position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: wrapContent ? gridSafeZone.base : 0,
-        bottom: 0,
-      },
-      ...(wrapContent && {
-        [mediaQueryXl]: {
-          right: gridSafeZone.xl,
-        },
-      }),
-    },
-    btn: {
-      padding: pxToRemWithUnit(8),
-    },
-    ...(disablePagination !== true && {
+    ...(hasPagination && {
       pagination: {
-        ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'grid' })),
-        gridAutoColumns: pxToRemWithUnit(8),
-        gridAutoFlow: 'column',
+        ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
+          display: hasPaginationValue ? 'flex' : 'none',
+        })),
         justifyContent: 'center',
-        gap: pxToRemWithUnit(8),
-        height: pxToRemWithUnit(8),
+        gap: spacingStaticSmall,
       },
       bullet: {
-        borderRadius: pxToRemWithUnit(4),
-        background: disabledColor,
+        borderRadius: borderRadiusSmall,
+        background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
+        // set transition to have the same speed as switching slides in splide
+        transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
+        width: '8px',
+        height: '8px',
       },
       [bulletActiveClass]: {
-        background: baseColor,
+        background: isHighContrastMode ? canvasTextColor : primaryColor,
+        width: '20px',
       },
     }),
   });

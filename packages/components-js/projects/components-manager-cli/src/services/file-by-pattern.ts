@@ -1,25 +1,10 @@
-import * as glob from 'glob'; // TODO: use globby like everywhere else
+import * as globby from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getProjectRootPath } from './config';
 
 async function filePathsByPattern(pattern: string): Promise<string[]> {
-  const matches = await new Promise<string[]>((resolve, reject) => {
-    glob(
-      pattern,
-      {
-        cwd: getProjectRootPath(),
-        nodir: true,
-      },
-      (error, files) => {
-        if (!error) {
-          resolve(files);
-        }
-
-        reject(error);
-      }
-    );
-  });
+  const matches = globby.sync(pattern, { cwd: getProjectRootPath() });
 
   if (matches.length > 0) {
     return matches.map((match) => {

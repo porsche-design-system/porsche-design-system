@@ -1,25 +1,23 @@
-import type { JssStyle } from 'jss';
-import type { GetJssStyleFunction } from '../../utils';
-import type { AlignLabel, BreakpointCustomizable, ThemeExtendedElectric } from '../../types';
-import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../utils';
+import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
-  getTextHiddenJssStyle,
   getTransition,
-  pxToRemWithUnit,
   getThemedColors,
+  getInsetJssStyle,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  getHighContrastColors,
+  getHiddenTextJssStyle,
 } from '../../styles';
-import { spacing, textSmall } from '@porsche-design-system/utilities-v2';
-import { hoverMediaQuery } from '../../styles/hover-media-query';
-
-const { small: spacingSmall } = spacing;
+import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 const getColors = (
   checked: boolean,
-  isDisabledOrLoading: boolean,
-  theme: ThemeExtendedElectric
+  disabled: boolean,
+  loading: boolean,
+  theme: Theme
 ): {
-  backgroundColor: string;
   buttonBorderColor: string;
   buttonBorderColorHover: string;
   buttonBackgroundColor: string;
@@ -28,64 +26,34 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const {
-    backgroundColor,
-    baseColor,
-    contrastHighColor,
-    successColor,
-    successColorDarken,
-    hoverColorDarken,
-    disabledColor,
-    brandColor,
-  } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const isLightElectricTheme = isThemeLightElectric(theme);
-  const checkedColor = isLightElectricTheme ? brandColor : successColor;
-  const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
+  const { canvasColor, canvasTextColor } = getHighContrastColors();
+  const checkedColor = isHighContrastMode ? canvasTextColor : successColor;
+  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
 
   return {
-    backgroundColor,
-    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastHighColor),
-    buttonBorderColorHover: checked ? (isLightElectricTheme ? hoverColorDarken : successColorDarken) : baseColor,
+    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
+    buttonBorderColorHover: checked ? (isHighContrastMode ? primaryColor : successColorDarken) : primaryColor,
     buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked
-      ? isLightElectricTheme
-        ? hoverColorDarken
-        : successColorDarken
-      : 'transparent',
+    buttonBackgroundColorHover: checked ? (isHighContrastMode ? checkedColor : successColorDarken) : 'transparent',
     toggleBackgroundColor:
-      (!checked && disabledOrLoadingColor) || (checked ? lightThemeBackgroundColor : contrastHighColor),
-    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : baseColor,
-    textColor: disabledOrLoadingColor || baseColor,
+      (loading && 'transparent') ||
+      (disabled && !checked && disabledColor) ||
+      (checked
+        ? isHighContrastMode
+          ? canvasColor
+          : lightThemeBackgroundColor
+        : isHighContrastMode
+        ? canvasTextColor
+        : primaryColor),
+    toggleBackgroundColorHover: checked
+      ? lightThemeBackgroundColor
+      : isHighContrastMode
+      ? canvasTextColor
+      : primaryColor,
+    textColor: disabledOrLoadingColor || primaryColor,
   };
-};
-
-const getAlignLabelJssStyle: GetJssStyleFunction = (alignLabel: AlignLabel): JssStyle => {
-  const styles: Record<AlignLabel, JssStyle> = {
-    left: {
-      order: 0,
-      paddingLeft: 0,
-      paddingRight: spacingSmall,
-    },
-    right: {
-      order: 1,
-      paddingLeft: spacingSmall,
-      paddingRight: 0,
-    },
-  };
-  return styles[alignLabel];
-};
-
-const getStretchJssStyle: GetJssStyleFunction = (stretch: boolean): JssStyle => {
-  return stretch
-    ? {
-        width: '100%',
-        justifyContent: 'space-between',
-      }
-    : {
-        width: 'auto',
-        justifyContent: 'flex-start',
-      };
 };
 
 export const getComponentCss = (
@@ -93,12 +61,11 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   stretch: BreakpointCustomizable<boolean>,
   checked: boolean,
+  disabled: boolean,
   loading: boolean,
-  isDisabledOrLoading: boolean,
-  theme: ThemeExtendedElectric
+  theme: Theme
 ): string => {
   const {
-    backgroundColor,
     buttonBorderColor,
     buttonBorderColorHover,
     buttonBackgroundColor,
@@ -106,86 +73,102 @@ export const getComponentCss = (
     toggleBackgroundColor,
     toggleBackgroundColorHover,
     textColor,
-  } = getColors(checked, isDisabledOrLoading, theme);
+  } = getColors(checked, disabled, loading, theme);
+  const { focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        display: 'flex',
-        outline: 0,
+        outline: 0, // custom element is able to delegate the focus
+        ...hostHiddenStyles,
+        ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+          display: stretchValue ? 'block' : 'inline-block',
+          width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
+          ...(!stretchValue && { verticalAlign: 'top' }),
+        })),
       }),
-      button: {
-        position: 'relative',
-        width: pxToRemWithUnit(48),
-        height: pxToRemWithUnit(24),
-        flexShrink: 0,
-        display: 'block',
-        margin: 0,
-        padding: 0,
-        appearance: 'none',
-        boxSizing: 'border-box',
-        color: buttonBorderColor,
-        border: '1px solid currentColor',
-        borderRadius: pxToRemWithUnit(12),
-        backgroundColor: buttonBackgroundColor,
-        outline: 'none',
-        cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-        transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
-        ...(!isDisabledOrLoading &&
-          hoverMediaQuery({
-            '&:hover': {
-              color: buttonBorderColorHover,
-              backgroundColor: buttonBackgroundColorHover,
-              '& .toggle': {
-                backgroundColor: toggleBackgroundColorHover,
-              },
-            },
-          })),
-        '&:focus': {
-          boxShadow: `0 0 0 2px ${backgroundColor}, 0 0 0 3px currentColor`,
-        },
-        '&:not(:focus-visible)': {
-          boxShadow: 'none',
-        },
-      },
     },
     root: {
       display: 'flex',
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
-      cursor: isDisabledOrLoading ? 'auto' : 'pointer',
-      ...buildResponsiveStyles(stretch, getStretchJssStyle),
+      alignItems: 'flex-start',
+      gap: spacingStaticSmall,
+      width: '100%',
+      padding: 0,
+      outline: 0,
+      border: 0,
+      textAlign: 'left',
+      background: 'transparent',
+      appearance: 'none',
+      cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
+      ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+        justifyContent: stretchValue ? 'space-between' : 'flex-start',
+      })),
+      ...(!isDisabledOrLoading(disabled, loading) &&
+        hoverMediaQuery({
+          '&:hover .switch': {
+            borderColor: buttonBorderColorHover,
+            backgroundColor: buttonBackgroundColorHover,
+            '& .toggle': {
+              backgroundColor: toggleBackgroundColorHover,
+            },
+          },
+        })),
+      '&:focus .switch::before': {
+        content: '""',
+        position: 'absolute',
+        ...getInsetJssStyle(-6),
+        border: `${borderWidthBase} solid ${focusColor}`,
+        borderRadius: '18px',
+      },
+      '&:not(:focus-visible) .switch::before': {
+        borderColor: 'transparent',
+      },
     },
-    text: {
-      ...textSmall,
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
-      color: textColor,
-      ...mergeDeep(
-        buildResponsiveStyles(alignLabel, getAlignLabelJssStyle),
-        buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
-      ),
+    switch: {
+      position: 'relative',
+      width: '48px',
+      height: '28px',
+      flexShrink: 0,
+      boxSizing: 'border-box',
+      border: `${borderWidthBase} solid ${buttonBorderColor}`,
+      borderRadius: '14px',
+      backgroundColor: buttonBackgroundColor,
+      cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
+      transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
     },
     toggle: {
       position: 'absolute',
-      top: pxToRemWithUnit(2),
-      left: pxToRemWithUnit(2),
-      width: pxToRemWithUnit(18),
-      height: pxToRemWithUnit(18),
+      top: '2px',
+      left: '2px',
+      width: '20px',
+      height: '20px',
       display: 'block',
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
-      transform: `translate3d(${checked ? pxToRemWithUnit(24) : '0'}, 0, 0)`,
+      transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
       transition: `${getTransition('background-color')},${getTransition('transform')}`,
     },
     ...(loading && {
       spinner: {
         position: 'absolute',
-        top: pxToRemWithUnit(-3),
-        left: pxToRemWithUnit(-3),
-        width: pxToRemWithUnit(24),
-        height: pxToRemWithUnit(24),
+        top: '-4px',
+        left: '-4px',
+        width: '28px',
+        height: '28px',
       },
     }),
+    label: {
+      ...textSmallStyle,
+      paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
+      minWidth: 0, // prevents flex child to overflow max available parent size
+      minHeight: 0, // prevents flex child to overflow max available parent size
+      color: textColor,
+      ...mergeDeep(
+        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
+          order: alignLabelValue === 'left' ? -1 : 0,
+        })),
+        buildResponsiveStyles(hideLabel, getHiddenTextJssStyle)
+      ),
+    },
   });
 };

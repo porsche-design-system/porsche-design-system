@@ -3,8 +3,8 @@ import { PLinkTile } from '@porsche-design-system/components-react';
 
 export const LinkTilePage = (): JSX.Element => {
   const style = `
-    .container {
-      max-width: 300px;
+    .container-large {
+      max-width: 800px;
     }
     .grid {
       display: grid;
@@ -17,7 +17,7 @@ export const LinkTilePage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light container" title="should render default link-tile on light background">
+      <div className="playground light grid" title="should render default link-tile on light background">
         <PLinkTile href="#" label="Some Label" description="Default">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -65,7 +65,7 @@ export const LinkTilePage = (): JSX.Element => {
           href="#"
           label="Some label"
           description="Weight responsive"
-          weight={{ base: 'regular', xs: 'semibold', s: 'regular', m: 'semibold', l: 'regular', xl: 'semibold' }}
+          weight={{ base: 'regular', xs: 'semi-bold', s: 'regular', m: 'semi-bold', l: 'regular', xl: 'semi-bold' }}
         >
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -148,7 +148,7 @@ export const LinkTilePage = (): JSX.Element => {
         </PLinkTile>
       </div>
 
-      <div className="playground light container" title="should render align top on light background">
+      <div className="playground light grid" title="should render align top on light background">
         <PLinkTile href="#" label="Some label" description="Align top" align="top" compact={true}>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -159,7 +159,7 @@ export const LinkTilePage = (): JSX.Element => {
         </PLinkTile>
       </div>
 
-      <div className="playground light container" title="should render without gradient">
+      <div className="playground light grid" title="should render without gradient">
         <PLinkTile href="#" label="Some label" description="Gradient false" gradient={false}>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD/zP9RsvrtAAAAHElEQVQY02Ng4GBgYGFgoBn9HwwOwPhDlqaTPwBKng+1NhhBkgAAAABJRU5ErkJggg=="
@@ -211,7 +211,7 @@ export const LinkTilePage = (): JSX.Element => {
       </div>
 
       <div
-        className="playground light container"
+        className="playground light grid"
         title="should render with picture tag and multiple sources depending on viewport on light background"
       >
         <PLinkTile href="#" label="Some label" description="Picture tag">
@@ -223,6 +223,22 @@ export const LinkTilePage = (): JSX.Element => {
               alt="Some alt text"
             />
           </picture>
+        </PLinkTile>
+      </div>
+
+      <div className="playground light container-large" title="should render with max width description text on light background">
+        <PLinkTile
+          href="#"
+          label="Some label"
+          description="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
+          compact={true}
+        >
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+            width={50}
+            height={50}
+            alt="Some alt text"
+          />
         </PLinkTile>
       </div>
     </>

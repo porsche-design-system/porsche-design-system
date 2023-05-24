@@ -1,19 +1,14 @@
-import type { PropertiesHyphen } from 'csstype';
-import type { Theme } from '../types';
-import type { GetFocusStylesOptions } from './common-styles';
 import type { JssStyle } from 'jss';
+import type { PropertiesHyphen } from 'csstype';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getBaseSlottedStyles,
+  focusPseudoJssStyle,
+  getBackfaceVisibilityJssStyle,
+  getHiddenTextJssStyle,
   getInsetJssStyle,
-  getFocusJssStyle,
-  getFormTextHiddenJssStyle,
-  getHoverJssStyle,
-  getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
-  getBackfaceVisibilityJssStyle,
 } from './common-styles';
 
 describe('getTransition()', () => {
@@ -74,12 +69,6 @@ describe('addImportantToEachRule()', () => {
   });
 });
 
-describe('getHoverJssStyles()', () => {
-  it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverJssStyle({ theme })).toMatchSnapshot();
-  });
-});
-
 describe('getInsetJssStyle()', () => {
   it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2], [-1]])(
     'should return correct JssStyle for parameter: %o',
@@ -89,42 +78,20 @@ describe('getInsetJssStyle()', () => {
   );
 });
 
-describe('getFocusJssStyles()', () => {
-  it.each<GetFocusStylesOptions>([
-    {},
-    { color: 'red' },
-    { offset: 1 },
-    { color: 'deeppink', offset: 1, pseudo: '::before' },
-    { color: 'deeppink', offset: 2, pseudo: '::after' },
-    { color: 'deeppink', offset: 3 },
-  ])('should return correct JssStyle for params: %o', (params) => {
-    expect(getFocusJssStyle(params)).toMatchSnapshot();
+describe('focusPseudoJssStyle', () => {
+  it('should return correct jss style', () => {
+    expect(focusPseudoJssStyle).toMatchSnapshot();
   });
 });
 
-describe('getBaseSlottedStyles()', () => {
-  it('should return correct styles', () => {
-    expect(getBaseSlottedStyles()).toMatchSnapshot();
-  });
-
-  it('should return correct styles with dark theme', () => {
-    expect(getBaseSlottedStyles({ withDarkTheme: true })).toMatchSnapshot();
-  });
-
-  it('should return correct styles without dark theme', () => {
-    expect(getBaseSlottedStyles({ withDarkTheme: false })).toMatchSnapshot();
-  });
-});
-
-describe('getTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
-    expect(getTextHiddenJssStyle(isHidden)).toMatchSnapshot();
-  });
-});
-
-describe('getFormTextHiddenJssStyle()', () => {
-  it.each<boolean>([true, false])('should return correct JssStyle for isHidden: %s', (isHidden) => {
-    expect(getFormTextHiddenJssStyle(isHidden)).toMatchSnapshot();
+describe('getHiddenTextStyles()', () => {
+  it.each<[boolean, JssStyle]>([
+    [true, undefined],
+    [false, undefined],
+    [true, { width: 'fit-content' }],
+    [false, { width: 'fit-content' }],
+  ])('should return correct JssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
+    expect(getHiddenTextJssStyle(isHidden, shownStyles)).toMatchSnapshot();
   });
 });
 

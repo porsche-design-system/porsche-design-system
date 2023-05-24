@@ -9,7 +9,7 @@ on:
 name: 'Porsche Design System'
 env:
   PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:16.15.1-stretch-slim
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.27.0-focal-2
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.33.0-focal
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -17,26 +17,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-        shell: bash
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -58,25 +42,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Unit Test Components Manager Core'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -87,12 +56,12 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components'
+      - name: 'Build Components Prod'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-prod
-      - name: 'Build Components JS'
+      - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
@@ -124,40 +93,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -169,40 +110,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -214,40 +127,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'VRT Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -265,40 +150,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'VRT Test (Playwright)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -316,40 +173,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -387,40 +216,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -452,51 +253,56 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
+  components-react-remix:
+    name: 'Components React Remix'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react
+      - name: 'VRT Test components-react/remix'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt
+          args: --components-react/remix
+      - name: 'VRT Regression components-react/remix'
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: components-react-remix-vrt-regression
+          path: ./packages/components-react/projects/remix/tests/vrt/results
   components-react-nextjs:
     name: 'Components React NextJS'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Remix'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react/remix
       - name: 'VRT Test components-react/nextjs'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -519,40 +325,12 @@ jobs:
     steps:
     - name: 'Checkout'
       uses: actions/checkout@v3
-    - name: 'Cache node_modules'
-      uses: actions/cache@v3
-      id: cache-node_modules
+    - name: 'Setup and install'
+      uses: ./.github/actions/setup-and-install
       with:
-        path: '**/node_modules'
-        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-    - name: 'Login to GitHub Container Registry'
-      uses: docker/login-action@v2
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: 'Pull Docker Image'
-      run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-    - name: 'Install'
-      if: steps.cache-node_modules.outputs.cache-hit != 'true'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-install
-    - name: 'Build Core Dependencies'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-build
-        args: --core-dependencies
-    - name: 'Build Components'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-build
-        args: --components
-    - name: 'Build Components JS'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-build
-        args: --components-js
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+      uses: ./.github/actions/build-components-js
     - name: 'Lint'
       uses: ./.github/actions/docker-run-playwright
       with:
@@ -590,40 +368,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'E2E Test (Puppeteer)'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -635,25 +385,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build Shared'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -675,31 +410,36 @@ jobs:
         with:
           name: fallbacks-vrt-regression
           path: ./packages/fallbacks/tests/vrt/results
+  component-meta:
+    name: 'Component Meta'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --component-meta
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build Shared'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -716,40 +456,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -776,40 +488,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -837,40 +521,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -898,40 +554,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --components-js
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -959,25 +587,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -1076,25 +689,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -1111,25 +709,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -1163,10 +746,12 @@ jobs:
       - components-js-vrt-playwright
       - components-angular
       - components-react
+      - components-react-remix
       - components-react-nextjs
       - components-vue
       - crawler-e2e-puppeteer
       - fallbacks
+      - component-meta
       - shared
       - storefront-unit
       - storefront-e2e
@@ -1178,14 +763,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Assets Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1210,10 +792,12 @@ jobs:
       - components-js-vrt-playwright
       - components-angular
       - components-react
+      - components-react-remix
       - components-react-nextjs
       - components-vue
       - crawler-e2e-puppeteer
       - fallbacks
+      - component-meta
       - shared
       - storefront-unit
       - storefront-e2e
@@ -1225,25 +809,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
-      - name: 'Install' # needed for algolia
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1266,30 +835,25 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Cache node_modules'
-        uses: actions/cache@v3
-        id: cache-node_modules
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Assets Build Artifact'
         uses: actions/download-artifact@v3
         with:
           name: assets-build
           path: ./packages/assets/dist
-      - name: 'Restore Build Artifact'
+      - name: 'Restore Components JS Build Artifact'
         uses: actions/download-artifact@v3
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
+      - name: 'Restore Components React Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-react-prod-build
+          path: ./packages/components-react/dist/react-wrapper
       - name: 'Restore Chunks Manifest Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1300,11 +864,16 @@ jobs:
         with:
           name: shared-build
           path: ./packages/shared/dist
-      - name: 'Smoke Test'
+      - name: 'Smoke Test Components JS'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-smoke
           args: --components-js
+      - name: 'Smoke Test Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-smoke
+          args: --components-react
   release-components-uxpin:
     name: 'Release Components UXPin'
     needs:
@@ -1328,7 +897,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_NODE_DOCKER_IMAGE }} # different docker image
       - name: 'Install'
         if: steps.cache-node_modules.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run-node
@@ -1361,14 +930,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1392,14 +958,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1423,14 +986,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1454,14 +1014,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1486,14 +1043,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1518,14 +1072,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Restore Utilities Deprecated Artifact'
         uses: actions/download-artifact@v3
         with:
@@ -1550,14 +1101,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v3
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v2
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_PLAYWRIGHT_DOCKER_IMAGE }}
+          install: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Publish Sketch Library Basic'
         uses: ./.github/actions/docker-run-playwright
         env:

@@ -6,6 +6,12 @@
 - … center the content area within the screen.
 - … set a maximum width for the content area.
 
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+This component is deprecated and will be removed with the next major release. 
+In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
+Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Types
@@ -13,7 +19,7 @@
 Depending on your layout requirements you can choose between the following options for the content area, whereas each of
 them can be applied module-based to give you a maximum of flexibility for your page layouts:
 
-### Basic (default)
+### Basic
 
 Depending on the screen width the "Basic" variant **includes a margin of 7% or 10% between content area and the left and
 right screen sides** (100% = full screen width):
@@ -23,7 +29,7 @@ right screen sides** (100% = full screen width):
 | **XS-L (320-1759 px)**     | 7%         |
 | **XL (1760 px or larger)** | 10%        |
 
-### Extended
+### Extended (default)
 
 The "Extended" content area includes no defined margin on the left and right of the content and has a maximum width of
 1920 px. Thus, in viewport sizes from 1920 px onwards there is a growing white space outside the left and right edge of

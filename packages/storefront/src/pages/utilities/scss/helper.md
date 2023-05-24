@@ -4,6 +4,11 @@
 
 ## p-generate-font-definition($fontSize, $fontWeight)
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>p-generate-font-definition()</code> mixin is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>$pds-font-family</code>, <code>$pds-font-weight-{regular|bold|semi-bold}</code>, <code>$pds-font-line-height</code> and one of the provided font sizes from <a href="styles/typography">typography</a>.
+</p-inline-notification>
+
 With this mixin, it's possible to get various kinds of text variants (size and weight) by passing two parameters as
 variables for `size` and `weight`.
 
@@ -36,6 +41,11 @@ p {
 
 ## p-generate-type-scale($size)
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>p-generate-type-scale()</code> mixin is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use <code>$pds-font-line-height</code> and one of the provided font sizes from <a href="styles/typography">typography</a>.
+</p-inline-notification>
+
 Generates font-size and line-height styling definition to fit into Porsche Vertical Grid System. `$size` only accepts
 value in rem or px, e.g. 12px or 1.5rem.
 
@@ -60,6 +70,11 @@ p {
 
 ## p-calculate-line-height($size)
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>p-calculate-line-height()</code> mixin is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>$pds-font-line-height</code> variable provided at <a href="styles/typography">typography</a>.
+</p-inline-notification>
+
 Calculates line-height to fit into Porsche Vertical Grid System. The `$size` parameter only accepts value in rem or px,
 e.g. 12px or 1.5rem.
 
@@ -83,6 +98,10 @@ p {
 
 ## p-px-to-rem($px)
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>p-px-to-rem()</code> mixin is <strong>deprecated</strong> without any replacement and will be removed with next major release.
+</p-inline-notification>
+
 Converts px to rem unit. The base for rem calculation is defined with 16px by default.  
 `$px` only accepts value in px unit, e.g. 12px.
 
@@ -105,6 +124,10 @@ div {
 ---
 
 ## p-rem-to-px($rem)
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>p-rem-to-px()</code> mixin is <strong>deprecated</strong> without any replacement and will be removed with next major release.
+</p-inline-notification>
 
 Converts rem to px unit. The base for rem calculation is defined with 16px by default.  
 `$rem` only accepts value in rem unit, e.g. 1.5rem.

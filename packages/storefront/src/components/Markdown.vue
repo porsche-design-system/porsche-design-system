@@ -7,9 +7,16 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-diff';
 
   @Component
   export default class Markdown extends Vue {
+    updated() {
+      this.$el
+        .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
+        .forEach((diff) => Prism.highlightElement(diff));
+    }
     // handling for raw anchor links to prevent full reload and respect base tag
     onContentClick(event: MouseEvent): void {
       const { altKey, ctrlKey, metaKey, shiftKey, target } = event;
@@ -28,13 +35,23 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/components-js/utilities/scss';
+  @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
   /* More information about :deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
 * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
 */
   .markdown :deep(> .vmark) {
+    .language-diff {
+      & > {
+        .inserted {
+          color: $pds-theme-light-notification-success;
+        }
+        .deleted {
+          color: $pds-theme-light-notification-error;
+        }
+      }
+    }
     &:first-child > {
       :first-child {
         margin-top: 0 !important;
@@ -82,19 +99,19 @@
 
         // Typography
         h1 {
-          @include pds-heading-large;
-          margin-top: 4.5rem;
+          @include pds-heading-xx-large;
+          margin-top: $pds-spacing-fluid-large;
         }
 
         h2 {
-          @include pds-heading-medium;
-          margin-top: 4rem;
+          @include pds-heading-x-large;
+          margin-top: $pds-spacing-fluid-large;
 
           // for anchor links with table of contents
           &[id] {
             p-link-pure {
               visibility: hidden;
-              margin-left: $pds-spacing-small;
+              margin-left: $pds-spacing-static-small;
             }
 
             &:hover {
@@ -110,35 +127,35 @@
         }
 
         h3 {
-          @include pds-heading-small;
-          margin-top: $pds-spacing-x-large;
+          @include pds-heading-large;
+          margin-top: $pds-spacing-fluid-large;
         }
 
         h4 {
-          @include pds-heading-small;
-          margin-top: $pds-spacing-large;
+          @include pds-heading-medium;
+          margin-top: $pds-spacing-fluid-medium;
         }
 
         h5,
         h6 {
-          @include pds-heading-x-small;
-          margin-top: 1.5rem;
+          @include pds-heading-small;
+          margin-top: $pds-spacing-fluid-medium;
         }
 
         p {
           @include pds-text-small;
-          margin-top: 1.5rem;
+          margin-top: $pds-spacing-fluid-small;
         }
 
         p-inline-notification {
-          margin-top: 1.5rem;
+          margin-top: $pds-spacing-fluid-small;
         }
 
         // Horizontal Rules
         hr {
           margin: {
-            top: 3.5rem;
-            bottom: $pds-spacing-medium;
+            top: $pds-spacing-fluid-large;
+            bottom: $pds-spacing-static-medium;
           }
           border: 0;
           height: 1px;
@@ -164,16 +181,16 @@
 
         // Blockquote
         blockquote {
-          padding-left: 1.5rem;
-          border-left: 0.3125rem solid $pds-theme-light-contrast-low;
+          padding-left: $pds-spacing-static-medium;
+          border-left: 5px solid $pds-theme-light-contrast-low;
         }
 
         // Lists
         ul,
         ol {
           @include pds-text-small;
-          margin-top: 1.5rem;
-          padding-left: $pds-spacing-large;
+          margin-top: $pds-spacing-fluid-medium;
+          padding-left: $pds-spacing-static-large;
 
           ul,
           ol {
@@ -189,6 +206,17 @@
           list-style-type: decimal;
         }
 
+        h3 + ul,
+        h3 + ol,
+        h4 + ul,
+        h4 + ol,
+        h5 + ul,
+        h5 + ol,
+        h6 + ul,
+        h6 + ol {
+          margin-top: $pds-spacing-fluid-x-small;
+        }
+
         // Code
         code,
         pre {
@@ -201,16 +229,16 @@
         }
 
         :not(pre) > code {
-          padding: 0.125rem $pds-spacing-small;
-          background-color: mix($pds-theme-light-brand, $pds-theme-light-background-base, 10%);
+          padding: 2px $pds-spacing-static-small;
+          background-color: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
           border-radius: 3px;
-          color: $pds-theme-light-brand;
+          color: $pds-theme-light-primary;
         }
 
         pre {
-          margin-top: $pds-spacing-small;
+          margin-top: $pds-spacing-static-small;
           display: block;
-          padding: $pds-spacing-small 1.5rem;
+          padding: $pds-spacing-static-small $pds-spacing-static-medium;
           word-break: break-all;
           word-wrap: break-word;
           background-color: $pds-theme-light-background-surface;
@@ -221,7 +249,7 @@
 
         // Tables
         table {
-          margin-top: 1.5rem;
+          margin-top: $pds-spacing-fluid-medium;
           border-collapse: collapse;
 
           code ~ code::before {
@@ -238,15 +266,15 @@
 
           th {
             text-align: left;
-            padding-bottom: $pds-spacing-small;
+            padding-bottom: $pds-spacing-static-small;
             border-bottom: 1px solid $pds-theme-light-contrast-low;
           }
 
           td {
             text-align: left;
             padding: {
-              top: $pds-spacing-small;
-              bottom: $pds-spacing-small;
+              top: $pds-spacing-static-small;
+              bottom: $pds-spacing-static-small;
             }
             border-bottom: 1px solid $pds-theme-light-contrast-low;
             vertical-align: top;
@@ -255,25 +283,15 @@
 
           th ~ th,
           td ~ td {
-            padding-left: 1.5rem;
+            padding-left: $pds-spacing-static-medium;
           }
         }
 
         // Links
-        a:not(.p-button):not(.p-link) {
-          text-decoration: underline;
-          color: $pds-theme-light-base;
-          outline: transparent solid 1px;
-          outline-offset: 1px;
-          transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-          &:hover {
-            color: $pds-theme-light-state-hover;
-          }
-
-          &:focus {
-            outline-color: $pds-theme-light-state-focus;
-          }
+        a {
+          color: inherit;
+          @include pds-hover;
+          @include pds-focus('none');
         }
 
         // Media
@@ -284,7 +302,7 @@
 
         // Special
         .playground {
-          margin-top: $pds-spacing-medium;
+          margin-top: $pds-spacing-static-medium;
         }
       }
     }

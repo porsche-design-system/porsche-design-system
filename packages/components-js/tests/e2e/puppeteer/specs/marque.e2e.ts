@@ -2,7 +2,6 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
-  getAttribute,
   getEventSummary,
   getLifecycleStatus,
   getProperty,
@@ -325,12 +324,12 @@ describe('without trademark', () => {
       expect(requestedImagePath, 'initial request resolution').toContain(resolution3x);
 
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await page.waitForRequest((request) => request.url().includes(fileNameSmall));
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await page.waitForRequest((request) => request.url().includes(fileNameMedium));
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution3x);
     });
@@ -348,23 +347,6 @@ describe('with link', () => {
     await setProperty(host, 'href', '#some-link');
     await waitForStencilLifecycle(page);
     expect(await getLink()).not.toBe(null);
-  });
-
-  it('should sync href and target prop when changed programmatically', async () => {
-    await setContentWithLink();
-
-    const host = await getHost();
-    const link = await getLink();
-
-    expect(await getAttribute(link, 'href')).toBe('about:blank#');
-    expect(await getAttribute(link, 'target')).toBe('_self');
-
-    await setProperty(host, 'href', '#some-link');
-    await setProperty(host, 'target', '_blank');
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(link, 'href')).toBe('#some-link');
-    expect(await getAttribute(link, 'target')).toBe('_blank');
   });
 
   it('should dispatch correct click events', async () => {

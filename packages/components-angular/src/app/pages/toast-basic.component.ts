@@ -9,13 +9,32 @@ import { ToastManager } from '@porsche-design-system/components-angular';
       .playground {
         height: 300px;
         padding: 0;
-        transform: translateX(0);
-        border: 1px solid deeppink;
       }
     `,
   ],
   template: `
-    <div class="playground light" title="should render toast neutral on light background">
+    <div class="visualize-grid">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="playground light" title="should render toast info on light background">
       <p-toast></p-toast>
     </div>
   `,

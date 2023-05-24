@@ -48,6 +48,14 @@ exports[`pds-media-query-max() should return correct css for breakpoint: xxl 1`]
 }"
 `;
 
+exports[`pds-media-query-min() should return correct css for breakpoint: base 1`] = `
+"@media (min-width: 0px) {
+  div {
+    color: deeppink;
+  }
+}"
+`;
+
 exports[`pds-media-query-min() should return correct css for breakpoint: l 1`] = `
 "@media (min-width: 1300px) {
   div {
@@ -96,8 +104,8 @@ exports[`pds-media-query-min() should return correct css for breakpoint: xxl 1`]
 }"
 `;
 
-exports[`pds-media-query-min() should return correct css for breakpoint: xxs 1`] = `
-"@media (min-width: 0px) {
+exports[`pds-media-query-min-max() should return correct css for breakpoint range: base - xs 1`] = `
+"@media (min-width: 0px) and (max-width: 479px) {
   div {
     color: deeppink;
   }
@@ -138,14 +146,6 @@ exports[`pds-media-query-min-max() should return correct css for breakpoint rang
 
 exports[`pds-media-query-min-max() should return correct css for breakpoint range: xs - s 1`] = `
 "@media (min-width: 480px) and (max-width: 759px) {
-  div {
-    color: deeppink;
-  }
-}"
-`;
-
-exports[`pds-media-query-min-max() should return correct css for breakpoint range: xxs - xs 1`] = `
-"@media (min-width: 0px) and (max-width: 479px) {
   div {
     color: deeppink;
   }

@@ -1,22 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type {
-  AccordionChangeEvent,
-  CarouselChangeEvent,
-  PageChangeEvent,
-  SortingChangeEvent,
-  SwitchChangeEvent,
-  TabChangeEvent,
+  AccordionUpdateEvent,
+  CarouselUpdateEvent,
+  PaginationUpdateEvent,
+  TableUpdateEvent,
+  SwitchUpdateEvent,
+  TabsBarUpdateEvent,
+  TabsUpdateEvent,
 } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-events',
   template: `
     <div class="playground light">
-      <p-accordion [heading]="'Some heading'" (accordionChange)="onAccordionChange($event)">
+      <p-accordion [heading]="'Some heading'" (update)="onAccordionUpdate($event)">
         Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
         labore et dolore magna aliquyam erat, sed diam voluptua.
       </p-accordion>
-      <p>{{ accordionChangeEventCounter }}</p>
+      <p>{{ accordionUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -24,27 +25,27 @@ import type {
         [totalItemsCount]="500"
         [itemsPerPage]="25"
         [activePage]="1"
-        (pageChange)="onPageChange($event)"
+        (update)="onPaginationUpdate($event)"
       ></p-pagination>
-      <p>{{ pageChangeEventCounter }}</p>
+      <p>{{ paginationUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-tabs-bar [activeTabIndex]="0" (tabChange)="onTabsBarChange($event)">
+      <p-tabs-bar [activeTabIndex]="0" (update)="onTabsBarUpdate($event)">
         <button>Tab 1</button>
         <button>Tab 2</button>
         <button>Tab 3</button>
       </p-tabs-bar>
-      <p>{{ tabsBarChangeEventCounter }}</p>
+      <p>{{ tabsBarUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-tabs [activeTabIndex]="0" (tabChange)="onTabsChange($event)">
+      <p-tabs [activeTabIndex]="0" (update)="onTabsUpdate($event)">
         <p-tabs-item label="Tab 1">Content 1</p-tabs-item>
         <p-tabs-item label="Tab 2">Content 2</p-tabs-item>
         <p-tabs-item label="Tab 3">Content 3</p-tabs-item>
       </p-tabs>
-      <p>{{ tabsChangeEventCounter }}</p>
+      <p>{{ tabsUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -55,88 +56,108 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-switch (switchChange)="onSwitchChange($event)">Switch</p-switch>
-      <p>{{ switchChangeEventCounter }}</p>
+      <p-switch (update)="onSwitchUpdate($event)">Switch</p-switch>
+      <p>{{ switchUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-modal [open]="isModalOpen" (close)="onModalClose()">Modal</p-modal>
-      <p>{{ modalCloseEventCounter }} <button (click)="openModal()">Open Modal</button></p>
+      <p-banner [open]="isBannerOpen" (dismiss)="onBannerDismiss()" [heading]="'Banner'"></p-banner>
+      <p>{{ bannerDismissEventCounter }}</p>
+      <button (click)="openBanner()">Open Banner</button>
     </div>
 
     <div class="playground light">
-      <p-table (sortingChange)="onTableSortingChange($event)">
+      <p-modal [open]="isModalOpen" (dismiss)="onModalDismiss()">Modal</p-modal>
+      <p>{{ modalDismissEventCounter }}</p>
+      <button (click)="openModal()">Open Modal</button>
+    </div>
+
+    <div class="playground light">
+      <p-table (update)="onTableUpdate($event)">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell [sort]="{ id: 'col1', active: true, direction: 'asc' }">Col 1</p-table-head-cell>
           </p-table-head-row>
         </p-table-head>
       </p-table>
-      <p>{{ tableSortingChangeEventCounter }}</p>
+      <p>{{ tableUpdateEventCounter }}</p>
     </div>
 
     <div class="playground light">
-      <p-carousel (carouselChange)="onCarouselChange($event)">
+      <p-carousel (update)="onCarouselUpdate($event)">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
       </p-carousel>
-      <p>{{ carouselChangeEventCounter }}</p>
+      <p>{{ carouselUpdateEventCounter }}</p>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsComponent {
-  public accordionChangeEventCounter = 0;
-  public pageChangeEventCounter = 0;
-  public tabsBarChangeEventCounter = 0;
-  public tabsChangeEventCounter = 0;
+  public accordionUpdateEventCounter = 0;
+  public paginationUpdateEventCounter = 0;
+  public tabsBarUpdateEventCounter = 0;
+  public tabsUpdateEventCounter = 0;
   public textFieldSearchValue = '';
-  public switchChangeEventCounter = 0;
-  public modalCloseEventCounter = 0;
+  public switchUpdateEventCounter = 0;
+  public bannerDismissEventCounter = 0;
+  public isBannerOpen = false;
+  public modalDismissEventCounter = 0;
   public isModalOpen = false;
-  public tableSortingChangeEventCounter = 0;
-  public carouselChangeEventCounter = 0;
+  public tableUpdateEventCounter = 0;
+  public carouselUpdateEventCounter = 0;
+
+  // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported package root
-  public onAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
-    this.accordionChangeEventCounter++;
+  public onAccordionUpdate(e: CustomEvent<AccordionUpdateEvent>) {
+    this.accordionUpdateEventCounter++;
   }
 
-  public onPageChange(e: CustomEvent<PageChangeEvent>) {
-    this.pageChangeEventCounter++;
+  public onPaginationUpdate(e: CustomEvent<PaginationUpdateEvent>) {
+    this.paginationUpdateEventCounter++;
   }
 
-  public onTabsBarChange(e: CustomEvent<TabChangeEvent>) {
-    this.tabsBarChangeEventCounter++;
+  public onTabsBarUpdate(e: CustomEvent<TabsBarUpdateEvent>) {
+    this.tabsBarUpdateEventCounter++;
   }
 
-  public onTabsChange(e: CustomEvent<TabChangeEvent>) {
-    this.tabsChangeEventCounter++;
+  public onTabsUpdate(e: CustomEvent<TabsUpdateEvent>) {
+    this.tabsUpdateEventCounter++;
   }
 
   public onTextFieldSearchInput(e: Event) {
     this.textFieldSearchValue = (e.target as HTMLInputElement).value;
   }
 
-  public onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
-    this.switchChangeEventCounter++;
+  public onSwitchUpdate(e: CustomEvent<SwitchUpdateEvent>) {
+    this.switchUpdateEventCounter++;
+  }
+
+  public openBanner() {
+    this.isBannerOpen = true;
+  }
+
+  public onBannerDismiss() {
+    this.bannerDismissEventCounter++;
+    this.isBannerOpen = false;
   }
 
   public openModal() {
     this.isModalOpen = true;
   }
 
-  public onModalClose() {
-    this.modalCloseEventCounter++;
+  public onModalDismiss() {
+    this.modalDismissEventCounter++;
     this.isModalOpen = false;
   }
 
-  public onTableSortingChange(e: CustomEvent<SortingChangeEvent>) {
-    this.tableSortingChangeEventCounter++;
+  public onTableUpdate(e: CustomEvent<TableUpdateEvent>) {
+    this.tableUpdateEventCounter++;
   }
 
-  public onCarouselChange(e: CustomEvent<CarouselChangeEvent>) {
-    this.carouselChangeEventCounter++;
+  public onCarouselUpdate(e: CustomEvent<CarouselUpdateEvent>) {
+    this.carouselUpdateEventCounter++;
   }
 }

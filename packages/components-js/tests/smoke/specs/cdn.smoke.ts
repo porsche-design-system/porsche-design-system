@@ -1,5 +1,7 @@
 import type { Page } from 'puppeteer';
 import {
+  CRESTS_CDN_BASE_URL,
+  CRESTS_MANIFEST,
   FALLBACKS_MANIFEST,
   FALLBACKS_CDN_BASE_URL,
   FONTS_CDN_BASE_URL,
@@ -10,6 +12,8 @@ import {
   MARQUES_MANIFEST,
   META_ICONS_CDN_BASE_URL,
   META_ICONS_MANIFEST,
+  MODEL_SIGNATURES_MANIFEST,
+  MODEL_SIGNATURES_CDN_BASE_URL,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
@@ -75,7 +79,7 @@ describe('cdn', () => {
     const assetPaths = {
       components: 'components/porsche-design-system.v',
       styles: 'styles/font-face.min.',
-      icons: 'icons/arrow-head-right.min.',
+      icons: 'icons/arrow-right.min.',
       fonts: 'fonts/porsche-next-w-la-regular.min.',
       marque: 'marque/porsche-marque-trademark.medium.min.',
     };
@@ -83,8 +87,8 @@ describe('cdn', () => {
     const content = `
 <p-content-wrapper>
   <p-marque></p-marque>
-  <p-headline variant="headline-1">Some Headline</p-headline>
-  <p-button>Some label</p-button>
+  <p-heading size="xx-large">Some Headline</p-heading>
+  <p-button icon="arrow-right">Some label</p-button>
 </p-content-wrapper>`;
 
     it('should request from .com cdn for { cdn: "auto" } when outside of china', async () => {
@@ -158,7 +162,7 @@ describe('cdn', () => {
         })(item);
       }
 
-      it(`should have all ${items.length} ${baseUrl.substr(baseUrl.lastIndexOf('/') + 1)}`, () => {
+      it(`should have all ${items.length} ${baseUrl.substring(baseUrl.lastIndexOf('/') + 1)}`, () => {
         expect(responseCounter).toBe(items.length);
         responseCounter = 0; // reset for upcoming test
       });
@@ -168,6 +172,11 @@ describe('cdn', () => {
       const chunks = objectToFlatArray(COMPONENT_CHUNKS_MANIFEST);
       const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_COMPONENTS}`;
       bulkRequestItems(chunks, baseUrl);
+    });
+
+    describe('crest', () => {
+      const crests = objectToFlatArray(CRESTS_MANIFEST);
+      bulkRequestItems(crests, CRESTS_CDN_BASE_URL);
     });
 
     describe('fallbacks', () => {
@@ -195,15 +204,23 @@ describe('cdn', () => {
       bulkRequestItems(metaIcons, META_ICONS_CDN_BASE_URL);
     });
 
+    describe('model-signatures', () => {
+      const modelSignatures = objectToFlatArray(MODEL_SIGNATURES_MANIFEST);
+      bulkRequestItems(modelSignatures, MODEL_SIGNATURES_CDN_BASE_URL);
+    });
+
     describe('styles', () => {
       // retrieve css file names via partial since FONT_FACE_CDN_URL returns different value based on flag in window
-      const comStyle = getFontFaceStylesheet({ cdn: 'auto', withoutTags: true });
-      const cnStyle = getFontFaceStylesheet({ cdn: 'cn', withoutTags: true });
+      const comStyle = getFontFaceStylesheet({ cdn: 'auto' });
+      const cnStyle = getFontFaceStylesheet({ cdn: 'cn' });
 
       // extract file name from full path
-      const getFileName = (path: string) => path.substr(path.lastIndexOf('/') + 1);
+      const getFileName = (path: string): string => {
+        path = path.replace(/(.*)(https:\/\/[a-z0-9./-]+\.css)(.*)/, '$2');
+        return path.substring(path.lastIndexOf('/') + 1);
+      };
 
-      const styles = [getFileName(comStyle), getFileName(cnStyle)];
+      const styles = [comStyle, cnStyle].map(getFileName);
       const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`;
       bulkRequestItems(styles, baseUrl);
     });

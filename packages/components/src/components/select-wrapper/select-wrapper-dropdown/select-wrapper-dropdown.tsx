@@ -7,7 +7,11 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
-import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type {
+  DropdownDirectionInternal,
+  SelectWrapperDropdownDirection,
+  SelectWrapperState,
+} from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
   getListAriaAttributes,
@@ -34,7 +38,6 @@ import {
   determineDirection,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
-import type { FormState } from '../../../utils/form/form-state';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
@@ -48,8 +51,8 @@ export class SelectWrapperDropdown {
   @Prop() public label?: string;
   @Prop() public description?: string;
   @Prop() public message?: string;
-  @Prop() public state?: FormState;
-  @Prop() public direction?: DropdownDirection = 'auto';
+  @Prop() public state?: SelectWrapperState;
+  @Prop() public direction?: SelectWrapperDropdownDirection = 'auto';
   @Prop() public theme?: Theme = 'light';
   @Prop() public filter?: boolean = false;
   @Prop() public required?: boolean = false;
@@ -83,7 +86,9 @@ export class SelectWrapperDropdown {
   }
 
   public componentDidRender(): void {
-    handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
+    if (this.isOpen) {
+      handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
+    }
   }
 
   public componentWillLoad(): void {
@@ -102,8 +107,8 @@ export class SelectWrapperDropdown {
       getComponentCss,
       this.direction === 'auto' ? determineDirection(this.host) : this.direction,
       this.isOpen,
-      this.disabled,
       this.state,
+      this.disabled,
       this.filter,
       this.theme
     );
@@ -119,6 +124,7 @@ export class SelectWrapperDropdown {
         {this.filter ? (
           [
             <input
+              key="input"
               type="text"
               role="combobox"
               disabled={this.disabled}
@@ -138,7 +144,7 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputElement = el)}
             />,
-            <span onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
+            <span key="span" onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
           ]
         ) : (
           <button
@@ -151,7 +157,8 @@ export class SelectWrapperDropdown {
               labelId,
               descriptionId,
               dropdownId,
-              getHighlightedOptionMapIndex(this.optionMaps))}
+              getHighlightedOptionMapIndex(this.optionMaps)
+            )}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onComboboxKeyDown}
           />
@@ -166,49 +173,56 @@ export class SelectWrapperDropdown {
               {this.description}
             </div>
           ),
-          <ul
-            id={dropdownId}
-            role="listbox"
-            tabIndex={-1}
-            {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
-            ref={(el) => (this.listElement = el)}
-          >
-            {this.filter && !hasFilterResults(this.optionMaps) ? (
-              <li class="option" aria-live="polite" role="status">
-                <span aria-hidden="true">---</span>
-                <span class="option__sr">No results found</span>
-              </li>
-            ) : (
-              this.optionMaps.map((option, index) => {
-                const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
-                return [
-                  title && (
-                    <span class="optgroup" role="presentation">
-                      {title}
-                    </span>
-                  ),
-                  <li
-                    id={`option-${index}`}
-                    role="option"
-                    class={{
-                      ['option']: true,
-                      ['option--selected']: selected,
-                      ['option--highlighted']: highlighted,
-                      ['option--disabled']: disabled,
-                      ['option--hidden']: hidden || initiallyHidden,
-                    }}
-                    onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                    {...getOptionAriaAttributes(option)}
-                  >
-                    {value}
-                    {selected && !disabled && (
-                      <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="inherit" />
-                    )}
-                  </li>,
-                ];
-              })
-            )}
-          </ul>,
+          this.isOpen && (
+            <ul
+              id={dropdownId}
+              role="listbox"
+              tabIndex={-1}
+              {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
+              ref={(el) => (this.listElement = el)}
+            >
+              {this.filter && !hasFilterResults(this.optionMaps) ? (
+                <li class="option" aria-live="polite" role="status">
+                  <span aria-hidden="true">---</span>
+                  <span class="option__sr">No results found</span>
+                </li>
+              ) : (
+                this.optionMaps.map((option, index) => {
+                  const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
+                  return [
+                    title && (
+                      <span class="optgroup" role="presentation">
+                        {title}
+                      </span>
+                    ),
+                    <li
+                      id={`option-${index}`}
+                      role="option"
+                      class={{
+                        ['option']: true,
+                        ['option--selected']: selected,
+                        ['option--highlighted']: highlighted,
+                        ['option--disabled']: disabled,
+                        ['option--hidden']: hidden || initiallyHidden,
+                      }}
+                      onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
+                      {...getOptionAriaAttributes(option)}
+                    >
+                      {value}
+                      {selected && !disabled && (
+                        <PrefixedTagNames.pIcon
+                          aria-hidden="true"
+                          name="check"
+                          color={disabled ? 'state-disabled' : 'primary'}
+                          theme={this.theme}
+                        />
+                      )}
+                    </li>,
+                  ];
+                })
+              )}
+            </ul>
+          ),
         ]}
       </Host>
     );

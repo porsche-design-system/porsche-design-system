@@ -1,59 +1,53 @@
 import { getInitialStyles } from '../../../src';
 import { render } from '@testing-library/react';
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import * as prettier from 'prettier';
 
-const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
-const tagNames = filteredTagNames.join();
-const prefixedTagNames = filteredTagNames.map((x) => `custom-prefix-${x}`).join();
-
+// to skip validation
 jest.mock('../../../src/shared');
+
+const getFormattedCSSWithoutTag = (style: string): string => {
+  return prettier.format(style.replace(/<style.*>([\s\S]*)<\/style>/g, '$1'), { parser: 'css' });
+};
 
 describe('format: html', () => {
   it('should return core styles', () => {
-    const result = getInitialStyles();
-    const regex = new RegExp(
-      `<style data-pds-initial-styles>${tagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}</style>`
-    );
-    expect(result).toMatch(regex);
+    const result: string = getInitialStyles();
+    expect(result).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
 
   it('should add custom prefixes to component names', () => {
-    const result = getInitialStyles({ prefix: 'custom-prefix' });
-    const regex = new RegExp(
-      `<style data-pds-initial-styles-custom-prefix>${prefixedTagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}</style>`
-    );
-    expect(result).toMatch(regex);
+    const result: string = getInitialStyles({ prefix: 'custom-prefix' });
+    expect(result).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(result)).toMatchSnapshot();
+  });
+
+  it('should add multiple custom prefixes to component names', () => {
+    const result: string = getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });
+    expect(result).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
 });
 
 describe('format: jsx', () => {
   it('should return core styles', () => {
-    const { container } = render(getInitialStyles({ format: 'jsx' }));
-    const regex = new RegExp(
-      `<style data-pds-initial-styles="">${tagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}</style>`
-    );
-    expect(container.innerHTML).toMatch(regex);
+    const result: JSX.Element = getInitialStyles({ format: 'jsx' });
+    const { container } = render(result);
+    expect(container.innerHTML).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
   });
 
   it('should add custom prefix to component names', () => {
-    const { container } = render(getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' }));
-    const regex = new RegExp(
-      `<style data-pds-initial-styles-custom-prefix="">${prefixedTagNames}{visibility:hidden}.hydrated,.ssr{visibility:inherit}</style>`
-    );
-    expect(container.innerHTML).toMatch(regex);
+    const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' });
+    const { container } = render(result);
+    expect(container.innerHTML).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
   });
-});
 
-describe('withoutTags: true', () => {
-  it('should return core styles without style tag', () => {
-    const result = getInitialStyles({ withoutTags: true });
-    const regex = new RegExp(`${tagNames}{visibility:hidden}`);
-    expect(result).toMatch(regex);
-  });
-});
-
-describe('applyNormalizeStyles: true', () => {
-  it('should return core styles and normalize styles', () => {
-    expect(getInitialStyles({ applyNormalizeStyles: true })).toMatchSnapshot();
+  it('should add multiple custom prefix to component names', () => {
+    const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: ['', 'some-prefix', 'another-prefix'] });
+    const { container } = render(result);
+    expect(container.innerHTML).toMatchSnapshot();
+    expect(getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
   });
 });

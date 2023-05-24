@@ -47,16 +47,16 @@ describe('addMessage()', () => {
     }).toThrowErrorMatchingInlineSnapshot('"Empty text provided to addMessage."');
   });
 
-  it('should set message state to neutral if none was provided', () => {
+  it('should set message state to info if none was provided', () => {
     toastManager.addMessage({ text: 'Some Message' });
-    expect(toastManager['messages'][0]).toEqual({ text: 'Some Message', state: 'neutral' });
+    expect(toastManager['messages'][0]).toEqual({ text: 'Some Message', state: 'info' });
   });
 
   it('should add messages to messages array', () => {
     toastManager.addMessage({ text: 'Some Message One' });
     toastManager.addMessage({ text: 'Some Message Two', state: 'success' });
     expect(toastManager['messages']).toEqual([
-      { text: 'Some Message One', state: 'neutral' },
+      { text: 'Some Message One', state: 'info' },
       { text: 'Some Message Two', state: 'success' },
     ]);
   });
@@ -91,7 +91,7 @@ describe('dismissToastItem()', () => {
     toastManager.addMessage({ text: 'Some Message Two' });
     toastManager.dismissToastItem();
 
-    expect(toastManager['messages']).toEqual([{ text: 'Some Message Two', state: 'neutral' }]);
+    expect(toastManager['messages']).toEqual([{ text: 'Some Message Two', state: 'info' }]);
   });
 
   it('should call dismissCallbackFunction', () => {
@@ -122,7 +122,7 @@ describe('getToast()', () => {
     toastManager.addMessage({ text: 'Some Message One' });
     toastManager.addMessage({ text: 'Some Message Two' });
 
-    expect(toastManager.getToast()).toEqual({ text: 'Some Message One', state: 'neutral' });
+    expect(toastManager.getToast()).toEqual({ text: 'Some Message One', state: 'info' });
   });
 
   it('should return undefined if array is empty', () => {

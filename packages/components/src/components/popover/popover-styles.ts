@@ -1,14 +1,28 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
-import { mediaQueryMin, textSmall } from '@porsche-design-system/utilities-v2';
-import { buildSlottedStyles, getCss } from '../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, pxToRemWithUnit } from '../../styles';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  frostedGlassStyle,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
+import { getCss, isHighContrastMode } from '../../utils';
+import {
+  addImportantToEachRule,
+  getHiddenTextJssStyle,
+  getHighContrastColors,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
+import type { Theme } from '../../types';
 
-const { backgroundColor, baseColor } = getThemedColors('light');
-
-const mediaQueryXS = mediaQueryMin('xs');
-const mediaQueryForcedColors = '@media (forced-colors: active)';
+const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
+const { canvasColor, canvasTextColor } = getHighContrastColors();
 
 const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   top: {
@@ -33,10 +47,9 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   },
 };
 
-const borderWidth = '.75rem';
+const borderWidth = '12px';
 const transparentColor = 'transparent';
-const canvas = 'canvas';
-const canvasText = 'canvastext';
+
 const join = (...arr: (string | number)[]): string => arr.join(' ');
 
 const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
@@ -45,45 +58,42 @@ const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(borderWidth, borderWidth, 0),
-    borderColor: join(backgroundColor, transparentColor, transparentColor),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvasText, canvas, canvas),
-    },
+    borderColor: isHighContrastMode
+      ? join(canvasTextColor, canvasColor, canvasColor)
+      : join(backgroundColorThemeLight, transparentColor, transparentColor),
   },
   right: {
     top: '50%',
     right: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
-    borderColor: join(transparentColor, backgroundColor, transparentColor, transparentColor),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvas, canvasText, canvas, canvas),
-    },
+    borderColor: isHighContrastMode
+      ? join(canvasColor, canvasTextColor, canvasColor, canvasColor)
+      : join(transparentColor, backgroundColorThemeLight, transparentColor, transparentColor),
   },
   bottom: {
     bottom: 0,
     left: '50%',
     transform: 'translateX(-50%)',
     borderWidth: join(0, borderWidth, borderWidth),
-    borderColor: join(transparentColor, transparentColor, backgroundColor),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvas, canvas, canvasText),
-    },
+    borderColor: isHighContrastMode
+      ? join(canvasColor, canvasColor, canvasTextColor)
+      : join(transparentColor, transparentColor, backgroundColorThemeLight),
   },
   left: {
     top: '50%',
     left: 0,
     transform: 'translateY(-50%)',
     borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
-    borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColor),
-    [mediaQueryForcedColors]: {
-      borderColor: join(canvas, canvas, canvas, canvasText),
-    },
+    borderColor: isHighContrastMode
+      ? join(canvasColor, canvasColor, canvasColor, canvasTextColor)
+      : join(transparentColor, transparentColor, transparentColor, backgroundColorThemeLight),
   },
 };
 
-export const getComponentCss = (direction: PopoverDirection): string => {
-  const spacerBox = '-1rem';
+export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
+  const spacerBox = '-16px';
+  const { hoverColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -91,15 +101,53 @@ export const getComponentCss = (direction: PopoverDirection): string => {
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
-          width: '1.5rem', // width of icon (to improve ssr support)
-          height: '1.5rem', // height of icon (to improve ssr support)
+          ...hostHiddenStyles,
         }),
         verticalAlign: 'top',
       },
       p: {
-        ...textSmall,
+        ...textSmallStyle,
         margin: 0,
       },
+      button: {
+        display: 'block',
+        position: 'relative',
+        appearance: 'none',
+        background: 'transparent',
+        border: 0,
+        padding: 0,
+        outline: 0,
+        cursor: 'pointer',
+        ...textSmallStyle,
+        width: fontLineHeight, // width needed to improve ssr support
+        height: fontLineHeight, // height needed to improve ssr support
+        borderRadius: '50%',
+        ...hoverMediaQuery({
+          transition: getTransition('background-color'),
+          '&:hover': {
+            ...frostedGlassStyle,
+            backgroundColor: hoverColor,
+          },
+        }),
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-2),
+          border: `${borderWidthBase} solid transparent`,
+          borderRadius: '50%',
+        },
+        '&:focus::before': {
+          borderColor: focusColor,
+        },
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
+        },
+      },
+    },
+    label: getHiddenTextJssStyle(),
+    icon: {
+      display: 'inline-block', // TODO: should be changed in icon!
+      transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     spacer: {
       position: 'absolute',
@@ -108,13 +156,13 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       left: spacerBox,
       right: spacerBox,
       bottom: spacerBox,
-      filter: 'drop-shadow(0 0 1rem rgba(0,0,0,.3))',
+      filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
           ? '240ms $fadeIn ease forwards'
-          : 'var(--p-override-popover-animation-duration, 240ms) $fadeIn ease forwards',
+          : 'var(--p-animation-duration, 240ms) $fadeIn ease forwards',
       '&::before': {
         content: '""',
         position: 'absolute',
@@ -124,24 +172,21 @@ export const getComponentCss = (direction: PopoverDirection): string => {
     },
     popover: {
       position: 'absolute',
-      maxWidth: '90vw',
+      maxWidth: 'min(90vw, 27rem)',
       width: 'max-content',
       boxSizing: 'border-box',
-      background: backgroundColor,
-      padding: '.5rem 1rem',
+      background: backgroundColorThemeLight,
+      padding: '8px 16px',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
-      ...textSmall,
+      ...textSmallStyle,
       listStyleType: 'none',
-      // TODO: The styles above are our text styles should be extracted as soon as p-text is refactored with JSS
-      color: baseColor,
+      color: primaryColorThemeLight,
       whiteSpace: 'inherit',
-      [mediaQueryXS]: {
-        maxWidth: pxToRemWithUnit(432),
-      },
-      [mediaQueryForcedColors]: {
-        outline: `1px solid ${canvasText}`,
-      },
+      borderRadius: borderRadiusSmall,
+      ...(isHighContrastMode && {
+        outline: `1px solid ${canvasTextColor}`,
+      }),
     },
     '@keyframes fadeIn': {
       from: {
@@ -152,8 +197,4 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       },
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };

@@ -4,7 +4,8 @@ import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -28,13 +29,14 @@ const generateDSRComponents = (): void => {
 
       let newFileContent = fileContent
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
+        .replace(/ implements [A-Za-z]+/g, '')
         .replace(/@Element\(\) /g, '')
         .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
         .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
         .replace(/@State\(\) /g, '')
-        .replace(/\n.*\n  @Event\(.*\).*\n/g, '')
+        .replace(/(?:\n  \/\*\*(?:.*\n){0,3})?  @Event\(.*\).*\n/g, '')
         .replace(/\n  public connectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentWillLoad\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentDidLoad\(\): void {[\s\S]+?\n  }\n/g, '')
@@ -48,7 +50,7 @@ const generateDSRComponents = (): void => {
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
-        .replace(/\s{2,}(?:warnIf|throwIf|sync)[A-Z][A-Za-z]+\([\s\S]+?;/g, '')
+        .replace(/\s{2,}(?:warnIf|throwIf|sync)[A-Z][A-Za-z<>, \n]+\([\s\S]+?;/g, '')
         .replace(/\n.+classList\.remove[\s\S]+?;/g, '')
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
         .replace(/ as HTML[A-Za-z]+/g, '')
@@ -58,7 +60,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
-        .replace(/\s+onTabChange={.*?}/g, '') // onTabChange props
+        .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
@@ -116,7 +118,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     return (
       <>
         {/* @ts-ignore */}
-        <template shadowroot="open"${delegatesFocusProp}>
+        <template shadowroot="open" shadowrootmode="open"${delegatesFocusProp}>
           <style dangerouslySetInnerHTML={{ __html: style }} />
           ${g1.trim().replace(/\n/g, '$&    ')}
         </template>${children}
@@ -143,7 +145,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
       newFileContent = newFileContent
         .replace(/PrefixedTagNames.p([A-Za-z]+)/g, 'P$1') // reference imported components
-        .replace(/<(?:PSelectWrapperDropdown|PToastItem)[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
+        .replace(/<PToastItem[\S\s]+?\/>/, '<></>'); // remove internal components that don't have wrapper and are not visible anyway
 
       // rewire default slot
       if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
@@ -182,6 +184,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/import { Component } from 'react';/, "import type { FC } from 'react';")
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
+          .replace(/: Theme/g, ': any')
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
@@ -190,12 +193,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
-        .replace(/getTextListItemCss\(listType, orderType, isNestedList\)/, "''") // text-list-item
+        .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
-          /(getHeadlineTagName|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
+          /(getDisplayTagType|getHeadingTagType|getHeadlineTagType|getTextTagType|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
-        ) // headline, text, text-list, tag
-        .replace(/ = getHeadlineTagName/, ': any$&') // headline
+        ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
+        .replace(/TextColor|TextWeight/g, 'any') // text
+        .replace(/import type { TextTag }.*;/g, '') // text
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
           "namedSlotChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"
@@ -211,13 +215,33 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
-        .replace(/(const (?:iconProps|btnProps|linkProps)) =/, '$1: any ='); // workaround typing issue
+        .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
+        .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
+        .replace(/Exclude<any, any>/g, 'any'); // workaround typings of deprecation maps
 
       // component based tweaks
       if (tagName === 'p-carousel') {
-        newFileContent = newFileContent.replace(/this\.slides(\.map)/, `otherChildren$1`);
+        newFileContent = newFileContent
+          .replace(/this\.slides(\.map)/, `otherChildren$1`)
+          .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n");
+      } else if (tagName === 'p-banner') {
+        // remove warning about deprecated title slot
+        newFileContent = newFileContent
+          .replace(/.+console\.warn\([\s\S]+?\);\n/g, '')
+          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+      } else if (tagName === 'p-inline-notification') {
+        newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+      } else if (tagName === 'p-pagination') {
+        // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
+        newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
       } else if (tagName === 'p-modal') {
-        newFileContent = newFileContent.replace(/this\.props\.(hasHeader)/g, '$1').replace(/hasHeader =/, 'const $&');
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
+          .replace(/hasHeader =/, 'const $&')
+          .replace(
+            /const hasHeader = .+\n/,
+            '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
+          );
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
@@ -237,19 +261,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
-      } else if (tagName === 'p-icon') {
-        newFileContent = newFileContent
-          .replace(/^/, "import { ICONS_MAP } from '@porsche-design-system/icons';\n") // add missing import
-          .replace(/( } from '@porsche-design-system\/components\/dist\/utils';)/, ', paramCaseToCamelCase, isUrl$1') // add missing import
-          .replace(
-            /(<i key={this\.key\+\+} className="root") \/>/,
-            `$1 dangerouslySetInnerHTML={{ __html: isUrl(this.props.source) ? '<img src="\'+ this.props.source +\'" alt="" />' : ICONS_MAP[paramCaseToCamelCase(this.props.name) as keyof typeof ICONS_MAP] || '' }} />`
-          ); // let svg icons render on server
       } else if (tagName === 'p-popover') {
-        // only keep :host styles
+        // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent.replace(
           /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
         );
       } else if (tagName === 'p-toast') {
         // only keep :host styles
@@ -267,19 +283,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const manipulatedChildren = children.map((child, i) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
-        : child
-    );`
-          )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
-      } else if (tagName === 'p-text-list') {
-        // pass down listType and orderType prop to p-text-list-item children
-        newFileContent = newFileContent
-          .replace(
-            /const { children, namedSlotChildren, otherChildren } =.*/,
-            `$&
-    const manipulatedChildren = children.map((child, i) =>
-      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? { ...child, props: { ...child.props, listType: this.props.listType, orderType: this.props.orderType } }
         : child
     );`
           )
@@ -310,6 +313,30 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-select-wrapper-dropdown') {
+        newFileContent = newFileContent
+          // Remove markup after button
+          .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
+          // Change isOpen, optionMaps, searchString to not be a prop
+          .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
+          // fix warning about read-only field
+          .replace(/value={/, 'defaultValue={');
+      } else if (tagName === 'p-select-wrapper') {
+        newFileContent = newFileContent
+          // Add PSelectWrapperDropdown component import
+          .replace(
+            /(import\s*{\s*PIcon\s*}\s*from\s*'\.\.\/components';\s*)/,
+            "$1import { PSelectWrapperDropdown } from '../components/select-wrapper-dropdown.wrapper';\r"
+          )
+          // Remove hasCustomDropdown attribute
+          .replace(/^\s*private\s+hasCustomDropdown\s*:\s*any\s*;\s*$/gm, '')
+          // Add hasCustomDropdown fn
+          .replace(
+            /(public\s+render\(\): JSX\.Element\s*{)/,
+            '$1\nconst hasCustomDropdown = isCustomDropdown(this.props.filter, this.props.native);'
+          )
+          // Change hasCustomDropdown to use fn instead of prop
+          .replace(/this\.props\.hasCustomDropdown/, 'hasCustomDropdown');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
@@ -356,6 +383,32 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
 $&`
           );
+      } else if (tagName === 'p-link-tile-model-signature') {
+        newFileContent = newFileContent
+          .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
+          .replace(/ {4}.*throwIfElementIsNotOfKind[\s\S]+?;\n/g, '') // remove validation
+          .replace(/(const overlayLinkProps).+?=([\s\S]+?);/, '$1 = $2 as const;') // remove typing
+          .replace(
+            /setRequiredPropsOfSlottedLinks.+?;/,
+            `const manipulatedChildren = children.map((child) =>
+      typeof child === 'object' && 'props' in child && namedSlotChildren.includes(child)
+        ? { ...child, props: { ...child.props, theme: 'dark', variant: child.props.slot } }
+        : child
+    );` // manipulate p-link children like our web component does at runtime
+          )
+          .replace(
+            /(const linkEl) = getLinkOrSlottedAnchorElement.+;/,
+            `const primaryLink = manipulatedChildren.find(
+      (child) => typeof child === 'object' && 'props' in child && child.props.variant === 'primary'
+    ) as any;
+    $1 = primaryLink.props.href
+      ? primaryLink.props
+      : (Array.isArray(primaryLink.props.children) ? primaryLink.props.children : [primaryLink.props.children]).find(
+          (child) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
+        ).props;`
+          ) // rewire source for linkEl
+          .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       }
 
       return newFileContent;

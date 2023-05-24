@@ -1,6 +1,13 @@
 import type { TextWeight } from '../types';
-import { fontWeight } from '@porsche-design-system/utilities-v2';
+import { fontWeightRegular, fontWeightSemiBold, fontWeightBold } from '@porsche-design-system/utilities-v2';
+import type { TextWeightDeprecated } from '../components/text/text-weight';
 
-export const getFontWeight = (weight: TextWeight): number => {
-  return fontWeight[weight === 'semibold' ? 'semiBold' : weight];
+const fontWeightMap: Record<Exclude<TextWeight, TextWeightDeprecated>, number> = {
+  regular: fontWeightRegular,
+  'semi-bold': fontWeightSemiBold,
+  bold: fontWeightBold,
+};
+
+export const getFontWeight = (weight: Exclude<TextWeight, TextWeightDeprecated>): number => {
+  return fontWeightMap[weight];
 };

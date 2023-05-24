@@ -1,10 +1,10 @@
 <template>
   <header>
     <router-link to="/" v-slot="{ href, navigate }">
-      <p-marque :href="href" @click="navigate"></p-marque>
+      <p-wordmark :href="href" @click="navigate"></p-wordmark>
     </router-link>
 
-    <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center"> Design System </p-headline>
+    <p-heading class="spacing-mt-8" size="medium" tag="h1" align="center"> Design System </p-heading>
 
     <p-text size="x-small" align="center">
       <strong>Web v{{ this.version }}</strong>
@@ -35,7 +35,7 @@
   export default class Header extends Vue {
     public version: string = version;
 
-    public versionOptions: string[] = ['v1', 'v2', 'latest'];
+    public versionOptions: string[] = ['v1', 'v2', 'v3', 'latest'];
     public onVersionChange = (event: Event): void => {
       window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}/`;
     };

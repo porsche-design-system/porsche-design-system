@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -81,10 +81,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     let props = super.generateProps(component, rawComponentInterface);
 
     // add custom props to wrappers
-    if (component === 'p-banner') {
-      props = addProp(props, 'title?: string;');
-      props = addProp(props, 'description?: string;');
-    } else if (component === 'p-toast') {
+    if (component === 'p-toast') {
       props = addProp(props, 'text: string;');
       props = addProp(props, 'state: ToastState;');
     } else if (component === 'p-text-field-wrapper') {
@@ -130,18 +127,22 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add uxpinbind annotations
     if (component === 'p-accordion') {
+      props = addUxPinBindAnnotation(props, 'open', 'onUpdate', 'open');
       props = addUxPinBindAnnotation(props, 'open', 'onAccordionChange', 'open');
     } else if (component === 'p-switch') {
+      props = addUxPinBindAnnotation(props, 'checked', 'onUpdate', 'checked');
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
     } else if (component === 'p-segmented-control') {
+      props = addUxPinBindAnnotation(props, 'value', 'onUpdate', 'value');
       props = addUxPinBindAnnotation(props, 'value', 'onSegmentedControlChange', 'value');
     } else if (component === 'p-tabs-bar') {
+      props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onUpdate', 'activeTabIndex');
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
     }
 
     // add spacing props to every component
     const spacings = this.spacingProps.map((x) => `${x}?: Spacing;`).join('\n  ');
-    const htmlAttributesType = this.generateHTMLAttributesType();
+    const htmlAttributesType = this.generateHTMLAttributesType().replace(/\|/g, '\\$&');
     props = props.replace(new RegExp(`(${htmlAttributesType} & {\n)`), `$1  ${spacings}\n`);
 
     return props;
@@ -168,32 +169,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
-      // special treatments
-      if (component === 'p-banner') {
-        cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `title = 'Title', description = 'Description', $1`) // set default children value in props destructuring
-          .replace(/PropsWithChildren<(.*)>/, '$1') // remove PropsWithChildren
-          .replace(
-            // map custom title and description props to slotted children
-            /(<Tag {...props}) \/>/,
-            [
-              '(',
-              ...[
-                '$1>',
-                ...['<span slot="title" children={title} />', '<span slot="description" children={description} />'].map(
-                  addNestedIndentation
-                ),
-                '</Tag>',
-              ].map(addNestedIndentation),
-              ')',
-            ].join('\n    ')
-          );
-      } else {
-        // other components receive their component name as default
-        cleanedComponent = cleanedComponent
-          .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
-          .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
-      }
+      // components receive their component name as default
+      cleanedComponent = cleanedComponent
+        .replace(/(\.\.\.rest)/, `children = '${this.stripFileExtension(component)}', $1`) // set default children value in props destructuring
+        .replace(/(\.\.\.rest,\n)/, '$1      children,\n'); // put destructured children into props object
 
       // other special treatments that need default props
       if (component === 'p-text') {
@@ -229,7 +208,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     } else if (component === 'p-toast') {
       cleanedComponent = cleanedComponent
-        .replace(/(\.\.\.rest)/, "text, state = 'neutral', $1") // destructure custom props
+        .replace(/(\.\.\.rest)/, "text, state = 'info', $1") // destructure custom props
         .replace(
           // integrate toast manager hook and call addMessage based on custom 'text' and 'state' props
           /((const propsToSync =)|(useBrowserLayoutEffect\(\(\) =>))/,
@@ -270,8 +249,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     switch (component) {
       case 'p-accordion':
       case 'p-button-group':
+      case 'p-button-tile':
       case 'p-checkbox-wrapper':
+      case 'p-fieldset':
       case 'p-link-tile':
+      case 'p-link-tile-model-signature':
       case 'p-modal':
       case 'p-radio-button-wrapper':
       case 'p-segmented-control':
@@ -309,6 +291,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           '<Button variant="secondary" uxpId="button-secondary" />',
         ].join(glue),
       },
+      'p-button-tile': {
+        props: { label: 'Some label', description: 'Some description' },
+        children: '<DummyImg uxpId="dummy-img" />',
+      },
       'p-checkbox-wrapper': {
         props: { label: 'CheckboxWrapper' },
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
@@ -317,9 +303,20 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           extraProps: { label: 'My Checkbox', checked: true },
         },
       },
+      'p-fieldset': {
+        props: { label: 'Fieldset' },
+      },
       'p-link-tile': {
         props: { label: 'Some label', description: 'Some description' },
         children: '<DummyImg uxpId="dummy-img" />',
+      },
+      'p-link-tile-model-signature': {
+        props: { heading: 'Some heading' },
+        children: [
+          '<DummyImg uxpId="dummy-img" />',
+          '<Link slot="primary" variant="primary" theme="dark" href="#" uxpId="link-primary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
+          '<Link slot="secondary" variant="secondary" theme="dark" href="#" uxpId="link-secondary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
+        ].join(glue),
       },
       'p-modal': {
         props: { heading: 'Heading', open: true },

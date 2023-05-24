@@ -2,26 +2,29 @@
 
 **Function name:** `getInitialStyles()`
 
-If you use `Porsche Design System` components, we take care that your application only renders those if they are fully
-styled. However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan
-has to be covered.
+It's necessary to provide some default styles to `Porsche Design System` components until they are fully bootstrapped to
+prevent FOUC. In addition, normalize and component related slotted styles are provided too.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
 
-| Option                 | Description                                                                                                                                                                                                     | Type      | Default |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- | -------- |
-| `prefix`               | Prefix will be added to the component names.                                                                                                                                                                    | `string`  | `''`    |
-| `withoutTags`          | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles.                                                    | `boolean` | `false` |
-| `format`               | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements.                                                                                       | `'html'   | 'jsx'`  | `'html'` |
-| `applyNormalizeStyles` | Applies basic css styles for Light DOM (Basic font style, focus style on focusable elements, hover style on anchor elements, proper font weight on bold elements, and correct font style on emphasis elements). | `boolean` | `false` |
+| Option   | Description                                                                                                               | Type    | Default   |
+| -------- | ------------------------------------------------------------------------------------------------------------------------- | ------- | --------- | -------- |
+| `prefix` | Prefix will be added to the component names. It's also possible to pass multiple prefixes.                                | `string | string[]` | `''`     |
+| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. | `'html' | 'jsx'`    | `'html'` |
 
 ## Examples
 
 Project integration differs based on the project setup.  
 The following showcases the most common ways.
+
+<p-inline-notification heading="Hint" state="success" dismiss-button="false">
+  In case, micro frontends with custom prefixed Porsche Design System components are used, 
+it's possible to provide proper initial styles to all of them by defining an array of custom prefixes (see example below).
+By entering <code>document.porscheDesignSystem</code> in the browser console of your application, it's possible to find out which prefixes are used.
+</p-inline-notification>
 
 <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
 
@@ -40,9 +43,9 @@ export default class Code extends Vue {
       comment: 'with custom prefix to match your prefixed components',
     },
     {
-      value: "{ applyNormalizeStyles: true }",
-      comment: 'apply normalize styles',
-    }
+      value: "{ prefix: ['', 'custom-prefix', 'another-prefix'] }",
+      comment: 'with multiple prefixes to match prefixed components coming from micro frontends',
+    },
   ];
 }
 </script>

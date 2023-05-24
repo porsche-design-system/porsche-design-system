@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import {
-    PorscheDesignSystemProvider,
     PAccordion,
     PBanner,
     PButton,
@@ -9,20 +8,25 @@
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
+    PCrest,
+    PDisplay,
     PDivider,
     PFieldsetWrapper,
     PFlex,
     PFlexItem,
     PGrid,
     PGridItem,
+    PHeading,
     PHeadline,
     PIcon,
     PInlineNotification,
     PLink,
     PLinkPure,
     PLinkSocial,
-    PLinkTile,
     PMarque,
+    PModal,
+    PModelSignature,
+    PorscheDesignSystemProvider,
     PPagination,
     PPopover,
     PRadioButtonWrapper,
@@ -31,9 +35,6 @@
     PSegmentedControlItem,
     PSelectWrapper,
     PSpinner,
-    PStepperHorizontal,
-    PStepperHorizontalItem,
-    PSwitch,
     PTable,
     PTableBody,
     PTableCell,
@@ -47,27 +48,43 @@
     PTag,
     PTagDismissible,
     PText,
+    PTextareaWrapper,
+    PFieldset,
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
-    PTextareaWrapper,
+    PWordmark,
   } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
   <div class="root" style="display: flex">
     <div style="flex: 1">
-      <div class="playground light" title="should render default headline">
-        <PHeadline>Default Components</PHeadline>
+      <div class="playground light" title="should render default heading">
+        <PHeading>Default Components</PHeading>
       </div>
+
+      <div class="playground light" title="should render default headline">
+        <PHeadline>Some Headline</PHeadline>
+      </div>
+
+      <div class="playground light" title="should render default display">
+        <PDisplay>Some Display</PDisplay>
+      </div>
+
       <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-      <div class="playground light" title="should render default banner">
-        <PBanner>
+      <div class="playground light playground--banner" title="should render default banner">
+        <PBanner :open="true">
           <span slot="title">Default banner component</span>
           <span slot="description">Some slotted banner description</span>
         </PBanner>
       </div>
       <!-- eslint-enable -->
+
+      <div class="playground light playground--modal" title="should render default modal">
+        <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+      </div>
+
       <div class="playground light" title="should render default inline-notification">
         <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
       </div>
@@ -129,6 +146,10 @@
         </PTextareaWrapper>
       </div>
 
+      <div class="playground light" title="should render default fieldset">
+        <PFieldset :label="'Some label'"></PFieldset>
+      </div>
+
       <div class="playground light" title="should render default fieldset-wrapper">
         <PFieldsetWrapper :label="'Some label'" />
       </div>
@@ -167,6 +188,18 @@
 
       <div class="playground light" title="should render default marque">
         <PMarque />
+      </div>
+
+      <div class="playground light" title="should render default wordmark">
+        <PWordmark />
+      </div>
+
+      <div class="playground light" title="should render default crest">
+        <PCrest />
+      </div>
+
+      <div class="playground light" title="should render default model-signature">
+        <PModelSignature />
       </div>
 
       <div class="playground light" title="should render default pagination">
@@ -248,24 +281,6 @@
         </PSegmentedControl>
       </div>
 
-      <div class="playground light" title="should render default switch">
-        <PSwitch>Some label</PSwitch>
-      </div>
-
-      <div class="playground light" title="should render default stepper-horizontal">
-        <PStepperHorizontal>
-          <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
-        </PStepperHorizontal>
-      </div>
-
       <div class="playground light" title="should render default scroller">
         <PScroller>
           <button>Default</button>
@@ -285,17 +300,6 @@
         </PScroller>
       </div>
 
-      <div class="playground light" title="should render default link-tile">
-        <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
-          <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            width="50"
-            height="50"
-            alt="Beach"
-          />
-        </PLinkTile>
-      </div>
-
       <div class="playground light" title="should render default carousel">
         <PCarousel :heading="'Heading'">
           <div>Slide 1</div>
@@ -307,17 +311,31 @@
 
     <PorscheDesignSystemProvider prefix="my-prefix">
       <div style="flex: 1">
-        <div class="playground light" title="should render default headline with custom prefix">
-          <PHeadline>Prefixed Components</PHeadline>
+        <div class="playground light" title="should render default heading with custom prefix">
+          <PHeading>Prefixed Components</PHeading>
         </div>
+
+        <div class="playground light" title="should render default headline with custom prefix">
+          <PHeadline>Some Headline</PHeadline>
+        </div>
+
+        <div class="playground light" title="should render default display with custom prefix">
+          <PDisplay>Some Display</PDisplay>
+        </div>
+
         <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-        <div class="playground light" title="should render default banner with custom prefix">
-          <PBanner>
+        <div class="playground light playground--banner" title="should render default banner with custom prefix">
+          <PBanner :open="true">
             <span slot="title">Prefixed banner component</span>
             <span slot="description">Some slotted banner description</span>
           </PBanner>
         </div>
         <!-- eslint-enable -->
+
+        <div class="playground light playground--modal" title="should render default modal with custom prefix">
+          <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+        </div>
+
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
         </div>
@@ -379,6 +397,10 @@
           </PTextareaWrapper>
         </div>
 
+        <div class="playground light" title="should render default fieldset with custom prefix">
+          <PFieldset :label="'Some label'"></PFieldset>
+        </div>
+
         <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
           <PFieldsetWrapper :label="'Some label'" />
         </div>
@@ -417,6 +439,18 @@
 
         <div class="playground light" title="should render default marque with custom prefix">
           <PMarque />
+        </div>
+
+        <div class="playground light" title="should render default wordmark with custom prefix">
+          <PWordmark />
+        </div>
+
+        <div class="playground light" title="should render default crest with custom prefix">
+          <PCrest />
+        </div>
+
+        <div class="playground light" title="should render default model-signature with custom prefix">
+          <PModelSignature />
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">
@@ -498,24 +532,6 @@
           </PSegmentedControl>
         </div>
 
-        <div class="playground light" title="should render default switch with custom prefix">
-          <PSwitch>Some label</PSwitch>
-        </div>
-
-        <div class="playground light" title="should render default stepper-horizontal with custom prefix">
-          <PStepperHorizontal>
-            <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
-            <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
-          </PStepperHorizontal>
-        </div>
-
         <div class="playground light" title="should render default scroller with custom prefix">
           <PScroller>
             <button>Default</button>
@@ -533,17 +549,6 @@
             <button>Default</button>
             <button>Default</button>
           </PScroller>
-        </div>
-
-        <div class="playground light" title="should render default link-tile with custom prefix">
-          <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-              width="50"
-              height="50"
-              alt="Beach"
-            />
-          </PLinkTile>
         </div>
 
         <div class="playground light" title="should render default carousel with custom prefix">
@@ -586,13 +591,15 @@
     background: deepskyblue;
   }
 
-  p-link-tile,
-  my-prefix-p-link-tile {
-    max-width: 400px;
+  .playground--banner,
+  .playground--modal {
+    transform: translate3d(0, 0, 0);
+    height: 10rem;
+    padding: 0;
+    margin: 1rem;
   }
 
-  p-banner,
-  my-prefix-p-banner {
-    --p-banner-position-type: static;
+  .playground--modal {
+    height: 20rem;
   }
 </style>

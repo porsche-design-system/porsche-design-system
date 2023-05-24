@@ -4,7 +4,6 @@ import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
 import * as childrenObserverUtils from '../../utils/children-observer';
 
 jest.mock('../../utils/dom');
-jest.mock('../../utils/slotted-styles');
 
 describe('connectedCallback', () => {
   it('should call this.setTabElements()', () => {
@@ -49,15 +48,6 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(undefined, 0);
   });
 
-  it('should call this.addEventListeners()', () => {
-    const component = new TabsBar();
-    component.host = document.createElement('p-tabs-bar');
-    component['scrollerElement'] = document.createElement('p-scroller');
-    const spy = jest.spyOn(component, 'addEventListeners' as any);
-
-    component.componentDidLoad();
-    expect(spy).toBeCalledWith();
-  });
   it('should call this.observeBreakpointChange()', () => {
     const component = new TabsBar();
     component.host = document.createElement('p-tabs-bar');

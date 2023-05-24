@@ -153,11 +153,11 @@ describe('hover state', () => {
     const select = await getSelect();
     const labelText = await getLabelText();
     const initialStyle = await getElementStyle(select, 'borderColor');
-    expect(initialStyle).toBe('rgb(98, 102, 105)');
+    expect(initialStyle).toBe('rgb(107, 109, 112)');
 
     await labelText.hover();
     const hoverColor = await getElementStyle(select, 'borderColor');
-    expect(hoverColor).toBe('rgb(0, 0, 0)');
+    expect(hoverColor).toBe('rgb(1, 2, 5)');
   });
 });
 

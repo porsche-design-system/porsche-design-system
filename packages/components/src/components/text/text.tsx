@@ -1,21 +1,21 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
+import type { TextTag } from './text-utils';
+import { getTextTagType, TEXT_TAGS } from './text-utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
-  getDataThemeDarkAttribute,
-  getHTMLElement,
-  TEXT_COLORS,
-  TEXT_WEIGHTS,
   TEXT_ALIGNS,
+  TEXT_COLORS,
   TEXT_SIZES,
+  TEXT_WEIGHTS,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import { getComponentCss, getSlottedCss } from './text-styles';
-import type { TextTag } from './text-tag';
-import { TEXT_TAGS } from './text-tag';
+import { getComponentCss } from './text-styles';
+import type { TextColorDeprecated } from './text-color';
+import type { TextWeightDeprecated } from './text-weight';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -34,7 +34,7 @@ const propTypes: PropTypes<typeof Text> = {
 export class Text {
   @Element() public host!: HTMLElement;
 
-  /** Sets a custom HTML tag depending of the usage of the text component. */
+  /** Sets a custom HTML tag depending on the usage of the text component. */
   @Prop() public tag?: TextTag = 'p';
 
   /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
@@ -47,7 +47,7 @@ export class Text {
   @Prop() public align?: TextAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: TextColor = 'default';
+  @Prop() public color?: TextColor = 'primary';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
@@ -55,33 +55,43 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const colorDeprecationMap: Record<TextColorDeprecated, Exclude<TextColor, TextColorDeprecated>> = {
+      brand: 'primary',
+      default: 'primary',
+      'neutral-contrast-low': 'contrast-low',
+      'neutral-contrast-medium': 'contrast-medium',
+      'neutral-contrast-high': 'contrast-high',
+      'notification-neutral': 'notification-info',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextColorDeprecated, TextColor>(this, 'color', colorDeprecationMap);
+    const weightDeprecationMap: Record<TextWeightDeprecated, Exclude<TextWeight, TextWeightDeprecated>> = {
+      thin: 'regular',
+      semibold: 'semi-bold',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextWeightDeprecated, TextWeight>(
+      this,
+      'weight',
+      weightDeprecationMap
+    );
     attachComponentCss(
       this.host,
       getComponentCss,
       this.size,
-      this.weight,
+      (weightDeprecationMap[this.weight] || this.weight) as Exclude<TextWeight, TextWeightDeprecated>,
       this.align,
-      this.color,
+      (colorDeprecationMap[this.color] || this.color) as Exclude<TextColor, TextColorDeprecated>,
       this.ellipsis,
       this.theme
     );
 
-    const firstChild = getHTMLElement(this.host, ':first-child');
-    const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
-    const TagType = hasSlottedTextTag ? 'div' : this.tag;
+    const TagType = getTextTagType(this.host, this.tag);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
-        <TagType class="root">
-          <slot />
-        </TagType>
-      </Host>
+      <TagType class="root">
+        <slot />
+      </TagType>
     );
   }
 }

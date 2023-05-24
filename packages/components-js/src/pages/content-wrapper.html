@@ -6,56 +6,65 @@
     color: white;
     background-color: lightskyblue;
   }
+
+  div:not(.visualize-grid) {
+    margin: 16px 0;
+  }
 </style>
 
-<div class="playground" title="should render with width 'basic'">
-  <p-content-wrapper>
-    <p>Some content</p>
-  </p-content-wrapper>
+<div class="visualize-grid">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 </div>
 
-<div class="playground" title="should render with width 'extended'">
-  <p-content-wrapper width="extended">
-    <p>Some content</p>
-  </p-content-wrapper>
-</div>
-
-<div class="playground" title="should render with width 'fluid'">
+<div title="should render with width 'fluid' (desktop: 16 columns)">
   <p-content-wrapper width="fluid">
-    <p>Some content</p>
+    <p>Fluid</p>
   </p-content-wrapper>
 </div>
 
-<div class="playground" title="should render with 'default' background color" style="background: deeppink">
-  <p-content-wrapper background-color="default">
-    <p>Some content</p>
+<div title="should render with width 'full' (desktop: 16 columns)">
+  <p-content-wrapper width="full">
+    <p>Full</p>
   </p-content-wrapper>
 </div>
 
-<div
-  class="playground"
-  title="should render with 'default' background color and dark theme"
-  style="background: deeppink"
->
-  <p-content-wrapper background-color="default" theme="dark">
-    <p>Some content</p>
+<div title="should render with width 'extended' (desktop: 14 columns)">
+  <p-content-wrapper>
+    <p>Extended</p>
   </p-content-wrapper>
 </div>
 
-<div class="playground" title="should color full width although width 'basic' is enabled">
-  <p-content-wrapper width="basic" style="background: deeppink">
-    <p>Some content</p>
-  </p-content-wrapper>
-</div>
-
-<div class="playground" title="should not cut off to wide content">
+<div title="should render with width 'basic' (desktop: 12 columns)">
   <p-content-wrapper width="basic">
-    <p style="margin-left: -2000px; margin-right: -2000px">Some content</p>
+    <p>Basic</p>
   </p-content-wrapper>
 </div>
 
-<div class="playground" title="should render background for set height" style="background: deeppink">
-  <p-content-wrapper background-color="default" style="height: 100px">
-    <p>Some content</p>
+<div title="should render with width 'narrow' (desktop: 8 columns)">
+  <p-content-wrapper width="narrow">
+    <p>Narrow</p>
+  </p-content-wrapper>
+</div>
+
+<div title="should color full width although width 'basic' is enabled">
+  <p-content-wrapper width="basic" style="background: deeppink">
+    <p>Full viewport is colored with custom color</p>
   </p-content-wrapper>
 </div>

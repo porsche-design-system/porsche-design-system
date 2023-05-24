@@ -1,45 +1,132 @@
-import type { IconSize, TextColor, ThemeExtendedElectricDark } from '../../types';
-import { getCss } from '../../utils';
-import { pxToRemWithUnit } from '../../styles';
-import { getThemedTextColor } from '../../styles/text-icon-styles';
+import type { TextSize, Theme } from '../../types';
+import { getCss, isThemeDark, isHighContrastMode } from '../../utils';
+import {
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextLarge,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXLarge,
+  fontSizeTextXSmall,
+  fontSizeTextXXSmall,
+} from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, hostHiddenStyles, getSchemedHighContrastMediaQuery } from '../../styles';
+import type { IconColor, IconColorDeprecated } from './icon-utils';
+import {
+  filterDarkContrastHigh,
+  filterDarkContrastLow,
+  filterDarkContrastMedium,
+  filterDarkDisabled,
+  filterDarkNotificationError,
+  filterDarkNotificationInfo,
+  filterDarkNotificationSuccess,
+  filterDarkNotificationWarning,
+  filterDarkPrimary,
+  filterLightContrastHigh,
+  filterLightContrastLow,
+  filterLightContrastMedium,
+  filterLightDisabled,
+  filterLightNotificationError,
+  filterLightNotificationInfo,
+  filterLightNotificationSuccess,
+  filterLightNotificationWarning,
+  filterLightPrimary,
+} from '../../styles/color-filters';
 
-const sizeMap: { [key in IconSize]: string } = {
-  small: pxToRemWithUnit(24),
-  medium: pxToRemWithUnit(36),
-  large: pxToRemWithUnit(48),
-  inherit: 'inherit',
+const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
+  'xx-small': fontSizeTextXXSmall,
+  'x-small': fontSizeTextXSmall,
+  small: fontSizeTextSmall,
+  medium: fontSizeTextMedium,
+  large: fontSizeTextLarge,
+  'x-large': fontSizeTextXLarge,
 };
 
-export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeExtendedElectricDark): string => {
-  const dimension = sizeMap[size];
+const filter: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string>> = {
+  light: {
+    primary: filterLightPrimary,
+    'state-disabled': filterLightDisabled,
+    'contrast-low': filterLightContrastLow,
+    'contrast-medium': filterLightContrastMedium,
+    'contrast-high': filterLightContrastHigh,
+    'notification-success': filterLightNotificationSuccess,
+    'notification-warning': filterLightNotificationWarning,
+    'notification-error': filterLightNotificationError,
+    'notification-info': filterLightNotificationInfo,
+  },
+  dark: {
+    primary: filterDarkPrimary,
+    'state-disabled': filterDarkDisabled,
+    'contrast-low': filterDarkContrastLow,
+    'contrast-medium': filterDarkContrastMedium,
+    'contrast-high': filterDarkContrastHigh,
+    'notification-success': filterDarkNotificationSuccess,
+    'notification-warning': filterDarkNotificationWarning,
+    'notification-error': filterDarkNotificationError,
+    'notification-info': filterDarkNotificationInfo,
+  },
+};
+
+const forceRerenderAnimationStyle = {
+  '0%': {
+    transform: 'rotateZ(0)',
+  },
+  '100%': {
+    transform: 'rotateZ(0)',
+  },
+};
+const keyFramesLight = 'rerender-light';
+const keyFramesDark = 'rerender-dark';
+
+export const getComponentCss = (
+  color: Exclude<IconColor, IconColorDeprecated>,
+  size: TextSize,
+  theme: Theme
+): string => {
+  const isColorInherit = color === 'inherit';
+  const isSizeInherit = size === 'inherit';
+  const isDark = isThemeDark(theme);
 
   return getCss({
     '@global': {
       ':host': {
-        display: 'inline-flex',
+        display: 'inline-block',
         verticalAlign: 'top',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       img: {
-        filter: ['dark', 'dark-electric'].includes(theme) ? 'invert(100%)' : 'none',
+        display: 'block', // without display, img tag gets some extra spacing
+        margin: 0,
+        padding: 0,
+        pointerEvents: 'none', // disable dragging/ghosting of images
+        ...(!isColorInherit && {
+          filter: filter[theme][color],
+          ...(isHighContrastMode &&
+            getSchemedHighContrastMediaQuery(
+              {
+                filter: filter.light[color],
+              },
+              {
+                filter: filter.dark[color],
+              }
+            )),
+          WebkitAnimation: `${isDark ? `${keyFramesDark}-${color}` : `${keyFramesLight}-${color}`} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
+        }),
+        ...(isSizeInherit
+          ? {
+              width: size,
+              height: size,
+            }
+          : {
+              width: fontLineHeight,
+              height: fontLineHeight,
+              font: `${sizeMap[size]} ${fontFamily}`,
+            }),
       },
-      svg: {
-        fill: 'currentColor',
-        // TODO: This is a temporary fallback for Chromium and should be removed if this bug is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=1242706
-        // further information: https://melanie-richards.com/blog/currentcolor-svg-hcm/
-        '@media (forced-colors: active)': {
-          fill: 'canvasText',
-        },
-      },
-    },
-    root: {
-      display: 'flex',
-      flexShrink: 0,
-      margin: 0,
-      padding: 0,
-      boxSizing: 'border-box',
-      width: dimension,
-      height: dimension,
-      color: getThemedTextColor(theme, color),
+      ...(!isColorInherit && {
+        [`@keyframes ${isDark ? `${keyFramesDark}-${color}` : `${keyFramesLight}-${color}`}`]:
+          forceRerenderAnimationStyle,
+      }),
     },
   });
 };

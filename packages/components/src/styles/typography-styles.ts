@@ -1,6 +1,39 @@
 import type { JssStyle } from 'jss';
+import type { TextAlign, TextColor, Theme } from '../types';
+import type { HeadingAlign, HeadingColor } from '../components/heading/heading-utils';
+import type { HeadlineColor } from '../components/headline/headline-utils';
+import type { DisplayAlign, DisplayColor } from '../components/display/display-utils';
+import type { TextColorDeprecated } from '../components/text/text-color';
+import { getThemedTypographyColor } from './text-icon-styles';
 
-export const getSlottedTypographyJssStyle = (): JssStyle => {
+export const getTypographyRootJssStyle = (
+  baseTextStyle: JssStyle,
+  responsiveStyle: JssStyle,
+  align: TextAlign | HeadingAlign | DisplayAlign,
+  color: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor,
+  ellipsis: boolean,
+  theme: Theme
+): JssStyle => {
+  return {
+    margin: 0,
+    padding: 0,
+    ...baseTextStyle,
+    color: getThemedTypographyColor(theme, color),
+    textAlign: align,
+    letterSpacing: 'normal',
+    listStyleType: 'none',
+    whiteSpace: 'inherit',
+    ...(ellipsis && {
+      maxWidth: '100%',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    }),
+    ...responsiveStyle,
+  };
+};
+
+export const getTypographySlottedJssStyle = (): JssStyle => {
   return {
     margin: 'inherit',
     padding: 'inherit',
@@ -16,14 +49,6 @@ export const getSlottedTypographyJssStyle = (): JssStyle => {
     wordWrap: 'inherit',
     hyphens: 'inherit',
     whiteSpace: 'inherit',
-  };
-};
-
-export const getEllipsisJssStyle = (): JssStyle => {
-  return {
-    maxWidth: '100%',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
+    letterSpacing: 'inherit',
   };
 };

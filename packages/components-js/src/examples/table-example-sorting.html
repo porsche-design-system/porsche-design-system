@@ -51,7 +51,7 @@
 
     passHeadItemsToNodes(headSorting); // initial state
 
-    table.addEventListener('sortingChange', (e) => {
+    table.addEventListener('update', (e) => {
       const { id, direction } = e.detail;
 
       const sortedHead = headSorting.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));

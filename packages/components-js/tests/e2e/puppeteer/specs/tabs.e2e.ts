@@ -304,6 +304,21 @@ describe('events', () => {
 
     expect(await getCountedEvents()).toBe(1);
   });
+
+  it('should emit both tabChange and update event', async () => {
+    await initTabs();
+    const host = await getHost();
+
+    await addEventListener(host, 'tabChange');
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+    const [, secondButton] = await getAllTabs();
+    await secondButton.click();
+    expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
+  });
 });
 
 it('should not crash without children', async () => {
@@ -340,13 +355,13 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-tabs'], 'componentDidLoad: p-tabs').toBe(1);
-    expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1); // includes 6 didLoad calls
+    expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1); // includes 4 didLoad calls
     expect(status.componentDidLoad['p-tabs-item'], 'componentDidLoad: p-tabs-item').toBe(3);
 
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(0);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -362,9 +377,10 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
     expect(status.componentDidUpdate['p-tabs-item'], 'componentDidUpdate: p-tabs-item').toBe(3);
+    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(6);
   });
 });
 

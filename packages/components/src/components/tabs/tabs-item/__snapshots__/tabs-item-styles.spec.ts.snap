@@ -3,59 +3,53 @@
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
   display: block !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  position: relative !important;
+  color: #FBFCFF !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-:host(::-moz-focus-inner) {
-  border: 0 !important;
+:host::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
 }
-:host(:focus) {
-  outline-color: #fff !important;
+:host(:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-:host(:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+:host(:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
   display: block !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  position: relative !important;
+  color: #010205 !important;
+  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-:host(::-moz-focus-inner) {
-  border: 0 !important;
+:host::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -4px !important;
+  left: -4px !important;
+  right: -4px !important;
+  bottom: -4px !important;
 }
-:host(:focus) {
-  outline-color: #000 !important;
+:host(:focus)::before {
+  border: 2px solid #1A44EA !important;
+  border-radius: 4px !important;
 }
-:host(:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for theme: light-electric 1`] = `
-":host {
-  display: block !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:host(::-moz-focus-inner) {
-  border: 0 !important;
-}
-:host(:focus) {
-  outline-color: #000 !important;
-}
-:host(:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
+:host(:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }"
 `;

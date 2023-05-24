@@ -1,5 +1,11 @@
 # Grid
 
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+This component is deprecated and will be removed with the next major release. 
+In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
+Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Architecture
@@ -79,7 +85,7 @@ Layout.
 All content elements that should behave responsively should be placed horizontally within the grid, always starting in a
 column. The spacing between content elements is therefore defined by the grid gutter. In most cases, this should refer
 to modules or content boxes, while smaller spaces on a more or less "micro-level" (both vertical and horizontal) should
-be defined by using the [Spacing](components/spacing) component.
+be defined by using the Spacing util.
 
 ![Porsche Design System grid alignment](./assets/grid-alignment.png)
 
@@ -99,7 +105,7 @@ user and the specific use context in mind.
 
 ![Porsche Design System grid behaviour](./assets/grid-behaviour.png)
 
-### Don’t be afraid to think outside of the box
+### Don't be afraid to think outside of the box
 
 It is possible to place elements end-to-end, spanning from left to the right edge of the screen. This can be done by
 using the "fluid" content width variant of the [Content Wrapper](components/content-wrapper) component. An example would

@@ -1,54 +1,50 @@
-import { Component, Element, h, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
+import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
   getPrefixedTagNames,
-  parseAndGetAriaAttributes,
   parseJSON,
-  validateProps,
-} from '../../utils';
-import { getComponentCss, getSlottedCss } from './link-tile-styles';
-import type { BreakpointCustomizable, SelectedAriaAttributes, LinkTarget, PropTypes } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import type { LinkTileAspectRatio, LinkTileAlign, LinkTileWeight, LinkTileSize } from './link-tile-utils';
-import {
-  LINK_TILE_SIZES,
-  LINK_TILE_ASPECT_RATIOS,
-  LINK_TILE_ALIGNS,
-  LINK_TILE_WEIGHTS,
   throwIfAlignTopAndNotCompact,
+  validateProps,
+  warnIfDeprecatedPropValueIsUsed,
+} from '../../utils';
+import type {
+  LinkTileAlign,
+  LinkTileAriaAttribute,
+  LinkTileAspectRatio,
+  LinkTileSize,
+  LinkTileTarget,
+  LinkTileWeight,
+  LinkTileWeightDeprecated,
 } from './link-tile-utils';
+import { LINK_TILE_WEIGHTS, sharedTilePropTypes } from './link-tile-utils';
+import { Component, Element, h, Prop } from '@stencil/core';
+import { getComponentCss } from './link-tile-styles';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
-  size: AllowedTypes.breakpoint<LinkTileSize>(LINK_TILE_SIZES),
+  ...sharedTilePropTypes,
   weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
-  aspectRatio: AllowedTypes.breakpoint<LinkTileAspectRatio>(LINK_TILE_ASPECT_RATIOS),
-  label: AllowedTypes.string,
-  description: AllowedTypes.string,
-  align: AllowedTypes.oneOf<LinkTileAlign>(LINK_TILE_ALIGNS),
-  gradient: AllowedTypes.boolean,
-  compact: AllowedTypes.breakpoint('boolean'),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<LinkTileAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({
   tag: 'p-link-tile',
   shadow: { delegatesFocus: true },
 })
-export class LinkTile {
+export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
 
   /** Font weight of the description. */
-  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semibold';
+  @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
@@ -65,14 +61,14 @@ export class LinkTile {
   /** Show gradient. */
   @Prop() public gradient?: boolean = true;
 
-  /** Displays the tile-link as compact version with description and link icon only. */
+  /** Displays the link-tile as compact version with description and link icon only. */
   @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
 
   /** href of the `<a>`. */
   @Prop() public href: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: LinkTileTarget = '_self';
 
   /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
   @Prop() public download?: string;
@@ -81,11 +77,7 @@ export class LinkTile {
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
-
-  public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
-  }
+  @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
@@ -94,43 +86,51 @@ export class LinkTile {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
+    warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeight>(this, 'weight', {
+      semibold: 'semi-bold',
+    });
     attachComponentCss(
       this.host,
       getComponentCss,
       this.aspectRatio,
       this.size,
-      this.weight,
+      this.weight, // potentially breakpoint customizable, so we can't easily access the deprecation map
       this.align,
       this.compact,
       this.gradient
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const descriptionId = 'description';
 
     const linkProps = {
       theme: 'dark',
+      variant: 'secondary',
+      aria: this.aria,
     };
 
-    const anchorProps = {
-      class: 'anchor',
+    const sharedLinkProps = {
       href: this.href,
       target: this.target,
       download: this.download,
-      'aria-describedby': descriptionId,
       rel: this.rel,
-      ...parseAndGetAriaAttributes(this.aria),
     };
 
     const link: JSX.Element = (
-      <PrefixedTagNames.pLink {...linkProps} key="link" class="link" variant="tertiary">
-        <a {...anchorProps}>{this.label}</a>
+      <PrefixedTagNames.pLink {...sharedLinkProps} {...linkProps} key="link-or-button" class="link-or-button">
+        {this.label}
       </PrefixedTagNames.pLink>
     );
 
     const linkPure: JSX.Element = (
-      <PrefixedTagNames.pLinkPure {...linkProps} key="link-pure" class="link-pure" hideLabel={true} icon="arrow-right">
-        <a {...anchorProps}>{this.label}</a>
+      <PrefixedTagNames.pLinkPure
+        {...sharedLinkProps}
+        {...linkProps}
+        key="link-or-button-pure"
+        class="link-or-button-pure"
+        hideLabel={true}
+        icon="arrow-right"
+      >
+        {this.label}
       </PrefixedTagNames.pLinkPure>
     );
 
@@ -140,7 +140,8 @@ export class LinkTile {
           <slot />
         </div>
         <div class="content">
-          <p id={descriptionId}>{this.description}</p>
+          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true" />
+          <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>

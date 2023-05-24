@@ -1,4 +1,5 @@
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   expectToSkipFocusOnComponent,
   getActiveElementTagName,
@@ -12,7 +13,10 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
-  const href = tagName.includes('link') || tagName.includes('marque') ? ' href="#"' : '';
+  const href =
+    tagName.includes('link') || tagName.includes('wordmark') || tagName.includes('marque') || tagName.includes('crest')
+      ? ' href="#"'
+      : '';
   const value = tagName.includes('segmented-control-item') ? ' value="some value"' : '';
   const state = tagName.includes('stepper-horizontal-item') ? ' state="complete"' : '';
 
@@ -49,21 +53,5 @@ ${component}
 
     expect(await getActiveElementTagName(page)).toBe(elTagName);
     expect(await page.evaluate(() => document.activeElement.shadowRoot.activeElement.tagName)).not.toBeNull();
-  });
-});
-
-['p-button', 'p-button-pure', 'p-switch'].forEach((tagName) => {
-  it(`should be removed from tab order when tabbable is false for ${tagName}`, async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<a href="#" id="before">before</a>
-<${tagName} tabbable="false">Some label</${tagName}>
-<a href="#" id="after">after</a>`
-    );
-
-    const host = await selectNode(page, tagName);
-    const before = await selectNode(page, '#before');
-
-    await expectToSkipFocusOnComponent(page, host, before);
   });
 });

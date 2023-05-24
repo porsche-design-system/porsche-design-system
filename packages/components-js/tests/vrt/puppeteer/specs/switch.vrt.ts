@@ -23,24 +23,34 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('switch-states', async () => {
       const page = vrt.getPage();
 
-      const head = `<style>p-switch ~ p-switch { margin-top: 0.5rem; }</style>`;
+      const head = `<style>
+        body { display: grid; grid-template-columns: repeat(2, 50%); }
+        p-switch:not(:last-child) { margin-right: 16px; margin-bottom: 1rem; }
+      </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-switch theme="${theme}">Some label</p-switch>
-        <p-switch theme="${theme}" checked="true">Some label</p-switch>
+        <p-switch theme="${theme}">Label</p-switch>
+        <p-switch theme="${theme}" checked="true">Label</p-switch>
         <p-switch theme="${theme}" loading="true">Loading</p-switch>
-        <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>`;
+        <p-switch theme="${theme}" loading="true" checked="true">Loading</p-switch>
+        <p-switch theme="${theme}">
+          Label
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
+        </p-switch>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] }),
-        { injectIntoHead: head }
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
 
-      await forceHoverState(page, '.hover > p-switch >>> button');
-      await forceFocusState(page, '.focus > p-switch'); // native outline should not be visible
-      await forceFocusState(page, '.focus > p-switch >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-switch >>> button');
+      await forceHoverState(page, '.hover p-switch >>> button');
+      await forceHoverState(page, '.hover p-switch span a');
+      await forceFocusState(page, '.focus p-switch'); // native outline should not be visible
+      await forceFocusState(page, '.focus p-switch >>> button');
+      await forceFocusState(page, '.focus p-switch span a');
+      await forceFocusHoverState(page, '.focus-hover p-switch >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-switch span a');
     })
   ).toBeFalsy();
 });

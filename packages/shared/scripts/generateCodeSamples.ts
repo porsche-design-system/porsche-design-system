@@ -4,15 +4,29 @@ import { pascalCase } from 'change-case';
 import type { TagName } from '../src/lib/tagNames';
 
 type CodeSample = {
-  component: TagName | 'componentsReady';
+  component:
+    | TagName
+    | 'componentsReady'
+    | 'styles-border'
+    | 'styles-drop-shadow'
+    | 'styles-focus'
+    | 'styles-frosted-glass'
+    | 'styles-gradient'
+    | 'styles-grid'
+    | 'styles-hover'
+    | 'styles-media-query'
+    | 'styles-spacing'
+    | 'styles-theme'
+    | 'styles-typography';
   samples: string[][]; // 2 dimensional to have multiple samples per component
 };
 
-type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';
+type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js' | 'shared';
 
 const componentsJsPath = '../components-js/src/examples';
 const componentsAngularPath = '../components-angular/src/app/examples';
 const componentsReactPath = '../components-react/src/examples';
+const componentsVuePath = '../components-vue/src/examples';
 
 const generateCodeSamples = (): void => {
   const codeSamples: CodeSample[] = [
@@ -26,6 +40,7 @@ const generateCodeSamples = (): void => {
         ],
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testbed.spec.ts'],
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testing-library.spec.ts'],
+        // TODO: vue is missing
       ],
     },
     {
@@ -35,6 +50,18 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/accordion-example.html',
           componentsAngularPath + '/accordion-example.component.ts',
           componentsReactPath + '/AccordionExample.tsx',
+          componentsVuePath + '/AccordionExample.vue',
+        ],
+      ],
+    },
+    {
+      component: 'p-banner',
+      samples: [
+        [
+          componentsJsPath + '/banner-example.html',
+          componentsAngularPath + '/banner-example.component.ts',
+          componentsReactPath + '/BannerExample.tsx',
+          // TODO: vue is missing
         ],
       ],
     },
@@ -45,11 +72,19 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/carousel-example-events.html',
           componentsAngularPath + '/carousel-example-events.component.ts',
           componentsReactPath + '/CarouselExampleEvents.tsx',
+          componentsVuePath + '/CarouselExampleEvents.vue',
         ],
         [
           componentsJsPath + '/carousel-example-dynamic-slides.html',
           componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
           componentsReactPath + '/CarouselExampleDynamicSlides.tsx',
+          componentsVuePath + '/CarouselExampleDynamicSlides.vue',
+        ],
+        [
+          componentsJsPath + '/carousel-example-jump-to-slide.html',
+          componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
+          componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
+          componentsVuePath + '/CarouselExampleJumpToSlide.vue',
         ],
       ],
     },
@@ -60,11 +95,13 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/inline-notification-example-events.html',
           componentsAngularPath + '/inline-notification-example-events.component.ts',
           componentsReactPath + '/InlineNotificationExampleEvents.tsx',
+          componentsVuePath + '/InlineNotificationExampleEvents.vue',
         ],
         [
           componentsJsPath + '/inline-notification-example-action-button.html',
           componentsAngularPath + '/inline-notification-example-action-button.component.ts',
           componentsReactPath + '/InlineNotificationExampleActionButton.tsx',
+          componentsVuePath + '/InlineNotificationExampleActionButton.vue',
         ],
       ],
     },
@@ -75,6 +112,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/modal-example-accessibility.html',
           componentsAngularPath + '/modal-example-accessibility.component.ts',
           componentsReactPath + '/ModalExampleAccessibility.tsx',
+          componentsVuePath + '/ModalExampleAccessibility.vue',
         ],
       ],
     },
@@ -85,6 +123,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/scroller-example.html',
           componentsAngularPath + '/scroller-example.component.ts',
           componentsReactPath + '/ScrollerExample.tsx',
+          componentsVuePath + '/ScrollerExample.vue',
         ],
       ],
     },
@@ -95,6 +134,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/segmented-control-example.html',
           componentsAngularPath + '/segmented-control-example.component.ts',
           componentsReactPath + '/SegmentedControlExample.tsx',
+          componentsVuePath + '/SegmentedControlExample.vue',
         ],
       ],
     },
@@ -105,6 +145,7 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/stepper-horizontal-example.html',
           componentsAngularPath + '/stepper-horizontal-example.component.ts',
           componentsReactPath + '/StepperHorizontalExample.tsx',
+          componentsVuePath + '/StepperHorizontalExample.vue',
         ],
       ],
     },
@@ -115,18 +156,21 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/table-example-basic.html',
           componentsAngularPath + '/table-example-basic.component.ts',
           componentsReactPath + '/TableExampleBasic.tsx',
+          componentsVuePath + '/TableExampleBasic.vue',
           'src/data/table-data-basic.ts', // order is important since part of filename is extracted for param types of function name
         ],
         [
           componentsJsPath + '/table-example-sorting.html',
           componentsAngularPath + '/table-example-sorting.component.ts',
           componentsReactPath + '/TableExampleSorting.tsx',
+          componentsVuePath + '/TableExampleSorting.vue',
           'src/data/table-data-sorting.ts', // order is important since part of filename is extracted for param types of function name
         ],
         [
           componentsJsPath + '/table-example-advanced.html',
           componentsAngularPath + '/table-example-advanced.component.ts',
           componentsReactPath + '/TableExampleAdvanced.tsx',
+          componentsVuePath + '/TableExampleAdvanced.vue',
           'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
         ],
       ],
@@ -138,11 +182,13 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/tabs-bar-example-basic.html',
           componentsAngularPath + '/tabs-bar-example-basic.component.ts',
           componentsReactPath + '/TabsBarExampleBasic.tsx',
+          componentsVuePath + '/TabsBarExampleBasic.vue',
         ],
         [
           componentsJsPath + '/tabs-bar-example-accessibility.html',
           componentsAngularPath + '/tabs-bar-example-accessibility.component.ts',
           componentsReactPath + '/TabsBarExampleAccessibility.tsx',
+          componentsVuePath + '/TabsBarExampleAccessibility.vue',
         ],
       ],
     },
@@ -153,11 +199,13 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/text-field-wrapper-example-imask.html',
           componentsAngularPath + '/text-field-wrapper-example-imask.component.ts',
           componentsReactPath + '/TextFieldWrapperExampleIMask.tsx',
+          componentsVuePath + '/TextFieldWrapperExampleIMask.vue',
         ],
         [
           componentsJsPath + '/text-field-wrapper-example-search.html',
           componentsAngularPath + '/text-field-wrapper-example-search.component.ts',
           componentsReactPath + '/TextFieldWrapperExampleSearch.tsx',
+          componentsVuePath + '/TextFieldWrapperExampleSearch.vue',
         ],
       ],
     },
@@ -168,6 +216,106 @@ const generateCodeSamples = (): void => {
           componentsJsPath + '/toast-example.html',
           componentsAngularPath + '/toast-example.component.ts',
           componentsReactPath + '/ToastExample.tsx',
+          componentsVuePath + '/ToastExample.vue',
+        ],
+      ],
+    },
+    {
+      component: 'styles-border',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-border-example.component.ts',
+          componentsReactPath + '/../styles/StylesBorderExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-drop-shadow',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-drop-shadow-example.component.ts',
+          componentsReactPath + '/../styles/StylesDropShadowExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-focus',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-focus-example.component.ts',
+          componentsReactPath + '/../styles/StylesFocusExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-frosted-glass',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-frosted-glass-example.component.ts',
+          componentsReactPath + '/../styles/StylesFrostedGlassExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-gradient',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-gradient-example.component.ts',
+          componentsReactPath + '/../styles/StylesGradientExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-grid',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-grid-example.component.ts',
+          componentsReactPath + '/../styles/StylesGridExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-hover',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-hover-example.component.ts',
+          componentsReactPath + '/../styles/StylesHoverExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-media-query',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-media-query-example.component.ts',
+          componentsReactPath + '/../styles/StylesMediaQueryExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-spacing',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-spacing-example.component.ts',
+          componentsReactPath + '/../styles/StylesSpacingExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-theme',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-theme-example.component.ts',
+          componentsReactPath + '/../styles/StylesThemeExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-typography',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-typography-example.component.ts',
+          componentsReactPath + '/../styles/StylesTypographyExample.tsx',
         ],
       ],
     },
@@ -176,7 +324,7 @@ const generateCodeSamples = (): void => {
   const packagesFolder = path.resolve(__dirname, '../../');
 
   const types = [
-    `type Framework = 'shared' | 'angular' | 'react' | 'vanilla-js';`,
+    `type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js' |'shared';`,
     `type FrameworkMarkup = { [key in Framework]?: string };`,
   ].join('\n');
 

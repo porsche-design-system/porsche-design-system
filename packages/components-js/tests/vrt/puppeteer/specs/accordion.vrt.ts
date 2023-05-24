@@ -24,37 +24,48 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('accordion-states', async () => {
       const page = vrt.getPage();
 
-      const content = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.`;
+      const content = `Slotted content`;
+
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+        </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
-        <p-accordion theme="${theme}" heading="Some heading">
+        <p-accordion theme="${theme}" heading="Heading">
           ${content}
         </p-accordion>
-        <p-accordion theme="${theme}" heading="Some heading" open="true">
+        <p-accordion theme="${theme}" heading="Heading" open="true">
           ${content}
         </p-accordion>
-        <p-accordion theme="${theme}" heading="Some compact accordion" open="true" compact="true">
+        <p-accordion theme="${theme}" heading="Heading" open="true">
+          ${content}
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
+        </p-accordion>
+        <p-accordion theme="${theme}" heading="Heading (compact=true)" open="true" compact="true">
            ${content}
         </p-accordion>
-        <p-accordion theme="${theme}" heading="Some navigation like accordion" open="true" compact="true">
+        <p-accordion theme="${theme}" heading="Heading (compact=true)" open="true" compact="true">
           <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
           <br />
           <p-link-pure href="https://www.porsche.com" theme="${theme}">Some link</p-link-pure>
         </p-accordion>`;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover > p-accordion >>> button');
-      await forceHoverState(page, '.hover > p-accordion > p-link-pure >>> a');
+      await forceHoverState(page, '.hover p-accordion >>> button');
+      await forceHoverState(page, '.hover p-accordion > p-link-pure >>> a');
+      await forceHoverState(page, '.hover p-accordion a');
 
-      await forceFocusState(page, '.focus > p-accordion >>> button');
-      await forceFocusState(page, '.focus > p-accordion > p-link-pure >>> a');
+      await forceFocusState(page, '.focus p-accordion >>> button');
+      await forceFocusState(page, '.focus p-accordion > p-link-pure >>> a');
+      await forceFocusState(page, '.focus p-accordion a');
 
-      await forceFocusHoverState(page, '.focus-hover > p-accordion >>> button');
-      await forceFocusHoverState(page, '.focus-hover > p-accordion > p-link-pure >>> a');
+      await forceFocusHoverState(page, '.focus-hover p-accordion >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-accordion > p-link-pure >>> a');
+      await forceFocusHoverState(page, '.focus-hover p-accordion a');
     })
   ).toBeFalsy();
 });

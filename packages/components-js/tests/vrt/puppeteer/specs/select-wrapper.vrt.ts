@@ -31,6 +31,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const page = vrt.getPage();
 
       const head = `<style>
+        body { display: grid; grid-template-columns: repeat(2, 50%); }
         .playground div {
           display: flex;
         }
@@ -50,9 +51,11 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 </select>`;
 
       const getSlottedMarkup = (opts?: { disabled?: boolean }): string => `
-<span slot="label">Some${opts?.disabled ? ' disabled' : ''} slotted label with a <a href="#">link</a>.</span>
-<span slot="description">Some slotted description with a <a href="#">link</a>.</span>
-<span slot="message">Some slotted message with a <a href="#">link</a>.</span>`;
+<span slot="label">${
+        opts?.disabled ? 'Disabled slotted' : 'Slotted'
+      } label <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
+<span slot="description">Slotted description <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
+<span slot="message">Slotted message <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>`;
 
       const disabledOptions: GetSelectMarkupOptions = { disabled: true };
 
@@ -158,7 +161,6 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoverState(page, '.hover .native p-select-wrapper select');
       await forceHoverState(page, '.hover p-select-wrapper span a');
-      await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
       await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
       await forceFocusState(page, '.focus .native p-select-wrapper select');
       await forceFocusState(page, '.focus p-select-wrapper span a');

@@ -19,7 +19,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-radio-button-wrapper');
 const getInput = () => selectNode(page, 'p-radio-button-wrapper input');
-const getLabelText = () => selectNode(page, 'p-radio-button-wrapper >>> .label');
+const getLabelText = () => selectNode(page, 'p-radio-button-wrapper >>> .text');
 const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .message');
 const getBackgroundStyle = (element: ElementHandle) => getElementStyle(element, 'background');
 
@@ -111,24 +111,19 @@ it('should disable radio-button when disabled property is set programmatically',
   );
 
   const input = await getInput();
-  const initialStyle = await getBackgroundStyle(input);
-  const label = await getLabelText();
-  const defaultLabelColor = 'rgb(0, 0, 0)';
-  const getLabelColor = () => getElementStyle(label, 'color');
+  const getCursor = () => getElementStyle(input, 'cursor');
 
-  expect(await getLabelColor()).toBe(defaultLabelColor);
+  expect(await getCursor()).toBe('pointer');
 
   await setProperty(input, 'disabled', true);
   await waitForInputTransition(page);
 
-  expect(await getLabelColor()).not.toBe(defaultLabelColor);
-  expect(await getBackgroundStyle(input)).not.toEqual(initialStyle);
+  expect(await getCursor()).toBe('not-allowed');
 
   await setProperty(input, 'disabled', false);
   await waitForInputTransition(page);
 
-  expect(await getLabelColor()).toBe(defaultLabelColor);
-  expect(await getBackgroundStyle(input)).toEqual(initialStyle);
+  expect(await getCursor()).toBe('pointer');
 });
 
 describe('checked state', () => {
@@ -179,8 +174,8 @@ describe('checked state', () => {
 
     const input1 = await selectNode(page, '#radio-1 > input[type="radio"]');
     const input2 = await selectNode(page, '#radio-2 > input[type="radio"]');
-    const labelText1 = await selectNode(page, '#radio-1 >>> .label');
-    const labelText2 = await selectNode(page, '#radio-2 >>> .label');
+    const labelText1 = await selectNode(page, '#radio-1 >>> .text');
+    const labelText2 = await selectNode(page, '#radio-2 >>> .text');
     const initialStyleInput1 = await getBackgroundStyle(input1);
     const initialStyleInput2 = await getBackgroundStyle(input2);
 
@@ -350,5 +345,36 @@ describe('accessibility', () => {
     await waitForStencilLifecycle(page);
 
     await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
+  });
+
+  it(`should keep focus on radio buttons when using keyboard navigation `, async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-button-wrapper label="Some label">
+        <input type="radio" name="some-name" id="radio-1"/>
+      </p-radio-button-wrapper>
+      <p-radio-button-wrapper label="Some label">
+        <input type="radio" name="some-name" id="radio-2"/>
+      </p-radio-button-wrapper>
+      <button id="lastPageEl"></button>`
+    );
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('radio-1');
+
+    await page.keyboard.press('ArrowDown');
+    expect(await getActiveElementId(page)).toBe('radio-2');
+
+    await page.keyboard.press('ArrowRight');
+    expect(await getActiveElementId(page)).toBe('radio-1');
+
+    await page.keyboard.press('ArrowUp');
+    expect(await getActiveElementId(page)).toBe('radio-2');
+
+    await page.keyboard.press('ArrowLeft');
+    expect(await getActiveElementId(page)).toBe('radio-1');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('lastPageEl');
   });
 });

@@ -1,103 +1,72 @@
-import type { JssStyle } from 'jss';
-import { mediaQueryMin, mediaQueryMinMax } from '@porsche-design-system/utilities-v2';
-import { buildSlottedStyles, getCss } from '../../utils';
-import { addImportantToRule, getBaseSlottedStyles, pxToRemWithUnit } from '../../styles';
+import {
+  borderRadiusSmall,
+  dropShadowHighStyle,
+  getMediaQueryMin,
+  gridExtendedOffsetBase,
+  gridExtendedOffsetS,
+  gridExtendedOffsetXXL,
+} from '@porsche-design-system/utilities-v2';
+import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 
-const bannerPositionTypeVar = '--p-banner-position-type';
-const bannerPositionTopVar = '--p-banner-position-top';
-const bannerPositionBottomVar = '--p-banner-position-bottom';
-const bannerZIndexVar = '--p-banner-z-index';
-const bannerAnimationDurationVar = '--p-animation-duration__banner';
+const cssVariableTop = '--p-banner-position-top';
+const cssVariableBottom = '--p-banner-position-bottom';
+const cssVariableAnimationDuration = '--p-animation-duration';
+const cssVariableZIndex = '--p-internal-banner-z-index';
+
+export const ANIMATION_DURATION = 600;
+
+const duration = `var(${cssVariableAnimationDuration},${ANIMATION_DURATION}ms)`;
 
 const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
-export const ANIMATION_DURATION = 600;
+const topBottomFallback = '56px';
 
-const mediaQueryS = mediaQueryMin('s');
-const mediaQueryXxs = mediaQueryMinMax('xxs', 's');
-
-export const getBoxShadow = (): JssStyle => ({
-  boxShadow:
-    `0 ${pxToRemWithUnit(2)} ${pxToRemWithUnit(4)} 0 rgba(0,0,0,0.05),` +
-    `0 ${pxToRemWithUnit(15)} ${pxToRemWithUnit(20)} 0 rgba(0,0,0,0.2)`,
-});
-
-export const getAnimationIn = (keyframesName: string, durationVar?: string): JssStyle => {
-  const duration = durationVar ? `var(${durationVar},${ANIMATION_DURATION}ms)` : `${ANIMATION_DURATION}ms`;
-  return {
-    animation: `${duration} $${keyframesName} ${easeInQuad} forwards`,
-  };
-};
-
-export const getAnimationOut = (keyframesName: string): JssStyle => ({
-  animation: addImportantToRule(`${ANIMATION_DURATION}ms $${keyframesName} ${easeOutQuad} forwards`),
-});
-
-export type KeyframesDirection = 'in' | 'out';
-const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
-  const insideStyle: JssStyle = { opacity: 1, transform: 'translate3d(0,0,0)' };
-  return direction === 'in'
-    ? {
-        from: outsideStyle,
-        to: insideStyle,
-      }
-    : {
-        from: insideStyle,
-        to: outsideStyle,
-      };
-};
-
-export const getKeyframesMobile = (direction: KeyframesDirection, bottomVar: string): JssStyle =>
-  getKeyframes(direction, {
-    opacity: 0,
-    transform: `translate3d(0,calc(var(${bottomVar}) + 100%),0)`, // space before and after "+" is crucial
-  });
-
-const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): JssStyle =>
-  getKeyframes(direction, {
-    opacity: 0,
-    transform: `translate3d(0,calc(-100% - var(${topVar})),0)`, // space before and after "-" is crucial
-  });
-
-export const getComponentCss = (): string => {
+export const getComponentCss = (isOpen: boolean): string => {
   return getCss({
     '@global': {
-      ':host': {
-        // TODO: Why is nothing set as important here?
-        [bannerPositionTopVar]: pxToRemWithUnit(56),
-        [bannerPositionBottomVar]: pxToRemWithUnit(56),
-        display: 'block',
-        position: `var(${bannerPositionTypeVar},fixed)`,
-        zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
-        opacity: 0,
-        left: 0,
-        right: 0,
-        willChange: 'opacity,transform',
-        [mediaQueryXxs]: {
-          bottom: `var(${bannerPositionBottomVar})`,
+      ':host': addImportantToEachRule({
+        position: 'fixed',
+        bottom: `var(${cssVariableBottom},${topBottomFallback})`,
+        left: gridExtendedOffsetBase,
+        right: gridExtendedOffsetBase,
+        margin: 0,
+        padding: 0,
+        width: 'auto',
+        maxWidth: '100%', // If component is wrapped in container with maxWidth
+        zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
+        ...dropShadowHighStyle,
+        borderRadius: borderRadiusSmall, // needed for rounded box-shadow
+        ...(isOpen
+          ? {
+              opacity: 1,
+              visibility: 'inherit',
+              transform: 'translate3d(0,0,0)',
+              transition: `opacity ${duration} ${easeInQuad},transform ${duration} ${easeInQuad}`,
+            }
+          : {
+              opacity: 0,
+              visibility: 'hidden',
+              transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
+              '&(.hydrated),&(.ssr)': {
+                transition: `visibility 0s linear ${duration},opacity ${duration} ${easeOutQuad},transform ${duration} ${easeOutQuad}`,
+              },
+            }),
+        [getMediaQueryMin('s')]: {
+          top: `var(${cssVariableTop},${topBottomFallback})`,
+          bottom: 'auto',
+          left: gridExtendedOffsetS,
+          right: gridExtendedOffsetS,
+          // space before and after "-" is crucial)
+          ...(!isOpen && { transform: `translate3d(0,calc(-100% - var(${cssVariableTop},${topBottomFallback})),0)` }),
         },
-        [mediaQueryS]: {
-          top: `var(${bannerPositionTopVar})`,
+        [getMediaQueryMin('xxl')]: {
+          left: gridExtendedOffsetXXL,
+          right: gridExtendedOffsetXXL,
         },
-        '&(.hydrated),&(.ssr)': {
-          [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
-          [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
-        },
-        '&(.banner--close)': {
-          [mediaQueryXxs]: getAnimationOut('mobileOut'),
-          [mediaQueryS]: getAnimationOut('desktopOut'),
-        },
-      },
-      '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),
-      '@keyframes mobileOut': getKeyframesMobile('out', bannerPositionBottomVar),
-      '@keyframes desktopIn': getKeyframesDesktop('in', bannerPositionTopVar),
-      '@keyframes desktopOut': getKeyframesDesktop('out', bannerPositionTopVar),
+        ...hostHiddenStyles,
+      }),
     },
-    root: getBoxShadow(),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };

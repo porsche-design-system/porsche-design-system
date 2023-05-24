@@ -1,41 +1,37 @@
-import type { ResponsiveOptions, Options, Splide } from '@splidejs/splide';
-import type { BreakpointCustomizable, BreakpointKey } from '../../types';
-import { getTagName, hasNamedSlot, mergeDeep } from '../../utils';
+import type { Options, Splide } from '@splidejs/splide';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import type { BreakpointCustomizable } from '../../types';
+import type { TagName } from '@porsche-design-system/shared';
+import { getTagName, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
-import type { TagName } from '@porsche-design-system/shared';
+
+export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
+export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
+
+export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
+export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
 // https://splidejs.com/guides/i18n/#default-texts
 // extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types
 export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
-export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
+export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };
 
-type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'gap'>;
-type ResponsiveOptsKey = keyof ResponsiveOpts;
 export type SplideBreakpoints = Options['breakpoints'];
 
 export const getSplideBreakpoints = (
-  perPage: Exclude<BreakpointCustomizable<number>, string>,
-  gap: BreakpointCustomizable<string>
+  perPage: Exclude<BreakpointCustomizable<number>, string> | 'auto'
 ): SplideBreakpoints => {
-  return mergeDeep(toSplideBreakpoints('perPage', perPage), toSplideBreakpoints('gap', gap));
-};
-
-export const toSplideBreakpoints = <T>(
-  propName: ResponsiveOptsKey,
-  value: BreakpointCustomizable<T>
-): SplideBreakpoints => {
-  return typeof value === 'object'
-    ? Object.entries(value).reduce(
-        (result, [key, val]: [BreakpointKey, number]) => ({
+  return typeof perPage === 'object'
+    ? Object.entries(perPage).reduce(
+        (result, [key, val]: [Breakpoint, number]) => ({
           ...result,
-          // cut off 'px' suffix
-          [key === 'base' ? 0 : breakpoint[key].slice(0, -2)]: {
+          [breakpoint[key]]: {
             // round to sanitize floating numbers
-            [propName]: propName === 'perPage' ? Math.round(val) : val,
+            perPage: Math.round(val),
           },
         }),
         {}
@@ -43,7 +39,7 @@ export const toSplideBreakpoints = <T>(
     : {
         0: {
           // round to sanitize floating numbers
-          [propName]: propName === 'perPage' ? Math.round(value as unknown as number) : value,
+          perPage: perPage === 'auto' ? 1 : Math.round(perPage as unknown as number),
         },
       };
 };

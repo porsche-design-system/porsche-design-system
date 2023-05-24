@@ -3,22 +3,22 @@ import { PModal, PButton, PText, PButtonGroup } from '@porsche-design-system/com
 
 export const ModalExampleAccessibilityPage = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const handleModalOpen = useCallback(() => {
+  const onOpen = useCallback(() => {
     setIsModalOpen(true);
   }, []);
-  const handleModalClose = useCallback(() => {
+  const onDismiss = useCallback(() => {
     setIsModalOpen(false);
   }, []);
 
   return (
     <>
-      <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={handleModalOpen}>
+      <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
         Open Modal
       </PButton>
-      <PModal open={isModalOpen} onClose={handleModalClose}>
+      <PModal open={isModalOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'Some Heading' }}>
         <PText>Some Content</PText>
-        <PButtonGroup className="footer">
-          <PButton>Save</PButton>
+        <PButtonGroup>
+          <PButton type="button">Save</PButton>
           <PButton type="button" variant="tertiary" icon="close">
             Close
           </PButton>

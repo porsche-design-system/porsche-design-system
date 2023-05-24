@@ -1,17 +1,18 @@
-import type { LinkTarget, PropTypes, SelectedAriaAttributes } from '../../types';
-import type { MarqueAriaAttribute, MarqueSize, MarqueVariant } from './marque-utils';
-import {
-  buildSrcSet,
-  cdnBaseUrl,
-  getInnerManifest,
-  MARQUE_ARIA_ATTRIBUTES,
-  MARQUE_SIZES,
-  MARQUE_VARIANTS,
-} from './marque-utils';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
+import type { MarqueAriaAttribute, MarqueVariant, MarqueTarget } from './marque-utils';
+import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_VARIANTS } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  parseAndGetAriaAttributes,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
+import type { MarqueSize } from './marque-size';
+import { MARQUE_SIZES } from './marque-size';
 
 const propTypes: PropTypes<typeof Marque> = {
   trademark: AllowedTypes.boolean,
@@ -22,6 +23,7 @@ const propTypes: PropTypes<typeof Marque> = {
   aria: AllowedTypes.aria<MarqueAriaAttribute>(MARQUE_ARIA_ATTRIBUTES),
 };
 
+/** @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead. */
 @Component({
   tag: 'p-marque',
   shadow: { delegatesFocus: true },
@@ -42,17 +44,18 @@ export class Marque {
   @Prop() public href?: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTarget = '_self';
+  @Prop() public target?: MarqueTarget = '_self';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttribute>;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-wordmark" component instead.');
     attachComponentCss(this.host, getComponentCss, this.size);
 
     const innerManifest = getInnerManifest(this.variant, this.trademark);
-    const mediumMedia = `(min-width: ${breakpoint.l})`;
+    const mediumMedia = `(min-width: ${breakpoint.l}px)`;
 
     const picture = (
       <picture>

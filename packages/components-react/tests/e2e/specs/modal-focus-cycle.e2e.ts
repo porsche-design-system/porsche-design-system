@@ -1,5 +1,6 @@
-import type { Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
+import { getProperty } from '../../../../components-js/tests/e2e/puppeteer/helpers';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -8,75 +9,73 @@ afterEach(async () => await page.close());
 it('should focus correct element', async () => {
   await page.setViewport({ width: 1400, height: 800 }); // to prevent horizontal scrollable table
   await goto(page, 'modal-focus-cycle');
+
   const host = await selectNode(page, 'p-modal');
-
-  const expectDialogToBeFocused = async (failMessage?: string) => {
-    const { tagName, className } = await host.evaluate((el) => {
-      const { tagName, className } = el.shadowRoot.activeElement;
-      return { tagName, className };
-    });
-    expect(tagName, failMessage).toBe('DIV');
-    expect(className, failMessage).toBe('root');
-  };
-
-  const expectCloseButtonToBeFocused = async (failMessage?: string) => {
-    const { tagName, className } = await host.evaluate((el) => {
-      const { tagName, className } = el.shadowRoot.activeElement;
-      return { tagName, className };
-    });
-    expect(tagName, failMessage).toBe('P-BUTTON-PURE');
-    expect(className, failMessage).toContain('close');
-  };
-
-  /** slot change has 1 tick delay before focusing, so we have to wait a little  */
-  const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve, 5));
-
   const getActiveElementTagName = () => page.evaluate(() => document.activeElement.tagName);
   const getActiveElementId = () => page.evaluate(() => document.activeElement.id);
+
+  const waitForFocus = async (el: ElementHandle<Element>) => {
+    await page.waitForFunction((host, el) => host.shadowRoot.activeElement === el, {}, host, el);
+    return await host.evaluateHandle((el) => el.shadowRoot.activeElement);
+  };
+
+  const expectDialogToBeFocused = async (failMessage?: string) => {
+    const dialog = await selectNode(page, 'p-modal >>> div.root');
+    const focused = await waitForFocus(dialog);
+    expect(await getProperty(focused, 'tagName'), failMessage).toBe('DIV');
+    expect(await getProperty(focused, 'className'), failMessage).toBe('root');
+  };
+
+  const expectDismissButtonToBeFocused = async (failMessage?: string) => {
+    const dismissHandle = await selectNode(page, 'p-modal >>> p-button-pure.dismiss');
+    const focused = await waitForFocus(dismissHandle);
+    expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON-PURE');
+    expect(await getProperty(focused, 'className'), failMessage).toContain('dismiss');
+  };
 
   const btnOpen = await selectNode(page, '#btn-open');
   await btnOpen.click();
 
   await page.waitForSelector('#loading');
-  await new Promise((resolve) => setTimeout(resolve, 50)); // give it some time to focus via stencil lifecycle
   await expectDialogToBeFocused('after open');
 
   await page.keyboard.press('Tab');
-  await expectCloseButtonToBeFocused('after open 1st tab');
+  await expectDismissButtonToBeFocused('after open 1st tab');
   await page.keyboard.press('Tab');
-  await expectCloseButtonToBeFocused('after open 2nd tab');
+  await expectDismissButtonToBeFocused('after open 2nd tab');
   await page.keyboard.press('Tab');
-  await expectCloseButtonToBeFocused('after open 3rd tab');
+  await expectDismissButtonToBeFocused('after open 3rd tab');
 
   await page.waitForSelector('p-table');
-  await new Promise((resolve) => setTimeout(resolve, 50)); // give it some time to focus via stencil lifecycle
   await expectDialogToBeFocused('after loading');
   await page.keyboard.press('Tab');
-  await expectCloseButtonToBeFocused('after loading 1st tab');
+  await expectDismissButtonToBeFocused('after loading 1st tab');
   await page.keyboard.press('Tab');
   expect(await getActiveElementTagName(), 'after loading 2nd tab').toBe('P-TABLE'); // when table is scrollable, otherwise it would be P-TABLE-HEAD-CELL
 
   const btnReload = await selectNode(page, '#btn-reload');
   await btnReload.focus();
   await page.keyboard.press('Tab');
-  await expectCloseButtonToBeFocused('after reload tab');
+  await expectDismissButtonToBeFocused('after reload tab');
   await page.keyboard.down('Shift');
   await page.keyboard.press('Tab');
   await page.keyboard.up('Shift');
   expect(await getActiveElementId()).toBe('btn-reload');
 
   await btnReload.click();
-  await waitForSlotChange();
   await expectDialogToBeFocused('after reload');
   await page.keyboard.press('Tab');
-  await expectCloseButtonToBeFocused('after reload 1st tab');
+  await expectDismissButtonToBeFocused('after reload 1st tab');
   await page.keyboard.press('Tab');
-  await expectCloseButtonToBeFocused('after reload 2nd tab');
-  await page.keyboard.press('Space'); // close modal
-  await new Promise((resolve) => setTimeout(resolve, 250)); // give it some time to close and refocus via stencil lifecycle
+  await expectDismissButtonToBeFocused('after reload 2nd tab');
 
-  expect(await getActiveElementId(), 'after close').toBe('btn-open');
+  await page.keyboard.press('Space'); // dismiss modal
+
+  await page.waitForFunction((el) => window.getComputedStyle(el).visibility === 'hidden', {}, host);
+  expect(await getActiveElementId(), 'after dismiss').toBe('btn-open');
 
   await page.keyboard.press('Tab');
-  expect(await getActiveElementId(), 'after close 1st tab').toBe('btn-after');
+
+  await page.waitForFunction((btn) => document.activeElement.id === btn.id, {}, await selectNode(page, '#btn-after'));
+  expect(await getActiveElementId(), 'after dismiss 1st tab').toBe('btn-after');
 });

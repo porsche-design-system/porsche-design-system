@@ -1,30 +1,40 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { TextColor } from '../types';
+import type { TextColorDeprecated } from '../components/text/text-color';
+import type { HeadingColor } from '../components/heading/heading-utils';
+import type { HeadlineColor } from '../components/headline/headline-utils';
+import type { DisplayColor } from '../components/display/display-utils';
 import { getThemedColors } from './colors';
 
-export const getThemedTextColor = (theme: Theme, textColor: TextColor): string => {
+export const getThemedTypographyColor = (
+  theme: Theme,
+  textColor: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor
+): string => {
+  // TODO: don't destructure for better minification
   const {
-    baseColor,
-    brandColor,
+    primaryColor,
     contrastHighColor,
     contrastMediumColor,
     contrastLowColor,
     successColor,
     errorColor,
     warningColor,
-    neutralColor,
+    infoColor,
   } = getThemedColors(theme);
 
-  const colorMap: { [key in TextColor]: string } = {
-    brand: brandColor,
-    default: baseColor,
-    'neutral-contrast-high': contrastHighColor,
-    'neutral-contrast-medium': contrastMediumColor,
-    'neutral-contrast-low': contrastLowColor,
+  const colorMap: Record<
+    Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor,
+    string
+  > = {
+    primary: primaryColor,
+    default: primaryColor, // deprecated but part of HeadlineColor
+    'contrast-low': contrastLowColor,
+    'contrast-medium': contrastMediumColor,
+    'contrast-high': contrastHighColor,
     'notification-success': successColor,
     'notification-warning': warningColor,
     'notification-error': errorColor,
-    'notification-neutral': neutralColor,
+    'notification-info': infoColor,
     inherit: 'currentColor',
   };
   return colorMap[textColor];

@@ -1,5 +1,10 @@
 # Marque
 
+<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+  This component is deprecated and will be removed with the next major release.
+Please use <a href="components/wordmark">p-wordmark</a> instead.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Sizes

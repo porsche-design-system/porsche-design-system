@@ -8,12 +8,15 @@
 
 ## Color
 
-<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  The <b>background-default</b> color is deprecated and will be removed with next major release. Please use
+  <b>background-base</b> color instead. In case, e.g. <b>color="background-default"</b> is used it will automatically be
+  mapped to <b>color="background-surface"</b>.
+
+</p-inline-notification>
+
+<Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
+  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
 </Playground>
 
 ## Label
@@ -33,12 +36,15 @@ another focusable element. This prevents loosing the focus order.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils'; 
+import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
+import { GRADIENT_COLORS } from '../scroller/scroller-utils'; 
 
 @Component
 export default class Code extends Vue {
-  config = { spacing: 'inline' };
-  backgroundColor = 'default';
+  config = { themeable: true, spacing: 'inline' };
+
+  backgroundColor = 'background-base';
+  backgroundColors = GRADIENT_COLORS;
 
   get colorMarkup(){
     return TAG_DISMISSIBLE_COLORS.map((color) => `<p-tag-dismissible color="${color}">Color ${color}</p-tag-dismissible>`).join('\n');

@@ -1,12 +1,17 @@
 import { getCss } from '../../../utils';
-import { addImportantToRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
-      ':host': {
-        display: addImportantToRule('table-header-group'),
-      },
+      ':host': addImportantToEachRule({
+        display: 'table-header-group',
+        fontSize: fontSizeTextXSmall,
+        lineHeight: fontLineHeight,
+        fontWeight: fontWeightSemiBold,
+        ...hostHiddenStyles,
+      }),
     },
   });
 };

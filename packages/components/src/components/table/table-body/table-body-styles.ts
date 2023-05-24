@@ -1,12 +1,13 @@
 import { getCss } from '../../../utils';
-import { addImportantToRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
-      ':host': {
-        display: addImportantToRule('table-row-group'),
-      },
+      ':host': addImportantToEachRule({
+        display: 'table-row-group',
+        ...hostHiddenStyles,
+      }),
     },
   });
 };

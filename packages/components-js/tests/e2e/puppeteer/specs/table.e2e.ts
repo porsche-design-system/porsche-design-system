@@ -5,14 +5,11 @@ import {
   getAttribute,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-
-const SCROLL_DURATION = 205; // with 20 steps and an interval of 10, we get 200ms plus 5ms for safety
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -20,19 +17,12 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-table');
 const getTable = () => selectNode(page, 'p-table >>> .table');
-const getTableHead = () => selectNode(page, 'p-table-head');
-const getTableHeadRow = () => selectNode(page, 'p-table-head-row');
 const getFirstTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(1)');
+
 const getFirstTableHeadCellButton = () => selectNode(page, 'p-table-head-cell:nth-child(1) >>> button');
 const getSecondTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(2)');
 const getThirdTableHeadCell = () => selectNode(page, 'p-table-head-cell:nth-child(3)');
-const getTableBody = () => selectNode(page, 'p-table-body');
-const getFirstTableRow = () => selectNode(page, 'p-table-row:nth-child(1)');
-const getFirstTableRowCell = () => selectNode(page, 'p-table-row:nth-child(1) p-table-cell:nth-child(1)');
 const getCaption = () => selectNode(page, 'p-table >>> .caption');
-const getScrollArea = () => selectNode(page, 'p-table >>> .scroll-area');
-const getScrollIndicator = () => selectNode(page, 'p-table >>> .scroll-indicator');
-const getScrollButton = () => selectNode(page, 'p-table >>> .scroll-button');
 
 type InitOptions = {
   columnAmount?: number;
@@ -85,56 +75,6 @@ const makeTableOverflow = async () => {
   await waitForStencilLifecycle(page);
 };
 
-describe('scroll button', () => {
-  it('should have type="button" attribute', async () => {
-    await initTable();
-    await makeTableOverflow();
-
-    expect(await getProperty(await getScrollButton(), 'type')).toBe('button');
-  });
-
-  it("should be visible when table's content is overflowing", async () => {
-    await initTable();
-
-    expect(await getScrollIndicator(), 'initially').toBeNull();
-
-    await makeTableOverflow();
-
-    expect(await getScrollIndicator(), 'finally').not.toBeNull();
-  });
-
-  it('should disappear when scrolled to the very right', async () => {
-    await initTable();
-    await makeTableOverflow();
-
-    expect(await getScrollIndicator(), 'initially').not.toBeNull();
-
-    const scrollArea = await getScrollArea();
-    await scrollArea.evaluate((el) => (el.scrollLeft = 2000));
-    await waitForStencilLifecycle(page);
-
-    expect(await getScrollIndicator(), 'finally').toBeNull();
-  });
-
-  it('should scroll table on click', async () => {
-    await initTable();
-    await makeTableOverflow();
-
-    const scrollArea = await getScrollArea();
-    const getScrollLeft = () => scrollArea.evaluate((el) => el.scrollLeft);
-
-    const initialScrollLeft = await getScrollLeft();
-    expect(initialScrollLeft, 'initially').toBe(0);
-
-    const scrollButton = await getScrollButton();
-    await scrollButton.click();
-    await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION));
-
-    const scrollLeftAfterClick = await getScrollLeft();
-    expect(scrollLeftAfterClick, 'after click').toBeGreaterThan(0);
-  });
-});
-
 describe('sorting', () => {
   it('should not render sorting button if invalid sort options are provided', async () => {
     await initTable({ isSortable: true });
@@ -169,8 +109,23 @@ describe('events', () => {
   it('should not have clickable button when column is not sortable', async () => {
     await initTable({ isSortable: false });
 
+    const firstTableHeadCellPButtonPure = await getFirstTableHeadCellButton();
+    expect(firstTableHeadCellPButtonPure).toBeNull();
+  });
+
+  it('should emit both sortingChange and update event', async () => {
+    await initTable({ isSortable: true });
+    const host = await getHost();
+
+    await addEventListener(host, 'sortingChange');
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
     const firstTableHeadCellButton = await getFirstTableHeadCellButton();
-    expect(firstTableHeadCellButton).toBeNull();
+    await firstTableHeadCellButton.click();
+    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 
@@ -180,6 +135,8 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1); // table uses p-scroller
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // scroller contains 2 p-icons: inside left and right scroll buttons
     expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
     expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
     expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
@@ -187,7 +144,7 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(27);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30); // all the components summed up
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -195,7 +152,7 @@ describe('lifecycle', () => {
     await initTable();
     const initialStatus = await getLifecycleStatus(page);
 
-    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(27);
+    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
     expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
     const host = await getHost();
@@ -208,9 +165,10 @@ describe('lifecycle', () => {
 
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(32);
-    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(5);
-    expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5);
+    // after adding sorting to every column (5 columns) we get 5 p-icons extra, so that the component amount increases from 30 to 40
+    expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(35);
+    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(7); // 2 p-icons inside scroller + 5 p-icons in table head for sorting
+    expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5); // 5 p-table-head-cells have been updated
     expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
   });
 });
@@ -254,29 +212,6 @@ describe('accessibility', () => {
 
     const caption = await getCaption();
     expect(await getAttribute(caption, 'id'), 'caption id').toBe('caption');
-  });
-
-  it('should expose correct accessibility tree of scroll area', async () => {
-    await initTable({ hasSlottedCaption: true });
-    const host = await getHost();
-    const scrollArea = await getScrollArea();
-
-    expect(await getAttribute(scrollArea, 'tabindex'), 'initial: tabindex').toBeNull();
-    expect(await getAttribute(scrollArea, 'role'), 'initial: role').toBeNull();
-    expect(await getAttribute(scrollArea, 'aria-label'), 'initial: aria-label').toBeNull();
-    expect(await getAttribute(scrollArea, 'aria-labelledby'), 'initial: aria-labelledby').toBeNull();
-
-    await makeTableOverflow();
-
-    await expectA11yToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as property' });
-    expect(await getAttribute(scrollArea, 'tabindex'), 'after overflow: tabindex').toBe('0');
-    expect(await getAttribute(scrollArea, 'aria-label'), 'after overflow: aria-label').toBeNull();
-
-    await setProperty(host, 'caption', 'Some caption');
-    await waitForStencilLifecycle(page);
-
-    await expectA11yToMatchSnapshot(page, scrollArea, { message: 'Overflow with caption as slot' });
-    expect(await getAttribute(scrollArea, 'aria-labelledby'), 'after caption: aria-labelledby').toBeNull();
   });
 
   it('should set correct aria-sort value when sortable', async () => {

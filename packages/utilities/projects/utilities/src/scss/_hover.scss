@@ -1,0 +1,36 @@
+@import 'lib/border';
+// @import 'lib/frosted-glass';
+@import 'lib/theme';
+
+$pds-focus-border-radius-map: (
+  'small': $pds-border-radius-small,
+  'medium': $pds-border-radius-medium,
+);
+
+$pds-offset-horizontal: 2px;
+
+@mixin pds-hover($border-radius: 'small') {
+  // it can easily be overwritten on purpose (when placed here) and visually reflected
+  @if map-has-key($pds-focus-border-radius-map, $border-radius) {
+    border-radius: map-get($pds-focus-border-radius-map, $border-radius);
+  } @else {
+    @if ($border-radius) {
+      border-radius: $border-radius;
+    } @else {
+      border-radius: map-get($pds-focus-border-radius-map, 'small');
+    }
+  }
+  margin-left: -#{$pds-offset-horizontal};
+  margin-right: -#{$pds-offset-horizontal};
+  padding-left: $pds-offset-horizontal;
+  padding-right: $pds-offset-horizontal;
+  @media (hover: hover) {
+    & {
+      transition: background var(--p-transition-duration, 0.24s) ease;
+    }
+    &:hover {
+      // @include pds-frosted-glass;
+      background: $pds-theme-light-state-hover;
+    }
+  }
+}

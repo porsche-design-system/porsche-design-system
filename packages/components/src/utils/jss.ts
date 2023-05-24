@@ -1,17 +1,17 @@
 import type { TagName } from '@porsche-design-system/shared';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
+import { parseJSON } from './breakpoint-customizable';
 import type { JssStyle, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import { parseJSON } from './breakpoint-customizable';
+import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getShadowRootHTMLElement } from './dom';
+import { getTagNameWithoutPrefix } from '.';
 import { addImportantToEachRule } from '../styles';
-import { getTagName, getTagNameWithoutPrefix } from '.';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
@@ -95,11 +95,10 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   }
 };
 
-export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Styles<'@global'> => ({
-  '@global': {
-    [getTagName(host)]: addImportantToEachRule(jssStyle),
-  },
-});
+// TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
+export const doNothing = (): void => {
+  addImportantToEachRule({});
+};
 
 export type GetJssStyleFunction = (value?: any) => JssStyle;
 
@@ -119,7 +118,7 @@ export const buildResponsiveStyles = <T>(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-            [mediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
+            [getMediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
           getJssStyle(value.base) as Styles
         )

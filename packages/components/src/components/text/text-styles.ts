@@ -1,74 +1,58 @@
-import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import { buildSlottedStyles, getCss, buildResponsiveStyles, textMap } from '../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles } from '../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
-import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../styles/typography-styles';
-import { getThemedTextColor } from '../../styles/text-icon-styles';
+import type { TextWeightDeprecated } from './text-weight';
+import type { TextColorDeprecated } from './text-color';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {
+  fontSizeTextLarge,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXLarge,
+  fontSizeTextXSmall,
+  fontSizeTextXXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
+import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
+import { TEXT_TAGS } from './text-utils';
+
+const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
+  'xx-small': fontSizeTextXXSmall,
+  'x-small': fontSizeTextXSmall,
+  small: fontSizeTextSmall,
+  medium: fontSizeTextMedium,
+  large: fontSizeTextLarge,
+  'x-large': fontSizeTextXLarge,
+};
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
-  weight: TextWeight,
+  weight: Exclude<TextWeight, TextWeightDeprecated>,
   align: TextAlign,
-  color: TextColor,
+  color: Exclude<TextColor, TextColorDeprecated>,
   ellipsis: boolean,
   theme: Theme
 ): string => {
-  // function is local to reuse `weight` parameter
-  // TODO: font short hand isn't really the best choice but we don't have any better alternative atm
-  const getSizeJssStyle = (textSize: TextSize): JssStyle => {
-    const fontWeightValue = getFontWeight(weight);
-    return textSize === 'inherit'
-      ? {
-          fontSize: textSize,
-          fontWeight: fontWeightValue,
-        }
-      : { font: textMap[textSize].font.replace('400', fontWeightValue) };
-  };
-
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       '::slotted': {
-        '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-          getSlottedTypographyJssStyle()
-        ),
+        [TEXT_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
-    root: {
-      display: 'inherit',
-      padding: 0,
-      margin: 0,
-      textAlign: align,
-      ...textSmall,
-      color: getThemedTextColor(theme, color),
-      listStyleType: 'none',
-      whiteSpace: 'inherit',
-      ...(ellipsis && getEllipsisJssStyle()),
-      ...buildResponsiveStyles(size, getSizeJssStyle),
-    },
+    root: getTypographyRootJssStyle(
+      textSmallStyle,
+      buildResponsiveStyles(size, (sizeValue: TextSize) => ({
+        fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+        fontWeight: getFontWeight(weight),
+      })),
+      align,
+      color,
+      ellipsis,
+      theme
+    ),
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& button': {
-        margin: 0,
-        padding: 0,
-        background: 0,
-        border: 0,
-        cursor: 'pointer',
-        font: 'inherit',
-      },
-      // adjust keys of baseSlottedStyles to be applied on both, `a` and `button` tag
-      ...Object.entries(getBaseSlottedStyles({ withDarkTheme: true })).reduce((result, [key, value]) => {
-        result[key.includes(' a') ? `${key},${key.replace(' a', ' button')}` : key] = value;
-        return result;
-      }, {} as JssStyle),
-    })
-  );
 };

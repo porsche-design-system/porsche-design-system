@@ -1,6 +1,6 @@
-import { IconName } from '../../types';
+import type { IconName, LinkTarget } from '../../types';
 
-export type SocialIconName = Extract<
+export type LinkSocialIcon = Extract<
   IconName,
   | 'logo-facebook'
   | 'logo-google'
@@ -36,3 +36,5 @@ export type SocialIconName = Extract<
   | 'logo-yahoo'
   | 'logo-youku'
 >;
+
+export type LinkSocialTarget = LinkTarget;

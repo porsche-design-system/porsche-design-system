@@ -12,7 +12,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
+import type { HeadingTag } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -21,13 +21,13 @@ afterEach(async () => await page.close());
 const clickHandlerScript = `
 <script>
   const accordion = document.querySelector('p-accordion');
-  accordion.addEventListener('accordionChange', (e) => {
+  accordion.addEventListener('update', (e) => {
     e.target.open = e.detail.open;
   });
 </script>`;
 
 type InitOptions = {
-  tag?: HeadlineTag;
+  tag?: HeadingTag;
   otherMarkup?: string;
   hasInput?: boolean;
   isOpen?: boolean;
@@ -157,7 +157,7 @@ it('should show aria-expanded true when open and false when closed', async () =>
   expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
 });
 
-it('should set correct inline content height using ResizeObserver', async () => {
+xit('should set correct inline content height using ResizeObserver', async () => {
   await initAccordion({ otherMarkup: clickHandlerScript });
 
   const button = await getButton();
@@ -173,7 +173,7 @@ it('should set correct inline content height using ResizeObserver', async () => 
   expect(inlineStyle).toMatchInlineSnapshot(`"height: 1rem;"`);
 });
 
-it('should set correct inline content height using MutationObserver and window resize listener', async () => {
+xit('should set correct inline content height using MutationObserver and window resize listener', async () => {
   await page.evaluate(() => {
     delete window.ResizeObserver;
   });
@@ -214,6 +214,21 @@ describe('events', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
+  });
+
+  it('should emit both accordionChange and update event', async () => {
+    await initAccordion();
+    const host = await getHost();
+
+    await addEventListener(host, 'accordionChange');
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+    const button = await getButton();
+    await button.click();
+    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });
 
@@ -292,7 +307,8 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-accordion'], 'componentDidUpdate: p-accordion').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 });

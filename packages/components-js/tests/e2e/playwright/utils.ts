@@ -1,7 +1,11 @@
 import type { Page, ElementHandle } from '@playwright/test';
 
 export const supportsDeclarativeShadowDOM = async (page: Page): Promise<boolean> => {
-  return page.evaluate(() => HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot'));
+  return page.evaluate(
+    () =>
+      HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot') ||
+      HTMLTemplateElement.prototype.hasOwnProperty('shadowRootMode')
+  );
 };
 
 export const waitForComponentsReady = (page: Page): Promise<number> => {

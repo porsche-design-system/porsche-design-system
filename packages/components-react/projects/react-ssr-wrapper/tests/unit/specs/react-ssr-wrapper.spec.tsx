@@ -3,11 +3,12 @@ import * as fromComponents from '../../../src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import { paramCase } from 'change-case';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { paramCase, pascalCase } from 'change-case';
+import Link from 'next/link';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
-  // @ts-ignore
   const Component = fromComponents[componentName];
   const tagName = paramCase(componentName) as TagName;
   const componentMeta = getComponentMeta(tagName);
@@ -16,7 +17,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   jest.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
 
   // default children
-  const { requiredChild, hasSlot } =
+  const { requiredChild, hasSlot, requiredNamedSlots } =
     tagName === 'p-tabs'
       ? { ...componentMeta, requiredChild: 'p-tabs-item label=TabItem' } // TODO: validation for this is missing and therefore componentMeta doesn't contain it
       : componentMeta;
@@ -38,6 +39,15 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
           <RequiredChildTag {...requiredChildProps} />
         ) : tagName === 'p-carousel' ? ( // we need an actual DOM node here
           <div>Some child</div>
+        ) : requiredNamedSlots ? (
+          requiredNamedSlots.map(({ slotName, tagName }) => {
+            const Component = fromComponents[pascalCase(tagName)];
+            return (
+              <Component key={slotName} slot={slotName} href={tagName.includes('link') ? '#' : undefined}>
+                Some label
+              </Component>
+            );
+          })
         ) : (
           'Some child'
         ),
@@ -55,6 +65,18 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
 
 describe('manual test cases', () => {
   const testCases: Partial<Record<TagName, (() => JSX.Element)[]>> = {
+    'p-checkbox-wrapper': [
+      () => (
+        <fromComponents.PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" />
+        </fromComponents.PCheckboxWrapper>
+      ),
+      () => (
+        <fromComponents.PCheckboxWrapper label="Some label" loading={true}>
+          <input type="checkbox" defaultChecked={true} />
+        </fromComponents.PCheckboxWrapper>
+      ),
+    ],
     'p-grid-item': [
       () => (
         <fromComponents.PGrid gutter={16}>
@@ -67,6 +89,49 @@ describe('manual test cases', () => {
           <fromComponents.PGridItem>Item 1</fromComponents.PGridItem>
           <fromComponents.PGridItem>Item 2</fromComponents.PGridItem>
         </fromComponents.PGrid>
+      ),
+    ],
+    'p-link-tile-model-signature': [
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary" href="#primary">
+            Primary
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary" href="#secondary">
+            Secondary
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
+      ),
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary">
+            <a href="#primary-slotted">Primary slotted</a>
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary">
+            <a href="#secondary-slotted">Secondary slotted</a>
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
+      ),
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary">
+            <Link href="#primary-framework">Primary Framework</Link>
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary">
+            <Link href="#secondary-framework">Secondary Framework</Link>
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
+      ),
+      () => (
+        <fromComponents.PLinkTileModelSignature heading="Some heading">
+          <fromComponents.PLink slot="primary">
+            <a href="#primary-slotted">Primary slotted with span</a>
+            <span>Something else</span>
+          </fromComponents.PLink>
+          <fromComponents.PLink slot="secondary">
+            <a href="#secondary-slotted">Secondary slotted</a>
+          </fromComponents.PLink>
+        </fromComponents.PLinkTileModelSignature>
       ),
     ],
     'p-tabs-item': [
@@ -99,6 +164,32 @@ describe('manual test cases', () => {
           <fromComponents.PSegmentedControlItem value={1}>Item 1</fromComponents.PSegmentedControlItem>
           <fromComponents.PSegmentedControlItem value={2}>Item 2</fromComponents.PSegmentedControlItem>
         </fromComponents.PSegmentedControl>
+      ),
+    ],
+    'p-select-wrapper': [
+      () => (
+        <fromComponents.PSelectWrapper filter={true} label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+            <option value="d">Option D</option>
+            <option value="e">Option E</option>
+            <option value="f">Option F</option>
+          </select>
+        </fromComponents.PSelectWrapper>
+      ),
+      () => (
+        <fromComponents.PSelectWrapper native={true} label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+            <option value="d">Option D</option>
+            <option value="e">Option E</option>
+            <option value="f">Option F</option>
+          </select>
+        </fromComponents.PSelectWrapper>
       ),
     ],
     'p-text-field-wrapper': [

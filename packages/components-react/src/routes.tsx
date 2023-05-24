@@ -1,6 +1,7 @@
-import { RouteProps } from 'react-router-dom';
+import type { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromStyles from './styles';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -25,6 +26,11 @@ export const routes: RouteType[] = [
     name: 'Overview',
     path: '/overview',
     element: <fromPages.OverviewPage />,
+  },
+  {
+    name: 'Overview Flaky',
+    path: '/overview-flaky',
+    element: <fromPages.OverviewFlakyPage />,
   },
   {
     name: 'Overview Notifications',
@@ -71,14 +77,24 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
-    name: 'Carousel Example Events',
-    path: '/carousel-example-events',
-    element: <fromExamples.CarouselExampleEventsPage />,
+    name: 'Banner Example',
+    path: '/banner-example',
+    element: <fromExamples.BannerExamplePage />,
   },
   {
     name: 'Carousel Example Dynamic Slides',
     path: '/carousel-example-dynamic-slides',
     element: <fromExamples.CarouselExampleDynamicSlidesPage />,
+  },
+  {
+    name: 'Carousel Example Events',
+    path: '/carousel-example-events',
+    element: <fromExamples.CarouselExampleEventsPage />,
+  },
+  {
+    name: 'Carousel Example Jump to Slide',
+    path: '/carousel-example-jump-to-slide',
+    element: <fromExamples.CarouselExampleJumpToSlidePage />,
   },
   {
     name: 'Inline Notification Example Action Button',
@@ -149,5 +165,64 @@ export const routes: RouteType[] = [
     name: 'Toast Example',
     path: '/toast-example',
     element: <fromExamples.ToastExamplePage />,
+  },
+  {
+    name: '---',
+    isDisabled: true,
+  },
+  {
+    name: 'Styles Border',
+    path: '/styles-border',
+    element: <fromStyles.StylesBorderExample />,
+  },
+  {
+    name: 'Styles Drop Shadow',
+    path: '/styles-drop-shadow',
+    element: <fromStyles.StylesDropShadowExample />,
+  },
+  {
+    name: 'Styles Focus',
+    path: '/styles-focus',
+    element: <fromStyles.StylesFocusExample />,
+  },
+  {
+    name: 'Styles Frosted Glass',
+    path: '/styles-frosted-glass',
+    element: <fromStyles.StylesFrostedGlassExample />,
+  },
+  {
+    name: 'Styles Gradient',
+    path: '/styles-gradient',
+    element: <fromStyles.StylesGradientExample />,
+  },
+  {
+    name: 'Styles Grid',
+    path: '/styles-grid',
+    element: <fromStyles.StylesGridExample />,
+  },
+  {
+    name: 'Styles Hover',
+    path: '/styles-hover',
+    element: <fromStyles.StylesHoverExample />,
+  },
+  {
+    name: 'Styles Media Query',
+    path: '/styles-media-query',
+    element: <fromStyles.StylesMediaQueryExample />,
+  },
+  {
+    name: 'Styles Spacing',
+    path: '/styles-spacing',
+    element: <fromStyles.StylesSpacingExample />,
+  },
+  {
+    name: 'Styles Theme',
+    path: '/styles-theme',
+    element: <fromStyles.StylesThemeExample />,
+  },
+  {
+    name: 'Styles Typography',
+    path: '/styles-typography',
+    element: <fromStyles.StylesTypographyExample />,
   },
 ];

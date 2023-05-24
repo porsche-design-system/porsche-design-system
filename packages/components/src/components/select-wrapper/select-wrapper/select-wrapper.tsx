@@ -2,8 +2,7 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   AllowedTypes,
   attachComponentCss,
-  attachSlottedCss,
-  getDataThemeDarkAttribute,
+  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -19,23 +18,21 @@ import {
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { DropdownDirection } from './select-wrapper-utils';
+import type { SelectWrapperDropdownDirection, SelectWrapperState } from './select-wrapper-utils';
 import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
-import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
+import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
-import { FORM_STATES } from '../../../utils/form/form-state';
-import type { FormState } from '../../../utils/form/form-state';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  state: AllowedTypes.oneOf<SelectWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   filter: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  dropdownDirection: AllowedTypes.oneOf<DropdownDirection>(DROPDOWN_DIRECTIONS),
+  dropdownDirection: AllowedTypes.oneOf<SelectWrapperDropdownDirection>(DROPDOWN_DIRECTIONS),
   native: AllowedTypes.boolean,
 };
 
@@ -53,7 +50,7 @@ export class SelectWrapper {
   @Prop() public description?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop() public state?: SelectWrapperState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -68,7 +65,7 @@ export class SelectWrapper {
   @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: DropdownDirection = 'auto';
+  @Prop() public dropdownDirection?: SelectWrapperDropdownDirection = 'auto';
 
   /** Forces rendering of native browser select dropdown */
   @Prop() public native?: boolean = false;
@@ -79,7 +76,6 @@ export class SelectWrapper {
   private hasCustomDropdown: boolean;
 
   public connectedCallback(): void {
-    attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes(); // on every reconnect
   }
 
@@ -116,7 +112,7 @@ export class SelectWrapper {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { disabled } = this.select;
-    attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, disabled, this.native, this.hideLabel, this.state, this.theme);
 
     const labelProps = disabled
       ? {}
@@ -131,7 +127,7 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getDataThemeDarkAttribute(this.theme)}>
+      <Host>
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (
@@ -141,20 +137,21 @@ export class SelectWrapper {
               </span>
             )}
             {hasDescription(this.host, this.description) && (
-              <span class="label__text label__text--description" {...labelProps}>
+              <span class="label__text" {...labelProps}>
                 {this.description || <slot name="description" />}
               </span>
             )}
             <PrefixedTagNames.pIcon
               class="icon"
               name="arrow-head-down"
-              color="inherit"
+              theme={this.theme}
+              color={disabled ? 'state-disabled' : 'primary'}
               aria-hidden="true"
               ref={(el) => (this.iconElement = el)}
             />
             <slot />
           </label>
-          {this.hasCustomDropdown && (
+          {this.hasCustomDropdown && !disabled && (
             <PrefixedTagNames.pSelectWrapperDropdown
               ref={(el) => (this.dropdownElement = el)}
               selectRef={this.select}
@@ -172,7 +169,7 @@ export class SelectWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} host={this.host} />
+          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
       </Host>
     );

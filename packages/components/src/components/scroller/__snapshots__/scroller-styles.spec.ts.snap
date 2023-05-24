@@ -1,21 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: dark  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #212225;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
+  padding: 4px;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -23,21 +55,29 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #fff;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -54,63 +94,94 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
+  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: visible;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
+  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: visible;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: visible;
+  }
+  .action-next button {
+    visibility: visible;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
+  padding: 4px;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -118,21 +189,29 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #000;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -149,85 +228,119 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: visible;
+  }
+  .action-next button {
+    visibility: visible;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: light-electric  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: top, hasScrollbar: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  padding: 4px;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #000;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -244,180 +357,118 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
-  justify-content: flex-start;
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
-  visibility: visible;
-}
-.action-prev .button::before {
-  left: 0;
-}
-.action-next {
-  position: relative;
-  padding: 0.25rem 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
-  justify-content: flex-end;
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-  visibility: visible;
-}
-.action-next .button::before {
-  right: 0;
-}
-.button {
-  pointer-events: auto;
-  position: static;
-}
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: top, theme: light  1`] = `
-":host {
-  display: block;
-  height: inherit !important;
-}
-.root {
-  display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
-  height: inherit;
-}
-.scroll-area {
-  min-height: 1.5rem;
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
-  position: relative;
-  display: inline-flex;
-  min-width: 100%;
-  vertical-align: top;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline-color: #000;
-}
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-.trigger {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  visibility: hidden;
-}
-.trigger:first-of-type {
-  left: 0;
-}
-.trigger:last-of-type {
-  right: 0;
-}
-.action-prev {
-  position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: visible;
+  }
+  .action-next button {
+    visibility: visible;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: false, isPrevHidden: true and scrollIndicatorPosition: undefined, theme: dark  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #212225;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  padding: 4px;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #fff;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -434,85 +485,119 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
+  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
+  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: visible;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: hidden;
+  }
+  .action-next button {
+    visibility: visible;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: true, isPrevHidden: false and scrollIndicatorPosition: undefined, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: true, isPrevHidden: false, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  padding: 4px;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #000;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -529,85 +614,119 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: visible;
+  }
+  .action-next button {
+    visibility: hidden;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, isNextHidden: true, isPrevHidden: true and scrollIndicatorPosition: undefined, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: true, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
+  padding: 4px;
+  overflow: auto hidden;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #000;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -624,63 +743,93 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: hidden;
+  }
+  .action-next button {
+    visibility: hidden;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: dark  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #0E0E12;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
+  padding: 4px;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -688,21 +837,29 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   display: none;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #fff;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -719,63 +876,94 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #262b2e 50%, #262b2e00 100%);
+  background: linear-gradient(to right, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: visible;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #262b2e00 0%, #262b2e 50%);
+  background: linear-gradient(to left, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: visible;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: visible;
+  }
+  .action-next button {
+    visibility: visible;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: light  1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
 ":host {
-  display: block;
+  display: block !important;
   height: inherit !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #EEEFF2;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
 .root {
   display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
+  padding: 4px;
+  overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -783,21 +971,29 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   display: none;
 }
 .scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   position: relative;
   display: inline-flex;
+  min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  outline: 0;
 }
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
+.scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
 }
-.scroll-wrapper:focus {
-  outline-color: #000;
+.scroll-wrapper:focus::before {
+  border-color: #1A44EA;
 }
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
+.scroll-wrapper:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 .trigger {
   position: absolute;
@@ -814,138 +1010,41 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .action-prev {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-left: -1px;
   grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
+  background: linear-gradient(to right, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: visible;
 }
-.action-prev .button::before {
-  left: 0;
+.action-prev button {
+  margin-left: 8px;
 }
 .action-next {
   position: relative;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
   margin-right: -1px;
   grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
+  background: linear-gradient(to left, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: visible;
 }
-.action-next .button::before {
-  right: 0;
+.action-next button {
+  margin-right: 8px;
 }
-.button {
-  pointer-events: auto;
-  position: static;
+@media(hover:hover) {
+  .action-prev button {
+    visibility: visible;
+  }
+  .action-next button {
+    visibility: visible;
+  }
 }
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, isNextHidden: false, isPrevHidden: false and scrollIndicatorPosition: center, theme: light-electric  1`] = `
-":host {
-  display: block;
-  height: inherit !important;
-}
-.root {
-  display: grid;
-  grid-template-columns: 2em minmax(0, 1fr) 2em;
-  margin: 0 -0.25rem;
-  height: inherit;
-}
-.scroll-area {
-  min-height: 1.5rem;
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 0.25rem;
-  overflow: scroll hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
-  outline: transparent solid 1px;
-  outline-offset: 2px;
-  position: relative;
-  display: inline-flex;
-  min-width: 100%;
-  vertical-align: top;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline-color: #000;
-}
-.scroll-wrapper:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-.trigger {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  visibility: hidden;
-}
-.trigger:first-of-type {
-  left: 0;
-}
-.trigger:last-of-type {
-  right: 0;
-}
-.action-prev {
-  position: relative;
-  padding: 0.25rem 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
-  justify-content: flex-start;
-  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
-  visibility: visible;
-}
-.action-prev .button::before {
-  left: 0;
-}
-.action-next {
-  position: relative;
-  padding: 0.25rem 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
-  justify-content: flex-end;
-  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
-  visibility: visible;
-}
-.action-next .button::before {
-  right: 0;
-}
-.button {
-  pointer-events: auto;
-  position: static;
-}
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: max(2rem, 80%);
-}"
+"
 `;

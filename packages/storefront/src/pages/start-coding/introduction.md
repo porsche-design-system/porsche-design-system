@@ -23,6 +23,7 @@ corresponding docs.
 - [Web components](start-coding/vanilla-js): `@porsche-design-system/components-js`
 - [Angular components](start-coding/angular): `@porsche-design-system/components-angular`
 - [React components](start-coding/react): `@porsche-design-system/components-react`
+- [Vue components](start-coding/vue): `@porsche-design-system/components-vue`
 
 Those packages can be consumed by the following public NPM registry:
 
@@ -43,13 +44,11 @@ All releases of the Porsche Design System additional packages are available as v
 about them on the corresponding docs.
 
 - [Assets](assets/introduction): `@porsche-design-system/assets`
-- [Utilities](utilities/introduction): `@porsche-design-system/utilities`
 
 ## Web components used with a not-supported framework
 
-At the time of writing, we only provide wrappers for Angular and React. But this doesn't mean that our web components
-can't be used with other frameworks like Vue or Ember. Just follow these guidelines to make our web components work in
-other frameworks:
+At the time of writing, we only provide wrappers for Angular, React and Vue. But this doesn't mean that our web
+components can't be used with other frameworks like Ember. Just follow these guidelines to make our web components work
+in other frameworks:
 
-- [Guidelines for Vue](https://stenciljs.com/docs/vue)
 - [Guidelines for Ember](https://stenciljs.com/docs/ember)

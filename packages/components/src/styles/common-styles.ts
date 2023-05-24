@@ -1,9 +1,9 @@
-import type { JssStyle, Styles } from 'jss';
-import type { PropertiesHyphen } from 'csstype';
-import { fontWeight } from '@porsche-design-system/utilities-v2';
-import { getThemedColors } from './';
-import { hoverMediaQuery } from './hover-media-query';
 import type { Theme } from '../types';
+import type { JssStyle } from 'jss';
+import type { PropertiesHyphen } from 'csstype';
+import type { ThemedColors } from './';
+import { borderWidthBase, themeLightStateFocus } from '@porsche-design-system/utilities-v2';
+import { getThemedColors } from './';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -27,17 +27,10 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-type GetHoverStylesOptions = {
-  theme?: Theme;
-};
-
-export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
-  return {
-    transition: getTransition('color'),
-    '&:hover': {
-      color: getThemedColors(theme).hoverColor,
-    },
-  };
+// TODO: this is workaround, in order the colors to be bundled in the main bundle, we need to have at least one function here, which is used in project and which calls "getThemedColors"
+// TODO: This mechanism needs to be investigated as part of refactoring
+export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
+  return getThemedColors(theme);
 };
 
 export type GetFocusStylesOptions = {
@@ -56,115 +49,51 @@ export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
   };
 };
 
-export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
-  const {
-    pseudo,
-    offset: outlineOffset,
-    color: outlineColor,
-  }: GetFocusStylesOptions = {
-    color: 'currentColor',
-    offset: 2,
-    ...opts,
-  };
-
-  return pseudo
-    ? {
-        outline: 0,
-        '&::-moz-focus-inner': {
-          border: 0,
-        },
-        [`&${pseudo}`]: {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(),
-          outline: '1px solid transparent',
-          outlineOffset: `${outlineOffset}px`,
-        },
-        [`&:focus${pseudo}`]: {
-          outlineColor,
-        },
-        [`&:focus:not(:focus-visible)${pseudo}`]: {
-          outlineColor: 'transparent',
-        },
-      }
-    : {
-        outline: '1px solid transparent',
-        outlineOffset: `${outlineOffset}px`,
-        '&::-moz-focus-inner': {
-          border: 0,
-        },
-        '&:focus': {
-          outlineColor,
-        },
-        '&:focus:not(:focus-visible)': {
-          outlineColor: 'transparent',
-        },
-      };
+// reset initial styles, e.g. in case link-pure is used with slotted anchor and nested within e.g. an accordion
+export const getResetInitialStylesForSlottedAnchor: JssStyle = {
+  margin: 0,
+  padding: 0,
+  outline: 0,
+  borderRadius: 0,
+  background: 'transparent',
 };
 
-export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: false }): Styles => {
-  return {
-    '& a': {
-      color: 'inherit',
-      textDecoration: 'underline',
-      ...getFocusJssStyle({ offset: 1 }),
-      ...hoverMediaQuery(getHoverJssStyle()),
-    },
-    ...(opts.withDarkTheme &&
-      ({
-        '&[data-theme="dark"] a:hover': hoverMediaQuery(getHoverJssStyle({ theme: 'dark' })['&:hover'] as JssStyle),
-      } as Styles)),
-    '& b, & strong': {
-      fontWeight: fontWeight.bold,
-    },
-    '& em, & i': {
-      fontStyle: 'normal',
-    },
-  };
+export const focusPseudoJssStyle: JssStyle = {
+  outline: 0,
+  '&:focus::before': {
+    content: '""',
+    position: 'absolute',
+    ...getInsetJssStyle(),
+    borderRadius: '1px',
+    outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+    outlineOffset: '2px',
+  },
+  '&:focus:not(:focus-visible)::before': {
+    outline: 0,
+  },
 };
 
-export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
+/**
+ * Returns a JSS style object that can be used to visually hide text in the browser, while still allowing it to be accessed by screen readers.
+ * @param {boolean} isHidden - A boolean value indicating whether the text should be hidden or not. Defaults to true.
+ * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
+ * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
+ */
+export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle =>
   isHidden
-    ? getScreenReaderOnlyJssStyle()
+    ? {
+        position: 'absolute',
+        width: 0,
+        height: '1px',
+        textIndent: '-999999px',
+      }
     : {
         position: 'static',
         width: 'auto',
         height: 'auto',
-        margin: 0,
-        overflow: 'visible',
-        clip: 'auto',
-        clipPath: 'none',
-        whiteSpace: 'normal',
+        textIndent: 0,
+        ...isShownJssStyle,
       };
-
-export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
-  ...getTextHiddenJssStyle(isHidden),
-  width: 'fit-content',
-  padding: `0 0 ${pxToRemWithUnit(4)}`,
-});
-
-export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
-  ...getTextHiddenJssStyle(isHidden),
-  width: 'auto',
-  padding: `0 0 0 ${pxToRemWithUnit(8)}`,
-});
-
-/**
- * Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
- */
-export const getScreenReaderOnlyJssStyle = (): JssStyle => {
-  return {
-    position: 'absolute',
-    height: '1px',
-    width: '1px',
-    border: '0',
-    margin: '-1px',
-    overflow: 'hidden',
-    clip: 'rect(1px,1px,1px,1px)',
-    clipPath: 'inset(50%)',
-    whiteSpace: 'nowrap',
-  };
-};
 
 export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
   backfaceVisibility: 'hidden',

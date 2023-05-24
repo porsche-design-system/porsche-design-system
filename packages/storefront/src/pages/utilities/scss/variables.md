@@ -4,6 +4,11 @@
 
 ## Color
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  The <code>p-color{-theme-dark}-{color-name}</code> variables are <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>pds-theme-{light|dark}-{color-name}</code> variables provided at <a href="styles/theme">theme</a>.
+</p-inline-notification>
+
 A light and dark theme is available depending on which background it's used.
 
 <br>
@@ -74,6 +79,11 @@ A light and dark theme is available depending on which background it's used.
 
 ### External brand colors
 
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>External brand colors</code> are <strong>deprecated</strong> without any replacement and will be removed with next major release.<br>
+  Please use the <code>pds-theme-{light|dark}-{color-name}</code> variables provided at <a href="styles/theme">theme</a>.
+</p-inline-notification>
+
 |                                          |               |                               |
 | ---------------------------------------- | ------------- | ----------------------------- |
 | <ColorBadge color="external-facebook"/>  | **Facebook**  | `$p-color-external-facebook`  |
@@ -94,6 +104,11 @@ A light and dark theme is available depending on which background it's used.
 ---
 
 ## Spacing
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>$p-spacing-{v}</code> mixins are <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>spacing</code> styles provided at <a href="styles/spacing">spacing</a>.
+</p-inline-notification>
 
 Given values are:  
 `4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
@@ -121,9 +136,14 @@ $p-layout-{v};
 
 For font styling it's recommended to use the
 [`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) component or
-[text/headline scss mixins](utilities/scss/mixins).
+[text/headline scss mixins](utilities-deprecated/scss/functions).
 
 ### Family
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>$p-font-family</code> variable is <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>$pds-font-family</code> variable provided at <a href="styles/typography">typography</a>.
+</p-inline-notification>
 
 Contains Porsche Next and predefined fallback fonts:
 
@@ -132,6 +152,11 @@ $p-font-family
 ```
 
 ### Weight
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>$p-font-weight-{v}</code> variables are <strong>deprecated</strong> and will be removed with next major release.<br>
+  Please use the <code>$pds-font-weight-{regular|bold}</code> variable provided at <a href="styles/typography">typography</a>.
+</p-inline-notification>
 
 Given values are:  
 `thin | regular | semibold | bold`
@@ -143,6 +168,11 @@ $p-font-weight-{v};
 ```
 
 ### Size
+
+<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+  <code>$p-font-size-{v}</code> variables are <strong>deprecated</strong> and will be removed with next major release.<br>
+  To recreate the result, use the provided <code>$pds-font-line-height</code> variable and one of the font sizes provided at <a href="styles/typography">typography</a>.
+</p-inline-notification>
 
 #### Font scaling system
 

@@ -8,41 +8,42 @@ import type {
   GetStackBlitzProjectAndOpenOptions,
   SharedImportKey,
   ExternalDependency,
-} from '../../utils';
-import type { Theme, ColorScheme, Framework } from '../../models';
+} from '@/utils';
+import type { Theme, BackgroundColor, Framework } from '@/models';
 import type { PorscheDesignSystemBundle } from '@/utils/stackblitz/types';
 
 export type OpenInStackBlitzOpts = {
   porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
-  framework: Exclude<Framework, 'shared'>;
+  framework: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
   theme: Theme;
-  backgroundColorScheme: ColorScheme;
+  backgroundColor: BackgroundColor;
   externalDependencies: ExternalDependency[];
   sharedImportKeys: SharedImportKey[];
   pdsVersion: string;
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, backgroundColorScheme, ...rest } = opts;
+  const { markup, framework, theme, backgroundColor, ...rest } = opts;
 
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     ...rest,
     markup: transformSrcAndSrcsetOfImgAndSourceTags(markup),
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
-    globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColorScheme)}; }`,
+    globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
   };
 
-  const getProjectAndOpenOptionsCallbackMap: {
-    [key in Exclude<Framework, 'shared'>]: GetStackBlitzProjectAndOpenOptions;
-  } = {
+  const getProjectAndOpenOptionsMap: Record<
+    Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
+    GetStackBlitzProjectAndOpenOptions
+  > = {
     'vanilla-js': getVanillaJsProjectAndOpenOptions,
     angular: getAngularProjectAndOpenOptions,
     react: getReactProjectAndOpenOptions,
   };
 
-  const { openFile, ...project } = getProjectAndOpenOptionsCallbackMap[framework](stackBlitzFrameworkOpts);
+  const { openFile, ...project } = getProjectAndOpenOptionsMap[framework](stackBlitzFrameworkOpts);
 
   sdk.openProject(project, { openFile });
 };

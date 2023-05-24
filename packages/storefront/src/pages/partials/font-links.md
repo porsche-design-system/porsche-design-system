@@ -10,20 +10,19 @@ runtime and after bootstrapping of your application, which might result in FOUT.
 Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead of `font-display: block` for better
 performance and less potential for layout shifts.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
 
 `type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold'`
 
-| Option        | Description                                                                                                                                                                                                          | Type           | Default                    |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------------------- | -------- | --------- |
-| `subset`      | Defines which font subset should be loaded.                                                                                                                                                                          | `'latin'       | 'greek'                    | 'cyril'` | `'latin'` |
-| `weights`     | Defines which font weights should be loaded.                                                                                                                                                                         | `FontWeight[]` | `['regular', 'semi-bold']` |
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                                                     | `'auto'        | 'cn'`                      | `'auto'` |
-| `withoutTags` | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns an array of strings with urls to the cdn location of the resources. | `boolean`      | `false`                    |
-| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                                                             | `'html'        | 'jsx'`                     | `'html'` |
+| Option    | Description                                                                                                              | Type           | Default                    |
+| --------- | ------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------------------- | -------- | --------- |
+| `subset`  | Defines which font subset should be loaded.                                                                              | `'latin'       | 'greek'                    | 'cyril'` | `'latin'` |
+| `weights` | Defines which font weights should be loaded.                                                                             | `FontWeight[]` | `['regular', 'semi-bold']` |
+| `cdn`     | Decides from which CDN the resources are loaded.                                                                         | `'auto'        | 'cn'`                      | `'auto'` |
+| `format`  | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html'        | 'jsx'`                     | `'html'` |
 
 ## Examples
 

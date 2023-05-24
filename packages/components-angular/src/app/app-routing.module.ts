@@ -2,18 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromStyles from './styles';
 
 export type ExtendedRoute = Route & {
-  name?: string;
+  name: string;
   isDisabled?: boolean;
 };
 
 export const routes: ExtendedRoute[] = [
-  {
-    path: '',
-    children: [],
-    pathMatch: 'full',
-  },
   ...[
     {
       name: 'Table',
@@ -32,6 +28,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Overview',
     path: 'overview',
     component: fromPages.OverviewComponent,
+  },
+  {
+    name: 'Overview Flaky',
+    path: 'overview-flaky',
+    component: fromPages.OverviewFlakyComponent,
   },
   {
     name: 'Overview Notifications',
@@ -59,6 +60,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.FormWrapperBindingComponent,
   },
   {
+    name: 'Optional Properties',
+    path: 'optional-properties',
+    component: fromPages.OptionalPropertiesComponent,
+  },
+  {
     name: 'Utilities',
     path: 'utilities',
     component: fromPages.UtilitiesComponent,
@@ -75,14 +81,24 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
-    name: 'Carousel Example Events',
-    path: 'carousel-example-events',
-    component: fromExamples.CarouselExampleEventsComponent,
+    name: 'Banner Example',
+    path: 'banner-example',
+    component: fromExamples.BannerExampleComponent,
   },
   {
     name: 'Carousel Example Dynamic Slides',
     path: 'carousel-example-dynamic-slides',
     component: fromExamples.CarouselExampleDynamicSlidesComponent,
+  },
+  {
+    name: 'Carousel Example Events',
+    path: 'carousel-example-events',
+    component: fromExamples.CarouselExampleEventsComponent,
+  },
+  {
+    name: 'Carousel Example Jump to Slide',
+    path: 'carousel-example-jump-to-slide',
+    component: fromExamples.CarouselExampleJumpToSlideComponent,
   },
   {
     name: 'Inline Notification Example Action Button',
@@ -154,10 +170,71 @@ export const routes: ExtendedRoute[] = [
     path: 'toast-example',
     component: fromExamples.ToastExampleComponent,
   },
+  {
+    name: '---',
+    path: '---',
+    isDisabled: true,
+    children: [],
+  },
+  {
+    name: 'Styles Border Example',
+    path: 'styles-border',
+    component: fromStyles.StylesBorderExampleComponent,
+  },
+  {
+    name: 'Styles Drop Shadow Example',
+    path: 'styles-drop-shadow',
+    component: fromStyles.StylesDropShadowExampleComponent,
+  },
+  {
+    name: 'Styles Focus Example',
+    path: 'styles-focus',
+    component: fromStyles.StylesFocusExampleComponent,
+  },
+  {
+    name: 'Styles Frosted Glass Example',
+    path: 'styles-frosted-glass',
+    component: fromStyles.StylesFrostedGlassExampleComponent,
+  },
+  {
+    name: 'Styles Gradient Example',
+    path: 'styles-gradient',
+    component: fromStyles.StylesGradientExampleComponent,
+  },
+  {
+    name: 'Styles Grid Example',
+    path: 'styles-grid',
+    component: fromStyles.StylesGridExampleComponent,
+  },
+  {
+    name: 'Styles Hover Example',
+    path: 'styles-hover',
+    component: fromStyles.StylesHoverExampleComponent,
+  },
+  {
+    name: 'Styles Media Query Example',
+    path: 'styles-media-query',
+    component: fromStyles.StylesMediaQueryExampleComponent,
+  },
+  {
+    name: 'Styles Spacing Example',
+    path: 'styles-spacing',
+    component: fromStyles.StylesSpacingExampleComponent,
+  },
+  {
+    name: 'Styles Theme Example',
+    path: 'styles-theme',
+    component: fromStyles.StylesThemeExampleComponent,
+  },
+  {
+    name: 'Styles Typography Example',
+    path: 'styles-typography',
+    component: fromStyles.StylesTypographyExampleComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, {})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

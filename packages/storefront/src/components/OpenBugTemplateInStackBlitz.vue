@@ -1,9 +1,9 @@
 <template>
-  <p-fieldset-wrapper label="Choose your Template:">
+  <p-fieldset label="Choose your Template:">
     <p-segmented-control
       :value="selectedFramework"
       aria-label="Choose your Framework:"
-      @segmentedControlChange="(e) => (this.selectedFramework = e.detail.value)"
+      @update="(e) => (this.selectedFramework = e.detail.value)"
     >
       <p-segmented-control-item v-for="(framework, index) in frameworks" :key="index" :value="framework">{{
         frameworkNameMap[framework]
@@ -21,7 +21,7 @@
       :framework="selectedFramework"
       :pdsVersion="selectedPdsVersion"
     ></CodeEditor>
-  </p-fieldset-wrapper>
+  </p-fieldset>
 </template>
 
 <script lang="ts">
@@ -66,7 +66,7 @@
 </script>
 
 <style scoped lang="scss">
-  p-fieldset-wrapper {
+  p-fieldset {
     margin: 1rem 0;
     > * {
       margin-bottom: 1rem;

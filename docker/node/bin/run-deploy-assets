@@ -23,10 +23,12 @@ function upload {
 }
 
 upload "packages/assets/cdn/components/*" components/
+upload "packages/assets/cdn/crest/*" crest/
 upload "packages/assets/cdn/email/*" email/
 upload "packages/assets/cdn/fallbacks/*" fallbacks/
 upload "packages/assets/cdn/fonts/*" fonts/
 upload "packages/assets/cdn/icons/*" icons/
 upload "packages/assets/cdn/marque/*" marque/
 upload "packages/assets/cdn/meta-icons/*" meta-icons/
+upload "packages/assets/cdn/model-signatures/*" model-signatures/
 upload "packages/assets/cdn/styles/font-face.min.*.css" styles/

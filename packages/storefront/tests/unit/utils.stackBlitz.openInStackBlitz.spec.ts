@@ -17,7 +17,7 @@ describe('openInStackBlitz()', () => {
     markup: 'Some markup',
     theme: 'light',
     framework: 'vanilla-js',
-    backgroundColorScheme: 'default',
+    backgroundColor: 'background-base',
     externalDependencies: [],
     sharedImportKeys: [],
     pdsVersion: '',
@@ -53,7 +53,7 @@ describe('openInStackBlitz()', () => {
 
     openInStackBlitz(openInStackBlitzOptions);
 
-    expect(spy).toBeCalledWith(openInStackBlitzOptions.theme, openInStackBlitzOptions.backgroundColorScheme);
+    expect(spy).toBeCalledWith(openInStackBlitzOptions.theme, openInStackBlitzOptions.backgroundColor);
   });
 
   it('should call getVanillaJsProjectAndOpenOptions() with correct parameters', () => {

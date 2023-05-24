@@ -62,8 +62,17 @@ export const HeadlinePage = (): JSX.Element => {
       <div className="playground" title="should apply custom styles for dedicated slotted content">
         <PHeadline>
           <span>
-            Some slotted and deeply nested <a href="#">linked</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text
+            Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
+          </span>
+        </PHeadline>
+      </div>
+
+      <div className="playground dark" title="should apply custom styles for dedicated slotted content">
+        <PHeadline theme="dark">
+          <span>
+            Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+            {' '}<em>emphasized</em> and <i>italic</i> text.
           </span>
         </PHeadline>
       </div>
@@ -73,10 +82,10 @@ export const HeadlinePage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should not automatically break words/strings by default">
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deeppink' }}>
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </PHeadline>
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deepskyblue' }}>
           <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
         </PHeadline>
       </div>
@@ -86,10 +95,10 @@ export const HeadlinePage = (): JSX.Element => {
         title="should be possible to overwrite hyphenation/break words behavior"
         style={{ hyphens: 'auto', overflowWrap: 'break-word' }}
       >
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deeppink' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deeppink' }}>
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </PHeadline>
-        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '240px', background: 'deepskyblue' }}>
+        <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deepskyblue' }}>
           <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
         </PHeadline>
       </div>

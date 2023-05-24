@@ -23,14 +23,26 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('headline-states', async () => {
       const page = vrt.getPage();
 
+      const head = `
+        <style>
+          body { display: grid; grid-template-columns: repeat(2, 50%); }
+        </style>`;
+
       const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-headline variant="headline-3" theme="${theme}">Some Headline with <a href="#">link</a></p-headline>`;
+        <p-headline variant="headline-3" theme="${theme}">
+          Headline
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
+        </p-headline>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup));
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
 
-      await forceHoverState(page, '.hover > p-headline a');
-      await forceFocusState(page, '.focus > p-headline a');
-      await forceFocusHoverState(page, '.focus-hover > p-headline a');
+      await forceHoverState(page, '.hover p-headline a');
+      await forceFocusState(page, '.focus p-headline a');
+      await forceFocusHoverState(page, '.focus-hover p-headline a');
     })
   ).toBeFalsy();
 });

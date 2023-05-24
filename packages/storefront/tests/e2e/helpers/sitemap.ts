@@ -55,7 +55,7 @@ export const buildSitemap = async (): Promise<string[]> => {
     // follow internal urls only
     if (href.startsWith('/')) {
       console.log(`Crawling url ${i + 1}/${allUrls.length}...`);
-      await page.goto(`${baseURL}${href}`, { waitUntil: 'networkidle0' });
+      await page.goto(`${baseURL}${href}`);
 
       const newLinks = await scanForUrls();
       // get rid of duplicates
@@ -64,14 +64,17 @@ export const buildSitemap = async (): Promise<string[]> => {
   }
 
   allUrls = allUrls.sort();
+  const internalUrls = allUrls.filter((link) => link.startsWith('/'));
+  const externalUrls = allUrls.filter((link) => !link.startsWith('/'));
 
-  console.log(`Finished building sitemap.json with ${allUrls.length} urls`);
-  console.log(`– Internal urls: ${allUrls.filter((link) => link.startsWith('/')).length}`);
-  console.log(`– External urls: ${allUrls.filter((link) => !link.startsWith('/')).length}`);
+  console.log(`Finished building sitemap.json with only ${internalUrls.length} internalUrls`);
+  console.log(`– Internal urls: ${internalUrls.length}`);
+  console.log(`– External urls: ${externalUrls.length}`);
 
   // write results/sitemap.json
-  fs.writeFileSync(sitemapResultPath, JSON.stringify(allUrls, null, 2));
-  return allUrls;
+  // we only care about internalUrls, since we do nothing with external ones and they just cause an additional CI run when extending the changelog
+  fs.writeFileSync(sitemapResultPath, JSON.stringify(internalUrls, null, 2));
+  return internalUrls;
 };
 
 const mapAsync = <T, U>(array: T[], callbackFn: (value: T, index: number, array: T[]) => Promise<U>): Promise<U[]> =>

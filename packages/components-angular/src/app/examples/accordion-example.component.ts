@@ -1,39 +1,29 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { AccordionChangeEvent } from '@porsche-design-system/components-angular';
+import type { AccordionUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-accordion-example',
   template: `
-    <p-accordion
-      [heading]="'Some Heading'"
-      [tag]="'h3'"
-      [open]="isAccordion1Open"
-      (accordionChange)="onAccordion1Change($event)"
-    >
+    <p-accordion [heading]="'Some Heading'" [tag]="'h3'" [open]="isOpen1" (update)="onUpdate1($event)">
       <p-text>{{ content }}</p-text>
     </p-accordion>
-    <p-accordion
-      [heading]="'Some Heading'"
-      [tag]="'h3'"
-      [open]="isAccordion2Open"
-      (accordionChange)="onAccordion2Change($event)"
-    >
+    <p-accordion [heading]="'Some Heading'" [tag]="'h3'" [open]="isOpen2" (update)="onUpdate2($event)">
       <p-text>{{ content }}</p-text>
     </p-accordion>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionExampleComponent {
-  isAccordion1Open = false;
-  isAccordion2Open = false;
+  isOpen1 = false;
+  isOpen2 = false;
   content =
     'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
     'dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
 
-  onAccordion1Change(e: CustomEvent<AccordionChangeEvent>) {
-    this.isAccordion1Open = e.detail.open;
+  onUpdate1(e: CustomEvent<AccordionUpdateEvent>) {
+    this.isOpen1 = e.detail.open;
   }
-  onAccordion2Change(e: CustomEvent<AccordionChangeEvent>) {
-    this.isAccordion2Open = e.detail.open;
+  onUpdate2(e: CustomEvent<AccordionUpdateEvent>) {
+    this.isOpen2 = e.detail.open;
   }
 }

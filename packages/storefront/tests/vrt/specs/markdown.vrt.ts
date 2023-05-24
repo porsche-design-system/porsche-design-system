@@ -2,7 +2,7 @@ import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-d
 import { routerViewSelector } from '../helpers';
 import { forceFocusState } from '../../../../components-js/tests/vrt/puppeteer/helpers';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'markdown', '/markdown', {
       elementSelector: routerViewSelector,

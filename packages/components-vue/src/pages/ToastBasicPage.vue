@@ -3,6 +3,27 @@
 </script>
 
 <template>
+  <div class="visualize-grid">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <div class="playground light">
     <ToastComponent text="Some message" />
   </div>
@@ -12,7 +33,10 @@
   .playground {
     height: 300px;
     padding: 0;
-    transform: translateX(0);
-    border: 1px solid deeppink;
+  }
+
+  .playground {
+    height: 300px;
+    padding: 0;
   }
 </style>

@@ -5,45 +5,118 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonAriaAttributes, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
-import { AccordionChangeEvent, AccordionSize } from "./components/accordion/accordion-utils";
-import { HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
+import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
-import { CarouselChangeEvent, CarouselInternationalization } from "./components/carousel/carousel-utils";
-import { FormState } from "./utils/form/form-state";
+import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
+import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+import { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
-import { DividerColor, DividerOrientation } from "./components/divider/divider-utils";
-import { FieldsetWrapperLabelSize } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
+import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
+import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
+import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
+import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
+import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { IconAriaAttribute } from "./components/icon/icon-utils";
-import { InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { LinkAriaAttribute } from "./components/link/link-utils";
-import { SocialIconName } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAspectRatio, LinkTileSize, LinkTileWeight } from "./components/link-tile/link-tile-utils";
-import { MarqueAriaAttribute, MarqueSize, MarqueVariant } from "./components/marque/marque-utils";
+import { HeadingTag } from "./components/heading/heading-tag";
+import { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/heading-utils";
+import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
+import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
+import { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
+import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
+import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
+import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
+import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
-import { NumberOfPageLinks, PageChangeEvent } from "./components/pagination/pagination-utils";
-import { PopoverDirection } from "./components/popover/popover-utils";
-import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
-import { DropdownDirection } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
+import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
+import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
+import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
+import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
+import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
-import { StepChangeEvent, StepperHorizontalSize } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
-import { StepperState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
-import { SwitchChangeEvent } from "./components/switch/switch";
-import { SortingChangeEvent, TableHeadCellSort } from "./components/table/table/table-utils";
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/tabs-bar/tabs-bar-utils";
-import { TagColor } from "./components/tag/tag-utils";
+import { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
+import { SwitchAlignLabel, SwitchUpdateEvent } from "./components/switch/switch-utils";
+import { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
+import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { TagColor, TagIcon } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
-import { TextTag } from "./components/text/text-tag";
-import { TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
-import { ListType, OrderType } from "./components/text-list/text-list/text-list-utils";
+import { TextTag } from "./components/text/text-utils";
+import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
+import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
+import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
+import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+export { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
+export { BannerState, BannerWidth } from "./components/banner/banner-utils";
+export { ButtonIcon } from "./components/button/button-utils";
+export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
+export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
+export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+export { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
+export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
+export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
+export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
+export { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
+export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
+export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
+export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
+export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
+export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
+export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
+export { HeadingTag } from "./components/heading/heading-tag";
+export { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/heading-utils";
+export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
+export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
+export { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
+export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
+export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
+export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
+export { MarqueSize } from "./components/marque/marque-size";
+export { ModalAriaAttribute } from "./components/modal/modal-utils";
+export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
+export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
+export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
+export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
+export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
+export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
+export { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
+export { SwitchAlignLabel, SwitchUpdateEvent } from "./components/switch/switch-utils";
+export { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
+export { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+export { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+export { TagColor, TagIcon } from "./components/tag/tag-utils";
+export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
+export { TextTag } from "./components/text/text-utils";
+export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
+export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
+export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
+export { ToastMessage } from "./components/toast/toast/toast-manager";
+export { ToastState } from "./components/toast/toast/toast-utils";
+export { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
     interface PAccordion {
         /**
@@ -65,15 +138,31 @@ export namespace Components {
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */
-        "tag"?: HeadlineTag;
+        "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PBanner {
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * Description of the banner.
+         */
+        "description"?: string;
+        /**
+          * If false, the banner will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
+          * Heading of the banner.
+         */
+        "heading"?: string;
+        /**
+          * If true, the banner is open.
+         */
+        "open": boolean;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -85,7 +174,8 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }
@@ -93,7 +183,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -103,9 +193,9 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: ButtonIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -115,14 +205,9 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -146,11 +231,11 @@ export namespace Components {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
+        "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -162,7 +247,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: ButtonPureIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -174,36 +259,98 @@ export namespace Components {
         /**
           * Size of the button.
          */
-        "size"?: BreakpointCustomizable<TextSize>;
+        "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
-        "type"?: ButtonType;
+        "type"?: ButtonPureType;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
-        "weight"?: TextWeight;
+        "weight"?: ButtonPureWeight;
+    }
+    interface PButtonTile {
+        /**
+          * Alignment of button and description.
+         */
+        "align"?: ButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
+        /**
+          * Aspect ratio of the button-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Displays the button-tile as compact version with description and button icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description": string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: ButtonTileIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label": string;
+        /**
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonTileType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     interface PCarousel {
+        /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
+          * Alignment of heading and description
+         */
+        "alignHeader"?: CarouselAlignHeader;
         /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
         /**
-          * If true, the carousel will not show pagination bullets at the bottom.
+          * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead. If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
@@ -215,19 +362,28 @@ export namespace Components {
          */
         "intl"?: CarouselInternationalization;
         /**
+          * If false, the carousel will not show pagination bullets at the bottom.
+         */
+        "pagination"?: BreakpointCustomizable<boolean>;
+        /**
           * Whether the slides should rewind from last to first slide and vice versa.
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
-          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Defines the outer spacings between the carousel and the left and right screen sides.
+         */
+        "width"?: CarouselWidth;
+        /**
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
     }
@@ -241,21 +397,34 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Disables the checkbox and shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
           * The message styled depending on validation state.
          */
         "message"?: string;
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: CheckboxWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PContentWrapper {
         /**
-          * Defines the background color.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
-          * Adapts the color when used on dark background.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "theme"?: Theme;
         /**
@@ -263,13 +432,57 @@ export namespace Components {
          */
         "width"?: ContentWrapperWidth;
     }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
+    }
+    interface PDisplay {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: DisplayAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: DisplayColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<DisplaySize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the display component.
+         */
+        "tag"?: DisplayTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
     interface PDivider {
         /**
           * Defines color depending on theme.
          */
         "color"?: DividerColor;
         /**
-          * Defines orientation.
+          * Defines direction.
+         */
+        "direction"?: BreakpointCustomizable<DividerDirection>;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead. Defines orientation.
          */
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
@@ -277,6 +490,35 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PFieldset {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: FieldsetLabelSize;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FieldsetState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     */
     interface PFieldsetWrapper {
         /**
           * The label text.
@@ -297,8 +539,15 @@ export namespace Components {
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: FieldsetWrapperState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -325,6 +574,9 @@ export namespace Components {
          */
         "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
@@ -351,13 +603,17 @@ export namespace Components {
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
@@ -365,6 +621,9 @@ export namespace Components {
          */
         "wrap"?: BreakpointCustomizable<GridWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
@@ -375,21 +634,50 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<GridItemSize>;
     }
-    interface PHeadline {
+    interface PHeading {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadingAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'default' | 'inherit'>;
+        "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<HeadingSize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the heading component.
+         */
+        "tag"?: HeadingTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+     */
+    interface PHeadline {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: HeadlineAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: HeadlineColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**
@@ -409,9 +697,10 @@ export namespace Components {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -427,15 +716,15 @@ export namespace Components {
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
           * Action icon of the inline-notification.
          */
-        "actionIcon"?: IconName;
+        "actionIcon"?: InlineNotificationActionIcon;
         /**
           * Action label of the inline-notification.
          */
@@ -449,11 +738,15 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * If false, the inline-notification will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the inline-notification.
          */
         "heading"?: string;
         /**
-          * Defines if the inline-notification can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -483,101 +776,9 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
-        /**
-          * A URL path to a custom icon.
-         */
-        "iconSource"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object.
-         */
-        "rel"?: string;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
-        /**
-          * Adapts the link color when used on dark background.
-         */
-        "theme"?: ThemeExtendedElectric;
-        /**
-          * The style variant of the link.
-         */
-        "variant"?: LinkVariant;
-    }
-    interface PLinkPure {
-        /**
-          * Display link in active state.
-         */
-        "active"?: boolean;
-        /**
-          * Aligns the label.
-         */
-        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
-        /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
-        /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
-         */
-        "download"?: string;
-        /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
-         */
-        "hideLabel"?: BreakpointCustomizable<boolean>;
-        /**
-          * When providing an url then the component will be rendered as `<a>`.
-         */
-        "href"?: string;
-        /**
-          * The icon shown. By choosing 'none', no icon is displayed
-         */
-        "icon"?: LinkButtonPureIconName;
-        /**
-          * A URL path to a custom icon.
-         */
-        "iconSource"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object.
-         */
-        "rel"?: string;
-        /**
-          * Size of the link.
-         */
-        "size"?: BreakpointCustomizable<TextSize>;
-        /**
-          * Stretches the area between icon and label to max available space.
-         */
-        "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: ThemeExtendedElectricDark;
-        /**
-          * The weight of the text (only has effect with visible label).
-         */
-        "weight"?: TextWeight;
-    }
-    interface PLinkSocial {
-        /**
-          * Show or hide label.
-         */
-        "hideLabel"?: BreakpointCustomizable<boolean>;
-        /**
-          * When providing an url then the component will be rendered as `<a>`.
-         */
-        "href"?: string;
-        /**
-          * The icon shown.
-         */
-        "icon"?: SocialIconName;
+        "icon"?: LinkIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -594,6 +795,106 @@ export namespace Components {
           * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
+        /**
+          * The style variant of the link.
+         */
+        "variant"?: LinkVariant;
+    }
+    interface PLinkPure {
+        /**
+          * Display link in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed
+         */
+        "icon"?: LinkPureIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Size of the link.
+         */
+        "size"?: BreakpointCustomizable<LinkPureSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkPureTarget;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
+        /**
+          * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
+         */
+        "weight"?: LinkPureWeight;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+     */
+    interface PLinkSocial {
+        /**
+          * Show or hide label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown.
+         */
+        "icon"?: LinkSocialIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkSocialTarget;
+        /**
+          * Adapts the link color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PLinkTile {
         /**
@@ -603,13 +904,13 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -643,12 +944,45 @@ export namespace Components {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTarget;
+        "target"?: LinkTileTarget;
         /**
           * Font weight of the description.
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
+    interface PLinkTileModelSignature {
+        /**
+          * Aspect ratio of the link-tile-model-signature.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Heading text.
+         */
+        "heading": string;
+        /**
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
+         */
+        "headingTag"?: LinkTileModelSignatureHeadingTag;
+        /**
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+         */
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: LinkTileModelSignatureModel;
+        /**
+          * Adapts the font weight of the heading.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+     */
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -665,7 +999,7 @@ export namespace Components {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTarget;
+        "target"?: MarqueTarget;
         /**
           * Show/hide trademark sign (only has effect when variant is set to default).
          */
@@ -685,9 +1019,13 @@ export namespace Components {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If true, the modal will not have a close button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If false, the modal will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
          */
@@ -701,27 +1039,49 @@ export namespace Components {
          */
         "open": boolean;
     }
+    interface PModelSignature {
+        /**
+          * Adapts the color of the component.
+         */
+        "color"?: ModelSignatureColor;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: ModelSignatureModel;
+        /**
+          * Adapts the size of the component.
+         */
+        "size"?: ModelSignatureSize;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
          */
         "activePage"?: number;
         /**
-          * Aria label what the pagination is used for.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
          */
         "allyLabel"?: string;
         /**
-          * Aria label for next page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
          */
         "allyLabelNext"?: string;
         /**
-          * Aria label for page navigation.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
          */
         "allyLabelPage"?: string;
         /**
-          * Aria label for previous page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
          */
         "allyLabelPrev"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+         */
+        "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
          */
@@ -729,7 +1089,7 @@ export namespace Components {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -743,7 +1103,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<'aria-label'>;
+        "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
           * Descriptive text to show additional information when popover is open
          */
@@ -752,6 +1112,10 @@ export namespace Components {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
+        /**
+          * Adapts the popover color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**
@@ -769,29 +1133,49 @@ export namespace Components {
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: RadioButtonWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PScroller {
         /**
+          * Sets the vertical position of scroll indicator.
+         */
+        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
+          * Add ARIA role.
+         */
+        "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
+        /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColor"?: ScrollerGradientColor;
         /**
-          * Sets the vertical position of scroll indicator icon
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
-        "scrollIndicatorPosition"?: ScrollIndicatorPosition;
+        "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately
+          * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
-        "scrollToPosition"?: ScrollToPosition;
+        "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
+        /**
+          * Scrolls the scroll area to the left either smooth or immediately.
+         */
+        "scrollToPosition"?: ScrollerScrollToPosition;
+        /**
+          * Specifies if scrollbar should be shown.
+         */
+        "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PSegmentedControl {
         /**
-          * Background color variations
+          * @deprecated since v3.0.0, will be removed with next major release. Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
@@ -811,7 +1195,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: SegmentedControlItemIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -833,7 +1217,7 @@ export namespace Components {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: DropdownDirection;
+        "dropdownDirection"?: SelectWrapperDropdownDirection;
         /**
           * Filters select options by typing a character
          */
@@ -857,7 +1241,7 @@ export namespace Components {
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: SelectWrapperState;
         /**
           * Adapts the select color depending on the theme.
          */
@@ -865,7 +1249,7 @@ export namespace Components {
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
-        "direction"?: DropdownDirection;
+        "direction"?: SelectWrapperDropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
         "isOpenOverride"?: boolean;
@@ -874,7 +1258,7 @@ export namespace Components {
         "onOpenChange": (isOpen: boolean) => void;
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
-        "state"?: FormState;
+        "state"?: SelectWrapperState;
         "theme"?: Theme;
     }
     interface PSpinner {
@@ -889,7 +1273,7 @@ export namespace Components {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
@@ -909,13 +1293,13 @@ export namespace Components {
         /**
           * The validation state.
          */
-        "state"?: StepperState;
+        "state"?: StepperHorizontalItemState;
     }
     interface PSwitch {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
+        "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
           * Visualize the switch with on/off status.
          */
@@ -937,20 +1321,19 @@ export namespace Components {
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -988,19 +1371,23 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabsGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabsGradientColorScheme;
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<TabSize>;
+        "size"?: BreakpointCustomizable<TabsSize>;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: TabsWeight;
     }
     interface PTabsBar {
         /**
@@ -1010,19 +1397,23 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabsBarGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<TabSize>;
+        "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: TabsBarWeight;
     }
     interface PTabsItem {
         /**
@@ -1038,7 +1429,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: TagIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -1061,6 +1452,10 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -1080,7 +1475,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending of the usage of the text component.
+          * Sets a custom HTML tag depending on the usage of the text component.
          */
         "tag"?: TextTag;
         /**
@@ -1096,7 +1491,7 @@ export namespace Components {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
          */
-        "actionIcon"?: Extract<IconName, 'locate'>;
+        "actionIcon"?: TextFieldWrapperActionIcon;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
          */
@@ -1118,13 +1513,21 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
         /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
+        /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: TextFieldWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
         /**
           * The unit text.
          */
@@ -1136,17 +1539,21 @@ export namespace Components {
     }
     interface PTextList {
         /**
-          * The type of the text list.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The type of the list.
          */
-        "listType"?: ListType;
+        "listType"?: TextListListType;
         /**
-          * The list style type of an ordered list.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
-        "orderType"?: OrderType;
+        "orderType"?: TextListOrderType;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * The list style type.
+         */
+        "type"?: TextListType;
     }
     interface PTextListItem {
     }
@@ -1168,13 +1575,21 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
         /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
+        /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: TextareaWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
@@ -1194,6 +1609,28 @@ export namespace Components {
         "text"?: string;
         /**
           * Adapts the toast-item color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
          */
         "theme"?: Theme;
     }
@@ -1285,6 +1722,12 @@ declare global {
         prototype: HTMLPButtonPureElement;
         new (): HTMLPButtonPureElement;
     };
+    interface HTMLPButtonTileElement extends Components.PButtonTile, HTMLStencilElement {
+    }
+    var HTMLPButtonTileElement: {
+        prototype: HTMLPButtonTileElement;
+        new (): HTMLPButtonTileElement;
+    };
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
     }
     var HTMLPCarouselElement: {
@@ -1297,11 +1740,26 @@ declare global {
         prototype: HTMLPCheckboxWrapperElement;
         new (): HTMLPCheckboxWrapperElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface HTMLPContentWrapperElement extends Components.PContentWrapper, HTMLStencilElement {
     }
     var HTMLPContentWrapperElement: {
         prototype: HTMLPContentWrapperElement;
         new (): HTMLPContentWrapperElement;
+    };
+    interface HTMLPCrestElement extends Components.PCrest, HTMLStencilElement {
+    }
+    var HTMLPCrestElement: {
+        prototype: HTMLPCrestElement;
+        new (): HTMLPCrestElement;
+    };
+    interface HTMLPDisplayElement extends Components.PDisplay, HTMLStencilElement {
+    }
+    var HTMLPDisplayElement: {
+        prototype: HTMLPDisplayElement;
+        new (): HTMLPDisplayElement;
     };
     interface HTMLPDividerElement extends Components.PDivider, HTMLStencilElement {
     }
@@ -1309,36 +1767,66 @@ declare global {
         prototype: HTMLPDividerElement;
         new (): HTMLPDividerElement;
     };
+    interface HTMLPFieldsetElement extends Components.PFieldset, HTMLStencilElement {
+    }
+    var HTMLPFieldsetElement: {
+        prototype: HTMLPFieldsetElement;
+        new (): HTMLPFieldsetElement;
+    };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     */
     interface HTMLPFieldsetWrapperElement extends Components.PFieldsetWrapper, HTMLStencilElement {
     }
     var HTMLPFieldsetWrapperElement: {
         prototype: HTMLPFieldsetWrapperElement;
         new (): HTMLPFieldsetWrapperElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {
     }
     var HTMLPFlexElement: {
         prototype: HTMLPFlexElement;
         new (): HTMLPFlexElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface HTMLPFlexItemElement extends Components.PFlexItem, HTMLStencilElement {
     }
     var HTMLPFlexItemElement: {
         prototype: HTMLPFlexItemElement;
         new (): HTMLPFlexItemElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface HTMLPGridElement extends Components.PGrid, HTMLStencilElement {
     }
     var HTMLPGridElement: {
         prototype: HTMLPGridElement;
         new (): HTMLPGridElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface HTMLPGridItemElement extends Components.PGridItem, HTMLStencilElement {
     }
     var HTMLPGridItemElement: {
         prototype: HTMLPGridItemElement;
         new (): HTMLPGridItemElement;
     };
+    interface HTMLPHeadingElement extends Components.PHeading, HTMLStencilElement {
+    }
+    var HTMLPHeadingElement: {
+        prototype: HTMLPHeadingElement;
+        new (): HTMLPHeadingElement;
+    };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+     */
     interface HTMLPHeadlineElement extends Components.PHeadline, HTMLStencilElement {
     }
     var HTMLPHeadlineElement: {
@@ -1369,6 +1857,9 @@ declare global {
         prototype: HTMLPLinkPureElement;
         new (): HTMLPLinkPureElement;
     };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+     */
     interface HTMLPLinkSocialElement extends Components.PLinkSocial, HTMLStencilElement {
     }
     var HTMLPLinkSocialElement: {
@@ -1381,6 +1872,15 @@ declare global {
         prototype: HTMLPLinkTileElement;
         new (): HTMLPLinkTileElement;
     };
+    interface HTMLPLinkTileModelSignatureElement extends Components.PLinkTileModelSignature, HTMLStencilElement {
+    }
+    var HTMLPLinkTileModelSignatureElement: {
+        prototype: HTMLPLinkTileModelSignatureElement;
+        new (): HTMLPLinkTileModelSignatureElement;
+    };
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+     */
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
     var HTMLPMarqueElement: {
@@ -1392,6 +1892,12 @@ declare global {
     var HTMLPModalElement: {
         prototype: HTMLPModalElement;
         new (): HTMLPModalElement;
+    };
+    interface HTMLPModelSignatureElement extends Components.PModelSignature, HTMLStencilElement {
+    }
+    var HTMLPModelSignatureElement: {
+        prototype: HTMLPModelSignatureElement;
+        new (): HTMLPModelSignatureElement;
     };
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
     }
@@ -1579,21 +2085,32 @@ declare global {
         prototype: HTMLPToastItemElement;
         new (): HTMLPToastItemElement;
     };
+    interface HTMLPWordmarkElement extends Components.PWordmark, HTMLStencilElement {
+    }
+    var HTMLPWordmarkElement: {
+        prototype: HTMLPWordmarkElement;
+        new (): HTMLPWordmarkElement;
+    };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
+        "p-button-tile": HTMLPButtonTileElement;
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
+        "p-crest": HTMLPCrestElement;
+        "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
+        "p-fieldset": HTMLPFieldsetElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
+        "p-heading": HTMLPHeadingElement;
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
         "p-inline-notification": HTMLPInlineNotificationElement;
@@ -1601,8 +2118,10 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
+        "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
+        "p-model-signature": HTMLPModelSignatureElement;
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
@@ -1634,6 +2153,7 @@ declare global {
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
+        "p-wordmark": HTMLPWordmarkElement;
     }
 }
 declare namespace LocalJSX {
@@ -1647,9 +2167,13 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when accordion state is changed.
+         */
+        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
+        /**
           * Emitted when accordion state is changed.
          */
-        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
+        "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -1661,19 +2185,35 @@ declare namespace LocalJSX {
         /**
           * Sets a headline tag, so it fits correctly within the outline of the page.
          */
-        "tag"?: HeadlineTag;
+        "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PBanner {
+        /**
+          * Description of the banner.
+         */
+        "description"?: string;
+        /**
+          * If false, the banner will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
+          * Heading of the banner.
+         */
+        "heading"?: string;
         /**
           * Emitted when the close button is clicked.
          */
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
-          * Defines if the banner can be closed/removed by the user.
+          * If true, the banner is open.
+         */
+        "open"?: boolean;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -1685,7 +2225,8 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "width"?: BannerWidth;
     }
@@ -1693,7 +2234,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1703,9 +2244,9 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
+        "icon"?: ButtonIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -1715,14 +2256,9 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -1746,11 +2282,11 @@ declare namespace LocalJSX {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
+        "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<ButtonAriaAttributes>;
+        "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -1762,7 +2298,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: LinkButtonPureIconName;
+        "icon"?: ButtonPureIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -1774,36 +2310,98 @@ declare namespace LocalJSX {
         /**
           * Size of the button.
          */
-        "size"?: BreakpointCustomizable<TextSize>;
+        "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
-        "type"?: ButtonType;
+        "type"?: ButtonPureType;
         /**
           * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
          */
-        "weight"?: TextWeight;
+        "weight"?: ButtonPureWeight;
+    }
+    interface PButtonTile {
+        /**
+          * Alignment of button and description.
+         */
+        "align"?: ButtonTileAlign;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
+        /**
+          * Aspect ratio of the button-tile.
+         */
+        "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Displays the button-tile as compact version with description and button icon only.
+         */
+        "compact"?: BreakpointCustomizable<boolean>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show gradient.
+         */
+        "gradient"?: boolean;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed.
+         */
+        "icon"?: ButtonTileIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Label of the button.
+         */
+        "label"?: string;
+        /**
+          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * Font size of the description.
+         */
+        "size"?: BreakpointCustomizable<ButtonTileSize>;
+        /**
+          * Specifies the type of the button.
+         */
+        "type"?: ButtonTileType;
+        /**
+          * Font weight of the description.
+         */
+        "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     interface PCarousel {
+        /**
+          * Defines which slide to be active (zero-based numbering).
+         */
+        "activeSlideIndex"?: number;
+        /**
+          * Alignment of heading and description
+         */
+        "alignHeader"?: CarouselAlignHeader;
         /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
         /**
-          * If true, the carousel will not show pagination bullets at the bottom.
+          * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead. If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
@@ -1815,23 +2413,36 @@ declare namespace LocalJSX {
          */
         "intl"?: CarouselInternationalization;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel's content slides.
+         */
+        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
+        /**
           * Emitted when carousel's content slides.
          */
-        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
+        /**
+          * If false, the carousel will not show pagination bullets at the bottom.
+         */
+        "pagination"?: BreakpointCustomizable<boolean>;
         /**
           * Whether the slides should rewind from last to first slide and vice versa.
          */
         "rewind"?: boolean;
         /**
-          * Sets the amount of slides visible at the same time.
+          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
-        "slidesPerPage"?: BreakpointCustomizable<number>;
+        "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
         /**
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
-          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Defines the outer spacings between the carousel and the left and right screen sides.
+         */
+        "width"?: CarouselWidth;
+        /**
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
     }
@@ -1845,21 +2456,34 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Disables the checkbox and shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
           * The message styled depending on validation state.
          */
         "message"?: string;
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: CheckboxWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PContentWrapper {
         /**
-          * Defines the background color.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
-          * Adapts the color when used on dark background.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "theme"?: Theme;
         /**
@@ -1867,13 +2491,57 @@ declare namespace LocalJSX {
          */
         "width"?: ContentWrapperWidth;
     }
+    interface PCrest {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: CrestTarget;
+    }
+    interface PDisplay {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: DisplayAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: DisplayColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<DisplaySize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the display component.
+         */
+        "tag"?: DisplayTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
     interface PDivider {
         /**
           * Defines color depending on theme.
          */
         "color"?: DividerColor;
         /**
-          * Defines orientation.
+          * Defines direction.
+         */
+        "direction"?: BreakpointCustomizable<DividerDirection>;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `direction` instead. Defines orientation.
          */
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
@@ -1881,6 +2549,35 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PFieldset {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: FieldsetLabelSize;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FieldsetState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     */
     interface PFieldsetWrapper {
         /**
           * The label text.
@@ -1901,8 +2598,15 @@ declare namespace LocalJSX {
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: FieldsetWrapperState;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -1929,6 +2633,9 @@ declare namespace LocalJSX {
          */
         "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+     */
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
@@ -1955,13 +2662,17 @@ declare namespace LocalJSX {
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
-          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
@@ -1969,6 +2680,9 @@ declare namespace LocalJSX {
          */
         "wrap"?: BreakpointCustomizable<GridWrap>;
     }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+     */
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
@@ -1979,21 +2693,50 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<GridItemSize>;
     }
-    interface PHeadline {
+    interface PHeading {
         /**
           * Text alignment of the component.
          */
-        "align"?: TextAlign;
+        "align"?: HeadingAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: Extract<TextColor, 'default' | 'inherit'>;
+        "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
         /**
-          * Sets a custom HTML tag depending of the usage of the headline component.
+          * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+         */
+        "size"?: BreakpointCustomizable<HeadingSize>;
+        /**
+          * Sets a custom HTML tag depending on the usage of the heading component.
+         */
+        "tag"?: HeadingTag;
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+     */
+    interface PHeadline {
+        /**
+          * Text alignment of the component.
+         */
+        "align"?: HeadlineAlign;
+        /**
+          * Basic text color variations depending on theme property.
+         */
+        "color"?: HeadlineColor;
+        /**
+          * Adds an ellipsis to a single line of text if it overflows.
+         */
+        "ellipsis"?: boolean;
+        /**
+          * Sets a custom HTML tag depending on the usage of the headline component.
          */
         "tag"?: HeadlineTag;
         /**
@@ -2013,9 +2756,10 @@ declare namespace LocalJSX {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: TextColor;
+        "color"?: IconColor;
         /**
-          * If enabled, icon will be loaded lazily when it's visible in the viewport.
+          * Has no effect anymore
+          * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
         /**
@@ -2031,15 +2775,15 @@ declare namespace LocalJSX {
          */
         "source"?: string;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
           * Action icon of the inline-notification.
          */
-        "actionIcon"?: IconName;
+        "actionIcon"?: InlineNotificationActionIcon;
         /**
           * Action label of the inline-notification.
          */
@@ -2053,6 +2797,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * If false, the inline-notification will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
           * Heading of the inline-notification.
          */
         "heading"?: string;
@@ -2065,7 +2813,7 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
-          * Defines if the inline-notification can be closed/removed by the user.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
         "persistent"?: boolean;
         /**
@@ -2095,101 +2843,9 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * The icon shown.
+          * The icon shown. By choosing 'none', no icon is displayed.
          */
-        "icon"?: IconName;
-        /**
-          * A URL path to a custom icon.
-         */
-        "iconSource"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object.
-         */
-        "rel"?: string;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
-        /**
-          * Adapts the link color when used on dark background.
-         */
-        "theme"?: ThemeExtendedElectric;
-        /**
-          * The style variant of the link.
-         */
-        "variant"?: LinkVariant;
-    }
-    interface PLinkPure {
-        /**
-          * Display link in active state.
-         */
-        "active"?: boolean;
-        /**
-          * Aligns the label.
-         */
-        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
-        /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
-        /**
-          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
-         */
-        "download"?: string;
-        /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
-         */
-        "hideLabel"?: BreakpointCustomizable<boolean>;
-        /**
-          * When providing an url then the component will be rendered as `<a>`.
-         */
-        "href"?: string;
-        /**
-          * The icon shown. By choosing 'none', no icon is displayed
-         */
-        "icon"?: LinkButtonPureIconName;
-        /**
-          * A URL path to a custom icon.
-         */
-        "iconSource"?: string;
-        /**
-          * Specifies the relationship of the target object to the link object.
-         */
-        "rel"?: string;
-        /**
-          * Size of the link.
-         */
-        "size"?: BreakpointCustomizable<TextSize>;
-        /**
-          * Stretches the area between icon and label to max available space.
-         */
-        "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: ThemeExtendedElectricDark;
-        /**
-          * The weight of the text (only has effect with visible label).
-         */
-        "weight"?: TextWeight;
-    }
-    interface PLinkSocial {
-        /**
-          * Show or hide label.
-         */
-        "hideLabel"?: BreakpointCustomizable<boolean>;
-        /**
-          * When providing an url then the component will be rendered as `<a>`.
-         */
-        "href"?: string;
-        /**
-          * The icon shown.
-         */
-        "icon"?: SocialIconName;
+        "icon"?: LinkIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -2206,6 +2862,106 @@ declare namespace LocalJSX {
           * Adapts the link color when used on dark background.
          */
         "theme"?: Theme;
+        /**
+          * The style variant of the link.
+         */
+        "variant"?: LinkVariant;
+    }
+    interface PLinkPure {
+        /**
+          * Display link in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown. By choosing 'none', no icon is displayed
+         */
+        "icon"?: LinkPureIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Size of the link.
+         */
+        "size"?: BreakpointCustomizable<LinkPureSize>;
+        /**
+          * Stretches the area between icon and label to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkPureTarget;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
+        /**
+          * The weight of the text (only has effect with visible label).
+          * @deprecated since v3.0.0, will be removed with next major release
+         */
+        "weight"?: LinkPureWeight;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+     */
+    interface PLinkSocial {
+        /**
+          * Show or hide label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown.
+         */
+        "icon"?: LinkSocialIcon;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkSocialTarget;
+        /**
+          * Adapts the link color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PLinkTile {
         /**
@@ -2215,13 +2971,13 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the tile-link as compact version with description and link icon only.
+          * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -2255,12 +3011,45 @@ declare namespace LocalJSX {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTarget;
+        "target"?: LinkTileTarget;
         /**
           * Font weight of the description.
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
+    interface PLinkTileModelSignature {
+        /**
+          * Aspect ratio of the link-tile-model-signature.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
+        /**
+          * Description text.
+         */
+        "description"?: string;
+        /**
+          * Heading text.
+         */
+        "heading"?: string;
+        /**
+          * Sets a custom headline tag which wraps the heading to enhance semantics.
+         */
+        "headingTag"?: LinkTileModelSignatureHeadingTag;
+        /**
+          * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+         */
+        "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: LinkTileModelSignatureModel;
+        /**
+          * Adapts the font weight of the heading.
+         */
+        "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
+    /**
+     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+     */
     interface PMarque {
         /**
           * Add ARIA attributes.
@@ -2277,7 +3066,7 @@ declare namespace LocalJSX {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTarget;
+        "target"?: MarqueTarget;
         /**
           * Show/hide trademark sign (only has effect when variant is set to default).
          */
@@ -2297,9 +3086,13 @@ declare namespace LocalJSX {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If true, the modal will not have a close button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If false, the modal will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
          */
@@ -2309,13 +3102,35 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Emitted when the component requests to be closed.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismiss` event instead. Emitted when the component requests to be dismissed.
          */
         "onClose"?: (event: PModalCustomEvent<void>) => void;
+        /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PModalCustomEvent<void>) => void;
         /**
           * If true, the modal is open.
          */
         "open"?: boolean;
+    }
+    interface PModelSignature {
+        /**
+          * Adapts the color of the component.
+         */
+        "color"?: ModelSignatureColor;
+        /**
+          * Adapts the model of the component.
+         */
+        "model"?: ModelSignatureModel;
+        /**
+          * Adapts the size of the component.
+         */
+        "size"?: ModelSignatureSize;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
     }
     interface PPagination {
         /**
@@ -2323,21 +3138,25 @@ declare namespace LocalJSX {
          */
         "activePage"?: number;
         /**
-          * Aria label what the pagination is used for.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead. Aria label what the pagination is used for.
          */
         "allyLabel"?: string;
         /**
-          * Aria label for next page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead. Aria label for next page icon.
          */
         "allyLabelNext"?: string;
         /**
-          * Aria label for page navigation.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead. Aria label for page navigation.
          */
         "allyLabelPage"?: string;
         /**
-          * Aria label for previous page icon.
+          * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead. Aria label for previous page icon.
          */
         "allyLabelPrev"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+         */
+        "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
          */
@@ -2345,11 +3164,15 @@ declare namespace LocalJSX {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when the page changes.
+         */
+        "onPageChange"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
         /**
           * Emitted when the page changes.
          */
-        "onPageChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
+        "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2363,7 +3186,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<'aria-label'>;
+        "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
           * Descriptive text to show additional information when popover is open
          */
@@ -2372,6 +3195,10 @@ declare namespace LocalJSX {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
+        /**
+          * Adapts the popover color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**
@@ -2389,35 +3216,59 @@ declare namespace LocalJSX {
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: RadioButtonWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PScroller {
         /**
+          * Sets the vertical position of scroll indicator.
+         */
+        "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
+        /**
+          * Add ARIA role.
+         */
+        "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
+        /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColor"?: ScrollerGradientColor;
         /**
-          * Sets the vertical position of scroll indicator icon
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
          */
-        "scrollIndicatorPosition"?: ScrollIndicatorPosition;
+        "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
-          * Scrolls the scroll area to the left either smooth or immediately
+          * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
-        "scrollToPosition"?: ScrollToPosition;
+        "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
+        /**
+          * Scrolls the scroll area to the left either smooth or immediately.
+         */
+        "scrollToPosition"?: ScrollerScrollToPosition;
+        /**
+          * Specifies if scrollbar should be shown.
+         */
+        "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PSegmentedControl {
         /**
-          * Background color variations
+          * @deprecated since v3.0.0, will be removed with next major release. Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
+         */
+        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
+        /**
           * Emitted when selected element changes.
          */
-        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
+        "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -2435,7 +3286,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: SegmentedControlItemIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -2457,7 +3308,7 @@ declare namespace LocalJSX {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: DropdownDirection;
+        "dropdownDirection"?: SelectWrapperDropdownDirection;
         /**
           * Filters select options by typing a character
          */
@@ -2481,7 +3332,7 @@ declare namespace LocalJSX {
         /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: SelectWrapperState;
         /**
           * Adapts the select color depending on the theme.
          */
@@ -2489,7 +3340,7 @@ declare namespace LocalJSX {
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
-        "direction"?: DropdownDirection;
+        "direction"?: SelectWrapperDropdownDirection;
         "disabled"?: boolean;
         "filter"?: boolean;
         "isOpenOverride"?: boolean;
@@ -2498,7 +3349,7 @@ declare namespace LocalJSX {
         "onOpenChange"?: (isOpen: boolean) => void;
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
-        "state"?: FormState;
+        "state"?: SelectWrapperState;
         "theme"?: Theme;
     }
     interface PSpinner {
@@ -2513,13 +3364,17 @@ declare namespace LocalJSX {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectricDark;
+        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active step is changed.
+         */
+        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
+        /**
           * Emitted when active step is changed.
          */
-        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepChangeEvent>) => void;
+        "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
         /**
           * The text size.
          */
@@ -2537,13 +3392,13 @@ declare namespace LocalJSX {
         /**
           * The validation state.
          */
-        "state"?: StepperState;
+        "state"?: StepperHorizontalItemState;
     }
     interface PSwitch {
         /**
           * Aligns the label.
          */
-        "alignLabel"?: BreakpointCustomizable<AlignLabel>;
+        "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
           * Visualize the switch with on/off status.
          */
@@ -2561,22 +3416,21 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when checked status is changed.
+         */
+        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
+        /**
           * Emitted when checked status is changed.
          */
-        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
+        "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
         /**
           * Stretches the contents to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * To remove the element from tab order.
-          * @deprecated since v2.8.0, use `tabindex="-1"` instead
-         */
-        "tabbable"?: boolean;
-        /**
           * Adapts the switch color depending on the theme.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -2584,9 +3438,17 @@ declare namespace LocalJSX {
          */
         "caption"?: string;
         /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when sorting is changed.
+         */
+        "onSortingChange"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
+        /**
           * Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
+        "onUpdate"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -2624,23 +3486,31 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabsGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabsGradientColorScheme;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
+        "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<TabSize>;
+        "size"?: BreakpointCustomizable<TabsSize>;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: TabsWeight;
     }
     interface PTabsBar {
         /**
@@ -2650,23 +3520,31 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColor"?: TabsBarGradientColor;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabsBarGradientColorScheme;
+        /**
+          * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
+        "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<TabSize>;
+        "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
         /**
           * The text weight.
          */
-        "weight"?: TabWeight;
+        "weight"?: TabsBarWeight;
     }
     interface PTabsItem {
         /**
@@ -2682,7 +3560,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: TagIcon;
         /**
           * A URL path to a custom icon.
          */
@@ -2705,6 +3583,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -2724,7 +3606,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
-          * Sets a custom HTML tag depending of the usage of the text component.
+          * Sets a custom HTML tag depending on the usage of the text component.
          */
         "tag"?: TextTag;
         /**
@@ -2740,7 +3622,7 @@ declare namespace LocalJSX {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
          */
-        "actionIcon"?: Extract<IconName, 'locate'>;
+        "actionIcon"?: TextFieldWrapperActionIcon;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
          */
@@ -2766,13 +3648,21 @@ declare namespace LocalJSX {
          */
         "onAction"?: (event: PTextFieldWrapperCustomEvent<void>) => void;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
         /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
+        /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: TextFieldWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
         /**
           * The unit text.
          */
@@ -2784,17 +3674,21 @@ declare namespace LocalJSX {
     }
     interface PTextList {
         /**
-          * The type of the text list.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The type of the list.
          */
-        "listType"?: ListType;
+        "listType"?: TextListListType;
         /**
-          * The list style type of an ordered list.
+          * @deprecated since v3.0.0, will be removed with next major release, use `type` instead. The list style type of ordered list. Only has effect when list type is set to 'ordered'.
          */
-        "orderType"?: OrderType;
+        "orderType"?: TextListOrderType;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the text color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * The list style type.
+         */
+        "type"?: TextListType;
     }
     interface PTextListItem {
     }
@@ -2816,13 +3710,21 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
-          * Show or hide max character count.
+          * @deprecated since v3.0.0, will be removed with next major release, use `showCounter` instead. Show or hide max character count.
          */
         "showCharacterCount"?: boolean;
         /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
+        /**
           * The validation state.
          */
-        "state"?: FormState;
+        "state"?: TextareaWrapperState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PToast {
         /**
@@ -2848,21 +3750,48 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PWordmark {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of wordmark.
+         */
+        "size"?: WordmarkSize;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: WordmarkTarget;
+        /**
+          * Adapts color depending on theme.
+         */
+        "theme"?: Theme;
+    }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
         "p-banner": PBanner;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
+        "p-button-tile": PButtonTile;
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
+        "p-crest": PCrest;
+        "p-display": PDisplay;
         "p-divider": PDivider;
+        "p-fieldset": PFieldset;
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
+        "p-heading": PHeading;
         "p-headline": PHeadline;
         "p-icon": PIcon;
         "p-inline-notification": PInlineNotification;
@@ -2870,8 +3799,10 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
+        "p-link-tile-model-signature": PLinkTileModelSignature;
         "p-marque": PMarque;
         "p-modal": PModal;
+        "p-model-signature": PModelSignature;
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
@@ -2903,6 +3834,7 @@ declare namespace LocalJSX {
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
         "p-toast-item": PToastItem;
+        "p-wordmark": PWordmark;
     }
 }
 export { LocalJSX as JSX };
@@ -2914,24 +3846,58 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
+            "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+             */
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
+            "p-crest": LocalJSX.PCrest & JSXBase.HTMLAttributes<HTMLPCrestElement>;
+            "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
+            "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+             */
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+             */
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+             */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+             */
             "p-grid": LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+             */
             "p-grid-item": LocalJSX.PGridItem & JSXBase.HTMLAttributes<HTMLPGridItemElement>;
+            "p-heading": LocalJSX.PHeading & JSXBase.HTMLAttributes<HTMLPHeadingElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+             */
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
+             */
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
+            "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
+            /**
+             * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
+             */
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
+            "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
@@ -2963,6 +3929,7 @@ declare module "@stencil/core" {
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
+            "p-wordmark": LocalJSX.PWordmark & JSXBase.HTMLAttributes<HTMLPWordmarkElement>;
         }
     }
 }
