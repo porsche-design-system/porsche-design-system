@@ -13,6 +13,7 @@ describe('modal', () => {
     component.host = document.createElement('p-modal');
     component.host.attachShadow({ mode: 'open' });
     component['closeBtn'] = document.createElement('button');
+    component['dialog'] = document.createElement('div');
   });
 
   describe('componentDidLoad', () => {
@@ -39,6 +40,28 @@ describe('modal', () => {
       component.componentDidLoad();
 
       expect(utilsSpy).not.toBeCalled();
+    });
+  });
+
+  describe('componentDidRender', () => {
+    it('should call focus() when modal is open and activeElement is not a child of host', () => {
+      component.open = true;
+      const spy = jest.spyOn(component['dialog'], 'focus');
+
+      component.componentDidRender();
+
+      expect(spy).toBeCalledWith();
+    });
+    it('should not call focus() when modal is not open and activeElement is a child of host', () => {
+      component.open = false;
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      component.host.appendChild(input);
+      const spy = jest.spyOn(component['dialog'], 'focus');
+
+      component.componentDidRender();
+
+      expect(spy).not.toBeCalledWith();
     });
   });
 
