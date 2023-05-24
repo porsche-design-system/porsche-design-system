@@ -1,7 +1,8 @@
 # Flyout
 
 The `p-flyout` component, also known as a drawer, is a controlled component that overlays from the left or right side of
-the screen. It is commonly used to display additional content or actions without completely obscuring the main page.
+the screen. It is commonly used as a temporary workspace that allows users to complete tasks without navigating to a new
+page or as a mobile navigation.
 
 Flyouts are flexible in the context and can include other components of the Porsche Design System.
 
@@ -33,7 +34,7 @@ In order to get notified when the flyout gets closed by clicking the `x` button,
 
 The size of `p-flyout` adjusts itself to the content with a predefined min/max width.
 
-<Playground :markup="widthPositionMarkup">
+<Playground :markup="widthPositionMarkup" :config="config">
   <SelectOptions v-model="position" :values="positions" name="position"></SelectOptions>
   <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
 </Playground>
@@ -53,13 +54,13 @@ scrolling to the end of the flyout or when there is available space to accommoda
 
 Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
 
-<Playground :markup="slottedMarkup">
+<Playground :markup="slottedMarkup" :config="config">
   <SelectOptions v-model="scrollable" :values="scrollables" name="scrollable"></SelectOptions>
 </Playground>
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExample" :markup="widthPositionMarkup"></Playground>
+<Playground :frameworkMarkup="codeExample" :markup="widthPositionMarkup" :config="config"></Playground>
 
 ## Custom styling
 
@@ -80,6 +81,7 @@ import {getFlyoutCodeSamples} from "shared/src";
 
 @Component
 export default class Code extends Vue {
+  config = { themeable: true };
   flyouts = [];
   codeExample = getFlyoutCodeSamples();
 
