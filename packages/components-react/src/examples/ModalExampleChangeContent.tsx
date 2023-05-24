@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { PButton, PModal, PText, PButtonGroup, PCheckboxWrapper } from '@porsche-design-system/components-react';
 
 export const ModalExampleChangeContentPage = (): JSX.Element => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
   }, []);

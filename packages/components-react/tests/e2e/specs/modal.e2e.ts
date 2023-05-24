@@ -6,13 +6,11 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-it('should not set scrollTop = 0 and dialog.focus() on changes within modal children', async () => {
+it('should not set scrollTop = 0 and should not call dialog.focus() on changes within modal children', async () => {
   await goto(page, 'modal-example-change-content');
   expect(await waitForComponentsReady(page)).toBe(9); // p-modal, p-button (close), p-text (3x), p-checkbox-wrapper, p-button-group, p-button (save and close)
 
   const host = await selectNode(page, 'p-modal');
-
-  await (await selectNode(page, 'p-button')).click();
 
   expect(await host.evaluate((el) => el.shadowRoot.activeElement.className)).toBe('root');
   expect(await host.evaluate((el) => el.scrollTop)).toBe(0);
