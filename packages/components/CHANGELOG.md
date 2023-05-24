@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Modal` scrollable modal does not jump to top on changes in react
+  ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
+
 ### [3.0.0] - 2023-05-11
 
 ### [3.0.0-rc.3] - 2023-05-10
