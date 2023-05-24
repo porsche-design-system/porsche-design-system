@@ -614,6 +614,10 @@ describe('activeSlideIndex', () => {
     const [slide1, slide2, slide3] = await getSlides();
 
     await slide1.focus();
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
     await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide2);
 
@@ -639,12 +643,9 @@ describe('activeSlideIndex', () => {
 
   it('should slide correctly if slides without focusable elements are tabbed for slidesPerPage=2', async () => {
     await initCarousel({ amountOfSlides: 6, slidesPerPage: 2, withFocusableElements: false });
-    const [slide1, slide2, slide3] = await getSlides();
+    const [slide1, slide2, slide3, slide4] = await getSlides();
 
     await slide1.focus();
-    await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide1);
-
     expect(await isElementCompletelyInViewport(slide1)).toBe(true);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
@@ -656,6 +657,13 @@ describe('activeSlideIndex', () => {
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(true);
 
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide3);
+
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(true);
+
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide2);
@@ -663,6 +671,7 @@ describe('activeSlideIndex', () => {
     expect(await isElementCompletelyInViewport(slide1)).toBe(false);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
@@ -696,26 +705,15 @@ describe('activeSlideIndex', () => {
   });
 
   it('should slide correctly if slides with focusable elements are tabbed for slidesPerPage=2', async () => {
-    await initCarousel({ amountOfSlides: 6, slidesPerPage: 2, withFocusableElements: true });
-    const [slide1, slide2, slide3] = await getSlides();
+    await initCarousel({ amountOfSlides: 4, slidesPerPage: 2, withFocusableElements: true });
+    const [slide1, slide2, slide3, slide4] = await getSlides();
 
     await slide1.focus();
-    await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide1);
-
     expect(await isElementCompletelyInViewport(slide1)).toBe(true);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
     await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide1);
-
-    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
-    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
-    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
-
-    await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide1);
 
     expect(await isElementCompletelyInViewport(slide1)).toBe(true);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
@@ -728,22 +726,42 @@ describe('activeSlideIndex', () => {
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(true);
 
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide3);
+
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(true);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide3);
+
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(true);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide3);
+
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(true);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide2);
 
-    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide2);
-
-    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
-    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
-    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
-
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide1);

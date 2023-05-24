@@ -312,6 +312,7 @@ describe('registerSplideHandlers()', () => {
     expect(removeAriaHiddenSpy).toBeCalledWith(component['splide']);
   });
 
+  // Todo: split up in event based tests
   // it('should call removeAriaHidden() on ready / moved / resized event', () => {
   //   const removeAriaHiddenSpy = jest.spyOn(carouselUtils, 'removeAriaHidden').mockImplementation(() => {});
   //   const component = new Carousel();
