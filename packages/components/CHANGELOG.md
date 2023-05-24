@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
+
 ### [3.0.0] - 2023-05-11
 
 ### [3.0.0-rc.3] - 2023-05-10
