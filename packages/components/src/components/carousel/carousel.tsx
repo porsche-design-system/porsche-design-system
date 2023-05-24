@@ -66,6 +66,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
+  skipLinkTarget: AllowedTypes.string,
 };
 
 @Component({
@@ -115,6 +116,9 @@ export class Carousel {
 
   /** Defines which slide to be active (zero-based numbering). */
   @Prop() public activeSlideIndex?: number = 0;
+
+  /** Defines target of skip link (to skip carousel entries). */
+  @Prop() public skipLinkTarget?: string;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -234,7 +238,7 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
+          {this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />}
           {hasDescription(this.host, this.description) &&
             ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
 
@@ -242,6 +246,19 @@ export class Carousel {
           {/* <slot name="post-heading" /> */}
 
           <div class="nav">
+            {this.skipLinkTarget && (
+              <PrefixedTagNames.pLinkPure
+                href={this.skipLinkTarget}
+                icon="arrow-last"
+                class="skip-link"
+                align-label="left"
+                hide-label="true"
+                aria-describedby={this.heading ? 'heading' : null}
+              >
+                {/* TODO: make it i18n configurable */}
+                Skip carousel entries
+              </PrefixedTagNames.pLinkPure>
+            )}
             <PrefixedTagNames.pButtonPure
               {...btnProps}
               icon="arrow-left"

@@ -370,6 +370,10 @@ export namespace Components {
          */
         "rewind"?: boolean;
         /**
+          * Defines target of skip link (to skip carousel entries).
+         */
+        "skipLinkTarget"?: string;
+        /**
           * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
         "slidesPerPage"?: BreakpointCustomizable<number> | 'auto';
@@ -2424,6 +2428,10 @@ declare namespace LocalJSX {
           * Whether the slides should rewind from last to first slide and vice versa.
          */
         "rewind"?: boolean;
+        /**
+          * Defines target of skip link (to skip carousel entries).
+         */
+        "skipLinkTarget"?: string;
         /**
           * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */

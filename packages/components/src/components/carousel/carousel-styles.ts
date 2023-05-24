@@ -42,7 +42,7 @@ const mediaQueryXXL = getMediaQueryMin('xxl');
 // we need an explicit grid template, therefor we need to calculate the button group width
 const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
-const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
+const buttonGroupWidth = `calc(${buttonSize} * 3 + ${spacingStaticXSmall} + 2px)`;
 
 const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: string } } = {
   basic: gridBasicOffset,
@@ -116,10 +116,26 @@ export const getComponentCss = (
         gap: spacingStaticXSmall,
         gridArea: '1 / 3 / 3 / auto', // needed in case description height is smaller than button group
         alignItems: 'end',
+        justifyContent: 'end',
       },
     },
     btn: {
       padding: spacingStaticSmall,
+    },
+    'skip-link': {
+      clipPath: 'inset(50%)',
+      width: '1px',
+      height: '1px',
+      overflow: 'hidden',
+      position: 'absolute',
+      '&:focus': {
+        clipPath: 'none',
+        position: 'static',
+        overflow: 'visible',
+        width: 'auto',
+        height: 'auto',
+        padding: spacingStaticSmall,
+      },
     },
     splide: {
       overflow: 'hidden',
