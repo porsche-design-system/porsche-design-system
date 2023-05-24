@@ -2,6 +2,7 @@ import type { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
+import { ModalExampleChangeContentPage } from './examples';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -110,6 +111,11 @@ export const routes: RouteType[] = [
     name: 'Modal Example Accessibility',
     path: '/modal-example-accessibility',
     element: <fromExamples.ModalExampleAccessibilityPage />,
+  },
+  {
+    name: 'Modal Example Change Content',
+    path: '/modal-example-change-content',
+    element: <fromExamples.ModalExampleChangeContentPage />,
   },
   {
     name: 'Scroller Example',
