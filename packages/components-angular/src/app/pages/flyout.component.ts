@@ -24,42 +24,81 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .playground {
         margin: 16px 0;
       }
+    
+      @media only screen and (min-width: 760px) {
+        #app,
+        :host {
+          display: grid;
+          grid-template-columns: repeat(2, 50%);
+        }
+      }
     `,
   ],
   template: `
-    <div class="playground light" title="should show flyout">
+    <div class="playground light auto-layout" title="should show flyout">
       <p-flyout [open]="true">Some Content: should show flyout</p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with prefixed component initialization">
+    <div class="playground dark auto-layout" title="should show flyout on dark theme">
+      <p-flyout [open]="true" [theme]="'dark'">Some Content: should show flyout</p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with prefixed component initialization">
       <my-prefix-p-flyout p-flyout [open]="true">
         Some Content: should show flyout with prefixed component initialization
       </my-prefix-p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout (maxWidth content)">
+    <div
+      class="playground dark auto-layout"
+      title="should show flyout with prefixed component initialization on dark theme"
+    >
+      <my-prefix-p-flyout p-flyout [open]="true" [theme]="'dark'">
+        Some Content: should show flyout with prefixed component initialization
+      </my-prefix-p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout (maxWidth content)">
       <p-flyout [open]="true">
         <div style="max-width: 100%; width: 100vw; height: 500px">
-          <p-text>Some Content in responsive max width</p-text>
+          <p>Some Content in responsive max width</p>
         </div>
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with header">
+    <div class="playground dark auto-layout" title="should show flyout (maxWidth content)">
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div style="max-width: 100%; width: 100vw; height: 500px">
+          <p>Some Content in responsive max width</p>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with header">
       <p-flyout [open]="true">
         <div slot="header">
-          <p-heading [tag]="'h5'" [size]="'large'">Sticky Heading</p-heading>
-          <p-text [size]="'small'">Sticky header text</p-text>
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
         </div>
         Some Content: should show flyout
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with header and scrollable content">
+    <div class="playground dark auto-layout" title="should show flyout with header on dark theme">
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        Some Content: should show flyout
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with header and scrollable content">
       <p-flyout [open]="true">
         <div slot="header">
-          <p-heading [tag]="'h5'" [size]="'large'">Sticky Heading</p-heading>
-          <p-text [size]="'small'">Sticky header text</p-text>
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
         </div>
         Some content: should show scrollable flyout
         <br />
@@ -103,7 +142,55 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with footer">
+    <div class="playground dark auto-layout" title="should show flyout with header and scrollable content on dark theme">
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        Some content: should show scrollable flyout
+        <br />
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam.
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with footer">
       <p-flyout [open]="true">
         Some Content: should show flyout
         <div slot="footer">
@@ -112,7 +199,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with footer and scrollable content">
+    <div class="playground dark auto-layout" title="should show flyout with footer on dark theme">
+      <p-flyout [open]="true" [theme]="'dark'">
+        Some Content: should show flyout
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with footer and scrollable content">
       <p-flyout [open]="true">
         Some content: should show scrollable flyout
         <br />
@@ -154,29 +250,89 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
         eos et accusam.
         <div slot="footer">
-          <p-button>Sticky Footer Button</p-button>
+          <button>Sticky Footer Button</button>
         </div>
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with header and footer">
+    <div class="playground dark auto-layout" title="should show flyout with footer and scrollable content on dark theme">
+      <p-flyout [open]="true" [theme]="'dark'">
+        Some content: should show scrollable flyout
+        <br />
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam.
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with header and footer">
       <p-flyout [open]="true">
         <div slot="header">
-          <p-heading [tag]="'h5'" [size]="'large'">Sticky Heading</p-heading>
-          <p-text [size]="'small'">Sticky header text</p-text>
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
         </div>
         Some Content: should show flyout
         <div slot="footer">
-          <p-button>Sticky Footer Button</p-button>
+          <button>Sticky Footer Button</button>
         </div>
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with header, footer and scrollable content">
+    <div class="playground dark auto-layout" title="should show flyout with header and footer on dark theme">
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        Some Content: should show flyout
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with header, footer and scrollable content">
       <p-flyout [open]="true">
         <div slot="header">
-          <p-heading [tag]="'h5'" [size]="'large'">Sticky Heading</p-heading>
-          <p-text [size]="'small'">Sticky header text</p-text>
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
         </div>
         Some content: should show scrollable flyout
         <br />
@@ -218,32 +374,108 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
         eos et accusam.
         <div slot="footer">
-          <p-button>Sticky Footer Button</p-button>
+          <button>Sticky Footer Button</button>
         </div>
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with header, footer and secondaryContent">
+    <div
+      class="playground dark auto-layout"
+      title="should show flyout with header, footer and scrollable content on dark theme"
+    >
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        Some content: should show scrollable flyout
+        <br />
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam.
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout with header, footer and secondaryContent">
       <p-flyout [open]="true">
         <div slot="header">
-          <p-heading [tag]="'h5'" [size]="'large'">Sticky Heading</p-heading>
-          <p-text [size]="'small'">Sticky header text</p-text>
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
         </div>
         Some Content: should show flyout
         <div slot="footer">
-          <p-button>Sticky Footer Button</p-button>
+          <button>Sticky Footer Button</button>
         </div>
         <div slot="secondary-content">
-          <p-text [size]="'small'">Some secondary content</p-text>
+          <p>Some secondary content</p>
         </div>
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with header, footer, secondaryContent and scrollable content">
+    <div
+      class="playground dark auto-layout"
+      title="should show flyout with header, footer and secondaryContent on dark theme"
+    >
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        Some Content: should show flyout
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+        <div slot="secondary-content">
+          <p>Some secondary content</p>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div
+      class="playground light auto-layout"
+      title="should show flyout with header, footer, secondaryContent and scrollable content"
+    >
       <p-flyout [open]="true">
         <div slot="header">
-          <p-heading [tag]="'h5'" [size]="'large'">Sticky Heading</p-heading>
-          <p-text [size]="'small'">Sticky header text</p-text>
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
         </div>
         Some content: should show scrollable flyout
         <br />
@@ -285,38 +517,173 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
         eos et accusam.
         <div slot="footer">
-          <p-button>Sticky Footer Button</p-button>
+          <button>Sticky Footer Button</button>
         </div>
         <div slot="secondary-content">
-          <p-text [size]="'small'">Some secondary content</p-text>
+          <p>Some secondary content</p>
         </div>
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout (position=left)">
+    <div
+      class="playground dark auto-layout"
+      title="should show flyout with header, footer, secondaryContent and scrollable content on dark theme"
+    >
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        Some content: should show scrollable flyout
+        <br />
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+        dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+        sanctus est Lorem ipsum dolor sit amet.
+        <br />
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+        elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+        eos et accusam.
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+        <div slot="secondary-content">
+          <p>Some secondary content</p>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div
+      class="playground light auto-layout"
+      title="should show flyout with header, footer, secondaryContent and slotted and deeply nested anchor"
+    >
+      <p-flyout [open]="true">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        <span>
+          Some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+        <div slot="secondary-content">
+          <p>Some secondary content</p>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div
+      class="playground dark auto-layout"
+      title="should show flyout with header, footer, secondaryContent and slotted and deeply nested anchor on dark theme"
+    >
+      <p-flyout [open]="true" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        <span>
+          Some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+          <em>emphasized</em> and <i>italic</i> text.
+        </span>
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+        <div slot="secondary-content">
+          <p>Some secondary content</p>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout (position=left)">
       <p-flyout [open]="true" [position]="'left'">Some Content: should show flyout</p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout (maxWidth content, position=left)">
+    <div class="playground dark auto-layout" title="should show flyout (position=left) on dark theme">
+      <p-flyout [open]="true" [position]="'left'" [theme]="'dark'">Some Content: should show flyout</p-flyout>
+    </div>
+
+    <div class="playground light auto-layout" title="should show flyout (maxWidth content, position=left)">
       <p-flyout [open]="true" [position]="'left'">
         <div style="max-width: 100%; width: 100vw; height: 500px">
-          <p-text>Some Content in responsive max width</p-text>
+          <p>Some Content in responsive max width</p>
         </div>
       </p-flyout>
     </div>
 
-    <div class="playground light" title="should show flyout with header, footer and secondaryContent (position=left)">
+    <div class="playground dark auto-layout" title="should show flyout (maxWidth content, position=left) on dark theme">
+      <p-flyout [open]="true" [position]="'left'" [theme]="'dark'">
+        <div style="max-width: 100%; width: 100vw; height: 500px">
+          <p>Some Content in responsive max width</p>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div
+      class="playground light auto-layout"
+      title="should show flyout with header, footer and secondaryContent (position=left)"
+    >
       <p-flyout [open]="true" [position]="'left'">
         <div slot="header">
-          <p-heading [tag]="'h5'" [size]="'large'">Sticky Heading</p-heading>
-          <p-text [size]="'small'">Sticky header text</p-text>
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
         </div>
         Some Content: should show flyout
         <div slot="footer">
-          <p-button>Sticky Footer Button</p-button>
+          <button>Sticky Footer Button</button>
         </div>
         <div slot="secondary-content">
-          <p-text [size]="'small'">Some secondary content</p-text>
+          <p>Some secondary content</p>
+        </div>
+      </p-flyout>
+    </div>
+
+    <div
+      class="playground dark auto-layout"
+      title="should show flyout with header, footer and secondaryContent (position=left) on dark theme"
+    >
+      <p-flyout [open]="true" [position]="'left'" [theme]="'dark'">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        Some Content: should show flyout
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+        <div slot="secondary-content">
+          <p>Some secondary content</p>
         </div>
       </p-flyout>
     </div>
