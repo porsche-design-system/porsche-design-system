@@ -90,6 +90,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "intl": "shape",
   "pagination": "breakpoint",
   "rewind": "boolean",
+  "skipLinkTarget": "string",
   "slidesPerPage": "oneOf",
   "theme": "oneOf",
   "width": "oneOf",
