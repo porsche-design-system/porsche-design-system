@@ -33,7 +33,7 @@ export const getComponentCss = (
   hasSecondaryContent: boolean,
   theme: Theme
 ): string => {
-  const { backgroundColor, contrastHighColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, contrastHighColor } = getThemedColors(theme);
   const isPositionLeft = position === 'left';
   const translatePosition = isPositionLeft ? '-100%' : '100%';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
@@ -77,6 +77,7 @@ export const getComponentCss = (
       }),
     },
     root: {
+      color: primaryColor, // enables color inheritance for slotted content
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
