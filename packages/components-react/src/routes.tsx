@@ -2,7 +2,6 @@ import type { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
-import { ModalExampleChangeContentPage } from './examples';
 
 export type RouteType = RouteProps & {
   name: string;
