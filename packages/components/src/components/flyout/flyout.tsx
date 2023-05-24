@@ -23,6 +23,7 @@ import { SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
 import { setFocusTrap } from '../../utils/focusTrap';
 import { setScrollLock } from '../../utils/scrollLock';
+import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -188,14 +189,15 @@ export class Flyout {
     setFocusTrap(this.host, isOpen, null, this.dismissFlyout);
   };
 
-  private onScroll = (): void => {
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  private onScroll = throttle(100, () => {
     if (this.dialog.scrollHeight - this.dialog.clientHeight > 0) {
       this.updateHeaderShadow();
       if (this.hasFooter) {
         this.updateFooterShadow();
       }
     }
-  };
+  });
 
   private updateHeaderShadow = (): void => {
     this.header.style.boxShadow =
@@ -203,16 +205,11 @@ export class Flyout {
   };
 
   private updateFooterShadow = (): void => {
-    if (!this.hasSecondaryContent) {
-      this.footer.style.boxShadow =
-        this.dialog.scrollHeight - FLYOUT_SCROLL_SHADOW_THRESHOLD > this.dialog.scrollTop + this.dialog.clientHeight
-          ? getFlyoutBoxShadow(-5, this.theme)
-          : 'none';
-    } else {
-      const footerBottom = this.footer ? this.dialog.clientHeight - this.footer.getBoundingClientRect().bottom : 0;
-      this.footer.style.boxShadow =
-        footerBottom < FLYOUT_SCROLL_SHADOW_THRESHOLD ? getFlyoutBoxShadow(-5, this.theme) : 'none';
-    }
+    const shouldApplyShadow = !this.hasSecondaryContent
+      ? this.dialog.scrollHeight - FLYOUT_SCROLL_SHADOW_THRESHOLD > this.dialog.scrollTop + this.dialog.clientHeight
+      : this.dialog.clientHeight - this.footer.getBoundingClientRect().bottom < FLYOUT_SCROLL_SHADOW_THRESHOLD;
+
+    this.footer.style.boxShadow = shouldApplyShadow ? getFlyoutBoxShadow(-5, this.theme) : 'none';
   };
 
   private dismissFlyout = (): void => {
