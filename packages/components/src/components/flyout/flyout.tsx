@@ -188,9 +188,11 @@ export class Flyout {
   };
 
   private onScroll = (): void => {
-    this.updateHeaderShadow();
-    if (this.hasFooter) {
-      this.updateFooterShadow();
+    if (this.dialog.scrollHeight - this.dialog.clientHeight > 0) {
+      this.updateHeaderShadow();
+      if (this.hasFooter) {
+        this.updateFooterShadow();
+      }
     }
   };
 
@@ -206,7 +208,7 @@ export class Flyout {
           ? `${flyoutBoxShadowColor} 0px -5px 10px`
           : 'none';
     } else {
-      const footerBottom = this.footer ? window.innerHeight - this.footer.getBoundingClientRect().bottom : 0;
+      const footerBottom = this.footer ? this.dialog.clientHeight - this.footer.getBoundingClientRect().bottom : 0;
       this.footer.style.boxShadow =
         footerBottom < FLYOUT_SCROLL_SHADOW_THRESHOLD ? `${flyoutBoxShadowColor} 0px -5px 10px` : 'none';
     }
