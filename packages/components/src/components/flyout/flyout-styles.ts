@@ -17,6 +17,7 @@ import {
 import { FlyoutPosition } from './flyout-utils';
 
 export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
+export const flyoutBoxShadowColorDark = 'rgba(0, 0, 0, 0.6)';
 
 const flyoutTransitionDuration = '0.5s';
 const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';

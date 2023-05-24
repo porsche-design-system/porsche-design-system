@@ -6,8 +6,9 @@ import {
   FLYOUT_SCROLL_SHADOW_THRESHOLD,
   FlyoutAriaAttribute,
   FlyoutPosition,
+  getFlyoutBoxShadow,
 } from './flyout-utils';
-import { flyoutBoxShadowColor, getComponentCss } from './flyout-styles';
+import { getComponentCss } from './flyout-styles';
 
 import {
   attachComponentCss,
@@ -198,19 +199,19 @@ export class Flyout {
 
   private updateHeaderShadow = (): void => {
     this.header.style.boxShadow =
-      this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD ? `${flyoutBoxShadowColor} 0px 5px 10px` : 'none';
+      this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD ? getFlyoutBoxShadow(5, this.theme) : 'none';
   };
 
   private updateFooterShadow = (): void => {
     if (!this.hasSecondaryContent) {
       this.footer.style.boxShadow =
         this.dialog.scrollHeight - FLYOUT_SCROLL_SHADOW_THRESHOLD > this.dialog.scrollTop + this.dialog.clientHeight
-          ? `${flyoutBoxShadowColor} 0px -5px 10px`
+          ? getFlyoutBoxShadow(-5, this.theme)
           : 'none';
     } else {
       const footerBottom = this.footer ? this.dialog.clientHeight - this.footer.getBoundingClientRect().bottom : 0;
       this.footer.style.boxShadow =
-        footerBottom < FLYOUT_SCROLL_SHADOW_THRESHOLD ? `${flyoutBoxShadowColor} 0px -5px 10px` : 'none';
+        footerBottom < FLYOUT_SCROLL_SHADOW_THRESHOLD ? getFlyoutBoxShadow(-5, this.theme) : 'none';
     }
   };
 
