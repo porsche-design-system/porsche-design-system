@@ -105,7 +105,7 @@ export class Modal {
   }
 
   public componentDidRender(): void {
-    // fix scroll to top bug in react #2569 (react causes rerender of modal on useState hook within modal)
+    // fix scroll to top bug in react #2569 (useState hook within modal causes rerender of modal)
     if (this.open && !this.host.contains(document.activeElement)) {
       // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed, although it shouldn't
       for (let i = 0; i < 4; i++) {
