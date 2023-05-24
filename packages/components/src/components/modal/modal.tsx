@@ -90,11 +90,7 @@ export class Modal {
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
     if (this.open) {
-      // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => (this.host.scrollTop = 0), i * 5);
-      }
-
+      this.dialog.focus(); // needs to happen after render
       this.updateScrollLock(true);
     }
 
@@ -111,7 +107,14 @@ export class Modal {
 
   public componentDidRender(): void {
     if (this.open) {
-      this.dialog.focus(); // needs to happen after render
+      // fix scroll to top bug in react #2569 (react causes rerender of modal on useState hook within modal)
+      if (!this.host.contains(document.activeElement)) {
+        // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed, although it shouldn't
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => (this.host.scrollTop = 0), i * 5);
+        }
+        this.dialog.focus(); // needs to happen after render
+      }
     }
   }
 
