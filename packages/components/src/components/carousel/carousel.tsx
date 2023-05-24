@@ -340,19 +340,13 @@ export class Carousel {
     const { Elements, Slides } = Components;
     const target = e.target;
 
-    const slottedSlideFocusIndex = (): number => this.slides.findIndex((slide) => slide.contains(target));
-    const slideIsVisible = (): boolean => {
-      const slottedSlideIndex = slottedSlideFocusIndex();
-      return (
-        target.classList.contains('is-visible') ||
-        (slottedSlideIndex !== -1 && Elements.slides.at(slottedSlideIndex).classList.contains('is-visible'))
-      );
-    };
+    const slottedSlideFocusIndex = this.slides.findIndex((slide) => slide.contains(target));
     const slideIndexOfFocusedElement = Elements.slides.includes(target)
       ? Slides.get().findIndex((el) => el.slide === target)
-      : slottedSlideFocusIndex();
-    if (!slideIsVisible()) {
-      if (slideIndexOfFocusedElement > index) {
+      : slottedSlideFocusIndex;
+
+    if (index !== slideIndexOfFocusedElement) {
+      if (slideIndexOfFocusedElement < this.amountOfPages && slideIndexOfFocusedElement > index) {
         slideNext(this.splide, this.amountOfPages);
       } else if (slideIndexOfFocusedElement < index) {
         slidePrev(this.splide, this.amountOfPages);
