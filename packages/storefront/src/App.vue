@@ -9,9 +9,10 @@
         <h1>Porsche Design System</h1>
         <VersionSelect class="versionSelect" />
       </div>
-      <router-link to="/" v-slot="{ href, navigate }">
+      <div class="wordmark"><router-link to="/" v-slot="{ href, navigate }">
         <p-wordmark :href="href" @click="navigate"></p-wordmark>
       </router-link>
+    </div>
       <div class="test-tools">
         <Search class="search" />
         <p-link-pure
@@ -108,23 +109,38 @@
     left: 0;
     right: 0;
     z-index: 98;
-    padding: $pds-spacing-fluid-small $pds-spacing-fluid-medium;
     display: grid;
-    gap: $pds-spacing-fluid-medium;
-    border-bottom: 1px solid $pds-theme-light-contrast-low;
-    grid-template-columns: minmax(0px, 1fr) auto minmax(0px, 1fr);
+    padding: 20px 0;
+
+   // border-bottom: 1px solid $pds-theme-light-contrast-low;
+
     align-items: center;
-    background: $pds-theme-light-background-base;
+    background-color: rgb(255 255 255 / 79%);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
+    border-radius: 6px;
+    //padding: $pds-spacing-fluid-small;
+    --pds-internal-grid-safe-zone: min(50vw - 880px,400px);
+    gap: clamp(16px, 1.25vw + 12px, 36px);
+    grid-template-columns: [full-start] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [wide-start] minmax(0,1fr) [extended-start] minmax(0,1fr) [basic-start] repeat(2,minmax(0,1fr)) [narrow-start] repeat(8,minmax(0,1fr)) [narrow-end] repeat(2,minmax(0,1fr)) [basic-end] minmax(0,1fr) [extended-end] minmax(0,1fr) [wide-end] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [full-end];
+    border-bottom: 1px solid #eeeff2;
   }
+
 
   .test-brand {
     display: flex;
     align-items: center;
     gap: $pds-spacing-fluid-x-small;
+    grid-column: wide-start/span 3;
 
     h1 {
       @include pds-text-small;
     }
+  }
+
+  .wordmark {
+    grid-column: narrow-start / narrow-end;
+    margin: auto;
   }
 
   .test-tools {
@@ -132,6 +148,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: $pds-spacing-static-small;
+    grid-column: span 4 / span 3;
   }
 
   * {
@@ -347,7 +364,13 @@
 
   .content {
     position: relative;
-    overflow: hidden;
+    display: grid;
+    gap: clamp(16px, 1.25vw + 12px, 36px);
+    grid-template-columns: [full-start] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [wide-start] minmax(0,1fr) [extended-start] minmax(0,1fr) [basic-start] repeat(2,minmax(0,1fr)) [narrow-start] repeat(8,minmax(0,1fr)) [narrow-end] repeat(2,minmax(0,1fr)) [basic-end] minmax(0,1fr) [extended-end] minmax(0,1fr) [wide-end] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [full-end];
+    --pds-internal-grid-safe-zone: min(50vw - 880px,400px);
+    height: auto;
+
+
 
     &--menu-active {
       @include pds-media-query-min-max('base', 's') {
@@ -357,8 +380,10 @@
         }
         .sidebar {
           opacity: 1;
+          width: 23.75rem;
           width: 100%;
           z-index: 1;
+          
           transform: translate3d(0, 0, 0);
         }
         .main {
@@ -373,17 +398,15 @@
   }
 
   .sidebar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    bottom: 0;
-    width: 17.5rem;
-    padding: 2.5rem $pds-spacing-static-large;
-    margin-top: 5rem;
-    // background: $pds-theme-light-background-base;
-    overflow-x: hidden;
-    overflow-y: auto;
+    padding: 12.5rem 8px 12rem 8px;
+    overflow: scroll;
     -webkit-overflow-scrolling: touch;
+    grid-column: wide-start/span 3;
+    align-items: start;
+    align-self: start;
+    height: 100vh;
 
     @include pds-media-query-min-max('base', 's') {
       opacity: 0;
@@ -394,7 +417,7 @@
 
   .main {
     background: $pds-theme-light-background-base;
-    margin-top: 10rem;
+//    margin-top: 10rem;
 
     @include pds-media-query-min-max('base', 's') {
       &--animate {
@@ -404,7 +427,7 @@
     }
 
     @include pds-media-query-min('s') {
-      margin-left: 17.5rem;
+      grid-column: span 14/full-end;
     }
   }
 

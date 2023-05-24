@@ -2,46 +2,34 @@
   <div>
     <header class="teaser">
       <div class="cover">
-        <video
-          class="video"
-          src="../assets/porsche-design-system.mp4"
-          poster="../assets/porsche-design-system.jpg"
-          autoplay
-          muted
-          playsinline
-        >
-          <track src="../assets/captions_en.vtt" kind="descriptions" srclang="en" label="english captions" />
-        </video>
+        <div class="cover-intro">
+          <div class="cover-intro-container">
+          <p-display size="small" tag="h2">Welcome to the new digital</p-display>
+          <p-text class="cover-intro-text" color="contrast-high" size="large">Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System 3.0.</p-text>
+          </div>
+        </div>
+        <div class="cover-image"></div>
       </div>
     </header>
 
     <article class="intro">
+
       <p-grid>
-        <p-grid-item size="{base: 12, m: 4}">
-          <p-heading size="large" tag="h1">Porsche Design System</p-heading>
-          <p-text size="{ base:'small', s: 'medium' }">for web applications</p-text>
-          <p-text class="spacing-mt-8">
-            <router-link to="/about/introduction">Learn more about it</router-link>
-          </p-text>
-        </p-grid-item>
-        <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size="{base: 12, m: 8}">
-          <p-text size="medium">
+        <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size="{base: 12, m: 12}">
+          <p-text size="large">
             The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic
             and high-quality web applications, including easy-to-use Figma and UX Pin libraries, coded Web Components
             and comprehensive usage guidelines. Everything is built and tested following the Porsche quality standards
             and corporate design principles.
           </p-text>
-          <p-text class="spacing-mt-32">
-            We provide releases for <strong>Vanilla JS</strong>, <strong>Angular</strong>,
-            <strong>React (NextJS | Remix)</strong> and <strong>Vue</strong> based on Web Components and appreciate any
-            feedback, feature requests or suggestions on our public
-            <a href="https://github.com/porsche-design-system/porsche-design-system/issues/new/choose">Issue Board</a>.
+          <p-text class="spacing-mt-32" size="medium" color="">
+            We provide releases for Vanilla JS, Angular and React based on Web Components and appreciate any feedback, feature requests or suggestions on our public Contribution Board.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
-              <p-link variant="primary" class="router-link spacing-mt-16 spacing-mr-32">
-                <router-link to="/start-designing/introduction">Start Designing</router-link>
-              </p-link>
+              <p-link-tile href="'#'" label="'Some Label'" description="'Some Description'" aspect-ratio="3:4">
+                <img src="https://designsystem.porsche.com/v3/img/image-grid.acfa41cf.png" width="3000" height="2000" alt="'Some alt text'" />
+              </p-link-tile>
             </p-flex-item>
             <p-flex-item>
               <p-link variant="primary" class="router-link spacing-mt-16 spacing-mr-32">
@@ -112,20 +100,44 @@
 
   .cover {
     position: relative;
-    padding-top: 34%;
+    height: 900px;
     overflow: hidden;
-    background: $pds-theme-light-contrast-low;
-    border-bottom: 1px solid $pds-theme-light-contrast-low;
+    background: radial-gradient(54.76% 107.92% at 64.08% 89.73%, #C5C8DF 0%, #EBDDF9 52.6%, #FFFFFF 100%);
   }
 
-  .video {
-    width: calc(100% + 4px);
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .cover-image {
+    background-image: url("../assets/tablet.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    width: 100%;
+    height: 100%;
+    background-position: right 10vw bottom -20vh;
   }
+
+
+  .cover-intro {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+  .cover-intro-container {
+    text-align: left;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    color: white;
+    width: 30%;
+    height: auto;
+    vertical-align: middle;
+    margin: 4rem;
+  }
+
+  .cover-intro-text {
+    padding-top: $pds-spacing-fluid-medium;
+  }
+
+
 
   .intro {
     margin: {
