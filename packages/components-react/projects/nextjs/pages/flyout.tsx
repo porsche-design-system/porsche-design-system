@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PButton, PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
 const FlyoutPage: NextPage = (): JSX.Element => {
   const style = `
@@ -196,7 +196,7 @@ const FlyoutPage: NextPage = (): JSX.Element => {
         <PFlyout open={true}>
           Some Content: should show flyout
           <div slot="footer">
-            <PButton>Sticky Footer Button</PButton>
+            <button>Sticky Footer Button</button>
           </div>
         </PFlyout>
       </div>

@@ -194,7 +194,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-flyout [open]="true">
         Some Content: should show flyout
         <div slot="footer">
-          <p-button>Sticky Footer Button</p-button>
+          <button>Sticky Footer Button</button>
         </div>
       </p-flyout>
     </div>

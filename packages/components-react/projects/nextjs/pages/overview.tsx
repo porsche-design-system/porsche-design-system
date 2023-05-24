@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PFlyout, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
@@ -36,7 +36,8 @@ const OverviewPage: NextPage = (): JSX.Element => {
     }
 
     .playground--banner,
-    .playground--modal {
+    .playground--modal,
+    .playground--flyout {
       transform: translate3d(0, 0, 0);
       height: 10rem;
       padding: 0;
@@ -44,6 +45,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
     }
 
     .playground--modal {
+      height: 20rem;
+    }
+
+    .playground--flyout {
       height: 20rem;
     }
   `;
@@ -75,6 +80,15 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
           <div className="playground light playground--modal" title="should render default modal">
             <PModal heading="Heading" open={true}>Some Content</PModal>
+          </div>
+
+          <div className="playground light playground--flyout" title="should render default flyout">
+            <PFlyout open={true}>
+              <span slot="header">Sticky Header</span>
+              Some Content
+              <span slot="footer">Sticky Footer</span>
+              <span slot="secondary-content">Some Secondary Content</span>
+            </PFlyout>
           </div>
 
           <div className="playground light" title="should render default inline-notification">
@@ -324,6 +338,15 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
             <div className="playground light playground--modal" title="should render default modal with custom prefix">
               <PModal heading="Heading" open={true}>Some Content</PModal>
+            </div>
+
+            <div className="playground light playground--flyout" title="should render default flyout">
+              <PFlyout open={true}>
+                <span slot="header">Sticky Header</span>
+                Some Content
+                <span slot="footer">Sticky Footer</span>
+                <span slot="secondary-content">Some Secondary Content</span>
+              </PFlyout>
             </div>
 
             <div className="playground light" title="should render default inline-notification with custom prefix">

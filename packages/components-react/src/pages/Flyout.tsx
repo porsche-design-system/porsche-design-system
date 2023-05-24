@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PButton, PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 export const FlyoutPage = (): JSX.Element => {
   const style = `
@@ -195,7 +195,7 @@ export const FlyoutPage = (): JSX.Element => {
         <PFlyout open={true}>
           Some Content: should show flyout
           <div slot="footer">
-            <PButton>Sticky Footer Button</PButton>
+            <button>Sticky Footer Button</button>
           </div>
         </PFlyout>
       </div>
