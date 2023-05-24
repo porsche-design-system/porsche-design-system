@@ -90,7 +90,6 @@ export class Modal {
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
     if (this.open) {
-      this.dialog.focus(); // needs to happen after render
       this.updateScrollLock(true);
     }
 
