@@ -18,24 +18,9 @@ it.each(furtherExtendedViewports)('should have no visual regression for flyout f
     await vrtTest(getVisualRegressionTester(viewport), 'flyout', '/#flyout', {
       scenario: async (page) => {
         await page.mouse.click(0, 0); // click top left corner of the page to remove focus on flyout
-
-        // const flyouts = await page.evaluate(() => document.querySelector('.scroll').shadowRoot);
-        // console.log(flyouts);
-
-        // const flyouts = await page.$$('.scroll');
-        // flyouts.forEach(async (flyout) => {
-        //   const f = await page.evaluate((el) => el.querySelector('.root'), flyout);
-        //   console.log(f);
-        // });
-
-        // Scroll down all flyouts with class "scroll"
-        await page.$$eval('.scroll p-flyout', (flyouts) => {
-          flyouts.forEach((flyout) => {
-            console.log(flyout.shadowRoot);
-            const root = flyout.shadowRoot.querySelector('DIV.root');
-            root.scrollTo(0, root.scrollHeight);
-            root.dispatchEvent(new Event('scroll'));
-          });
+        // Scroll down flyouts
+        await page.$$eval('.scroll-here', (scrollElements) => {
+          scrollElements.forEach((el) => el.scrollIntoView());
         });
       },
     })
