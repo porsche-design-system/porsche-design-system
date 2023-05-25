@@ -117,6 +117,7 @@ export const getComponentCss = (
         gridArea: '1 / 3 / 3 / auto', // needed in case description height is smaller than button group
         alignItems: 'end',
         justifyContent: 'end',
+        justifySelf: 'end',
       },
     },
     btn: {
