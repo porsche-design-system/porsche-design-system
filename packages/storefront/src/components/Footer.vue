@@ -1,13 +1,15 @@
 <template>
   <footer>
-    <p-link-pure href="https://brand.porsche.com" target="_blank" icon="external" align-label="left">brand.porsche.com</p-link-pure>
+    <p-link-pure href="https://brand.porsche.com" target="_blank" icon="external" align-label="left">
+      brand.porsche.com
+    </p-link-pure>
     <p-text size="xx-small" color="contrast-high">
       <span>© {{ year }} Dr. Ing. h.c. F. Porsche AG.</span>
       <br />
       <a href="https://ux.porsche.com/privacy-policy">Privacy Policy</a>
-      <span> / </span>
+      &nbsp;
       <a href="https://ux.porsche.com/imprint">Imprint</a>
-      <span> / </span>
+      &nbsp;
       <router-link :to="'/license'">License</router-link>
     </p-text>
   </footer>
