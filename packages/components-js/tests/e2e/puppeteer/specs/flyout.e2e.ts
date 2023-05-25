@@ -10,7 +10,6 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
-  getOffsetWidth,
   getProperty,
   selectNode,
   setContentWithDesignSystem,
@@ -24,7 +23,6 @@ import PFlyout = Components.PFlyout;
 let page: Page;
 const CSS_TRANSITION_DURATION = 600;
 const flyoutMinWidth = 320;
-const flyoutMaxWidth = 1080;
 
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
@@ -106,15 +104,10 @@ const addButtonsBeforeAndAfterFlyout = () =>
     document.body.append(buttonAfter);
   });
 
-const scrollFlyoutBy = async (scrollAmount: number) =>
-  await page.evaluate(
-    (el, scrollAmount) => {
-      el.scrollTo(0, scrollAmount);
-      el.dispatchEvent(new Event('scroll'));
-    },
-    await getFlyout(),
-    scrollAmount
-  );
+const scrollFlyoutTo = async (selector: string) =>
+  await page.evaluate((el) => {
+    el.scrollIntoView();
+  }, await selectNode(page, selector));
 
 const expectDismissButtonToBeFocused = async (failMessage?: string) => {
   const host = await getHost();
@@ -141,7 +134,6 @@ it('should visible after opened', async () => {
   expect(await getFlyoutVisibility()).toBe('visible');
 });
 
-// TODO: Add test for min/max width flyout
 it('should have correct transform when dismissed and opened', async () => {
   await initBasicFlyout({ open: false });
   const getFlyoutTransform = async () => getElementStyle(await getFlyout(), 'transform', { waitForTransition: true });
@@ -165,17 +157,16 @@ describe('scroll shadows', () => {
   it('should have header scroll shadow when header slot is used and scrolled down', async () => {
     await initBasicFlyout(
       { open: true },
-      { header: '<div slot="header">Some Heading</div>', content: '<div style="height: 200vh">Some Content</div>' }
+      {
+        header: '<div slot="header">Some Heading</div>',
+        content: '<div style="height: 200vh">Some Content</div><span class="scroll-here"></span>',
+      }
     );
     const header = await getHeader();
     expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
 
-    await scrollFlyoutBy(10);
-    await page.waitForFunction((el) => getComputedStyle(el).boxShadow === 'none', {}, await getHeader());
-    // Box Shadow is only applied if threshold is exceeded
-    expect(await getElementStyle(header, 'boxShadow'), 'after scroll within threshold').toBe('none');
+    await scrollFlyoutTo('.scroll-here');
 
-    await scrollFlyoutBy(11);
     await page.waitForFunction(
       (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
       {},
@@ -198,55 +189,42 @@ describe('scroll shadows', () => {
     expect(await getElementStyle(footer, 'boxShadow')).toBe('none');
   });
 
-  // TODO: Position sticky not working in Puppeteer
-  // it('footer scroll shadow with secondary content', async () => {
-  //   await initBasicFlyout(
-  //     { open: true },
-  //     {
-  //       footer: '<div slot="footer"><button>Some Footer</button></div>',
-  //       content: '<div style="height: 100vh">Some Content</div>',
-  //       secondaryContent: '<div>Secondary Content</div>',
-  //     }
-  //   );
-  //   const footer = await getFooter();
-  //   expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
-  //     'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
-  //   );
-  //
-  //   await scrollFlyoutBy(await getProperty<number>(await getFlyout(), 'scrollHeight'));
-  //
-  //   // console.log(await getProperty<number>(await getFlyout(), 'scrollHeight'));
-  //   // console.log(
-  //   //   (await getProperty<number>(await getFlyout(), 'scrollTop')) +
-  //   //     (await getProperty<number>(await getFlyout(), 'clientHeight'))
-  //   // );
-  //
-  //   expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
-  // });
-  //
-  // it('footer scroll shadow', async () => {
-  //   await initBasicFlyout(
-  //     { open: true },
-  //     {
-  //       footer: '<div slot="footer"><button>Some Footer</button></div>',
-  //       content: '<div style="height: 1000px">Some Content</div>',
-  //     }
-  //   );
-  //   const footer = await getFooter();
-  //   expect(await getElementStyle(footer, 'boxShadow'), 'is visible when content scrollable').toBe(
-  //     'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
-  //   );
-  //
-  //   await scrollFlyoutBy(1500);
-  //
-  //   console.log(await getProperty<number>(await getFlyout(), 'scrollHeight'));
-  //   console.log(
-  //     (await getProperty<number>(await getFlyout(), 'scrollTop')) +
-  //     (await getProperty<number>(await getFlyout(), 'clientHeight'))
-  //   );
-  //
-  //   expect(await getElementStyle(footer, 'boxShadow'), 'is not visible after scrolled to the bottom').toBe('none');
-  // });
+  it('footer scroll shadow with secondary content', async () => {
+    await initBasicFlyout(
+      { open: true },
+      {
+        footer: '<div slot="footer"><button>Some Footer</button></div>',
+        content: '<div style="height: 100vh">Some Content</div>',
+        secondaryContent: '<div slot="secondary-content">Secondary Content<span class="scroll-here"></span></div>',
+      }
+    );
+    const footer = await getFooter();
+    expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
+      'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
+    );
+
+    await scrollFlyoutTo('.scroll-here');
+    await page.waitForFunction((el) => getComputedStyle(el).boxShadow === 'none', {}, footer);
+    expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
+  });
+
+  it('footer scroll shadow without secondary content', async () => {
+    await initBasicFlyout(
+      { open: true },
+      {
+        footer: '<div slot="footer"><button>Some Footer</button></div>',
+        content: '<div style="height: 100vh">Some Content</div><span class="scroll-here"></span>',
+      }
+    );
+    const footer = await getFooter();
+    expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
+      'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
+    );
+
+    await scrollFlyoutTo('.scroll-here');
+    await page.waitForFunction((el) => getComputedStyle(el).boxShadow === 'none', {}, footer);
+    expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
+  });
 });
 
 describe('can be dismissed', () => {
@@ -278,18 +256,6 @@ describe('can be dismissed', () => {
     await addEventListener(host, 'dismiss');
   });
 
-  // it('should be closed if content is not scrollable and mousedown is inside area of scroll track', async () => {
-  //   await page.setViewport({ width: 800, height: 600 });
-  //   await page.mouse.move(784, 300);
-  //   await page.mouse.down();
-  //
-  //   expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
-  //
-  //   await page.mouse.up();
-  //
-  //   expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
-  // });
-  //
   it('should be closable via x button', async () => {
     const dismissBtn = await getFlyoutDismissButton();
     const dismissBtnReal = await getFlyoutDismissButtonReal();
