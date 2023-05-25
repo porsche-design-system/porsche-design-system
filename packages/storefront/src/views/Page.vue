@@ -107,7 +107,7 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  .markdown {
+  p-tabs-bar + .markdown {
     margin-top: $pds-spacing-fluid-large;
   }
 </style>
