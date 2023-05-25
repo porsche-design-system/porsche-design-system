@@ -2,56 +2,27 @@
   <main v-if="isStandalone">
     <router-view />
   </main>
-  <!-- id="app" is for vrt test -->
   <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
-    <header class="test-header">
-      <div class="test-brand">
-        <h1>Porsche Design System</h1>
-        <VersionSelect class="versionSelect" />
-      </div>
-      <div class="wordmark"><router-link to="/" v-slot="{ href, navigate }">
-        <p-wordmark :href="href" @click="navigate"></p-wordmark>
-      </router-link>
-    </div>
-      <div class="test-tools">
-        <Search class="search" />
-        <p-link-pure
-          :icon-source="require('@/assets/github.svg')"
-          href="https://github.com/porsche-design-system/porsche-design-system"
-          target="_blank"
-          hide-label="true"
-          style="padding: 13px"
-          >Navigate to GitHub space of Porsche Design System</p-link-pure
-        >
-        <Menu class="menu"></Menu>
-      </div>
-    </header>
-    <!--<header class="nav-header">
-      <Brand :class="{ 'brand--menu-active': isMenuActive }" />
-      <Header class="header" />
-    </header>-->
-    <div class="sidebar">
-      <Sidebar />
+    <Header class="header" />
+    <aside class="aside">
+      <Sidebar class="sidebar" />
       <Footer class="footer" />
-    </div>
+    </aside>
     <main class="main" :class="{ 'main--animate': isAnimated }">
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
-      <p-spinner v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
+      <p-spinner class="spinner" v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
     </main>
-    <!--<Menu class="menu"></Menu>-->
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
+  import { Watch } from 'vue-property-decorator';
   import Component from 'vue-class-component';
   import Disclaimer from '@/components/Disclaimer.vue';
-  import Brand from '@/components/Brand.vue';
   import Header from '@/components/Header.vue';
   import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
-  import Menu from '@/components/Menu.vue';
-  import { Watch } from 'vue-property-decorator';
   import VersionSelect from '@/components/VersionSelect.vue';
   import Search from '@/components/Search.vue';
 
@@ -60,11 +31,9 @@
   @Component({
     components: {
       Disclaimer,
-      Brand,
       Header,
       Sidebar,
       Footer,
-      Menu,
       VersionSelect,
       Search,
     },
@@ -103,76 +72,11 @@
 <style lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  .test-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 98;
-    display: grid;
-    padding: 20px 0;
-
-   // border-bottom: 1px solid $pds-theme-light-contrast-low;
-
-    align-items: center;
-    background-color: rgb(255 255 255 / 79%);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(8px);
-    border-radius: 6px;
-    //padding: $pds-spacing-fluid-small;
-    --pds-internal-grid-safe-zone: min(50vw - 880px,400px);
-    gap: clamp(16px, 1.25vw + 12px, 36px);
-    grid-template-columns: [full-start] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [wide-start] minmax(0,1fr) [extended-start] minmax(0,1fr) [basic-start] repeat(2,minmax(0,1fr)) [narrow-start] repeat(8,minmax(0,1fr)) [narrow-end] repeat(2,minmax(0,1fr)) [basic-end] minmax(0,1fr) [extended-end] minmax(0,1fr) [wide-end] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [full-end];
-    border-bottom: 1px solid #eeeff2;
-  }
-
-
-  .test-brand {
-    display: flex;
-    align-items: center;
-    gap: $pds-spacing-fluid-x-small;
-    grid-column: wide-start/span 3;
-
-    h1 {
-      @include pds-text-small;
-    }
-  }
-
-  .wordmark {
-    grid-column: narrow-start / narrow-end;
-    margin: auto;
-  }
-
-  .test-tools {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: $pds-spacing-static-small;
-    grid-column: span 4 / span 3;
-  }
-
+  // TODO: we should not rely on * selector reset
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-
-  .brand {
-    @include pds-media-query-min-max('base', 's') {
-      &:not(.brand--menu-active) {
-        display: none !important;
-      }
-    }
-  }
-
-  .nav-header {
-    display: flex;
-    width: 100%;
-    height: 10rem;
-    position: fixed;
-    z-index: 1;
-    align-items: center;
-    // background: #fff;
   }
 
   main {
@@ -357,33 +261,23 @@
 <style scoped lang="scss">
   @use 'sass:math';
   @use '@porsche-design-system/components-js/styles' as *;
+  @use '@/styles/internal.variables.scss' as *;
 
-  .footer {
-    margin-top: $pds-spacing-fluid-small;
-  }
+  #app {
+    @include pds-grid;
 
-  .content {
-    position: relative;
-    display: grid;
-    gap: clamp(16px, 1.25vw + 12px, 36px);
-    grid-template-columns: [full-start] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [wide-start] minmax(0,1fr) [extended-start] minmax(0,1fr) [basic-start] repeat(2,minmax(0,1fr)) [narrow-start] repeat(8,minmax(0,1fr)) [narrow-end] repeat(2,minmax(0,1fr)) [basic-end] minmax(0,1fr) [extended-end] minmax(0,1fr) [wide-end] minmax(0,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))) [full-end];
-    --pds-internal-grid-safe-zone: min(50vw - 880px,400px);
-    height: auto;
-
-
-
-    &--menu-active {
+    /* &--menu-active {
       @include pds-media-query-min-max('base', 's') {
         .header {
           pointer-events: none;
           opacity: 0;
         }
-        .sidebar {
+        .aside {
           opacity: 1;
           width: 23.75rem;
           width: 100%;
           z-index: 1;
-          
+
           transform: translate3d(0, 0, 0);
         }
         .main {
@@ -394,30 +288,46 @@
           pointer-events: none;
         }
       }
-    }
+    }*/
   }
 
-  .sidebar {
+  // TODO: still not ideal, in edge cases > 2560px
+  .aside {
     position: sticky;
-    top: 0;
-    padding: 12.5rem 8px 12rem 8px;
-    overflow: scroll;
+    top: 87px;
+    height: calc(100vh - 87px);
+    padding: calc(#{$p-content-offset - 87px}) $pds-spacing-static-medium $pds-spacing-fluid-x-large
+      $pds-grid-wide-offset-base;
+    overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    grid-column: wide-start/span 3;
-    align-items: start;
-    align-self: start;
-    height: 100vh;
+    grid-column: full-start / 5;
 
     @include pds-media-query-min-max('base', 's') {
       opacity: 0;
       transform: translate3d(-8.75rem, 0, 0);
       transition: transform 0.3s, opacity 0.3s;
     }
+
+    @include pds-media-query-min('s') {
+      padding: calc(#{$p-content-offset - 87px}) $pds-spacing-static-medium $pds-spacing-fluid-x-large
+        $pds-grid-wide-offset-s;
+    }
+
+    @include pds-media-query-min('xxl') {
+      padding: calc(#{$p-content-offset - 87px}) $pds-spacing-static-medium $pds-spacing-fluid-x-large
+        $pds-grid-wide-offset-xxl;
+    }
+  }
+
+  .footer {
+    margin-top: $pds-spacing-fluid-small;
   }
 
   .main {
-    background: $pds-theme-light-background-base;
-//    margin-top: 10rem;
+    margin-top: $p-content-offset;
+    margin-bottom: $pds-spacing-fluid-x-large;
+    grid-column: wide-start / wide-end;
 
     @include pds-media-query-min-max('base', 's') {
       &--animate {
@@ -427,22 +337,14 @@
     }
 
     @include pds-media-query-min('s') {
-      grid-column: span 14/full-end;
+      grid-column: 6 / wide-end;
     }
   }
 
   .router-view {
-    position: relative;
-    padding: 0 $pds-spacing-static-large $pds-spacing-static-large;
-    background: $pds-theme-light-background-base;
-
     @include pds-media-query-min-max('base', 's') {
       opacity: 1;
       transition: opacity 0.3s;
-    }
-
-    @include pds-media-query-min('s') {
-      padding: 0 4rem 4rem;
     }
 
     &--loading {
@@ -451,7 +353,7 @@
     }
   }
 
-  p-spinner {
+  .spinner {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -460,14 +362,6 @@
 
     @include pds-media-query-min('s') {
       left: calc(50% + #{math.div(17.5rem, 2)});
-    }
-  }
-
-  .menu {
-    display: none;
-
-    @include pds-media-query-min-max('base', 's') {
-      display: block;
     }
   }
 </style>
