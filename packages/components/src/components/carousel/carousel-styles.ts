@@ -123,18 +123,11 @@ export const getComponentCss = (
       padding: spacingStaticSmall,
     },
     'skip-link': {
-      clipPath: 'inset(50%)',
-      width: '1px',
-      height: '1px',
-      overflow: 'hidden',
-      position: 'absolute',
+      opacity: 0,
+      pointerEvents: 'none',
       '&:focus': {
-        clipPath: 'none',
-        position: 'static',
-        overflow: 'visible',
-        width: 'auto',
-        height: 'auto',
-        padding: spacingStaticSmall,
+        opacity: 1,
+        pointerEvents: 'all',
       },
     },
     splide: {

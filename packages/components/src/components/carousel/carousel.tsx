@@ -250,7 +250,7 @@ export class Carousel {
               <PrefixedTagNames.pLinkPure
                 href={this.skipLinkTarget}
                 icon="arrow-last"
-                class="skip-link"
+                class="btn skip-link"
                 align-label="left"
                 hide-label="true"
                 aria-describedby={this.heading ? 'heading' : null}
