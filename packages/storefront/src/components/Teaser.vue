@@ -1,7 +1,9 @@
 <template>
   <header>
-    <p-display size="small" tag="h2">{{ heading }}</p-display>
-    <p-text color="contrast-high" size="large">{{ description }}</p-text>
+    <p-display size="small" tag="h2">Welcome to the new digital</p-display>
+    <p-text color="contrast-high" size="large">
+      Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.
+    </p-text>
   </header>
 </template>
 
@@ -10,11 +12,7 @@
   import Component from 'vue-class-component';
 
   @Component({})
-  export default class Teaser extends Vue {
-    public heading = 'Welcome to the new digital';
-    public description =
-      'Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.';
-  }
+  export default class Teaser extends Vue {}
 </script>
 
 <style scoped lang="scss">
@@ -31,14 +29,24 @@
     &::before {
       content: '';
       position: absolute;
-      inset: 0 calc(#{$pds-grid-wide-offset-s} * -1) 0 0;
+      inset: 0 calc(#{$pds-grid-wide-offset-base} * -1) 0 0;
       background: url('~@/assets/tablet.png') no-repeat bottom -6vw right 10% / min(50%, 600px),
         radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, #ffffff 100%);
       z-index: -1;
+
+      @include pds-media-query-min('s') {
+        inset: 0 calc(#{$pds-grid-wide-offset-s} * -1) 0 0;
+      }
+
+      @include pds-media-query-min('xxl') {
+        inset: 0 calc(#{$pds-grid-wide-offset-xxl} * -1) 0 0;
+      }
     }
 
     & > * {
-      max-width: 50%;
+      @include pds-media-query-min('xs') {
+        max-width: 50%;
+      }
     }
   }
 </style>
