@@ -43,19 +43,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -173,19 +166,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -303,19 +289,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -450,19 +429,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -596,19 +568,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -741,19 +706,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -887,19 +845,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1060,19 +1011,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1233,19 +1177,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1363,19 +1300,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1493,19 +1423,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1639,19 +1562,12 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   padding: 8px;
 }
 .skip-link {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .skip-link:focus {
-  clip-path: none;
-  position: static;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  padding: 8px;
+  opacity: 1;
+  pointer-events: all;
 }
 .splide {
   overflow: hidden;
