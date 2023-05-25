@@ -1,6 +1,6 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import type { MarqueAriaAttribute, MarqueTarget } from './marque-utils';
-import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
+import type { MarqueAriaAttribute, MarqueVariant, MarqueTarget } from './marque-utils';
+import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_VARIANTS } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -16,6 +16,7 @@ import { MARQUE_SIZES } from './marque-size';
 
 const propTypes: PropTypes<typeof Marque> = {
   trademark: AllowedTypes.boolean,
+  variant: AllowedTypes.oneOf<MarqueVariant>(MARQUE_VARIANTS),
   size: AllowedTypes.oneOf<MarqueSize>(MARQUE_SIZES),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
@@ -30,8 +31,11 @@ const propTypes: PropTypes<typeof Marque> = {
 export class Marque {
   @Element() public host!: HTMLElement;
 
-  /** Show/hide trademark sign. */
+  /** Show/hide trademark sign (only has effect when variant is set to default). */
   @Prop() public trademark?: boolean = true;
+
+  /** Shows marque in special editions */
+  @Prop() public variant?: MarqueVariant = 'default';
 
   /** Adapts sizing of marque. */
   @Prop() public size?: MarqueSize = 'responsive';
@@ -50,7 +54,7 @@ export class Marque {
     warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-wordmark" component instead.');
     attachComponentCss(this.host, getComponentCss, this.size);
 
-    const innerManifest = getInnerManifest(this.trademark);
+    const innerManifest = getInnerManifest(this.variant, this.trademark);
     const mediumMedia = `(min-width: ${breakpoint.l}px)`;
 
     const picture = (
