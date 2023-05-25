@@ -30,9 +30,8 @@
   @use '@porsche-design-system/components-js/styles' as *;
 
   .menu {
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: $pds-spacing-static-small;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
 
     &:hover {
