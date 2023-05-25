@@ -27,7 +27,6 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
-  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -130,7 +129,6 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
-  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -233,7 +231,6 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
-  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -335,7 +332,6 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
-  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -437,7 +433,6 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
-  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -540,7 +535,6 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
-  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -643,6 +637,7 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -789,6 +784,7 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -891,6 +887,7 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -993,6 +990,7 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -1095,6 +1093,7 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -1197,6 +1196,7 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -1298,6 +1298,7 @@ exports[`getComponentCss() should return correct css for disabled: false, native
   z-index: 0 !important;
   cursor: pointer !important;
   padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  border-color: transparent !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
