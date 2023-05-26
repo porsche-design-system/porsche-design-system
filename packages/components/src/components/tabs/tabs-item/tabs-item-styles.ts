@@ -26,6 +26,10 @@ export const getComponentCss = (theme: Theme): string => {
           borderColor: 'transparent',
         },
       }),
+      // make content of tabs-item selectable
+      '::slotted(*)': addImportantToEachRule({
+        position: 'relative',
+      }),
     },
   });
 };
