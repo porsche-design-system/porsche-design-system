@@ -24,6 +24,9 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 }
 :host(:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(*) {
+  position: relative !important;
 }"
 `;
 
@@ -51,5 +54,8 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 :host(:focus:not(:focus-visible))::before {
   border-color: transparent !important;
+}
+::slotted(*) {
+  position: relative !important;
 }"
 `;
