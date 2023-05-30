@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `Toast` allow line breaks within toast message
+
 ### [3.1.0-rc.0] - 2023-05-24
 
 #### Added
