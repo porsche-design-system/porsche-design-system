@@ -68,6 +68,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -310,6 +311,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -551,6 +553,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -628,6 +631,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 .footer {
   background: #FFF;
@@ -715,6 +719,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -796,6 +801,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 .footer {
   background: #0E0E12;
@@ -963,6 +969,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -1040,6 +1047,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 .footer {
   background: #FFF;
@@ -1127,6 +1135,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -1208,6 +1217,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background-repeat: no-repeat;
   background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
 .footer {
   background: #0E0E12;
