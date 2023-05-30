@@ -3285,6 +3285,7 @@ exports[`should render dsr component for PFlyout 1`] = `
   >
     <style>
       :host {
+  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   top: 0 !important;
@@ -3330,15 +3331,13 @@ exports[`should render dsr component for PFlyout 1`] = `
   border-color: #535457;
 }
 .root {
+  color: #010205;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 0;
+  position: relative;
+  margin-left: auto;
   box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: hidden;
   height: 100%;
-  width: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   background: #FFF;
@@ -3349,6 +3348,14 @@ exports[`should render dsr component for PFlyout 1`] = `
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
 }
     </style>
     <div
