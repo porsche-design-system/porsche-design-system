@@ -33,9 +33,9 @@ export const getComponentCss = (theme: Theme): string => {
         },
       }),
       // make content of tabs-item selectable
-      '::slotted(*)': addImportantToRule({
-        position: 'relative',
-      }),
+      '::slotted(*)': {
+        position: addImportantToRule('relative'),
+      },
     },
   });
 };
