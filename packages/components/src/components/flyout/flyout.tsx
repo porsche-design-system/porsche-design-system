@@ -69,7 +69,9 @@ export class Flyout {
     this.updateFocusTrap(isOpen);
 
     if (isOpen) {
-      this.updateFooterShadow();
+      if (this.hasFooter) {
+        this.updateFooterShadow();
+      }
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
     } else {
       this.focusedElBeforeOpen?.focus();
@@ -96,7 +98,9 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
-      this.updateFooterShadow();
+      if (this.hasFooter) {
+        this.updateFooterShadow();
+      }
       // Necessary to select button to make :focus-visible work
       this.dismissBtn.shadowRoot.querySelector('button').focus();
     }
@@ -193,7 +197,9 @@ export class Flyout {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private onScroll = throttle(100, () => {
     if (this.dialog.scrollHeight - this.dialog.clientHeight > 0) {
-      this.updateHeaderShadow();
+      if (this.hasHeader) {
+        this.updateHeaderShadow();
+      }
       if (this.hasFooter) {
         this.updateFooterShadow();
       }
