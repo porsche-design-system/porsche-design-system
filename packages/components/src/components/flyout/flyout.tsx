@@ -69,7 +69,7 @@ export class Flyout {
     this.updateFocusTrap(isOpen);
 
     if (isOpen) {
-      if (this.hasFooter) {
+      if (this.hasSecondaryContent && this.hasFooter) {
         this.updateFooterShadow();
       }
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -98,7 +98,7 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
-      if (this.hasFooter) {
+      if (this.hasSecondaryContent && this.hasFooter) {
         this.updateFooterShadow();
       }
       // Necessary to select button to make :focus-visible work
@@ -156,7 +156,7 @@ export class Flyout {
           })}
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
-          onScroll={this.onScroll}
+          {...(this.hasSecondaryContent && { onScroll: this.onScroll })} // if no secondary content is used scroll shadows are done via CSS
         >
           <div class="header" ref={(el) => (this.header = el)}>
             {this.hasHeader && (

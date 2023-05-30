@@ -38,6 +38,7 @@ export const getComponentCss = (
   const isPositionLeft = position === 'left';
   const translatePosition = isPositionLeft ? '-100%' : '100%';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
+  const shadowColor = theme === 'dark' ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
 
   return getCss({
     '@global': addImportantToEachRule({
@@ -84,7 +85,9 @@ export const getComponentCss = (
       position: 'relative',
       [isPositionLeft ? 'marginRight' : 'marginLeft']: 'auto',
       boxSizing: 'border-box',
-      overflowY: 'auto',
+      ...(hasSecondaryContent && {
+        overflowY: 'auto',
+      }),
       height: '100%',
       minWidth: minWidthDefault,
       maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
@@ -98,6 +101,20 @@ export const getComponentCss = (
     },
     content: {
       padding: contentPadding,
+      // If secondary content is used scroll shadows have to be done via JS
+      ...(!hasSecondaryContent && {
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        backgroundImage: `linear-gradient(to top, ${backgroundColor}, ${backgroundColor}),
+                          linear-gradient(to top, ${backgroundColor}, ${backgroundColor}),
+                          linear-gradient(to top, ${shadowColor}, rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, ${shadowColor}, rgba(255, 255, 255, 0))`,
+        backgroundPosition: 'bottom center, top center, bottom center, top center',
+        backgroundColor,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '100% 20px, 100% 20px, 100% 10px, 100% 10px',
+        backgroundAttachment: 'local, local, scroll, scroll',
+      }),
     },
     ...(hasFooter && {
       footer: {
