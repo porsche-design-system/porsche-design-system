@@ -343,6 +343,7 @@ exports[`should call validateProps() with correct parameters via render for p-ma
   "size": "oneOf",
   "target": "string",
   "trademark": "boolean",
+  "variant": "oneOf",
 }
 `;
 
