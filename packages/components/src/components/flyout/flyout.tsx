@@ -79,7 +79,6 @@ export class Flyout {
   public componentDidLoad(): void {
     // in case flyout is rendered with open prop
     if (this.open) {
-      this.updateFooterShadow();
       setScrollLock(true);
       this.updateFocusTrap(true);
     }
@@ -97,6 +96,7 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
+      this.updateFooterShadow();
       // Necessary to select button to make :focus-visible work
       this.dismissBtn.shadowRoot.querySelector('button').focus();
     }
