@@ -11,6 +11,7 @@
     PCrest,
     PDisplay,
     PDivider,
+    PFlyout,
     PFieldsetWrapper,
     PFlex,
     PFlexItem,
@@ -83,6 +84,10 @@
 
       <div class="playground light playground--modal" title="should render default modal">
         <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+      </div>
+
+      <div class="playground light playground--flyout" title="should render default flyout">
+        <PFlyout :open="true">Some Content</PFlyout>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -592,14 +597,16 @@
   }
 
   .playground--banner,
-  .playground--modal {
+  .playground--modal,
+  .playground--flyout {
     transform: translate3d(0, 0, 0);
     height: 10rem;
     padding: 0;
     margin: 1rem;
   }
 
-  .playground--modal {
+  .playground--modal,
+  .playground--flyout {
     height: 20rem;
   }
 </style>
