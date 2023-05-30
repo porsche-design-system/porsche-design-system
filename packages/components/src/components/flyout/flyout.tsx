@@ -70,7 +70,7 @@ export class Flyout {
 
     if (isOpen) {
       if (this.hasSecondaryContent && this.hasFooter) {
-        this.updateFooterShadow();
+        this.onScroll();
       }
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
     } else {
@@ -99,7 +99,7 @@ export class Flyout {
   public componentDidRender(): void {
     if (this.open) {
       if (this.hasSecondaryContent && this.hasFooter) {
-        this.updateFooterShadow();
+        this.onScroll();
       }
       // Necessary to select button to make :focus-visible work
       this.dismissBtn.shadowRoot.querySelector('button').focus();
