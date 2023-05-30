@@ -110,6 +110,7 @@ export const getComponentCss = (
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100% 20px, 100% 20px, 100% 10px, 100% 10px',
         backgroundAttachment: 'local, local, scroll, scroll',
+        overscrollBehaviorY: 'none',
       }),
     },
     ...(hasFooter && {
