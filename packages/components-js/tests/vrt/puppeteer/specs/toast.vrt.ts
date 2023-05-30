@@ -12,6 +12,12 @@ describe('toast-basic', () => {
   });
 });
 
+describe('toast-line-break', () => {
+  it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
+    expect(await vrtTest(getVisualRegressionTester(viewport), 'toast-line-break', '/#toast-line-break')).toBeFalsy();
+  });
+});
+
 describe('toast-basic-state-neutral', () => {
   it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
     expect(await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/#toast-basic')).toBeFalsy();

@@ -62,6 +62,7 @@ import { ToastBasicPage } from './ToastBasic';
 import { ToastBasicDarkPage } from './ToastBasicDark';
 import { ToastBasicLongTextPage } from './ToastBasicLongText';
 import { ToastBasicStateNeutralPage } from './ToastBasicStateNeutral';
+import { ToastLineBreakPage } from './ToastLineBreak';
 import { ToastOffsetPage } from './ToastOffset';
 import { ToastPrefixedPage } from './ToastPrefixed';
 import { TypographyCyrilPage } from './TypographyCyril';
@@ -315,6 +316,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Toast Basic State Neutral',
     path: '/toast-basic-state-neutral',
     element: <ToastBasicStateNeutralPage />,
+  },
+  {
+    name: 'Toast Line Break',
+    path: '/toast-line-break',
+    element: <ToastLineBreakPage />,
   },
   {
     name: 'Toast Offset',
