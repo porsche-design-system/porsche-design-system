@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Tabs` make content of tab item selectable
+- `Tabs` content of tab item is selectable
   [#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582)
 
 ### [3.1.0-rc.0] - 2023-05-24
