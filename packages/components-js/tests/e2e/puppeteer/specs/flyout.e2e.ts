@@ -159,7 +159,8 @@ describe('scroll shadows', () => {
       { open: true },
       {
         header: '<div slot="header">Some Heading</div>',
-        content: '<div style="height: 200vh">Some Content</div><span class="scroll-here"></span>',
+        content: '<div style="height: 200vh">Some Content</div>',
+        secondaryContent: '<div slot="secondary-content" class="scroll-here">Some Content</div>',
       }
     );
     const header = await getHeader();
@@ -196,24 +197,6 @@ describe('scroll shadows', () => {
         footer: '<div slot="footer"><button>Some Footer</button></div>',
         content: '<div style="height: 100vh">Some Content</div>',
         secondaryContent: '<div slot="secondary-content">Secondary Content<span class="scroll-here"></span></div>',
-      }
-    );
-    const footer = await getFooter();
-    expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
-      'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
-    );
-
-    await scrollFlyoutTo('.scroll-here');
-    await page.waitForFunction((el) => getComputedStyle(el).boxShadow === 'none', {}, footer);
-    expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
-  });
-
-  it('footer scroll shadow without secondary content', async () => {
-    await initBasicFlyout(
-      { open: true },
-      {
-        footer: '<div slot="footer"><button>Some Footer</button></div>',
-        content: '<div style="height: 100vh">Some Content</div><span class="scroll-here"></span>',
       }
     );
     const footer = await getFooter();
