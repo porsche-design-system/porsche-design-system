@@ -1,6 +1,12 @@
 import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getThemedColors, hostHiddenStyles, getInsetJssStyle } from '../../../styles';
+import {
+  addImportantToEachRule,
+  getThemedColors,
+  hostHiddenStyles,
+  getInsetJssStyle,
+  addImportantToRule,
+} from '../../../styles';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (theme: Theme): string => {
@@ -27,7 +33,7 @@ export const getComponentCss = (theme: Theme): string => {
         },
       }),
       // make content of tabs-item selectable
-      '::slotted(*)': addImportantToEachRule({
+      '::slotted(*)': addImportantToRule({
         position: 'relative',
       }),
     },
