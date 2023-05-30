@@ -336,7 +336,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             '$1\nconst hasCustomDropdown = isCustomDropdown(this.props.filter, this.props.native);'
           )
           // Change hasCustomDropdown to use fn instead of prop
-          .replace(/this\.props\.hasCustomDropdown/, 'hasCustomDropdown');
+          .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
