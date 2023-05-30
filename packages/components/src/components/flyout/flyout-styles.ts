@@ -110,7 +110,6 @@ export const getComponentCss = (
                           linear-gradient(to top, ${shadowColor}, rgba(255, 255, 255, 0)),
                           linear-gradient(to bottom, ${shadowColor}, rgba(255, 255, 255, 0))`,
         backgroundPosition: 'bottom center, top center, bottom center, top center',
-        backgroundColor,
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100% 20px, 100% 20px, 100% 10px, 100% 10px',
         backgroundAttachment: 'local, local, scroll, scroll',
