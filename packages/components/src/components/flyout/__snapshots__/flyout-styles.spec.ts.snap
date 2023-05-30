@@ -50,7 +50,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -62,6 +61,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -286,7 +296,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -298,6 +307,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -521,7 +541,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -533,6 +552,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #0E0E12;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -592,7 +622,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -604,6 +633,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 .footer {
   background: #FFF;
@@ -673,7 +713,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -685,6 +724,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -748,7 +798,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -760,6 +809,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #0E0E12;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 .footer {
   background: #0E0E12;
@@ -909,7 +969,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -921,6 +980,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #0E0E12;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -980,7 +1050,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -992,6 +1061,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 .footer {
   background: #FFF;
@@ -1061,7 +1141,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1073,6 +1152,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, #FFF, #FFF),
+                          linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #FFF;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -1136,7 +1226,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
-  overflow-y: auto;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1148,6 +1237,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, #0E0E12, #0E0E12),
+                          linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0)),
+                          linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-color: #0E0E12;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
 }
 .footer {
   background: #0E0E12;
