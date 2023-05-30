@@ -245,7 +245,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSecondaryContent)/g, '$1')
-          .replace(/(?:hasHeader|hasFooter|hasSecondaryContent) =/g, 'const $&');
+          .replace(/(?:hasHeader|hasFooter|hasSecondaryContent) =/g, 'const $&')
+          .replace('// eslint-disable-next-line @typescript-eslint/member-ordering', '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
