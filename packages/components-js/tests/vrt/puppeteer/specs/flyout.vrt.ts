@@ -60,12 +60,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       });
 
       await forceHoverState(page, '.hover p-flyout a');
-      await forceHoverState(page, '.hover p-flyout >>> p-button-pure');
       await forceHoverState(page, '.hover p-flyout >>> p-button-pure >>> button');
       await forceFocusState(page, '.focus p-flyout a');
       await forceFocusState(page, '.focus p-flyout >>> p-button-pure >>> button');
       await forceFocusHoverState(page, '.focus-hover p-flyout a');
-      await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure');
       await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure >>> button');
     })
   ).toBeFalsy();
