@@ -77,7 +77,7 @@ p-flyout {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import {getFlyoutCodeSamples} from "shared/src"; 
+import { getFlyoutCodeSamples } from "@porsche-design-system/shared"; 
 
 @Component
 export default class Code extends Vue {
