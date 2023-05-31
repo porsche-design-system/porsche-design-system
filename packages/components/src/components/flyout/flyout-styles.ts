@@ -1,4 +1,4 @@
-import { getCss, Theme } from '../../utils';
+import { getCss, isThemeDark, Theme } from '../../utils';
 import {
   addImportantToEachRule,
   getInsetJssStyle,
@@ -36,9 +36,8 @@ export const getComponentCss = (
 ): string => {
   const { primaryColor, backgroundColor, contrastHighColor } = getThemedColors(theme);
   const isPositionLeft = position === 'left';
-  const translatePosition = isPositionLeft ? '-100%' : '100%';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
-  const shadowColor = theme === 'dark' ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
+  const shadowColor = isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
 
   return getCss({
     '@global': addImportantToEachRule({
@@ -93,7 +92,7 @@ export const getComponentCss = (
       maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
-      transform: isOpen ? 'initial' : `translate3d(${translatePosition}, 0, 0)`,
+      transform: isOpen ? 'initial' : `translate3d(${isPositionLeft ? '-100%' : '100%'}, 0, 0)`,
       transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
         isOpen ? '0s' : flyoutTransitionDuration
       }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
