@@ -9,8 +9,8 @@ component in various situations.
 
 ### Do:
 
-- Use a Flyout as a temporary workspace that allows users to complete tasks without navigating to a new page
-- Use a Flyout for mobile navigation
+- Use a Flyout as a temporary workspace that allows users to complete tasks without navigating to a new page.
+- Use a Flyout for mobile navigation.
 - Adjust Flyout size and alignment with the grid.
 - Use the sticky header for a descriptive headline & optional sub-headline.
 - Use the sticky footer for a call to action.
@@ -20,7 +20,7 @@ component in various situations.
 
 ### Don't:
 
-- Don't use to many actions in the sticky footer or header
-- Don't put important information in the secondary content slot
+- Don't use to many actions in the sticky footer or header.
+- Don't put important information in the secondary content slot.
 - Don't use fullscreen Flyout's on desktop.
 - Don't launch a Flyout within a Flyout.
