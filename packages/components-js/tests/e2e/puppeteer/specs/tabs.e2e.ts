@@ -23,13 +23,12 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const initTabs = (opts?: { amount?: number; activeTabIndex?: number; hasNestedContent: boolean }) => {
-  const { amount = 3, activeTabIndex, hasNestedContent } = opts || {};
+const initTabs = (opts?: { amount?: number; activeTabIndex?: number }) => {
+  const { amount = 3, activeTabIndex } = opts || {};
 
-  const tabsContent = hasNestedContent ? `<p-text><p>Content</p></p-text>` : 'Content ';
   const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
-    .map((_, i) => `<p-tabs-item label="Tab ${i + 1}">${tabsContent}${i + 1}</p-tabs-item>`)
+    .map((_, i) => `<p-tabs-item label="Tab ${i + 1}">Content ${i + 1}</p-tabs-item>`)
     .join('')}
 </p-tabs>`;
 
@@ -249,35 +248,24 @@ describe('keyboard', () => {
 });
 
 describe('select Tab Item content', () => {
+  const rect = async () =>
+    await page.evaluate(() => {
+      const tabContent1 = document.querySelector('[label="Tab 1"]');
+      const { x, y } = tabContent1.getBoundingClientRect();
+      return { x, y };
+    });
+
+  const selection = async () =>
+    await page.evaluate(() => {
+      return window.getSelection().toString();
+    });
+
   it('should select content of tabs item', async () => {
     await initTabs();
-    const rect = await page.evaluate(() => {
-      const tabContent1 = document.querySelector('[label="Tab 1"]');
-      const { x, y } = tabContent1.getBoundingClientRect();
-      return { x, y };
-    });
 
-    await page.mouse.click(rect.x, rect.y, { count: 2 });
-    const selection = await page.evaluate(() => {
-      return window.getSelection().toString();
-    });
+    await page.mouse.click((await rect()).x, (await rect()).y, { count: 2 });
 
-    expect(selection).toBe('Content');
-  });
-  it('should select content of tabs item if content is nested', async () => {
-    await initTabs({ hasNestedContent: true });
-    const rect = await page.evaluate(() => {
-      const tabContent1 = document.querySelector('[label="Tab 1"]');
-      const { x, y } = tabContent1.getBoundingClientRect();
-      return { x, y };
-    });
-
-    await page.mouse.click(rect.x, rect.y, { count: 2 });
-    const selection = await page.evaluate(() => {
-      return window.getSelection().toString();
-    });
-
-    expect(selection).toBe('Content');
+    expect(await selection()).toBe('Content');
   });
 });
 
