@@ -1,19 +1,14 @@
 import { getCss, isThemeDark, Theme } from '../../utils';
 import {
   addImportantToEachRule,
+  getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../../styles';
-import type { JssStyle } from 'jss';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import {
-  frostedGlassStyle,
-  spacingFluidLarge,
-  spacingStaticMedium,
-  themeDarkBackgroundShading,
-} from '../../../../utilities/projects/utilities';
+import { spacingFluidLarge, spacingStaticMedium } from '../../../../utilities/projects/utilities';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
@@ -54,7 +49,7 @@ export const getComponentCss = (
               transition: `visibility 0s linear ${flyoutTransitionDuration}`,
             }),
         ...getInsetJssStyle(),
-        ...getFrostedGlassBackgroundJssStyles(isOpen),
+        ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration),
         ...hostHiddenStyles,
       },
     }),
@@ -133,28 +128,4 @@ export const getComponentCss = (
       },
     }),
   });
-};
-
-const getFrostedGlassBackgroundJssStyles = (isOpen: boolean): JssStyle => {
-  const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
-  return {
-    '&::before': {
-      content: '""',
-      position: 'fixed',
-      ...getInsetJssStyle(),
-      background: themeDarkBackgroundShading,
-      pointerEvents: 'none',
-      ...(isOpen
-        ? {
-            opacity: 1,
-            ...frostedGlassStyle,
-          }
-        : {
-            opacity: 0,
-            backdropFilter: 'blur(0px)',
-            WebkitBackdropFilter: 'blur(0px)',
-          }),
-      transition: `opacity ${flyoutTransitionDuration} ${transitionTimingFunction}, backdrop-filter ${flyoutTransitionDuration} ${transitionTimingFunction}, --webkit-backdrop-filter ${flyoutTransitionDuration} ${transitionTimingFunction}`,
-    },
-  };
 };
