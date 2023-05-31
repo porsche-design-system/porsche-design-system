@@ -17,5 +17,7 @@
   flyout.addEventListener('dismiss', () => {
     flyout.open = false;
   });
-  document.querySelector('p-button').addEventListener('click', () => (flyout.open = true));
+  document.querySelector('p-button').addEventListener('click', () => {
+    flyout.open = true;
+  });
 </script>
