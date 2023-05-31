@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  createHTMLAttributes,
+  getHTMLAttributes,
   expectA11yToMatchSnapshot,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -59,7 +59,7 @@ const initBasicFlyout = (
   const { header, content = '<p>Some Content</p>', footer, secondaryContent } = flyoutSlots || {};
 
   const flyoutMarkup = `
-    <p-flyout ${createHTMLAttributes(flyoutProps)}>
+    <p-flyout ${getHTMLAttributes(flyoutProps)}>
       ${header ? header : ''}
       ${content}
       ${footer ? footer : ''}

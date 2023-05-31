@@ -398,11 +398,11 @@ export const getOffsetLeft = (element: ElementHandle): Promise<number> => getPro
 export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetWidth');
 
 /**
- * Creates HTML attributes string from an object of properties.
+ * Get HTML attributes string from an object of properties.
  * @param props - The object containing the properties.
- * @returns The generated HTML attributes string.
+ * @returns The HTML attributes string.
  */
-export const createHTMLAttributes = <T extends object>(props: T): string => {
+export const getHTMLAttributes = <T extends object>(props: T): string => {
   return Object.entries(props)
     .filter(([, value]) => value !== undefined)
     .map(([prop, value]) => {
