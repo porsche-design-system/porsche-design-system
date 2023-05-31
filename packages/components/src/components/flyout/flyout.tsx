@@ -10,7 +10,14 @@ import {
 } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
 
-import { attachComponentCss, getPrefixedTagNames, hasNamedSlot, parseAndGetAriaAttributes, THEMES } from '../../utils';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasNamedSlot,
+  parseAndGetAriaAttributes,
+  THEMES,
+} from '../../utils';
 import { AllowedTypes, PropTypes, validateProps } from '../../utils/validation/validateProps';
 import type { SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
@@ -77,6 +84,16 @@ export class Flyout {
       setScrollLock(true);
       this.updateFocusTrap(true);
     }
+
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
+      if (this.open) {
+        // 1 tick delay is needed so that web components can be bootstrapped
+        setTimeout(() => {
+          this.updateFocusTrap(true);
+          this.dismissBtn.shadowRoot.querySelector('button').focus(); // set initial focus
+        });
+      }
+    });
   }
 
   public componentDidRender(): void {
@@ -144,22 +161,22 @@ export class Flyout {
           <div class="header" ref={(el) => (this.header = el)}>
             {this.hasHeader && (
               <div class="header-content">
-                <slot name="header" onSlotchange={this.onSlotchange} />
+                <slot name="header" />
               </div>
             )}
             {dismissBtn}
           </div>
           <div class="content">
-            <slot onSlotchange={this.onSlotchange} />
+            <slot />
           </div>
           {this.hasFooter && (
             <div class="footer" ref={(el) => (this.footer = el)}>
-              <slot name="footer" onSlotchange={this.onSlotchange} />
+              <slot name="footer" />
             </div>
           )}
           {this.hasSecondaryContent && (
             <div class="secondary-content">
-              <slot name="secondary-content" onSlotchange={this.onSlotchange} />
+              <slot name="secondary-content" />
             </div>
           )}
         </div>
@@ -200,16 +217,6 @@ export class Flyout {
       : this.dialog.clientHeight - this.footer.getBoundingClientRect().bottom < FLYOUT_SCROLL_SHADOW_THRESHOLD;
 
     this.footer.style.boxShadow = shouldApplyShadow ? getFlyoutBoxShadow(-5, this.theme) : 'none';
-  };
-
-  private onSlotchange = (): void => {
-    if (this.open) {
-      // 1 tick delay is needed so that web components can be bootstrapped
-      setTimeout(() => {
-        this.updateFocusTrap(true);
-        this.dismissBtn.shadowRoot.querySelector('button').focus(); // set initial focus
-      });
-    }
   };
 
   private dismissFlyout = (): void => {
