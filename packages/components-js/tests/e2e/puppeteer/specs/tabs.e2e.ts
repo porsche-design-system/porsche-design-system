@@ -248,23 +248,18 @@ describe('keyboard', () => {
 });
 
 describe('text selection', () => {
-  const rect = async () =>
-    await page.evaluate(() => {
+  it('should be possible to select text within tabs item', async () => {
+    await initTabs();
+    const tabContentRect = await page.evaluate(() => {
       const tabContent1 = document.querySelector('[label="Tab 1"]');
       const { x, y } = tabContent1.getBoundingClientRect();
       return { x, y };
     });
-
-  const selection = async () =>
-    await page.evaluate(() => {
+    await page.mouse.click(tabContentRect.x, tabContentRect.y, { count: 2 });
+    const selection = await page.evaluate(() => {
       return window.getSelection().toString();
     });
-  it('should be possible to select text within tabs item', async () => {
-    await initTabs();
-
-    await page.mouse.click((await rect()).x, (await rect()).y, { count: 2 });
-
-    expect(await selection()).toBe('Content');
+    expect(selection).toBe('Content');
   });
 });
 
