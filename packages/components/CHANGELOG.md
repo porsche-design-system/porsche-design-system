@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Select Wrapper` missing border on touch devices [#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579)
 - `Modal` scrollable modal does not jump to top on changes in react
   ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
 
