@@ -248,8 +248,8 @@ describe('keyboard', () => {
   });
 });
 
-describe('select Tab Item content', () => {
-  it('should select content of tabs item', async () => {
+describe('text selection', () => {
+  it('should be possible to select text within tabs item', async () => {
     await initTabs();
     const rect = await page.evaluate(() => {
       const tabContent1 = document.querySelector('[label="Tab 1"]');
@@ -264,7 +264,8 @@ describe('select Tab Item content', () => {
 
     expect(selection).toBe('Content');
   });
-  it('should select content of tabs item if content is nested', async () => {
+
+  it('should be possible to select nested text within tabs item', async () => {
     await initTabs({ hasNestedContent: true });
     const rect = await page.evaluate(() => {
       const tabContent1 = document.querySelector('[label="Tab 1"]');
