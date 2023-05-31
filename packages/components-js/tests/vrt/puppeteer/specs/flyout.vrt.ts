@@ -43,7 +43,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetMarkup = () => `
         <p-flyout open="true">
-          <div slot="heading">
+          <div slot="header">
             Some slotted heading
             <span>
               and some slotted, deeply nested <a href="#">anchor</a>.
