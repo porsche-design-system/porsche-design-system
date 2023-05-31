@@ -45,8 +45,15 @@ export const getComponentCss = (
         display: 'flex',
         position: 'fixed',
         zIndex: FLYOUT_Z_INDEX,
+        ...(isOpen
+          ? {
+              visibility: 'inherit',
+            }
+          : {
+              visibility: 'hidden',
+              transition: `visibility 0s linear ${flyoutTransitionDuration}`,
+            }),
         ...getInsetJssStyle(),
-        ...getVisibilityJssStyles(isOpen),
         ...getFrostedGlassBackgroundJssStyles(isOpen),
         ...hostHiddenStyles,
       },
@@ -127,16 +134,6 @@ export const getComponentCss = (
     }),
   });
 };
-
-const getVisibilityJssStyles = (isOpen: boolean): JssStyle =>
-  isOpen
-    ? {
-        visibility: 'inherit',
-      }
-    : {
-        visibility: 'hidden',
-        transition: `visibility 0s linear ${flyoutTransitionDuration}`,
-      };
 
 const getFrostedGlassBackgroundJssStyles = (isOpen: boolean): JssStyle => {
   const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
