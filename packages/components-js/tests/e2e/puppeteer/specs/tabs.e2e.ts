@@ -247,7 +247,7 @@ describe('keyboard', () => {
   });
 });
 
-describe('select Tab Item content', () => {
+describe('text selection', () => {
   const rect = async () =>
     await page.evaluate(() => {
       const tabContent1 = document.querySelector('[label="Tab 1"]');
@@ -259,8 +259,7 @@ describe('select Tab Item content', () => {
     await page.evaluate(() => {
       return window.getSelection().toString();
     });
-
-  it('should select content of tabs item', async () => {
+  it('should be possible to select text within tabs item', async () => {
     await initTabs();
 
     await page.mouse.click((await rect()).x, (await rect()).y, { count: 2 });
