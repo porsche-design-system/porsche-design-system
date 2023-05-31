@@ -23,12 +23,13 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const initTabs = (opts?: { amount?: number; activeTabIndex?: number }) => {
-  const { amount = 3, activeTabIndex } = opts || {};
+const initTabs = (opts?: { amount?: number; activeTabIndex?: number; hasNestedContent: boolean }) => {
+  const { amount = 3, activeTabIndex, hasNestedContent } = opts || {};
 
+  const tabsContent = hasNestedContent ? `<p-text><p>Content</p></p-text>` : 'Content ';
   const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
-    .map((_, i) => `<p-tabs-item label="Tab ${i + 1}">Content ${i + 1}</p-tabs-item>`)
+    .map((_, i) => `<p-tabs-item label="Tab ${i + 1}">${tabsContent}${i + 1}</p-tabs-item>`)
     .join('')}
 </p-tabs>`;
 
@@ -244,6 +245,39 @@ describe('keyboard', () => {
 
     expect(await isElementAtIndexFocused(page, 0)).toBeTruthy();
     expect(await isElementAtIndexFocused(page, 1)).toBeFalsy();
+  });
+});
+
+describe('select Tab Item content', () => {
+  it('should select content of tabs item', async () => {
+    await initTabs();
+    const rect = await page.evaluate(() => {
+      const tabContent1 = document.querySelector('[label="Tab 1"]');
+      const { x, y } = tabContent1.getBoundingClientRect();
+      return { x, y };
+    });
+
+    await page.mouse.click(rect.x, rect.y, { count: 2 });
+    const selection = await page.evaluate(() => {
+      return window.getSelection().toString();
+    });
+
+    expect(selection).toBe('Content');
+  });
+  it('should select content of tabs item if content is nested', async () => {
+    await initTabs({ hasNestedContent: true });
+    const rect = await page.evaluate(() => {
+      const tabContent1 = document.querySelector('[label="Tab 1"]');
+      const { x, y } = tabContent1.getBoundingClientRect();
+      return { x, y };
+    });
+
+    await page.mouse.click(rect.x, rect.y, { count: 2 });
+    const selection = await page.evaluate(() => {
+      return window.getSelection().toString();
+    });
+
+    expect(selection).toBe('Content');
   });
 });
 
