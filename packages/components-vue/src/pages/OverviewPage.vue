@@ -87,7 +87,12 @@
       </div>
 
       <div class="playground light playground--flyout" title="should render default flyout">
-        <PFlyout :open="true">Some Content</PFlyout>
+        <PFlyout :open="true">
+          <span slot="header">Sticky Header</span>
+          Some Content
+          <span slot="footer">Sticky Footer</span>
+          <span slot="secondary-content">Some Secondary Content</span>
+        </PFlyout>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -342,7 +347,12 @@
         </div>
 
         <div class="playground light playground--flyout" title="should render default flyout with custom prefix">
-          <PFlyout :open="true">Some Content</PFlyout>
+          <PFlyout :open="true">
+            <span slot="header">Sticky Header</span>
+            Some Content
+            <span slot="footer">Sticky Footer</span>
+            <span slot="secondary-content">Some Secondary Content</span>
+          </PFlyout>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
