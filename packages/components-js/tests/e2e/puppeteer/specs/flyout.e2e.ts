@@ -18,7 +18,6 @@ import {
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
 import { Components } from '@porsche-design-system/components';
-import PFlyout = Components.PFlyout;
 
 let page: Page;
 const CSS_TRANSITION_DURATION = 600;
@@ -46,7 +45,7 @@ const waitForFlyoutTransition = async () => {
 const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
 const initBasicFlyout = (
-  flyoutProps: PFlyout = {
+  flyoutProps: Components.PFlyout = {
     open: true,
   },
   flyoutSlots?: {
