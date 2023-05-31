@@ -60,7 +60,7 @@ Make sure to set the `aria` property with a descriptive `aria-label` value when 
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExample" :markup="widthPositionMarkup" :config="config"></Playground>
+<Playground :frameworkMarkup="codeExample" :markup="slottedMarkup" :config="config"></Playground>
 
 ## Custom styling
 
