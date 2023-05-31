@@ -2944,6 +2944,7 @@ exports[`should match snapshot 1`] = `
       "message": "string",
       "showCharacterCount": "boolean",
       "showCounter": "boolean",
+      "showPasswordToggle": "boolean",
       "state": [
         "none",
         "error",
@@ -2999,6 +3000,7 @@ exports[`should match snapshot 1`] = `
       "message": null,
       "showCharacterCount": null,
       "showCounter": true,
+      "showPasswordToggle": true,
       "state": "none",
       "theme": "light",
       "unit": null,

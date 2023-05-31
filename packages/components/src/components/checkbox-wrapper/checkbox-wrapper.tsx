@@ -51,7 +51,7 @@ export class CheckboxWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Disables the checkbox and shows a loading indicator. */
+  /** __Experimental__: Disables the checkbox and shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
   /** Adapts the color depending on the theme. */
