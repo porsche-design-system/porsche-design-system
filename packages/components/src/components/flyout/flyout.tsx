@@ -19,7 +19,7 @@ import {
   THEMES,
 } from '../../utils';
 import { AllowedTypes, PropTypes, validateProps } from '../../utils/validation/validateProps';
-import { SelectedAriaAttributes, Theme } from '../../types';
+import type { SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
 import { setFocusTrap } from '../../utils/focusTrap';
 import { setScrollLock } from '../../utils/scrollLock';
