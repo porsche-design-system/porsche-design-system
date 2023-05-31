@@ -56,10 +56,16 @@ export const getComponentCss = (
     }),
     header: {
       display: 'flex',
+      ...(hasHeader && {
+        flexDirection: 'row-reverse',
+      }),
       justifyContent: 'flex-end',
       background: backgroundColor,
       position: 'sticky',
       top: 0,
+      '&--shadow': {
+        boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px 5px 10px`,
+      },
     },
     ...(hasHeader && {
       'header-content': {
@@ -121,6 +127,9 @@ export const getComponentCss = (
         padding: contentPadding,
         position: 'sticky',
         bottom: 0,
+        '&--shadow': {
+          boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px -5px 10px`,
+        },
       },
     }),
     ...(hasSecondaryContent && {

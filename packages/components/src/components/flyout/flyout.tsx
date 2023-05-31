@@ -6,7 +6,6 @@ import {
   FLYOUT_SCROLL_SHADOW_THRESHOLD,
   FlyoutAriaAttribute,
   FlyoutPosition,
-  getFlyoutBoxShadow,
 } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
 
@@ -59,6 +58,7 @@ export class Flyout {
   private dismissBtn: HTMLElement;
   private header: HTMLElement;
   private footer: HTMLElement;
+  private secondaryContent: HTMLElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSecondaryContent: boolean;
@@ -159,12 +159,12 @@ export class Flyout {
           {...(this.hasSecondaryContent && { onScroll: this.onScroll })} // if no secondary content is used scroll shadows are done via CSS
         >
           <div class="header" ref={(el) => (this.header = el)}>
+            {dismissBtn}
             {this.hasHeader && (
               <div class="header-content">
                 <slot name="header" />
               </div>
             )}
-            {dismissBtn}
           </div>
           <div class="content">
             <slot />
@@ -175,7 +175,7 @@ export class Flyout {
             </div>
           )}
           {this.hasSecondaryContent && (
-            <div class="secondary-content">
+            <div class="secondary-content" ref={(el) => (this.secondaryContent = el)}>
               <slot name="secondary-content" />
             </div>
           )}
@@ -191,7 +191,7 @@ export class Flyout {
   };
 
   private updateFocusTrap = (isOpen: boolean): void => {
-    setFocusTrap(this.host, isOpen, null, this.dismissFlyout);
+    setFocusTrap(this.host, isOpen, this.dismissBtn, this.dismissFlyout);
   };
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -207,16 +207,20 @@ export class Flyout {
   });
 
   private updateHeaderShadow = (): void => {
-    this.header.style.boxShadow =
-      this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD ? getFlyoutBoxShadow(5, this.theme) : 'none';
+    if (this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD) {
+      this.header.classList.add('header--shadow');
+    } else {
+      this.header.classList.remove('header--shadow');
+    }
   };
 
   private updateFooterShadow = (): void => {
-    const shouldApplyShadow = !this.hasSecondaryContent
-      ? this.dialog.scrollHeight - FLYOUT_SCROLL_SHADOW_THRESHOLD > this.dialog.scrollTop + this.dialog.clientHeight
-      : this.dialog.clientHeight - this.footer.getBoundingClientRect().bottom < FLYOUT_SCROLL_SHADOW_THRESHOLD;
-
-    this.footer.style.boxShadow = shouldApplyShadow ? getFlyoutBoxShadow(-5, this.theme) : 'none';
+    const shouldApplyShadow = this.secondaryContent.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
+    if (shouldApplyShadow) {
+      this.footer.classList.add('footer--shadow');
+    } else {
+      this.footer.classList.remove('footer--shadow');
+    }
   };
 
   private dismissFlyout = (): void => {
