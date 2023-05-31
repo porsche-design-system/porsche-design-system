@@ -3,6 +3,7 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '
 import {
   AllowedTypes,
   attachComponentCss,
+  deepEqual,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
@@ -105,14 +106,22 @@ export class Modal {
   }
 
   public componentDidRender(): void {
-    // fix scroll to top bug in react #2569 (useState hook within modal causes rerender of modal)
-    if (this.open && !this.host.contains(document.activeElement)) {
-      // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed, although it shouldn't
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => (this.host.scrollTop = 0), i * 5);
-      }
-      this.dialog.focus(); // needs to happen after render
+    // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed, although it shouldn't
+    for (let i = 0; i < 4; i++) {
+      setTimeout(() => (this.host.scrollTop = 0), i * 5);
     }
+    this.dialog.focus(); // needs to happen after render
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Modal>, 'fullscreen'>
+  ): boolean {
+    if (propertyName === 'fullscreen' && deepEqual(_newVal, _oldVal)) {
+      return false;
+    }
+    return true;
   }
 
   public disconnectedCallback(): void {
