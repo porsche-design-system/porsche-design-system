@@ -1,4 +1,4 @@
-import { Theme } from '../../utils';
+import { isThemeDark, Theme } from '../../utils';
 import { flyoutBoxShadowColor, flyoutBoxShadowColorDark } from './flyout-styles';
 
 export const FLYOUT_POSITIONS = ['left', 'right'] as const;
@@ -11,4 +11,4 @@ export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 export const FLYOUT_SCROLL_SHADOW_THRESHOLD = 10;
 
 export const getFlyoutBoxShadow = (offsetY: number, theme: Theme): string =>
-  `${theme === 'dark' ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px ${offsetY}px 10px`;
+  `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px ${offsetY}px 10px`;
