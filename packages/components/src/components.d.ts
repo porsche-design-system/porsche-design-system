@@ -1521,7 +1521,7 @@ export namespace Components {
          */
         "showCounter"?: boolean;
         /**
-          * __Experimental__: Show or hide password toggle for input type="password".
+          * __Experimental__: Show or hide password toggle for `input type="password"`.
          */
         "showPasswordToggle"?: boolean;
         /**
@@ -3660,7 +3660,7 @@ declare namespace LocalJSX {
          */
         "showCounter"?: boolean;
         /**
-          * __Experimental__: Show or hide password toggle for input type="password".
+          * __Experimental__: Show or hide password toggle for `input type="password"`.
          */
         "showPasswordToggle"?: boolean;
         /**
