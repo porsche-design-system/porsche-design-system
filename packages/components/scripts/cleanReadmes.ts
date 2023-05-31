@@ -101,7 +101,7 @@ const fixBreakpointCustomizable = (str: string): string => {
 
   if (breakpointCustomizableTypes.length) {
     breakpointCustomizableTypes.push(
-      'type BreakpointCustomizable<T> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }'
+      'type BreakpointCustomizable<T> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; xxl?: T; }'
     );
     str = str.replace(
       /## Properties/,
