@@ -2,9 +2,9 @@ import { isTouchDevice } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 
 export const DROPDOWN_DIRECTIONS_INTERNAL = ['down', 'up'] as const;
-export type DropdownDirectionInternal = typeof DROPDOWN_DIRECTIONS_INTERNAL[number];
+export type DropdownDirectionInternal = (typeof DROPDOWN_DIRECTIONS_INTERNAL)[number];
 export const DROPDOWN_DIRECTIONS = [...DROPDOWN_DIRECTIONS_INTERNAL, 'auto'] as const;
-export type SelectWrapperDropdownDirection = typeof DROPDOWN_DIRECTIONS[number];
+export type SelectWrapperDropdownDirection = (typeof DROPDOWN_DIRECTIONS)[number];
 
 export type SelectWrapperState = FormState;
 

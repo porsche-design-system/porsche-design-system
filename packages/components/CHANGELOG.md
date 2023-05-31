@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Select Wrapper` missing border on touch devices [#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579)
 - `Tabs Item` text content can be selected/highlighted
   [#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582)
 
