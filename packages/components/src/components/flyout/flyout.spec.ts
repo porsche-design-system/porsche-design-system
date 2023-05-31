@@ -32,7 +32,7 @@ describe('flyout', () => {
       component.open = true;
       component.componentDidLoad();
 
-      expect(utilsSpy).toBeCalledWith(component.host, true, null, component['dismissFlyout']);
+      expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissFlyout']);
     });
 
     it('should call setScrollLock() with correct parameters if flyout is open', () => {
