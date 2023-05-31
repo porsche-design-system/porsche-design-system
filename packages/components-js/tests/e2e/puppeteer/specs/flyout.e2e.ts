@@ -56,14 +56,14 @@ const initBasicFlyout = (
     secondaryContent?: string;
   }
 ): Promise<void> => {
-  const { header, content = '<p>Some Content</p>', footer, secondaryContent } = flyoutSlots || {};
+  const { header = '', content = '<p>Some Content</p>', footer = '', secondaryContent = '' } = flyoutSlots || {};
 
   const flyoutMarkup = `
     <p-flyout ${getHTMLAttributes(flyoutProps)}>
-      ${header ? header : ''}
+      ${header}
       ${content}
-      ${footer ? footer : ''}
-      ${secondaryContent ? secondaryContent : ''}
+      ${footer}
+      ${secondaryContent}
     </p-flyout>`;
 
   return setContentWithDesignSystem(page, flyoutMarkup);
