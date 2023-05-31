@@ -29,13 +29,13 @@ In order to find the right notification type for your use case, we have defined 
 
 ## z-index in descending order
 
-| Component | z-index              |
-| --------- | -------------------- |
-| Toast     | {{zIndexes.toast}}   |
-| Modal     | {{zIndexes.modal}}   |
-| Flyout    | {{zIndexes.flyout}}  |
-| Popover   | {{zIndexes.popover}} |
-| Banner    | {{zIndexes.banner}}  |
+| Component                                                                            | z-index              |
+| ------------------------------------------------------------------------------------ | -------------------- |
+| Toast                                                                                | {{zIndexes.toast}}   |
+| Modal                                                                                | {{zIndexes.modal}}   |
+| Flyout                                                                               | {{zIndexes.flyout}}  |
+| Popover <p-popover ref="popover">Start the live demo to see it in action</p-popover> | {{zIndexes.popover}} |
+| Banner                                                                               | {{zIndexes.banner}}  |
 
 <p-button v-on:click="startDemo()">Start Live Demo</p-button>
 
@@ -47,6 +47,12 @@ In order to find the right notification type for your use case, we have defined 
   <p-modal ref="modal" heading="Some Heading" :open="isModalOpen">
     <p-text>Some Content</p-text>
   </p-modal>
+</div>
+
+<div>  
+  <p-flyout ref="flyout" :open="isFlyoutOpen">
+    <p-text>Some Content</p-text>
+  </p-flyout>
 </div>
 
 ## References
@@ -78,6 +84,7 @@ import {
 @Component
 export default class Code extends Vue {
   isModalOpen = false;
+  isFlyoutOpen = false;
   isBannerOpen = false;
   toastCounter = 1;
 
@@ -90,14 +97,16 @@ export default class Code extends Vue {
   };
 
   mounted() {
-    this.$refs.modal.addEventListener('close', () => this.isModalOpen = false);
+    this.$refs.modal.addEventListener('dismiss', () => this.isModalOpen = false);
+    this.$refs.flyout.addEventListener('dismiss', () => this.isFlyoutOpen = false);
   }
 
-  /** TODO: Add popover and flyout */ 
   startDemo() {
+    this.$refs.popover.shadowRoot.querySelector('button').click();
     this.$refs.toast.addMessage({ text: `Some message ${this.toastCounter}`});
     this.toastCounter++;
     this.isModalOpen = true;
+    this.isFlyoutOpen = true; 
     if(!this.isBannerOpen){    
       this.openBanner();
     }
