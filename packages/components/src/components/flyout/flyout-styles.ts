@@ -6,7 +6,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../../styles';
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 import { FLYOUT_Z_INDEX } from '../../constants';
 import {
   frostedGlassStyle,
@@ -14,7 +14,7 @@ import {
   spacingStaticMedium,
   themeDarkBackgroundShading,
 } from '../../../../utilities/projects/utilities';
-import { FlyoutPosition } from './flyout-utils';
+import type { FlyoutPosition } from './flyout-utils';
 
 export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
 export const flyoutBoxShadowColorDark = 'rgba(0, 0, 0, 0.6)';
