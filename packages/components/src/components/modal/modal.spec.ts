@@ -3,7 +3,7 @@ import * as modalUtils from './modal-utils';
 import * as focusTrapUtils from '../../utils/focusTrap';
 import * as scrollLock from '../../utils/scrollLock';
 import * as domUtils from '../../utils/dom';
-import { FirstAndLastFocusableElement } from '../../utils/focusTrap';
+import type { FirstAndLastFocusableElement } from '../../utils/focusTrap';
 
 jest.mock('../../utils/dom');
 
