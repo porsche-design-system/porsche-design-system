@@ -29,7 +29,8 @@ export const getComponentCss = (
   hasSecondaryContent: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, backgroundColor, contrastHighColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor } = getThemedColors(theme);
+  const { contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
   const isPositionLeft = position === 'left';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
   const shadowColor = isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
@@ -74,8 +75,8 @@ export const getComponentCss = (
       background: backgroundColor,
       ...hoverMediaQuery({
         '&:hover': {
-          background: contrastHighColor,
-          borderColor: contrastHighColor,
+          background: darkThemeContrastHighColor,
+          borderColor: darkThemeContrastHighColor,
         },
       }),
     },
