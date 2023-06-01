@@ -12,7 +12,7 @@ component in various situations.
 - Use a Flyout as a temporary workspace that allows users to complete tasks without navigating to a new page.
 - Use a Flyout for mobile navigation.
 - Adjust Flyout size and alignment with the grid.
-- Use the sticky header for a descriptive headline & optional sub-headline.
+- Use the sticky header for a descriptive heading & optional sub-heading.
 - Use the sticky footer for a call to action.
 - Use the secondary content slot for additional or less important information such as legals or faqs.
 - Follow button order and positioning guidelines.
