@@ -60,7 +60,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -149,7 +149,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -233,7 +233,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -319,7 +319,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   opacity: 0;
   transform: translate3d(100%, 0, 0);
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -408,7 +408,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   opacity: 0;
   transform: translate3d(100%, 0, 0);
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -492,7 +492,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   opacity: 0;
   transform: translate3d(100%, 0, 0);
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -577,7 +577,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -658,7 +658,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -753,7 +753,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -839,7 +839,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -936,7 +936,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -1021,7 +1021,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -1102,7 +1102,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -1197,7 +1197,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -1283,7 +1283,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -1380,7 +1380,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   opacity: 1;
   transform: initial;
   transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
