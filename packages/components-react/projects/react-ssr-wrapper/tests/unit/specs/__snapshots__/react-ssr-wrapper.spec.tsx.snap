@@ -3319,6 +3319,9 @@ exports[`should render dsr component for PFlyout 1`] = `
   position: sticky;
   top: 0;
 }
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
+}
 .dismiss {
   margin: 16px;
   height: fit-content;
