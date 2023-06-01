@@ -160,6 +160,18 @@ type CarouselInternationalization = {
 
 <Playground :markup="internationalization" :config="config"></Playground>
 
+## Skip Carousel Entries
+
+Through the `skip-link-target` property, a skip link for keyboard users can be provided to give the possibility to skip
+over all carousel entries. The skip link is only visible when it receives focus from the keyboard.
+
+### <A11yIcon></A11yIcon> Accessibility hints
+
+- The target of the skip link should point to the next heading or element right after the carousel
+- Use the `skip-link-target` property if you have >5 carousel items
+
+<Playground :markup="skip" :config="config"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -269,6 +281,11 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>
 `;
+
+skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/carousel/examples#target">
+  ${this.getSlides(4)}
+</p-carousel>
+<p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
 }
 </script>
 
