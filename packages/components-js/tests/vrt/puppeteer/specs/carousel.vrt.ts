@@ -41,7 +41,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         .join('');
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
-        <p-carousel theme="${theme}">
+        <p-carousel theme="${theme}" skip-link-target="#target">
           <h2 slot="heading">
             Slotted heading
             <span>
@@ -62,8 +62,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await forceHoverState(page, '.hover p-carousel >>> p-button-pure >>> button');
       await forceHoverState(page, '.hover p-carousel span a');
       await forceFocusState(page, '.focus p-carousel >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-carousel >>> p-link-pure >>> button');
       await forceFocusState(page, '.focus p-carousel span a');
       await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-button-pure >>> button');
+      await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-link-pure >>> button');
       await forceFocusHoverState(page, '.focus-hover p-carousel span a');
     })
   ).toBeFalsy();
