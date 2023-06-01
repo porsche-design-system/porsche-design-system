@@ -1240,7 +1240,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}:host::before{content:"" !important;position:absolute !important;top:-4px !important;left:-4px !important;right:-4px !important;bottom:-4px !important}
+        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -1254,7 +1254,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}:host::before{content:"" !important;position:absolute !important;top:-4px !important;left:-4px !important;right:-4px !important;bottom:-4px !important}
+        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -7737,14 +7737,6 @@ exports[`should render dsr component for PTabsItem 1`] = `
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
 }
     </style>
     <slot />

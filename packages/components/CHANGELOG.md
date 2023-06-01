@@ -9,6 +9,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- **[EXPERIMENTAL]** Prop `showPasswordToggle` for `Text Field Wrapper` with `input type="password"`
+  ([#2586](https://github.com/porsche-design-system/porsche-design-system/pull/2586))
+
+#### Fixed
+
+- `Select Wrapper` missing border on touch devices [#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579)
+- `Tabs Item` text content can be selected/highlighted
+  [#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582)
+
 ### [3.1.0-rc.0] - 2023-05-24
 
 #### Added

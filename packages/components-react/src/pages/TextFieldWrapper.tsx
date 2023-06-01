@@ -281,6 +281,9 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <PTextFieldWrapper label="Type password readonly">
           <input type="password" defaultValue="some password" readOnly />
         </PTextFieldWrapper>
+        <PTextFieldWrapper label="Type password showPasswordToggle=false" showPasswordToggle={false}>
+          <input type="password" defaultValue="some password" />
+        </PTextFieldWrapper>
         <PTextFieldWrapper label="Type password long text" style={{ maxWidth: '15rem' }}>
           <input
             type="password"
@@ -298,6 +301,9 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </PTextFieldWrapper>
         <PTextFieldWrapper label="Type password readonly" theme="dark">
           <input type="password" defaultValue="some password" readOnly />
+        </PTextFieldWrapper>
+        <PTextFieldWrapper label="Type password showPasswordToggle=false" showPasswordToggle={false} theme="dark">
+          <input type="password" defaultValue="some password" />
         </PTextFieldWrapper>
         <PTextFieldWrapper label="Type password long text" style={{ maxWidth: '15rem' }} theme="dark">
           <input

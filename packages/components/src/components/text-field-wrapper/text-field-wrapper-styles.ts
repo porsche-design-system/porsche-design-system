@@ -47,6 +47,7 @@ export const getComponentCss = (
   hasUnitOrVisibleCounter: boolean,
   unitPosition: TextFieldWrapperUnitPosition,
   inputType: string,
+  showPasswordToggle: boolean,
   isWithinForm: boolean,
   theme: Theme
 ): string => {
@@ -56,7 +57,7 @@ export const getComponentCss = (
   const isNumber = isType(inputType, 'number');
   const isCalendar = isType(inputType, 'date') || isType(inputType, 'week') || isType(inputType, 'month');
   const isTime = isType(inputType, 'time');
-  const isSearchOrPassword = isSearch || isPassword;
+  const isSearchOrPassword = isSearch || (isPassword && showPasswordToggle);
   const isSearchWithoutForm = isSearch && !isWithinForm;
   const isSearchWithForm = isSearch && isWithinForm;
   const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
