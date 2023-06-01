@@ -3,12 +3,12 @@
   import { provide } from 'vue';
   import { prefixInjectionKey } from './utils';
 
-  const props = withDefaults(defineProps<{ prefix?: string }>(), {
+  const { prefix } = withDefaults(defineProps<{ prefix?: string }>(), {
     prefix: '',
   });
 
-  load({ prefix: props.prefix });
-  provide(prefixInjectionKey, props.prefix);
+  load({ prefix });
+  provide(prefixInjectionKey, prefix);
 </script>
 
 <template><slot /></template>
