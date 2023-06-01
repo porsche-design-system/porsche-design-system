@@ -75,7 +75,7 @@
     "@playwright/test": "1.34.3",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^20.2.3",
+    "@types/node": "^20.2.5",
     "concurrently": "^8.1.0",
     "devtools-protocol": "^0.0.1151065",
     "globby": "^11.0.4",
@@ -86,7 +86,7 @@
     "ts-node": "^10.9.1",
     "typescript": "~5.0.4",
     "webpack": "^5.85.0",
-    "webpack-bundle-analyzer": "^4.8.0",
+    "webpack-bundle-analyzer": "^4.9.0",
     "webpack-cli": "^5.1.1"
   }
 }
