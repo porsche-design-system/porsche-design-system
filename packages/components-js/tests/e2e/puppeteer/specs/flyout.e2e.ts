@@ -333,13 +333,15 @@ describe('focus behavior', () => {
 
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-header');
+    await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-content');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-secondary-content');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-header');
+    await expectDismissButtonToBeFocused();
   });
 
   it('should not allow focusing element behind of flyout when pressing Tab', async () => {
@@ -414,9 +416,9 @@ describe('after content change', () => {
     await expectDismissButtonToBeFocused('initially');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-content');
+    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-header');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-footer');
+    expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content');
 
     const host = await getHost();
     await host.evaluate((el) => {
@@ -434,7 +436,7 @@ describe('after content change', () => {
     await openFlyout();
     await expectDismissButtonToBeFocused('initially');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-content');
+    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-header');
 
     const host = await getHost();
     await host.evaluate((el) => {
@@ -465,13 +467,15 @@ describe('after content change', () => {
     await expectDismissButtonToBeFocused('after button appended');
 
     await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-header');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-content');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-new');
     await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-secondary-content');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-header');
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('finally');
   });
@@ -484,13 +488,13 @@ describe('can be controlled via keyboard', () => {
     await expectDismissButtonToBeFocused('initially');
 
     await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-header');
+    await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-content');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-secondary-content');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-header');
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('finally');
   });
@@ -502,13 +506,13 @@ describe('can be controlled via keyboard', () => {
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-header');
-    await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-secondary-content');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-content');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-header');
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('finally');
     await page.keyboard.up('ShiftLeft');
