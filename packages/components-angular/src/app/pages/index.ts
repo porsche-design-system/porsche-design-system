@@ -55,6 +55,7 @@ import { LinkTileComponent } from './link-tile.component';
 import { LinkTileModelSignatureComponent } from './link-tile-model-signature.component';
 import { MarqueComponent } from './marque.component';
 import { ModalComponent } from './modal.component';
+import { ModalChangeContentComponent } from './modal-change-content.component';
 import { ModelSignatureComponent } from './model-signature.component';
 import { OverviewComponent } from './overview.component';
 import { OverviewFlakyComponent } from './overview-flaky.component';
@@ -117,6 +118,7 @@ export const generatedPages = [
   LinkTileModelSignatureComponent,
   MarqueComponent,
   ModalComponent,
+  ModalChangeContentComponent,
   ModelSignatureComponent,
   OverviewComponent,
   OverviewFlakyComponent,
@@ -286,6 +288,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal',
     path: 'modal',
     component: ModalComponent,
+  },
+  {
+    name: 'Modal Change Content',
+    path: 'modal-change-content',
+    component: ModalChangeContentComponent,
   },
   {
     name: 'Model Signature',

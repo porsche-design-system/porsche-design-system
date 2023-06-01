@@ -40,6 +40,7 @@ import { LinkTilePage } from './LinkTile';
 import { LinkTileModelSignaturePage } from './LinkTileModelSignature';
 import { MarquePage } from './Marque';
 import { ModalPage } from './Modal';
+import { ModalChangeContentPage } from './ModalChangeContent';
 import { ModelSignaturePage } from './ModelSignature';
 import { PaginationPage } from './Pagination';
 import { PopoverPage } from './Popover';
@@ -205,6 +206,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal',
     path: '/modal',
     element: <ModalPage />,
+  },
+  {
+    name: 'Modal Change Content',
+    path: '/modal-change-content',
+    element: <ModalChangeContentPage />,
   },
   {
     name: 'Model Signature',

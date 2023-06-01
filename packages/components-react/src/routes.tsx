@@ -112,11 +112,6 @@ export const routes: RouteType[] = [
     element: <fromExamples.ModalExampleAccessibilityPage />,
   },
   {
-    name: 'Modal Example Change Content',
-    path: '/modal-example-change-content',
-    element: <fromExamples.ModalExampleChangeContentPage />,
-  },
-  {
     name: 'Scroller Example',
     path: '/scroller-example',
     element: <fromExamples.ScrollerExamplePage />,

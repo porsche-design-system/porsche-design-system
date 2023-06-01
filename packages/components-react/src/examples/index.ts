@@ -6,7 +6,6 @@ export * from './CarouselExampleJumpToSlide';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './ModalExampleAccessibility';
-export * from './ModalExampleChangeContent';
 export * from './ScrollerExample';
 export * from './SegmentedControlExample';
 export * from './StepperHorizontalExample';
