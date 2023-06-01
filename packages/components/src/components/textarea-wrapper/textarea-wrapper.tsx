@@ -15,8 +15,9 @@ import {
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
+  validatePropChange,
   validateProps,
-  warnIfDeprecatedPropIsUsed
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
@@ -101,6 +102,14 @@ export class TextareaWrapper {
       message: this.message || this.description,
       state: this.state,
     });
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof TextareaWrapper>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

@@ -10,6 +10,7 @@ import {
   setAttribute,
   THEMES,
   unobserveChildren,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
@@ -85,6 +86,14 @@ export class Tabs {
 
   public componentDidLoad(): void {
     this.setAccessibilityAttributes();
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Tabs>, 'size'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
   }
 
   public componentDidUpdate(): void {

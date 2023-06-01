@@ -63,17 +63,6 @@ describe('modal', () => {
     });
   });
 
-  describe('componentShouldUpdate', () => {
-    it('should call validatePropChange() with correct parameters', () => {
-      const component = new Modal();
-      const spy = jest.spyOn(validatePropChangeUtils, 'validatePropChange');
-
-      component.componentShouldUpdate({ base: true, s: false }, { base: true, s: false }, 'fullscreen');
-
-      expect(spy).toBeCalledWith({ base: true, s: false }, { base: true, s: false }, 'fullscreen', ['fullscreen']);
-    });
-  });
-
   describe('render', () => {
     beforeEach(() => {
       jest.spyOn(global.console, 'warn').mockImplementation(() => {});

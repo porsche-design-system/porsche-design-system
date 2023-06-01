@@ -12,6 +12,7 @@ import {
   TEXT_WEIGHTS,
   THEMES,
   throwIfInvalidLinkUsage,
+  validatePropChange,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -100,6 +101,14 @@ export class LinkPure {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof LinkPure>, 'alignLabel' | 'stretch' | 'size' | 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['alignLabel', 'stretch', 'size', 'hideLabel']);
   }
 
   public render(): JSX.Element {

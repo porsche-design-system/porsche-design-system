@@ -12,6 +12,7 @@ import {
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
+  validatePropChange,
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
@@ -74,6 +75,14 @@ export class RadioButtonWrapper {
       message: this.message,
       state: this.state,
     });
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof RadioButtonWrapper>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

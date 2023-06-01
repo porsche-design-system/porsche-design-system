@@ -15,6 +15,7 @@ import {
   setAttribute,
   THEMES,
   unobserveAttributes,
+  validatePropChange,
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -103,6 +104,14 @@ export class SelectWrapper {
         state: this.state,
       });
     }
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof SelectWrapper>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

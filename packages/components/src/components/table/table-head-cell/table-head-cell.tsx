@@ -6,6 +6,7 @@ import {
   getPrefixedTagNames,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
+  validatePropChange,
   validateProps,
 } from '../../../utils';
 import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
@@ -42,6 +43,14 @@ export class TableHeadCell {
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-table-head-row');
     throwIfElementHasAttribute(this.host, 'sort');
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof TableHeadCell>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public render(): JSX.Element {

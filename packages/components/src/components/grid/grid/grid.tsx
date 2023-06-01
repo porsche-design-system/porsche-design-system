@@ -3,7 +3,13 @@ import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { deprecatedGridComponentMessage, GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
-import { AllowedTypes, attachComponentCss, validateProps, warnIfDeprecatedComponentIsUsed } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  validatePropChange,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../../utils';
 
 const propTypes: PropTypes<typeof Grid> = {
   direction: AllowedTypes.breakpoint<GridDirection>(GRID_DIRECTIONS),
@@ -30,6 +36,14 @@ export class Grid {
    * @deprecated since v3.0.0, will be removed with next major release
    */
   @Prop() public gutter?: BreakpointCustomizable<GridGutter> = { base: 16, s: 24, m: 36 };
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Grid>, 'direction' | 'wrap' | 'gutter'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['direction', 'wrap', 'gutter']);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

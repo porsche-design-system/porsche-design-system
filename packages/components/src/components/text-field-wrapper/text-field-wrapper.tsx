@@ -16,6 +16,7 @@ import {
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -184,6 +185,14 @@ export class TextFieldWrapper {
       message: this.message || this.description,
       state: this.state,
     });
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof TextFieldWrapper>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

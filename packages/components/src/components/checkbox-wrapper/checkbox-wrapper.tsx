@@ -16,6 +16,7 @@ import {
   validateProps,
   FORM_STATES,
   isDisabledOrLoading,
+  validatePropChange,
 } from '../../utils';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
@@ -94,6 +95,14 @@ export class CheckboxWrapper {
       message: this.message,
       state: this.state,
     });
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof CheckboxWrapper>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

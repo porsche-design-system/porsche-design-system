@@ -11,6 +11,7 @@ import {
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
+  validatePropChange,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -110,6 +111,14 @@ export class ButtonPure {
       () => this.type,
       () => this.isDisabledOrLoading
     );
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof ButtonPure>, 'size' | 'hideLabel' | 'alignLabel' | 'stretch'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['size', 'hideLabel', 'alignLabel', 'stretch']);
   }
 
   public render(): JSX.Element {

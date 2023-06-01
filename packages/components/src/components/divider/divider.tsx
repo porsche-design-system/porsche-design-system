@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   THEMES,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
@@ -39,6 +40,14 @@ export class Divider {
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Divider>, 'orientation' | 'direction'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['orientation', 'direction']);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

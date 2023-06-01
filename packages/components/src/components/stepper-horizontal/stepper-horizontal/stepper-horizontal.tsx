@@ -13,6 +13,7 @@ import {
   throwIfChildrenAreNotOfKind,
   unobserveBreakpointChange,
   unobserveChildren,
+  validatePropChange,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
@@ -95,6 +96,14 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof StepperHorizontal>, 'size'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
   }
 
   public componentDidUpdate(): void {

@@ -8,6 +8,7 @@ import {
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   THEMES,
+  validatePropChange,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
@@ -73,6 +74,14 @@ export class Switch {
       () => 'button',
       () => isDisabledOrLoading(this.disabled, this.loading)
     );
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Switch>, 'alignLabel' | 'hideLabel' | 'stretch'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['alignLabel', 'hideLabel', 'stretch']);
   }
 
   public render(): JSX.Element {

@@ -6,6 +6,7 @@ import {
   getPrefixedTagNames,
   parseJSON,
   throwIfAlignTopAndNotCompact,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -81,6 +82,14 @@ export class LinkTile implements ITileProps {
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof LinkTile>, 'size' | 'aspectRatio' | 'compact' | 'weight'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['size', 'aspectRatio', 'compact', 'weight']);
   }
 
   public render(): JSX.Element {

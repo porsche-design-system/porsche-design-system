@@ -9,6 +9,7 @@ import {
   parseAndGetAriaAttributes,
   THEMES,
   throwIfInvalidLinkUsage,
+  validatePropChange,
   validateProps,
 } from '../../utils';
 import type {
@@ -75,6 +76,14 @@ export class Link {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Link>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public render(): JSX.Element {

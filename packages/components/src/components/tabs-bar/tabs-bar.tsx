@@ -14,6 +14,7 @@ import {
   THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
@@ -139,6 +140,14 @@ export class TabsBar {
     // needs to happen after render in order to have status bar defined and proper calculation
     this.setBarStyle();
     this.setAccessibilityAttributes();
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof TabsBar>, 'size'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
   }
 
   public disconnectedCallback(): void {

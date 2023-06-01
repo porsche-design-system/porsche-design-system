@@ -7,6 +7,7 @@ import {
   getPrefixedTagNames,
   THEMES,
   throwIfInvalidLinkUsage,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
@@ -57,6 +58,14 @@ export class LinkSocial {
     throwIfInvalidLinkUsage(this.host, this.href);
     warnIfDeprecatedComponentIsUsed(this.host, 'Use "link" component with corresponding social icon instead.');
     doNothing(); // TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof LinkSocial>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public render(): JSX.Element {

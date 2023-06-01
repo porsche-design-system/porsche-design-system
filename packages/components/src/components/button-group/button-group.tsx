@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, validatePropChange, validateProps } from '../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { getComponentCss } from './button-group-styles';
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
@@ -18,6 +18,14 @@ export class ButtonGroup {
 
   /** Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints. */
   @Prop() public direction?: BreakpointCustomizable<ButtonGroupDirection> = { base: 'column', xs: 'row' };
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof ButtonGroup>, 'direction'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['direction']);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

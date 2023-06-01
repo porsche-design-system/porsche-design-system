@@ -5,6 +5,7 @@ import {
   getPrefixedTagNames,
   parseJSONAttribute,
   THEMES,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -113,6 +114,14 @@ export class Pagination {
     this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
 
     this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Pagination>, 'maxNumberOfPageLinks'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['maxNumberOfPageLinks']);
   }
 
   public disconnectedCallback(): void {

@@ -12,6 +12,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   throwIfParentIsNotOfKind,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
@@ -60,6 +61,24 @@ export class FlexItem {
 
   /** The shorthand property for the combined definition of "shrink", "grow" and "basis" */
   @Prop() public flex?: BreakpointCustomizable<FlexItemFlex> = 'initial';
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<
+      InstanceType<typeof FlexItem>,
+      'width' | 'offset' | 'alignSelf' | 'grow' | 'shrink' | 'flex'
+    >
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, [
+      'width',
+      'offset',
+      'alignSelf',
+      'grow',
+      'shrink',
+      'flex',
+    ]);
+  }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-flex');

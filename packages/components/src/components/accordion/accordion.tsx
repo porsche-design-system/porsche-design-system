@@ -5,6 +5,7 @@ import {
   getPrefixedTagNames,
   HEADING_TAGS,
   THEMES,
+  validatePropChange,
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
@@ -78,6 +79,14 @@ export class Accordion {
 
   public componentDidLoad(): void {
     this.observeResize(); // for first init
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Accordion>, 'size'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
   }
 
   public disconnectedCallback(): void {

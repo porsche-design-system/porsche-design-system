@@ -20,6 +20,7 @@ import {
   THEMES,
   validateProps,
   getLinkButtonThemeForIcon,
+  validatePropChange,
 } from '../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
@@ -85,6 +86,14 @@ export class Button {
       () => this.type,
       () => isDisabledOrLoading(this.disabled, this.loading)
     );
+  }
+
+  public componentShouldUpdate(
+    _newVal: unknown,
+    _oldVal: unknown,
+    propertyName: keyof Pick<InstanceType<typeof Button>, 'hideLabel'>
+  ): boolean {
+    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
   }
 
   public render(): JSX.Element {
