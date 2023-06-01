@@ -106,7 +106,7 @@ export const getComponentCss = (
       transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
         isOpen ? '0s' : flyoutTransitionDuration
       }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
-      boxShadow: `${isPositionLeft ? '3px' : '-3px'} 0px 10px rgba(0, 0, 0, 0.35)`,
+      boxShadow: `${isPositionLeft ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
     },
     content: {
       padding: contentPadding,
