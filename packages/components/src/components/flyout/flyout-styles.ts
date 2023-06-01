@@ -95,6 +95,7 @@ export const getComponentCss = (
       boxSizing: 'border-box',
       ...(hasSecondaryContent && {
         overflowY: 'auto',
+        overscrollBehaviorY: 'none',
       }),
       height: '100%',
       minWidth: minWidthDefault,
