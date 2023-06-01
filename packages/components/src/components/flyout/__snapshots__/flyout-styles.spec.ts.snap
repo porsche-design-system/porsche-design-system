@@ -141,6 +141,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   margin-right: auto;
   box-sizing: border-box;
   overflow-y: auto;
+  overscroll-behavior-y: none;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -224,6 +225,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   margin-right: auto;
   box-sizing: border-box;
   overflow-y: auto;
+  overscroll-behavior-y: none;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -398,6 +400,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   margin-left: auto;
   box-sizing: border-box;
   overflow-y: auto;
+  overscroll-behavior-y: none;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -481,6 +484,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   margin-left: auto;
   box-sizing: border-box;
   overflow-y: auto;
+  overscroll-behavior-y: none;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -924,6 +928,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   margin-right: auto;
   box-sizing: border-box;
   overflow-y: auto;
+  overscroll-behavior-y: none;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1367,6 +1372,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   margin-left: auto;
   box-sizing: border-box;
   overflow-y: auto;
+  overscroll-behavior-y: none;
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
