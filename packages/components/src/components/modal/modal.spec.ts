@@ -1,6 +1,7 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
 import * as domUtils from '../../utils/dom';
+import * as jssUtils from '../../utils/jss';
 import type { FirstAndLastFocusableElement } from './modal-utils';
 
 jest.mock('../../utils/dom');
@@ -44,7 +45,7 @@ describe('modal', () => {
   });
 
   describe('componentDidRender', () => {
-    it('should call focus() when modal is open and activeElement is not a child of host', () => {
+    it('should focus dialog if modal is open', () => {
       component.open = true;
       const spy = jest.spyOn(component['dialog'], 'focus');
 
@@ -52,16 +53,43 @@ describe('modal', () => {
 
       expect(spy).toBeCalledWith();
     });
-    it('should not call focus() when modal is not open and activeElement is a child of host', () => {
+    it('should not focus dialog if modal is not open', () => {
       component.open = false;
-      const input = document.createElement('input');
-      input.type = 'checkbox';
-      component.host.appendChild(input);
       const spy = jest.spyOn(component['dialog'], 'focus');
 
       component.componentDidRender();
 
       expect(spy).not.toBeCalledWith();
+    });
+  });
+
+  describe('componentShouldUpdate', () => {
+    it('should return true if propertyName is not fullscreen', () => {
+      const component = new Modal();
+      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(true);
+
+      expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
+    });
+
+    it('should return true if deepEqual() returns false', () => {
+      const component = new Modal();
+      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(false);
+
+      expect(component.componentShouldUpdate(null, null, 'fullscreen' as any)).toBe(true);
+    });
+
+    it('should return true if propertyName is not fullscreen and deepEqual() returns false', () => {
+      const component = new Modal();
+      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(false);
+
+      expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
+    });
+
+    it('should return false if propertyName is fullscreen and deepEqual() returns true', () => {
+      const component = new Modal();
+      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(true);
+
+      expect(component.componentShouldUpdate(null, null, 'fullscreen')).toBe(false);
     });
   });
 
