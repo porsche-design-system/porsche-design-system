@@ -249,6 +249,7 @@ export class Carousel {
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
                 href={this.skipLinkTarget}
+                theme={this.theme}
                 icon="arrow-last"
                 class="btn skip-link"
                 align-label="left"
