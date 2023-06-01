@@ -17,5 +17,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build and Push Docker Image'
-        run: ./docker/node/build-and-push-base-image-playwright.sh
+        run: cd docker/node && ./build-and-push-base-image-playwright.sh
         shell: bash
