@@ -399,7 +399,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Disables the checkbox and shows a loading indicator.
+          * __Experimental__: Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -1541,6 +1541,10 @@ export namespace Components {
          */
         "showCounter"?: boolean;
         /**
+          * __Experimental__: Show or hide password toggle for `input type="password"`.
+         */
+        "showPasswordToggle"?: boolean;
+        /**
           * The validation state.
          */
         "state"?: TextFieldWrapperState;
@@ -2487,7 +2491,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Disables the checkbox and shows a loading indicator.
+          * __Experimental__: Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -3708,6 +3712,10 @@ declare namespace LocalJSX {
           * Show or hide max character count.
          */
         "showCounter"?: boolean;
+        /**
+          * __Experimental__: Show or hide password toggle for `input type="password"`.
+         */
+        "showPasswordToggle"?: boolean;
         /**
           * The validation state.
          */

@@ -7,11 +7,12 @@ import {
 } from '../helpers';
 import {
   defaultViewports,
+  getVisualRegressionCrest2xTester,
+  getVisualRegressionCrest3xTester,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-import { getVisualRegressionCrest2xTester, getVisualRegressionCrest3xTester } from 'shared/src/testing/vrt';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'crest', '/#crest')).toBeFalsy();
