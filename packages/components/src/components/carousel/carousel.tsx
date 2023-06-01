@@ -252,8 +252,8 @@ export class Carousel {
                 theme={this.theme}
                 icon="arrow-last"
                 class="btn skip-link"
-                align-label="left"
-                hide-label="true"
+                alignLabel="left"
+                hideLabel={true}
                 aria-describedby={this.heading ? 'heading' : null}
               >
                 {/* TODO: make it i18n configurable */}
