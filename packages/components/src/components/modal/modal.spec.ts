@@ -1,7 +1,7 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
 import * as domUtils from '../../utils/dom';
-import * as jssUtils from '../../utils/jss';
+import * as validatePropChangeUtils from '../../utils/validation/validatePropChange';
 import type { FirstAndLastFocusableElement } from './modal-utils';
 
 jest.mock('../../utils/dom');
@@ -64,32 +64,13 @@ describe('modal', () => {
   });
 
   describe('componentShouldUpdate', () => {
-    it('should return true if propertyName is not fullscreen', () => {
+    it('should call validatePropChange() with correct parameters', () => {
       const component = new Modal();
-      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(true);
+      const spy = jest.spyOn(validatePropChangeUtils, 'validatePropChange');
 
-      expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
-    });
+      component.componentShouldUpdate({ base: true, s: false }, { base: true, s: false }, 'fullscreen');
 
-    it('should return true if deepEqual() returns false', () => {
-      const component = new Modal();
-      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(false);
-
-      expect(component.componentShouldUpdate(null, null, 'fullscreen' as any)).toBe(true);
-    });
-
-    it('should return true if propertyName is not fullscreen and deepEqual() returns false', () => {
-      const component = new Modal();
-      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(false);
-
-      expect(component.componentShouldUpdate(null, null, 'someOtherProp' as any)).toBe(true);
-    });
-
-    it('should return false if propertyName is fullscreen and deepEqual() returns true', () => {
-      const component = new Modal();
-      jest.spyOn(jssUtils, 'deepEqual').mockReturnValue(true);
-
-      expect(component.componentShouldUpdate(null, null, 'fullscreen')).toBe(false);
+      expect(spy).toBeCalledWith({ base: true, s: false }, { base: true, s: false }, 'fullscreen', ['fullscreen']);
     });
   });
 

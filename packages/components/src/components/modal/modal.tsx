@@ -3,13 +3,13 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '
 import {
   AllowedTypes,
   attachComponentCss,
-  deepEqual,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
   parseAndGetAriaAttributes,
   validateProps,
   warnIfDeprecatedPropIsUsed,
+  validatePropChange,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
 import {
@@ -120,10 +120,7 @@ export class Modal {
     _oldVal: unknown,
     propertyName: keyof Pick<InstanceType<typeof Modal>, 'fullscreen'>
   ): boolean {
-    if (propertyName === 'fullscreen' && deepEqual(_newVal, _oldVal)) {
-      return false;
-    }
-    return true;
+    return validatePropChange(_newVal, _oldVal, propertyName, ['fullscreen']);
   }
 
   public disconnectedCallback(): void {

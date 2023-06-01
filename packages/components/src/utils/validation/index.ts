@@ -10,6 +10,7 @@ export * from './throwIfParentIsNotOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';
 export { AllowedTypes, validateProps } from './validateProps';
+export * from './validatePropChange';
 
 export * from '../link-button/align-label';
 export * from '../link-button/button-type';
