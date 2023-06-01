@@ -36,6 +36,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   position: sticky;
   top: 0;
 }
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
+}
 .dismiss {
   margin: 16px;
   height: fit-content;
@@ -110,10 +113,14 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -189,10 +196,14 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -230,6 +241,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   bottom: 0;
+}
+.footer--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px -5px 10px;
 }
 .secondary-content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -278,6 +292,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
 }
 .dismiss {
   margin: 16px;
@@ -353,10 +370,14 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -432,10 +453,14 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -473,6 +498,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   bottom: 0;
+}
+.footer--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px -5px 10px;
 }
 .secondary-content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -520,6 +548,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .dismiss {
   margin: 16px;
@@ -599,6 +630,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: sticky;
   top: 0;
 }
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
+}
 .dismiss {
   margin: 16px;
   height: fit-content;
@@ -639,6 +673,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: sticky;
   bottom: 0;
 }
+.footer--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
+}
 @media(hover:hover) {
   .dismiss:hover {
     background: #AFB0B3;
@@ -678,10 +715,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #FFF;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -760,10 +801,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -809,6 +854,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: sticky;
   bottom: 0;
 }
+.footer--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px -5px 10px;
+}
 @media(hover:hover) {
   .dismiss:hover {
     background: #AFB0B3;
@@ -848,10 +896,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #FFF;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -889,6 +941,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   bottom: 0;
+}
+.footer--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
 }
 .secondary-content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -936,6 +991,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .dismiss {
   margin: 16px;
@@ -1015,6 +1073,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: sticky;
   top: 0;
 }
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
+}
 .dismiss {
   margin: 16px;
   height: fit-content;
@@ -1055,6 +1116,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: sticky;
   bottom: 0;
 }
+.footer--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
+}
 @media(hover:hover) {
   .dismiss:hover {
     background: #AFB0B3;
@@ -1094,10 +1158,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #FFF;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -1176,10 +1244,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #0E0E12;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -1225,6 +1297,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: sticky;
   bottom: 0;
 }
+.footer--shadow {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px -5px 10px;
+}
 @media(hover:hover) {
   .dismiss:hover {
     background: #AFB0B3;
@@ -1264,10 +1339,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .header {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   background: #FFF;
   position: sticky;
   top: 0;
+}
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
 }
 .header-content {
   flex: auto;
@@ -1305,6 +1384,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   bottom: 0;
+}
+.footer--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
 }
 .secondary-content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
