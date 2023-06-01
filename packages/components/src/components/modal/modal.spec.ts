@@ -1,7 +1,6 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
 import * as domUtils from '../../utils/dom';
-import * as validatePropChangeUtils from '../../utils/validation/validatePropChange';
 import type { FirstAndLastFocusableElement } from './modal-utils';
 
 jest.mock('../../utils/dom');

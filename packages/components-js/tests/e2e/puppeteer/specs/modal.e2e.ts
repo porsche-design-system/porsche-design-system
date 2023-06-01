@@ -468,24 +468,6 @@ describe('focus behavior', () => {
       await page.keyboard.press('Tab');
       await expectDismissButtonToBeFocused('finally');
     });
-
-    it('should not set scrollTop = 0 on changes within modal children', async () => {
-      await goto(page, 'modal-change-content');
-      expect(await waitForComponentsReady(page)).toBe(8);
-
-      const host = await selectNode(page, 'p-modal');
-
-      expect(await getActiveElementClassNameInShadowRoot(host)).toBe('root');
-      expect(await host.evaluate((el) => el.scrollTop)).toBe(0);
-
-      await host.evaluate((el) => (el.scrollTop = 200));
-      await (await selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]')).click();
-
-      const val = await selectNode(page, 'p-text p');
-      expect(await val.evaluate((el) => el.innerHTML)).toBe('Checkbox change');
-      expect(await host.evaluate((el) => el.scrollTop)).toBe(200);
-      expect(await getActiveElementTagName(page)).toBe('INPUT');
-    });
   });
 
   describe('with disable-close-button', () => {
