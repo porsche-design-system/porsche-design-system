@@ -64,6 +64,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await forceFocusState(page, '.focus p-carousel >>> p-button-pure >>> button');
       await forceFocusState(page, '.focus p-carousel >>> p-link-pure >>> a');
       await forceFocusState(page, '.focus p-carousel span a');
+      await forceFocusState(page, '.focus p-carousel >>> .splide__slide');
       await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-button-pure >>> button');
       await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-link-pure >>> a');
       await forceFocusHoverState(page, '.focus-hover p-carousel span a');
