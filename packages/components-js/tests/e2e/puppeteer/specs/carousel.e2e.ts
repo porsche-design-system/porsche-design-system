@@ -27,6 +27,7 @@ type InitOptions = {
   withFocusableElements?: boolean;
   rewind?: boolean;
   activeSlideIndex?: number;
+  skipLinkTarget?: string;
 };
 
 const initCarousel = (opts?: InitOptions) => {
@@ -36,6 +37,7 @@ const initCarousel = (opts?: InitOptions) => {
     withFocusableElements = false,
     rewind = true,
     activeSlideIndex,
+    skipLinkTarget,
   } = opts || {};
 
   const slides = Array.from(Array(amountOfSlides))
@@ -51,6 +53,7 @@ const initCarousel = (opts?: InitOptions) => {
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
     rewind === false ? 'rewind="false"' : '',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
+    skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
   ].join(' ');
 
   const content = `${focusableElementBefore}<p-carousel heading="Heading" ${attrs}>
@@ -68,6 +71,7 @@ const getButtonPrev = () => selectNode(page, 'p-carousel >>> p-button-pure:first
 const getButtonNext = () => selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
 const getPagination = () => selectNode(page, 'p-carousel >>> .pagination');
 const getPaginationBullets = async () => (await getPagination()).$$('span');
+const getSkipLink = () => selectNode(page, 'p-carousel >>> .skip-link >>> a');
 
 const waitForSlideToBeActive = (slide: ElementHandle) =>
   page.waitForFunction((el) => el.classList.contains('is-active'), {}, slide);
@@ -470,6 +474,18 @@ describe('focus behavior', () => {
     await waitForSlideToBeActive(slide2);
 
     expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
+  });
+
+  // Todo: currently this test fails due to headless browser mode (about:blank)
+  it('should have correct focus cycle if skip link has focus and is clicked', async () => {
+    await initCarousel({ slidesPerPage: 2, withFocusableElements: true, skipLinkTarget: '#link-after' });
+    const skipLink = await getSkipLink();
+
+    await skipLink.focus();
+
+    await page.keyboard.press('Enter');
+
+    expect(await getActiveElementId(page)).toBe('link-after');
   });
 });
 
