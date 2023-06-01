@@ -4,6 +4,8 @@ export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleEvents';
 export * from './CarouselExampleJumpToSlide';
 export * from './FlyoutExample';
+export * from './FlyoutExampleSlotted';
+export * from './FlyoutExampleSlottedSecondary';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './ModalExampleAccessibility';

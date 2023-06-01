@@ -1,15 +1,7 @@
 <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
 
-<p-flyout open="false">
-  <div slot="header">
-    <p-heading tag="h5" size="large">Sticky Heading</p-heading>
-    <p-text size="small">Sticky header text</p-text>
-  </div>
-  <p-text>Some Content</p-text>
-  <div slot="footer">
-    <p-button>Footer Button</p-button>
-  </div>
-  <p-text slot="secondary-content">Some Secondary Content</p-text>
+<p-flyout open="false" position="right">
+  <p-text>Some content that dynamically scales the width of the flyout.</p-text>
 </p-flyout>
 
 <script>

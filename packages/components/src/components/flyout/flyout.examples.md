@@ -34,9 +34,10 @@ In order to get notified when the flyout gets closed by clicking the `x` button,
 
 The size of `p-flyout` adjusts itself to the content with a predefined min/max width.
 
-<Playground :markup="widthPositionMarkup" :config="config">
-  <SelectOptions v-model="position" :values="positions" name="position"></SelectOptions>
-  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
+<Playground :frameworkMarkup="basicSample" :markup="basicSample['vanilla-js']" :config="config">
+  <div class="select-container">
+    <SelectOptions v-model="position" :values="positions" name="position"></SelectOptions>
+  </div>
 </Playground>
 
 ## Slotted header/footer/content
@@ -54,13 +55,12 @@ scrolling to the end of the flyout or when there is available space to accommoda
 
 Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
 
-<Playground :markup="slottedMarkup" :config="config">
-  <SelectOptions v-model="scrollable" :values="scrollables" name="scrollable"></SelectOptions>
+<Playground :frameworkMarkup="slottedSample" :markup="slottedSample['vanilla-js']" :config="config">
+  <div class="select-container">
+    <SelectOptions v-model="scrollable" :values="scrollables" name="scrollable"></SelectOptions>
+    <SelectOptions v-model="secondaryContent" :values="secondaryContents" name="secondary-content"></SelectOptions>
+  </div>
 </Playground>
-
-### Framework Implementations
-
-<Playground :frameworkMarkup="codeExample" :markup="slottedMarkup" :config="config"></Playground>
 
 ## Custom styling
 
@@ -77,13 +77,18 @@ p-flyout {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { getFlyoutCodeSamples } from "@porsche-design-system/shared"; 
+import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
+import { convertMarkup } from '@porsche-design-system/storefront/src/utils/formatting.ts';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
   flyouts = [];
-  codeExample = getFlyoutCodeSamples();
+  codeExample = getFlyoutCodeSamples('default');
+  codeExampleSlotted = getFlyoutCodeSamples('example-slotted'); 
+  codeExampleSlottedSecondary = getFlyoutCodeSamples('example-slotted-secondary');
+
+  blindtext = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
 
   mounted() {
     this.registerEvents();
@@ -105,41 +110,26 @@ export default class Code extends Vue {
     });
   }
 
-    width = 'minWidth';
-    widths = ['minWidth', 'maxWidth'];
     position = 'right';
     positions = ['left', 'right'];
-    get widthPositionMarkup() {
-      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
-      
-return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
-
-<p-flyout open="false" position="${this.position}">
-  ${content}
-</p-flyout>`;
+    get basicSample() {
+      Object.entries(this.codeExample).forEach(([key, value]) => this.codeExample[key] = value.replace(/left|right/, this.position));
+      return this.codeExample
     }
 
-  scrollable = 'true';
-  scrollables = ['true', 'false'];
-  get slottedMarkup() {
-const content = this.scrollable === 'true' ? `<p-text>Some Content</p-text>
-  <div style="height: 40vh;"></div>
-  <p-text>More Content</p-text>
-  <div style="height: 40vh;"></div>
-  <p-text>Even More Content</p-text>` : '<p-text>Some Content</p-text>';
-return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
-<p-flyout open="false" aria="{ 'aria-label': 'Sticky Heading' }">
-  <div slot="header">
-    <p-heading tag="h5" size="large">Sticky Heading</p-heading>
-    <p-text size="small">Sticky header text</p-text>
-  </div>
-  ${content}
-  <div slot="footer">
-    <p-button>Footer Button</p-button>
-  </div>
-  <p-text slot="secondary-content">Some Secondary Content</p-text>
-</p-flyout>`;
-  }
+    scrollable = 'true';
+    scrollables = ['true', 'false'];
+    secondaryContent = 'true';
+    secondaryContents = ['true', 'false'];
+    get slottedSample() {
+      const content = '<div slot="secondary-content">Some Secondary Content</div>';
+      Object.entries(this.codeExampleSlotted)
+            .forEach(([key, value]) => 
+                this.codeExampleSlotted[key] = value
+                  .replace(/100vh|initial/, this.scrollable === 'true' ? '100vh' : 'initial')
+                  .replace(/(\s*<div slot="secondary-content">Some Secondary Content<\/div>)?(\s*)(<\/p-flyout>|<\/PFlyout>)/, this.secondaryContent === 'true' ? `$2\t${content}$2$3` : '$2$3'));
+      return this.codeExampleSlotted
+    }
 
   openFlyout(index: number): void {
     this.flyouts[index].open = true;
@@ -148,5 +138,15 @@ return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout
   closeFlyout(index: number): void {
     this.flyouts[index].open = false;
   }
+
 }
 </script>
+
+<style>
+  .select-container {
+    display: flex; 
+    column-gap: 16px; 
+    flex-wrap: wrap; 
+    padding-bottom: 16px
+  }
+</style>

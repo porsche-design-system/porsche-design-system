@@ -13,7 +13,14 @@
 
 <template>
   <PButton type="button" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen">Open Flyout</PButton>
-  <PFlyout :open="isFlyoutOpen" :position="'right'" @dismiss="onDismiss">
-    <PText>Some content that dynamically scales the width of the flyout.</PText>
+  <PFlyout :open="isFlyoutOpen" @dismiss="onDismiss" :aria="{ 'aria-label': 'Sticky Heading' }">
+    <slot name="header">
+      <PHeading :tag="'h5'" :size="'large'">Sticky Heading</PHeading>
+      <PText size="small">Sticky header text</PText>
+    </slot>
+    <PText style="width: 50vw; height: 100vh">Some Content</PText>
+    <slot name="footer">
+      <PButton type="button">Footer Button</PButton>
+    </slot>
   </PFlyout>
 </template>

@@ -4,6 +4,8 @@ import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynami
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
+import { FlyoutExampleSlottedComponent } from './flyout-example-slotted.component';
+import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted-secondary.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
@@ -26,6 +28,8 @@ export const examples = [
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
   FlyoutExampleComponent,
+  FlyoutExampleSlottedComponent,
+  FlyoutExampleSlottedSecondaryComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   ModalExampleAccessibilityComponent,
@@ -48,6 +52,8 @@ export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
 export * from './flyout-example.component';
+export * from './flyout-example-slotted.component';
+export * from './flyout-example-slotted-secondary.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './modal-example-accessibility.component';
