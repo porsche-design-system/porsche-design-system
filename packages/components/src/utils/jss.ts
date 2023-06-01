@@ -146,7 +146,7 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
   }, {} as T);
 };
 
-export const deepEqual = (object1, object2) => {
+export const deepEqual = <T extends Record<string, any>>(object1: T, object2: T) => {
   const keys1 = Object.keys(object1);
   const keys2 = Object.keys(object2);
 
