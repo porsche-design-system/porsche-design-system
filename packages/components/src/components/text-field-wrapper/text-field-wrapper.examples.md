@@ -82,6 +82,16 @@ Inputs with `type="password"` receive a toggle button to display the input's val
 
 <Playground :markup="typePassword" :config="config"></Playground>
 
+## type="password" without password toggle button
+
+If you want to remove the password toggle button, you can pass `showPasswordToggle="false"`.
+
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+The <code>showPasswordToggle</code> prop is experimental and might be removed in a future release.
+</p-inline-notification>
+
+<Playground :markup="typePasswordWithoutPasswordToggle" :config="config"></Playground>
+
 ## type="search"
 
 Inputs with `type="search"` receive a decorative search icon when used outside a form.  
@@ -235,6 +245,10 @@ export default class Code extends Vue {
 `<p-text-field-wrapper label="Some label">
   <input type="password" name="some-name" value="some password" />
 </p-text-field-wrapper>`;
+
+  get typePasswordWithoutPasswordToggle() {
+    return this.typePassword.replace(/label="Some label"/, '$& show-password-toggle="false"');
+  }
 
   typeSearch =
 `<p-text-field-wrapper label="Some label">

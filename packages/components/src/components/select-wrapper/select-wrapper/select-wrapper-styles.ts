@@ -17,7 +17,7 @@ export const ICON_SPACE = `${24 + 13 * 2 + 2}px`; // 24px = icon width, 13px * 2
 
 export const getComponentCss = (
   isDisabled: boolean,
-  native: boolean,
+  hasCustomDropdown: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   theme: Theme
@@ -33,7 +33,7 @@ export const getComponentCss = (
         zIndex: 0, // TODO: overrides global style.css in e2e and vrts
         cursor: 'pointer',
         padding: `8px calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2) 8px ${spacingStaticMedium}`,
-        ...(!native && !isDisabled && { borderColor: 'transparent' }),
+        ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
       }),
     }),
     root: {
