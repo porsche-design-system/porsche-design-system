@@ -63,21 +63,11 @@ export class FlexItem {
   @Prop() public flex?: BreakpointCustomizable<FlexItemFlex> = 'initial';
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<
-      InstanceType<typeof FlexItem>,
-      'width' | 'offset' | 'alignSelf' | 'grow' | 'shrink' | 'flex'
-    >
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof FlexItem>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, [
-      'width',
-      'offset',
-      'alignSelf',
-      'grow',
-      'shrink',
-      'flex',
-    ]);
+    return validatePropChange(newVal, oldVal, propName, ['width', 'offset', 'alignSelf', 'grow', 'shrink', 'flex']);
   }
 
   public connectedCallback(): void {

@@ -140,19 +140,20 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
   expect(spy).not.toBeCalled();
 });
 
-fit.each<TagName>(tagNamesWithBreakpointCustomizableProps)('should call validatePropChange() for %s', (tagName) => {
-  const spy = jest.spyOn(validatePropChangeUtils, 'validatePropChange');
-  const component = componentFactory(tagName);
-  const props = getComponentMeta(tagName).breakpointCustomizableProps;
+it.each<TagName>(tagNamesWithBreakpointCustomizableProps)(
+  'should call validatePropChange() with correct parameters for %s',
+  (tagName) => {
+    const spy = jest.spyOn(validatePropChangeUtils, 'validatePropChange');
+    const component = componentFactory(tagName);
+    const props = getComponentMeta(tagName).breakpointCustomizableProps;
 
-  props.map((prop) => {
     try {
-      component.componentShouldUpdate('newValue', 'oldValue', prop);
+      component.componentShouldUpdate('newValue', 'oldValue', 'propName');
     } catch {}
 
-    expect(spy).toBeCalledWith('newValue', 'oldValue', prop, props);
-  });
-});
+    expect(spy).toBeCalledWith('newValue', 'oldValue', 'propName', props);
+  }
+);
 
 it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters via render for %s',

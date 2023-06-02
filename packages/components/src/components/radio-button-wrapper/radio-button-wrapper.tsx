@@ -78,11 +78,11 @@ export class RadioButtonWrapper {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof RadioButtonWrapper>, 'hideLabel'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof RadioButtonWrapper>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

@@ -188,11 +188,11 @@ export class TextFieldWrapper {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof TextFieldWrapper>, 'hideLabel'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof TextFieldWrapper>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

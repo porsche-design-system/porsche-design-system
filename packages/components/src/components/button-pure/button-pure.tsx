@@ -114,11 +114,11 @@ export class ButtonPure {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof ButtonPure>, 'size' | 'hideLabel' | 'alignLabel' | 'stretch'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof ButtonPure>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size', 'hideLabel', 'alignLabel', 'stretch']);
+    return validatePropChange(newVal, oldVal, propName, ['size', 'hideLabel', 'alignLabel', 'stretch']);
   }
 
   public render(): JSX.Element {

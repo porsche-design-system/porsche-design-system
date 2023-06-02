@@ -82,11 +82,11 @@ export class Accordion {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Accordion>, 'size'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof Accordion>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
+    return validatePropChange(newVal, oldVal, propName, ['size']);
   }
 
   public disconnectedCallback(): void {

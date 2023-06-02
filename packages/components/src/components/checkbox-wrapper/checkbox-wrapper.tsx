@@ -98,11 +98,11 @@ export class CheckboxWrapper {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof CheckboxWrapper>, 'hideLabel'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof CheckboxWrapper>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

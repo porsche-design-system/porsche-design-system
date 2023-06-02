@@ -37,12 +37,8 @@ export class Grid {
    */
   @Prop() public gutter?: BreakpointCustomizable<GridGutter> = { base: 16, s: 24, m: 36 };
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Grid>, 'direction' | 'wrap' | 'gutter'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['direction', 'wrap', 'gutter']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Grid>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['direction', 'wrap', 'gutter']);
   }
 
   public render(): JSX.Element {

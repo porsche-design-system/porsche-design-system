@@ -42,11 +42,11 @@ export class Divider {
   @Prop() public theme?: Theme = 'light';
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Divider>, 'orientation' | 'direction'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof Divider>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['orientation', 'direction']);
+    return validatePropChange(newVal, oldVal, propName, ['orientation', 'direction']);
   }
 
   public render(): JSX.Element {

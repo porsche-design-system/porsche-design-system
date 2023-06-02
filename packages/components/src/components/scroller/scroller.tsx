@@ -8,6 +8,7 @@ import {
   parseJSONAttribute,
   scrollElementTo,
   THEMES,
+  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
@@ -119,8 +120,11 @@ export class Scroller {
   }
 
   // should only update if scrollable
-  public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
-    return !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden));
+  public componentShouldUpdate(newVal, oldVal, propName): boolean {
+    return (
+      validatePropChange(newVal, oldVal, propName, ['scrollToPosition']) &&
+      !isScrollable(this.isNextHidden, this.isPrevHidden)
+    );
   }
 
   public render(): JSX.Element {

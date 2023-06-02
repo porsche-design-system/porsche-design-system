@@ -88,12 +88,8 @@ export class Tabs {
     this.setAccessibilityAttributes();
   }
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Tabs>, 'size'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Tabs>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['size']);
   }
 
   public componentDidUpdate(): void {

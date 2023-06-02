@@ -78,12 +78,8 @@ export class Link {
     throwIfInvalidLinkUsage(this.host, this.href);
   }
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Link>, 'hideLabel'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Link>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public render(): JSX.Element {

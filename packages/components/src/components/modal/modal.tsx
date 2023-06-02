@@ -115,12 +115,8 @@ export class Modal {
     }
   }
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Modal>, 'fullscreen'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['fullscreen']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Modal>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['fullscreen']);
   }
 
   public disconnectedCallback(): void {

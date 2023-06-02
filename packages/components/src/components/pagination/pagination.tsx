@@ -117,11 +117,11 @@ export class Pagination {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Pagination>, 'maxNumberOfPageLinks'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof Pagination>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['maxNumberOfPageLinks']);
+    return validatePropChange(newVal, oldVal, propName, ['maxNumberOfPageLinks']);
   }
 
   public disconnectedCallback(): void {

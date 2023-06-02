@@ -316,7 +316,7 @@ describe('mergeDeep()', () => {
   });
 });
 
-describe('mergeDeep()', () => {
+describe('deepEqual()', () => {
   const data: { obj1: Record<string, any>; obj2: Record<string, any>; result: boolean }[] = [
     {
       obj1: { foo: 'bar', bar: 'foo' },

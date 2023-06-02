@@ -106,9 +106,9 @@ export class ButtonTile implements ITileProps {
   public componentShouldUpdate(
     _newVal: unknown,
     _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof ButtonTile>, 'size' | 'aspectRatio' | 'compact' | 'weight'>
+    propName: keyof Pick<InstanceType<typeof ButtonTile>, 'size' | 'aspectRatio' | 'compact' | 'weight'>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size', 'aspectRatio', 'compact', 'weight']);
+    return validatePropChange(_newVal, _oldVal, propName, ['size', 'aspectRatio', 'compact', 'weight']);
   }
 
   public render(): JSX.Element {

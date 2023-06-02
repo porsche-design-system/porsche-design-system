@@ -61,14 +61,14 @@ export class Flex {
   @Prop() public alignContent?: BreakpointCustomizable<FlexAlignContent> = 'stretch';
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof Pick<
       InstanceType<typeof Flex>,
       'inline' | 'wrap' | 'direction' | 'justifyContent' | 'alignItems' | 'alignContent'
     >
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, [
+    return validatePropChange(newVal, oldVal, propName, [
       'inline',
       'wrap',
       'direction',

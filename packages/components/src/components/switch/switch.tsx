@@ -76,12 +76,8 @@ export class Switch {
     );
   }
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Switch>, 'alignLabel' | 'hideLabel' | 'stretch'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['alignLabel', 'hideLabel', 'stretch']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Switch>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['alignLabel', 'hideLabel', 'stretch']);
   }
 
   public render(): JSX.Element {

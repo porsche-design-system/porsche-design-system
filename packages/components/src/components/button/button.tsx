@@ -88,12 +88,8 @@ export class Button {
     );
   }
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Button>, 'hideLabel'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Button>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public render(): JSX.Element {

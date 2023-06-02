@@ -20,11 +20,11 @@ export class ButtonGroup {
   @Prop() public direction?: BreakpointCustomizable<ButtonGroupDirection> = { base: 'column', xs: 'row' };
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof ButtonGroup>, 'direction'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof ButtonGroup>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['direction']);
+    return validatePropChange(newVal, oldVal, propName, ['direction']);
   }
 
   public render(): JSX.Element {

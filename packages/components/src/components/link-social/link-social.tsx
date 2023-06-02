@@ -61,11 +61,11 @@ export class LinkSocial {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof LinkSocial>, 'hideLabel'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof LinkSocial>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['hideLabel']);
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public render(): JSX.Element {

@@ -56,12 +56,8 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Text>, 'size'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Text>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['size']);
   }
 
   public render(): JSX.Element {

@@ -33,11 +33,11 @@ export class GridItem {
   @Prop() public offset?: BreakpointCustomizable<GridItemOffset> = 0;
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof GridItem>, 'size' | 'offset'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof GridItem>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size', 'offset']);
+    return validatePropChange(newVal, oldVal, propName, ['size', 'offset']);
   }
 
   public connectedCallback(): void {

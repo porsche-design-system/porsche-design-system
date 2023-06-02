@@ -37,12 +37,8 @@ export class Toast {
     });
   }
 
-  public componentShouldUpdate(
-    _: unknown,
-    __: unknown,
-    propertyName: keyof Pick<InstanceType<typeof Toast>, 'theme'>
-  ): boolean {
-    return propertyName !== 'theme';
+  public componentShouldUpdate(_: unknown, __: unknown, propName: keyof InstanceType<typeof Toast>): boolean {
+    return propName !== 'theme';
   }
 
   public disconnectedCallback(): void {

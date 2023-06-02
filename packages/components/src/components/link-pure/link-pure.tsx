@@ -104,11 +104,11 @@ export class LinkPure {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof LinkPure>, 'alignLabel' | 'stretch' | 'size' | 'hideLabel'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof LinkPure>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['alignLabel', 'stretch', 'size', 'hideLabel']);
+    return validatePropChange(newVal, oldVal, propName, ['alignLabel', 'stretch', 'size', 'hideLabel']);
   }
 
   public render(): JSX.Element {

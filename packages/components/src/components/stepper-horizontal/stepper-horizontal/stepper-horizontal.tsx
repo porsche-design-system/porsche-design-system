@@ -99,11 +99,11 @@ export class StepperHorizontal {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof StepperHorizontal>, 'size'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof Pick<InstanceType<typeof StepperHorizontal>, 'size'>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size']);
+    return validatePropChange(newVal, oldVal, propName, ['size']);
   }
 
   public componentDidUpdate(): void {

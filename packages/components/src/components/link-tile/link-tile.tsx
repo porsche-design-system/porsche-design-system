@@ -85,11 +85,11 @@ export class LinkTile implements ITileProps {
   }
 
   public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof LinkTile>, 'size' | 'aspectRatio' | 'compact' | 'weight'>
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof LinkTile>
   ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['size', 'aspectRatio', 'compact', 'weight']);
+    return validatePropChange(newVal, oldVal, propName, ['size', 'aspectRatio', 'compact', 'weight']);
   }
 
   public render(): JSX.Element {
