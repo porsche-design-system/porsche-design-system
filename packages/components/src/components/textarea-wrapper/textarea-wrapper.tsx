@@ -85,6 +85,14 @@ export class TextareaWrapper {
       (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
   }
 
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof TextareaWrapper>
+  ): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  }
+
   public componentDidLoad(): void {
     if (this.hasCounter) {
       addInputEventListenerForCounter(this.textarea, this.ariaElement, this.counterElement);
@@ -102,14 +110,6 @@ export class TextareaWrapper {
       message: this.message || this.description,
       state: this.state,
     });
-  }
-
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof TextareaWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

@@ -62,16 +62,16 @@ export class FlexItem {
   /** The shorthand property for the combined definition of "shrink", "grow" and "basis" */
   @Prop() public flex?: BreakpointCustomizable<FlexItemFlex> = 'initial';
 
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'p-flex');
+  }
+
   public componentShouldUpdate(
     newVal: unknown,
     oldVal: unknown,
     propName: keyof InstanceType<typeof FlexItem>
   ): boolean {
     return validatePropChange(newVal, oldVal, propName, ['width', 'offset', 'alignSelf', 'grow', 'shrink', 'flex']);
-  }
-
-  public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-flex');
   }
 
   public render(): JSX.Element {

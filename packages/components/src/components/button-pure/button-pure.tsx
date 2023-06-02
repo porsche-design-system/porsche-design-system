@@ -105,20 +105,20 @@ export class ButtonPure {
     }
   }
 
-  public componentDidLoad(): void {
-    improveButtonHandlingForCustomElement(
-      this.host,
-      () => this.type,
-      () => this.isDisabledOrLoading
-    );
-  }
-
   public componentShouldUpdate(
     newVal: unknown,
     oldVal: unknown,
     propName: keyof InstanceType<typeof ButtonPure>
   ): boolean {
     return validatePropChange(newVal, oldVal, propName, ['size', 'hideLabel', 'alignLabel', 'stretch']);
+  }
+
+  public componentDidLoad(): void {
+    improveButtonHandlingForCustomElement(
+      this.host,
+      () => this.type,
+      () => this.isDisabledOrLoading
+    );
   }
 
   public render(): JSX.Element {

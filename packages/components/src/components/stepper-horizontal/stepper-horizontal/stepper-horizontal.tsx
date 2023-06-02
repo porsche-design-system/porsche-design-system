@@ -76,6 +76,14 @@ export class StepperHorizontal {
     this.validateComponent();
   }
 
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof Pick<InstanceType<typeof StepperHorizontal>, 'size'>
+  ): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['size']);
+  }
+
   public componentDidLoad(): void {
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
 
@@ -96,14 +104,6 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
-  }
-
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof Pick<InstanceType<typeof StepperHorizontal>, 'size'>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size']);
   }
 
   public componentDidUpdate(): void {

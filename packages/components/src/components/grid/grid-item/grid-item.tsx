@@ -32,16 +32,16 @@ export class GridItem {
   /** The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
   @Prop() public offset?: BreakpointCustomizable<GridItemOffset> = 0;
 
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'p-grid');
+  }
+
   public componentShouldUpdate(
     newVal: unknown,
     oldVal: unknown,
     propName: keyof InstanceType<typeof GridItem>
   ): boolean {
     return validatePropChange(newVal, oldVal, propName, ['size', 'offset']);
-  }
-
-  public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-grid');
   }
 
   public render(): JSX.Element {

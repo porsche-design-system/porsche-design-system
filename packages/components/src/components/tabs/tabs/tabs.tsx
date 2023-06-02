@@ -84,12 +84,12 @@ export class Tabs {
     this.observeProperties();
   }
 
-  public componentDidLoad(): void {
-    this.setAccessibilityAttributes();
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Tabs>): boolean {
     return validatePropChange(newVal, oldVal, propName, ['size']);
+  }
+
+  public componentDidLoad(): void {
+    this.setAccessibilityAttributes();
   }
 
   public componentDidUpdate(): void {

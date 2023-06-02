@@ -68,16 +68,16 @@ export class Switch {
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Switch>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['alignLabel', 'hideLabel', 'stretch']);
+  }
+
   public componentDidLoad(): void {
     improveButtonHandlingForCustomElement(
       this.host,
       () => 'button',
       () => isDisabledOrLoading(this.disabled, this.loading)
     );
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Switch>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['alignLabel', 'hideLabel', 'stretch']);
   }
 
   public render(): JSX.Element {

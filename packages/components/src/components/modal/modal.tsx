@@ -88,6 +88,10 @@ export class Modal {
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Modal>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['fullscreen']);
+  }
+
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
     if (this.open) {
@@ -113,10 +117,6 @@ export class Modal {
       }
       this.dialog.focus(); // needs to happen after render
     }
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Modal>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['fullscreen']);
   }
 
   public disconnectedCallback(): void {

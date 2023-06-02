@@ -64,6 +64,14 @@ export class RadioButtonWrapper {
     this.observeAttributes(); // once initially
   }
 
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof RadioButtonWrapper>
+  ): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  }
+
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -75,14 +83,6 @@ export class RadioButtonWrapper {
       message: this.message,
       state: this.state,
     });
-  }
-
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof RadioButtonWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

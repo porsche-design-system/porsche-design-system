@@ -110,18 +110,18 @@ export class Pagination {
   private navigationElement: HTMLElement;
   private unlistenResize: () => void;
 
-  public componentDidLoad(): void {
-    this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
-
-    this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
-  }
-
   public componentShouldUpdate(
     newVal: unknown,
     oldVal: unknown,
     propName: keyof InstanceType<typeof Pagination>
   ): boolean {
     return validatePropChange(newVal, oldVal, propName, ['maxNumberOfPageLinks']);
+  }
+
+  public componentDidLoad(): void {
+    this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
+
+    this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
   public disconnectedCallback(): void {

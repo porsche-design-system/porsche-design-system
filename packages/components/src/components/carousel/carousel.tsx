@@ -156,6 +156,15 @@ export class Carousel {
     this.observeBreakpointChange();
   }
 
+  // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof Carousel>
+  ): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['slidesPerPage', 'disablePagination', 'pagination']);
+  }
+
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
@@ -175,15 +184,6 @@ export class Carousel {
     });
 
     this.registerSplideHandlers(this.splide);
-  }
-
-  // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof Carousel>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['slidesPerPage', 'disablePagination', 'pagination']);
   }
 
   public componentDidUpdate(): void {

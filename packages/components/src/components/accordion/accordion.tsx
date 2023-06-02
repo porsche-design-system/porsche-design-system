@@ -77,16 +77,16 @@ export class Accordion {
     }
   }
 
-  public componentDidLoad(): void {
-    this.observeResize(); // for first init
-  }
-
   public componentShouldUpdate(
     newVal: unknown,
     oldVal: unknown,
     propName: keyof InstanceType<typeof Accordion>
   ): boolean {
     return validatePropChange(newVal, oldVal, propName, ['size']);
+  }
+
+  public componentDidLoad(): void {
+    this.observeResize(); // for first init
   }
 
   public disconnectedCallback(): void {

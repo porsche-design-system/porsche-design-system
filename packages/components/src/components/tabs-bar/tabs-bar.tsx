@@ -119,6 +119,14 @@ export class TabsBar {
     this.observeBreakpointChange();
   }
 
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof TabsBar>
+  ): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['size']);
+  }
+
   public componentDidLoad(): void {
     // TODO: validation of active element index inside of tabs bar!
     // TODO: why not do this in connectedCallback?
@@ -140,14 +148,6 @@ export class TabsBar {
     // needs to happen after render in order to have status bar defined and proper calculation
     this.setBarStyle();
     this.setAccessibilityAttributes();
-  }
-
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof TabsBar>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size']);
   }
 
   public disconnectedCallback(): void {

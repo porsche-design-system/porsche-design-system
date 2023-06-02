@@ -80,16 +80,16 @@ export class Button {
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Button>): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  }
+
   public componentDidLoad(): void {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
       () => isDisabledOrLoading(this.disabled, this.loading)
     );
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Button>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public render(): JSX.Element {

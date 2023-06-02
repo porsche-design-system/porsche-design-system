@@ -158,6 +158,14 @@ export class TextFieldWrapper {
     }
   }
 
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof TextFieldWrapper>
+  ): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  }
+
   public componentDidLoad(): void {
     if (this.hasCounter) {
       addInputEventListenerForCounter(
@@ -185,14 +193,6 @@ export class TextFieldWrapper {
       message: this.message || this.description,
       state: this.state,
     });
-  }
-
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof TextFieldWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {

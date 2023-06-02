@@ -84,6 +84,14 @@ export class CheckboxWrapper {
     this.observeAttributes(); // once initially
   }
 
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof CheckboxWrapper>
+  ): boolean {
+    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  }
+
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -95,14 +103,6 @@ export class CheckboxWrapper {
       message: this.message,
       state: this.state,
     });
-  }
-
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof CheckboxWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
   }
 
   public disconnectedCallback(): void {
