@@ -2,8 +2,8 @@ import { validatePropChange } from './validatePropChange';
 
 describe('validatePropChange()', () => {
   const data: {
-    newVal: Record<string, any>;
-    oldVal: Record<string, any>;
+    newVal: unknown;
+    oldVal: unknown;
     propertyName: string;
     arrayOfRelevantPropNames: string[];
     result: boolean;
@@ -12,7 +12,13 @@ describe('validatePropChange()', () => {
       newVal: { foo: 'bar', bar: 'foo' },
       oldVal: { foo: 'foo', bar: 'foo' },
       propertyName: 'fullscreen',
-
+      arrayOfRelevantPropNames: ['size'],
+      result: true,
+    },
+    {
+      newVal: { foo: 'bar', bar: 'foo' },
+      oldVal: { foo: 'bar', bar: 'foo' },
+      propertyName: 'fullscreen',
       arrayOfRelevantPropNames: ['size'],
       result: true,
     },
@@ -30,6 +36,90 @@ describe('validatePropChange()', () => {
       arrayOfRelevantPropNames: ['size', 'fullscreen'],
       result: false,
     },
+    {
+      newVal: 'hey',
+      oldVal: 'hello',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size'],
+      result: true,
+    },
+    {
+      newVal: 'hey',
+      oldVal: 'hey',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size'],
+      result: true,
+    },
+    {
+      newVal: 'hey',
+      oldVal: 'hello',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size', 'fullscreen'],
+      result: true,
+    },
+    {
+      newVal: 'hey',
+      oldVal: 'hey',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size', 'fullscreen'],
+      result: true,
+    },
+    {
+      newVal: '1',
+      oldVal: '0',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size'],
+      result: true,
+    },
+    {
+      newVal: '1',
+      oldVal: '1',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size'],
+      result: true,
+    },
+    {
+      newVal: '1',
+      oldVal: '0',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size', 'fullscreen'],
+      result: true,
+    },
+    {
+      newVal: '1',
+      oldVal: '1',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size', 'fullscreen'],
+      result: true,
+    },
+    {
+      newVal: 'true',
+      oldVal: 'false',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size'],
+      result: true,
+    },
+    {
+      newVal: 'true',
+      oldVal: 'true',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size'],
+      result: true,
+    },
+    {
+      newVal: 'true',
+      oldVal: 'false',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size', 'fullscreen'],
+      result: true,
+    },
+    {
+      newVal: 'true',
+      oldVal: 'true',
+      propertyName: 'fullscreen',
+      arrayOfRelevantPropNames: ['size', 'fullscreen'],
+      result: true,
+    },
   ];
   it.each(
     data.map(({ newVal, oldVal, propertyName, arrayOfRelevantPropNames, result }) => [
@@ -40,7 +130,7 @@ describe('validatePropChange()', () => {
       result,
     ])
   )(
-    `should be called with newVal: '%s' oldVal: '%s', propertyName: '%s' and arrayOfRelevantPropNames: %s and return '%s'`,
+    `should for newVal: "%s" oldVal: "%s", propertyName: "%s" and arrayOfRelevantPropNames: "%s" return "%s"`,
     (newVal, oldVal, propertyName, arrayOfRelevantPropNames, result) => {
       expect(validatePropChange(newVal, oldVal, propertyName, arrayOfRelevantPropNames)).toEqual(result);
     }
