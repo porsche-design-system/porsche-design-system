@@ -349,18 +349,9 @@ describe('deepEqual()', () => {
       result: false,
     },
   ];
-  it.each(
-    data.map(({ obj1, obj2, result }) => [
-      JSON.stringify(obj1), // for test description
-      JSON.stringify(obj2), // for test description
-      JSON.stringify(result), // for test description
-      obj1,
-      obj2,
-      result,
-    ])
-  )(
+  it.each(data.map(({ obj1, obj2, result }) => [obj1, obj2, result]))(
     `should be called with '%s' and %s and return '%s'`,
-    (_, __, ___, obj1: Record<string, any>, obj2: Record<string, any>, result: boolean) => {
+    (obj1: Record<string, any>, obj2: Record<string, any>, result: boolean) => {
       expect(deepEqual(obj1, obj2)).toEqual(result);
     }
   );
