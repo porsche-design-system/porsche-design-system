@@ -64,7 +64,7 @@ describe('deepEqual()', () => {
     },
   ];
   it.each(data.map(({ obj1, obj2, result }) => [obj1, obj2, result]))(
-    `should for obj1: "%s" and obj2: "%s" return "%s"`,
+    'should for obj1: %s and obj2: %s return %s',
     (obj1: Record<string, any>, obj2: Record<string, any>, result: boolean) => {
       expect(isDeepEqual(obj1, obj2)).toEqual(result);
     }

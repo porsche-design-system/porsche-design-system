@@ -96,7 +96,7 @@ describe('getMinifiedCss()', () => {
       input,
       result,
     ])
-  )(`should transform '%s' to %s`, (_, __, input: Styles, result: string) => {
+  )('should transform %s to %s', (_, __, input: Styles, result: string) => {
     expect(getMinifiedCss(input)).toBe(result);
   });
 });

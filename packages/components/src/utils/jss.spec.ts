@@ -310,7 +310,7 @@ describe('mergeDeep()', () => {
       input,
       result,
     ])
-  )(`should be called with '%s' and return '%s'`, (_, __, input: object[], result: object) => {
+  )('should return for %s and return %s', (_, __, input: object[], result: object) => {
     expect(mergeDeep(...input)).toStrictEqual(result);
   });
 });

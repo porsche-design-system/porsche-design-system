@@ -130,7 +130,7 @@ describe('validatePropChange()', () => {
       result,
     ])
   )(
-    `should for newVal: "%s" oldVal: "%s", propertyName: "%s" and arrayOfRelevantPropNames: "%s" return "%s"`,
+    'should for newVal: %s oldVal: %s, propertyName: %s and arrayOfRelevantPropNames: %s return %s',
     (newVal, oldVal, propertyName, arrayOfRelevantPropNames, result) => {
       expect(validatePropChange(newVal, oldVal, propertyName, arrayOfRelevantPropNames)).toEqual(result);
     }
