@@ -43,29 +43,23 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
+  @use '@/styles/internal.variables.scss' as *;
 
   header {
     @include pds-frosted-glass;
-    position: fixed;
-    inset: 0 0 auto;
+    position: sticky; // with sticky we can use fixed positioning as well as position it on the Porsche Grid
+    top: 0;
+    height: $p-header-height; // relevant for a controlled text-zoom 200% support
+    box-sizing: border-box; // relevant for a controlled text-zoom 200% support
     z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: $pds-grid-gap;
     align-items: center;
-    padding: $pds-spacing-static-medium $pds-grid-wide-offset-base;
     border-bottom: 1px solid $pds-theme-light-background-surface;
     background-color: rgb(255 255 255 / 79%);
     -webkit-backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
     backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
-
-    @include pds-media-query-min('s') {
-      padding: $pds-spacing-static-medium $pds-grid-wide-offset-s;
-    }
-
-    @include pds-media-query-min('xxl') {
-      padding: $pds-spacing-static-medium $pds-grid-wide-offset-xxl;
-    }
 
     & > :first-child,
     & > :last-child {

@@ -24,7 +24,7 @@
   @use '@porsche-design-system/components-js/styles' as *;
 
   .teaser {
-    margin-top: -#{$p-content-offset};
+    margin-top: -#{$p-header-height};
   }
 
   .intro {

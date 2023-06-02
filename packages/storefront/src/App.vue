@@ -2,66 +2,28 @@
   <main v-if="isStandalone">
     <router-view />
   </main>
-  <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
+  <div id="app" v-else>
     <Header class="header" />
-    <aside class="aside">
-      <Sidebar class="sidebar" />
-      <Footer class="footer" />
-    </aside>
-    <main class="main" :class="{ 'main--animate': isAnimated }">
-      <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
-      <p-spinner class="spinner" v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
-    </main>
+    <Aside class="aside" />
+    <Main class="main" />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import { Watch } from 'vue-property-decorator';
   import Component from 'vue-class-component';
-  import Disclaimer from '@/components/Disclaimer.vue';
   import Header from '@/components/Header.vue';
-  import Sidebar from '@/components/Sidebar.vue';
-  import Footer from '@/components/Footer.vue';
-  import VersionSelect from '@/components/VersionSelect.vue';
-  import Search from '@/components/Search.vue';
-
-  const TRANSITION_DURATION = 300;
+  import Aside from '@/components/Aside.vue';
+  import Main from '@/components/Main.vue';
 
   @Component({
     components: {
-      Disclaimer,
       Header,
-      Sidebar,
-      Footer,
-      VersionSelect,
-      Search,
+      Aside,
+      Main,
     },
   })
   export default class App extends Vue {
-    private isAnimated = false;
-    private isMenuActive = false;
-
-    // transition of main is applied via separate flag in order to not mess up our modal
-    @Watch('$store.state.isMenuActive')
-    private onIsMenuActiveChange(isMenuActive: boolean): void {
-      if (isMenuActive) {
-        this.isAnimated = isMenuActive;
-        Vue.nextTick(() => {
-          this.isMenuActive = isMenuActive;
-        });
-      } else {
-        this.isMenuActive = isMenuActive;
-
-        setTimeout(() => {
-          this.isAnimated = isMenuActive;
-        }, TRANSITION_DURATION);
-      }
-    }
-
-    public get isLoading(): boolean {
-      return this.$store.getters.isLoading;
-    }
 
     public get isStandalone(): boolean {
       return this.$route.meta?.standalone;
@@ -259,109 +221,61 @@
 </style>
 
 <style scoped lang="scss">
-  @use 'sass:math';
   @use '@porsche-design-system/components-js/styles' as *;
-  @use '@/styles/internal.variables.scss' as *;
 
   #app {
     @include pds-grid;
-
-    /* &--menu-active {
-      @include pds-media-query-min-max('base', 's') {
-        .header {
-          pointer-events: none;
-          opacity: 0;
-        }
-        .aside {
-          opacity: 1;
-          width: 23.75rem;
-          width: 100%;
-          z-index: 1;
-
-          transform: translate3d(0, 0, 0);
-        }
-        .main {
-          transform: translate3d(17.5rem, 0, 0);
-        }
-        .router-view {
-          opacity: 0.05;
-          pointer-events: none;
-        }
-      }
-    }*/
+    grid-row-gap: $pds-spacing-fluid-x-large;
+    grid-template-rows: repeat(3, auto);
   }
 
-  // TODO: still not ideal, in edge cases > 2560px
-  .aside {
-    position: sticky;
-    top: 87px;
-    height: calc(100vh - 87px);
-    padding: calc(#{$p-content-offset - 87px}) $pds-spacing-static-medium $pds-spacing-fluid-x-large
-      $pds-grid-wide-offset-base;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    grid-column: full-start / 5;
-
-    @include pds-media-query-min-max('base', 's') {
-      opacity: 0;
-      transform: translate3d(-8.75rem, 0, 0);
-      transition: transform 0.3s, opacity 0.3s;
-    }
+  .header {
+    grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
+    // Enables the frosted glass background of the header to be placed from side to side of the viewport while
+    // the content is still being placed on the Porsche Grid
+    margin: 0 calc(#{$pds-grid-wide-offset-base} * -1);
+    padding: 0 $pds-grid-wide-offset-base;
 
     @include pds-media-query-min('s') {
-      padding: calc(#{$p-content-offset - 87px}) $pds-spacing-static-medium $pds-spacing-fluid-x-large
-        $pds-grid-wide-offset-s;
+      margin: 0 calc(#{$pds-grid-wide-offset-s} * -1);
+      padding: 0 $pds-grid-wide-offset-s;
     }
 
     @include pds-media-query-min('xxl') {
-      padding: calc(#{$p-content-offset - 87px}) $pds-spacing-static-medium $pds-spacing-fluid-x-large
-        $pds-grid-wide-offset-xxl;
+      margin: 0 calc(#{$pds-grid-wide-offset-xxl} * -1);
+      padding: 0 $pds-grid-wide-offset-xxl;
     }
   }
 
-  .footer {
-    margin-top: $pds-spacing-fluid-small;
+  .aside {
+    grid-column: $pds-grid-wide-column-start / 5;
+    // Enlarge vertical scrollable area to be visually aligned with the main section
+    margin-top: calc(#{$pds-spacing-fluid-x-large} * -1);
+    padding: $pds-spacing-fluid-x-large 0;
+    // Move scrollbar out of Porsche Grid to keep navigation inside
+    margin-right: calc(#{$pds-grid-gap} * -1);
+    padding-right: $pds-grid-gap;
+    // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being
+    // placed on the Porsche Grid
+    margin-left: calc(#{$pds-grid-wide-offset-base} * -1);
+    padding-left: $pds-grid-wide-offset-base;
+
+    @include pds-media-query-min('s') {
+      margin-left: calc(#{$pds-grid-wide-offset-s} * -1);
+      padding-left: $pds-grid-wide-offset-s;
+    }
+
+    @include pds-media-query-min('xxl') {
+      margin-left: calc(#{$pds-grid-wide-offset-xxl} * -1);
+      padding-left: $pds-grid-wide-offset-xxl;
+    }
   }
 
   .main {
-    margin-top: $p-content-offset;
-    margin-bottom: $pds-spacing-fluid-x-large;
-    grid-column: wide-start / wide-end;
-
-    @include pds-media-query-min-max('base', 's') {
-      &--animate {
-        transform: translate3d(0, 0, 0);
-        transition: transform 0.3s;
-      }
-    }
+    grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
 
     @include pds-media-query-min('s') {
-      grid-column: 6 / wide-end;
-    }
-  }
-
-  .router-view {
-    @include pds-media-query-min-max('base', 's') {
-      opacity: 1;
-      transition: opacity 0.3s;
-    }
-
-    &--loading {
-      opacity: 0;
-      pointer-events: none;
-    }
-  }
-
-  .spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    z-index: 10;
-
-    @include pds-media-query-min('s') {
-      left: calc(50% + #{math.div(17.5rem, 2)});
+      grid-column-start: 6;
     }
   }
 </style>
