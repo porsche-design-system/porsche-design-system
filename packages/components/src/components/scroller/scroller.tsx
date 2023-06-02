@@ -123,7 +123,7 @@ export class Scroller {
   public componentShouldUpdate(newVal, oldVal, propName): boolean {
     return (
       validatePropChange(newVal, oldVal, propName, ['scrollToPosition']) &&
-      !isScrollable(this.isNextHidden, this.isPrevHidden)
+      !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden))
     );
   }
 
