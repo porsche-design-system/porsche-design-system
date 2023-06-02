@@ -19,15 +19,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
-    "styled-components": "^5.3.10"
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@types/node": "^20.2.3",
-    "@types/react": "^18.2.6",
+    "@types/node": "^20.2.5",
+    "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
-    "concurrently": "^8.0.1",
+    "concurrently": "^8.1.0",
     "react-scripts": "^5.0.1",
     "sass": "^1.62.1",
     "ts-node": "^10.9.1",

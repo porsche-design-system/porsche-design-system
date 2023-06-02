@@ -2,7 +2,7 @@ import { inject } from 'vue';
 import type { InjectionKey } from 'vue';
 import type { ToastMessage } from './lib/types';
 
-export const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<'pdsPrefix'>;
+export const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<string>;
 
 export const getPrefixedTagName = (tagName: string): string => {
   const prefix = inject(prefixInjectionKey);
