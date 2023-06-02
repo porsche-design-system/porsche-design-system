@@ -19,16 +19,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 
 - `Select Wrapper` missing border on touch devices
-  [#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579)
+  ([#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579))
 - `Tabs Item` text content can be selected/highlighted
-  [#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582)
+  ([#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582))
 
 ### [3.1.0-rc.0] - 2023-05-24
 
 #### Added
 
 - `Marque` now has a `variant` property, including 75 years variant
-  [#2575](https://github.com/porsche-design-system/porsche-design-system/pull/2575)
+  ([#2575](https://github.com/porsche-design-system/porsche-design-system/pull/2575))
 
 ### [3.0.0] - 2023-05-11
 
