@@ -10,11 +10,9 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  goto,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
