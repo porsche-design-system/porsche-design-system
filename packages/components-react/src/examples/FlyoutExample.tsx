@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { PButton, PText, PFlyout, PHeading } from '@porsche-design-system/components-react';
+import { PButton, PText, PFlyout } from '@porsche-design-system/components-react';
 
 export const FlyoutExamplePage = (): JSX.Element => {
   const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
