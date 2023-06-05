@@ -7,7 +7,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasHeading,
-  isDeepEqual,
   THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -77,10 +76,6 @@ export class InlineNotification {
 
   private get hasDismissButton(): boolean {
     return this.persistent ? false : this.dismissButton;
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

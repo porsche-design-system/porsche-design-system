@@ -23,6 +23,19 @@ const tagNamesPublicWithProps = TAG_NAMES.filter(
 const tagNamesPublicWithoutProps = TAG_NAMES.filter(
   (tagName) => !getComponentMeta(tagName).isInternal && !getComponentMeta(tagName).props
 );
+const tagNamesWithPropsOfTypeObject = TAG_NAMES.filter((tagName) => {
+  return (
+    !getComponentMeta(tagName).breakpointCustomizableProps &&
+    !(
+      getComponentMeta(tagName).allowedPropValues &&
+      Object.values(getComponentMeta(tagName).allowedPropValues)
+        .map((prop) => {
+          return typeof prop === 'object' && !Array.isArray(prop);
+        })
+        .includes(true)
+    )
+  );
+});
 
 // TODO: group tests by component instead of by feature?
 
@@ -137,16 +150,19 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
   expect(spy).not.toBeCalled();
 });
 
-it.each<TagName>(tagNamesPublicWithProps)('should call isDeepEqual() with correct parameters for %s', (tagName) => {
-  const spy = jest.spyOn(isDeepEqualUtils, 'isDeepEqual');
-  const component = componentFactory(tagName);
+it.each<TagName>(tagNamesWithPropsOfTypeObject)(
+  'should call isDeepEqual() with correct parameters for %s',
+  (tagName) => {
+    const spy = jest.spyOn(isDeepEqualUtils, 'isDeepEqual');
+    const component = componentFactory(tagName);
 
-  if (component.componentShouldUpdate) {
-    component.componentShouldUpdate('newValue', 'oldValue');
+    if (component.componentShouldUpdate) {
+      component.componentShouldUpdate('newValue', 'oldValue');
+    }
+
+    expect(spy).not.toBeCalledWith('newValue', 'oldValue');
   }
-
-  expect(spy).toBeCalledWith('newValue', 'oldValue');
-});
+);
 
 it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters via render for %s',

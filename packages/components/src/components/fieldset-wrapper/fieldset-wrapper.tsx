@@ -5,7 +5,6 @@ import {
   FORM_STATES,
   hasLabel,
   hasMessage,
-  isDeepEqual,
   THEMES,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -52,10 +51,6 @@ export class FieldsetWrapper {
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

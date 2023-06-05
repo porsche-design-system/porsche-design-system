@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, isDeepEqual, THEMES, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
 import type { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';
 import { getComponentCss } from './model-signature-styles';
@@ -36,10 +36,6 @@ export class ModelSignature {
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

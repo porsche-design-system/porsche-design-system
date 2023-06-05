@@ -4,7 +4,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasNamedSlot,
-  isDeepEqual,
   THEMES,
   validateProps,
 } from '../../../utils';
@@ -39,10 +38,6 @@ export class Table {
 
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEvent>;
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
-  }
 
   public componentWillLoad(): void {
     warnIfCaptionIsUndefined(this.host, this.caption);
