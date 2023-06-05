@@ -5,11 +5,11 @@ import {
   getLinkButtonThemeForIcon,
   getPrefixedTagNames,
   hasVisibleIcon,
+  isDeepEqual,
   LINK_BUTTON_VARIANTS,
   parseAndGetAriaAttributes,
   THEMES,
   throwIfInvalidLinkUsage,
-  validatePropChange,
   validateProps,
 } from '../../utils';
 import type {
@@ -78,8 +78,8 @@ export class Link {
     throwIfInvalidLinkUsage(this.host, this.href);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Link>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

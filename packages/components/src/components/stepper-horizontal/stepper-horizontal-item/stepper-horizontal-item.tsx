@@ -15,6 +15,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isDeepEqual,
   throwIfParentIsNotOfKind,
   updateParent,
   validateProps,
@@ -53,6 +54,10 @@ export class StepperHorizontalItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-stepper-horizontal');
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

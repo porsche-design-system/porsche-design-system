@@ -6,10 +6,10 @@ import {
   attachComponentCss,
   getNamedSlotOrThrow,
   getPrefixedTagNames,
+  isDeepEqual,
   throwIfElementIsNotOfKind,
   TILE_ASPECT_RATIOS,
   TILE_WEIGHTS,
-  validatePropChange,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
@@ -67,12 +67,8 @@ export class LinkTileModelSignature {
   /** Sets a custom headline tag which wraps the heading to enhance semantics. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propertyName: keyof Pick<InstanceType<typeof LinkTileModelSignature>, 'weight' | 'aspectRatio' | 'linkDirection'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propertyName, ['weight', 'aspectRatio', 'linkDirection']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

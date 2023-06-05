@@ -3,9 +3,9 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isDeepEqual,
   parseJSONAttribute,
   THEMES,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -110,12 +110,8 @@ export class Pagination {
   private navigationElement: HTMLElement;
   private unlistenResize: () => void;
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof Pagination>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['maxNumberOfPageLinks']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

@@ -4,9 +4,9 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isDeepEqual,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
-  validatePropChange,
   validateProps,
 } from '../../../utils';
 import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
@@ -45,12 +45,8 @@ export class TableHeadCell {
     throwIfElementHasAttribute(this.host, 'sort');
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof TableHeadCell>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

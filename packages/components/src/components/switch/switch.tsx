@@ -6,9 +6,9 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
+  isDeepEqual,
   isDisabledOrLoading,
   THEMES,
-  validatePropChange,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
@@ -68,8 +68,8 @@ export class Switch {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Switch>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['alignLabel', 'hideLabel', 'stretch']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

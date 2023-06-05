@@ -6,8 +6,8 @@ import { getComponentCss } from './grid-item-styles';
 import {
   AllowedTypes,
   attachComponentCss,
+  isDeepEqual,
   throwIfParentIsNotOfKind,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
@@ -36,12 +36,8 @@ export class GridItem {
     throwIfParentIsNotOfKind(this.host, 'p-grid');
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof GridItem>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size', 'offset']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

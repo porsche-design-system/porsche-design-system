@@ -8,6 +8,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
+  isDeepEqual,
   THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -88,6 +89,10 @@ export class Banner {
     if (this.open && this.hasDismissButton) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

@@ -6,10 +6,10 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
+  isDeepEqual,
   parseAndGetAriaAttributes,
   validateProps,
   warnIfDeprecatedPropIsUsed,
-  validatePropChange,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
 import {
@@ -88,8 +88,8 @@ export class Modal {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Modal>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['fullscreen']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

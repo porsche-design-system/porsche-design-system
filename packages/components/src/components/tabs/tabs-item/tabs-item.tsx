@@ -1,7 +1,7 @@
 import type { PropTypes } from '../../../types';
 import type { TabsItemInternalHTMLProps } from './tabs-item-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import { AllowedTypes, attachComponentCss, isDeepEqual, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
 import { getComponentCss } from './tabs-item-styles';
 
 const propTypes: PropTypes<typeof TabsItem> = {
@@ -20,6 +20,10 @@ export class TabsItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-tabs');
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

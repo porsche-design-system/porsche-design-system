@@ -36,7 +36,7 @@ const generateConstructorMap = (): void => {
   componentWillLoad?: () => void;
   componentWillRender?: () => void;
   disconnectedCallback?: () => void;
-  componentShouldUpdate?: (newValue: unknown, oldValue: unknown, propName: string) => boolean;
+  componentShouldUpdate?: (newValue: unknown, oldValue: unknown, propName?: string) => void;
   render: () => void;
 };`;
 

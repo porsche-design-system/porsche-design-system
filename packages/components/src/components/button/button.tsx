@@ -15,12 +15,12 @@ import {
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
+  isDeepEqual,
   isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
   THEMES,
   validateProps,
   getLinkButtonThemeForIcon,
-  validatePropChange,
 } from '../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
@@ -80,8 +80,8 @@ export class Button {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Button>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

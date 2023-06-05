@@ -29,6 +29,7 @@ import {
   getPrefixedTagNames,
   getSlotTextContent,
   hasDescription,
+  isDeepEqual,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -36,7 +37,6 @@ import {
   THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -157,12 +157,8 @@ export class Carousel {
   }
 
   // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof Carousel>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['slidesPerPage', 'disablePagination', 'pagination']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

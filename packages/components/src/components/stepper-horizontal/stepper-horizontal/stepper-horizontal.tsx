@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
+  isDeepEqual,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -13,7 +14,6 @@ import {
   throwIfChildrenAreNotOfKind,
   unobserveBreakpointChange,
   unobserveChildren,
-  validatePropChange,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
@@ -76,12 +76,8 @@ export class StepperHorizontal {
     this.validateComponent();
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof Pick<InstanceType<typeof StepperHorizontal>, 'size'>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

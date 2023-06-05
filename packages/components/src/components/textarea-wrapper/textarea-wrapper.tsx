@@ -10,12 +10,12 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  isDeepEqual,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -85,12 +85,8 @@ export class TextareaWrapper {
       (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof TextareaWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

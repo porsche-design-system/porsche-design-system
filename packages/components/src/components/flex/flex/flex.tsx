@@ -19,7 +19,7 @@ import { getComponentCss } from './flex-styles';
 import {
   AllowedTypes,
   attachComponentCss,
-  validatePropChange,
+  isDeepEqual,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
@@ -60,22 +60,8 @@ export class Flex {
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: BreakpointCustomizable<FlexAlignContent> = 'stretch';
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof Pick<
-      InstanceType<typeof Flex>,
-      'inline' | 'wrap' | 'direction' | 'justifyContent' | 'alignItems' | 'alignContent'
-    >
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, [
-      'inline',
-      'wrap',
-      'direction',
-      'justifyContent',
-      'alignItems',
-      'alignContent',
-    ]);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

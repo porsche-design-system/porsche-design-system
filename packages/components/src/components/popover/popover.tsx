@@ -10,6 +10,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isDeepEqual,
   parseAndGetAriaAttributes,
   THEMES,
   validateProps,
@@ -53,6 +54,10 @@ export class Popover {
 
   public connectedCallback(): void {
     addDocumentEventListener(this);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidRender(): void {

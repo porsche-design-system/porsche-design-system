@@ -4,9 +4,9 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isDeepEqual,
   parseJSON,
   throwIfAlignTopAndNotCompact,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -84,12 +84,8 @@ export class LinkTile implements ITileProps {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof LinkTile>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size', 'aspectRatio', 'compact', 'weight']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

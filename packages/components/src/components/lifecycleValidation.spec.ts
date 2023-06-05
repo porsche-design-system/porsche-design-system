@@ -8,7 +8,7 @@ import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
 import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
 import * as validatePropsUtils from '../utils/validation/validateProps';
-import * as validatePropChangeUtils from '../utils/validation/validatePropChange';
+import * as isDeepEqualUtils from '../utils/is-deep-equal';
 import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
@@ -22,9 +22,6 @@ const tagNamesPublicWithProps = TAG_NAMES.filter(
 );
 const tagNamesPublicWithoutProps = TAG_NAMES.filter(
   (tagName) => !getComponentMeta(tagName).isInternal && !getComponentMeta(tagName).props
-);
-const tagNamesWithBreakpointCustomizableProps = TAG_NAMES.filter(
-  (tagName) => getComponentMeta(tagName).breakpointCustomizableProps
 );
 
 // TODO: group tests by component instead of by feature?
@@ -140,20 +137,16 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
   expect(spy).not.toBeCalled();
 });
 
-it.each<TagName>(tagNamesWithBreakpointCustomizableProps)(
-  'should call validatePropChange() with correct parameters for %s',
-  (tagName) => {
-    const spy = jest.spyOn(validatePropChangeUtils, 'validatePropChange');
-    const component = componentFactory(tagName);
-    const props = getComponentMeta(tagName).breakpointCustomizableProps;
+it.each<TagName>(tagNamesPublicWithProps)('should call isDeepEqual() with correct parameters for %s', (tagName) => {
+  const spy = jest.spyOn(isDeepEqualUtils, 'isDeepEqual');
+  const component = componentFactory(tagName);
 
-    try {
-      component.componentShouldUpdate('newValue', 'oldValue', 'propName');
-    } catch {}
-
-    expect(spy).toBeCalledWith('newValue', 'oldValue', 'propName', props);
+  if (component.componentShouldUpdate) {
+    component.componentShouldUpdate('newValue', 'oldValue');
   }
-);
+
+  expect(spy).toBeCalledWith('newValue', 'oldValue');
+});
 
 it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters via render for %s',

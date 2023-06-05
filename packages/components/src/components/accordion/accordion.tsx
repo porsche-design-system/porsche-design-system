@@ -4,8 +4,8 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   HEADING_TAGS,
+  isDeepEqual,
   THEMES,
-  validatePropChange,
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
@@ -77,12 +77,8 @@ export class Accordion {
     }
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof Accordion>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

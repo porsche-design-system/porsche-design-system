@@ -10,13 +10,13 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  isDeepEqual,
   isRequiredAndParentNotRequired,
   observeAttributes,
   observeProperties,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -158,12 +158,8 @@ export class TextFieldWrapper {
     }
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof TextFieldWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

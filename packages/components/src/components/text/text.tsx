@@ -5,12 +5,12 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  isDeepEqual,
   TEXT_ALIGNS,
   TEXT_COLORS,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -56,8 +56,8 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Text>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

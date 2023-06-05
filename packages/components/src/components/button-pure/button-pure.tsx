@@ -7,11 +7,11 @@ import {
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
+  isDeepEqual,
   isDisabledOrLoading,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
-  validatePropChange,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -105,12 +105,8 @@ export class ButtonPure {
     }
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof ButtonPure>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size', 'hideLabel', 'alignLabel', 'stretch']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

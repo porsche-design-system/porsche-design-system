@@ -8,6 +8,7 @@ import {
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
+  isDeepEqual,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
@@ -16,7 +17,6 @@ import {
   validateProps,
   FORM_STATES,
   isDisabledOrLoading,
-  validatePropChange,
 } from '../../utils';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
@@ -84,12 +84,8 @@ export class CheckboxWrapper {
     this.observeAttributes(); // once initially
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof CheckboxWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidRender(): void {

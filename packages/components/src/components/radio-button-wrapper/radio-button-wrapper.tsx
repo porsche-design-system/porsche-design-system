@@ -7,12 +7,12 @@ import {
   getOnlyChildOfKindHTMLElementOrThrow,
   hasLabel,
   hasMessage,
+  isDeepEqual,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
-  validatePropChange,
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
@@ -64,12 +64,8 @@ export class RadioButtonWrapper {
     this.observeAttributes(); // once initially
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof RadioButtonWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidRender(): void {

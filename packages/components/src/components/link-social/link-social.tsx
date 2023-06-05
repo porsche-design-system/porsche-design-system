@@ -5,9 +5,9 @@ import {
   doNothing,
   getLinkButtonThemeForIcon,
   getPrefixedTagNames,
+  isDeepEqual,
   THEMES,
   throwIfInvalidLinkUsage,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
@@ -60,12 +60,8 @@ export class LinkSocial {
     doNothing(); // TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof LinkSocial>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

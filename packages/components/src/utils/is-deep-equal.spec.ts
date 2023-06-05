@@ -1,72 +1,72 @@
 import { isDeepEqual } from './is-deep-equal';
 
-describe('deepEqual()', () => {
-  const data: { obj1: Record<string, any>; obj2: Record<string, any>; result: boolean }[] = [
+describe('isDeepEqual()', () => {
+  const data: { val1: unknown; val2: unknown; result: boolean }[] = [
     {
-      obj1: { foo: 'bar', bar: 'foo' },
-      obj2: { foo: 'bar', bar: 'foo' },
+      val1: { foo: 'bar', bar: 'foo' },
+      val2: { foo: 'bar', bar: 'foo' },
       result: true,
     },
     {
-      obj1: { foo: 'bar', bar: 'foo' },
-      obj2: { bar: 'foo', foo: 'bar' },
+      val1: { foo: 'bar', bar: 'foo' },
+      val2: { bar: 'foo', foo: 'bar' },
       result: true,
     },
     {
-      obj1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      obj2: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
+      val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
+      val2: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
       result: true,
     },
     {
-      obj1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      obj2: { foo: { bar: 'foo', foo: 'bar' }, bar: 'foo' },
+      val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
+      val2: { foo: { bar: 'foo', foo: 'bar' }, bar: 'foo' },
       result: true,
     },
     {
-      obj1: { bar: 'foo', foo: 'bar' },
-      obj2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
+      val1: { bar: 'foo', foo: 'bar' },
+      val2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
       result: false,
     },
     {
-      obj1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      obj2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
+      val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
+      val2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
       result: false,
     },
     {
-      obj1: 'foo',
-      obj2: 'bar',
+      val1: 'foo',
+      val2: 'bar',
       result: false,
     },
     {
-      obj1: 'foo',
-      obj2: 'foo',
+      val1: 'foo',
+      val2: 'foo',
       result: true,
     },
     {
-      obj1: '1',
-      obj2: '0',
+      val1: 1,
+      val2: 0,
       result: false,
     },
     {
-      obj1: '1',
-      obj2: '1',
+      val1: 1,
+      val2: 1,
       result: true,
     },
     {
-      obj1: true,
-      obj2: false,
+      val1: true,
+      val2: false,
       result: false,
     },
     {
-      obj1: true,
-      obj2: true,
+      val1: true,
+      val2: true,
       result: true,
     },
   ];
-  it.each(data.map(({ obj1, obj2, result }) => [obj1, obj2, result]))(
-    'should for obj1: %s and obj2: %s return %s',
-    (obj1: Record<string, any>, obj2: Record<string, any>, result: boolean) => {
-      expect(isDeepEqual(obj1, obj2)).toEqual(result);
+  it.each(data.map(({ val1, val2, result }) => [val1, val2, result] as [unknown, unknown, boolean]))(
+    'should for val1: %s and val2: %s return %s',
+    (val1, val2, result) => {
+      expect(isDeepEqual(val1, val2)).toEqual(result);
     }
   );
 });

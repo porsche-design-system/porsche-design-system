@@ -9,13 +9,13 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  isDeepEqual,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   setAttribute,
   THEMES,
   unobserveAttributes,
-  validatePropChange,
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -91,12 +91,8 @@ export class SelectWrapper {
     }
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof SelectWrapper>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidRender(): void {

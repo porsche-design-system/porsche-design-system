@@ -1,7 +1,14 @@
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type { WordmarkSize, WordmarkTarget, WordmarkAriaAttribute } from './wordmark-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps, THEMES } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  parseAndGetAriaAttributes,
+  validateProps,
+  THEMES,
+  isDeepEqual,
+} from '../../utils';
 import { WORDMARK_ARIA_ATTRIBUTES, WORDMARK_SIZES } from './wordmark-utils';
 import { getComponentCss } from './wordmark-styles';
 
@@ -34,6 +41,10 @@ export class Wordmark {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

@@ -12,11 +12,11 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
+  isDeepEqual,
   isDisabledOrLoading,
   parseJSON,
   throwIfAlignTopAndNotCompact,
   TILE_WEIGHTS,
-  validatePropChange,
   validateProps,
 } from '../../utils';
 import type {
@@ -103,12 +103,8 @@ export class ButtonTile implements ITileProps {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
   }
 
-  public componentShouldUpdate(
-    _newVal: unknown,
-    _oldVal: unknown,
-    propName: keyof Pick<InstanceType<typeof ButtonTile>, 'size' | 'aspectRatio' | 'compact' | 'weight'>
-  ): boolean {
-    return validatePropChange(_newVal, _oldVal, propName, ['size', 'aspectRatio', 'compact', 'weight']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

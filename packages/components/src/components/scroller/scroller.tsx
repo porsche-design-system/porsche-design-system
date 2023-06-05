@@ -4,11 +4,11 @@ import {
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
+  isDeepEqual,
   parseAndGetAriaAttributes,
   parseJSONAttribute,
   scrollElementTo,
   THEMES,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
@@ -119,7 +119,7 @@ export class Scroller {
     propName: keyof InstanceType<typeof Scroller>
   ): boolean {
     return (
-      validatePropChange(newVal, oldVal, propName, ['scrollToPosition']) &&
+      !isDeepEqual(newVal, oldVal) &&
       !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden))
     );
   }

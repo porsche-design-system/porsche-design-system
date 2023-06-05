@@ -5,6 +5,7 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  isDeepEqual,
   parseAndGetAriaAttributes,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -48,6 +49,10 @@ export class Marque {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttribute>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

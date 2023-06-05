@@ -11,8 +11,8 @@ import { getComponentCss } from './flex-item-styles';
 import {
   AllowedTypes,
   attachComponentCss,
+  isDeepEqual,
   throwIfParentIsNotOfKind,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
@@ -66,12 +66,8 @@ export class FlexItem {
     throwIfParentIsNotOfKind(this.host, 'p-flex');
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof FlexItem>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['width', 'offset', 'alignSelf', 'grow', 'shrink', 'flex']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

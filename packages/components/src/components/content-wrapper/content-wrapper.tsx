@@ -1,5 +1,12 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, THEMES, validateProps, warnIfDeprecatedComponentIsUsed } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  isDeepEqual,
+  THEMES,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../utils';
 import type { PropTypes, Theme } from '../../types';
 import type { ContentWrapperBackgroundColor, ContentWrapperWidth } from './content-wrapper-utils';
 import {
@@ -37,6 +44,10 @@ export class ContentWrapper {
    * @deprecated since v3.0.0, will be removed with next major release
    */
   @Prop() public theme?: Theme = 'light';
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

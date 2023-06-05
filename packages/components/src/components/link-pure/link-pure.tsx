@@ -7,12 +7,12 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasVisibleIcon,
+  isDeepEqual,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
   throwIfInvalidLinkUsage,
-  validatePropChange,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
@@ -103,12 +103,8 @@ export class LinkPure {
     throwIfInvalidLinkUsage(this.host, this.href);
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof LinkPure>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['alignLabel', 'stretch', 'size', 'hideLabel']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

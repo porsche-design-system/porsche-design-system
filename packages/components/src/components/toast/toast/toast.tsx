@@ -2,7 +2,14 @@ import type { ToastMessage } from './toast-manager';
 import { toastManager } from './toast-manager';
 import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
 import { getComponentCss, toastCloseClassName } from './toast-styles';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  isDeepEqual,
+  THEMES,
+  validateProps,
+} from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof Toast> = {

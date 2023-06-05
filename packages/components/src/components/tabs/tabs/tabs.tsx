@@ -4,13 +4,13 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isDeepEqual,
   observeChildren,
   observeProperties,
   removeAttribute,
   setAttribute,
   THEMES,
   unobserveChildren,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
@@ -84,8 +84,8 @@ export class Tabs {
     this.observeProperties();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Tabs>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

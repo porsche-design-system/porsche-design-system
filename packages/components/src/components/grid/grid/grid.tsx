@@ -6,7 +6,7 @@ import { getComponentCss } from './grid-styles';
 import {
   AllowedTypes,
   attachComponentCss,
-  validatePropChange,
+  isDeepEqual,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
@@ -37,8 +37,8 @@ export class Grid {
    */
   @Prop() public gutter?: BreakpointCustomizable<GridGutter> = { base: 16, s: 24, m: 36 };
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: keyof InstanceType<typeof Grid>): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['direction', 'wrap', 'gutter']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

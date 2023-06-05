@@ -6,6 +6,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
+  isDeepEqual,
   isShadowRootParentOfKind,
   observeBreakpointChange,
   observeChildren,
@@ -14,7 +15,6 @@ import {
   THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
-  validatePropChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
@@ -119,12 +119,8 @@ export class TabsBar {
     this.observeBreakpointChange();
   }
 
-  public componentShouldUpdate(
-    newVal: unknown,
-    oldVal: unknown,
-    propName: keyof InstanceType<typeof TabsBar>
-  ): boolean {
-    return validatePropChange(newVal, oldVal, propName, ['size']);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {
