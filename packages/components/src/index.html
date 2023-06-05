@@ -10,9 +10,6 @@
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
     <style>
-      p-flyout {
-        --p-flyout-max-width: 350px;
-      }
       .playground {
         padding: 1rem;
       }
@@ -34,87 +31,14 @@
       }
     </style>
   </head>
-  <body style="overflow: auto" class="playground">
+  <body>
     <header>
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main>
-      <p-button>Open</p-button>
-      <p-button>Open Slotted Scroll</p-button>
-      <p-button>Open Slotted</p-button>
-      <p-button>Open buttons</p-button>
-      <p-flyout id="basic" theme="dark">
-        <div slot="header">
-          <p-heading tag="h5" size="large">Sticky Heading</p-heading>
-          <p-text size="small">Sticky header text</p-text>
-        </div>
-        <div style="height: 100vh">Some Content</div>
-      </p-flyout>
-      <p-flyout position="left" open="true">
-        <div slot="header">
-          <p-heading tag="h5" size="large">Sticky Heading</p-heading>
-          <p-text size="small">Sticky header text</p-text>
-        </div>
-        <div style="height: 100vh">Some Content</div>
-        <div slot="footer">
-          <p-button>Footer Button</p-button>
-        </div>
-        <div slot="secondary-content">
-          <p-text> Secondary Content </p-text>
-        </div>
-      </p-flyout>
-      <p-flyout theme="dark">
-        <div slot="header">
-          <p-heading tag="h5" size="large">Sticky Heading</p-heading>
-          <p-text size="small">Sticky header text</p-text>
-        </div>
-        <p-text>Some Content</p-text>
-        <p-button slot="footer">Footer Button</p-button>
-        <div slot="secondary-content">
-          <p-text> Secondary Content </p-text>
-        </div>
-      </p-flyout>
-      <!--      <p-flyout theme="dark"> Some Content </p-flyout>-->
-      <!--      <p-flyout>-->
-      <!--        <p-button>Footer Button</p-button>-->
-      <!--      </p-flyout>-->
-      <!--      <p-flyout>-->
-      <!--        <div slot="heading">-->
-      <!--          <p-button>Header Button</p-button>-->
-      <!--        </div>-->
-      <!--        <p-button>Content Button</p-button>-->
-      <!--      </p-flyout>-->
-      <!--      <p-flyout>-->
-      <!--        <div slot="header">-->
-      <!--          <p-button>Header Button</p-button>-->
-      <!--        </div>-->
-      <!--        <p-button>Content Button</p-button>-->
-      <!--        Some content-->
-      <!--        <p-button slot="footer">Footer Button</p-button>-->
-      <!--        <p-button slot="secondary-content">Footer Button</p-button>-->
-      <!--      </p-flyout>-->
-    </main>
+    <main></main>
 
     <script>
-      const flyouts = document.querySelectorAll('p-flyout');
-      console.log(flyouts);
-
-      const buttonsOpen = document.querySelectorAll('p-button');
-      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => openFlyout(index)));
-
-      flyouts.forEach((flyout, index) => {
-        flyout.addEventListener('dismiss', () => closeFlyout(index));
-      });
-
-      function openFlyout(index) {
-        flyouts[index].open = true;
-      }
-
-      function closeFlyout(index) {
-        flyouts[index].open = false;
-      }
-
       [
         <!-- START: keep this snippet to log component lifecycle events -->
         ('componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'),
