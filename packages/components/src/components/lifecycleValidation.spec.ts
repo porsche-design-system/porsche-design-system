@@ -158,7 +158,7 @@ it.each<TagName>(tagNamesWithPropsOfTypeObject)(
       component.componentShouldUpdate('newValue', 'oldValue');
     }
 
-    expect(spy).not.toBeCalledWith('newValue', 'oldValue');
+    expect(spy).toBeCalledWith('newValue', 'oldValue');
   }
 );
 
