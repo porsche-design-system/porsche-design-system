@@ -191,8 +191,5 @@
     "**/ng-packagr/rollup": "^3.21.0",
     "**/vite/rollup": "^3.23.0",
     "**/workbox-build/rollup": "^3.21.0"
-  },
-  "dependencies": {
-    "@playwright/test": "1.33.0"
   }
 }
