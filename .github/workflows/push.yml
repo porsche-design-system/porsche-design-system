@@ -308,6 +308,11 @@ jobs:
         with:
           entrypoint: run-test-vrt
           args: --components-react/nextjs
+      - name: 'Build Remix' # remix build is checked as part of nextjs unit tests
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react/remix
       - name: 'Unit Test react-ssr-wrapper'
         uses: ./.github/actions/docker-run-playwright
         with:
