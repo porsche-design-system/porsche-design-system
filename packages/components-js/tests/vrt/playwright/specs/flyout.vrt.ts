@@ -6,10 +6,18 @@ test.describe('should have no visual regression for flyout', async () => {
     scenario: async (page) => {
       await page.mouse.click(0, 0); // click top left corner of the page to remove focus on flyout
       // Scroll down flyouts
-      console.log(await page.evaluate(() => (window as any).componentsReady()));
-      await page.$$eval('.scroll-here', async (scrollElements) => {
-        scrollElements.forEach((el) => el.scrollIntoView({ behavior: 'instant' as any }));
-        await new Promise((resolve) => setTimeout(resolve, 500));
+      await page.$$eval('.scroll', async (scrollElements) => {
+        scrollElements.forEach((el) => {
+          const root = el.shadowRoot.querySelector('.root');
+          root.scrollTo(0, root.scrollHeight);
+        });
+      });
+      // If no sub-footer is provided content is scrollable instead of root
+      await page.$$eval('.scroll-content', async (scrollElements) => {
+        scrollElements.forEach((el) => {
+          const content = el.shadowRoot.querySelector('.content');
+          content.scrollTo(0, content.scrollHeight);
+        });
       });
     },
   });

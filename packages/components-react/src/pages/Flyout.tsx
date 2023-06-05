@@ -693,7 +693,7 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground auto-layout"
         title="should show scrolled down flyout with header, footer, secondaryContent and scrollable content"
       >
-        <PFlyout open={true}>
+        <PFlyout open={true} className="scroll">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
@@ -751,7 +751,7 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground dark auto-layout"
         title="should show scrolled down flyout with header, footer, secondaryContent and scrollable content on dark theme"
       >
-        <PFlyout open={true} theme="dark">
+        <PFlyout open={true} theme="dark" className="scroll">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
@@ -806,7 +806,7 @@ export const FlyoutPage = (): JSX.Element => {
       </div>
 
       <div className="playground auto-layout" title="should show scrolled down flyout with header, footer and scrollable content">
-        <PFlyout open={true}>
+        <PFlyout open={true} className="scroll-content">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
@@ -861,7 +861,7 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground dark auto-layout"
         title="should show scrolled down flyout with header, footer and scrollable content on dark theme"
       >
-        <PFlyout open={true} theme="dark">
+        <PFlyout open={true} theme="dark" className="scroll-content">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>

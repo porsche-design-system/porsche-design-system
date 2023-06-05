@@ -692,7 +692,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground auto-layout"
       title="should show scrolled down flyout with header, footer, secondaryContent and scrollable content"
     >
-      <p-flyout [open]="true">
+      <p-flyout [open]="true" class="scroll">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
@@ -750,7 +750,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground dark auto-layout"
       title="should show scrolled down flyout with header, footer, secondaryContent and scrollable content on dark theme"
     >
-      <p-flyout [open]="true" [theme]="'dark'">
+      <p-flyout [open]="true" [theme]="'dark'" class="scroll">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
@@ -805,7 +805,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground auto-layout" title="should show scrolled down flyout with header, footer and scrollable content">
-      <p-flyout [open]="true">
+      <p-flyout [open]="true" class="scroll-content">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
@@ -860,7 +860,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground dark auto-layout"
       title="should show scrolled down flyout with header, footer and scrollable content on dark theme"
     >
-      <p-flyout [open]="true" [theme]="'dark'">
+      <p-flyout [open]="true" [theme]="'dark'" class="scroll-content">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
