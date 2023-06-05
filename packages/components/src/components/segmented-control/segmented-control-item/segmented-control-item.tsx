@@ -3,7 +3,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  isDeepEqual,
   throwIfParentIsNotOfKind,
   throwIfPropIsUndefined,
   updateParent,
@@ -61,10 +60,6 @@ export class SegmentedControlItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-segmented-control');
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

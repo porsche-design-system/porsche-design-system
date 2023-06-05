@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, isDeepEqual, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
 import type { PropTypes } from '../../../types';
 import { getComponentCss } from './table-cell-styles';
 
@@ -19,10 +19,6 @@ export class TableCell {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-table-row');
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
   }
 
   public render(): JSX.Element {

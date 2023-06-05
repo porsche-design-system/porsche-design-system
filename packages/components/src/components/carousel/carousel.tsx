@@ -157,8 +157,8 @@ export class Carousel {
   }
 
   // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: string): boolean {
+    return !isDeepEqual(newVal, oldVal) && propName !== 'activeSlideIndex';
   }
 
   public componentDidLoad(): void {

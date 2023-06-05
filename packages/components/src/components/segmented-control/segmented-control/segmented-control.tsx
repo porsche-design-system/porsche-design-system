@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Pro
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
   observeChildren,
   THEMES,
   throwIfChildrenAreNotOfKind,
@@ -65,10 +64,6 @@ export class SegmentedControl {
       throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
       forceUpdate(this.host);
     });
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

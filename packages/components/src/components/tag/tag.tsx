@@ -6,7 +6,6 @@ import {
   attachComponentCss,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
-  isDeepEqual,
   THEMES,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
@@ -39,10 +38,6 @@ export class Tag {
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

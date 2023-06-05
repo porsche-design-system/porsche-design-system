@@ -1,12 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  isDeepEqual,
-  THEMES,
-  validateProps,
-  warnIfDeprecatedPropIsUsed,
-} from '../../../utils';
+import { AllowedTypes, attachComponentCss, THEMES, validateProps, warnIfDeprecatedPropIsUsed } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import type { TextListListType, TextListOrderType, TextListType } from './text-list-utils';
 import { isListTypeOrdered, LIST_TYPES, ORDER_TYPES, TEXT_LIST_TYPES } from './text-list-utils';
@@ -41,10 +34,6 @@ export class TextList {
 
   /** Adapts the text color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

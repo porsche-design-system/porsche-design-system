@@ -2,14 +2,7 @@ import type { ToastMessage } from './toast-manager';
 import { toastManager } from './toast-manager';
 import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
 import { getComponentCss, toastCloseClassName } from './toast-styles';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  isDeepEqual,
-  THEMES,
-  validateProps,
-} from '../../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof Toast> = {
@@ -37,8 +30,8 @@ export class Toast {
     toastManager.register(this.host, () => this.toastItemElement.classList.add(toastCloseClassName));
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+  public componentShouldUpdate(_: unknown, __: unknown, propName: keyof InstanceType<typeof Toast>): boolean {
+    return propName !== 'theme';
   }
 
   public componentDidLoad(): void {
