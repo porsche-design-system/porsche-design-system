@@ -5,7 +5,7 @@ test.describe.only('should have no visual regression', async () => {
   await executeVisualRegressionTest('overview', {
     scenario: async (page) => {
       // Enable console logging
-      context.on('console', (msg) => {
+      page.on('console', (msg) => {
         const type = msg.type();
         const location = msg.location();
         console.log(`[${type}] ${location.url}:${location.lineNumber}:${location.columnNumber} ${msg.text()}`);
