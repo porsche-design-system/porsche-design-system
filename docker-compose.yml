@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.34.3-focal
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.33.0-focal
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
