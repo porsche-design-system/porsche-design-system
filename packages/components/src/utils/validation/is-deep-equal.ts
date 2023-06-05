@@ -1,4 +1,4 @@
-import { isObject } from './jss';
+import { isObject } from '../jss';
 
 export const isDeepEqual = (newVal: unknown, oldVal: unknown): boolean => {
   if (typeof newVal !== 'object' || typeof oldVal !== 'object') {

@@ -8,7 +8,7 @@ import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
 import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
 import * as validatePropsUtils from '../utils/validation/validateProps';
-import * as isDeepEqualUtils from '../utils/is-deep-equal';
+import * as isDeepEqualUtils from '../utils/validation/is-deep-equal';
 import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
