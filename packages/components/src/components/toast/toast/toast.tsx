@@ -37,8 +37,8 @@ export class Toast {
     toastManager.register(this.host, () => this.toastItemElement.classList.add(toastCloseClassName));
   }
 
-  public componentShouldUpdate(_: unknown, __: unknown, propName: keyof InstanceType<typeof Toast>): boolean {
-    return propName !== 'theme';
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return !isDeepEqual(newVal, oldVal);
   }
 
   public componentDidLoad(): void {
