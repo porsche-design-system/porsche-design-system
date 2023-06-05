@@ -9,10 +9,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Modal` scrollable modal does not jump to top on changes within dialog
+  ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
+
+### [3.1.0-rc.1] - 2023-06-02
+
 #### Added
 
 - **[EXPERIMENTAL]** Prop `showPasswordToggle` for `Text Field Wrapper` with `input type="password"`
   ([#2586](https://github.com/porsche-design-system/porsche-design-system/pull/2586))
+- Prop `name` for `Icon` supports `heart`, `heart-filled`, `copy`, `fingerprint`, `tire`, `roof-open` and `roof-closed`
+  ([#2589](https://github.com/porsche-design-system/porsche-design-system/pull/2589))
 
 #### Fixed
 
@@ -20,8 +29,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579))
 - `Tabs Item` text content can be selected/highlighted
   ([#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582))
-- `Modal` scrollable modal does not jump to top on changes within dialog
-  ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
 
 ### [3.1.0-rc.0] - 2023-05-24
 
