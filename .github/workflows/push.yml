@@ -161,6 +161,8 @@ jobs:
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js
+        env:
+          DEBUG: pw:api
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v3
