@@ -9,11 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         overflow: auto !important;
       }
     
-      .root {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-      }
-    
       p-flex-item > p,
       my-prefix-p-flex-item > p,
       p-grid-item > p,
@@ -55,8 +50,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <div class="root">
-      <div>
+    <div class="root" style="display: flex">
+      <div style="flex: 1">
         <div class="playground light" title="should render default heading">
           <p-heading>Default Components</p-heading>
         </div>
@@ -294,9 +289,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <button>Default</button>
           </p-scroller>
         </div>
+
+        <div class="playground light" title="should render default carousel">
+          <p-carousel [heading]="'Heading'">
+            <div>Slide 1</div>
+            <div>Slide 2</div>
+            <div>Slide 3</div>
+          </p-carousel>
+        </div>
       </div>
 
-      <div>
+      <div style="flex: 1">
         <div class="playground light" title="should render default heading with custom prefix">
           <my-prefix-p-heading p-heading>Prefixed Components</my-prefix-p-heading>
         </div>
@@ -536,16 +539,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <button>Default</button>
             <button>Default</button>
           </my-prefix-p-scroller>
-        </div>
-      </div>
-
-      <div style="grid-column: 1 / span 2">
-        <div class="playground light" title="should render default carousel">
-          <p-carousel [heading]="'Heading'">
-            <div>Slide 1</div>
-            <div>Slide 2</div>
-            <div>Slide 3</div>
-          </p-carousel>
         </div>
 
         <div class="playground light" title="should render default carousel with custom prefix">
