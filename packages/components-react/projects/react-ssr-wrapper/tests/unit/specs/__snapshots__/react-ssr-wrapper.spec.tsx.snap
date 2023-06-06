@@ -2476,6 +2476,8 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide {
   overflow: hidden;
+  padding: 4px 0;
+  margin: -4px 0;
 }
 .splide__track {
   cursor: grab;
@@ -2483,7 +2485,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__list {
   display: flex;
-  height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -2493,6 +2494,8 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
+  border-radius: 12px;
+  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
