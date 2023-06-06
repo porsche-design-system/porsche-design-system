@@ -1,5 +1,6 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import * as process from 'process';
 
 /**
  * Read environment variables from file.
@@ -30,7 +31,7 @@ const config: PlaywrightTestConfig = {
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: false,
+  forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: 0, // Retrys are causing the test to be stuck in the pipeline
   /* Opt out of parallel tests on CI. */
