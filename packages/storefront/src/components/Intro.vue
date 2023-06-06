@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <p-text size="large">
+  <article>
+    <p-text class="heading" size="large">
       The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and
       high-quality web applications, including easy-to-use Figma and UX Pin libraries, coded Web Components and
       comprehensive usage guidelines. Everything is built and tested following the Porsche quality standards and
       corporate design principles.
     </p-text>
-    <p-text color="contrast-high">
+    <p-text class="paragraph" color="contrast-high">
       We provide protected
       <a href="https://www.figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">Figma</a>
       and UX Pin libraries, as well as public accessible
@@ -17,7 +17,7 @@
       feedback, feature requests or suggestions on our public accessible
       <a href="https://github.com/porsche-design-system/porsche-design-system/issues">issue board</a>.
     </p-text>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">
@@ -31,22 +31,25 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  div {
+  article {
     display: grid;
     gap: $pds-grid-gap;
 
     @include pds-media-query-min('s') {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-
-      & > * {
-        &:first-child {
-          grid-column: span 3;
-        }
-
-        &:last-child {
-          grid-column: span 2;
-        }
-      }
     }
+  }
+
+  .heading,
+  .paragraph {
+    max-width: 50rem;
+  }
+
+  .heading {
+    grid-column: span 3;
+  }
+
+  .paragraph {
+    grid-column: span 2;
   }
 </style>

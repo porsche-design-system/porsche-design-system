@@ -1,5 +1,5 @@
 <template>
-  <ais-instant-search :index-name="getAlgoliaIndexName()" :search-client="searchClient">
+  <ais-instant-search class="search" :index-name="getAlgoliaIndexName()" :search-client="searchClient">
     <ais-search-box :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
@@ -79,7 +79,7 @@
     };
 
     onHitsChange(hits: AlgoliaResult[]): void {
-      this.$emit('onSearchActiveChange', this.displayHits && hits.length > 0);
+      this.$store.commit('setIsSearchActive', this.displayHits && hits.length > 0);
     }
 
     shouldDisplayHits(query: string): void {
@@ -112,6 +112,7 @@
 </script>
 
 <style scoped lang="scss">
+  // TODO: the Search component can be simplified in general, in terms of markup, styles and javascript
   @use '@porsche-design-system/components-js/styles' as *;
 
   .search {
@@ -119,29 +120,22 @@
   }
 
   .spacer {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    z-index: 1;
-    filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
-    @include pds-media-query-min-max('base', 's') {
-      right: initial;
-      width: 100%;
-      filter: none;
-    }
-
-    &::before {
-      content: '';
+    @include pds-media-query-min('m') {
       position: absolute;
-      border-style: solid;
-      bottom: 0;
+      bottom: -20px;
       left: 50%;
-      transform: translateX(-50%);
-      border-width: 0 12px 12px;
-      border-color: transparent transparent $pds-theme-light-background-base;
-      @include pds-media-query-min-max('base', 's') {
-        top: 36px;
-        bottom: initial;
+      z-index: 1;
+      filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
+
+      &::before {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 0 12px 12px;
+        border-color: transparent transparent $pds-theme-light-background-base;
       }
     }
   }
@@ -159,19 +153,18 @@
   }
 
   .hits {
-    position: absolute;
-    width: 263px;
-    max-height: 70vh;
-    right: 0;
-    top: 0;
-    transform: translate(50%, 0);
-    padding: $pds-spacing-static-medium 0;
-    border-radius: $pds-border-radius-small;
-    background: $pds-theme-light-background-base;
-    overflow: auto;
-    z-index: 1;
-    @include pds-media-query-min-max('base', 's') {
-      width: 100%;
+    @include pds-media-query-min('m') {
+      position: absolute;
+      width: 263px;
+      max-height: 70vh;
+      right: 0;
+      top: 0;
+      transform: translate(50%, 0);
+      padding: $pds-spacing-static-medium 0;
+      border-radius: $pds-border-radius-small;
+      background: $pds-theme-light-background-base;
+      overflow: auto;
+      z-index: 1;
     }
   }
 
@@ -181,7 +174,12 @@
 
   :deep(.hits__item) {
     list-style: none;
-    @include pds-media-query-min('s') {
+
+    @include pds-media-query-max('m') {
+      margin-top: $pds-spacing-fluid-large;
+    }
+
+    @include pds-media-query-min('m') {
       padding: $pds-spacing-static-small $pds-spacing-static-large $pds-spacing-static-small;
     }
   }

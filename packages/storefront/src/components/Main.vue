@@ -1,7 +1,7 @@
 <template>
   <main>
     <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
-    <p-spinner v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
+    <p-spinner class="spinner" :class="{ 'spinner--loading': isLoading }" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
   </main>
 </template>
 
@@ -22,28 +22,41 @@
 <style scoped lang="scss">
   @use 'sass:math';
   @use '@porsche-design-system/components-js/styles' as *;
+  @use '@/styles/internal.variables.scss' as *;
 
-  .router-view {
-    @include pds-media-query-min-max('base', 's') {
-      opacity: 1;
-      transition: opacity 0.3s;
+  main {
+    position: relative;
+    grid-column: $pds-grid-extended-column-start / $pds-grid-extended-column-end;
+
+    @include pds-media-query-min('m') {
+      grid-column: 6 / $pds-grid-wide-column-end;
     }
+  }
+
+  // TODO: loading state does not work properly because `setIsLoading` setter of Vue store is never called
+  .router-view {
+    opacity: 1;
+    transition: opacity $transition-duration $transition-duration; // let main content smoothly (delayed) fade in after loading
 
     &--loading {
+      transition: opacity $transition-duration; // let main content smoothly (immediately) fade out while loading
       opacity: 0;
       pointer-events: none;
     }
   }
 
-  p-spinner {
-    position: absolute;
+  .spinner {
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translate(-50%, -50%);
     z-index: 10;
+    opacity: 0;
+    transition: opacity $transition-duration $transition-duration; // let spinner smoothly (delayed) fade out after loading
 
-    @include pds-media-query-min('s') {
-      left: calc(50% + #{math.div(17.5rem, 2)});
+    &--loading {
+      transition: opacity $transition-duration; // let spinner smoothly (immediately) fade in while loading
+      opacity: 1;
     }
   }
 </style>

@@ -24,7 +24,7 @@
   @use '@porsche-design-system/components-js/styles' as *;
 
   .teaser {
-    margin-top: -#{$p-header-height};
+    margin-top: calc((#{$header-height} + #{$pds-spacing-fluid-x-large}) * -1);
   }
 
   .intro {

@@ -6,18 +6,22 @@
     <Header class="header" />
     <Aside class="aside" />
     <Main class="main" />
+    <Backdrop class="backdrop" />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import Backdrop from '@/components/Backdrop.vue';
   import Header from '@/components/Header.vue';
   import Aside from '@/components/Aside.vue';
   import Main from '@/components/Main.vue';
+  import { Watch } from "vue-property-decorator";
 
   @Component({
     components: {
+      Backdrop,
       Header,
       Aside,
       Main,
@@ -28,10 +32,17 @@
     public get isStandalone(): boolean {
       return this.$route.meta?.standalone;
     }
+
+    @Watch('$route')
+    private onRouteChange(): void {
+      this.$store.commit('setIsMenuActive', false);
+    }
   }
 </script>
 
 <style lang="scss">
+  // TODO: we shouldn't define most of the following styles globally
+
   @use '@porsche-design-system/components-js/styles' as *;
 
   // TODO: we should not rely on * selector reset
@@ -227,55 +238,5 @@
     @include pds-grid;
     grid-row-gap: $pds-spacing-fluid-x-large;
     grid-template-rows: repeat(3, auto);
-  }
-
-  .header {
-    grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
-    // Enables the frosted glass background of the header to be placed from side to side of the viewport while
-    // the content is still being placed on the Porsche Grid
-    margin: 0 calc(#{$pds-grid-wide-offset-base} * -1);
-    padding: 0 $pds-grid-wide-offset-base;
-
-    @include pds-media-query-min('s') {
-      margin: 0 calc(#{$pds-grid-wide-offset-s} * -1);
-      padding: 0 $pds-grid-wide-offset-s;
-    }
-
-    @include pds-media-query-min('xxl') {
-      margin: 0 calc(#{$pds-grid-wide-offset-xxl} * -1);
-      padding: 0 $pds-grid-wide-offset-xxl;
-    }
-  }
-
-  .aside {
-    grid-column: $pds-grid-wide-column-start / 5;
-    // Enlarge vertical scrollable area to be visually aligned with the main section
-    margin-top: calc(#{$pds-spacing-fluid-x-large} * -1);
-    padding: $pds-spacing-fluid-x-large 0;
-    // Move scrollbar out of Porsche Grid to keep navigation inside
-    margin-right: calc(#{$pds-grid-gap} * -1);
-    padding-right: $pds-grid-gap;
-    // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being
-    // placed on the Porsche Grid
-    margin-left: calc(#{$pds-grid-wide-offset-base} * -1);
-    padding-left: $pds-grid-wide-offset-base;
-
-    @include pds-media-query-min('s') {
-      margin-left: calc(#{$pds-grid-wide-offset-s} * -1);
-      padding-left: $pds-grid-wide-offset-s;
-    }
-
-    @include pds-media-query-min('xxl') {
-      margin-left: calc(#{$pds-grid-wide-offset-xxl} * -1);
-      padding-left: $pds-grid-wide-offset-xxl;
-    }
-  }
-
-  .main {
-    grid-column: $pds-grid-wide-column-start / $pds-grid-wide-column-end;
-
-    @include pds-media-query-min('s') {
-      grid-column-start: 6;
-    }
   }
 </style>

@@ -1,19 +1,20 @@
 <template>
-  <select v-model="version" v-on:change="onVersionChange" aria-label="Switch Porsche Design System version">
-    <option v-for="option in versionOptions" :key="option" :value="option">{{ option }}</option>
-  </select>
+  <label>
+    <p-heading size="small">Porsche Design System</p-heading>
+    <select v-model="version" v-on:change="onVersionChange" aria-label="Switch Porsche Design System version">
+      <option v-for="option in versionOptions" :key="option" :value="option">{{ option }}</option>
+    </select>
+  </label>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  // import { version } from '@porsche-design-system/components-js/package.json';
 
   @Component({
     components: {},
   })
   export default class VersionSelect extends Vue {
-    // public version: string = version;
 
     public version = 'v3';
     public versionOptions: string[] = ['v3', 'v2', 'v1'];
@@ -26,6 +27,13 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
+
+  label {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $pds-spacing-static-small;
+    align-items: center;
+  }
 
   select {
     @include pds-focus;

@@ -8,6 +8,7 @@ export type State = {
   isLoading: boolean;
   lastTimeout?: number;
   isMenuActive: boolean;
+  isSearchActive: boolean;
   selectedFramework: Framework;
   theme: Theme;
 };
@@ -16,6 +17,7 @@ const initialState: State = {
   isLoading: false,
   lastTimeout: undefined,
   isMenuActive: false,
+  isSearchActive: false,
   selectedFramework: 'vanilla-js',
   theme: 'light',
 };
@@ -34,6 +36,9 @@ export default new Vuex.Store({
     },
     toggleIsMenuActive(state: State): void {
       state.isMenuActive = !state.isMenuActive;
+    },
+    setIsSearchActive(state: State, payload: boolean): void {
+      state.isSearchActive = payload;
     },
     setSelectedFramework(state: State, payload: Framework): void {
       state.selectedFramework = payload;
@@ -59,6 +64,9 @@ export default new Vuex.Store({
     },
     isMenuActive(state: State): boolean {
       return state.isMenuActive;
+    },
+    isSearchActive(state: State): boolean {
+      return state.isSearchActive;
     },
     selectedFramework(state: State): Framework {
       return state.selectedFramework;

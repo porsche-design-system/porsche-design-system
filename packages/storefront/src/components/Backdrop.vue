@@ -23,29 +23,29 @@
   @use '@/styles/internal.variables.scss' as *;
 
   div {
+    @include pds-frosted-glass;
     content: "";
     position: fixed;
     inset: 0;
     z-index: 2;
     background: $pds-theme-light-background-shading;
-    @include pds-frosted-glass;
     -webkit-backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
     backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
 
     @include pds-media-query-min('m') {
       display: none;
     }
-  }
 
-  .fade-in {
-    transition: opacity $transition-duration;
-    opacity: 1;
-    transform: translateX(0);
-  }
+    &.fade-in {
+      transition: opacity $transition-duration;
+      opacity: 1;
+      transform: translateX(0);
+    }
 
-  .fade-out {
-    transition: opacity $transition-duration, transform 0s $transition-duration;
-    opacity: 0;
-    transform: translateX(-100%); // 3D transition by GPU is not needed, since style is applied immediately after some delay
+    &.fade-out {
+      transition: opacity $transition-duration, transform 0s $transition-duration;
+      opacity: 0;
+      transform: translateX(-100%);
+    }
   }
 </style>
