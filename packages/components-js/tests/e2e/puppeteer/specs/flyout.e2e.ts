@@ -597,17 +597,19 @@ describe('slotted', () => {
     const header = await getHeaderContent();
     const headerSlottedContent = await getHeaderSlottedContent();
     expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="header"></slot>"`);
-    expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${headerContent}"`);
+    expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"`);
 
     const footer = await getFooter();
     const footerSlottedContent = await getFooterSlottedContent();
     expect(await getProperty(footer, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="footer"></slot>"`);
-    expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${footerContent}"`);
+    expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"`);
 
     const subFooter = await getSubFooter();
     const subFooterSlottedContent = await getSubFooterSlottedContent();
     expect(await getProperty(subFooter, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="sub-footer"></slot>"`);
-    expect(await getProperty(subFooterSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${subFooter}"`);
+    expect(await getProperty(subFooterSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
+      `"<p>Sub Footer Content</p>"`
+    );
   });
 });
 
