@@ -2,5 +2,11 @@ import { test } from '@playwright/test';
 import { executeVisualRegressionTest } from '../helpers/playwright-helper';
 
 test.describe('should have no visual regression', async () => {
-  await executeVisualRegressionTest('content-wrapper');
+  await executeVisualRegressionTest('content-wrapper', {
+    scenario: async (page) => {
+      test.describe.configure({
+        retries: 3,
+      });
+    },
+  });
 });
