@@ -4,9 +4,12 @@ export const isDeepEqual = (newVal: unknown, oldVal: unknown): boolean => {
   if (typeof newVal !== 'object' || typeof oldVal !== 'object') {
     // string, boolean, number
     return newVal === oldVal;
-  } else if (Array.isArray(newVal) || Array.isArray(newVal)) {
-    throw new Error(
-      'Values of type array are currently not handled by the isDeepEqual(). Array equality check must be added if needed.'
+  } else if (Array.isArray(newVal) && Array.isArray(newVal)) {
+    return (
+      Array.isArray(newVal) &&
+      Array.isArray(oldVal) &&
+      newVal.length === oldVal.length &&
+      newVal.every((val, index) => val === oldVal[index])
     );
   }
 
