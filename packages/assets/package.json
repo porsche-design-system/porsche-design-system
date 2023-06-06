@@ -39,7 +39,7 @@
     "@porsche-design-system/utilities-v2": "0.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.0",
     "@types/http-server": "^0.12.1",
     "http-server": "^14.1.1",

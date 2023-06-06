@@ -2,6 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,
+  isSsrHydration,
   observeChildren,
   observeProperties,
   throwIfRootNodeIsNotOneOfKind,
@@ -92,8 +93,12 @@ export class SelectWrapperDropdown {
   }
 
   public componentWillLoad(): void {
-    this.observeProperties();
-    document.addEventListener('mousedown', this.onClickOutside, true);
+    if (!isSsrHydration(this.host)) {
+      // when ssr rendered component is partially hydrated before being rerendered by its parent select-wrapper
+      // it has no select ref and options can't be accessed
+      this.observeProperties();
+      document.addEventListener('mousedown', this.onClickOutside, true);
+    }
   }
 
   public disconnectedCallback(): void {

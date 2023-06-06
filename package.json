@@ -117,6 +117,7 @@
     "test:e2e:playwright:components-js": "yarn --cwd ./packages/components-js test:e2e:playwright",
     "test:e2e:components-angular": "yarn --cwd ./packages/components-angular test:e2e",
     "test:e2e:components-react": "yarn --cwd ./packages/components-react test:e2e",
+    "test:e2e:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:e2e",
     "test:e2e:components-vue": "yarn --cwd ./packages/components-vue test:e2e",
     "test:e2e:crawler": "yarn --cwd ./packages/crawler test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",
@@ -189,7 +190,7 @@
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0",
     "**/eslint-config-react-app/eslint-plugin-jest": "^27.2.1",
     "**/ng-packagr/rollup": "^3.21.0",
-    "**/vite/rollup": "^3.21.0",
+    "**/vite/rollup": "^3.23.0",
     "**/workbox-build/rollup": "^3.21.0"
   }
 }
