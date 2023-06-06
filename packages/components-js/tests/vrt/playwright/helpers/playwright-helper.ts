@@ -19,7 +19,8 @@ export const executeVisualRegressionTest = async (route: string, options?: Optio
 
     await page.setViewportSize({ width, height: 1 });
     await page.goto(`${baseUrl}/#${route}`);
-    await page.waitForSelector('p-flyout');
+    console.log(await page.evaluate(() => document.querySelector('div#app').innerHTML));
+    await page.waitForFunction(() => document.querySelector('div#app').innerHTML);
     await page.setViewportSize({ width, height: await page.evaluate(() => document.body.clientHeight) });
 
     if (scenario) {
