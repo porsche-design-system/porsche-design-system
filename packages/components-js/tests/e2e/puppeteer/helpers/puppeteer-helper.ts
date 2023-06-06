@@ -275,7 +275,7 @@ export const initConsoleObserver = (page: Page): void => {
     if (msg.type() === 'error') {
       const { description } = msg.args()[0].remoteObject();
       if (description) {
-        console.log(description);
+        console.error(description);
       }
     }
   });
