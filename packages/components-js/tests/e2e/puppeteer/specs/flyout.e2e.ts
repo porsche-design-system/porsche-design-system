@@ -597,12 +597,16 @@ describe('slotted', () => {
     const header = await getHeaderContent();
     const headerSlottedContent = await getHeaderSlottedContent();
     expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="header"></slot>"`);
-    expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"`);
+    expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
+      `"<h1>Sticky Heading</h1><p>Sticky header text</p>"`
+    );
 
     const footer = await getFooter();
     const footerSlottedContent = await getFooterSlottedContent();
     expect(await getProperty(footer, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="footer"></slot>"`);
-    expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"`);
+    expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
+      `"<button>Footer Button</button>"`
+    );
 
     const subFooter = await getSubFooter();
     const subFooterSlottedContent = await getSubFooterSlottedContent();
