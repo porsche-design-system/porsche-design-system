@@ -4,7 +4,7 @@ export const isDeepEqual = (newVal: unknown, oldVal: unknown): boolean => {
   if (typeof newVal !== 'object' || typeof oldVal !== 'object') {
     // string, boolean, number
     return newVal === oldVal;
-  } else if (Array.isArray(newVal) || Array.isArray(newVal)) {
+  } else if (Array.isArray(newVal) || Array.isArray(oldVal)) {
     return (
       Array.isArray(newVal) &&
       Array.isArray(oldVal) &&

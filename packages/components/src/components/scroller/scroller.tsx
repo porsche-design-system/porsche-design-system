@@ -112,7 +112,6 @@ export class Scroller {
     }
   }
 
-  // should only update if scrollable
   public componentShouldUpdate(
     newVal: unknown,
     oldVal: unknown,
@@ -120,7 +119,7 @@ export class Scroller {
   ): boolean {
     return (
       !isDeepEqual(newVal, oldVal) &&
-      !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden))
+      !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden)) // should only update if scrollable
     );
   }
 
