@@ -26,6 +26,6 @@ it('should not cause new lifecycle when nothing on the component changes', async
 
   const finalStatus = await getLifecycleStatus(page);
   expect(finalStatus.componentDidUpdate['p-button-pure'], 'final componentDidUpdate: p-button-pure').toBe(1);
-  expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(2);
+  expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(1);
   expect(finalStatus.componentDidLoad.all, 'final componentDidLoad: all').toBe(0);
 });
