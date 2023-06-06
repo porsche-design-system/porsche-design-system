@@ -19,7 +19,7 @@ export const executeVisualRegressionTest = async (route: string, options?: Optio
 
     await page.setViewportSize({ width, height: 1 });
     await page.goto(`${baseUrl}/#${route}`);
-    //await page.evaluate(() => (window as any).componentsReady());
+    await page.evaluate(() => (window as any).componentsReady());
     await page.setViewportSize({ width, height: await page.evaluate(() => document.body.clientHeight) });
 
     if (scenario) {
