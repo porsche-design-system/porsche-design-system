@@ -4,12 +4,13 @@ export const isDeepEqual = (newVal: unknown, oldVal: unknown): boolean => {
   if (typeof newVal !== 'object' || typeof oldVal !== 'object') {
     // string, boolean, number
     return newVal === oldVal;
-  } else if (Array.isArray(newVal) && Array.isArray(newVal)) {
+  } else if (Array.isArray(newVal) || Array.isArray(newVal)) {
     return (
       Array.isArray(newVal) &&
       Array.isArray(oldVal) &&
       newVal.length === oldVal.length &&
-      newVal.every((val, index) => val === oldVal[index])
+      newVal.every((item) => oldVal.includes(item)) &&
+      oldVal.every((item) => newVal.includes(item))
     );
   }
 
@@ -25,6 +26,7 @@ export const isDeepEqual = (newVal: unknown, oldVal: unknown): boolean => {
         return false;
       }
     }
+    return true;
   }
-  return true;
+  return false;
 };

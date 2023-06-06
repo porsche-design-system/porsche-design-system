@@ -33,6 +33,21 @@ describe('isDeepEqual()', () => {
       result: false,
     },
     {
+      val1: ['foo', 'bar'],
+      val2: ['foo', 'bar'],
+      result: true,
+    },
+    {
+      val1: ['foo', 'bar'],
+      val2: ['bar', 'foo'],
+      result: true,
+    },
+    {
+      val1: ['fooo', 'bar'],
+      val2: ['foo', 'bar'],
+      result: false,
+    },
+    {
       val1: 'foo',
       val2: 'bar',
       result: false,
