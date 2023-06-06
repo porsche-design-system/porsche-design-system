@@ -1,62 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import {
-  PAccordion,
-  PBanner,
-  PButton,
-  PButtonGroup,
-  PButtonPure,
-  PCarousel,
-  PCheckboxWrapper,
-  PContentWrapper,
-  PCrest,
-  PDisplay,
-  PDivider,
-  PFieldset,
-  PFieldsetWrapper,
-  PFlex,
-  PFlexItem,
-  PFlyout,
-  PGrid,
-  PGridItem,
-  PHeading,
-  PHeadline,
-  PIcon,
-  PInlineNotification,
-  PLink,
-  PLinkPure,
-  PLinkSocial,
-  PMarque,
-  PModal,
-  PModelSignature,
-  PorscheDesignSystemProvider,
-  PPagination,
-  PPopover,
-  PRadioButtonWrapper,
-  PScroller,
-  PSegmentedControl,
-  PSegmentedControlItem,
-  PSelectWrapper,
-  PSpinner,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableHeadRow,
-  PTableRow,
-  PTabs,
-  PTabsBar,
-  PTabsItem,
-  PTag,
-  PTagDismissible,
-  PText,
-  PTextareaWrapper,
-  PTextFieldWrapper,
-  PTextList,
-  PTextListItem,
-  PWordmark,
-} from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PFlyout, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
@@ -135,9 +79,7 @@ const OverviewPage: NextPage = (): JSX.Element => {
           </div>
 
           <div className="playground light playground--modal" title="should render default modal">
-            <PModal heading="Heading" open={true}>
-              Some Content
-            </PModal>
+            <PModal heading="Heading" open={true}>Some Content</PModal>
           </div>
 
           <div className="playground light playground--flyout" title="should render default flyout">
@@ -247,9 +189,7 @@ const OverviewPage: NextPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default link-social">
-            <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">
-              Some label
-            </PLinkSocial>
+            <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
           </div>
 
           <div className="playground light" title="should render default marque">
@@ -307,8 +247,8 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default accordion">
             <PAccordion heading="Some accordion heading">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
             </PAccordion>
           </div>
 
@@ -318,23 +258,15 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default flex">
             <PFlex>
-              <PFlexItem>
-                <p>1</p>
-              </PFlexItem>
-              <PFlexItem>
-                <p>2</p>
-              </PFlexItem>
+              <PFlexItem><p>1</p></PFlexItem>
+              <PFlexItem><p>2</p></PFlexItem>
             </PFlex>
           </div>
 
           <div className="playground light" title="should render default grid">
             <PGrid>
-              <PGridItem size={6}>
-                <p>1</p>
-              </PGridItem>
-              <PGridItem size={6}>
-                <p>2</p>
-              </PGridItem>
+              <PGridItem size={6}><p>1</p></PGridItem>
+              <PGridItem size={6}><p>2</p></PGridItem>
             </PGrid>
           </div>
 
@@ -397,10 +329,7 @@ const OverviewPage: NextPage = (): JSX.Element => {
               <PDisplay>Some Display</PDisplay>
             </div>
 
-            <div
-              className="playground light playground--banner"
-              title="should render default banner with custom prefix"
-            >
+            <div className="playground light playground--banner" title="should render default banner with custom prefix">
               <PBanner open={true}>
                 <span slot="title">Prefixed banner component</span>
                 <span slot="description">Some slotted banner description</span>
@@ -408,9 +337,7 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </div>
 
             <div className="playground light playground--modal" title="should render default modal with custom prefix">
-              <PModal heading="Heading" open={true}>
-                Some Content
-              </PModal>
+              <PModal heading="Heading" open={true}>Some Content</PModal>
             </div>
 
             <div className="playground light playground--flyout" title="should render default flyout">
@@ -423,7 +350,10 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default inline-notification with custom prefix">
-              <PInlineNotification heading="Some heading" description="Some description" />
+              <PInlineNotification
+                heading="Some heading"
+                description="Some description"
+               />
             </div>
 
             <div className="playground light" title="should render default popover with custom prefix">
@@ -520,9 +450,7 @@ const OverviewPage: NextPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default link-social with custom prefix">
-              <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">
-                Some label
-              </PLinkSocial>
+              <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
             </div>
 
             <div className="playground light" title="should render default marque with custom prefix">
@@ -580,9 +508,8 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default accordion with custom prefix">
               <PAccordion heading="Some accordion heading">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum.
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
               </PAccordion>
             </div>
 
@@ -592,23 +519,15 @@ const OverviewPage: NextPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default flex with custom prefix">
               <PFlex>
-                <PFlexItem>
-                  <p>1</p>
-                </PFlexItem>
-                <PFlexItem>
-                  <p>2</p>
-                </PFlexItem>
+                <PFlexItem><p>1</p></PFlexItem>
+                <PFlexItem><p>2</p></PFlexItem>
               </PFlex>
             </div>
 
             <div className="playground light" title="should render default grid with custom prefix">
               <PGrid>
-                <PGridItem size={6}>
-                  <p>1</p>
-                </PGridItem>
-                <PGridItem size={6}>
-                  <p>2</p>
-                </PGridItem>
+                <PGridItem size={6}><p>1</p></PGridItem>
+                <PGridItem size={6}><p>2</p></PGridItem>
               </PGrid>
             </div>
 

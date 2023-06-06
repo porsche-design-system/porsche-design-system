@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       body {
         overflow: auto !important;
       }
-
+    
       p-flex-item > p,
       my-prefix-p-flex-item > p,
       p-grid-item > p,
@@ -21,21 +21,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         color: white;
         background: lightskyblue;
       }
-
+    
       p-flex-item:nth-child(1n) > p,
       my-prefix-p-flex-item:nth-child(1n) > p,
       p-grid-item:nth-child(1n) > p,
       my-prefix-p-grid-item:nth-child(1n) > p {
         background: skyblue;
       }
-
+    
       p-flex-item:nth-child(2n) > p,
       my-prefix-p-flex-item:nth-child(2n) > p,
       p-grid-item:nth-child(2n) > p,
       my-prefix-p-grid-item:nth-child(2n) > p {
         background: deepskyblue;
       }
-
+    
       .playground--banner,
       .playground--modal,
       .playground--flyout {
@@ -44,11 +44,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         padding: 0;
         margin: 1rem;
       }
-
+    
       .playground--modal {
         height: 20rem;
       }
-
+    
       .playground--flyout {
         height: 20rem;
       }
@@ -347,8 +347,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
-          <my-prefix-p-inline-notification
-            p-inline-notification
+          <my-prefix-p-inline-notification p-inline-notification
             [heading]="'Some heading'"
             [description]="'Some description'"
           ></my-prefix-p-inline-notification>
@@ -431,9 +430,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default text-list with custom prefix">
           <my-prefix-p-text-list p-text-list>
-            <my-prefix-p-text-list-item p-text-list-item
-              >The quick brown fox jumps over the lazy dog</my-prefix-p-text-list-item
-            >
+            <my-prefix-p-text-list-item p-text-list-item>The quick brown fox jumps over the lazy dog</my-prefix-p-text-list-item>
           </my-prefix-p-text-list>
         </div>
 
@@ -450,9 +447,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default link-social with custom prefix">
-          <my-prefix-p-link-social p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'"
-            >Some label</my-prefix-p-link-social
-          >
+          <my-prefix-p-link-social p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'">Some label</my-prefix-p-link-social>
         </div>
 
         <div class="playground light" title="should render default marque with custom prefix">
@@ -472,12 +467,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">
-          <my-prefix-p-pagination
-            p-pagination
-            [totalItemsCount]="500"
-            [itemsPerPage]="25"
-            [activePage]="1"
-          ></my-prefix-p-pagination>
+          <my-prefix-p-pagination p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></my-prefix-p-pagination>
         </div>
 
         <div class="playground light" title="should render default table with custom prefix">
@@ -548,18 +538,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light" title="should render default segmented-control with custom prefix">
           <my-prefix-p-segmented-control p-segmented-control [value]="'s'">
-            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'s'"
-              >S</my-prefix-p-segmented-control-item
-            >
-            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'m'"
-              >M</my-prefix-p-segmented-control-item
-            >
-            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'l'"
-              >L</my-prefix-p-segmented-control-item
-            >
-            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'xl'"
-              >XL</my-prefix-p-segmented-control-item
-            >
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'s'">S</my-prefix-p-segmented-control-item>
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'m'">M</my-prefix-p-segmented-control-item>
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'l'">L</my-prefix-p-segmented-control-item>
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'xl'">XL</my-prefix-p-segmented-control-item>
           </my-prefix-p-segmented-control>
         </div>
 
