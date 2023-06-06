@@ -223,7 +223,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (tagName === 'p-carousel') {
         newFileContent = newFileContent
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
-          .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n");
+          .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n")
+          .replace(/.*onFocusin=\{.*\n/, '');
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
         newFileContent = newFileContent

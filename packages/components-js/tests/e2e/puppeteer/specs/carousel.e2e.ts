@@ -9,6 +9,7 @@ import {
   getCssClasses,
   getEventSummary,
   getLifecycleStatus,
+  goto,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
@@ -476,13 +477,12 @@ describe('focus behavior', () => {
     expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
   });
 
-  // Todo: currently this test fails due to headless browser mode (about:blank)
   it('should have correct focus cycle if skip link has focus and is clicked', async () => {
+    await goto(page, ''); // need to have actual window.location
     await initCarousel({ slidesPerPage: 2, withFocusableElements: true, skipLinkTarget: '#link-after' });
     const skipLink = await getSkipLink();
 
     await skipLink.focus();
-
     await page.keyboard.press('Enter');
 
     expect(await getActiveElementId(page)).toBe('link-after');

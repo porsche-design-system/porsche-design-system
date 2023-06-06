@@ -12,9 +12,7 @@ import {
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
-  removeAriaHidden,
   renderPagination,
-  setCustomTabIndex,
   slideNext,
   slidePrev,
   updatePagination,
@@ -147,6 +145,7 @@ export class Carousel {
     this.observeBreakpointChange();
 
     if (this.splide) {
+      this.observeSlides(); // on reconnect, adjust tabindex and aria attributes on slides
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
@@ -161,6 +160,7 @@ export class Carousel {
   }
 
   public componentDidLoad(): void {
+    this.observeSlides(); // initial, adjust tabindex and aria attributes on slides
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
       autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
@@ -179,10 +179,6 @@ export class Carousel {
     });
 
     this.registerSplideHandlers(this.splide);
-
-    this.container.addEventListener('focusin', (e: FocusEvent & { target: HTMLElement }) =>
-      this.handleScrollingOnFocusIn(e)
-    );
   }
 
   // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
@@ -198,6 +194,7 @@ export class Carousel {
 
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
+    unobserveChildren(this.container); // adjust tabindex and aria attributes on slides
     unobserveBreakpointChange(this.host);
     this.splide.destroy();
   }
@@ -271,7 +268,7 @@ export class Carousel {
               icon="arrow-right"
               ref={(ref) => (this.btnNext = ref)}
               onClick={() => slideNext(this.splide, this.amountOfPages)}
-              onKeyDown={(e: KeyboardEvent) => this.setFocusOnActiveSlide(e)}
+              onKeyDown={this.onNextKeyDown}
             />
           </div>
         </div>
@@ -281,6 +278,7 @@ export class Carousel {
           class="splide"
           aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
           ref={(ref) => (this.container = ref)}
+          onFocusin={this.onSplideFocusIn}
         >
           <div class="splide__track">
             <div class="splide__list">
@@ -304,14 +302,6 @@ export class Carousel {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
-    });
-
-    splide.on('ready moved resized', () => {
-      removeAriaHidden(splide);
-    });
-
-    splide.on('refresh', () => {
-      setCustomTabIndex(splide);
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
@@ -344,31 +334,46 @@ export class Carousel {
     renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
   };
 
-  private setFocusOnActiveSlide = (e: KeyboardEvent): void => {
+  private onNextKeyDown = (e: KeyboardEvent): void => {
     if (e.key === 'Tab' && !e.shiftKey) {
-      const activeSlideIndex = this.splide.index;
-      const activeSlide = this.splide.Components.Elements.slides.at(activeSlideIndex);
+      const activeSlide = this.splide.Components.Elements.slides.at(this.splide.index);
       activeSlide.focus();
       e.preventDefault();
     }
   };
 
-  private handleScrollingOnFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
-    const { index, Components } = this.splide;
-    const { Elements, Slides } = Components;
-    const target = e.target;
+  private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
+    const { target } = e;
+    const {
+      index: splideIndex,
+      Components: { Elements },
+    } = this.splide;
 
-    const slottedSlideFocusIndex = this.slides.findIndex((slide) => slide.contains(target));
     const slideIndexOfFocusedElement = Elements.slides.includes(target)
-      ? Slides.get().findIndex((el) => el.slide === target)
-      : slottedSlideFocusIndex;
+      ? Elements.slides.indexOf(target) // focussed element is the slide itself
+      : this.slides.findIndex((slide) => slide.contains(target)); // focussed element is within slide, e.g. link or button
 
-    if (index !== slideIndexOfFocusedElement) {
-      if (slideIndexOfFocusedElement < this.amountOfPages && slideIndexOfFocusedElement > index) {
+    if (splideIndex !== slideIndexOfFocusedElement) {
+      if (slideIndexOfFocusedElement < this.amountOfPages && slideIndexOfFocusedElement > splideIndex) {
         slideNext(this.splide, this.amountOfPages);
-      } else if (slideIndexOfFocusedElement < index) {
+      } else if (slideIndexOfFocusedElement < splideIndex) {
         slidePrev(this.splide, this.amountOfPages);
       }
     }
   };
+
+  private observeSlides(): void {
+    // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
+    observeChildren(
+      this.container,
+      () =>
+        this.splide.Components.Elements.slides.forEach((el) => {
+          el.removeAttribute('aria-hidden');
+          if (el.tabIndex !== 0) {
+            el.tabIndex = 0;
+          }
+        }),
+      ['tabindex', 'aria-hidden' as any]
+    );
+  }
 }

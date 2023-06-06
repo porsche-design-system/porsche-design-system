@@ -76,57 +76,6 @@
           <p>(50vw)</p>
         </div>
       </p-carousel>
-
-      <p-carousel
-        align-header="center"
-        heading="Some heading"
-        description="Some description"
-        skip-link-target="#carousel"
-        id="carouselSkipTarget"
-      >
-        <div>Slide 1<br /><p-link href="#">P-Link 1</p-link></div>
-        <div>Slide 2<br /></div>
-        <div>Slide 3<br /></div>
-        <div>Slide 4<br /></div>
-        <div>Slide 5<br /></div>
-        <div>Slide 6<br /></div>
-      </p-carousel>
-
-      <p-carousel
-        align-header="center"
-        heading="Some heading"
-        description="Some description"
-        id="carousel"
-        skip-link-target="#after"
-      >
-        <div>Slide 1<br /><p-link href="#">P-Link 1</p-link></div>
-        <div>Slide 2<br /></div>
-        <div>Slide 3<br /></div>
-        <div>Slide 4<br /></div>
-        <div>Slide 5<br /></div>
-        <div>Slide 6<br /></div>
-      </p-carousel>
-      <button type="button" onclick="addSlides()" id="after">Add slide</button>
-      <button type="button" onclick="removeSlides()">Remove last slide</button>
-      <script>
-        const addSlides = () => {
-          const carousel = document.getElementById('carousel');
-
-          const newSlide = document.createElement('div');
-          newSlide.textContent = 'New Slide';
-          carousel.appendChild(newSlide);
-        };
-      </script>
-
-      <button>After</button>
-
-      <p-carousel slides-per-page="2" heading="Some heading">
-        <div>Slide 1<br /><a href="#">Link</a></div>
-        <div>Slide 2<br /><a href="#">Link</a></div>
-        <div>Slide 3<br /><a href="#">Link</a></div>
-        <div>Slide 4<br /><a href="#">Link</a></div>
-      </p-carousel>
-      <button>After</button>
     </main>
 
     <script>

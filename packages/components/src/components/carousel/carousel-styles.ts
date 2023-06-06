@@ -10,6 +10,7 @@ import {
   hostHiddenStyles,
 } from '../../styles';
 import {
+  borderRadiusLarge,
   borderRadiusSmall,
   borderWidthBase,
   fontFamily,
@@ -28,7 +29,6 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
-  themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
 
 export const carouselTransitionDuration = 400;
@@ -55,7 +55,7 @@ export const getComponentCss = (
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, focusColor } = getThemedColors(theme);
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
@@ -134,6 +134,8 @@ export const getComponentCss = (
     splide: {
       overflow: 'hidden',
       // visibility: 'hidden',
+      padding: `4px 0`, // for slide focus outline
+      margin: `-4px 0`, // for slide focus outline
       '&__track': {
         cursor: 'grab',
         // !important is necessary to override inline styles set by splide library
@@ -157,7 +159,6 @@ export const getComponentCss = (
       },
       '&__list': {
         display: 'flex',
-        height: '100%',
         ...getBackfaceVisibilityJssStyle(),
       },
       '&__slide': {
@@ -165,10 +166,11 @@ export const getComponentCss = (
         flexShrink: 0,
         ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
+        borderRadius: borderRadiusLarge,
+        overflow: 'hidden',
         '&:focus-visible': {
-          borderRadius: '4px',
-          outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
-          outlineOffset: '-2px',
+          outline: `${borderWidthBase} solid ${focusColor}`,
+          outlineOffset: '2px',
         },
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding

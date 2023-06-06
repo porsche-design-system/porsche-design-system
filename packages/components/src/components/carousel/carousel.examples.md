@@ -299,7 +299,6 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
     flex-direction: column;
     background: #00b0f4;
     height: 150px;
-    border-radius: $pds-border-radius-small;
   }
 
   :deep(p-carousel) {
