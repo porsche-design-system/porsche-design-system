@@ -18,9 +18,7 @@ export const executeVisualRegressionTest = async (route: string, options?: Optio
     testInfo.snapshotSuffix = ''; // removes system OS names in snapshot
 
     await page.setViewportSize({ width, height: 1 });
-    console.log(await page.request.get(`${baseUrl}/#${route}`, { ignoreHTTPSErrors: true }));
-    await page.goto(`${baseUrl}/#${route}`, { timeout: 30000 });
-    console.log(await page.evaluate(() => document.querySelector('div#app').innerHTML));
+    await page.goto(`${baseUrl}/#${route}`);
     await page.waitForFunction(() => document.querySelector('div#app').innerHTML);
     await page.setViewportSize({ width, height: await page.evaluate(() => document.body.clientHeight) });
 
