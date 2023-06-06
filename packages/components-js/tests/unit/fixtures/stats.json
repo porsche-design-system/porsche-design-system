@@ -26,13 +26,13 @@
   },
   {
     "chunkShortName": "button-tile",
-    "size": 6756,
-    "gzipSize": 2800
+    "size": 6807,
+    "gzipSize": 2815
   },
   {
     "chunkShortName": "carousel",
-    "size": 41793,
-    "gzipSize": 16981
+    "size": 42489,
+    "gzipSize": 17204
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -116,18 +116,18 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 6852,
-    "gzipSize": 2867
+    "size": 6903,
+    "gzipSize": 2880
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 7330,
-    "gzipSize": 3189
+    "size": 7383,
+    "gzipSize": 3202
   },
   {
     "chunkShortName": "main",
-    "size": 69168,
-    "gzipSize": 23235
+    "size": 69206,
+    "gzipSize": 23247
   },
   {
     "chunkShortName": "marque",
