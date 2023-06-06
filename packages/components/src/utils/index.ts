@@ -12,6 +12,7 @@ export * from './dom';
 export * from './form';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export { isDeepEqual } from './is-deep-equal';
+export * from './is-ssr-hydration';
 export * from './jss';
 export { parseJSONAttribute } from './json';
 export * from './link-button/getLinkButtonThemeForIcon';
