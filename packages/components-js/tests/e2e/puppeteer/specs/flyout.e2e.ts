@@ -33,8 +33,8 @@ const getHeaderContent = () => selectNode(page, 'p-flyout >>> .header-content');
 const getHeaderSlottedContent = () => selectNode(page, '[slot="header"]');
 const getFooter = () => selectNode(page, 'p-flyout >>> .footer');
 const getFooterSlottedContent = () => selectNode(page, '[slot="footer"]');
-const getSecondaryContent = () => selectNode(page, 'p-flyout >>> .secondary-content');
-const getSecondaryContentSlottedContent = () => selectNode(page, '[slot="secondary-content"]');
+const getSubFooter = () => selectNode(page, 'p-flyout >>> .sub-footer');
+const getSubFooterSlottedContent = () => selectNode(page, '[slot="sub-footer"]');
 const getFlyoutDismissButton = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss');
 const getFlyoutDismissButtonReal = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss >>> button');
 const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
@@ -52,17 +52,17 @@ const initBasicFlyout = (
     content?: string;
     header?: string;
     footer?: string;
-    secondaryContent?: string;
+    subFooter?: string;
   }
 ): Promise<void> => {
-  const { header = '', content = '<p>Some Content</p>', footer = '', secondaryContent = '' } = flyoutSlots || {};
+  const { header = '', content = '<p>Some Content</p>', footer = '', subFooter = '' } = flyoutSlots || {};
 
   const flyoutMarkup = `
     <p-flyout ${getHTMLAttributes(flyoutProps)}>
       ${header}
       ${content}
       ${footer}
-      ${secondaryContent}
+      ${subFooter}
     </p-flyout>`;
 
   return setContentWithDesignSystem(page, flyoutMarkup);
@@ -72,12 +72,8 @@ const initAdvancedFlyout = async () => {
   const header = '<div slot="header"><p-button id="btn-header">Header button</p-button></div>';
   const footer = '<div slot="footer"><p-button id="btn-footer">Content button</p-button></div>';
   const content = '<p-button id="btn-content">Content button</p-button>';
-  const secondaryContent =
-    '<div slot="secondary-content"><p-button id="btn-secondary-content">Content button</p-button></div>';
-  await initBasicFlyout(
-    { open: false },
-    { header: header, footer: footer, content: content, secondaryContent: secondaryContent }
-  );
+  const subFooter = '<div slot="sub-footer"><p-button id="btn-sub-footer">Content button</p-button></div>';
+  await initBasicFlyout({ open: false }, { header: header, footer: footer, content: content, subFooter: subFooter });
 };
 
 const openFlyout = async () => {
@@ -159,7 +155,7 @@ describe('scroll shadows', () => {
       {
         header: '<div slot="header">Some Heading</div>',
         content: '<div style="height: 200vh">Some Content</div>',
-        secondaryContent: '<div slot="secondary-content" class="scroll-here">Some Content</div>',
+        subFooter: '<div slot="sub-footer" class="scroll-here">Some Content</div>',
       }
     );
     const header = await getHeader();
@@ -189,13 +185,13 @@ describe('scroll shadows', () => {
     expect(await getElementStyle(footer, 'boxShadow')).toBe('none');
   });
 
-  it('footer scroll shadow with secondary content', async () => {
+  it('footer scroll shadow with sub-footer content', async () => {
     await initBasicFlyout(
       { open: true },
       {
         footer: '<div slot="footer"><button>Some Footer</button></div>',
         content: '<div style="height: 100vh">Some Content</div>',
-        secondaryContent: '<div slot="secondary-content">Secondary Content<span class="scroll-here"></span></div>',
+        subFooter: '<div slot="sub-footer">Sub Footer Content<span class="scroll-here"></span></div>',
       }
     );
     const footer = await getFooter();
@@ -327,7 +323,7 @@ describe('focus behavior', () => {
     await expectDismissButtonToBeFocused();
   });
 
-  it('should have correct focus order when there are focusable elements in header, content, footer and secondary content', async () => {
+  it('should have correct focus order when there are focusable elements in header, content, footer and sub-footer', async () => {
     await initAdvancedFlyout();
     await openFlyout();
 
@@ -339,7 +335,7 @@ describe('focus behavior', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-secondary-content');
+    expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused();
   });
@@ -475,7 +471,7 @@ describe('after content change', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-secondary-content');
+    expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('finally');
   });
@@ -494,7 +490,7 @@ describe('can be controlled via keyboard', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-secondary-content');
+    expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('finally');
   });
@@ -506,7 +502,7 @@ describe('can be controlled via keyboard', () => {
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-secondary-content');
+    expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-footer');
     await page.keyboard.press('Tab');
@@ -586,16 +582,16 @@ describe('lifecycle', () => {
 });
 
 describe('slotted', () => {
-  it('should set slotted header, footer, secondary-content', async () => {
+  it('should set slotted header, footer, sub-footer', async () => {
     const headerContent = '<h1>Sticky Heading</h1><p>Sticky header text</p>';
     const footerContent = '<button>Footer Button</button>';
-    const secondaryContent = '<p>Secondary Content</p>';
+    const subFooterContent = '<p>Sub Footer Content</p>';
     await initBasicFlyout(
       { open: true },
       {
         header: `<div slot="header">${headerContent}</div>`,
         footer: `<div slot="footer">${footerContent}</div>`,
-        secondaryContent: `<div slot="secondary-content">${secondaryContent}</div>`,
+        subFooter: `<div slot="sub-footer">${subFooterContent}</div>`,
       }
     );
     const header = await getHeaderContent();
@@ -608,10 +604,10 @@ describe('slotted', () => {
     expect(await getProperty(footer, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="footer"></slot>"`);
     expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${footerContent}"`);
 
-    const secondary = await getSecondaryContent();
-    const secondarySlottedContent = await getSecondaryContentSlottedContent();
-    expect(await getProperty(secondary, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="secondary-content"></slot>"`);
-    expect(await getProperty(secondarySlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${secondaryContent}"`);
+    const subFooter = await getSubFooter();
+    const subFooterSlottedContent = await getSubFooterSlottedContent();
+    expect(await getProperty(subFooter, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="sub-footer"></slot>"`);
+    expect(await getProperty(subFooterSlottedContent, 'innerHTML')).toMatchInlineSnapshot(`"${subFooter}"`);
   });
 });
 

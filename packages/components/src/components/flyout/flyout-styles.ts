@@ -26,7 +26,7 @@ export const getComponentCss = (
   position: FlyoutPosition,
   hasHeader: boolean,
   hasFooter: boolean,
-  hasSecondaryContent: boolean,
+  hasSubFooter: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
@@ -94,7 +94,7 @@ export const getComponentCss = (
       position: 'relative',
       [isPositionLeft ? 'marginRight' : 'marginLeft']: 'auto',
       boxSizing: 'border-box',
-      ...(hasSecondaryContent && {
+      ...(hasSubFooter && {
         overflowY: 'auto',
         overscrollBehaviorY: 'none',
       }),
@@ -111,8 +111,8 @@ export const getComponentCss = (
     },
     content: {
       padding: contentPadding,
-      // If secondary content is used scroll shadows have to be done via JS
-      ...(!hasSecondaryContent && {
+      // If sub-footer is used scroll shadows have to be done via JS
+      ...(!hasSubFooter && {
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         backgroundImage: `linear-gradient(to top, ${backgroundColor}, ${backgroundColor}), linear-gradient(to top, ${backgroundColor}, ${backgroundColor}), linear-gradient(to top, ${shadowColor}, ${transparentColor}), linear-gradient(to bottom, ${shadowColor}, ${transparentColor})`,
@@ -134,8 +134,8 @@ export const getComponentCss = (
         },
       },
     }),
-    ...(hasSecondaryContent && {
-      ['secondary-content']: {
+    ...(hasSubFooter && {
+      ['sub-footer']: {
         padding: contentPadding,
       },
     }),

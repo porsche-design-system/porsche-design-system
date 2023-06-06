@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div slot="footer">
         <p-button>Footer Button</p-button>
       </div>
-      <p-text slot="secondary-content">Some Secondary Content</p-text>
+      <p-text slot="sub-footer">Some Sub Footer Content</p-text>
     </p-flyout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -26,7 +26,7 @@ export const FlyoutExampleSlottedSecondaryPage = (): JSX.Element => {
         <div slot="footer">
           <PButton type="button">Footer Button</PButton>
         </div>
-        <PText slot="secondary-content">Some Secondary Content</PText>
+        <PText slot="sub-footer">Some Sub Footer Content</PText>
       </PFlyout>
     </>
   );

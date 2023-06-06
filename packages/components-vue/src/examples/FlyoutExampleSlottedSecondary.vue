@@ -22,8 +22,8 @@
     <slot name="footer">
       <PButton type="button">Footer Button</PButton>
     </slot>
-    <slot name="secondary-content">
-      <PText>Some Secondary Content</PText>
+    <slot name="sub-footer">
+      <PText>Some Sub Footer Content</PText>
     </slot>
   </PFlyout>
 </template>

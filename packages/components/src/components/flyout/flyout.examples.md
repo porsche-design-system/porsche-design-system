@@ -49,7 +49,7 @@ Display a sticky `header` at the top of the flyout. When used the dismiss button
 Show a sticky `footer` at the bottom of the flyout, flowing under the main content when scrollable or when there is
 extra space.
 
-You can use the `secondary-content` slot to display additional information below the footer. This slot is ideal for less
+You can use the `sub-footer` slot to display additional information below the footer. This slot is ideal for less
 critical content, such as legal information or FAQs, which provides further details to the user. It appears when
 scrolling to the end of the flyout or when there is available space to accommodate the content.
 
@@ -58,7 +58,7 @@ Make sure to set the `aria` property with a descriptive `aria-label` value when 
 <Playground :frameworkMarkup="slottedSample" :markup="slottedSample['vanilla-js']" :config="config">
   <div class="select-container">
     <SelectOptions v-model="scrollable" :values="scrollables" name="scrollable"></SelectOptions>
-    <SelectOptions v-model="secondaryContent" :values="secondaryContents" name="secondary-content"></SelectOptions>
+    <SelectOptions v-model="subFooter" :values="subFooters" name="sub-footer"></SelectOptions>
   </div>
 </Playground>
 
@@ -119,15 +119,15 @@ export default class Code extends Vue {
 
     scrollable = 'true';
     scrollables = ['true', 'false'];
-    secondaryContent = 'true';
-    secondaryContents = ['true', 'false'];
+    subFooter = 'true';
+    subFooters = ['true', 'false'];
     get slottedSample() {
-      const content = '<div slot="secondary-content">Some Secondary Content</div>';
+      const content = '<div slot="sub-footer">Some Sub Footer Content</div>';
       Object.entries(this.codeExampleSlotted)
             .forEach(([key, value]) => 
                 this.codeExampleSlotted[key] = value
                   .replace(/100vh|initial/, this.scrollable === 'true' ? '100vh' : 'initial')
-                  .replace(/(\s*<div slot="secondary-content">Some Secondary Content<\/div>)?(\s*)(<\/p-flyout>|<\/PFlyout>)/, this.secondaryContent === 'true' ? `$2\t${content}$2$3` : '$2$3'));
+                  .replace(/(\s*<div slot="sub-footer">Some Sub Footer Content<\/div>)?(\s*)(<\/p-flyout>|<\/PFlyout>)/, this.subFooter === 'true' ? `$2\t${content}$2$3` : '$2$3'));
       return this.codeExampleSlotted
     }
 

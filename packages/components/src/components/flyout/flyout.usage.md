@@ -14,13 +14,13 @@ component in various situations.
 - Adjust Flyout size and alignment with the grid.
 - Use the sticky header for a descriptive heading & optional sub-heading.
 - Use the sticky footer for a call to action.
-- Use the secondary content slot for additional or less important information such as legals or faqs.
+- Use the sub-footer slot for additional or less important information such as legals or faqs.
 - Follow button order and positioning guidelines.
 - Use feedback banner for any feedback related to the request.
 
 ### Don't:
 
 - Don't use to many actions in the sticky footer or header.
-- Don't put important information in the secondary content slot.
+- Don't put important information in the sub-footer slot.
 - Don't use fullscreen Flyout's on desktop.
 - Don't launch a Flyout within a Flyout.

@@ -18,7 +18,7 @@ describe('getComponentCss()', () => {
     [true, 'left', false, true, false, 'light'],
     [false, 'left', true, true, true, 'dark'],
   ])(
-    'should return correct css for isOpen: %s, position: %s, hasHeader: %s, hasFooter: %s, hasSecondaryContent: %s, theme: %s',
+    'should return correct css for isOpen: %s, position: %s, hasHeader: %s, hasFooter: %s, hasSubFooter: %s, theme: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }

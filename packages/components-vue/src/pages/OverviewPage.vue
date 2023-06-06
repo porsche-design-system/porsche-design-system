@@ -91,7 +91,7 @@
           <span slot="header">Sticky Header</span>
           Some Content
           <span slot="footer">Sticky Footer</span>
-          <span slot="secondary-content">Some Secondary Content</span>
+          <span slot="sub-footer">Some Sub Footer Content</span>
         </PFlyout>
       </div>
 
@@ -351,7 +351,7 @@
             <span slot="header">Sticky Header</span>
             Some Content
             <span slot="footer">Sticky Footer</span>
-            <span slot="secondary-content">Some Secondary Content</span>
+            <span slot="sub-footer">Some Sub Footer Content</span>
           </PFlyout>
         </div>
 

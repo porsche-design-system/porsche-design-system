@@ -426,7 +426,7 @@
   </p-flyout>
 </div>
 
-<div class="playground light auto-layout" title="should show flyout with header, footer and secondaryContent">
+<div class="playground light auto-layout" title="should show flyout with header, footer and subFooter">
   <p-flyout open="true">
     <div slot="header">
       <h1>Sticky Heading</h1>
@@ -436,16 +436,13 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
 
-<div
-  class="playground dark auto-layout"
-  title="should show flyout with header, footer and secondaryContent on dark theme"
->
+<div class="playground dark auto-layout" title="should show flyout with header, footer and subFooter on dark theme">
   <p-flyout open="true" theme="dark">
     <div slot="header">
       <h1>Sticky Heading</h1>
@@ -455,15 +452,15 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
 
 <div
   class="playground light auto-layout"
-  title="should show flyout with header, footer, secondaryContent and scrollable content"
+  title="should show flyout with header, footer, subFooter and scrollable content"
 >
   <p-flyout open="true">
     <div slot="header">
@@ -512,15 +509,15 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
 
 <div
   class="playground dark auto-layout"
-  title="should show flyout with header, footer, secondaryContent and scrollable content on dark theme"
+  title="should show flyout with header, footer, subFooter and scrollable content on dark theme"
 >
   <p-flyout open="true" theme="dark">
     <div slot="header">
@@ -569,15 +566,15 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
 
 <div
   class="playground light auto-layout"
-  title="should show flyout with header, footer, secondaryContent and slotted and deeply nested anchor"
+  title="should show flyout with header, footer, subFooter and slotted and deeply nested anchor"
 >
   <p-flyout open="true">
     <div slot="header">
@@ -591,15 +588,15 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
 
 <div
   class="playground dark auto-layout"
-  title="should show flyout with header, footer, secondaryContent and slotted and deeply nested anchor on dark theme"
+  title="should show flyout with header, footer, subFooter and slotted and deeply nested anchor on dark theme"
 >
   <p-flyout open="true" theme="dark">
     <div slot="header">
@@ -613,8 +610,8 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
@@ -643,10 +640,7 @@
   </p-flyout>
 </div>
 
-<div
-  class="playground light auto-layout"
-  title="should show flyout with header, footer and secondaryContent (position=left)"
->
+<div class="playground light auto-layout" title="should show flyout with header, footer and subFooter (position=left)">
   <p-flyout open="true" position="left">
     <div slot="header">
       <h1>Sticky Heading</h1>
@@ -656,15 +650,15 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
 
 <div
   class="playground dark auto-layout"
-  title="should show flyout with header, footer and secondaryContent (position=left) on dark theme"
+  title="should show flyout with header, footer and subFooter (position=left) on dark theme"
 >
   <p-flyout open="true" position="left" theme="dark">
     <div slot="header">
@@ -675,15 +669,15 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
     </div>
   </p-flyout>
 </div>
 
 <div
   class="playground auto-layout"
-  title="should show scrolled down flyout with header, footer, secondaryContent and scrollable content"
+  title="should show scrolled down flyout with header, footer, subFooter and scrollable content"
 >
   <p-flyout open="true" class="scroll">
     <div slot="header">
@@ -732,8 +726,8 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
       <span class="scroll-here"></span>
     </div>
   </p-flyout>
@@ -741,7 +735,7 @@
 
 <div
   class="playground dark auto-layout"
-  title="should show scrolled down flyout with header, footer, secondaryContent and scrollable content on dark theme"
+  title="should show scrolled down flyout with header, footer, subFooter and scrollable content on dark theme"
 >
   <p-flyout open="true" theme="dark" class="scroll">
     <div slot="header">
@@ -790,8 +784,8 @@
     <div slot="footer">
       <button>Sticky Footer Button</button>
     </div>
-    <div slot="secondary-content">
-      <p>Some secondary content</p>
+    <div slot="sub-footer">
+      <p>Some Sub Footer Content</p>
       <span class="scroll-here"></span>
     </div>
   </p-flyout>

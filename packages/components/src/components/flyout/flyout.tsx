@@ -58,10 +58,10 @@ export class Flyout {
   private dismissBtn: HTMLElement;
   private header: HTMLElement;
   private footer: HTMLElement;
-  private secondaryContent: HTMLElement;
+  private subFooter: HTMLElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
-  private hasSecondaryContent: boolean;
+  private hasSubFooter: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -69,7 +69,7 @@ export class Flyout {
     this.updateFocusTrap(isOpen);
 
     if (isOpen) {
-      if (this.hasSecondaryContent && this.hasFooter) {
+      if (this.hasSubFooter && this.hasFooter) {
         this.onScroll();
       }
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -98,7 +98,7 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
-      if (this.hasSecondaryContent && this.hasFooter) {
+      if (this.hasSubFooter && this.hasFooter) {
         this.onScroll();
       }
       // Necessary to select button to make :focus-visible work
@@ -116,7 +116,7 @@ export class Flyout {
 
     this.hasHeader = hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
-    this.hasSecondaryContent = hasNamedSlot(this.host, 'secondary-content');
+    this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
 
     attachComponentCss(
       this.host,
@@ -125,7 +125,7 @@ export class Flyout {
       this.position,
       this.hasHeader,
       this.hasFooter,
-      this.hasSecondaryContent,
+      this.hasSubFooter,
       this.theme
     );
 
@@ -156,7 +156,7 @@ export class Flyout {
           })}
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}
-          {...(this.hasSecondaryContent && { onScroll: this.onScroll })} // if no secondary content is used scroll shadows are done via CSS
+          {...(this.hasSubFooter && { onScroll: this.onScroll })} // if no sub-footer is used scroll shadows are done via CSS
         >
           <div class="header" ref={(el) => (this.header = el)}>
             {dismissBtn}
@@ -174,9 +174,9 @@ export class Flyout {
               <slot name="footer" />
             </div>
           )}
-          {this.hasSecondaryContent && (
-            <div class="secondary-content" ref={(el) => (this.secondaryContent = el)}>
-              <slot name="secondary-content" />
+          {this.hasSubFooter && (
+            <div class="sub-footer" ref={(el) => (this.subFooter = el)}>
+              <slot name="sub-footer" />
             </div>
           )}
         </div>
@@ -215,7 +215,7 @@ export class Flyout {
   };
 
   private updateFooterShadow = (): void => {
-    const shouldApplyShadow = this.secondaryContent.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
+    const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
     if (shouldApplyShadow) {
       this.footer.classList.add('footer--shadow');
     } else {
