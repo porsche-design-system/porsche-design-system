@@ -134,8 +134,8 @@ export const getComponentCss = (
     splide: {
       overflow: 'hidden',
       // visibility: 'hidden',
-      padding: `4px 0`, // for slide focus outline
-      margin: `-4px 0`, // for slide focus outline
+      padding: '4px 0', // for slide focus outline
+      margin: '-4px 0', // for slide focus outline
       '&__track': {
         cursor: 'grab',
         // !important is necessary to override inline styles set by splide library

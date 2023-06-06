@@ -373,7 +373,7 @@ export class Carousel {
             el.tabIndex = 0;
           }
         }),
-      ['tabindex', 'aria-hidden' as any]
+      ['tabindex', 'aria-hidden']
     );
   }
 }

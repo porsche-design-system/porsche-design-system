@@ -1,4 +1,5 @@
 import { hasWindow } from './has-window';
+import type { AriaAttributes } from '../aria-types';
 
 export const childrenMutationMap: Map<Node, () => void> = new Map();
 
@@ -18,7 +19,7 @@ const childrenObserver =
 export const observeChildren = <T extends HTMLElement, K = keyof T>(
   node: T,
   callback: () => void,
-  attributes?: Lowercase<K extends string ? K : string>[]
+  attributes?: (Lowercase<K extends string ? K : string> | keyof AriaAttributes)[]
 ): void => {
   // node might not be defined in connectedCallback
   if (node) {
