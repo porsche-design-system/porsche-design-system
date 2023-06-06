@@ -7,6 +7,8 @@ const ToastLineBreakPage: NextPage = (): JSX.Element => {
     .playground {
       height: 300px;
       padding: 0;
+      transform: translateX(0);
+      border: 1px solid deeppink;
     }
   `;
 
@@ -14,29 +16,8 @@ const ToastLineBreakPage: NextPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="visualize-grid">
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-
       <div className="playground light" title="should render toast info with line break on light background">
-        <Toast text="Some<br> message"></PToast>
+        <Toast text="Some<br> message" />
       </div>
     </>
   );

@@ -212,6 +212,10 @@ const generatedRoutes = {
     "path": "/toast-basic-state-neutral",
     "name": "ToastBasicStateNeutral"
   },
+  "toastLineBreak": {
+    "path": "/toast-line-break",
+    "name": "ToastLineBreak"
+  },
   "toastOffset": {
     "path": "/toast-offset",
     "name": "ToastOffset"
