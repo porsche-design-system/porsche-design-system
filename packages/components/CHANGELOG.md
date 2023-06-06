@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Wrong validation during SSR hydration of `Link Tile` and `Select Wrapper`
+  ([#2588](https://github.com/porsche-design-system/porsche-design-system/pull/2588))
+
+### [3.1.0-rc.1] - 2023-06-02
+
 #### Added
 
 - **[EXPERIMENTAL]** Prop `showPasswordToggle` for `Text Field Wrapper` with `input type="password"`

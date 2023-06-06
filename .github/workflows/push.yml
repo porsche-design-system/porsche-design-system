@@ -298,11 +298,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'Build Remix'
+      - name: 'Build Remix' # remix build is checked as part of nextjs unit tests
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-react/remix
+      - name: 'E2E Test components-react/nextjs'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e
+          args: --components-react/nextjs
       - name: 'VRT Test components-react/nextjs'
         uses: ./.github/actions/docker-run-playwright
         with:

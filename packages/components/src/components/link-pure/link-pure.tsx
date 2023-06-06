@@ -7,6 +7,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasVisibleIcon,
+  isSsrHydration,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   TEXT_WEIGHTS,
@@ -99,7 +100,11 @@ export class LinkPure {
   @Prop() public aria?: SelectedAriaAttributes<LinkPureAriaAttribute>;
 
   public componentWillLoad(): void {
-    throwIfInvalidLinkUsage(this.host, this.href);
+    if (!isSsrHydration(this.host)) {
+      // when ssr rendered component is partially hydrated before being rerendered by its parent (e.g. link-tile)
+      // it has no href prop and no slotted anchor, so validation fails
+      throwIfInvalidLinkUsage(this.host, this.href);
+    }
   }
 
   public render(): JSX.Element {
