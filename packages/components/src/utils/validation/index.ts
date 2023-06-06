@@ -19,4 +19,3 @@ export * from '../../components/text/text-color';
 export * from '../../components/text/text-size';
 export * from '../../components/text/text-weight';
 export * from '../theme';
-export * from './is-deep-equal';
