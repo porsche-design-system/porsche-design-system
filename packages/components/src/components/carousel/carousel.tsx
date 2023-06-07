@@ -156,7 +156,11 @@ export class Carousel {
     this.observeBreakpointChange();
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, propName: string): boolean {
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof Carousel>
+  ): boolean {
     return !isDeepEqual(newVal, oldVal) && propName !== 'activeSlideIndex'; // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
   }
 
