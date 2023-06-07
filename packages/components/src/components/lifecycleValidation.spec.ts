@@ -154,9 +154,7 @@ it.each<TagName>(tagNamesWithPropsOfTypeObject)(
     const spy = jest.spyOn(isDeepEqualUtils, 'isDeepEqual');
     const component = componentFactory(tagName);
 
-    if (component.componentShouldUpdate) {
-      component.componentShouldUpdate('newValue', 'oldValue');
-    }
+    component.componentShouldUpdate('newValue', 'oldValue');
 
     expect(spy).toBeCalledWith('newValue', 'oldValue');
   }
