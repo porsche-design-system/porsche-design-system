@@ -58,7 +58,7 @@ describe('modal', () => {
 
       component.componentDidRender();
 
-      expect(spy).not.toBeCalledWith();
+      expect(spy).not.toBeCalled();
     });
   });
 
