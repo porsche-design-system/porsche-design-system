@@ -7,7 +7,7 @@
       weight="regular"
       compact="true"
     >
-      <img src="@/assets/start-designing.png" alt="Some wireframes" />
+      <img src="@/assets/start-designing.jpg" alt="Some wireframes" />
     </p-link-tile>
     <p-link-tile
       href="developing/introduction"
@@ -16,7 +16,7 @@
       weight="regular"
       compact="true"
     >
-      <img src="@/assets/start-developing.png" alt="Some woman developing with Porsche Design System version 3" />
+      <img src="@/assets/start-developing.jpg" alt="Some woman developing with Porsche Design System version 3" />
     </p-link-tile>
     <p-link-tile
       href="updates/migration-guide/porsche-design-system"
@@ -26,7 +26,7 @@
       compact="true"
     >
       <img
-        src="@/assets/migrate-v2-to-v3.png"
+        src="@/assets/migrate-v2-to-v3.jpg"
         alt="Sample Porsche web application with Porsche Design System version 3."
       />
     </p-link-tile>
