@@ -13,6 +13,7 @@ The `componentsReady` function is provided as part of the following components p
 - @porsche-design-system/components-js
 - @porsche-design-system/components-angular
 - @porsche-design-system/components-react
+- @porsche-design-system/components-vue
 
 <TableOfContents></TableOfContents>
 

@@ -73,10 +73,10 @@ export const config: StorefrontConfig = {
     },
     // @ts-ignore
     'Components Ready': [() => import('@/pages/developing/components-ready.md')],
-    // @ts-ignore
-    Testing: [() => import('@/pages/developing/testing.md')],
   },
   Components: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/components/introduction.md')],
     Accordion: {
       // @ts-ignore
       Examples: [() => import(`@/../../components/src/components/accordion/accordion.examples.md`)],
@@ -593,7 +593,5 @@ export const config: StorefrontConfig = {
     Troubleshooting: [() => import('@/pages/help/troubleshooting.md')],
     // @ts-ignore
     'Bug Report': [() => import('@/pages/help/bug-report.md')],
-    // @ts-ignore
-    'Component Meta': [() => import('@/pages/help/component-meta/component-meta.md')],
   },
 };

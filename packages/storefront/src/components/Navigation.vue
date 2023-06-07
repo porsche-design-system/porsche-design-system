@@ -55,9 +55,7 @@
         return result;
       }, {} as { [id: string]: boolean });
 
-      // sort components alphabetically
       this.config.Components = Object.keys(this.config.Components)
-        .sort()
         .reduce((result, category) => {
           result[category] = this.config.Components[category];
           return result;
@@ -66,7 +64,7 @@
 
     @Watch('$route')
     private onRouteChange(to: Route): void {
-      this.accordion = { ...this.accordion, [Sidebar.category(to)]: true };
+      this.accordion = { ...this.accordion, [Navigation.category(to)]: true };
     }
 
     toggleActive(category: string): void {
