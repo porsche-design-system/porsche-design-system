@@ -1,10 +1,6 @@
-# Tags
-
-<TableOfContents></TableOfContents>
+# Tag
 
 Use tags to label, categorize, or organize items using keywords that describe them.
-
-## Usage Tags
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
 component in various situations.
@@ -27,24 +23,3 @@ component in various situations.
 - Don't use more than two words (only if necessary).
 - Don't implement something else than a link or button.
 - Don't use Tags for navigation.
-
----
-
-# Tag Dismissible
-
-Allows users to quickly refine the result of data they want to be presented on the page.
-
-## Usage Tag Dismissible
-
-The following segment provides instructions for designers and developers regarding the appropriate utilization of this
-component in various situations.
-
-### Do:
-
-- Use to show that a certain filter is active.
-- Use this component with a label if additional information is needed (e.g. category an attribute/filter refers to).
-
-### Don't:
-
-- Don't use it for other interactions than dismissing a selection.
-- Don't have long content that causes multiline.

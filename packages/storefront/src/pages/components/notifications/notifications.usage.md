@@ -13,7 +13,7 @@ using your product. Ensure your **notifications are relevant, timely, and inform
 
 In order to find the right notification type for your use case, we have defined some decision-making rules for you:
 
-<p-link href="components/notifications/decision-tree" variant="primary">Go to the Decision Tree</p-link>
+<p-link href="patterns/notifications/decision-tree" variant="primary">Go to the Decision Tree</p-link>
 
 ---
 

@@ -23,30 +23,21 @@ const adjustHeadline = (str: string): string => {
   const h1Replacements: { [key in TagName]?: string } = {
     'p-flex': 'Flex',
     'p-grid': 'Grid',
-    'p-display': 'Typography',
-    'p-inline-notification': 'Notifications',
     'p-segmented-control': 'Segmented Control',
     'p-stepper-horizontal': 'Stepper Horizontal',
     'p-table': 'Table',
     'p-tabs': 'Tabs',
-    'p-tag': 'Tags',
   };
 
   // all component names on multi prop pages
   const multiPropReplacements: TagName[] = [
     ...(Object.keys(h1Replacements) as TagName[]),
-    'p-banner',
     'p-flex-item',
     'p-grid-item',
     'p-stepper-horizontal-item',
-    'p-headline',
-    'p-heading',
-    'p-text',
     'p-segmented-control-item',
-    'p-toast',
     'p-table-head-cell',
     'p-tabs-item',
-    'p-tag-dismissible',
   ];
 
   // append # to component names on multi prop pages to restore hierarchy

@@ -92,7 +92,12 @@ export const config: StorefrontConfig = {
       Props: [() => import(`@/../../components/src/components/accordion/accordion.props.md`)],
     },
     // @ts-ignore
-    Banner: [() => import('@/../../components/src/components/banner/banner.redirect.md')],
+    Banner: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/banner/banner.examples.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/banner/banner.props.md')],
+    },
     Button: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/button/button.examples.md')],
@@ -157,6 +162,12 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/crest/crest.props.md')],
     },
+    Display: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/display/display.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/display/display.props.md')],
+    },
     Divider: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/divider/divider.examples.md')],
@@ -203,6 +214,18 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/grid/grid-item/grid-item.props.md'),
       ],
     },
+    Heading: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/heading/heading.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/heading/heading.props.md')],
+    },
+    Headline: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/headline/headline.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/headline/headline.props.md')],
+    },
     Icon: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/icon/icon.examples.md')],
@@ -212,6 +235,12 @@ export const config: StorefrontConfig = {
       Guideline: [() => import('@/../../components/src/components/icon/icon.guideline.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/icon/icon.props.md')],
+    },
+    'Inline Notification': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/inline-notification/inline-notification.examples.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/inline-notification/inline-notification.props.md')],
     },
     Link: {
       // @ts-ignore
@@ -279,28 +308,6 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/model-signature/model-signature.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/model-signature/model-signature.props.md')],
-    },
-    Notifications: {
-      // @ts-ignore
-      Introduction: [() => import('@/pages/components/notifications/notifications.usage.md')],
-      'Inline Notification': [
-        // @ts-ignore
-        () => import('@/../../components/src/components/inline-notification/inline-notification.examples.md'),
-      ],
-      // @ts-ignore
-      Toast: [() => import('@/../../components/src/components/toast/toast.examples.md')],
-      // @ts-ignore
-      Banner: [() => import('@/../../components/src/components/banner/banner.examples.md')],
-      // @ts-ignore
-      'Decision Tree': [() => import('@/pages/components/notifications/decision-tree.md')],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/inline-notification/inline-notification.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/toast/toast/toast.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/banner/banner.props.md'),
-      ],
     },
     Pagination: {
       // @ts-ignore
@@ -430,21 +437,27 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/tabs-bar/tabs-bar.props.md')],
     },
-    Tags: {
+    Tag: {
       // @ts-ignore
-      Introduction: [() => import('@/../../components/src/components/tag/tag.introduction.md')],
+      Examples: [() => import('@/../../components/src/components/tag/tag.examples.md')],
       // @ts-ignore
-      Tag: [() => import('@/../../components/src/components/tag/tag.examples.md')],
-      'Tag Dismissible': [
-        // @ts-ignore
-        () => import('@/../../components/src/components/tag-dismissible/tag-dismissible.examples.md'),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/tag/tag.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/tag-dismissible/tag-dismissible.props.md'),
-      ],
+      Usage: [() => import('@/../../components/src/components/tag/tag.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/tag/tag.props.md')],
+    },
+    'Tag Dismissible': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/tag-dismissible/tag-dismissible.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/tag-dismissible/tag-dismissible.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/tag-dismissible/tag-dismissible.props.md')],
+    },
+    Text: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/text/text.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/text/text.props.md')],
     },
     'Text Field': {
       Examples: [
@@ -476,27 +489,11 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/textarea-wrapper/textarea-wrapper.props.md')],
     },
-    Typography: {
+    Toast: {
       // @ts-ignore
-      Text: [() => import('@/../../components/src/components/text/text.example.md')],
+      Examples: [() => import('@/../../components/src/components/toast/toast.examples.md')],
       // @ts-ignore
-      Heading: [() => import('@/../../components/src/components/heading/heading.example.md')],
-      // @ts-ignore
-      Headline: [() => import('@/../../components/src/components/headline/headline.example.md')],
-      // @ts-ignore
-      Display: [() => import('@/../../components/src/components/display/display.example.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/components/typography/typography.usage.md')],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/display/display.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/heading/heading.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/headline/headline.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/text/text.props.md'),
-      ],
+      Props: [() => import('@/../../components/src/components/toast/toast/toast.props.md')],
     },
     Wordmark: {
       // @ts-ignore
@@ -565,6 +562,12 @@ export const config: StorefrontConfig = {
       Resources: [() => import('@/pages/patterns/forms/resources.md')],
       // @ts-ignore
       Legal: [() => import('@/pages/patterns/forms/legal.md')],
+    },
+    Notifications: {
+      // @ts-ignore
+      Introduction: [() => import('@/pages/components/notifications/notifications.usage.md')],
+      // @ts-ignore
+      'Decision Tree': [() => import('@/pages/components/notifications/decision-tree.md')],
     },
   },
   'Must Know': {
