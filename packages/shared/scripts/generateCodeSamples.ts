@@ -89,6 +89,29 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-flyout',
+      samples: [
+        [
+          componentsJsPath + '/flyout-example.html',
+          componentsAngularPath + '/flyout-example.component.ts',
+          componentsReactPath + '/FlyoutExample.tsx',
+          componentsVuePath + '/FlyoutExample.vue',
+        ],
+        [
+          componentsJsPath + '/flyout-example-slotted.html',
+          componentsAngularPath + '/flyout-example-slotted.component.ts',
+          componentsReactPath + '/FlyoutExampleSlotted.tsx',
+          componentsVuePath + '/FlyoutExampleSlotted.vue',
+        ],
+        [
+          componentsJsPath + '/flyout-example-slotted-secondary.html',
+          componentsAngularPath + '/flyout-example-slotted-secondary.component.ts',
+          componentsReactPath + '/FlyoutExampleSlottedSecondary.tsx',
+          componentsVuePath + '/FlyoutExampleSlottedSecondary.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-inline-notification',
       samples: [
         [

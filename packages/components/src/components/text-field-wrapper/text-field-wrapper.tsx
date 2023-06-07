@@ -10,6 +10,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   observeProperties,
@@ -155,6 +156,10 @@ export class TextFieldWrapper {
       // detect programmatic value changes like it happens in frameworks
       observeProperties(this.input, ['value'], () => (this.isClearable = !!this.input.value));
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

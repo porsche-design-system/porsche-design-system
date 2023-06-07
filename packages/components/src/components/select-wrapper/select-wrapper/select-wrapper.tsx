@@ -9,6 +9,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
@@ -88,6 +89,10 @@ export class SelectWrapper {
       setAttribute(this.select, 'tabindex', '-1');
       setAttribute(this.select, 'aria-hidden', 'true');
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidRender(): void {

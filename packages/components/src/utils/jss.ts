@@ -10,7 +10,7 @@ import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getShadowRootHTMLElement } from './dom';
-import { getTagNameWithoutPrefix } from '.';
+import { getTagNameWithoutPrefix, hasPropValueChanged } from '.';
 import { addImportantToEachRule } from '../styles';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
@@ -98,6 +98,7 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
 // TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
 export const doNothing = (): void => {
   addImportantToEachRule({});
+  hasPropValueChanged(1, 1); // to force into main chunk
 };
 
 export type GetJssStyleFunction = (value?: any) => JssStyle;

@@ -7,6 +7,7 @@ import {
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
+  hasPropValueChanged,
   isDisabledOrLoading,
   TEXT_SIZES,
   TEXT_WEIGHTS,
@@ -102,6 +103,10 @@ export class ButtonPure {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

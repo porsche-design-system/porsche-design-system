@@ -5,6 +5,7 @@ import {
   doNothing,
   getLinkButtonThemeForIcon,
   getPrefixedTagNames,
+  hasPropValueChanged,
   THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
@@ -57,6 +58,10 @@ export class LinkSocial {
     throwIfInvalidLinkUsage(this.host, this.href);
     warnIfDeprecatedComponentIsUsed(this.host, 'Use "link" component with corresponding social icon instead.');
     doNothing(); // TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

@@ -6,6 +6,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -13,11 +14,12 @@ import {
 import type { ModalAriaAttribute } from './modal-utils';
 import {
   MODAL_ARIA_ATTRIBUTES,
-  setScrollLock,
   warnIfAriaAndHeadingPropsAreUndefined,
   clickStartedInScrollbarTrack,
 } from './modal-utils';
 import { getComponentCss } from './modal-styles';
+import { setFocusTrap } from '../../utils/focusTrap';
+import { setScrollLock } from '../../utils/scrollLock';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -78,7 +80,8 @@ export class Modal {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    this.updateScrollLock(isOpen);
+    this.updateFocusTrap(isOpen);
+    setScrollLock(isOpen);
 
     if (isOpen) {
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -87,17 +90,22 @@ export class Modal {
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
     if (this.open) {
-      this.updateScrollLock(true);
+      this.updateFocusTrap(true);
+      setScrollLock(true);
     }
 
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
       if (this.open) {
         // 1 tick delay is needed so that web components can be bootstrapped
         setTimeout(() => {
-          this.updateScrollLock(true);
+          this.updateFocusTrap(true);
           this.dialog.focus(); // set initial focus
         });
       }
@@ -115,7 +123,8 @@ export class Modal {
   }
 
   public disconnectedCallback(): void {
-    setScrollLock(this.host, false);
+    setFocusTrap(this.host, false);
+    setScrollLock(false);
   }
 
   public render(): JSX.Element {
@@ -164,8 +173,8 @@ export class Modal {
     );
   }
 
-  private updateScrollLock(isOpen: boolean): void {
-    setScrollLock(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
+  private updateFocusTrap(isOpen: boolean): void {
+    setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
   }
 
   private onMouseDown = (e: MouseEvent): void => {

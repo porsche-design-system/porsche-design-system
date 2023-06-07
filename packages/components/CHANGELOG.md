@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
+
 #### Changed
 
 - `Toast` allow line breaks within toast message
@@ -17,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Wrong validation during SSR hydration of `Link Tile` and `Select Wrapper`
   ([#2588](https://github.com/porsche-design-system/porsche-design-system/pull/2588))
+- `Modal` scrollable modal does not jump to top on changes within dialog
+  ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
+- Unnecessary lifecycles are prevented when prop values do not change for complex values
+  ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
 
 ### [3.1.0-rc.1] - 2023-06-02
 

@@ -6,6 +6,7 @@ import {
   attachComponentCss,
   getNamedSlotOrThrow,
   getPrefixedTagNames,
+  hasPropValueChanged,
   throwIfElementIsNotOfKind,
   TILE_ASPECT_RATIOS,
   TILE_WEIGHTS,
@@ -65,6 +66,10 @@ export class LinkTileModelSignature {
 
   /** Sets a custom headline tag which wraps the heading to enhance semantics. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
