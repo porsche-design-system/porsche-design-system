@@ -2,7 +2,12 @@ import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import type { ThemedColors } from './';
-import { borderWidthBase, themeLightStateFocus } from '@porsche-design-system/utilities-v2';
+import {
+  borderWidthBase,
+  frostedGlassStyle,
+  themeDarkBackgroundShading,
+  themeLightStateFocus,
+} from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -99,3 +104,38 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
   backfaceVisibility: 'hidden',
   WebkitBackfaceVisibility: 'hidden',
 });
+
+/**
+ * Generates JSS styles for a frosted glass background.
+ * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
+ * @param {string} duration - The duration of the transition animation.
+ * @param {string} timingFn - The timing function of the transition animation. (default: 'cubic-bezier(.16,1,.3,1)')
+ * @returns {JssStyle} - The JSS styles for the frosted glass background.
+ */
+export const getFrostedGlassBackgroundJssStyles = (
+  isVisible: boolean,
+  duration: string,
+  timingFn = 'cubic-bezier(.16,1,.3,1)'
+): JssStyle => {
+  return {
+    // workaround via pseudo element to fix stacking (black) background in safari
+    '&::before': {
+      content: '""',
+      position: 'fixed',
+      ...getInsetJssStyle(),
+      background: themeDarkBackgroundShading,
+      pointerEvents: 'none',
+      ...(isVisible
+        ? {
+            opacity: 1,
+            ...frostedGlassStyle,
+          }
+        : {
+            opacity: 0,
+            backdropFilter: 'blur(0px)',
+            WebkitBackdropFilter: 'blur(0px)',
+          }),
+      transition: `opacity ${duration} ${timingFn}, backdrop-filter ${duration} ${timingFn}, --webkit-backdrop-filter ${duration} ${timingFn}`,
+    },
+  };
+};
