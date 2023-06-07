@@ -101,6 +101,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.CarouselExampleJumpToSlideComponent,
   },
   {
+    name: 'Flyout Example',
+    path: 'flyout-example',
+    component: fromExamples.FlyoutExampleComponent,
+  },
+  {
     name: 'Inline Notification Example Action Button',
     path: 'inline-notification-example-action-button',
     component: fromExamples.InlineNotificationExampleActionButtonComponent,

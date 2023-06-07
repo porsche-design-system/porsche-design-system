@@ -893,6 +893,50 @@ exports[`should match snapshot 1`] = `
     "requiredParent": "p-flex",
     "styling": "jss",
   },
+  "p-flyout": {
+    "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
+      "open": "boolean",
+      "position": [
+        "left",
+        "right",
+      ],
+      "theme": [
+        "light",
+        "dark",
+      ],
+    },
+    "eventNames": [
+      "dismiss",
+    ],
+    "hasAriaProp": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "namedSlots": [
+      "header",
+      "footer",
+    ],
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "props": {
+      "aria": null,
+      "open": false,
+      "position": "right",
+      "theme": "light",
+    },
+    "requiredProps": [
+      "open",
+    ],
+    "styling": "jss",
+  },
   "p-grid": {
     "allowedPropValues": {
       "direction": [

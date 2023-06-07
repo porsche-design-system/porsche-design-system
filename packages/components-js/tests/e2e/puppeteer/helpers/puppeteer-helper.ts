@@ -396,3 +396,19 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
 export const getScrollLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'scrollLeft');
 export const getOffsetLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetLeft');
 export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetWidth');
+
+/**
+ * Get HTML attributes string from an object of properties.
+ * @param props - The object containing the properties.
+ * @returns The HTML attributes string.
+ */
+export const getHTMLAttributes = <T extends object>(props: T): string => {
+  return Object.entries(props)
+    .filter(([, value]) => value !== undefined)
+    .map(([prop, value]) => {
+      const attributeName = prop.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+      const attributeValue = typeof value === 'object' ? JSON.stringify(value).replace(/"/g, "'") : value;
+      return `${attributeName}="${attributeValue}"`;
+    })
+    .join(' ');
+};

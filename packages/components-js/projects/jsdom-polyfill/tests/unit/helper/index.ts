@@ -56,6 +56,9 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-flex-item></p-flex-item>
     <p-flex-item></p-flex-item>
   </p-flex>`,
+  'p-flyout': `
+    <p-flyout></p-flyout>
+  `,
   'p-grid': `<p-grid>
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>

@@ -16,6 +16,10 @@ stay open after user interaction like submission of a form.
   Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal. 
 </p-inline-notification>
 
+<p-inline-notification heading="Recommendation" state="success" dismiss-button="false">
+  You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning. 
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic

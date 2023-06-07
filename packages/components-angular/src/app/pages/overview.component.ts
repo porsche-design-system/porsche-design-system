@@ -37,7 +37,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       .playground--banner,
-      .playground--modal {
+      .playground--modal,
+      .playground--flyout {
         transform: translate3d(0, 0, 0);
         height: 10rem;
         padding: 0;
@@ -45,6 +46,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       .playground--modal {
+        height: 20rem;
+      }
+    
+      .playground--flyout {
         height: 20rem;
       }
     `,
@@ -73,6 +78,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light playground--modal" title="should render default modal">
           <p-modal [heading]="'Heading'" [open]="true">Some Content</p-modal>
+        </div>
+
+        <div class="playground light playground--flyout" title="should render default flyout">
+          <p-flyout [open]="true">
+            <span slot="header">Sticky Header</span>
+            Some Content
+            <span slot="footer">Sticky Footer</span>
+            <span slot="sub-footer">Some Sub Footer Content</span>
+          </p-flyout>
         </div>
 
         <div class="playground light" title="should render default inline-notification">
@@ -321,6 +335,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         <div class="playground light playground--modal" title="should render default modal with custom prefix">
           <my-prefix-p-modal p-modal [heading]="'Heading'" [open]="true">Some Content</my-prefix-p-modal>
+        </div>
+
+        <div class="playground light playground--flyout" title="should render default flyout">
+          <my-prefix-p-flyout p-flyout [open]="true">
+            <span slot="header">Sticky Header</span>
+            Some Content
+            <span slot="footer">Sticky Footer</span>
+            <span slot="sub-footer">Some Sub Footer Content</span>
+          </my-prefix-p-flyout>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
