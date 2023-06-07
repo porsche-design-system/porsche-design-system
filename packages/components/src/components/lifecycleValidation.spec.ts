@@ -148,17 +148,33 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
   expect(spy).not.toBeCalled();
 });
 
-it.each<TagName>(tagNamesWithPropsOfTypeObject)(
-  'should call isDeepEqual() with correct parameters via componentShouldUpdate for %s',
-  (tagName) => {
+describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
+  const component = componentFactory(tagName);
+
+  it('should call isDeepEqual() with correct parameters via componentShouldUpdate', () => {
     const spy = jest.spyOn(isDeepEqualUtils, 'isDeepEqual');
-    const component = componentFactory(tagName);
 
     component.componentShouldUpdate('newValue', 'oldValue');
 
     expect(spy).toBeCalledWith('newValue', 'oldValue');
-  }
-);
+  });
+
+  it('should call componentShouldUpdate() and return true for various values', () => {
+    const spy = jest.spyOn(component, 'componentShouldUpdate');
+
+    component.componentShouldUpdate('newValue', 'oldValue');
+
+    expect(spy).toReturnWith(true);
+  });
+
+  it('should call componentShouldUpdate() and return false for equal values', () => {
+    const spy = jest.spyOn(component, 'componentShouldUpdate');
+
+    component.componentShouldUpdate('newValue', 'newValue');
+
+    expect(spy).toReturnWith(false);
+  });
+});
 
 it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters via render for %s',
