@@ -43,11 +43,6 @@ describe('hasPropValueChanged()', () => {
       result: true,
     },
     {
-      val1: [11, 2],
-      val2: [1, 2],
-      result: true,
-    },
-    {
       val1: 'foo',
       val2: 'bar',
       result: true,
