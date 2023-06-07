@@ -1,0 +1,15 @@
+<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+
+<p-flyout open="false" position="right">
+  <p-text>Some content that dynamically scales the width of the flyout.</p-text>
+</p-flyout>
+
+<script>
+  const flyout = document.querySelector('p-flyout');
+  flyout.addEventListener('dismiss', () => {
+    flyout.open = false;
+  });
+  document.querySelector('p-button').addEventListener('click', () => {
+    flyout.open = true;
+  });
+</script>

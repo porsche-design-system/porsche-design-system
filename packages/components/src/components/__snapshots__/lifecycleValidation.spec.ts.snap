@@ -189,6 +189,15 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-flyout: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "open": "boolean",
+  "position": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-grid: propTypes with ValidatorFunctions 1`] = `
 {
   "direction": "breakpoint",

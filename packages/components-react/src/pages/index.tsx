@@ -28,6 +28,7 @@ import { DividerPage } from './Divider';
 import { FieldsetPage } from './Fieldset';
 import { FieldsetWrapperPage } from './FieldsetWrapper';
 import { FlexPage } from './Flex';
+import { FlyoutPage } from './Flyout';
 import { GridPage } from './Grid';
 import { HeadingPage } from './Heading';
 import { HeadlinePage } from './Headline';
@@ -145,6 +146,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flex',
     path: '/flex',
     element: <FlexPage />,
+  },
+  {
+    name: 'Flyout',
+    path: '/flyout',
+    element: <FlyoutPage />,
   },
   {
     name: 'Grid',
