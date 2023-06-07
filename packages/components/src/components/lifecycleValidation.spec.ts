@@ -148,28 +148,22 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
   expect(spy).not.toBeCalled();
 });
 
-describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s componentShouldUpdate', (tagName) => {
+describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
   const component = componentFactory(tagName);
 
-  it('should call hasPropValueChanged() with correct parameters', () => {
-    const spy = jest.spyOn(hasPropValueChangedUtils, 'hasPropValueChanged');
+  it('should call hasPropValueChanged() with correct parameters via componentShouldUpdate and return its result', () => {
+    const spy = jest
+      .spyOn(hasPropValueChangedUtils, 'hasPropValueChanged')
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(false);
 
-    component.componentShouldUpdate('newValue', 'oldValue', 'propOrStateName');
+    const result1 = component.componentShouldUpdate('newVal', 'oldVal', 'propOrStateName');
+    expect(result1).toBe(true);
+    expect(spy).toBeCalledWith('newVal', 'oldVal');
 
-    expect(spy).toBeCalledWith('newValue', 'oldValue');
-  });
-
-  it('should return result of hasPropValueChanged()', () => {
-    jest.spyOn(hasPropValueChangedUtils, 'hasPropValueChanged').mockReturnValueOnce(true).mockReturnValueOnce(false);
-    const spy = jest.spyOn(component, 'componentShouldUpdate');
-
-    component.componentShouldUpdate('newValue', 'oldValue', 'propOrStateName');
-
-    expect(spy).toReturnWith(true);
-
-    component.componentShouldUpdate('newValue', 'oldValue', 'propOrStateName');
-
-    expect(spy).toReturnWith(false);
+    const result2 = component.componentShouldUpdate('sameVal', 'sameVal', 'propOrStateName');
+    expect(result2).toBe(false);
+    expect(spy).toBeCalledWith('sameVal', 'sameVal');
   });
 });
 
