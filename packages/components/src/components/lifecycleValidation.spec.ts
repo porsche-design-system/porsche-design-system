@@ -148,10 +148,10 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
   expect(spy).not.toBeCalled();
 });
 
-describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
+describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s componentShouldUpdate', (tagName) => {
   const component = componentFactory(tagName);
 
-  it('should call hasPropValueChanged() with correct parameters via componentShouldUpdate', () => {
+  it('should call hasPropValueChanged() with correct parameters', () => {
     const spy = jest.spyOn(hasPropValueChangedUtils, 'hasPropValueChanged');
 
     component.componentShouldUpdate('newValue', 'oldValue', 'propOrStateName');
