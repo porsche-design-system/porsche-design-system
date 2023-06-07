@@ -23,28 +23,28 @@ describe('hasPropValueChanged()', () => {
       result: true,
     },
     {
-      val1: ['foo', 'bar'],
-      val2: ['foo', 'bar'],
+      val1: [1, 2],
+      val2: [1, 2],
       result: false,
     },
     {
-      val1: ['foo', 'bar'],
-      val2: ['bar', 'foo'],
+      val1: [1, 2],
+      val2: [2, 1],
       result: false,
     },
     {
-      val1: ['foo', 'bar'],
-      val2: ['foo', 'foo'],
+      val1: [1, 2],
+      val2: [1, 1],
       result: true,
     },
     {
-      val1: ['foo', 'bar'],
-      val2: ['foo', 'foo', 'bar'],
+      val1: [1, 2, 2],
+      val2: [1, 1, 3],
       result: true,
     },
     {
-      val1: ['fooo', 'bar'],
-      val2: ['foo', 'bar'],
+      val1: [11, 2],
+      val2: [1, 2],
       result: true,
     },
     {
