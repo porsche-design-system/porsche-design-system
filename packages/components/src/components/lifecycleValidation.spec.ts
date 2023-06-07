@@ -149,7 +149,7 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
 });
 
 it.each<TagName>(tagNamesWithPropsOfTypeObject)(
-  'should call isDeepEqual() with correct parameters for %s',
+  'should call isDeepEqual() with correct parameters via componentShouldUpdate for %s',
   (tagName) => {
     const spy = jest.spyOn(isDeepEqualUtils, 'isDeepEqual');
     const component = componentFactory(tagName);
