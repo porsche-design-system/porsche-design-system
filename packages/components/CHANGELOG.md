@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
+
 #### Fixed
 
 - Wrong validation during SSR hydration of `Link Tile` and `Select Wrapper`
@@ -18,7 +22,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
 - **[EXPERIMENTAL]** Prop `showPasswordToggle` for `Text Field Wrapper` with `input type="password"`
   ([#2586](https://github.com/porsche-design-system/porsche-design-system/pull/2586))
 - Prop `name` for `Icon` supports `heart`, `heart-filled`, `copy`, `fingerprint`, `tire`, `roof-open` and `roof-closed`
