@@ -80,7 +80,6 @@ import { ToastBasicComponent } from './toast-basic.component';
 import { ToastBasicDarkComponent } from './toast-basic-dark.component';
 import { ToastBasicLongTextComponent } from './toast-basic-long-text.component';
 import { ToastBasicStateNeutralComponent } from './toast-basic-state-neutral.component';
-import { ToastLineBreakComponent } from './toast-line-break.component';
 import { ToastOffsetComponent } from './toast-offset.component';
 import { ToastPrefixedComponent } from './toast-prefixed.component';
 import { TypographyCyrilComponent } from './typography-cyril.component';
@@ -143,7 +142,6 @@ export const generatedPages = [
   ToastBasicDarkComponent,
   ToastBasicLongTextComponent,
   ToastBasicStateNeutralComponent,
-  ToastLineBreakComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
   TypographyCyrilComponent,
@@ -398,11 +396,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Toast Basic State Neutral',
     path: 'toast-basic-state-neutral',
     component: ToastBasicStateNeutralComponent,
-  },
-  {
-    name: 'Toast Line Break',
-    path: 'toast-line-break',
-    component: ToastLineBreakComponent,
   },
   {
     name: 'Toast Offset',

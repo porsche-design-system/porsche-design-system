@@ -42,7 +42,13 @@ export class ToastManagerClass {
       throw new Error('Empty text provided to addMessage.');
     }
 
-    const msg: ToastMessage = { state: 'info', ...message }; // info is our default state
+    const msg: ToastMessage = {
+      state: message.state || 'info', // info is our default state
+      text: message.text
+        .replace(/<br ?\/?>/g, '%%%BR%%%') // temporary replace linebreaks
+        .replace(/<[^>]*>/g, '') //strip all html tags
+        .replace(/%%%BR%%%/g, '<br>'), // recover line breaks
+    };
 
     const { length } = this.messages;
     this.messages.push(msg);
