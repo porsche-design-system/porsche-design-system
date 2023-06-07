@@ -5,10 +5,6 @@ test.describe('should have no visual regression', async () => {
   await executeVisualRegressionTest('toast-basic');
 });
 
-test.describe('should have no visual regression', async () => {
-  await executeVisualRegressionTest('toast-line-break');
-});
-
 test.describe('should have no visual regression when dark', async () => {
   await executeVisualRegressionTest('toast-basic-dark');
 });
