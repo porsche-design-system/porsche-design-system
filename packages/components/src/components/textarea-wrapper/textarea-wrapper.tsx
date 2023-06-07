@@ -10,13 +10,14 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
   validateProps,
-  warnIfDeprecatedPropIsUsed
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
@@ -82,6 +83,10 @@ export class TextareaWrapper {
     this.hasCounter =
       hasCounter(this.textarea) &&
       (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

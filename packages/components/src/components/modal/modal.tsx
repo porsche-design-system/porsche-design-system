@@ -6,6 +6,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -87,6 +88,10 @@ export class Modal {
     } else {
       this.focusedElBeforeOpen?.focus();
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

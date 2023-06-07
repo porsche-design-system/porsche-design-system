@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -42,6 +43,10 @@ export class TableHeadCell {
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-table-head-row');
     throwIfElementHasAttribute(this.host, 'sort');
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

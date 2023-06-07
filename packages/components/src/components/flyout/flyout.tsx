@@ -14,6 +14,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   THEMES,
 } from '../../utils';
@@ -94,6 +95,10 @@ export class Flyout {
         });
       }
     });
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidRender(): void {

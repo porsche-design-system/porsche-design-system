@@ -11,6 +11,7 @@ import { getComponentCss } from './flex-item-styles';
 import {
   AllowedTypes,
   attachComponentCss,
+  hasPropValueChanged,
   throwIfParentIsNotOfKind,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -63,6 +64,10 @@ export class FlexItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-flex');
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

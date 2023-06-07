@@ -400,10 +400,10 @@ describe('lifecycle', () => {
       status.componentDidUpdate['p-stepper-horizontal-item'],
       'componentDidUpdate: p-stepper-horizontal-item'
     ).toBe(3);
-    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 });
 

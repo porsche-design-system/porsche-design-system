@@ -6,6 +6,7 @@ import { getComponentCss } from './grid-item-styles';
 import {
   AllowedTypes,
   attachComponentCss,
+  hasPropValueChanged,
   throwIfParentIsNotOfKind,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -33,6 +34,10 @@ export class GridItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-grid');
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   parseJSONAttribute,
   scrollElementTo,
@@ -118,9 +119,15 @@ export class Scroller {
     }
   }
 
-  // should only update if scrollable
-  public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
-    return !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden));
+  public componentShouldUpdate(
+    newVal: unknown,
+    oldVal: unknown,
+    propName: keyof InstanceType<typeof Scroller>
+  ): boolean {
+    return (
+      !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden)) && // should only update if scrollable
+      hasPropValueChanged(newVal, oldVal)
+    );
   }
 
   public render(): JSX.Element {

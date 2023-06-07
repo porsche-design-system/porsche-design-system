@@ -15,6 +15,7 @@ describe('modal', () => {
     component.host = document.createElement('p-modal');
     component.host.attachShadow({ mode: 'open' });
     component['closeBtn'] = document.createElement('button');
+    component['dialog'] = document.createElement('div');
   });
 
   describe('componentDidLoad', () => {
@@ -49,6 +50,25 @@ describe('modal', () => {
       component.componentDidLoad();
 
       expect(utilsSpy).not.toBeCalled();
+    });
+  });
+
+  describe('componentDidRender', () => {
+    it('should focus dialog if modal is open', () => {
+      component.open = true;
+      const spy = jest.spyOn(component['dialog'], 'focus');
+
+      component.componentDidRender();
+
+      expect(spy).toBeCalledWith();
+    });
+    it('should not focus dialog if modal is not open', () => {
+      component.open = false;
+      const spy = jest.spyOn(component['dialog'], 'focus');
+
+      component.componentDidRender();
+
+      expect(spy).not.toBeCalled();
     });
   });
 
