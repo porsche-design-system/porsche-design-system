@@ -4,7 +4,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   HEADING_TAGS,
-  isDeepEqual,
+  hasPropValueChanged,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -78,7 +78,7 @@ export class Accordion {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

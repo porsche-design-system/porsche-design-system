@@ -6,7 +6,7 @@ import {
   attachComponentCss,
   getNamedSlotOrThrow,
   getPrefixedTagNames,
-  isDeepEqual,
+  hasPropValueChanged,
   throwIfElementIsNotOfKind,
   TILE_ASPECT_RATIOS,
   TILE_WEIGHTS,
@@ -68,7 +68,7 @@ export class LinkTileModelSignature {
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

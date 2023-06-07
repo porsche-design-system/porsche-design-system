@@ -6,7 +6,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
-  isDeepEqual,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -89,7 +89,7 @@ export class Modal {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

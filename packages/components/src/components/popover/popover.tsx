@@ -10,7 +10,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  isDeepEqual,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   THEMES,
   validateProps,
@@ -57,7 +57,7 @@ export class Popover {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidRender(): void {

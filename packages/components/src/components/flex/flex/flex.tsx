@@ -19,7 +19,7 @@ import { getComponentCss } from './flex-styles';
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
+  hasPropValueChanged,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
@@ -61,7 +61,7 @@ export class Flex {
   @Prop() public alignContent?: BreakpointCustomizable<FlexAlignContent> = 'stretch';
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

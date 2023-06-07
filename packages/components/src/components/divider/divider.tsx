@@ -2,7 +2,7 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
+  hasPropValueChanged,
   THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -42,7 +42,7 @@ export class Divider {
   @Prop() public theme?: Theme = 'light';
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

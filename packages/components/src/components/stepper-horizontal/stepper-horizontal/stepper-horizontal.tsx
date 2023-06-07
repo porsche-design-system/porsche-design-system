@@ -5,7 +5,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
-  isDeepEqual,
+  hasPropValueChanged,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -77,7 +77,7 @@ export class StepperHorizontal {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

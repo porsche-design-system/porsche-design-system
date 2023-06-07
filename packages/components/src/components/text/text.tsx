@@ -5,7 +5,7 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
+  hasPropValueChanged,
   TEXT_ALIGNS,
   TEXT_COLORS,
   TEXT_SIZES,
@@ -57,7 +57,7 @@ export class Text {
   @Prop() public theme?: Theme = 'light';
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

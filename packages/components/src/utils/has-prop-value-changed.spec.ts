@@ -1,6 +1,6 @@
-import { isDeepEqual } from './is-deep-equal';
+import { hasPropValueChanged } from './has-prop-value-changed';
 
-describe('isDeepEqual()', () => {
+describe('hasPropValueChanged()', () => {
   const data: { val1: unknown; val2: unknown; result: boolean }[] = [
     {
       val1: { foo: 'bar', bar: 'foo' },
@@ -81,7 +81,7 @@ describe('isDeepEqual()', () => {
   it.each(data.map(({ val1, val2, result }) => [val1, val2, result] as [unknown, unknown, boolean]))(
     'should for val1: %s and val2: %s return %s',
     (val1, val2, result) => {
-      expect(isDeepEqual(val1, val2)).toEqual(result);
+      expect(hasPropValueChanged(val1, val2)).toEqual(result);
     }
   );
 });

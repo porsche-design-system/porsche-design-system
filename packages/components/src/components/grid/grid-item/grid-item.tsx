@@ -6,7 +6,7 @@ import { getComponentCss } from './grid-item-styles';
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
+  hasPropValueChanged,
   throwIfParentIsNotOfKind,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -37,7 +37,7 @@ export class GridItem {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

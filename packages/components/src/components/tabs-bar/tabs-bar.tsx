@@ -6,7 +6,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
-  isDeepEqual,
+  hasPropValueChanged,
   isShadowRootParentOfKind,
   observeBreakpointChange,
   observeChildren,
@@ -120,7 +120,7 @@ export class TabsBar {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

@@ -6,7 +6,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
-  isDeepEqual,
+  hasPropValueChanged,
   isDisabledOrLoading,
   THEMES,
   validateProps,
@@ -69,7 +69,7 @@ export class Switch {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

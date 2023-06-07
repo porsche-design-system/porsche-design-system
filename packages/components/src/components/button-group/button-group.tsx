@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, isDeepEqual, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { getComponentCss } from './button-group-styles';
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
@@ -20,7 +20,7 @@ export class ButtonGroup {
   @Prop() public direction?: BreakpointCustomizable<ButtonGroupDirection> = { base: 'column', xs: 'row' };
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

@@ -7,7 +7,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasVisibleIcon,
-  isDeepEqual,
+  hasPropValueChanged,
   isSsrHydration,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
@@ -109,7 +109,7 @@ export class LinkPure {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

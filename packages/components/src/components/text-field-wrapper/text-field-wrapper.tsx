@@ -10,7 +10,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
-  isDeepEqual,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   observeProperties,
@@ -159,7 +159,7 @@ export class TextFieldWrapper {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

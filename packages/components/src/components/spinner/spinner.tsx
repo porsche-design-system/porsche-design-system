@@ -5,7 +5,7 @@ import { SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
   THEMES,
@@ -35,7 +35,7 @@ export class Spinner {
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

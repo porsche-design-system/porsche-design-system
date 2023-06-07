@@ -3,7 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  isDeepEqual,
+  hasPropValueChanged,
   parseJSONAttribute,
   THEMES,
   validateProps,
@@ -111,7 +111,7 @@ export class Pagination {
   private unlistenResize: () => void;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

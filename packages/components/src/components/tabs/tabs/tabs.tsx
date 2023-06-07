@@ -4,7 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  isDeepEqual,
+  hasPropValueChanged,
   observeChildren,
   observeProperties,
   removeAttribute,
@@ -85,7 +85,7 @@ export class Tabs {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

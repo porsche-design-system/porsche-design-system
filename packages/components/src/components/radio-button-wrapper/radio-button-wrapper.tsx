@@ -7,7 +7,7 @@ import {
   getOnlyChildOfKindHTMLElementOrThrow,
   hasLabel,
   hasMessage,
-  isDeepEqual,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
@@ -65,7 +65,7 @@ export class RadioButtonWrapper {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidRender(): void {

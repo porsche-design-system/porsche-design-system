@@ -2,7 +2,13 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { CrestAriaAttribute, CrestTarget } from './crest-utils';
 import { buildCrestSrcSet, CREST_ARIA_ATTRIBUTES, crestCdnBaseUrl, crestInnerManifest, crestSize } from './crest-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, isDeepEqual, parseAndGetAriaAttributes, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  parseAndGetAriaAttributes,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './crest-styles';
 
 const propTypes: PropTypes<typeof Crest> = {
@@ -30,7 +36,7 @@ export class Crest {
   @Prop() public aria?: SelectedAriaAttributes<CrestAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

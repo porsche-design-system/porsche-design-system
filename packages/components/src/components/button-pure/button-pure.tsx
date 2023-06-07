@@ -7,7 +7,7 @@ import {
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
-  isDeepEqual,
+  hasPropValueChanged,
   isDisabledOrLoading,
   TEXT_SIZES,
   TEXT_WEIGHTS,
@@ -106,7 +106,7 @@ export class ButtonPure {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

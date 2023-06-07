@@ -7,7 +7,7 @@ import {
   parseAndGetAriaAttributes,
   validateProps,
   THEMES,
-  isDeepEqual,
+  hasPropValueChanged,
 } from '../../utils';
 import { WORDMARK_ARIA_ATTRIBUTES, WORDMARK_SIZES } from './wordmark-utils';
 import { getComponentCss } from './wordmark-styles';
@@ -43,7 +43,7 @@ export class Wordmark {
   @Prop() public aria?: SelectedAriaAttributes<WordmarkAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

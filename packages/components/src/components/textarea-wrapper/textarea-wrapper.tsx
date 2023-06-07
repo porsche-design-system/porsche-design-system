@@ -10,7 +10,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
-  isDeepEqual,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
@@ -86,7 +86,7 @@ export class TextareaWrapper {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

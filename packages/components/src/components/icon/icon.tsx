@@ -4,7 +4,7 @@ import { buildIconUrl, ICON_ARIA_ATTRIBUTES, ICON_COLORS, IconSize } from './ico
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   THEMES,
@@ -58,7 +58,7 @@ export class Icon {
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

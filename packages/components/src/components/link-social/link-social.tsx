@@ -5,7 +5,7 @@ import {
   doNothing,
   getLinkButtonThemeForIcon,
   getPrefixedTagNames,
-  isDeepEqual,
+  hasPropValueChanged,
   THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
@@ -61,7 +61,7 @@ export class LinkSocial {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

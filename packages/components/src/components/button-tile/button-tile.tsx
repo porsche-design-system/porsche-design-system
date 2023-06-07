@@ -12,7 +12,7 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
-  isDeepEqual,
+  hasPropValueChanged,
   isDisabledOrLoading,
   parseJSON,
   throwIfAlignTopAndNotCompact,
@@ -104,7 +104,7 @@ export class ButtonTile implements ITileProps {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

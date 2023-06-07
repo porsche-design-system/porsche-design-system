@@ -29,7 +29,7 @@ import {
   getPrefixedTagNames,
   getSlotTextContent,
   hasDescription,
-  isDeepEqual,
+  hasPropValueChanged,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -161,7 +161,7 @@ export class Carousel {
     oldVal: unknown,
     propName: keyof InstanceType<typeof Carousel>
   ): boolean {
-    return !isDeepEqual(newVal, oldVal) && propName !== 'activeSlideIndex'; // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
+    return !hasPropValueChanged(newVal, oldVal) && propName !== 'activeSlideIndex'; // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
   }
 
   public componentDidLoad(): void {

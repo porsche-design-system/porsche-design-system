@@ -8,7 +8,7 @@ import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
 import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
 import * as validatePropsUtils from '../utils/validation/validateProps';
-import * as isDeepEqualUtils from '../utils/is-deep-equal';
+import * as hasPropValueChangedUtils from '../utils/has-prop-value-changed';
 import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
@@ -25,13 +25,13 @@ const tagNamesPublicWithoutProps = TAG_NAMES.filter(
 );
 const tagNamesWithPropsOfTypeObject = TAG_NAMES.filter((tagName) => {
   return (
-    getComponentMeta(tagName).breakpointCustomizableProps ||
+    (getComponentMeta(tagName).breakpointCustomizableProps &&
+      getComponentMeta(tagName).breakpointCustomizableProps.length > 0) ||
     (getComponentMeta(tagName).allowedPropValues &&
-      Object.values(getComponentMeta(tagName).allowedPropValues)
-        .map((prop) => {
-          return typeof prop === 'object' && !Array.isArray(prop);
-        })
-        .includes(true))
+      Object.values(getComponentMeta(tagName).allowedPropValues).some(
+        // Check for Array types to exclude e.g. theme = ['light', 'dark'] -> might cause an issue in the future if a prop would accept array values.
+        (prop) => typeof prop === 'object' && !Array.isArray(prop)
+      ))
   );
 });
 
@@ -151,8 +151,8 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
 describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
   const component = componentFactory(tagName);
 
-  it('should call isDeepEqual() with correct parameters via componentShouldUpdate', () => {
-    const spy = jest.spyOn(isDeepEqualUtils, 'isDeepEqual');
+  it('should call hasPropValueChanged() with correct parameters via componentShouldUpdate', () => {
+    const spy = jest.spyOn(hasPropValueChangedUtils, 'hasPropValueChanged');
 
     component.componentShouldUpdate('newValue', 'oldValue');
 

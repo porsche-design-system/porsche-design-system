@@ -3,7 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  isDeepEqual,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   THEMES,
   validateProps,
@@ -45,7 +45,7 @@ export class TagDismissible {
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

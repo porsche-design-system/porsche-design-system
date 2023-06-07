@@ -15,7 +15,7 @@ import {
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
-  isDeepEqual,
+  hasPropValueChanged,
   isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
   THEMES,
@@ -81,7 +81,7 @@ export class Button {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

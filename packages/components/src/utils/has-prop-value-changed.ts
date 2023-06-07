@@ -1,6 +1,6 @@
 import { isObject } from './jss';
 
-export const isDeepEqual = (newVal: unknown, oldVal: unknown): boolean => {
+export const hasPropValueChanged = (newVal: unknown, oldVal: unknown): boolean => {
   if (typeof newVal !== 'object' || typeof oldVal !== 'object') {
     // string, boolean, number
     return newVal === oldVal;
@@ -22,7 +22,7 @@ export const isDeepEqual = (newVal: unknown, oldVal: unknown): boolean => {
       const val1 = newVal[key];
       const val2 = oldVal[key];
       const areObjects = isObject(val1 as Record<string, any>) && isObject(val2 as Record<string, any>);
-      if ((areObjects && !isDeepEqual(val1, val2)) || (!areObjects && val1 !== val2)) {
+      if ((areObjects && !hasPropValueChanged(val1, val2)) || (!areObjects && val1 !== val2)) {
         return false;
       }
     }

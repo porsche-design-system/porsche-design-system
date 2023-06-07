@@ -11,7 +11,7 @@ import { getComponentCss } from './flex-item-styles';
 import {
   AllowedTypes,
   attachComponentCss,
-  isDeepEqual,
+  hasPropValueChanged,
   throwIfParentIsNotOfKind,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -67,7 +67,7 @@ export class FlexItem {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !isDeepEqual(newVal, oldVal);
+    return !hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
