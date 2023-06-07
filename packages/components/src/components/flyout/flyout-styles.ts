@@ -14,6 +14,8 @@ import type { FlyoutPosition } from './flyout-utils';
 
 export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
 export const flyoutBoxShadowColorDark = 'rgba(0, 0, 0, 0.6)';
+export const headerShadowClass = 'header--shadow';
+export const footerShadowClass = 'footer--shadow';
 
 const flyoutTransitionDuration = '0.5s';
 const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
@@ -65,9 +67,9 @@ export const getComponentCss = (
       background: backgroundColor,
       ...getStickyJSSStyle(),
       top: 0,
-      '&--shadow': {
-        boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px 5px 10px`,
-      },
+    },
+    [`${headerShadowClass}`]: {
+      boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px 5px 10px`,
     },
     ...(hasHeader && {
       'header-content': {
@@ -130,9 +132,9 @@ export const getComponentCss = (
         padding: contentPadding,
         ...getStickyJSSStyle(),
         bottom: 0,
-        '&--shadow': {
-          boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px -5px 10px`,
-        },
+      },
+      [`${footerShadowClass}`]: {
+        boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px -5px 10px`,
       },
     }),
     ...(hasSubFooter && {

@@ -7,7 +7,7 @@ import {
   FlyoutAriaAttribute,
   FlyoutPosition,
 } from './flyout-utils';
-import { getComponentCss } from './flyout-styles';
+import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
 
 import {
   attachComponentCss,
@@ -206,12 +206,12 @@ export class Flyout {
 
   private updateHeaderShadow = (): void => {
     const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
-    this.header.classList[shouldApplyShadow ? 'add' : 'remove']('header--shadow');
+    this.header.classList[shouldApplyShadow ? 'add' : 'remove'](headerShadowClass);
   };
 
   private updateFooterShadow = (): void => {
     const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
-    this.footer.classList[shouldApplyShadow ? 'add' : 'remove']('footer--shadow');
+    this.footer.classList[shouldApplyShadow ? 'add' : 'remove'](footerShadowClass);
   };
 
   private dismissFlyout = (): void => {
