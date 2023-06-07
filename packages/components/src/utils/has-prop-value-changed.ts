@@ -3,10 +3,10 @@ import { isObject } from './jss';
 export const hasPropValueChanged = (newVal: unknown, oldVal: unknown): boolean => {
   if (typeof newVal !== 'object' || typeof oldVal !== 'object') {
     // primitive types
-    return newVal === oldVal;
+    return newVal !== oldVal;
   } else if (Array.isArray(newVal) && Array.isArray(oldVal)) {
     // type array
-    return newVal.length === oldVal.length && newVal.every((item) => oldVal.includes(item));
+    return !(newVal.length === oldVal.length && newVal.every((item) => oldVal.includes(item)));
   } else {
     // type object
     const keys1 = Object.keys(newVal);
@@ -17,13 +17,13 @@ export const hasPropValueChanged = (newVal: unknown, oldVal: unknown): boolean =
         const val1 = newVal[key];
         const val2 = oldVal[key];
         const areObjects = isObject(val1 as Record<string, any>) && isObject(val2 as Record<string, any>);
-        if ((areObjects && !hasPropValueChanged(val1, val2)) || (!areObjects && val1 !== val2)) {
-          return false;
+        if ((areObjects && hasPropValueChanged(val1, val2)) || (!areObjects && val1 !== val2)) {
+          return true;
         }
       }
-      return true;
-    } else {
       return false;
+    } else {
+      return true;
     }
   }
 };

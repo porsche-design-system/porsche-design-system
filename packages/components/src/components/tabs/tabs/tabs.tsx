@@ -85,7 +85,7 @@ export class Tabs {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !hasPropValueChanged(newVal, oldVal);
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

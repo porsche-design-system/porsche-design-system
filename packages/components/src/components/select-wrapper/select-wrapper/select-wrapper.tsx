@@ -92,7 +92,7 @@ export class SelectWrapper {
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !hasPropValueChanged(newVal, oldVal);
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidRender(): void {

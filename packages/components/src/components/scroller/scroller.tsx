@@ -126,7 +126,7 @@ export class Scroller {
   ): boolean {
     return (
       !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden)) && // should only update if scrollable
-      !hasPropValueChanged(newVal, oldVal)
+      hasPropValueChanged(newVal, oldVal)
     );
   }
 

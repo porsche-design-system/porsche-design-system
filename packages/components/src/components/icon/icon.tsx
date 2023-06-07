@@ -58,7 +58,7 @@ export class Icon {
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return !hasPropValueChanged(newVal, oldVal);
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

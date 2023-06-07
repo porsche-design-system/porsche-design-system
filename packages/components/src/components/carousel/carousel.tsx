@@ -161,7 +161,7 @@ export class Carousel {
     oldVal: unknown,
     propName: keyof InstanceType<typeof Carousel>
   ): boolean {
-    return propName !== 'activeSlideIndex' && !hasPropValueChanged(newVal, oldVal); // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
+    return propName !== 'activeSlideIndex' && hasPropValueChanged(newVal, oldVal); // we need to prevent splide reinitialization via splide.refresh() when activeSlideIndex is changed from outside
   }
 
   public componentDidLoad(): void {
