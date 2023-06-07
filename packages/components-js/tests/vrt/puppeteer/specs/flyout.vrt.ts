@@ -13,7 +13,7 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 
-it.each(furtherExtendedViewports)('should have no visual regression for flyout for viewport %s', async (viewport) => {
+it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'flyout', '/#flyout', {
       scenario: async (page) => {
