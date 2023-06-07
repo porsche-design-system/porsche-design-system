@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   parseJSONAttribute,
   THEMES,
   validateProps,
@@ -108,6 +109,10 @@ export class Pagination {
 
   private navigationElement: HTMLElement;
   private unlistenResize: () => void;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public componentDidLoad(): void {
     this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);

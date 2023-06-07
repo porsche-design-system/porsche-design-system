@@ -79,25 +79,31 @@ describe('componentDidLoad', () => {
 describe('componentShouldUpdate', () => {
   it('should return true if prop name does not match scrollToPosition', () => {
     const component = new Scroller();
-    expect(component.componentShouldUpdate(0, 0, 'theme')).toBe(true);
+    expect(component.componentShouldUpdate(1, 0, 'theme')).toBe(true);
   });
 
-  it('should return true if prop name matches "scrollToPosition" and isPrevHidden and isNextHidden are false', () => {
+  it('should return true if prop name matches "scrollToPosition", value of "scrollToPosition" changed and isPrevHidden and isNextHidden are false', () => {
     const component = new Scroller();
     component['isPrevHidden'] = false;
     component['isNextHidden'] = false;
-    expect(component.componentShouldUpdate(0, 0, 'scrollToPosition')).toBe(true);
+    expect(component.componentShouldUpdate({ scrollPosition: 10 }, { scrollPosition: 0 }, 'scrollToPosition')).toBe(
+      true
+    );
   });
 
   it('should return false if prop name matches "scrollToPosition" and isPrevHidden is true', () => {
     const component = new Scroller();
     component['isPrevHidden'] = true;
-    expect(component.componentShouldUpdate(0, 0, 'scrollToPosition')).toBe(false);
+    expect(component.componentShouldUpdate({ scrollPosition: 0 }, { scrollPosition: 0 }, 'scrollToPosition')).toBe(
+      false
+    );
   });
 
   it('should return false if prop name matches "scrollToPosition" and isNextHidden is true', () => {
     const component = new Scroller();
     component['isNextHidden'] = true;
-    expect(component.componentShouldUpdate(0, 0, 'scrollToPosition')).toBe(false);
+    expect(component.componentShouldUpdate({ scrollPosition: 0 }, { scrollPosition: 0 }, 'scrollToPosition')).toBe(
+      false
+    );
   });
 });

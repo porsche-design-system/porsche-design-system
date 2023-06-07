@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
 import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from './display-utils';
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
 import { getComponentCss } from './display-styles';
 
 const propTypes: PropTypes<typeof Display> = {
@@ -38,6 +38,10 @@ export class Display {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

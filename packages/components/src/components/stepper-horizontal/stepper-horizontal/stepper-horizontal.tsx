@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
+  hasPropValueChanged,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -73,6 +74,10 @@ export class StepperHorizontal {
   public componentWillLoad(): void {
     // Initial validation
     this.validateComponent();
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

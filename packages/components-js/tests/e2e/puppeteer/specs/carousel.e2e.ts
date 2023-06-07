@@ -609,8 +609,8 @@ describe('activeSlideIndex', () => {
     await waitForStencilLifecycle(page);
 
     const finalStatus = await getLifecycleStatus(page);
-    expect(finalStatus.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(4); // aria and disabled props where modified
-    expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(4);
+    expect(finalStatus.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(3); // aria and disabled props where modified
+    expect(finalStatus.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(3);
     expect(finalStatus.componentDidLoad.all, 'final componentDidLoad: all').toBe(5);
   });
 
@@ -810,8 +810,8 @@ describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(4);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+    expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
 });

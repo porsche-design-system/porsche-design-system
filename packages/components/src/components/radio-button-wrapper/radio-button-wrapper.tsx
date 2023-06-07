@@ -7,6 +7,7 @@ import {
   getOnlyChildOfKindHTMLElementOrThrow,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
@@ -61,6 +62,10 @@ export class RadioButtonWrapper {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     addChangeListener(this.input);
     this.observeAttributes(); // once initially
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidRender(): void {
