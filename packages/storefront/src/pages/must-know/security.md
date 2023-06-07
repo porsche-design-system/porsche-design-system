@@ -1,4 +1,4 @@
-# Cve
+# Security
 
 The Porsche Design System uses Dependabot provided by Github to check for **common vulnerabilities and exposures (CVE)**
 in integrated packages. This process is invoked automatically in our pipeline and thus ensures the protection.

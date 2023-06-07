@@ -11,76 +11,70 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Utilities: [() => import('@/pages/news/migration-guide-utilities.md')],
     },
-    Changelog: {
-      // @ts-ignore
-      Components: [() => import('@/../../components/CHANGELOG.md')],
-      // @ts-ignore
-      Utilities: [() => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md')],
-      // @ts-ignore
-      Assets: [() => import('@/../../assets/CHANGELOG.md')],
-    },
     // @ts-ignore
-    Versioning: [() => import('@/pages/news/versioning.md')],
+    Changelog: [() => import('@/../../components/CHANGELOG.md')],
+    // @ts-ignore
+    Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
   'Designing': {
     // @ts-ignore
-    Introduction: [() => import('@/pages/start-designing/introduction.md')],
+    Introduction: [() => import('@/pages/designing/introduction.md')],
   },
   'Developing': {
     // @ts-ignore
-    Introduction: [() => import('@/pages/start-coding/introduction.md')],
+    Introduction: [() => import('@/pages/developing/introduction.md')],
+    'Vanilla Js': {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/developing/vanilla-js/getting-started.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/developing/vanilla-js/advanced.md')],
+    },
     Angular: {
       // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/angular/getting-started.md')],
+      'Getting Started': [() => import('@/pages/developing/angular/getting-started.md')],
       // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/angular/advanced.md')],
+      Advanced: [() => import('@/pages/developing/angular/advanced.md')],
     },
     React: {
       // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/react/getting-started.md')],
+      'Getting Started': [() => import('@/pages/developing/react/getting-started.md')],
       // @ts-ignore
-      Testing: [() => import('@/pages/start-coding/react/testing.md')],
+      Testing: [() => import('@/pages/developing/react/testing.md')],
       // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/react/advanced.md')],
-    },
-    'Vanilla Js': {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/vanilla-js/getting-started.md')],
-      // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/vanilla-js/advanced.md')],
+      Advanced: [() => import('@/pages/developing/react/advanced.md')],
     },
     'Next Js': {
       // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
+      'Getting Started': [() => import('@/pages/developing/next-js/getting-started.md')],
       'Ssr Support': [
         // @ts-ignore
-        () => import('@/pages/start-coding/next-js/ssr-support.md'),
+        () => import('@/pages/developing/next-js/ssr-support.md'),
         // @ts-ignore
-        () => import('@/pages/start-coding/ssr-support-table.md'),
+        () => import('@/pages/developing/shared/ssr-support-table.md'),
       ],
       // @ts-ignore
-      Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
+      Testing: [() => import('@/pages/developing/next-js/testing.md')],
     },
     Remix: {
       // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/remix/getting-started.md')],
+      'Getting Started': [() => import('@/pages/developing/remix/getting-started.md')],
       'Ssr Support': [
         // @ts-ignore
-        () => import('@/pages/start-coding/remix/ssr-support.md'),
+        () => import('@/pages/developing/remix/ssr-support.md'),
         // @ts-ignore
-        () => import('@/pages/start-coding/ssr-support-table.md'),
+        () => import('@/pages/developing/shared/ssr-support-table.md'),
       ],
     },
     Vue: {
       // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/vue/getting-started.md')],
+      'Getting Started': [() => import('@/pages/developing/vue/getting-started.md')],
       // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/vue/advanced.md')],
+      Advanced: [() => import('@/pages/developing/vue/advanced.md')],
     },
     // @ts-ignore
-    'Components Ready': [() => import('@/pages/general/components-ready.md')],
+    'Components Ready': [() => import('@/pages/developing/components-ready.md')],
     // @ts-ignore
-    Testing: [() => import('@/pages/general/testing.md')],
+    Testing: [() => import('@/pages/developing/testing.md')],
   },
   Components: {
     Accordion: {
@@ -565,22 +559,30 @@ export const config: StorefrontConfig = {
     },
     Notifications: {
       // @ts-ignore
-      Introduction: [() => import('@/pages/components/notifications/notifications.usage.md')],
+      Introduction: [() => import('@/pages/patterns/notifications/notifications.usage.md')],
       // @ts-ignore
-      'Decision Tree': [() => import('@/pages/components/notifications/decision-tree.md')],
+      'Decision Tree': [() => import('@/pages/patterns/notifications/decision-tree.md')],
     },
   },
   'Must Know': {
+    'Accessibility': {
+      // @ts-ignore
+      Introduction: [() => import('@/pages/must-know/accessibility/introduction.md')],
+      // @ts-ignore
+      Statement: [() => import('@/pages/must-know/accessibility/statement.md')]
+    },
     // @ts-ignore
-    Introduction: [() => import('@/pages/accessibility/introduction.md')],
+    Security: [() => import('@/pages/must-know/security.md')],
+    Performance: {
+      // @ts-ignore
+      Cdn: [() => import('@/pages/must-know/performance/cdn.md')],
+      // @ts-ignore
+      'Loading Behaviour': [() => import('@/pages/must-know/performance/loading-behaviour.md')],
+    },
     // @ts-ignore
-    'Accessibility Statement': [() => import('@/pages/accessibility/statement.md')],
+    'Browser Compatibility': [() => import('@/pages/must-know/browser-compatibility.md')],
     // @ts-ignore
-    Security: [() => import('@/pages/security/cve.md')],
-    // @ts-ignore
-    Cdn: [() => import('@/pages/performance/cdn.md')],
-    // @ts-ignore
-    'Loading Behaviour': [() => import('@/pages/performance/loading-behaviour.md')],
+    Versioning: [() => import('@/pages/must-know/versioning.md')],
   },
   Help: {
     // @ts-ignore
@@ -590,8 +592,8 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Troubleshooting: [() => import('@/pages/help/troubleshooting.md')],
     // @ts-ignore
-    'Browser Compatibility': [() => import('@/pages/basics/browser-compatibility.md')],
-    // @ts-ignore
     'Bug Report': [() => import('@/pages/help/bug-report.md')],
+    // @ts-ignore
+    'Component Meta': [() => import('@/pages/help/component-meta/component-meta.md')],
   },
 };
