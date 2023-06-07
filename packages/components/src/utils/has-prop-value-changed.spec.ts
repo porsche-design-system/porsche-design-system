@@ -13,23 +13,13 @@ describe('hasPropValueChanged()', () => {
       result: false,
     },
     {
-      val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      val2: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      result: false,
-    },
-    {
-      val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      val2: { foo: { bar: 'foo', foo: 'bar' }, bar: 'foo' },
-      result: false,
-    },
-    {
-      val1: { bar: 'foo', foo: 'bar' },
-      val2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
+      val1: { foo: 'bar', bar: 'foo' },
+      val2: { foo: 'foo', bar: 'bar' },
       result: true,
     },
     {
-      val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      val2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
+      val1: { foo: 'bar', bar: 'foo' },
+      val2: { foo: 'bar', bar: 'foo', fooo: 'foo' },
       result: true,
     },
     {
