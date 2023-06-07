@@ -139,3 +139,17 @@ export const getFrostedGlassBackgroundJssStyles = (
     },
   };
 };
+
+/**
+ * Get the JSS style for the sticky position with vendor prefixes fallback.
+ * @returns {JssStyle} The JSS style object.
+ */
+export const getStickyJSSStyle = (): JssStyle => ({
+  position: 'sticky',
+  fallbacks: [
+    { position: '-webkit-sticky' },
+    { position: '-moz-sticky' },
+    { position: '-o-sticky' },
+    { position: '-ms-sticky' },
+  ],
+});
