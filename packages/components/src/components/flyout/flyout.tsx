@@ -205,20 +205,13 @@ export class Flyout {
   });
 
   private updateHeaderShadow = (): void => {
-    if (this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD) {
-      this.header.classList.add('header--shadow');
-    } else {
-      this.header.classList.remove('header--shadow');
-    }
+    const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
+    this.header.classList[shouldApplyShadow ? 'add' : 'remove']('header--shadow');
   };
 
   private updateFooterShadow = (): void => {
     const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
-    if (shouldApplyShadow) {
-      this.footer.classList.add('footer--shadow');
-    } else {
-      this.footer.classList.remove('footer--shadow');
-    }
+    this.footer.classList[shouldApplyShadow ? 'add' : 'remove']('footer--shadow');
   };
 
   private dismissFlyout = (): void => {
