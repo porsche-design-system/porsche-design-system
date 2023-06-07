@@ -69,7 +69,7 @@ export class Flyout {
     this.updateFocusTrap(isOpen);
 
     if (isOpen) {
-      if (this.hasSubFooter && this.hasFooter) {
+      if (this.hasSubFooter) {
         this.onScroll();
       }
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -98,7 +98,7 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
-      if (this.hasSubFooter && this.hasFooter) {
+      if (this.hasSubFooter) {
         this.onScroll();
       }
       // Necessary to select button to make :focus-visible work
@@ -197,9 +197,7 @@ export class Flyout {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private onScroll = throttle(100, () => {
     if (this.dialog.scrollHeight - this.dialog.clientHeight > 0) {
-      if (this.hasHeader) {
-        this.updateHeaderShadow();
-      }
+      this.updateHeaderShadow();
       if (this.hasFooter) {
         this.updateFooterShadow();
       }
