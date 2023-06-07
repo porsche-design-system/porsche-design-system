@@ -132,7 +132,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/carousel/carousel.props.md')],
     },
-    Checkbox: {
+    'Checkbox Wrapper': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.examples.md')],
       // @ts-ignore
@@ -319,7 +319,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/popover/popover.props.md')],
     },
-    'Radio Button': {
+    'Radio Button Wrapper': {
       Examples: [
         // @ts-ignore
         () => import('@/../../components/src/components/radio-button-wrapper/radio-button-wrapper.examples.md'),
@@ -341,7 +341,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/scroller/scroller.props.md')],
     },
-    Select: {
+    'Select Wrapper': {
       Examples: [
         // @ts-ignore
         () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.examples.md'),
@@ -453,7 +453,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/text/text.props.md')],
     },
-    'Text Field': {
+    'Text Field Wrapper': {
       Examples: [
         // @ts-ignore
         () => import('@/../../components/src/components/text-field-wrapper/text-field-wrapper.examples.md'),
@@ -475,7 +475,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/text-list/text-list/text-list.props.md')],
     },
-    Textarea: {
+    'Textarea Wrapper': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/textarea-wrapper/textarea-wrapper.examples.md')],
       // @ts-ignore

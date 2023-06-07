@@ -1,4 +1,4 @@
-# Checkbox
+# Checkbox Wrapper
 
 <TableOfContents></TableOfContents>
 
