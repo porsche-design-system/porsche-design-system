@@ -1,23 +1,13 @@
 <template>
   <header>
     <div>
-      <p-button-pure @click="toggleMenuVisibility()" class="open-menu-button" icon="menu-lines" hide-label="true">Open menu</p-button-pure>
+      <Menu variant="open" class="open-menu-button" />
       <VersionSelect class="version-select" />
     </div>
-    <router-link to="/" v-slot="{ href, navigate }">
-      <p-wordmark :href="href" @click="navigate"></p-wordmark>
-    </router-link>
+    <Wordmark />
     <div>
       <Search class="search-field" />
-      <p-link-pure
-        class="github-anchor"
-        :icon-source="require('@/assets/github.svg')"
-        href="https://github.com/porsche-design-system/porsche-design-system"
-        target="_blank"
-        hide-label="true"
-      >
-        Navigate to GitHub repository of Porsche Design System
-      </p-link-pure>
+      <GitHubAnchor class="github-anchor" />
     </div>
   </header>
 </template>
@@ -27,11 +17,17 @@
   import Component from 'vue-class-component';
   import VersionSelect from '@/components/VersionSelect.vue';
   import Search from '@/components/Search.vue';
+  import Menu from '@/components/Menu.vue';
+  import Wordmark from '@/components/Wordmark.vue';
+  import GitHubAnchor from '@/components/GitHubAnchor.vue';
 
   @Component({
     components: {
       VersionSelect,
       Search,
+      Menu,
+      Wordmark,
+      GitHubAnchor,
     },
   })
   export default class Header extends Vue {
@@ -112,6 +108,7 @@
     margin-right: -13px; // compensate alignment because of custom padding
   }
 
+  // TODO: maybe conditional rendering would be more advanced
   .heading,
   .version-select,
   .search-field {
@@ -120,6 +117,7 @@
     }
   }
 
+  // TODO: maybe conditional rendering would be more advanced
   .open-menu-button {
     @include pds-media-query-min('m') {
       display: none;

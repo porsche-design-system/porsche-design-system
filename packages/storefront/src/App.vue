@@ -3,10 +3,12 @@
     <router-view />
   </main>
   <div id="app" v-else>
-    <Header class="header" />
-    <Aside class="aside" />
-    <Main class="main" />
-    <Backdrop class="backdrop" />
+    <Header />
+    <Aside />
+    <Main>
+      <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
+    </Main>
+    <Backdrop />
   </div>
 </template>
 
@@ -31,6 +33,10 @@
 
     public get isStandalone(): boolean {
       return this.$route.meta?.standalone;
+    }
+
+    public get isLoading(): boolean {
+      return this.$store.getters.isLoading;
     }
 
     @Watch('$route')
@@ -233,10 +239,23 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
+  @use '@/styles/internal.variables.scss' as *;
 
   #app {
     @include pds-grid;
     grid-row-gap: $pds-spacing-fluid-x-large;
     grid-template-rows: repeat(3, auto);
+  }
+
+  // TODO: loading state does not work properly because `setIsLoading` setter of Vue store is never called
+  .router-view {
+    opacity: 1;
+    transition: opacity $transition-duration $transition-duration; // let main content smoothly (delayed) fade in after loading
+
+    &--loading {
+      transition: opacity $transition-duration; // let main content smoothly (immediately) fade out while loading
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 </style>

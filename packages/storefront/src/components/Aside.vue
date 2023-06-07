@@ -1,10 +1,10 @@
 <template>
   <aside :class="isMenuVisible ? 'slide-in' : 'slide-out'">
-    <Menu class="close-menu-button" />
+    <Menu variant="close" class="close-menu-button" />
     <div class="scroll-area">
       <VersionSelect class="version-select" />
       <Search class="search-field" />
-      <Sidebar />
+      <Navigation />
       <Footer />
     </div>
   </aside>
@@ -16,15 +16,15 @@
   import Menu from '@/components/Menu.vue';
   import VersionSelect from '@/components/VersionSelect.vue';
   import Search from '@/components/Search.vue';
-  import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
+  import Navigation from "@/components/Navigation.vue";
 
   @Component({
     components: {
       Menu,
       VersionSelect,
       Search,
-      Sidebar,
+      Navigation,
       Footer,
     },
   })
@@ -117,6 +117,7 @@
     }
   }
 
+  // TODO: maybe conditional rendering would be more advanced
   .version-select,
   .search-field {
     @include pds-media-query-min('m') {

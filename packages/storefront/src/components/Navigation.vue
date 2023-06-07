@@ -1,12 +1,13 @@
 <template>
   <nav v-show="!this.isSearchVisible">
+    <!-- TODO: spacer class could be applied with an additional abstraction layer in storefront.config.ts  -->
     <p-accordion
       v-for="(pages, category, index) in config"
       :key="index"
       :heading="category"
-      :class="['Styles', 'Must Know'].includes(category) && 'spacer'"
-      v-bind:open="accordion[category]"
-      v-on:update="toggleActive(category)"
+      :class="['Components', 'Must Know'].includes(category) && 'spacer'"
+      :open="accordion[category]"
+      @update="toggleActive(category)"
       compact="true"
     >
       <ul>
@@ -36,7 +37,7 @@
   @Component({
     components: {},
   })
-  export default class Sidebar extends Vue {
+  export default class Navigation extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public accordion: { [id: string]: boolean } = {};
 
@@ -74,7 +75,7 @@
 
     getDeprecated(category: string, page: string): string {
       if (category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.isDeprecated) {
-        return ' (deprecated)';
+        return ' 🚫';
       } else {
         return '';
       }

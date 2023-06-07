@@ -1,14 +1,5 @@
 <template>
   <div>
-    <!--<p-button
-      v-show="!isSearchOpen"
-      type="button"
-      variant="secondary"
-      icon="search"
-      hide-label="true"
-      @click="onSearchButtonClick()"
-      >Search</p-button
-    >-->
     <form onsubmit="event.preventDefault()">
       <p-text-field-wrapper
         hide-label="true"
@@ -62,11 +53,6 @@
     public timerId!: ReturnType<typeof setTimeout>;
 
     private isSearchOpen = false;
-
-    onSearchButtonClick() {
-      this.isSearchOpen = true;
-      this.$nextTick(() => (this.$refs.search as HTMLElement).focus());
-    }
 
     data() {
       return {

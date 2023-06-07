@@ -1,6 +1,6 @@
 <template>
   <main>
-    <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
+    <slot />
     <p-spinner class="spinner" :class="{ 'spinner--loading': isLoading }" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
   </main>
 </template>
@@ -34,23 +34,13 @@
   }
 
   // TODO: loading state does not work properly because `setIsLoading` setter of Vue store is never called
-  .router-view {
-    opacity: 1;
-    transition: opacity $transition-duration $transition-duration; // let main content smoothly (delayed) fade in after loading
-
-    &--loading {
-      transition: opacity $transition-duration; // let main content smoothly (immediately) fade out while loading
-      opacity: 0;
-      pointer-events: none;
-    }
-  }
-
   .spinner {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
+    pointer-events: none;
     opacity: 0;
     transition: opacity $transition-duration $transition-duration; // let spinner smoothly (delayed) fade out after loading
 

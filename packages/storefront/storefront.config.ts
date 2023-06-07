@@ -4,6 +4,24 @@ export const ALGOLIA_APP_ID = '1NH68HJ92C';
 export const ALGOLIA_SEARCH_ONLY_KEY = '690605ee1f61d0e13c571484ecb74125';
 
 export const config: StorefrontConfig = {
+  News: {
+    'Migration Guide': {
+      // @ts-ignore
+      'Porsche Design System': [() => import('@/pages/news/migration-guide.md')],
+      // @ts-ignore
+      Utilities: [() => import('@/pages/news/migration-guide-utilities.md')],
+    },
+    Changelog: {
+      // @ts-ignore
+      Components: [() => import('@/../../components/CHANGELOG.md')],
+      // @ts-ignore
+      Utilities: [() => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md')],
+      // @ts-ignore
+      Assets: [() => import('@/../../assets/CHANGELOG.md')],
+    },
+    // @ts-ignore
+    Versioning: [() => import('@/pages/news/versioning.md')],
+  },
   'Designing': {
     // @ts-ignore
     Introduction: [() => import('@/pages/start-designing/introduction.md')],
@@ -63,50 +81,6 @@ export const config: StorefrontConfig = {
     'Components Ready': [() => import('@/pages/general/components-ready.md')],
     // @ts-ignore
     Testing: [() => import('@/pages/general/testing.md')],
-  },
-  Updates: {
-    'Migration Guide': {
-      // @ts-ignore
-      'Porsche Design System': [() => import('@/pages/news/migration-guide.md')],
-      // @ts-ignore
-      Utilities: [() => import('@/pages/news/migration-guide-utilities.md')],
-    },
-    Changelog: {
-      // @ts-ignore
-      Components: [() => import('@/../../components/CHANGELOG.md')],
-      // @ts-ignore
-      Utilities: [() => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md')],
-      // @ts-ignore
-      Assets: [() => import('@/../../assets/CHANGELOG.md')],
-    },
-    // @ts-ignore
-    Versioning: [() => import('@/pages/news/versioning.md')],
-  },
-  Styles: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/styles/introduction.md')],
-    // @ts-ignore
-    Border: [() => import('@/pages/styles/border.md')],
-    // @ts-ignore
-    'Drop Shadow': [() => import('@/pages/styles/drop-shadow.md')],
-    // @ts-ignore
-    Focus: [() => import('@/pages/styles/focus.md')],
-    // @ts-ignore
-    'Frosted Glass': [() => import('@/pages/styles/frosted-glass.md')],
-    // @ts-ignore
-    Gradient: [() => import('@/pages/styles/gradient.md')],
-    // @ts-ignore
-    Grid: [() => import('@/pages/styles/grid.md')],
-    // @ts-ignore
-    Hover: [() => import('@/pages/styles/hover.md')],
-    // @ts-ignore
-    'Media Query': [() => import('@/pages/styles/media-query.md')],
-    // @ts-ignore
-    Spacing: [() => import('@/pages/styles/spacing.md')],
-    // @ts-ignore
-    Theme: [() => import('@/pages/styles/theme.md')],
-    // @ts-ignore
-    Typography: [() => import('@/pages/styles/typography.md')],
   },
   Components: {
     Accordion: {
@@ -393,7 +367,7 @@ export const config: StorefrontConfig = {
           import(
             // @ts-ignore
             '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
-          ),
+            ),
       ],
     },
     Spinner: {
@@ -532,6 +506,32 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/wordmark/wordmark.props.md')],
     },
+  },
+  Styles: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/styles/introduction.md')],
+    // @ts-ignore
+    Border: [() => import('@/pages/styles/border.md')],
+    // @ts-ignore
+    'Drop Shadow': [() => import('@/pages/styles/drop-shadow.md')],
+    // @ts-ignore
+    Focus: [() => import('@/pages/styles/focus.md')],
+    // @ts-ignore
+    'Frosted Glass': [() => import('@/pages/styles/frosted-glass.md')],
+    // @ts-ignore
+    Gradient: [() => import('@/pages/styles/gradient.md')],
+    // @ts-ignore
+    Grid: [() => import('@/pages/styles/grid.md')],
+    // @ts-ignore
+    Hover: [() => import('@/pages/styles/hover.md')],
+    // @ts-ignore
+    'Media Query': [() => import('@/pages/styles/media-query.md')],
+    // @ts-ignore
+    Spacing: [() => import('@/pages/styles/spacing.md')],
+    // @ts-ignore
+    Theme: [() => import('@/pages/styles/theme.md')],
+    // @ts-ignore
+    Typography: [() => import('@/pages/styles/typography.md')],
   },
   Partials: {
     // @ts-ignore

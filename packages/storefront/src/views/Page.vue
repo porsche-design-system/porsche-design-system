@@ -3,7 +3,7 @@
     <p-tabs-bar v-if="hasTabs" :active-tab-index="activeTabIndex" size="medium">
       <router-link v-for="(tab, index) in tabs" :key="index" :to="createTabLink(tab)">{{ tab }}</router-link>
     </p-tabs-bar>
-    <Markdown class="markdown">
+    <Markdown>
       <component :is="component" v-for="(component, index) in components" :key="index"></component>
     </Markdown>
   </div>
@@ -107,7 +107,7 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  p-tabs-bar + .markdown {
-    margin-top: $pds-spacing-fluid-large;
+  p-tabs-bar {
+    margin-bottom: $pds-spacing-fluid-large;
   }
 </style>
