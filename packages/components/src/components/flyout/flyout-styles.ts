@@ -3,7 +3,6 @@ import {
   addImportantToEachRule,
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
-  getStickyJSSStyle,
   getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -65,7 +64,7 @@ export const getComponentCss = (
       }),
       justifyContent: 'flex-end',
       background: backgroundColor,
-      ...getStickyJSSStyle(),
+      position: 'sticky',
       top: 0,
     },
     [`${headerShadowClass}`]: {
@@ -130,7 +129,7 @@ export const getComponentCss = (
       footer: {
         background: backgroundColor,
         padding: contentPadding,
-        ...getStickyJSSStyle(),
+        position: 'sticky',
         bottom: 0,
       },
       [`${footerShadowClass}`]: {
