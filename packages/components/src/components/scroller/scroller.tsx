@@ -112,22 +112,22 @@ export class Scroller {
     }
   }
 
+  public componentDidLoad(): void {
+    this.initIntersectionObserver();
+    if (this.scrollToPosition) {
+      this.scrollToPositionHandler();
+    }
+  }
+
   public componentShouldUpdate(
     newVal: unknown,
     oldVal: unknown,
     propName: keyof InstanceType<typeof Scroller>
   ): boolean {
     return (
-      !hasPropValueChanged(newVal, oldVal) &&
-      !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden)) // should only update if scrollable
+      !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden)) && // should only update if scrollable
+      !hasPropValueChanged(newVal, oldVal)
     );
-  }
-
-  public componentDidLoad(): void {
-    this.initIntersectionObserver();
-    if (this.scrollToPosition) {
-      this.scrollToPositionHandler();
-    }
   }
 
   public render(): JSX.Element {
