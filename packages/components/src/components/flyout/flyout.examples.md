@@ -82,7 +82,7 @@ import { convertMarkup } from '@porsche-design-system/storefront/src/utils/forma
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, overflowX: 'visible' };
   flyouts = [];
   codeExample = getFlyoutCodeSamples('default');
   codeExampleSlotted = getFlyoutCodeSamples('example-slotted'); 
@@ -149,4 +149,8 @@ export default class Code extends Vue {
     flex-wrap: wrap; 
     padding-bottom: 16px
   }
+
+  /*.example {*/
+  /*  overflow-x: unset;*/
+  /*}*/
 </style>
