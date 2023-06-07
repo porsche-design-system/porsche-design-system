@@ -9,7 +9,7 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import { spacingFluidLarge, spacingStaticMedium } from '../../../../utilities/projects/utilities';
+import { spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
