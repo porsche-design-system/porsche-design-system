@@ -159,18 +159,15 @@ describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
     expect(spy).toBeCalledWith('newValue', 'oldValue');
   });
 
-  it('should call componentShouldUpdate() and return true for various values', () => {
+  it('should return result of hasPropValueChanged()', () => {
+    jest.spyOn(hasPropValueChangedUtils, 'hasPropValueChanged').mockReturnValueOnce(true).mockReturnValueOnce(false);
     const spy = jest.spyOn(component, 'componentShouldUpdate');
 
     component.componentShouldUpdate('newValue', 'oldValue');
 
     expect(spy).toReturnWith(true);
-  });
 
-  it('should call componentShouldUpdate() and return false for equal values', () => {
-    const spy = jest.spyOn(component, 'componentShouldUpdate');
-
-    component.componentShouldUpdate('newValue', 'newValue');
+    component.componentShouldUpdate('newValue', 'oldValue');
 
     expect(spy).toReturnWith(false);
   });
