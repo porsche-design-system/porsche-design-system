@@ -5,77 +5,77 @@ describe('hasPropValueChanged()', () => {
     {
       val1: { foo: 'bar', bar: 'foo' },
       val2: { foo: 'bar', bar: 'foo' },
-      result: true,
+      result: false,
     },
     {
       val1: { foo: 'bar', bar: 'foo' },
       val2: { bar: 'foo', foo: 'bar' },
-      result: true,
+      result: false,
     },
     {
       val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
       val2: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
-      result: true,
+      result: false,
     },
     {
       val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
       val2: { foo: { bar: 'foo', foo: 'bar' }, bar: 'foo' },
-      result: true,
+      result: false,
     },
     {
       val1: { bar: 'foo', foo: 'bar' },
       val2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
-      result: false,
+      result: true,
     },
     {
       val1: { foo: { foo: 'bar', bar: 'foo' }, bar: 'foo' },
       val2: { foo: { bar: 'fooo', foo: 'bar' }, bar: 'foo' },
-      result: false,
+      result: true,
     },
     {
       val1: ['foo', 'bar'],
       val2: ['foo', 'bar'],
-      result: true,
+      result: false,
     },
     {
       val1: ['foo', 'bar'],
       val2: ['bar', 'foo'],
-      result: true,
+      result: false,
     },
     {
       val1: ['fooo', 'bar'],
       val2: ['foo', 'bar'],
-      result: false,
+      result: true,
     },
     {
       val1: 'foo',
       val2: 'bar',
-      result: false,
+      result: true,
     },
     {
       val1: 'foo',
       val2: 'foo',
-      result: true,
+      result: false,
     },
     {
       val1: 1,
       val2: 0,
-      result: false,
+      result: true,
     },
     {
       val1: 1,
       val2: 1,
-      result: true,
-    },
-    {
-      val1: true,
-      val2: false,
       result: false,
     },
     {
       val1: true,
-      val2: true,
+      val2: false,
       result: true,
+    },
+    {
+      val1: true,
+      val2: true,
+      result: false,
     },
   ];
   it.each(data.map(({ val1, val2, result }) => [val1, val2, result] as [unknown, unknown, boolean]))(

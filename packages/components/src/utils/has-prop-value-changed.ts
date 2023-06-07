@@ -6,7 +6,7 @@ export const hasPropValueChanged = (newVal: unknown, oldVal: unknown): boolean =
     return newVal !== oldVal;
   } else if (Array.isArray(newVal) && Array.isArray(oldVal)) {
     // type array
-    return !(newVal.length === oldVal.length && newVal.every((item) => oldVal.includes(item)));
+    return !(newVal.length === oldVal.length && newVal.sort().every((val, i) => val === oldVal.sort()[i]));
   } else {
     // type object
     const keys1 = Object.keys(newVal);
