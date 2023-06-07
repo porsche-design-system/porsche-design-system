@@ -30,10 +30,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   justify-content: flex-end;
   background: #FFF;
@@ -116,10 +112,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -204,10 +196,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -251,10 +239,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
@@ -305,10 +289,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   justify-content: flex-end;
   background: #FFF;
@@ -391,10 +371,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -479,10 +455,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -526,10 +498,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
@@ -579,10 +547,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   justify-content: flex-end;
   background: #0E0E12;
@@ -664,10 +628,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   justify-content: flex-end;
   background: #FFF;
@@ -712,10 +672,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   overscroll-behavior-y: none;
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
@@ -762,10 +718,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -852,10 +804,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -905,10 +853,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   overscroll-behavior-y: none;
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
@@ -955,10 +899,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -1002,10 +942,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
@@ -1055,10 +991,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   justify-content: flex-end;
   background: #0E0E12;
@@ -1140,10 +1072,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   justify-content: flex-end;
   background: #FFF;
@@ -1188,10 +1116,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   overscroll-behavior-y: none;
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
@@ -1238,10 +1162,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -1328,10 +1248,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -1381,10 +1297,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   overscroll-behavior-y: none;
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
@@ -1431,10 +1343,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   display: none !important;
 }
 .header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -1478,10 +1386,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 .footer {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
