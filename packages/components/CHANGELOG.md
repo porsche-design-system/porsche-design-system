@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `Crest` replaced final assets and meta icons
+  ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
+
 #### Added
 
 - `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
