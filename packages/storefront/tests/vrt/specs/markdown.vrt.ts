@@ -1,11 +1,11 @@
 import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
-import { routerViewSelector } from '../helpers';
+import { mainViewSelector } from '../helpers';
 import { forceFocusState } from '../../../../components-js/tests/vrt/puppeteer/helpers';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'markdown', '/markdown', {
-      elementSelector: routerViewSelector,
+      elementSelector: mainViewSelector,
       // focus first of two links
       scenario: (page) => forceFocusState(page, 'a[href="https://designsystem.porsche.com/"]:not([title])'),
     })

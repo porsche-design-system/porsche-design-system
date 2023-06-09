@@ -4,20 +4,20 @@ import {
   getVisualRegressionStatesTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-import { routerViewSelector } from '../helpers';
+import { mainViewSelector } from '../helpers';
 
-xit.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'story', '/components/pagination/examples', {
-      elementSelector: routerViewSelector,
+      elementSelector: mainViewSelector,
     })
   ).toBeFalsy();
 });
 
-xit('should have no visual regression with dark theme', async () => {
+it('should have no visual regression with dark theme', async () => {
   expect(
     await vrtTest(getVisualRegressionStatesTester(), 'story-dark', '/components/pagination/examples', {
-      elementSelector: routerViewSelector,
+      elementSelector: mainViewSelector,
       scenario: async (page) => {
         await page.click('.playground > p-tabs-bar > button:nth-of-type(2)');
         await new Promise((resolve) => setTimeout(resolve, 500)); // wait for animation/transition of tabs bar
