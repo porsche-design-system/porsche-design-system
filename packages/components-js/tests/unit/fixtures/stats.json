@@ -47,7 +47,7 @@
   {
     "chunkShortName": "crest",
     "size": 2190,
-    "gzipSize": 1145
+    "gzipSize": 1143
   },
   {
     "chunkShortName": "display",
@@ -67,7 +67,7 @@
   {
     "chunkShortName": "fieldset-wrapper",
     "size": 4212,
-    "gzipSize": 1752
+    "gzipSize": 1750
   },
   {
     "chunkShortName": "flex",
@@ -76,13 +76,13 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 7406,
-    "gzipSize": 2986
+    "size": 7452,
+    "gzipSize": 3004
   },
   {
     "chunkShortName": "grid",
     "size": 2665,
-    "gzipSize": 1182
+    "gzipSize": 1183
   },
   {
     "chunkShortName": "heading",
@@ -127,12 +127,12 @@
   {
     "chunkShortName": "link-tile-model-signature",
     "size": 7413,
-    "gzipSize": 3212
+    "gzipSize": 3213
   },
   {
     "chunkShortName": "main",
     "size": 70083,
-    "gzipSize": 23544
+    "gzipSize": 23561
   },
   {
     "chunkShortName": "marque",
@@ -217,7 +217,7 @@
   {
     "chunkShortName": "tag-dismissible",
     "size": 3939,
-    "gzipSize": 1753
+    "gzipSize": 1756
   },
   {
     "chunkShortName": "text",
