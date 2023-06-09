@@ -11,7 +11,7 @@ component in various situations.
 
 - Use to enable a user to select one value from a predefined list. Use as soon as two options are mutually exclusive.
   Use
-- [Checkbox](components/checkbox) instead if there is only one option.
+- [Checkbox](components/checkbox-wrapper) instead if there is only one option.
 - Use when the user should see all available options.
 - Consider using the [Segmented Control](components/segmented-control) for 5 options or fewer.
 - Keep the label text short and descriptive (one or two words).
@@ -21,13 +21,13 @@ component in various situations.
 
 ### Don't:
 
-- Don't use a radio Button for a large number of items (≥ 7), use the [Select](components/select) or
+- Don't use a radio Button for a large number of items (≥ 7), use the [Select](components/select-wrapper) or
   [Segmented Control](components/segmented-control) component instead.
 
 ---
 
 ## Related Components
 
-- [Checkbox](components/checkbox)
+- [Checkbox](components/checkbox-wrapper)
 - [Segmented Control](components/segmented-control)
-- [Select](components/select)
+- [Select](components/select-wrapper)

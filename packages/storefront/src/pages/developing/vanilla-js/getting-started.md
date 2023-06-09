@@ -7,7 +7,7 @@
 To build your own (non framework specific) application with **Native Web Components** of the Porsche Design System,
 follow these steps:
 
-- Follow the instructions at [Introduction](start-coding/introduction) to get the required npm package
+- Follow the instructions at [Introduction](developing/introduction) to get the required npm package
 - Install the Porsche Design System
 
 ```shell script
@@ -43,7 +43,7 @@ After adding the `@porsche-design-system/components-js` package to your project,
 
 ## When are Porsche Design System components initialized?
 
-See [componentsReady()](helpers/components-ready) for further information.
+See [componentsReady()](developing/components-ready) for further information.
 
 ## Sample integration
 

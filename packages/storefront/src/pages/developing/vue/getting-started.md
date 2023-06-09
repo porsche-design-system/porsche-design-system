@@ -85,4 +85,4 @@ Currently, the plugin approach is in development.
 
 ## When are Porsche Design System components initialized?
 
-See [componentsReady()](helpers/components-ready) for further information.
+See [componentsReady()](developing/components-ready) for further information.

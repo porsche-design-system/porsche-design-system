@@ -19,7 +19,7 @@
       <img src="@/assets/start-developing.jpg" alt="Some woman developing with Porsche Design System version 3" />
     </p-link-tile>
     <p-link-tile
-      href="updates/migration-guide/porsche-design-system"
+      href="news/migration-guide/porsche-design-system"
       aspect-ratio="{ base: '4:3', xs: '16:9' }"
       description="Migrate from v2 to v3"
       weight="regular"

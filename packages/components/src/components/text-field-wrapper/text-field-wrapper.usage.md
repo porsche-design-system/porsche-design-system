@@ -21,11 +21,11 @@ component in various situations.
 ### Don't:
 
 - Don't use labels with more than two words whenever possible (keep it short and descriptive).
-- Don't use it if users need to enter longer text (therefore use the [Textarea](components/textarea) component).
+- Don't use it if users need to enter longer text (therefore use the [Textarea](components/textarea-wrapper) component).
 - Don't use instructional or description text for the label.
 
 ---
 
 ## Related Components
 
-- [Textarea](components/textarea)
+- [Textarea](components/textarea-wrapper)

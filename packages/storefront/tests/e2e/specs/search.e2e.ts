@@ -67,7 +67,7 @@ describe('search', () => {
     const amount = await getAmountOfAlgoliaHits();
 
     expect(await getElementStyle(hitsWrapper, 'display')).toBe('block');
-    expect(amount).toBe(4);
+    expect(amount).toBe(3);
   });
 
   it('should hide hits after clicking on a result', async () => {

@@ -22,7 +22,7 @@ possible.
 
 Let us notify you whenever there is relevant news for you regarding Porsche Design System or general design topics. We
 will use your account registration for sending mails. If you are not yet registered, please sign up via
-[Start Designing](start-designing/introduction) or [Start Coding](start-coding/introduction)
+[Start Designing](designing/introduction) or [Start Developing](developing/introduction)
 
 ## Issue and contribution management at GitHub
 

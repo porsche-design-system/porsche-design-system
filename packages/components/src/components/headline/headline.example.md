@@ -4,7 +4,7 @@
 
 <p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
   This component is deprecated and will be removed with the next major release.
-Please use <a href="components/typography/heading">p-heading</a> instead.
+Please use <a href="components/heading">p-heading</a> instead.
 </p-inline-notification>
 
 <TableOfContents></TableOfContents>

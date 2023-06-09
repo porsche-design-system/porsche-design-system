@@ -58,10 +58,8 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
       const heading =
         url === '/'
           ? 'first page'
-          : url.startsWith('/patterns/forms/')
-          ? await getPatternHeading()
-          : url.startsWith('/patterns/styles/')
-          ? await getPatternStylesHeadline()
+          : url.startsWith('/patterns/forms/example/') || url.startsWith('/patterns/styles/example/')
+          ? 'some pattern or style example standalone page'
           : await getHeadline();
 
       expect(heading).not.toBe('404 - Page not found');

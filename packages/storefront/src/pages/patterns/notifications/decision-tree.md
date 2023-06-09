@@ -25,9 +25,9 @@ Status: Neutral
 
 #### Related Components:
 
-- [Inline Notification](components/notifications/inline-notification)
+- [Inline Notification](components/inline-notification)
 - [Modal](components/modal)
-- [Toast](components/notifications/toast)
+- [Toast](components/toast)
 
 ---
 
@@ -47,9 +47,9 @@ Status: Success
 
 #### Related Components:
 
-- [Inline Notification](components/notifications/inline-notification)
+- [Inline Notification](components/inline-notification)
 - Inline Validation (supported by all form elements)
-- [Toast](components/notifications/toast)
+- [Toast](components/toast)
 
 ---
 
@@ -68,8 +68,8 @@ Status: Warning
 
 #### Related Components:
 
-- [Banner](components/notifications/banner)
-- [Inline Notification](components/notifications/inline-notification)
+- [Banner](components/banner)
+- [Inline Notification](components/inline-notification)
 - [Modal](components/modal)
 
 ---
@@ -91,7 +91,7 @@ Status: Error
 
 #### Related Components:
 
-- [Banner](components/notifications/banner)
-- [Inline Notification](components/notifications/inline-notification)
+- [Banner](components/banner)
+- [Inline Notification](components/inline-notification)
 - Inline Validation (supported by all form elements)
 - [Modal](components/modal)

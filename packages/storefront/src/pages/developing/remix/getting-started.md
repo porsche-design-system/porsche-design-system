@@ -184,4 +184,4 @@ export default function Index(): JSX.Element {
 
 ## When are Porsche Design System components (re-)hydrated?
 
-See [componentsReady()](helpers/components-ready) for further information.
+See [componentsReady()](developing/components-ready) for further information.

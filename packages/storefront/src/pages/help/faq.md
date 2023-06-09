@@ -23,11 +23,11 @@ communication channels to get in contact or ask for support or submit support re
 **Developer**  
 The source code of the Porsche Design System is stored and developed within a private GitHub repository and distributed
 via a private NPM registry. Both managed by the Porsche Design System team. If you are not yet registered, please sign
-up via [Start Coding](start-coding/introduction).
+up via [Start Developing](developing/introduction).
 
 **Designer**  
 The Porsche Design System Sketch library is created and maintained within a private Abstract project. If you are not yet
-registered, please sign up via [Start Designing](start-designing/introduction).
+registered, please sign up via [Start Designing](designing/introduction).
 
 ## What is the release strategy and how are the issues prioritized?
 
@@ -38,7 +38,7 @@ feedback and associated requirements.
 
 ## What happens with contents marked as deprecated?
 
-Please take a look at our [versioning and release strategy](news/versioning).
+Please take a look at our [versioning and release strategy](must-know/versioning).
 
 ## How to handle older versions?
 

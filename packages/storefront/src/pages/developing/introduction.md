@@ -20,10 +20,10 @@ examples and solutions for testing.
 All releases of the Porsche Design System are available as versioned NPM packages. Please read more about them on the
 corresponding docs.
 
-- [Web components](start-coding/vanilla-js): `@porsche-design-system/components-js`
-- [Angular components](start-coding/angular): `@porsche-design-system/components-angular`
-- [React components](start-coding/react): `@porsche-design-system/components-react`
-- [Vue components](start-coding/vue): `@porsche-design-system/components-vue`
+- [Web components](developing/vanilla-js): `@porsche-design-system/components-js`
+- [Angular components](developing/angular): `@porsche-design-system/components-angular`
+- [React components](developing/react): `@porsche-design-system/components-react`
+- [Vue components](developing/vue): `@porsche-design-system/components-vue`
 
 Those packages can be consumed by the following public NPM registry:
 
@@ -34,16 +34,6 @@ Alternatively, they can also be found on the following private NPM registries:
 - Porsche Design System NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
 - My Porsche NPM registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
 - Porsche Highway NPM registry ([https://highway.porsche.com/artifactory/](https://highway.porsche.com/artifactory/))
-
-### Get optional NPM-Packages
-
-We provide some additional packages which could help you in your daily business and hopefully make your coding life
-easier. These packages are optional and not directly needed to use our Porsche Design System components.
-
-All releases of the Porsche Design System additional packages are available as versioned NPM packages. Please read more
-about them on the corresponding docs.
-
-- [Assets](assets/introduction): `@porsche-design-system/assets`
 
 ## Web components used with a not-supported framework
 

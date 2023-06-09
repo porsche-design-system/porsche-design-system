@@ -152,7 +152,7 @@ export default function Home() {
 
 ## When are Porsche Design System components (re-)hydrated?
 
-See [componentsReady()](helpers/components-ready) for further information.
+See [componentsReady()](developing/components-ready) for further information.
 
 ## Sample integration
 

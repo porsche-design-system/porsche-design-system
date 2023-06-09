@@ -127,7 +127,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Radio Button',
           tab: 'Usage',
-          url: '/components/radio-button/usage',
+          url: '/components/radio-button-wrapper/usage',
           objectID: 'components-radio-button-usage-0',
           _highlightResult: {
             name: {
@@ -206,7 +206,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Notifications',
           tab: 'Inline Notification',
-          url: '/components/notifications/inline-notification#event-handling',
+          url: '/components/inline-notification#event-handling',
           objectID: 'components-notifications-inline-notification-5',
           _highlightResult: {
             name: {
@@ -244,7 +244,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Checkbox',
           tab: 'Usage',
-          url: '/components/checkbox/usage#related-components',
+          url: '/components/checkbox-wrapper/usage#related-components',
           objectID: 'components-checkbox-usage-5',
           _highlightResult: {
             name: {
@@ -320,7 +320,7 @@ export const ALGOLIA_RESPONSE_MOCK = {
           category: 'Components',
           page: 'Select',
           tab: 'Usage',
-          url: '/components/select/usage#related-components',
+          url: '/components/select-wrapper/usage#related-components',
           objectID: 'components-select-usage-5',
           _highlightResult: {
             name: {
@@ -692,84 +692,6 @@ export const ALGOLIA_RESPONSE_MOCK = {
             },
             tab: {
               value: 'Examples',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-          },
-        },
-        {
-          name: 'State',
-          content:
-            'Focus\n\nThe `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. \nThe provided SCSS mixin ensures focus is shown by keyboard navigation only.\n\nGiven parameters are: \n* `$color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with background-color and white text on a page with white surface.  \n* `$offset`: Can be overwritten when default offset is not sufficient.  \n* `$pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.\n\n#### Example\n\n\n\n#### Result\n\n\n',
-          category: 'Utilities',
-          page: 'Scss',
-          tab: 'Functions',
-          url: '/utilities/scss/functions#state',
-          objectID: 'utilities-scss-functions-3',
-          _highlightResult: {
-            name: {
-              value: 'State',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-            content: {
-              value:
-                'Focus\n\nThe `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. \nThe provided SCSS mixin ensures focus is shown by keyboard navigation only.\n\nGiven parameters are: \n* `$color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom __ais-highlight__button__/ais-highlight__ with background-color and white text on a page with white surface.  \n* `$offset`: Can be overwritten when default offset is not sufficient.  \n* `$pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.\n\n#### Example\n\n\n\n#### Result\n\n\n',
-              matchLevel: 'full',
-              fullyHighlighted: false,
-              matchedWords: ['button'],
-            },
-            category: {
-              value: 'Utilities',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-            page: {
-              value: 'Scss',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-            tab: {
-              value: 'Functions',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-          },
-        },
-        {
-          name: 'State',
-          content:
-            'Focus\n\nThe `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. \nThe provided SCSS mixin ensures focus is shown by keyboard navigation only.\n\nGiven options object keys: \n* `color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with background-color and white text on a page with white surface.  \n* `offset`: Can be overwritten when default offset is not sufficient.\n* `pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.\n\n#### Example\n\n\n\n#### Result\n\n',
-          category: 'Utilities',
-          page: 'Js',
-          tab: 'Functions',
-          url: '/utilities/js/functions#state',
-          objectID: 'utilities-js-functions-4',
-          _highlightResult: {
-            name: {
-              value: 'State',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-            content: {
-              value:
-                'Focus\n\nThe `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. \nThe provided SCSS mixin ensures focus is shown by keyboard navigation only.\n\nGiven options object keys: \n* `color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom __ais-highlight__button__/ais-highlight__ with background-color and white text on a page with white surface.  \n* `offset`: Can be overwritten when default offset is not sufficient.\n* `pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.\n\n#### Example\n\n\n\n#### Result\n\n',
-              matchLevel: 'full',
-              fullyHighlighted: false,
-              matchedWords: ['button'],
-            },
-            category: {
-              value: 'Utilities',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-            page: {
-              value: 'Js',
-              matchLevel: 'none',
-              matchedWords: [],
-            },
-            tab: {
-              value: 'Functions',
               matchLevel: 'none',
               matchedWords: [],
             },

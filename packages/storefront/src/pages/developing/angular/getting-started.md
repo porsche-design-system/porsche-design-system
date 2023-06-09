@@ -6,7 +6,7 @@
 
 To build your own application with the **Angular** components of the Porsche Design System, follow these steps:
 
-- Follow the instructions at [Introduction](start-coding/introduction) to get the required npm package
+- Follow the instructions at [Introduction](developing/introduction) to get the required npm package
 - Run `ng new my-app` to create a new Angular workspace and initial project
 - Install the Porsche Design System
 
@@ -67,7 +67,7 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## When are Porsche Design System components initialized?
 
-See [componentsReady()](helpers/components-ready) for further information.
+See [componentsReady()](developing/components-ready) for further information.
 
 ## Sample integration
 
