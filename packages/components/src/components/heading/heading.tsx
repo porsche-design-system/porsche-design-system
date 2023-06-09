@@ -4,7 +4,7 @@ import { HEADING_TAGS } from './heading-tag';
 import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
 import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
 import { getComponentCss } from './heading-styles';
 
 const propTypes: PropTypes<typeof Heading> = {
@@ -40,6 +40,10 @@ export class Heading {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

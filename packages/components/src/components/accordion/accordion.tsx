@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   HEADING_TAGS,
+  hasPropValueChanged,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -74,6 +75,10 @@ export class Accordion {
     if (this.content) {
       this.observeResize(); // for reconnect
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

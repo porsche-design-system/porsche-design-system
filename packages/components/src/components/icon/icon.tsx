@@ -4,6 +4,7 @@ import { buildIconUrl, ICON_ARIA_ATTRIBUTES, ICON_COLORS, IconSize } from './ico
 import {
   AllowedTypes,
   attachComponentCss,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
   THEMES,
@@ -55,6 +56,10 @@ export class Icon {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

@@ -176,7 +176,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|footer|sub-footer)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -242,6 +242,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const hasHeader = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           );
+      } else if (tagName === 'p-flyout') {
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
+          .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
+          .replace('// eslint-disable-next-line @typescript-eslint/member-ordering', '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
@@ -336,7 +341,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             '$1\nconst hasCustomDropdown = isCustomDropdown(this.props.filter, this.props.native);'
           )
           // Change hasCustomDropdown to use fn instead of prop
-          .replace(/this\.props\.hasCustomDropdown/, 'hasCustomDropdown');
+          .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))

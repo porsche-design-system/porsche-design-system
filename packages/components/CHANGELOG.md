@@ -1,13 +1,64 @@
 # Changelog
 
-## Porsche Design System - Components
+## Porsche Design System
 
-All notable changes to this project will be documented in this file.
+
+All notable changes to this project will be documented in this file and published as following npm packages:
+
+* `@porsche-design-system/components-js`
+* `@porsche-design-system/components-angular`
+* `@porsche-design-system/components-react`
+* `@porsche-design-system/components-vue`
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
+
+### [3.1.0] - 2023-06-09
+
+### [3.1.0-rc.2] - 2023-06-09
+
+#### Changed
+
+- `Crest` replaced final assets and meta icons
+  ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
+
+#### Added
+
+- `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
+
+#### Fixed
+
+- Wrong validation during SSR hydration of `Link Tile` and `Select Wrapper`
+  ([#2588](https://github.com/porsche-design-system/porsche-design-system/pull/2588))
+- `Modal` scrollable modal does not jump to top on changes within dialog
+  ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
+- Unnecessary lifecycles are prevented when prop values do not change for complex values
+  ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
+
+### [3.1.0-rc.1] - 2023-06-02
+
+#### Added
+
+- **[EXPERIMENTAL]** Prop `showPasswordToggle` for `Text Field Wrapper` with `input type="password"`
+  ([#2586](https://github.com/porsche-design-system/porsche-design-system/pull/2586))
+- Prop `name` for `Icon` supports `heart`, `heart-filled`, `copy`, `fingerprint`, `tire`, `roof-open` and `roof-closed`
+  ([#2589](https://github.com/porsche-design-system/porsche-design-system/pull/2589))
+
+#### Fixed
+
+- `Select Wrapper` missing border on touch devices
+  ([#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579))
+- `Tabs Item` text content can be selected/highlighted
+  ([#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582))
+
+### [3.1.0-rc.0] - 2023-05-24
+
+#### Added
+
+- `Marque` now has a `variant` property, including 75 years variant
+  ([#2575](https://github.com/porsche-design-system/porsche-design-system/pull/2575))
 
 ### [3.0.0] - 2023-05-11
 

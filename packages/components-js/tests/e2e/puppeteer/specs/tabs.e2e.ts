@@ -247,6 +247,22 @@ describe('keyboard', () => {
   });
 });
 
+describe('text selection', () => {
+  it('should be possible to select text within tabs item', async () => {
+    await initTabs();
+    const tabContentRect = await page.evaluate(() => {
+      const tabContent1 = document.querySelector('[label="Tab 1"]');
+      const { x, y } = tabContent1.getBoundingClientRect();
+      return { x, y };
+    });
+    await page.mouse.click(tabContentRect.x, tabContentRect.y, { count: 2 });
+    const selection = await page.evaluate(() => {
+      return window.getSelection().toString();
+    });
+    expect(selection).toBe('Content');
+  });
+});
+
 describe('events', () => {
   it('should trigger tabChange event on tab click', async () => {
     await initTabs({ activeTabIndex: 1 }); // start with other index than first
@@ -377,10 +393,10 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
     expect(status.componentDidUpdate['p-tabs-item'], 'componentDidUpdate: p-tabs-item').toBe(3);
-    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(6);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
   });
 });
 

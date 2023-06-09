@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   parseJSON,
   throwIfAlignTopAndNotCompact,
   validateProps,
@@ -81,6 +82,10 @@ export class LinkTile implements ITileProps {
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

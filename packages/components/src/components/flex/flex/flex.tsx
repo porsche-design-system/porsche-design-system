@@ -16,7 +16,13 @@ import {
   FLEX_WRAPS,
 } from './flex-utils';
 import { getComponentCss } from './flex-styles';
-import { AllowedTypes, attachComponentCss, validateProps, warnIfDeprecatedComponentIsUsed } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  validateProps,
+  warnIfDeprecatedComponentIsUsed,
+} from '../../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
 
 const propTypes: PropTypes<typeof Flex> = {
@@ -53,6 +59,10 @@ export class Flex {
 
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: BreakpointCustomizable<FlexAlignContent> = 'stretch';
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

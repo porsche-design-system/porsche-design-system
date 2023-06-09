@@ -1,1 +1,1 @@
-export const routerViewSelector = '#app > .main > .router-view';
+export const mainViewSelector = '#app > main';

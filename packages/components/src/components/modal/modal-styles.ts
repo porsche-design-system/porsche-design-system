@@ -1,20 +1,19 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep, parseJSON } from '../../utils';
-import type { BreakpointCustomizable } from '../../types';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import {
   borderRadiusMedium,
   borderWidthBase,
   breakpoints,
-  frostedGlassStyle,
   getMediaQueryMin,
   gridExtendedOffsetBase,
   headingLargeStyle,
-  themeDarkBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
+import type { BreakpointCustomizable } from '../../types';
 import {
   addImportantToEachRule,
+  getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
   hostHiddenStyles,
@@ -109,25 +108,7 @@ export const getComponentCss = (
                 transition: 'visibility 0s linear .2s',
               }),
           ...hostHiddenStyles,
-          // workaround via pseudo element to fix stacking (black) background in safari
-          '&::before': {
-            content: '""',
-            position: 'fixed',
-            ...getInsetJssStyle(),
-            background: themeDarkBackgroundShading,
-            pointerEvents: 'none', // enable scrolling in safari by dragging the scrollbar track
-            ...(isOpen
-              ? {
-                  opacity: 1,
-                  ...frostedGlassStyle,
-                }
-              : {
-                  opacity: 0,
-                  backdropFilter: 'blur(0px)',
-                  WebkitBackdropFilter: 'blur(0px)',
-                }),
-            transition: `opacity ${duration} ${transitionTimingFunction}, backdrop-filter ${duration} ${transitionTimingFunction},--webkit-backdrop-filter ${duration} ${transitionTimingFunction}`,
-          },
+          ...getFrostedGlassBackgroundJssStyles(isOpen, duration),
         }),
         overflowY: 'auto', // overrideable
       },

@@ -149,7 +149,7 @@ is required for a certain input field. E.g. List the necessary characters that a
 
 ## Accessibility
 
-Always stick to the defined [Accessibility criteria](accessibility/introduction) (WCAG level AA) when designing web
+Always stick to the defined [Accessibility criteria](must-know/accessibility) (WCAG level AA) when designing web
 applications for Porsche. For form design you should consider in particular the following aspects:
 
 - Forms should **provide 100% keyboard navigation**, which means: Users should be able to jump through the whole form
@@ -170,8 +170,8 @@ applications for Porsche. For form design you should consider in particular the 
 
 ## Related components
 
-- [Text Field](components/text-field)
-- [Textarea](components/textarea)
-- [Checkbox](components/checkbox)
-- [Radio Button](components/radio-button)
-- [Select](components/select)
+- [Text Field](components/text-field-wrapper)
+- [Textarea](components/textarea-wrapper)
+- [Checkbox](components/checkbox-wrapper)
+- [Radio Button](components/radio-button-wrapper)
+- [Select](components/select-wrapper)

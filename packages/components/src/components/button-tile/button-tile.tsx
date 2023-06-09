@@ -12,6 +12,7 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
+  hasPropValueChanged,
   isDisabledOrLoading,
   parseJSON,
   throwIfAlignTopAndNotCompact,
@@ -100,6 +101,10 @@ export class ButtonTile implements ITileProps {
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

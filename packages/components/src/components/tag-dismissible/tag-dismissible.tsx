@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   THEMES,
   validateProps,
@@ -42,6 +43,10 @@ export class TagDismissible {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

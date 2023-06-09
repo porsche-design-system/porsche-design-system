@@ -15,6 +15,7 @@ import {
   getPrefixedTagNames,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
+  hasPropValueChanged,
   isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
   THEMES,
@@ -77,6 +78,10 @@ export class Button {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

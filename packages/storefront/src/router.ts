@@ -47,12 +47,7 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach(async () => {
   await $store.dispatch('toggleLoadingAsync', false);
-  // workaround for open issue(s) to set vue router scroll behaviour to other than standard body element
-  // see: https://github.com/vuejs/vue-router/pull/2780
-  const scrollElement = document.querySelector('.main');
-  if (scrollElement !== null) {
-    scrollElement.scrollTo(0, 0);
-  }
+  window.scrollTo(0, 0);
 });
 
 export default router;

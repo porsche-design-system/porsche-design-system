@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -148,7 +148,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -262,7 +262,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -366,7 +366,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -480,7 +480,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: dark 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -594,7 +594,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -708,7 +708,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -821,7 +821,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
@@ -942,7 +942,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, showPasswordToggle: true, isWithinForm: true, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1055,7 +1055,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1158,7 +1158,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1272,7 +1272,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1385,7 +1385,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: dark 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1498,7 +1498,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1611,7 +1611,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1725,7 +1725,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1829,7 +1829,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -1943,7 +1943,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: dark 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2057,7 +2057,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2171,7 +2171,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2284,7 +2284,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2387,7 +2387,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2501,7 +2501,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2613,7 +2613,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2715,7 +2715,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2828,7 +2828,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -2941,7 +2941,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -3044,7 +3044,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
@@ -3158,7 +3158,110 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: false, isWithinForm: false, theme: light 1`] = `
+":host {
+  display: block;
+  --p-internal-text-field-input-padding-left: 16px !important;
+  --p-internal-text-field-input-padding-right: 16px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(input) {
+  display: block !important;
+  width: 100% !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  margin: 0 !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #CC1922 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  padding: 8px var(--p-internal-text-field-input-padding-right) 8px var(--p-internal-text-field-input-padding-left) !important;
+}
+::slotted(input:focus) {
+  border-color: #010205 !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
+}
+::slotted(input[readonly]) {
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
+}
+::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+    border-color: #951219 !important;
+  }
+}
+
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+.label__text {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #CC1922;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+  padding: 0;
+}
+@media(hover:hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+    border-color: #951219 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, showPasswordToggle: true, isWithinForm: false, theme: light 1`] = `
 ":host {
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;

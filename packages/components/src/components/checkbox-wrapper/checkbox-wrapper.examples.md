@@ -1,4 +1,4 @@
-# Checkbox
+# Checkbox Wrapper
 
 The `p-checkbox-wrapper` component is a styling wrapper for the native HTML input type `checkbox` form element. Checking
 one box doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
@@ -45,6 +45,10 @@ why these elements are disabled. A good practice when to use the disabled state 
 changes while this process is performed.
 
 ## Loading
+
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+The <code>loading</code> prop is experimental and might be removed in a future release.
+</p-inline-notification>
 
 <Playground :markup="loading" :config="config"></Playground>
 

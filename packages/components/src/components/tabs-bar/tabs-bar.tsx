@@ -6,6 +6,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
+  hasPropValueChanged,
   isShadowRootParentOfKind,
   observeBreakpointChange,
   observeChildren,
@@ -116,6 +117,10 @@ export class TabsBar {
     });
 
     this.observeBreakpointChange();
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

@@ -10,6 +10,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   observeProperties,
@@ -54,6 +55,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   showCounter: AllowedTypes.boolean,
   actionIcon: AllowedTypes.oneOf<TextFieldWrapperActionIcon>([undefined, 'locate']),
   actionLoading: AllowedTypes.boolean,
+  showPasswordToggle: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -98,6 +100,9 @@ export class TextFieldWrapper {
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
+
+  /** __Experimental__: Show or hide password toggle for `input type="password"`. */
+  @Prop() public showPasswordToggle?: boolean = true;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -153,6 +158,10 @@ export class TextFieldWrapper {
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
   public componentDidLoad(): void {
     if (this.hasCounter) {
       addInputEventListenerForCounter(
@@ -205,6 +214,7 @@ export class TextFieldWrapper {
       this.hasUnit || this.isCounterVisible,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
       this.isPassword ? 'password' : type,
+      this.showPasswordToggle,
       this.isWithinForm,
       this.theme
     );
@@ -245,7 +255,7 @@ export class TextFieldWrapper {
             <slot />
             {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           </label>
-          {this.isPassword ? (
+          {this.isPassword && this.showPasswordToggle ? (
             <PrefixedTagNames.pButtonPure
               {...buttonProps}
               type="button"

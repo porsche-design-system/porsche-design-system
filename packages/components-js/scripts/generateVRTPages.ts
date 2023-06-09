@@ -189,14 +189,15 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
   // imports, exports and routes into barrel file
   const routes = getRoutes(importPaths, framework);
   const importsAndExports = getImportsAndExports(importPaths, framework);
-  const separator = '/* Auto Generated Below */';
+  const separatorStart: string = '/* Auto Generated Below */';
+  const separatorEnd: string = '/* Auto Generated Above */';
 
   let barrelFileName: string;
   let frameworkImports: string;
   let frameworkRoutes: string;
 
   if (framework === 'angular') {
-    frameworkImports = [separator, importsAndExports].join('\n');
+    frameworkImports = [separatorStart, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedPages = [
   ${importPaths
     .map((importPath) => pascalCase(importPath))
@@ -208,26 +209,30 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     barrelFileName = 'index.ts';
   } else if (framework === 'react') {
     const eslintRule = '/* eslint-disable import/first */';
-    frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
+    frameworkImports = [separatorStart, eslintRule, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
     barrelFileName = 'index.tsx';
   } else if (framework === 'nextjs') {
-    frameworkImports = [separator].join('\n');
-    frameworkRoutes = `export const generatedRoutes = ${JSON.stringify(
+    frameworkRoutes = `const generatedRoutes = ${JSON.stringify(
       importPaths
-        .map((importPath) => {
-          return { path: importPath, name: pascalCase(importPath) };
-        })
-        .reduce((a, v) => ({ ...a, [camelCase(v.path)]: v }), {})
+        .map((importPath) => ({ path: importPath.replace(/^\./, ''), name: pascalCase(importPath) }))
+        .reduce((a, v) => ({ ...a, [camelCase(v.path)]: v }), {}),
+      null,
+      2
     )};`;
-    barrelFileName = 'index.tsx';
+    // no imports needed, but we want to inject the routes at the beginning
+    frameworkRoutes = [separatorStart, frameworkRoutes, separatorEnd].join('\n');
+    barrelFileName = '../routes.ts';
   }
 
   if (barrelFileName) {
     const barrelFilePath = path.resolve(pagesDirectories[framework], barrelFileName);
     const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
     const newBarrelFileContent =
-      [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
+      (framework === 'nextjs'
+        ? [frameworkRoutes, barrelFileContent.split(separatorEnd)[1].trim()]
+        : [barrelFileContent.split(separatorStart)[0].trim(), frameworkImports, frameworkRoutes]
+      ).join('\n\n') + '\n';
 
     writeFile(barrelFilePath, newBarrelFileContent);
   }

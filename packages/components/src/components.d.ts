@@ -22,6 +22,7 @@ import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
+import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingTag } from "./components/heading/heading-tag";
@@ -34,8 +35,8 @@ import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
-import { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
@@ -78,6 +79,7 @@ export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
+export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingTag } from "./components/heading/heading-tag";
@@ -90,8 +92,8 @@ export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
-export { MarqueAriaAttribute, MarqueTarget } from "./components/marque/marque-utils";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
@@ -397,7 +399,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Disables the checkbox and shows a loading indicator.
+          * __Experimental__: Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -602,6 +604,24 @@ export namespace Components {
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
+    }
+    interface PFlyout {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * If true, the flyout is open.
+         */
+        "open": boolean;
+        /**
+          * The position of the flyout
+         */
+        "position"?: FlyoutPosition;
+        /**
+          * Adapts the flyout color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -1001,9 +1021,13 @@ export namespace Components {
          */
         "target"?: MarqueTarget;
         /**
-          * Show/hide trademark sign.
+          * Show/hide trademark sign (only has effect when variant is set to default).
          */
         "trademark"?: boolean;
+        /**
+          * Shows marque in special editions
+         */
+        "variant"?: MarqueVariant;
     }
     interface PModal {
         /**
@@ -1517,6 +1541,10 @@ export namespace Components {
          */
         "showCounter"?: boolean;
         /**
+          * __Experimental__: Show or hide password toggle for `input type="password"`.
+         */
+        "showPasswordToggle"?: boolean;
+        /**
           * The validation state.
          */
         "state"?: TextFieldWrapperState;
@@ -1642,6 +1670,10 @@ export interface PBannerCustomEvent<T> extends CustomEvent<T> {
 export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselElement;
+}
+export interface PFlyoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPFlyoutElement;
 }
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1795,6 +1827,12 @@ declare global {
     var HTMLPFlexItemElement: {
         prototype: HTMLPFlexItemElement;
         new (): HTMLPFlexItemElement;
+    };
+    interface HTMLPFlyoutElement extends Components.PFlyout, HTMLStencilElement {
+    }
+    var HTMLPFlyoutElement: {
+        prototype: HTMLPFlyoutElement;
+        new (): HTMLPFlyoutElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -2104,6 +2142,7 @@ declare global {
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
+        "p-flyout": HTMLPFlyoutElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
         "p-heading": HTMLPHeadingElement;
@@ -2452,7 +2491,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Disables the checkbox and shows a loading indicator.
+          * __Experimental__: Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -2657,6 +2696,28 @@ declare namespace LocalJSX {
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
+    }
+    interface PFlyout {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
+        /**
+          * If true, the flyout is open.
+         */
+        "open"?: boolean;
+        /**
+          * The position of the flyout
+         */
+        "position"?: FlyoutPosition;
+        /**
+          * Adapts the flyout color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -3064,9 +3125,13 @@ declare namespace LocalJSX {
          */
         "target"?: MarqueTarget;
         /**
-          * Show/hide trademark sign.
+          * Show/hide trademark sign (only has effect when variant is set to default).
          */
         "trademark"?: boolean;
+        /**
+          * Shows marque in special editions
+         */
+        "variant"?: MarqueVariant;
     }
     interface PModal {
         /**
@@ -3648,6 +3713,10 @@ declare namespace LocalJSX {
          */
         "showCounter"?: boolean;
         /**
+          * __Experimental__: Show or hide password toggle for `input type="password"`.
+         */
+        "showPasswordToggle"?: boolean;
+        /**
           * The validation state.
          */
         "state"?: TextFieldWrapperState;
@@ -3781,6 +3850,7 @@ declare namespace LocalJSX {
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
+        "p-flyout": PFlyout;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
         "p-heading": PHeading;
@@ -3861,6 +3931,7 @@ declare module "@stencil/core" {
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
              */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
+            "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
              */

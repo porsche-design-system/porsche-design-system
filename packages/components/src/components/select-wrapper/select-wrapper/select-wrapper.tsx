@@ -9,6 +9,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
@@ -90,6 +91,10 @@ export class SelectWrapper {
     }
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
@@ -112,7 +117,15 @@ export class SelectWrapper {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { disabled } = this.select;
-    attachComponentCss(this.host, getComponentCss, disabled, this.native, this.hideLabel, this.state, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      disabled,
+      this.hasCustomDropdown,
+      this.hideLabel,
+      this.state,
+      this.theme
+    );
 
     const labelProps = disabled
       ? {}

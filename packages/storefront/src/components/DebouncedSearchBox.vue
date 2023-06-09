@@ -1,14 +1,36 @@
 <template>
-  <p-text-field-wrapper hide-label="true" label="Search">
-    <input
-      type="search"
-      name="search"
-      placeholder="Search"
-      v-model="query"
-      autocomplete="off"
-      @focus="onFocus(localQuery)"
-    />
-  </p-text-field-wrapper>
+  <div>
+    <form onsubmit="event.preventDefault()">
+      <p-text-field-wrapper
+        hide-label="true"
+        label="Search"
+        @blur="
+          () => {
+            this.isSearchOpen = false;
+            onFocus('');
+          }
+        "
+      >
+        <input
+          ref="search"
+          type="search"
+          name="search"
+          placeholder="Search"
+          v-model="query"
+          autocomplete="off"
+          @focus="onFocus(localQuery)"
+          @blur="
+            () => {
+              if (!localQuery) {
+                this.isSearchOpen = false;
+                onFocus('');
+              }
+            }
+          "
+        />
+      </p-text-field-wrapper>
+    </form>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,6 +51,8 @@
 
     public localQuery = '';
     public timerId!: ReturnType<typeof setTimeout>;
+
+    private isSearchOpen = false;
 
     data() {
       return {
@@ -62,3 +86,18 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+
+  p-button {
+    @include pds-media-query-min-max('base', 's') {
+      display: none !important;
+    }
+  }
+  p-text-field-wrapper {
+    @include pds-media-query-min-max('base', 's') {
+      display: block !important;
+    }
+  }
+</style>

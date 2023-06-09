@@ -25,74 +25,6 @@
     <% } %>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
-
-    <style>
-      .loader {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #fff;
-        z-index: 10000;
-        font-family: 'Porsche Next', 'Arial Narrow', Arial, 'Heiti SC', SimHei, sans-serif;
-      }
-
-      .spinner {
-        position: absolute;
-        width: 72px;
-        top: 50%;
-        left: 50%;
-        margin: -36px 0 0 -36px;
-        fill: none;
-        transform: translate3d(0, 0, 0);
-        stroke-width: 1px;
-        stroke: #323639;
-      }
-
-      .fg {
-        stroke-linecap: round;
-        transform-origin: center center;
-        stroke-dashoffset: 0;
-        stroke-dasharray: 40, 200;
-        animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
-      }
-
-      .bg {
-        opacity: 0.4;
-      }
-
-      .sr-text {
-        position: absolute;
-        height: 1px;
-        width: 1px;
-        border: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(1px, 1px, 1px, 1px);
-        clip-path: inset(50%);
-        white-space: nowrap;
-      }
-
-      @keyframes rotate {
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes dash {
-        0% {
-          stroke-dasharray: 3, 1000;
-        }
-        50% {
-          stroke-dasharray: 42, 1000;
-        }
-        100% {
-          stroke-dasharray: 30, 1000;
-          stroke-dashoffset: -52;
-        }
-      }
-    </style>
   </head>
   <body>
     <noscript>
@@ -101,17 +33,7 @@
         continue.</strong
       >
     </noscript>
-    <div id="app">
-      <div class="loader" id="pdsLoader" role="alert" aria-live="assertive" aria-label="Loading page">
-        <span class="sr-text">&nbsp;</span>
-        <div class="spinner">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <circle class="fg" cx="16" cy="16" r="9" />
-            <circle class="bg" cx="16" cy="16" r="9" />
-          </svg>
-        </div>
-      </div>
-    </div>
+    <div id="app"></div>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getLoaderScript() %>
     <% if (process.env.NODE_ENV === 'production') { %>

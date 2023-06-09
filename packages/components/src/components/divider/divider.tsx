@@ -2,6 +2,7 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  hasPropValueChanged,
   THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -39,6 +40,10 @@ export class Divider {
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

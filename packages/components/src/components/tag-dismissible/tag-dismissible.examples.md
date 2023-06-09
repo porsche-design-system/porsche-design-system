@@ -1,10 +1,8 @@
-# Tags
-
-<TableOfContents></TableOfContents>
-
-## Tag Dismissible
+# Tag Dismissible
 
 `p-tag-dismissible` is used in contexts where the user can actively remove a tag. It is often seen in filtering.
+
+<TableOfContents></TableOfContents>
 
 ## Color
 
