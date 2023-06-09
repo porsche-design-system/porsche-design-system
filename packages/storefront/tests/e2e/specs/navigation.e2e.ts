@@ -47,11 +47,11 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
       it(`should navigate to "${category} > ${page}"`, async () => {
         // console.log(`${category} > ${page}`);
         const [accordionButton] = await browserPage.$x(
-          `//div[@class='sidebar']/nav/p-accordion[@heading='${category}']`
+          `//aside/nav/p-accordion[@heading='${category}']`
         );
         const href = `\/${paramCase(category)}\/${paramCase(page)}`;
         const [linkElement] = await browserPage.$x(
-          `//div[@class='sidebar']/nav//p-link-pure//a[contains(., '${page}')][@href='${href}']`
+          `//aside/nav//p-link-pure//a[contains(., '${page}')][@href='${href}']`
         );
 
         await accordionButton.click();
