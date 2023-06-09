@@ -4,66 +4,6 @@ export const ALGOLIA_APP_ID = '1NH68HJ92C';
 export const ALGOLIA_SEARCH_ONLY_KEY = '690605ee1f61d0e13c571484ecb74125';
 
 export const config: StorefrontConfig = {
-  About: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/about/introduction.md')],
-  },
-  'Start Designing': {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/start-designing/introduction.md')],
-  },
-  'Start Coding': {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/start-coding/introduction.md')],
-    Angular: {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/angular/getting-started.md')],
-      // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/angular/advanced.md')],
-    },
-    React: {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/react/getting-started.md')],
-      // @ts-ignore
-      Testing: [() => import('@/pages/start-coding/react/testing.md')],
-      // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/react/advanced.md')],
-    },
-    'Vanilla Js': {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/vanilla-js/getting-started.md')],
-      // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/vanilla-js/advanced.md')],
-    },
-    'Next Js': {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
-      'Ssr Support': [
-        // @ts-ignore
-        () => import('@/pages/start-coding/next-js/ssr-support.md'),
-        // @ts-ignore
-        () => import('@/pages/start-coding/ssr-support-table.md'),
-      ],
-      // @ts-ignore
-      Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
-    },
-    Remix: {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/remix/getting-started.md')],
-      'Ssr Support': [
-        // @ts-ignore
-        () => import('@/pages/start-coding/remix/ssr-support.md'),
-        // @ts-ignore
-        () => import('@/pages/start-coding/ssr-support-table.md'),
-      ],
-    },
-    Vue: {
-      // @ts-ignore
-      'Getting Started': [() => import('@/pages/start-coding/vue/getting-started.md')],
-      // @ts-ignore
-      Advanced: [() => import('@/pages/start-coding/vue/advanced.md')],
-    },
-  },
   News: {
     'Migration Guide': {
       // @ts-ignore
@@ -71,46 +11,72 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Utilities: [() => import('@/pages/news/migration-guide-utilities.md')],
     },
-    Changelog: {
-      // @ts-ignore
-      Components: [() => import('@/../../components/CHANGELOG.md')],
-      // @ts-ignore
-      Utilities: [() => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md')],
-      // @ts-ignore
-      Assets: [() => import('@/../../assets/CHANGELOG.md')],
-    },
     // @ts-ignore
-    Versioning: [() => import('@/pages/news/versioning.md')],
+    Changelog: [() => import('@/../../components/CHANGELOG.md')],
     // @ts-ignore
     Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
-  Styles: {
+  'Designing': {
     // @ts-ignore
-    Introduction: [() => import('@/pages/styles/introduction.md')],
+    Introduction: [() => import('@/pages/designing/introduction.md')],
+  },
+  'Developing': {
     // @ts-ignore
-    Border: [() => import('@/pages/styles/border.md')],
+    Introduction: [() => import('@/pages/developing/introduction.md')],
+    'Vanilla Js': {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/developing/vanilla-js/getting-started.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/developing/vanilla-js/advanced.md')],
+    },
+    Angular: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/developing/angular/getting-started.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/developing/angular/advanced.md')],
+    },
+    React: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/developing/react/getting-started.md')],
+      // @ts-ignore
+      Testing: [() => import('@/pages/developing/react/testing.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/developing/react/advanced.md')],
+    },
+    'Next Js': {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/developing/next-js/getting-started.md')],
+      'Ssr Support': [
+        // @ts-ignore
+        () => import('@/pages/developing/next-js/ssr-support.md'),
+        // @ts-ignore
+        () => import('@/pages/developing/shared/ssr-support-table.md'),
+      ],
+      // @ts-ignore
+      Testing: [() => import('@/pages/developing/next-js/testing.md')],
+    },
+    Remix: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/developing/remix/getting-started.md')],
+      'Ssr Support': [
+        // @ts-ignore
+        () => import('@/pages/developing/remix/ssr-support.md'),
+        // @ts-ignore
+        () => import('@/pages/developing/shared/ssr-support-table.md'),
+      ],
+    },
+    Vue: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/developing/vue/getting-started.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/developing/vue/advanced.md')],
+    },
     // @ts-ignore
-    'Drop Shadow': [() => import('@/pages/styles/drop-shadow.md')],
-    // @ts-ignore
-    Focus: [() => import('@/pages/styles/focus.md')],
-    // @ts-ignore
-    'Frosted Glass': [() => import('@/pages/styles/frosted-glass.md')],
-    // @ts-ignore
-    Gradient: [() => import('@/pages/styles/gradient.md')],
-    // @ts-ignore
-    Grid: [() => import('@/pages/styles/grid.md')],
-    // @ts-ignore
-    Hover: [() => import('@/pages/styles/hover.md')],
-    // @ts-ignore
-    'Media Query': [() => import('@/pages/styles/media-query.md')],
-    // @ts-ignore
-    Spacing: [() => import('@/pages/styles/spacing.md')],
-    // @ts-ignore
-    Theme: [() => import('@/pages/styles/theme.md')],
-    // @ts-ignore
-    Typography: [() => import('@/pages/styles/typography.md')],
+    'Components Ready': [() => import('@/pages/developing/components-ready.md')],
   },
   Components: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/components/introduction.md')],
     Accordion: {
       // @ts-ignore
       Examples: [() => import(`@/../../components/src/components/accordion/accordion.examples.md`)],
@@ -120,7 +86,12 @@ export const config: StorefrontConfig = {
       Props: [() => import(`@/../../components/src/components/accordion/accordion.props.md`)],
     },
     // @ts-ignore
-    Banner: [() => import('@/../../components/src/components/banner/banner.redirect.md')],
+    Banner: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/banner/banner.examples.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/banner/banner.props.md')],
+    },
     Button: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/button/button.examples.md')],
@@ -161,7 +132,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/carousel/carousel.props.md')],
     },
-    Checkbox: {
+    'Checkbox Wrapper': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.examples.md')],
       // @ts-ignore
@@ -184,6 +155,12 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/crest/crest.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/crest/crest.props.md')],
+    },
+    Display: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/display/display.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/display/display.props.md')],
     },
     Divider: {
       // @ts-ignore
@@ -239,6 +216,18 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/grid/grid-item/grid-item.props.md'),
       ],
     },
+    Heading: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/heading/heading.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/heading/heading.props.md')],
+    },
+    Headline: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/headline/headline.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/headline/headline.props.md')],
+    },
     Icon: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/icon/icon.examples.md')],
@@ -248,6 +237,12 @@ export const config: StorefrontConfig = {
       Guideline: [() => import('@/../../components/src/components/icon/icon.guideline.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/icon/icon.props.md')],
+    },
+    'Inline Notification': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/inline-notification/inline-notification.examples.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/inline-notification/inline-notification.props.md')],
     },
     Link: {
       // @ts-ignore
@@ -316,28 +311,6 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/model-signature/model-signature.props.md')],
     },
-    Notifications: {
-      // @ts-ignore
-      Introduction: [() => import('@/pages/components/notifications/notifications.usage.md')],
-      'Inline Notification': [
-        // @ts-ignore
-        () => import('@/../../components/src/components/inline-notification/inline-notification.examples.md'),
-      ],
-      // @ts-ignore
-      Toast: [() => import('@/../../components/src/components/toast/toast.examples.md')],
-      // @ts-ignore
-      Banner: [() => import('@/../../components/src/components/banner/banner.examples.md')],
-      // @ts-ignore
-      'Decision Tree': [() => import('@/pages/components/notifications/decision-tree.md')],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/inline-notification/inline-notification.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/toast/toast/toast.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/banner/banner.props.md'),
-      ],
-    },
     Pagination: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/pagination/pagination.examples.md')],
@@ -354,7 +327,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/popover/popover.props.md')],
     },
-    'Radio Button': {
+    'Radio Button Wrapper': {
       Examples: [
         // @ts-ignore
         () => import('@/../../components/src/components/radio-button-wrapper/radio-button-wrapper.examples.md'),
@@ -376,7 +349,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/scroller/scroller.props.md')],
     },
-    Select: {
+    'Select Wrapper': {
       Examples: [
         // @ts-ignore
         () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.examples.md'),
@@ -403,7 +376,7 @@ export const config: StorefrontConfig = {
           import(
             // @ts-ignore
             '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
-          ),
+            ),
       ],
     },
     Spinner: {
@@ -466,23 +439,29 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/tabs-bar/tabs-bar.props.md')],
     },
-    Tags: {
+    Tag: {
       // @ts-ignore
-      Introduction: [() => import('@/../../components/src/components/tag/tag.introduction.md')],
+      Examples: [() => import('@/../../components/src/components/tag/tag.examples.md')],
       // @ts-ignore
-      Tag: [() => import('@/../../components/src/components/tag/tag.examples.md')],
-      'Tag Dismissible': [
-        // @ts-ignore
-        () => import('@/../../components/src/components/tag-dismissible/tag-dismissible.examples.md'),
-      ],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/tag/tag.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/tag-dismissible/tag-dismissible.props.md'),
-      ],
+      Usage: [() => import('@/../../components/src/components/tag/tag.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/tag/tag.props.md')],
     },
-    'Text Field': {
+    'Tag Dismissible': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/tag-dismissible/tag-dismissible.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/tag-dismissible/tag-dismissible.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/tag-dismissible/tag-dismissible.props.md')],
+    },
+    Text: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/text/text.example.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/text/text.props.md')],
+    },
+    'Text Field Wrapper': {
       Examples: [
         // @ts-ignore
         () => import('@/../../components/src/components/text-field-wrapper/text-field-wrapper.examples.md'),
@@ -504,7 +483,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/text-list/text-list/text-list.props.md')],
     },
-    Textarea: {
+    'Textarea Wrapper': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/textarea-wrapper/textarea-wrapper.examples.md')],
       // @ts-ignore
@@ -512,27 +491,11 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/textarea-wrapper/textarea-wrapper.props.md')],
     },
-    Typography: {
+    Toast: {
       // @ts-ignore
-      Text: [() => import('@/../../components/src/components/text/text.example.md')],
+      Examples: [() => import('@/../../components/src/components/toast/toast.examples.md')],
       // @ts-ignore
-      Heading: [() => import('@/../../components/src/components/heading/heading.example.md')],
-      // @ts-ignore
-      Headline: [() => import('@/../../components/src/components/headline/headline.example.md')],
-      // @ts-ignore
-      Display: [() => import('@/../../components/src/components/display/display.example.md')],
-      // @ts-ignore
-      Usage: [() => import('@/pages/components/typography/typography.usage.md')],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/display/display.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/heading/heading.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/headline/headline.props.md'),
-        // @ts-ignore
-        () => import('@/../../components/src/components/text/text.props.md'),
-      ],
+      Props: [() => import('@/../../components/src/components/toast/toast/toast.props.md')],
     },
     Wordmark: {
       // @ts-ignore
@@ -542,6 +505,32 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/wordmark/wordmark.props.md')],
     },
+  },
+  Styles: {
+    // @ts-ignore
+    Introduction: [() => import('@/pages/styles/introduction.md')],
+    // @ts-ignore
+    Border: [() => import('@/pages/styles/border.md')],
+    // @ts-ignore
+    'Drop Shadow': [() => import('@/pages/styles/drop-shadow.md')],
+    // @ts-ignore
+    Focus: [() => import('@/pages/styles/focus.md')],
+    // @ts-ignore
+    'Frosted Glass': [() => import('@/pages/styles/frosted-glass.md')],
+    // @ts-ignore
+    Gradient: [() => import('@/pages/styles/gradient.md')],
+    // @ts-ignore
+    Grid: [() => import('@/pages/styles/grid.md')],
+    // @ts-ignore
+    Hover: [() => import('@/pages/styles/hover.md')],
+    // @ts-ignore
+    'Media Query': [() => import('@/pages/styles/media-query.md')],
+    // @ts-ignore
+    Spacing: [() => import('@/pages/styles/spacing.md')],
+    // @ts-ignore
+    Theme: [() => import('@/pages/styles/theme.md')],
+    // @ts-ignore
+    Typography: [() => import('@/pages/styles/typography.md')],
   },
   Partials: {
     // @ts-ignore
@@ -567,24 +556,6 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
   },
-  Help: {
-    // @ts-ignore
-    Support: [() => import('@/pages/help/support.md')],
-    // @ts-ignore
-    Faq: [() => import('@/pages/help/faq.md')],
-    // @ts-ignore
-    Troubleshooting: [() => import('@/pages/help/troubleshooting.md')],
-    // @ts-ignore
-    'Browser Compatibility': [() => import('@/pages/basics/browser-compatibility.md')],
-    // @ts-ignore
-    'Bug Report': [() => import('@/pages/help/bug-report.md')],
-  },
-  Accessibility: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/accessibility/introduction.md')],
-    // @ts-ignore
-    'Accessibility Statement': [() => import('@/pages/accessibility/statement.md')],
-  },
   Patterns: {
     Forms: {
       // @ts-ignore
@@ -594,53 +565,41 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Legal: [() => import('@/pages/patterns/forms/legal.md')],
     },
-  },
-  Assets: {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/assets/introduction.md')],
-    // @ts-ignore
-    Icons: [() => import('@/pages/assets/icons.md')],
-    // @ts-ignore
-    'Meta Icons': [() => import('@/pages/assets/meta-icons.md')],
-    // @ts-ignore
-    Marque: [() => import('@/pages/assets/marque.md')],
-    // @ts-ignore
-    Fonts: [() => import('@/pages/assets/fonts.md')],
-  },
-  'Utilities Deprecated': {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/utilities/introduction.md')],
-    Scss: {
+    Notifications: {
       // @ts-ignore
-      Variables: [() => import('@/pages/utilities/scss/variables.md')],
+      Introduction: [() => import('@/pages/patterns/notifications/notifications.usage.md')],
       // @ts-ignore
-      Functions: [() => import('@/pages/utilities/scss/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/scss/helper.md')],
-    },
-    Js: {
-      // @ts-ignore
-      Variables: [() => import('@/pages/utilities/js/variables.md')],
-      // @ts-ignore
-      Functions: [() => import('@/pages/utilities/js/functions.md')],
-      // @ts-ignore
-      Helper: [() => import('@/pages/utilities/js/helper.md')],
+      'Decision Tree': [() => import('@/pages/patterns/notifications/decision-tree.md')],
     },
   },
-  Performance: {
+  'Must Know': {
+    'Accessibility': {
+      // @ts-ignore
+      Introduction: [() => import('@/pages/must-know/accessibility/introduction.md')],
+      // @ts-ignore
+      Statement: [() => import('@/pages/must-know/accessibility/statement.md')]
+    },
     // @ts-ignore
-    Cdn: [() => import('@/pages/performance/cdn.md')],
+    Security: [() => import('@/pages/must-know/security.md')],
+    Performance: {
+      // @ts-ignore
+      Cdn: [() => import('@/pages/must-know/performance/cdn.md')],
+      // @ts-ignore
+      'Loading Behaviour': [() => import('@/pages/must-know/performance/loading-behaviour.md')],
+    },
     // @ts-ignore
-    'Loading Behaviour': [() => import('@/pages/performance/loading-behaviour.md')],
+    'Browser Compatibility': [() => import('@/pages/must-know/browser-compatibility.md')],
+    // @ts-ignore
+    Versioning: [() => import('@/pages/must-know/versioning.md')],
   },
-  Security: {
+  Help: {
     // @ts-ignore
-    Cve: [() => import('@/pages/security/cve.md')],
-  },
-  Helpers: {
+    Support: [() => import('@/pages/help/support.md')],
     // @ts-ignore
-    'Components Ready': [() => import('@/pages/general/components-ready.md')],
+    Faq: [() => import('@/pages/help/faq.md')],
     // @ts-ignore
-    Testing: [() => import('@/pages/general/testing.md')],
+    Troubleshooting: [() => import('@/pages/help/troubleshooting.md')],
+    // @ts-ignore
+    'Bug Report': [() => import('@/pages/help/bug-report.md')],
   },
 };

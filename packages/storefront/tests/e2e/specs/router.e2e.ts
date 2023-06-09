@@ -41,32 +41,27 @@ describe('custom view', () => {
 
 describe('page view', () => {
   it('should route to page when no tabs are configured', async () => {
-    await page.goto(buildUrl('/about/introduction'));
-    expect(await getCurrentUrl()).toBe(buildUrl('/about/introduction'));
+    await page.goto(buildUrl('/news/changelog'));
+    expect(await getCurrentUrl()).toBe(buildUrl('/news/changelog'));
   });
 
   it('should route to passed tab of page when tabs are configured', async () => {
-    await page.goto(buildUrl('/components/typography/heading'));
-    expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/heading'));
-  });
-
-  it('should route to passed tab of page when tabs are configured', async () => {
-    await page.goto(buildUrl('/components/typography/headline'));
-    expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/headline'));
+    await page.goto(buildUrl('/components/heading/examples'));
+    expect(await getCurrentUrl()).toBe(buildUrl('/components/heading/examples'));
   });
 
   it('should redirect to first configured tab of page when no tab is passed', async () => {
-    await page.goto(buildUrl('/components/typography'));
-    expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/text'));
+    await page.goto(buildUrl('/components/heading'));
+    expect(await getCurrentUrl()).toBe(buildUrl('/components/heading/examples'));
   });
 
   it('should redirect to first configured tab of page when passed tab is invalid', async () => {
-    await page.goto(buildUrl('/components/typography/some-invalid-tab'));
-    expect(await getCurrentUrl()).toBe(buildUrl('/components/typography/text'));
+    await page.goto(buildUrl('/components/heading/some-invalid-tab'));
+    expect(await getCurrentUrl()).toBe(buildUrl('/components/heading/examples'));
   });
 
   it('should redirect to 404 when passed category is invalid', async () => {
-    await page.goto(buildUrl('/some-invalid-category/typography'));
+    await page.goto(buildUrl('/some-invalid-category/heading'));
     expect(await getCurrentUrl()).toBe(buildUrl('/404'));
   });
 

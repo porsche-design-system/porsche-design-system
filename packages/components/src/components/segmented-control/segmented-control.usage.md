@@ -22,14 +22,14 @@ component in various situations.
 ### Don't:
 
 - Don't use it to filter or navigate content (use [Tabs](components/tabs) instead).
-- Don't use it for more than 5 options (use the [Select](components/select) component).
-- Don't use it with mixed values (use [Radio Button](components/radio-button) or [Select](components/select) instead).
+- Don't use it for more than 5 options (use the [Select](components/select-wrapper) component).
+- Don't use it with mixed values (use [Radio Button](components/radio-button-wrapper) or [Select](components/select-wrapper) instead).
 - Don't exceed maximum width so the values turn multiline.
 
 ---
 
 ## Related components
 
-- [Select](components/select)
-- [Radio Button](components/radio-button)
+- [Select](components/select-wrapper)
+- [Radio Button](components/radio-button-wrapper)
 - [Tabs](components/tabs)
