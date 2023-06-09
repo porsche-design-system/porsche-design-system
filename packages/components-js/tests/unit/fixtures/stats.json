@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 7406,
-    "gzipSize": 2986
+    "size": 7452,
+    "gzipSize": 3004
   },
   {
     "chunkShortName": "grid",
@@ -132,7 +132,7 @@
   {
     "chunkShortName": "main",
     "size": 70083,
-    "gzipSize": 23544
+    "gzipSize": 23542
   },
   {
     "chunkShortName": "marque",
@@ -241,8 +241,8 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 6846,
-    "gzipSize": 2901
+    "size": 6974,
+    "gzipSize": 2970
   },
   {
     "chunkShortName": "wordmark",
