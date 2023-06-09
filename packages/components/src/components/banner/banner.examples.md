@@ -1,18 +1,16 @@
-# Notifications
-
-<TableOfContents></TableOfContents>
-
-## Banner
+# Banner
 
 The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey
 informational and/or critical notification like some site related topics.
 
-Review the [notification decision tree](components/notifications/decision-tree) to determine which notification
+Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification
 component is best for a particular scenario.
 
 <p-inline-notification heading="Attention" state="warning" dismiss-button="false">
   Before v3.0.0 the <strong>p-banner</strong> handled its open state internally. This is no longer the case, since v3.0.0 it is a <strong>controlled</strong> component and has to be opened with the <strong>open property</strong>.
 </p-inline-notification>
+
+<TableOfContents></TableOfContents>
 
 ## Basic
 

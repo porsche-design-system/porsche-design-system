@@ -1,8 +1,4 @@
-# Typography
-
-<TableOfContents></TableOfContents>
-
-## Display
+# Display
 
 `p-display` is used to highlight and specify heading styling and hierarchy in documents.
 
@@ -11,6 +7,8 @@
 the "@porsche-design-system/components-{js|angular|react|vue}/styles" sub-package for best performance since way 
 less DOM nodes are required to render. Further information can be found <a href="styles/typography">here</a>.
 </p-inline-notification>
+
+<TableOfContents></TableOfContents>
 
 ---
 

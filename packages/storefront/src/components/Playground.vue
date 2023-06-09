@@ -191,7 +191,9 @@
   .example {
     padding: $pds-spacing-static-large;
     overflow-x: auto;
+    margin-top: $pds-spacing-static-small;
     border: 1px solid transparent;
+    border-radius: $pds-border-radius-large;
 
     // Theme
     &--light {

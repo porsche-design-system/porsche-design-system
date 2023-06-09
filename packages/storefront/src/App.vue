@@ -2,78 +2,56 @@
   <main v-if="isStandalone">
     <router-view />
   </main>
-  <!-- id="app" is for vrt test -->
-  <div id="app" v-else class="content" :class="{ 'content--menu-active': isMenuActive }">
-    <div class="sidebar">
-      <Header />
-      <p-divider class="divider-spacing-small"></p-divider>
-      <Sidebar />
-      <p-divider class="divider-spacing-small"></p-divider>
-      <Footer />
-    </div>
-    <main class="main" :class="{ 'main--animate': isAnimated }">
+  <div id="app" v-else>
+    <Header />
+    <Aside />
+    <Main>
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
-      <p-spinner v-if="isLoading" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
-    </main>
-    <Menu class="menu"></Menu>
+    </Main>
+    <Backdrop />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import Disclaimer from '@/components/Disclaimer.vue';
+  import Backdrop from '@/components/Backdrop.vue';
   import Header from '@/components/Header.vue';
-  import Sidebar from '@/components/Sidebar.vue';
-  import Footer from '@/components/Footer.vue';
-  import Menu from '@/components/Menu.vue';
-  import { Watch } from 'vue-property-decorator';
-
-  const TRANSITION_DURATION = 300;
+  import Aside from '@/components/Aside.vue';
+  import Main from '@/components/Main.vue';
+  import { Watch } from "vue-property-decorator";
 
   @Component({
     components: {
-      Disclaimer,
+      Backdrop,
       Header,
-      Sidebar,
-      Footer,
-      Menu,
+      Aside,
+      Main,
     },
   })
   export default class App extends Vue {
-    private isAnimated = false;
-    private isMenuActive = false;
 
-    // transition of main is applied via separate flag in order to not mess up our modal
-    @Watch('$store.state.isMenuActive')
-    private onIsMenuActiveChange(isMenuActive: boolean): void {
-      if (isMenuActive) {
-        this.isAnimated = isMenuActive;
-        Vue.nextTick(() => {
-          this.isMenuActive = isMenuActive;
-        });
-      } else {
-        this.isMenuActive = isMenuActive;
-
-        setTimeout(() => {
-          this.isAnimated = isMenuActive;
-        }, TRANSITION_DURATION);
-      }
+    public get isStandalone(): boolean {
+      return this.$route.meta?.standalone;
     }
 
     public get isLoading(): boolean {
       return this.$store.getters.isLoading;
     }
 
-    public get isStandalone(): boolean {
-      return this.$route.meta?.standalone;
+    @Watch('$route')
+    private onRouteChange(): void {
+      this.$store.commit('setIsMenuActive', false);
     }
   }
 </script>
 
 <style lang="scss">
+  // TODO: we shouldn't define most of the following styles globally
+
   @use '@porsche-design-system/components-js/styles' as *;
 
+  // TODO: we should not rely on * selector reset
   * {
     margin: 0;
     padding: 0;
@@ -260,108 +238,24 @@
 </style>
 
 <style scoped lang="scss">
-  @use 'sass:math';
   @use '@porsche-design-system/components-js/styles' as *;
+  @use '@/styles/internal.variables.scss' as *;
 
-  .content {
-    position: relative;
-    overflow: hidden;
-
-    &--menu-active {
-      @include pds-media-query-min-max('base', 's') {
-        .sidebar {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
-
-        .main {
-          transform: translate3d(17.5rem, 0, 0);
-        }
-
-        .router-view {
-          opacity: 0.05;
-          pointer-events: none;
-        }
-      }
-    }
+  #app {
+    @include pds-grid;
+    grid-row-gap: $pds-spacing-fluid-x-large;
+    grid-template-rows: repeat(3, auto);
   }
 
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 17.5rem;
-    padding: 1.5rem $pds-spacing-static-large 2.5rem;
-    border-right: 1px solid $pds-theme-light-contrast-low;
-    background: $pds-theme-light-background-base;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-
-    @include pds-media-query-min-max('base', 's') {
-      opacity: 0;
-      transform: translate3d(-8.75rem, 0, 0);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-  }
-
-  .main {
-    background: $pds-theme-light-background-base;
-
-    @include pds-media-query-min-max('base', 's') {
-      &--animate {
-        transform: translate3d(0, 0, 0);
-        transition: transform 0.3s;
-      }
-    }
-
-    @include pds-media-query-min('s') {
-      margin-left: 17.5rem;
-    }
-  }
-
-  .router-view {
-    position: relative;
-    padding: $pds-spacing-static-large;
-    background: $pds-theme-light-background-base;
-
-    @include pds-media-query-min-max('base', 's') {
-      opacity: 1;
-      transition: opacity 0.3s;
-    }
-
-    @include pds-media-query-min('s') {
-      padding: 4rem;
-    }
+  // TODO: loading state does not work properly because `setIsLoading` setter of Vue store is never called
+  // TODO: desired delayed fade-in causes e2e/a11y test to fail
+  /* .router-view {
+    opacity: 1;
+    transition: opacity $transition-duration $transition-duration; // let main content smoothly (delayed) fade in after loading
 
     &--loading {
+      transition: opacity $transition-duration; // let main content smoothly (immediately) fade out while loading
       opacity: 0;
-      pointer-events: none;
     }
-  }
-
-  p-spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    z-index: 10;
-
-    @include pds-media-query-min('s') {
-      left: calc(50% + #{math.div(17.5rem, 2)});
-    }
-  }
-
-  .menu {
-    display: none;
-
-    @include pds-media-query-min-max('base', 's') {
-      display: block;
-      position: fixed;
-      z-index: 2;
-      top: 0;
-      right: 0;
-    }
-  }
+  }*/
 </style>
