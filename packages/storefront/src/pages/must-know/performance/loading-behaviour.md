@@ -1,4 +1,4 @@
-# Loading Behaviour
+# Performance
 
 **Unstyled content** when opening an application or website creates a bad first impression. To prevent this, the Porsche
 Design System offers various **partials** as part of the `@porsche-design-system/components-{js|angular|react}` package

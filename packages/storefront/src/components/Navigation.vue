@@ -13,8 +13,8 @@
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link :to="getRoute(category, page)" v-slot="{ isActive, href, navigate }">
-            <p-link-pure icon="none" :active="isActive" :href="href" @click="navigate">
-              {{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span>
+            <p-link-pure icon="none" :active="isActive">
+              <a :href="href" @click="navigate">{{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span></a>
             </p-link-pure>
           </router-link>
         </li>

@@ -1,4 +1,4 @@
-# Cdn
+# Performance
 
 The Porsche Design System **components**, **marque**, **icons**, **fonts** and **styles** are delivered by CDN
 (cdn.ui.porsche.com). This way all digital Porsche products share and use the cached and versioned assets independently.

@@ -1,4 +1,4 @@
-# Accessibility Statement
+# Accessibility
 
 <TableOfContents></TableOfContents>
 

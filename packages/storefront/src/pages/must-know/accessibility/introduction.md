@@ -1,4 +1,4 @@
-# Introduction
+# Accessibility
 
 > „If our mission is to be customer-driven, connected, simple, helpful and inclusive – accessibility must be part of
 > that!“
