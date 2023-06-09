@@ -248,14 +248,14 @@
   }
 
   // TODO: loading state does not work properly because `setIsLoading` setter of Vue store is never called
-  .router-view {
+  // TODO: desired delayed fade-in causes e2e/a11y test to fail
+  /* .router-view {
     opacity: 1;
     transition: opacity $transition-duration $transition-duration; // let main content smoothly (delayed) fade in after loading
 
     &--loading {
       transition: opacity $transition-duration; // let main content smoothly (immediately) fade out while loading
       opacity: 0;
-      pointer-events: none;
     }
-  }
+  }*/
 </style>
