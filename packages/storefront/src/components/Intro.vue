@@ -42,7 +42,7 @@
 
   .heading,
   .paragraph {
-    max-width: 50rem;
+    max-width: 54rem;
   }
 
   .heading {
