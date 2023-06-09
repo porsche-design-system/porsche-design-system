@@ -15,7 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Toast` allow line breaks within toast message
+- `Toast` allows line break markups within toast message
+  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
+- `Toast` shows always the latest toast message and clears its queue immediately if a new message is added
+  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
 
 #### Fixed
 
