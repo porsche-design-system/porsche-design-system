@@ -1,16 +1,14 @@
 import {
-  defaultViewports,
+  furtherExtendedViewports,
   getVisualRegressionTester,
   getVisualRegressionStatesTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 import { mainViewSelector } from '../helpers';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'story', '/components/pagination/examples', {
-      elementSelector: mainViewSelector,
-    })
+    await vrtTest(getVisualRegressionTester(viewport), 'story', '/components/pagination/examples')
   ).toBeFalsy();
 });
 
