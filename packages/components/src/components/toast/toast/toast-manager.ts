@@ -46,7 +46,7 @@ export class ToastManagerClass {
       state: message.state || 'info', // info is our default state
       text: message.text
         .replace(/<br ?\/?>/g, '%%%BR%%%') // temporary replace linebreaks
-        .replace(/<[^>]*>/g, '') //strip all html tags
+        .replace(/<[^>]*>/g, '') // strip all html tags
         .replace(/%%%BR%%%/g, '<br>'), // recover line breaks
     };
 

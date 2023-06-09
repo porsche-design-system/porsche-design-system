@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PHeading, PFlyout, PButton, PText } from '@porsche-design-system/components-vue';
+  import { PFlyout, PButton, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const isFlyoutOpen = ref(false);
