@@ -102,45 +102,16 @@ it(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRID
   expect(await getToastItem()).toBeNull();
 });
 
-it('should queue multiple toast-items and show them in correct order', async () => {
+it('should always show the latest toast message and clear queue immediately if a new message was added', async () => {
   await initToastWithToastItem({ text: '1' });
   await addMessage({ text: '2' });
-  await addMessage({ text: '3' });
-
-  expect(await getProperty(await getToastItem(), 'text')).toBe('1');
-
-  await waitForToastTimeout();
-
-  expect(await getProperty(await getToastItem(), 'text')).toBe('2');
-
-  await waitForToastTimeout();
-
-  expect(await getProperty(await getToastItem(), 'text')).toBe('3');
-});
-
-it(`should queue two toast-items, close the first, queue a third, display the second one,
-after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds display the third and finally after ${
-  TOAST_TIMEOUT_DURATION_OVERRIDE * 2
-} seconds display none`, async () => {
-  await initToastWithToastItem({ text: '1' });
-  await addMessage({ text: '2' });
-
-  const closeButton = await getCloseButton();
-  await closeButton.click();
   await waitForAnimationFinish();
 
-  await waitForStencilLifecycle(page);
-  await addMessage({ text: '3' });
-
   expect(await getProperty(await getToastItem(), 'text')).toBe('2');
 
-  await waitForToastTimeout();
-
+  await addMessage({ text: '3' });
+  await waitForAnimationFinish();
   expect(await getProperty(await getToastItem(), 'text')).toBe('3');
-
-  await waitForToastTimeout();
-
-  expect(await getToastItem()).toBeNull();
 });
 
 describe('lifecycle', () => {
@@ -165,19 +136,6 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
-  });
-
-  it('should not update on offsetBottom prop change', async () => {
-    await initToast();
-
-    const host = await getHost();
-    await setProperty(host, 'offsetBottom', { bottom: 20 });
-    await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidUpdate['p-toast'], 'componentDidUpdate: p-toast').toBe(0);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
   });
 
   it('should not update on theme prop change', async () => {
