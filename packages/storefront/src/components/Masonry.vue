@@ -4,6 +4,7 @@
       href="designing/introduction"
       aspect-ratio="{ base: '4:3', xs: '16:9', s: '3:4' }"
       description="Start Designing"
+      label="Start Designing"
       weight="regular"
       compact="true"
     >
@@ -13,6 +14,7 @@
       href="developing/introduction"
       aspect-ratio="{ base: '4:3', xs: '16:9', s: '3:4' }"
       description="Start Developing"
+      label="Start Developing"
       weight="regular"
       compact="true"
     >
@@ -22,6 +24,7 @@
       href="news/migration-guide/porsche-design-system"
       aspect-ratio="{ base: '4:3', xs: '16:9' }"
       description="Migrate from v2 to v3"
+      label="Migrate from v2 to v3"
       weight="regular"
       compact="true"
     >
