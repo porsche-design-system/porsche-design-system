@@ -2,7 +2,7 @@ import { forceUpdate } from '@stencil/core';
 import type { ToastState } from './toast-utils';
 import { ANIMATION_DURATION } from './toast-styles';
 
-const TOAST_DEFAULT_TIMEOUT = 6000;
+const TOAST_DEFAULT_TIMEOUT = 60000;
 
 // css variable names for overriding behaviour in tests
 const TEMPORARY_TOAST_SKIP_TIMEOUT = '--p-temporary-toast-skip-timeout';
@@ -55,6 +55,9 @@ export class ToastManagerClass {
 
     if (!length) {
       forceUpdate(this.toastEl);
+    }
+    if (length >= 1) {
+      this.dismissToastItem();
     }
   }
 
