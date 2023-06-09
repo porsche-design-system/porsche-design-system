@@ -22,6 +22,7 @@ const components: Component[] = [
   'fieldset',
   'fieldset-wrapper',
   'flex',
+  'flyout',
   'grid',
   'heading',
   'headline',
@@ -61,7 +62,7 @@ const scenarioPopover = async (page: Page) => {
   await openPopoversAndHighlightSpacer(page);
 };
 
-const scenarioModalOrBanner = async (page: Page) => {
+const scenarioModalOrBannerOrFlyout = async (page: Page) => {
   await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
 };
 
@@ -77,7 +78,7 @@ const highContrastTest = async (component: Component, scheme: 'light' | 'dark') 
     {
       ...(component === 'popover' && { scenario: scenarioPopover }),
       ...(component === 'select-wrapper' && { scenario: scenarioSelectWrapper }),
-      ...(['modal', 'banner'].includes(component) && { scenario: scenarioModalOrBanner }),
+      ...(['modal', 'banner', 'flyout'].includes(component) && { scenario: scenarioModalOrBannerOrFlyout }),
       forcedColorsEnabled: true,
       prefersColorScheme: scheme,
     }

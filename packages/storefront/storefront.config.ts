@@ -196,6 +196,14 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/flex/flex-item/flex-item.props.md'),
       ],
     },
+    Flyout: {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/flyout/flyout.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/flyout/flyout.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/flyout/flyout.props.md')],
+    },
     Grid: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/grid/grid.examples.md')],

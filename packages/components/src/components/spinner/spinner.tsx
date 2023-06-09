@@ -2,7 +2,14 @@ import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type { SpinnerSize, SpinnerAriaAttribute } from './spinner-utils';
 import { SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
-import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps, THEMES } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  parseAndGetAriaAttributes,
+  validateProps,
+  THEMES,
+} from '../../utils';
 import { getComponentCss } from './spinner-styles';
 
 const propTypes: PropTypes<typeof Spinner> = {
@@ -26,6 +33,10 @@ export class Spinner {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttribute>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

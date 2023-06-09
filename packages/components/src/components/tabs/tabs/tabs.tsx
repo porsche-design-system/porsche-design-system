@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   observeChildren,
   observeProperties,
   removeAttribute,
@@ -81,6 +82,10 @@ export class Tabs {
       this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
     });
     this.observeProperties();
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

@@ -64,6 +64,10 @@ const generatedRoutes = {
     "path": "/flex",
     "name": "Flex"
   },
+  "flyout": {
+    "path": "/flyout",
+    "name": "Flyout"
+  },
   "grid": {
     "path": "/grid",
     "name": "Grid"

@@ -6,6 +6,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
+  hasPropValueChanged,
   isDisabledOrLoading,
   THEMES,
   validateProps,
@@ -65,6 +66,10 @@ export class Switch {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {

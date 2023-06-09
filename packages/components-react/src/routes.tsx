@@ -97,6 +97,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.CarouselExampleJumpToSlidePage />,
   },
   {
+    name: 'Flyout Example',
+    path: '/flyout-example',
+    element: <fromExamples.FlyoutExamplePage />,
+  },
+  {
     name: 'Inline Notification Example Action Button',
     path: '/inline-notification-example-action-button',
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,

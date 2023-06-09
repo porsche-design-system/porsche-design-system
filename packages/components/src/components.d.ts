@@ -22,6 +22,7 @@ import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
+import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingTag } from "./components/heading/heading-tag";
@@ -78,6 +79,7 @@ export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
+export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingTag } from "./components/heading/heading-tag";
@@ -602,6 +604,24 @@ export namespace Components {
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
+    }
+    interface PFlyout {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * If true, the flyout is open.
+         */
+        "open": boolean;
+        /**
+          * The position of the flyout
+         */
+        "position"?: FlyoutPosition;
+        /**
+          * Adapts the flyout color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -1651,6 +1671,10 @@ export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselElement;
 }
+export interface PFlyoutCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPFlyoutElement;
+}
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
@@ -1803,6 +1827,12 @@ declare global {
     var HTMLPFlexItemElement: {
         prototype: HTMLPFlexItemElement;
         new (): HTMLPFlexItemElement;
+    };
+    interface HTMLPFlyoutElement extends Components.PFlyout, HTMLStencilElement {
+    }
+    var HTMLPFlyoutElement: {
+        prototype: HTMLPFlyoutElement;
+        new (): HTMLPFlyoutElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -2112,6 +2142,7 @@ declare global {
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
+        "p-flyout": HTMLPFlyoutElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
         "p-heading": HTMLPHeadingElement;
@@ -2665,6 +2696,28 @@ declare namespace LocalJSX {
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
+    }
+    interface PFlyout {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
+        /**
+          * If true, the flyout is open.
+         */
+        "open"?: boolean;
+        /**
+          * The position of the flyout
+         */
+        "position"?: FlyoutPosition;
+        /**
+          * Adapts the flyout color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -3797,6 +3850,7 @@ declare namespace LocalJSX {
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
+        "p-flyout": PFlyout;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
         "p-heading": PHeading;
@@ -3877,6 +3931,7 @@ declare module "@stencil/core" {
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
              */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
+            "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
              */

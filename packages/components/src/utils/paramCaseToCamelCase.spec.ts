@@ -5,6 +5,6 @@ it.each([
   ['arrow-double-down', 'arrowDoubleDown'],
   ['button', 'button'],
   ['pButton', 'pButton'],
-])("should be called with '%s' and return '%s'", (input, result) => {
+])('should for %s return %s', (input, result) => {
   expect(paramCaseToCamelCase(input)).toBe(result);
 });

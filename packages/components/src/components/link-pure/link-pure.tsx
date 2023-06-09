@@ -7,6 +7,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasVisibleIcon,
+  hasPropValueChanged,
   isSsrHydration,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
@@ -105,6 +106,10 @@ export class LinkPure {
       // it has no href prop and no slotted anchor, so validation fails
       throwIfInvalidLinkUsage(this.host, this.href);
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
