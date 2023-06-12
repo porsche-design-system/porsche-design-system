@@ -131,7 +131,6 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       const usesToast = script?.includes('p-toast');
       const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
-      const isOverviewPage = fileName === 'overview' || fileName === 'overview-flaky';
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
       const usesSetAllReady = script?.includes('componentsReady()');
@@ -166,7 +165,6 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
         isIconPage,
         usesQuerySelector,
         usesPrefixing,
-        isOverviewPage,
       };
 
       const { fileName: convertedFileName, fileContent: convertedFileContent } =

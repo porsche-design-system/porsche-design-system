@@ -31,12 +31,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-modal [heading]="'Heading'" [open]="true">Some Content: should show modal</p-modal>
     </div>
 
-    <div class="playground light" title="should show modal with prefixed component initialization">
-      <my-prefix-p-modal p-modal [heading]="'Heading'" [open]="true">
-        Some Content: should show modal with prefixed component initialization
-      </my-prefix-p-modal>
-    </div>
-
     <div class="playground light" title="should show modal (fullscreen=true)">
       <p-modal [heading]="'Heading'" [open]="true" [fullscreen]="true"> Some content: should show modal (fullscreen=true) </p-modal>
     </div>
