@@ -119,7 +119,7 @@ export const getPopoverMargin = (
   }
 };
 
-type PopoverInternal = Partial<InstanceType<typeof Popover>> & { open: boolean };
+export type PopoverInternal = Partial<InstanceType<typeof Popover>> & { open: boolean };
 export const registeredPopovers: PopoverInternal[] = [];
 
 export const addDocumentEventListener = (popover: Popover): void => {
