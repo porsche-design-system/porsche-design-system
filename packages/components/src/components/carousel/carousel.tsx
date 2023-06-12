@@ -17,7 +17,6 @@ import {
   slidePrev,
   updatePagination,
   updatePrevNextButtons,
-  updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
@@ -66,6 +65,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
+  skipLinkTarget: AllowedTypes.string,
 };
 
 @Component({
@@ -116,6 +116,9 @@ export class Carousel {
   /** Defines which slide to be active (zero-based numbering). */
   @Prop() public activeSlideIndex?: number = 0;
 
+  /** Defines target of skip link (to skip carousel entries). */
+  @Prop() public skipLinkTarget?: string;
+
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when carousel's content slides. */
@@ -143,6 +146,7 @@ export class Carousel {
     this.observeBreakpointChange();
 
     if (this.splide) {
+      this.observeSlides(); // on reconnect, adjust tabindex and aria attributes on slides
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
@@ -165,6 +169,7 @@ export class Carousel {
   }
 
   public componentDidLoad(): void {
+    this.observeSlides(); // initial, adjust tabindex and aria attributes on slides
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
       autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
@@ -189,11 +194,11 @@ export class Carousel {
     // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
-    updateSlidesInert(this.splide);
   }
 
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
+    unobserveChildren(this.container); // adjust tabindex and aria attributes on slides
     unobserveBreakpointChange(this.host);
     this.splide.destroy();
   }
@@ -234,7 +239,7 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
+          {this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />}
           {hasDescription(this.host, this.description) &&
             ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
 
@@ -242,6 +247,20 @@ export class Carousel {
           {/* <slot name="post-heading" /> */}
 
           <div class="nav">
+            {this.skipLinkTarget && (
+              <PrefixedTagNames.pLinkPure
+                href={this.skipLinkTarget}
+                theme={this.theme}
+                icon="arrow-last"
+                class="btn skip-link"
+                alignLabel="left"
+                hideLabel={true}
+                aria-describedby={this.heading ? 'heading' : null}
+              >
+                {/* TODO: make it i18n configurable */}
+                Skip carousel entries
+              </PrefixedTagNames.pLinkPure>
+            )}
             <PrefixedTagNames.pButtonPure
               {...btnProps}
               icon="arrow-left"
@@ -253,6 +272,7 @@ export class Carousel {
               icon="arrow-right"
               ref={(ref) => (this.btnNext = ref)}
               onClick={() => slideNext(this.splide, this.amountOfPages)}
+              onKeyDown={this.onNextKeyDown}
             />
           </div>
         </div>
@@ -262,11 +282,12 @@ export class Carousel {
           class="splide"
           aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
           ref={(ref) => (this.container = ref)}
+          onFocusin={this.onSplideFocusIn}
         >
           <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (
-                <div key={i} class="splide__slide">
+                <div key={i} class="splide__slide" tabIndex={0}>
                   <slot name={`slide-${i}`} />
                 </div>
               ))}
@@ -284,13 +305,11 @@ export class Carousel {
   private registerSplideHandlers(splide: Splide): void {
     splide.on('mounted', () => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updateSlidesInert(splide);
       renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updateSlidesInert(splide);
       updatePagination(this.paginationEl, activeIndex);
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
@@ -317,6 +336,48 @@ export class Carousel {
       this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
     renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
-    updateSlidesInert(this.splide);
   };
+
+  private onNextKeyDown = (e: KeyboardEvent): void => {
+    if (e.key === 'Tab' && !e.shiftKey) {
+      const activeSlide = this.splide.Components.Elements.slides.at(this.splide.index);
+      activeSlide.focus();
+      e.preventDefault();
+    }
+  };
+
+  private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
+    const { target } = e;
+    const {
+      index: splideIndex,
+      Components: { Elements },
+    } = this.splide;
+
+    const slideIndexOfFocusedElement = Elements.slides.includes(target)
+      ? Elements.slides.indexOf(target) // focussed element is the slide itself
+      : this.slides.findIndex((slide) => slide.contains(target)); // focussed element is within slide, e.g. link or button
+
+    if (splideIndex !== slideIndexOfFocusedElement) {
+      if (slideIndexOfFocusedElement < this.amountOfPages && slideIndexOfFocusedElement > splideIndex) {
+        slideNext(this.splide, this.amountOfPages);
+      } else if (slideIndexOfFocusedElement < splideIndex) {
+        slidePrev(this.splide, this.amountOfPages);
+      }
+    }
+  };
+
+  private observeSlides(): void {
+    // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
+    observeChildren(
+      this.container,
+      () =>
+        this.splide.Components.Elements.slides.forEach((el) => {
+          el.removeAttribute('aria-hidden');
+          if (el.tabIndex !== 0) {
+            el.tabIndex = 0;
+          }
+        }),
+      ['tabindex', 'aria-hidden']
+    );
+  }
 }

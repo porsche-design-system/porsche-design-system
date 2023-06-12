@@ -9,7 +9,6 @@ export type ReactCharacteristics = {
   isIconPage: boolean;
   usesQuerySelector: boolean;
   usesPrefixing: boolean;
-  isOverviewPage: boolean;
 };
 
 export const convertToReactVRTPage = (
@@ -21,22 +20,15 @@ export const convertToReactVRTPage = (
   toastText: string,
   characteristics: ReactCharacteristics
 ): { fileName: string; fileContent: string } => {
-  const {
-    usesSetAllReady,
-    usesComponentsReady,
-    usesToast,
-    isIconPage,
-    usesQuerySelector,
-    usesPrefixing,
-    isOverviewPage,
-  } = characteristics;
+  const { usesSetAllReady, usesComponentsReady, usesToast, isIconPage, usesQuerySelector, usesPrefixing } =
+    characteristics;
 
   // imports
   const reactImports = [
     (usesSetAllReady || usesQuerySelector) && !isIconPage && !usesToast && 'useEffect',
     usesSetAllReady && 'useState',
   ]
-    .filter((x) => x)
+    .filter(Boolean)
     .sort(byAlphabet)
     .join(', ');
 
@@ -57,7 +49,7 @@ export const convertToReactVRTPage = (
     (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,
     usesToast && `import { Toast } from '../components';`,
   ]
-    .filter((x) => x)
+    .filter(Boolean)
     .join('\n');
 
   // implementation
@@ -126,32 +118,35 @@ $2`
 
   fileContent = fileContent.replace(/(\n +)(<(?:strong|em|b|i)>)/g, "$1{' '}$2"); // for forced whitespace
 
-  if (isOverviewPage) {
-    // wrap right column with PorscheDesignSystemProvider
-    let i = 0;
-    fileContent = fileContent.replace(/\n\s\s<div style="flex: 1">[\s\S]*?\n\s\s<\/div>/g, (match) => {
-      if (i === 1) {
-        match = match
-          .replace(match, `\n<PorscheDesignSystemProvider prefix="${prefix}">${match}\n</PorscheDesignSystemProvider>`)
-          .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
-      }
-      i++;
-      return match;
-    });
+  // inject PorscheDesignSystemProvider
+  if (fileContent.match(/<div data-prefix="my-prefix".*>/)) {
+    fileContent = fileContent
+      .replace(/<div data-prefix="my-prefix".*>[\s\S]*?\n<\/div>/g, (match) =>
+        match.replace(
+          match,
+          `<PorscheDesignSystemProvider prefix="${prefix}">\n  ${match.replace(
+            /(\n)(.)/g,
+            '$1  $2' // fix indentation
+          )}\n</PorscheDesignSystemProvider>`
+        )
+      )
+      .replace(/ data-prefix="my-prefix"/g, ''); // get rid of marker
+  } else {
+    if (prefix) {
+      throw new Error(`Using prefix without wrapping <div data-prefix="my-prefix"> is not supported for "${fileName}"`);
+    }
   }
 
-  const openingFragmentTag = usesPrefixing && !isOverviewPage ? 'PorscheDesignSystemProvider prefix="my-prefix"' : '';
-  const closingFragmentTag = openingFragmentTag.split(' ')[0];
-  fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1      $2');
+  fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1      $2'); // fix indentation
 
   fileContent = `${comment}
 ${imports}
 
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
-    <${openingFragmentTag}>${styleJsx}
+    <>${styleJsx}
       ${convertToReact(fileContent).replace(/<PToast/g, '<Toast')}
-    </${closingFragmentTag}>
+    </>
   );
 };
 `;

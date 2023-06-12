@@ -30,12 +30,12 @@ export const convertToAngularVRTPage = (
     usesOnInit && 'OnInit',
     usesSetAllReady && 'ChangeDetectorRef',
   ]
-    .filter((x) => x)
+    .filter(Boolean)
     .sort(byAlphabet)
     .join(', ');
 
   const pdsImports = [(usesSetAllReady || usesComponentsReady) && 'componentsReady', usesToast && 'ToastManager']
-    .filter((x) => x)
+    .filter(Boolean)
     .sort(byAlphabet)
     .join(', ');
 
@@ -44,7 +44,7 @@ export const convertToAngularVRTPage = (
     pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-angular';`,
     isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
   ]
-    .filter((x) => x)
+    .filter(Boolean)
     .join('\n');
 
   // decorator
@@ -110,6 +110,7 @@ $2`
   }
 
   fileContent = fileContent
+    .replace(/ data-prefix="my-prefix"/g, '') // get rid of marker
     .replace(/(\n)([ <>]+)/g, '$1    $2') // fix indentation
     .replace(/\\/g, '\\\\') // fix \\ in generated output
     .replace(/`/g, '\\`'); // fix \` in generated output
