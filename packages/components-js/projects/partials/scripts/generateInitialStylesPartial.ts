@@ -19,6 +19,7 @@ const tagNamesWithSlottedAnchor = joinArrayElementsToString([
   'p-carousel',
   'p-checkbox-wrapper',
   'p-display',
+  'p-flyout',
   'p-heading',
   'p-headline',
   'p-inline-notification',
