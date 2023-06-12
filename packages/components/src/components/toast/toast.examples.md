@@ -1,16 +1,14 @@
-# Notifications
-
-<TableOfContents></TableOfContents>
-
-## Toast
+# Toast
 
 The `p-toast` component manages both the queue and display of toast messages.  
 Therefore, you can only have a single instance of this component within in your application. We recommend rendering it
 close to the `body`, e.g., in your `App.tsx` or `app.component.ts`. This way you reduce the chance of having issues with
 its z-index and fixed positioning.
 
-Review the [notification decision tree](components/notifications/decision-tree) to determine which notification
+Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification
 component is best for a particular scenario.
+
+<TableOfContents></TableOfContents>
 
 ## Basic
 
