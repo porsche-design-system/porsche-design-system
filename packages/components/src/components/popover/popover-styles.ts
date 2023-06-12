@@ -24,7 +24,7 @@ import type { Theme } from '../../types';
 const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
 const { canvasColor, canvasTextColor } = getHighContrastColors();
 
-const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
+const directionPositionMap: Record<PopoverDirection, JssStyle> = {
   top: {
     bottom: '100%',
     left: '50%',
@@ -52,7 +52,7 @@ const transparentColor = 'transparent';
 
 const join = (...arr: (string | number)[]): string => arr.join(' ');
 
-const directionArrowMap: { [key in PopoverDirection]: JssStyle } = {
+const directionArrowMap: Record<PopoverDirection, JssStyle> = {
   top: {
     top: 0,
     left: '50%',
