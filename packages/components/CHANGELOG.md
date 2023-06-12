@@ -2,18 +2,32 @@
 
 ## Porsche Design System
 
-
 All notable changes to this project will be documented in this file and published as following npm packages:
 
-* `@porsche-design-system/components-js`
-* `@porsche-design-system/components-angular`
-* `@porsche-design-system/components-react`
-* `@porsche-design-system/components-vue`
+- `@porsche-design-system/components-js`
+- `@porsche-design-system/components-angular`
+- `@porsche-design-system/components-react`
+- `@porsche-design-system/components-vue`
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
+
+#### Added
+
+- `skipLinkTarget` property to `Carousel` component to enhance keyboard functionality
+  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
+
+#### Fixed
+
+- Missing styles in Initial Styles Partial for `Flyout` component
+  ([#2598](https://github.com/porsche-design-system/porsche-design-system/pull/2598))
+
+#### Changed
+
+- `Carousel` supports click events on non-active slides and changed keyboard navigation
+  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
 
 ### [3.1.0] - 2023-06-09
 
@@ -27,8 +41,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
-- `skipLinkTarget` property to `Carousel` component to enhance keyboard functionality
-  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
 
 #### Fixed
 
@@ -38,11 +50,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
 - Unnecessary lifecycles are prevented when prop values do not change for complex values
   ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
-
-#### Changed
-
-- `Carousel` supports click events on non-active slides and changed keyboard navigation
-  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
 
 ### [3.1.0-rc.1] - 2023-06-02
 
