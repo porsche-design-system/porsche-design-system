@@ -153,7 +153,7 @@ export const onDocumentMousedown = (e: MouseEvent): void => {
 export const onDocumentKeydown = (e: KeyboardEvent): void => {
   const { key } = e;
   const isEscape = key === 'Escape';
-  if (isEscape || key === 'SpaceBar' || key === 'Enter') {
+  if (isEscape || key === 'Enter' || key === 'SpaceBar' || key === ' ') {
     const popover = registeredPopovers.find(
       (popoverItem) => popoverItem.open && (isEscape || !e.composedPath().includes(popoverItem.host))
     );
