@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Partials: `getInitialStyles` supports `Flyout` component
   ([#2598](https://github.com/porsche-design-system/porsche-design-system/pull/2598))
+- `Popover` content can be selected/highlighted
+  ([#2599](https://github.com/porsche-design-system/porsche-design-system/pull/2599))
 
 #### Changed
 
