@@ -31,6 +31,9 @@ import {
 
 export const carouselTransitionDuration = 400;
 export const bulletActiveClass = 'bullet--active';
+export const bulletInfiniteClass = 'bullet--infinite';
+
+export const bulletHidden = 'bullet--hidden';
 
 const selectorHeading = 'h2,::slotted([slot=heading])';
 const selectorDescription = 'p,::slotted([slot=description])';
@@ -169,6 +172,7 @@ export const getComponentCss = (
           display: hasPaginationValue ? 'flex' : 'none',
         })),
         justifyContent: 'center',
+        alignItems: 'center',
         gap: spacingStaticSmall,
       },
       bullet: {
@@ -182,6 +186,13 @@ export const getComponentCss = (
       [bulletActiveClass]: {
         background: isHighContrastMode ? canvasTextColor : primaryColor,
         width: '20px',
+      },
+      [bulletInfiniteClass]: {
+        width: '4px',
+        height: '4px',
+      },
+      [bulletHidden]: {
+        display: 'none',
       },
     }),
   });

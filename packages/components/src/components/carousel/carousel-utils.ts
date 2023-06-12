@@ -5,13 +5,16 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
-import { bulletActiveClass } from './carousel-styles';
+import { bulletActiveClass, bulletHidden, bulletInfiniteClass } from './carousel-styles';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
 export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
+
+const CAROUSEL_INFINITE_BULLET_AMOUNT = 5;
+const CAROUSEL_INFINITE_BULLET_TRESHHOLD = 5;
 
 // https://splidejs.com/guides/i18n/#default-texts
 // extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types
@@ -98,13 +101,48 @@ export const renderPagination = (paginationEl: HTMLElement, amountOfPages: numbe
     paginationEl.innerHTML = Array.from(Array(amountOfPages))
       .map((_, i) => `<span class='bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}'></span>`)
       .join('');
+    if (amountOfPages > CAROUSEL_INFINITE_BULLET_TRESHHOLD) {
+      updateBulletState(paginationEl, amountOfPages, activeIndex);
+    }
   }
 };
 
-export const updatePagination = (paginationEl: HTMLElement, newIndex: number): void => {
+export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
+  const edgeArea = Math.round(CAROUSEL_INFINITE_BULLET_AMOUNT / 2);
+  const isActiveIndexStart = newIndex < edgeArea;
+  const isActiveIndexEnd = newIndex > amountOfPages - 1 - edgeArea;
+  const isInfiniteBullet = (bulletIndex: number) => {
+    const isInfiniteBulletAfterActive = isActiveIndexStart
+      ? bulletIndex === CAROUSEL_INFINITE_BULLET_AMOUNT - 1
+      : bulletIndex === newIndex + 2;
+    const isInfiniteBulletBeforeActive = isActiveIndexEnd
+      ? bulletIndex === amountOfPages - CAROUSEL_INFINITE_BULLET_AMOUNT
+      : bulletIndex === newIndex - 2;
+    return isInfiniteBulletAfterActive || isInfiniteBulletBeforeActive;
+  };
+  const isHiddenBullet = (bulletIndex: number) => {
+    const isHiddenBulletAfterActive = isActiveIndexStart
+      ? bulletIndex > CAROUSEL_INFINITE_BULLET_AMOUNT - 1
+      : bulletIndex > newIndex + 2;
+    const isHiddenBulletBeforeActive = isActiveIndexEnd
+      ? bulletIndex < amountOfPages - CAROUSEL_INFINITE_BULLET_AMOUNT
+      : bulletIndex < newIndex - 2;
+    return isHiddenBulletAfterActive || isHiddenBulletBeforeActive;
+  };
+
+  Array.from(paginationEl.children as HTMLCollectionOf<HTMLElement>).forEach((bullet, index) => {
+    bullet.classList[isInfiniteBullet(index) ? 'add' : 'remove'](bulletInfiniteClass);
+    bullet.classList[isHiddenBullet(index) ? 'add' : 'remove'](bulletHidden);
+  });
+};
+
+export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
   if (paginationEl) {
     paginationEl.querySelector('.' + bulletActiveClass).classList.remove(bulletActiveClass);
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
+    if (amountOfPages > CAROUSEL_INFINITE_BULLET_TRESHHOLD) {
+      updateBulletState(paginationEl, amountOfPages, newIndex);
+    }
   }
 };
 
