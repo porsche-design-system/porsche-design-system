@@ -21,7 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- Missing styles in Initial Styles Partial for `Flyout` component
+- Partials: `getInitialStyles` supports `Flyout` component
   ([#2598](https://github.com/porsche-design-system/porsche-design-system/pull/2598))
 
 #### Changed
@@ -35,7 +35,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Crest` replaced final assets and meta icons
+- `Crest` updated assets ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
+- Partials: `getMetaTagsAndIconLinks` updated assets
   ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
 
 #### Added
