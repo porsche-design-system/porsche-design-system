@@ -179,7 +179,7 @@ export const getComponentCss = (
         borderRadius: borderRadiusSmall,
         background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
         // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
+        transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms, height ${carouselTransitionDuration}ms`,
         width: '8px',
         height: '8px',
       },
