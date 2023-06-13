@@ -1,6 +1,6 @@
 const prefix =
   process.env.NODE_ENV === 'production'
-    ? `[Porsche Design System v${ROLLUP_REPLACE_VERSION}]`
+    ? `[Porsche Design System v${ROLLUP_REPLACE_VERSION}]` // this part isn't covered by unit tests
     : '[Porsche Design System]';
 
 export const consoleWarn = (...messages: string[]): void => {
