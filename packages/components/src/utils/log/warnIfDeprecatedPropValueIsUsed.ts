@@ -1,5 +1,5 @@
+import type { Class, FunctionPropertyNames } from '../../types';
 import { getDeprecatedPropWarningMessage } from './helper';
-import type { Class, FunctionPropertyNames } from '../../types/index';
 
 // TODO: add missing unit test
 export const warnIfDeprecatedPropValueIsUsed = <C extends Class<any>, DeprecatedT extends string, T extends string>(

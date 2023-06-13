@@ -1,4 +1,4 @@
-import type { Class, FunctionPropertyNames } from '../../types/index';
+import type { Class, FunctionPropertyNames } from '../../types';
 import { getDeprecatedPropWarningMessage } from './helper';
 
 export const warnIfDeprecatedPropIsUsed = <C extends Class<any>>(
