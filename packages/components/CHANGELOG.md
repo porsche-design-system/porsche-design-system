@@ -30,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Carousel` supports click events on non-active slides and changed keyboard navigation
   ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
+- Unified wordings of all console warnings, errors and exceptions
+  ([#2602](https://github.com/porsche-design-system/porsche-design-system/pull/2602))
 
 ### [3.1.0] - 2023-06-09
 
