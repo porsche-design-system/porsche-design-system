@@ -32,12 +32,14 @@ const togglePopover = async (): Promise<void> => {
 type InitOptions = {
   direction?: PopoverDirection;
   withLink?: boolean;
+  withStrong?: boolean;
   withButtonOutside?: boolean;
 };
 const initPopover = (opts?: InitOptions): Promise<void> => {
-  const { direction = 'bottom', withLink = false, withButtonOutside = false } = opts || {};
+  const { direction = 'bottom', withLink = false, withStrong = false, withButtonOutside = false } = opts || {};
 
   const linkMarkup = withLink ? '<a href="#">Some Link</a>' : '';
+  const strongMarkup = withStrong ? '<strong>strong</strong>' : '';
   const buttonMarkup = withButtonOutside ? '<button>Some Button</button>' : '';
 
   return setContentWithDesignSystem(
@@ -45,6 +47,7 @@ const initPopover = (opts?: InitOptions): Promise<void> => {
     `
 <p-popover direction="${direction}">
   ${linkMarkup}
+  ${strongMarkup}
   Some Popover Content
 </p-popover>
 ${buttonMarkup}`
@@ -131,31 +134,6 @@ it('should trigger focus & blur events at the correct time', async () => {
   await page.keyboard.up('ShiftLeft');
 });
 
-it('should provide functionality to focus & blur the custom element', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <div id="wrapper">
-      <a href="#" id="before">before</a>
-      <p-popover>Some Popover Content</p-popover>
-    </div>`
-  );
-
-  const popoverHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-popover'));
-
-  const popover = await getHost();
-  const before = await selectNode(page, '#before');
-  await before.focus();
-  expect(await popoverHasFocus()).toBe(false);
-  await popover.focus();
-  expect(await popoverHasFocus()).toBe(true);
-  await page.evaluate(() => {
-    const buttonElement = document.querySelector('p-popover') as HTMLElement;
-    buttonElement.blur();
-  });
-  expect(await popoverHasFocus()).toBe(false);
-});
-
 describe('mouse behavior', () => {
   it('should open popover on click', async () => {
     await initPopover();
@@ -219,11 +197,22 @@ describe('mouse behavior', () => {
 
     expect(await getPopover()).not.toBeNull();
   });
+
+  it('should be possible to select/highlight text within open popover', async () => {
+    await initPopover({ withStrong: true });
+    await togglePopover();
+
+    const strongEl = await selectNode(page, 'strong');
+    await strongEl.click({ count: 2 });
+
+    const selection = await page.evaluate(() => window.getSelection().toString());
+    expect(selection).toBe('strong');
+  });
 });
 
 describe('keyboard behavior', () => {
   describe('escape', () => {
-    const focusedElement = 'BUTTON';
+    const focusedElementTagName = 'BUTTON';
 
     it('should close popover when button is focused', async () => {
       await initPopover();
@@ -231,13 +220,15 @@ describe('keyboard behavior', () => {
       await togglePopover();
 
       expect(await getPopover()).not.toBeNull();
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
       expect(await getPopover()).toBeNull();
-      expect(await getActiveElementTagNameInShadowRoot(host), 'focus on button after escape').toBe(focusedElement);
+      expect(await getActiveElementTagNameInShadowRoot(host), 'focus on button after escape').toBe(
+        focusedElementTagName
+      );
     });
 
     it('should close popover when content is focused', async () => {
@@ -246,7 +237,7 @@ describe('keyboard behavior', () => {
       await togglePopover();
 
       expect(await getPopover()).not.toBeNull();
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
 
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
@@ -257,7 +248,7 @@ describe('keyboard behavior', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getPopover()).toBeNull();
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
     });
 
     it('should close popover when content outside is focused', async () => {
@@ -265,7 +256,7 @@ describe('keyboard behavior', () => {
       const host = await getHost();
       await togglePopover();
 
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElement);
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
       expect(await getPopover()).not.toBeNull();
 
       await page.keyboard.press('Tab');

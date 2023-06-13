@@ -200,7 +200,7 @@ major version.
 ### Headline:
 
 - Component is deprecated and will be removed with the next major release. Please use the
-  **[Heading](components/typography/heading)** component instead.
+  **[Heading](components/heading)** component instead.
 
 ```diff
 - <p-headline>The quick brown fox jumps over the lazy dog</p-headline>

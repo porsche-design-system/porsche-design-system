@@ -2470,8 +2470,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .btn {
   padding: 8px;
 }
+.skip-link {
+  opacity: 0;
+  pointer-events: none;
+}
 .splide {
   overflow: hidden;
+  padding: 4px 0;
+  margin: -4px 0;
 }
 .splide__track {
   cursor: grab;
@@ -2479,7 +2485,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__list {
   display: flex;
-  height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -2489,6 +2494,8 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
+  border-radius: 12px;
+  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
@@ -2522,7 +2529,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
@@ -2530,6 +2537,8 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     gap: 4px;
     grid-area: 1 / 3 / 3 / auto;
     align-items: end;
+    justify-content: end;
+    justify-self: end;
   }
   .splide__track {
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
@@ -2837,6 +2846,7 @@ img {
         >
           <div
             class="splide__slide"
+            tabindex="0"
           >
             <slot
               name="slide-0"
@@ -3037,17 +3047,17 @@ img {
     </style>
     <picture>
       <source
-        srcset="http://localhost:3001/crest/porsche-crest.min.99bed7254e46aa46a8391f715158a5fc@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.3abd4612f0e0d8dc7e56d8f236a7b338@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.01315546293a6bce3814304a1c8ad162@3x.webp 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.min.0d0cc89ae5ee57c4c15bd0dbbcbfe5d0@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.2245c45e99be5a46b4b56e73c43d5c63@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.19b429278b158b5cb5aa6ce80751e3fe@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="http://localhost:3001/crest/porsche-crest.min.c7a5c86ffd55b1d0d332c94a795b1928@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.3c189f2d4ba0c1a579ef61b309de4825@3x.png 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.min.d76137cf8cf94822b7aedb534ba88418@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.18d6f02003b0829bac939fade88fd4e6@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
         height="40"
-        src="http://localhost:3001/crest/porsche-crest.min.ac5bd967d27623d356c7864f697bf01a@2x.png"
+        src="http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png"
         width="30"
       />
     </picture>

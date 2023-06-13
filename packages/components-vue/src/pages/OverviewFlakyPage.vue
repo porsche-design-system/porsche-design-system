@@ -12,8 +12,8 @@
 </script>
 
 <template>
-  <div class="root" style="display: flex">
-    <div style="flex: 1">
+  <div class="root">
+    <div>
       <div class="playground light" title="should render default stepper-horizontal">
         <PStepperHorizontal>
           <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
@@ -71,7 +71,7 @@
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
-      <div style="flex: 1">
+      <div>
         <div class="playground light" title="should render default stepper-horizontal with custom prefix">
           <PStepperHorizontal>
             <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
@@ -132,6 +132,11 @@
 </template>
 
 <style scoped>
+  .root {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
   p-link-tile,
   p-button-tile,
   p-link-tile-model-signature,

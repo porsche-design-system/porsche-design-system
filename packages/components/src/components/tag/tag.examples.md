@@ -1,10 +1,8 @@
-# Tags
-
-<TableOfContents></TableOfContents>
-
-## Tag
+# Tag
 
 `p-tag` is used to label, categorize, or organize items by using keywords that describe them.
+
+<TableOfContents></TableOfContents>
 
 ## Color
 

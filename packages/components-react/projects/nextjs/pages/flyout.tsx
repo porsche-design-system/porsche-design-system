@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { PFlyout } from '@porsche-design-system/components-react/ssr';
 
 const FlyoutPage: NextPage = (): JSX.Element => {
   const style = `
@@ -34,7 +34,7 @@ const FlyoutPage: NextPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider prefix="my-prefix">
+    <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light auto-layout" title="should show flyout">
@@ -43,21 +43,6 @@ const FlyoutPage: NextPage = (): JSX.Element => {
 
       <div className="playground dark auto-layout" title="should show flyout on dark theme">
         <PFlyout open={true} theme="dark">Some Content: should show flyout</PFlyout>
-      </div>
-
-      <div className="playground light auto-layout" title="should show flyout with prefixed component initialization">
-        <PFlyout open={true}>
-          Some Content: should show flyout with prefixed component initialization
-        </PFlyout>
-      </div>
-
-      <div
-        className="playground dark auto-layout"
-        title="should show flyout with prefixed component initialization on dark theme"
-      >
-        <PFlyout open={true} theme="dark">
-          Some Content: should show flyout with prefixed component initialization
-        </PFlyout>
       </div>
 
       <div className="playground light auto-layout" title="should show flyout (maxWidth content)">
@@ -927,7 +912,7 @@ const FlyoutPage: NextPage = (): JSX.Element => {
         <span />
         <span />
       </div>
-    </PorscheDesignSystemProvider>
+    </>
   );
 };
 

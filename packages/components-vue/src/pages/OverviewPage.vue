@@ -59,8 +59,8 @@
 </script>
 
 <template>
-  <div class="root" style="display: flex">
-    <div style="flex: 1">
+  <div class="root">
+    <div>
       <div class="playground light" title="should render default heading">
         <PHeading>Default Components</PHeading>
       </div>
@@ -320,7 +320,7 @@
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
-      <div style="flex: 1">
+      <div>
         <div class="playground light" title="should render default heading with custom prefix">
           <PHeading>Prefixed Components</PHeading>
         </div>
@@ -583,6 +583,11 @@
 </template>
 
 <style scoped>
+  .root {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
   p-flex-item > p,
   my-prefix-p-flex-item > p,
   p-grid-item > p,

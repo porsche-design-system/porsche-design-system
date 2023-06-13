@@ -15,7 +15,7 @@ it('should navigate to license', async () => {
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
   await page.evaluate(() => (window as any).componentsReady());
 
-  const [linkElement] = await page.$x(`//footer[@class='footer']//a[contains(., 'License')]`);
+  const [linkElement] = await page.$x(`//footer//a[contains(., 'License')]`);
 
   expect(await isLinkActive(linkElement)).toBe(false);
 

@@ -23,7 +23,7 @@ export const getFocusStyle = (opts?: Options) => {
       outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
       outlineOffset,
     },
-    // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
+    // why? have a look at this article https://www.tpgi.com/focus-visible-and-backwards-compatibility/
     '&:focus:not(:focus-visible)': {
       outlineColor: 'transparent',
     },
