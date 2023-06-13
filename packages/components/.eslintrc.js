@@ -16,7 +16,7 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'prefer-arrow', 'react'],
+  plugins: ['@typescript-eslint', 'prefer-arrow', 'react', 'fp'],
   rules: {
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/array-type': 'error',
@@ -151,7 +151,8 @@ module.exports = {
     'no-bitwise': 'error',
     'no-caller': 'error',
     'no-cond-assign': 'error',
-    'no-console': ['error'],
+    'no-console': 'error',
+    'fp/no-throw': 'error',
     'no-debugger': 'error',
     'no-empty': 'error',
     'no-eval': 'error',
