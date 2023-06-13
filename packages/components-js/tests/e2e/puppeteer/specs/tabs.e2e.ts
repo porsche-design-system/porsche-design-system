@@ -248,7 +248,7 @@ describe('keyboard', () => {
 });
 
 describe('text selection', () => {
-  it('should be possible to select text within tabs item', async () => {
+  it('should be possible to select/highlight text within tabs item', async () => {
     await initTabs();
     const tabContentRect = await page.evaluate(() => {
       const tabContent1 = document.querySelector('[label="Tab 1"]');
@@ -256,9 +256,7 @@ describe('text selection', () => {
       return { x, y };
     });
     await page.mouse.click(tabContentRect.x, tabContentRect.y, { count: 2 });
-    const selection = await page.evaluate(() => {
-      return window.getSelection().toString();
-    });
+    const selection = await page.evaluate(() => window.getSelection().toString());
     expect(selection).toBe('Content');
   });
 });
