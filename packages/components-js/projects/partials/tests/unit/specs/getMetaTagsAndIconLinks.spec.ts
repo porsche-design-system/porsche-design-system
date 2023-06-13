@@ -15,7 +15,7 @@ describe('validation', () => {
   });
 });
 
-fdescribe('format: html', () => {
+describe('format: html', () => {
   it('should return meta tags and icon links', () => {
     const result: string = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX' });
     const regex = new RegExp(
@@ -33,7 +33,7 @@ fdescribe('format: html', () => {
   });
 });
 
-fdescribe('format: jsx', () => {
+describe('format: jsx', () => {
   it('should return meta tags and icon links', () => {
     const result: JSX.Element = getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'Porsche UX Platform' });
     const { container } = render(result);
