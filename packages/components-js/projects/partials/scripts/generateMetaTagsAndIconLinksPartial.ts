@@ -23,7 +23,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     '<meta name="apple-mobile-web-app-title" content="$appTitle" />',
     `<meta name="msapplication-TileImage" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.mstile.mstile_270x270}' />`,
     '<meta name="msapplication-TileColor" content="#FFF" />',
-    `<link rel="icon" type="image/png" sizes="32x32" href='${metaIconCDNPath}/${META_ICONS_MANIFEST.favicon.favicon_32x32}'/>`,
+    `<link rel="icon" type="image/png" sizes="any" href='${metaIconCDNPath}/${META_ICONS_MANIFEST.favicon.favicon}'/>`,
     `<link rel="apple-touch-icon" href='${metaIconCDNPath}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}' />`,
     `<link rel="manifest" href="$manifestUrl" />`,
   ];
