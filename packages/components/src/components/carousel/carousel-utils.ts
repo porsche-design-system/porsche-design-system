@@ -96,19 +96,24 @@ export const updatePrevNextButtons = (btnPrev: ButtonPure, btnNext: ButtonPure, 
 
 export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number, activeIndex: number): void => {
   if (paginationEl) {
+    const isInfinitePagination = amountOfPages > CAROUSEL_INFINITE_BULLET_TRESHHOLD;
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
     activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(Array(amountOfPages))
       .map((_, i) => `<span class='bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}'></span>`)
       .join('');
-    if (amountOfPages > CAROUSEL_INFINITE_BULLET_TRESHHOLD) {
+    if (isInfinitePagination) {
+      // Set all bullets hidden initially
+      Array.from(paginationEl.children as HTMLCollectionOf<HTMLElement>).forEach((bullet) => {
+        bullet.classList.add(bulletHidden);
+      });
       updateBulletState(paginationEl, amountOfPages, activeIndex);
     }
   }
 };
 
 export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
-  const edgeArea = Math.round(CAROUSEL_INFINITE_BULLET_AMOUNT / 2);
+  const edgeArea = 3;
   const isActiveIndexStart = newIndex < edgeArea;
   const isActiveIndexEnd = newIndex > amountOfPages - 1 - edgeArea;
   const isInfiniteBullet = (bulletIndex: number) => {
@@ -130,10 +135,12 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
     return isHiddenBulletAfterActive || isHiddenBulletBeforeActive;
   };
 
-  Array.from(paginationEl.children as HTMLCollectionOf<HTMLElement>).forEach((bullet, index) => {
-    bullet.classList[isInfiniteBullet(index) ? 'add' : 'remove'](bulletInfiniteClass);
-    bullet.classList[isHiddenBullet(index) ? 'add' : 'remove'](bulletHidden);
-  });
+  // Only update bullets around newIndex
+  for (let i = newIndex - 5; i < newIndex + 5; i++) {
+    const index = i >= 0 ? i : amountOfPages + i;
+    paginationEl.children[index]?.classList[isInfiniteBullet(index) ? 'add' : 'remove'](bulletInfiniteClass);
+    paginationEl.children[index]?.classList[isHiddenBullet(index) ? 'add' : 'remove'](bulletHidden);
+  }
 };
 
 export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
