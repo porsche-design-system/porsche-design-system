@@ -109,6 +109,11 @@ module.exports = {
         ],
         paths: [
           {
+            name: 'change-case',
+            message:
+              'Please use paramCaseToCamelCase() util instead or do it yourself instead of pulling in a library.',
+          },
+          {
             name: '@porsche-design-system/utilities',
             message: 'Please use @porsche-design-system/utilities-v2 instead since the one used is not performant.',
           },
