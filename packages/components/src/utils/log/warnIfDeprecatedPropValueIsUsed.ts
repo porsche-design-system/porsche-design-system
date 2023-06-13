@@ -1,5 +1,6 @@
 import type { Class, FunctionPropertyNames } from '../../types';
 import { getDeprecatedPropWarningMessage } from './helper';
+import { consoleWarn } from './logger';
 
 // TODO: add missing unit test
 export const warnIfDeprecatedPropValueIsUsed = <C extends Class<any>, DeprecatedT extends string, T extends string>(
@@ -13,6 +14,6 @@ export const warnIfDeprecatedPropValueIsUsed = <C extends Class<any>, Deprecated
       instance.host as HTMLElement,
       `${prop as string}="${value}"`
     );
-    console.warn(`${deprecatedPropWarningMessage} Please use "${deprecationMap[value]}" instead.`);
+    consoleWarn(deprecatedPropWarningMessage, `Please use "${deprecationMap[value]}" instead.`);
   }
 };

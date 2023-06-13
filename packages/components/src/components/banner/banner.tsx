@@ -5,6 +5,7 @@ import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
+  consoleWarn,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
@@ -117,7 +118,7 @@ export class Banner {
     );
     const hasTitleSlot = hasNamedSlot(this.host, 'title');
     if (hasTitleSlot) {
-      console.warn(
+      consoleWarn(
         getDeprecatedPropWarningMessage(this.host, 'slot="title"'),
         'Please use the "heading" prop or slot="heading" instead.'
       );

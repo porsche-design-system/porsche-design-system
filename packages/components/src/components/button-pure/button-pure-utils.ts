@@ -1,6 +1,12 @@
 import type { ButtonAriaAttribute } from '../../utils';
 import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes, TextSize } from '../../types';
-import { getButtonBaseAriaAttributes, getTagName, hasVisibleIcon, parseAndGetAriaAttributes } from '../../utils';
+import {
+  consoleWarn,
+  getButtonBaseAriaAttributes,
+  getTagName,
+  hasVisibleIcon,
+  parseAndGetAriaAttributes,
+} from '../../utils';
 import type { AlignLabel, ButtonType, TextWeight } from '../../types';
 
 export type ButtonPureType = ButtonType;
@@ -17,7 +23,7 @@ export const warnIfIsLoadingAndIconIsNone = (
   iconSource: string
 ): void => {
   if (loading && !hasVisibleIcon(iconName, iconSource)) {
-    console.warn(
+    consoleWarn(
       `The combination of properties "icon='${iconName}'" and loading='${loading} within ${getTagName(
         host
       )} is not supported.`

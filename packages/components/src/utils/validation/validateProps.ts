@@ -4,7 +4,7 @@ import type { BreakpointValues } from '../breakpoint-customizable';
 import { parseJSON } from '../breakpoint-customizable';
 import { breakpoints } from '@porsche-design-system/utilities-v2';
 import { parseJSONAttribute } from '../json';
-import { getTagName } from '..';
+import { consoleError, getTagName } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
@@ -51,8 +51,8 @@ export const printErrorMessage = ({
   propType,
   componentName,
 }: ValidationError & { componentName: string }): void => {
-  console.error(
-    `Warning: Invalid property '${propName}' with value '${formatObjectOutput(
+  consoleError(
+    `Invalid property '${propName}' with value '${formatObjectOutput(
       propValue
     )}' supplied to '${componentName}', expected one of: ${propType}`
   );

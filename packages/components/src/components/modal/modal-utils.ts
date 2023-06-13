@@ -1,4 +1,4 @@
-import { getTagName } from '../../utils';
+import { consoleWarn, getTagName } from '../../utils';
 import type { SelectedAriaAttributes } from '../../types';
 
 export const warnIfAriaAndHeadingPropsAreUndefined = (
@@ -8,7 +8,7 @@ export const warnIfAriaAndHeadingPropsAreUndefined = (
 ): void => {
   // TODO: slotted heading doesn't count?
   if (!heading && !aria) {
-    console.warn(
+    consoleWarn(
       `Either heading or aria attributes on ${getTagName(host)} have to be set in order to ensure accessibility.`
     );
   }

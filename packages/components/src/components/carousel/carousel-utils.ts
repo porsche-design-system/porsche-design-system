@@ -1,7 +1,7 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
-import { getTagName, hasNamedSlot } from '../../utils';
+import { consoleWarn, getTagName, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
@@ -45,7 +45,7 @@ export const getSplideBreakpoints = (
 
 export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void => {
   if (!heading && !hasNamedSlot(host, 'heading')) {
-    console.warn(
+    consoleWarn(
       `A heading has to be set via property or named slot on ${getTagName(host)} in order to ensure accessibility.`
     );
   }
