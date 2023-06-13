@@ -10,3 +10,7 @@ export const consoleWarn = (...messages: string[]): void => {
 export const consoleError = (...messages: string[]): void => {
   console.error(prefix, ...messages); // eslint-disable-line no-console
 };
+
+export const throwException = (message: string): void => {
+  throw new Error(`${prefix} ${message}`);
+};

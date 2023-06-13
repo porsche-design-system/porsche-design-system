@@ -1,4 +1,4 @@
-import { getOnlyChildOfKindHTMLElementOrThrow, getTagName } from '../../utils';
+import { getOnlyChildOfKindHTMLElementOrThrow, getTagNameWithoutPrefix, throwException } from '../../utils';
 
 export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): void => {
   let isInvalid = hrefValue && host.children.length > 0;
@@ -14,10 +14,10 @@ export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): v
   }
 
   if (isInvalid) {
-    throw new Error(
-      `Usage of ${getTagName(
+    throwException(
+      `usage of ${getTagNameWithoutPrefix(
         host
-      )} is not valid. Please provide a href property or a single and direct 'a' child element.`
+      )} is not valid. Please provide a href property or a single and direct "a" child element.`
     );
   }
 };

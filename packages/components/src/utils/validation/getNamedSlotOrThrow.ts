@@ -1,12 +1,10 @@
-import { getTagName } from '../tag-name';
+import { getTagNameWithoutPrefix } from '../tag-name';
 import { getNamedSlot } from '../getNamedSlot';
+import { throwException } from '../log';
 
-export const getNamedSlotOrThrow = (el: HTMLElement, slotName: string): HTMLElement => {
-  const slot = getNamedSlot(el, slotName);
-
-  if (!slot) {
-    throw new Error(`Named slot '${slotName}' is missing on element ${getTagName(el)}`);
-  }
-
-  return slot;
+export const getNamedSlotOrThrow = (el: HTMLElement, slotName: string): HTMLElement | void => {
+  return (
+    getNamedSlot(el, slotName) ||
+    throwException(`named slot "${slotName}" is missing for component "${getTagNameWithoutPrefix(el)}"`)
+  );
 };

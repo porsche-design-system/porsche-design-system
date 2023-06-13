@@ -1,11 +1,11 @@
 import type { IconName } from '../../types';
-import { getClosestHTMLElement, hasCounter, hasDocument } from '../../utils';
+import { getClosestHTMLElement, hasCounter, hasDocument, throwException } from '../../utils';
 import { borderWidthBase } from '@porsche-design-system/utilities-v2';
 import { cssVariableInputPaddingLeft, cssVariableInputPaddingRight } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
-export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
+export type TextFieldWrapperUnitPosition = (typeof UNIT_POSITIONS)[number];
 
 export type TextFieldWrapperActionIcon = Extract<IconName, 'locate'>;
 export type TextFieldWrapperState = FormState;
@@ -42,7 +42,7 @@ export const setInputStyles = (
 
 export const throwIfUnitLengthExceeded = (unit: string): void => {
   if (unit.length > 5) {
-    throw new RangeError(`unit: ${unit} passed to 'p-text-field-wrapper' exceeds the maximum length of 5`);
+    throwException(`unit="${unit}" passed to "p-text-field-wrapper" exceeds the maximum length of 5.`);
   }
 };
 

@@ -1,7 +1,7 @@
 import { throwIfInvalidLinkUsage } from './throwIfInvalidLinkUsage';
 
 const errorMessage =
-  '"Usage of div is not valid. Please provide a href property or a single and direct \'a\' child element."';
+  '"[Porsche Design System] usage of div is not valid. Please provide a href property or a single and direct "a" child element."';
 
 describe('with href value', () => {
   const href = '#';

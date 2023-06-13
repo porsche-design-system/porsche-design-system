@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable } from '../breakpoint-customizable';
-import { getTagName } from '../tag-name';
+import { getTagNameWithoutPrefix } from '../tag-name';
 import type { TileAlign, TileAspectRatio, TileSize } from '../';
+import { throwException } from '../';
 
 // does not take care of breakpoint customizable
 export const throwIfAlignTopAndNotCompact = (
@@ -9,7 +10,9 @@ export const throwIfAlignTopAndNotCompact = (
   compact: BreakpointCustomizable<boolean>
 ): void => {
   if (align === 'top' && (!compact || (typeof compact === 'string' && compact === 'false'))) {
-    throw new Error(`Usage of ${getTagName(host)} is not valid. Top alignment is only possible when compact is true.`);
+    throwException(
+      `usage of ${getTagNameWithoutPrefix(host)} is not valid. align="top" is only possible with compact="true".`
+    );
   }
 };
 
