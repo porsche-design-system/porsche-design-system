@@ -52,9 +52,9 @@ export const printErrorMessage = ({
   componentName,
 }: ValidationError & { componentName: string }): void => {
   consoleError(
-    `Invalid property '${propName}' with value '${formatObjectOutput(
+    `Invalid property "${propName}" with value "${formatObjectOutput(
       propValue
-    )}' supplied to '${componentName}', expected one of: ${propType}`
+    )}" supplied to "${componentName}", expected one of: ${propType}`
   );
 };
 

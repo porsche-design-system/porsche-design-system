@@ -1,4 +1,5 @@
 import * as validatePropsUtils from './validateProps';
+import * as loggerUtils from '../log/logger';
 import * as breakpointCustomizableUtils from '../breakpoint-customizable';
 import * as jsonUtils from '../json';
 import {
@@ -555,12 +556,11 @@ describe('formatArrayOutput()', () => {
 });
 
 describe('printErrorMessage()', () => {
-  it('should call console.error() with correct parameter', () => {
-    let message: string;
-    const spy = jest.spyOn(global.console, 'error').mockImplementation((msg) => (message = msg));
+  it('should call consoleError() util with correct parameter', () => {
+    const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
     printErrorMessage({ propName: 'href', propValue: 'a', propType: 'string', componentName: 'p-link' });
 
     expect(spy).toBeCalledWith(expect.any(String));
-    expect(message).toMatchSnapshot();
+    expect(spy.mock.calls[0][0]).toMatchSnapshot();
   });
 });

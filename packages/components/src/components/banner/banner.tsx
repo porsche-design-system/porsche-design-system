@@ -15,7 +15,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
-import { getDeprecatedPropWarningMessage } from '../../utils/log/helper';
+import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
@@ -119,8 +119,8 @@ export class Banner {
     const hasTitleSlot = hasNamedSlot(this.host, 'title');
     if (hasTitleSlot) {
       consoleWarn(
-        getDeprecatedPropWarningMessage(this.host, 'slot="title"'),
-        'Please use the "heading" prop or slot="heading" instead.'
+        getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="title"'),
+        'Please use the heading prop or slot="heading" instead.'
       );
     }
     attachComponentCss(this.host, getComponentCss, this.open);

@@ -24,9 +24,9 @@ export const warnIfIsLoadingAndIconIsNone = (
 ): void => {
   if (loading && !hasVisibleIcon(iconName, iconSource)) {
     consoleWarn(
-      `The combination of properties "icon='${iconName}'" and loading='${loading} within ${getTagName(
+      `combination of properties icon="${iconName}" and loading="${loading}" for component "${getTagName(
         host
-      )} is not supported.`
+      )}" is not supported.`
     );
   }
 };

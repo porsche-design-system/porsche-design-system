@@ -1,5 +1,5 @@
 import type { Class, FunctionPropertyNames } from '../../types';
-import { getDeprecatedPropWarningMessage } from './helper';
+import { getDeprecatedPropOrSlotWarningMessage } from './helper';
 import { consoleWarn } from './logger';
 
 export const warnIfDeprecatedPropIsUsed = <C extends Class<any>>(
@@ -9,6 +9,9 @@ export const warnIfDeprecatedPropIsUsed = <C extends Class<any>>(
 ): void => {
   const propValue = instance[prop];
   if (propValue !== undefined && propValue !== null) {
-    consoleWarn(getDeprecatedPropWarningMessage(instance.host as HTMLElement, prop as string), additionalText);
+    consoleWarn(
+      getDeprecatedPropOrSlotWarningMessage(instance.host as HTMLElement, prop as string),
+      additionalText || ''
+    );
   }
 };

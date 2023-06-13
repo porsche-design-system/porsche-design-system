@@ -1,11 +1,11 @@
-import { consoleWarn, getTagName, hasNamedSlot } from '../../../utils';
+import { consoleWarn, getTagNameWithoutPrefix, hasNamedSlot } from '../../../utils';
 
-export const warnIfCaptionIsUndefined = (host: HTMLElement, caption: string): void => {
+export const warnIfCaptionIsMissing = (host: HTMLElement, caption: string): void => {
   if (!caption && !hasNamedSlot(host, 'caption')) {
     consoleWarn(
-      `Property "caption" of ${getTagName(
+      `caption has to be set via property or named slot for component "${getTagNameWithoutPrefix(
         host
-      )} needs to be provided to fulfill accessibility requirements, either as prop or named slot.`
+      )}" in order to ensure accessibility.`
     );
   }
 };

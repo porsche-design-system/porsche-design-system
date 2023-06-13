@@ -1,4 +1,7 @@
-const prefix = '[Porsche Design System]';
+const prefix =
+  process.env.NODE_ENV === 'production'
+    ? `[Porsche Design System v${ROLLUP_REPLACE_VERSION}]`
+    : '[Porsche Design System]';
 
 export const consoleWarn = (...messages: string[]): void => {
   console.warn(prefix, ...messages); // eslint-disable-line no-console
