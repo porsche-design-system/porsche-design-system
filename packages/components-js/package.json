@@ -76,7 +76,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
     "@types/node": "^20.2.5",
-    "concurrently": "^8.1.0",
+    "concurrently": "^8.2.0",
     "devtools-protocol": "^0.0.1151065",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.7",

@@ -62,7 +62,7 @@
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
     "change-case": "^4.1.2",
-    "concurrently": "^8.1.0",
+    "concurrently": "^8.2.0",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^8.0.1",
     "eslint": "^8.41.0",
