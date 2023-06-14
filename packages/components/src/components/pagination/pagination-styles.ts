@@ -48,6 +48,7 @@ export const getComponentCss = (
       nav: {
         display: 'flex',
         justifyContent: 'center',
+        userSelect: 'none',
         ...buildResponsiveStyles(maxNumberOfPageLinks, (n: PaginationMaxNumberOfPageLinks) => ({
           counterReset: `size ${n}`,
         })),

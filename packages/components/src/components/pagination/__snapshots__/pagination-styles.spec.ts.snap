@@ -10,6 +10,7 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: {
 nav {
   display: flex;
   justify-content: center;
+  user-select: none;
   counter-reset: size 5;
 }
 ul {
@@ -133,6 +134,7 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5
 nav {
   display: flex;
   justify-content: center;
+  user-select: none;
   counter-reset: size 5;
 }
 ul {
@@ -229,6 +231,7 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5
 nav {
   display: flex;
   justify-content: center;
+  user-select: none;
   counter-reset: size 5;
 }
 ul {
@@ -325,6 +328,7 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7
 nav {
   display: flex;
   justify-content: center;
+  user-select: none;
   counter-reset: size 7;
 }
 ul {
@@ -421,6 +425,7 @@ exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7
 nav {
   display: flex;
   justify-content: center;
+  user-select: none;
   counter-reset: size 7;
 }
 ul {
