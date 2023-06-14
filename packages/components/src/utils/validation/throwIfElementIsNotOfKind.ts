@@ -8,6 +8,6 @@ export const throwIfElementIsNotOfKind = (host: HTMLElement, element: HTMLElemen
   const slotTagName = getTagName(element);
 
   if (slotTagName !== prefixedTagName) {
-    throwException(`slot "${element}" has to be a "${prefixedTagName}" but received "${slotTagName}".`);
+    throwException(`slot '${element}' has to be a '${prefixedTagName}' but received '${slotTagName}'.`);
   }
 };

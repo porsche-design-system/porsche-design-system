@@ -11,7 +11,7 @@ export const throwIfAlignTopAndNotCompact = (
 ): void => {
   if (align === 'top' && (!compact || (typeof compact === 'string' && compact === 'false'))) {
     throwException(
-      `usage of ${getTagNameWithoutPrefix(host)} is not valid. align="top" is only possible with compact="true".`
+      `usage of ${getTagNameWithoutPrefix(host)} is not valid. align='top' is only possible with compact='true'.`
     );
   }
 };

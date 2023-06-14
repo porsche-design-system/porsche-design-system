@@ -55,7 +55,7 @@ describe('warnIfHeadingIsMissing()', () => {
 
     warnIfHeadingIsMissing(host, undefined);
     expect(spy).toBeCalledWith(
-      'heading has to be set via property or named slot for component "p-carousel" in order to ensure accessibility.'
+      'heading has to be set via property or named slot for component p-carousel in order to ensure accessibility.'
     );
 
     warnIfHeadingIsMissing(host, null);

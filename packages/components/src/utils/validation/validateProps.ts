@@ -4,7 +4,7 @@ import type { BreakpointValues } from '../breakpoint-customizable';
 import { parseJSON } from '../breakpoint-customizable';
 import { breakpoints } from '@porsche-design-system/utilities-v2';
 import { parseJSONAttribute } from '../json';
-import { consoleError, getTagName } from '..';
+import { consoleError, getTagNameWithoutPrefix } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
@@ -52,9 +52,9 @@ export const printErrorMessage = ({
   componentName,
 }: ValidationError & { componentName: string }): void => {
   consoleError(
-    `Invalid property "${propName}" with value "${formatObjectOutput(
+    `Invalid property '${propName}' with value '${formatObjectOutput(
       propValue
-    )}" supplied to "${componentName}", expected one of: ${propType}`
+    )}' supplied to ${componentName}, expected one of: ${propType}`
   );
 };
 
@@ -237,5 +237,7 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
   Object.entries(propTypes)
     .map(([propKey, validatorFunc]: [string, ValidatorFunction]) => validatorFunc(propKey, instance[propKey]))
     .filter((x) => x)
-    .forEach((error) => printErrorMessage({ ...error, componentName: getTagName(instance.host as HTMLElement) }));
+    .forEach((error) =>
+      printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) })
+    );
 };

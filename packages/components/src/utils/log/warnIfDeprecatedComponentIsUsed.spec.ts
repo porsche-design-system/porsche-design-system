@@ -7,7 +7,7 @@ it('should call consoleWarn() util with correct parameter', () => {
   warnIfDeprecatedComponentIsUsed(host, 'Use some other component instead.');
 
   expect(spy).toHaveBeenCalledWith(
-    'component "div" is deprecated and will be removed with next major release.',
+    'component div is deprecated and will be removed with next major release.',
     'Use some other component instead.'
   );
 });

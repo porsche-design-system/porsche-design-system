@@ -3,9 +3,9 @@ import { consoleWarn, getTagNameWithoutPrefix, hasNamedSlot } from '../../../uti
 export const warnIfCaptionIsMissing = (host: HTMLElement, caption: string): void => {
   if (!caption && !hasNamedSlot(host, 'caption')) {
     consoleWarn(
-      `caption has to be set via property or named slot for component "${getTagNameWithoutPrefix(
+      `caption has to be set via property or named slot for component ${getTagNameWithoutPrefix(
         host
-      )}" in order to ensure accessibility.`
+      )} in order to ensure accessibility.`
     );
   }
 };

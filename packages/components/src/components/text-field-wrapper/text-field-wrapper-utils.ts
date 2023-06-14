@@ -42,7 +42,7 @@ export const setInputStyles = (
 
 export const throwIfUnitLengthExceeded = (unit: string): void => {
   if (unit.length > 5) {
-    throwException(`unit="${unit}" passed to "p-text-field-wrapper" exceeds the maximum length of 5.`);
+    throwException(`unit='${unit}' passed to 'p-text-field-wrapper' exceeds the maximum length of 5.`);
   }
 };
 

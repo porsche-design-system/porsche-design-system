@@ -9,7 +9,7 @@ describe('throwIfAlignTopAndNotCompact()', () => {
   ])('should throw error for align: %s and compact: %s', (align, compact) => {
     const divElement = document.createElement('div');
     expect(() => throwIfAlignTopAndNotCompact(divElement, align, compact)).toThrowErrorMatchingInlineSnapshot(
-      '"[Porsche Design System] usage of div is not valid. align="top" is only possible with compact="true"."'
+      "\"[Porsche Design System] usage of div is not valid. align='top' is only possible with compact='true'.\""
     );
   });
 

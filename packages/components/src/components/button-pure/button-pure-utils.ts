@@ -3,7 +3,7 @@ import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes, TextSi
 import {
   consoleWarn,
   getButtonBaseAriaAttributes,
-  getTagName,
+  getTagNameWithoutPrefix,
   hasVisibleIcon,
   parseAndGetAriaAttributes,
 } from '../../utils';
@@ -24,9 +24,9 @@ export const warnIfIsLoadingAndIconIsNone = (
 ): void => {
   if (loading && !hasVisibleIcon(iconName, iconSource)) {
     consoleWarn(
-      `combination of properties icon="${iconName}" and loading="${loading}" for component "${getTagName(
+      `combination of properties icon='${iconName}' and loading='${loading}' for component ${getTagNameWithoutPrefix(
         host
-      )}" is not supported.`
+      )} is not supported.`
     );
   }
 };

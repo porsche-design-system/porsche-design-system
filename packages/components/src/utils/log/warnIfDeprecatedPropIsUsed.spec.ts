@@ -1,7 +1,7 @@
 import { warnIfDeprecatedPropIsUsed } from './warnIfDeprecatedPropIsUsed';
 import * as loggerUtils from '../../utils/log/logger';
 
-const warningMessage = 'deprecatedProp is deprecated for component "span" and will be removed with next major release.';
+const warningMessage = 'deprecatedProp is deprecated for component span and will be removed with next major release.';
 
 class SomeInstance {
   host = document.createElement('span');

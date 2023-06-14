@@ -17,7 +17,7 @@ export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): v
     throwException(
       `usage of ${getTagNameWithoutPrefix(
         host
-      )} is not valid. Please provide a href property or a single and direct "a" child element.`
+      )} is not valid. Please provide a href property or a single and direct <a> child element.`
     );
   }
 };
