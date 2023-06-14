@@ -1,11 +1,11 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, hasNamedSlot } from '../../utils';
-import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
-import { bulletActiveClass, bulletHidden, bulletInfiniteClass } from './carousel-styles';
+import { bulletActiveClass, bulletInfiniteClass, paginationInfiniteClass } from './carousel-styles';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
@@ -13,8 +13,9 @@ export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
-const CAROUSEL_INFINITE_BULLET_AMOUNT = 5;
-const CAROUSEL_INFINITE_BULLET_TRESHHOLD = 5;
+const INFINITE_BULLET_OFFSET = 2;
+const INFINITE_BULLET_AMOUNT = INFINITE_BULLET_OFFSET * 2 + 1;
+const INFINITE_BULLET_THRESHOLD = 5;
 
 // https://splidejs.com/guides/i18n/#default-texts
 // extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types
@@ -94,60 +95,55 @@ export const updatePrevNextButtons = (btnPrev: ButtonPure, btnNext: ButtonPure, 
   };
 };
 
+export const isInfinitePagination = (amountOfPages: number): boolean => {
+  return amountOfPages > INFINITE_BULLET_THRESHOLD;
+};
+
 export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number, activeIndex: number): void => {
   if (paginationEl) {
-    const isInfinitePagination = amountOfPages > CAROUSEL_INFINITE_BULLET_TRESHHOLD;
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
     activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(Array(amountOfPages))
       .map((_, i) => `<span class='bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}'></span>`)
       .join('');
-    if (isInfinitePagination) {
-      // Set all bullets hidden initially
-      Array.from(paginationEl.children as HTMLCollectionOf<HTMLElement>).forEach((bullet) => {
-        bullet.classList.add(bulletHidden);
-      });
+    if (isInfinitePagination(amountOfPages)) {
       updateBulletState(paginationEl, amountOfPages, activeIndex);
     }
   }
 };
 
 export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
-  const edgeArea = 3;
-  const isActiveIndexStart = newIndex < edgeArea;
-  const isActiveIndexEnd = newIndex > amountOfPages - 1 - edgeArea;
-  const isInfiniteBullet = (bulletIndex: number) => {
-    const isInfiniteBulletAfterActive = isActiveIndexStart
-      ? bulletIndex === CAROUSEL_INFINITE_BULLET_AMOUNT - 1
-      : bulletIndex === newIndex + 2;
-    const isInfiniteBulletBeforeActive = isActiveIndexEnd
-      ? bulletIndex === amountOfPages - CAROUSEL_INFINITE_BULLET_AMOUNT
-      : bulletIndex === newIndex - 2;
-    return isInfiniteBulletAfterActive || isInfiniteBulletBeforeActive;
-  };
-  const isHiddenBullet = (bulletIndex: number) => {
-    const isHiddenBulletAfterActive = isActiveIndexStart
-      ? bulletIndex > CAROUSEL_INFINITE_BULLET_AMOUNT - 1
-      : bulletIndex > newIndex + 2;
-    const isHiddenBulletBeforeActive = isActiveIndexEnd
-      ? bulletIndex < amountOfPages - CAROUSEL_INFINITE_BULLET_AMOUNT
-      : bulletIndex < newIndex - 2;
-    return isHiddenBulletAfterActive || isHiddenBulletBeforeActive;
-  };
+  const edgeCaseIndex = INFINITE_BULLET_OFFSET + 1;
+  const isStartCase = newIndex < edgeCaseIndex - 1;
+  const isEndCase = newIndex > amountOfPages - 1 - edgeCaseIndex;
+  const infiniteBulletRight = newIndex + INFINITE_BULLET_OFFSET;
+  const infiniteBulletLeft = newIndex - INFINITE_BULLET_OFFSET;
+
+  const isInfiniteBulletStart = (bulletIndex: number): boolean =>
+    isEndCase ? bulletIndex === amountOfPages - INFINITE_BULLET_AMOUNT : bulletIndex === infiniteBulletLeft;
+
+  const isInfiniteBulletEnd = (bulletIndex: number): boolean =>
+    isStartCase ? bulletIndex === INFINITE_BULLET_AMOUNT - 1 : bulletIndex === infiniteBulletRight;
+
+  // Update pagination translate position
+  const transformValue = (isEndCase ? amountOfPages - INFINITE_BULLET_AMOUNT : Math.max(newIndex - 2, 0)) * 8;
+  paginationEl.style.transform = `translateX(-${transformValue}px)`;
 
   // Only update bullets around newIndex
-  for (let i = newIndex - 5; i < newIndex + 5; i++) {
-    const index = i >= 0 ? i : amountOfPages + i;
-    paginationEl.children[index]?.classList[isInfiniteBullet(index) ? 'add' : 'remove'](bulletInfiniteClass);
-    paginationEl.children[index]?.classList[isHiddenBullet(index) ? 'add' : 'remove'](bulletHidden);
+  for (let i = newIndex - INFINITE_BULLET_AMOUNT - 1; i < newIndex + INFINITE_BULLET_AMOUNT + 1; i++) {
+    const index = (i + amountOfPages) % amountOfPages;
+    paginationEl.children[index]?.classList[
+      isInfiniteBulletStart(index) || isInfiniteBulletEnd(index) ? 'add' : 'remove'
+    ](bulletInfiniteClass);
   }
+  paginationEl.classList[isStartCase ? 'add' : 'remove'](paginationInfiniteClass);
 };
 
 export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
   if (paginationEl) {
     paginationEl.querySelector('.' + bulletActiveClass).classList.remove(bulletActiveClass);
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
-    if (amountOfPages > CAROUSEL_INFINITE_BULLET_TRESHHOLD) {
+    if (isInfinitePagination(amountOfPages)) {
       updateBulletState(paginationEl, amountOfPages, newIndex);
     }
   }

@@ -31,9 +31,14 @@ import {
 
 export const carouselTransitionDuration = 400;
 export const bulletActiveClass = 'bullet--active';
+export const paginationInfiniteClass = 'pagination--infinite';
 export const bulletInfiniteClass = 'bullet--infinite';
 
-export const bulletHidden = 'bullet--hidden';
+export const infiniteModifier = '--infinite';
+
+const paginationBulletSize = '8px';
+const paginationInfiniteBulletSize = '4px';
+const paginationActiveBulletSize = '20px';
 
 const selectorHeading = 'h2,::slotted([slot=heading])';
 const selectorDescription = 'p,::slotted([slot=description])';
@@ -53,6 +58,7 @@ const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: stri
 export const getComponentCss = (
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
+  isInfinitePagniation: boolean,
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
@@ -167,32 +173,60 @@ export const getComponentCss = (
     //     display: block,
     //   }
     ...(hasPagination && {
+      ['pagination-container']: {
+        position: 'relative',
+        width: `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * 4 + ${spacingStaticSmall} * 4)`, // Width for five bullets (one active + spacing)
+        left: 'calc(50% - 42px)',
+        overflowX: 'hidden',
+      },
       pagination: {
         ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
           display: hasPaginationValue ? 'flex' : 'none',
         })),
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
+        width: 'fit-content',
         gap: spacingStaticSmall,
+        transition: `all ${carouselTransitionDuration}ms`,
+        ...(isInfinitePagniation && {
+          [`& > .${bulletInfiniteClass} ~ span, & > .${bulletActiveClass} ~ span`]: {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+          [`& > .${bulletInfiniteClass} ~ .${bulletInfiniteClass} ~ span, & > .${bulletActiveClass} ~ .${bulletInfiniteClass} ~ span`]:
+            {
+              width: '0px',
+              height: '0px',
+            },
+          [`& > span.${bulletInfiniteClass}`]: {
+            width: paginationInfiniteBulletSize,
+            height: paginationInfiniteBulletSize,
+          },
+          [`&${infiniteModifier} > .bullet:nth-child(-n+4)`]: {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+        }),
+        [`& > span.${bulletActiveClass}`]: {
+          background: isHighContrastMode ? canvasTextColor : primaryColor,
+          height: paginationBulletSize,
+          width: `${paginationActiveBulletSize} !important`,
+        },
       },
       bullet: {
         borderRadius: borderRadiusSmall,
         background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
+        ...(isInfinitePagniation
+          ? {
+              width: '0px',
+              height: '0px',
+            }
+          : {
+              width: paginationBulletSize,
+              height: paginationBulletSize,
+            }),
         // set transition to have the same speed as switching slides in splide
         transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms, height ${carouselTransitionDuration}ms`,
-        width: '8px',
-        height: '8px',
-      },
-      [bulletActiveClass]: {
-        background: isHighContrastMode ? canvasTextColor : primaryColor,
-        width: '20px',
-      },
-      [bulletInfiniteClass]: {
-        width: '4px',
-        height: '4px',
-      },
-      [bulletHidden]: {
-        display: 'none',
       },
     }),
   });
