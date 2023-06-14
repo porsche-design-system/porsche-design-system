@@ -419,10 +419,10 @@
   resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.10.1.tgz#70e45678f06c72fa2e350e8553ec4a4d72b92e06"
   integrity sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==
 
-"@axe-core/puppeteer@^4.7.1":
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.7.1.tgz#43555e3650a413132e30e9d38288315274b7a4ef"
-  integrity sha512-I54CqakQ32I/wW0GOMEPiDK7P8pU3T/rbNNINs6UkXsSSYv8BZrKtKJEn7xELLt8PGxYTaG7c6D88U7tLaXOlA==
+"@axe-core/puppeteer@^4.7.3":
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/@axe-core/puppeteer/-/puppeteer-4.7.3.tgz#46b67584b67415a32b0bb6c118bec29e23b9cb4b"
+  integrity sha512-a+fkO0l4hHehEqHPJBhkZv0lz7SZlDMnYE52Sx2JuX0AMfcgL+UxcPo0QrS9LaqNXXhU67xCCqQVSinlGFixcQ==
   dependencies:
     axe-core "^4.7.0"
 
