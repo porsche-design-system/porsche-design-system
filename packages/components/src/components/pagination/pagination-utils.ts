@@ -6,7 +6,6 @@
  *
  * Adapted from ultimate-pagination
  * https://github.com/ultimate-pagination/ultimate-pagination
- *
  */
 
 export const PAGINATION_NUMBER_OF_PAGE_LINKS = [5, 7] as const;
@@ -16,12 +15,6 @@ export type PaginationUpdateEvent = { page: number; previousPage: number };
 // TODO: first and last wording similar to carousel?
 export type PaginationInternationalization = Partial<Record<'root' | 'prev' | 'next' | 'page', string>> | string; // string to support attribute, gets removed via InputParser
 
-export type PageItemType = 'PAGE';
-export type EllipsisItemType = 'ELLIPSIS';
-export type PreviousPageLinkItemType = 'PREVIOUS_PAGE_LINK';
-export type NextPageLinkItemType = 'NEXT_PAGE_LINK';
-export type PaginationItemType = PageItemType | EllipsisItemType | PreviousPageLinkItemType | NextPageLinkItemType;
-
 export type PaginationOptions = {
   activePage: number;
   pageTotal: number;
@@ -29,42 +22,28 @@ export type PaginationOptions = {
 };
 
 export type PaginationItem = {
-  value: number;
+  value?: number;
   isActive: boolean;
-  type: PaginationItemType;
+  type: ItemType;
 };
 
-// TODO: create enum?
-export const itemTypes: {
-  PAGE: PageItemType;
-  ELLIPSIS: EllipsisItemType;
-  PREVIOUS_PAGE_LINK: PreviousPageLinkItemType;
-  NEXT_PAGE_LINK: NextPageLinkItemType;
-} = {
-  PAGE: 'PAGE',
-  ELLIPSIS: 'ELLIPSIS',
-  PREVIOUS_PAGE_LINK: 'PREVIOUS_PAGE_LINK',
-  NEXT_PAGE_LINK: 'NEXT_PAGE_LINK',
+export enum ItemType {
+  PAGE,
+  ELLIPSIS,
+  PREVIOUS,
+  NEXT,
+}
+
+const ellipsisItem: PaginationItem = {
+  type: ItemType.ELLIPSIS,
+  isActive: false,
 };
-
-// TODO: merge factories
-const createFirstEllipsis = (pageNumber: number): PaginationItem => ({
-  type: itemTypes.ELLIPSIS,
-  value: pageNumber,
-  isActive: false,
-});
-
-const createLastEllipsis = (pageNumber: number): PaginationItem => ({
-  type: itemTypes.ELLIPSIS,
-  value: pageNumber,
-  isActive: false,
-});
 
 const createPreviousPageLink = (options: PaginationOptions): PaginationItem => {
   const { activePage } = options;
 
   return {
-    type: itemTypes.PREVIOUS_PAGE_LINK,
+    type: ItemType.PREVIOUS,
     value: Math.max(1, activePage - 1),
     isActive: activePage > 1,
   };
@@ -74,7 +53,7 @@ const createNextPageLink = (options: PaginationOptions): PaginationItem => {
   const { activePage, pageTotal } = options;
 
   return {
-    type: itemTypes.NEXT_PAGE_LINK,
+    type: ItemType.NEXT,
     value: Math.min(pageTotal, activePage + 1),
     isActive: activePage < pageTotal,
   };
@@ -82,7 +61,7 @@ const createNextPageLink = (options: PaginationOptions): PaginationItem => {
 
 const createPageFunctionFactory = (options: PaginationOptions): ((pageNumber: number) => PaginationItem) => {
   return (pageNumber): PaginationItem => ({
-    type: itemTypes.PAGE,
+    type: ItemType.PAGE,
     value: pageNumber,
     isActive: pageNumber === options.activePage,
   });
@@ -127,8 +106,7 @@ export const createPaginationModel = (options: PaginationOptions): PaginationIte
     // Calculate and add ellipsis before group of middle pages
     const firstEllipsisPageNumber = middlePagesStart - 1;
     const showPageInsteadOfFirstEllipsis = firstEllipsisPageNumber === firstPagesEnd + 1;
-    const createFirstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage : createFirstEllipsis;
-    const firstEllipsisOrPage = createFirstEllipsisOrPage(firstEllipsisPageNumber);
+    const firstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage(firstEllipsisPageNumber) : ellipsisItem;
     paginationModel.push(firstEllipsisOrPage);
 
     // Add group of middle pages
@@ -137,8 +115,7 @@ export const createPaginationModel = (options: PaginationOptions): PaginationIte
     // Calculate and add ellipsis after group of middle pages
     const lastEllipsisPageNumber = middlePagesEnd + 1;
     const showPageInsteadOfLastEllipsis = lastEllipsisPageNumber === lastPagesStart - 1;
-    const createLastEllipsisOrPage = showPageInsteadOfLastEllipsis ? createPage : createLastEllipsis;
-    const lastEllipsisOrPage = createLastEllipsisOrPage(lastEllipsisPageNumber);
+    const lastEllipsisOrPage = showPageInsteadOfLastEllipsis ? createPage(lastEllipsisPageNumber) : ellipsisItem;
     paginationModel.push(lastEllipsisOrPage);
 
     // Add group of last pages

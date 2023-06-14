@@ -20,7 +20,7 @@ import {
   getCounterResetValue,
   getCurrentActivePage,
   getTotalPages,
-  itemTypes,
+  ItemType,
   PAGINATION_NUMBER_OF_PAGE_LINKS,
 } from './pagination-utils';
 import { listenResize } from '../../utils/window-resize-listener';
@@ -174,7 +174,7 @@ export class Pagination {
             };
 
             switch (type) {
-              case itemTypes.PREVIOUS_PAGE_LINK:
+              case ItemType.PREVIOUS:
                 return (
                   <li key="prev">
                     <span
@@ -187,14 +187,14 @@ export class Pagination {
                   </li>
                 );
 
-              case itemTypes.ELLIPSIS:
+              case ItemType.ELLIPSIS:
                 return (
                   <li key="ellipsis">
                     <span class="ellipsis" />
                   </li>
                 );
 
-              case itemTypes.PAGE:
+              case ItemType.PAGE:
                 return (
                   <li key={value}>
                     <span
@@ -208,7 +208,7 @@ export class Pagination {
                   </li>
                 );
 
-              case itemTypes.NEXT_PAGE_LINK:
+              case ItemType.NEXT:
                 return (
                   <li key="next">
                     <span
