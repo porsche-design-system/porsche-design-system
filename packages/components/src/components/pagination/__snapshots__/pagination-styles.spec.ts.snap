@@ -40,7 +40,7 @@ span {
   border-radius: 4px;
   border-color: transparent;
 }
-span:not(.ellipsis):focus::before {
+span:not(.ellipsis):focus:focus-visible::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -50,15 +50,11 @@ span:not(.ellipsis):focus::before {
   border: 2px solid #1A44EA;
   border-radius: 8px;
 }
-span:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   color: #FBFCFF;
   border: 2px solid #FBFCFF;
-  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
@@ -114,7 +110,7 @@ span[aria-current]:not(.ellipsis):focus::before {
   span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -167,7 +163,7 @@ span {
   border-radius: 4px;
   border-color: transparent;
 }
-span:not(.ellipsis):focus::before {
+span:not(.ellipsis):focus:focus-visible::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -177,15 +173,11 @@ span:not(.ellipsis):focus::before {
   border: 2px solid #1A44EA;
   border-radius: 8px;
 }
-span:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   color: #FBFCFF;
   border: 2px solid #FBFCFF;
-  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
@@ -214,7 +206,7 @@ span[aria-current]:not(.ellipsis):focus::before {
   span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -267,7 +259,7 @@ span {
   border-radius: 4px;
   border-color: transparent;
 }
-span:not(.ellipsis):focus::before {
+span:not(.ellipsis):focus:focus-visible::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -277,15 +269,11 @@ span:not(.ellipsis):focus::before {
   border: 2px solid #1A44EA;
   border-radius: 8px;
 }
-span:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   color: #010205;
   border: 2px solid #010205;
-  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
@@ -314,7 +302,7 @@ span[aria-current]:not(.ellipsis):focus::before {
   span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -367,7 +355,7 @@ span {
   border-radius: 4px;
   border-color: transparent;
 }
-span:not(.ellipsis):focus::before {
+span:not(.ellipsis):focus:focus-visible::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -377,15 +365,11 @@ span:not(.ellipsis):focus::before {
   border: 2px solid #1A44EA;
   border-radius: 8px;
 }
-span:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   color: #FBFCFF;
   border: 2px solid #FBFCFF;
-  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
@@ -414,7 +398,7 @@ span[aria-current]:not(.ellipsis):focus::before {
   span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -467,7 +451,7 @@ span {
   border-radius: 4px;
   border-color: transparent;
 }
-span:not(.ellipsis):focus::before {
+span:not(.ellipsis):focus:focus-visible::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -477,15 +461,11 @@ span:not(.ellipsis):focus::before {
   border: 2px solid #1A44EA;
   border-radius: 8px;
 }
-span:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
 span[aria-current] {
   cursor: default;
   pointer-events: none;
   color: #010205;
   border: 2px solid #010205;
-  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
@@ -514,7 +494,7 @@ span[aria-current]:not(.ellipsis):focus::before {
   span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
