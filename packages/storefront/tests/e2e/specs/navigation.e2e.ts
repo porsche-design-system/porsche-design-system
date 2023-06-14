@@ -5,6 +5,7 @@ import { paramCase } from 'change-case';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers/puppeteer-helper';
+import { selectNode } from '@porsche-design-system/angular/tests/e2e/helpers';
 
 let browserPage: Page;
 
@@ -19,12 +20,12 @@ beforeEach(async () => {
 afterEach(async () => await browserPage.close());
 
 const isTabActive = (element: ElementHandle | null): Promise<boolean> =>
-  element.evaluate((el ) => el.className.includes('router-link-active'));
-const isLinkActive = (element: ElementHandle | null): Promise<boolean> =>
-  element.evaluate((el ) => el.active);
+  element.evaluate((el) => el.className.includes('router-link-active'));
+const isLinkActive = (element: ElementHandle | null): Promise<boolean> => element.evaluate((el) => el.active);
 const getMainTitle = (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
 const hasPageObjectObject = (page: Page): Promise<boolean> =>
   page.evaluate(() => document.body.innerText.includes('[object Object]'));
+const article = await selectNode(browserPage, 'article');
 
 /**
  * to override transition duration of accordion
@@ -48,9 +49,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
   for (const [page, tabs] of Object.entries(pages).sort(([a], [b]) => a.localeCompare(b))) {
     ((category: string, page: string) => {
       it(`should navigate to "${category} > ${page}"`, async () => {
-        const [accordionButton] = await browserPage.$x(
-          `//aside//nav/p-accordion[@heading='${category}']`
-        );
+        const [accordionButton] = await browserPage.$x(`//aside//nav/p-accordion[@heading='${category}']`);
         const href = `\/${paramCase(category)}\/${paramCase(page)}`;
         const [linkElement] = await browserPage.$x(
           `//aside//nav//p-link-pure/a[contains(., '${page}')][@href='${href}']/parent::p-link-pure`
@@ -83,7 +82,13 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             }
 
             await tabElement.click();
-            await browserPage.waitForNetworkIdle();
+            await browserPage.waitForFunction(
+              (element: Element & { prevInnerHtml: string }) => {
+                return element.innerHTML !== element.prevInnerHtml;
+              },
+              {},
+              article
+            );
             await browserPage.evaluate(() => (window as any).componentsReady());
 
             expect(await isTabActive(tabElement), 'should have tab active after click').toBe(true);
