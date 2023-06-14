@@ -56,7 +56,7 @@ export class LinkSocial {
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
-    warnIfDeprecatedComponentIsUsed(this.host, 'Use "p-link" component with corresponding social icon instead.');
+    warnIfDeprecatedComponentIsUsed(this.host, 'Use p-link component with corresponding social icon instead.');
     doNothing(); // TODO: this function does nothing but treats for unknowns reasons e.g. getThemedColors to be bundled into main chunk
   }
 
