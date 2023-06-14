@@ -8,7 +8,7 @@ describe('scrollToPositionHandler', () => {
     component.scrollToPosition = { scrollPosition: 100 };
     component['scrollAreaElement'] = document.createElement('p-scroller');
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
-    jest.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation(() => {});
+    jest.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation();
 
     component.scrollToPositionHandler();
 
@@ -20,7 +20,7 @@ describe('scrollToPositionHandler', () => {
     const component = new Scroller();
     component.scrollToPosition = { scrollPosition: 100, isSmooth: true };
     component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = jest.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation(() => {});
+    const spy = jest.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation();
 
     component.scrollToPositionHandler();
 
@@ -65,7 +65,7 @@ describe('componentDidLoad', () => {
   });
   it('should call scrollToPositionHandler() if scrollToPosition', () => {
     const component = new Scroller();
-    jest.spyOn(component, 'initIntersectionObserver' as any).mockImplementation(() => {});
+    jest.spyOn(component, 'initIntersectionObserver' as any).mockImplementation();
     component.scrollToPosition = { scrollPosition: 100 };
     component['scrollAreaElement'] = document.createElement('p-scroller');
     const spy = jest.spyOn(component, 'scrollToPositionHandler');

@@ -14,7 +14,7 @@ describe('warnIfDeprecatedPropIsUsed()', () => {
     instance.deprecatedProp = 'something';
     const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).toHaveBeenCalledWith(warningMessage, '');
+    expect(spy).toBeCalledWith(warningMessage, '');
   });
 
   it('should call consoleWarn() util with correct parameters when prop is false', () => {
@@ -22,7 +22,7 @@ describe('warnIfDeprecatedPropIsUsed()', () => {
     instance.deprecatedProp = false;
     const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).toHaveBeenCalledWith(warningMessage, '');
+    expect(spy).toBeCalledWith(warningMessage, '');
   });
 
   it('should call consoleWarn() util with correct parameters when prop is 0', () => {
@@ -30,7 +30,7 @@ describe('warnIfDeprecatedPropIsUsed()', () => {
     instance.deprecatedProp = 0;
     const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp', 'some other text');
-    expect(spy).toHaveBeenCalledWith(warningMessage, 'some other text');
+    expect(spy).toBeCalledWith(warningMessage, 'some other text');
   });
 
   it('should not call consoleWarn() util when prop is undefined', () => {
@@ -38,7 +38,7 @@ describe('warnIfDeprecatedPropIsUsed()', () => {
     instance.deprecatedProp = undefined;
     const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).not.toBeCalled();
   });
 
   it('should not call consoleWarn() util when prop is null', () => {
@@ -46,6 +46,6 @@ describe('warnIfDeprecatedPropIsUsed()', () => {
     instance.deprecatedProp = null;
     const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).not.toBeCalled();
   });
 });

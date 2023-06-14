@@ -3,7 +3,7 @@ import { warnIfCaptionIsMissing } from './table-utils';
 describe('warnIfCaptionIsMissing()', () => {
   let spy;
   beforeEach(() => {
-    spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    spy = jest.spyOn(global.console, 'warn').mockImplementation();
   });
   afterEach(() => {
     spy.mockRestore();

@@ -2,7 +2,7 @@ import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './but
 
 describe('warnIfIsLoadingAndIconIsNone()', () => {
   it('should print warning if property icon = none, iconSource = "" and loading = true', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     const host = document.createElement('p-button-pure');
 
     warnIfIsLoadingAndIconIsNone(host, true, 'highway', '');

@@ -40,7 +40,7 @@ describe('getSplideBreakpoints()', () => {
 
 describe('warnIfHeadingIsMissing()', () => {
   it('should call hasNamedSlot() with correct parameters', () => {
-    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    jest.spyOn(global.console, 'warn').mockImplementation();
     const spy = jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot');
     const host = document.createElement('p-carousel');
 
@@ -66,7 +66,7 @@ describe('warnIfHeadingIsMissing()', () => {
   });
 
   it('should not call consoleWarn() util if heading prop is set', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     const host = document.createElement('p-carousel');
 
     warnIfHeadingIsMissing(host, 'some heading');
@@ -74,7 +74,7 @@ describe('warnIfHeadingIsMissing()', () => {
   });
 
   it('should not call consoleWarn() util if slotted heading exists', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(true);
     const host = document.createElement('p-carousel');
 
