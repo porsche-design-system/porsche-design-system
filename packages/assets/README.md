@@ -22,12 +22,10 @@ yarn add @porsche-design-system/assets
 ### Usage
 
 ```js
-import { EMAIL_CDN_BASE_URL, EMAIL_MANIFEST } from '@porsche-design-system/assets';
 import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
 import { META_ICONS_CDN_BASE_URL, META_ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
 
-const emailMarqueUrl = `${EMAIL_CDN_BASE_URL}/${EMAIL_MANIFEST.porscheMarque}`;
 const marqueMediumUrl = `${MARQUES_CDN_BASE_URL}/${MARQUES_MANIFEST.porscheMarque.medium}`;
 const metaFaviconUrl = `${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.favicon.favicon_16x16}`;
 const iconCarUrl = `${ICONS_CDN_BASE_URL}/${ICONS_MANIFEST.car}`;
