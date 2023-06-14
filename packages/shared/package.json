@@ -46,7 +46,7 @@
     "@octokit/core": "^4.2.1",
     "@rollup/plugin-typescript": "^11.1.0",
     "@types/madge": "^5.0.0",
-    "@types/node": "^20.2.5",
+    "@types/node": "^20.3.1",
     "@types/pixelmatch": "^5.2.4",
     "@types/sharp": "^0.32.0",
     "change-case": "^4.1.2",
