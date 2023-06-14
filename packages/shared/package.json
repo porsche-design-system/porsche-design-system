@@ -51,7 +51,7 @@
     "@types/sharp": "^0.32.0",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
-    "madge": "^6.0.0",
+    "madge": "^6.1.0",
     "rollup": "^3.25.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
