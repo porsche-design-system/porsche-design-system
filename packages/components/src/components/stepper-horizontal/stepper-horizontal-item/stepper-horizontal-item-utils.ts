@@ -24,7 +24,7 @@ export const throwIfCurrentAndDisabled = (host: HTMLElement): void => {
     (host as HTMLPStepperHorizontalItemElement).state === 'current' &&
     (host as HTMLPStepperHorizontalItemElement).disabled
   ) {
-    throwException(`using state="current" and disabled="true" for ${getTagNameWithoutPrefix(host)} is not allowed.`);
+    throwException(`using state='current' and disabled='true' for ${getTagNameWithoutPrefix(host)} is not allowed.`);
   }
 };
 

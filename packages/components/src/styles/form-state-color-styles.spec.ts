@@ -8,7 +8,7 @@ describe('getThemedFormStateColors()', () => {
     ['dark', 'none'],
     ['dark', 'success'],
     ['dark', 'error'],
-  ])('should return correct colors for theme: %o and state: %o', (...args) => {
+  ])('should return correct colors for theme: %s and state: %s', (...args) => {
     expect(getThemedFormStateColors(...args)).toMatchSnapshot();
   });
 });
