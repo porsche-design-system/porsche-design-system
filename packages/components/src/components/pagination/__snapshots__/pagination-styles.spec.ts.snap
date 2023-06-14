@@ -54,7 +54,8 @@ span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 span[aria-current] {
-  disabled-cursor-style: [object Object];
+  cursor: default;
+  pointer-events: none;
   color: #FBFCFF;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
@@ -180,7 +181,8 @@ span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 span[aria-current] {
-  disabled-cursor-style: [object Object];
+  cursor: default;
+  pointer-events: none;
   color: #FBFCFF;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
@@ -279,7 +281,8 @@ span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 span[aria-current] {
-  disabled-cursor-style: [object Object];
+  cursor: default;
+  pointer-events: none;
   color: #010205;
   border: 2px solid #010205;
   border-radius: 4px;
@@ -378,7 +381,8 @@ span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 span[aria-current] {
-  disabled-cursor-style: [object Object];
+  cursor: default;
+  pointer-events: none;
   color: #FBFCFF;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
@@ -477,7 +481,8 @@ span:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
 span[aria-current] {
-  disabled-cursor-style: [object Object];
+  cursor: default;
+  pointer-events: none;
   color: #010205;
   border: 2px solid #010205;
   border-radius: 4px;

@@ -105,13 +105,11 @@ export const getComponentCss = (
           borderColor: 'transparent',
         },
         '&[aria-current]': {
-          disabledCursorStyle,
+          ...disabledCursorStyle,
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
           borderRadius: borderRadiusSmall,
-          '&:not(.ellipsis):focus::before': {
-            ...getInsetJssStyle(-6),
-          },
+          '&:not(.ellipsis):focus::before': getInsetJssStyle(-6),
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
