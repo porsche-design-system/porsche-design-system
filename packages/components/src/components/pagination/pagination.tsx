@@ -4,8 +4,11 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  observeBreakpointChange,
+  parseJSON,
   parseJSONAttribute,
   THEMES,
+  unobserveBreakpointChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -23,7 +26,6 @@ import {
   ItemType,
   PAGINATION_NUMBER_OF_PAGE_LINKS,
 } from './pagination-utils';
-import { listenResize } from '../../utils/window-resize-listener';
 import { getComponentCss } from './pagination-styles';
 
 const propTypes: PropTypes<typeof Pagination> = {
@@ -108,22 +110,22 @@ export class Pagination {
   @State() private breakpointMaxNumberOfPageLinks: PaginationMaxNumberOfPageLinks = 7;
 
   private navigationElement: HTMLElement;
-  private unlistenResize: () => void;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
+  public connectedCallback(): void {
+    this.observeBreakpointChange(); // on reconnect
+  }
 
+  public componentDidLoad(): void {
+    this.observeBreakpointChange(); // initially or slow prop binding
     this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
   public disconnectedCallback(): void {
-    if (this.unlistenResize) {
-      this.unlistenResize();
-    }
+    unobserveBreakpointChange(this.host);
   }
 
   public render(): JSX.Element {
@@ -245,6 +247,13 @@ export class Pagination {
   }
 
   private updateMaxNumberOfPageLinks = (): void => {
+    // TODO: change this to a non js solution to support SSR and prevent initial rerender
     this.breakpointMaxNumberOfPageLinks = getCounterResetValue(this.navigationElement);
+  };
+
+  private observeBreakpointChange = (): void => {
+    if (typeof parseJSON(this.maxNumberOfPageLinks) === 'object') {
+      observeBreakpointChange(this.host, this.updateMaxNumberOfPageLinks);
+    }
   };
 }

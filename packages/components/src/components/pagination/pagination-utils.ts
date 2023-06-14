@@ -155,7 +155,6 @@ export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): nu
 
 // TODO: change this to a non js solution to support SSR
 export const getCounterResetValue = (element: Element): PaginationMaxNumberOfPageLinks => {
-  const computedStyles = getComputedStyle(element);
-  const [, value] = computedStyles.getPropertyValue('counter-reset').split(' ');
+  const [, value] = getComputedStyle(element).counterReset.split(' ');
   return parseInt(value, 10) as PaginationMaxNumberOfPageLinks;
 };
