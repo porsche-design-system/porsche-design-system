@@ -228,15 +228,10 @@ export class Pagination {
   }
 
   private onKeyDown(event: KeyboardEvent, page: number): void {
-    /**
-     * from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
-     */
+    // from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
     const { key } = event;
     if (key === ' ' || key === 'Enter' || key === 'Spacebar') {
-      /**
-       * Prevent the default action to stop scrolling when space is pressed
-       */
-      event.preventDefault();
+      event.preventDefault(); // prevent the default action to stop scrolling when space is pressed
       this.onClick(page);
     }
   }

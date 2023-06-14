@@ -1,5 +1,3 @@
-import { throwException } from '../../utils';
-
 /**
  * Universal pagination model generation algorithm
  *
@@ -24,115 +22,82 @@ export type PreviousPageLinkItemType = 'PREVIOUS_PAGE_LINK';
 export type NextPageLinkItemType = 'NEXT_PAGE_LINK';
 export type PaginationItemType = PageItemType | EllipsisItemType | PreviousPageLinkItemType | NextPageLinkItemType;
 
-export type ItemTypes = {
-  PAGE: PageItemType;
-  ELLIPSIS: EllipsisItemType;
-  PREVIOUS_PAGE_LINK: PreviousPageLinkItemType;
-  NEXT_PAGE_LINK: NextPageLinkItemType;
-};
-
-export type ItemKeys = {
-  [type: string]: number;
-  FIRST_ELLIPSIS: number;
-  SECOND_ELLIPSIS: number;
-  PREVIOUS_PAGE_LINK: number;
-  NEXT_PAGE_LINK: number;
-};
-
-export type PaginationModelOptions = {
+export type PaginationOptions = {
   activePage: number;
   pageTotal: number;
   pageRange: number;
 };
 
-export type PaginationModelItem = {
-  key: number; // TODO: unused?
+export type PaginationItem = {
   value: number;
   isActive: boolean;
   type: PaginationItemType;
 };
 
-// TODO: create enum
-export const itemTypes: ItemTypes = {
+// TODO: create enum?
+export const itemTypes: {
+  PAGE: PageItemType;
+  ELLIPSIS: EllipsisItemType;
+  PREVIOUS_PAGE_LINK: PreviousPageLinkItemType;
+  NEXT_PAGE_LINK: NextPageLinkItemType;
+} = {
   PAGE: 'PAGE',
   ELLIPSIS: 'ELLIPSIS',
   PREVIOUS_PAGE_LINK: 'PREVIOUS_PAGE_LINK',
   NEXT_PAGE_LINK: 'NEXT_PAGE_LINK',
 };
 
-// TODO: unused?
-const itemKeys: ItemKeys = {
-  FIRST_ELLIPSIS: -1,
-  SECOND_ELLIPSIS: -2,
-  PREVIOUS_PAGE_LINK: -4,
-  NEXT_PAGE_LINK: -5,
-};
-
 // TODO: merge factories
-const createFirstEllipsis = (pageNumber: number): PaginationModelItem => ({
+const createFirstEllipsis = (pageNumber: number): PaginationItem => ({
   type: itemTypes.ELLIPSIS,
-  key: itemKeys.FIRST_ELLIPSIS,
   value: pageNumber,
   isActive: false,
 });
 
-const createSecondEllipsis = (pageNumber: number): PaginationModelItem => ({
+const createLastEllipsis = (pageNumber: number): PaginationItem => ({
   type: itemTypes.ELLIPSIS,
-  key: itemKeys.SECOND_ELLIPSIS,
   value: pageNumber,
   isActive: false,
 });
 
-const createPreviousPageLink = (options: PaginationModelOptions): PaginationModelItem => {
+const createPreviousPageLink = (options: PaginationOptions): PaginationItem => {
   const { activePage } = options;
 
   return {
     type: itemTypes.PREVIOUS_PAGE_LINK,
-    key: itemKeys.PREVIOUS_PAGE_LINK,
     value: Math.max(1, activePage - 1),
     isActive: activePage > 1,
   };
 };
 
-const createNextPageLink = (options: PaginationModelOptions): PaginationModelItem => {
+const createNextPageLink = (options: PaginationOptions): PaginationItem => {
   const { activePage, pageTotal } = options;
 
   return {
     type: itemTypes.NEXT_PAGE_LINK,
-    key: itemKeys.NEXT_PAGE_LINK,
     value: Math.min(pageTotal, activePage + 1),
     isActive: activePage < pageTotal,
   };
 };
 
-const createPageFunctionFactory = (options: PaginationModelOptions): ((pageNumber: number) => PaginationModelItem) => {
-  const { activePage } = options;
-
-  return (pageNumber): PaginationModelItem => ({
+const createPageFunctionFactory = (options: PaginationOptions): ((pageNumber: number) => PaginationItem) => {
+  return (pageNumber): PaginationItem => ({
     type: itemTypes.PAGE,
-    key: pageNumber,
     value: pageNumber,
-    isActive: pageNumber === activePage,
+    isActive: pageNumber === options.activePage,
   });
 };
 
 export const createRange = (start: number, end: number): number[] =>
   Array.from(Array(end - start + 1)).map((_, i) => i + start);
 
-export const createPaginationModel = (options: PaginationModelOptions): PaginationModelItem[] => {
-  // exception tests
-  if (options == null) {
-    throwException('createPaginationModel(): options object should be a passed.');
-  }
-
+export const createPaginationModel = (options: PaginationOptions): PaginationItem[] => {
   const { pageTotal, activePage, pageRange } = options;
 
   const boundaryPagesRange = 1;
   const ellipsisSize = 1;
-  const paginationModel: PaginationModelItem[] = [];
+  const paginationModel: PaginationItem[] = [createPreviousPageLink(options)];
   const createPage = createPageFunctionFactory(options);
-
-  paginationModel.push(createPreviousPageLink(options));
 
   // Simplify generation of pages if number of available items is equal or greater than total pages to show
   if (1 + 2 * ellipsisSize + 2 * pageRange + 2 * boundaryPagesRange >= pageTotal) {
@@ -146,36 +111,35 @@ export const createPaginationModel = (options: PaginationModelOptions): Paginati
 
     // Calculate group of last pages
     const lastPagesStart = pageTotal + 1 - boundaryPagesRange;
-    const lastPagesEnd = pageTotal;
-    const lastPages = createRange(lastPagesStart, lastPagesEnd).map(createPage);
+    const lastPages = createRange(lastPagesStart, pageTotal).map(createPage);
 
-    // Calculate group of main pages
-    const mainPagesStart = Math.min(
+    // Calculate group of middle pages
+    const middlePagesStart = Math.min(
       Math.max(activePage - pageRange, firstPagesEnd + ellipsisSize + 1),
       lastPagesStart - ellipsisSize - 2 * pageRange - 1
     );
-    const mainPagesEnd = mainPagesStart + 2 * pageRange;
-    const mainPages = createRange(mainPagesStart, mainPagesEnd).map(createPage);
+    const middlePagesEnd = middlePagesStart + 2 * pageRange;
+    const middlePages = createRange(middlePagesStart, middlePagesEnd).map(createPage);
 
     // Add group of first pages
     paginationModel.push(...firstPages);
 
-    // Calculate and add ellipsis before group of main pages
-    const firstEllipsisPageNumber = mainPagesStart - 1;
+    // Calculate and add ellipsis before group of middle pages
+    const firstEllipsisPageNumber = middlePagesStart - 1;
     const showPageInsteadOfFirstEllipsis = firstEllipsisPageNumber === firstPagesEnd + 1;
     const createFirstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage : createFirstEllipsis;
-    const firstEllipsis = createFirstEllipsisOrPage(firstEllipsisPageNumber);
-    paginationModel.push(firstEllipsis);
+    const firstEllipsisOrPage = createFirstEllipsisOrPage(firstEllipsisPageNumber);
+    paginationModel.push(firstEllipsisOrPage);
 
-    // Add group of main pages
-    paginationModel.push(...mainPages);
+    // Add group of middle pages
+    paginationModel.push(...middlePages);
 
-    // Calculate and add ellipsis after group of main pages
-    const secondEllipsisPageNumber = mainPagesEnd + 1;
-    const showPageInsteadOfSecondEllipsis = secondEllipsisPageNumber === lastPagesStart - 1;
-    const createSecondEllipsisOrPage = showPageInsteadOfSecondEllipsis ? createPage : createSecondEllipsis;
-    const secondEllipsis = createSecondEllipsisOrPage(secondEllipsisPageNumber);
-    paginationModel.push(secondEllipsis);
+    // Calculate and add ellipsis after group of middle pages
+    const lastEllipsisPageNumber = middlePagesEnd + 1;
+    const showPageInsteadOfLastEllipsis = lastEllipsisPageNumber === lastPagesStart - 1;
+    const createLastEllipsisOrPage = showPageInsteadOfLastEllipsis ? createPage : createLastEllipsis;
+    const lastEllipsisOrPage = createLastEllipsisOrPage(lastEllipsisPageNumber);
+    paginationModel.push(lastEllipsisOrPage);
 
     // Add group of last pages
     paginationModel.push(...lastPages);
@@ -187,11 +151,6 @@ export const createPaginationModel = (options: PaginationModelOptions): Paginati
 };
 
 export const getCurrentActivePage = (activePage: number, totalPages: number): number => {
-  // exception tests
-  if (activePage === undefined || totalPages === undefined) {
-    throwException('getCurrentActivePage(): activePage and totalPages props must be provided.');
-  }
-
   // Obviously we can't be on a negative or 0 page.
   if (activePage < 1) {
     activePage = 1;
@@ -206,11 +165,6 @@ export const getCurrentActivePage = (activePage: number, totalPages: number): nu
 };
 
 export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): number => {
-  // exception test
-  if (totalItemsCount === undefined || itemsPerPage === undefined) {
-    throwException('getTotalPages(): totalItemsCount and itemsPerPage props must be provided.');
-  }
-
   if (totalItemsCount < 1) {
     totalItemsCount = 1;
   }
@@ -222,6 +176,7 @@ export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): nu
   return Math.ceil(totalItemsCount / itemsPerPage);
 };
 
+// TODO: change this to a non js solution to support SSR
 export const getCounterResetValue = (element: Element): PaginationMaxNumberOfPageLinks => {
   const computedStyles = getComputedStyle(element);
   const [, value] = computedStyles.getPropertyValue('counter-reset').split(' ');
