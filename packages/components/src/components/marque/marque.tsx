@@ -56,7 +56,7 @@ export class Marque {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-wordmark" component instead.');
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new p-wordmark component instead.');
     attachComponentCss(this.host, getComponentCss, this.size);
 
     const innerManifest = getInnerManifest(this.variant, this.trademark);

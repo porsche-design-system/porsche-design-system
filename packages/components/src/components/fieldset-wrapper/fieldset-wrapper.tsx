@@ -54,7 +54,7 @@ export class FieldsetWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-fieldset" component instead.');
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new p-fieldset component instead.');
     attachComponentCss(
       this.host,
       getComponentCss,
