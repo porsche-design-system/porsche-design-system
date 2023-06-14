@@ -3267,10 +3267,10 @@
     unbzip2-stream "1.4.3"
     yargs "17.7.1"
 
-"@remix-run/dev@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.16.1.tgz#925da5b62761302c435d371b4e85751dacc6102c"
-  integrity sha512-PrCIOa4qkZISW9l2tAX9+KMPSfO9QfMGfBZz6rd79v/GQ9N2bhWgKGWwzWhlGWJoVnnRZT5VRIy6YZsepa52/A==
+"@remix-run/dev@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.17.0.tgz#d6e5629a66aa8fc167da8850515936e455e264d4"
+  integrity sha512-UczyZdcUfQCS8a53VT4UtGFUCLYPKFiMwfvZMMgDL6kbWnYrknvXkXICqG26QbyR3bKDR6JPm5I6wVsmTGp+vQ==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/generator" "^7.21.5"
@@ -3282,7 +3282,7 @@
     "@babel/traverse" "^7.21.5"
     "@babel/types" "^7.21.5"
     "@npmcli/package-json" "^2.0.0"
-    "@remix-run/server-runtime" "1.16.1"
+    "@remix-run/server-runtime" "1.17.0"
     "@vanilla-extract/integration" "^6.2.0"
     arg "^5.0.1"
     cacache "^15.0.5"
@@ -3307,11 +3307,12 @@
     minimatch "^9.0.0"
     node-fetch "^2.6.9"
     ora "^5.4.1"
+    picomatch "^2.3.1"
     postcss "^8.4.19"
     postcss-discard-duplicates "^5.1.0"
     postcss-load-config "^4.0.1"
     postcss-modules "^6.0.0"
-    prettier "2.7.1"
+    prettier "^2.7.1"
     pretty-ms "^7.0.1"
     proxy-agent "^5.0.0"
     react-refresh "^0.14.0"
@@ -3325,10 +3326,10 @@
     ws "^7.4.5"
     xdm "^2.0.0"
 
-"@remix-run/eslint-config@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/eslint-config/-/eslint-config-1.16.1.tgz#059fe15791f7f57f8b71c1c78171a07e7da334e5"
-  integrity sha512-oVkkpgVrTM3CcKaaw5ZOwVjV+yGi7DzgEnjD+BCnLVj4CHQNc9KsNOwVW1ub9JqW5mnBdly5MHDcocEft2LJBw==
+"@remix-run/eslint-config@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/eslint-config/-/eslint-config-1.17.0.tgz#a676af11ce1bd4cc5a0a5480715f1bf0d67ded84"
+  integrity sha512-tOIRQN1knA529DbZab/oCh5v3aMJh34auj6H9L7R/fFeOocqhQPK3EZCqdkw5GDNKjFCrfcSUMFuLVBD8Ye5Zw==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/eslint-parser" "^7.21.8"
@@ -3397,17 +3398,6 @@
     compression "^1.7.4"
     express "^4.17.1"
     morgan "^1.10.0"
-
-"@remix-run/server-runtime@1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.16.1.tgz#e3680d5709ff3c4d1f2396820a828fdf6a7a1519"
-  integrity sha512-HG+f3PGE9kzTTPe5i5Hv7UGrJLmFID1Ae4BMohP5e0xXOxbdlKDPj6NN6yGDgE7OqKFuDVliW2B5LlUdJZgUFw==
-  dependencies:
-    "@remix-run/router" "1.6.2"
-    "@web3-storage/multipart-parser" "^1.0.0"
-    cookie "^0.4.1"
-    set-cookie-parser "^2.4.8"
-    source-map "^0.7.3"
 
 "@remix-run/server-runtime@1.17.0", "@remix-run/server-runtime@^1.17.0":
   version "1.17.0"
@@ -3563,10 +3553,10 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@rushstack/eslint-patch@^1.1.0", "@rushstack/eslint-patch@^1.1.3", "@rushstack/eslint-patch@^1.2.0", "@rushstack/eslint-patch@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.3.0.tgz#f5635b36fc0dad96ef1e542a302cd914230188c0"
-  integrity sha512-IthPJsJR85GhOkp3Hvp8zFOPK5ynKn6STyHa/WZpioK7E1aYDiBzpqQPrngc14DszIUkIrdd3k9Iu0XSzlP/1w==
+"@rushstack/eslint-patch@^1.1.0", "@rushstack/eslint-patch@^1.1.3", "@rushstack/eslint-patch@^1.2.0", "@rushstack/eslint-patch@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.3.1.tgz#edbb85ff95f3be41eaa70c6d6ad6d8ba0a9c7e46"
+  integrity sha512-RkmuBcqiNioeeBKbgzMlOdreUkJfYaSjwgx9XDgGGpjvWgyaxWvDmZVSN9CS6LjEASadhgPv2BcFp+SeouWXXA==
 
 "@schematics/angular@15.2.8":
   version "15.2.8"
@@ -19787,12 +19777,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
-  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
-
-"prettier@^1.18.2 || ^2.0.0", prettier@^2.8.8:
+"prettier@^1.18.2 || ^2.0.0", prettier@^2.7.1, prettier@^2.8.8:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
