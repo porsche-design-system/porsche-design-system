@@ -19,11 +19,12 @@ export type PaginationOptions = {
   activePage: number;
   pageTotal: number;
   pageRange: number;
+  showLastPage: boolean;
 };
 
 export type PaginationItem = {
-  value?: number;
-  isActive: boolean;
+  value?: number; // relevant for clickable elements
+  isActive: boolean; // affects aria-disabled and aria-current
   type: ItemType;
 };
 
@@ -71,7 +72,7 @@ export const createRange = (start: number, end: number): number[] =>
   Array.from(Array(end - start + 1)).map((_, i) => i + start);
 
 export const createPaginationModel = (options: PaginationOptions): PaginationItem[] => {
-  const { pageTotal, activePage, pageRange } = options;
+  const { pageTotal, activePage, pageRange, showLastPage } = options;
 
   const boundaryPagesRange = 1;
   const ellipsisSize = 1;
@@ -83,29 +84,20 @@ export const createPaginationModel = (options: PaginationOptions): PaginationIte
     const allPages = createRange(1, pageTotal).map(createPage);
     paginationModel.push(...allPages);
   } else {
-    // Calculate group of first pages
-    const firstPagesStart = 1;
-    const firstPagesEnd = boundaryPagesRange;
-    const firstPages = createRange(firstPagesStart, firstPagesEnd).map(createPage);
-
-    // Calculate group of last pages
-    const lastPagesStart = pageTotal + 1 - boundaryPagesRange;
-    const lastPages = createRange(lastPagesStart, pageTotal).map(createPage);
+    // Add first page
+    paginationModel.push(createPage(1));
 
     // Calculate group of middle pages
     const middlePagesStart = Math.min(
-      Math.max(activePage - pageRange, firstPagesEnd + ellipsisSize + 1),
-      lastPagesStart - ellipsisSize - 2 * pageRange - 1
+      Math.max(activePage - pageRange, 2 + ellipsisSize),
+      pageTotal - ellipsisSize - 2 * pageRange - 1
     );
     const middlePagesEnd = middlePagesStart + 2 * pageRange;
     const middlePages = createRange(middlePagesStart, middlePagesEnd).map(createPage);
 
-    // Add group of first pages
-    paginationModel.push(...firstPages);
-
     // Calculate and add ellipsis before group of middle pages
     const firstEllipsisPageNumber = middlePagesStart - 1;
-    const showPageInsteadOfFirstEllipsis = firstEllipsisPageNumber === firstPagesEnd + 1;
+    const showPageInsteadOfFirstEllipsis = firstEllipsisPageNumber === 2;
     const firstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage(firstEllipsisPageNumber) : ellipsisItem;
     paginationModel.push(firstEllipsisOrPage);
 
@@ -114,12 +106,14 @@ export const createPaginationModel = (options: PaginationOptions): PaginationIte
 
     // Calculate and add ellipsis after group of middle pages
     const lastEllipsisPageNumber = middlePagesEnd + 1;
-    const showPageInsteadOfLastEllipsis = lastEllipsisPageNumber === lastPagesStart - 1;
+    const showPageInsteadOfLastEllipsis = lastEllipsisPageNumber === pageTotal - 1;
     const lastEllipsisOrPage = showPageInsteadOfLastEllipsis ? createPage(lastEllipsisPageNumber) : ellipsisItem;
     paginationModel.push(lastEllipsisOrPage);
 
-    // Add group of last pages
-    paginationModel.push(...lastPages);
+    // Add last page
+    if (showLastPage || (!showLastPage && showPageInsteadOfLastEllipsis)) {
+      paginationModel.push(createPage(pageTotal));
+    }
   }
 
   paginationModel.push(createNextPageLink(options));

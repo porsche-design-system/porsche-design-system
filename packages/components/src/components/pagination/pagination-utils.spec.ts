@@ -34,7 +34,9 @@ describe('createPaginationModel()', () => {
   describe('for pageTotal = 1', () => {
     it('should return correct model for 1 of 1', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 1, pageTotal: 1, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 1, pageTotal: 1, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['1(<)', '*1', '1(>)']);
     });
   });
@@ -42,61 +44,81 @@ describe('createPaginationModel()', () => {
   describe('for pageTotal = 10', () => {
     it('should return correct model for 1 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 1, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 1, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['1(<)', '*1', '2', '3', '4', '5', '(...>)', '10', '*2(>)']);
     });
 
     it('should return correct model for 2 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 2, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 2, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*1(<)', '1', '*2', '3', '4', '5', '(...>)', '10', '*3(>)']);
     });
 
     it('should return correct model for 3 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 3, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 3, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*2(<)', '1', '2', '*3', '4', '5', '(...>)', '10', '*4(>)']);
     });
 
     it('should return correct model for 4 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 4, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 4, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*3(<)', '1', '2', '3', '*4', '5', '(...>)', '10', '*5(>)']);
     });
 
     it('should return correct model for 5 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 5, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 5, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*4(<)', '1', '(<...)', '4', '*5', '6', '(...>)', '10', '*6(>)']);
     });
 
     it('should return correct model for 6 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 6, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 6, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*5(<)', '1', '(<...)', '5', '*6', '7', '(...>)', '10', '*7(>)']);
     });
 
     it('should return correct model for 7 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 7, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 7, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*6(<)', '1', '(<...)', '6', '*7', '8', '9', '10', '*8(>)']);
     });
 
     it('should return correct model for 8 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 8, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 8, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*7(<)', '1', '(<...)', '6', '7', '*8', '9', '10', '*9(>)']);
     });
 
     it('should return correct model for 9 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 9, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 9, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*8(<)', '1', '(<...)', '6', '7', '8', '*9', '10', '*10(>)']);
     });
 
     it('should return correct model for 10 of 10', () => {
       expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 10, pageTotal: 10, pageRange: 1 }))
+        formatPaginationModelToASCII(
+          createPaginationModel({ activePage: 10, pageTotal: 10, pageRange: 1, showLastPage: true })
+        )
       ).toEqual(['*9(<)', '1', '(<...)', '6', '7', '8', '9', '*10', '10(>)']);
     });
   });

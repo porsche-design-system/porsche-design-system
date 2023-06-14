@@ -33,6 +33,7 @@ const propTypes: PropTypes<typeof Pagination> = {
   itemsPerPage: AllowedTypes.number,
   activePage: AllowedTypes.number,
   maxNumberOfPageLinks: AllowedTypes.breakpoint<PaginationMaxNumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
+  showLastPage: AllowedTypes.boolean,
   allyLabel: AllowedTypes.string,
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
@@ -62,11 +63,14 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;
 
-  /** The maximum number of page links rendered */
+  /** The maximum number of page links rendered. */
   @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks> = {
     base: 5,
     xs: 7,
   };
+
+  /** Show or hide the button to jump to the last page. */
+  @Prop() public showLastPage?: boolean = true;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead.
@@ -153,6 +157,7 @@ export class Pagination {
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
       pageRange: this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0,
+      showLastPage: this.showLastPage,
     });
     const parsedIntl = parseJSONAttribute(this.intl);
 
@@ -181,8 +186,8 @@ export class Pagination {
                   <li key="prev">
                     <span
                       {...spanProps}
-                      aria-disabled={isActive ? null : 'true'}
                       aria-label={this.allyLabelPrev || parsedIntl.prev}
+                      aria-disabled={isActive ? null : 'true'}
                     >
                       <PrefixedTagNames.pIcon name="arrow-left" {...iconProps} />
                     </span>
@@ -215,8 +220,8 @@ export class Pagination {
                   <li key="next">
                     <span
                       {...spanProps}
-                      aria-disabled={isActive ? null : 'true'}
                       aria-label={this.allyLabelNext || parsedIntl.next}
+                      aria-disabled={isActive ? null : 'true'}
                     >
                       <PrefixedTagNames.pIcon name="arrow-right" {...iconProps} />
                     </span>
