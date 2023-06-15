@@ -28,7 +28,12 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground :markup="basic('{ base: 5, s: 7 }')" :config="config"></Playground>
 
----
+## Without last page
+
+In case you don't need or want the the ability to see and jump to the last page, you can disable it via
+`showLastPage="false"`.
+
+<Playground :markup="withoutLastPage" :config="config"></Playground>
 
 ## Behaviour playground
 
@@ -70,8 +75,10 @@ export default class Code extends Vue {
   }
 
   get behaviour() {
-    return `<p-pagination total-items-count="${this.totalItemsCount}" items-per-page="${this.itemsPerPage}" active-page="${this.activePage}"></p-pagination>`
+    return `<p-pagination total-items-count="${this.totalItemsCount}" items-per-page="${this.itemsPerPage}" active-page="${this.activePage}"></p-pagination>`;
   }
+
+  withoutLastPage = this.basic().replace('>', ' show-last-page="false">');
 
   mounted(){
     this.registerEvents();
