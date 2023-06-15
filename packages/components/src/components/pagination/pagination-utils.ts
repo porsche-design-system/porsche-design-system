@@ -90,7 +90,7 @@ export const createPaginationModel = (options: PaginationOptions): PaginationIte
     // Calculate group of middle pages
     const middlePagesStart = Math.min(
       Math.max(activePage - pageRange, 2 + ellipsisSize),
-      pageTotal - ellipsisSize - 2 * pageRange - 1
+      pageTotal - ellipsisSize - 2 * pageRange - (showLastPage ? 1 : 0)
     );
     const middlePagesEnd = middlePagesStart + 2 * pageRange;
     const middlePages = createRange(middlePagesStart, middlePagesEnd).map(createPage);
@@ -106,12 +106,12 @@ export const createPaginationModel = (options: PaginationOptions): PaginationIte
 
     // Calculate and add ellipsis after group of middle pages
     const lastEllipsisPageNumber = middlePagesEnd + 1;
-    const showPageInsteadOfLastEllipsis = lastEllipsisPageNumber === pageTotal - 1;
+    const showPageInsteadOfLastEllipsis = lastEllipsisPageNumber === pageTotal - (showLastPage ? 1 : 0);
     const lastEllipsisOrPage = showPageInsteadOfLastEllipsis ? createPage(lastEllipsisPageNumber) : ellipsisItem;
     paginationModel.push(lastEllipsisOrPage);
 
     // Add last page
-    if (showLastPage || (!showLastPage && showPageInsteadOfLastEllipsis)) {
+    if (showLastPage) {
       paginationModel.push(createPage(pageTotal));
     }
   }
