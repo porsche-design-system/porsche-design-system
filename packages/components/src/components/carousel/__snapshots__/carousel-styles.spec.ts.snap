@@ -353,19 +353,19 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > span.bullet--active {
-  background: #FBFCFF;
-  height: 8px;
-  width: 20px !important;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
   background: #88898C;
   width: 8px;
   height: 8px;
-  transition: background-color 400ms, width 400ms, height 400ms;
+  transition: background-color 400ms, width 400ms;
+}
+.bullet--active {
+  background: #FBFCFF;
+  height: 8px;
+  width: 20px !important;
 }
 @media(min-width:760px) {
   .header {
@@ -506,19 +506,19 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > span.bullet--active {
-  background: #010205;
-  height: 8px;
-  width: 20px !important;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 8px;
   height: 8px;
-  transition: background-color 400ms, width 400ms, height 400ms;
+  transition: background-color 400ms, width 400ms;
+}
+.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
 }
 @media(min-width:760px) {
   .header {
@@ -659,28 +659,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
-  width: 8px;
-  height: 8px;
-}
-.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
-  width: 0px;
-  height: 0px;
-}
-.pagination > span.bullet--infinite {
-  width: 4px;
-  height: 4px;
-}
-.pagination > span.bullet--active {
-  background: #010205;
-  height: 8px;
-  width: 20px !important;
-}
-.pagination--infinite > .bullet:nth-child(-n+4) {
-  width: 8px;
-  height: 8px;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
@@ -688,6 +667,35 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: 0px;
   height: 0px;
   transition: background-color 400ms, width 400ms, height 400ms;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite {
+  width: 4px !important;
+  height: 4px !important;
+}
+.bullet--infinite ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
 }
 @media(min-width:760px) {
   .header {
@@ -828,28 +836,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
-  width: 8px;
-  height: 8px;
-}
-.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
-  width: 0px;
-  height: 0px;
-}
-.pagination > span.bullet--infinite {
-  width: 4px;
-  height: 4px;
-}
-.pagination > span.bullet--active {
-  background: #FBFCFF;
-  height: 8px;
-  width: 20px !important;
-}
-.pagination--infinite > .bullet:nth-child(-n+4) {
-  width: 8px;
-  height: 8px;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
@@ -857,6 +844,35 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: 0px;
   height: 0px;
   transition: background-color 400ms, width 400ms, height 400ms;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite {
+  width: 4px !important;
+  height: 4px !important;
+}
+.bullet--infinite ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.bullet--active {
+  background: #FBFCFF;
+  height: 8px;
+  width: 20px !important;
+}
+.bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
 }
 @media(min-width:760px) {
   .header {
@@ -996,19 +1012,19 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > span.bullet--active {
-  background: #010205;
-  height: 8px;
-  width: 20px !important;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 8px;
   height: 8px;
-  transition: background-color 400ms, width 400ms, height 400ms;
+  transition: background-color 400ms, width 400ms;
+}
+.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
 }
 @media(min-width:480px) {
   .pagination-container {
@@ -1176,28 +1192,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
-  width: 8px;
-  height: 8px;
-}
-.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
-  width: 0px;
-  height: 0px;
-}
-.pagination > span.bullet--infinite {
-  width: 4px;
-  height: 4px;
-}
-.pagination > span.bullet--active {
-  background: #010205;
-  height: 8px;
-  width: 20px !important;
-}
-.pagination--infinite > .bullet:nth-child(-n+4) {
-  width: 8px;
-  height: 8px;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
@@ -1205,6 +1200,35 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: 0px;
   height: 0px;
   transition: background-color 400ms, width 400ms, height 400ms;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite {
+  width: 4px !important;
+  height: 4px !important;
+}
+.bullet--infinite ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
 }
 @media(min-width:480px) {
   .pagination-container {
@@ -1624,19 +1648,19 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > span.bullet--active {
-  background: #010205;
-  height: 8px;
-  width: 20px !important;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 8px;
   height: 8px;
-  transition: background-color 400ms, width 400ms, height 400ms;
+  transition: background-color 400ms, width 400ms;
+}
+.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
 }
 @media(min-width:760px) {
   .header {
@@ -1777,28 +1801,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   align-items: center;
   width: fit-content;
   gap: 8px;
-  transition: all 400ms;
-}
-.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
-  width: 8px;
-  height: 8px;
-}
-.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
-  width: 0px;
-  height: 0px;
-}
-.pagination > span.bullet--infinite {
-  width: 4px;
-  height: 4px;
-}
-.pagination > span.bullet--active {
-  background: #010205;
-  height: 8px;
-  width: 20px !important;
-}
-.pagination--infinite > .bullet:nth-child(-n+4) {
-  width: 8px;
-  height: 8px;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
@@ -1806,6 +1809,35 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: 0px;
   height: 0px;
   transition: background-color 400ms, width 400ms, height 400ms;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite {
+  width: 4px !important;
+  height: 4px !important;
+}
+.bullet--infinite ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--infinite ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
 }
 @media(min-width:760px) {
   .header {
