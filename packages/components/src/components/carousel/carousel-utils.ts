@@ -5,7 +5,12 @@ import type { BreakpointCustomizable } from '../../types';
 import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, hasNamedSlot } from '../../utils';
 import { ButtonPure } from '../button-pure/button-pure';
-import { bulletActiveClass, bulletInfiniteClass, paginationInfiniteClass } from './carousel-styles';
+import {
+  bulletActiveClass,
+  bulletInfiniteClass,
+  paginationInfiniteClass,
+  paginationBulletSize,
+} from './carousel-styles';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
@@ -113,27 +118,27 @@ export const renderPagination = (paginationEl: HTMLElement, amountOfPages: numbe
 };
 
 export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
-  const edgeCaseIndex = INFINITE_BULLET_OFFSET + 1;
-  const isStartCase = newIndex < edgeCaseIndex - 1;
-  const isEndCase = newIndex > amountOfPages - 1 - edgeCaseIndex;
-  const infiniteBulletRight = newIndex + INFINITE_BULLET_OFFSET;
-  const infiniteBulletLeft = newIndex - INFINITE_BULLET_OFFSET;
+  const isStartCase = newIndex < INFINITE_BULLET_OFFSET;
+  const isEndCase = newIndex > amountOfPages - 1 - INFINITE_BULLET_OFFSET;
+  const infiniteBulletRightIndex = newIndex + INFINITE_BULLET_OFFSET;
+  const infiniteBulletLeftIndex = newIndex - INFINITE_BULLET_OFFSET;
+  const endCaseInfiniteBulletIndex = amountOfPages - INFINITE_BULLET_AMOUNT;
+  const startCaseInfiniteBulletIndex = INFINITE_BULLET_AMOUNT - 1;
 
-  const isInfiniteBulletStart = (bulletIndex: number): boolean =>
-    isEndCase ? bulletIndex === amountOfPages - INFINITE_BULLET_AMOUNT : bulletIndex === infiniteBulletLeft;
+  const isInfiniteBulletLeft = (bulletIndex: number): boolean =>
+    isEndCase ? bulletIndex === endCaseInfiniteBulletIndex : bulletIndex === infiniteBulletLeftIndex;
 
-  const isInfiniteBulletEnd = (bulletIndex: number): boolean =>
-    isStartCase ? bulletIndex === INFINITE_BULLET_AMOUNT - 1 : bulletIndex === infiniteBulletRight;
+  const isInfiniteBulletRight = (bulletIndex: number): boolean =>
+    isStartCase ? bulletIndex === startCaseInfiniteBulletIndex : bulletIndex === infiniteBulletRightIndex;
 
-  // Update pagination translate position
-  const transformValue = (isEndCase ? amountOfPages - INFINITE_BULLET_AMOUNT : Math.max(newIndex - 2, 0)) * 8;
-  paginationEl.style.transform = `translateX(-${transformValue}px)`;
+  const transformValue = isEndCase ? endCaseInfiniteBulletIndex : Math.max(infiniteBulletLeftIndex, 0);
+  paginationEl.style.transform = `translateX(calc(-${transformValue} * ${paginationBulletSize}))`;
 
   // Only update bullets around newIndex
   for (let i = newIndex - INFINITE_BULLET_AMOUNT - 1; i < newIndex + INFINITE_BULLET_AMOUNT + 1; i++) {
     const index = (i + amountOfPages) % amountOfPages;
     paginationEl.children[index]?.classList[
-      isInfiniteBulletStart(index) || isInfiniteBulletEnd(index) ? 'add' : 'remove'
+      isInfiniteBulletLeft(index) || isInfiniteBulletRight(index) ? 'add' : 'remove'
     ](bulletInfiniteClass);
   }
   paginationEl.classList[isStartCase ? 'add' : 'remove'](paginationInfiniteClass);

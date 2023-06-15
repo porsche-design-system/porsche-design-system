@@ -34,9 +34,7 @@ export const bulletActiveClass = 'bullet--active';
 export const paginationInfiniteClass = 'pagination--infinite';
 export const bulletInfiniteClass = 'bullet--infinite';
 
-export const infiniteModifier = '--infinite';
-
-const paginationBulletSize = '8px';
+export const paginationBulletSize = '8px';
 const paginationInfiniteBulletSize = '4px';
 const paginationActiveBulletSize = '20px';
 
@@ -174,16 +172,17 @@ export const getComponentCss = (
     //   }
     ...(hasPagination && {
       ['pagination-container']: {
+        ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
+          display: hasPaginationValue ? 'flex' : 'none',
+        })),
         position: 'relative',
+        justifyContent: isInfinitePagniation ? 'flex-start' : 'center',
         width: `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * 4 + ${spacingStaticSmall} * 4)`, // Width for five bullets (one active + spacing)
         left: 'calc(50% - 42px)',
         overflowX: 'hidden',
       },
       pagination: {
-        ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
-          display: hasPaginationValue ? 'flex' : 'none',
-        })),
-        justifyContent: 'flex-start',
+        display: 'flex',
         alignItems: 'center',
         width: 'fit-content',
         gap: spacingStaticSmall,
@@ -202,10 +201,6 @@ export const getComponentCss = (
             width: paginationInfiniteBulletSize,
             height: paginationInfiniteBulletSize,
           },
-          [`&${infiniteModifier} > .bullet:nth-child(-n+4)`]: {
-            width: paginationBulletSize,
-            height: paginationBulletSize,
-          },
         }),
         [`& > span.${bulletActiveClass}`]: {
           background: isHighContrastMode ? canvasTextColor : primaryColor,
@@ -213,6 +208,14 @@ export const getComponentCss = (
           width: `${paginationActiveBulletSize} !important`,
         },
       },
+      ...(isInfinitePagniation && {
+        [`${paginationInfiniteClass}`]: {
+          ['& > .bullet:nth-child(-n+4)']: {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+        },
+      }),
       bullet: {
         borderRadius: borderRadiusSmall,
         background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
