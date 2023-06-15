@@ -415,6 +415,55 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div>Slide 3</div>
       </p-carousel>
     </div>
+
+    <div class="playground light" title="should render carousel with infinite pagination with active slide at the start">
+      <p-carousel [heading]="'Infinite pagination start'">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+        <div>Slide 5</div>
+        <div>Slide 6</div>
+      </p-carousel>
+    </div>
+
+    <div class="playground light" title="should render carousel with infinite pagination with active slide in the middle">
+      <p-carousel [heading]="'Infinite pagination middle'" [activeSlideIndex]="4">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+        <div>Slide 5</div>
+        <div>Slide 6</div>
+        <div>Slide 7</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground dark"
+      title="should render carousel with infinite pagination with active slide in the middle on dark background"
+    >
+      <p-carousel [heading]="'Infinite pagination middle'" [activeSlideIndex]="4" [theme]="'dark'">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+        <div>Slide 5</div>
+        <div>Slide 6</div>
+        <div>Slide 7</div>
+      </p-carousel>
+    </div>
+
+    <div class="playground light" title="should render carousel with infinite pagination with active slide at the ened">
+      <p-carousel [heading]="'Infinite pagination end'" [activeSlideIndex]="5">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+        <div>Slide 5</div>
+        <div>Slide 6</div>
+      </p-carousel>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
