@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -110,7 +110,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -218,7 +218,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, alignHeader: center and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center and theme: dark 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -291,21 +291,32 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.pagination-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
 .pagination {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  width: fit-content;
   gap: 8px;
+  transition: all 400ms;
+}
+.pagination > span.bullet--active {
+  background: #FBFCFF;
+  height: 8px;
+  width: 20px !important;
 }
 .bullet {
   border-radius: 4px;
   background: #88898C;
-  transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
-}
-.bullet--active {
-  background: #FBFCFF;
-  width: 20px;
+  transition: background-color 400ms, width 400ms, height 400ms;
 }
 @media(min-width:760px) {
   .header {
@@ -344,7 +355,142 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
+":host {
+  display: flex !important;
+  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  flex-direction: column !important;
+  box-sizing: content-box !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  max-width: 56.25rem !important;
+  margin: 0 !important;
+}
+p,::slotted([slot=description]) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  max-width: 34.375rem !important;
+  margin: clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+}
+h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+  color: #010205 !important;
+}
+@media(min-width:760px) {
+  h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+    grid-column: 1 / 3 !important;
+  }
+}
+
+.header {
+  display: grid;
+  padding: 0 max(22px, 10.625vw - 12px);
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 8px;
+}
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+  padding: 0 max(22px, 10.625vw - 12px) !important;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.pagination-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 8px;
+  transition: all 400ms;
+}
+.pagination > span.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.bullet {
+  border-radius: 4px;
+  background: #6B6D70;
+  width: 8px;
+  height: 8px;
+  transition: background-color 400ms, width 400ms, height 400ms;
+}
+@media(min-width:760px) {
+  .header {
+    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    font-size: 1rem;
+    column-gap: 16px;
+    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+    grid-area: 1 / 3 / 3 / auto;
+    align-items: end;
+  }
+  .splide__track {
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+  }
+}
+
+@media(min-width:1920px) {
+  .header {
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+  }
+  .splide__track {
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+  }
+}
+
+@media(max-width:479px) {
+  .splide__track {
+    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -417,21 +563,48 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.pagination-container {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
 .pagination {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  width: fit-content;
   gap: 8px;
+  transition: all 400ms;
+}
+.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.pagination > span.bullet--infinite {
+  width: 4px;
+  height: 4px;
+}
+.pagination > span.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
-  transition: background-color 400ms, width 400ms;
-  width: 8px;
-  height: 8px;
-}
-.bullet--active {
-  background: #010205;
-  width: 20px;
+  width: 0px;
+  height: 0px;
+  transition: background-color 400ms, width 400ms, height 400ms;
 }
 @media(min-width:760px) {
   .header {
@@ -470,7 +643,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, alignHeader: left and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: left and theme: dark 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -542,21 +715,48 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.pagination-container {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
 .pagination {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  width: fit-content;
   gap: 8px;
+  transition: all 400ms;
+}
+.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.pagination > span.bullet--infinite {
+  width: 4px;
+  height: 4px;
+}
+.pagination > span.bullet--active {
+  background: #FBFCFF;
+  height: 8px;
+  width: 20px !important;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
 }
 .bullet {
   border-radius: 4px;
   background: #88898C;
-  transition: background-color 400ms, width 400ms;
-  width: 8px;
-  height: 8px;
-}
-.bullet--active {
-  background: #FBFCFF;
-  width: 20px;
+  width: 0px;
+  height: 0px;
+  transition: background-color 400ms, width 400ms, height 400ms;
 }
 @media(min-width:760px) {
   .header {
@@ -594,7 +794,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -666,149 +866,35 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-.bullet {
-  border-radius: 4px;
-  background: #6B6D70;
-  transition: background-color 400ms, width 400ms;
-  width: 8px;
-  height: 8px;
-}
-.bullet--active {
-  background: #010205;
-  width: 20px;
-}
-@media(min-width:760px) {
-  .header {
-    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    font-size: 1rem;
-    column-gap: 16px;
-    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
-  }
-  .nav {
-    display: flex;
-    gap: 4px;
-    grid-area: 1 / 3 / 3 / auto;
-    align-items: end;
-  }
-  .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
-  }
-}
-
-@media(min-width:1920px) {
-  .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
-  }
-  .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, alignHeader: center and theme: light 1`] = `
-":host {
-  display: flex !important;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
-  flex-direction: column !important;
-  box-sizing: content-box !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-h2,::slotted([slot=heading]) {
-  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  max-width: 56.25rem !important;
-  margin: 0 !important;
-}
-p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  max-width: 34.375rem !important;
-  margin: clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
-}
-h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
-  color: #010205 !important;
-}
-@media(min-width:760px) {
-  h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
-    grid-column: 2 !important;
-  }
-}
-
-.header {
-  display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
-  text-align: center;
-}
-.nav {
+.pagination-container {
   display: none;
-}
-.btn {
-  padding: 8px;
-}
-.splide {
-  overflow: hidden;
-}
-.splide__track {
-  cursor: grab;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
-}
-.splide__list {
-  display: flex;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.splide__slide {
   position: relative;
-  flex-shrink: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-}
-.splide__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.splide__track--draggable {
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
+  justify-content: center;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
 }
 .pagination {
-  display: none;
-  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: fit-content;
   gap: 8px;
+  transition: all 400ms;
+}
+.pagination > span.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
-  transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
-}
-.bullet--active {
-  background: #010205;
-  width: 20px;
+  transition: background-color 400ms, width 400ms, height 400ms;
 }
 @media(min-width:480px) {
-  .pagination {
+  .pagination-container {
     display: flex;
   }
 }
@@ -819,7 +905,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
-    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
@@ -831,25 +916,25 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   .splide__track {
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
-  .pagination {
+  .pagination-container {
     display: none;
   }
 }
 
 @media(min-width:1000px) {
-  .pagination {
+  .pagination-container {
     display: flex;
   }
 }
 
 @media(min-width:1300px) {
-  .pagination {
+  .pagination-container {
     display: none;
   }
 }
 
 @media(min-width:1760px) {
-  .pagination {
+  .pagination-container {
     display: flex;
   }
 }
@@ -871,7 +956,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -898,13 +983,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
-    grid-column: 1 / 3 !important;
+    grid-column: 2 !important;
   }
 }
 
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
+  text-align: center;
 }
 .nav {
   display: none;
@@ -943,24 +1029,51 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.pagination {
+.pagination-container {
   display: none;
-  justify-content: center;
+  position: relative;
+  justify-content: flex-start;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  width: fit-content;
   gap: 8px;
+  transition: all 400ms;
+}
+.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.pagination > span.bullet--infinite {
+  width: 4px;
+  height: 4px;
+}
+.pagination > span.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
-  transition: background-color 400ms, width 400ms;
-  width: 8px;
-  height: 8px;
-}
-.bullet--active {
-  background: #010205;
-  width: 20px;
+  width: 0px;
+  height: 0px;
+  transition: background-color 400ms, width 400ms, height 400ms;
 }
 @media(min-width:480px) {
-  .pagination {
+  .pagination-container {
     display: flex;
   }
 }
@@ -971,6 +1084,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
@@ -982,25 +1096,25 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   .splide__track {
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
-  .pagination {
+  .pagination-container {
     display: none;
   }
 }
 
 @media(min-width:1000px) {
-  .pagination {
+  .pagination-container {
     display: flex;
   }
 }
 
 @media(min-width:1300px) {
-  .pagination {
+  .pagination-container {
     display: none;
   }
 }
 
 @media(min-width:1760px) {
-  .pagination {
+  .pagination-container {
     display: flex;
   }
 }
@@ -1022,7 +1136,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1132,7 +1246,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1240,7 +1354,142 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
+":host {
+  display: flex !important;
+  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  flex-direction: column !important;
+  box-sizing: content-box !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  max-width: 56.25rem !important;
+  margin: 0 !important;
+}
+p,::slotted([slot=description]) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  max-width: 34.375rem !important;
+  margin: clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+}
+h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+  color: #010205 !important;
+}
+@media(min-width:760px) {
+  h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+    grid-column: 1 / 3 !important;
+  }
+}
+
+.header {
+  display: grid;
+  padding: 0 max(22px, 10.625vw - 12px);
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 8px;
+}
+.splide {
+  overflow: hidden;
+}
+.splide__track {
+  cursor: grab;
+  padding: 0 max(22px, 10.625vw - 12px) !important;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.pagination-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 8px;
+  transition: all 400ms;
+}
+.pagination > span.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.bullet {
+  border-radius: 4px;
+  background: #6B6D70;
+  width: 8px;
+  height: 8px;
+  transition: background-color 400ms, width 400ms, height 400ms;
+}
+@media(min-width:760px) {
+  .header {
+    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    font-size: 1rem;
+    column-gap: 16px;
+    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+    grid-area: 1 / 3 / 3 / auto;
+    align-items: end;
+  }
+  .splide__track {
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+  }
+}
+
+@media(min-width:1920px) {
+  .header {
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+  }
+  .splide__track {
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+  }
+}
+
+@media(max-width:479px) {
+  .splide__track {
+    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1313,21 +1562,48 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.pagination-container {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
 .pagination {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  width: fit-content;
   gap: 8px;
+  transition: all 400ms;
+}
+.pagination > .bullet--infinite ~ span, .pagination > .bullet--active ~ span {
+  width: 8px;
+  height: 8px;
+}
+.pagination > .bullet--infinite ~ .bullet--infinite ~ span, .pagination > .bullet--active ~ .bullet--infinite ~ span {
+  width: 0px;
+  height: 0px;
+}
+.pagination > span.bullet--infinite {
+  width: 4px;
+  height: 4px;
+}
+.pagination > span.bullet--active {
+  background: #010205;
+  height: 8px;
+  width: 20px !important;
+}
+.pagination--infinite > .bullet:nth-child(-n+4) {
+  width: 8px;
+  height: 8px;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
-  transition: background-color 400ms, width 400ms;
-  width: 8px;
-  height: 8px;
-}
-.bullet--active {
-  background: #010205;
-  width: 20px;
+  width: 0px;
+  height: 0px;
+  transition: background-color 400ms, width 400ms, height 400ms;
 }
 @media(min-width:760px) {
   .header {
@@ -1336,130 +1612,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     justify-items: center;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
-  }
-  .nav {
-    display: flex;
-    gap: 4px;
-    grid-area: 1 / 3 / 3 / auto;
-    align-items: end;
-  }
-  .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-  }
-}
-
-@media(min-width:1920px) {
-  .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
-  }
-  .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, alignHeader: left and theme: light 1`] = `
-":host {
-  display: flex !important;
-  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
-  flex-direction: column !important;
-  box-sizing: content-box !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-h2,::slotted([slot=heading]) {
-  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  max-width: 56.25rem !important;
-  margin: 0 !important;
-}
-p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  max-width: 34.375rem !important;
-  margin: clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
-}
-h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
-  color: #010205 !important;
-}
-@media(min-width:760px) {
-  h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
-    grid-column: 1 / 3 !important;
-  }
-}
-
-.header {
-  display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
-}
-.nav {
-  display: none;
-}
-.btn {
-  padding: 8px;
-}
-.splide {
-  overflow: hidden;
-}
-.splide__track {
-  cursor: grab;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
-}
-.splide__list {
-  display: flex;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.splide__slide {
-  position: relative;
-  flex-shrink: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-}
-.splide__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.splide__track--draggable {
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-}
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-.bullet {
-  border-radius: 4px;
-  background: #6B6D70;
-  transition: background-color 400ms, width 400ms;
-  width: 8px;
-  height: 8px;
-}
-.bullet--active {
-  background: #010205;
-  width: 20px;
-}
-@media(min-width:760px) {
-  .header {
-    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    font-size: 1rem;
-    column-gap: 16px;
-    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
