@@ -96,16 +96,6 @@ The pagination indicators underneath the slides can be removed via `pagination="
   <SelectOptions v-model="pagination" :values="paginations" name="pagination"></SelectOptions>
 </Playground>
 
-## Focus Behavior
-
-In order to not have focusable elements that are offscreen, the `p-carousel` adds the
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert" target="_blank">`inert`</a> attribute on
-them.  
-For browsers that don't support the `inert` attribute, yet, the component adds a `tabindex="-1"` attribute on `a`,
-`button`, `p-button`, `p-button-pure`, `p-link` and `p-link-pure` elements as a fallback
-
-<Playground :markup="focusBehavior" :config="config"></Playground>
-
 ## Jump to slide (activeSlideIndex)
 
 To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
@@ -159,6 +149,22 @@ type CarouselInternationalization = {
 ```
 
 <Playground :markup="internationalization" :config="config"></Playground>
+
+## Focus Behavior
+
+<Playground :markup="focusBehavior" :config="config"></Playground>
+
+## Skip Carousel Entries
+
+Through the `skipLinkTarget` property, a skip link for keyboard users can be provided to give the possibility to skip
+over all carousel entries. The skip link is only visible when it receives focus from the keyboard.
+
+### <A11yIcon></A11yIcon> Accessibility hints
+
+- The target of the skip link should point to the next heading or element right after the carousel
+- Use the `skipLinkTarget` property if you have >5 carousel items
+
+<Playground :markup="skip" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -269,6 +275,11 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>
 `;
+
+skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/carousel/examples#target">
+  ${this.getSlides(4)}
+</p-carousel>
+<p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
 }
 </script>
 
@@ -282,7 +293,6 @@ export default class Code extends Vue {
     flex-direction: column;
     background: #00b0f4;
     height: 150px;
-    border-radius: $pds-border-radius-small;
   }
 
   :deep(p-carousel) {

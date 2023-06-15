@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof Popover> = {
 
 @Component({
   tag: 'p-popover',
-  shadow: { delegatesFocus: true },
+  shadow: true, // delegatesFocus: true prevents text selection inside
 })
 export class Popover {
   @Element() public host!: HTMLElement;

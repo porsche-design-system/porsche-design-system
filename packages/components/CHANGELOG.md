@@ -14,10 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `skipLinkTarget` property to `Carousel` component to enhance keyboard functionality
+  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
+
 #### Fixed
 
-- Missing styles in Initial Styles Partial for `Flyout` component
+- Partials: `getInitialStyles` supports `Flyout` component
   ([#2598](https://github.com/porsche-design-system/porsche-design-system/pull/2598))
+- `Popover` content can be selected/highlighted
+  ([#2599](https://github.com/porsche-design-system/porsche-design-system/pull/2599))
+
+#### Changed
+
+- `Carousel` supports click events on non-active slides and changed keyboard navigation
+  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
 
 ### [3.1.0] - 2023-06-09
 
@@ -25,7 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Crest` replaced final assets and meta icons
+- `Crest` updated assets ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
+- Partials: `getMetaTagsAndIconLinks` updated assets
   ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
 
 #### Added

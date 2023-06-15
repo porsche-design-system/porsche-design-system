@@ -2470,8 +2470,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 .btn {
   padding: 8px;
 }
+.skip-link {
+  opacity: 0;
+  pointer-events: none;
+}
 .splide {
   overflow: hidden;
+  padding: 4px 0;
+  margin: -4px 0;
 }
 .splide__track {
   cursor: grab;
@@ -2479,7 +2485,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__list {
   display: flex;
-  height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -2489,6 +2494,8 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
+  border-radius: 12px;
+  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
@@ -2522,7 +2529,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 2 + 4px + 2px);
+    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
@@ -2530,6 +2537,8 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     gap: 4px;
     grid-area: 1 / 3 / 3 / auto;
     align-items: end;
+    justify-content: end;
+    justify-self: end;
   }
   .splide__track {
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
@@ -2837,6 +2846,7 @@ img {
         >
           <div
             class="splide__slide"
+            tabindex="0"
           >
             <slot
               name="slide-0"

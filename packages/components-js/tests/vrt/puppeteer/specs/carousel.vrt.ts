@@ -41,7 +41,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         .join('');
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
-        <p-carousel theme="${theme}">
+        <p-carousel theme="${theme}" skip-link-target="#target">
           <h2 slot="heading">
             Slotted heading
             <span>
@@ -60,10 +60,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover p-carousel >>> p-button-pure >>> button');
+      await forceFocusState(page, '.hover p-carousel >>> p-link-pure'); // to make it appear via :focus
+      await forceHoverState(page, '.hover p-carousel >>> p-link-pure >>> a');
       await forceHoverState(page, '.hover p-carousel span a');
       await forceFocusState(page, '.focus p-carousel >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus p-carousel >>> p-link-pure'); // to make it appear via :focus
+      await forceFocusState(page, '.focus p-carousel >>> p-link-pure >>> a');
       await forceFocusState(page, '.focus p-carousel span a');
+      await forceFocusState(page, '.focus p-carousel >>> .splide__slide'); // TODO: make this work 🤷‍
       await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus-hover p-carousel >>> p-link-pure'); // to make it appear via :focus
+      await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-link-pure >>> a');
       await forceFocusHoverState(page, '.focus-hover p-carousel span a');
     })
   ).toBeFalsy();

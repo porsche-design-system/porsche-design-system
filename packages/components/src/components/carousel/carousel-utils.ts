@@ -2,7 +2,6 @@ import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
-import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, hasNamedSlot } from '../../utils';
 import { ButtonPure } from '../button-pure/button-pure';
 import {
@@ -150,47 +149,6 @@ export const updatePagination = (paginationEl: HTMLElement, amountOfPages: numbe
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
     if (isInfinitePagination(amountOfPages)) {
       updateBulletState(paginationEl, amountOfPages, newIndex);
-    }
-  }
-};
-
-export let hasInertSupport = typeof HTMLElement !== 'undefined' && HTMLElement.prototype.hasOwnProperty('inert');
-
-// for unit tests
-export const overrideHasInertSupport = (override: boolean): void => {
-  hasInertSupport = override;
-};
-
-export const updateSlidesInert = (splide: Splide): void => {
-  // splide doesn't exist yet on first run but on later reconnects or update calls
-  if (splide) {
-    const slides = splide.Components.Slides.get().map((slide) => slide.slide);
-    const {
-      index,
-      options: { perPage },
-    } = splide;
-    const maxIndex = index + perPage;
-
-    if (hasInertSupport) {
-      // add inert attribute on slides in shadowDOM
-      // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
-      // https://caniuse.com/?search=inert
-      slides.forEach((slide, i) =>
-        i >= index && i < maxIndex ? slide.removeAttribute('inert') : slide.setAttribute('inert', '')
-      );
-    } else {
-      // fallback with tabindex handling for certain elements in lightDOM
-      const prefix = getTagName((splide.root.getRootNode() as ShadowRoot).host as HTMLElement).replace('carousel', '');
-      const tagNames: TagName[] = ['p-button', 'p-button-pure', 'p-link', 'p-link-pure'];
-      const pdsSelectors = tagNames.map((tagName) => tagName.replace(/^p-/, prefix)).join();
-
-      slides.forEach((slide, i) =>
-        ((slide.firstChild as HTMLSlotElement).assignedNodes()[0] as HTMLElement)
-          .querySelectorAll(`[href],button,${pdsSelectors}`)
-          .forEach((el) =>
-            i >= index && i < maxIndex ? el.removeAttribute('tabindex') : el.setAttribute('tabindex', '-1')
-          )
-      );
     }
   }
 };
