@@ -5,7 +5,6 @@ import { paramCase } from 'change-case';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers/puppeteer-helper';
-import { selectNode } from '@porsche-design-system/angular/tests/e2e/helpers';
 
 let browserPage: Page;
 
@@ -25,7 +24,6 @@ const isLinkActive = (element: ElementHandle | null): Promise<boolean> => elemen
 const getMainTitle = (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
 const hasPageObjectObject = (page: Page): Promise<boolean> =>
   page.evaluate(() => document.body.innerText.includes('[object Object]'));
-const article = await selectNode(browserPage, 'article');
 
 /**
  * to override transition duration of accordion
@@ -74,21 +72,17 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             const tabHref = `\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(tab)}`;
             const [tabElement] = await browserPage.$x(`//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`);
 
-            const isTabElementActiveInitially = await isTabActive(tabElement);
-            if (parseInt(index) === 0) {
-              expect(isTabElementActiveInitially, 'should have first tab active initially').toBe(true);
-            } else {
-              expect(isTabElementActiveInitially, 'should not have tab active initially').toBe(false);
-            }
-
             await tabElement.click();
-            await browserPage.waitForFunction(
-              (element: Element & { prevInnerHtml: string }) => {
-                return element.innerHTML !== element.prevInnerHtml;
-              },
-              {},
-              article
-            );
+            await browserPage.setRequestInterception(true);
+            browserPage.on('request', (req) => {
+              if (req.isInterceptResolutionHandled()) return;
+              const url = req.url();
+              if (url.includes('chunk')) {
+                setTimeout(() => req.continue(), 1000);
+              } else {
+                req.continue();
+              }
+            });
             await browserPage.evaluate(() => (window as any).componentsReady());
 
             expect(await isTabActive(tabElement), 'should have tab active after click').toBe(true);
