@@ -66,21 +66,6 @@ export const getComponentCss = (
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
-  console.log(
-    getCss({
-      [`${bulletActiveClass}`]: {
-        '& ~ span': {
-          width: paginationBulletSize,
-          height: paginationBulletSize,
-        },
-        [`& ~ .${bulletInfiniteClass} ~ span`]: {
-          width: '0px',
-          height: '0px',
-        },
-      },
-    })
-  );
-
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
