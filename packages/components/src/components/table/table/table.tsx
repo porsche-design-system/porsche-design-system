@@ -10,7 +10,7 @@ import {
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
 import type { TableUpdateEvent } from './table-utils';
-import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
+import { SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
@@ -40,7 +40,7 @@ export class Table {
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEvent>;
 
   public componentWillLoad(): void {
-    warnIfCaptionIsUndefined(this.host, this.caption);
+    warnIfCaptionIsMissing(this.host, this.caption);
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEvent>) => {
       e.stopPropagation();
       this.update.emit(e.detail);

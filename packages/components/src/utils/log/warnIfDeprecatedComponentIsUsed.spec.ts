@@ -1,13 +1,13 @@
 import { warnIfDeprecatedComponentIsUsed } from './warnIfDeprecatedComponentIsUsed';
+import * as loggerUtils from '../../utils/log/logger';
 
-const warningMessage =
-  '[Porsche Design System] Component "div" is deprecated and will be removed with next major release. Use some other component instead.';
+it('should call consoleWarn() util with correct parameter', () => {
+  const host = document.createElement('div');
+  const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
+  warnIfDeprecatedComponentIsUsed(host, 'Use some other component instead.');
 
-describe('with host element', () => {
-  it('should throw warning', () => {
-    const host = document.createElement('div');
-    jest.spyOn(console, 'warn').mockImplementation();
-    warnIfDeprecatedComponentIsUsed(host, 'Use some other component instead.');
-    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining(warningMessage));
-  });
+  expect(spy).toBeCalledWith(
+    'component div is deprecated and will be removed with next major release.',
+    'Use some other component instead.'
+  );
 });

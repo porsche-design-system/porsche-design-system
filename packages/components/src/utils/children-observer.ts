@@ -1,5 +1,5 @@
+import type { AriaAttributes } from '../types';
 import { hasWindow } from './has-window';
-import type { AriaAttributes } from '../aria-types';
 
 export const childrenMutationMap: Map<Node, () => void> = new Map();
 

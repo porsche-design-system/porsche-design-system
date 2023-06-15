@@ -206,7 +206,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     expect(spy).toBeCalledWith(usedTagNamesForVersionsMock, preloadTagNamesForVersionsMock);
   });
 
-  it('should call console.warn for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
+  it('should call consoleWarn() util for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
     jest
       .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
       .mockReturnValue({ '1.2.3': ['p-text'], '1.2.4': ['p-text', 'p-button', 'p-link'] });
@@ -229,7 +229,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     expect(spy).toBeCalledTimes(2);
   });
 
-  it('should not call console.warn and should not call getWarningRecommendation() when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
+  it('should not call consoleWarn() util and should not call getWarningRecommendation() when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
     jest.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({});
     const warnSpy = jest.spyOn(global.console, 'warn');
     const getWarningRecommendationSpy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
@@ -320,7 +320,7 @@ describe('throwPartialValidationWarning()', () => {
     'getComponentChunkLinks',
     'getInitialStyles',
   ])(
-    'should call console.warn and getWarningRecommendation() with correct parameters when called with partial %s()',
+    'should call consoleWarn() util and getWarningRecommendation() with correct parameters when called with partial %s()',
     (partialName) => {
       const warnSpy = jest.spyOn(global.console, 'warn');
       const getWarningRecommendationSpy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
@@ -336,7 +336,7 @@ describe('throwPartialValidationWarning()', () => {
 describe('getWarningRecommendation()', () => {
   it('should return string with correct parameters when called with partial getFontLinks()', () => {
     expect(getWarningRecommendation('getFontLinks')).toEqual(
-      'The usage of the getFontLinks() partial is recommended as described at https://designsystem.porsche.com/v2/partials/font-links to enhance loading behavior.'
+      'The usage of the getFontLinks() partial is recommended as described at https://designsystem.porsche.com/v3/partials/font-links to enhance loading behavior.'
     );
   });
 });

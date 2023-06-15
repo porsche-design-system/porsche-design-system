@@ -54,7 +54,7 @@ export class Headline {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new "p-heading" component instead.');
+    warnIfDeprecatedComponentIsUsed(this.host, 'Please use new p-heading component instead.');
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
 
     const TagType = getHeadlineTagType(this.host, this.variant, this.tag);

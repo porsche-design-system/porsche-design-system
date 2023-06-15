@@ -1,7 +1,7 @@
 import { warnIfDeprecatedPropIsUsed } from './warnIfDeprecatedPropIsUsed';
+import * as loggerUtils from '../../utils/log/logger';
 
-const warningMessage =
-  '[Porsche Design System] deprecatedProp is deprecated for component "span" and will be removed with next major release.';
+const warningMessage = 'deprecatedProp is deprecated for component span and will be removed with next major release.';
 
 class SomeInstance {
   host = document.createElement('span');
@@ -9,43 +9,43 @@ class SomeInstance {
 }
 
 describe('warnIfDeprecatedPropIsUsed()', () => {
-  it('should throw warning when prop is string', () => {
+  it('should call consoleWarn() util with correct parameters when prop is string', () => {
     const instance = new SomeInstance();
     instance.deprecatedProp = 'something';
-    const spy = jest.spyOn(console, 'warn').mockImplementation();
+    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).toHaveBeenCalledWith(warningMessage, undefined);
+    expect(spy).toBeCalledWith(warningMessage, '');
   });
 
-  it('should throw warning when prop is false', () => {
+  it('should call consoleWarn() util with correct parameters when prop is false', () => {
     const instance = new SomeInstance();
     instance.deprecatedProp = false;
-    const spy = jest.spyOn(console, 'warn').mockImplementation();
+    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).toHaveBeenCalledWith(warningMessage, undefined);
+    expect(spy).toBeCalledWith(warningMessage, '');
   });
 
-  it('should throw warning when prop is 0', () => {
+  it('should call consoleWarn() util with correct parameters when prop is 0', () => {
     const instance = new SomeInstance();
     instance.deprecatedProp = 0;
-    const spy = jest.spyOn(console, 'warn').mockImplementation();
+    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp', 'some other text');
-    expect(spy).toHaveBeenCalledWith(warningMessage, 'some other text');
+    expect(spy).toBeCalledWith(warningMessage, 'some other text');
   });
 
-  it('should not throw warning when prop is undefined', () => {
+  it('should not call consoleWarn() util when prop is undefined', () => {
     const instance = new SomeInstance();
     instance.deprecatedProp = undefined;
-    const spy = jest.spyOn(console, 'warn').mockImplementation();
+    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).not.toBeCalled();
   });
 
-  it('should not throw warning when prop is null', () => {
+  it('should not call consoleWarn() util when prop is null', () => {
     const instance = new SomeInstance();
     instance.deprecatedProp = null;
-    const spy = jest.spyOn(console, 'warn').mockImplementation();
+    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     warnIfDeprecatedPropIsUsed<typeof SomeInstance>(instance, 'deprecatedProp');
-    expect(spy).not.toHaveBeenCalled();
+    expect(spy).not.toBeCalled();
   });
 });

@@ -201,8 +201,8 @@ describe('render', () => {
   });
 
   it('should call parseJSON() with correct parameter and set this.disablePagination', () => {
-    jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
-    jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing').mockImplementation(() => {});
+    jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
+    jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing').mockImplementation();
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
@@ -218,7 +218,7 @@ describe('render', () => {
 
 describe('componentDidUpdate', () => {
   it('should call this.splide.refresh()', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const refreshSpy: () => Splide = jest.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;
@@ -228,7 +228,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call updatePrevNextButtons() with correct parameters', () => {
-    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
     component['splide'] = { refresh: () => {} } as Splide;
 
@@ -272,8 +272,8 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should call updatePrevNextButtons() and renderPagination() with correct parameters on mounted event', () => {
-    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
-    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
+    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
     const component = new Carousel();
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
@@ -284,8 +284,8 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should call updatePrevNextButtons(), updatePagination(), this.change.emit() and this.carouselChange.emit() with correct parameters on splide events', () => {
-    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
-    const updatePaginationSpy = jest.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
+    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const updatePaginationSpy = jest.spyOn(carouselUtils, 'updatePagination').mockImplementation();
     const changeEmitSpy = jest.fn();
     const carouselChangeEmitSpy = jest.fn();
     const component = new Carousel();
