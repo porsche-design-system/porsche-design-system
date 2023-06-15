@@ -49,14 +49,14 @@ describe('addMessage()', () => {
 
   it('should set message state to info if none was provided', () => {
     toastManager.addMessage({ text: 'Some Message' });
-    expect(toastManager['messages'][0]).toEqual({ text: 'Some Message', state: 'info' });
+    expect(toastManager['message']).toEqual({ text: 'Some Message', state: 'info' });
   });
 
   it('should remove html tags except <br> or <br /> within message', () => {
     toastManager.addMessage({
       text: 'Some Message <br>Some linebreak <br />Some linebreak <button>button</button> <strong>strong</strong> <em>emphasized</em> <i>italic</i>',
     });
-    expect(toastManager['messages'][0]).toEqual({
+    expect(toastManager['message']).toEqual({
       text: 'Some Message <br>Some linebreak <br>Some linebreak button strong emphasized italic',
       state: 'info',
     });
@@ -72,18 +72,18 @@ describe('addMessage()', () => {
     expect(spy).not.toBeCalledTimes(2);
   });
 
-  it('should add messages to messages array', () => {
+  it('should add message', () => {
     toastManager.addMessage({ text: 'Some Message One' });
-    expect(toastManager['messages']).toEqual([{ text: 'Some Message One', state: 'info' }]);
+    expect(toastManager['message']).toEqual({ text: 'Some Message One', state: 'info' });
   });
 
   it('should always show the latest message and clear the queue immediately if a new message was added', () => {
     toastManager.addMessage({ text: 'Some Message One' });
-    expect(toastManager['messages']).toEqual([{ text: 'Some Message One', state: 'info' }]);
+    expect(toastManager['message']).toEqual({ text: 'Some Message One', state: 'info' });
 
     toastManager.addMessage({ text: 'Some Message Two', state: 'success' });
     expect(dismissCallbackFunction).toBeCalledTimes(1);
-    expect(toastManager['messages']).toEqual([{ text: 'Some Message Two', state: 'success' }]);
+    expect(toastManager['message']).toEqual({ text: 'Some Message Two', state: 'success' });
   });
 });
 
@@ -105,7 +105,7 @@ describe('dismissToastItem()', () => {
     toastManager.addMessage({ text: 'Some Message' });
     toastManager.dismissToastItem();
 
-    expect(toastManager['messages']).toEqual([]);
+    expect(toastManager['message']).toBeUndefined();
   });
 
   it('should call dismissCallbackFunction', () => {
@@ -163,21 +163,21 @@ describe('startTimeout()', () => {
     expect(toastManager['timeout']).toBeDefined();
   });
 
-  it('should not set a timeout if no messages are available', () => {
+  it('should not set a timeout if no message is available', () => {
     toastManager.startTimeout();
     expect(toastManager['timeout']).toBeUndefined();
   });
 });
 
 describe('unregister()', () => {
-  it('should remove toastEl reference, remove messages and clear timeout', () => {
+  it('should remove toastEl reference, remove message and clear timeout', () => {
     const toastElement = document.createElement('p-toast');
     toastManager.register(toastElement, dismissCallbackFunction);
     toastManager.addMessage({ text: 'Some Message' });
     toastManager.unregister();
 
     expect(toastManager['toastEl']).toBeNull();
-    expect(toastManager['messages']).toEqual([]);
+    expect(toastManager['message']).toBeUndefined();
     expect(toastManager['timeout']).toBeNull();
   });
 });
