@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName, paramCaseToCamelCase } from '..';
+import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, paramCaseToCamelCase, throwException } from '..';
 
 export const throwIfRootNodeIsNotOneOfKind = (element: HTMLElement, tagNames: TagName[]): void => {
   const shadowHost = (element.getRootNode() as ShadowRoot)?.host as HTMLElement;
@@ -8,6 +8,6 @@ export const throwIfRootNodeIsNotOneOfKind = (element: HTMLElement, tagNames: Ta
   const allowedTagNames = tagNames.map((tagName) => prefixedTagNames[paramCaseToCamelCase(tagName)]);
 
   if (!allowedTagNames.includes(actualTagName)) {
-    throw new Error(`${getTagName(element)} can't be used like this`);
+    throwException(`${getTagNameWithoutPrefix(element)} can't be used like this.`);
   }
 };

@@ -62,7 +62,7 @@ const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => 
   const readyPromises = collectAllComponentOnReadyPromises(el);
   Promise.all(readyPromises)
     .then((proms) => resolve(proms.length))
-    .catch(console.error);
+    .catch((err) => console.error('[Porsche Design System]', err)); // eslint-disable-line no-console
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {

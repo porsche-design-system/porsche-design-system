@@ -1,6 +1,7 @@
 import { forceUpdate } from '@stencil/core';
 import type { ToastState } from './toast-utils';
 import { ANIMATION_DURATION } from './toast-styles';
+import { throwException } from '../../../utils';
 
 const TOAST_DEFAULT_TIMEOUT = 6000;
 
@@ -21,7 +22,7 @@ export class ToastManagerClass {
 
   public register(toastElement: HTMLElement, onDismiss: () => void): void {
     if (this.toastEl) {
-      throw new Error('<p-toast> was rendered multiple times.');
+      throwException('p-toast was rendered multiple times.');
     }
     this.toastEl = toastElement;
     this.onDismissCallback = onDismiss;
@@ -35,11 +36,11 @@ export class ToastManagerClass {
 
   public addMessage(message: ToastMessage): void {
     if (!this.toastEl) {
-      throw new Error('Missing <p-toast> element.');
+      throwException('missing p-toast element.');
     }
 
     if (!message.text) {
-      throw new Error('Empty text provided to addMessage.');
+      throwException('p-toast empty text provided to addMessage().');
     }
 
     message.text

@@ -1,3 +1,5 @@
+import { throwException } from '../../utils';
+
 /**
  * Universal pagination model generation algorithm
  *
@@ -120,7 +122,7 @@ export const createRange = (start: number, end: number): number[] =>
 export const createPaginationModel = (options: PaginationModelOptions): PaginationModelItem[] => {
   // exception tests
   if (options == null) {
-    throw new Error('createPaginationModel(): options object should be a passed');
+    throwException('createPaginationModel(): options object should be a passed.');
   }
 
   const { pageTotal, activePage, pageRange } = options;
@@ -187,7 +189,7 @@ export const createPaginationModel = (options: PaginationModelOptions): Paginati
 export const getCurrentActivePage = (activePage: number, totalPages: number): number => {
   // exception tests
   if (activePage === undefined || totalPages === undefined) {
-    throw new Error('getCurrentActivePage(): activePage and totalPages props must be provided');
+    throwException('getCurrentActivePage(): activePage and totalPages props must be provided.');
   }
 
   // Obviously we can't be on a negative or 0 page.
@@ -206,7 +208,7 @@ export const getCurrentActivePage = (activePage: number, totalPages: number): nu
 export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): number => {
   // exception test
   if (totalItemsCount === undefined || itemsPerPage === undefined) {
-    throw new Error('getTotalPages(): totalItemsCount and itemsPerPage props must be provided');
+    throwException('getTotalPages(): totalItemsCount and itemsPerPage props must be provided.');
   }
 
   if (totalItemsCount < 1) {

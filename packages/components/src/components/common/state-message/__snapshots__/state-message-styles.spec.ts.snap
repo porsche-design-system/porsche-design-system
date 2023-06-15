@@ -3,17 +3,13 @@
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: error 1`] = `
 {
   "message": {
-    "&__icon": {
-      "marginRight": "0.25rem",
-    },
-    "WebkitTextSizeAdjust": "none",
-    "color": "#fc1717",
+    "color": "#FC4040",
     "display": "flex",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "gap": "4px",
     "hyphens": "auto",
-    "marginTop": "0.25rem",
+    "marginTop": "4px",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -22,17 +18,13 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: none 1`] = `
 {
   "message": {
-    "&__icon": {
-      "marginRight": "0.25rem",
-    },
-    "WebkitTextSizeAdjust": "none",
     "color": undefined,
     "display": "flex",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "gap": "4px",
     "hyphens": "auto",
-    "marginTop": "0.25rem",
+    "marginTop": "4px",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -41,17 +33,13 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: success 1`] = `
 {
   "message": {
-    "&__icon": {
-      "marginRight": "0.25rem",
-    },
-    "WebkitTextSizeAdjust": "none",
-    "color": "#01ba1d",
+    "color": "#09D087",
     "display": "flex",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "gap": "4px",
     "hyphens": "auto",
-    "marginTop": "0.25rem",
+    "marginTop": "4px",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -60,17 +48,13 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: error 1`] = `
 {
   "message": {
-    "&__icon": {
-      "marginRight": "0.25rem",
-    },
-    "WebkitTextSizeAdjust": "none",
-    "color": "#e00000",
+    "color": "#CC1922",
     "display": "flex",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "gap": "4px",
     "hyphens": "auto",
-    "marginTop": "0.25rem",
+    "marginTop": "4px",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -79,17 +63,13 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: none 1`] = `
 {
   "message": {
-    "&__icon": {
-      "marginRight": "0.25rem",
-    },
-    "WebkitTextSizeAdjust": "none",
     "color": undefined,
     "display": "flex",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "gap": "4px",
     "hyphens": "auto",
-    "marginTop": "0.25rem",
+    "marginTop": "4px",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
@@ -98,17 +78,13 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: success 1`] = `
 {
   "message": {
-    "&__icon": {
-      "marginRight": "0.25rem",
-    },
-    "WebkitTextSizeAdjust": "none",
-    "color": "#018a16",
+    "color": "#197E10",
     "display": "flex",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "gap": "4px",
     "hyphens": "auto",
-    "marginTop": "0.25rem",
+    "marginTop": "4px",
     "overflowWrap": "break-word",
-    "textSizeAdjust": "none",
     "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }

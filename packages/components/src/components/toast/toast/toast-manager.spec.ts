@@ -18,7 +18,7 @@ describe('register()', () => {
 
     expect(() => {
       toastManager.register(toastElement, dismissCallbackFunction);
-    }).toThrowErrorMatchingInlineSnapshot('"<p-toast> was rendered multiple times."');
+    }).toThrowErrorMatchingInlineSnapshot(`"[Porsche Design System] p-toast was rendered multiple times."`);
   });
 
   it('should set private members', () => {
@@ -38,13 +38,13 @@ describe('addMessage()', () => {
     toastManager.unregister();
     expect(() => {
       toastManager.addMessage({ text: 'Some Message' });
-    }).toThrowErrorMatchingInlineSnapshot('"Missing <p-toast> element."');
+    }).toThrowErrorMatchingInlineSnapshot(`"[Porsche Design System] missing p-toast element."`);
   });
 
   it('should throw if no text was provided', () => {
     expect(() => {
       toastManager.addMessage({ text: '' });
-    }).toThrowErrorMatchingInlineSnapshot('"Empty text provided to addMessage."');
+    }).toThrowErrorMatchingInlineSnapshot(`"[Porsche Design System] p-toast empty text provided to addMessage()."`);
   });
 
   it('should set message state to info if none was provided', () => {

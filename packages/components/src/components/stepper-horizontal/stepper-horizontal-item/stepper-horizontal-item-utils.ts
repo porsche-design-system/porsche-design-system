@@ -1,13 +1,13 @@
 import type { IconName } from '@porsche-design-system/icons';
 import type { Theme } from '../../../types';
-import { getTagName } from '../../../utils';
+import { getTagNameWithoutPrefix, throwException } from '../../../utils';
 
 export type StepperHorizontalItemInternalHTMLProps = {
   theme: Theme;
 };
 
 export const STEPPER_ITEM_STATES = ['current', 'complete', 'warning'] as const;
-export type StepperHorizontalItemState = typeof STEPPER_ITEM_STATES[number];
+export type StepperHorizontalItemState = (typeof STEPPER_ITEM_STATES)[number];
 
 export const isStateCompleteOrWarning = (state: StepperHorizontalItemState): boolean => {
   return state === 'complete' || state === 'warning';
@@ -24,7 +24,7 @@ export const throwIfCurrentAndDisabled = (host: HTMLElement): void => {
     (host as HTMLPStepperHorizontalItemElement).state === 'current' &&
     (host as HTMLPStepperHorizontalItemElement).disabled
   ) {
-    throw new Error(`Using state='current' and disabled='true' at ${getTagName(host)} is not allowed`);
+    throwException(`using state='current' and disabled='true' for ${getTagNameWithoutPrefix(host)} is not allowed.`);
   }
 };
 

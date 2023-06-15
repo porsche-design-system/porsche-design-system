@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { AriaRole } from '../src/aria-types';
 
 const prepareAriaTypes = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -26,7 +25,7 @@ const prepareAriaTypes = (): void => {
     ariaRoleTypes,
   ].join('\n\n');
 
-  const fileName = 'src/aria-types.ts';
+  const fileName = 'src/types/aria-types.d.ts';
   const filePath = path.resolve(rootDirectory, fileName);
 
   fs.writeFileSync(filePath, content);

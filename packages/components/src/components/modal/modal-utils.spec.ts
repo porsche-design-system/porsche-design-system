@@ -2,7 +2,7 @@ import { clickStartedInScrollbarTrack, warnIfAriaAndHeadingPropsAreUndefined } f
 
 describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
   it('should print warning when aria and heading props are undefined', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     const host = document.createElement('p-modal');
 
     warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', undefined);

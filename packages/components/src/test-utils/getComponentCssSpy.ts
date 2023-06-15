@@ -3,7 +3,7 @@ import { getCssObject } from './getCssObject';
 
 export const getComponentCssSpy = (): jest.SpyInstance => {
   // silence deprecation warnings
-  jest.spyOn(console, 'warn').mockImplementation(() => {}); // eslint-disable-line @typescript-eslint/no-empty-function
+  jest.spyOn(console, 'warn').mockImplementation();
 
   // mock to get the result from getComponentCss() directly
   return jest
