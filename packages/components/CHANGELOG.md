@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Carousel` pagination now shows 5 "infinite bullets" when using more than 5 slides
+  ([#2600](https://github.com/porsche-design-system/porsche-design-system/pull/2600))
 - `Carousel` supports click events on non-active slides and changed keyboard navigation
   ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
 
