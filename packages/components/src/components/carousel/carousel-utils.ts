@@ -7,7 +7,7 @@ import { ButtonPure } from '../button-pure/button-pure';
 import {
   bulletActiveClass,
   bulletInfiniteClass,
-  paginationInfiniteClass,
+  paginationInfiniteStartCaseClass,
   paginationBulletSize,
 } from './carousel-styles';
 
@@ -17,8 +17,11 @@ export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
+// The offset value used for calculating the number of infinite bullets
 const INFINITE_BULLET_OFFSET = 2;
+// The total number of infinite bullets including the center bullet
 const INFINITE_BULLET_AMOUNT = INFINITE_BULLET_OFFSET * 2 + 1;
+// Infinite bullets will be shown if the total number of bullets is greater than this value
 const INFINITE_BULLET_THRESHOLD = 5;
 
 // https://splidejs.com/guides/i18n/#default-texts
@@ -136,11 +139,12 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
   // Only update bullets around newIndex
   for (let i = newIndex - INFINITE_BULLET_AMOUNT - 1; i < newIndex + INFINITE_BULLET_AMOUNT + 1; i++) {
     const index = (i + amountOfPages) % amountOfPages;
-    paginationEl.children[index]?.classList[
+    paginationEl.children[index].classList[
       isInfiniteBulletLeft(index) || isInfiniteBulletRight(index) ? 'add' : 'remove'
     ](bulletInfiniteClass);
   }
-  paginationEl.classList[isStartCase ? 'add' : 'remove'](paginationInfiniteClass);
+  // Add/Remove class to pagination in order to style the first bullets when the index is in isStartCase
+  paginationEl.classList[isStartCase ? 'add' : 'remove'](paginationInfiniteStartCaseClass);
 };
 
 export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
