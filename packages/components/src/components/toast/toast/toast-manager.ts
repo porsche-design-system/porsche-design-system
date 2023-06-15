@@ -14,7 +14,7 @@ export type ToastMessage = {
 };
 
 export class ToastManagerClass {
-  private messages: ToastMessage[] = [];
+  private message: ToastMessage = { text: '' };
   private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
   private onDismissCallback: () => void;
@@ -29,7 +29,7 @@ export class ToastManagerClass {
 
   public unregister(): void {
     this.toastEl = null;
-    this.messages = [];
+    this.message = { text: '' };
     this.removeTimeout();
   }
 
@@ -42,28 +42,23 @@ export class ToastManagerClass {
       throw new Error('Empty text provided to addMessage.');
     }
 
-    const msg: ToastMessage = {
-      state: message.state || 'info', // info is our default state
-      text: message.text
-        .replace(/<br ?\/?>/g, '%%%BR%%%') // temporary replace linebreaks
-        .replace(/<[^>]*>/g, '') // strip all html tags
-        .replace(/%%%BR%%%/g, '<br>'), // recover line breaks
-    };
+    message.text
+      .replace(/<br ?\/?>/g, '%%%BR%%%') // temporary replace linebreaks
+      .replace(/<[^>]*>/g, '') // strip all html tags
+      .replace(/%%%BR%%%/g, '<br>'); // recover line breaks
 
-    const { length } = this.messages;
-    this.messages.push(msg);
-
-    if (!length) {
+    if (this.message.text === '') {
       forceUpdate(this.toastEl);
-    }
-    if (length >= 1) {
+    } else if (this.message.text !== message.text) {
       this.dismissToastItem();
     }
+
+    this.message = message;
   }
 
   public dismissToastItem = (): void => {
     this.removeTimeout();
-    this.messages.shift();
+    this.message.text = '';
     this.onDismissCallback();
     setTimeout(
       () => forceUpdate(this.toastEl),
@@ -76,11 +71,11 @@ export class ToastManagerClass {
 
   public getToast(): ToastMessage {
     this.startTimeout();
-    return this.messages[0];
+    return this.message.text ? this.message : undefined;
   }
 
   public startTimeout(): void {
-    if (this.messages.length) {
+    if (this.message.text) {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
