@@ -526,7 +526,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
-    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
@@ -696,6 +695,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
+    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
@@ -1022,7 +1022,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
-    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
@@ -1219,6 +1218,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
+    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
@@ -1644,7 +1644,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
-    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
@@ -1814,6 +1813,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     font-size: 1rem;
     column-gap: 16px;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
+    justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
   .nav {
