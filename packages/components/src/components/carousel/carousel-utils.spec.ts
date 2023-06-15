@@ -343,6 +343,7 @@ describe('updatePrevNextButtons()', () => {
 
 const bulletMarkup = '<span class="bullet"></span>';
 const bulletActiveMarkup = '<span class="bullet bullet--active"></span>';
+const bulletInfiniteMarkup = '<span class="bullet bullet--infinite"></span>';
 
 describe('renderPagination()', () => {
   it('should render correct children of pagination', () => {
@@ -370,16 +371,64 @@ describe('renderPagination()', () => {
     renderPagination(el, 3, 1);
     expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup, bulletMarkup].join(''));
   });
+
+  it('should render correct children of pagination when using less or equal than 5 slides', () => {
+    const el = document.createElement('div');
+
+    renderPagination(el, 4, 0);
+    expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
+
+    renderPagination(el, 5, 0);
+    expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
+  });
+
+  it('should render correct children of pagination when using more than 5 slides', () => {
+    const el = document.createElement('div');
+
+    renderPagination(el, 6, 0);
+    expect(el.innerHTML).toBe(
+      [bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
+    );
+
+    renderPagination(el, 6, 1);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
+    );
+
+    renderPagination(el, 6, 2);
+    expect(el.innerHTML).toBe(
+      [bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join(
+        ''
+      )
+    );
+
+    renderPagination(el, 6, 3);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup].join(
+        ''
+      )
+    );
+
+    renderPagination(el, 6, 4);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup].join('')
+    );
+
+    renderPagination(el, 6, 5);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup].join('')
+    );
+  });
 });
 
-describe('updatePagination()', () => {
+fdescribe('updatePagination()', () => {
   it('should remove bullet--active class from child', () => {
     const el = document.createElement('div');
     el.innerHTML = [bulletMarkup, bulletMarkup, bulletActiveMarkup].join('');
     const spy = jest.spyOn(el.children[2].classList, 'remove');
 
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
-    updatePagination(el, 0);
+    updatePagination(el, 3, 0);
     expect(spy).toBeCalledWith('bullet--active');
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
   });
@@ -390,9 +439,98 @@ describe('updatePagination()', () => {
     const spy = jest.spyOn(el.children[2].classList, 'add');
 
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
-    updatePagination(el, 2);
+    updatePagination(el, 3, 2);
     expect(spy).toBeCalledWith('bullet--active');
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
+  });
+
+  it('should update bullet classes when using more than 5 slides at start', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [
+      bulletMarkup,
+      bulletActiveMarkup,
+      bulletMarkup,
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+    ].join('');
+    const spyInfinite = jest.spyOn(el.children[0].classList, 'add');
+    const spyActiveRemove = jest.spyOn(el.children[1].classList, 'remove');
+    const spyActiveAdd = jest.spyOn(el.children[2].classList, 'add');
+
+    expect(el.children[0].outerHTML).toBe(bulletMarkup);
+    expect(el.children[1].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[2].outerHTML).toBe(bulletMarkup);
+    updatePagination(el, 6, 2);
+    expect(spyInfinite).toBeCalledWith('bullet--infinite');
+    expect(spyActiveRemove).toBeCalledWith('bullet--active');
+    expect(spyActiveAdd).toBeCalledWith('bullet--active');
+    expect(el.children[0].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[1].outerHTML).toBe(bulletMarkup);
+    expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
+  });
+
+  it('should update bullet classes when using more than 5 slides at the middle', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+      bulletActiveMarkup,
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+    ].join('');
+    const spyInfiniteStartRemove = jest.spyOn(el.children[1].classList, 'remove');
+    const spyInfiniteStartAdd = jest.spyOn(el.children[2].classList, 'add');
+    const spyActiveRemove = jest.spyOn(el.children[3].classList, 'remove');
+    const spyActiveAdd = jest.spyOn(el.children[4].classList, 'add');
+    const spyInfiniteEndRemove = jest.spyOn(el.children[5].classList, 'remove');
+    const spyInfiniteEndAdd = jest.spyOn(el.children[6].classList, 'add');
+
+    expect(el.children[1].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[2].outerHTML).toBe(bulletMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletMarkup);
+    expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
+    updatePagination(el, 7, 4);
+    expect(spyInfiniteStartRemove).toBeCalledWith('bullet--infinite');
+    expect(spyInfiniteStartAdd).toBeCalledWith('bullet--infinite');
+    expect(spyActiveRemove).toBeCalledWith('bullet--active');
+    expect(spyActiveAdd).toBeCalledWith('bullet--active');
+    expect(spyInfiniteEndRemove).toBeCalledWith('bullet--infinite');
+    expect(spyInfiniteEndAdd).toBeCalledWith('bullet--infinite');
+    expect(el.children[2].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[5].outerHTML).toBe(bulletMarkup);
+    expect(el.children[6].outerHTML).toBe(bulletInfiniteMarkup);
+  });
+
+  it('should update bullet classes when using more than 5 slides at end', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+      bulletMarkup,
+      bulletActiveMarkup,
+      bulletMarkup,
+    ].join('');
+    const spyInfinite = jest.spyOn(el.children[5].classList, 'add');
+    const spyActiveRemove = jest.spyOn(el.children[4].classList, 'remove');
+    const spyActiveAdd = jest.spyOn(el.children[3].classList, 'add');
+
+    expect(el.children[5].outerHTML).toBe(bulletMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletMarkup);
+    updatePagination(el, 6, 3);
+    expect(spyInfinite).toBeCalledWith('bullet--infinite');
+    expect(spyActiveRemove).toBeCalledWith('bullet--active');
+    expect(spyActiveAdd).toBeCalledWith('bullet--active');
+    expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);
   });
 });
 
