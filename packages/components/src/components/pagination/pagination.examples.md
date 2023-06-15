@@ -30,7 +30,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Without last page
 
-In case you don't need or want the the ability to see and jump to the last page, you can disable it via
+In case you don't need or want the ability to see and jump to the last page, you can disable it via
 `showLastPage="false"`.
 
 <Playground :markup="withoutLastPage" :config="config"></Playground>
