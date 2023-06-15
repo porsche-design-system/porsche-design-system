@@ -56,7 +56,7 @@ const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: stri
 export const getComponentCss = (
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
-  isInfinitePagniation: boolean,
+  isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
@@ -176,7 +176,7 @@ export const getComponentCss = (
           display: hasPaginationValue ? 'flex' : 'none',
         })),
         position: 'relative',
-        justifyContent: isInfinitePagniation ? 'flex-start' : 'center',
+        justifyContent: isInfinitePagination ? 'flex-start' : 'center',
         width: `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * 4 + ${spacingStaticSmall} * 4)`, // Width for five bullets (one active + spacing)
         left: 'calc(50% - 42px)',
         overflowX: 'hidden',
@@ -187,7 +187,7 @@ export const getComponentCss = (
         width: 'fit-content',
         gap: spacingStaticSmall,
         transition: `all ${carouselTransitionDuration}ms`,
-        ...(isInfinitePagniation && {
+        ...(isInfinitePagination && {
           [`& > .${bulletInfiniteClass} ~ span, & > .${bulletActiveClass} ~ span`]: {
             width: paginationBulletSize,
             height: paginationBulletSize,
@@ -208,7 +208,7 @@ export const getComponentCss = (
           width: `${paginationActiveBulletSize} !important`,
         },
       },
-      ...(isInfinitePagniation && {
+      ...(isInfinitePagination && {
         [`${paginationInfiniteClass}`]: {
           ['& > .bullet:nth-child(-n+4)']: {
             width: paginationBulletSize,
@@ -219,7 +219,7 @@ export const getComponentCss = (
       bullet: {
         borderRadius: borderRadiusSmall,
         background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
-        ...(isInfinitePagniation
+        ...(isInfinitePagination
           ? {
               width: '0px',
               height: '0px',
