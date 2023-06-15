@@ -33,7 +33,7 @@ import {
 
 export const carouselTransitionDuration = 400;
 export const bulletActiveClass = 'bullet--active';
-export const paginationInfiniteClass = 'pagination--infinite';
+export const paginationInfiniteStartCaseClass = 'pagination--infinite';
 export const bulletInfiniteClass = 'bullet--infinite';
 
 export const paginationBulletSize = '8px';
@@ -65,6 +65,21 @@ export const getComponentCss = (
   const { primaryColor, contrastMediumColor, focusColor } = getThemedColors(theme);
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
+
+  console.log(
+    getCss({
+      [`${bulletActiveClass}`]: {
+        '& ~ span': {
+          width: paginationBulletSize,
+          height: paginationBulletSize,
+        },
+        [`& ~ .${bulletInfiniteClass} ~ span`]: {
+          width: '0px',
+          height: '0px',
+        },
+      },
+    })
+  );
 
   return getCss({
     '@global': {
@@ -205,36 +220,8 @@ export const getComponentCss = (
         alignItems: 'center',
         width: 'fit-content',
         gap: spacingStaticSmall,
-        transition: `all ${carouselTransitionDuration}ms`,
-        ...(isInfinitePagination && {
-          [`& > .${bulletInfiniteClass} ~ span, & > .${bulletActiveClass} ~ span`]: {
-            width: paginationBulletSize,
-            height: paginationBulletSize,
-          },
-          [`& > .${bulletInfiniteClass} ~ .${bulletInfiniteClass} ~ span, & > .${bulletActiveClass} ~ .${bulletInfiniteClass} ~ span`]:
-            {
-              width: '0px',
-              height: '0px',
-            },
-          [`& > span.${bulletInfiniteClass}`]: {
-            width: paginationInfiniteBulletSize,
-            height: paginationInfiniteBulletSize,
-          },
-        }),
-        [`& > span.${bulletActiveClass}`]: {
-          background: isHighContrastMode ? canvasTextColor : primaryColor,
-          height: paginationBulletSize,
-          width: `${paginationActiveBulletSize} !important`,
-        },
+        transition: `transform ${carouselTransitionDuration}ms`,
       },
-      ...(isInfinitePagination && {
-        [`${paginationInfiniteClass}`]: {
-          ['& > .bullet:nth-child(-n+4)']: {
-            width: paginationBulletSize,
-            height: paginationBulletSize,
-          },
-        },
-      }),
       bullet: {
         borderRadius: borderRadiusSmall,
         background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
@@ -242,13 +229,53 @@ export const getComponentCss = (
           ? {
               width: '0px',
               height: '0px',
+              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms, height ${carouselTransitionDuration}ms`,
             }
           : {
               width: paginationBulletSize,
               height: paginationBulletSize,
+              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
             }),
-        // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms, height ${carouselTransitionDuration}ms`,
+      },
+      ...(isInfinitePagination && {
+        [`${paginationInfiniteStartCaseClass}`]: {
+          ['& > .bullet:nth-child(-n+4)']: {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+        },
+        [`${bulletInfiniteClass}`]: {
+          // Necessary to override the bulletActiveClass sibling selector
+          ...addImportantToEachRule({
+            width: paginationInfiniteBulletSize,
+            height: paginationInfiniteBulletSize,
+          }),
+          '& ~ span': {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+            width: '0px',
+            height: '0px',
+          },
+        },
+      }),
+      [`${bulletActiveClass}`]: {
+        background: isHighContrastMode ? canvasTextColor : primaryColor,
+        height: paginationBulletSize,
+        ...addImportantToEachRule({
+          width: paginationActiveBulletSize,
+        }),
+        ...(isInfinitePagination && {
+          '& ~ span': {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+            width: '0px',
+            height: '0px',
+          },
+        }),
       },
     }),
   });
