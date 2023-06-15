@@ -12,9 +12,9 @@ const format = isIifeBuild ? 'iife' : isEsmBuild ? 'esm' : 'umd';
 const isDev = process.env.PORSCHE_DESIGN_SYSTEM_DEV === '1';
 console.log('Environment:', isDev ? 'dev' : 'prod');
 console.log('Version:', version);
-console.log('format:', format);
+console.log('Format:', format);
 console.log('Deploy URL:', deployUrl);
-console.log('targetDirectory:', targetDirectory);
+console.log('Target Directory:', targetDirectory);
 
 // type PorscheWebComponentManagerConfig = {
 //   version: string;

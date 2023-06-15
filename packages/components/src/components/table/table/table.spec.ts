@@ -3,8 +3,8 @@ import { Table } from './table';
 
 describe('table', () => {
   describe('componentWillLoad', () => {
-    it('should call warnIfCaptionIsUndefined() with correct parameters', () => {
-      const spy = jest.spyOn(tableUtils, 'warnIfCaptionIsUndefined');
+    it('should call warnIfCaptionIsMissing() with correct parameters', () => {
+      const spy = jest.spyOn(tableUtils, 'warnIfCaptionIsMissing');
       const component = new Table();
       component.host = document.createElement('p-table');
       component.host.attachShadow({ mode: 'open' });

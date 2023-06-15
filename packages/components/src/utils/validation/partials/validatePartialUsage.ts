@@ -6,6 +6,7 @@ import {
 } from './helper';
 import type { PartialName } from '@porsche-design-system/shared';
 import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
+import { consoleWarn } from '../../log';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -57,10 +58,9 @@ export const validateGetComponentChunkLinksUsage = (): void => {
   );
 
   Object.entries(usedTagNamesWithoutPreloadForVersions).forEach(([version, tagNames]) => {
-    console.warn(
-      `[Porsche Design System] Usage of Porsche Design System v${version} component '${tagNames.join(
-        ', '
-      )}' detected without preloading. ${getWarningRecommendation('getComponentChunkLinks')}`
+    consoleWarn(
+      `Usage of Porsche Design System v${version} component '${tagNames.join(', ')}' detected without preloading.`,
+      getWarningRecommendation('getComponentChunkLinks')
     );
   });
 };
@@ -78,10 +78,11 @@ export const validateGetInitialStylesUsage = (): void => {
 };
 
 export const throwPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
-  console.warn(
-    `[Porsche Design System] The Porsche Design System ${
+  consoleWarn(
+    `The Porsche Design System ${
       prefix ? `with prefix: '${prefix}' ` : ''
-    }is used without using the ${partialName}() partial. ${getWarningRecommendation(partialName)}`
+    }is used without using the ${partialName}() partial.`,
+    getWarningRecommendation(partialName)
   );
 };
 
@@ -90,5 +91,5 @@ export const getWarningRecommendation = (partialName: string): string => {
     .replace('get', '')
     .replace(/([a-z])([A-Z])/g, '$1-$2') // camelCase to param-case
     .toLowerCase();
-  return `The usage of the ${partialName}() partial is recommended as described at https://designsystem.porsche.com/v2/partials/${partialUrl} to enhance loading behavior.`;
+  return `The usage of the ${partialName}() partial is recommended as described at https://designsystem.porsche.com/v3/partials/${partialUrl} to enhance loading behavior.`;
 };

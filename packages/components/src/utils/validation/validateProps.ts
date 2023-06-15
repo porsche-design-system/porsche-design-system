@@ -1,11 +1,10 @@
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import type { Class, FunctionPropertyNames } from '../../types/index';
+import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
 import type { BreakpointValues } from '../breakpoint-customizable';
 import { parseJSON } from '../breakpoint-customizable';
 import { breakpoints } from '@porsche-design-system/utilities-v2';
-import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
-import { getTagName } from '..';
+import { consoleError, getTagNameWithoutPrefix } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
@@ -52,10 +51,10 @@ export const printErrorMessage = ({
   propType,
   componentName,
 }: ValidationError & { componentName: string }): void => {
-  console.error(
-    `Warning: Invalid property '${propName}' with value '${formatObjectOutput(
+  consoleError(
+    `Invalid property '${propName}' with value '${formatObjectOutput(
       propValue
-    )}' supplied to '${componentName}', expected one of: ${propType}`
+    )}' supplied to ${componentName}, expected one of: ${propType}`
   );
 };
 
@@ -238,5 +237,7 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
   Object.entries(propTypes)
     .map(([propKey, validatorFunc]: [string, ValidatorFunction]) => validatorFunc(propKey, instance[propKey]))
     .filter((x) => x)
-    .forEach((error) => printErrorMessage({ ...error, componentName: getTagName(instance.host as HTMLElement) }));
+    .forEach((error) =>
+      printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) })
+    );
 };

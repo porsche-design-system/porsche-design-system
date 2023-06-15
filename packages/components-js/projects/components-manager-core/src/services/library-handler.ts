@@ -34,7 +34,7 @@ export function loadComponentLibrary({ script, version, prefix }: LoadComponentL
   );
   if (collidingVersion) {
     throw new Error(
-      `[Porsche Design System] Prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
+      `[Porsche Design System] prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
 Take a look at document.${CM_KEY} for more details.`
     );
   }

@@ -13,6 +13,7 @@ import {
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import * as hasNamedSlotUtils from '../../utils/dom/hasNamedSlot';
+import * as loggerUtils from '../../utils/log/logger';
 import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../button-pure/button-pure';
 
@@ -39,7 +40,7 @@ describe('getSplideBreakpoints()', () => {
 
 describe('warnIfHeadingIsMissing()', () => {
   it('should call hasNamedSlot() with correct parameters', () => {
-    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    jest.spyOn(global.console, 'warn').mockImplementation();
     const spy = jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot');
     const host = document.createElement('p-carousel');
 
@@ -47,14 +48,14 @@ describe('warnIfHeadingIsMissing()', () => {
     expect(spy).toBeCalledWith(host, 'heading');
   });
 
-  it('should call console.warn with correct parameter if heading prop is not set or slotted heading does not exist', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  it('should call consoleWarn() util with correct parameter if heading prop is not set or slotted heading does not exist', () => {
+    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(false);
     const host = document.createElement('p-carousel');
 
     warnIfHeadingIsMissing(host, undefined);
     expect(spy).toBeCalledWith(
-      'A heading has to be set via property or named slot on p-carousel in order to ensure accessibility.'
+      'heading has to be set via property or named slot for component p-carousel in order to ensure accessibility.'
     );
 
     warnIfHeadingIsMissing(host, null);
@@ -64,16 +65,16 @@ describe('warnIfHeadingIsMissing()', () => {
     expect(spy).toBeCalledTimes(3);
   });
 
-  it('should not call console.warn if heading prop is set', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  it('should not call consoleWarn() util if heading prop is set', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     const host = document.createElement('p-carousel');
 
     warnIfHeadingIsMissing(host, 'some heading');
     expect(spy).not.toBeCalled();
   });
 
-  it('should not call console.warn if slotted heading exists', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  it('should not call consoleWarn() util if slotted heading exists', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(true);
     const host = document.createElement('p-carousel');
 

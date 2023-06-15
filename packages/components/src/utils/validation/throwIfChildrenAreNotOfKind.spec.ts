@@ -20,7 +20,7 @@ it('should throw correct error message when areChildrenOfKind() is false', () =>
   parent.append(child1, child2);
 
   expect(() => throwIfChildrenAreNotOfKind(parent, 'p-grid-item')).toThrow(
-    'Child HTMLElements of p-grid should be of kind p-grid-item but got div'
+    '[Porsche Design System] child HTMLElements of p-grid should be of kind p-grid-item but got div'
   );
 });
 

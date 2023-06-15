@@ -32,6 +32,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2600](https://github.com/porsche-design-system/porsche-design-system/pull/2600))
 - `Carousel` supports click events on non-active slides and changed keyboard navigation
   ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
+- Unified wordings of all console warnings, errors and exceptions
+  ([#2602](https://github.com/porsche-design-system/porsche-design-system/pull/2602))
+- Angular: increased peer dependency to `>=15.0.0 <17.0.0`
+  ([#2602](https://github.com/porsche-design-system/porsche-design-system/pull/2602))
 
 ### [3.1.0] - 2023-06-09
 
@@ -1669,7 +1673,7 @@ accessible regarding its color contrast and might even be removed in an upcoming
 
 #### Changed
 
-- Angular: Increased peer dependency to `>=12.0.0 <14.0.0`
+- Angular: increased peer dependency to `>=12.0.0 <14.0.0`
 
 ### [2.7.0] - 2021-12-14
 
@@ -1963,7 +1967,7 @@ color contrast and might even be removed in an upcoming major release again.
 
 #### Fixed
 
-- Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
+- Angular: events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
 
 ### [2.0.2] - 2021-04-21
 
@@ -1980,7 +1984,7 @@ color contrast and might even be removed in an upcoming major release again.
 - Visual appearance of `Checkbox Wrapper` in iOS Safari
 - A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly
 - Visual bug in Firefox when zooming out `Text Field Wrapper`, `Checkbox Wrapper` and `Textarea Wrapper`
-- Angular: Streamline component styles in dark theme
+- Angular: streamline component styles in dark theme
 
 #### Changed
 

@@ -7,29 +7,27 @@ exports[`getComponentCss() should return correct css for size: medium 1`] = `
   vertical-align: top;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 a {
   display: block;
   text-decoration: none;
   outline: 0;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
+a:focus::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
-}
-a:focus::before {
-  outline-color: #000;
+  border-radius: 1px;
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+  outline: 0;
 }
 picture {
   display: block;
@@ -50,29 +48,27 @@ exports[`getComponentCss() should return correct css for size: responsive 1`] = 
   vertical-align: top;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 a {
   display: block;
   text-decoration: none;
   outline: 0;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
+a:focus::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
-}
-a:focus::before {
-  outline-color: #000;
+  border-radius: 1px;
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+  outline: 0;
 }
 picture {
   display: block;
@@ -100,29 +96,27 @@ exports[`getComponentCss() should return correct css for size: small 1`] = `
   vertical-align: top;
   outline: 0 !important;
 }
+:host([hidden]) {
+  display: none !important;
+}
 a {
   display: block;
   text-decoration: none;
   outline: 0;
 }
-a::-moz-focus-inner {
-  border: 0;
-}
-a::before {
+a:focus::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
-}
-a:focus::before {
-  outline-color: #000;
+  border-radius: 1px;
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 a:focus:not(:focus-visible)::before {
-  outline-color: transparent;
+  outline: 0;
 }
 picture {
   display: block;

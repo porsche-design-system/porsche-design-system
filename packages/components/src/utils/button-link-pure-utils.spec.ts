@@ -16,7 +16,7 @@ describe('hasVisibleIcon()', () => {
 
 describe('warnIfParentIsPTextAndIconIsNone()', () => {
   it('should print warning if parent is p-text and iconName === "none" & iconSource = ""', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     const parent = document.createElement('p-text');
     const child = document.createElement('button');
     parent.appendChild(child);
