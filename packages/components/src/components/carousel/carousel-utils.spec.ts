@@ -421,7 +421,7 @@ describe('renderPagination()', () => {
   });
 });
 
-fdescribe('updatePagination()', () => {
+describe('updatePagination()', () => {
   it('should remove bullet--active class from child', () => {
     const el = document.createElement('div');
     el.innerHTML = [bulletMarkup, bulletMarkup, bulletActiveMarkup].join('');
