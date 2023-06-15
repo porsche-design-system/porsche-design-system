@@ -21,7 +21,7 @@ it('should return result of getDirectChildHTMLElement()', () => {
   expect(getOnlyChildHTMLElementOrThrow(parent, 'a')).toBe(child);
 });
 
-const errorMessage = '"div has to contain a single direct child of: a"';
+const errorMessage = '"[Porsche Design System] div has to contain a single direct child of: a"';
 
 it('should throw error if there is a another child before', () => {
   const parent = document.createElement('div');

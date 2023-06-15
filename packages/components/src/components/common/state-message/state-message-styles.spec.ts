@@ -1,6 +1,6 @@
 import { getFunctionalComponentStateMessageStyles } from './state-message-styles';
 
-xdescribe('getFunctionalComponentStateMessageStyles()', () => {
+describe('getFunctionalComponentStateMessageStyles()', () => {
   it.each<Parameters<typeof getFunctionalComponentStateMessageStyles>>([
     ['light', 'none'],
     ['light', 'success'],
@@ -8,7 +8,7 @@ xdescribe('getFunctionalComponentStateMessageStyles()', () => {
     ['dark', 'none'],
     ['dark', 'success'],
     ['dark', 'error'],
-  ])('should return correct JssStyle for theme: %s and state: %s', (theme, state) => {
-    expect(getFunctionalComponentStateMessageStyles(theme, state)).toMatchSnapshot();
+  ])('should return correct JssStyle for theme: %s and state: %s', (...args) => {
+    expect(getFunctionalComponentStateMessageStyles(...args)).toMatchSnapshot();
   });
 });

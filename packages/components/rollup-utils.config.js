@@ -6,6 +6,7 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import * as globby from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
+import { version } from './package.json';
 
 const outputDir = 'dist/utils';
 const input = 'src/utils-entry.ts';
@@ -36,6 +37,7 @@ const sharedPlugins = [
   replace({
     preventAssignment: true,
     ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
+    ROLLUP_REPLACE_VERSION: `"${version}"`,
     'process.env.NODE_ENV': '"production"',
   }),
   commonjs(),

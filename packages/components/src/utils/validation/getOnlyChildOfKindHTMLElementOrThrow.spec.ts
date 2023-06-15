@@ -15,7 +15,7 @@ it('should call getDirectChildHTMLElements() with correct parameters and return 
   expect(spy).toBeCalledWith(parent, selector);
 });
 
-const errorMessage = '"div has to contain a single direct child of: a"';
+const errorMessage = '"[Porsche Design System] div has to contain a single direct child of: a"';
 
 it('should throw error if there is more than 1 child of same kind', () => {
   const parent = document.createElement('div');

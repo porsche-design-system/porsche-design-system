@@ -1,6 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { areAllChildrenOfKind } from '../dom/areAllChildrenOfKind';
-import { getPrefixedTagNames, getTagName, paramCaseToCamelCase } from '..';
+import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, paramCaseToCamelCase, throwException } from '..';
 
 export const throwIfChildrenAreNotOfKind = (element: HTMLElement, tagName: TagName): void => {
   if (!areAllChildrenOfKind(element, tagName)) {
@@ -10,8 +10,10 @@ export const throwIfChildrenAreNotOfKind = (element: HTMLElement, tagName: TagNa
       .filter((actualTagName) => actualTagName !== allowedTagName)
       .join(', ');
 
-    throw new Error(
-      `Child HTMLElements of ${getTagName(element)} should be of kind ${allowedTagName} but got ${actualTagNames}`
+    throwException(
+      `child HTMLElements of ${getTagNameWithoutPrefix(
+        element
+      )} should be of kind ${allowedTagName} but got ${actualTagNames}.`
     );
   }
 };

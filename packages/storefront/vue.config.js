@@ -1,3 +1,6 @@
+const webpack = require('webpack');
+const pkgJson = require('./package.json');
+
 module.exports = {
   publicPath: './',
   chainWebpack: (config) => {
@@ -23,6 +26,12 @@ module.exports = {
         },
       ],
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        ROLLUP_REPLACE_IS_STAGING: '"production"',
+        ROLLUP_REPLACE_VERSION: `"${pkgJson.dependencies['@porsche-design-system/components-js']}"`,
+      }),
+    ],
   },
   devServer: {
     progress: false,
