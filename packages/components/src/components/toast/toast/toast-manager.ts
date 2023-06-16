@@ -15,7 +15,7 @@ export type ToastMessage = {
 };
 
 export class ToastManagerClass {
-  private messages: ToastMessage[] = [];
+  private message: ToastMessage;
   private toastEl: HTMLElement;
   private timeout: NodeJS.Timeout;
   private onDismissCallback: () => void;
@@ -30,7 +30,7 @@ export class ToastManagerClass {
 
   public unregister(): void {
     this.toastEl = null;
-    this.messages = [];
+    this.message = undefined;
     this.removeTimeout();
   }
 
@@ -43,19 +43,22 @@ export class ToastManagerClass {
       throwException('p-toast empty text provided to addMessage().');
     }
 
-    const msg: ToastMessage = { state: 'info', ...message }; // info is our default state
-
-    const { length } = this.messages;
-    this.messages.push(msg);
-
-    if (!length) {
+    const msg: ToastMessage = {
+      state: message.state || 'info', // info is our default state
+      text: message.text.replace(/<(?!br)[^>]*>/g, ''), // strip all html tags except linebreaks
+    };
+    if (!this.message) {
       forceUpdate(this.toastEl);
+    } else if (this.message.text !== message.text) {
+      this.dismissToastItem();
     }
+
+    this.message = msg;
   }
 
   public dismissToastItem = (): void => {
     this.removeTimeout();
-    this.messages.shift();
+    this.message = undefined;
     this.onDismissCallback();
     setTimeout(
       () => forceUpdate(this.toastEl),
@@ -68,11 +71,11 @@ export class ToastManagerClass {
 
   public getToast(): ToastMessage {
     this.startTimeout();
-    return this.messages[0];
+    return this.message;
   }
 
   public startTimeout(): void {
-    if (this.messages.length) {
+    if (this.message) {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
       } else {
