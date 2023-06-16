@@ -1111,9 +1111,13 @@ export namespace Components {
          */
         "itemsPerPage": number;
         /**
-          * The maximum number of page links rendered
+          * The maximum number of page links rendered.
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
+        /**
+          * Show or hide the button to jump to the last page.
+         */
+        "showLastPage"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */
@@ -3227,7 +3231,7 @@ declare namespace LocalJSX {
          */
         "itemsPerPage"?: number;
         /**
-          * The maximum number of page links rendered
+          * The maximum number of page links rendered.
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
@@ -3238,6 +3242,10 @@ declare namespace LocalJSX {
           * Emitted when the page changes.
          */
         "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
+        /**
+          * Show or hide the button to jump to the last page.
+         */
+        "showLastPage"?: boolean;
         /**
           * Adapts the color when used on dark background.
          */

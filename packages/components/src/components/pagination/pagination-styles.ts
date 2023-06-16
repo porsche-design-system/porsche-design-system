@@ -48,6 +48,7 @@ export const getComponentCss = (
       nav: {
         display: 'flex',
         justifyContent: 'center',
+        userSelect: 'none',
         ...buildResponsiveStyles(maxNumberOfPageLinks, (n: PaginationMaxNumberOfPageLinks) => ({
           counterReset: `size ${n}`,
         })),
@@ -91,27 +92,21 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
             ...frostedGlassStyle,
-            backgroundColor: hoverColor,
+            background: hoverColor,
           },
         }),
-        '&:not(.ellipsis):focus::before': {
+        '&:not(.ellipsis):focus:focus-visible::before': {
           content: '""',
           position: 'absolute',
           ...getInsetJssStyle(-4),
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
         },
-        '&:focus:not(:focus-visible)::before': {
-          borderColor: 'transparent',
-        },
         '&[aria-current]': {
-          disabledCursorStyle,
+          ...disabledCursorStyle,
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
-          borderRadius: borderRadiusSmall,
-          '&:not(.ellipsis):focus::before': {
-            ...getInsetJssStyle(-6),
-          },
+          '&:not(.ellipsis):focus::before': getInsetJssStyle(-6),
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,

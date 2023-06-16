@@ -47,6 +47,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         [maxNumberOfPageLinks]="{ base: 5, s: 7, l: 5 }"
       ></p-pagination>
     </div>
+
+    <div class="playground light" title="should show pagination without last page on light background">
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1" [showLastPage]="false"></p-pagination>
+    </div>
+
+    <div
+      class="playground light"
+      title="should show pagination with last page selected and without last page on light background"
+    >
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="20" [showLastPage]="false"></p-pagination>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

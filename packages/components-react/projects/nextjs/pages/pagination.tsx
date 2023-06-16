@@ -48,6 +48,17 @@ const PaginationPage: NextPage = (): JSX.Element => {
           maxNumberOfPageLinks={{ base: 5, s: 7, l: 5 }}
          />
       </div>
+
+      <div className="playground light" title="should show pagination without last page on light background">
+        <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} showLastPage={false} />
+      </div>
+
+      <div
+        className="playground light"
+        title="should show pagination with last page selected and without last page on light background"
+      >
+        <PPagination totalItemsCount={500} itemsPerPage={25} activePage={20} showLastPage={false} />
+      </div>
     </>
   );
 };

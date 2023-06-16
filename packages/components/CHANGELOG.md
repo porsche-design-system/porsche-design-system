@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `skipLinkTarget` property to `Carousel` component to enhance keyboard functionality
   ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
+- `showLastPage` property to `Pagination` component
+  ([#2606](https://github.com/porsche-design-system/porsche-design-system/pull/2606))
 
 #### Fixed
 
