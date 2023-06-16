@@ -72,15 +72,22 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             const tabHref = `\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(tab)}`;
             const [tabElement] = await browserPage.$x(`//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`);
 
+            const isTabElementActiveInitially = await isTabActive(tabElement);
+            if (parseInt(index) === 0) {
+              expect(isTabElementActiveInitially, 'should have first tab active initially').toBe(true);
+            } else {
+              expect(isTabElementActiveInitially, 'should not have tab active initially').toBe(false);
+            }
+
             await tabElement.click();
             await browserPage.setRequestInterception(true);
-            browserPage.on('request', (req) => {
+            browserPage.on('request', async (req) => {
               if (req.isInterceptResolutionHandled()) return;
               const url = req.url();
               if (url.includes('chunk')) {
-                setTimeout(() => req.continue(), 1000);
+                await browserPage.waitForRequest(url);
               } else {
-                req.continue();
+                await req.continue();
               }
             });
             await browserPage.evaluate(() => (window as any).componentsReady());
@@ -90,6 +97,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on tab page').toBe(
               false
             );
+            expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
             expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
           }
         }
