@@ -71,7 +71,7 @@ export class ToastManagerClass {
 
   public getToast(): ToastMessage {
     this.startTimeout();
-    return this.message ? this.message : undefined;
+    return this.message;
   }
 
   public startTimeout(): void {
