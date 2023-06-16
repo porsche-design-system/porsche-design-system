@@ -11,7 +11,6 @@ let browserPage: Page;
 beforeEach(async () => {
   browserPage = await browser.newPage();
   initConsoleObserver(browserPage);
-  await browserPage.setRequestInterception(true);
 
   await browserPage.goto(baseURL, { waitUntil: 'networkidle0' });
   await injectCSSOverrides();
@@ -53,6 +52,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         const [linkElement] = await browserPage.$x(
           `//aside//nav//p-link-pure/a[contains(., '${page}')][@href='${href}']/parent::p-link-pure`
         );
+        await browserPage.setRequestInterception(true);
 
         await accordionButton.click();
 
@@ -81,14 +81,14 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             }
 
             await tabElement.click();
-            browserPage.on('request', async (req) => {
-              if (req.isInterceptResolutionHandled()) return;
-              const url = req.url();
-              if (url.includes('chunk')) {
-                await browserPage.waitForRequest(url);
-              } else {
-                await req.continue();
+            await browserPage.on('requestfinished', (request) => {
+              if (request.url().includes('chunk')) {
+                request.continue();
               }
+            });
+            await browserPage.on('request', (request) => {
+              if (request.isInterceptResolutionHandled()) return;
+              request.continue();
             });
             await browserPage.evaluate(() => (window as any).componentsReady());
 
@@ -97,7 +97,6 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on tab page').toBe(
               false
             );
-            expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
             expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
           }
         }
