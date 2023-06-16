@@ -11,6 +11,7 @@ let browserPage: Page;
 beforeEach(async () => {
   browserPage = await browser.newPage();
   initConsoleObserver(browserPage);
+  await browserPage.setRequestInterception(true);
 
   await browserPage.goto(baseURL, { waitUntil: 'networkidle0' });
   await injectCSSOverrides();
@@ -80,7 +81,6 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             }
 
             await tabElement.click();
-            await browserPage.setRequestInterception(true);
             browserPage.on('request', async (req) => {
               if (req.isInterceptResolutionHandled()) return;
               const url = req.url();
