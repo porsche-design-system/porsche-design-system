@@ -1,150 +1,106 @@
-import {
-  createPaginationModel,
-  getTotalPages,
-  getCurrentActivePage,
-  createRange,
-  PaginationModelItem,
-  itemTypes,
-} from './pagination-utils';
+import { createPaginationModel, getTotalPages, getCurrentActivePage, createRange, ItemType } from './pagination-utils';
+import type { PaginationItem } from './pagination-utils';
 
-const paginationModelItemToSymbolPart = (item: PaginationModelItem) => {
+const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): string => {
   switch (item.type) {
-    case itemTypes.PREVIOUS_PAGE_LINK:
+    case ItemType.PREVIOUS:
       return '<';
-    case itemTypes.NEXT_PAGE_LINK:
+    case ItemType.NEXT:
       return '>';
-    case itemTypes.ELLIPSIS:
-      return item.key === -1 ? '<...' : '...>';
+    case ItemType.ELLIPSIS:
+      return index === 2 ? '<...' : '...>';
   }
 };
 
-const formatPaginationModelToASCII = (paginationModel: PaginationModelItem[]) => {
-  const arr = paginationModel.map((item) => {
-    const symbolPart = paginationModelItemToSymbolPart(item);
+const formatPaginationModelToASCII = (items: PaginationItem[]): string[] => {
+  return items.map((item, idx) => {
+    const symbolPart = paginationModelItemToSymbolPart(item, idx);
     return [item.isActive ? '*' : '', item.value, symbolPart ? `(${symbolPart})` : ''].join('');
   });
-  return arr;
 };
 
-describe('createRange', () => {
-  it('should return a range from min to max', () => {
-    expect(createRange(0, 1)).toEqual([0, 1]);
-    expect(createRange(1, 1)).toEqual([1]);
-    expect(createRange(-1, 0)).toEqual([-1, 0]);
-    expect(createRange(5, 10)).toEqual([5, 6, 7, 8, 9, 10]);
+describe('createRange()', () => {
+  it.each<[number, number, number[]]>([
+    [0, 1, [0, 1]],
+    [1, 1, [1]],
+    [-1, 0, [-1, 0]],
+    [5, 10, [5, 6, 7, 8, 9, 10]],
+  ])('should for start: %s and end: %s return: %s', (start, end, result) => {
+    expect(createRange(start, end)).toEqual(result);
   });
 });
 
-describe('createPaginationModel', () => {
-  it("should throw an exception if options aren't passed", () => {
-    // @ts-ignore
-    expect(() => createPaginationModel()).toThrowError('createPaginationModel(): options object should be a passed');
-  });
+describe('createPaginationModel()', () => {
+  const pageRange = 1;
 
-  describe('when there is 1 page', () => {
-    it('should return correct model for 1 of 1', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 1, pageTotal: 1, pageRange: 1 }))
-      ).toEqual(['1(<)', '*1', '1(>)']);
+  describe('for showLastPage = true', () => {
+    describe('for pageTotal = 1', () => {
+      it('should return correct model for 1 of 1', () => {
+        expect(
+          formatPaginationModelToASCII(
+            createPaginationModel({ activePage: 1, pageTotal: 1, pageRange, showLastPage: true })
+          )
+        ).toEqual(['1(<)', '*1', '1(>)']);
+      });
+    });
+
+    describe('for pageTotal = 10', () => {
+      it.each<[number, string[]]>([
+        [1, ['1(<)', '*1', '2', '3', '4', '5', '(...>)', '10', '*2(>)']],
+        [2, ['*1(<)', '1', '*2', '3', '4', '5', '(...>)', '10', '*3(>)']],
+        [3, ['*2(<)', '1', '2', '*3', '4', '5', '(...>)', '10', '*4(>)']],
+        [4, ['*3(<)', '1', '2', '3', '*4', '5', '(...>)', '10', '*5(>)']],
+        [5, ['*4(<)', '1', '(<...)', '4', '*5', '6', '(...>)', '10', '*6(>)']],
+        [6, ['*5(<)', '1', '(<...)', '5', '*6', '7', '(...>)', '10', '*7(>)']],
+        [7, ['*6(<)', '1', '(<...)', '6', '*7', '8', '9', '10', '*8(>)']],
+        [8, ['*7(<)', '1', '(<...)', '6', '7', '*8', '9', '10', '*9(>)']],
+        [9, ['*8(<)', '1', '(<...)', '6', '7', '8', '*9', '10', '*10(>)']],
+        [10, ['*9(<)', '1', '(<...)', '6', '7', '8', '9', '*10', '10(>)']],
+      ])('should return correct model for %s of 10', (activePage, result) => {
+        expect(
+          formatPaginationModelToASCII(
+            createPaginationModel({ activePage, pageTotal: 10, pageRange, showLastPage: true })
+          )
+        ).toEqual(result);
+      });
     });
   });
 
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 1 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 1, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['1(<)', '*1', '2', '3', '4', '5', '6(...>)', '10', '*2(>)']);
+  describe('for showLastPage = false', () => {
+    describe('for pageTotal = 1', () => {
+      it('should return correct model for 1 of 1', () => {
+        expect(
+          formatPaginationModelToASCII(
+            createPaginationModel({ activePage: 1, pageTotal: 1, pageRange, showLastPage: false })
+          )
+        ).toEqual(['1(<)', '*1', '1(>)']);
+      });
     });
-  });
 
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 2 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 2, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*1(<)', '1', '*2', '3', '4', '5', '6(...>)', '10', '*3(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 3 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 3, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*2(<)', '1', '2', '*3', '4', '5', '6(...>)', '10', '*4(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 4 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 4, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*3(<)', '1', '2', '3', '*4', '5', '6(...>)', '10', '*5(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 5 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 5, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*4(<)', '1', '3(<...)', '4', '*5', '6', '7(...>)', '10', '*6(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 6 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 6, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*5(<)', '1', '4(<...)', '5', '*6', '7', '8(...>)', '10', '*7(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 7 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 7, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*6(<)', '1', '5(<...)', '6', '*7', '8', '9', '10', '*8(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 8 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 8, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*7(<)', '1', '5(<...)', '6', '7', '*8', '9', '10', '*9(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 9 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 9, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*8(<)', '1', '5(<...)', '6', '7', '8', '*9', '10', '*10(>)']);
-    });
-  });
-
-  describe('when there are 10 pages', () => {
-    it('should return correct model for 10 of 10', () => {
-      expect(
-        formatPaginationModelToASCII(createPaginationModel({ activePage: 10, pageTotal: 10, pageRange: 1 }))
-      ).toEqual(['*9(<)', '1', '5(<...)', '6', '7', '8', '9', '*10', '10(>)']);
+    describe('for pageTotal = 10', () => {
+      it.each<[number, string[]]>([
+        [1, ['1(<)', '*1', '2', '3', '4', '5', '(...>)', '*2(>)']],
+        [2, ['*1(<)', '1', '*2', '3', '4', '5', '(...>)', '*3(>)']],
+        [3, ['*2(<)', '1', '2', '*3', '4', '5', '(...>)', '*4(>)']],
+        [4, ['*3(<)', '1', '2', '3', '*4', '5', '(...>)', '*5(>)']],
+        [5, ['*4(<)', '1', '(<...)', '4', '*5', '6', '(...>)', '*6(>)']],
+        [6, ['*5(<)', '1', '(<...)', '5', '*6', '7', '(...>)', '*7(>)']],
+        [7, ['*6(<)', '1', '(<...)', '6', '*7', '8', '(...>)', '*8(>)']],
+        [8, ['*7(<)', '1', '(<...)', '7', '*8', '9', '10', '*9(>)']],
+        [9, ['*8(<)', '1', '(<...)', '7', '8', '*9', '10', '*10(>)']],
+        [10, ['*9(<)', '1', '(<...)', '7', '8', '9', '*10', '10(>)']],
+      ])('should return correct model for %s of 10', (activePage, result) => {
+        expect(
+          formatPaginationModelToASCII(
+            createPaginationModel({ activePage, pageTotal: 10, pageRange, showLastPage: false })
+          )
+        ).toEqual(result);
+      });
     });
   });
 });
 
-describe('getTotalPages', () => {
-  it('should throw an exception if just one value is passed', () => {
-    // @ts-ignore
-    expect(() => getTotalPages(5)).toThrowError(
-      'getTotalPages(): totalItemsCount and itemsPerPage props must be provided'
-    );
-  });
-
-  it("should throw an exception if value isn't passed", () => {
-    // @ts-ignore
-    expect(() => getTotalPages()).toThrowError(
-      'getTotalPages(): totalItemsCount and itemsPerPage props must be provided'
-    );
-  });
-
+describe('getTotalPages()', () => {
   it('should return the amount of pages', () => {
     expect(getTotalPages(100, 10)).toBe(10);
   });
@@ -162,21 +118,7 @@ describe('getTotalPages', () => {
   });
 });
 
-describe('getCurrentActivePage', () => {
-  it("should throw an exception if value isn't passed", () => {
-    // @ts-ignore
-    expect(() => getCurrentActivePage(5)).toThrowError(
-      'getCurrentActivePage(): activePage and totalPages props must be provided'
-    );
-  });
-
-  it("should throw an exception if value isn't passed", () => {
-    // @ts-ignore
-    expect(() => getCurrentActivePage()).toThrowError(
-      'getCurrentActivePage(): activePage and totalPages props must be provided'
-    );
-  });
-
+describe('getCurrentActivePage()', () => {
   it('should return the minimum of one page', () => {
     expect(getCurrentActivePage(0, 10)).toBe(1);
   });

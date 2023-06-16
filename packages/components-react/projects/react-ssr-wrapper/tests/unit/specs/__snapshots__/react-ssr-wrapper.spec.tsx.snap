@@ -5236,6 +5236,7 @@ exports[`should render dsr component for PPagination 1`] = `
 nav {
   display: flex;
   justify-content: center;
+  user-select: none;
   counter-reset: size 5;
 }
 ul {
@@ -5269,13 +5270,13 @@ span {
 span:not([aria-disabled]):not(.ellipsis):hover {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, .18);
+  background: rgba(148, 149, 152, .18);
 }
 span[aria-current] {
-  disabled-cursor-style: [object Object];
+  cursor: default;
+  pointer-events: none;
   color: #010205;
   border: 2px solid #010205;
-  border-radius: 4px;
 }
 span[aria-disabled] {
   cursor: default;
