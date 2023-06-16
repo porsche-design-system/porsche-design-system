@@ -45,10 +45,7 @@ export class ToastManagerClass {
 
     const msg: ToastMessage = {
       state: message.state || 'info', // info is our default state
-      text: message.text
-        .replace(/<br ?\/?>/g, '%%%BR%%%') // temporary replace linebreaks
-        .replace(/<[^>]*>/g, '') // strip all html tags
-        .replace(/%%%BR%%%/g, '<br>'), // recover line breaks
+      text: message.text.replace(/<(?!br)[^>]*>/g, ''), // strip all html tags except linebreaks
     };
     if (!this.message) {
       forceUpdate(this.toastEl);

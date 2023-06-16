@@ -57,7 +57,7 @@ describe('addMessage()', () => {
       text: 'Some Message <br>Some linebreak <br />Some linebreak <button>button</button> <strong>strong</strong> <em>emphasized</em> <i>italic</i>',
     });
     expect(toastManager['message']).toEqual({
-      text: 'Some Message <br>Some linebreak <br>Some linebreak button strong emphasized italic',
+      text: 'Some Message <br>Some linebreak <br />Some linebreak button strong emphasized italic',
       state: 'info',
     });
   });
