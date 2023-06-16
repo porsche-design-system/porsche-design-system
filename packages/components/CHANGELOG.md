@@ -36,6 +36,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2602](https://github.com/porsche-design-system/porsche-design-system/pull/2602))
 - Angular: increased peer dependency to `>=15.0.0 <17.0.0`
   ([#2602](https://github.com/porsche-design-system/porsche-design-system/pull/2602))
+- `Toast` allows line break markups within toast message
+  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
+- `Toast` shows always the latest toast message and clears its queue immediately if a new message is added
+  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
 
 ### [3.1.0] - 2023-06-09
 
@@ -50,13 +54,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
-
-#### Changed
-
-- `Toast` allows line break markups within toast message
-  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
-- `Toast` shows always the latest toast message and clears its queue immediately if a new message is added
-  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
 
 #### Fixed
 
