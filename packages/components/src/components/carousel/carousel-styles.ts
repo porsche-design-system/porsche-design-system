@@ -205,6 +205,7 @@ export const getComponentCss = (
         display: 'flex',
         alignItems: 'center',
         width: 'fit-content',
+        height: paginationBulletSize,
         gap: spacingStaticSmall,
         transition: `transform ${carouselTransitionDuration}ms`,
       },
