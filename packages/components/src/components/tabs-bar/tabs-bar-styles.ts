@@ -37,8 +37,6 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           position: 'relative',
-          // TODO: probably not needed because there is no style with position: fixed
-          transform: 'translate3d(0,0,0)', // creates new stacking context
           ...hostHiddenStyles,
         }),
       },
@@ -50,7 +48,6 @@ export const getComponentCss = (
           display: 'inline-block',
           position: 'relative',
           margin: '0 0 4px 0',
-          padding: 0,
           verticalAlign: 'top',
           fontFamily: 'inherit',
           fontStyle: 'inherit',
@@ -62,28 +59,23 @@ export const getComponentCss = (
           boxSizing: 'border-box',
           WebkitAppearance: 'none',
           appearance: 'none',
-          outline: 0,
           outlineOffset: '1px',
           textDecoration: 'none',
           textAlign: 'left',
           border: 0,
-          background: 'transparent',
           color: primaryColor,
           cursor: 'pointer',
           borderRadius: borderRadiusSmall,
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: '-2px',
-            bottom: '-2px',
-            left: '-4px',
-            right: '-4px',
-            borderRadius: borderRadiusSmall,
-            zIndex: '-1', // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
-            ...hoverMediaQuery({
-              transition: getTransition('background'),
-            }),
-          },
+          ...hoverMediaQuery({
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              inset: '-2px -4px',
+              borderRadius: borderRadiusSmall,
+              zIndex: '-1', // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
+              transition: getTransition('background-color'),
+            },
+          }),
         },
         ...hoverMediaQuery({
           [transformSelector('::slotted([role]:hover)::before')]: {
