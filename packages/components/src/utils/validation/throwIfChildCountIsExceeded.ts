@@ -1,8 +1,10 @@
-import { getTagName } from '..';
+import { getTagNameWithoutPrefix, throwException } from '..';
 
 export const throwIfChildCountIsExceeded = (element: HTMLElement, allowedAmount: number): void => {
   const childCount = element.children.length;
   if (childCount > allowedAmount) {
-    throw new Error(`Only ${allowedAmount} children are allowed in ${getTagName(element)} but got ${childCount}`);
+    throwException(
+      `only ${allowedAmount} children are allowed in ${getTagNameWithoutPrefix(element)} but got ${childCount}.`
+    );
   }
 };

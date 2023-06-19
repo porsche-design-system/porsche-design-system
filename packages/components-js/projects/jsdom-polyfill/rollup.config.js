@@ -1,6 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
 import { version } from '../components-wrapper/package.json';
 import typescript from '@rollup/plugin-typescript';
@@ -43,11 +42,6 @@ export default [
         // marque assets
         find: /(const picture =)( [\s\S]*?;)/,
         replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
-      }),
-      terser({
-        output: {
-          comments: false,
-        },
       }),
     ],
   },

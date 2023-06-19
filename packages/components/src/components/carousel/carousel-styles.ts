@@ -2,6 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
+  addImportantToRule,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
@@ -10,7 +11,9 @@ import {
   hostHiddenStyles,
 } from '../../styles';
 import {
+  borderRadiusLarge,
   borderRadiusSmall,
+  borderWidthBase,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -31,6 +34,12 @@ import {
 
 export const carouselTransitionDuration = 400;
 export const bulletActiveClass = 'bullet--active';
+export const paginationInfiniteStartCaseClass = 'pagination--infinite';
+export const bulletInfiniteClass = 'bullet--infinite';
+
+export const paginationBulletSize = '8px';
+const paginationInfiniteBulletSize = '4px';
+const paginationActiveBulletSize = '20px';
 
 const selectorHeading = 'h2,::slotted([slot=heading])';
 const selectorDescription = 'p,::slotted([slot=description])';
@@ -40,7 +49,7 @@ const mediaQueryXXL = getMediaQueryMin('xxl');
 // we need an explicit grid template, therefor we need to calculate the button group width
 const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
-const buttonGroupWidth = `calc(${buttonSize} * 2 + ${spacingStaticXSmall} + 2px)`;
+const buttonGroupWidth = `calc(${buttonSize} * 3 + ${spacingStaticXSmall} + 2px)`;
 
 const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: string } } = {
   basic: gridBasicOffset,
@@ -50,10 +59,11 @@ const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: stri
 export const getComponentCss = (
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
+  isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, focusColor } = getThemedColors(theme);
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
@@ -114,14 +124,26 @@ export const getComponentCss = (
         gap: spacingStaticXSmall,
         gridArea: '1 / 3 / 3 / auto', // needed in case description height is smaller than button group
         alignItems: 'end',
+        justifyContent: 'end',
+        justifySelf: 'end',
       },
     },
     btn: {
       padding: spacingStaticSmall,
     },
+    'skip-link': {
+      opacity: 0,
+      pointerEvents: 'none',
+      '&:focus': {
+        opacity: 1,
+        pointerEvents: 'all',
+      },
+    },
     splide: {
       overflow: 'hidden',
       // visibility: 'hidden',
+      padding: '4px 0', // for slide focus outline
+      margin: '-4px 0', // for slide focus outline
       '&__track': {
         cursor: 'grab',
         // !important is necessary to override inline styles set by splide library
@@ -145,7 +167,6 @@ export const getComponentCss = (
       },
       '&__list': {
         display: 'flex',
-        height: '100%',
         ...getBackfaceVisibilityJssStyle(),
       },
       '&__slide': {
@@ -153,6 +174,12 @@ export const getComponentCss = (
         flexShrink: 0,
         ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
+        borderRadius: borderRadiusLarge,
+        overflow: 'hidden',
+        '&:focus-visible': {
+          outline: `${borderWidthBase} solid ${focusColor}`,
+          outlineOffset: '2px',
+        },
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },
@@ -164,24 +191,76 @@ export const getComponentCss = (
     //     display: block,
     //   }
     ...(hasPagination && {
-      pagination: {
+      ['pagination-container']: {
         ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
           display: hasPaginationValue ? 'flex' : 'none',
         })),
-        justifyContent: 'center',
+        position: 'relative',
+        justifyContent: isInfinitePagination ? 'flex-start' : 'center',
+        width: `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * 4 + ${spacingStaticSmall} * 4)`, // Width for five bullets (one active + spacing)
+        left: 'calc(50% - 42px)',
+        overflowX: 'hidden',
+      },
+      pagination: {
+        display: 'flex',
+        alignItems: 'center',
+        width: 'fit-content',
+        height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: spacingStaticSmall,
+        transition: `transform ${carouselTransitionDuration}ms`,
       },
       bullet: {
         borderRadius: borderRadiusSmall,
         background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
-        // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
-        width: '8px',
-        height: '8px',
+        ...(isInfinitePagination
+          ? {
+              width: '0px',
+              height: '0px',
+              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms, height ${carouselTransitionDuration}ms`,
+            }
+          : {
+              width: paginationBulletSize,
+              height: paginationBulletSize,
+              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
+            }),
       },
-      [bulletActiveClass]: {
+      ...(isInfinitePagination && {
+        [`${paginationInfiniteStartCaseClass}`]: {
+          ['& > .bullet:nth-child(-n+4)']: {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+        },
+        [`${bulletInfiniteClass}`]: {
+          // Necessary to override the bulletActiveClass sibling selector
+          ...addImportantToEachRule({
+            width: paginationInfiniteBulletSize,
+            height: paginationInfiniteBulletSize,
+          }),
+          '& ~ span': {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+            width: '0px',
+            height: '0px',
+          },
+        },
+      }),
+      [`${bulletActiveClass}`]: {
         background: isHighContrastMode ? canvasTextColor : primaryColor,
-        width: '20px',
+        height: paginationBulletSize,
+        width: addImportantToRule(paginationActiveBulletSize),
+        ...(isInfinitePagination && {
+          '& ~ span': {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+            width: '0px',
+            height: '0px',
+          },
+        }),
       },
     }),
   });

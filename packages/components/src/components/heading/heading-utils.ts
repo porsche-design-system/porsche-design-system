@@ -1,14 +1,13 @@
-import type { TextAlign } from '../text/text-align';
 import type { HeadingTag } from './heading-tag';
-import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { BreakpointCustomizable, TextAlign } from '../../types';
 import { hasSpecificSlottedTag } from '../../utils';
 import { HEADING_TAGS } from './heading-tag';
 
 export const HEADING_SIZES = ['small', 'medium', 'large', 'x-large', 'xx-large', 'inherit'] as const;
-export type HeadingSize = typeof HEADING_SIZES[number];
+export type HeadingSize = (typeof HEADING_SIZES)[number];
 
 export const HEADING_COLORS = ['primary', 'inherit'] as const;
-export type HeadingColor = typeof HEADING_COLORS[number];
+export type HeadingColor = (typeof HEADING_COLORS)[number];
 
 export type HeadingAlign = TextAlign;
 

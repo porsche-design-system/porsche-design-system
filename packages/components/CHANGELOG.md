@@ -2,18 +2,50 @@
 
 ## Porsche Design System
 
-
 All notable changes to this project will be documented in this file and published as following npm packages:
 
-* `@porsche-design-system/components-js`
-* `@porsche-design-system/components-angular`
-* `@porsche-design-system/components-react`
-* `@porsche-design-system/components-vue`
+- `@porsche-design-system/components-js`
+- `@porsche-design-system/components-angular`
+- `@porsche-design-system/components-react`
+- `@porsche-design-system/components-vue`
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
+
+### [3.2.0] - 2023-06-19
+
+### [3.2.0-rc.0] - 2023-06-19
+
+#### Added
+
+- `skipLinkTarget` property to `Carousel` component to enhance keyboard functionality
+  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
+- `showLastPage` property to `Pagination` component
+  ([#2606](https://github.com/porsche-design-system/porsche-design-system/pull/2606))
+
+#### Fixed
+
+- Partials: `getInitialStyles` supports `Flyout` component
+  ([#2598](https://github.com/porsche-design-system/porsche-design-system/pull/2598))
+- `Popover` content can be selected/highlighted
+  ([#2599](https://github.com/porsche-design-system/porsche-design-system/pull/2599))
+
+#### Changed
+
+- `Carousel` pagination now shows 5 "infinite bullets" when using more than 5 slides
+  ([#2600](https://github.com/porsche-design-system/porsche-design-system/pull/2600))
+- `Carousel` supports click events on non-active slides and changed keyboard navigation
+  ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
+- Unified wordings of all console warnings, errors and exceptions
+  ([#2602](https://github.com/porsche-design-system/porsche-design-system/pull/2602))
+- Angular: increased peer dependency to `>=15.0.0 <17.0.0`
+  ([#2602](https://github.com/porsche-design-system/porsche-design-system/pull/2602))
+- `Toast` allows line break markups within toast message
+  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
+- `Toast` shows always the latest toast message and clears its queue immediately if a new message is added
+  ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
 
 ### [3.1.0] - 2023-06-09
 
@@ -21,7 +53,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Crest` replaced final assets and meta icons
+- `Crest` updated assets ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
+- Partials: `getMetaTagsAndIconLinks` updated assets
   ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
 
 #### Added
@@ -1650,7 +1683,7 @@ accessible regarding its color contrast and might even be removed in an upcoming
 
 #### Changed
 
-- Angular: Increased peer dependency to `>=12.0.0 <14.0.0`
+- Angular: increased peer dependency to `>=12.0.0 <14.0.0`
 
 ### [2.7.0] - 2021-12-14
 
@@ -1944,7 +1977,7 @@ color contrast and might even be removed in an upcoming major release again.
 
 #### Fixed
 
-- Angular: Events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
+- Angular: events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
 
 ### [2.0.2] - 2021-04-21
 
@@ -1961,7 +1994,7 @@ color contrast and might even be removed in an upcoming major release again.
 - Visual appearance of `Checkbox Wrapper` in iOS Safari
 - A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly
 - Visual bug in Firefox when zooming out `Text Field Wrapper`, `Checkbox Wrapper` and `Textarea Wrapper`
-- Angular: Streamline component styles in dark theme
+- Angular: streamline component styles in dark theme
 
 #### Changed
 

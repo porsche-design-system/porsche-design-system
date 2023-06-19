@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { PFlyout } from '@porsche-design-system/components-react';
 
 export const FlyoutPage = (): JSX.Element => {
   const style = `
@@ -33,7 +33,7 @@ export const FlyoutPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider prefix="my-prefix">
+    <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light auto-layout" title="should show flyout">
@@ -42,21 +42,6 @@ export const FlyoutPage = (): JSX.Element => {
 
       <div className="playground dark auto-layout" title="should show flyout on dark theme">
         <PFlyout open={true} theme="dark">Some Content: should show flyout</PFlyout>
-      </div>
-
-      <div className="playground light auto-layout" title="should show flyout with prefixed component initialization">
-        <PFlyout open={true}>
-          Some Content: should show flyout with prefixed component initialization
-        </PFlyout>
-      </div>
-
-      <div
-        className="playground dark auto-layout"
-        title="should show flyout with prefixed component initialization on dark theme"
-      >
-        <PFlyout open={true} theme="dark">
-          Some Content: should show flyout with prefixed component initialization
-        </PFlyout>
       </div>
 
       <div className="playground light auto-layout" title="should show flyout (maxWidth content)">
@@ -926,6 +911,6 @@ export const FlyoutPage = (): JSX.Element => {
         <span />
         <span />
       </div>
-    </PorscheDesignSystemProvider>
+    </>
   );
 };

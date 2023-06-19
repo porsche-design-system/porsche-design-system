@@ -65,7 +65,6 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 - `./docker.sh run-build --components-angular` (builds angular components)
 - `./docker.sh run-build --components-react` (builds react components)
 - `./docker.sh run-build --core-dependencies` (builds utilities, icons, fonts, marque and assets)
-- `./docker.sh run-build --email` (builds the email marque)
 - `./docker.sh run-build --fonts` (builds the font set)
 - `./docker.sh run-build --icons` (builds the optimized icon set)
 - `./docker.sh run-build --marque` (builds the marque)

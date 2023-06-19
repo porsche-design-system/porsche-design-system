@@ -1,17 +1,28 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
-import type { TagName } from '@porsche-design-system/shared';
-import { getTagName, hasNamedSlot } from '../../utils';
+import { consoleWarn, getTagNameWithoutPrefix, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
-import { bulletActiveClass } from './carousel-styles';
+import {
+  bulletActiveClass,
+  bulletInfiniteClass,
+  paginationInfiniteStartCaseClass,
+  paginationBulletSize,
+} from './carousel-styles';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
 export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
+
+// The offset value used for calculating the number of infinite bullets
+const INFINITE_BULLET_OFFSET = 2;
+// The total number of infinite bullets including the center bullet
+const INFINITE_BULLET_AMOUNT = INFINITE_BULLET_OFFSET * 2 + 1;
+// Infinite bullets will be shown if the total number of bullets is greater than this value
+const INFINITE_BULLET_THRESHOLD = 5;
 
 // https://splidejs.com/guides/i18n/#default-texts
 // extracted from Options from '@splidejs/splide' but defined locally to not have to rebundle types
@@ -46,8 +57,10 @@ export const getSplideBreakpoints = (
 
 export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void => {
   if (!heading && !hasNamedSlot(host, 'heading')) {
-    console.warn(
-      `A heading has to be set via property or named slot on ${getTagName(host)} in order to ensure accessibility.`
+    consoleWarn(
+      `heading has to be set via property or named slot for component ${getTagNameWithoutPrefix(
+        host
+      )} in order to ensure accessibility.`
     );
   }
 };
@@ -91,6 +104,10 @@ export const updatePrevNextButtons = (btnPrev: ButtonPure, btnNext: ButtonPure, 
   };
 };
 
+export const isInfinitePagination = (amountOfPages: number): boolean => {
+  return amountOfPages > INFINITE_BULLET_THRESHOLD;
+};
+
 export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number, activeIndex: number): void => {
   if (paginationEl) {
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
@@ -98,53 +115,46 @@ export const renderPagination = (paginationEl: HTMLElement, amountOfPages: numbe
     paginationEl.innerHTML = Array.from(Array(amountOfPages))
       .map((_, i) => `<span class='bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}'></span>`)
       .join('');
+    if (isInfinitePagination(amountOfPages)) {
+      updateBulletState(paginationEl, amountOfPages, activeIndex);
+    }
   }
 };
 
-export const updatePagination = (paginationEl: HTMLElement, newIndex: number): void => {
+export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
+  const isStartCase = newIndex < INFINITE_BULLET_OFFSET;
+  const isEndCase = newIndex > amountOfPages - 1 - INFINITE_BULLET_OFFSET;
+  const infiniteBulletRightIndex = newIndex + INFINITE_BULLET_OFFSET;
+  const infiniteBulletLeftIndex = newIndex - INFINITE_BULLET_OFFSET;
+  const endCaseInfiniteBulletIndex = amountOfPages - INFINITE_BULLET_AMOUNT;
+  const startCaseInfiniteBulletIndex = INFINITE_BULLET_AMOUNT - 1;
+
+  const isInfiniteBulletLeft = (bulletIndex: number): boolean =>
+    isEndCase ? bulletIndex === endCaseInfiniteBulletIndex : bulletIndex === infiniteBulletLeftIndex;
+
+  const isInfiniteBulletRight = (bulletIndex: number): boolean =>
+    isStartCase ? bulletIndex === startCaseInfiniteBulletIndex : bulletIndex === infiniteBulletRightIndex;
+
+  const transformValue = isEndCase ? endCaseInfiniteBulletIndex : Math.max(infiniteBulletLeftIndex, 0);
+  paginationEl.style.transform = `translateX(calc(-${transformValue} * ${paginationBulletSize}))`;
+
+  // Only update bullets around newIndex
+  for (let i = newIndex - INFINITE_BULLET_AMOUNT - 1; i < newIndex + INFINITE_BULLET_AMOUNT + 1; i++) {
+    const index = (i + amountOfPages) % amountOfPages;
+    paginationEl.children[index].classList[
+      isInfiniteBulletLeft(index) || isInfiniteBulletRight(index) ? 'add' : 'remove'
+    ](bulletInfiniteClass);
+  }
+  // Add/Remove class to pagination in order to style the first bullets when the index is in isStartCase
+  paginationEl.classList[isStartCase ? 'add' : 'remove'](paginationInfiniteStartCaseClass);
+};
+
+export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
   if (paginationEl) {
     paginationEl.querySelector('.' + bulletActiveClass).classList.remove(bulletActiveClass);
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
-  }
-};
-
-export let hasInertSupport = typeof HTMLElement !== 'undefined' && HTMLElement.prototype.hasOwnProperty('inert');
-
-// for unit tests
-export const overrideHasInertSupport = (override: boolean): void => {
-  hasInertSupport = override;
-};
-
-export const updateSlidesInert = (splide: Splide): void => {
-  // splide doesn't exist yet on first run but on later reconnects or update calls
-  if (splide) {
-    const slides = splide.Components.Slides.get().map((slide) => slide.slide);
-    const {
-      index,
-      options: { perPage },
-    } = splide;
-    const maxIndex = index + perPage;
-
-    if (hasInertSupport) {
-      // add inert attribute on slides in shadowDOM
-      // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
-      // https://caniuse.com/?search=inert
-      slides.forEach((slide, i) =>
-        i >= index && i < maxIndex ? slide.removeAttribute('inert') : slide.setAttribute('inert', '')
-      );
-    } else {
-      // fallback with tabindex handling for certain elements in lightDOM
-      const prefix = getTagName((splide.root.getRootNode() as ShadowRoot).host as HTMLElement).replace('carousel', '');
-      const tagNames: TagName[] = ['p-button', 'p-button-pure', 'p-link', 'p-link-pure'];
-      const pdsSelectors = tagNames.map((tagName) => tagName.replace(/^p-/, prefix)).join();
-
-      slides.forEach((slide, i) =>
-        ((slide.firstChild as HTMLSlotElement).assignedNodes()[0] as HTMLElement)
-          .querySelectorAll(`[href],button,${pdsSelectors}`)
-          .forEach((el) =>
-            i >= index && i < maxIndex ? el.removeAttribute('tabindex') : el.setAttribute('tabindex', '-1')
-          )
-      );
+    if (isInfinitePagination(amountOfPages)) {
+      updateBulletState(paginationEl, amountOfPages, newIndex);
     }
   }
 };

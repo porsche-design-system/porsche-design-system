@@ -1,5 +1,5 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-import { getTagName } from '..';
+import { getTagNameWithoutPrefix, throwException } from '..';
 import { getDirectChildHTMLElement } from '../dom/getDirectChildHTMLElement';
 
 // prettier-ignore
@@ -11,7 +11,7 @@ export function getOnlyChildHTMLElementOrThrow(element: HTMLElement, selector: s
 
   // directChild can be null from querySelector()
   if (!directChild || directChild.previousElementSibling || directChild.nextElementSibling) {
-    throw new Error(`${getTagName(element)} has to contain a single direct child of: ${selector}`);
+    throwException(`${getTagNameWithoutPrefix(element)} has to contain a single direct child of: ${selector}`);
   }
 
   return directChild; // Einzelkind

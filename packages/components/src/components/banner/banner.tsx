@@ -5,6 +5,7 @@ import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
   attachComponentCss,
+  consoleWarn,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
@@ -14,7 +15,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
-import { getDeprecatedPropWarningMessage } from '../../utils/log/helper';
+import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
@@ -117,9 +118,9 @@ export class Banner {
     );
     const hasTitleSlot = hasNamedSlot(this.host, 'title');
     if (hasTitleSlot) {
-      console.warn(
-        getDeprecatedPropWarningMessage(this.host, 'slot="title"'),
-        'Please use the "heading" prop or slot="heading" instead.'
+      consoleWarn(
+        getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="title"'),
+        'Please use the heading prop or slot="heading" instead.'
       );
     }
     attachComponentCss(this.host, getComponentCss, this.open);

@@ -391,6 +391,7 @@ exports[`should match snapshot 1`] = `
       },
       "pagination": "boolean",
       "rewind": "boolean",
+      "skipLinkTarget": "string",
       "slidesPerPage": [
         "number",
         "auto",
@@ -434,6 +435,7 @@ exports[`should match snapshot 1`] = `
       "description",
     ],
     "nestedComponents": [
+      "p-link-pure",
       "p-button-pure",
     ],
     "props": {
@@ -445,6 +447,7 @@ exports[`should match snapshot 1`] = `
       "intl": null,
       "pagination": true,
       "rewind": true,
+      "skipLinkTarget": null,
       "slidesPerPage": 1,
       "theme": "light",
       "width": "basic",
@@ -1952,6 +1955,7 @@ exports[`should match snapshot 1`] = `
         5,
         7,
       ],
+      "showLastPage": "boolean",
       "theme": [
         "light",
         "dark",
@@ -2002,6 +2006,7 @@ exports[`should match snapshot 1`] = `
         "base": 5,
         "xs": 7,
       },
+      "showLastPage": true,
       "theme": "light",
       "totalItemsCount": 1,
     },

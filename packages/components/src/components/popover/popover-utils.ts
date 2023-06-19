@@ -4,10 +4,10 @@ import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
-export type PopoverDirection = typeof POPOVER_DIRECTIONS[number];
+export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];
 
 export const POPOVER_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type PopoverAriaAttribute = typeof POPOVER_ARIA_ATTRIBUTES[number];
+export type PopoverAriaAttribute = (typeof POPOVER_ARIA_ATTRIBUTES)[number];
 
 const safeZonePx = 16;
 
@@ -119,18 +119,19 @@ export const getPopoverMargin = (
   }
 };
 
-export const registeredPopovers: Popover[] = [];
+export type PopoverInternal = Partial<InstanceType<typeof Popover>> & { open: boolean };
+export const registeredPopovers: PopoverInternal[] = [];
 
 export const addDocumentEventListener = (popover: Popover): void => {
-  if (!registeredPopovers.includes(popover)) {
-    registeredPopovers.push(popover);
-    document.addEventListener('mousedown', onDocumentMousedown);
-    document.addEventListener('keydown', onDocumentKeydown);
+  if (!registeredPopovers.includes(popover as unknown as PopoverInternal)) {
+    registeredPopovers.push(popover as unknown as PopoverInternal);
+    document.addEventListener('mousedown', onDocumentMousedown); // multiple calls don't add multiple listeners
+    document.addEventListener('keydown', onDocumentKeydown); // multiple calls don't add multiple listeners
   }
 };
 
 export const removeDocumentEventListener = (popover: Popover): void => {
-  const index = registeredPopovers.indexOf(popover);
+  const index = registeredPopovers.indexOf(popover as unknown as PopoverInternal);
   if (index > -1) {
     registeredPopovers.splice(index, 1);
   }
@@ -142,26 +143,22 @@ export const removeDocumentEventListener = (popover: Popover): void => {
 
 export const onDocumentMousedown = (e: MouseEvent): void => {
   const popover = registeredPopovers.find(
-    // eslint-disable-next-line dot-notation
-    (popoverElement) => popoverElement['open'] && !e.composedPath().includes(popoverElement.host)
+    (popoverItem) => popoverItem.open && !e.composedPath().includes(popoverItem.host)
   );
   if (popover) {
-    // eslint-disable-next-line dot-notation
-    popover['open'] = false;
+    popover.open = false;
   }
 };
 
 export const onDocumentKeydown = (e: KeyboardEvent): void => {
   const { key } = e;
   const isEscape = key === 'Escape';
-  if (isEscape || ['SpaceBar', 'Enter', ' '].includes(key)) {
+  if (isEscape || key === 'Enter' || key === 'SpaceBar' || key === ' ') {
     const popover = registeredPopovers.find(
-      // eslint-disable-next-line dot-notation
-      (popoverElement) => popoverElement['open'] && (isEscape || !e.composedPath().includes(popoverElement.host))
+      (popoverItem) => popoverItem.open && (isEscape || !e.composedPath().includes(popoverItem.host))
     );
     if (popover) {
-      // eslint-disable-next-line dot-notation
-      popover['open'] = false;
+      popover.open = false;
     }
   }
 };

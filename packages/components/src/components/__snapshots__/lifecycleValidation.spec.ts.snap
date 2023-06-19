@@ -90,6 +90,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "intl": "shape",
   "pagination": "breakpoint",
   "rewind": "boolean",
+  "skipLinkTarget": "string",
   "slidesPerPage": "oneOf",
   "theme": "oneOf",
   "width": "oneOf",
@@ -378,6 +379,7 @@ exports[`should call validateProps() with correct parameters via render for p-pa
   "intl": "shape",
   "itemsPerPage": "number",
   "maxNumberOfPageLinks": "breakpoint",
+  "showLastPage": "boolean",
   "theme": "oneOf",
   "totalItemsCount": "number",
 }

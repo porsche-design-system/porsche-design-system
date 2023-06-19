@@ -3,19 +3,17 @@ import {
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
-  hasInertSupport,
   isFirstPage,
   isLastPage,
-  overrideHasInertSupport,
   renderPagination,
   slideNext,
   slidePrev,
   updatePagination,
   updatePrevNextButtons,
-  updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import * as hasNamedSlotUtils from '../../utils/dom/hasNamedSlot';
+import * as loggerUtils from '../../utils/log/logger';
 import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../button-pure/button-pure';
 
@@ -42,7 +40,7 @@ describe('getSplideBreakpoints()', () => {
 
 describe('warnIfHeadingIsMissing()', () => {
   it('should call hasNamedSlot() with correct parameters', () => {
-    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    jest.spyOn(global.console, 'warn').mockImplementation();
     const spy = jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot');
     const host = document.createElement('p-carousel');
 
@@ -50,14 +48,14 @@ describe('warnIfHeadingIsMissing()', () => {
     expect(spy).toBeCalledWith(host, 'heading');
   });
 
-  it('should call console.warn with correct parameter if heading prop is not set or slotted heading does not exist', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  it('should call consoleWarn() util with correct parameter if heading prop is not set or slotted heading does not exist', () => {
+    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
     jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(false);
     const host = document.createElement('p-carousel');
 
     warnIfHeadingIsMissing(host, undefined);
     expect(spy).toBeCalledWith(
-      'A heading has to be set via property or named slot on p-carousel in order to ensure accessibility.'
+      'heading has to be set via property or named slot for component p-carousel in order to ensure accessibility.'
     );
 
     warnIfHeadingIsMissing(host, null);
@@ -67,16 +65,16 @@ describe('warnIfHeadingIsMissing()', () => {
     expect(spy).toBeCalledTimes(3);
   });
 
-  it('should not call console.warn if heading prop is set', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  it('should not call consoleWarn() util if heading prop is set', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     const host = document.createElement('p-carousel');
 
     warnIfHeadingIsMissing(host, 'some heading');
     expect(spy).not.toBeCalled();
   });
 
-  it('should not call console.warn if slotted heading exists', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  it('should not call consoleWarn() util if slotted heading exists', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
     jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(true);
     const host = document.createElement('p-carousel');
 
@@ -343,6 +341,7 @@ describe('updatePrevNextButtons()', () => {
 
 const bulletMarkup = '<span class="bullet"></span>';
 const bulletActiveMarkup = '<span class="bullet bullet--active"></span>';
+const bulletInfiniteMarkup = '<span class="bullet bullet--infinite"></span>';
 
 describe('renderPagination()', () => {
   it('should render correct children of pagination', () => {
@@ -370,6 +369,54 @@ describe('renderPagination()', () => {
     renderPagination(el, 3, 1);
     expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup, bulletMarkup].join(''));
   });
+
+  it('should render correct children of pagination when using less or equal than 5 slides', () => {
+    const el = document.createElement('div');
+
+    renderPagination(el, 4, 0);
+    expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
+
+    renderPagination(el, 5, 0);
+    expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
+  });
+
+  it('should render correct children of pagination when using more than 5 slides', () => {
+    const el = document.createElement('div');
+
+    renderPagination(el, 6, 0);
+    expect(el.innerHTML).toBe(
+      [bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
+    );
+
+    renderPagination(el, 6, 1);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
+    );
+
+    renderPagination(el, 6, 2);
+    expect(el.innerHTML).toBe(
+      [bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join(
+        ''
+      )
+    );
+
+    renderPagination(el, 6, 3);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup].join(
+        ''
+      )
+    );
+
+    renderPagination(el, 6, 4);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup].join('')
+    );
+
+    renderPagination(el, 6, 5);
+    expect(el.innerHTML).toBe(
+      [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup].join('')
+    );
+  });
 });
 
 describe('updatePagination()', () => {
@@ -379,7 +426,7 @@ describe('updatePagination()', () => {
     const spy = jest.spyOn(el.children[2].classList, 'remove');
 
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
-    updatePagination(el, 0);
+    updatePagination(el, 3, 0);
     expect(spy).toBeCalledWith('bullet--active');
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
   });
@@ -390,203 +437,97 @@ describe('updatePagination()', () => {
     const spy = jest.spyOn(el.children[2].classList, 'add');
 
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
-    updatePagination(el, 2);
+    updatePagination(el, 3, 2);
     expect(spy).toBeCalledWith('bullet--active');
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
   });
-});
 
-describe('updateSlidesInert()', () => {
-  const defaultHasInertSupport = hasInertSupport;
+  it('should update bullet classes when using more than 5 slides at start', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [
+      bulletMarkup,
+      bulletActiveMarkup,
+      bulletMarkup,
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+    ].join('');
+    const spyInfinite = jest.spyOn(el.children[0].classList, 'add');
+    const spyActiveRemove = jest.spyOn(el.children[1].classList, 'remove');
+    const spyActiveAdd = jest.spyOn(el.children[2].classList, 'add');
 
-  afterEach(() => overrideHasInertSupport(defaultHasInertSupport));
-
-  const getHostAndSplideRoot = (opts?: { withPrefix: boolean }): [HTMLElement, HTMLElement] => {
-    const slide1 = document.createElement('div');
-    slide1.innerHTML = '<slot name="slide1">';
-    const slide2 = document.createElement('div');
-    slide2.innerHTML = '<slot name="slide2">';
-    const slide3 = document.createElement('div');
-    slide3.innerHTML = '<slot name="slide3">';
-
-    // const slot1 = document.createElement('slot');
-    // slot1.name = 'slide1';
-    // const slot2 = document.createElement('slot');
-    // slot2.name = 'slide2';
-    // const slot3 = document.createElement('slot');
-    // slot3.name = 'slide3';
-
-    const splideRoot = document.createElement('div');
-    splideRoot.id = 'splide';
-    splideRoot.append(slide1, slide2, slide3);
-
-    const host = document.createElement((opts?.withPrefix ? 'some-prefix-' : '') + 'p-carousel');
-    host.attachShadow({ mode: 'open' });
-    host.shadowRoot.append(splideRoot);
-
-    return [host, splideRoot];
-  };
-
-  const getMockedSplide = (index: number, perPage: number, root: HTMLElement): Splide =>
-    ({
-      index,
-      root,
-      options: { perPage },
-      Components: { Slides: { get: () => Array.from(root.children).map((slide) => ({ slide })) } },
-    } as Splide);
-
-  describe('for hasInertSupport=true', () => {
-    beforeEach(() => overrideHasInertSupport(true));
-
-    it('should correctly add and remove inert attributes on shadowDOM slides', () => {
-      expect(hasInertSupport).toBe(true);
-
-      const [, splideRoot] = getHostAndSplideRoot();
-      const [slide1, slide2, slide3] = Array.from(splideRoot.children);
-
-      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
-      expect(slide1.getAttribute('inert')).toBe(null);
-      expect(slide2.getAttribute('inert')).toBe('');
-      expect(slide3.getAttribute('inert')).toBe('');
-
-      updateSlidesInert(getMockedSplide(1, 1, splideRoot));
-      expect(slide1.getAttribute('inert')).toBe('');
-      expect(slide2.getAttribute('inert')).toBe(null);
-      expect(slide3.getAttribute('inert')).toBe('');
-
-      updateSlidesInert(getMockedSplide(2, 1, splideRoot));
-      expect(slide1.getAttribute('inert')).toBe('');
-      expect(slide2.getAttribute('inert')).toBe('');
-      expect(slide3.getAttribute('inert')).toBe(null);
-
-      updateSlidesInert(getMockedSplide(0, 2, splideRoot));
-      expect(slide1.getAttribute('inert')).toBe(null);
-      expect(slide2.getAttribute('inert')).toBe(null);
-      expect(slide3.getAttribute('inert')).toBe('');
-
-      updateSlidesInert(getMockedSplide(1, 2, splideRoot));
-      expect(slide1.getAttribute('inert')).toBe('');
-      expect(slide2.getAttribute('inert')).toBe(null);
-      expect(slide3.getAttribute('inert')).toBe(null);
-
-      updateSlidesInert(getMockedSplide(0, 3, splideRoot));
-      expect(slide1.getAttribute('inert')).toBe(null);
-      expect(slide2.getAttribute('inert')).toBe(null);
-      expect(slide3.getAttribute('inert')).toBe(null);
-    });
+    expect(el.children[0].outerHTML).toBe(bulletMarkup);
+    expect(el.children[1].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[2].outerHTML).toBe(bulletMarkup);
+    updatePagination(el, 6, 2);
+    expect(spyInfinite).toBeCalledWith('bullet--infinite');
+    expect(spyActiveRemove).toBeCalledWith('bullet--active');
+    expect(spyActiveAdd).toBeCalledWith('bullet--active');
+    expect(el.children[0].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[1].outerHTML).toBe(bulletMarkup);
+    expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
   });
 
-  describe('for hasInertSupport=false', () => {
-    beforeEach(() => overrideHasInertSupport(false));
+  it('should update bullet classes when using more than 5 slides at the middle', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+      bulletActiveMarkup,
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+    ].join('');
+    const spyInfiniteStartRemove = jest.spyOn(el.children[1].classList, 'remove');
+    const spyInfiniteStartAdd = jest.spyOn(el.children[2].classList, 'add');
+    const spyActiveRemove = jest.spyOn(el.children[3].classList, 'remove');
+    const spyActiveAdd = jest.spyOn(el.children[4].classList, 'add');
+    const spyInfiniteEndRemove = jest.spyOn(el.children[5].classList, 'remove');
+    const spyInfiniteEndAdd = jest.spyOn(el.children[6].classList, 'add');
 
-    const getLightDOMSlides = (): HTMLElement[] => {
-      const slide1 = document.createElement('div');
-      slide1.slot = 'slide1';
-      slide1.innerHTML = 'Slide 1 with a <a href="#">link</a>';
-      const slide2 = document.createElement('div');
-      slide2.slot = 'slide2';
-      slide2.innerHTML = 'Slide 1 with a <button>button</button>';
-      const slide3 = document.createElement('div');
-      slide3.slot = 'slide3';
-      slide3.innerHTML = 'Slide 1 with a <p-link>link</p-link>';
+    expect(el.children[1].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[2].outerHTML).toBe(bulletMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletMarkup);
+    expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
+    updatePagination(el, 7, 4);
+    expect(spyInfiniteStartRemove).toBeCalledWith('bullet--infinite');
+    expect(spyInfiniteStartAdd).toBeCalledWith('bullet--infinite');
+    expect(spyActiveRemove).toBeCalledWith('bullet--active');
+    expect(spyActiveAdd).toBeCalledWith('bullet--active');
+    expect(spyInfiniteEndRemove).toBeCalledWith('bullet--infinite');
+    expect(spyInfiniteEndAdd).toBeCalledWith('bullet--infinite');
+    expect(el.children[2].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[5].outerHTML).toBe(bulletMarkup);
+    expect(el.children[6].outerHTML).toBe(bulletInfiniteMarkup);
+  });
 
-      return [slide1, slide2, slide3];
-    };
+  it('should update bullet classes when using more than 5 slides at end', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [
+      bulletMarkup,
+      bulletInfiniteMarkup,
+      bulletMarkup,
+      bulletMarkup,
+      bulletActiveMarkup,
+      bulletMarkup,
+    ].join('');
+    const spyInfinite = jest.spyOn(el.children[5].classList, 'add');
+    const spyActiveRemove = jest.spyOn(el.children[4].classList, 'remove');
+    const spyActiveAdd = jest.spyOn(el.children[3].classList, 'add');
 
-    it('should not add inert attribute on shadowDOM slides', () => {
-      expect(hasInertSupport).toBe(false);
-
-      const [host, splideRoot] = getHostAndSplideRoot();
-      const [slide1, slide2, slide3] = Array.from(splideRoot.children);
-      const lightDOMSlides = getLightDOMSlides();
-      host.append(...lightDOMSlides);
-
-      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
-      expect(slide1.getAttribute('inert')).toBe(null);
-      expect(slide2.getAttribute('inert')).toBe(null);
-      expect(slide3.getAttribute('inert')).toBe(null);
-    });
-
-    it('should call querySelectorAll() with correct parameters on each lightDOM slide without prefix', () => {
-      expect(hasInertSupport).toBe(false);
-
-      const [host, splideRoot] = getHostAndSplideRoot();
-      const lightDOMSlides = getLightDOMSlides();
-      const [slide1, slide2, slide3] = lightDOMSlides;
-      host.append(slide1, slide2, slide3);
-
-      const spy1 = jest.spyOn(slide1, 'querySelectorAll');
-      const spy2 = jest.spyOn(slide2, 'querySelectorAll');
-      const spy3 = jest.spyOn(slide3, 'querySelectorAll');
-      const selector = '[href],button,p-button,p-button-pure,p-link,p-link-pure';
-
-      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
-      expect(spy1).toBeCalledWith(selector);
-      expect(spy2).toBeCalledWith(selector);
-      expect(spy3).toBeCalledWith(selector);
-    });
-
-    it('should call querySelectorAll() with correct parameters on each lightDOM slide with prefix', () => {
-      expect(hasInertSupport).toBe(false);
-
-      const [host, splideRoot] = getHostAndSplideRoot({ withPrefix: true });
-      const lightDOMSlides = getLightDOMSlides();
-      const [slide1, slide2, slide3] = lightDOMSlides;
-      host.append(slide1, slide2, slide3);
-
-      const spy1 = jest.spyOn(slide1, 'querySelectorAll');
-      const spy2 = jest.spyOn(slide2, 'querySelectorAll');
-      const spy3 = jest.spyOn(slide3, 'querySelectorAll');
-      const selector =
-        '[href],button,some-prefix-p-button,some-prefix-p-button-pure,some-prefix-p-link,some-prefix-p-link-pure';
-
-      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
-      expect(spy1).toBeCalledWith(selector);
-      expect(spy2).toBeCalledWith(selector);
-      expect(spy3).toBeCalledWith(selector);
-    });
-
-    it('should correctly add and remove tabindex attributes on lightDOM slides children', () => {
-      expect(hasInertSupport).toBe(false);
-
-      const [host, splideRoot] = getHostAndSplideRoot();
-      const lightDOMSlides = getLightDOMSlides();
-      const [slide1, slide2, slide3] = lightDOMSlides;
-      host.append(slide1, slide2, slide3);
-
-      const child1 = slide1.children[0];
-      const child2 = slide2.children[0];
-      const child3 = slide3.children[0];
-
-      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
-      expect(child1.getAttribute('tabindex')).toBe(null);
-      expect(child2.getAttribute('tabindex')).toBe('-1');
-      expect(child3.getAttribute('tabindex')).toBe('-1');
-
-      updateSlidesInert(getMockedSplide(1, 1, splideRoot));
-      expect(child1.getAttribute('tabindex')).toBe('-1');
-      expect(child2.getAttribute('tabindex')).toBe(null);
-      expect(child3.getAttribute('tabindex')).toBe('-1');
-
-      updateSlidesInert(getMockedSplide(2, 1, splideRoot));
-      expect(child1.getAttribute('tabindex')).toBe('-1');
-      expect(child2.getAttribute('tabindex')).toBe('-1');
-      expect(child3.getAttribute('tabindex')).toBe(null);
-
-      updateSlidesInert(getMockedSplide(0, 2, splideRoot));
-      expect(child1.getAttribute('tabindex')).toBe(null);
-      expect(child2.getAttribute('tabindex')).toBe(null);
-      expect(child3.getAttribute('tabindex')).toBe('-1');
-
-      updateSlidesInert(getMockedSplide(1, 2, splideRoot));
-      expect(child1.getAttribute('tabindex')).toBe('-1');
-      expect(child2.getAttribute('tabindex')).toBe(null);
-      expect(child3.getAttribute('tabindex')).toBe(null);
-
-      updateSlidesInert(getMockedSplide(0, 3, splideRoot));
-      expect(child1.getAttribute('tabindex')).toBe(null);
-      expect(child2.getAttribute('tabindex')).toBe(null);
-      expect(child3.getAttribute('tabindex')).toBe(null);
-    });
+    expect(el.children[5].outerHTML).toBe(bulletMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletMarkup);
+    updatePagination(el, 6, 3);
+    expect(spyInfinite).toBeCalledWith('bullet--infinite');
+    expect(spyActiveRemove).toBeCalledWith('bullet--active');
+    expect(spyActiveAdd).toBeCalledWith('bullet--active');
+    expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
+    expect(el.children[4].outerHTML).toBe(bulletMarkup);
+    expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);
   });
 });

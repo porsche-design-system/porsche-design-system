@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PHeading, PModal, PorscheDesignSystemProvider, PText } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PModal, PText } from '@porsche-design-system/components-react/ssr';
 
 const ModalPage: NextPage = (): JSX.Element => {
   const style = `
@@ -26,17 +26,11 @@ const ModalPage: NextPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider prefix="my-prefix">
+    <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show modal">
         <PModal heading="Heading" open={true}>Some Content: should show modal</PModal>
-      </div>
-
-      <div className="playground light" title="should show modal with prefixed component initialization">
-        <PModal heading="Heading" open={true}>
-          Some Content: should show modal with prefixed component initialization
-        </PModal>
       </div>
 
       <div className="playground light" title="should show modal (fullscreen=true)">
@@ -159,7 +153,7 @@ const ModalPage: NextPage = (): JSX.Element => {
         <span />
         <span />
       </div>
-    </PorscheDesignSystemProvider>
+    </>
   );
 };
 

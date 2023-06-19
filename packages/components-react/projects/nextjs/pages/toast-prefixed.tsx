@@ -14,13 +14,15 @@ const ToastPrefixedPage: NextPage = (): JSX.Element => {
   `;
 
   return (
-    <PorscheDesignSystemProvider prefix="my-prefix">
+    <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light" title="should render prefixed toast info on light background">
-        <Toast text="Some message" />
-      </div>
-    </PorscheDesignSystemProvider>
+      <PorscheDesignSystemProvider prefix="my-prefix">
+        <div className="playground light" title="should render prefixed toast info on light background">
+          <Toast text="Some message" />
+        </div>
+      </PorscheDesignSystemProvider>
+    </>
   );
 };
 
