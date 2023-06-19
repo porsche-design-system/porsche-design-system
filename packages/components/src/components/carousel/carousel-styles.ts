@@ -2,6 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
+  addImportantToRule,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
