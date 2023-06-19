@@ -10,6 +10,9 @@ import {
   supportsConstructableStylesheets,
 } from './jss';
 import type { JssStyle, Styles } from 'jss';
+import * as globby from 'globby';
+import * as path from 'path';
+import * as fs from 'fs';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
@@ -444,4 +447,17 @@ describe('getCachedComponentCss()', () => {
 
     expect(getComponentCss).toBeCalledTimes(1);
   });
+});
+
+describe('all styles snapshots', () => {
+  const srcDirPath = path.resolve(__dirname, '..');
+  const snapshotFilePaths = globby.sync(`${srcDirPath}/**/*-styles.spec.ts.snap`);
+
+  it.each(snapshotFilePaths.map((filePath) => [path.basename(filePath), filePath]))(
+    'should not contain [object Object] in %s',
+    (_, filePath) => {
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      expect(fileContent).not.toContain('[object Object]');
+    }
+  );
 });

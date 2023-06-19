@@ -1955,6 +1955,7 @@ exports[`should match snapshot 1`] = `
         5,
         7,
       ],
+      "showLastPage": "boolean",
       "theme": [
         "light",
         "dark",
@@ -2005,6 +2006,7 @@ exports[`should match snapshot 1`] = `
         "base": 5,
         "xs": 7,
       },
+      "showLastPage": true,
       "theme": "light",
       "totalItemsCount": 1,
     },

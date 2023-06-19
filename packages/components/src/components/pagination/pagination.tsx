@@ -4,8 +4,11 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  observeBreakpointChange,
+  parseJSON,
   parseJSONAttribute,
   THEMES,
+  unobserveBreakpointChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -20,10 +23,9 @@ import {
   getCounterResetValue,
   getCurrentActivePage,
   getTotalPages,
-  itemTypes,
+  ItemType,
   PAGINATION_NUMBER_OF_PAGE_LINKS,
 } from './pagination-utils';
-import { listenResize } from '../../utils/window-resize-listener';
 import { getComponentCss } from './pagination-styles';
 
 const propTypes: PropTypes<typeof Pagination> = {
@@ -31,6 +33,7 @@ const propTypes: PropTypes<typeof Pagination> = {
   itemsPerPage: AllowedTypes.number,
   activePage: AllowedTypes.number,
   maxNumberOfPageLinks: AllowedTypes.breakpoint<PaginationMaxNumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
+  showLastPage: AllowedTypes.boolean,
   allyLabel: AllowedTypes.string,
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
@@ -60,11 +63,14 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;
 
-  /** The maximum number of page links rendered */
+  /** The maximum number of page links rendered. */
   @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks> = {
     base: 5,
     xs: 7,
   };
+
+  /** Show or hide the button to jump to the last page. */
+  @Prop() public showLastPage?: boolean = true;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead.
@@ -108,22 +114,22 @@ export class Pagination {
   @State() private breakpointMaxNumberOfPageLinks: PaginationMaxNumberOfPageLinks = 7;
 
   private navigationElement: HTMLElement;
-  private unlistenResize: () => void;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.unlistenResize = listenResize(this.updateMaxNumberOfPageLinks);
+  public connectedCallback(): void {
+    this.observeBreakpointChange(); // on reconnect
+  }
 
+  public componentDidLoad(): void {
+    this.observeBreakpointChange(); // initially or slow prop binding
     this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
   public disconnectedCallback(): void {
-    if (this.unlistenResize) {
-      this.unlistenResize();
-    }
+    unobserveBreakpointChange(this.host);
   }
 
   public render(): JSX.Element {
@@ -151,6 +157,7 @@ export class Pagination {
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
       pageRange: this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0,
+      showLastPage: this.showLastPage,
     });
     const parsedIntl = parseJSONAttribute(this.intl);
 
@@ -174,27 +181,27 @@ export class Pagination {
             };
 
             switch (type) {
-              case itemTypes.PREVIOUS_PAGE_LINK:
+              case ItemType.PREVIOUS:
                 return (
                   <li key="prev">
                     <span
                       {...spanProps}
-                      aria-disabled={isActive ? null : 'true'}
                       aria-label={this.allyLabelPrev || parsedIntl.prev}
+                      aria-disabled={isActive ? null : 'true'}
                     >
                       <PrefixedTagNames.pIcon name="arrow-left" {...iconProps} />
                     </span>
                   </li>
                 );
 
-              case itemTypes.ELLIPSIS:
+              case ItemType.ELLIPSIS:
                 return (
                   <li key="ellipsis">
                     <span class="ellipsis" />
                   </li>
                 );
 
-              case itemTypes.PAGE:
+              case ItemType.PAGE:
                 return (
                   <li key={value}>
                     <span
@@ -208,13 +215,13 @@ export class Pagination {
                   </li>
                 );
 
-              case itemTypes.NEXT_PAGE_LINK:
+              case ItemType.NEXT:
                 return (
                   <li key="next">
                     <span
                       {...spanProps}
-                      aria-disabled={isActive ? null : 'true'}
                       aria-label={this.allyLabelNext || parsedIntl.next}
+                      aria-disabled={isActive ? null : 'true'}
                     >
                       <PrefixedTagNames.pIcon name="arrow-right" {...iconProps} />
                     </span>
@@ -228,15 +235,10 @@ export class Pagination {
   }
 
   private onKeyDown(event: KeyboardEvent, page: number): void {
-    /**
-     * from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
-     */
+    // from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
     const { key } = event;
     if (key === ' ' || key === 'Enter' || key === 'Spacebar') {
-      /**
-       * Prevent the default action to stop scrolling when space is pressed
-       */
-      event.preventDefault();
+      event.preventDefault(); // prevent the default action to stop scrolling when space is pressed
       this.onClick(page);
     }
   }
@@ -250,6 +252,13 @@ export class Pagination {
   }
 
   private updateMaxNumberOfPageLinks = (): void => {
+    // TODO: change this to a non js solution to support SSR and prevent initial rerender
     this.breakpointMaxNumberOfPageLinks = getCounterResetValue(this.navigationElement);
+  };
+
+  private observeBreakpointChange = (): void => {
+    if (typeof parseJSON(this.maxNumberOfPageLinks) === 'object') {
+      observeBreakpointChange(this.host, this.updateMaxNumberOfPageLinks);
+    }
   };
 }
