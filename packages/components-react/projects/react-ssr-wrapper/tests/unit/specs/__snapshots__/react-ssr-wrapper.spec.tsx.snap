@@ -2520,6 +2520,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   display: flex;
   align-items: center;
   width: fit-content;
+  height: 8px;
   gap: 8px;
   transition: transform 400ms;
 }
