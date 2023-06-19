@@ -35,7 +35,7 @@
     "algoliasearch": "^4.17.2",
     "change-case": "^4.1.2",
     "core-js": "^3.31.0",
-    "imask": "^7.0.0",
+    "imask": "^6.6.3",
     "prismjs": "^1.29.0",
     "vmark": "1.1.0",
     "vmark-loader": "1.0.0",

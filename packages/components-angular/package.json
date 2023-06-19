@@ -38,8 +38,8 @@
     "@angular/platform-browser-dynamic": "^15.2.9",
     "@angular/router": "^15.2.9",
     "@porsche-design-system/components-angular": "3.1.0",
-    "angular-imask": "7.0.0",
-    "imask": "^7.0.0",
+    "angular-imask": "6.6.3",
+    "imask": "^6.6.3",
     "rxjs": "^7.8.1",
     "tslib": "^2.5.2",
     "zone.js": "~0.13.1"
