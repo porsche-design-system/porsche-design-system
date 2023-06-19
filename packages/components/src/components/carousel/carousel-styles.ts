@@ -248,9 +248,7 @@ export const getComponentCss = (
       [`${bulletActiveClass}`]: {
         background: isHighContrastMode ? canvasTextColor : primaryColor,
         height: paginationBulletSize,
-        ...addImportantToEachRule({
-          width: paginationActiveBulletSize,
-        }),
+        width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {
           '& ~ span': {
             width: paginationBulletSize,
