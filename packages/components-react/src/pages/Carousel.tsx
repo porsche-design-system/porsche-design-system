@@ -416,6 +416,55 @@ export const CarouselPage = (): JSX.Element => {
           <div>Slide 3</div>
         </PCarousel>
       </div>
+
+      <div className="playground light" title="should render carousel with infinite pagination with active slide at the start">
+        <PCarousel heading="Infinite pagination start">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground light" title="should render carousel with infinite pagination with active slide in the middle">
+        <PCarousel heading="Infinite pagination middle" activeSlideIndex={4}>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
+          <div>Slide 7</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground dark"
+        title="should render carousel with infinite pagination with active slide in the middle on dark background"
+      >
+        <PCarousel heading="Infinite pagination middle" activeSlideIndex={4} theme="dark">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
+          <div>Slide 7</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground light" title="should render carousel with infinite pagination with active slide at the ened">
+        <PCarousel heading="Infinite pagination end" activeSlideIndex={5}>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
+        </PCarousel>
+      </div>
     </>
   );
 };

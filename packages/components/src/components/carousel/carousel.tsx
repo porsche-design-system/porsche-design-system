@@ -12,6 +12,7 @@ import {
   getAmountOfPages,
   getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
+  isInfinitePagination,
   renderPagination,
   slideNext,
   slidePrev,
@@ -222,6 +223,7 @@ export class Carousel {
             ) as BreakpointCustomizable<boolean>)
           : !this.disablePagination
         : this.pagination,
+      isInfinitePagination(this.amountOfPages),
       this.alignHeader,
       this.theme
     );
@@ -296,7 +298,9 @@ export class Carousel {
         </div>
 
         {(this.disablePagination ? this.disablePagination !== true : this.pagination) && (
-          <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
+          <div class="pagination-container">
+            <div class="pagination" ref={(ref) => (this.paginationEl = ref)}></div>
+          </div>
         )}
       </Host>
     );
@@ -310,7 +314,7 @@ export class Carousel {
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updatePagination(this.paginationEl, activeIndex);
+      updatePagination(this.paginationEl, this.amountOfPages, activeIndex);
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
