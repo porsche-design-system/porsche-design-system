@@ -205,7 +205,7 @@ export const getComponentCss = (
         display: 'flex',
         alignItems: 'center',
         width: 'fit-content',
-        height: paginationBulletSize,
+        height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: spacingStaticSmall,
         transition: `transform ${carouselTransitionDuration}ms`,
       },
