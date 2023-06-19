@@ -2,6 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
+  addImportantToRule,
   addImportantToEachRule,
   getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
@@ -33,6 +34,12 @@ import {
 
 export const carouselTransitionDuration = 400;
 export const bulletActiveClass = 'bullet--active';
+export const paginationInfiniteStartCaseClass = 'pagination--infinite';
+export const bulletInfiniteClass = 'bullet--infinite';
+
+export const paginationBulletSize = '8px';
+const paginationInfiniteBulletSize = '4px';
+const paginationActiveBulletSize = '20px';
 
 const selectorHeading = 'h2,::slotted([slot=heading])';
 const selectorDescription = 'p,::slotted([slot=description])';
@@ -52,6 +59,7 @@ const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: stri
 export const getComponentCss = (
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
+  isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
@@ -183,24 +191,75 @@ export const getComponentCss = (
     //     display: block,
     //   }
     ...(hasPagination && {
-      pagination: {
+      ['pagination-container']: {
         ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
           display: hasPaginationValue ? 'flex' : 'none',
         })),
-        justifyContent: 'center',
+        position: 'relative',
+        justifyContent: isInfinitePagination ? 'flex-start' : 'center',
+        width: `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * 4 + ${spacingStaticSmall} * 4)`, // Width for five bullets (one active + spacing)
+        left: 'calc(50% - 42px)',
+        overflowX: 'hidden',
+      },
+      pagination: {
+        display: 'flex',
+        alignItems: 'center',
+        width: 'fit-content',
         gap: spacingStaticSmall,
+        transition: `transform ${carouselTransitionDuration}ms`,
       },
       bullet: {
         borderRadius: borderRadiusSmall,
         background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
-        // set transition to have the same speed as switching slides in splide
-        transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
-        width: '8px',
-        height: '8px',
+        ...(isInfinitePagination
+          ? {
+              width: '0px',
+              height: '0px',
+              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms, height ${carouselTransitionDuration}ms`,
+            }
+          : {
+              width: paginationBulletSize,
+              height: paginationBulletSize,
+              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
+            }),
       },
-      [bulletActiveClass]: {
+      ...(isInfinitePagination && {
+        [`${paginationInfiniteStartCaseClass}`]: {
+          ['& > .bullet:nth-child(-n+4)']: {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+        },
+        [`${bulletInfiniteClass}`]: {
+          // Necessary to override the bulletActiveClass sibling selector
+          ...addImportantToEachRule({
+            width: paginationInfiniteBulletSize,
+            height: paginationInfiniteBulletSize,
+          }),
+          '& ~ span': {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+            width: '0px',
+            height: '0px',
+          },
+        },
+      }),
+      [`${bulletActiveClass}`]: {
         background: isHighContrastMode ? canvasTextColor : primaryColor,
-        width: '20px',
+        height: paginationBulletSize,
+        width: addImportantToRule(paginationActiveBulletSize),
+        ...(isInfinitePagination && {
+          '& ~ span': {
+            width: paginationBulletSize,
+            height: paginationBulletSize,
+          },
+          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+            width: '0px',
+            height: '0px',
+          },
+        }),
       },
     }),
   });

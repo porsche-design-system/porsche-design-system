@@ -296,7 +296,7 @@ describe('registerSplideHandlers()', () => {
 
     component['splide'].emit('move', 1, 0);
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], 1);
+    expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], undefined, 1);
     expect(changeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
     expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
   });

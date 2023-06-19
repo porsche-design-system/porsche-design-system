@@ -83,7 +83,9 @@ exports[`should have no basic DOM regression for p-carousel 1`] = `
     </div>
   </div>
 </div>
-<div class="pagination">
+<div class="pagination-container">
+  <div class="pagination">
+  </div>
 </div>"
 `;
 

@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.2.0-rc.0] - 2023-06-19
+
 #### Added
 
 - `skipLinkTarget` property to `Carousel` component to enhance keyboard functionality
@@ -30,6 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Carousel` pagination now shows 5 "infinite bullets" when using more than 5 slides
+  ([#2600](https://github.com/porsche-design-system/porsche-design-system/pull/2600))
 - `Carousel` supports click events on non-active slides and changed keyboard navigation
   ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
 - Unified wordings of all console warnings, errors and exceptions

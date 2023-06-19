@@ -161,6 +161,43 @@ it('should update pagination on prev button clicks', async () => {
   expect(await getCssClasses(bullet3)).toBe('bullet');
 });
 
+it('should update infinite pagination on prev button clicks', async () => {
+  await initCarousel({ amountOfSlides: 6 });
+  const buttonPrev = await getButtonPrev();
+  const paginationBullets = await getPaginationBullets();
+
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet bullet--active');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet');
+
+  await buttonPrev.click();
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet bullet--active');
+
+  await buttonPrev.click();
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet bullet--active');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet');
+
+  await buttonPrev.click();
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet bullet--active');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet bullet--infinite');
+});
+
 it('should update pagination on next button clicks', async () => {
   await initCarousel();
   const buttonNext = await getButtonNext();
@@ -184,6 +221,43 @@ it('should update pagination on next button clicks', async () => {
   expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
   expect(await getCssClasses(bullet2)).toBe('bullet');
   expect(await getCssClasses(bullet3)).toBe('bullet');
+});
+
+it('should update infinite pagination on next button clicks', async () => {
+  await initCarousel({ amountOfSlides: 6 });
+  const buttonNext = await getButtonNext();
+  const paginationBullets = await getPaginationBullets();
+
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet bullet--active');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet');
+
+  await buttonNext.click();
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet bullet--active');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet');
+
+  await buttonNext.click();
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet bullet--active');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet');
+
+  await buttonNext.click();
+  expect(await getCssClasses(paginationBullets[0])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[1])).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(paginationBullets[2])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[3])).toBe('bullet bullet--active');
+  expect(await getCssClasses(paginationBullets[4])).toBe('bullet');
+  expect(await getCssClasses(paginationBullets[5])).toBe('bullet bullet--infinite');
 });
 
 it('should have working pagination and prev/next buttons after reconnect', async () => {
@@ -316,6 +390,34 @@ describe('adding/removing slides', () => {
     await waitForStencilLifecycle(page);
     expect((await getSlides()).length).toBe(2);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(2);
+  });
+
+  it('should update infinite pagination', async () => {
+    await initCarousel({ amountOfSlides: 6 });
+    const host = await getHost();
+
+    const pagination = await getPagination();
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+    const bullets = await getPaginationBullets();
+    expect(await getCssClasses(bullets[0])).toBe('bullet bullet--active');
+    expect(await getCssClasses(bullets[1])).toBe('bullet');
+    expect(await getCssClasses(bullets[2])).toBe('bullet');
+    expect(await getCssClasses(bullets[3])).toBe('bullet');
+    expect(await getCssClasses(bullets[4])).toBe('bullet bullet--infinite');
+    expect(await getCssClasses(bullets[5])).toBe('bullet');
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+
+    expect((await getSlides()).length).toBe(7);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(7);
+    const afterSlideBullets = await getPaginationBullets();
+    expect(await getCssClasses(afterSlideBullets[6])).toBe('bullet');
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+    expect((await getSlides()).length).toBe(6);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
   });
 
   it('should update aria-labels of prev/next buttons', async () => {

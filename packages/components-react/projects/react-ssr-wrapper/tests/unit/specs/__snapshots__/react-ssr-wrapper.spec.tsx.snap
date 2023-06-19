@@ -2508,21 +2508,32 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.pagination-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: calc(20px + 8px * 4 + 8px * 4);
+  left: calc(50% - 42px);
+  overflow-x: hidden;
+}
 .pagination {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  width: fit-content;
   gap: 8px;
+  transition: transform 400ms;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
-  transition: background-color 400ms, width 400ms;
   width: 8px;
   height: 8px;
+  transition: background-color 400ms, width 400ms;
 }
 .bullet--active {
   background: #010205;
-  width: 20px;
+  height: 8px;
+  width: 20px !important;
 }
 @media(min-width:760px) {
   .header {
@@ -2856,8 +2867,12 @@ img {
       </div>
     </div>
     <div
-      class="pagination"
-    />
+      class="pagination-container"
+    >
+      <div
+        class="pagination"
+      />
+    </div>
   </template>
   <div>
     Some child
