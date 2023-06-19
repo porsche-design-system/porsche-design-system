@@ -4350,10 +4350,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jasmine@^4.3.2":
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.3.2.tgz#27045b95e1249e67ef02c7966e12003fb25df18b"
-  integrity sha512-lKkWBcbxEZX/7nxPqEtv/OjPLaBa2j0o+hmv5Yn83b/+11C1kfBAkgvmrb13WDkmizUJ3B+jYrWh4M0YRtrzEQ==
+"@types/jasmine@^4.3.3":
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.3.3.tgz#0d11f73bd34c25a6586cca3f9c88ad4fcd1bf60c"
+  integrity sha512-KqJKAl72n2azOoohHe07OwQekDnGVGFkWGQgZ5fcE3rt+ahDFtoJ7Jte5qxW/acSlcV/ys/r2XmjtXiUs59o+w==
 
 "@types/jest-environment-puppeteer@^5.0.3":
   version "5.0.3"
