@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 43755,
-    "gzipSize": 17609
+    "size": 43738,
+    "gzipSize": 17612
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -131,8 +131,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 70262,
-    "gzipSize": 23623
+    "size": 70296,
+    "gzipSize": 23632
   },
   {
     "chunkShortName": "marque",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "pagination",
-    "size": 7714,
-    "gzipSize": 3097
+    "size": 7299,
+    "gzipSize": 2900
   },
   {
     "chunkShortName": "popover",
@@ -241,8 +241,8 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 6788,
-    "gzipSize": 2875
+    "size": 6833,
+    "gzipSize": 2905
   },
   {
     "chunkShortName": "wordmark",
