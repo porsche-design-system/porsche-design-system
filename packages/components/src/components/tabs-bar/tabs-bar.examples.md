@@ -27,7 +27,7 @@ Basic implementation is a tab bar with tabs to switch between the content. Just 
 change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate the window location, inside the
 `<p-tabs-bar>` component and it will handle all styling behaviors.
 
-In order to get notified when the active tabs change, you need to register an event listener for the `change` event
+In order to get notified when the active tabs change, you need to register an event listener for the `update` event
 which is emitted by `p-tabs-bar`.
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
