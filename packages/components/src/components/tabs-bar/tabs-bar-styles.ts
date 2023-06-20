@@ -134,7 +134,7 @@ export const getComponentCss = (
       bottom: isHighContrastMode ? '0' : '-2px',
       visibility: 'visible',
       transition: `transform ${barTransitionDuration},width ${barTransitionDuration}`,
-      animation: `$hide 0s .5s forwards`, // auto hide bar after transition, needs to be a little longer in Safari
+      animation: '$hide 0s .5s forwards', // auto hide bar after transition, needs to be a little longer in Safari
     },
     '@keyframes hide': {
       to: {
