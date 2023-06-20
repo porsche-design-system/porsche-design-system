@@ -120,6 +120,9 @@ export const getComponentCss = (
       }),
       '& > div': {
         overflow: 'hidden',
+        // Necessary to make focus-outlines fully visible
+        padding: '4px',
+        margin: '-4px',
       },
     },
   });
