@@ -111,25 +111,15 @@ export const getComponentCss = (
     },
     collapsible: {
       color: primaryColor, // enables color inheritance for slotted content
-      overflow: 'hidden',
-      ...(open
-        ? {
-            height: 'auto',
-            paddingBottom: compact ? spacingStaticSmall : '24px',
-            visibility: 'visible',
-            transition: getTransition('height') + ',' + getTransition('padding-bottom'),
-            animation: `$open 0s ${transitionDuration} forwards`, // delay overflow change and have `overflow: visible` after transition
-          }
-        : {
-            height: 0,
-            visibility: 'hidden',
-            transition: getTransition('height') + `,visibility 0s linear ${transitionDuration}`,
-          }),
-    },
-    // TODO: this doesn't get shortened and results in `keyframes-open` for some unknown reason
-    '@keyframes open': {
-      to: {
-        overflow: 'visible',
+      display: 'grid',
+      gridTemplateRows: '0fr',
+      transition: `grid-template-rows ${transitionDuration} ease-out, visibility 0s linear ${transitionDuration}`,
+      ...(open && {
+        gridTemplateRows: '1fr',
+        paddingBottom: compact ? spacingStaticSmall : '24px',
+      }),
+      '& > div': {
+        overflow: 'hidden',
       },
     },
   });
