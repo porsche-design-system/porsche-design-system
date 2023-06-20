@@ -112,12 +112,18 @@ export const getComponentCss = (
     collapsible: {
       color: primaryColor, // enables color inheritance for slotted content
       display: 'grid',
-      gridTemplateRows: '0fr',
-      transition: `grid-template-rows ${transitionDuration} ease-out, visibility 0s linear ${transitionDuration}`,
-      ...(open && {
-        gridTemplateRows: '1fr',
-        paddingBottom: compact ? spacingStaticSmall : '24px',
-      }),
+      ...(open
+        ? {
+            gridTemplateRows: '1fr',
+            visibility: 'visible',
+            transition: `grid-template-rows ${transitionDuration} ease-out`,
+            paddingBottom: compact ? spacingStaticSmall : '24px',
+          }
+        : {
+            gridTemplateRows: '0fr',
+            visibility: 'hidden',
+            transition: `grid-template-rows ${transitionDuration} ease-out, visibility 0s linear ${transitionDuration}`,
+          }),
       '& > div': {
         overflow: 'hidden',
         // Necessary to make focus-outlines fully visible
