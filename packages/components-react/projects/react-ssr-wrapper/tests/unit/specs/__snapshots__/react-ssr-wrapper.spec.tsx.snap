@@ -1613,6 +1613,7 @@ button:hover::before {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
+  visibility: hidden;
   transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
 .collapsible &gt; div {
