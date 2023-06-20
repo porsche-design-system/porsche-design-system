@@ -38,7 +38,6 @@ export const getComponentCss = (
             '::slotted': {
               '&(a)': {
                 ...getResetInitialStylesForSlottedAnchor,
-                outline: 0,
                 textDecoration: underline ? 'underline' : 'none',
                 font: 'inherit',
                 color: 'inherit',
