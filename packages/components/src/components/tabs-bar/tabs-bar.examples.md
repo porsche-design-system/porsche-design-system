@@ -6,8 +6,8 @@ hash, to change the state of another element and therefore change the appearance
 to move on a longer page.
 
 The component does not handle the display of your content. If you use the component you have to manually care for the
-content to be rendered beneath. To help with this task the component triggers an event called `tabChange` with the index
-of the active tab.
+content to be rendered beneath. To help with this task the component triggers an event called `update` with the index of
+the active tab.
 
 If you intend to only change content on tab-click without location changes and you are fine that the content needs to be
 pre-rendered then we prepared a component which also handles the correct display of content according to the active tab.

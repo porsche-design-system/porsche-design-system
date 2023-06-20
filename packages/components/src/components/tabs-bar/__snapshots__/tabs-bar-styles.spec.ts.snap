@@ -34,12 +34,21 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   color: #FBFCFF !important;
   cursor: pointer !important;
 }
-::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+::slotted(a)::after,::slotted(button)::after {
+  content: "" !important;
+  visibility: hidden !important;
 }
-::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+  position: absolute !important;
+  height: 2px !important;
+  left: 0 !important;
+  background: #FBFCFF !important;
+  right: 0px !important;
+  bottom: -6px !important;
+  visibility: visible !important;
+}
+::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
@@ -67,18 +76,24 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: 400;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+  transition: visibility 0s linear .4s !important;
+}
 .bar {
-  display: block;
   position: absolute;
-  width: 0;
   height: 2px;
   left: 0;
-  bottom: -2px;
   background: #FBFCFF;
-}
-.bar--enable-transition {
-  will-change: width;
+  width: 0;
+  bottom: -2px;
+  visibility: visible;
   transition: transform .4s,width .4s;
+  animation: keyframes-hide 0s .4s forwards;
+}
+@keyframes keyframes-hide {
+  to {
+    visibility: hidden;
+  }
 }"
 `;
 
@@ -116,12 +131,21 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   color: #010205 !important;
   cursor: pointer !important;
 }
-::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+::slotted(a)::after,::slotted(button)::after {
+  content: "" !important;
+  visibility: hidden !important;
 }
-::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+  position: absolute !important;
+  height: 2px !important;
+  left: 0 !important;
+  background: #010205 !important;
+  right: 0px !important;
+  bottom: -6px !important;
+  visibility: visible !important;
+}
+::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
@@ -149,18 +173,24 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: 400;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+  transition: visibility 0s linear .4s !important;
+}
 .bar {
-  display: block;
   position: absolute;
-  width: 0;
   height: 2px;
   left: 0;
-  bottom: -2px;
   background: #010205;
-}
-.bar--enable-transition {
-  will-change: width;
+  width: 0;
+  bottom: -2px;
+  visibility: visible;
   transition: transform .4s,width .4s;
+  animation: keyframes-hide 0s .4s forwards;
+}
+@keyframes keyframes-hide {
+  to {
+    visibility: hidden;
+  }
 }"
 `;
 
@@ -198,12 +228,21 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   color: #FBFCFF !important;
   cursor: pointer !important;
 }
-::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+::slotted(a)::after,::slotted(button)::after {
+  content: "" !important;
+  visibility: hidden !important;
 }
-::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+  position: absolute !important;
+  height: 2px !important;
+  left: 0 !important;
+  background: #FBFCFF !important;
+  right: 0px !important;
+  bottom: -6px !important;
+  visibility: visible !important;
+}
+::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
@@ -231,18 +270,24 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: 400;
   font-size: 1rem;
 }
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+  transition: visibility 0s linear .4s !important;
+}
 .bar {
-  display: block;
   position: absolute;
-  width: 0;
   height: 2px;
   left: 0;
-  bottom: -2px;
   background: #FBFCFF;
-}
-.bar--enable-transition {
-  will-change: width;
+  width: 0;
+  bottom: -2px;
+  visibility: visible;
   transition: transform .4s,width .4s;
+  animation: keyframes-hide 0s .4s forwards;
+}
+@keyframes keyframes-hide {
+  to {
+    visibility: hidden;
+  }
 }"
 `;
 
@@ -280,12 +325,21 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   color: #010205 !important;
   cursor: pointer !important;
 }
-::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+::slotted(a)::after,::slotted(button)::after {
+  content: "" !important;
+  visibility: hidden !important;
 }
-::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+  position: absolute !important;
+  height: 2px !important;
+  left: 0 !important;
+  background: #010205 !important;
+  right: 0px !important;
+  bottom: -6px !important;
+  visibility: visible !important;
+}
+::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
@@ -313,18 +367,24 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: 400;
   font-size: 1rem;
 }
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+  transition: visibility 0s linear .4s !important;
+}
 .bar {
-  display: block;
   position: absolute;
-  width: 0;
   height: 2px;
   left: 0;
-  bottom: -2px;
   background: #010205;
-}
-.bar--enable-transition {
-  will-change: width;
+  width: 0;
+  bottom: -2px;
+  visibility: visible;
   transition: transform .4s,width .4s;
+  animation: keyframes-hide 0s .4s forwards;
+}
+@keyframes keyframes-hide {
+  to {
+    visibility: hidden;
+  }
 }"
 `;
 
@@ -362,12 +422,21 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   color: #010205 !important;
   cursor: pointer !important;
 }
-::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+::slotted(a)::after,::slotted(button)::after {
+  content: "" !important;
+  visibility: hidden !important;
 }
-::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+  position: absolute !important;
+  height: 2px !important;
+  left: 0 !important;
+  background: #010205 !important;
+  right: 0px !important;
+  bottom: -6px !important;
+  visibility: visible !important;
+}
+::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
@@ -395,18 +464,24 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: 600;
   font-size: 1rem;
 }
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+  transition: visibility 0s linear .4s !important;
+}
 .bar {
-  display: block;
   position: absolute;
-  width: 0;
   height: 2px;
   left: 0;
-  bottom: -2px;
   background: #010205;
-}
-.bar--enable-transition {
-  will-change: width;
+  width: 0;
+  bottom: -2px;
+  visibility: visible;
   transition: transform .4s,width .4s;
+  animation: keyframes-hide 0s .4s forwards;
+}
+@keyframes keyframes-hide {
+  to {
+    visibility: hidden;
+  }
 }"
 `;
 
@@ -444,12 +519,21 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   color: #010205 !important;
   cursor: pointer !important;
 }
-::slotted(a:focus)::before,::slotted(button:focus)::before {
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+::slotted(a)::after,::slotted(button)::after {
+  content: "" !important;
+  visibility: hidden !important;
 }
-::slotted(a:focus:not(:focus-visible))::before,::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+  position: absolute !important;
+  height: 2px !important;
+  left: 0 !important;
+  background: #010205 !important;
+  right: 0px !important;
+  bottom: -6px !important;
+  visibility: visible !important;
+}
+::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
+  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 16px !important;
@@ -477,47 +561,53 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-weight: 400;
   font-size: 1rem;
 }
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+  transition: visibility 0s linear .4s !important;
+}
 .bar {
-  display: block;
   position: absolute;
-  width: 0;
   height: 2px;
   left: 0;
-  bottom: -2px;
   background: #010205;
-}
-.bar--enable-transition {
-  will-change: width;
+  width: 0;
+  bottom: -2px;
+  visibility: visible;
   transition: transform .4s,width .4s;
+  animation: keyframes-hide 0s .4s forwards;
+}
+@keyframes keyframes-hide {
+  to {
+    visibility: hidden;
+  }
 }
 @media(min-width:480px) {
-  .scroller {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  }
+    .scroller {
+      font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    }
 }
 
 @media(min-width:760px) {
-  .scroller {
-    font-size: 1rem;
-  }
+    .scroller {
+      font-size: 1rem;
+    }
 }
 
 @media(min-width:1000px) {
-  .scroller {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  }
+    .scroller {
+      font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    }
 }
 
 @media(min-width:1300px) {
-  .scroller {
-    font-size: 1rem;
-  }
+    .scroller {
+      font-size: 1rem;
+    }
 }
 
 @media(min-width:1760px) {
-  .scroller {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  }
+    .scroller {
+      font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    }
 }
 "
 `;
