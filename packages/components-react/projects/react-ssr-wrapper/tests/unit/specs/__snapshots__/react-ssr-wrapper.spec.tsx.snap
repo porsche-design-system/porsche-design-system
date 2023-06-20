@@ -1616,7 +1616,7 @@ button:hover::before {
   visibility: hidden;
   transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
-.collapsible &gt; div {
+.collapsible div {
   overflow: hidden;
   padding: 4px;
   margin: -4px;
