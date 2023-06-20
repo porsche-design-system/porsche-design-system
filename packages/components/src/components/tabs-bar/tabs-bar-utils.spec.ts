@@ -122,10 +122,15 @@ describe('setBarStyle()', () => {
 
   it('should reset animation on barElement when there is a selected tabElement', () => {
     jest.useFakeTimers();
-    const spy = jest.spyOn(global, 'setTimeout');
+    let count = 0;
+    const spy = jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
+      // we can then use fake timers to preserve the async nature of this call
+      setTimeout(() => cb(100 * ++count), 100);
+      return 0;
+    });
     expect(barElement.style.animation).toBe('');
 
-    el1.ariaSelected = 'true';
+    el1.setAttribute('aria-selected', 'true');
     setBarStyle([el1, el2], 0, barElement);
 
     expect(barElement.style.animation).toBe('none');
@@ -134,6 +139,7 @@ describe('setBarStyle()', () => {
 
     expect(spy).toBeCalledWith(expect.any(Function));
     expect(barElement.style.animation).toBe('');
+    jest.useRealTimers();
   });
 });
 

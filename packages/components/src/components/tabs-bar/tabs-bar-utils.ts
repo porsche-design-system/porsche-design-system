@@ -1,5 +1,5 @@
 import type { ScrollerDirection, ScrollerGradientColor, ScrollerGradientColorScheme } from '../scroller/scroller-utils';
-import { setAttribute } from '../../utils';
+import { getAttribute, setAttribute } from '../../utils';
 
 export const TABS_BAR_SIZES = ['small', 'medium'] as const;
 export type TabsBarSize = (typeof TABS_BAR_SIZES)[number];
@@ -54,10 +54,12 @@ export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, 
   }
 
   // when there is no active item before, no need to animate anything
-  if (tabElements.some((el) => el.ariaSelected === 'true')) {
+  // el.ariaSelected isn't supported in firefox, therefore we need to read the attribute
+  // https://caniuse.com/mdn-api_element_ariaselected
+  if (tabElements.some((el) => getAttribute(el, 'aria-selected') === 'true')) {
     // reset animation that hides the bar after the transition
     barElement.style.animation = 'none';
-    setTimeout(() => (barElement.style.animation = ''));
+    window.requestAnimationFrame(() => (barElement.style.animation = ''));
   }
 };
 
