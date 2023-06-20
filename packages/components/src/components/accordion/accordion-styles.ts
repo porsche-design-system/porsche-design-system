@@ -124,9 +124,9 @@ export const getComponentCss = (
             visibility: 'hidden',
             transition: `grid-template-rows ${transitionDuration} ease-out, visibility 0s linear ${transitionDuration}`,
           }),
-      '& > div': {
+      '& div': {
         overflow: 'hidden',
-        // Necessary to make focus-outlines fully visible
+        // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',
       },
