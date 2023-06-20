@@ -71,6 +71,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
+  visibility: hidden;
   transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
 .collapsible > div {
@@ -151,7 +152,8 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  visibility: visible;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
   padding-bottom: 24px;
 }
 .collapsible > div {
@@ -231,6 +233,7 @@ button:not(:focus-visible)::before {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 0fr;
+  visibility: hidden;
   transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
 .collapsible > div {
@@ -310,6 +313,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
+  visibility: hidden;
   transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
 .collapsible > div {
@@ -389,7 +393,8 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  visibility: visible;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
   padding-bottom: 8px;
 }
 .collapsible > div {
@@ -470,6 +475,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
+  visibility: hidden;
   transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
 .collapsible > div {
@@ -550,7 +556,8 @@ button:not(:focus-visible)::before {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  visibility: visible;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
   padding-bottom: 24px;
 }
 .collapsible > div {
@@ -631,7 +638,8 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  visibility: visible;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
   padding-bottom: 24px;
 }
 .collapsible > div {
@@ -711,6 +719,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
+  visibility: hidden;
   transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
 .collapsible > div {
@@ -790,7 +799,8 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  visibility: visible;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
   padding-bottom: 8px;
 }
 .collapsible > div {
@@ -906,7 +916,8 @@ button:not(:focus-visible)::before {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  visibility: visible;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
   padding-bottom: 24px;
 }
 .collapsible > div {
