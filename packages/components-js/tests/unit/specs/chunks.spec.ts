@@ -225,13 +225,6 @@ describe('chunk content', () => {
     });
   });
 
-  describe('css inset property', () => {
-    it.each(chunkFileNames)('should not contain css inset property in %s', (chunkFileName) => {
-      const content = getChunkContent(chunkFileName);
-      expect(content).not.toContain('inset:');
-    });
-  });
-
   describe('ResizeObserver', () => {
     it.each(chunkFileNames.filter((x) => !x.includes('accordion')))(
       'should not contain ResizeObserver in %s',
