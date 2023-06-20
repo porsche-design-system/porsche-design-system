@@ -11,7 +11,7 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
     </span>
   </button>
 </h2>
-<div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control" style="height: 0px;">
+<div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control">
   <div>
     <slot>
     </slot>
