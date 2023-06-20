@@ -22,8 +22,9 @@ export const getComponentCss = (
   const { linkColor } = getHighContrastColors();
 
   return getCss(
-    mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme), {
-      ...(hasSlottedAnchor && {
+    mergeDeep(
+      getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme),
+      hasSlottedAnchor && {
         ...(isHighContrastMode && {
           root: {
             borderColor: linkColor,
@@ -58,7 +59,7 @@ export const getComponentCss = (
             },
           },
         }),
-      }),
-    })
+      }
+    )
   );
 };
