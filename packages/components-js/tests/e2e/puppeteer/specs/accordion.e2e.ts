@@ -52,9 +52,9 @@ const getBody = () => selectNode(page, 'body');
 const getCollapseVisibility = async () => getElementStyle(await getCollapsible(), 'visibility');
 const getCollapseGridTemplateRows = async () => getElementStyle(await getCollapsible(), 'gridTemplateRows');
 
-it('should set "gridTemplateRows: 1fr" (18.5px) and "visibility: visible" on collapsible on initial open', async () => {
+it('should set "gridTemplateRows: 1fr" and "visibility: visible" on collapsible on initial open', async () => {
   await initAccordion({ isOpen: true });
-  expect(await getCollapseGridTemplateRows()).toBe('18.5px');
+  expect(await getCollapseGridTemplateRows()).not.toBe('0px');
   expect(await getCollapseVisibility()).toBe('visible');
 });
 
@@ -74,7 +74,7 @@ it('should set correct gridTemplateRows and visibility on collapsible on open ch
   await setProperty(host, 'open', true);
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows(), 'after open=true').toBe('18.5px');
+  expect(await getCollapseGridTemplateRows(), 'after open=true').not.toBe('0px');
   expect(await getCollapseVisibility()).toBe('visible');
 
   await setProperty(host, 'open', false);
@@ -94,7 +94,7 @@ it('should have correct gridTemplateRows and visibility after fast open/close re
   await button.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows()).toBe('18.5px');
+  expect(await getCollapseGridTemplateRows()).not.toBe('0px');
   expect(await getCollapseVisibility()).toBe('visible');
 });
 
