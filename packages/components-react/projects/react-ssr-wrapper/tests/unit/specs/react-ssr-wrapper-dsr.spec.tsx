@@ -10,26 +10,12 @@ import {
 import '@porsche-design-system/components-react/jsdom-polyfill';
 
 describe('SSR components', () => {
-  let consoleErrors = [];
-
-  beforeAll(() => {
-    const originalConsoleError = console.error;
-    console.error = (...args) => {
-      consoleErrors.push(args);
-      originalConsoleError(...args);
-    };
-  });
-
-  afterEach(() => {
-    consoleErrors = [];
-  });
-
   it('should have working SSR PLink component', async () => {
+    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
     render(
       <PorscheDesignSystemProvider>
-        <PLink href={'/'} data-testid={'p-link'}>
-          Button
-        </PLink>
+        <PLink href={'/'}>Link</PLink>
       </PorscheDesignSystemProvider>
     );
 
@@ -40,20 +26,21 @@ describe('SSR components', () => {
     const componentsReadyCount = await componentsReady();
     expect(componentsReadyCount).toBe(1);
 
-    const component = screen.getByTestId('p-link');
-
     // Check if shadowRoot is populated
-    const shadowRoot = component.shadowRoot;
+    // eslint-disable-next-line testing-library/no-node-access
+    const shadowRoot = document.querySelector('p-link').shadowRoot;
     expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
     // Check for console errors
-    expect(consoleErrors).toEqual([]);
+    expect(consoleErrorSpy).not.toBeCalled();
   });
 
   it('should have working SSR PButton component', async () => {
+    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
     render(
       <PorscheDesignSystemProvider>
-        <PButton data-testid={'p-button'}>Button</PButton>
+        <PButton>Button</PButton>
       </PorscheDesignSystemProvider>
     );
 
@@ -64,20 +51,21 @@ describe('SSR components', () => {
     const componentsReadyCount = await componentsReady();
     expect(componentsReadyCount).toBe(1);
 
-    const component = screen.getByTestId('p-button');
-
     // Check if shadowRoot is populated
-    const shadowRoot = component.shadowRoot;
+    // eslint-disable-next-line testing-library/no-node-access
+    const shadowRoot = document.querySelector('p-button').shadowRoot;
     expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
     // Check for console errors
-    expect(consoleErrors).toEqual([]);
+    expect(consoleErrorSpy).not.toBeCalled();
   });
 
   it('should have working SSR PSegmentedControl component', async () => {
+    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
     render(
       <PorscheDesignSystemProvider>
-        <PSegmentedControl data-testid={'p-segmented-control'} value={2} onUpdate={(e) => console.log(e)}>
+        <PSegmentedControl value={2}>
           <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
           <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
           <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
@@ -94,7 +82,8 @@ describe('SSR components', () => {
     const componentsReadyCount = await componentsReady();
     expect(componentsReadyCount).toBe(6);
 
-    const component = screen.getByTestId('p-segmented-control');
+    // eslint-disable-next-line testing-library/no-node-access
+    const component = document.querySelector('p-segmented-control');
 
     // Check if shadowRoot is populated
     const shadowRoot = component.shadowRoot;
@@ -105,6 +94,6 @@ describe('SSR components', () => {
     expect(component).toHaveValue(3);
 
     // Check for console errors
-    expect(consoleErrors).toEqual([]);
+    expect(consoleErrorSpy).not.toBeCalled();
   });
 });
