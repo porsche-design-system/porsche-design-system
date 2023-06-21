@@ -277,7 +277,20 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
         );
       } else if (tagName === 'p-tabs-bar') {
-        newFileContent = newFileContent.replace(/\n.*this\.props\.setAccessibilityAttributes\(\);/, '');
+        newFileContent = newFileContent
+          // get rid of left over
+          .replace(/\n.*this\.props\.setAccessibilityAttributes\(\);/, '')
+          // set aria attributes on button and anchor children, what at runtime is done via this.setAccessibilityAttributes()
+          .replace(
+            /const { children, namedSlotChildren, otherChildren } =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
+        ? { ...child, props: { ...child.props, role: 'tab', tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1', 'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false' } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(

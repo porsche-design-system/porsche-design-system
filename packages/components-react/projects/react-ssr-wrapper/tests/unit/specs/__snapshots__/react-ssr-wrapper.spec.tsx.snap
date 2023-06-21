@@ -1220,11 +1220,17 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
         </p-scroller>
       </template>
       <button
+        aria-selected="true"
+        role="tab"
+        tabindex="0"
         type="button"
       >
         Tab 1
       </button>
       <button
+        aria-selected="false"
+        role="tab"
+        tabindex="-1"
         type="button"
       >
         Tab 2
@@ -7641,6 +7647,9 @@ img {
         </p-scroller>
       </template>
       <button
+        aria-selected="true"
+        role="tab"
+        tabindex="0"
         type="button"
       >
         TabItem
