@@ -47,19 +47,29 @@ export const getFocusedTabIndex = (tabElements: HTMLElement[]): number => {
 };
 
 export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, barElement: HTMLElement): void => {
-  const activeTabElement = tabElements[activeTabIndex];
-  if (activeTabElement) {
-    const transformation = getTransformation(activeTabElement);
-    setAttribute(barElement, 'style', transformation);
-  }
+  // in frameworks, when chunk is already loaded, the watcher for activeTabIndex can trigger
+  // before the component is rendered, therefore barElement is not defined, yet
+  if (barElement) {
+    // el.ariaSelected isn't supported in firefox, therefore we need to read the attribute
+    // https://caniuse.com/mdn-api_element_ariaselected
+    const currentActiveTabElement = tabElements.find((el) => getAttribute(el, 'aria-selected') === 'true');
+    if (currentActiveTabElement) {
+      // for initial activeTabIndex > 0 and resized window with fluid font-size for size="medium"
+      // we need to adjust the starting point of the transition
+      setAttribute(barElement, 'style', 'transition: none;' + getTransformation(currentActiveTabElement));
+    }
 
-  // when there is no active item before, no need to animate anything
-  // el.ariaSelected isn't supported in firefox, therefore we need to read the attribute
-  // https://caniuse.com/mdn-api_element_ariaselected
-  if (tabElements.some((el) => getAttribute(el, 'aria-selected') === 'true')) {
-    // reset animation that hides the bar after the transition
-    barElement.style.animation = 'none';
-    window.requestAnimationFrame(() => (barElement.style.animation = ''));
+    const newActiveTabElement = tabElements[activeTabIndex];
+    if (newActiveTabElement) {
+      setAttribute(barElement, 'style', getTransformation(newActiveTabElement));
+    }
+
+    // when there was an active item before, we need to reset the animation
+    if (currentActiveTabElement) {
+      // reset animation that hides the bar after the transition
+      barElement.style.animation = 'none';
+      window.requestAnimationFrame(() => (barElement.style.animation = ''));
+    }
   }
 };
 
