@@ -141,7 +141,7 @@ export class TabsBar {
 
   public componentDidRender(): void {
     // 1 tick delay to prevent transition
-    setTimeout(() => {
+    window.requestAnimationFrame(() => {
       this.scrollerElement.classList[this.activeTabIndex !== undefined ? 'add' : 'remove'](scrollerAnimatedCssClass);
     });
   }
@@ -264,17 +264,21 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (isSmooth = true): void => {
-    const scrollActivePosition = getScrollActivePosition(
-      this.tabElements,
-      this.direction,
-      this.activeTabIndex,
-      this.scrollerElement
-    );
+    // scrollAreaElement might be undefined in certain scenarios with framework routing involved
+    // where the activeTabIndex watcher triggers this function before the scroller is rendered and the ref defined
+    if (this.scrollerElement) {
+      const scrollActivePosition = getScrollActivePosition(
+        this.tabElements,
+        this.direction,
+        this.activeTabIndex,
+        this.scrollerElement
+      );
 
-    this.scrollerElement.scrollToPosition = {
-      scrollPosition: scrollActivePosition,
-      isSmooth,
-    };
+      this.scrollerElement.scrollToPosition = {
+        scrollPosition: scrollActivePosition,
+        isSmooth,
+      };
+    }
   };
 
   private setBarStyle = (): void => {
