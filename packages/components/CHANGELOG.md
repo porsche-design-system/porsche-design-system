@@ -14,10 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Tabs Bar` supports SSR ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
+
 #### Fixed
 
 - `Accordion` collapsable content is overflowing when used with multiple prefixes  
   ([#2612](https://github.com/porsche-design-system/porsche-design-system/pull/2612))
+- `Tabs Bar` position of underline for fluid font-size with `size="medium`
+  ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
 
 ### [3.2.0] - 2023-06-19
 
