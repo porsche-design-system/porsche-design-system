@@ -6,13 +6,8 @@ import {
 } from '@porsche-design-system/shared/testing';
 import { mainViewSelector } from '../helpers';
 
-// TODO: we shouldn't rely on retries since computed result has to be deterministic
-jest.retryTimes(3);
-
 it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'story', '/components/pagination/examples')
-  ).toBeFalsy();
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'story', '/components/pagination/examples')).toBeFalsy();
 });
 
 it('should have no visual regression with dark theme', async () => {
