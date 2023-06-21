@@ -33,7 +33,7 @@ it('should render components wrapped with nested provider and prefix', () => {
 
 it('should throw error if PorscheDesignSystemProvider is missing ', () => {
   const spy = jest.spyOn(global.console, 'error');
-  jest.spyOn(global.console, 'warn').mockImplementation(() => {}); // suppress vue warning
+  jest.spyOn(global.console, 'warn').mockImplementation(); // suppress vue warning
 
   expect(() => render(PButton)).toThrowErrorMatchingInlineSnapshot(
     '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
