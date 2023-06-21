@@ -1,8 +1,8 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 5041,
-    "gzipSize": 2204
+    "size": 4248,
+    "gzipSize": 1869
   },
   {
     "chunkShortName": "banner",
@@ -106,18 +106,18 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6167,
-    "gzipSize": 2518
+    "size": 6195,
+    "gzipSize": 2526
   },
   {
     "chunkShortName": "link-pure",
-    "size": 7077,
-    "gzipSize": 2832
+    "size": 7120,
+    "gzipSize": 2841
   },
   {
     "chunkShortName": "link-social",
-    "size": 5945,
-    "gzipSize": 2481
+    "size": 5973,
+    "gzipSize": 2488
   },
   {
     "chunkShortName": "link-tile",
@@ -132,7 +132,7 @@
   {
     "chunkShortName": "main",
     "size": 70296,
-    "gzipSize": 23641
+    "gzipSize": 23637
   },
   {
     "chunkShortName": "marque",
@@ -201,18 +201,18 @@
   },
   {
     "chunkShortName": "tabs",
-    "size": 6283,
-    "gzipSize": 2632
+    "size": 6503,
+    "gzipSize": 2704
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 9767,
-    "gzipSize": 3839
+    "size": 9733,
+    "gzipSize": 3801
   },
   {
     "chunkShortName": "tag",
-    "size": 5210,
-    "gzipSize": 2103
+    "size": 5252,
+    "gzipSize": 2118
   },
   {
     "chunkShortName": "tag-dismissible",
