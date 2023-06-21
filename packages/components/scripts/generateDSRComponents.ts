@@ -7,6 +7,8 @@ import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
+const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
+
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const componentsDirectory = path.resolve(rootDirectory, 'src/components');
@@ -19,7 +21,8 @@ const generateDSRComponents = (): void => {
   const utilsBundleImportPath = '@porsche-design-system/components/dist/utils';
 
   const componentFileContents = componentPaths
-    // .filter((filePath) => filePath.includes('accordion'))
+    // .filter((filePath) => filePath.includes('accordion')) // for easier debugging
+    .filter((filePath) => !EXCLUDED_COMPONENTS.includes(`p-${path.basename(filePath).split('.')[0]}` as TagName))
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
