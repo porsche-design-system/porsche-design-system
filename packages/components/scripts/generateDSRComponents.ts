@@ -273,6 +273,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /getPopoverCss\(.+?\)/,
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
         );
+      } else if (tagName === 'p-tabs-bar') {
+        newFileContent = newFileContent.replace(/\n.*this\.props\.setAccessibilityAttributes\(\);/, '');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(
