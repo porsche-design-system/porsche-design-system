@@ -67,6 +67,7 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         width: '100%',
+        textAlign: 'center',
         padding: '13px 0px',
         ...(hasIcon &&
           hasSlottedContent && {
