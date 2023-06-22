@@ -49,6 +49,7 @@ const sendAlgoliaRequest = async () =>
   Promise.all([
     page.type(searchInputSelector, searchTerm),
     page.waitForResponse((response) => response.status() === 200),
+    page.waitForSelector('.ais-Hits-item'),
   ]);
 
 describe('search', () => {
