@@ -1,7 +1,7 @@
 import {
   getItemMaxWidth,
   syncSegmentedControlItemsProps,
-  tempDiv,
+  tempButton,
   tempIcon,
   tempLabel,
 } from './segmented-control-utils';
@@ -16,7 +16,7 @@ describe('getItemMaxWidth()', () => {
 
   beforeEach(() => {
     host.innerHTML = '';
-    tempDiv.innerHTML = '';
+    tempButton.innerHTML = '';
   });
 
   it('should return width of widest element', () => {
@@ -43,68 +43,68 @@ describe('getItemMaxWidth()', () => {
 
   it('should append temporary div', () => {
     const spy = jest.spyOn(host.shadowRoot, 'append');
-    jest.spyOn(tempDiv, 'remove').mockImplementationOnce(() => {});
-    expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
+    jest.spyOn(tempButton, 'remove').mockImplementationOnce(() => {});
+    expect(Array.from(host.shadowRoot.children)).not.toContain(tempButton);
 
     getItemMaxWidth(host);
 
-    expect(spy).toBeCalledWith(tempDiv);
-    expect(Array.from(host.shadowRoot.children)).toContain(tempDiv);
+    expect(spy).toBeCalledWith(tempButton);
+    expect(Array.from(host.shadowRoot.children)).toContain(tempButton);
   });
 
   it('should remove temporary div', () => {
-    const spy = jest.spyOn(tempDiv, 'remove');
+    const spy = jest.spyOn(tempButton, 'remove');
     getItemMaxWidth(host);
 
     expect(spy).toBeCalledWith();
-    expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
+    expect(Array.from(host.shadowRoot.children)).not.toContain(tempButton);
   });
 
   it('should use temporary icon element if icon is set', () => {
-    const spy = jest.spyOn(tempDiv, 'prepend');
+    const spy = jest.spyOn(tempButton, 'prepend');
 
     const child: HTMLElement & SegmentedControlItem = document.createElement('div') as any;
     child.icon = 'truck';
     host.append(child);
-    expect(Array.from(tempDiv.children)).not.toContain(tempIcon);
+    expect(Array.from(tempButton.children)).not.toContain(tempIcon);
 
     getItemMaxWidth(host);
 
     expect(spy).toBeCalledWith(tempIcon);
-    expect(Array.from(tempDiv.children)).toContain(tempIcon);
+    expect(Array.from(tempButton.children)).toContain(tempIcon);
   });
 
   it('should use temporary icon element if iconSource is set', () => {
-    const spy = jest.spyOn(tempDiv, 'prepend');
+    const spy = jest.spyOn(tempButton, 'prepend');
 
     const child: HTMLElement & SegmentedControlItem = document.createElement('div') as any;
     child.iconSource = 'truck.svg';
     host.append(child);
-    expect(Array.from(tempDiv.children)).not.toContain(tempIcon);
+    expect(Array.from(tempButton.children)).not.toContain(tempIcon);
 
     getItemMaxWidth(host);
 
     expect(spy).toBeCalledWith(tempIcon);
-    expect(Array.from(tempDiv.children)).toContain(tempIcon);
+    expect(Array.from(tempButton.children)).toContain(tempIcon);
   });
 
   it('should use temporary label if label is set', () => {
-    const spy = jest.spyOn(tempDiv, 'prepend');
+    const spy = jest.spyOn(tempButton, 'prepend');
 
     const child: HTMLElement & SegmentedControlItem = document.createElement('div') as any;
     child.label = 'Some label';
     host.append(child);
-    expect(Array.from(tempDiv.children)).not.toContain(tempLabel);
+    expect(Array.from(tempButton.children)).not.toContain(tempLabel);
 
     getItemMaxWidth(host);
 
     expect(spy).toBeCalledWith(tempLabel);
-    expect(Array.from(tempDiv.children)).toContain(tempLabel);
+    expect(Array.from(tempButton.children)).toContain(tempLabel);
   });
 
   describe('styles of temporary elements', () => {
     it('should have correct style for tempDiv', () => {
-      expect(tempDiv.style).toMatchSnapshot();
+      expect(tempButton.style).toMatchSnapshot();
     });
 
     it('should have correct style for tempLabel', () => {

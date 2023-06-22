@@ -19,16 +19,16 @@ export type SegmentedControlUpdateEvent = { value: string | number };
 
 // Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
 /* eslint-disable @typescript-eslint/quotes */
-const tempFont = "'Porsche Next, sans-serif'";
+const tempFont = 'Porsche Next, sans-serif';
 
 // temporary dom node to measure max-width of children content
-export const tempDiv = hasDocument ? document.createElement('div') : undefined;
-if (tempDiv) {
-  tempDiv.style.position = 'absolute';
-  tempDiv.style.visibility = 'hidden';
-  tempDiv.style.padding = `0 ${ITEM_PADDING}`;
-  tempDiv.style.boxSizing = 'border-box';
-  tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
+export const tempButton = hasDocument ? document.createElement('button') : undefined;
+if (tempButton) {
+  tempButton.style.position = 'absolute';
+  tempButton.style.visibility = 'hidden';
+  tempButton.style.padding = `0 ${ITEM_PADDING}`;
+  tempButton.style.boxSizing = 'border-box';
+  tempButton.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
 }
 
 export const tempLabel = hasDocument ? document.createElement('div') : undefined;
@@ -44,24 +44,24 @@ if (tempIcon) {
 }
 
 export const getItemMaxWidth = (host: HTMLElement): number => {
-  tempDiv.innerHTML = '';
-  host.shadowRoot.append(tempDiv);
+  tempButton.innerHTML = '';
+  host.shadowRoot.append(tempButton);
 
   const widths = Array.from(host.children).map((item: HTMLElement & SegmentedControlItem) => {
-    tempDiv.innerHTML = item.innerHTML;
+    tempButton.innerHTML = item.innerHTML;
 
     if (item.icon || item.iconSource) {
-      tempDiv.prepend(tempIcon);
+      tempButton.prepend(tempIcon);
     }
     if (item.label) {
       tempLabel.innerHTML = item.label;
-      tempDiv.prepend(tempLabel);
+      tempButton.prepend(tempLabel);
     }
 
-    return parseFloat(getComputedStyle(tempDiv).width);
+    return parseFloat(getComputedStyle(tempButton).width);
   });
 
-  tempDiv.remove();
+  tempButton.remove();
 
   return Math.max(...widths);
 };
