@@ -187,7 +187,7 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
           <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
           <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
-          <PSegmentedControlItem value={4} disabled>Option 4</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>Option 4</PSegmentedControlItem>
           <PSegmentedControlItem value={5}>Option 5</PSegmentedControlItem>
         </PSegmentedControl>
       </div>

@@ -187,7 +187,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="1">Option 1</p-segmented-control-item>
         <p-segmented-control-item [value]="2">Option 2</p-segmented-control-item>
         <p-segmented-control-item [value]="3">Option 3</p-segmented-control-item>
-        <p-segmented-control-item [value]="4" disabled>Option 4</p-segmented-control-item>
+        <p-segmented-control-item [value]="4" [disabled]="true">Option 4</p-segmented-control-item>
         <p-segmented-control-item [value]="5">Option 5</p-segmented-control-item>
       </p-segmented-control>
     </div>
