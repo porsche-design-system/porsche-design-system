@@ -1,3 +1,4 @@
+import type { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
@@ -10,7 +11,6 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ElementHandle, Page } from 'puppeteer';
 
 let page: Page;
 let requestedImagePath: string;
@@ -19,6 +19,7 @@ beforeEach(async () => {
   page = await browser.newPage();
   requestedImagePath = '';
 
+  await page.setCacheEnabled(false);
   await page.setRequestInterception(true);
   page.on('request', (req) => {
     const url = req.url();
@@ -46,6 +47,9 @@ const getSource = (): Promise<ElementHandle> => selectNode(page, 'p-marque >>> s
 const getLink = () => selectNode(page, 'p-marque >>> a');
 const getImage = () => selectNode(page, 'p-marque >>> img');
 
+const getImageRequest = (page: Page) =>
+  page.waitForRequest((request) => request.url().endsWith('.png') || request.url().endsWith('.webp'));
+
 const resolution1x = '@1x';
 const resolution2x = '@2x';
 const resolution3x = '@3x';
@@ -55,7 +59,9 @@ describe('with trademark', () => {
   const fileNameMedium = 'marque-trademark.medium';
 
   describe('on default screen', () => {
-    beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
+    beforeEach(async () => {
+      await page.setViewport({ width: 1299, height: 300 });
+    });
 
     it('should request correct image for 1x resolution', async () => {
       await setContentWithTrademark();
@@ -64,13 +70,15 @@ describe('with trademark', () => {
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution1x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution1x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath).toContain(fileNameMedium);
       expect(requestedImagePath).toContain(resolution1x);
     });
@@ -83,13 +91,15 @@ describe('with trademark', () => {
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution2x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution2x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath).toContain(fileNameMedium);
       expect(requestedImagePath).toContain(resolution2x);
     });
@@ -102,13 +112,15 @@ describe('with trademark', () => {
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath).toContain(fileNameMedium);
       expect(requestedImagePath).toContain(resolution3x);
     });
@@ -116,7 +128,6 @@ describe('with trademark', () => {
 
   describe('on large screen', () => {
     beforeEach(async () => {
-      await page.setCacheEnabled(false);
       await page.setViewport({ width: 1300, height: 300 });
     });
 
@@ -126,12 +137,14 @@ describe('with trademark', () => {
 
       expect(await getProperty(await getSource(), 'srcset'), 'initial size').toContain(fileNameMedium);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(await getProperty(await getSource(), 'srcset'), 'size after first change').toContain(fileNameSmall);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(await getProperty(await getSource(), 'srcset'), 'size after second change').toContain(fileNameMedium);
     });
 
@@ -142,13 +155,15 @@ describe('with trademark', () => {
       expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'initial request resolution').toContain(resolution1x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution1x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution1x);
     });
@@ -161,13 +176,15 @@ describe('with trademark', () => {
       expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'initial request resolution').toContain(resolution2x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution2x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution2x);
     });
@@ -180,13 +197,15 @@ describe('with trademark', () => {
       expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'initial request resolution').toContain(resolution3x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution3x);
     });
@@ -198,7 +217,9 @@ describe('without trademark', () => {
   const fileNameMedium = 'marque.medium';
 
   describe('on default screen', () => {
-    beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
+    beforeEach(async () => {
+      await page.setViewport({ width: 1299, height: 300 });
+    });
 
     it('should request correct image for 1x resolution', async () => {
       await setContentWithoutTrademark();
@@ -207,13 +228,15 @@ describe('without trademark', () => {
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution1x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution1x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath).toContain(fileNameMedium);
       expect(requestedImagePath).toContain(resolution1x);
     });
@@ -226,13 +249,15 @@ describe('without trademark', () => {
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution2x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution2x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath).toContain(fileNameMedium);
       expect(requestedImagePath).toContain(resolution2x);
     });
@@ -245,13 +270,15 @@ describe('without trademark', () => {
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath).toContain(fileNameMedium);
       expect(requestedImagePath).toContain(resolution3x);
     });
@@ -259,7 +286,6 @@ describe('without trademark', () => {
 
   describe('on large screen', () => {
     beforeEach(async () => {
-      await page.setCacheEnabled(false);
       await page.setViewport({ width: 1300, height: 300 });
     });
 
@@ -269,12 +295,14 @@ describe('without trademark', () => {
 
       expect(await getProperty(await getSource(), 'srcset'), 'initial size').toContain(fileNameMedium);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(await getProperty(await getSource(), 'srcset'), 'size after first change').toContain(fileNameSmall);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(await getProperty(await getSource(), 'srcset'), 'size after second change').toContain(fileNameMedium);
     });
 
@@ -285,13 +313,15 @@ describe('without trademark', () => {
       expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'initial request resolution').toContain(resolution1x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution1x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution1x);
     });
@@ -304,13 +334,15 @@ describe('without trademark', () => {
       expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'initial request resolution').toContain(resolution2x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await waitForStencilLifecycle(page);
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution2x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await waitForStencilLifecycle(page);
+      await imgRequest2;
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution2x);
     });
@@ -323,13 +355,15 @@ describe('without trademark', () => {
       expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'initial request resolution').toContain(resolution3x);
 
+      const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
-      await page.waitForRequest((request) => request.url().includes(fileNameSmall));
+      await imgRequest1;
       expect(requestedImagePath).toContain(fileNameSmall);
       expect(requestedImagePath).toContain(resolution3x);
 
+      const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await page.waitForRequest((request) => request.url().includes(fileNameMedium));
+      await imgRequest2;
       expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
       expect(requestedImagePath, 'final request resolution').toContain(resolution3x);
     });
