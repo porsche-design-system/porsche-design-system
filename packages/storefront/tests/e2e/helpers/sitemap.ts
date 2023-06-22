@@ -44,7 +44,7 @@ export const buildSitemap = async (): Promise<string[]> => {
   console.log('Building sitemap...');
   fs.mkdirSync(path.dirname(sitemapResultPath), { recursive: true });
 
-  await page.goto(baseURL, { waitUntil: 'networkidle0' });
+  await page.goto(baseURL);
 
   // initial scan on front page without duplicates
   let allUrls = (await scanForUrls()).filter((x, i, array) => array.indexOf(x) === i);

@@ -15,7 +15,7 @@ const frameworkToButtonTextMap: Record<Exclude<Framework, 'shared'>, string> = {
 xit.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
   'should have working stackBlitz button for framework: %s',
   async (framework) => {
-    await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
+    await page.goto(`${baseURL}/components/button/examples`);
 
     const [frameworkButton] = await page.$x(`//button[text() = '${frameworkToButtonTextMap[framework]}']`);
 
