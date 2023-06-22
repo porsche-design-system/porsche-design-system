@@ -25,8 +25,8 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
-    "@types/react": "^18.2.12",
-    "@types/react-dom": "^18.2.5",
+    "@types/react": "^18.2.13",
+    "@types/react-dom": "^18.2.6",
     "react-scripts": "^5.0.1",
     "typescript": "~5.1.3"
   },
