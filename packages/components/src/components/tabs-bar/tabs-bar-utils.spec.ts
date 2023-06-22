@@ -125,6 +125,7 @@ describe('setBarStyle()', () => {
     let count = 0;
     const spy = jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
       // we can then use fake timers to preserve the async nature of this call
+      // @ts-ignore
       setTimeout(() => cb(100 * ++count), 100);
       return 0;
     });
