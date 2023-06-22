@@ -16,14 +16,13 @@ import {
   textXSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
+import { CSSProperties } from 'react';
 
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = pxToRemWithUnit(24);
 export const ICON_MARGIN = pxToRemWithUnit(4);
-
-const ICON_OFFSET = '4px';
 
 export const getColors = (
   isDisabled: boolean,
@@ -45,6 +44,9 @@ export const getColors = (
     hoverBorderColor: primaryColor,
   };
 };
+
+export const getItemPadding = (hasIconAndSlottedContent: boolean): CSSProperties['padding'] =>
+  hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : '13px';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -68,11 +70,7 @@ export const getComponentCss = (
         height: '100%',
         width: '100%',
         textAlign: 'center',
-        padding: '13px 0px',
-        ...(hasIcon &&
-          hasSlottedContent && {
-            paddingRight: ICON_OFFSET,
-          }),
+        padding: getItemPadding(hasIcon && hasSlottedContent),
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,
