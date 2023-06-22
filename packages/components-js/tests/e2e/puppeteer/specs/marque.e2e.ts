@@ -13,21 +13,10 @@ import {
 } from '../helpers';
 
 let page: Page;
-let requestedImagePath: string;
 
 beforeEach(async () => {
   page = await browser.newPage();
-  requestedImagePath = '';
-
   await page.setCacheEnabled(false);
-  await page.setRequestInterception(true);
-  page.on('request', (req) => {
-    const url = req.url();
-    if (url.endsWith('.png') || url.endsWith('.webp')) {
-      requestedImagePath = url;
-    }
-    req.continue();
-  });
 });
 afterEach(async () => await page.close());
 
@@ -64,65 +53,71 @@ describe('with trademark', () => {
     });
 
     it('should request correct image for 1x resolution', async () => {
+      const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution1x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution1x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1).toContain(fileNameSmall);
+      expect(imgUrl1).toContain(resolution1x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution1x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath).toContain(fileNameMedium);
-      expect(requestedImagePath).toContain(resolution1x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3).toContain(fileNameMedium);
+      expect(imgUrl3).toContain(resolution1x);
     });
 
     it('should request correct image for 2x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution2x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution2x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1).toContain(fileNameSmall);
+      expect(imgUrl1).toContain(resolution2x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution2x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath).toContain(fileNameMedium);
-      expect(requestedImagePath).toContain(resolution2x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3).toContain(fileNameMedium);
+      expect(imgUrl3).toContain(resolution2x);
     });
 
     it('should request correct image for 3x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution3x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution3x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1).toContain(fileNameSmall);
+      expect(imgUrl1).toContain(resolution3x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution3x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath).toContain(fileNameMedium);
-      expect(requestedImagePath).toContain(resolution3x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3).toContain(fileNameMedium);
+      expect(imgUrl3).toContain(resolution3x);
     });
   });
 
@@ -149,65 +144,71 @@ describe('with trademark', () => {
     });
 
     it('should request correct image for 1x resolution', async () => {
+      const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'initial request resolution').toContain(resolution1x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution1x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
+      expect(imgUrl1, 'initial request resolution').toContain(resolution1x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution1x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'final request resolution').toContain(resolution1x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3, 'final request size').toContain(fileNameMedium);
+      expect(imgUrl3, 'final request resolution').toContain(resolution1x);
     });
 
     it('should request correct image for 2x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'initial request resolution').toContain(resolution2x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution2x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
+      expect(imgUrl1, 'initial request resolution').toContain(resolution2x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution2x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'final request resolution').toContain(resolution2x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3, 'final request size').toContain(fileNameMedium);
+      expect(imgUrl3, 'final request resolution').toContain(resolution2x);
     });
 
     it('should request correct image for 3x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'initial request resolution').toContain(resolution3x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution3x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
+      expect(imgUrl1, 'initial request resolution').toContain(resolution3x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution3x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'final request resolution').toContain(resolution3x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3, 'final request size').toContain(fileNameMedium);
+      expect(imgUrl3, 'final request resolution').toContain(resolution3x);
     });
   });
 });
@@ -222,65 +223,71 @@ describe('without trademark', () => {
     });
 
     it('should request correct image for 1x resolution', async () => {
+      const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution1x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution1x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1).toContain(fileNameSmall);
+      expect(imgUrl1).toContain(resolution1x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution1x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath).toContain(fileNameMedium);
-      expect(requestedImagePath).toContain(resolution1x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3).toContain(fileNameMedium);
+      expect(imgUrl3).toContain(resolution1x);
     });
 
     it('should request correct image for 2x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution2x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution2x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1).toContain(fileNameSmall);
+      expect(imgUrl1).toContain(resolution2x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution2x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath).toContain(fileNameMedium);
-      expect(requestedImagePath).toContain(resolution2x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3).toContain(fileNameMedium);
+      expect(imgUrl3).toContain(resolution2x);
     });
 
     it('should request correct image for 3x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution3x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution3x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1).toContain(fileNameSmall);
+      expect(imgUrl1).toContain(resolution3x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution3x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath).toContain(fileNameMedium);
-      expect(requestedImagePath).toContain(resolution3x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3).toContain(fileNameMedium);
+      expect(imgUrl3).toContain(resolution3x);
     });
   });
 
@@ -307,65 +314,71 @@ describe('without trademark', () => {
     });
 
     it('should request correct image for 1x resolution', async () => {
+      const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'initial request resolution').toContain(resolution1x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution1x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
+      expect(imgUrl1, 'initial request resolution').toContain(resolution1x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution1x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'final request resolution').toContain(resolution1x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3, 'final request size').toContain(fileNameMedium);
+      expect(imgUrl3, 'final request resolution').toContain(resolution1x);
     });
 
     it('should request correct image for 2x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'initial request resolution').toContain(resolution2x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution2x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
+      expect(imgUrl1, 'initial request resolution').toContain(resolution2x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution2x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'final request resolution').toContain(resolution2x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3, 'final request size').toContain(fileNameMedium);
+      expect(imgUrl3, 'final request resolution').toContain(resolution2x);
     });
 
     it('should request correct image for 3x resolution', async () => {
       await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
+      const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark();
       const host = await getHost();
 
-      expect(requestedImagePath, 'initial request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'initial request resolution').toContain(resolution3x);
-
-      const imgRequest1 = getImageRequest(page);
-      await setProperty(host, 'size', 'small');
-      await imgRequest1;
-      expect(requestedImagePath).toContain(fileNameSmall);
-      expect(requestedImagePath).toContain(resolution3x);
+      const imgUrl1 = (await imgRequest1).url();
+      expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
+      expect(imgUrl1, 'initial request resolution').toContain(resolution3x);
 
       const imgRequest2 = getImageRequest(page);
+      await setProperty(host, 'size', 'small');
+      const imgUrl2 = (await imgRequest2).url();
+      expect(imgUrl2).toContain(fileNameSmall);
+      expect(imgUrl2).toContain(resolution3x);
+
+      const imgRequest3 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
-      await imgRequest2;
-      expect(requestedImagePath, 'final request size').toContain(fileNameMedium);
-      expect(requestedImagePath, 'final request resolution').toContain(resolution3x);
+      const imgUrl3 = (await imgRequest3).url();
+      expect(imgUrl3, 'final request size').toContain(fileNameMedium);
+      expect(imgUrl3, 'final request resolution').toContain(resolution3x);
     });
   });
 });
