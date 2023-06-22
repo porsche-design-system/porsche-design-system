@@ -17,8 +17,9 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 
 export type SegmentedControlUpdateEvent = { value: string | number };
 
-// wide font for safety buffer, Porsche Next might not be available or not used and cause wrong calculation
-const tempFont = 'sans-serif';
+// Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
+/* eslint-disable @typescript-eslint/quotes */
+const tempFont = "'Porsche Next, sans-serif'";
 
 // temporary dom node to measure max-width of children content
 export const tempDiv = hasDocument ? document.createElement('div') : undefined;
