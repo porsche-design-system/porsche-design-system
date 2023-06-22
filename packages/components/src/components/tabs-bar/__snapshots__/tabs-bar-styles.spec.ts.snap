@@ -33,6 +33,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   border: 0 !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
+  z-index: 0 !important;
 }
 ::slotted(a)::after,::slotted(button)::after {
   content: "" !important;
@@ -130,6 +131,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
+  z-index: 0 !important;
 }
 ::slotted(a)::after,::slotted(button)::after {
   content: "" !important;
@@ -227,6 +229,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   border: 0 !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
+  z-index: 0 !important;
 }
 ::slotted(a)::after,::slotted(button)::after {
   content: "" !important;
@@ -324,6 +327,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
+  z-index: 0 !important;
 }
 ::slotted(a)::after,::slotted(button)::after {
   content: "" !important;
@@ -421,6 +425,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
+  z-index: 0 !important;
 }
 ::slotted(a)::after,::slotted(button)::after {
   content: "" !important;
@@ -518,6 +523,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
+  z-index: 0 !important;
 }
 ::slotted(a)::after,::slotted(button)::after {
   content: "" !important;
