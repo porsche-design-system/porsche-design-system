@@ -16,7 +16,6 @@ import {
   textXSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
-import { CSSProperties } from 'react';
 
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
@@ -45,7 +44,7 @@ export const getColors = (
   };
 };
 
-export const getItemPadding = (hasIconAndSlottedContent: boolean): CSSProperties['padding'] =>
+export const getItemPadding = (hasIconAndSlottedContent: boolean): string =>
   hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : '13px';
 
 export const getComponentCss = (
@@ -65,6 +64,7 @@ export const getComponentCss = (
         outline: 0,
         ...hostHiddenStyles,
       }),
+      // All width relevant styling has to be kept in sync with the tempDiv of the p-segmented-control utils
       button: {
         display: 'block',
         height: '100%',
