@@ -18,8 +18,8 @@ CSSStyleDeclaration {
   "_onChange": [Function],
   "_values": {
     "box-sizing": "border-box",
-    "font": "sans-serif normal normal 400 normal",
-    "font-family": "sans-serif",
+    "font": "'Porsche Next, sans-serif' normal normal 400 normal",
+    "font-family": "'Porsche Next, sans-serif'",
     "font-style": "normal",
     "font-variant": "normal",
     "font-weight": "400",
@@ -64,8 +64,8 @@ CSSStyleDeclaration {
   "_length": 1,
   "_onChange": [Function],
   "_values": {
-    "font": "sans-serif normal normal 400 normal",
-    "font-family": "sans-serif",
+    "font": "'Porsche Next, sans-serif' normal normal 400 normal",
+    "font-family": "'Porsche Next, sans-serif'",
     "font-style": "normal",
     "font-variant": "normal",
     "font-weight": "400",
