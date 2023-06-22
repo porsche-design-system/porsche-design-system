@@ -41,8 +41,9 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'table', '/#table')).toBeFalsy();
 });
 
-describe.each<Theme>(['light', 'dark'])('%s', (theme) => {
-  it('should have no visual regression for :hover + :focus-visible and %s theme', async () => {
+it.each<Theme>(['light', 'dark'])(
+  'should have no visual regression for :hover + :focus-visible and %s theme',
+  async (theme) => {
     const vrt = getVisualRegressionStatesTester();
     expect(
       await vrt.test(`table-states-${theme}`, async () => {
@@ -73,5 +74,5 @@ describe.each<Theme>(['light', 'dark'])('%s', (theme) => {
         await forceHoverState(page, '.hover p-table-head-cell >>> button');
       })
     ).toBeFalsy();
-  });
-});
+  }
+);
