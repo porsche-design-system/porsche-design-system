@@ -306,6 +306,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-segmented-control-item') {
+        newFileContent = newFileContent.replace(/!!this\.props\.innerHTML/, '!!children.length');
       } else if (tagName === 'p-stepper-horizontal') {
         // pass down theme prop to p-stepper-horizontal-item children
         newFileContent = newFileContent
