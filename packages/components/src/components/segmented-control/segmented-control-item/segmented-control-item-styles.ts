@@ -23,6 +23,8 @@ export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = pxToRemWithUnit(24);
 export const ICON_MARGIN = pxToRemWithUnit(4);
 
+const ICON_OFFSET = '4px';
+
 export const getColors = (
   isDisabled: boolean,
   isSelected: boolean,
@@ -44,7 +46,13 @@ export const getColors = (
   };
 };
 
-export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIcon: boolean, theme: Theme): string => {
+export const getComponentCss = (
+  isDisabled: boolean,
+  isSelected: boolean,
+  hasIcon: boolean,
+  hasSlottedContent: boolean,
+  theme: Theme
+): string => {
   const { focusColor } = getThemedColors(theme);
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
 
@@ -59,7 +67,11 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
         display: 'block',
         height: '100%',
         width: '100%',
-        padding: hasIcon ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`,
+        padding: '13px 0px',
+        ...(hasIcon &&
+          hasSlottedContent && {
+            paddingRight: ICON_OFFSET,
+          }),
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,
@@ -105,10 +117,14 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
         color: labelColor,
       },
     },
-    icon: {
-      height: ICON_SIZE,
-      width: ICON_SIZE,
-      marginRight: ICON_MARGIN,
-    },
+    ...(hasIcon && {
+      icon: {
+        height: ICON_SIZE,
+        width: ICON_SIZE,
+        ...(hasSlottedContent && {
+          marginRight: ICON_MARGIN,
+        }),
+      },
+    }),
   });
 };
