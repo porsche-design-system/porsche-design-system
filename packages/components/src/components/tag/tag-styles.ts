@@ -55,7 +55,7 @@ export const getComponentCss = (
       span: {
         display: 'flex',
         gap: '2px',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         position: 'relative',
         padding: '4px 9px',
         borderRadius: borderRadiusSmall,
