@@ -89,27 +89,12 @@ const clickElement = async (el: ElementHandle) => {
 
 const waitForAnimation = () => new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
-xdescribe('slotted content changes', () => {
-  it('should adjust bar style when name of tab is changed', async () => {
-    await initTabsBar({ amount: 3, activeTabIndex: 0 });
-    const [firstButton] = await getAllButtons();
-    const bar = await getBar();
-    await waitForAnimation();
-
-    expect(Math.floor((await getElementPositions(page, bar)).right), 'initial position').toEqual(87);
-
-    await firstButton.evaluate((el) => (el.innerHTML = 'New long button name on this button'));
-    await waitForStencilLifecycle(page);
-    await waitForAnimation();
-
-    expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(252);
-  });
-
+describe('slotted content changes', () => {
   it('should adjust bar style when new tab element is added and clicked', async () => {
     await initTabsBar({ amount: 1, activeTabIndex: 0 });
     const bar = await getBar();
 
-    //add a new button
+    // add a new button
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
       const tab = document.createElement('button');
@@ -117,7 +102,6 @@ xdescribe('slotted content changes', () => {
       tabsBar.append(tab);
     });
     await waitForStencilLifecycle(page);
-    await waitForAnimation();
 
     expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(0);
 
@@ -127,7 +111,7 @@ xdescribe('slotted content changes', () => {
     expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
   });
 
-  it('should stay selected and have same bar style when tab after current active tab is removed', async () => {
+  it('should stay selected and have same bar style when tab after active tab is removed', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
     const bar = await getBar();
 
@@ -137,9 +121,7 @@ xdescribe('slotted content changes', () => {
       const tabsBar = document.querySelector('p-tabs-bar');
       tabsBar.removeChild(tabsBar.children[2]);
     });
-
     await waitForStencilLifecycle(page);
-    await waitForAnimation();
     const [, secondButton] = await getAllButtons();
 
     expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
@@ -156,9 +138,7 @@ xdescribe('slotted content changes', () => {
       const tabsBar = document.querySelector('p-tabs-bar');
       tabsBar.removeChild(tabsBar.children[2]);
     });
-
     await waitForStencilLifecycle(page);
-    await waitForAnimation();
 
     expect(await getBarWidth()).toBe('0px');
     expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
@@ -174,10 +154,7 @@ xdescribe('slotted content changes', () => {
       const tabsBar = document.querySelector('p-tabs-bar');
       tabsBar.removeChild(tabsBar.children[1]);
     });
-
     await waitForStencilLifecycle(page);
-    await waitForAnimation();
-
     const [firstButton, secondButton] = await getAllButtons();
 
     expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
@@ -196,9 +173,7 @@ xdescribe('slotted content changes', () => {
       const tabsBar = document.querySelector('p-tabs-bar');
       tabsBar.removeChild(tabsBar.children[1]);
     });
-
     await waitForStencilLifecycle(page);
-    await waitForAnimation();
 
     const [, secondButton] = await getAllButtons();
 
