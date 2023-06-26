@@ -1,7 +1,7 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { CrestAriaAttribute, CrestTarget } from './crest-utils';
 import { buildCrestSrcSet, CREST_ARIA_ATTRIBUTES, crestCdnBaseUrl, crestInnerManifest, crestSize } from './crest-utils';
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

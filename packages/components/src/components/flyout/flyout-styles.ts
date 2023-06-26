@@ -1,4 +1,4 @@
-import { getCss, isThemeDark, Theme } from '../../utils';
+import { getCss, isThemeDark, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   getFrostedGlassBackgroundJssStyles,

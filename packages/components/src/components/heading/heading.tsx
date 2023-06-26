@@ -3,7 +3,7 @@ import type { HeadingTag } from './heading-tag';
 import { HEADING_TAGS } from './heading-tag';
 import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
 import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, hasPropValueChanged, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
 import { getComponentCss } from './heading-styles';
 

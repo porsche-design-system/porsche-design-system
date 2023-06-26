@@ -1,4 +1,15 @@
-import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  Host,
+  type JSX,
+  Prop,
+  State,
+} from '@stencil/core';
 import {
   addInputEventListenerForCounter,
   AllowedTypes,

@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { AriaAttributes, BreakpointCustomizable, PropTypes } from '../../types';
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 import {
@@ -26,7 +26,7 @@ import {
   LINK_TILE_MODEL_SIGNATURE_MODELS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
-import { JSXBase } from '@stencil/core/internal';
+import { type JSXBase } from '@stencil/core/internal';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(LINK_TILE_MODEL_SIGNATURE_MODELS),

@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import type {
   StepperHorizontalItemInternalHTMLProps,
   StepperHorizontalItemState,

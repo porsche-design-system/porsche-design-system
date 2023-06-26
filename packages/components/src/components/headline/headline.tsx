@@ -1,7 +1,7 @@
 import type { PropTypes, Theme } from '../../types';
 import type { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagType, HEADLINE_COLORS, HEADLINE_TAGS } from './headline-utils';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

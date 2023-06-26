@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
 import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from './display-utils';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, hasPropValueChanged, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
 import { getComponentCss } from './display-styles';
 
