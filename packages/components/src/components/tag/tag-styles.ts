@@ -49,6 +49,7 @@ export const getComponentCss = (
       ':host': {
         display: 'inline-flex',
         verticalAlign: 'top',
+        whiteSpace: 'nowrap',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       span: {
@@ -61,7 +62,6 @@ export const getComponentCss = (
         background: backgroundColor,
         color: primaryColor,
         font: textXSmallStyle.font,
-        whiteSpace: 'nowrap',
         ...(isHighContrastMode && {
           outline: '1px solid transparent',
         }),
