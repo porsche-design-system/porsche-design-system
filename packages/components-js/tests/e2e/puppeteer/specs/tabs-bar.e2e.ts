@@ -105,9 +105,11 @@ describe('slotted content changes', () => {
 
     expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(0);
 
-    const [, secondButton] = await getAllButtons();
+    const buttons = await getAllButtons();
+    const [, secondButton] = buttons;
     await clickElement(secondButton);
 
+    expect(buttons.length).toBe(2);
     expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
   });
 
@@ -122,6 +124,9 @@ describe('slotted content changes', () => {
     });
     await waitForStencilLifecycle(page);
 
+    const buttons = await getAllButtons();
+
+    expect(buttons.length).toBe(2);
     expect(await getBarWidth()).toBe('0px');
     expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
     expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
@@ -136,8 +141,11 @@ describe('slotted content changes', () => {
       tabsBar.removeChild(tabsBar.children[1]);
     });
     await waitForStencilLifecycle(page);
-    const [firstButton, secondButton] = await getAllButtons();
 
+    const buttons = await getAllButtons();
+    const [firstButton, secondButton] = buttons;
+
+    expect(buttons.length).toBe(2);
     expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
     expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
     expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
@@ -153,10 +161,12 @@ describe('slotted content changes', () => {
     });
     await waitForStencilLifecycle(page);
 
-    const [, secondButton] = await getAllButtons();
+    const buttons = await getAllButtons();
+    const [, secondButton] = buttons;
 
+    expect(buttons.length).toBe(2);
     expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
-    expect(await getBarWidth()).toBe('87px');
+    expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
   });
 });
 
