@@ -40,6 +40,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -47,14 +48,13 @@ exports[`getComponentCss() should return correct css for color: background-base,
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #0E0E12;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -97,6 +97,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -104,14 +105,13 @@ exports[`getComponentCss() should return correct css for color: background-base,
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #FFF;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -154,6 +154,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -161,14 +162,13 @@ exports[`getComponentCss() should return correct css for color: background-base,
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #0E0E12;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -220,6 +220,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -227,14 +228,13 @@ exports[`getComponentCss() should return correct css for color: background-base,
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #FFF;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -286,6 +286,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -293,14 +294,13 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #212225;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -352,6 +352,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -359,14 +360,13 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #EEEFF2;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -418,6 +418,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -425,14 +426,13 @@ exports[`getComponentCss() should return correct css for color: notification-err
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #3A0F0F;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -484,6 +484,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -491,14 +492,13 @@ exports[`getComponentCss() should return correct css for color: notification-err
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #FFE2E4;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -550,6 +550,7 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -557,14 +558,13 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #04294E;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -616,6 +616,7 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -623,14 +624,13 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #D3E1FF;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -682,6 +682,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -689,14 +690,13 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #003320;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -748,6 +748,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -755,14 +756,13 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #E4FFEC;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -814,6 +814,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -821,14 +822,13 @@ exports[`getComponentCss() should return correct css for color: notification-war
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #362B0A;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -880,6 +880,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -887,14 +888,13 @@ exports[`getComponentCss() should return correct css for color: notification-war
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #FFF4D2;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -946,6 +946,7 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -953,14 +954,13 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #FBFCFF;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -1012,6 +1012,7 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
 ":host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -1019,14 +1020,13 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
 span {
   display: flex;
   gap: 2px;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
   background: #010205;
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
