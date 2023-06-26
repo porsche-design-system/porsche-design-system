@@ -11,6 +11,7 @@
 | ✅ **Divider**              |                                                                                                                                                                                    |
 | ✅ **Fieldset Wrapper**     |                                                                                                                                                                                    |
 | ✅ **Flex**                 |                                                                                                                                                                                    |
+| ✅ **Flyout**               |                                                                                                                                                                                    |
 | ✅ **Grid**                 |                                                                                                                                                                                    |
 | ✅ **Headline**             |                                                                                                                                                                                    |
 | ✅ **Icon**                 |                                                                                                                                                                                    |
