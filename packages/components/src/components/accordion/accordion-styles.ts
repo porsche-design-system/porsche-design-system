@@ -99,8 +99,10 @@ export const getComponentCss = (
     },
     'icon-container': {
       height: fontLineHeight,
+      width: fontLineHeight,
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
     },
     icon: {
       width: fontLineHeight,
