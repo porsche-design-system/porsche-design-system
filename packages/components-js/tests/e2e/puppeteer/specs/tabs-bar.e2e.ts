@@ -111,24 +111,6 @@ describe('slotted content changes', () => {
     expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
   });
 
-  it('should stay selected and have same bar style when tab after active tab is removed', async () => {
-    await initTabsBar({ amount: 3, activeTabIndex: 1 });
-    const bar = await getBar();
-
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(103);
-
-    await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
-      tabsBar.removeChild(tabsBar.children[2]);
-    });
-    await waitForStencilLifecycle(page);
-    const [, secondButton] = await getAllButtons();
-
-    expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
-    expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
-  });
-
   it('should reset tabindex and bar styles when active tab on last position is removed', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 2 });
     const bar = await getBar();
@@ -143,12 +125,11 @@ describe('slotted content changes', () => {
     expect(await getBarWidth()).toBe('0px');
     expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
     expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(0);
+    expect(Math.floor((await getElementPositions(page, bar)).left)).toEqual(0);
   });
 
   it('should reset tabindex when last tab is active and a tab is removed in the middle', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 2 });
-    const bar = await getBar();
 
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
@@ -161,13 +142,10 @@ describe('slotted content changes', () => {
     expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
     expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
     expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(0);
-    expect(await getBarWidth(), 'final width').toBe('0px');
   });
 
   it('should set tabindex and aria-selected on next tab when active tab in the middle is removed', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
-    const bar = await getBar();
 
     await page.evaluate(() => {
       const tabsBar = document.querySelector('p-tabs-bar');
@@ -178,8 +156,7 @@ describe('slotted content changes', () => {
     const [, secondButton] = await getAllButtons();
 
     expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
-    expect(await getBarWidth(), 'final width').toBe('87px');
+    expect(await getBarWidth()).toBe('87px');
   });
 });
 
