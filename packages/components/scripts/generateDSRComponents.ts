@@ -351,7 +351,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
         const constants = rawPrivateMembers
           .map((member) => member.replace(/^this\./, 'const ')) // make it local constants
-          .map((member, i, arr) =>
+          .map((member, _, arr) =>
             member
               .replace(
                 // use local constants
