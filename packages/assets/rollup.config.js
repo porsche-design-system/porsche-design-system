@@ -1,6 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 import typescript from '@rollup/plugin-typescript';
+import json from '@rollup/plugin-json';
+import shebang from 'rollup-plugin-preserve-shebang';
 
 const rootDir = '../..';
 const outputDir = 'dist';
@@ -49,6 +52,6 @@ export default [
       dir: 'bin',
       format: 'cjs',
     },
-    plugins: [...commonPlugins, typescript()],
+    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
 ];
