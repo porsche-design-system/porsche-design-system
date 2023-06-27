@@ -7,6 +7,8 @@ import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
+const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
+
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const componentsDirectory = path.resolve(rootDirectory, 'src/components');
@@ -19,7 +21,8 @@ const generateDSRComponents = (): void => {
   const utilsBundleImportPath = '@porsche-design-system/components/dist/utils';
 
   const componentFileContents = componentPaths
-    // .filter((filePath) => filePath.includes('accordion'))
+    // .filter((filePath) => filePath.includes('accordion')) // for easier debugging
+    .filter((filePath) => !EXCLUDED_COMPONENTS.includes(`p-${path.basename(filePath).split('.')[0]}` as TagName))
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -273,6 +276,21 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /getPopoverCss\(.+?\)/,
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
         );
+      } else if (tagName === 'p-tabs-bar') {
+        newFileContent = newFileContent
+          // get rid of left over
+          .replace(/\n.*this\.props\.setAccessibilityAttributes\(\);/, '')
+          // set aria attributes on button and anchor children, what at runtime is done via this.setAccessibilityAttributes()
+          .replace(
+            /const { children, namedSlotChildren, otherChildren } =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
+        ? { ...child, props: { ...child.props, role: 'tab', tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1', 'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false' } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(

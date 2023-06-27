@@ -81,12 +81,8 @@ export const getComponentCss = (
           textDecoration: 'underline',
           cursor: 'pointer',
           font: 'inherit',
-          outline: 0, // reset native blue outline
           color: 'inherit',
           appearance: 'none',
-          margin: 0,
-          padding: 0,
-          background: 0,
           border: 0,
           textAlign: 'left',
         },
