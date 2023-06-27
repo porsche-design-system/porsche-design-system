@@ -8025,7 +8025,7 @@ exports[`should render dsr component for PTag 1`] = `
 span {
   display: flex;
   gap: 2px;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   padding: 4px 9px;
   border-radius: 4px;
@@ -8054,6 +8054,7 @@ span {
 }
 .icon {
   margin-left: -2px;
+  align-self: flex-start;
 }
     </style>
     <span>
