@@ -11,7 +11,7 @@ import '@porsche-design-system/components-react/jsdom-polyfill';
 
 describe('SSR components', () => {
   it('should have working SSR PLink component', async () => {
-    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation();
 
     render(
       <PorscheDesignSystemProvider>
@@ -36,7 +36,7 @@ describe('SSR components', () => {
   });
 
   it('should have working SSR PButton component', async () => {
-    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation();
 
     render(
       <PorscheDesignSystemProvider>
@@ -61,7 +61,7 @@ describe('SSR components', () => {
   });
 
   it('should have working SSR PSegmentedControl component', async () => {
-    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation();
 
     render(
       <PorscheDesignSystemProvider>
