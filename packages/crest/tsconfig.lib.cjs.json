@@ -3,6 +3,6 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "./dist/types",
-    "outDir": "./dist/module"
+    "outDir": "./dist"
   }
 }

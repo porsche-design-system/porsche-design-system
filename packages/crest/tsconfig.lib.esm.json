@@ -2,6 +2,6 @@
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
     "module": "ESNext",
-    "outDir": "./dist/umd"
+    "outDir": "./dist/esm"
   }
 }
