@@ -6,11 +6,10 @@ import {
   PTableHeadCell,
   PTableHeadRow,
   PTableRow,
+  type TableUpdateEvent,
 } from '@porsche-design-system/components-react';
-import type { TableUpdateEvent } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import { dataSorting, headSorting } from '@porsche-design-system/shared';
-import type { DataSorting } from '@porsche-design-system/shared';
+import { dataSorting, type DataSorting, headSorting } from '@porsche-design-system/shared';
 
 export const TableExampleSortingPage = (): JSX.Element => {
   const [head, setHead] = useState(headSorting);

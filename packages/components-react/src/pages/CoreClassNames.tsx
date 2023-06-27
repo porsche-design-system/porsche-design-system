@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PButton, PButtonProps } from '@porsche-design-system/components-react';
+import { PButton, type PButtonProps } from '@porsche-design-system/components-react';
 
 const SOME_CLASS_1 = 'someClass1';
 const SOME_CLASS_2 = 'someClass2';
