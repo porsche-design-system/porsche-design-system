@@ -5,11 +5,5 @@
     "verbatimModuleSyntax": false,
     "types": ["node", "jest"]
   },
-  "include": ["./src"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    },
-    "include": ["./scripts"]
-  }
+  "include": ["./src"]
 }

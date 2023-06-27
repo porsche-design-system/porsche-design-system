@@ -3,12 +3,5 @@
   "compilerOptions": {
     "moduleResolution": "node"
   },
-  "include": ["./src"],
-  "ts-node": {
-    "transpileOnly": true,
-    "compilerOptions": {
-      "module": "CommonJS"
-    },
-    "include": ["./scripts"]
-  }
+  "include": ["./src"]
 }
