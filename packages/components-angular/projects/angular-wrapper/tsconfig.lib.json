@@ -1,11 +1,11 @@
 {
+  // used by ng-packagr
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/angular-wrapper",
     "declaration": true,
     "declarationMap": true,
-    "inlineSources": true,
-    "lib": ["dom", "es2018"]
+    "inlineSources": true
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

@@ -1,4 +1,6 @@
 {
+  // TODO: enable once on TypeScript 5
+  // "extends": "@porsche-design-system/shared/tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -10,7 +12,6 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "esnext",
-    "lib": ["esnext", "dom"],
     "paths": {
       "@porsche-design-system/components-angular": ["dist/angular-wrapper"],
       "@angular/*": ["node_modules/@angular/*"]
