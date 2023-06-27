@@ -1,7 +1,6 @@
 # Versioning
 
-We value stability and transparency. Thus we strive to ensure that our reusable components, libraries and familiar
-practices don't become obsolete often and unexpectedly.
+We value stability and transparency. Thus we strive to ensure that our reusable components and libraries don't become outdated and obsolete.
 
 <TableOfContents></TableOfContents>
 
