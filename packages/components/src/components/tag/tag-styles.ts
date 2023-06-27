@@ -55,7 +55,7 @@ export const getComponentCss = (
       span: {
         display: 'flex',
         gap: '2px',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         position: 'relative',
         padding: '4px 9px',
         borderRadius: borderRadiusSmall,
@@ -102,6 +102,7 @@ export const getComponentCss = (
     },
     icon: {
       marginLeft: '-2px', // optimize visual alignment
+      alignSelf: 'flex-start',
     },
   });
 };
