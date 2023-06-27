@@ -26,7 +26,10 @@ export default [
   },
   {
     input,
-    output: { dir: `${outputDir}/esm`, format: 'esm' },
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+    },
     plugins: [
       ...commonPlugins,
       typescript(),
@@ -39,5 +42,13 @@ export default [
         ],
       }),
     ],
+  },
+  {
+    input: 'src/serve-cdn.ts',
+    output: {
+      dir: 'bin',
+      format: 'cjs',
+    },
+    plugins: [...commonPlugins, typescript()],
   },
 ];
