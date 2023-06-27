@@ -171,6 +171,19 @@ export const TagPage = (): JSX.Element => {
           </PTag>
         </div>
       </div>
+
+      <div className="playground light" title="should break into multiline if not enough space is given">
+        <div style={{ width: '100px', overflow: 'auto', border: '1px solid deeppink' }}>
+          <PTag color="primary" style={{ whiteSpace: 'normal' }}>Text that is very long</PTag>
+          <PTag color="primary" icon="car" style={{ whiteSpace: 'normal' }}>Text with icon that is very long</PTag>
+          <PTag color="notification-success-soft" icon="car" style={{ whiteSpace: 'normal' }}>
+            <a href="#">Link with icon that is very long</a>
+          </PTag>
+          <PTag color="notification-success-soft" icon="car" style={{ whiteSpace: 'normal' }}>
+            <button>Button with icon that is very long</button>
+          </PTag>
+        </div>
+      </div>
     </>
   );
 };

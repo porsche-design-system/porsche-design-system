@@ -54,6 +54,13 @@ to.
 
 <Playground :markup="linkAccessibility"></Playground>
 
+## Multiline
+
+The contents of the `p-tag` component are rendered with `white-space: nowrap` by default. If multiline rendering is
+needed (e.g. due to less amount of space), the default behaviour can be overwritten with CSS from outside.
+
+<Playground :markup="textWrap" :config="config"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
@@ -94,5 +101,7 @@ export default class Code extends Vue {
   linkAccessibility = `<p-tag icon="car">
   <a href="https://www.porsche.com" aria-label="More information about used cars">Used cars</a>
 </p-tag>`;
+
+  textWrap = `<div style="width: 100px"><p-tag color="notification-success-soft" style="white-space: normal">Some label with longer text wrapped in a narrow container</p-tag></div>`;
 }
 </script>
