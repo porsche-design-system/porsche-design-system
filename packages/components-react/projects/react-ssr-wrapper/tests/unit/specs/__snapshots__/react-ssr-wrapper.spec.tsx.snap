@@ -8058,6 +8058,7 @@ exports[`should render dsr component for PTag 1`] = `
       :host {
   display: inline-flex;
   vertical-align: top;
+  white-space: nowrap;
 }
 :host([hidden]) {
   display: none !important;
@@ -8072,7 +8073,6 @@ span {
   background: #EEEFF2;
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  white-space: nowrap;
 }
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
@@ -8095,6 +8095,7 @@ span {
 }
 .icon {
   margin-left: -2px;
+  align-self: flex-start;
 }
     </style>
     <span>
