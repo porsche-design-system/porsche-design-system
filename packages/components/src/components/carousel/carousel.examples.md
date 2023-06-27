@@ -108,7 +108,7 @@ To control the `p-carousel` from the outside you can specify its `activeSlideInd
 
 ## Event Handling
 
-Whenever the `p-carousel` slides, the `change` is emitted containing both, the `activeIndex` and `previousIndex`.
+Whenever the `p-carousel` slides, the `update` is emitted containing both, the `activeIndex` and `previousIndex`.
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
   The <code>carouselChange</code> event has been deprecated and will be removed with the next major release.<br>

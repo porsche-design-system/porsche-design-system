@@ -86,7 +86,7 @@ describe('createPorscheDesignSystem()', () => {
 
 describe('usePorscheDesignSystemPlugin()', () => {
   it('should throw an error when no plugin is provided', () => {
-    jest.spyOn(console, 'warn').mockImplementation(() => {}); // suppress vue warning
+    jest.spyOn(console, 'warn').mockImplementation(); // suppress vue warning
 
     expect(() => {
       usePorscheDesignSystemPlugin();
