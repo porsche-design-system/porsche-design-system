@@ -30,6 +30,9 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 1",
                                           "role": "tab",
@@ -40,6 +43,9 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 2",
                                           "role": "tab",
@@ -49,6 +55,9 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                             {
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
+                                            },
+                                            {
+                                              "role": "none",
                                             },
                                           ],
                                           "name": "Tab Button 3",
@@ -167,6 +176,9 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 1",
                                           "role": "tab",
@@ -177,6 +189,9 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 2",
                                           "role": "tab",
@@ -186,6 +201,9 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                             {
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
+                                            },
+                                            {
+                                              "role": "none",
                                             },
                                           ],
                                           "name": "Tab Button 3",
@@ -304,6 +322,9 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 1",
                                           "role": "tab",
@@ -324,6 +345,9 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                             {
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
+                                            },
+                                            {
+                                              "role": "none",
                                             },
                                           ],
                                           "name": "Tab Button 3",
@@ -442,6 +466,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 1",
                                           "role": "tab",
@@ -463,6 +490,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                             {
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
+                                            },
+                                            {
+                                              "role": "none",
                                             },
                                           ],
                                           "name": "Tab Button 3",
@@ -592,6 +622,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 2",
                                           "role": "tab",
@@ -601,6 +634,9 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                             {
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
+                                            },
+                                            {
+                                              "role": "none",
                                             },
                                           ],
                                           "name": "Tab Button 3",
@@ -719,6 +755,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 1",
                                           "role": "tab",
@@ -729,6 +768,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 2",
                                           "role": "tab",
@@ -738,6 +780,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                             {
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
+                                            },
+                                            {
+                                              "role": "none",
                                             },
                                           ],
                                           "name": "Tab Button 3",
@@ -867,6 +912,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 1",
                                           "role": "tab",
@@ -877,6 +925,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
+                                            {
+                                              "role": "none",
+                                            },
                                           ],
                                           "name": "Tab Button 2",
                                           "role": "tab",
@@ -886,6 +937,9 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                             {
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
+                                            },
+                                            {
+                                              "role": "none",
                                             },
                                           ],
                                           "name": "Tab Button 3",

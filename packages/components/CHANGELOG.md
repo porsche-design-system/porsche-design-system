@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Tabs` and `Tabs Bar` support SSR ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
 - Contents of `Tag` component can now be wrapped in multiple lines
   ([#2625](https://github.com/porsche-design-system/porsche-design-system/pull/2625))
 
@@ -23,9 +24,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `jsdom-polyfill` fixes validation errors in unit tests during SSR hydration
   ([#2613](https://github.com/porsche-design-system/porsche-design-system/pull/2613))
-
 - `Accordion` collapsable content is overflowing when used with multiple prefixes  
   ([#2612](https://github.com/porsche-design-system/porsche-design-system/pull/2612))
+- `Tabs Bar` position of underline for fluid font-size with `size="medium` when resizing
+  ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
 
 ### [3.2.0] - 2023-06-19
 

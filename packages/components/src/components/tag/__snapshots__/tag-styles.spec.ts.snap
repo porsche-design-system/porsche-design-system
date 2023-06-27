@@ -61,7 +61,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -119,7 +119,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -177,7 +177,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -244,7 +244,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -311,7 +311,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -378,7 +378,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -445,7 +445,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -512,7 +512,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -579,7 +579,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -646,7 +646,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -713,7 +713,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -780,7 +780,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -847,7 +847,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -914,7 +914,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -981,7 +981,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;
@@ -1048,7 +1048,7 @@ span {
   padding: 0 !important;
   outline: 0 !important;
   border-radius: 0 !important;
-  background: 0 !important;
+  background: transparent !important;
   display: inline !important;
   position: static !important;
   text-decoration: underline !important;

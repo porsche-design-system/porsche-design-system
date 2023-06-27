@@ -19,7 +19,7 @@ jest.mock('react', () => ({
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix() to throw exception', () => {
-    const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'error').mockImplementation();
     let error1, error2;
 
     try {
@@ -85,7 +85,7 @@ describe('usePrefix()', () => {
     });
 
     it('should throw error if useContext() returns undefined ', () => {
-      jest.spyOn(global.console, 'error').mockImplementation(() => {});
+      jest.spyOn(global.console, 'error').mockImplementation();
       jest.spyOn(React, 'useContext').mockReturnValue(undefined);
 
       expect(() => usePrefix('p-text')).toThrow();

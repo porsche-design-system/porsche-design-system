@@ -58,7 +58,7 @@ export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
 export const getResetInitialStylesForSlottedAnchor: JssStyle = {
   margin: 0,
   padding: 0,
-  outline: 0,
+  outline: 0, // reset native blue outline
   borderRadius: 0,
   background: 'transparent',
 };
