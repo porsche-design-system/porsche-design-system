@@ -17,7 +17,7 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:meta-icons && yarn build:lib",
-    "build:meta-icons": "ts-node --project tsconfig.json scripts/build.ts",
+    "build:meta-icons": "ts-node scripts/build.ts",
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
