@@ -2180,6 +2180,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: 0;
 }
 .icon {
@@ -4172,6 +4173,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: 0;
 }
 .icon {

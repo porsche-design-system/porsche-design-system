@@ -34,6 +34,7 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
         ...getInsetJssStyle('auto'),
         whiteSpace: 'inherit',
         textIndent: 0,
+        zIndex: 1, // fix Firefox bug on :hover (#2583)
       };
 };
 
