@@ -13,7 +13,7 @@ type NodeWithChildren = Node & { children?: NodeWithChildren[] };
 type TestCase = {
   node: NodeWithChildren;
   selector: string;
-  expect: number[];
+  expect?: number[];
 };
 
 describe('cdp-helper', () => {
@@ -40,7 +40,7 @@ describe('cdp-helper', () => {
           backendNodeId: 1,
         },
         selector: 'test',
-        expect: undefined,
+        expect: [],
       },
       {
         node: {
