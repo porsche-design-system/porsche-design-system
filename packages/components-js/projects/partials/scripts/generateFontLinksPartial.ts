@@ -30,10 +30,6 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element {
 
   throwIfRunInBrowser('getFontLinks');
 
-  if (opts?.['weight']) {
-    throw new Error('Option "weight" is not supported, please use "weights" instead');
-  }
-
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const fonts = {
     latin: {

@@ -13,15 +13,15 @@ jest.mock('../../../src/shared');
 
 describe('validation', () => {
   it('should throw error on invalid components parameter', () => {
-    let error;
+    let errorMessage = '';
     try {
       getComponentChunkLinks({ components: ['some-invalid-component'] as any[] });
     } catch (e) {
-      error = e.message;
+      errorMessage = (e as Error).message;
     }
 
-    expect(error).toContain('The following supplied component chunk names are invalid:');
-    expect(error).toContain('some-invalid-component');
+    expect(errorMessage).toContain('The following supplied component chunk names are invalid:');
+    expect(errorMessage).toContain('some-invalid-component');
   });
 });
 
