@@ -6,7 +6,6 @@
     "verbatimModuleSyntax": false, // TODO: override default, otherwise we have runtime init errors in link-tile because of sharedTilePropTypes
     "declaration": false,
     "experimentalDecorators": true,
-    "module": "esnext",
     "jsx": "react",
     "jsxFactory": "h",
     "types": ["node", "jest"]
