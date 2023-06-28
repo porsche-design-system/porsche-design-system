@@ -3,6 +3,8 @@ import OpenBugTemplateInStackBlitz from '@/components/OpenBugTemplateInStackBlit
 describe('OpenBugTemplateInStackBlitz.vue', () => {
   describe('fetchVersions()', () => {
     it('should call fetch() with correct parameters and return string array of versions', async () => {
+      jest.spyOn(global.console, 'info').mockImplementation(); // suppress vue warning
+
       const url = 'https://registry.npmjs.org/@porsche-design-system/components-js';
       const fetchSpy = jest.spyOn(global, 'fetch');
       const component: any = new OpenBugTemplateInStackBlitz();
