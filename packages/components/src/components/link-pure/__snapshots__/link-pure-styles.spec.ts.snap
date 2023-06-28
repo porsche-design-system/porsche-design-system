@@ -121,6 +121,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     bottom: auto;
     white-space: inherit;
     text-indent: 0;
+    z-index: 1;
     order: 0;
   }
 }
@@ -165,6 +166,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     bottom: auto;
     white-space: inherit;
     text-indent: 0;
+    z-index: 1;
     order: 0;
   }
 }
@@ -209,6 +211,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     bottom: auto;
     white-space: inherit;
     text-indent: 0;
+    z-index: 1;
     order: 0;
   }
 }
@@ -302,6 +305,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     bottom: auto;
     white-space: inherit;
     text-indent: 0;
+    z-index: 1;
   }
 }
 
@@ -334,6 +338,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     bottom: auto;
     white-space: inherit;
     text-indent: 0;
+    z-index: 1;
   }
 }
 
@@ -366,6 +371,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     bottom: auto;
     white-space: inherit;
     text-indent: 0;
+    z-index: 1;
   }
 }
 
@@ -430,6 +436,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: 0;
 }
 .icon {
@@ -506,6 +513,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: 0;
 }
 .icon {
@@ -601,6 +609,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: 0;
 }
 .icon {
@@ -677,6 +686,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: 0;
 }
 .icon {
@@ -1002,6 +1012,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: -1;
 }
 .icon {
@@ -1080,6 +1091,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   bottom: auto;
   white-space: inherit;
   text-indent: 0;
+  z-index: 1;
   order: -1;
 }
 .icon {

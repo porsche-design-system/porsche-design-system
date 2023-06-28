@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2612](https://github.com/porsche-design-system/porsche-design-system/pull/2612))
 - `Tabs Bar` position of underline for fluid font-size with `size="medium` when resizing
   ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
+- `Button Pure`, `Link Pure`: `:hover` bug on Firefox
+  ([#2630](https://github.com/porsche-design-system/porsche-design-system/pull/2630))
 
 ### [3.2.0] - 2023-06-19
 
