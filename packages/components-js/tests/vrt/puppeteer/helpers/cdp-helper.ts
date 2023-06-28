@@ -1,11 +1,12 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
-import Protocol from 'devtools-protocol';
+import type { Protocol } from 'devtools-protocol';
 import type { CDPSession, Page } from 'puppeteer';
-import NodeId = Protocol.DOM.NodeId;
-import BackendNodeId = Protocol.DOM.BackendNodeId;
+
+type NodeId = Protocol.DOM.NodeId;
+type BackendNodeId = Protocol.DOM.BackendNodeId;
 
 const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
-type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
+type ForcedPseudoClasses = (typeof FORCED_PSEUDO_CLASSES)[number];
 
 const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
@@ -14,7 +15,7 @@ const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 const allThemes: Theme[] = ['light', 'dark'];
 const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
-export type StateType = typeof ALL_STATES[number];
+export type StateType = (typeof ALL_STATES)[number];
 
 export type GetMarkup = () => string;
 export type GetThemedMarkup = (theme: Theme) => string;
