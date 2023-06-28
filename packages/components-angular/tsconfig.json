@@ -9,9 +9,9 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
-    "target": "esnext",
+    "target": "ESNext",
     "paths": {
       "@porsche-design-system/components-angular": ["dist/angular-wrapper"],
       "@angular/*": ["node_modules/@angular/*"]
