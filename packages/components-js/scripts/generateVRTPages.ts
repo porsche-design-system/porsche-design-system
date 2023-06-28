@@ -93,11 +93,10 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
     .map((importPath) => {
       const componentImport = `import { ${pascalCase(importPath)}${componentSuffix} } from '${importPath}';`;
       return isPageWithoutRoute(importPath)
-        ? [`export * from '${importPath}';`, isAngular && `${componentImport}`]
+        ? [`export * from '${importPath}';`, ...(isAngular ? [`${componentImport}`] : [])]
         : [componentImport];
     })
     .flat()
-    .filter((x) => x)
     .sort(byAlphabet)
     .join('\n');
 };
@@ -132,7 +131,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
       const isIconPage = fileName === 'icon';
-      const usesOnInit = script && !isIconPage;
+      const usesOnInit = !!script && !isIconPage;
       const usesSetAllReady = script?.includes('componentsReady()');
 
       // extract template if there is any, replacing is framework specific
@@ -190,9 +189,9 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
   const separatorStart: string = '/* Auto Generated Below */';
   const separatorEnd: string = '/* Auto Generated Above */';
 
-  let barrelFileName: string;
-  let frameworkImports: string;
-  let frameworkRoutes: string;
+  let barrelFileName: string = '';
+  let frameworkImports: string = '';
+  let frameworkRoutes: string = '';
 
   if (framework === 'angular') {
     frameworkImports = [separatorStart, importsAndExports].join('\n');

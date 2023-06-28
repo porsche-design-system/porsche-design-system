@@ -4,7 +4,7 @@ import {
   getConfig,
   getProjectPackageJson,
   getProjectRootPath,
-  GlobalStyles,
+  type GlobalStyles,
   isGlobalStyleSrc,
 } from '../services/config';
 import { generateWebPackConfig } from '../services/webpack.config';
