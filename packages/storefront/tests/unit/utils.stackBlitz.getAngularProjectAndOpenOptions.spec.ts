@@ -142,7 +142,6 @@ export class ExampleComponent {}
       false,
     ],
     [`@use '@porsche-design-system/components-js/styles' as *;`, true],
-    [`@import '@porsche-design-system/utilities';`, true],
     [`@use '@porsche-design-system/components-angular/styles/scss';`, true],
     [
       `@import '@porsche-design-system/components-angular/styles/scss';
