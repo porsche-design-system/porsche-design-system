@@ -14,7 +14,7 @@ pushd "packages/assets"
 popd
 
 # update "assets" in packages
-packages=( "components" "components-js" "components-angular" "components-react" "components-vue" "storefront" "utilities-deprecated" )
+packages=( "components" "components-js" "components-angular" "components-react" "components-vue" "storefront" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/assets": )(".*")$\1"'${1}'"$' package.json
