@@ -11,9 +11,8 @@ module.exports = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
-        // override tsconfig.json in package root
         tsconfig: {
-          esModuleInterop: false,
+          verbatimModuleSyntax: false,
         },
       },
     ],
