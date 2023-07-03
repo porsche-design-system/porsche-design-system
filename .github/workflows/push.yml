@@ -7,8 +7,6 @@ on:
       - housekeeping/*
       - release/*
   pull_request:
-    branches:
-      - main
     branches-ignore:
       - v*
       - issue/*
