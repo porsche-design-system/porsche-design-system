@@ -69,7 +69,6 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         width: '100%',
-        textAlign: 'center',
         padding: getItemPadding(hasIcon && hasSlottedContent),
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
