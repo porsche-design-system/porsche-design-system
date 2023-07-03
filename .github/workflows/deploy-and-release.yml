@@ -41,8 +41,6 @@ env:
 jobs:
   assets-deployment:
     name: 'Assets Deployment'
-    needs:
-      - build-and-test
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -66,8 +64,6 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs:
-      - build-and-test
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
