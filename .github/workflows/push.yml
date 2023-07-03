@@ -18,27 +18,7 @@ jobs:
   assets-deployment:
     name: 'Assets Deployment'
     needs:
-      - production-builds
-      - components-unit
-      - components-js-unit
-      - components-js-e2e-puppeteer
-      - components-js-e2e-playwright
-      - components-js-vrt-puppeteer
-      - components-js-vrt-playwright
-      - components-angular
-      - components-react
-      - components-react-remix
-      - components-react-nextjs
-      - components-vue
-      - crawler-e2e-puppeteer
-      - fallbacks
-      - component-meta
-      - shared
-      - storefront-unit
-      - storefront-e2e
-      - storefront-a11y
-      - storefront-vrt
-      - utilities
+      - build-and-test
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -63,27 +43,7 @@ jobs:
   storefront-deployment:
     name: 'Storefront Deployment'
     needs:
-      - production-builds
-      - components-unit
-      - components-js-unit
-      - components-js-e2e-puppeteer
-      - components-js-e2e-playwright
-      - components-js-vrt-puppeteer
-      - components-js-vrt-playwright
-      - components-angular
-      - components-react
-      - components-react-remix
-      - components-react-nextjs
-      - components-vue
-      - crawler-e2e-puppeteer
-      - fallbacks
-      - component-meta
-      - shared
-      - storefront-unit
-      - storefront-e2e
-      - storefront-a11y
-      - storefront-vrt
-      - utilities
+      - build-and-test
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
