@@ -6,12 +6,6 @@ on:
       - issue/*
       - housekeeping/*
       - release/*
-  pull_request:
-    branches-ignore:
-      - v*
-      - issue/*
-      - housekeeping/*
-      - release/*
 name: 'Porsche Design System'
 jobs:
   build-and-test:
@@ -21,7 +15,6 @@ jobs:
       github-token: ${{ secrets.GITHUB_TOKEN }}
   deploy-and-release:
     name: 'Deploy and Release'
-    if: github.repository_owner == 'Porsche Design System'
     uses: ./.github/workflows/deploy-and-release.yml
     needs:
       - build-and-test
