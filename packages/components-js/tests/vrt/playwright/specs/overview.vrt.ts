@@ -10,7 +10,7 @@ test.describe('should have no visual regression', async () => {
   });
 });
 
-test.describe('should have no visual regression', async () => {
+test.describe('should have no visual regression for flaky', async () => {
   await executeVisualRegressionTest('overview-flaky', {
     scenario: async (page) => {
       await openPopovers(page);

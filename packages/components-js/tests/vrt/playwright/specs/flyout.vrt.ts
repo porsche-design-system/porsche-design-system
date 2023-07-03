@@ -1,7 +1,7 @@
 import { executeVisualRegressionTest } from '../helpers/playwright-helper';
 import { test } from '@playwright/test';
 
-test.describe('should have no visual regression for flyout', async () => {
+test.describe('should have no visual regression', async () => {
   await executeVisualRegressionTest('flyout', {
     scenario: async (page) => {
       test.setTimeout(60000);

@@ -22,8 +22,9 @@ export const getComponentCss = (
   const { linkColor } = getHighContrastColors();
 
   return getCss(
-    mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme), {
-      ...(hasSlottedAnchor && {
+    mergeDeep(
+      getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme),
+      hasSlottedAnchor && {
         ...(isHighContrastMode && {
           root: {
             borderColor: linkColor,
@@ -33,7 +34,6 @@ export const getComponentCss = (
           '::slotted': {
             '&(a)': {
               ...getResetInitialStylesForSlottedAnchor,
-              outline: 0,
               textDecoration: 'none',
               font: 'inherit',
               color: 'inherit',
@@ -59,7 +59,7 @@ export const getComponentCss = (
             },
           },
         }),
-      }),
-    })
+      }
+    )
   );
 };

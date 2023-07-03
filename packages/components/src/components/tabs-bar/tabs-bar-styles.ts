@@ -3,6 +3,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -16,13 +17,17 @@ import {
   borderWidthBase,
   fontSizeText,
   frostedGlassStyle,
+  spacingStaticMedium,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import type { JssStyle } from 'jss';
 
-const tabsTransitionDuration = '.4s';
+const barTransitionDuration = '.4s';
+export const scrollerAnimatedCssClass = 'scroller--animated';
 
+const targetSelectors = ['a', 'button'];
 const transformSelector = (selector: string): string =>
-  ['a', 'button'].map((tag) => selector.replace(/\[role]/g, tag)).join();
+  targetSelectors.map((tag) => selector.replace(/\[role]/g, tag)).join();
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TabsBarSize>,
@@ -31,14 +36,19 @@ export const getComponentCss = (
 ): string => {
   const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
 
+  const barJssStyle: JssStyle = {
+    position: 'absolute',
+    height: '2px',
+    left: 0,
+    background: isHighContrastMode ? getHighContrastColors().canvasTextColor : primaryColor,
+  };
+
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
           position: 'relative',
-          // TODO: probably not needed because there is no style with position: fixed
-          transform: 'translate3d(0,0,0)', // creates new stacking context
           ...hostHiddenStyles,
         }),
       },
@@ -50,7 +60,6 @@ export const getComponentCss = (
           display: 'inline-block',
           position: 'relative',
           margin: '0 0 4px 0',
-          padding: 0,
           verticalAlign: 'top',
           fontFamily: 'inherit',
           fontStyle: 'inherit',
@@ -62,28 +71,24 @@ export const getComponentCss = (
           boxSizing: 'border-box',
           WebkitAppearance: 'none',
           appearance: 'none',
-          outline: 0,
           outlineOffset: '1px',
           textDecoration: 'none',
           textAlign: 'left',
           border: 0,
-          background: 'transparent',
           color: primaryColor,
           cursor: 'pointer',
           borderRadius: borderRadiusSmall,
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: '-2px',
-            bottom: '-2px',
-            left: '-4px',
-            right: '-4px',
-            borderRadius: borderRadiusSmall,
-            zIndex: '-1', // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
-            ...hoverMediaQuery({
-              transition: getTransition('background'),
-            }),
-          },
+          zIndex: 0, // needed for ::before pseudo element to be visible
+          ...hoverMediaQuery({
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              inset: '-2px -4px',
+              borderRadius: borderRadiusSmall,
+              zIndex: -1, // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
+              transition: getTransition('background-color'),
+            },
+          }),
         },
         ...hoverMediaQuery({
           [transformSelector('::slotted([role]:hover)::before')]: {
@@ -91,16 +96,24 @@ export const getComponentCss = (
             background: hoverColor,
           },
         }),
-        // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
-        [transformSelector('::slotted([role]:focus)::before')]: {
-          border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: borderRadiusSmall,
+        // basic invisible bar, that will be delayed via transition: visibility
+        [transformSelector('::slotted([role])::after')]: {
+          content: '""',
+          visibility: 'hidden',
         },
-        [transformSelector('::slotted([role]:focus:not(:focus-visible))::before')]: {
-          borderColor: 'transparent',
+        // visible bar for selected tab
+        [transformSelector('::slotted([role][aria-selected="true"])::after')]: {
+          ...barJssStyle,
+          right: '0px',
+          bottom: isHighContrastMode ? '-4px' : '-6px',
+          visibility: 'visible',
+        },
+        // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
+        [transformSelector('::slotted([role]:focus:focus-visible)::before')]: {
+          border: `${borderWidthBase} solid ${focusColor}`,
         },
         [transformSelector('::slotted([role]:not(:last-child))')]: {
-          marginRight: '16px', // No token for this spacing exists yet
+          marginRight: spacingStaticMedium,
         },
       }),
     },
@@ -109,17 +122,24 @@ export const getComponentCss = (
       fontWeight: getFontWeight(weight),
       ...buildResponsiveStyles(size, (s: TabsBarSize) => ({ fontSize: fontSizeText[s] })),
     },
+    // conditionally applied and removed based on if activeTabIndex exists
+    [scrollerAnimatedCssClass]: {
+      ['& ' + transformSelector('::slotted([role][aria-selected="true"])::after')]: {
+        transition: addImportantToRule(`visibility 0s linear ${barTransitionDuration}`), // bar appears after transition
+      },
+    },
+    // moving bar
     bar: {
-      display: 'block',
-      position: 'absolute',
-      width: 0,
-      height: '2px',
-      left: 0,
+      ...barJssStyle,
+      width: 0, // actual width and transform is set via inline css
       bottom: isHighContrastMode ? '0' : '-2px',
-      background: isHighContrastMode ? getHighContrastColors().canvasTextColor : primaryColor,
-      '&--enable-transition': {
-        willChange: 'width',
-        transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,
+      visibility: 'visible',
+      transition: `transform ${barTransitionDuration},width ${barTransitionDuration}`,
+      animation: '$hide 0s .5s forwards', // auto hide bar after transition, needs to be a little longer in Safari
+    },
+    '@keyframes hide': {
+      to: {
+        visibility: 'hidden',
       },
     },
   });
