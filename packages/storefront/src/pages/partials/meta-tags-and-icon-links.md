@@ -41,7 +41,6 @@ export default class Code extends Vue {
   public params = [
     {
       value: "{ appTitle: 'TITLE_OF_YOUR_APP' }",
-      comment: 'with appTitle only'
     },
     {
       value: "{ appTitle: 'TITLE_OF_YOUR_APP', cdn: 'cn' }",

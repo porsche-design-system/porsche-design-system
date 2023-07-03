@@ -31,7 +31,7 @@ The following showcases the most common ways.
 
 **Note:** Make sure to preload only fonts which are really needed initially!
 
-<PartialDocs name="getFontLinks" :params="params"></PartialDocs>
+<PartialDocs name="getFontLinks" :params="params" location="head"></PartialDocs>
 
 <script lang="ts">
 import Vue from 'vue';
