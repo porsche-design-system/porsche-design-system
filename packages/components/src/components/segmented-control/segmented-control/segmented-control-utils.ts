@@ -22,12 +22,12 @@ const tempFont = 'Porsche Next, sans-serif';
 
 // temporary dom node to measure max-width of children content
 // All width relevant styling has to be kept in sync with the button of the p-segmented-control-item
-export const tempDiv = hasDocument ? document.createElement('div') : undefined;
+export const tempDiv = hasDocument ? document.createElement('button') : undefined;
 if (tempDiv) {
   tempDiv.style.position = 'absolute';
-  tempDiv.style.visibility = 'hidden';
+  // tempDiv.style.visibility = 'hidden';
   tempDiv.style.padding = `0 ${ITEM_PADDING}`; // Uses the largest possible padding of the item
-  tempDiv.style.border = borderWidthBase;
+  tempDiv.style.border = `${borderWidthBase} solid`;
   tempDiv.style.boxSizing = 'border-box';
   tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
 }
@@ -46,7 +46,7 @@ if (tempIcon) {
 
 export const getItemMaxWidth = (host: HTMLElement): number => {
   tempDiv.innerHTML = '';
-  host.shadowRoot.append(tempDiv);
+  document.body.append(tempDiv);
 
   const widths = Array.from(host.children).map((item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
@@ -62,7 +62,7 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
     return parseFloat(getComputedStyle(tempDiv).width);
   });
 
-  tempDiv.remove();
+  // tempDiv.remove();
 
   return Math.max(...widths);
 };
