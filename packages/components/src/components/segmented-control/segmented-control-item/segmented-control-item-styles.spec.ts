@@ -15,7 +15,7 @@ describe('getComponentCss()', () => {
     [false, false, false, false, 'light'],
     [false, false, false, false, 'dark'],
   ])(
-    'should return correct css for isDisabled: %s, isSelected: %s, hasIcon: %s, hasSlottedContent: %s, and theme: %s',
+    'should return correct css for isDisabled: %s, isSelected: %s, hasIcon: %s, hasSlottedContent: %s and theme: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
