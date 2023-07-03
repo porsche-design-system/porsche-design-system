@@ -1,7 +1,7 @@
 name: 'Build components-js'
 description: 'Build and restore cached builds of assets, component-meta, components, components-js, shared and utilities'
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: 'Restore Cached Builds'
       uses: actions/cache/restore@v3

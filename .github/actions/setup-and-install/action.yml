@@ -9,7 +9,7 @@ inputs:
     description: 'github token for container registry'
     required: true
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: 'Cache node_modules'
       if: inputs.install == 'true'
