@@ -7,8 +7,6 @@ on:
       - housekeeping/*
       - release/*
   pull_request:
-    branches:
-      - main
 name: 'Porsche Design System'
 jobs:
   build-and-test:
