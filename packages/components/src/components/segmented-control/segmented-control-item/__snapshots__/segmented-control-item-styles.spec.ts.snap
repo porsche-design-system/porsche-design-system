@@ -12,7 +12,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #404044;
   border-radius: 4px;
@@ -71,7 +71,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
   border-radius: 4px;
@@ -130,7 +130,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #404044;
   border-radius: 4px;
@@ -189,7 +189,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
   border-radius: 4px;
@@ -248,7 +248,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
   border-radius: 4px;
@@ -375,7 +375,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #010205;
   border-radius: 4px;
@@ -484,7 +484,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #D8D8DB;
   border-radius: 4px;
@@ -593,7 +593,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px;
+  padding: 13px 17px;
   margin: 0;
   border: 2px solid #010205;
   border-radius: 4px;
