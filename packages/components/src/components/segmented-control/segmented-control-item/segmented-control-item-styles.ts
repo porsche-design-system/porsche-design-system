@@ -45,7 +45,7 @@ export const getColors = (
 };
 
 export const getItemPadding = (hasIconAndSlottedContent: boolean): string =>
-  hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : '13px';
+  hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`;
 
 export const getComponentCss = (
   isDisabled: boolean,
