@@ -18,7 +18,7 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 export type SegmentedControlUpdateEvent = { value: string | number };
 
 // Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
-const tempFont = 'Porsche Next, sans serif';
+const tempFont = 'Porsche Next, sans-serif';
 
 // temporary dom node to measure max-width of children content
 // All width relevant styling has to be kept in sync with the button of the p-segmented-control-item
