@@ -12,7 +12,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #404044;
@@ -72,7 +71,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
@@ -132,7 +130,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #404044;
@@ -192,7 +189,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
@@ -252,7 +248,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
@@ -316,7 +311,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
@@ -381,7 +375,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #010205;
@@ -436,7 +429,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #010205;
@@ -492,7 +484,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
@@ -547,7 +538,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #D8D8DB;
@@ -603,7 +593,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px;
   margin: 0;
   border: 2px solid #010205;
@@ -658,7 +647,6 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  text-align: center;
   padding: 13px 17px 13px 13px;
   margin: 0;
   border: 2px solid #010205;
