@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: Build and Push Docker Image
+    name: Build and Push Docker Images
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -16,6 +16,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build and Push Docker Image'
+      - name: 'Build and Push Docker Image Playwright'
         run: cd docker/node && ./build-and-push-base-image-playwright.sh
+        shell: bash
+      - name: 'Build and Push Docker Image Node'
+        run: cd docker/node && ./build-and-push-base-image-node.sh
         shell: bash
