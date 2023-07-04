@@ -3,12 +3,9 @@ on:
     branches:
       - main
       - v*
-      - issue/* # TODO: remove
-      - housekeeping/* # TODO: remove
-      - release/* # TODO: remove
-#  pull_request:
-#    branches:
-#      - main
+  pull_request:
+    branches:
+      - main
 name: 'Porsche Design System'
 jobs:
   build-and-test:
