@@ -26,10 +26,10 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call this.validateComponent()', () => {
+  it('should call this.validateComponentState()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
-    const spy = jest.spyOn(component, 'validateComponent' as any);
+    const spy = jest.spyOn(component, 'validateComponentState' as any);
 
     component.componentWillLoad();
     expect(spy).toBeCalledWith();
@@ -113,13 +113,13 @@ describe('disconnectedCallback', () => {
   });
 });
 
-describe('this.validateComponent()', () => {
+describe('this.validateComponentChildren()', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
     const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
-    component['validateComponent']();
+    component['validateComponentChildren']();
     expect(spy).toBeCalledWith(component.host, 'p-stepper-horizontal-item');
   });
 
@@ -128,16 +128,18 @@ describe('this.validateComponent()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
-    component['validateComponent']();
+    component['validateComponentChildren']();
     expect(spy).toBeCalledWith(component.host, 9);
   });
+});
 
+describe('this.validateComponentState()', () => {
   it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
     const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
-    component['validateComponent']();
+    component['validateComponentState']();
     expect(spy).toBeCalledWith(component.host, component['stepperHorizontalItems']);
   });
 });
