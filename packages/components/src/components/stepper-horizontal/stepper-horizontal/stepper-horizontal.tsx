@@ -89,8 +89,10 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
+  }
 
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => this.onSlotchange());
+  public componentDidRender(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
   public componentDidUpdate(): void {
