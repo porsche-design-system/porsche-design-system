@@ -46,8 +46,8 @@
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^15.0.0",
-    "@angular-devkit/build-angular": "^15.2.6",
-    "@angular/cli": "^15.2.8",
+    "@angular-devkit/build-angular": "^15.2.9",
+    "@angular/cli": "^15.2.9",
     "@angular/compiler-cli": "^15.2.9",
     "@angular/language-service": "^15.2.9",
     "@porsche-design-system/assets": "5.0.2",
