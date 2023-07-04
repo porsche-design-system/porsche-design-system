@@ -16,7 +16,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.0.2",
+    "styled-components": "^5.3.11",
     "web-vitals": "^3.3.2"
   },
   "devDependencies": {
@@ -27,6 +27,7 @@
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/styled-components": "^5.1.26",
     "react-scripts": "^5.0.1",
     "typescript": "~5.1.6"
   },
