@@ -13,5 +13,5 @@ it.each(Object.keys(fromComponents))('should render web component for %s', async
     </UXPinWrapper>
   );
 
-  expect(container.firstElementChild.tagName.toLowerCase()).toBe('p-' + paramCase(componentName));
+  expect(container.firstElementChild!.tagName.toLowerCase()).toBe('p-' + paramCase(componentName));
 });

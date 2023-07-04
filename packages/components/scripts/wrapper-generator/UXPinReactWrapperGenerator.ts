@@ -42,6 +42,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       imports = imports
         .replace(/( } from '\.\.\/\.\.\/hooks';)/, ', useToastManager$1')
         .replace(/( } from '\.\.\/types';)/, ', ToastState$1');
+    } else if (component === 'p-button' || component === 'p-button-pure') {
+      imports = imports.replace(/, (?:ButtonType|ButtonPureType)/, '');
+    } else if (component === 'p-marque') {
+      imports = imports.replace(/, MarqueTarget/, '');
+    } else if (component === 'p-text') {
+      imports = imports.replace(/, TextSize/, '');
     }
 
     // add spacing imports

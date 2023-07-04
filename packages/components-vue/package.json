@@ -8,7 +8,7 @@
     "build": "yarn clean:build && yarn build:vue-wrapper && yarn build:subPackages",
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
     "build:vue-wrapper:lib": "vite build -c vite.config.package.ts",
-    "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && ts-node --project tsconfig.node.json scripts/addDeprecatedAnnotations.ts",
+    "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && ts-node scripts/addDeprecatedAnnotations.ts",
     "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:typings:testing && yarn build:subPackages:typings",
     "build:subPackages:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:subPackages:typings": "yarn build:subPackages:typings:partials && yarn build:subPackages:typings:styles",

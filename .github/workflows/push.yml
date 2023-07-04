@@ -46,16 +46,16 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Unit Test Components Manager Core'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-unit
-          args: --components-js:components-manager-core
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Unit Test Components Manager Core'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:components-manager-core
       - name: 'Build Components Prod'
         uses: ./.github/actions/docker-run-playwright
         with:

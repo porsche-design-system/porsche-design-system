@@ -1,6 +1,13 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import type { IconAriaAttribute, IconColor, IconColorDeprecated } from './icon-utils';
-import { buildIconUrl, ICON_ARIA_ATTRIBUTES, ICON_COLORS, IconSize } from './icon-utils';
+import {
+  buildIconUrl,
+  ICON_ARIA_ATTRIBUTES,
+  ICON_COLORS,
+  type IconAriaAttribute,
+  type IconColor,
+  type IconColorDeprecated,
+  type IconSize,
+} from './icon-utils';
 import {
   AllowedTypes,
   attachComponentCss,

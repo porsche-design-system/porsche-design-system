@@ -40,7 +40,7 @@ it('should have one unit test per component', () => {
   expect(componentsWithMissingTests.length).toEqual(0);
 });
 
-it.each(Object.entries(tagNameMarkup))('should have no fetch call for %s', async (tagName, markup) => {
+it.each(Object.entries(tagNameMarkup))('should have no fetch call for %s', async (_, markup) => {
   const spy = jest.spyOn(global, 'fetch');
 
   document.body.innerHTML = markup;

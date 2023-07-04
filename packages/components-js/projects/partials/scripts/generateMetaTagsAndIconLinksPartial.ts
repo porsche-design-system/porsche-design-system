@@ -43,6 +43,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element {
   const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions = {
+    appTitle: '',
     cdn: 'auto',
     format: 'html',
     ...opts,

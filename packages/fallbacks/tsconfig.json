@@ -1,18 +1,9 @@
 {
+  "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
-    "target": "ES5",
-    "module": "ES2015",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "strict": true,
+    "verbatimModuleSyntax": false,
     "types": ["node", "jest"]
   },
-  "include": ["./src"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    },
-    "include": ["./scripts"]
-  }
+  "include": ["./src"]
 }

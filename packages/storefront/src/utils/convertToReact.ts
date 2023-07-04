@@ -2,12 +2,12 @@ import { camelCase, pascalCase, paramCase } from 'change-case';
 
 export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
-  markup.replace(/\s(\S+)="({.*?})"/g, (m, $key, $value) => ` ${camelCase($key)}={${$value}}`);
+  markup.replace(/\s(\S+)="({.*?})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
 
 export const transformStandardAttributes = (markup: string): string =>
   // transform all standard attributes to camel case
   markup
-    .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => ` ${camelCase($key)}="${$value}"`)
+    .replace(/\s(\S+)="(.*?)"/g, (_, $key, $value) => ` ${camelCase($key)}="${$value}"`)
     .replace(/(<(?:input|textarea|select).*?)\sreadonly/g, '$1 readOnly')
     .replace(/(<(?:input|textarea).*?)\smaxlength=/g, '$1 maxLength=')
     .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, paramCase($attr)))
@@ -18,13 +18,13 @@ export const transformClassAttribute = (markup: string): string =>
 
 export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
-  markup.replace(/\son([a-z]+?)="(.*?)"/g, (m, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
+  markup.replace(/\son([a-z]+?)="(.*?)"/g, (_, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
 
 export const transformBooleanDigitAndUndefinedValues = (markup: string): string =>
   markup.replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}').replace(/{(911|718)}/g, '"$1"'); // TODO replace temporary 911|718 work around with more generic approach
 
 export const transformCustomElementTagName = (markup: string): string =>
-  markup.replace(/<(\/?)(p-[\w-]+)/g, (m, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
+  markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
 
 export const transformInputs = (markup: string): string => markup.replace(/(<input(?:.[^/]*?))>/g, '$1 />');
 
@@ -32,7 +32,7 @@ export const transformToSelfClosingTags = (markup: string): string =>
   markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
 
 export const transformStyleAttribute = (markup: string): string =>
-  markup.replace(/\sstyle="([\s\S]*?)"/g, (m, $style: string) => {
+  markup.replace(/\sstyle="([\s\S]*?)"/g, (_, $style: string) => {
     $style = $style
       .replace(/;/g, ',') // transform semi colons to comma
       .replace(/,\s*$/g, ''); // remove last comma

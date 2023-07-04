@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   ALIGN_LABELS,
   AllowedTypes,

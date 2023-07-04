@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

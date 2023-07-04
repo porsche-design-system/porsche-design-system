@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,

@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

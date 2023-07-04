@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
 import type { TextTag } from './text-utils';
 import { getTextTagType, TEXT_TAGS } from './text-utils';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

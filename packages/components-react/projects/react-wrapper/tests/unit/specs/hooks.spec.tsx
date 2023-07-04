@@ -1,13 +1,12 @@
 import { render } from '@testing-library/react';
-import type { ToastMessage } from '../../../src/public-api';
-import { PButton, useToastManager } from '../../../src/public-api';
+import { PButton, useToastManager, type ToastMessage } from '../../../src/public-api';
 import * as hooks from '../../../src/hooks';
 import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
   usePrefix,
 } from '../../../src/hooks';
-import { useContext, useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import * as React from 'react';
 import { PorscheDesignSystemContext } from '../../../src/provider';
 

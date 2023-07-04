@@ -1,23 +1,14 @@
 {
+  "extends": "@porsche-design-system/shared/tsconfig.json",
   "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2019"],
-    "types": ["vitest/globals", "node", "jest"],
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "target": "ES2019",
-    "strict": true,
     "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"]
     },
-    "skipLibCheck": true,
+    "types": ["vitest/globals", "node", "jest"],
 
     // Remix takes care of building everything in `remix build`.
     "noEmit": true

@@ -7,7 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  ThemedColors,
+  type ThemedColors,
 } from '../../styles';
 import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { TagColor, TagColorDeprecated } from './tag-utils';

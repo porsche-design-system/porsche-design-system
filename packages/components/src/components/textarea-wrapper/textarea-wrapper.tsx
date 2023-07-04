@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   addInputEventListenerForCounter,

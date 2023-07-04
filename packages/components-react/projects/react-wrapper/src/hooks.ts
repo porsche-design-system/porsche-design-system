@@ -14,7 +14,7 @@ export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
   skipCheck = true;
 };
 
-export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
+export const usePrefix = (tagName: string): string => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return tagName;
   } else {
@@ -28,8 +28,8 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   }
 };
 
-export const useEventCallback = /*#__PURE__*/ (
-  ref: MutableRefObject<HTMLElement>,
+export const useEventCallback = (
+  ref: MutableRefObject<HTMLElement | undefined>,
   eventName: string,
   eventHandler: (e: Event) => void
 ): void => {
@@ -42,7 +42,7 @@ export const useEventCallback = /*#__PURE__*/ (
   }, [eventHandler]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
-export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>, className: string) => {
+export const useMergedClass = (ref: MutableRefObject<HTMLElement | undefined>, className?: string) => {
   const prevComponentClassName = useRef<string>();
 
   return useMemo(() => {
@@ -69,7 +69,9 @@ export const useToastManager = (): { addMessage: (msg: ToastMessage) => void } =
 
   return {
     addMessage: (message: ToastMessage): void => {
-      const toast = document.body.querySelector(tagName) as HTMLElement & { addMessage: (message: ToastMessage) => void };
+      const toast = document.body.querySelector(tagName) as HTMLElement & {
+        addMessage: (message: ToastMessage) => void;
+      };
       customElements.whenDefined(tagName).then(() => toast.addMessage(message));
     },
   };

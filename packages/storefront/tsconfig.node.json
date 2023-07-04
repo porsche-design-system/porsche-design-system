@@ -1,11 +1,3 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "Node",
-    "target": "esnext",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceRoot": "./"
-  }
+  "extends": "@porsche-design-system/shared/tsconfig.json"
 }

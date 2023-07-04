@@ -4,6 +4,7 @@ import modify from 'rollup-plugin-modify';
 import { version } from '../components-wrapper/package.json';
 import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import copy from 'rollup-plugin-copy';
 
 const outputDir = '../../dist/components-wrapper';
 
@@ -42,6 +43,9 @@ export default [
         // marque assets
         find: /(const picture =)( [\s\S]*?;)/,
         replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
+      }),
+      copy({
+        targets: [{ src: 'src/index.d.ts', dest: `${outputDir}/jsdom-polyfill` }],
       }),
     ],
   },

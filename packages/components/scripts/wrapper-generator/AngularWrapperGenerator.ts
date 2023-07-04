@@ -16,7 +16,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return `${component.replace('p-', '')}.wrapper.ts`;
   }
 
-  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+  public generateImports(_: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
 
     const angularImports = [
@@ -42,7 +42,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       .join('\n');
   }
 
-  public generateProps(component: TagName, rawComponentInterface: string): string {
+  public generateProps(_: TagName, __: string): string {
     return '';
   }
 
