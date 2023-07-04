@@ -12,15 +12,15 @@ jest.mock('../../../src/shared');
 
 describe('validation', () => {
   it('should throw error on invalid icons parameter', () => {
-    let error;
+    let errorMessage: string = '';
     try {
       getIconLinks({ icons: ['some-invalid-icon'] as any[] });
     } catch (e) {
-      error = e.message;
+      errorMessage = (e as Error).message;
     }
 
-    expect(error).toContain('The following supplied icon names are invalid:');
-    expect(error).toContain('some-invalid-icon');
+    expect(errorMessage).toContain('The following supplied icon names are invalid:');
+    expect(errorMessage).toContain('some-invalid-icon');
   });
 });
 

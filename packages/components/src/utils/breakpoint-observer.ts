@@ -17,7 +17,8 @@ export const observeBreakpointChange = (node: HTMLElement, callback: () => void)
   if (node) {
     if (breakpointChangeCallbackMap.size === 0) {
       mediaQueryLists.forEach((mediaQueryList) => {
-        mediaQueryList.addEventListener('change', handleBreakpointChange);
+        // matchmedia-polyfill only implements addListener in jsdom-polyfill
+        mediaQueryList.addEventListener?.('change', handleBreakpointChange);
       });
     }
     breakpointChangeCallbackMap.set(node, callback);
@@ -28,7 +29,7 @@ export const unobserveBreakpointChange = (node: HTMLElement): void => {
   breakpointChangeCallbackMap.delete(node);
   if (breakpointChangeCallbackMap.size === 0) {
     mediaQueryLists.forEach((mediaQueryList) => {
-      // matchmedia-polyfill only implements removeListener
+      // matchmedia-polyfill only implements removeListener in jsdom-polyfill
       mediaQueryList.removeEventListener?.('change', handleBreakpointChange);
     });
   }

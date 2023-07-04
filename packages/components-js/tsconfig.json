@@ -1,9 +1,6 @@
 {
+  "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
     "types": ["node", "jest"]
   },
   "include": ["./projects/components-wrapper/environment.ts"]

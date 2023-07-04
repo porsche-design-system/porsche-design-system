@@ -8159,11 +8159,6 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
 
-clsx@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
-  integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
-
 co-body@^6.0.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/co-body/-/co-body-6.1.0.tgz#d87a8efc3564f9bfe3aced8ef5cd04c7a8766547"
@@ -9216,7 +9211,7 @@ cssstyle@^3.0.0:
   dependencies:
     rrweb-cssom "^0.6.0"
 
-csstype@^3.0.2, csstype@^3.0.7, csstype@^3.1.0, csstype@^3.1.1, csstype@^3.1.2:
+csstype@^3.0.2, csstype@^3.0.7, csstype@^3.1.0, csstype@^3.1.1:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
@@ -21167,6 +21162,13 @@ rollup-plugin-modify@^3.0.0:
     magic-string "0.25.2"
     ospec "3.1.0"
 
+rollup-plugin-preserve-shebang@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-preserve-shebang/-/rollup-plugin-preserve-shebang-1.0.1.tgz#17109cdb4ed12c3cac9379b802182427cdbee5a1"
+  integrity sha512-gk7ExGBqvUinhgrvldKHkAKXXwRkWMXMZymNkrtn50uBgHITlhRjhnKmbNGwAIc4Bzgl3yLv7/8Fhi/XeHhFKg==
+  dependencies:
+    magic-string "^0.25.7"
+
 rollup-plugin-terser@^7.0.0, rollup-plugin-terser@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-7.0.2.tgz#e8fbba4869981b2dc35ae7e8a502d5c6c04d324d"
@@ -24764,10 +24766,10 @@ webpack@^4.0.0:
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
 
-webpack@^5.64.4, webpack@^5.88.0:
-  version "5.88.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.88.0.tgz#a07aa2f8e7a64a8f1cec0c6c2e180e3cb34440c8"
-  integrity sha512-O3jDhG5e44qIBSi/P6KpcCcH7HD+nYIHVBhdWFxcLOcIGN8zGo5nqF3BjyNCxIh4p1vFdNnreZv2h2KkoAw3lw==
+webpack@^5.64.4, webpack@^5.88.1:
+  version "5.88.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.88.1.tgz#21eba01e81bd5edff1968aea726e2fbfd557d3f8"
+  integrity sha512-FROX3TxQnC/ox4N+3xQoWZzvGXSuscxR32rbzjpXgEzWudJFEJBpdlkkob2ylrv5yzzufD1zph1OoFsLtm6stQ==
   dependencies:
     "@types/eslint-scope" "^3.7.3"
     "@types/estree" "^1.0.0"

@@ -1,19 +1,13 @@
 {
+  "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
+    "useDefineForClassFields": false, // TODO: override default, causes runtime errors when true
+    "strict": false, // TODO: override default, would be great to set this to true, but too many errors :(
+    "verbatimModuleSyntax": false, // TODO: override default, otherwise we have runtime init errors in link-tile because of sharedTilePropTypes
     "declaration": false,
     "experimentalDecorators": true,
-    "lib": ["dom", "es2017"],
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es2017",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
     "types": ["node", "jest"]
   },
   "include": ["src"],

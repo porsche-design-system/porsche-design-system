@@ -1,4 +1,4 @@
-import { TAG_NAMES_WITH_CHUNK, TagName } from '@porsche-design-system/shared';
+import { TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { getTagNameWithoutPrefix } from '../../tag-name';
 import { isAlreadyInArray } from '../../is-already-in-array';
 

@@ -1,6 +1,5 @@
-import { PTabsBar, PText } from '@porsche-design-system/components-react';
+import { PTabsBar, PText, type TabsBarUpdateEvent } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import type { TabsBarUpdateEvent } from '@porsche-design-system/components-react';
 
 export const TabsBarExampleAccessibilityPage = (): JSX.Element => {
   const [tabIndex, setTabIndex] = useState<number>(0);
@@ -33,7 +32,7 @@ export const TabsBarExampleAccessibilityPage = (): JSX.Element => {
         ))}
       </PTabsBar>
 
-      {tabPanels.map((content, i) => (
+      {tabPanels.map((_, i) => (
         <div
           key={i}
           role="tabpanel"

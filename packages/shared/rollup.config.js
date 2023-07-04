@@ -29,7 +29,10 @@ export default [
     },
     plugins: [
       copy({
-        targets: [{ src: 'src/css/*', dest: 'dist/css' }],
+        targets: [
+          { src: 'src/css/*', dest: 'dist/css' },
+          { src: 'src/tsconfig.json', dest: 'dist' },
+        ],
       }),
       typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }),
     ],

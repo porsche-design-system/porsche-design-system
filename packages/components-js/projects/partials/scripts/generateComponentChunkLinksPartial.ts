@@ -37,7 +37,7 @@ Please use only valid component chunk names:
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
-  const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
+  const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp as keyof typeof manifest]}\`);
 
   const linksHtml = urls
     // core needs crossorigin attribute / we need ternary otherwise false is written into link

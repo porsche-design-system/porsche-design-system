@@ -18,7 +18,7 @@
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./build && rm -rf ./public/build",
-    "patchRemixRunProcessBrowserGlobalIdentifier": "ts-node --project ../../tsconfig.node.json ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
+    "patchRemixRunProcessBrowserGlobalIdentifier": "ts-node ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",

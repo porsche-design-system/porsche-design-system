@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { render } from '@testing-library/react';
 import * as fromComponents from '../../../src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
@@ -220,7 +221,7 @@ describe('manual test cases', () => {
     Object.entries(testCases)
       .map(([tagName, jsxSnippets]) => jsxSnippets.map((jsxSnippet) => [tagName, jsxSnippet]))
       .flat() as [TagName, () => JSX.Element][]
-  )('should pass internal props correctly to %s', (tagName, jsxSnippet) => {
+  )('should pass internal props correctly to %s', (_, jsxSnippet) => {
     const { container } = render(<PorscheDesignSystemProvider>{jsxSnippet()}</PorscheDesignSystemProvider>);
 
     expect(container.firstElementChild).toMatchSnapshot();

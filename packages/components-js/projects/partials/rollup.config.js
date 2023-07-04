@@ -1,6 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const outputDir = 'dist';
@@ -24,7 +24,7 @@ export default [
       ],
     },
     // Our partials contain jsx. We bundle react/jsx-runtime into the build to make it work in VanillaJS and Angular.
-    plugins: [commonjs(), nodeResolve(), typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
+    plugins: [commonjs(), resolve(), typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
   },
   {
     input,

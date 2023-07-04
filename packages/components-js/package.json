@@ -21,7 +21,7 @@
     "build:components-manager-cli": "yarn --cwd ./projects/components-manager-cli build",
     "build:components-manager-core": "yarn --cwd ./projects/components-manager-core build",
     "build:components-wrapper": "yarn build:components-wrapper:environment && yarn build:components-wrapper:webpack && yarn build:components-wrapper:cm && yarn build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder && yarn build:components-wrapper:generateChunksManifest && yarn build:components-wrapper:copyUtilitiesBuildToComponentsJs && yarn build:components-wrapper:createUtilitiesScssEntryPoint",
-    "build:components-wrapper:environment": "tsc --project tsconfig.json",
+    "build:components-wrapper:environment": "tsc --project tsconfig.json --module commonjs --moduleResolution node --verbatimModuleSyntax false",
     "build:components-wrapper:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.ts",
     "build:components-wrapper:cm": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} IIFE_BUILD=1 cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} ESM_BUILD=1 cm build",
     "build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder": "ts-node scripts/replaceCdnBaseUrlDynamicPlaceholder.ts",
@@ -85,7 +85,7 @@
     "terser-webpack-plugin": "^5.3.9",
     "ts-node": "^10.9.1",
     "typescript": "~5.1.3",
-    "webpack": "^5.88.0",
+    "webpack": "^5.88.1",
     "webpack-bundle-analyzer": "^4.9.0",
     "webpack-cli": "^5.1.4"
   }

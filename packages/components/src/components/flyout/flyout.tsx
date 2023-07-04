@@ -1,14 +1,12 @@
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, Watch } from '@stencil/core';
-
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
 import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
   FLYOUT_SCROLL_SHADOW_THRESHOLD,
-  FlyoutAriaAttribute,
-  FlyoutPosition,
+  type FlyoutAriaAttribute,
+  type FlyoutPosition,
 } from './flyout-utils';
 import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
-
 import {
   attachComponentCss,
   getPrefixedTagNames,
@@ -17,9 +15,10 @@ import {
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   THEMES,
+  AllowedTypes,
+  validateProps,
 } from '../../utils';
-import { AllowedTypes, PropTypes, validateProps } from '../../utils/validation/validateProps';
-import type { SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
 import { setFocusTrap } from '../../utils/focusTrap';
 import { setScrollLock } from '../../utils/scrollLock';

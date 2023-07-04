@@ -1,9 +1,10 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "CommonJS",
     "declaration": true,
     "declarationDir": "./dist/types",
-    "outDir": "./dist/module"
+    "outDir": "./dist",
+    "verbatimModuleSyntax": false
   }
 }

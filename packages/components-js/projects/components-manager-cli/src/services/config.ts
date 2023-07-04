@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { CommonConfig } from '../../shared-definitions/entry-config';
+import type { CommonConfig } from '../../shared-definitions/entry-config';
 import { filePathByPattern } from './file-by-pattern';
 
 const configFileName = 'cm.config.js';

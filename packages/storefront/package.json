@@ -30,7 +30,6 @@
     "@porsche-design-system/browser-notification": "4.1.4",
     "@porsche-design-system/components-js": "3.2.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities": "5.4.1",
     "@stackblitz/sdk": "1.8.2",
     "algoliasearch": "^4.17.2",
     "change-case": "^4.1.2",

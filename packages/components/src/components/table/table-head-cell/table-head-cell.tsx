@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,

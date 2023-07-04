@@ -22,7 +22,7 @@ import {
   validateProps,
   getLinkButtonThemeForIcon,
 } from '../../utils';
-import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';

@@ -58,6 +58,7 @@ export default [
         declaration: true,
         declarationDir: outputDir,
         include: ['src/**/*.ts'],
+        verbatimModuleSyntax: false,
       }),
       generatePackageJson({
         baseContents: {
@@ -79,6 +80,7 @@ export default [
       ...sharedPlugins,
       typescript({
         tsconfig: './tsconfig.json',
+        verbatimModuleSyntax: false,
       }),
     ],
   },

@@ -27,15 +27,16 @@ export const convertToAngularVRTPage = (
   const angularImports = [
     'ChangeDetectionStrategy',
     'Component',
-    usesOnInit && 'OnInit',
-    usesSetAllReady && 'ChangeDetectorRef',
+    ...(usesOnInit ? ['OnInit'] : []),
+    ...(usesSetAllReady ? ['ChangeDetectorRef'] : []),
   ]
-    .filter(Boolean)
     .sort(byAlphabet)
     .join(', ');
 
-  const pdsImports = [(usesSetAllReady || usesComponentsReady) && 'componentsReady', usesToast && 'ToastManager']
-    .filter(Boolean)
+  const pdsImports = [
+    ...(usesSetAllReady || usesComponentsReady ? ['componentsReady'] : []),
+    ...(usesToast ? ['ToastManager'] : []),
+  ]
     .sort(byAlphabet)
     .join(', ');
 

@@ -16,7 +16,7 @@ import {
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import type {
   ButtonPureAlignLabel,

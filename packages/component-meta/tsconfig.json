@@ -1,17 +1,11 @@
 {
+  "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true
+    "strict": false,
+    "moduleResolution": "node"
   },
   "include": ["./src", "./scripts"],
   "ts-node": {
-    "transpileOnly": true,
-    "compilerOptions": {
-      "module": "commonjs"
-    },
-    "include": ["./scripts"]
+    "transpileOnly": true // to ignore error: Cannot find name 'HTMLPScrollerElement'. Did you mean 'HTMLPreElement'
   }
 }
