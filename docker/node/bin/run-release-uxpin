@@ -58,6 +58,8 @@ SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 P_CURRENT_BRANCH="${GITHUB_REF_NAME}" # https://docs.github.com/en/actions/learn-github-actions/variables
 
 echo $P_CURRENT_BRANCH;
+echo 'test';
+echo $GITHUB_REF_NAME;
 
 PACKAGE_LOCATION="./packages/components-js/dist/components-wrapper"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
