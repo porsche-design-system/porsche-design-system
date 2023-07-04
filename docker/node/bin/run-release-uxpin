@@ -55,7 +55,7 @@ publish() {
 }
 
 SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
-P_CURRENT_BRANCH="${GITHUB_REF:11}" # strip first 11 characters from "refs/heads/issue/1405"
+P_CURRENT_BRANCH="${GITHUB_REF_NAME}" # https://docs.github.com/en/actions/learn-github-actions/variables
 
 PACKAGE_LOCATION="./packages/components-js/dist/components-wrapper"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
