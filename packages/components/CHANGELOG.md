@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Segmented Control` text is not centered / causing unintended line-breaks
+  ([#2614](https://github.com/porsche-design-system/porsche-design-system/pull/2614))
 - `jsdom-polyfill` fixes validation errors in unit tests during SSR hydration
   ([#2613](https://github.com/porsche-design-system/porsche-design-system/pull/2613))
 - `Accordion` collapsable content is overflowing when used with multiple prefixes  
