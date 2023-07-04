@@ -19,14 +19,14 @@ it('should focus correct element', async () => {
     return await host.evaluateHandle((el) => el.shadowRoot.activeElement);
   };
 
-  const expectDialogToBeFocused = async (failMessage?: string) => {
+  const expectDialogToBeFocused = async (failMessage: string) => {
     const dialog = await selectNode(page, 'p-modal >>> div.root');
     const focused = await waitForFocus(dialog);
     expect(await getProperty(focused, 'tagName'), failMessage).toBe('DIV');
     expect(await getProperty(focused, 'className'), failMessage).toBe('root');
   };
 
-  const expectDismissButtonToBeFocused = async (failMessage?: string) => {
+  const expectDismissButtonToBeFocused = async (failMessage: string) => {
     const dismissHandle = await selectNode(page, 'p-modal >>> p-button-pure.dismiss');
     const focused = await waitForFocus(dismissHandle);
     expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON-PURE');
@@ -51,6 +51,9 @@ it('should focus correct element', async () => {
   await page.keyboard.press('Tab');
   await expectDismissButtonToBeFocused('after loading 1st tab');
   await page.keyboard.press('Tab');
+
+  const table = await selectNode(page, 'p-table');
+  await page.waitForFunction((el) => document.activeElement === el, {}, table);
   expect(await getActiveElementTagName(), 'after loading 2nd tab').toBe('P-TABLE'); // when table is scrollable, otherwise it would be P-TABLE-HEAD-CELL
 
   const btnReload = await selectNode(page, '#btn-reload');
