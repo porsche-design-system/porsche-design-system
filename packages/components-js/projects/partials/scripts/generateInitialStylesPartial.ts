@@ -175,11 +175,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
     if (prefix && typeof prefix === 'string') {
       return tagNames.map((tagName) => \`\${prefix}-\${tagName}\`);
     } else if (Array.isArray(prefix) && prefix.length) {
-      const tagNamesArray = [];
-      prefix.forEach((_prefix) => {
-        tagNamesArray.push(tagNames.map((tagName) => \`\${_prefix ? _prefix + '-' : ''}\${tagName}\`));
-      });
-      return tagNamesArray.flat();
+      return prefix.map((_prefix) => tagNames.map((tagName) => \`\${_prefix ? _prefix + '-' : ''}\${tagName}\`)).flat();
     } else {
       return tagNames;
     }

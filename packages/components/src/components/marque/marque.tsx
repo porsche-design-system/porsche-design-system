@@ -1,7 +1,7 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { MarqueAriaAttribute, MarqueVariant, MarqueTarget } from './marque-utils';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_VARIANTS } from './marque-utils';
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

@@ -1,4 +1,4 @@
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 
 export function runWebpack(config: webpack.Configuration) {
   return new Promise((resolve, reject) => {

@@ -4,4 +4,14 @@ module.exports = {
   verbose: true,
   rootDir: '../../../',
   testMatch: ['**/tests/unit/specs/**/*.+(ts|tsx|js)'],
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          verbatimModuleSyntax: false,
+        },
+      },
+    ],
+  },
 };

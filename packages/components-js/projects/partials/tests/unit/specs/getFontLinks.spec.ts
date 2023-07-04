@@ -9,32 +9,26 @@ jest.mock('../../../src/shared');
 
 describe('validation', () => {
   it('should throw error on invalid font weights option', () => {
-    let error;
-    try {
-      getFontLinks({ weights: ['some-invalid-weight'] as any[] });
-    } catch (e) {
-      error = e.message;
-    }
+    expect(() => getFontLinks({ weights: ['some-invalid-weight'] as any[] })).toThrowErrorMatchingInlineSnapshot(
+      `
+      "The following supplied font weights are invalid:
+        some-invalid-weight
 
-    expect(error).toContain('The following supplied font weights are invalid:');
-    expect(error).toContain('some-invalid-weight');
+      Please use only valid font weights:
+        regular, semi-bold, bold"
+    `
+    );
   });
 
   it('should throw error on invalid font subset option', () => {
-    let error;
-    try {
-      getFontLinks({ subset: 'some-invalid-subset' as any });
-    } catch (e) {
-      error = e.message;
-    }
+    expect(() => getFontLinks({ subset: 'some-invalid-subset' as any })).toThrowErrorMatchingInlineSnapshot(
+      `
+      "The following supplied font subset is invalid:
+        some-invalid-subset
 
-    expect(error).toContain('The following supplied font subset is invalid:');
-    expect(error).toContain('some-invalid-subset');
-  });
-
-  it('should throw error on invalid weight options', () => {
-    expect(() => getFontLinks({ weight: ['latin'] } as any)).toThrowErrorMatchingInlineSnapshot(
-      `"Option "weight" is not supported, please use "weights" instead"`
+      Please use only valid font subset:
+        latin, greek, cyril"
+    `
     );
   });
 });

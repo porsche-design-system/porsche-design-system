@@ -7,7 +7,7 @@ import {
   PTableHeadCell,
   PTableHeadRow,
   PTableRow,
-  Theme,
+  type Theme,
 } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';

@@ -20,7 +20,7 @@ import {
   updatePrevNextButtons,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,

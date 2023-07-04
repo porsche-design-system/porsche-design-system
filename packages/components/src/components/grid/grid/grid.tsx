@@ -1,6 +1,6 @@
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { deprecatedGridComponentMessage, GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
 import {

@@ -188,6 +188,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
+          .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2') // remove unused destructured host
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
@@ -226,7 +227,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (tagName === 'p-carousel') {
         newFileContent = newFileContent
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
-          .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n")
+          .replace(/^/, "$&import type { BreakpointCustomizable } from '../types';\n")
           .replace(/.*onFocusin=\{.*\n/, '');
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
@@ -304,7 +305,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
-    const manipulatedChildren = children.map((child, i) =>
+    const manipulatedChildren = children.map((child) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
         : child
@@ -317,7 +318,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
-    const manipulatedChildren = children.map((child, i) =>
+    const manipulatedChildren = children.map((child) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, selected: child.props?.value === this.props.value, backgroundColor: this.props.backgroundColor, theme: this.props.theme } }
         : child
@@ -332,7 +333,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
-    const manipulatedChildren = children.map((child, i) =>
+    const manipulatedChildren = children.map((child) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, theme: this.props.theme } }
         : child
@@ -371,7 +372,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
         const constants = rawPrivateMembers
           .map((member) => member.replace(/^this\./, 'const ')) // make it local constants
-          .map((member, i, arr) =>
+          .map((member, _, arr) =>
             member
               .replace(
                 // use local constants

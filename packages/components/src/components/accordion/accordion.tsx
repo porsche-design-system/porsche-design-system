@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,7 +10,7 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { AccordionSize, AccordionUpdateEvent } from './accordion-utils';
-import { ACCORDION_SIZES, AccordionTag } from './accordion-utils';
+import { ACCORDION_SIZES, type AccordionTag } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
