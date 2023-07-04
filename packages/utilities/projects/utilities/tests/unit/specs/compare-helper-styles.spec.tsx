@@ -51,7 +51,7 @@ xit('should have equal styles for styled-components and jss', () => {
   });
 
   render(
-    <StyleSheetManager disableVendorPrefixes>
+    <StyleSheetManager>
       <SampleStyles />
     </StyleSheetManager>
   );
