@@ -5,19 +5,18 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   observeBreakpointChange,
-  observeChildren,
   parseJSON,
   THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveBreakpointChange,
-  unobserveChildren,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepperHorizontalUpdateEvent, StepperHorizontalSize } from './stepper-horizontal-utils';
+import type { StepperHorizontalSize, StepperHorizontalUpdateEvent } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
@@ -58,22 +57,12 @@ export class StepperHorizontal {
 
   public connectedCallback(): void {
     this.defineStepperHorizontalItemElements();
-
-    // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
-    observeChildren(this.host, () => {
-      this.defineStepperHorizontalItemElements();
-      // Validate when new steps are added
-      this.validateComponent();
-      this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-      this.scrollIntoView();
-    });
-
     this.observeBreakpointChange();
   }
 
   public componentWillLoad(): void {
     // Initial validation
-    this.validateComponent();
+    this.validateComponentState();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -100,6 +89,8 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
+
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => this.onSlotchange());
   }
 
   public componentDidUpdate(): void {
@@ -109,7 +100,6 @@ export class StepperHorizontal {
 
   public disconnectedCallback(): void {
     unobserveBreakpointChange(this.host);
-    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
@@ -152,13 +142,16 @@ export class StepperHorizontal {
   };
 
   private defineStepperHorizontalItemElements = (): void => {
-    // TODO: validation? this could be any kind of dom node
+    this.validateComponentChildren();
     this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
   };
 
-  private validateComponent = (): void => {
+  private validateComponentChildren = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
     throwIfChildCountIsExceeded(this.host, 9);
+  };
+
+  private validateComponentState = (): void => {
     throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
   };
 
@@ -186,5 +179,13 @@ export class StepperHorizontal {
     if (typeof parseJSON(this.size) === 'object') {
       observeBreakpointChange(this.host, this.scrollIntoView);
     }
+  };
+
+  private onSlotchange = (): void => {
+    this.defineStepperHorizontalItemElements();
+    // Validate when new steps are added
+    this.validateComponentState();
+    this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+    this.scrollIntoView();
   };
 }
