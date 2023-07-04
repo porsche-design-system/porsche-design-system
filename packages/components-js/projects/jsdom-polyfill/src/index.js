@@ -19,17 +19,16 @@ window.PDS_SKIP_FETCH = true;
 process.browser = true;
 
 // workaround for WebComponentManager not working in JSDOM
-require('./lib/loader.cjs')
-  .defineCustomElements()
-  .then(() => {
-    window.PDS_SKIP_FETCH = false;
-    // jsdom polyfill build does not load anything from CDN and also does not use our web components manager
-    // therefore, we have to setup the document.porscheDesignSystem ourselves here
-    // 'ROLLUP_REPLACE_VERSION' is replaced during build
-    document.porscheDesignSystem = {
-      ['ROLLUP_REPLACE_VERSION']: {
-        readyResolve: () => {},
-        isReady: () => Promise.resolve(),
-      },
-    };
-  });
+require('./lib/loader.cjs').defineCustomElements(); // this is executed synchronous since stencil v4
+
+window.PDS_SKIP_FETCH = false;
+
+// jsdom polyfill build does not load anything from CDN and also does not use our web components manager
+// therefore, we have to setup the document.porscheDesignSystem ourselves here
+// 'ROLLUP_REPLACE_VERSION' is replaced during build
+document.porscheDesignSystem = {
+  ['ROLLUP_REPLACE_VERSION']: {
+    readyResolve: () => {},
+    isReady: () => Promise.resolve(),
+  },
+};
