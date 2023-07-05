@@ -36,7 +36,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:18.15.0-slim
+  PDS_NODE_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/node:16.15.1-stretch-slim
   PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.35.1-focal
 jobs:
   assets-deployment:
