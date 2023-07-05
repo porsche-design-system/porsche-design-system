@@ -133,17 +133,18 @@ export class StepperHorizontal {
     }
   };
 
-  private getStepperHorizontalItemElements = (): HTMLPStepperHorizontalItemElement[] =>
-    Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+  private createStepperHorizontalItemElements = (): HTMLPStepperHorizontalItemElement[] => {
+    return Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+  };
 
   private defineStepperHorizontalItemElements = (): void => {
-    this.stepperHorizontalItems = this.getStepperHorizontalItemElements();
+    this.stepperHorizontalItems = this.createStepperHorizontalItemElements();
   };
 
   private validateComponent = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
     throwIfChildCountIsExceeded(this.host, 9);
-    throwIfMultipleCurrentStates(this.host, this.getStepperHorizontalItemElements());
+    throwIfMultipleCurrentStates(this.host, this.createStepperHorizontalItemElements());
   };
 
   private scrollIntoView = (): void => {
