@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Tabs` and `Tabs Bar` support SSR ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
 - Contents of `Tag` component can now be wrapped in multiple lines
   ([#2625](https://github.com/porsche-design-system/porsche-design-system/pull/2625))
+- `Carousel`: possibility to set custom border-radius of slide items
+  ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
 
 #### Fixed
 
@@ -32,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
 - `Button Pure`, `Link Pure`: `:hover` bug on Firefox
   ([#2630](https://github.com/porsche-design-system/porsche-design-system/pull/2630))
+- `Carousel`: Removed `overflow:hidden` of slide items
+  ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
 
 ### [3.2.0] - 2023-06-19
 
