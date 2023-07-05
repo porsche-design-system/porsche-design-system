@@ -1,6 +1,5 @@
 import type { Page } from 'puppeteer';
 import {
-  getConsoleErrors,
   getConsoleErrorsAmount,
   getElementProp,
   getOuterHTML,
