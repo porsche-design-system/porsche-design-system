@@ -65,6 +65,7 @@ const initCarousel = (opts?: InitOptions) => {
 };
 
 const getHost = () => selectNode(page, 'p-carousel');
+const getSlottedSlides = async () => (await selectNode(page, 'p-carousel')).$$('[slot^="slide-"]');
 const getSplide = () => selectNode(page, 'p-carousel >>> .splide');
 const getSplideTrack = () => selectNode(page, 'p-carousel >>> .splide__track');
 const getSlides = async () => (await selectNode(page, 'p-carousel >>> .splide')).$$('.splide__slide');
@@ -345,8 +346,7 @@ describe('adding/removing slides', () => {
   it('should update tabindex attribute of slide', async () => {
     await initCarousel({ amountOfSlides: 2 });
     const host = await getHost();
-    const [slide1, slide2] = await getSlides();
-
+    const [slide1, slide2] = await getSlottedSlides();
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(slide1, 'tabindex')).toBe('0');
@@ -354,7 +354,7 @@ describe('adding/removing slides', () => {
 
     await addSlide(host);
     await waitForStencilLifecycle(page);
-    const [slide1Added, slide2Added, slide3Added] = await getSlides();
+    const [slide1Added, slide2Added, slide3Added] = await getSlottedSlides();
 
     expect(await getAttribute(slide1Added, 'tabindex')).toBe('0');
     expect(await getAttribute(slide2Added, 'tabindex')).toBe('0');
@@ -362,7 +362,7 @@ describe('adding/removing slides', () => {
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    const [slide1Removed, slide2Removed] = await getSlides();
+    const [slide1Removed, slide2Removed] = await getSlottedSlides();
 
     expect(await getAttribute(slide1Removed, 'tabindex')).toBe('0');
     expect(await getAttribute(slide2Removed, 'tabindex')).toBe('0');
