@@ -89,6 +89,13 @@ export class Icon {
     );
 
     // TODO: wouldn't it be better to set alt attribute instead of aria-label?
-    return <img src={buildIconUrl(this.source || this.name)} {...parseAndGetAriaAttributes(this.aria)} alt="" />;
+    return (
+      <img
+        src={buildIconUrl(this.source || this.name)}
+        {...parseAndGetAriaAttributes(this.aria)}
+        {...(!this.source && { width: 24, height: 24 })}
+        alt=""
+      />
+    );
   }
 }
