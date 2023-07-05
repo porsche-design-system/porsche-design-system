@@ -94,6 +94,7 @@ export class Icon {
         src={buildIconUrl(this.source || this.name)}
         {...parseAndGetAriaAttributes(this.aria)}
         {...(!this.source && { width: 24, height: 24 })}
+        loading="lazy"
         alt=""
       />
     );
