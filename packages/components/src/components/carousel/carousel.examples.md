@@ -154,6 +154,13 @@ type CarouselInternationalization = {
 
 <Playground :markup="focusBehavior" :config="config"></Playground>
 
+## Custom Border Radius
+
+By default, every carousel item gets a border radius of `12px`. This can be changed via a custom CSS property, e.g.:  
+`--p-carousel-border-radius: 4px`.
+
+<Playground :markup="customBorderRadius" :config="config"></Playground>
+
 ## Skip Carousel Entries
 
 Through the `skipLinkTarget` property, a skip link for keyboard users can be provided to give the possibility to skip
@@ -276,6 +283,10 @@ export default class Code extends Vue {
 </p-carousel>
 `;
 
+customBorderRadius = `<p-carousel heading="${this.basicHeading}" style="--p-carousel-border-radius: 4px;">
+  ${this.getSlides(4)}
+</p-carousel>`;
+
 skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/carousel/examples#target">
   ${this.getSlides(4)}
 </p-carousel>
@@ -298,7 +309,7 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
   :deep(p-carousel) {
     margin-bottom: $pds-spacing-fluid-medium;
   }
-
+  
   button {
     padding: .5rem 1rem;
 
