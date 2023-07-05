@@ -2446,6 +2446,9 @@ exports[`should render dsr component for PCarousel 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -2496,13 +2499,10 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
@@ -2865,7 +2865,6 @@ img {
         >
           <div
             class="splide__slide"
-            tabindex="0"
           >
             <slot
               name="slide-0"

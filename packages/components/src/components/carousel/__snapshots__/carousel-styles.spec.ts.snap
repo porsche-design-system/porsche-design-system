@@ -10,6 +10,13 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -65,23 +72,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -137,6 +137,13 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -191,23 +198,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -261,6 +261,13 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -317,23 +324,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -417,6 +417,13 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -471,23 +478,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -570,6 +570,13 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -625,23 +632,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -749,6 +749,13 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -803,23 +810,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -926,6 +926,13 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -980,23 +987,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1106,6 +1106,13 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -1161,23 +1168,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1312,6 +1312,13 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -1367,23 +1374,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1439,6 +1439,13 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -1493,23 +1500,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1564,6 +1564,13 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -1618,23 +1625,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
@@ -1717,6 +1717,13 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px);
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   max-width: 56.25rem !important;
@@ -1772,23 +1779,16 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   -webkit-backface-visibility: hidden;
 }
 .splide__slide {
-  position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .splide__sr {
   position: absolute;
   width: 0;
   height: 1px;
   text-indent: -999999px;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .splide__track--draggable {
   user-select: none;
