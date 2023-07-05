@@ -3,9 +3,9 @@ on:
     branches:
       - main
       - v*
-      - issue
-      - housekeeping
-      - release
+      - issue/*
+      - housekeeping/*
+      - release/*
 name: 'Porsche Design System'
 jobs:
   build-and-test:
