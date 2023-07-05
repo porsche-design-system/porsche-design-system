@@ -1,5 +1,6 @@
 import type { Page } from 'puppeteer';
 import {
+  getConsoleErrors,
   getConsoleErrorsAmount,
   getElementProp,
   getOuterHTML,
@@ -69,6 +70,20 @@ describe('Form Wrapper with slotted input', () => {
     // back and forth navigation seems to be necessary to reproduce a bug
     await page.select('select', 'form-wrapper-binding');
 
+    expect(getConsoleErrorsAmount()).toBe(0);
+
+    await page.evaluate(() => console.error('test error'));
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+});
+
+describe('Stepper Horizontal states', () => {
+  it('should have no console error if navigated between two pages', async () => {
+    initConsoleObserver(page);
+    await goto(page, 'stepper-horizontal-navigation-example-start-component');
+    expect(getConsoleErrorsAmount()).toBe(0);
+
+    await goto(page, 'stepper-horizontal-navigation-example-second-component');
     expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));

@@ -136,6 +136,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.StepperHorizontalExampleComponent,
   },
   {
+    name: 'Stepper Horizontal Navigation Example Start',
+    path: 'stepper-horizontal-navigation-example-start-component',
+    component: fromExamples.StepperHorizontalNavigationExampleStartComponent,
+  },
+  {
+    name: 'Stepper Horizontal Navigation Example Second',
+    path: 'stepper-horizontal-navigation-example-second-component',
+    component: fromExamples.StepperHorizontalNavigationExampleSecondComponent,
+  },
+  {
     name: 'Table Example Basic',
     path: 'table-example-basic',
     component: fromExamples.TableExampleBasicComponent,
