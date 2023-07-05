@@ -76,6 +76,13 @@ export const getComponentCss = (
         boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
         ...hostHiddenStyles,
       }),
+      '::slotted(*)': {
+        borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+      },
+      '::slotted(*:focus-visible)': {
+        outline: `${borderWidthBase} solid ${focusColor}`,
+        outlineOffset: '2px',
+      },
       [selectorHeading]: addImportantToEachRule({
         ...headingXLargeStyle,
         maxWidth: '56.25rem',
@@ -141,7 +148,6 @@ export const getComponentCss = (
     },
     splide: {
       overflow: 'hidden',
-      // visibility: 'hidden',
       padding: '4px 0', // for slide focus outline
       margin: '-4px 0', // for slide focus outline
       '&__track': {
@@ -170,26 +176,12 @@ export const getComponentCss = (
         ...getBackfaceVisibilityJssStyle(),
       },
       '&__slide': {
-        position: 'relative',
         flexShrink: 0,
         ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        borderRadius: borderRadiusLarge,
-        overflow: 'hidden',
-        '&:focus-visible': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          outlineOffset: '2px',
-        },
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },
-    // .splide.is-initialized,
-    // .splide.is-rendered {
-    //     visibility: visible,
-    //   }
-    // .splide.is-initialized:not(.is-active) .splide__list {
-    //     display: block,
-    //   }
     ...(hasPagination && {
       ['pagination-container']: {
         ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
