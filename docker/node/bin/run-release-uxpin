@@ -57,10 +57,6 @@ publish() {
 SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 P_CURRENT_BRANCH="${GITHUB_REF_NAME}" # https://docs.github.com/en/actions/learn-github-actions/variables
 
-echo "GITHUB_REF ${GITHUB_REF}"
-echo "GITHUB_REF_NAME ${GITHUB_REF_NAME}"
-echo "GITHUB_HEAD_REF ${GITHUB_HEAD_REF}"
-
 PACKAGE_LOCATION="./packages/components-js/dist/components-wrapper"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
