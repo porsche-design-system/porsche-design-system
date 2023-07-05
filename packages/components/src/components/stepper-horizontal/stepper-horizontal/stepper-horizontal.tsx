@@ -56,13 +56,9 @@ export class StepperHorizontal {
   private currentStepIndex: number;
 
   public connectedCallback(): void {
+    this.validateComponent();
     this.defineStepperHorizontalItemElements();
     this.observeBreakpointChange();
-  }
-
-  public componentWillLoad(): void {
-    // Initial validation
-    this.validateComponentState();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -76,8 +72,6 @@ export class StepperHorizontal {
 
     // Sometimes lifecycle gets called after disconnectedCallback()
     if (this.scrollerElement) {
-      this.addEventListeners();
-
       // Initial scroll current into view
       this.scrollerElement.scrollToPosition = {
         scrollPosition: getScrollActivePosition(
@@ -89,9 +83,7 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
-  }
 
-  public componentDidRender(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
@@ -117,6 +109,7 @@ export class StepperHorizontal {
           class="scroller"
           aria={{ role: 'list' }}
           theme={this.theme}
+          onClick={this.onClickScroller}
           ref={(el) => (this.scrollerElement = el)}
         >
           <slot />
@@ -125,36 +118,32 @@ export class StepperHorizontal {
     );
   }
 
-  private addEventListeners = (): void => {
-    // TODO: why not apply via jsx?
-    this.scrollerElement.addEventListener('click', (e) => {
-      const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
-        this.host,
-        'p-stepper-horizontal-item',
-        e.composedPath()
-      );
+  private onClickScroller = (e: MouseEvent): void => {
+    const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
+      this.host,
+      'p-stepper-horizontal-item',
+      e.composedPath()
+    );
 
-      if (target) {
-        const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
+    if (target) {
+      const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
 
-        this.update.emit({ activeStepIndex: clickedStepIndex });
-        this.stepChange.emit({ activeStepIndex: clickedStepIndex });
-      }
-    });
+      this.update.emit({ activeStepIndex: clickedStepIndex });
+      this.stepChange.emit({ activeStepIndex: clickedStepIndex });
+    }
   };
+
+  private getStepperHorizontalItemElements = (): HTMLPStepperHorizontalItemElement[] =>
+    Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
 
   private defineStepperHorizontalItemElements = (): void => {
-    this.validateComponentChildren();
-    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+    this.stepperHorizontalItems = this.getStepperHorizontalItemElements();
   };
 
-  private validateComponentChildren = (): void => {
+  private validateComponent = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
     throwIfChildCountIsExceeded(this.host, 9);
-  };
-
-  private validateComponentState = (): void => {
-    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+    throwIfMultipleCurrentStates(this.host, this.getStepperHorizontalItemElements());
   };
 
   private scrollIntoView = (): void => {
@@ -184,9 +173,8 @@ export class StepperHorizontal {
   };
 
   private onSlotchange = (): void => {
+    this.validateComponent();
     this.defineStepperHorizontalItemElements();
-    // Validate when new steps are added
-    this.validateComponentState();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
     this.scrollIntoView();
   };
