@@ -16,7 +16,6 @@ jobs:
   deploy-and-release:
     name: 'Deploy and Release'
     uses: ./.github/workflows/deploy-and-release.yml
-    if: github.repository_owner == 'porsche-design-system'
     needs:
       - build-and-test
     secrets:
