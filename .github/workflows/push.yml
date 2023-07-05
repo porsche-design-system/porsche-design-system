@@ -3,9 +3,9 @@ on:
     branches:
       - main
       - v*
-  pull_request:
-    branches:
-      - main
+      - issue
+      - housekeeping
+      - release
 name: 'Porsche Design System'
 jobs:
   build-and-test:
