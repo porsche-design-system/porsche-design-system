@@ -287,7 +287,7 @@ export default class Code extends Vue {
 `;
 
 customBorderRadius = 'small';
-customBorderRadii = ['small', 'medium', 'large', 'zero'];
+customBorderRadii = [...Object.keys(borderRadius), 'zero'];
 get customBorderRadiusMarkup() {
     return `<p-carousel heading="${this.basicHeading}" style="--p-carousel-border-radius: ${this.customBorderRadius !== 'zero' ? borderRadius[this.customBorderRadius] : 0}">
   ${this.getSlides(4)}
