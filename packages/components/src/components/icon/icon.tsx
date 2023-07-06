@@ -53,7 +53,7 @@ export class Icon {
   @Prop() public size?: IconSize = 'small';
 
   /**
-   * Has no effect anymore
+   * Has no effect anymore (the component is now using the native `loading="lazy"` attribute by default)
    * @deprecated since v3.0.0, will be removed with next major release
    */
   @Prop() public lazy?: boolean;

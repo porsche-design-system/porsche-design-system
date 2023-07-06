@@ -81,7 +81,7 @@ sure that the custom icon serves the specific needs like size and viewbox which 
 ## Lazy loaded icon
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-  This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
+  Since the component is using the native 'loading="lazy"' attribute by default, this property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
 </p-inline-notification>
 
 <Playground :markup="lazy" :config="config"></Playground>
