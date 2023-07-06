@@ -12,7 +12,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  parseAndGetAriaAttributes,
   TEXT_SIZES,
   THEMES,
   validateProps,
@@ -88,15 +87,13 @@ export class Icon {
       this.theme
     );
 
-    // TODO: wouldn't it be better to set alt attribute instead of aria-label?
     return (
       <img
         src={buildIconUrl(this.source || this.name)}
-        {...parseAndGetAriaAttributes(this.aria)}
         width={24} // improve bootstrapping behaviour
         height={24} // improve bootstrapping behaviour
         loading="lazy"
-        alt=""
+        alt={this.aria['aria-label']}
       />
     );
   }
