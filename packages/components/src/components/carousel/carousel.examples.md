@@ -156,7 +156,7 @@ type CarouselInternationalization = {
 
 ## Custom Border Radius
 
-By default, every carousel item gets a border radius of large (`12px`). This can be changed via a custom CSS property
+By default, every carousel item gets a predefined border radius of "large" (`12px`). This can be changed via a custom CSS property
 (see also [Border Styles](styles/border#styles)).
 
 <Playground :markup="customBorderRadiusMarkup" :config="config">
