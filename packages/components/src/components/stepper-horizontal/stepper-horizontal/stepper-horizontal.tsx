@@ -137,14 +137,10 @@ export class StepperHorizontal {
     }
   };
 
-  private createStepperHorizontalItemElements = (): HTMLPStepperHorizontalItemElement[] => {
-    return Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
-  };
-
   private validateComponent = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
     throwIfChildCountIsExceeded(this.host, 9);
-    this.stepperHorizontalItems = this.createStepperHorizontalItemElements();
+    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
     throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
   };
 

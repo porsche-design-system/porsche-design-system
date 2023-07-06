@@ -33,14 +33,6 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
     expect(spy).toBeCalledWith();
   });
-  it('should call createStepperHorizontalItemElements()', () => {
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-    const spy = jest.spyOn(component, 'createStepperHorizontalItemElements' as any);
-
-    component.componentWillLoad();
-    expect(spy).toBeCalledWith();
-  });
 });
 
 describe('componentDidLoad', () => {
