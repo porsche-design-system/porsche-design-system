@@ -6,30 +6,31 @@ import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 import * as scrollingUtils from '../../../utils/scrolling';
 
 describe('connectedCallback', () => {
-  it('should call this.validateComponent()', () => {
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-    const spy = jest.spyOn(component, 'validateComponent' as any);
-
-    component.connectedCallback();
-    expect(spy).toBeCalledWith();
-  });
-
-  it('should call defineStepperHorizontalItemElements()', () => {
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-    const spy = jest.spyOn(component, 'defineStepperHorizontalItemElements' as any);
-
-    component.connectedCallback();
-    expect(spy).toBeCalledWith();
-  });
-
   it('should call this.observeBreakpointChange()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
+    expect(spy).toBeCalledWith();
+  });
+});
+
+describe('componentWillLoad', () => {
+  it('should call this.validateComponent()', () => {
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+    const spy = jest.spyOn(component, 'validateComponent' as any);
+
+    component.componentWillLoad();
+    expect(spy).toBeCalledWith();
+  });
+  it('should call createStepperHorizontalItemElements()', () => {
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+    const spy = jest.spyOn(component, 'createStepperHorizontalItemElements' as any);
+
+    component.componentWillLoad();
     expect(spy).toBeCalledWith();
   });
 });
