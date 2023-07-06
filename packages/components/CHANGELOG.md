@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2625](https://github.com/porsche-design-system/porsche-design-system/pull/2625))
 - `Carousel`: Possibility to set custom border-radius of slide items
   ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
+- native lazy loading attribute to `img` tag of `Icon`
+  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
 
 #### Fixed
 
@@ -40,6 +42,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2630](https://github.com/porsche-design-system/porsche-design-system/pull/2630))
 - `Carousel`: Removed `overflow:hidden` of slide items
   ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
+
+#### Changed
+
+- Improved bootstrapping behaviour of `Icon`
+  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
 
 ### [3.2.0] - 2023-06-19
 
