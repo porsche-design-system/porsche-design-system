@@ -814,7 +814,10 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             </style>
             <img
               alt=""
+              height="24"
+              loading="lazy"
               src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              width="24"
             />
           </template>
         </p-icon>
@@ -918,7 +921,10 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             </style>
             <img
               alt=""
+              height="24"
+              loading="lazy"
               src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              width="24"
             />
           </template>
         </p-icon>
@@ -1024,7 +1030,10 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -1051,7 +1060,10 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -1178,7 +1190,10 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       </style>
                       <img
                         alt=""
+                        height="24"
+                        loading="lazy"
                         src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        width="24"
                       />
                     </template>
                   </p-icon>
@@ -1205,7 +1220,10 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       </style>
                       <img
                         alt=""
+                        height="24"
+                        loading="lazy"
                         src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        width="24"
                       />
                     </template>
                   </p-icon>
@@ -1389,7 +1407,10 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 </style>
                 <img
                   alt=""
+                  height="24"
+                  loading="lazy"
                   src="http://localhost:3001/icons/view.min.cd78cae7309f44d941e9264047e3efa0.svg"
+                  width="24"
                 />
               </template>
             </p-icon>
@@ -1448,7 +1469,10 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
           </style>
           <img
             alt=""
+            height="24"
+            loading="lazy"
             src="http://localhost:3001/icons/search.min.f2755d61c24b6ad037f51d65588be308.svg"
+            width="24"
           />
         </template>
       </p-icon>
@@ -1482,7 +1506,10 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                 </style>
                 <img
                   alt=""
+                  height="24"
+                  loading="lazy"
                   src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                  width="24"
                 />
               </template>
             </p-icon>
@@ -1681,7 +1708,10 @@ img {
               </style>
               <img
                 alt=""
+                height="24"
+                loading="lazy"
                 src="http://localhost:3001/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
+                width="24"
               />
             </template>
           </p-icon>
@@ -1847,7 +1877,10 @@ img {
             </style>
             <img
               alt=""
+              height="24"
+              loading="lazy"
               src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+              width="24"
             />
           </template>
         </p-icon>
@@ -1985,7 +2018,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -2238,7 +2274,10 @@ img {
           </style>
           <img
             alt=""
+            height="24"
+            loading="lazy"
             src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            width="24"
           />
         </template>
       </p-icon>
@@ -2708,7 +2747,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -2839,7 +2881,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -3523,7 +3568,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -3749,7 +3797,10 @@ img {
     </style>
     <img
       alt=""
+      height="24"
+      loading="lazy"
       src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+      width="24"
     />
   </template>
 </p-icon>
@@ -3850,7 +3901,10 @@ img {
         </style>
         <img
           alt=""
+          height="24"
+          loading="lazy"
           src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+          width="24"
         />
       </template>
     </p-icon>
@@ -3988,7 +4042,10 @@ img {
               </style>
               <img
                 alt=""
+                height="24"
+                loading="lazy"
                 src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                width="24"
               />
             </template>
           </p-icon>
@@ -4230,7 +4287,10 @@ img {
           </style>
           <img
             alt=""
+            height="24"
+            loading="lazy"
             src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            width="24"
           />
         </template>
       </p-icon>
@@ -4364,7 +4424,10 @@ img {
           </style>
           <img
             alt=""
+            height="24"
+            loading="lazy"
             src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            width="24"
           />
         </template>
       </p-icon>
@@ -5184,7 +5247,10 @@ img {
                 </style>
                 <img
                   alt=""
+                  height="24"
+                  loading="lazy"
                   src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                  width="24"
                 />
               </template>
             </p-icon>
@@ -5382,7 +5448,10 @@ img {
                 </style>
                 <img
                   alt=""
+                  height="24"
+                  loading="lazy"
                   src="http://localhost:3001/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
+                  width="24"
                 />
               </template>
             </p-icon>
@@ -5442,7 +5511,10 @@ img {
                 </style>
                 <img
                   alt=""
+                  height="24"
+                  loading="lazy"
                   src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+                  width="24"
                 />
               </template>
             </p-icon>
@@ -5610,7 +5682,10 @@ img {
           </style>
           <img
             alt=""
+            height="24"
+            loading="lazy"
             src="http://localhost:3001/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
+            width="24"
           />
         </template>
       </p-icon>
@@ -5901,7 +5976,10 @@ img {
               </style>
               <img
                 alt=""
+                height="24"
+                loading="lazy"
                 src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                width="24"
               />
             </template>
           </p-icon>
@@ -5953,7 +6031,10 @@ img {
               </style>
               <img
                 alt=""
+                height="24"
+                loading="lazy"
                 src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                width="24"
               />
             </template>
           </p-icon>
@@ -6195,7 +6276,10 @@ img {
             </style>
             <img
               alt=""
+              height="24"
+              loading="lazy"
               src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              width="24"
             />
           </template>
         </p-icon>
@@ -6572,7 +6656,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -6624,7 +6711,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -7045,7 +7135,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -7097,7 +7190,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -7578,7 +7674,10 @@ img {
                       </style>
                       <img
                         alt=""
+                        height="24"
+                        loading="lazy"
                         src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        width="24"
                       />
                     </template>
                   </p-icon>
@@ -7630,7 +7729,10 @@ img {
                       </style>
                       <img
                         alt=""
+                        height="24"
+                        loading="lazy"
                         src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        width="24"
                       />
                     </template>
                   </p-icon>
@@ -7948,7 +8050,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -8000,7 +8105,10 @@ img {
                   </style>
                   <img
                     alt=""
+                    height="24"
+                    loading="lazy"
                     src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    width="24"
                   />
                 </template>
               </p-icon>
@@ -8208,7 +8316,10 @@ img {
           </style>
           <img
             alt=""
+            height="24"
+            loading="lazy"
             src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+            width="24"
           />
         </template>
       </p-icon>
