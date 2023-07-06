@@ -93,7 +93,8 @@ export class Icon {
       <img
         src={buildIconUrl(this.source || this.name)}
         {...parseAndGetAriaAttributes(this.aria)}
-        {...(!this.source && { width: 24, height: 24 })} // improve bootstrapping behaviour
+        width={24} // improve bootstrapping behaviour
+        height={24} // improve bootstrapping behaviour
         loading="lazy"
         alt=""
       />
