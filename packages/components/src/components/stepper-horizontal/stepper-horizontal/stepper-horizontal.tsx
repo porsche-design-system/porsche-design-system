@@ -56,9 +56,12 @@ export class StepperHorizontal {
   private currentStepIndex: number;
 
   public connectedCallback(): void {
-    this.validateComponent();
-    this.defineStepperHorizontalItemElements();
     this.observeBreakpointChange();
+  }
+
+  public componentWillLoad(): void {
+    // Initial validation
+    this.validateComponent();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -137,14 +140,11 @@ export class StepperHorizontal {
     return Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
   };
 
-  private defineStepperHorizontalItemElements = (): void => {
-    this.stepperHorizontalItems = this.createStepperHorizontalItemElements();
-  };
-
   private validateComponent = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
     throwIfChildCountIsExceeded(this.host, 9);
-    throwIfMultipleCurrentStates(this.host, this.createStepperHorizontalItemElements());
+    this.stepperHorizontalItems = this.createStepperHorizontalItemElements();
+    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
   };
 
   private scrollIntoView = (): void => {
@@ -175,7 +175,6 @@ export class StepperHorizontal {
 
   private onSlotchange = (): void => {
     this.validateComponent();
-    this.defineStepperHorizontalItemElements();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
     this.scrollIntoView();
   };
