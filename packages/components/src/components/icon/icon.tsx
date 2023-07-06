@@ -12,6 +12,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
+  parseAndGetAriaAttributes,
   TEXT_SIZES,
   THEMES,
   validateProps,
@@ -93,7 +94,7 @@ export class Icon {
         width={24} // improve bootstrapping behaviour
         height={24} // improve bootstrapping behaviour
         loading="lazy"
-        alt={this.aria['aria-label']}
+        alt={parseAndGetAriaAttributes(this.aria)?.['aria-label'] ?? ''}
       />
     );
   }
