@@ -339,7 +339,7 @@ describe('updateSlidesAndPagination()', () => {
     const slide2 = document.createElement('div');
     slide2.id = 'slide2';
     const getSlidesMock = [slide1, slide2];
-    const spy = jest.spyOn(carouselUtils, 'getSlidesAndAddNamedSlots').mockReturnValue(getSlidesMock);
+    const spy = jest.spyOn(carouselUtils, 'getSlidesAndAddAttributes').mockReturnValue(getSlidesMock);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     expect(component['slides']).toEqual([]);
@@ -350,7 +350,7 @@ describe('updateSlidesAndPagination()', () => {
   });
 
   it('should call this.updateAmountOfPages()', () => {
-    jest.spyOn(carouselUtils, 'getSlidesAndAddNamedSlots').mockImplementation(() => []);
+    jest.spyOn(carouselUtils, 'getSlidesAndAddAttributes').mockImplementation(() => []);
     const component = new Carousel();
     const spy = jest.spyOn(component, 'updateAmountOfPages' as any);
 
