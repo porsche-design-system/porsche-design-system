@@ -9,7 +9,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
-import type { PropTypes, Theme, ValidatorFunction } from '../../../types';
+import type { PropTypes, Theme, ValidatorFunction, BreakpointCustomizable } from '../../../types';
 import { getComponentCss } from './segmented-control-styles';
 import type { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from './segmented-control-utils';
 import {
@@ -27,6 +27,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   ]),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
+  column: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.breakpoint('number'), AllowedTypes.breakpoint(['auto'])]),
 };
 
 @Component({
@@ -46,6 +47,10 @@ export class SegmentedControl {
 
   /** Sets the initial value of the segmented-control. */
   @Prop() public value?: string | number;
+
+  // TODO: maybe find better description
+  /** Sets the width of the items. */
+  @Prop() public column?: BreakpointCustomizable<number | 'auto'> = 'auto';
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -80,7 +85,7 @@ export class SegmentedControl {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
-    attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
+    attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host), this.column);
     syncSegmentedControlItemsProps(this.host, this.value, this.theme);
 
     return (

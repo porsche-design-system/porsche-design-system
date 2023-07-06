@@ -1207,6 +1207,10 @@ export namespace Components {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
+          * Sets the width of the items.
+         */
+        "column"?: BreakpointCustomizable<number | 'auto'>;
+        /**
           * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
@@ -3334,6 +3338,10 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release. Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
+        /**
+          * Sets the width of the items.
+         */
+        "column"?: BreakpointCustomizable<number | 'auto'>;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
