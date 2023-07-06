@@ -25,6 +25,8 @@ is_version_published() {
 
 publish() {
   echo "task: [$(date)] \"publish\""
+  git config --global --add safe.directory /github/workspace # fix detected dubious ownership in repository at '/github/workspace'
+
   pushd "./packages/components-react/projects/uxpin-wrapper"
     uxpin_token=$UXPIN_TOKEN_DEV
     pushParam=""
