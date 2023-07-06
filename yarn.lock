@@ -4911,10 +4911,10 @@
     "@typescript-eslint/types" "5.61.0"
     eslint-visitor-keys "^3.3.0"
 
-"@uxpin/merge-cli@3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.0.5.tgz#99f2d5afff603355e0fb0b2cee3b78465755b5bb"
-  integrity sha512-Sme1Wn6BsuVfM2TmrFhgujwT9MQovUII7NLnSltqK1Corcg6zL5fan58L+i/4+Y4PgaH6QbgmThvq7ufI9KZcQ==
+"@uxpin/merge-cli@3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.0.6.tgz#61cc9dc82fadb70531657131735e66e92eaf81c3"
+  integrity sha512-0vE687fQycNjdgst639jcJoJ3Fh4BM1cDwRplkF8jMk+yTn6kmNCJJZF0Kl53ZeeweWW7m+Bc+6JlU5T+A4vZw==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/plugin-proposal-class-properties" "^7.2.3"
@@ -4935,6 +4935,7 @@
     clean-stacktrace "^1.1.0"
     clean-stacktrace-relative-paths "^1.0.4"
     commander "^2.11.0"
+    debug "^4.3.4"
     form-data "^4.0.0"
     formidable "^1.2.1"
     fs-extra "^7.0.0"
@@ -4950,6 +4951,7 @@
     p-map-series "^1.0.0"
     p-reduce "^1.0.0"
     path-sort "^0.1.0"
+    pretty-bytes "5.6.0"
     react-docgen "^4.1.0"
     require1k "^1.0.1"
     sortobject "^1.1.1"
@@ -19864,7 +19866,7 @@ prettier-linter-helpers@^1.0.0:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
-pretty-bytes@^5.3.0, pretty-bytes@^5.4.1:
+pretty-bytes@5.6.0, pretty-bytes@^5.3.0, pretty-bytes@^5.4.1:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
