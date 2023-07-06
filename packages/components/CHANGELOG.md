@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Tabs` and `Tabs Bar` support SSR ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
 - Contents of `Tag` component can now be wrapped in multiple lines
   ([#2625](https://github.com/porsche-design-system/porsche-design-system/pull/2625))
+- native lazy loading attribute to `img` tag of `Icon`
+  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
 
 #### Fixed
 
@@ -36,8 +38,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - Improved bootstrapping behaviour of `Icon`
-  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
-- Added native lazy loading attribute to <img /> tag of `Icon`
   ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
 
 ### [3.2.0] - 2023-06-19
