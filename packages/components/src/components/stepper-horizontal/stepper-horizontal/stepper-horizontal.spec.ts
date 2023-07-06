@@ -6,6 +6,14 @@ import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 import * as scrollingUtils from '../../../utils/scrolling';
 
 describe('connectedCallback', () => {
+  it('should call this.validateComponent()', () => {
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+    const spy = jest.spyOn(component, 'validateComponent' as any);
+
+    component.connectedCallback();
+    expect(spy).toBeCalledWith();
+  });
   it('should call this.observeBreakpointChange()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');

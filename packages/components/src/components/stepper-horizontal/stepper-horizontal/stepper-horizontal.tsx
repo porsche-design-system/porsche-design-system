@@ -56,6 +56,7 @@ export class StepperHorizontal {
   private currentStepIndex: number;
 
   public connectedCallback(): void {
+    this.validateComponent(); // on every reconnect
     this.observeBreakpointChange();
   }
 
