@@ -59,7 +59,6 @@ export const getComponentCss = (
         spinner: {
           width: fontLineHeight,
           height: fontLineHeight,
-          pointerEvents: 'none',
           position: 'absolute',
           top: '50%',
           left: '50%',
