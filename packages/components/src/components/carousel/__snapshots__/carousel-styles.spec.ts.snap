@@ -11,11 +11,11 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -138,11 +138,11 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -263,11 +263,11 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -418,11 +418,11 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -571,11 +571,11 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -750,11 +750,11 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -927,11 +927,11 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1107,11 +1107,11 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1313,11 +1313,11 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1440,11 +1440,11 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1565,11 +1565,11 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1718,11 +1718,11 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(*:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;

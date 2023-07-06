@@ -2447,7 +2447,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   display: none !important;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius, 12px);
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;

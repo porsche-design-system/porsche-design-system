@@ -77,7 +77,7 @@ export const getComponentCss = (
         ...hostHiddenStyles,
       }),
       '::slotted(*)': {
-        borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+        borderRadius: addImportantToRule(`var(--p-carousel-border-radius, ${borderRadiusLarge})`),
       },
       '::slotted(*:focus-visible)': addImportantToEachRule({
         outline: `${borderWidthBase} solid ${focusColor}`,
