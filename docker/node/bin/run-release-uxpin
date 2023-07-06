@@ -45,7 +45,7 @@ publish() {
     fi
     echo "Adding param: ${pushParam}"
 
-    result=$(DEBUG=uxpin* ./node_modules/.bin/uxpin-merge push --token ${uxpin_token} ${pushParam})
+    result=$(./node_modules/.bin/uxpin-merge push --token ${uxpin_token} ${pushParam})
     echo $result
   popd
 

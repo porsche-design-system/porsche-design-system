@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: Build and Push Docker Images
+    name: Build and Push Docker Image
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -18,7 +18,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Build and Push Docker Image Playwright'
         run: cd docker/node && ./build-and-push-base-image-playwright.sh
-        shell: bash
-      - name: 'Build and Push Docker Image Node'
-        run: cd docker/node && ./build-and-push-base-image-node.sh
         shell: bash
