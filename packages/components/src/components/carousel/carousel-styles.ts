@@ -79,10 +79,10 @@ export const getComponentCss = (
       '::slotted(*)': {
         borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
       },
-      '::slotted(*:focus-visible)': {
+      '::slotted(*:focus-visible)': addImportantToEachRule({
         outline: `${borderWidthBase} solid ${focusColor}`,
         outlineOffset: '2px',
-      },
+      }),
       [selectorHeading]: addImportantToEachRule({
         ...headingXLargeStyle,
         maxWidth: '56.25rem',
