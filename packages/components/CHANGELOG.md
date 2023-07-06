@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Stepper Horizontal` navigation between 2 pages is not working as expected in angular
+  ([#2641](https://github.com/porsche-design-system/porsche-design-system/pull/2641))
 - `Segmented Control` text is not centered / causing unintended line-breaks
   ([#2614](https://github.com/porsche-design-system/porsche-design-system/pull/2614))
 - `jsdom-polyfill` fixes validation errors in unit tests during SSR hydration
