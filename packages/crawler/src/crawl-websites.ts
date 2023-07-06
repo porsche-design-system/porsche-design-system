@@ -1,4 +1,4 @@
-import { crawlerConfig as config } from '../constants';
+import type { CustomerWebsite, TagNameData, TreeMap } from './types';
 import * as puppeteer from 'puppeteer';
 import { evaluatePage } from './evaluate-page';
 import {
@@ -8,10 +8,14 @@ import {
   getRawDataWithoutVersionsAndPrefixes,
 } from './helpers/convert-data-helper';
 import { writeGeneralReport, writeWebsiteReport } from './helpers/fs-helper';
-import { TagNameData } from './types';
 import { stringifyObject } from './utils';
 
-export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: string): Promise<TagNameData[]> => {
+export const crawlWebsite = async (
+  browser: puppeteer.Browser,
+  websiteUrl: string,
+  websitePage: string,
+  websiteTeam: string
+): Promise<TagNameData[]> => {
   const page = await browser.newPage();
   // at least porsche finder seems to check the headers to block scrapers, setting the UA solves this
   await page.setUserAgent(
@@ -37,6 +41,21 @@ export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: strin
   // aggregated data without versions and prefixes
   const aggregatedConsumedTagNames = getAggregatedConsumedTagNames(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
 
+  const treeMap: TreeMap = {
+    title: websiteTeam,
+    subtitle: websitePage,
+    versions: stringifyObject(
+      Object.keys(consumedPdsVersionsWithPrefixes).map((version) => {
+        return { name: version, value: 1 };
+      })
+    ),
+    components: stringifyObject(
+      Object.entries(aggregatedConsumedTagNames.tagNames).map(([tagName, data]) => {
+        return { name: tagName, value: data.amount };
+      })
+    ),
+  };
+
   writeWebsiteReport(
     websiteUrl,
     stringifyObject({
@@ -49,19 +68,25 @@ export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: strin
       consumedPdsVersionsWithPrefixes,
       aggregatedConsumedTagNames,
       aggregatedConsumedTagNamesForVersionsAndPrefixes,
-    })
+    }),
+    treeMap
   );
 
   await page.close();
 
   return pdsCrawlerRawDataWithoutVersionsAndPrefixes;
 };
-export const crawlWebsites = async (browser: puppeteer.Browser, customerWebsites: string[]): Promise<void> => {
+export const crawlWebsites = async (browser: puppeteer.Browser, customerWebsites: CustomerWebsite[]): Promise<void> => {
   // data for all websites
   let generalRawData = [] as TagNameData[];
 
-  for (const websiteUrl of customerWebsites) {
-    const pdsCrawlerRawDataWithoutVersionsAndPrefixes = await crawlWebsite(browser, websiteUrl);
+  for (const website of customerWebsites) {
+    const pdsCrawlerRawDataWithoutVersionsAndPrefixes = await crawlWebsite(
+      browser,
+      website.url,
+      website.page,
+      website.team
+    );
     // collecting data for general report (over all websites)
     generalRawData = generalRawData.concat(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
   }

@@ -68,3 +68,16 @@ export type AggregatedData = {
 };
 
 export type AggregatedTagNamesForVersionsAndPrefixes = VersionsAndPrefixesMap<AggregatedData[]>;
+
+export type TreeMap = {
+  title: string;
+  subtitle: string;
+  versions: string;
+  components: string;
+};
+
+export type CustomerWebsite = {
+  team: string;
+  page: string;
+  url: string;
+};
