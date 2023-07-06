@@ -117,7 +117,7 @@ describe('getSlidesAndAddAttributes()', () => {
     expect(getSlidesAndAddAttributes(host)).toEqual([child1]);
   });
 
-  it('should add incremental slot="slide-x" and tabindex="0" properties on each child', () => {
+  it('should add incremental slot="slide-x" and tabindex="0" properties and attributes on each child', () => {
     const host = document.createElement('p-carousel');
     const children = getChildren();
     host.append(...children);
@@ -126,6 +126,8 @@ describe('getSlidesAndAddAttributes()', () => {
     result.forEach((child, i) => {
       expect(child.slot).toBe(`slide-${i}`);
       expect(child.tabIndex).toBe(0);
+      expect(child.getAttribute('slot')).toBe(`slide-${i}`);
+      expect(child.getAttribute('tabindex')).toBe('0');
     });
   });
 });
