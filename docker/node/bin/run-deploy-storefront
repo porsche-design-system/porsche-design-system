@@ -13,8 +13,8 @@ if [[ -z "${AWS_SECRET_ACCESS_KEY}" ]]; then
   exit 1
 fi
 
-if [[ -z "${GITHUB_REF}" ]]; then
-  echo "Please provide the \$GITHUB_REF environment variable."
+if [[ -z "${GITHUB_REF_NAME}" ]]; then
+  echo "Please provide the \$GITHUB_REF_NAME environment variable."
   exit 1
 fi
 
@@ -122,7 +122,7 @@ isCurrentBranchMainOrVBranch() {
   return 1
 }
 
-P_CURRENT_BRANCH="${GITHUB_REF:11}" # strip first 11 characters
+P_CURRENT_BRANCH="${GITHUB_REF_NAME}" # https://docs.github.com/en/actions/learn-github-actions/variables
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 BUCKET_URL="s3://porsche-design-system-storefront"
 
