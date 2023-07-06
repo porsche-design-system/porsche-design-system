@@ -117,7 +117,7 @@ describe('getSlidesAndAddAttributes()', () => {
     expect(getSlidesAndAddAttributes(host)).toEqual([child1]);
   });
 
-  it('should add incremental slot="slide-x" and tabindex="0" attributes on each child', () => {
+  it('should add incremental slot="slide-x" and tabindex="0" properties on each child', () => {
     const host = document.createElement('p-carousel');
     const children = getChildren();
     host.append(...children);
