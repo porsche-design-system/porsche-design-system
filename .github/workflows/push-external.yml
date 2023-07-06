@@ -1,0 +1,13 @@
+on:
+  pull_request:
+    branches:
+      - main
+name: 'External Contribution'
+jobs:
+  build-and-test:
+    name: 'Build and Test'
+    if: github.repository_owner != 'porsche-design-system'
+    uses: ./.github/workflows/build-and-test.yml
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+
