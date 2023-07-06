@@ -2,7 +2,6 @@ import type { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
-  getActiveElementClassNameInShadowRoot,
   getActiveElementId,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
@@ -44,7 +43,7 @@ const initCarousel = (opts?: InitOptions) => {
   const slides = Array.from(Array(amountOfSlides))
     .map((_, i) => {
       const link = withFocusableElements ? ` <a id="link-${i + 1}" href="#">Link</a>` : '';
-      return `<div>Slide ${i + 1}${link}</div>`;
+      return `<div id="slide${i + 1}">Slide ${i + 1}${link}</div>`;
     })
     .join('\n  ');
 
@@ -515,13 +514,13 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
+    expect(await getActiveElementId(page)).toBe('slide1');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-1');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-next');
+    expect(await getActiveElementId(page)).toBe('slide2');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-2');
@@ -544,19 +543,19 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
+    expect(await getActiveElementId(page)).toBe('slide1');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-1');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-visible is-next');
+    expect(await getActiveElementId(page)).toBe('slide2');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-2');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide');
+    expect(await getActiveElementId(page)).toBe('slide3');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('link-3');
@@ -576,7 +575,7 @@ describe('focus behavior', () => {
     await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide2);
 
-    expect(await getActiveElementClassNameInShadowRoot(host)).toBe('splide__slide is-active is-visible');
+    expect(await getActiveElementId(page)).toBe('slide2');
   });
 
   it('should have correct focus cycle if skip link has focus and is clicked', async () => {
@@ -730,8 +729,9 @@ describe('activeSlideIndex', () => {
   it('should slide correctly if slides without focusable elements are tabbed for slidesPerPage=1', async () => {
     await initCarousel({ slidesPerPage: 1, withFocusableElements: false });
     const [slide1, slide2, slide3] = await getSlides();
+    const [slideSlotted1] = await getSlottedSlides();
 
-    await slide1.focus();
+    await slideSlotted1.focus();
     expect(await isElementCompletelyInViewport(slide1)).toBe(true);
     expect(await isElementCompletelyInViewport(slide2)).toBe(false);
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
@@ -762,8 +762,9 @@ describe('activeSlideIndex', () => {
   it('should slide correctly if slides without focusable elements are tabbed for slidesPerPage=2', async () => {
     await initCarousel({ amountOfSlides: 6, slidesPerPage: 2, withFocusableElements: false });
     const [slide1, slide2, slide3, slide4] = await getSlides();
+    const [slideSlotted1] = await getSlottedSlides();
 
-    await slide1.focus();
+    await slideSlotted1.focus();
     expect(await isElementCompletelyInViewport(slide1)).toBe(true);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
@@ -803,8 +804,9 @@ describe('activeSlideIndex', () => {
   it('should slide correctly if slides with focusable elements are tabbed', async () => {
     await initCarousel({ slidesPerPage: 1, withFocusableElements: true });
     const [slide1, slide2, slide3] = await getSlides();
+    const [slideSlotted1] = await getSlottedSlides();
 
-    await slide1.focus();
+    await slideSlotted1.focus();
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide2);
@@ -825,8 +827,9 @@ describe('activeSlideIndex', () => {
   it('should slide correctly if slides with focusable elements are tabbed for slidesPerPage=2', async () => {
     await initCarousel({ amountOfSlides: 4, slidesPerPage: 2, withFocusableElements: true });
     const [slide1, slide2, slide3, slide4] = await getSlides();
+    const [slideSlotted1] = await getSlottedSlides();
 
-    await slide1.focus();
+    await slideSlotted1.focus();
     expect(await isElementCompletelyInViewport(slide1)).toBe(true);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
