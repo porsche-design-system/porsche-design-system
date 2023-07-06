@@ -12,6 +12,8 @@ import { ModalExampleAccessibilityComponent } from './modal-example-accessibilit
 import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
+import { StepperHorizontalNavigationExampleStartComponent } from './stepper-horizontal-navigation-example-start.component';
+import { StepperHorizontalNavigationExampleSecondComponent } from './stepper-horizontal-navigation-example-second.component';
 import { TableExampleAdvancedComponent } from './table-example-advanced.component';
 import { TableExampleBasicComponent } from './table-example-basic.component';
 import { TableExampleSortingComponent } from './table-example-sorting.component';
@@ -36,6 +38,8 @@ export const examples = [
   ScrollerExampleComponent,
   SegmentedControlExampleComponent,
   StepperHorizontalExampleComponent,
+  StepperHorizontalNavigationExampleStartComponent,
+  StepperHorizontalNavigationExampleSecondComponent,
   TableExampleAdvancedComponent,
   TableExampleBasicComponent,
   TableExampleSortingComponent,
@@ -60,6 +64,8 @@ export * from './modal-example-accessibility.component';
 export * from './scroller-example.component';
 export * from './segmented-control-example.component';
 export * from './stepper-horizontal-example.component';
+export * from './stepper-horizontal-navigation-example-start.component';
+export * from './stepper-horizontal-navigation-example-second.component';
 export * from './table-example-advanced.component';
 export * from './table-example-basic.component';
 export * from './table-example-sorting.component';

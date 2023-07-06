@@ -5,19 +5,18 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   observeBreakpointChange,
-  observeChildren,
   parseJSON,
   THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveBreakpointChange,
-  unobserveChildren,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepperHorizontalUpdateEvent, StepperHorizontalSize } from './stepper-horizontal-utils';
+import type { StepperHorizontalSize, StepperHorizontalUpdateEvent } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
@@ -57,17 +56,7 @@ export class StepperHorizontal {
   private currentStepIndex: number;
 
   public connectedCallback(): void {
-    this.defineStepperHorizontalItemElements();
-
-    // TODO: wouldn't a slotchange listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
-    observeChildren(this.host, () => {
-      this.defineStepperHorizontalItemElements();
-      // Validate when new steps are added
-      this.validateComponent();
-      this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-      this.scrollIntoView();
-    });
-
+    this.validateComponent(); // on every reconnect
     this.observeBreakpointChange();
   }
 
@@ -87,8 +76,6 @@ export class StepperHorizontal {
 
     // Sometimes lifecycle gets called after disconnectedCallback()
     if (this.scrollerElement) {
-      this.addEventListeners();
-
       // Initial scroll current into view
       this.scrollerElement.scrollToPosition = {
         scrollPosition: getScrollActivePosition(
@@ -100,6 +87,8 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
+
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
   public componentDidUpdate(): void {
@@ -109,7 +98,6 @@ export class StepperHorizontal {
 
   public disconnectedCallback(): void {
     unobserveBreakpointChange(this.host);
-    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
@@ -125,6 +113,7 @@ export class StepperHorizontal {
           class="scroller"
           aria={{ role: 'list' }}
           theme={this.theme}
+          onClick={this.onClickScroller}
           ref={(el) => (this.scrollerElement = el)}
         >
           <slot />
@@ -133,32 +122,25 @@ export class StepperHorizontal {
     );
   }
 
-  private addEventListeners = (): void => {
-    // TODO: why not apply via jsx?
-    this.scrollerElement.addEventListener('click', (e) => {
-      const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
-        this.host,
-        'p-stepper-horizontal-item',
-        e.composedPath()
-      );
+  private onClickScroller = (e: MouseEvent): void => {
+    const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
+      this.host,
+      'p-stepper-horizontal-item',
+      e.composedPath()
+    );
 
-      if (target) {
-        const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
+    if (target) {
+      const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
 
-        this.update.emit({ activeStepIndex: clickedStepIndex });
-        this.stepChange.emit({ activeStepIndex: clickedStepIndex });
-      }
-    });
-  };
-
-  private defineStepperHorizontalItemElements = (): void => {
-    // TODO: validation? this could be any kind of dom node
-    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+      this.update.emit({ activeStepIndex: clickedStepIndex });
+      this.stepChange.emit({ activeStepIndex: clickedStepIndex });
+    }
   };
 
   private validateComponent = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'p-stepper-horizontal-item');
     throwIfChildCountIsExceeded(this.host, 9);
+    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
     throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
   };
 
@@ -186,5 +168,11 @@ export class StepperHorizontal {
     if (typeof parseJSON(this.size) === 'object') {
       observeBreakpointChange(this.host, this.scrollIntoView);
     }
+  };
+
+  private onSlotchange = (): void => {
+    this.validateComponent();
+    this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+    this.scrollIntoView();
   };
 }
