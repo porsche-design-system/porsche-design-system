@@ -33,6 +33,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Button Pure`, `Link Pure`: `:hover` bug on Firefox
   ([#2630](https://github.com/porsche-design-system/porsche-design-system/pull/2630))
 
+#### Changed
+
+- Improved bootstrapping behaviour of `Icon`
+  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
+- Added native lazy loading attribute to <img /> tag of `Icon`
+  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
+
 ### [3.2.0] - 2023-06-19
 
 ### [3.2.0-rc.0] - 2023-06-19
