@@ -154,6 +154,15 @@ type CarouselInternationalization = {
 
 <Playground :markup="focusBehavior" :config="config"></Playground>
 
+## Custom Border Radius
+
+By default, every carousel item gets a predefined border radius of "large" (`12px`). This can be changed via a custom CSS property
+(see also [Border Styles](styles/border#styles)).
+
+<Playground :markup="customBorderRadiusMarkup" :config="config">
+  <SelectOptions v-model="customBorderRadius" :values="customBorderRadii" name="borderRadius"></SelectOptions>
+</Playground>
+
 ## Skip Carousel Entries
 
 Through the `skipLinkTarget` property, a skip link for keyboard users can be provided to give the possibility to skip
@@ -172,7 +181,8 @@ import Component from 'vue-class-component';
 import type { Theme } from '@/models';
 import type { CarouselWidth, CarouselAlignHeader } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
-import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS } from './carousel-utils'; 
+import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS } from './carousel-utils';
+import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
 export default class Code extends Vue {
@@ -276,6 +286,14 @@ export default class Code extends Vue {
 </p-carousel>
 `;
 
+customBorderRadius = 'small';
+customBorderRadii = [...Object.keys(borderRadius), 'zero'];
+get customBorderRadiusMarkup() {
+    return `<p-carousel heading="${this.basicHeading}" style="--p-carousel-border-radius: ${this.customBorderRadius !== 'zero' ? borderRadius[this.customBorderRadius] : 0}">
+  ${this.getSlides(4)}
+</p-carousel>`
+};
+
 skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/carousel/examples#target">
   ${this.getSlides(4)}
 </p-carousel>
@@ -298,7 +316,7 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
   :deep(p-carousel) {
     margin-bottom: $pds-spacing-fluid-medium;
   }
-
+  
   button {
     padding: .5rem 1rem;
 

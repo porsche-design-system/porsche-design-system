@@ -15,6 +15,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .playground {
         padding: 1rem 0;
       }
+      .change-border-radius {
+        --p-carousel-border-radius: 4px;
+      }
     `,
   ],
   template: `
@@ -454,7 +457,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with infinite pagination with active slide at the ened">
+    <div class="playground light" title="should render carousel with infinite pagination with active slide at the end">
       <p-carousel [heading]="'Infinite pagination end'" [activeSlideIndex]="5">
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -462,6 +465,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div>Slide 4</div>
         <div>Slide 5</div>
         <div>Slide 6</div>
+      </p-carousel>
+    </div>
+
+    <div class="playground light" title="should render carousel on light background with custom border-radius">
+      <p-carousel [heading]="'Slides with custom border radius'" class="change-border-radius">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
       </p-carousel>
     </div>
   `,
