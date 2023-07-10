@@ -72,26 +72,3 @@ export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, 
     }
   }
 };
-
-// TODO: Better approach for keyboard handling?
-// export const getKeydownedSegmentedControlItem = (
-//   { key }: KeyboardEvent,
-//   value: string | number,
-//   childrenCollection: HTMLCollection
-// ): HTMLElement & SegmentedControlItem => {
-//   const prevOrNext =
-//     ((key === 'ArrowLeft' || key === 'Left') && -1) || ((key === 'ArrowRight' || key === 'Right') && 1);
-//   if (prevOrNext) {
-//     const children = Array.from(childrenCollection) as (HTMLElement & SegmentedControlItem)[];
-//     const selectedIndex = children.findIndex((item) => item.value === value);
-//
-//     const validIndexes = children.map((item, i) => !item.disabled && i).filter((x: number | boolean) => x !== false);
-//     const maxValidIndex = validIndexes.length - 1;
-//
-//     const selectedValidIndex = validIndexes.findIndex((i) => i === selectedIndex);
-//     let newValidIndex = selectedValidIndex + prevOrNext;
-//     newValidIndex = newValidIndex < 0 ? maxValidIndex : newValidIndex > maxValidIndex ? 0 : newValidIndex;
-//
-//     return children[validIndexes[newValidIndex]];
-//   }
-// };
