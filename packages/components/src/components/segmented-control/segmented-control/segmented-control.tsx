@@ -2,6 +2,7 @@ import { Component, Element, Event, type EventEmitter, forceUpdate, h, Host, typ
 import {
   AllowedTypes,
   attachComponentCss,
+  hasPropValueChanged,
   observeChildren,
   THEMES,
   throwIfChildrenAreNotOfKind,
@@ -75,6 +76,10 @@ export class SegmentedControl {
     this.host.addEventListener('click', (e) =>
       this.updateValue(getClickedItem(this.host, 'p-segmented-control-item', e.composedPath()))
     );
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public disconnectedCallback(): void {
