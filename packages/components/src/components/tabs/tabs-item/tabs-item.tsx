@@ -1,7 +1,13 @@
 import type { PropTypes } from '../../../types';
 import type { TabsItemInternalHTMLProps } from './tabs-item-utils';
-import { Component, Element, h, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import { Component, Element, h, Prop, Watch } from '@stencil/core';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  throwIfParentIsNotOfKind,
+  updateParent,
+  validateProps,
+} from '../../../utils';
 import { getComponentCss } from './tabs-item-styles';
 
 const propTypes: PropTypes<typeof TabsItem> = {
@@ -17,6 +23,11 @@ export class TabsItem {
 
   /** Defines the label used in tabs. */
   @Prop() public label: string;
+
+  @Watch('label')
+  public handleLabelChange(): void {
+    updateParent(this.host);
+  }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'p-tabs');

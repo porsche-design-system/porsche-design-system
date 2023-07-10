@@ -40,13 +40,10 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-typescript": "^11.1.2",
     "@types/html-minifier": "^4.0.2",
     "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.0",
-    "rollup": "^3.26.0",
-    "rollup-plugin-terser": "^7.0.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.0",
     "typescript": "^5.1.6"

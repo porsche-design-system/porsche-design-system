@@ -1,8 +1,8 @@
-import { observeChildren, unobserveChildren, childrenMutationMap } from './children-observer';
+import { observeChildren, unobserveChildren, observedNodesMap } from './children-observer';
 
 describe('observeChildren()', () => {
   beforeEach(() => {
-    childrenMutationMap.clear();
+    observedNodesMap.clear();
   });
 
   const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
@@ -12,8 +12,8 @@ describe('observeChildren()', () => {
     const callback = () => {};
 
     observeChildren(node, callback);
-    expect(childrenMutationMap.size).toBe(1);
-    expect(childrenMutationMap.get(node)).toEqual(callback);
+    expect(observedNodesMap.size).toBe(1);
+    expect(observedNodesMap.get(node)).toEqual(callback);
   });
 
   describe('on children change', () => {
@@ -22,13 +22,13 @@ describe('observeChildren()', () => {
       const cb = jest.fn();
 
       observeChildren(div, cb);
-      expect(childrenMutationMap.size).toBe(1);
+      expect(observedNodesMap.size).toBe(1);
 
       unobserveChildren(div);
-      expect(childrenMutationMap.size).toBe(0);
+      expect(observedNodesMap.size).toBe(0);
 
       observeChildren(div, cb);
-      expect(childrenMutationMap.size).toBe(1);
+      expect(observedNodesMap.size).toBe(1);
 
       div.appendChild(document.createElement('span'));
 
@@ -81,12 +81,37 @@ describe('observeChildren()', () => {
       await tick();
       expect(cb).toBeCalledTimes(1);
     });
+
+    it('should run all callbacks of observing parents when nested child node changes', async () => {
+      const parent = document.createElement('div');
+      const child1 = document.createElement('div');
+      const child2 = document.createElement('div');
+      parent.appendChild(child1);
+      parent.appendChild(child2);
+
+      const subParent = document.createElement('div');
+      const subChild1 = document.createElement('div');
+      subParent.appendChild(subChild1);
+      child2.append(subParent);
+
+      const cb1 = jest.fn();
+      const cb2 = jest.fn();
+
+      observeChildren(parent, cb1);
+      observeChildren(subParent, cb2);
+
+      subParent.appendChild(document.createElement('span'));
+
+      await tick();
+      expect(cb1).toBeCalledTimes(1);
+      expect(cb2).toBeCalledTimes(1);
+    });
   });
 });
 
 describe('unobserveChildren()', () => {
   beforeEach(() => {
-    childrenMutationMap.clear();
+    observedNodesMap.clear();
   });
 
   it('should remove correct element from childrenMutationMap', () => {
@@ -100,18 +125,18 @@ describe('unobserveChildren()', () => {
     observeChildren(node1, callback1);
     observeChildren(node2, callback2);
     observeChildren(node3, callback3);
-    expect(childrenMutationMap.size).toBe(3);
+    expect(observedNodesMap.size).toBe(3);
 
     unobserveChildren(node1);
-    expect(childrenMutationMap.size).toBe(2);
-    expect(childrenMutationMap.get(node1)).toEqual(undefined);
-    expect(childrenMutationMap.get(node2)).toEqual(callback2);
-    expect(childrenMutationMap.get(node3)).toEqual(callback3);
+    expect(observedNodesMap.size).toBe(2);
+    expect(observedNodesMap.get(node1)).toEqual(undefined);
+    expect(observedNodesMap.get(node2)).toEqual(callback2);
+    expect(observedNodesMap.get(node3)).toEqual(callback3);
 
     unobserveChildren(node3);
-    expect(childrenMutationMap.size).toBe(1);
-    expect(childrenMutationMap.get(node1)).toEqual(undefined);
-    expect(childrenMutationMap.get(node2)).toEqual(callback2);
-    expect(childrenMutationMap.get(node3)).toEqual(undefined);
+    expect(observedNodesMap.size).toBe(1);
+    expect(observedNodesMap.get(node1)).toEqual(undefined);
+    expect(observedNodesMap.get(node2)).toEqual(callback2);
+    expect(observedNodesMap.get(node3)).toEqual(undefined);
   });
 });

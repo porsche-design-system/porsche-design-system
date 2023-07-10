@@ -9,7 +9,6 @@ import {
   hasPropValueChanged,
   isShadowRootParentOfKind,
   observeBreakpointChange,
-  observeChildren,
   parseJSON,
   setAttribute,
   THEMES,
@@ -21,10 +20,10 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
-  TabsBarUpdateEvent,
   TabsBarGradientColor,
   TabsBarGradientColorScheme,
   TabsBarSize,
+  TabsBarUpdateEvent,
   TabsBarWeight,
   TabsBarWeightDeprecated,
 } from './tabs-bar-utils';
@@ -38,7 +37,7 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
 import type { ScrollerDirection } from '../scroller/scroller-utils';
-import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../scroller/scroller-utils';
+import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
@@ -93,11 +92,8 @@ export class TabsBar {
 
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
-    // can be null if removeAttribute() is used
-    if (newValue === null) {
-      this.activeTabIndex = undefined;
-    }
-    this.direction = newValue > oldValue || oldValue === undefined ? 'next' : 'prev';
+    this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
+    this.direction = this.activeTabIndex > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.setBarStyle();
     this.scrollActiveTabIntoView();
   }
@@ -105,15 +101,6 @@ export class TabsBar {
   public connectedCallback(): void {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
     this.setTabElements();
-
-    // TODO: wouldn't a slot change listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
-    observeChildren(this.host, () => {
-      this.setTabElements();
-      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
-      this.setBarStyle();
-      this.setAccessibilityAttributes();
-    });
-
     this.observeBreakpointChange();
   }
 
@@ -125,12 +112,7 @@ export class TabsBar {
     // TODO: validation of active element index inside of tabs bar!
     // TODO: why not do this in connectedCallback?
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
-
-    // skip scrolling on first render when no activeElementIndex is set
-    if (this.activeTabIndex !== undefined) {
-      this.scrollActiveTabIntoView(false);
-    }
-
+    this.scrollActiveTabIntoView(false);
     this.observeBreakpointChange();
   }
 
@@ -180,11 +162,17 @@ export class TabsBar {
         onClick={this.onClick}
         onKeyDown={this.onKeydown}
       >
-        <slot />
+        <slot onSlotchange={this.onSlotchange} />
         <span class="bar" ref={(el) => (this.barElement = el)} />
       </PrefixedTagNames.pScroller>
     );
   }
+
+  private onSlotchange = (): void => {
+    this.setTabElements();
+    this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
+    this.setBarStyle();
+  };
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
@@ -266,7 +254,7 @@ export class TabsBar {
   private scrollActiveTabIntoView = (isSmooth = true): void => {
     // scrollAreaElement might be undefined in certain scenarios with framework routing involved
     // where the activeTabIndex watcher triggers this function before the scroller is rendered and the ref defined
-    if (this.scrollerElement) {
+    if (this.scrollerElement && this.activeTabIndex !== undefined) {
       const scrollActivePosition = getScrollActivePosition(
         this.tabElements,
         this.direction,

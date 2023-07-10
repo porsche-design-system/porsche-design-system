@@ -3,6 +3,7 @@ import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
 import bin from 'rollup-plugin-bin';
+import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 const rootDir = '../..';
 const projectDir = 'projects/react-wrapper';
@@ -32,6 +33,15 @@ const subPackageJsonConfig = {
   },
 };
 
+// to silence warnings like
+// Module level directives cause errors when bundled, "use client" in "..." was ignored.
+// https://github.com/Ephem/rollup-plugin-preserve-directives#disabling-warnings
+const onwarn = (warning, warn) => {
+  if (warning.code !== 'MODULE_LEVEL_DIRECTIVE') {
+    warn(warning);
+  }
+};
+
 export default [
   {
     input,
@@ -42,6 +52,7 @@ export default [
       preserveModules: true,
     },
     plugins: [
+      preserveDirectives.default(),
       resolve(),
       typescript({
         ...typescriptOpts,
@@ -59,6 +70,7 @@ export default [
         ],
       }),
     ],
+    onwarn,
   },
   {
     input,
@@ -68,7 +80,8 @@ export default [
       format: 'esm',
       preserveModules: true,
     },
-    plugins: [resolve(), typescript(typescriptOpts)],
+    plugins: [preserveDirectives.default(), resolve(), typescript(typescriptOpts)],
+    onwarn,
   },
   {
     input: `${projectDir}/src/jsdom-polyfill/index.ts`,

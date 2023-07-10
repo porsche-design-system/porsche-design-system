@@ -268,7 +268,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         : child
     );`
           )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}')
+          .replace(/onSlotchange={this\.props\.onSlotchange}/, '');
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
       } else if (tagName === 'p-popover') {
@@ -291,7 +292,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         : child
     );`
           )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}')
+          .replace(/onSlotchange={this\.props\.onSlotchange}/, '');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(
