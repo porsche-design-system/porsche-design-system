@@ -17,9 +17,9 @@
   "dependencies": {
     "@porsche-design-system/components-manager-core": "0.0.0",
     "globby": "^11.0.4",
-    "webpack": "^5.88.0"
+    "webpack": "^5.88.1"
   },
   "devDependencies": {
-    "typescript": "~5.1.3"
+    "typescript": "~5.1.6"
   }
 }

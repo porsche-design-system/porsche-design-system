@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,

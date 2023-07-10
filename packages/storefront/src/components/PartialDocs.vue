@@ -45,20 +45,18 @@
       const glue = '\n  ';
 
       const angularPartials = this.params
-        .map(({ value, comment }, index) =>
+        .map(({ value, comment }, i) =>
           [
-            comment && `// Alternative: ${comment}`,
-            (index !== 0 ? 'partialContent = ' : '') + `${this.name}(${value});`,
+            comment && `// ${i > 0 ? 'Alternative: ' : ''}${comment}`,
+            `${i === 0 ? 'let ' : ''}partialContent = ${this.name}(${value});`,
           ]
-            .filter((x) => x)
+            .filter(Boolean)
             .join(glue)
         )
         .join('\n\n  ');
 
       const exampleAngular = `<!-- prerequisite -->
 <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
-npm install --save-dev @angular-builders/custom-webpack
-<!-- or via yarn -->
 yarn add --dev @angular-builders/custom-webpack
 
 <!-- angular.json -->
@@ -70,16 +68,15 @@ yarn add --dev @angular-builders/custom-webpack
     "options": {
       "outputPath": "dist/components-angular",
 +     "indexTransform": "./scripts/transformIndexHtml.ts",
-      ...
 
 <!-- ./scripts/transformIndexHtml.ts -->
 import type { TargetOptions } from '@angular-builders/custom-webpack';
 import { ${this.name} } from '${partialPackage}';
 
 export default (targetOptions: TargetOptions, indexHtml: string): string => {
-  let partialContent = ${angularPartials}
+  ${angularPartials}
 
-  return indexHtml.replace(/(<\\/${this.location}>)/, \`\\n\${partialContent}$1\`);
+  return indexHtml.replace(/<\\/${this.location}>/, \`\${partialContent}$&\`);
 };`;
 
       const partialRequirePath = `require('${partialPackage}').${this.name}`;
@@ -88,9 +85,9 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
       const exampleReact =
         `<${this.location}>\n  ` +
         this.params
-          .map(({ value, comment }) =>
-            [comment && `<!-- Alternative: ${comment} -->`, `<%= ${partialRequirePath}(${value}) %>`]
-              .filter((x) => x)
+          .map(({ value, comment }, i) =>
+            [comment && `<!-- ${i > 0 ? 'Alternative: ' : ''}${comment} -->`, `<%= ${partialRequirePath}(${value}) %>`]
+              .filter(Boolean)
               .join(glue)
           )
           .join('\n\n  ') +
@@ -98,13 +95,13 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
 
       const placeholder = `PLACEHOLDER_${constantCase(this.name.replace('get', ''))}`;
       const jsPartials = this.params
-        .map(({ value, comment }) => {
+        .map(({ value, comment }, i) => {
           const partialCall = `${partialRequirePathJs}(${value})`.replace(/'/g, '\\"'); // transform quotes
           return [
-            comment && `<!-- Alternative: ${comment} -->`,
+            comment && `<!-- ${i > 0 ? 'Alternative: ' : ''}${comment} -->`,
             `"replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialCall})') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"`,
           ]
-            .filter((x) => x)
+            .filter(Boolean)
             .join(glue);
         })
         .join(glue);
@@ -123,11 +120,8 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
 
       const exampleVue =
         `<!-- prerequisite -->
-<!-- install with yarn -->
-yarn add vite-plugin-html
-
-<!-- install with npm -->
-npm install vite-plugin-html
+<!-- docs: https://github.com/vbenjs/vite-plugin-html -->
+yarn add --dev vite-plugin-html
 
 <!-- index.html -->
 <${this.location}>
@@ -146,12 +140,12 @@ export default defineConfig({
       inject: {
         data: {\n  ` +
         this.params
-          .map(({ value, comment }) =>
+          .map(({ value, comment }, i) =>
             [
-              comment && `        // Alternative: ${comment}`,
+              comment && `        // ${i > 0 ? 'Alternative: ' : ''}${comment}`,
               `        ${camelCase(this.name.replace('get', ''))}: ${partialRequirePath}(${value}),`,
             ]
-              .filter((x) => x)
+              .filter(Boolean)
               .join(glue)
           )
           .join('\n\n  ') +

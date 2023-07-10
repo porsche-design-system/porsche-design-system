@@ -1,0 +1,9 @@
+{
+  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "compilerOptions": {
+    "strict": false, // 🙈 too many errors
+    "noUnusedLocals": false,
+    "jsx": "react-jsx"
+  },
+  "include": ["./src"]
+}

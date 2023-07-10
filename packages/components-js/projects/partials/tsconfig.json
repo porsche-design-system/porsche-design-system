@@ -1,18 +1,11 @@
 {
+  "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
     "jsx": "react-jsx"
   },
   "include": ["./src"],
   "ts-node": {
-    "transpileOnly": true,
-    "compilerOptions": {
-      "module": "commonjs"
-    },
-    "include": ["./scripts"]
+    "transpileOnly": true // to ignore tons of errors in components package
   }
 }

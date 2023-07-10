@@ -1,11 +1,12 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
-import Protocol from 'devtools-protocol';
+import type { Protocol } from 'devtools-protocol';
 import type { CDPSession, Page } from 'puppeteer';
-import NodeId = Protocol.DOM.NodeId;
-import BackendNodeId = Protocol.DOM.BackendNodeId;
+
+type NodeId = Protocol.DOM.NodeId;
+type BackendNodeId = Protocol.DOM.BackendNodeId;
 
 const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
-type ForcedPseudoClasses = typeof FORCED_PSEUDO_CLASSES[number];
+type ForcedPseudoClasses = (typeof FORCED_PSEUDO_CLASSES)[number];
 
 const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
@@ -14,7 +15,7 @@ const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 const allThemes: Theme[] = ['light', 'dark'];
 const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
-export type StateType = typeof ALL_STATES[number];
+export type StateType = (typeof ALL_STATES)[number];
 
 export type GetMarkup = () => string;
 export type GetThemedMarkup = (theme: Theme) => string;
@@ -75,9 +76,7 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
 
     if (nodeIds && deepShadowRootNodeName) {
       nodeIds = (
-        await Promise.all(
-          nodeIds.map(async (nodeId) => await getElementNodeIdsInShadowRoot(cdp, nodeId, deepShadowRootNodeName))
-        )
+        await Promise.all(nodeIds.map((nodeId) => getElementNodeIdsInShadowRoot(cdp, nodeId, deepShadowRootNodeName)))
       ).flat();
     }
 
@@ -105,15 +104,15 @@ export const resolveSelector = (
 
 const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise<NodeId[]> => {
   await cdp.send('DOM.getDocument');
-  const { root } = (await cdp.send('DOM.getDocument', {
+  const { root } = await cdp.send('DOM.getDocument', {
     depth: 0,
-  })) as Protocol.DOM.GetDocumentResponse;
+  });
 
   return (
-    (await cdp.send('DOM.querySelectorAll', {
+    await cdp.send('DOM.querySelectorAll', {
       nodeId: root.nodeId,
       selector,
-    })) as Protocol.DOM.QuerySelectorAllResponse
+    })
   ).nodeIds;
 };
 
@@ -127,32 +126,34 @@ export const findBackendNodeIds = (
     currentNode.attributes?.includes(localNodeNameOrClassName)
   ) {
     return [currentNode.backendNodeId];
-  } else {
-    return currentNode.children
-      ?.map((child) => findBackendNodeIds(child, localNodeNameOrClassName))
+  } else if (currentNode.children) {
+    return currentNode
+      .children!.map((child) => findBackendNodeIds(child, localNodeNameOrClassName))
       .flat()
-      .filter((x) => x);
+      .filter(Boolean);
+  } else {
+    return [];
   }
 };
 
 const getElementNodeIdsInShadowRoot = async (cdp: CDPSession, nodeId: NodeId, selector: string): Promise<NodeId[]> => {
-  const hostNode: Protocol.DOM.Node = (
-    (await cdp.send('DOM.describeNode', {
+  const hostNode = (
+    await cdp.send('DOM.describeNode', {
       nodeId,
       depth: -1,
       pierce: true,
-    })) as Protocol.DOM.DescribeNodeResponse
+    })
   ).node;
 
-  const backendNodeIds = hostNode.shadowRoots && findBackendNodeIds(hostNode.shadowRoots[0], selector);
+  const backendNodeIds = hostNode.shadowRoots ? findBackendNodeIds(hostNode.shadowRoots[0], selector) : [];
 
-  return backendNodeIds
+  return backendNodeIds.length
     ? (
-        (await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
+        await cdp.send('DOM.pushNodesByBackendIdsToFrontend', {
           backendNodeIds,
-        })) as Protocol.DOM.PushNodesByBackendIdsToFrontendResponse
+        })
       ).nodeIds
-    : undefined;
+    : [];
 };
 
 const forceStateOnNodeId = async (

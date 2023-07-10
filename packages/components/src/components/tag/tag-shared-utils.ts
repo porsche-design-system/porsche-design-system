@@ -1,4 +1,4 @@
-import { getInsetJssStyle, ThemedColors } from '../../styles';
+import { getInsetJssStyle, type ThemedColors } from '../../styles';
 import type { JssStyle } from 'jss';
 import type { TagColor, TagColorDeprecated } from './tag-utils';
 import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';

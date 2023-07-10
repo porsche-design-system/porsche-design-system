@@ -1,17 +1,12 @@
 {
+  "extends": "./src/tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true
+    "strict": false, // 🙈 too many issues
+    "verbatimModuleSyntax": false,
+    "moduleResolution": "node"
   },
   "include": ["./src", "./scripts"],
   "ts-node": {
-    "transpileOnly": true,
-    "compilerOptions": {
-      "module": "commonjs"
-    },
-    "include": ["./scripts"]
+    "transpileOnly": true // to ignore error of circular dependency with stencil.config.ts importing @porsche-design-system/shared
   }
 }

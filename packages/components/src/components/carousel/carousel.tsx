@@ -10,7 +10,7 @@ import {
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_WIDTHS,
   getAmountOfPages,
-  getSlidesAndAddNamedSlots,
+  getSlidesAndAddAttributes,
   getSplideBreakpoints,
   isInfinitePagination,
   renderPagination,
@@ -20,7 +20,7 @@ import {
   updatePrevNextButtons,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
@@ -147,7 +147,7 @@ export class Carousel {
     this.observeBreakpointChange();
 
     if (this.splide) {
-      this.observeSlides(); // on reconnect, adjust tabindex and aria attributes on slides
+      this.observeSlides(); // on reconnect, adjust aria attributes on slides
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
@@ -289,7 +289,7 @@ export class Carousel {
           <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (
-                <div key={i} class="splide__slide" tabIndex={0}>
+                <div key={i} class="splide__slide">
                   <slot name={`slide-${i}`} />
                 </div>
               ))}
@@ -329,7 +329,7 @@ export class Carousel {
   }
 
   private updateSlidesAndPagination = (): void => {
-    this.slides = getSlidesAndAddNamedSlots(this.host);
+    this.slides = getSlidesAndAddAttributes(this.host);
     this.updateAmountOfPages();
   };
 
@@ -344,7 +344,7 @@ export class Carousel {
 
   private onNextKeyDown = (e: KeyboardEvent): void => {
     if (e.key === 'Tab' && !e.shiftKey) {
-      const activeSlide = this.splide.Components.Elements.slides.at(this.splide.index);
+      const activeSlide = this.slides.at(this.splide.index);
       activeSlide.focus();
       e.preventDefault();
     }
@@ -352,14 +352,8 @@ export class Carousel {
 
   private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
     const { target } = e;
-    const {
-      index: splideIndex,
-      Components: { Elements },
-    } = this.splide;
-
-    const slideIndexOfFocusedElement = Elements.slides.includes(target)
-      ? Elements.slides.indexOf(target) // focussed element is the slide itself
-      : this.slides.findIndex((slide) => slide.contains(target)); // focussed element is within slide, e.g. link or button
+    const { index: splideIndex } = this.splide;
+    const slideIndexOfFocusedElement = this.slides.findIndex((slide) => slide.contains(target)); // focussed element is slot or within slide, e.g. link or button
 
     if (splideIndex !== slideIndexOfFocusedElement) {
       if (slideIndexOfFocusedElement < this.amountOfPages && slideIndexOfFocusedElement > splideIndex) {
@@ -377,11 +371,8 @@ export class Carousel {
       () =>
         this.splide.Components.Elements.slides.forEach((el) => {
           el.removeAttribute('aria-hidden');
-          if (el.tabIndex !== 0) {
-            el.tabIndex = 0;
-          }
         }),
-      ['tabindex', 'aria-hidden']
+      ['aria-hidden']
     );
   }
 }

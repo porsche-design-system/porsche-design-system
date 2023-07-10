@@ -1,9 +1,10 @@
 {
+  // TODO: would be nice to use but to many errors with vue-loader
+  // "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
     "strict": true,
-    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -15,8 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    }
   },
   "include": ["src"]
 }

@@ -15,10 +15,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
 
     const reactImports = [
-      'ForwardedRef',
+      'type ForwardedRef',
       'forwardRef',
-      'HTMLAttributes',
-      ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
+      'type HTMLAttributes',
+      ...(this.inputParser.canHaveChildren(component) ? ['type PropsWithChildren'] : []),
       'useRef',
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;

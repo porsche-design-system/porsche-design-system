@@ -1,4 +1,3 @@
-import type { TableUpdateEvent } from '@porsche-design-system/components-react';
 import {
   PButtonPure,
   PHeading,
@@ -10,9 +9,10 @@ import {
   PTableHeadRow,
   PTableRow,
   PText,
+  type TableUpdateEvent,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
+import { dataAdvanced, type DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
 export const TableExampleAdvancedPage = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);

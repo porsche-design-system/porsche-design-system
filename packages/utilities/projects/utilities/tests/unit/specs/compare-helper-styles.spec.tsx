@@ -9,7 +9,7 @@ import styled, { StyleSheetManager } from 'styled-components';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-import { getFocusStyle, headingMediumStyle, frostedGlassStyle } from '../../../src/js';
+import { getFocusStyle, headingMediumStyle } from '../../../src/js';
 import { createUseStyles } from 'react-jss';
 
 const formatAndNeutralizeStyle = (style: string): string => {
@@ -51,7 +51,7 @@ xit('should have equal styles for styled-components and jss', () => {
   });
 
   render(
-    <StyleSheetManager disableVendorPrefixes>
+    <StyleSheetManager>
       <SampleStyles />
     </StyleSheetManager>
   );

@@ -4,16 +4,16 @@ export const transformEventsToAngularSyntax = (markup: string): string =>
   markup.replace(/\son([a-z]+?)="(.*?)"/g, ' ($1)="$2"');
 
 export const transformAttributesWithObjectValues = (markup: string): string =>
-  markup.replace(/\s([a-z-]+)="{(.*?)}"/g, (m, $key, $value) => ` [${camelCase($key)}]="{${$value}}"`);
+  markup.replace(/\s([a-z-]+)="{(.*?)}"/g, (_, $key, $value) => ` [${camelCase($key)}]="{${$value}}"`);
 
 export const transformAttributesWithNotDigitValue = (markup: string): string =>
-  markup.replace(/\s([a-z-]+)="([^-\d].*?)"/g, (m, $key, $value) =>
+  markup.replace(/\s([a-z-]+)="([^-\d].*?)"/g, (_, $key, $value) =>
     // handle aria attributes
     $key.startsWith('aria-') ? ` ${$key}="${$value}"` : ` [${camelCase($key)}]="'${$value}'"`
   );
 
 export const transformAttributesWithDigitValue = (markup: string): string =>
-  markup.replace(/\s([a-z-]+)="(-?\d*)"/g, (m, $key, $value) =>
+  markup.replace(/\s([a-z-]+)="(-?\d*)"/g, (_, $key, $value) =>
     $key === 'maxlength'
       ? ` [maxLength]="${$value}"`
       : // surround numeric "name" and "model" prop values with single quotes

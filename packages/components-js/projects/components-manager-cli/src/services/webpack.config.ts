@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as webpack from 'webpack';
-import { EntryConfig } from '../../shared-definitions/entry-config';
+import type { EntryConfig } from '../../shared-definitions/entry-config';
 import { getProjectRootPath } from './config';
 
 export function generateWebPackConfig(targetDirectory: string, config: EntryConfig): webpack.Configuration {
@@ -47,6 +47,10 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
             globalObject: "typeof self !== 'undefined' ? self : this",
           }),
     },
+    // great for debugging:
+    // https://browsersl.ist/#q=%3E+0.5%25+and+last+2+versions%2C+not+dead%2C+not+op_mini+all%2C+not+opera+%3E+0%2C+not+Samsung+%3E+0%2C+not+and_uc+%3E+0
+    target:
+      'browserslist:> 0.5% and last 2 versions, not dead, not op_mini all, not opera > 0, not Samsung > 0, not and_uc > 0',
     plugins: [
       new webpack.DefinePlugin({
         CM_CONFIG: JSON.stringify(strippedConfig),

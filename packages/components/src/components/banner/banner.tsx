@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
 import type { BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
 import { BANNER_STATES } from './banner-utils';

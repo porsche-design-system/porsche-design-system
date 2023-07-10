@@ -36,7 +36,7 @@ import {
   TABS_BAR_SIZES,
   TABS_BAR_WEIGHTS,
 } from './tabs-bar-utils';
-import { getComponentCss } from './tabs-bar-styles';
+import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
 import type { ScrollerDirection } from '../scroller/scroller-utils';
 import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../scroller/scroller-utils';
 
@@ -87,19 +87,18 @@ export class TabsBar {
   @State() private tabElements: HTMLElement[] = [];
 
   private barElement: HTMLElement;
-  private prevActiveTabIndex: number;
+  private scrollerElement: HTMLPScrollerElement;
   private direction: ScrollerDirection = 'next';
   private hasPTabsParent: boolean;
-  private scrollerElement: HTMLPScrollerElement;
 
   @Watch('activeTabIndex')
-  public activeTabHandler(newValue: number, oldValue: number): void {
+  public activeTabIndexHandler(newValue: number, oldValue: number): void {
     // can be null if removeAttribute() is used
     if (newValue === null) {
       this.activeTabIndex = undefined;
     }
-    this.prevActiveTabIndex = oldValue;
     this.direction = newValue > oldValue || oldValue === undefined ? 'next' : 'prev';
+    this.setBarStyle();
     this.scrollActiveTabIntoView();
   }
 
@@ -111,7 +110,6 @@ export class TabsBar {
     observeChildren(this.host, () => {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
-      this.prevActiveTabIndex = this.activeTabIndex;
       this.setBarStyle();
       this.setAccessibilityAttributes();
     });
@@ -128,27 +126,24 @@ export class TabsBar {
     // TODO: why not do this in connectedCallback?
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
 
-    if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
-      // skip scrolling on first render when no activeElementIndex is set
+    // skip scrolling on first render when no activeElementIndex is set
+    if (this.activeTabIndex !== undefined) {
       this.scrollActiveTabIntoView(false);
     }
 
     this.observeBreakpointChange();
-
-    // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
-    // and first call in componentDidRender() is skipped because elements are not defined, yet
-    this.setBarStyle();
-  }
-
-  public componentDidRender(): void {
-    // needs to happen after render in order to have status bar defined and proper calculation
-    this.setBarStyle();
-    this.setAccessibilityAttributes();
   }
 
   public disconnectedCallback(): void {
     unobserveBreakpointChange(this.host);
     unobserveChildren(this.host);
+  }
+
+  public componentDidRender(): void {
+    // 1 tick delay to prevent transition
+    window.requestAnimationFrame(() => {
+      this.scrollerElement.classList[this.activeTabIndex !== undefined ? 'add' : 'remove'](scrollerAnimatedCssClass);
+    });
   }
 
   public render(): JSX.Element {
@@ -169,6 +164,7 @@ export class TabsBar {
       (deprecationMap[this.weight] || this.weight) as Exclude<TabsBarWeight, TabsBarWeightDeprecated>,
       this.theme
     );
+    this.setAccessibilityAttributes();
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -192,13 +188,10 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
-      const tabIndex = this.activeTabIndex || 0;
-      const isFocusable = tabIndex === +index;
-      const isSelected = this.activeTabIndex === +index;
       const attrs = {
         role: 'tab',
-        tabindex: isFocusable ? '0' : '-1',
-        'aria-selected': isSelected ? 'true' : 'false',
+        tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
+        'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
       };
       /* eslint-disable-next-line guard-for-in */
       for (const key in attrs) {
@@ -245,7 +238,10 @@ export class TabsBar {
       case 'End':
         upcomingFocusedTabIndex = this.tabElements.length - 1;
         break;
-      // the slotted buttons have a a different tabbing sequence in chrome and safari and it appears that on hitting tab the first slotted one with tabindex=0 becomes focused instead of the one after, therefor the 'Tab' case needs to be handled.
+
+      // the slotted buttons have a different tabbing sequence in chrome and safari and it appears that on hitting
+      // tab the first slotted one with tabindex=0 becomes focused instead of the one after,
+      // therefor the 'Tab' case needs to be handled
       case 'Tab':
         const { target } = e as KeyboardEvent & { target: EventTarget & HTMLElement };
         const { tabIndex } = target;
@@ -269,7 +265,7 @@ export class TabsBar {
 
   private scrollActiveTabIntoView = (isSmooth = true): void => {
     // scrollAreaElement might be undefined in certain scenarios with framework routing involved
-    // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
+    // where the activeTabIndex watcher triggers this function before the scroller is rendered and the ref defined
     if (this.scrollerElement) {
       const scrollActivePosition = getScrollActivePosition(
         this.tabElements,
@@ -286,7 +282,7 @@ export class TabsBar {
   };
 
   private setBarStyle = (): void => {
-    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
+    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement);
   };
 
   private observeBreakpointChange = (): void => {

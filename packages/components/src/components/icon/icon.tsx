@@ -1,6 +1,13 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import type { IconAriaAttribute, IconColor, IconColorDeprecated } from './icon-utils';
-import { buildIconUrl, ICON_ARIA_ATTRIBUTES, ICON_COLORS, IconSize } from './icon-utils';
+import {
+  buildIconUrl,
+  ICON_ARIA_ATTRIBUTES,
+  ICON_COLORS,
+  type IconAriaAttribute,
+  type IconColor,
+  type IconColorDeprecated,
+  type IconSize,
+} from './icon-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -46,7 +53,7 @@ export class Icon {
   @Prop() public size?: IconSize = 'small';
 
   /**
-   * Has no effect anymore
+   * Has no effect anymore (the component is now using the native `loading="lazy"` attribute by default)
    * @deprecated since v3.0.0, will be removed with next major release
    */
   @Prop() public lazy?: boolean;
@@ -81,7 +88,14 @@ export class Icon {
       this.theme
     );
 
-    // TODO: wouldn't it be better to set alt attribute instead of aria-label?
-    return <img src={buildIconUrl(this.source || this.name)} {...parseAndGetAriaAttributes(this.aria)} alt="" />;
+    return (
+      <img
+        src={buildIconUrl(this.source || this.name)}
+        width={24} // improve bootstrapping behaviour
+        height={24} // improve bootstrapping behaviour
+        loading="lazy"
+        alt={parseAndGetAriaAttributes(this.aria)?.['aria-label'] ?? ''}
+      />
+    );
   }
 }

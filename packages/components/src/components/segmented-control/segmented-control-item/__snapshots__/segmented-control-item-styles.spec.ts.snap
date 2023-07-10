@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -56,15 +56,187 @@ span {
     border-color: #FBFCFF;
   }
 }
-
-.icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  margin-right: 0.25rem;
-}"
+"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false and theme: light 1`] = `
+":host {
+  display: block !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 13px 17px;
+  margin: 0;
+  border: 2px solid #D8D8DB;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  position: relative;
+  cursor: pointer;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+button:focus::before {
+  border-color: #1A44EA;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  color: #6B6D70;
+}
+@media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true and theme: dark 1`] = `
+":host {
+  display: block !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 13px 17px;
+  margin: 0;
+  border: 2px solid #404044;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  position: relative;
+  cursor: pointer;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+button:focus::before {
+  border-color: #1A44EA;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  color: #88898C;
+}
+@media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 13px 17px;
+  margin: 0;
+  border: 2px solid #D8D8DB;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  position: relative;
+  cursor: pointer;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+button:focus::before {
+  border-color: #1A44EA;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  color: #6B6D70;
+}
+@media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -124,11 +296,10 @@ span {
 .icon {
   height: 1.5rem;
   width: 1.5rem;
-  margin-right: 0.25rem;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -192,7 +363,61 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
+":host {
+  display: block !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 13px 17px;
+  margin: 0;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  position: relative;
+  cursor: pointer;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+button:focus::before {
+  border-color: #1A44EA;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  color: #6B6D70;
+}
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -247,7 +472,61 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
+":host {
+  display: block !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 13px 17px;
+  margin: 0;
+  border: 2px solid #D8D8DB;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  color: #949598;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  position: relative;
+  cursor: not-allowed;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+button:focus::before {
+  border-color: #1A44EA;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  color: #949598;
+}
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -302,7 +581,61 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
+":host {
+  display: block !important;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+button {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 13px 17px;
+  margin: 0;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  color: #949598;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  position: relative;
+  cursor: not-allowed;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+button:focus::before {
+  border-color: #1A44EA;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: auto;
+  color: #949598;
+}
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;

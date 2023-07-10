@@ -14,7 +14,7 @@ const chunkFiles = [indexJsFile].concat(chunkFileNames.map((chunkFileName) => pa
 
 const getChunkContent = (chunkFileName: string): string => {
   const chunkFile = chunkFiles.find((x) => x.includes(chunkFileName));
-  return fs.readFileSync(chunkFile, 'utf8');
+  return fs.readFileSync(chunkFile!, 'utf8');
 };
 
 describe('chunk size', () => {
@@ -66,9 +66,9 @@ describe('chunk size', () => {
     oldSize: number;
     newSize: number;
     diffSize: number;
-    oldGzipSize?: number;
+    oldGzipSize: number;
     newGzipSize: number;
-    diffGzipSize?: number;
+    diffGzipSize: number;
   };
   const statsResults: StatsResult[] = [];
 
@@ -78,7 +78,7 @@ describe('chunk size', () => {
       const [chunkShortName] = assetResult.chunks;
       const { name: chunkName, size: newSize } = assetResult;
 
-      const { size: oldSize, gzipSize: oldGzipSize } =
+      const { size: oldSize = 0, gzipSize: oldGzipSize = 0 } =
         fixtureStats.find((x) => x.chunkShortName === chunkShortName) || {};
       const newGzipSize = gzipSize.sync(getChunkContent(chunkName));
 
@@ -225,13 +225,6 @@ describe('chunk content', () => {
     });
   });
 
-  describe('css inset property', () => {
-    it.each(chunkFileNames)('should not contain css inset property in %s', (chunkFileName) => {
-      const content = getChunkContent(chunkFileName);
-      expect(content).not.toContain('inset:');
-    });
-  });
-
   describe('--p-temporary', () => {
     it.each(chunkFileNames)('should not contain "--p-temporary" css variables in %s', (chunkFileName) => {
       const content = getChunkContent(chunkFileName);
@@ -279,7 +272,7 @@ describe('chunk content', () => {
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
         expect(content).toMatch(hexColorRegEx);
-        expect(content.match(hexColorRegEx).length).toBe(1);
+        expect(content.match(hexColorRegEx)!.length).toBe(1);
       }
     );
   });

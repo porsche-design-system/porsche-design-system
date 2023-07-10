@@ -65,11 +65,14 @@ export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void
   }
 };
 
-export const getSlidesAndAddNamedSlots = (host: HTMLElement): HTMLElement[] => {
+export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
     ({ slot }) => slot !== 'heading' && slot !== 'description'
   ) as HTMLElement[];
-  slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
+  slides.forEach((el, i) => {
+    el.setAttribute('slot', `slide-${i}`);
+    el.setAttribute('tabindex', '0');
+  });
 
   return slides;
 };

@@ -7,6 +7,8 @@ import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
+const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
+
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const componentsDirectory = path.resolve(rootDirectory, 'src/components');
@@ -19,7 +21,8 @@ const generateDSRComponents = (): void => {
   const utilsBundleImportPath = '@porsche-design-system/components/dist/utils';
 
   const componentFileContents = componentPaths
-    // .filter((filePath) => filePath.includes('accordion'))
+    // .filter((filePath) => filePath.includes('accordion')) // for easier debugging
+    .filter((filePath) => !EXCLUDED_COMPONENTS.includes(`p-${path.basename(filePath).split('.')[0]}` as TagName))
     .map((filePath) => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -185,6 +188,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
+          .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2') // remove unused destructured host
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
@@ -223,7 +227,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (tagName === 'p-carousel') {
         newFileContent = newFileContent
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
-          .replace(/^/, "$&import { BreakpointCustomizable } from '../types';\n")
+          .replace(/^/, "$&import type { BreakpointCustomizable } from '../types';\n")
           .replace(/.*onFocusin=\{.*\n/, '');
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
@@ -273,6 +277,21 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /getPopoverCss\(.+?\)/,
           `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
         );
+      } else if (tagName === 'p-tabs-bar') {
+        newFileContent = newFileContent
+          // get rid of left over
+          .replace(/\n.*this\.props\.setAccessibilityAttributes\(\);/, '')
+          // set aria attributes on button and anchor children, what at runtime is done via this.setAccessibilityAttributes()
+          .replace(
+            /const { children, namedSlotChildren, otherChildren } =.*/,
+            `$&
+    const manipulatedChildren = children.map((child, i) =>
+      typeof child === 'object' && 'props' in child && otherChildren.includes(child)
+        ? { ...child, props: { ...child.props, role: 'tab', tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1', 'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false' } }
+        : child
+    );`
+          )
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(
@@ -286,7 +305,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
-    const manipulatedChildren = children.map((child, i) =>
+    const manipulatedChildren = children.map((child) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, gutter: this.props.gutter } }
         : child
@@ -299,20 +318,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
-    const manipulatedChildren = children.map((child, i) =>
+    const manipulatedChildren = children.map((child) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, selected: child.props?.value === this.props.value, backgroundColor: this.props.backgroundColor, theme: this.props.theme } }
         : child
     );`
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+      } else if (tagName === 'p-segmented-control-item') {
+        newFileContent = newFileContent.replace(/!!this\.props\.innerHTML/, '!!children.length');
       } else if (tagName === 'p-stepper-horizontal') {
         // pass down theme prop to p-stepper-horizontal-item children
         newFileContent = newFileContent
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
             `$&
-    const manipulatedChildren = children.map((child, i) =>
+    const manipulatedChildren = children.map((child) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
         ? { ...child, props: { ...child.props, theme: this.props.theme } }
         : child
@@ -351,7 +372,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
         const constants = rawPrivateMembers
           .map((member) => member.replace(/^this\./, 'const ')) // make it local constants
-          .map((member, i, arr) =>
+          .map((member, _, arr) =>
             member
               .replace(
                 // use local constants

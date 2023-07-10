@@ -1,6 +1,6 @@
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type { WordmarkSize, WordmarkTarget, WordmarkAriaAttribute } from './wordmark-utils';
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

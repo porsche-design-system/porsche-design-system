@@ -1,7 +1,7 @@
 import type { PropTypes, Theme } from '../../types';
 import type { IconColor } from '../icon/icon-utils';
 import type { InlineNotificationState, InlineNotificationStateDeprecated } from './inline-notification-utils';
-import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,

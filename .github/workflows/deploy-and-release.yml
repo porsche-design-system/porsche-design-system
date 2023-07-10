@@ -1,0 +1,307 @@
+on:
+  workflow_call:
+    secrets:
+      github-token:
+        description: 'github token for container registry'
+        required: true
+      porsche-npm-registry-token:
+        description: 'npm registry token for porsche jfrog'
+        required: true
+      npmjs-registry-token:
+        description: 'npm registry token for npmjs'
+        required: true
+      cdn-user:
+        description: 'cdn user'
+        required: true
+      cdn-ssh-key:
+        description: 'cdn ssh key'
+        required: true
+      algolia-app-id:
+        description: 'algolia app id'
+        required: true
+      algolia-api-key:
+        description: 'algolia api key'
+        required: true
+      aws-access-key-id:
+        description: 'aws access key id'
+        required: true
+      aws-secret-access-key:
+        description: 'aws secret access key'
+        required: true
+      uxpin-token-dev:
+        description: 'uxpin-token-dev'
+        required: true
+      uxpin-token-latest:
+        description: 'uxpin-token-latest'
+        required: true
+name: 'Deploy and Release'
+env:
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.35.1-focal
+jobs:
+  assets-deployment:
+    name: 'Assets Deployment'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          install: false
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Assets Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: assets-cdn
+          path: ./packages/assets/cdn
+      - name: 'Deploy Assets to CDN'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          CDN_USER: ${{ secrets.cdn-user }}
+          CDN_SSH_KEY: ${{ secrets.cdn-ssh-key }}
+        with:
+          entrypoint: run-deploy-assets
+  storefront-deployment:
+    name: 'Storefront Deployment'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: storefront-build
+          path: ./packages/storefront/dist
+      - name: 'Deploy'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws-secret-access-key }}
+        with:
+          entrypoint: run-deploy-storefront
+  smoke-test:
+    name: 'Smoke Test'
+    needs:
+      - assets-deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Assets Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: assets-build
+          path: ./packages/assets/dist
+      - name: 'Restore Components JS Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Restore Components React Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-react-prod-build
+          path: ./packages/components-react/dist/react-wrapper
+      - name: 'Restore Chunks Manifest Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-js-chunks-manifest-prod-build
+          path: ./packages/components-js/projects/components-wrapper/lib
+      - name: 'Restore Shared Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
+      - name: 'Smoke Test Components JS'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-smoke
+          args: --components-js
+      - name: 'Smoke Test Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-smoke
+          args: --components-react
+  release-components-uxpin:
+    name: 'Release Components UXPin'
+    needs:
+      - assets-deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # important for uxpin since it uses the commit history
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Components JS Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Restore Components UXPin Source Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-uxpin-source
+          path: ./packages/components-react/projects/uxpin-wrapper
+      - name: 'Publish UXPin Library'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          UXPIN_TOKEN_DEV: ${{ secrets.uxpin-token-dev }}
+          UXPIN_TOKEN_LATEST: ${{ secrets.uxpin-token-latest }}
+        with:
+          entrypoint: run-release-uxpin
+  release-components-js:
+    name: 'Release Components JS'
+    needs:
+      - smoke-test
+      - storefront-deployment
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          install: false
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.porsche-npm-registry-token }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-js/dist/components-wrapper
+  release-components-angular:
+    name: 'Release Components Angular'
+    needs:
+      - release-components-js
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          install: false
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-angular-prod-build
+          path: ./packages/components-angular/dist/angular-wrapper
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.porsche-npm-registry-token }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-angular/dist/angular-wrapper
+  release-components-react:
+    name: 'Release Components React'
+    needs:
+      - release-components-js
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          install: false
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-react-prod-build
+          path: ./packages/components-react/dist/react-wrapper
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.porsche-npm-registry-token }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-react/dist/react-wrapper
+  release-components-vue:
+    name: 'Release Components Vue'
+    needs:
+      - release-components-js
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          install: false
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-vue-prod-build
+          path: ./packages/components-vue/dist/vue-wrapper
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.porsche-npm-registry-token }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-vue/dist/vue-wrapper
+  release-assets:
+    name: 'Release Assets'
+    needs:
+      - smoke-test
+      - storefront-deployment
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          install: false
+          github-token: ${{ secrets.github-token }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: assets-build
+          path: ./packages/assets/dist
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.porsche-npm-registry-token }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/assets/dist
