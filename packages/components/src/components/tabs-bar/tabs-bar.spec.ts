@@ -16,16 +16,6 @@ describe('connectedCallback', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call observeChildren() with correct parameters', () => {
-    const childrenObserverUtilsSpy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-    const host = document.createElement('p-tabs-bar');
-    const component = new TabsBar();
-    component.host = host;
-
-    component.connectedCallback();
-    expect(childrenObserverUtilsSpy).toBeCalledWith(host, expect.any(Function));
-  });
-
   it('should call this.observeBreakpointChange()', () => {
     const component = new TabsBar();
     component.host = document.createElement('p-tabs-bar');

@@ -9,7 +9,6 @@ import {
   hasPropValueChanged,
   isShadowRootParentOfKind,
   observeBreakpointChange,
-  observeChildren,
   parseJSON,
   setAttribute,
   THEMES,
@@ -21,10 +20,10 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
-  TabsBarUpdateEvent,
   TabsBarGradientColor,
   TabsBarGradientColorScheme,
   TabsBarSize,
+  TabsBarUpdateEvent,
   TabsBarWeight,
   TabsBarWeightDeprecated,
 } from './tabs-bar-utils';
@@ -38,7 +37,7 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
 import type { ScrollerDirection } from '../scroller/scroller-utils';
-import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../scroller/scroller-utils';
+import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
@@ -105,15 +104,6 @@ export class TabsBar {
   public connectedCallback(): void {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
     this.setTabElements();
-
-    // TODO: wouldn't a slot change listener be good enough? https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
-    observeChildren(this.host, () => {
-      this.setTabElements();
-      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
-      this.setBarStyle();
-      this.setAccessibilityAttributes();
-    });
-
     this.observeBreakpointChange();
   }
 
@@ -180,11 +170,18 @@ export class TabsBar {
         onClick={this.onClick}
         onKeyDown={this.onKeydown}
       >
-        <slot />
+        <slot onSlotchange={this.onSlotchange} />
         <span class="bar" ref={(el) => (this.barElement = el)} />
       </PrefixedTagNames.pScroller>
     );
   }
+
+  private onSlotchange = (): void => {
+    this.setTabElements();
+    this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
+    this.setBarStyle();
+    this.setAccessibilityAttributes();
+  };
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
