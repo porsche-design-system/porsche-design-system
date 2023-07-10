@@ -49,8 +49,7 @@ export class SegmentedControl {
   /** Sets the initial value of the segmented-control. */
   @Prop() public value?: string | number;
 
-  // TODO: maybe find better description
-  /** Sets the width of the items. */
+  /** Sets the width and number of columns of the items. */
   @Prop() public column?: BreakpointCustomizable<number | 'auto'> = 'auto';
 
   /**

@@ -1207,7 +1207,7 @@ export namespace Components {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
-          * Sets the width of the items.
+          * Sets the width and number of columns of the items.
          */
         "column"?: BreakpointCustomizable<number | 'auto'>;
         /**
@@ -3339,7 +3339,7 @@ declare namespace LocalJSX {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
-          * Sets the width of the items.
+          * Sets the width and number of columns of the items.
          */
         "column"?: BreakpointCustomizable<number | 'auto'>;
         /**

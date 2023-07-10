@@ -58,6 +58,45 @@ export const SegmentedControlPage = (): JSX.Element => {
         </PSegmentedControl>
       </div>
 
+      <PSegmentedControl className="playground light" title="should render segmented-control with column=1" column={1}>
+        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
+      </PSegmentedControl>
+
+      <PSegmentedControl className="playground light" title="should render segmented-control with column=2" column={2}>
+        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
+      </PSegmentedControl>
+
+      <PSegmentedControl className="playground light" title="should render segmented-control with column=3" column={3}>
+        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
+      </PSegmentedControl>
+
+      <PSegmentedControl className="playground light" title="should render segmented-control with column=4" column={4}>
+        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
+      </PSegmentedControl>
+
+      <PSegmentedControl
+        className="playground light"
+        title="should render segmented-control with responsive column"
+        column={{ base: 'auto', s: '1', m: '2', l: '3', xl: '4' }}
+      >
+        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
+      </PSegmentedControl>
+
       <div className="playground dark" title="should render segmented-control with labels on dark theme">
         <PSegmentedControl value="s" theme="dark">
           <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
