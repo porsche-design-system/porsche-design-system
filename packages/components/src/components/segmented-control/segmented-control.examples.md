@@ -24,6 +24,15 @@ as described in the <a :href="eventHandlingUrl">Event Handling</a> section.
 
 <Playground :markup="initialValueMarkup" :config="config"></Playground>
 
+## Column
+
+The width of the `p-segmented-control` items can be controlled by the breakpoint customizable property `column` which
+defaults to value `auto`.
+
+<Playground :markup="columnMarkup" :config="config">
+  <SelectOptions v-model="column" :values="columns" name="column"></SelectOptions>
+</Playground>
+
 ## With Labels
 
 Additional meta information can be displayed by setting a `label` on each child.
@@ -102,6 +111,14 @@ export default class Code extends Vue {
   initialValueMarkup = `<p-segmented-control value="2" aria-label="Choose an option">
   ${this.optionItems}
 </p-segmented-control>`;
+
+  column = 'auto';
+  columns = ['auto', 1, 2, 3, 4, 5, "{ base: 1, s: 2, m: 'auto' }"];
+  get columnMarkup() {
+    return `<p-segmented-control column="${this.column}" aria-label="Choose a t-shirt size">
+  ${this.shirtSizeItems}
+</p-segmented-control>`;
+  }
 
   withLabelsMarkup = `<p-segmented-control aria-label="Choose an option">
   ${this.optionItems.replace(/value="\d"/g, '$& label="Label"')}
