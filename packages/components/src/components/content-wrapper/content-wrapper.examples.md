@@ -9,6 +9,12 @@ In general, please use native <a href="https://css-tricks.com/snippets/css/compl
 Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
 </p-inline-notification>
 
+<p-inline-notification heading="Layout hint" state="warning" dismiss-button="false">
+  The component can only be used with the full viewport width. The alignment of its content can be controlled 
+  by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.<br><br>
+  Therefore, the following examples only work in fullscreen after clicking the <strong>Maximize</strong> buttons.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Width

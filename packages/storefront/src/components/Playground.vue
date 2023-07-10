@@ -303,6 +303,7 @@
       overflow: auto;
       z-index: 999;
       margin: 0;
+      padding-top: 0;
       border: 0;
       border-radius: 0;
 
