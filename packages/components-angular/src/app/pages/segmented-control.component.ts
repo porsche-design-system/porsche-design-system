@@ -89,7 +89,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-segmented-control
       class="playground light"
       title="should render segmented-control with responsive column"
-      [column]="{ base: 'auto', s: '1', m: '2', l: '3', xl: '4' }"
+      [column]="{ base: 'auto', s: 1, m: 2, l: 3, xl: 4 }"
     >
       <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
       <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>

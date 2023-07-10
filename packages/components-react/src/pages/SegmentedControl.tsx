@@ -89,7 +89,7 @@ export const SegmentedControlPage = (): JSX.Element => {
       <PSegmentedControl
         className="playground light"
         title="should render segmented-control with responsive column"
-        column={{ base: 'auto', s: '1', m: '2', l: '3', xl: '4' }}
+        column={{ base: 'auto', s: 1, m: 2, l: 3, xl: 4 }}
       >
         <PSegmentedControlItem value="s">S</PSegmentedControlItem>
         <PSegmentedControlItem value="m">M</PSegmentedControlItem>
