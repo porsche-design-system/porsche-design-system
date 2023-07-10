@@ -1,4 +1,4 @@
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
+import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 
