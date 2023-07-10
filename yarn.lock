@@ -21170,6 +21170,13 @@ rollup-plugin-modify@^3.0.0:
     magic-string "0.25.2"
     ospec "3.1.0"
 
+rollup-plugin-preserve-directives@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-preserve-directives/-/rollup-plugin-preserve-directives-0.2.0.tgz#cc9dc34371ecf22878dc27fdd5cfb3f47b5ee088"
+  integrity sha512-KUwbBaFvD1zFIDNnOkR+u64sSod3m0l6q46/SzTOa4GTQ6hp6w0FRr2u7x99YkY9qhlna5panmTmuLWeJ/2KWw==
+  dependencies:
+    magic-string "^0.30.0"
+
 rollup-plugin-preserve-shebang@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-preserve-shebang/-/rollup-plugin-preserve-shebang-1.0.1.tgz#17109cdb4ed12c3cac9379b802182427cdbee5a1"

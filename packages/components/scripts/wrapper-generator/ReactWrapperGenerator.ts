@@ -38,7 +38,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
-    return [importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
+    return ["'use client';\n", importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes]
+      .filter((x) => x)
+      .join('\n');
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
