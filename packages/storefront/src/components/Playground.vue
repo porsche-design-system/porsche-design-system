@@ -15,6 +15,7 @@
         'example--spacing-block': mergedConfig.spacing === 'block',
         'example--spacing-block-small': mergedConfig.spacing === 'block-small',
         'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
+        'example--fullscreen': isFullscreen,
       }"
     >
       <div
@@ -46,6 +47,14 @@
           :backgroundColor="config.backgroundColor"
         ></CodeEditor>
       </template>
+
+      <p-button
+        v-if="config.supportsFullscreen"
+        class="btn-fullscreen"
+        :icon="isFullscreen ? 'zoom-in' : 'zoom-out'"
+        @click="toggleFullscreen()"
+        >{{ isFullscreen ? 'Minimize' : 'Maximize' }}</p-button
+      >
     </div>
   </div>
 </template>
@@ -69,6 +78,7 @@
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
     withoutDemo: boolean;
+    supportsFullscreen: boolean;
   };
 
   export const initialConfig: PlaygroundConfig = {
@@ -78,6 +88,7 @@
     spacing: 'none',
     overflowX: 'auto',
     withoutDemo: false,
+    supportsFullscreen: false,
   };
 
   const themeableComponentsSelector = Object.entries(componentMeta)
@@ -99,6 +110,7 @@
     @Prop({ default: '' }) public markup!: string;
 
     getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
+    isFullscreen = false;
 
     public mounted(): void {
       if (this.config.themeable) {
@@ -114,6 +126,11 @@
 
     public switchTheme(theme: Theme): void {
       this.$store.commit('setTheme', theme);
+    }
+
+    public toggleFullscreen(): void {
+      this.isFullscreen = !this.isFullscreen;
+      document.body.style.overflow = this.isFullscreen ? 'hidden' : '';
     }
 
     public get cleanedEditorMarkup(): string {
@@ -189,6 +206,7 @@
   @import '../styles/internal.variables';
 
   .example {
+    position: relative;
     padding: $pds-spacing-static-large;
     overflow-x: auto;
     margin-top: $pds-spacing-static-small;
@@ -278,5 +296,26 @@
         max-height: 40rem;
       }
     }
+
+    &--fullscreen {
+      position: fixed;
+      inset: 0;
+      overflow: auto;
+      z-index: 999;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+
+      .demo {
+        margin: 0 (-$pds-spacing-static-large);
+      }
+    }
+  }
+
+  .btn-fullscreen {
+    position: absolute;
+    top: $pds-spacing-static-small;
+    right: $pds-spacing-static-small;
+    margin: 0 !important;
   }
 </style>

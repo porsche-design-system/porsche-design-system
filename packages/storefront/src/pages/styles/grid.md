@@ -12,7 +12,7 @@ between 320px and 2560px, using fluid sized columns and gaps.
 <p-link href="patterns/styles/example/grid" target="_blank" variant="secondary">View Porsche Grid in Full
 Window</p-link>
 
-<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
+<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']" :config="config">
   <ExampleStylesGrid />
 </Playground>
 
@@ -148,6 +148,7 @@ import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 })
 export default class Code extends Vue {
   codeExample = getStylesGridCodeSamples();
+  config = { supportsFullscreen: true };
 
   public mounted(): void {
     adjustSelectedFramework(this.codeExample);

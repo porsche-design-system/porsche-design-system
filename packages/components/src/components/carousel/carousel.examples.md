@@ -156,8 +156,8 @@ type CarouselInternationalization = {
 
 ## Custom Border Radius
 
-By default, every carousel item gets a predefined border radius of "large" (`12px`). This can be changed via a custom CSS property
-(see also [Border Styles](styles/border#styles)).
+By default, every carousel item gets a predefined border radius of "large" (`12px`). This can be changed via a custom
+CSS property (see also [Border Styles](styles/border#styles)).
 
 <Playground :markup="customBorderRadiusMarkup" :config="config">
   <SelectOptions v-model="customBorderRadius" :values="customBorderRadii" name="borderRadius"></SelectOptions>
@@ -186,7 +186,7 @@ import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, supportsFullscreen: true };
 
   get theme(): Theme {
     return this.$store.getters.theme;
