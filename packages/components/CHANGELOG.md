@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- React: `'use client';` directive is applied on all components for main and `ssr` sub-package
+  ([#2654](https://github.com/porsche-design-system/porsche-design-system/pull/2654))
+
 ### [3.3.0] - 2023-07-07
 
 ### [3.3.0-rc.0] - 2023-07-06
