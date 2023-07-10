@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Fixes regression in `observeChildren` with nested components
+  ([#2649](https://github.com/porsche-design-system/porsche-design-system/pull/2649))
+
 ### [3.3.0] - 2023-07-07
 
 ### [3.3.0-rc.0] - 2023-07-06
