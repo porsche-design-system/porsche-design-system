@@ -1,15 +1,14 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, h, Host, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  observeChildren,
-  observeProperties,
   removeAttribute,
   setAttribute,
   THEMES,
+  throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -18,9 +17,9 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { TabsBarUpdateEvent } from '../../tabs-bar/tabs-bar-utils';
 import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
-import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../../scroller/scroller-utils';
+import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../../scroller/scroller-utils';
+import type { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from './tabs-utils';
 import { syncTabsItemsProps } from './tabs-utils';
-import type { TabsUpdateEvent, TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsWeight } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),
@@ -77,11 +76,6 @@ export class Tabs {
 
   public connectedCallback(): void {
     this.defineTabsItemElements();
-    observeChildren(this.host, () => {
-      this.defineTabsItemElements();
-      this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
-    });
-    this.observeProperties();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -127,13 +121,17 @@ export class Tabs {
             </button>
           ))}
         </PrefixedTagNames.pTabsBar>
-        <slot />
+        <slot onSlotchange={this.onSlotchange} />
       </Host>
     );
   }
 
+  private onSlotchange = (): void => {
+    this.defineTabsItemElements();
+  };
+
   private defineTabsItemElements = (): void => {
-    // TODO: validation? this could be any kind of dom node
+    throwIfChildrenAreNotOfKind(this.host, 'p-tabs-item');
     this.tabsItemElements = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 
@@ -156,10 +154,6 @@ export class Tabs {
         removeAttribute(tab, 'tabindex');
       }
     }
-  };
-
-  private observeProperties = (): void => {
-    this.tabsItemElements.forEach((el) => observeProperties(el, ['label'], () => forceUpdate(this.host)));
   };
 
   private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>): void => {
