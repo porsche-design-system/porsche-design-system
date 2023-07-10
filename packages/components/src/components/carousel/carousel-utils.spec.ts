@@ -1,7 +1,7 @@
 import * as carouselUtils from './carousel-utils';
 import {
   getAmountOfPages,
-  getSlidesAndAddNamedSlots,
+  getSlidesAndAddAttributes,
   getSplideBreakpoints,
   isFirstPage,
   isLastPage,
@@ -83,7 +83,7 @@ describe('warnIfHeadingIsMissing()', () => {
   });
 });
 
-describe('getSlidesAndAddNamedSlots()', () => {
+describe('getSlidesAndAddAttributes()', () => {
   const getChildren = (): HTMLElement[] => {
     const child1 = document.createElement('div');
     child1.id = 'child1';
@@ -99,11 +99,11 @@ describe('getSlidesAndAddNamedSlots()', () => {
 
   it('should return parameters children as array ', () => {
     const host = document.createElement('p-carousel');
-    expect(getSlidesAndAddNamedSlots(host)).toEqual([]);
+    expect(getSlidesAndAddAttributes(host)).toEqual([]);
 
     const children = getChildren();
     host.append(...children);
-    expect(getSlidesAndAddNamedSlots(host)).toEqual(children);
+    expect(getSlidesAndAddAttributes(host)).toEqual(children);
   });
 
   it('should not return parameters children with slot="heading" or slot="post-heading"', () => {
@@ -114,17 +114,20 @@ describe('getSlidesAndAddNamedSlots()', () => {
     child3.slot = 'description';
 
     host.append(child1, child2, child3);
-    expect(getSlidesAndAddNamedSlots(host)).toEqual([child1]);
+    expect(getSlidesAndAddAttributes(host)).toEqual([child1]);
   });
 
-  it('should add incremental slot="slide-x" attribute on each child', () => {
+  it('should add incremental slot="slide-x" and tabindex="0" properties and attributes on each child', () => {
     const host = document.createElement('p-carousel');
     const children = getChildren();
     host.append(...children);
 
-    const result = getSlidesAndAddNamedSlots(host);
+    const result = getSlidesAndAddAttributes(host);
     result.forEach((child, i) => {
       expect(child.slot).toBe(`slide-${i}`);
+      expect(child.tabIndex).toBe(0);
+      expect(child.getAttribute('slot')).toBe(`slide-${i}`);
+      expect(child.getAttribute('tabindex')).toBe('0');
     });
   });
 });

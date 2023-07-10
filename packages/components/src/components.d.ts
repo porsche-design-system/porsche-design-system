@@ -723,7 +723,7 @@ export namespace Components {
          */
         "color"?: IconColor;
         /**
-          * Has no effect anymore
+          * Has no effect anymore (the component is now using the native `loading="lazy"` attribute by default)
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
@@ -2831,7 +2831,7 @@ declare namespace LocalJSX {
          */
         "color"?: IconColor;
         /**
-          * Has no effect anymore
+          * Has no effect anymore (the component is now using the native `loading="lazy"` attribute by default)
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "lazy"?: boolean;
