@@ -21,7 +21,6 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-typescript": "^11.1.2",
     "@types/madge": "^5.0.0",
     "@types/styled-components": "^5.1.26",
     "change-case": "^4.1.2",
@@ -29,9 +28,6 @@
     "madge": "^6.1.0",
     "prettier": "^2.8.8",
     "react-jss": "^10.10.0",
-    "rollup": "^3.26.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-generate-package-json": "^3.2.0",
     "sass": "^1.63.6",
     "styled-components": "^5.3.11",
     "ts-jest": "^29.1.1",
