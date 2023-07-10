@@ -93,7 +93,7 @@ export class TabsBar {
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
-    this.direction = newValue > oldValue || oldValue === undefined ? 'next' : 'prev';
+    this.direction = this.activeTabIndex > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.setBarStyle();
     this.scrollActiveTabIntoView();
   }
@@ -172,7 +172,6 @@ export class TabsBar {
     this.setTabElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
     this.setBarStyle();
-    this.setAccessibilityAttributes();
   };
 
   private setAccessibilityAttributes = (): void => {
