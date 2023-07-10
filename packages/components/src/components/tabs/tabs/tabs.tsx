@@ -1,11 +1,10 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, h, Host, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  observeProperties,
   removeAttribute,
   setAttribute,
   THEMES,
@@ -77,7 +76,6 @@ export class Tabs {
 
   public connectedCallback(): void {
     this.defineTabsItemElements();
-    this.observeProperties();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -130,7 +128,6 @@ export class Tabs {
 
   private onSlotchange = (): void => {
     this.defineTabsItemElements();
-    this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
   };
 
   private defineTabsItemElements = (): void => {
@@ -157,10 +154,6 @@ export class Tabs {
         removeAttribute(tab, 'tabindex');
       }
     }
-  };
-
-  private observeProperties = (): void => {
-    this.tabsItemElements.forEach((el) => observeProperties(el, ['label'], () => forceUpdate(this.host)));
   };
 
   private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>): void => {
