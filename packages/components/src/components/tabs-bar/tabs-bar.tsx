@@ -92,10 +92,7 @@ export class TabsBar {
 
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
-    // can be null if removeAttribute() is used
-    if (newValue === null) {
-      this.activeTabIndex = undefined;
-    }
+    this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.direction = newValue > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.setBarStyle();
     this.scrollActiveTabIntoView();
@@ -115,12 +112,7 @@ export class TabsBar {
     // TODO: validation of active element index inside of tabs bar!
     // TODO: why not do this in connectedCallback?
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
-
-    // skip scrolling on first render when no activeElementIndex is set
-    if (this.activeTabIndex !== undefined) {
-      this.scrollActiveTabIntoView(false);
-    }
-
+    this.scrollActiveTabIntoView(false);
     this.observeBreakpointChange();
   }
 
@@ -263,7 +255,7 @@ export class TabsBar {
   private scrollActiveTabIntoView = (isSmooth = true): void => {
     // scrollAreaElement might be undefined in certain scenarios with framework routing involved
     // where the activeTabIndex watcher triggers this function before the scroller is rendered and the ref defined
-    if (this.scrollerElement) {
+    if (this.scrollerElement && this.activeTabIndex !== undefined) {
       const scrollActivePosition = getScrollActivePosition(
         this.tabElements,
         this.direction,
