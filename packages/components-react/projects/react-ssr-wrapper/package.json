@@ -16,8 +16,6 @@
     "clean:build": "rm -rf ../../dist/react-wrapper/ssr"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "rollup": "^3.26.0",
-    "rollup-plugin-generate-package-json": "^3.2.0"
+    "@porsche-design-system/shared": "0.0.0"
   }
 }
