@@ -12,9 +12,9 @@ export const observedNodesMap: Map<Node, () => void> = new Map();
 const childrenObserver =
   hasWindow &&
   new MutationObserver((mutations) => {
-    const observedNodes = Array.from(observedNodesMap.keys());
     // there may be race conditions in jsdom-polyfill tests  where the map is already empty when a mutation happens
     if (observedNodesMap.size) {
+      const observedNodes = Array.from(observedNodesMap.keys());
       mutations
         // remove duplicates so we execute callback only once per node
         .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
