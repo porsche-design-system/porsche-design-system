@@ -344,7 +344,10 @@ const generateComponentMeta = (): void => {
                   } else {
                     result[propName] = [...(result[propName] as string[]), ...variableValues];
                   }
-                } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
+                } else if (
+                  propType.match(/^oneOf<ValidatorFunction>/) ||
+                  propType.match(/^breakpoint<ValidatorFunction/)
+                ) {
                   // e.g. in segmented-control, segmented-control-item or carousel
                   const [, oneOfParam] = propType.match(/\(((?:.|\n)+)\)/);
                   const [, oneOfValues] = oneOfParam.match(/^\[((?:.|\n)+)]$/) || [];
