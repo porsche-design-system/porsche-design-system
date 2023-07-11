@@ -28,7 +28,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   ]),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
-  column: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.breakpoint('number'), AllowedTypes.breakpoint(['auto'])]),
+  column: AllowedTypes.breakpoint<ValidatorFunction | 'auto'>([AllowedTypes.number, 'auto']),
 };
 
 @Component({

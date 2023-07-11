@@ -420,7 +420,7 @@ exports[`should call validateProps() with correct parameters via render for p-sc
 exports[`should call validateProps() with correct parameters via render for p-segmented-control: propTypes with ValidatorFunctions 1`] = `
 {
   "backgroundColor": "oneOf",
-  "column": "oneOf",
+  "column": "breakpoint",
   "theme": "oneOf",
   "value": "oneOf",
 }

@@ -115,7 +115,7 @@ export const isBreakpointCustomizableValueInvalid = <T>(
 ): boolean => {
   return allowedValues === 'boolean' || allowedValues === 'number'
     ? isValueNotOfType(value, allowedValues)
-    : !allowedValues.includes(value as T);
+    : typeof allowedValues[0] !== 'function' && !allowedValues.includes(value as T);
 };
 
 type AllowedTypeKey = 'string' | 'number' | 'boolean';
