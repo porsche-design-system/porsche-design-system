@@ -6,7 +6,7 @@ describe('getComponentCss()', () => {
     [80, 1],
     [230, 10],
     [20, { base: 4, s: 3, m: 2, l: 'auto' }],
-  ])('should return correct css for maxWidth: %s and column: %s', (...args) => {
+  ])('should return correct css for maxWidth: %s and columns: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });

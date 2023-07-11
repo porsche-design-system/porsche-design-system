@@ -429,6 +429,90 @@ describe('AllowedTypes', () => {
         expect(result2).toBe(undefined);
       });
     });
+
+    describe('for array of values', () => {
+      const validatorFunctionValues = AllowedTypes.breakpoint(['a', 'b']);
+
+      it('should return anonymous ValidatorFunction', () => {
+        expect(validatorFunctionValues).toEqual(expect.any(Function));
+      });
+
+      it('should call formatArrayOutput() via anonymous ValidatorFunction', () => {
+        const spy = jest.spyOn(validatePropsUtils, 'formatArrayOutput');
+        validatorFunctionValues('propName', 'c');
+        expect(spy).toBeCalledWith(['a', 'b']);
+      });
+
+      it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
+        const result = validatorFunctionValues('propName', 'c');
+        expect(result).toEqual({
+          propName: 'propName',
+          propValue: 'c',
+          propType:
+            "('a' | 'b')[], { base: ('a' | 'b')[], xs?: ('a' | 'b')[], s?: ('a' | 'b')[], m?: ('a' | 'b')[], l?: ('a' | 'b')[], xl?: ('a' | 'b')[], xxl?: ('a' | 'b')[] }",
+        });
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value is in allowedValues array', () => {
+        const result = validatorFunctionValues('propName', 'b');
+        expect(result).toBe(undefined);
+      });
+    });
+
+    describe('for array of validator functions', () => {
+      const nestedValidatorFunc1 = jest.fn();
+      const nestedValidatorFunc2 = jest.fn();
+      const nestedValidatorFunc3 = jest.fn();
+
+      const validatorFunctionFunctions = AllowedTypes.breakpoint([
+        nestedValidatorFunc1,
+        nestedValidatorFunc2,
+        nestedValidatorFunc3,
+      ]);
+
+      const error: ValidationError = {
+        propName: 'propName',
+        propValue: 'c',
+        propType: expect.any(String),
+      };
+
+      it('should return anonymous ValidatorFunction', () => {
+        expect(validatorFunctionFunctions).toEqual(expect.any(Function));
+      });
+
+      it('should call nested validator functions until first one returns undefined via anonymous ValidatorFunction', () => {
+        nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'string' });
+        nestedValidatorFunc2.mockReturnValueOnce(undefined);
+        validatorFunctionFunctions('propName', 'c');
+        expect(nestedValidatorFunc1).toBeCalledWith('propName', 'c');
+        expect(nestedValidatorFunc2).toBeCalledWith('propName', 'c');
+        expect(nestedValidatorFunc3).not.toBeCalled();
+      });
+
+      it('should return error object via anonymous ValidatorFunction if value does not pass any nested validator function', () => {
+        nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'string' });
+        nestedValidatorFunc2.mockReturnValueOnce({ ...error, propType: 'boolean' });
+        nestedValidatorFunc3.mockReturnValueOnce({ ...error, propType: 'boolean' });
+        const result = validatorFunctionFunctions('propName', 'c');
+        expect(result).toEqual(error);
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value does not pass at least one nested validator function', () => {
+        nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'number' });
+        nestedValidatorFunc2.mockReturnValueOnce({ ...error, propType: 'number' });
+        nestedValidatorFunc3.mockReturnValueOnce(undefined);
+        const result = validatorFunctionFunctions('propName', 'c');
+        expect(result).toBe(undefined);
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value passes all nested validator functions', () => {
+        nestedValidatorFunc1.mockReturnValueOnce(undefined);
+        nestedValidatorFunc2.mockReturnValueOnce(undefined);
+        nestedValidatorFunc3.mockReturnValueOnce(undefined);
+        const result = validatorFunctionFunctions('propName', 'b');
+        expect(result).toBe(undefined);
+      });
+    });
   });
 
   describe('.aria', () => {

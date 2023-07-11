@@ -5,17 +5,20 @@ import type { BreakpointCustomizable } from '../../../types';
 const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
 
-export const getComponentCss = (maxWidth: number, column: BreakpointCustomizable<number | 'auto'>): string => {
-  maxWidth = (maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) || maxWidth;
+export const getComponentCss = (maxItemWidth: number, columns: BreakpointCustomizable<number | 'auto'>): string => {
+  const minWidth =
+    (maxItemWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) ||
+    (maxItemWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) ||
+    maxItemWidth;
 
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
-        ...buildResponsiveStyles(column, (col: number | 'auto') => ({
+        ...buildResponsiveStyles(columns, (col: number | 'auto') => ({
           gridTemplateColumns:
-            col === 'auto' ? `repeat(auto-fit, minmax(${maxWidth}px, 1fr))` : `repeat(${col}, ${maxWidth}px)`,
+            col === 'auto' ? `repeat(auto-fit, minmax(${minWidth}px, 1fr))` : `repeat(${col}, ${minWidth}px)`,
         })),
         gap: '6px',
         ...hostHiddenStyles,

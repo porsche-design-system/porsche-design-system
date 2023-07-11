@@ -1207,9 +1207,9 @@ export namespace Components {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
-          * Sets the width and number of columns of the items.
+          * Sets the width of the items.
          */
-        "column"?: BreakpointCustomizable<number | 'auto'>;
+        "columns"?: BreakpointCustomizable<number | 'auto'>;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -3339,9 +3339,9 @@ declare namespace LocalJSX {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
-          * Sets the width and number of columns of the items.
+          * Sets the width of the items.
          */
-        "column"?: BreakpointCustomizable<number | 'auto'>;
+        "columns"?: BreakpointCustomizable<number | 'auto'>;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
