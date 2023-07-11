@@ -58,28 +58,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-segmented-control>
     </div>
 
-    <p-segmented-control class="playground light" title="should render segmented-control with column=1" [column]="1">
+    <p-segmented-control class="playground light" title="should render segmented-control with columns=1" [columns]="1">
       <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
       <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
       <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
       <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
     </p-segmented-control>
 
-    <p-segmented-control class="playground light" title="should render segmented-control with column=2" [column]="2">
+    <p-segmented-control class="playground light" title="should render segmented-control with columns=2" [columns]="2">
       <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
       <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
       <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
       <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
     </p-segmented-control>
 
-    <p-segmented-control class="playground light" title="should render segmented-control with column=3" [column]="3">
+    <p-segmented-control class="playground light" title="should render segmented-control with columns=3" [columns]="3">
       <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
       <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
       <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
       <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
     </p-segmented-control>
 
-    <p-segmented-control class="playground light" title="should render segmented-control with column=4" [column]="4">
+    <p-segmented-control class="playground light" title="should render segmented-control with columns=4" [columns]="4">
       <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
       <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
       <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
@@ -88,8 +88,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <p-segmented-control
       class="playground light"
-      title="should render segmented-control with responsive column"
-      [column]="{ base: 'auto', s: 1, m: 2, l: 3, xl: 4 }"
+      title="should render segmented-control with responsive columns"
+      [columns]="{ base: 'auto', s: 1, m: 2, l: 3, xl: 4 }"
     >
       <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
       <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
