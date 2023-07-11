@@ -2164,7 +2164,7 @@ exports[`should match snapshot 1`] = `
         "background-surface",
         "background-default",
       ],
-      "column": [
+      "columns": [
         "number",
         "auto",
       ],
@@ -2178,7 +2178,7 @@ exports[`should match snapshot 1`] = `
       ],
     },
     "breakpointCustomizableProps": [
-      "column",
+      "columns",
     ],
     "deprecatedEventNames": [
       "segmentedControlChange",
@@ -2203,7 +2203,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "props": {
       "backgroundColor": null,
-      "column": "auto",
+      "columns": "auto",
       "theme": "light",
       "value": null,
     },
