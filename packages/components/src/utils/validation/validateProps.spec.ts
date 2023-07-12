@@ -118,39 +118,39 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
   describe('for boolean', () => {
     it('should call isValueNotOfType() with correct parameters', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isValueNotOfType');
-      isBreakpointCustomizableValueInvalid(true, 'boolean');
+      isBreakpointCustomizableValueInvalid('name', true, 'boolean');
       expect(spy).toBeCalledWith(true, 'boolean');
     });
 
     it('should return result of isValueNotOfType()', () => {
       jest.spyOn(validatePropsUtils, 'isValueNotOfType').mockReturnValueOnce(true).mockReturnValueOnce(false);
-      expect(isBreakpointCustomizableValueInvalid(true, 'boolean')).toBe(true);
-      expect(isBreakpointCustomizableValueInvalid(true, 'boolean')).toBe(false);
+      expect(isBreakpointCustomizableValueInvalid('name', true, 'boolean')).toBe(true);
+      expect(isBreakpointCustomizableValueInvalid('name', true, 'boolean')).toBe(false);
     });
   });
 
   describe('for number', () => {
     it('should call isValueNotOfType() with correct parameters', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isValueNotOfType');
-      isBreakpointCustomizableValueInvalid(true, 'number');
+      isBreakpointCustomizableValueInvalid('name', true, 'number');
       expect(spy).toBeCalledWith(true, 'number');
     });
 
     it('should return result of isValueNotOfType()', () => {
       jest.spyOn(validatePropsUtils, 'isValueNotOfType').mockReturnValueOnce(true).mockReturnValueOnce(false);
-      expect(isBreakpointCustomizableValueInvalid(true, 'number')).toBe(true);
-      expect(isBreakpointCustomizableValueInvalid(true, 'number')).toBe(false);
+      expect(isBreakpointCustomizableValueInvalid('name', true, 'number')).toBe(true);
+      expect(isBreakpointCustomizableValueInvalid('name', true, 'number')).toBe(false);
     });
   });
 
   describe('for array', () => {
     const allowedValues = ['a', 'b'];
     it('should return true if value is not in allowedValues', () => {
-      expect(isBreakpointCustomizableValueInvalid('c', allowedValues)).toBe(true);
+      expect(isBreakpointCustomizableValueInvalid('name', 'c', allowedValues)).toBe(true);
     });
 
     it('should return false if value is in allowedValues', () => {
-      expect(isBreakpointCustomizableValueInvalid('a', allowedValues)).toBe(false);
+      expect(isBreakpointCustomizableValueInvalid('name', 'a', allowedValues)).toBe(false);
     });
   });
 });
@@ -362,7 +362,7 @@ describe('AllowedTypes', () => {
     it('should call isBreakpointCustomizableValueInvalid() with correct parameters for flat value via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isBreakpointCustomizableValueInvalid');
       validatorFunctionArray('propName', 'a');
-      expect(spy).toBeCalledWith('a', ['a', 'b']);
+      expect(spy).toBeCalledWith('propName', 'a', ['a', 'b']);
     });
 
     it('should call isBreakpointCustomizableValueInvalid() with correct parameters for nested values via anonymous ValidatorFunction', () => {
@@ -370,8 +370,8 @@ describe('AllowedTypes', () => {
       const propValue = { base: 'a', s: 'b' };
       validatorFunctionArray('propName', propValue);
       expect(spy).toBeCalledTimes(2);
-      expect(spy).toHaveBeenNthCalledWith(1, 'a', ['a', 'b']);
-      expect(spy).toHaveBeenNthCalledWith(2, 'b', ['a', 'b']);
+      expect(spy).toHaveBeenNthCalledWith(1, 'propName', 'a', ['a', 'b']);
+      expect(spy).toHaveBeenNthCalledWith(2, 'propName', 'b', ['a', 'b']);
     });
 
     it('should call getBreakpointCustomizableStructure() via anonymous ValidatorFunction', () => {
