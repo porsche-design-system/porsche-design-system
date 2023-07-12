@@ -4,7 +4,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 and column
 ":host {
   display: grid !important;
   grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(4, 46px) !important;
+  grid-template-columns: repeat(4, minmax(46px, 1fr)) !important;
   gap: 6px !important;
 }
 :host([hidden]) {
@@ -12,19 +12,19 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 and column
 }
 @media(min-width:760px) {
   :host {
-    grid-template-columns: repeat(3, 46px) !important;
+    grid-template-columns: repeat(3, minmax(46px, 1fr)) !important;
   }
 }
 
 @media(min-width:1000px) {
   :host {
-    grid-template-columns: repeat(2, 46px) !important;
+    grid-template-columns: repeat(2, minmax(46px, 1fr)) !important;
   }
 }
 
 @media(min-width:1300px) {
   :host {
-    grid-template-columns: repeat(auto-fit, minmax(46px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, 46px) !important;
   }
 }
 "
@@ -34,7 +34,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 and column
 ":host {
   display: grid !important;
   grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, minmax(46px, 1fr)) !important;
+  grid-template-columns: repeat(auto-fit, 46px) !important;
   gap: 6px !important;
 }
 :host([hidden]) {
@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 80 and column
 ":host {
   display: grid !important;
   grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(1, 80px) !important;
+  grid-template-columns: repeat(1, minmax(80px, 1fr)) !important;
   gap: 6px !important;
 }
 :host([hidden]) {
@@ -58,7 +58,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 230 and colum
 ":host {
   display: grid !important;
   grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(10, 220px) !important;
+  grid-template-columns: repeat(10, minmax(220px, 1fr)) !important;
   gap: 6px !important;
 }
 :host([hidden]) {

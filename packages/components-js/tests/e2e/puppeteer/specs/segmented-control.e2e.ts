@@ -32,13 +32,13 @@ const getAllItemButtons = async () =>
 
 const getFirstItemOffsetWidth = async (): Promise<number> => getOffsetWidth(await getFirstItemHost());
 
-const initSegmentedControl = (opts?: { amount?: number; value?: number; column?: number }): Promise<void> => {
-  const { amount = 1, value, column } = opts || {};
+const initSegmentedControl = (opts?: { amount?: number; value?: number; columns?: number }): Promise<void> => {
+  const { amount = 1, value, columns } = opts || {};
   const items = Array.from(Array(amount))
     .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
     .join('\n');
 
-  const content = `<p-segmented-control ${value ? ` value="${value}"` : ''} ${column ? ` column="${column}"` : ''}">
+  const content = `<p-segmented-control ${value ? ` value="${value}"` : ''} ${columns ? ` columns="${columns}"` : ''}">
   ${items}
 </p-segmented-control>`;
 
@@ -46,8 +46,8 @@ const initSegmentedControl = (opts?: { amount?: number; value?: number; column?:
 };
 
 describe('width calculation', () => {
-  it('should recalculate width on resized', async () => {
-    await initSegmentedControl({ amount: 6 });
+  it('should recalculate width on resized when columns=6', async () => {
+    await initSegmentedControl({ amount: 6, columns: 1 });
     const initialItemWidth = await getFirstItemOffsetWidth();
 
     await page.setViewport({ width: 800, height: 600 });
@@ -56,8 +56,8 @@ describe('width calculation', () => {
     expect(await getFirstItemOffsetWidth()).toBeLessThan(initialItemWidth);
   });
 
-  it('should recalculate width on items when column=6 and longest content is removed', async () => {
-    await initSegmentedControl({ amount: 6, column: 6 });
+  it('should recalculate width on items when longest content is removed', async () => {
+    await initSegmentedControl({ amount: 6 });
     const secondItemHost = await getSecondItemHost();
 
     // Extend content of second item
@@ -72,8 +72,8 @@ describe('width calculation', () => {
     expect(await getFirstItemOffsetWidth()).toBeLessThan(initialItemWidth);
   });
 
-  it('should recalculate width on items when column=6 and new item with longer content is added', async () => {
-    await initSegmentedControl({ amount: 6, column: 6 });
+  it('should recalculate width on items when new item with longer content is added', async () => {
+    await initSegmentedControl({ amount: 6 });
     const host = await getHost();
 
     const initialItemWidth = await getFirstItemOffsetWidth();
@@ -88,8 +88,8 @@ describe('width calculation', () => {
     expect(await getFirstItemOffsetWidth()).toBeGreaterThan(initialItemWidth);
   });
 
-  it('should recalculate width on items when column=6 and content changes', async () => {
-    await initSegmentedControl({ amount: 6, column: 6 });
+  it('should recalculate width on items when content changes', async () => {
+    await initSegmentedControl({ amount: 6 });
     const firstItemHost = await getFirstItemHost();
 
     const initialItemWidth = await getFirstItemOffsetWidth();
@@ -102,8 +102,8 @@ describe('width calculation', () => {
     expect(await getFirstItemOffsetWidth()).toBeGreaterThan(initialItemWidth);
   });
 
-  it('should recalculate width on items on label change when column=6', async () => {
-    await initSegmentedControl({ amount: 6, column: 6 });
+  it('should recalculate width on items on label change', async () => {
+    await initSegmentedControl({ amount: 6 });
     const firstItemHost = await getFirstItemHost();
 
     await setProperty(firstItemHost, 'label', 'Some super long Label to extend the width');
@@ -117,8 +117,8 @@ describe('width calculation', () => {
     expect(await getFirstItemOffsetWidth()).toBeLessThan(initialItemWidth);
   });
 
-  it('should recalculate width on items when icon is added when column=6', async () => {
-    await initSegmentedControl({ amount: 6, column: 6 });
+  it('should recalculate width on items when icon is added', async () => {
+    await initSegmentedControl({ amount: 6 });
     const secondItemHost = await getSecondItemHost();
 
     const initialItemWidth = await getFirstItemOffsetWidth();
@@ -129,8 +129,8 @@ describe('width calculation', () => {
     expect(await getFirstItemOffsetWidth()).toBeGreaterThan(initialItemWidth);
   });
 
-  it('should recalculate width on items when icon is removed when column=6', async () => {
-    await initSegmentedControl({ amount: 6, column: 6 });
+  it('should recalculate width on items when icon is removed', async () => {
+    await initSegmentedControl({ amount: 6 });
     const secondItemHost = await getSecondItemHost();
 
     await setProperty(secondItemHost, 'icon', 'truck');

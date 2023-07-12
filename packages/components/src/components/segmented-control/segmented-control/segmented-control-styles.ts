@@ -18,7 +18,7 @@ export const getComponentCss = (maxItemWidth: number, columns: BreakpointCustomi
         gridAutoRows: '1fr', // for equal height
         ...buildResponsiveStyles(columns, (col: number | 'auto') => ({
           gridTemplateColumns:
-            col === 'auto' ? `repeat(auto-fit, minmax(${minWidth}px, 1fr))` : `repeat(${col}, ${minWidth}px)`,
+            col === 'auto' ? `repeat(auto-fit, ${minWidth}px)` : `repeat(${col}, minmax(${minWidth}px, 1fr))`,
         })),
         gap: '6px',
         ...hostHiddenStyles,
