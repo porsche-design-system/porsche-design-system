@@ -115,7 +115,7 @@ export default class Code extends Vue {
   column = 'auto';
   columns = ['auto', 1, 2, 3, 4, 5, "{ base: 1, s: 2, m: 'auto' }"];
   get columnsMarkup() {
-    return `<p-segmented-control columns="${this.columns}" aria-label="Choose a t-shirt size">
+    return `<p-segmented-control columns="${this.column}" aria-label="Choose a t-shirt size">
   ${this.shirtSizeItems}
 </p-segmented-control>`;
   }
