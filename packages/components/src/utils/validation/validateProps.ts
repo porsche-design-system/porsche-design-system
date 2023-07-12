@@ -78,7 +78,7 @@ export const getBreakpointCustomizableStructure = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): string => {
   if (allowedValues !== 'boolean' && allowedValues !== 'number') {
-    allowedValues = formatArrayOutput(allowedValues.map((val) => (typeof val === 'function' ? (val as any).name : val)))
+    allowedValues = formatArrayOutput(allowedValues.map((val) => (typeof val === 'function' ? val.name : val)))
       .replace(/\[/g, '(') // starting inline type literal array
       .replace(/]/g, ')[]') // ending inline type literal array
       .replace(/,/g, ' |') as any; // replace commas with a pipe
