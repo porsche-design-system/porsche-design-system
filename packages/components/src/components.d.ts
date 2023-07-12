@@ -39,6 +39,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -96,6 +97,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -1081,6 +1083,26 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PMultiSelect {
+        /**
+          * The label text.
+         */
+        "name": string;
+    }
+    interface PMultiSelectOption {
+        /**
+          * Disables the option.
+         */
+        "disabled": boolean;
+        /**
+          * The option selected state.
+         */
+        "selected": boolean;
+        /**
+          * The option value.
+         */
+        "value": string;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1691,6 +1713,10 @@ export interface PModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPModalElement;
 }
+export interface PMultiSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPMultiSelectOptionElement;
+}
 export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPaginationElement;
@@ -1941,6 +1967,18 @@ declare global {
         prototype: HTMLPModelSignatureElement;
         new (): HTMLPModelSignatureElement;
     };
+    interface HTMLPMultiSelectElement extends Components.PMultiSelect, HTMLStencilElement {
+    }
+    var HTMLPMultiSelectElement: {
+        prototype: HTMLPMultiSelectElement;
+        new (): HTMLPMultiSelectElement;
+    };
+    interface HTMLPMultiSelectOptionElement extends Components.PMultiSelectOption, HTMLStencilElement {
+    }
+    var HTMLPMultiSelectOptionElement: {
+        prototype: HTMLPMultiSelectOptionElement;
+        new (): HTMLPMultiSelectOptionElement;
+    };
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
     }
     var HTMLPPaginationElement: {
@@ -2165,6 +2203,8 @@ declare global {
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
+        "p-multi-select": HTMLPMultiSelectElement;
+        "p-multi-select-option": HTMLPMultiSelectOptionElement;
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
@@ -3201,6 +3241,30 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PMultiSelect {
+        /**
+          * The label text.
+         */
+        "name"?: string;
+    }
+    interface PMultiSelectOption {
+        /**
+          * Disables the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * Emitted when the option state changes.
+         */
+        "onUpdate"?: (event: PMultiSelectOptionCustomEvent<MultiSelectOptionUpdateEvent>) => void;
+        /**
+          * The option selected state.
+         */
+        "selected"?: boolean;
+        /**
+          * The option value.
+         */
+        "value"?: string;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -3881,6 +3945,8 @@ declare namespace LocalJSX {
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
+        "p-multi-select": PMultiSelect;
+        "p-multi-select-option": PMultiSelectOption;
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
@@ -3977,6 +4043,8 @@ declare module "@stencil/core" {
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
+            "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
+            "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
