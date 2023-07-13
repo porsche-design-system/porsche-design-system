@@ -5,13 +5,10 @@ import {
   getActiveElementId,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
-  getConsoleLogMessages,
-  getConsoleLogsAmount,
   getCssClasses,
   getEventSummary,
   getLifecycleStatus,
   goto,
-  initConsoleObserver,
   reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
@@ -663,16 +660,14 @@ describe('events', () => {
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 
+  // TODO: find a way to test native click behaviour
   xit('should emit native events on slotted interactive elements', async () => {
-    initConsoleObserver(page);
     await initCarousel({ amountOfSlides: 4, slidesPerPage: 1, withFocusableElements: true });
     const getSlottedLink1 = selectNode(page, '#link-1');
     const getSlottedLink2 = selectNode(page, '#link-4');
 
     await (await getSlottedLink1).click();
     await (await getSlottedLink2).click();
-
-    expect(getConsoleLogsAmount()).toBe(2);
   });
 });
 

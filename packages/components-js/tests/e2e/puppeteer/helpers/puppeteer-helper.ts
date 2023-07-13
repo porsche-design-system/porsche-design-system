@@ -282,7 +282,6 @@ export const initConsoleObserver = (page: Page): void => {
 
 const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
 const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
-const getConsoleLogs = () => consoleMessages.filter((x) => x.type() === 'log');
 export const getConsoleErrorsAmount = () => getConsoleErrors().length;
 export const getConsoleErrorMessages = () =>
   getConsoleErrors()
@@ -291,12 +290,6 @@ export const getConsoleErrorMessages = () =>
 export const getConsoleWarningsAmount = () => getConsoleWarnings().length;
 export const getConsoleWarningMessages = () =>
   getConsoleWarnings()
-    .map((msg) => '- ' + msg.text())
-    .join('\n');
-
-export const getConsoleLogsAmount = () => getConsoleLogs().length;
-export const getConsoleLogMessages = () =>
-  getConsoleLogs()
     .map((msg) => '- ' + msg.text())
     .join('\n');
 
