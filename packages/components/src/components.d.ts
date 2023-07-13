@@ -12,6 +12,7 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+import { TileBackground } from "./utils";
 import { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -69,6 +70,7 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+export { TileBackground } from "./utils";
 export { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -293,6 +295,10 @@ export namespace Components {
           * Aspect ratio of the button-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Adapts the description and button theme when used on light background image.
+         */
+        "background"?: BreakpointCustomizable<TileBackground>;
         /**
           * Displays the button-tile as compact version with description and button icon only.
          */
@@ -933,6 +939,10 @@ export namespace Components {
           * Aspect ratio of the link-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        /**
+          * Adapts the description and link theme when used on light background image.
+         */
+        "background"?: BreakpointCustomizable<TileBackground>;
         /**
           * Displays the link-tile as compact version with description and link icon only.
          */
@@ -2386,6 +2396,10 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
+          * Adapts the description and button theme when used on light background image.
+         */
+        "background"?: BreakpointCustomizable<TileBackground>;
+        /**
           * Displays the button-tile as compact version with description and button icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
@@ -3045,6 +3059,10 @@ declare namespace LocalJSX {
           * Aspect ratio of the link-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
+        /**
+          * Adapts the description and link theme when used on light background image.
+         */
+        "background"?: BreakpointCustomizable<TileBackground>;
         /**
           * Displays the link-tile as compact version with description and link icon only.
          */

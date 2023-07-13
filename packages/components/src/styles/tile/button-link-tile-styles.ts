@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../utils';
+import type { Theme, TileAlign, TileAspectRatio, TileBackground, TileSize, TileWeight } from '../../utils';
 import type { LinkTileWeight } from '../../components/link-tile/link-tile-utils';
 import type { BreakpointCustomizable } from '../../types';
 import { pxToRemWithUnit } from '../';
@@ -14,6 +14,7 @@ import {
 import { buildResponsiveStyles, mergeDeep } from '../../utils';
 import { getFontWeight } from '../font-weight-styles';
 import { getTileBaseStyles } from './tile-base-styles';
+import { getThemedColors } from '../../styles';
 
 const sizeMap: Record<TileSize, { fontSize: string }> = {
   inherit: { fontSize: 'inherit' },
@@ -24,6 +25,7 @@ export const getButtonLinkTileStyles = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   size: BreakpointCustomizable<TileSize>,
   weight: BreakpointCustomizable<TileWeight | LinkTileWeight>, // to get deprecated semibold typed
+  background: BreakpointCustomizable<TileBackground>,
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
@@ -43,6 +45,11 @@ export const getButtonLinkTileStyles = (
             buildResponsiveStyles(weight, (w: TileWeight | LinkTileWeight) => ({
               fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w), // mapping of the deprecated weight semibold
             }))
+          ),
+          ...buildResponsiveStyles(background, (background: Theme) =>
+            background === 'dark'
+              ? { color: getThemedColors('dark').primaryColor }
+              : { color: getThemedColors('light').primaryColor }
           ),
         },
       },
