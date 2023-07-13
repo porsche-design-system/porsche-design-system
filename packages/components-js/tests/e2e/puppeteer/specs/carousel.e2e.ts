@@ -42,7 +42,7 @@ const initCarousel = (opts?: InitOptions) => {
 
   const slides = Array.from(Array(amountOfSlides))
     .map((_, i) => {
-      const link = withFocusableElements ? ` <a id="link-${i + 1}" href="#">Link</a>` : '';
+      const link = withFocusableElements ? ` <a id="link-${i + 1}" href="#" onclick="return false;">Link</a>` : '';
       return `<div id="slide${i + 1}">Slide ${i + 1}${link}</div>`;
     })
     .join('\n  ');
@@ -657,6 +657,16 @@ describe('events', () => {
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
+
+  // TODO: find a way to test native click behaviour
+  xit('should emit native events on slotted interactive elements', async () => {
+    await initCarousel({ amountOfSlides: 4, slidesPerPage: 1, withFocusableElements: true });
+    const getSlottedLink1 = selectNode(page, '#link-1');
+    const getSlottedLink2 = selectNode(page, '#link-4');
+
+    await (await getSlottedLink1).click();
+    await (await getSlottedLink2).click();
+  });
 });
 
 describe('activeSlideIndex', () => {
@@ -770,6 +780,13 @@ describe('activeSlideIndex', () => {
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
     await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide2);
 
     expect(await isElementCompletelyInViewport(slide1)).toBe(false);
@@ -785,20 +802,19 @@ describe('activeSlideIndex', () => {
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide2);
+    await waitForSlideToBeActive(slide3);
 
-    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
-    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
     expect(await isElementCompletelyInViewport(slide3)).toBe(true);
-    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(true);
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide1);
+    await waitForSlideToBeActive(slide2);
 
-    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
-    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
   });
 
   it('should slide correctly if slides with focusable elements are tabbed', async () => {
@@ -841,19 +857,19 @@ describe('activeSlideIndex', () => {
     expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
     await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide1);
+
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
     await waitForSlideToBeActive(slide2);
 
-    expect(await isElementCompletelyInViewport(slide1)).toBe(false);
     expect(await isElementCompletelyInViewport(slide2)).toBe(true);
     expect(await isElementCompletelyInViewport(slide3)).toBe(true);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await waitForSlideToBeActive(slide3);
-
-    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
-    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
-    expect(await isElementCompletelyInViewport(slide4)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
