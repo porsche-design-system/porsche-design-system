@@ -284,7 +284,7 @@ export class Carousel {
           class="splide"
           aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
           ref={(ref) => (this.container = ref)}
-          onMouseDown={(e) => e.preventDefault()}
+          onMouseDown={(e) => e.preventDefault()} // enables native click events on slotted interactive elements
           onFocusin={this.onSplideFocusIn}
         >
           <div class="splide__track">
