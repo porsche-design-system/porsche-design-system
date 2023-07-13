@@ -284,7 +284,7 @@ export class Carousel {
           class="splide"
           aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
           ref={(ref) => (this.container = ref)}
-          onMouseDown={this.onSplideClick}
+          onMouseDown={(e) => e.preventDefault()}
           onFocusin={this.onSplideFocusIn}
         >
           <div class="splide__track">
@@ -352,23 +352,19 @@ export class Carousel {
   };
 
   private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
-    console.log(e);
     const { target } = e;
     const { index: splideIndex } = this.splide;
     const slideIndexOfFocusedElement = this.slides.findIndex((slide) => slide.contains(target)); // focussed element is slot or within slide, e.g. link or button
+    const slideIsVisible =
+      this.splide.Components.Elements.slides[slideIndexOfFocusedElement].classList.contains('is-visible');
 
     if (splideIndex !== slideIndexOfFocusedElement) {
-      if (slideIndexOfFocusedElement < this.amountOfPages && slideIndexOfFocusedElement > splideIndex) {
+      if (slideIndexOfFocusedElement > splideIndex && !slideIsVisible) {
         slideNext(this.splide, this.amountOfPages);
       } else if (slideIndexOfFocusedElement < splideIndex) {
         slidePrev(this.splide, this.amountOfPages);
       }
     }
-  };
-
-  private onSplideClick = (e: MouseEvent & { target: HTMLElement }): void => {
-    console.log(e);
-    e.stopPropagation();
   };
 
   private observeSlides(): void {
