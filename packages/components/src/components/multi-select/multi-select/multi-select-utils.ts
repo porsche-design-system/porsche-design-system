@@ -1,13 +1,18 @@
 export const nativeSelect = document.createElement('select');
 nativeSelect.multiple = true;
 
-export const createNativeSelect = (host: HTMLElement, name: string): void => {
+export const createNativeSelect = (host: HTMLElement, name: string, disabled: boolean, required: boolean): void => {
   nativeSelect.name = name;
-  host.prepend(nativeSelect);
+  nativeSelect.disabled = disabled;
+  nativeSelect.required = required;
+  // nativeSelect.hidden = true;
+  if (!host.querySelector('SELECT')) {
+    host.after(nativeSelect);
+  }
 };
 
 // TODO: only update options instead of recreate
-export const updateNativeSelectOptions = (multiSelectOptions: HTMLElement[]): void => {
+export const updateNativeSelectOptions = (multiSelectOptions: HTMLPMultiSelectOptionElement[]): void => {
   nativeSelect.innerHTML = '';
   multiSelectOptions.forEach((option) => {
     const selectOption = document.createElement('option');
@@ -16,8 +21,15 @@ export const updateNativeSelectOptions = (multiSelectOptions: HTMLElement[]): vo
   });
 };
 
-export const updateNativeOption = (nativeOption: HTMLElement, option: HTMLElement): void => {
-  (nativeOption as HTMLPMultiSelectOptionElement).value = (option as HTMLPMultiSelectOptionElement).value;
-  (nativeOption as HTMLPMultiSelectOptionElement).selected = (option as HTMLPMultiSelectOptionElement).selected;
+export const updateNativeOption = (nativeOption: HTMLOptionElement, option: HTMLPMultiSelectOptionElement): void => {
+  nativeOption.value = option.value;
+  nativeOption.selected = option.selected;
   nativeOption.textContent = option.textContent;
 };
+
+export const updateMultiSelectOptions = (searchString: string, options: HTMLPMultiSelectOptionElement[]): void => {
+  options.forEach((option) => (option.style.display = optionIncludesSearchString(option, searchString) ? '' : 'none'));
+};
+
+export const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searchString: string): boolean =>
+  option.value.toLowerCase().includes(searchString.toLowerCase());

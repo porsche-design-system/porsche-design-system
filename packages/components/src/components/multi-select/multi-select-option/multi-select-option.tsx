@@ -1,5 +1,5 @@
-import { Component, Element, Event, EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
-import { AllowedTypes, getPrefixedTagNames, validateProps } from '../../../utils';
+import { Component, Element, Event, EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
+import { AllowedTypes, getPrefixedTagNames, observeChildren, unobserveChildren, validateProps } from '../../../utils';
 import { MultiSelectOptionUpdateEvent } from './multi-select-option-utils';
 import { PropTypes } from '../../../utils/validation/validateProps';
 
@@ -28,13 +28,21 @@ export class MultiSelectOption {
   /** Emitted when the option state changes. */
   @Event({ bubbles: true }) public update: EventEmitter<MultiSelectOptionUpdateEvent>;
 
-  @Watch('value')
-  public valueChangeHandler(): void {
-    this.update.emit({ optionElement: this.host });
+  public connectedCallback(): void {
+    // TODO: Validation
+    // TODO: hidden prop?
+    observeChildren(this.host, () => {
+      this.update.emit({ optionElement: this.host as HTMLPMultiSelectOptionElement });
+    });
   }
 
-  // TODO: Validation
-  // TODO: Should slot content change also trigger update?
+  public componentDidUpdate(): void {
+    this.update.emit({ optionElement: this.host as HTMLPMultiSelectOptionElement });
+  }
+
+  public disconnectedCallback(): void {
+    unobserveChildren(this.host);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
@@ -43,10 +51,10 @@ export class MultiSelectOption {
     return (
       <Host>
         <PrefixedTagNames.pCheckboxWrapper>
+          <input type="checkbox" onClick={this.onClick} checked={this.selected} disabled={this.disabled} />
           <span slot="label">
             <slot />
           </span>
-          <input type="checkbox" onClick={this.onClick} checked={this.selected} disabled={this.disabled} />
         </PrefixedTagNames.pCheckboxWrapper>
       </Host>
     );
@@ -54,6 +62,5 @@ export class MultiSelectOption {
 
   private onClick = (): void => {
     this.selected = !this.selected;
-    this.update.emit({ optionElement: this.host });
   };
 }

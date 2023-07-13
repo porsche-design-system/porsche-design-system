@@ -1,1 +1,1 @@
-export type MultiSelectOptionUpdateEvent = { optionElement: HTMLElement };
+export type MultiSelectOptionUpdateEvent = { optionElement: HTMLPMultiSelectOptionElement };
