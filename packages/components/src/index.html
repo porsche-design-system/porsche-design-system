@@ -36,11 +36,78 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <form id="myForm">
+        <p-multi-select name="name" label="Some Label">
+          <p-multi-select-option value="Test">Test</p-multi-select-option>
+        </p-multi-select>
+        <!--        <p-fieldset required>-->
+        <!--          <p-select-wrapper label="Some label">-->
+        <!--            <select name="some-name" required>-->
+        <!--              <option hidden></option>-->
+        <!--              <option value="a">Option A</option>-->
+        <!--              <option value="b">Option B</option>-->
+        <!--              <option value="c">Option C</option>-->
+        <!--            </select>-->
+        <!--          </p-select-wrapper>-->
+        <!--        </p-fieldset>-->
+
+        <!--        <button type="button" id="toggle">Toggle required</button>-->
+        <button type="submit">Submit</button>
+      </form>
+    </main>
 
     <script>
-      <!-- START: keep this snippet to log component lifecycle events -->
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+      const multiSelect = document.querySelector('p-multi-select');
+      // const select = document.querySelector('p-select-wrapper select');
+      // const toggle = document.querySelector('#toggle');
+      const form = document.getElementById('myForm');
+
+      // console.log(toggle);
+      //
+      // toggle.addEventListener('click', () => {
+      //   if (select.getAttribute('required') === 'true') {
+      //     select.setAttribute('required', 'false');
+      //   } else {
+      //     select.setAttribute('required', 'true');
+      //   }
+      // });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the form from being submitted
+        // console.log(document.getElementById('cars').value);
+        console.log(form.name.value);
+      });
+
+      setTimeout(() => {
+        const option = document.createElement('p-multi-select-option');
+        option.value = 'Option 2';
+        option.setAttribute('value', 'Option 2');
+        option.selected = true;
+        option.innerText = 'Option 2';
+        multiSelect.appendChild(option);
+        console.log('Slot of p-multi-select was changed');
+      }, 1000);
+
+      setTimeout(() => {
+        const options = document.querySelectorAll('p-multi-select-option');
+        Array.from(options).at(-1).value = 'New Value';
+        console.log('Value of p-multi-select-option was changed');
+      }, 2000);
+
+      setTimeout(() => {
+        const options = document.querySelectorAll('p-multi-select-option');
+        Array.from(options).at(-1).innerHTML = 'New Value';
+        console.log('Slot content of p-multi-select-option was changed');
+      }, 3000);
+
+      // setTimeout(() => {
+      //   const options = document.querySelectorAll('p-multi-select-option');
+      //   Array.from(options).at(-1).disabled = true;
+      //   console.log('Changed p-multi-select-option to disabled');
+      // }, 4000);
+
+      [('componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate')].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
