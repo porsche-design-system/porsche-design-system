@@ -42,9 +42,7 @@ const initCarousel = (opts?: InitOptions) => {
 
   const slides = Array.from(Array(amountOfSlides))
     .map((_, i) => {
-      const link = withFocusableElements
-        ? ` <a id="link-${i + 1}" href="#" onclick="console.log('clicked');return false;">Link</a>`
-        : '';
+      const link = withFocusableElements ? ` <a id="link-${i + 1}" href="#" onclick="return false;">Link</a>` : '';
       return `<div id="slide${i + 1}">Slide ${i + 1}${link}</div>`;
     })
     .join('\n  ');
