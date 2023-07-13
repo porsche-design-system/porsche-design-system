@@ -5,9 +5,9 @@ export const createNativeSelect = (host: HTMLElement, name: string, disabled: bo
   nativeSelect.name = name;
   nativeSelect.disabled = disabled;
   nativeSelect.required = required;
-  // nativeSelect.hidden = true;
+  nativeSelect.hidden = true;
   if (!host.querySelector('SELECT')) {
-    host.after(nativeSelect);
+    host.prepend(nativeSelect);
   }
 };
 

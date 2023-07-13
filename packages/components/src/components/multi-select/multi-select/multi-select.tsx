@@ -11,16 +11,16 @@ import {
   AllowedTypes,
   attachComponentCss,
   getDirectChildHTMLElements,
+  getPrefixedTagNames,
   hasLabel,
   observeAttributes,
-  Theme,
   THEMES,
   validateProps,
 } from '../../../utils';
-import { PropTypes } from '../../../utils/validation/validateProps';
-import { BreakpointCustomizable } from '@porsche-design-system/components-vue';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
+import { MultiSelectDropdownOpenChangeEvent } from '../multi-select-dropdown/multi-select-dropdown-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -57,6 +57,7 @@ export class MultiSelect {
   @Prop() public theme?: Theme = 'light';
 
   @State() private selectedString = '';
+  @State() private isOpen = false;
 
   private multiSelectOptions: HTMLPMultiSelectOptionElement[];
 
@@ -66,6 +67,11 @@ export class MultiSelect {
     const nativeOption = nativeSelect.children[index] as HTMLOptionElement;
     updateNativeOption(nativeOption, event.detail.optionElement);
     this.updateSelectedString();
+  }
+
+  @Listen('openChange')
+  public updateDropdownOpen(event: CustomEvent<MultiSelectDropdownOpenChangeEvent>): void {
+    this.isOpen = event.detail.isOpen;
   }
 
   public connectedCallback(): void {
@@ -83,25 +89,44 @@ export class MultiSelect {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.disabled, this.hideLabel, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.disabled, this.hideLabel, 'none', this.theme);
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <div class="root">
           <label class="label">
-            {hasLabel(this.host, this.label) && (
+            {!this.hideLabel && hasLabel(this.host, this.label) && (
               <span class="label__text">
                 {this.label || <slot name="label" />}
                 {this.required && <Required />}
               </span>
             )}
           </label>
-          <input placeholder={this.selectedString || null} autoComplete="off" onInput={this.onFilterChange} />
-          <ul>
-            <li class="option">
-              <slot onSlotchange={() => this.updateOptions()} />
-            </li>
-          </ul>
+          <div class="input-container">
+            <input
+              placeholder={this.selectedString || null}
+              autoComplete="off"
+              onInput={this.onFilterChange}
+              onClick={this.onInputClick}
+            />
+            <PrefixedTagNames.pIcon
+              class="icon"
+              name="arrow-head-down"
+              theme={this.theme}
+              color={this.disabled ? 'state-disabled' : 'primary'}
+              aria-hidden="true"
+              // ref={(el) => (this.iconElement = el)}
+            />
+          </div>
+          <PrefixedTagNames.pMultiSelectDropdown
+            isOpen={this.isOpen}
+            onOpenChange={this.onDropdownOpenChange}
+            theme={this.theme}
+          >
+            <slot onSlotchange={() => this.updateOptions()} />
+          </PrefixedTagNames.pMultiSelectDropdown>
         </div>
       </Host>
     );
@@ -126,6 +151,14 @@ export class MultiSelect {
     this.selectedString = Array.from(nativeSelect.selectedOptions)
       .map((option) => option.textContent)
       .join(', ');
+  };
+
+  private onInputClick = (): void => {
+    this.isOpen = true;
+  };
+
+  private onDropdownOpenChange = (isOpen: boolean): void => {
+    this.isOpen = isOpen;
   };
 
   private observeAttributes(): void {

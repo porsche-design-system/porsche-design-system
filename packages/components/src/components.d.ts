@@ -39,6 +39,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { MultiSelectDropdownDirection, MultiSelectDropdownOpenChangeEvent } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 import { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -97,6 +98,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { MultiSelectDropdownDirection, MultiSelectDropdownOpenChangeEvent } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 export { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -1085,9 +1087,34 @@ export namespace Components {
     }
     interface PMultiSelect {
         /**
+          * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
           * The label text.
          */
+        "label"?: string;
+        /**
+          * This attribute is used to specify the name of the control.
+         */
         "name": string;
+        /**
+          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+         */
+        "required"?: boolean;
+        /**
+          * Adapts the select color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PMultiSelectDropdown {
+        "direction"?: MultiSelectDropdownDirection;
+        "isOpen": boolean;
+        "theme"?: Theme;
     }
     interface PMultiSelectOption {
         /**
@@ -1713,6 +1740,10 @@ export interface PModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPModalElement;
 }
+export interface PMultiSelectDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPMultiSelectDropdownElement;
+}
 export interface PMultiSelectOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPMultiSelectOptionElement;
@@ -1973,6 +2004,12 @@ declare global {
         prototype: HTMLPMultiSelectElement;
         new (): HTMLPMultiSelectElement;
     };
+    interface HTMLPMultiSelectDropdownElement extends Components.PMultiSelectDropdown, HTMLStencilElement {
+    }
+    var HTMLPMultiSelectDropdownElement: {
+        prototype: HTMLPMultiSelectDropdownElement;
+        new (): HTMLPMultiSelectDropdownElement;
+    };
     interface HTMLPMultiSelectOptionElement extends Components.PMultiSelectOption, HTMLStencilElement {
     }
     var HTMLPMultiSelectOptionElement: {
@@ -2204,6 +2241,7 @@ declare global {
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
         "p-multi-select": HTMLPMultiSelectElement;
+        "p-multi-select-dropdown": HTMLPMultiSelectDropdownElement;
         "p-multi-select-option": HTMLPMultiSelectOptionElement;
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
@@ -3243,9 +3281,38 @@ declare namespace LocalJSX {
     }
     interface PMultiSelect {
         /**
+          * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
           * The label text.
          */
+        "label"?: string;
+        /**
+          * This attribute is used to specify the name of the control.
+         */
         "name"?: string;
+        /**
+          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+         */
+        "required"?: boolean;
+        /**
+          * Adapts the select color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PMultiSelectDropdown {
+        "direction"?: MultiSelectDropdownDirection;
+        "isOpen"?: boolean;
+        /**
+          * Emitted when the open state should change.
+         */
+        "onOpenChange"?: (event: PMultiSelectDropdownCustomEvent<MultiSelectDropdownOpenChangeEvent>) => void;
+        "theme"?: Theme;
     }
     interface PMultiSelectOption {
         /**
@@ -3946,6 +4013,7 @@ declare namespace LocalJSX {
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
         "p-multi-select": PMultiSelect;
+        "p-multi-select-dropdown": PMultiSelectDropdown;
         "p-multi-select-option": PMultiSelectOption;
         "p-pagination": PPagination;
         "p-popover": PPopover;
@@ -4044,6 +4112,7 @@ declare module "@stencil/core" {
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
+            "p-multi-select-dropdown": LocalJSX.PMultiSelectDropdown & JSXBase.HTMLAttributes<HTMLPMultiSelectDropdownElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
