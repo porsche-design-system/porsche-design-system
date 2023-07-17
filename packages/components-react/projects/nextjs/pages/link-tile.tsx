@@ -79,7 +79,7 @@ const LinkTilePage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light grid" title="should render background='light' on light background">
-        <PLinkTile label="Some label" description="Background light" background="light">
+        <PLinkTile href="#" label="Some label" description="Background light" background="light">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width={50}
