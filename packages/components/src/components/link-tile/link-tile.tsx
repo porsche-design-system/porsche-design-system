@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
-import type { ITileProps, LinkTileBackground } from '../../utils';
+import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
