@@ -46,8 +46,8 @@ export const getButtonLinkTileStyles = (
               fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w), // mapping of the deprecated weight semibold
             }))
           ),
-          ...buildResponsiveStyles(background, (background: Theme) =>
-            background === 'dark'
+          ...buildResponsiveStyles(background, (b: Theme) =>
+            b === 'dark'
               ? { color: getThemedColors('dark').primaryColor }
               : { color: getThemedColors('light').primaryColor }
           ),
